@@ -54,7 +54,7 @@ def scrape_web_page(page_url, save_as=""):
      """
 
     # open Splinter and visit web page
-    browser = init_splinter(headlessTF=False)
+    browser = init_splinter()
     browser.visit(page_url)
 
     # pause for 3 seconds to let the page load

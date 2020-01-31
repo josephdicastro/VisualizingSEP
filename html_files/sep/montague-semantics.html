@@ -1,0 +1,1874 @@
+<!DOCTYPE html><!--[if lt IE 7]> <html class="ie6 ie"> <![endif]--><!--[if IE 7]>    <html class="ie7 ie"> <![endif]--><!--[if IE 8]>    <html class="ie8 ie"> <![endif]--><!--[if IE 9]>    <html class="ie9 ie"> <![endif]--><!--[if !IE]> --><html xmlns="http://www.w3.org/1999/xhtml"><!-- <![endif]--><head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>
+Montague Semantics (Stanford Encyclopedia of Philosophy/Winter 2019 Edition)
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="noarchive, noodp" />
+<meta property="citation_title" content="Montague Semantics" />
+<meta property="citation_author" content="Janssen, Theo M. V." />
+<meta property="citation_publication_date" content="2011/11/07" />
+<meta name="DC.title" content="Montague Semantics" />
+<meta name="DC.creator" content="Janssen, Theo M. V." />
+<meta name="DCTERMS.issued" content="2011-11-07" />
+<meta name="DCTERMS.modified" content="2016-02-25" />
+
+<!-- NOTE: Import webfonts using this link: -->
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,200&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" media="screen,handheld" href="../../css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" media="screen,handheld" href="../../css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css" />
+<!--[if IE 7]> <link rel="stylesheet" type="text/css" href="../../css/font-awesome-ie7.min.css"> <![endif]-->
+<link rel="stylesheet" type="text/css" media="screen,handheld" href="../../css/style.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../../css/print.css" />
+<link rel="stylesheet" type="text/css" href="../../css/entry.css" />
+<!--[if IE]> <link rel="stylesheet" type="text/css" href="../../css/ie.css" /> <![endif]-->
+<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+
+<!-- NOTE: Javascript for sticky behavior needed on article and ToC pages -->
+<script type="text/javascript" src="../../js/jquery-scrolltofixed-min.js"></script>
+<script type="text/javascript" src="../../js/entry.js"></script>
+
+<!-- SEP custom script -->
+<script type="text/javascript" src="../../js/sep.js"></script>
+</head>
+
+<!-- NOTE: The nojs class is removed from the page if javascript is enabled. Otherwise, it drives the display when there is no javascript. -->
+<body class="archive article" id="pagetopright">
+<div id="container">
+<div id="header-wrapper">
+  <div id="header">
+    <div id="branding">
+      <div id="site-logo"><a href="../../index.html"><img src="../../symbols/sep-man-red.png" alt="SEP logo" /></a></div>
+      <div id="site-title"><a href="../../index.html">Stanford Encyclopedia of Philosophy Archive<div id="site-subtitle">Winter 2019 Edition</div></a></div>
+    </div>
+    <div id="navigation">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <button class="btn btn-navbar collapsed" data-target=".collapse-main-menu" data-toggle="collapse" type="button"> <i class="icon-reorder"></i> Menu </button>
+            <div class="nav-collapse collapse-main-menu collapse">
+              <ul class="nav">
+                <li class="dropdown"><a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-book"></i> Browse</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                    <li><a href="../../contents.html">Table of Contents</a></li>
+                    <li><a href="../../new.html">New in this Archive</a></li>
+                    
+                    <li><a href="../../published.html">Chronological</a></li>
+                    <li><a href="../../../../archives/">Archives <i class="icon-external-link"></i></a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a id="drop2" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-info-sign"></i> About</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                    <li><a href="../../info.html">Editorial Information</a></li>
+                    <li><a href="../../about.html">About the SEP</a></li>
+                    <li><a href="../../board.html">Editorial Board</a></li>
+                    <li><a href="../../cite.html">How to Cite the SEP</a></li>
+                    <li><a href="../../special-characters.html">Special Characters</a></li>
+                    
+                    <li><a href="../../../../contact.html">Contact <i class="icon-external-link"></i></a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a id="drop3" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-leaf"></i> Support SEP</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                    <li><a href="../../../../support/">Support the SEP</a></li>
+                    <li><a href="../../../../support/friends.html">PDFs for SEP Friends</a></li>
+                    <li><a href="../../../../support/donate.html">Make a Donation</a></li>
+                    <li><a href="../../../../support/sepia.html">SEPIA for Libraries</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End navigation -->
+    
+    <div id="search">
+      <form id="search-form" method="get" action="../../../../search/searcher.py">
+        <input type="search" name="query" placeholder="Search this archive" />
+<input type="hidden" name="archive" value="win2019" />
+
+        <div class="search-btn-wrapper"><button class="btn search-btn" type="submit"><i class="icon-search"></i></button></div>
+      </form>
+    </div>
+    <!-- End search --> 
+    
+  </div>
+  <!-- End header --> 
+</div>
+<!-- End header wrapper -->
+
+<div id="content">
+
+<!-- Begin article sidebar -->
+<div id="article-sidebar" class="sticky" style="z-index: 999;">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <button class="btn btn-navbar collapsed" data-target=".collapse-sidebar" data-toggle="collapse" type="button"> <i class="icon-reorder"></i> Entry Navigation </button>
+        <div id="article-nav" class="nav-collapse collapse-sidebar collapse">
+          <ul class="nav">
+            <li><a href="#toc">Entry Contents</a></li>
+            <li><a href="#Bib">Bibliography</a></li>
+            <li><a href="#Aca">Academic Tools</a></li>
+            <li><a href="https://leibniz.stanford.edu/friends/preview/montague-semantics/">Friends PDF Preview <i class="icon-external-link"></i></a></li>
+            <li><a href="https://plato.stanford.edu/cgi-bin/encyclopedia/archinfo.cgi?entry=montague-semantics&amp;archive=win2019">Author and Citation Info <i class="icon-external-link"></i></a> </li>
+            <li><a href="#pagetopright" class="back-to-top">Back to Top <i class="icon-angle-up icon2x"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div></div>
+<!-- End article sidebar --> 
+
+<!-- NOTE: Article content must have two wrapper divs: id="article" and id="article-content" -->
+<div id="article">
+<div id="article-content">
+
+<!-- BEGIN ARTICLE HTML -->
+
+
+<div id="aueditable"><!--DO NOT MODIFY THIS LINE AND ABOVE-->
+
+<h1>Montague Semantics</h1><div id="pubinfo"><em>First published Mon Nov 7, 2011; substantive revision Thu Feb 25, 2016</em></div>
+
+<div id="preamble">
+
+<p>
+Montague semantics is a theory of natural language semantics and of
+its relation with syntax. It was originally developed by the logician
+Richard Montague (1930–1971) and subsequently modified and
+extended by linguists, philosophers, and logicians. The most important
+features of the theory are its use of model theoretic semantics which
+is nowadays commonly used for the semantics of logical languages and
+its adherence to the principle of compositionality—that is, the
+meaning of the whole is a function of the meanings of its parts and
+their mode of syntactic combination. This entry presents the origins
+of Montague Semantics, summarizes important aspects of the classical
+theory, and sketches more recent developments. We conclude with a
+small example, which illustrates some modern features.</p>
+</div>
+
+<div id="toc">
+<!--Entry Contents-->
+
+<ul>
+
+ <li><a href="#Int">1. Introduction</a>
+ 
+<ul>
+
+ <li><a href="#Bac">1.1 Background</a></li>
+ 
+ <li><a href="#BasAsp">1.2 Basic Aspects</a></li>
+ </ul></li>
+
+ <li><a href="#ComMonSem">2. Components of Montague Semantics</a>
+ 
+<ul>
+
+ <li><a href="#UniMeaPos">2.1 Unicorns and Meaning Postulates</a></li>
+ 
+ <li><a href="#NouPhrGenQua">2.2 Noun Phrases and Generalized Quantifiers</a></li>
+ 
+ <li><a href="#LogTra">2.3 Logic and Translating</a></li>
+ 
+ <li><a href="#IntTau">2.4 Intensionality and Tautologies</a></li>
+ 
+ <li><a href="#ScoDerHis">2.5 Scope and Derivational History</a></li>
+ </ul></li>
+
+ <li><a href="#PhiAsp">3. Philosophical Aspects</a>
+ 
+<ul>
+
+ <li><a href="#FreInt">3.1 From Frege to Intensions</a></li>
+ 
+ <li><a href="#Com">3.2 Compositionality</a></li>
+ 
+ <li><a href="#SynCatSemTyp">3.3 Syntactic Categories and Semantic Types</a></li>
+ 
+ <li><a href="#Pra">3.4 Pragmatics</a></li>
+ 
+ <li><a href="#Ont">3.5 Ontology</a></li>
+ 
+ <li><a href="#Psy">3.6 Psychology</a></li>
+ </ul></li>
+
+ <li><a href="#Con">4. Concluding Remarks</a>
+ 
+<ul>
+
+ <li><a href="#Leg">4.1 Legacy</a></li>
+ 
+ <li><a href="#FurRea">4.2 Further Reading</a></li>
+ 
+ <li><a href="#Exa">4.3 Example</a></li>
+ </ul></li>
+
+ <li><a href="#Bib">Bibliography</a></li>
+ 
+ <li><a href="#Aca">Academic Tools</a></li>
+ 
+ <li><a href="#Oth">Other Internet Resources</a></li>
+ 
+ <li><a href="#Rel">Related Entries</a></li>
+ </ul>
+<!--Entry Contents-->
+
+<hr />
+</div>
+
+<div id="main-text">
+
+<h2><a name="Int">1. Introduction</a></h2>
+
+<h3><a name="Bac">1.1 Background</a></h3>
+
+<p>
+Montague semantics is the approach to the semantics of natural
+language introduced by Richard Montague in the 1970s. He described the
+aim of his enterprise as follows:</p>
+
+<blockquote>
+The basic aim of semantics is to characterize the notion of a true
+sentence (under a given interpretation) and of entailment (Montague
+1970c, 223 fn).
+</blockquote>
+
+<p>
+The salient points of Montague's approach are a model theoretic
+semantics, a systematic relation between syntax and semantics, and a
+fully explicit description of a fragment of natural language. His
+approach constituted a revolution: after the Chomskyan revolution that
+brought mathematical methods into syntax, now such methods were
+introduced in semantics.</p>
+
+<p>
+Montague's approach became influential, as many authors began to work
+in his framework and conferences were devoted to ‘Montague
+grammar’. Later on, certain aspects of his approach were adapted
+or changed, became generally accepted or were entirely abandoned.
+Nowadays not many authors would describe their own work as
+‘Montague semantics’ given the many differences that have
+taken shape in semantics since Montague's own work, but his ideas have
+left important traces, and changed the semantic landscape forever. In
+our presentation of Montague semantics the focus will be on these
+developments.</p>
+
+<p>
+Richard Montague was a mathematical logician who had specialized in
+set theory and modal logic. His views on natural language must be
+understood with his mathematical background in mind. Montague held the
+view that natural language was a formal language very much in the same
+sense as predicate logic was a formal language. As such, in Montague's
+view, the study of natural language belonged to mathematics, and not
+to psychology (Thomason 1974, 2). Montague formulated his views:</p>
+
+<blockquote>
+There is in my opinion no important theoretical difference between
+natural languages and the artificial languages of logicians; indeed I
+consider it possible to comprehend the syntax and semantics of both
+kinds of languages with a single natural and mathematically precise
+theory. (Montague 1970c, 222)
+</blockquote>
+
+<p>
+Sometimes only the first part of the quote is recalled, and that might
+raise the question whether he did not notice the great differences:
+for instance that natural languages develop without an a priori set of
+rules whereas artificial languages have an explicit syntax and are
+designed for a special purpose. But the quote as a whole expresses
+clearly what Montague meant by ‘no important theoretical
+difference’; the ‘single natural and mathematically
+precise theory’ which he aimed at, is presented in his paper
+‘Universal Grammar’ (Montague 1970c). He became most
+well-known after the appearance of Montague 1973, in which the theory
+is applied to some phenomena which were discussed intensively in the
+philosophical literature of those days.</p>
+
+<p>
+Montague's interest in the field arose while teaching introductory
+logic courses. Standard in such courses are exercises in which one is
+asked to translate natural language sentences into logic. To answer
+such exercises required a bilingual individual, understanding both the
+natural language and the logic. Montague provided, for the first time
+in history, a mechanical method to obtain these logical translations.
+About this, Montague said:</p>
+
+<blockquote>
+It should be emphasized that this is not a matter of vague intuition,
+as in elementary logic courses, but an assertion to which we have
+assigned exact significance. (Montague 1973, 266)
+</blockquote>
+
+<p>
+We next describe the basic ideas of Montague semantics. Section 2
+presents several components of Montague semantics in more detail.
+Section 3 includes a discussion of philosophically interesting
+aspects, and Section 4 provides a detailed example and further
+reading.</p>
+
+<h3><a name="BasAsp">1.2 Basic Aspects</a></h3>
+
+<p>
+To implement his objective, Montague applied the method which is
+standard for logical languages: model theoretic semantics. This means
+that, using constructions from set theory, a model is defined, and
+that natural language expressions are interpreted as elements (or
+sets, or functions) in this universe. Such a model should not be
+conceived of as a model of reality. On the one hand the model gives
+more than reality: natural language does not only speak about past,
+present and future of the real world, but also about situations that
+might be the case, or are imaginary, or cannot be the case at all. On
+the other hand, however, the model offers less: it merely specifies
+reality as conceived by language. An example: we speak about mass
+nouns such as <em>water</em> as if every part of water is water again,
+so as if it has no minimal parts, which physically is not correct. For
+more information on natural language metaphysics, see Bach 1986b.</p>
+
+<p>
+Montague semantics is not interested in a particular situation (e.g.
+the real world) but in semantical properties of language. When
+formalizing such properties, reference to a class of models has to be
+made, and therefore the interpretation of a language will be defined
+with respect to a set of (suitable) models. For example, in the
+introduction we mentioned that the characterization of entailment was
+a basic goal of semantics. That notion is defined as follows. Sentence
+<i>A</i> entails sentence <i>B</i> if in all models in which the
+interpretation of <i>A</i> is true, also the interpretation of
+<i>B</i> is true. Likewise a tautology is true in all models, and a
+contradiction is true in no model.</p>
+
+<p>
+An essential feature of Montague semantics is the systematic relation
+between syntax and semantics. This relation is described by the
+Principle of Compositionality which reads, in a formulation that is
+standard nowadays:</p>
+
+<blockquote>
+The meaning of a compound expression is a function of the meanings of
+its parts and of the way they are syntactically combined. (Partee
+1984, 281)
+</blockquote>
+
+<p>
+An example. Suppose that the meaning of <em>walk</em>, or
+<em>sing</em> is (for each model in the class) defined as the set of
+individuals who share respectively the property of walking or the
+property of singing. By appealing to the principle of
+compositionality, if there is a rule that combines these two
+expressions to the verb phrase <em>walk and sing</em>, there must be a
+corresponding rule that determines the meaning of that verb phrase. In
+this case, the resulting meaning will be the intersection of the two
+sets. Consequently, in all models the meaning of <em>walk and
+sing</em> is a subset of the meaning of <em>walk</em>. Furthermore we
+have a rule that combines the noun phrase <em>John</em> with a verb
+phrase. The resulting sentence <em>John walks and sings</em> means
+that John is an element of the set denoted by the verb phrase. Note
+that in any model in which John is element of the intersection of
+walkers and singers, he is an element of the set of walkers. So
+<em>John walks and sings</em> entails <em>John walks</em>.</p>
+
+<p>
+An important consequence of the principle of compositionality is that
+all the parts which play a role in the syntactic composition of a
+sentence, must also have a meaning. And furthermore, each syntactic
+rule must be accompanied by a semantic rule which says how the meaning
+of the compound is obtained. Thus the meaning of an expression is
+determined by the way in which the expression is formed, and as such
+the derivational history plays a role in determining the meaning. For
+further discussion, see Section 2.5.</p>
+
+<p>
+The formulation of the aim of Montague semantics mentioned in the
+introduction (‘to characterize truth and entailment of
+sentences’) suggests that the method is restricted to
+declarative sentences. But this is need not be the case. In Montague
+1973 (248 fn) we already find suggestions for how to deal with
+imperatives and questions. Hamblin (1973) and Karttunen (1977) have
+given a semantics for questions by considering them with a meaning
+that is based upon sentences (viz. sets of propositions). Groenendijk
+and Stokhof (1989) consider questions as expressions with meanings of
+their own nature (namely partitions).</p>
+
+<p>
+Since Montague only considered sentences in isolation, certain
+commentators pointed out that the sentence boundary was a serious
+limitation for the approach. But what about discourse? An obvious
+requirement is that the sentences from a discourse are interpreted one
+by one. How then to treat co-referentiality of anaphora over sentence
+boundaries? The solution which was proposed first, was Discourse
+Representation Theory (Kamp 1981). On the one hand that was an
+offspring of Montague's approach because it used model theoretic
+semantics, on the other hand it was a deviation because (discourse)
+representations were an essential ingredient. Nowadays there are
+several reformulations of DRT that fit into Montague's framework (see
+van Eijck and Kamp 1997). A later solution was based upon a change of
+the logic; dynamic Montague semantics was developed and that gave a
+procedure for binding free variables in logic which has an effect on
+subsequent formulas (Groenendijk and Stokhof 1991). Hence the sentence
+boundary is not a fundamental obstacle for Montague semantics.</p>
+
+<h2><a name="ComMonSem">2. Components of Montague Semantics</a></h2>
+
+<h3><a name="UniMeaPos">2.1 Unicorns and Meaning Postulates</a></h3>
+
+<p>
+Montague's most influential article was ‘The Proper Treatment of
+Quantification in Ordinary English’ (Montague 1973). It
+presented a fragment of English that covered several phenomena which
+were in those days discussed extensively. One of the examples gave
+rise to the trademark of Montague grammar: the unicorn (several
+publications on Montague grammar are illustrated with unicorns).</p>
+
+<p>
+Consider the two sentences <em>John finds a unicorn</em> and <em>John
+seeks a unicorn</em>. These are syntactically alike
+(subject-verb-object), but are semantically very different. From the
+first sentence follows that there exists at least one unicorn, whereas
+the second sentence is ambiguous between the so called <em>de
+dicto</em> reading which does not imply the existence of unicorns, and
+the <em>de re</em> reading from which existence of unicorns
+follows.</p>
+
+<p>
+The two sentences are examples of a traditional problem called
+‘quantification into intensional contexts’. Traditionally
+the second sentence as a whole was seen as an intensional context, and
+the novelty of Montague's solution was that he considered the object
+position of <em>seek</em> as the source of the phenomenon. He
+formalized <em>seek</em> not as a relation between two individuals,
+but as a relation between an individual and a more abstract entity,
+see Section 2.2. Under this analysis the existence of a unicorn does
+not follow. The <em>de re</em> reading is obtained in a different way,
+see Section 2.5.</p>
+
+<p>
+It was Montague's strategy to apply to all expressions of a category
+the most general approach, and narrow this down, when required, by
+meaning postulates. So initially, <em>find</em> is also considered to
+be a relation between an individual and such an abstract entity, but
+some meaning postulate restricts the class of models in which we
+interpret the fragment to only those models in which the relation for
+<em>find</em> is the (classical) relation between individuals.</p>
+
+<p>
+As a consequence of this strategy, Montague's paper has many meaning
+postulates. Nowadays semanticists often prefer to express the semantic
+properties of individual lexical items directly in their lexical
+meaning, and then <em>find</em> is directly interpreted as a relation
+between individuals. Nowadays meaning postulates are mainly used to
+express structural properties of the models (for instance the
+structure of time axis), and to express relations between the meanings
+of words. For a discussion of the role of meaning postulates, see
+Zimmermann 1999.</p>
+
+<h3><a name="NouPhrGenQua">2.2 Noun Phrases and Generalized Quantifiers</a></h3>
+
+<p>
+Noun phrases like <em>a pig</em>, <em>every pig</em>, and
+<em>Babe</em>, behave in many respects syntactically alike: they can
+occur in the same positions, can be conjoined, etc. But a uniform
+semantics seems problematic. There were proposals which said that
+<em>every pig</em> denotes the universally generic pig, and <em>a
+pig</em> an arbitrary pig. Such proposals were rejected by Lewis
+(1970), who raised, for instance, the question which would be the
+color of the universal pig, all colors, or would it be colorless?</p>
+
+<p>
+Montague proposed the denotation of a descriptive phrase to be a set
+of properties. For instance, the denotation of <em>John</em> is the
+set consisting of properties which hold for him, and of <em>every
+man</em> the set of properties which hold for every man. Thus they are
+semantically uniform, and then conjunction and/or disjunction of
+arbitrary quantifier phrases (including e.g. <em>most but not
+all</em>) can be dealt with in a uniform way.</p>
+
+<p>
+This abstract approach has led to generalized quantifier theory, see
+Barwise &amp; Cooper 1981 and Peters &amp; Westerståhl 2006. By
+using generalized quantifier theory a remarkable result has been
+achieved. It concerns ‘negative polarity items’: words
+like <em>yet</em> and <em>ever</em>. Their occurrence can be licensed
+by negation: <em>The 6:05 has arrived yet</em> is out, whereas <em>The
+6:05 hasn't arrived yet</em> is OK. But there are more contexts in
+which negative polarity items may occur, and syntacticians did not
+succeed in characterizing them. Ladusaw (1980) did so by using a
+characterization from generalized quantifier theory. This was a great
+success for formal semantics! His proposal roughly was as follows.
+Downward entailing expressions are expressions that license inferences
+from supersets to subsets. <em>No</em> is downward entailing because
+from <em>No man walks</em> it follows that <em>No father walks</em>. A
+negative polarity item is acceptable only if it is interpreted in the
+scope of a downward entailing expression, e.g. <em>No man ever
+walks</em>. Further research showed that the analysis needed refining,
+and that a hierarchy of negative polarity items should be used
+(Ladusaw 1996).</p>
+
+<h3><a name="LogTra">2.3 Logic and Translating</a></h3>
+
+<p>
+An expression may directly be associated with some element from the
+model. For instance, <em>walk</em> with some set of individuals. Then
+also the operations on meanings have to be specified directly, and
+that leads to formulations such as:</p>
+
+<blockquote>
+<i>G</i><sub>3</sub> is that function <i>f</i> ∈
+((2<sup><i>I</i></sup>)<sup><i>A</i>×<i>A</i></sup>)<sup><i>A</i><sup>ω</sup></sup>
+such that, for all <i>x</i> ∈ <i>A</i><sup>ω</sup>, all
+<i>u</i>,<i>t</i> ∈ <i>A</i> and all <i>i</i> ∈ <i>I</i> :
+<i>f</i>(<i>x</i>)(<i>t</i>,<i>u</i>)(<i>i</i>) = 1 if and only if
+<i>t</i> = <i>u</i>. (Montague 1970a, 194)
+</blockquote>
+
+<p>
+Such descriptions are not easy to understand, nor convenient to work
+with. Montague (1973, 256) said, ‘it is probably more
+perspicuous to proceed indirectly.’ For this purpose he
+introduced a language, called ‘intensional logic’. The
+operation described above is then represented by
+<sup>∧</sup>λ<i>t</i>λ<i>u</i>[<i>t</i> = <i>u</i>].
+The λ<i>t</i> says that it is a function that takes <i>t</i> as
+argument, likewise for λ<i>u</i>. So
+λ<i>t</i>λ<i>u</i>[<i>t</i> = <i>u</i>] is a function
+which takes two arguments, and yields true if the arguments are equal,
+and otherwise false. The preceding <sup>∧</sup> says that we
+consider a function from possible worlds and moments of time to the
+thus defined function.</p>
+
+<p>
+Two features of the Montague's ‘intensional logic’
+attracted attention.</p>
+
+<ol>
+
+<li>It is a higher order logic. In those days, linguists, philosophers
+and mathematicians were only familiar with first order logic (the
+logic in which there are only variables for basic entities). Since in
+Montague semantics the parts of expressions must have meaning too, a
+higher order logic was needed (we have already seen that <em>every
+man</em> denotes a set of properties).</li>
+
+<li>The logic has lambda abstraction, which in Montague's days was not
+a standard ingredient of logic. The lambda operator makes it possible
+to express with higher order functions, and the operator made it
+possible to cope differences between syntax and semantics. For
+instance, in <em>John walks and he talks</em> there is only one
+occurrence of <em>John</em>, whereas in the logic John should occur
+with the predicate <strong>walk</strong> and with the predicate
+<strong>talk</strong>. The use of lambda-operators enables us to plug
+in the meaning of <em>John</em> at several positions. The importance
+of lambdas is expressed by Partee at a talk on ‘The first decade
+of Montague Grammar’: ‘Lambdas changed my life’
+(Partee 1996, 24). Nowadays lambdas are a standard tool in all papers
+in semantics. In section 4.1 an example will be given that illustrates
+the power of lambdas.</li>
+</ol>
+
+<p>
+This motivation for using translations (a tool for obtaining
+perspicuous representations of meanings) has certain consequences.</p>
+
+<ol>
+
+<li> Translation is a tool to obtain formulas which <em>represent</em>
+meanings. Different, but equivalent formulas are equally acceptable.
+In the introduction of this article it was said that Montague grammar
+provided a mechanical procedure for obtaining the logical translation.
+As a matter of fact, the result of Montague's translation of <em>Every
+man runs</em> is not identical with the traditional translation,
+although equivalent with it, see the example in Section 4.1.</li>
+
+<li>The translation into logic should be dispensable. So in Montague
+semantics there is nothing like ‘logical form’(which plays
+such an important role in the tradition of Chomsky).</li>
+
+<li>For each syntactic rule which combines one or more expressions
+there is a corresponding semantic rule that combines the corresponding
+representations of the meanings. This connection is baptized the
+rule-to-rule hypothesis (Bach 1976). Maybe it is useful to emphasize
+that (in case the syntactic operation is meaning preserving) the
+corresponding semantic rule can be the identity mapping .</li>
+
+<li>Operations depending on specific features of formulas are not
+allowed. Janssen (1997) criticized several proposals on this aspect.
+He showed that proposals that are deficient in this respect are either
+incorrect (make wrong predictions for closely related sentences), or
+can be corrected and generalized, and thus improved.</li>
+</ol>
+
+<p>
+The method of using a logic for representing meanings has a long
+history. One might point to philosophers such as Dalgarno and Leibniz
+who developed formal languages in order to express philosophy clearly.
+In the 19th century there were several proposals for artificial
+languages in order to make mathematical argumentation more
+transparent, for instance by Frege and by Peano. Frege's
+‘Begriffsschrift’ (Frege 1879) can be seen as the birth of
+predicate logic: he introduced quantifiers. His motivation came from
+mathematical needs; he did not use his Begriffsschrift in his papers
+on natural language. Russell (1905) used logic to represent the
+meanings of natural language. A classical example in his paper is the
+analysis of <em>The king of France is bald</em>. Syntactically it has
+the form subject-predicate, but if it would be constructed logically
+as a subject-predicate, then <em>the king of France</em>, which
+denotes nothing, cannot be the subject. So there is a difference
+between the syntactic form, and the logical form: natural language
+obscures the view of the real meaning. This became known as the
+‘misleading form thesis’. Therefore philosophers of
+language saw, in those days, the role of logic as a tool to improve
+natural language. An interesting overview of the history of
+translating is given in Stokhof 2007.</p>
+
+<p>
+Note, however, that Montague semantics has nothing to do with the aim
+of improving natural language or providing its logical form.</p>
+
+<h3><a name="IntTau">2.4 Intensionality and Tautologies</a></h3>
+
+<p>
+Montague defined the denotation of a sentence as a function from
+possible worlds and moments of time to truth values. Such a function
+is called an ‘intension’. As he said (Montague 1970a,
+218), this made it possible to deal with the semantics of common
+phenomena such as modifiers, e.g. in <em>Necessarily the father of
+Cain is Adam</em>. Its denotation cannot be obtained from the truth
+value of <em>The father of Cain is Adam</em> : one has to know the
+truth value for other possible worlds and moments of time. The
+intensional approach also made it possible to deal with several
+classical puzzles. Two examples from Montague 1973 are: <em>The
+temperature is rising</em>, which should not be analyzed as stating
+that some number is rising. And <em>John wishes to catch a fish and
+eat it</em> should not be analyzed as stating that John has a
+particular fish in mind, but that he wants to eat the fish he will
+catch.</p>
+
+<p>
+Intensional semantics has been criticized for the fact that all
+tautologies get the same meaning (are synonymous). Indeed, a tautology
+as <em>John is ill or he is not ill</em> gets as intension the
+function that constantly yields <strong>true</strong>, and the same
+holds for other tautologies. If one is interested in discriminating
+semantically between tautologies, then a refinement of the notions
+‘meaning’ and ‘equivalence’ is needed:
+‘meaning’ should see distinctions between tautologies, and
+‘equivalence’ should be sensitive for the thus refined
+notion of meaning. The oldest proposals to account for this problem is
+by Lewis (1970): propositions are structured by including in their
+meanings also the meanings of their parts. Then indeed <em>Green grass
+is green</em> and <em>White snow is white</em> have different
+meanings. However, lexical synonyms still pose a problem. Since
+<em>woodchuck</em> and <em>groundhog</em> are names for the same
+species, <em>John believes that Phil is a groundhog</em> is, under
+this view, equivalent with <em>John believes that Phil is a
+woodchuck</em>. One could consider belief contexts a separate problem,
+but most authors see it as part of the problem of equivalence of all
+tautologies. </p>
+
+<p>
+Later several proposals for dealing with this are given. Bäuerle
+and Cresswell (2003) give an overview of the older proposals, and Fox
+and Lappin (2005) review more recent ones. The latter authors explain
+that there are two strategies: the first is to introduce impossible
+worlds in which <em>woodchuck</em> and <em>groundhog</em> are not
+equivalent, and the second is to introduce an entailment relation with
+the property that identity does not follow from reciprocal entailment.
+Fox and Lappin follow the second strategy.</p>
+
+<h3><a name="ScoDerHis">2.5 Scope and Derivational History</a></h3>
+
+<p>
+A well known example of scope ambiguity is <em>Every man loves a
+woman</em>. Is there only one woman involved (e.g. mother Mary), or
+does every man love a different woman? The sentence has no lexically
+ambiguous words, and there are no syntactic arguments to assign them
+more than one constituent structure. How to account for the
+ambiguity?</p>
+
+<p>
+In Montague 1973, the scope ambiguity is dealt with by providing for
+the sentence two different derivations. On the reading that
+<em>every</em> has wide scope, the sentence is produced from <em>every
+man</em> and <em>loves a woman</em>. On the reading that only one
+woman is involved, the sentence is obtained from <em>Every man loves
+him</em><sub>1</sub>. The <em>him</em><sub>1</sub> is an artifact, a
+placeholder, or, one might say, a syntactic variable. A special kind
+of rule, called a ‘quantifying-in rule’, will replace this
+<em>him</em><sub>1</sub> by a noun phrase or a pronoun (in case there
+are more occurrences of this placeholder). The placeholder corresponds
+with a logical variable that becomes bound by the semantic counterpart
+of the quantifying-in rule. For the sentence under discussion, the
+effect of the application of the quantifying-in rule to <em>a
+woman</em> and <em>Every man loves him</em><sub>1</sub> is that the
+desired sentence is produced and that the quantifier corresponding
+with <em>a woman</em> gets wide scope. When we would depict its
+derivation as a tree, this tree would be larger than the constituent
+structure of the sentence due to the introduction and later removal of
+<em>him</em><sub>1</sub>.</p>
+
+<p>
+This quantifying-in rule is used by Montague for other phenomena as
+well. An example is co-referentiality: <em>Mary loves the man whom she
+kissed</em> is obtained from <em>He</em><sub>1</sub> <em>loves the man
+whom he</em><sub>1</sub> <em>kissed</em>. And the <em>de re</em>
+reading of <em>John seeks a unicorn</em> is obtained from <em>a
+unicorn</em> and <em>John seeks him</em><sub>1</sub>.</p>
+
+<p>
+Many researchers did not like this analysis in which powerful
+syntactic rules and artificial symbols (<em>him</em><sub>1</sub>) are
+used. Below we consider two strategies to remedy.</p>
+
+<p>
+The first strategy was to deny the ambiguity. Some linguists have
+argued that the scope order is the same as the surface order; this is
+known as ‘Jackendoff's principle’ (Jackendoff 1972). But
+there are sentences where this does not work. Others said that it is
+sufficient only to obtain the weakest reading (<em>every</em> wide
+scope), and that the stronger reading is inferred when additional
+information is available. But there are sentences for which the
+different scope readings are logically independent, as in <em>Every
+woman loves one man</em>.</p>
+
+<p>
+The second strategy was to capture the ambiguity in another way than
+by the quantifying-in rules. Historically the first method was to put
+the interpretations of the noun phrases in a store from which these
+interpretations could be retrieved when needed: different stages of
+retrieving correspond with differences in scope. One might see this as
+a grammar in which the direct correspondence between syntax and
+semantics has been relaxed. The method is called ‘Cooper
+Store’, after the author who proposed this (Cooper 1983). A
+later proposal is DRT (= discourse representation theory), where
+representations are used to account for such ambiguities (van Eijck
+&amp; Kamp 1997).</p>
+
+<p>
+A recent method is by means of ‘lifting rules’ (see Sect.
+3.3): the meaning of a noun-phrase is ‘lifted’ to a more
+abstract level, and different levels yield different scope readings
+(see Hendriks 2001 and Jacobson 2014).</p>
+
+<p>
+Even if the role of derivational history can be avoided for scope and
+co-referentiality, other phenomena remain for which derivational
+histories have a role. An example is <em>John wondered when Alice said
+she would leave</em>. This is ambiguous between John asking for the
+time of leaving, or for the time of saying. So the sentence is
+ambiguous, even though there are no arguments for assigning to it more
+than one constituent structure. Pelletier (1993) presents this
+sentence and others, and says: ‘In order to maintain the
+Compositionality Principle, theorists have resorted to a number of
+devices which are all more or less unmotivated (except to maintain the
+Principle): Montagovian “quantifying-in” rules, traces,
+gaps, […].’ Pelletier's objection can be appreciated if
+one assumes that meaning assignment is directly linked with
+constituent structure. But, as explained in Section 1.2, this is not
+the case. The derivation specifies which rules are combined in which
+order, and this derivation constitutes the input to the meaning
+assignment function. The constituent structure is determined by the
+output of the syntactic rules, and different derivation processes may
+generate one and the same constituent structure. In this way, semantic
+ambiguities are accounted for. One should not call something
+‘constituent structure’ if it is not intended as such, and
+next refute it because it does not have the desired properties.</p>
+
+<p>
+The distinction between a derivation tree and a constituent tree is
+made in several theories of grammar. In Tree Adjoining Grammars
+(TAG's) the different scope readings of the sentence about loving a
+woman differ in the order in which the noun-phrases are substituted in
+the basic tree. A classical example in Chomskyan grammar is <em>The
+shooting of the hunters was bloody</em>, which is ambiguous between
+the hunters shooting, or the hunters being shot at. The two readings
+come from two different sources: one in which <em>the hunters</em> is
+the subject of the sentence, and one in which it is the object.</p>
+
+<h2><a name="PhiAsp">3. Philosophical Aspects</a></h2>
+
+<h3><a name="FreInt">3.1 From Frege to Intensions</a></h3>
+
+<p>
+Frege (1892) introduced the distinction between ‘sense’
+and ‘reference’. It has been said that Montague followed
+this distinction, and that ‘intension’ coincides with
+‘sense’. But that is not correct. Let us first consider
+Frege's argumentation. It concerns <em>The Greeks did not know that
+the morning star is the evening star</em>. During classical antiquity,
+it had not yet been discovered that both the morning star and the
+evening star are the planet Venus. We would, however, not like to
+analyze the sentence as stating that the Greeks did not know that
+Venus is the same as Venus, i.e. that they did not recognize an
+obvious truth. Frege's theory is that in ordinary contexts the
+expression <em>the morning star</em> denotes its referent (a celestial
+object), but in indirect contexts it denotes something different that
+is called ‘its sense’. This notion includes not only the
+referent, but also the way in which one refers to an object. Since
+referring to a celestial object by <em>the morning star</em> differs
+from referring to it by <em>the evening star</em>, the sentence
+<em>The morning star is the evening star</em> does not express an
+analytic truth.</p>
+
+<p>
+Frege's approach was abandoned because it was not really satisfactory.
+It introduced an ambiguity of the of the phrase <em>the morning
+star</em>, whereas it is not a lexical ambiguity: there is no sentence
+that has different readings due to that phrase. Nevertheless, Frege
+associated with that expression two denotations. The situation gets
+even worse: Carnap (1947) noted that under Frege's approach we would
+also need the ‘sense of a sense’ etc. Consequently,
+Frege's approach requires an infinite hierarchy of semantic
+denotations (and that for an expression which never gives rise to the
+ambiguity of a sentence). Carnap proposed another formalization of the
+same idea, but in which with one expression only one denotation is
+associated. Montague (1970c, 233) introduced with his
+‘intensional logic’ a variant of this idea. The difference
+with Frege (one denotation for an expression, instead of infinitely
+many) was possible due to two novelties (see Montague 1970a,
+217–218): ‘descriptive phrases do not denote
+individuals’, and ‘the denotation of a sentence is not a
+truth-value’.</p>
+
+<p>
+For an more elaborated discussion, see Janssen 2011; for information
+on the history of intensional logic, see Montague 1970b (145).</p>
+
+<h3><a name="Com">3.2 Compositionality</a></h3>
+
+<p>
+For Montague the principle of compositionality was not a subject of
+deliberation or discussion, because for him, as a mathematical
+logician, it was the only way to proceed. He describes his method in
+side remarks with phrases like ‘following Tarski’, or
+‘following Frege’, without ever calling it a principle.
+Later authors identified the Principle of Compositionality as the
+cornerstone of Montague's work. The reason was that discussions arose,
+and an investigation of the foundations of Montague grammar was asked
+for.</p>
+
+<p>
+It has been claimed that Montague himself did not work compositionally
+in the case of pronouns. This is, however, not the case. In order to
+explain the compositional nature of his treatment of pronouns, both
+Janssen (1997) and Dowty (2007) explain how variables are interpreted
+in logic; we follow their explanations. Consider the following clauses
+from the traditional Tarskian interpretation of predicate logic.</p>
+
+<ol>
+
+<li>⟦ϕ ∧ ψ⟧<sup><i>g</i></sup> = <b>1</b>
+if and only if ⟦ϕ⟧<sup><i>g</i></sup> = <b>1</b>
+and ⟦ψ⟧<sup><i>g</i></sup> = <b>1</b></li>
+
+<li>⟦∀<i>x</i>ϕ⟧<sup><i>g</i></sup> =
+<b>1</b> if and only if for all <i>h</i>
+∼<sub><i>x</i></sub><i>g</i> holds
+⟦ϕ⟧<sup><i>h</i></sup> = <b>1</b></li>
+</ol>
+
+<p>
+The first clause says: ϕ ∧ ψ is true when using
+assignment <i>g</i> if and only if ϕ and ψ are true when the
+assignment <i>g</i> is used. In the second clause assignments <i>h</i>
+are introduced (by ∼<sub><i>x</i> </sub><i>g</i>) which are equal
+to <i>g</i> except maybe for the value they assign to variable
+<i>x</i>. Montague uses the same format, with the difference that
+besides <i>g</i> he also has <i>i</i>, the time of reference and
+<i>j</i>, the possible world, as superscripts.</p>
+
+<p>
+In the formulation of the clauses there is nothing which can be
+pointed at as ‘the meaning’, in fact it is a definition of
+truth with <i>g</i> and <i>h</i> as parameters. So how is it possible
+that this (and Montague's work) are compositional?</p>
+
+<p>
+The answer requires a shift in perspective. The meaning of a formula
+ϕ, shortly <i>M</i>(ϕ), is the set of assignments for which
+the formula is true. Then the first clause says that <i>M</i>(ϕ
+∧ ψ) = <i>M</i>(ϕ) ∩ <i>M</i>(ψ), so a simple
+set-theoretic combination on the two meanings is performed. And
+<i>M</i>(∀<i>x</i>ϕ) = {<i>h</i>
+∼<sub><i>x</i></sub><i>g</i>∣<i>g</i> ∈
+<i>M</i>(ϕ)}, which can be described as: extend the set
+<i>M</i>(ϕ) with all <i>x</i>-variants. Likewise, in Montague
+semantics the meaning of an expression is a function which has as
+domain the triples &lt;moment of time, possible world, assignment to
+variables&gt;.</p>
+
+<p>
+Is it possible to achieve compositionality for natural language?
+Obvious candidates for counterexamples are idioms, because their
+meanings seem not to be built from their constituting words. However,
+Westerståhl (2002) presents a collection of methods, varying
+from compound basic expressions, to deviant meanings for constituting
+parts. Janssen (1997) refutes several other counterexamples that are
+put forward in the literature.</p>
+
+<p>
+How strong is compositionality? Mathematical results show that any
+language can be given a compositional semantics, either by using an
+unorthodox syntax (Janssen 1997) or by using an unorthodox semantics
+(Zadrozny 1994). However their proofs are not helpful in practice.
+Hodges (2001) showed how a given compositional semantics for a
+fragment can be extended to a larger language.</p>
+
+<p>
+Among formal semanticists one can find the following attitudes towards
+compositionality (nearly the same list is given in Partee 1996):</p>
+
+<ol>
+
+<li>Compositionality is a basic methodological principle; any proposal
+should obey it. Janssen(1997) and Jacobson(2014) are adherents of this
+position.</li>
+
+<li>Compositionality is a good method, but other methods can be used
+as well. For instance formal meaning representation can be used in an
+essential way. An example is DRT (discourse representation theory,
+Kamp 1981).</li>
+
+<li>Compositionality is an ideal, but a proposal need not to satisfy
+it.</li>
+
+<li>It is an empirical issue whether compositionality can be achieved.
+See Dowty 2007 for a discussion.</li>
+</ol>
+
+<p>
+An extensive discussion of compositionality is given in Janssen 1997,
+and in the entry on
+ <a href="../compositionality/">compositionality</a>
+ (Szabó 2007).</p>
+
+<h3><a name="SynCatSemTyp">3.3 Syntactic Categories and Semantic Types</a></h3>
+
+<p>
+According to Montague the purpose of syntax is to produce the input
+for the semantics:</p>
+
+<blockquote>
+I fail to see any interest in syntax except as a preliminary to
+semantics. (Montague 1970c, 223)
+</blockquote>
+
+<p>
+Although the syntax was in his eyes subordinate, he was fully explicit
+in his rules in which he used some ad hoc syntactic tools. </p>
+
+<p>
+In Montague 1970a, the relation between syntactic categories and
+semantic types is given only by a list. Montague (1973) defines a
+systematic relation which amounts to the same relation as one would
+have in categorial grammar. However, Montague's syntax is not a
+categorial syntax because the rules are not always category driven and
+because some of the rules are not concatenation rules.</p>
+
+<p>
+For each of these two aspects, proposals have been put forward to
+change the situation. One direction was to stay closer to the ideals
+of categorial grammar, with only type driven rules, sometimes allowing
+for a restricted extension of the power of concatenation rules. See,
+for example, Morrill 1994 and Carpenter 1998. The other approach was
+to incorporate in Montague grammar as much as possible the insights
+from syntactic theories, especially originating from the tradition of
+Chomsky. A first step was made by Partee (1973), who let the grammar
+produce structures (labelled bracketings). A syntactically
+sophisticated grammar (with Chomskyan movement rules) was used in the
+Rosetta translation project (Rosetta 1994).</p>
+
+<p>
+Montague introduced the <em>and</em> in <em>John walks and Mary
+sings</em> not from a given lexical entry, but as effect of a rule.
+This is known as treating <em>and</em> syncategorematically. He did
+this for all determiners, and also for negation. For <em>John walks
+and sings</em> a different rule is needed than for <em>John walks and
+Mary sings</em> because syntactically the first one is a conjunction
+of verb phrases and the second one of sentences. However, the two
+meanings of <em>and</em> are closely related and a generalisation is
+missed. As general solution it was proposed to use rules (or
+alternatively general principles) that change the category of an
+expression to another category; a change that corresponds with a
+semantic rule that ‘lifts’ the meaning. For instance, the
+meaning of <em>and</em> as a connective between verb phrases is
+obtained by lifting the meaning of sentence connective ∧ to
+λ<i>P</i>λ<i>Q</i>λ<i>x</i>[<i>P</i>(<i>x</i>)
+∧ <i>Q</i>(<i>x</i>)]. Classical papers about the approach with
+lifting rules are Partee and Rooth 1983, Partee 1987 and Hendriks
+2001. In a monograph (Winter 2001) the whole complex of conjoined
+phrases is considered.</p>
+
+<p>
+Nowadays the syntactic side usually plays no important role in
+publications on Montague semantics. Montague's method to present
+fragments with a fully explicit syntax is largely abandoned. One
+rather focuses on a semantically interesting phenomenon, suggesting
+rules which are only explicit concerning the semantic side. Whether
+and how the phenomenon fits together with the treatment of other
+phenomena is not considered. But Partee in Janssen 1997 and Jacobson
+2014 give arguments against this tendency. Jacobson 2014 indeed
+provides a fragment. </p>
+
+<h3><a name="Pra">3.4 Pragmatics</a></h3>
+
+<p>
+The meaning of sentences is sometimes determined by factors from the
+context of use; e.g. whether <em>I am happy</em> is true, depends on
+who the speaker is. Other examples are <em>here</em> and
+<em>this</em>. Montague writes about these factors in his paper
+‘Pragmatics’ (Montague 1968) and in Montague 1970b. He
+indicates how this could be done by introducing additional parameters
+(besides the time and the possible world). His papers focus on the
+formal apparatus, and he works it out only for the pronoun
+<em>I</em>.</p>
+
+<p>
+Several authors followed Montague's approach, and extended, when
+needed, the list of parameters. A classical example is Kaplan 1989,
+which deals with demonstratives and indexicals. He uses
+‘context’ as a parameter, which consists at least in
+agent, moment of time, location, and possible world. The content of a
+sentence, with respect to a context, is a proposition, and the
+linguistic meaning, or character, of an expression is a function from
+contexts to contents. This difference between content and meaning is
+exploited to develop his (influential) theory of demonstratives
+(<em>she, her, that</em>) and indexicals (<em>I, today</em>).</p>
+
+<p>
+Cresswell (1973, 111) has another opinion. He argues that the approach
+with parameters requires that a finite list of contextual features is
+given in an advance. He considers that to be impossible and provides
+an alternative. His proposal is not followed by other authors.</p>
+
+<p>
+Presuppositions and implicatures are often considered as belonging to
+pragmatics. The aim of a recursive approach to presupposition was
+always in the air, for the practical reason that it seems the only way
+to deal with presuppositions for infinitely many sentences. An example
+of a compositional treatment is Peters 1979. But the phenomena are
+complex, and later treatments are not always completely compositional;
+several correcting factors have to be taken into consideration (Beaver
+1997).</p>
+
+<p>
+Finally, there is pragmatics in the sense of using a language in
+practical situations. Declarative sentences can be used to ask
+questions, and to give orders, and sometimes sentences are not used
+literally, but metaphorically. On this aspect of pragmatics not much
+has been written, but Cresswell (1973) explains that formal semantics
+has all the ingredients to cope with it.</p>
+
+<h3><a name="Ont">3.5 Ontology</a></h3>
+
+<p>
+Montague's ‘intensional logic’ is a higher order logic.
+This aspect provoked a very critical attack by Hintikka:</p>
+
+<blockquote>
+It seems to me that this is the strategy employed by Montague
+Grammarians, who are in fact strongly committed to compositionality.
+[…]. There is a price to be paid however. The higher order
+entities evoked in this “type theoretical ascent” are much
+less realistic philosophically and psycholinguistically than our
+original individuals. Hence the ascent is bound to detract from the
+psycholinguistic and methodological realism of one's theory. (Hintikka
+1983, 20)
+</blockquote>
+
+<p>
+Hintikka's criticism has not found many supporters. Ironically,
+Hintikka's alternative (game theoretical semantics), is encapsulated
+in the traditional Tarskian approach (see Hodges 1997 or Caicedo <i>et
+al</i>. 2009); they define the meaning of a formula as a collection of
+sets of assignments.</p>
+
+<p>
+In Montague's approach possible worlds are basic objects without
+internal or external structure. Phenomena having to do with belief,
+require external structure, such as an accessibility relation for
+belief-alternatives. Counterfactuals require a distance notion to
+characterize worlds which differ minimally from each other. Structures
+on possible worlds are used frequently.</p>
+
+<p>
+Sometimes an internal structure for possible worlds is proposed. A
+possible world determines a set of propositions (those propositions
+which are true with respect to that world), and in Fox and Lappin
+2005, the reverse order is followed. They have propositions as
+primitive notions, and define possible worlds on the basis of them.
+Also Cresswell (1973) provides a method for obtaining possible worlds
+with internal structure: he describes how to build possible worlds
+from basic facts. None of these proposals for internal structure have
+been applied by other authors than the proposers.</p>
+
+<p>
+The philosophical status of certain entities is not so clear, such as
+pains, tasks, obligations and events. These are needed when evaluating
+sentences like e.g. <em>Jones had a pain similar to the one he had
+yesterday</em>. In ‘On the nature of certain philosophical
+entities’ (Montague 1969), Montague describes how these notions
+can be described using his intentional logic; they are properties of
+moments of time in a possible world. Of these notions, only events
+occur in papers by other authors, albeit not in the way Montague
+suggested. They are seen as basic, but provided with an algebraic
+structure allowing, e.g., subevents (Link 1998, ch. 10–12; Bach
+1986a).</p>
+
+<p>
+The set <i>E</i> may include whatever one would like to consider as
+basic entities: numbers, possible objects, and possible individuals.
+Whether an individual is considered to be really living or existing at
+a certain moment of time or in a certain possible world is not given
+directly by the model; one has to introduce a predicate expressing
+this. Normally the set <i>E</i> has no internal structure, but for
+mass nouns (which have the characteristic property that any part of
+water is water), a structure is needed, see Pelletier &amp; Schubert
+2003. Also plurals might evoke a structure on the set <i>E</i>, e.g.
+when sum-individuals are used (see Link 1983, 1998 (ch. 1–4),
+and Bach 1986a). Also when properties (<em>loving John</em>) are
+considered as entities for which predicates may hold (<em>Mary likes
+loving John</em>) structure is needed: property theory gives the tools
+to incorporate them (see Turner 1983).</p>
+
+<h3><a name="Psy">3.6 Psychology</a></h3>
+
+<p>
+When Montague grammar emerged, the leading theory about syntax was
+Chomskyan grammar. That approach claimed that it revealed processes
+that went on in the brain, and that linguistics was a branch of
+biology. In those days it was experimentally shown that the passive
+transformation was a real process in the brain. Chomskyan grammar
+still is a leading theory, and although most of the theory has changed
+considerably (there is no passive transformation anymore), it still
+considers itself to be revealing psychologically real processes.
+Montague had no psychological claim for his theory; on the contrary,
+he considered linguistics as a branch of mathematics and not of
+psychology (Thomason (ed.) 1974, 2). </p>
+
+<p>
+However, the field remained interested in psychological aspects.
+Partee (1977) explained to a meeting of psychologists that the theory
+cannot be applied directly to psychology because of the huge numbers
+of entities in the models (infinite numbers of functions from
+functions to functions). Partee (1979) argues that there is a deep gap
+between the mathematical view and the psychological view, especially
+concerning propositional attitude verbs and the behavior of proper
+names in such contexts, and she says that this gap has, somehow, to be
+bridged.</p>
+
+<p>
+An argument often put forward in defense of compositionality concerns
+its psychological motivation. The principle explains how a person can
+understand sentences he has never heard before; Frege (1923, 55)
+already mentioned this argument This motivation for compositionality
+is attacked by Schiffer (1987). On the one hand he argues that
+compositionality is not needed in an explanation of that power, and on
+the other hand that a compositional approach does not work. His
+argumentation is illustrated by <em>Tanya believes that Gustav is a
+dog</em>. Schiffer considers several compositional theories and argues
+that none of these theories offers a plausible account for the
+proposition that is supposed to be the content of Tanya's belief. So
+there is nothing from which the meaning of the sentence can be formed
+compositionally. Hence compositionality cannot hold. Partee (1988)
+discusses Schiffer's arguments against compositionality, and explains
+that Schiffer does not make a sufficient distinction between semantic
+facts and psychological facts. Partee points out the analogy between
+these problems with belief and those with the semantics of proper
+names (how can one correctly use proper names without being acquainted
+with the referent). The latter is discussed and explained by Kripke
+(1972). Partee proposes to solve the problems of belief along the same
+lines. Schiffer (1988) replies to this paper, but he does not react to
+her analogy, nor to the main point: that a semantic theory is to be
+distinguished from a psychological theory.</p>
+
+<p>
+An extensive discussion of the relation between Montague semantics and
+psychology is given in the last chapter in Dowty 1979. He starts his
+chapter with a description of the situation. ‘Contemporary
+linguists, unlike many philosophers of language, almost invariably
+profess to be concerned with the “psychological reality”
+of the theoretical concepts they postulate in semantics
+analysis’ (Dowty 1979). He works out this point and then
+describes his own position. ‘To get the point right away, let me
+confess that I believe that the model theoretic intension of a word
+has in principle <em>nothing whatsoever</em> to do with what goes on
+in a person's head when he uses a word.’ Nevertheless, he tries
+to show that the notion of intension is a fundamental and
+indispensable concept from the point of view of ‘psychological
+semantics’. He gives three reasons. The first is that semantics
+provides a theory that explains entailment (and synonymity, validity
+contradiction etc.]), all notions that must somehow be part of a
+theory of language understanding. Secondly, the theory of truth and
+reference must be a bottom line in any general account of
+‘meaning’ in natural language. And thirdly, when certain
+ways of compositionally deriving the meanings from their parts can be
+shown to be necessary in a theory of truth and reference, then it may
+be concluded that the same compositional analysis is necessary in a
+theory of language understanding.</p>
+
+<p>
+These examples illustrate the general opinion that psychological
+reality can only very indirectly be associated with what is going on
+in Montague semantics; only a few articles discuss the connection.</p>
+
+<h2><a name="Con">4. Concluding Remarks</a></h2>
+
+<h3><a name="Leg">4.1 Legacy</a></h3>
+
+<p>
+Montague revolutionized the field of semantic theory. He introduced
+methods and tools from mathematical logic, and set standards for
+explicitness in semantics. Now all semanticists know that logic has
+more to offer than first order logic only. Finally, recall that
+Barbara Partee said: ‘lambdas really changed my life’; in
+fact lambdas changed the lives of all semanticists.</p>
+
+<h3><a name="FurRea">4.2 Further Reading</a></h3>
+
+<p>
+A recent introduction is Jacobson 2014. It is a gentle introduction to
+the field, especially for linguists and philosophers. It presents
+several successes obtained by the approach. Older introductions are
+Dowty et al 1981 and Gamut 1991, which are more technical and prepare
+for Montague's original paper. An overview of the history of the field
+is given by Partee and Hendriks (1997). Collections of important
+papers are Portner and Partee (eds.) 2002 and Partee 2004. The
+‘Handbook of compositionality’(Werning et al 2011)
+discusses many aspects of the approach. The most important journal in
+the field are Linguistics and Philosophy, Natural Language Semantics,
+and Semantics and Pragmatics. </p>
+
+<h3><a name="Exa">4.3 Example</a></h3>
+
+<p>
+A small example is presented below, it consists of the two sentences
+<em>John is singing</em>, and <em>Every man is singing</em>. The
+example is not presented in Montague's original way, but modernized:
+there is a lifting rule, the determiner is a basic expression, and
+intensional aspects are not considered.</p>
+
+<p>
+The grammar has four basic expressions:
+<br class="newline" />
+1. <em>John</em> is an expression of the category Proper Name. Its
+denotation is an individual represented in logic by <b>John</b>.
+<br class="newline" />
+2. The Intransitive Verb <em>sing</em> denotes a set (the set of
+singers), and is represented by the predicate symbol <b>sing</b>.
+<br class="newline" />
+3. The Common Noun <em>man</em>, which denotes a set, represented by
+<strong>man</strong>.
+<br class="newline" />
+4. The Determiner <em>every</em>. Its denotation is
+λ<i>P</i>λ<i>Q</i>∀<i>x</i>[<i>P</i>(<i>x</i>)
+→ <i>Q</i>(<i>x</i>)]; an explanation of this formula will be
+given below.</p>
+
+<p>
+The grammar has three rules.</p>
+
+<p>
+1. A rule which takes as input a Proper Name, and produces a Noun
+Phrase. The input word is not changed: it is lifted to a
+‘higher’ grammatical category. Semantically its meaning is
+lifted to a more abstract, a ‘higher’ meaning: the
+representation of the denotation of <em>John</em> as Noun Phrase is
+λ<i>P</i>[<i>P</i>(<b>John</b>)]. An explanation of the formula
+is as follows. <i>P</i> is a variable over properties: if we have
+chosen an interpretation for <i>P</i>, we may say whether <i>P</i>
+holds for John or not, i.e. whether <i>P</i>(<b>John</b>) is true. The
+λ<i>P</i> abstracts from the possible interpretations of
+<i>P</i>: the expression λ<i>P</i>[<i>P</i>(<b>John</b>)]
+denotes a function that takes as input properties and yields
+<strong>true</strong> if the property holds for John, and
+<strong>false</strong> otherwise. So the denotation of <em>John</em>
+is the characteristic function of the set of properties he has.</p>
+
+<p>
+2. A rule that takes as input a Noun Phrase and an Intransitive Verb,
+and yields as output a Sentence: from <em>John</em> and <em>sing</em>
+it produces <em>John is singing</em>. The corresponding semantic rule
+requires the denotation of the Noun Phrase to be applied to the
+denotation of the Intransitive Verb. This is represented as
+λ<i>P</i>[<i>P</i>(<b>John</b>)](<b>sing</b>). When applied to
+the argument <b>sing</b>, the function represented by
+λ<i>P</i>[<i>P</i>(<b>John</b>)] yields <strong>true</strong>
+if the predicate <strong>sing</strong> holds for John, so precisely in
+case <b>sing</b>(<b>John</b>) is <strong>true</strong>. So
+λ<i>P</i>[<i>P</i>(<b>John</b>)](<b>sing</b>) and
+<b>sing</b>(<b>John</b>) are equivalent. The latter formula can be
+obtained by removing the λ<i>P</i> and substituting
+<strong>sing</strong> for <i>P</i>. This is called
+‘lambda-conversion’.</p>
+
+<p>
+3. A rule that takes as inputs a Determiner and a Common Noun, and
+yields a Noun Phrase: from <em>every</em> and <em>man</em> it produces
+<em>every man</em>. Semantically the denotation of the Determiner has
+to be applied to the denotation of the Common Noun, hence
+λ<i>P</i>λ<i>Q</i>∀<i>x</i>[<i>P</i>(<i>x</i>)
+→ <i>Q</i>(<i>x</i>)](<b>man</b>). By lambda conversion (just
+explained) this is simplified to
+λ<i>Q</i>∀<i>x</i>[<b>man</b>(<i>x</i>) →
+<i>Q</i>(<i>x</i>)]. This result denotes a function that, when applied
+to property <i>A</i>, yields <strong>true</strong> just in case all
+man have property <i>A</i>.</p>
+
+<p>
+The example given with the last rule helps us to understand the
+formula for <em>every</em> : that denotes a relation between
+properties <i>A</i> and <i>B</i> which holds in case every <i>A</i>
+has property <i>B</i>.</p>
+
+<p>
+The next step is now easy. Apply the rule for combining a Noun Phrase
+and an Intransitive Verb to the last result, producing <em>Every man
+is singing</em>. The output of the semantic rule is
+λ<i>Q</i>∀<i>x</i>[<b>man</b>(<i>x</i>) →
+<i>Q</i>(<i>x</i>)](<b>sing</b>). By lambda conversion we obtain
+∀<i>x</i>[<b>man</b>(<i>x</i>) →<b>sing</b>(<i>x</i>)],
+which is the traditional logical representation of <em>Every man is
+singing</em>.</p>
+
+<p>
+Note the role of lambda-operators:
+<br class="newline" />
+1. <em>John</em> and <em>every man</em> are interpreted in a similar
+way: sets of properties. These sets can be represented due to
+lambda-operators.
+<br class="newline" />
+2. <em>Every man</em> and <em>sing</em> are syntactically on the same
+level, but semantically <i>sing</i> has a subordinated role: it occurs
+embedded in the formula. This switch of level is possible due to
+lambda-operators.</p>
+</div>
+
+<div id="bibliography">
+
+<h2><a name="Bib">Bibliography</a></h2>
+
+<ul class="hanging">
+
+<li>Angelelli, I. (ed.), 1967, <em>Gottlob Frege. Kleine
+Schriften</em>, Hildesheim: Olms.</li>
+
+<li>Bach, E., 1976, “An extension of classical transformational
+grammar”, in <em>Problems in Linguistic Metatheory</em>
+(Proceedings of the 1976 conference), pp. 183–224. East Lansing,
+Michigan: Michigan State University.</li>
+
+<li>–––, 1986a, “The algebra of events”,
+<em>Linguistics and Philosophy</em>, 9: 5–16. Reprinted in
+Portner and Partee (eds.) 2002, pp. 324–33.</li>
+
+<li>–––, 1986b, “Natural language
+metaphysics”, in R. Barcan Marcus, G. J. W. Dorn, and P.
+Weingartner (eds.), <em>Logic, Methodology, and Philosophy of Science
+VII</em>, pp. 573–595, Amsterdam: North Holland.</li>
+
+<li>Barwise, J. and Cooper, R., 1981, “Generalized quantifiers
+and natural language”, <em>Linguistics and Philosophy</em>, 4:
+159–219. Reprinted in Portner and Partee (eds.) 2002, pp.
+75–126.</li>
+
+<li>Bäuerle, R. and Cresswell, M. J., 2003, “Propositional
+attitudes”, in Gabbay and Guenthner (eds.) 2003, chapter 6, pp.
+121–141.</li>
+
+<li>Bäuerle, R., Schwartz, C., and von Stechow, A. (eds.), 1983,
+<em>Meaning, Use and Interpretation of Language</em>, Berlin: de
+Gruyter.</li>
+
+<li>Beaver, D. I., 1997, “Presupposition”, in J. van
+Benthem and A. ter Meulen (eds.) 1997, chapter 17, pp.
+939–1008.</li>
+
+<li>van Benthem, J. and ter Meulen, A. (eds.), 1997, <em>Handbook of
+Logic and Language</em>, Amsterdam: Elsevier.</li>
+
+<li>van Benthem, J. and ter Meulen, A. (eds.), 2011, <em>Handbook of
+Logic and Language. Second edition</em>, Amsterdam: Elsevier MIT
+Press.</li>
+
+<li>Caicedo, X., Dechesne, F., and Janssen, T. M. V., 2009,
+“Equivalence and quantifier rules for logics with imperfect
+information”, <em>Logic Journal of the IGPL</em>, 17:
+91–129.</li>
+
+<li>Carnap, R., 1947, <em>Meaning and Necessity: A Study in Semantics
+and Modal Logic</em>, Chicago: University of Chicago Press.</li>
+
+<li>Carpenter, B., 1998, <em>Type-Logical Semantics</em>, Cambridge:
+MIT Press.</li>
+
+<li>Cooper, R., 1983, <em>Quantification and Syntactic Theory</em>,
+Synthese Language Library 21, Dordrecht: Reidel.</li>
+
+<li>Cresswell, M. J., 1973, <em>Logics and Languages</em>, London:
+Methuen.</li>
+
+<li>Davidson, D. and Harman, G. (eds.), 1972, <em>Semantics of Natural
+Language</em> (Synthese Library 40), Dordrecht: Reidel.</li>
+
+<li>Dowty, D., 1979, <em>Word Meaning and Montague Grammar</em>
+(Synthese Language Library 7), Dordrecht: Reidel.</li>
+
+<li>Dowty, D., Wall, R., and Peters, S., 1981, <em>Introduction to
+Montague Semantics</em> (Synthese Language Library 11), Dordrecht:
+Reidel.</li>
+
+<li>Dowty, D., 2007, “Compositionality as an empirical
+problem”, in C. Barker and P. Jacobson (eds.), <em>Direct
+Compositionality</em> (Oxford Studies in Theoretical Linguistics 14),
+chapter 2, pp., 23–101, Oxford: Oxford University Press.</li>
+
+<li>van Eijck, J. and Kamp, H., 1997, “Representing discourse in
+context”, in J. van Benthem and A. ter Meulen (eds.) 1997,
+chapter 3, pp. 179–237; updated reprint in J. van Benthem and A.
+ter Meulen (eds.) 2011, chapter 3, pp. 181–252.</li>
+
+<li>Fox, C. and Lappin, S., 2005, <em>Foundations of Intensional
+Semantics</em>, Malden, MA: Blackwell.</li>
+
+<li>Frege, G., 1879, <em>Begriffsschrift, eine der arithmetischen
+nachgebildeten Formelsprache des reinen Denkens</em>, Halle: Nebert.
+Reprinted in Angelelli 1967, pp. 89–93.</li>
+
+<li>–––, 1892, “Über Sinn und
+Bedeutung”, <em>Zeitschrift für Philosophie und
+philosophische Kritik</em>, 100: 25–50. Reprinted in Angelelli
+1967, pp. 143–162. Translated as ‘On Sense and
+Reference’ in Geach and Black 1952, pp. 56–58.</li>
+
+<li>Gabbay, D. M. and Guenthner, F. (eds.), 2003, <em>Handbook of
+Philosophical Logic</em>, 2nd edition, volume 10, Dordrecht:
+Kluwer.</li>
+
+<li>Geach, P. T. and Black, M. (eds.), 1952, <em>Translations from the
+Philosophical Writings of Gottlob Frege</em>, Oxford: Basil
+Blackwell.</li>
+
+<li>Gamut, L. T. F., 1991, <em>Logic, Language and Meaning. Volume 2
+Intensional Logic and Logical Grammar</em>, Chicago and London: The
+University of Chicago Press.</li>
+
+<li>Groenendijk, J. and Stokhof, M., 1991, “Dynamic predicate
+logic”, <em>Linguistics and Philosophy</em>, 14:
+39–100.</li>
+
+<li>–––, 1989, “Type-shifting rules and the
+semantics of questions”, in <em>Properties, Types and Meanings.
+Vol. 2: Semantic Issues</em>, G. Chierchia, B. H. Partee, and R.
+Turner (eds.), Dordrecht: Reidel, pp. 21–68. Reprinted in
+Portner and Partee (eds.) 2002, pp. 421–457.</li>
+
+<li>Hamblin, C. L., 1973, “Questions in Montague English”,
+<em>Foundations of Language</em>, 10(1): 41–53.</li>
+
+<li>Hendriks, H., 2001, “Compositionality and model-theoretic
+interpretation”, <em>Journal of Logic, Language and
+Information</em>, 10(1): 29–48.</li>
+
+<li>Hintikka, J., 1983, <em>The Game of Language. Studies in
+Game-Theoretical Semantics and Its Applications</em> (Synthese
+Language Library 22), Dordrecht: Reidel.</li>
+
+<li>Hodges, W., 1997, “Compositional semantics for a language of
+imperfect information”, <em>Logic Journal of the IGPL</em>,
+5(4): 539–563.</li>
+
+<li>–––, 2001, “Formal features of
+compositionality”, <em>Journal for Logic Language and
+Computation</em>, 10(1): 7–28.</li>
+
+<li>Jackendoff, R. S., 1972, <em>Semantic Interpretation in Generative
+Grammar</em>, Cambridge, MA: MIT Press.</li>
+
+<li>Jacobson, P., 2014, <em>Compositional Semantics. An introduction
+to the syntax/semantics interface</em>, Oxford: Oxford University
+Press. </li>
+
+<li>Janssen, T. M. V., 1997, “Compositionality (with an appendix
+by B. Partee)”, in van Benthem and ter Meulen (eds.) 1997,
+chapter 7, pp. 417–473.</li>
+
+<li>–––, 2001, “Frege, contextuality and
+compositionality”, <em>Journal of Logic, Language and
+Information</em>, 10(1): 115–136.</li>
+
+<li>–––, 2012, “Compositionality: its historic
+context”, in Werning et. al. (eds.), 2012, chapter 1, Oxford
+University Press. pp. 19–46.</li>
+
+<li>Kamp, H., 1981, “A theory of truth and semantic
+representation”, in J. Groenendijk, T. Janssen, and M. Stokhof
+(eds.), <em>Formal Methods in the Study of Language</em>, Centre for
+Mathematics and Computer Science, Amsterdam, pp. 1–14. Reprinted
+in Portner and Partee (eds.) 2002, pp. 189–222.</li>
+
+<li>Kaplan, D., 1989, “Demonstratives”, in J. Almog, J.
+Perry, and H. Wettstein (eds.), <em>Themes from Kaplan</em>, Oxford:
+Oxford University Press, pp. 481–563.</li>
+
+<li>Karttunen, L., 1977, “Syntax and semantics of
+questions”, <em>Linguistics and Philosophy</em>, 1: 3–44.
+Reprinted in Portner and Partee (eds.) 2002, pp. 382–420.</li>
+
+<li>Kripke, S., 1972, “Naming and necessity”, in Davidson
+and Harman (eds.) 1972, 253–355. Reprinted as ‘Naming and
+Necessity’, Cambridge, MA: Harvard University Press, 1980.</li>
+
+<li>Ladusaw, W. A., 1980, “On the notion <em>Affective</em> in
+the analysis of negative-polarity items”, <em>Journal of
+Linguistic Research</em>, 1: 1–16. Reprinted in Portner and
+Partee (eds.) 2002, pp. 457–470..</li>
+
+<li>–––, 1996, “Negation and polarity
+items”, in Lappin 1996, chapter 12, pp. 321–341 </li>
+
+<li>Lappin, S., 1996, <em>The Handbook of Contemporary Semantic
+Theory</em> (Blackwell Handbooks in Linguistics 3), Oxford:
+Blackwell.</li>
+
+<li>Lewis, D., 1970, “General semantics”,
+<em>Synthese</em>, 22: 18–67. Reprinted in Partee (ed.) 1976,
+pp. 1–50.</li>
+
+<li>Link, G., 1983, “The logical analysis of plurals and mass
+terms: a lattice-theoretic approach”, in Bäuerle <i>et
+al</i>. 1983, 302–323. Reprinted in Portner and Partee (eds.)
+2002, pp. 127–146.</li>
+
+<li>–––, 1998, <em>Algebraic Semantics in Language
+and Philosophy</em> (CSLI Lecture Notes 74), Stanford: CSLI.</li>
+
+<li>Montague, R., 1968, “Pragmatics”, in R. Klibansky
+(ed.), <em>Contemporary Philosophy. A Survey</em>, Florence: La Nuova
+Italia Editrice, 102–122. Reprinted in Thomason (ed.) 1974, pp.
+95–118.</li>
+
+<li>–––, 1969, “On the nature of certain
+philosophical entities”, <em>The Monist</em>, 353:
+159–194. Reprinted in Thomason (ed.) 1974, pp.
+148–187.</li>
+
+<li>–––, 1970a, “English as a formal
+language”, in B. Visentini, et al. (eds.), <em>Linguaggi nella
+Società e nella Tecnica</em>, Milan: Edizioni di Communita,
+189–224; reprinted in Thomason (ed.) 1974, pp.
+188–221.</li>
+
+<li>–––, 1970b, “Pragmatics and intensional
+logic”, <em>Synthese</em>, 22: 68–94. Reprinted in
+Thomason (ed.) 1974, pp. 119–147.</li>
+
+<li>–––, 1970c, “Universal grammar”,
+<em>Theoria</em>, 36: 373–398. Reprinted in Thomason (ed.) 1974,
+pp. 7–27.</li>
+
+<li>–––, 1973, “The proper treatment of
+quantification in ordinary English”, in K. J. J. Hintikka, J. M.
+E. Moravcsik, and P. Suppes (eds.), <em>Approaches to Natural
+Language</em> (Synthese Library 49), Dordrecht: Reidel, 221–242.
+Reprinted in Portner and Partee (eds.) 2002, pp. 17–35.</li>
+
+<li>Morrill, G. V., 1994, <em>Type Logical Grammar. The Logic of
+Signs</em>, Dordrecht: Kluwer.</li>
+
+<li>Partee, B. H., 1973, “Some transformational extensions of
+Montague grammar”, <em>Journal of Philosophical Logic</em>, 2:
+509–534. Reprinted in Partee 1976, pp. 51–76.</li>
+
+<li>–––, 1977, “Possible world semantics and
+linguistic theory”, <em>The Monist</em>: 303–326.</li>
+
+<li>–––, 1979, “Semantics — mathematics
+or psychology?”, in R. Bäuerle, U. Egli, and A. von Stechow
+(eds.), <em>Semantics from Different Points of View</em>, Berlin:
+Springer, pp. 1–14.</li>
+
+<li>–––, 1984, “Compositionality”, in F.
+Landman and F. Veltman (eds.), <em>Varieties of Formal Semantics:
+Proceedings of the 4th Amsterdam Colloquium</em> (Groningen-Amsterdam
+Studies in Semantics, No. 3), pp. 281–311, Dordrecht: Foris.
+Reprinted in Partee 2004, pp. 153–181.</li>
+
+<li>–––, 1987, “Noun phrase interpretation and
+type-shifting principles”, in J. Groenendijk, D. de Jongh, and
+M. Stokhof (eds.), <em>Studies in Discourse Representation Theory and
+the Theory of Generalized Quantifiers</em> (Groningen-Amsterdam
+Studies in Semantics, No. 8), pp. 115–143, Dordrecht: Foris.
+Reprinted in Partee 2004, pp. 203–224.</li>
+
+<li>–––, 1988, “Semantic facts and
+psychological facts”, <em>Mind &amp; Language</em>, 3:
+43–52.</li>
+
+<li>–––, 1996, “The development of formal
+semantics in linguistic theory”, in Lappin 1996, chapter 12, pp.
+11–38.</li>
+
+<li>–––, 2004, <em>Compositionality in Formal
+Semantics. Selected Papers by B. H. Partee</em>, (Explorations in
+Semantics 1), Malden, MA: Blackwell.</li>
+
+<li>Partee, B. H. with Hendriks, H., 1997, “Montague
+grammar”, in van Benthem and ter Meulen (eds.) 1997, chapter 1,
+7–91, reprinted in van Benthem and ter Meulen (eds.) 2011,
+chapter 1, 3–94 </li>
+
+<li>Partee, B. and Rooth, M., 1983, “Generalized conjunction and
+type ambiguity”, in Bäuerle <i>et al</i>. 1983, pp.
+361–383. Reprinted in Portner and Partee (eds.) 2002, pp.
+334–356.</li>
+
+<li>Pelletier, F. J., 1993, “Remarks involving internal and
+external semantics”, in J. MacNamara and G. Reges (eds.),
+<em>The Logical Foundations of Cognition</em>, Oxford: Oxford
+University Press, 283–295.</li>
+
+<li>Pelletier, F. J. and Schubert, L. K., 2003, “Mass
+expressions”, in Gabbay and Guenthner (eds.) 2003, chapter 6,
+249–335.</li>
+
+<li>Peters, S., 1979, “A truth-conditional formulation of
+Karttunen's account of presupposition”, <em>Synthese</em>, 40:
+301–316.</li>
+
+<li>Peters, S. and Westerståhl, D., 2006, <em>Quantifiers in
+Language and Logic</em>, Oxford: Oxford University Press.</li>
+
+<li>Portner, P. and Partee, B. (eds.), 2002, <em>Formal Semantics: the
+Essential Readings</em>. Oxford: Blackwell.</li>
+
+<li>Rosetta, M. T., 1994, <em>Compositional Translation</em> (Kluwer
+International Series in Engineering and Computer Science 230),
+Dordrecht: Kluwer. </li>
+
+<li>Russell, B., 1905, “On denoting”, <em>Mind</em>, 14:
+175–226. Reprinted in R. C. Marsh (ed.), <em>Logic and
+Knowledge. Essays 1901–1950</em>, pp. 33–56, New York:
+Macmillan.</li>
+
+<li>Schiffer, S., 1987, <em>Remnants of Meaning</em>, Cambridge, MA:
+MIT Press.</li>
+
+<li>–––, 1988, “Reply to comments”,
+<em>Mind &amp; Language</em>, 3: 53–63.</li>
+
+<li>Stokhof, M., 2007, “Hand or hammer? On formal and natural
+languages in semantics”, <em>Journal of Indian Philosophy</em>,
+35: 597–626.</li>
+
+<li>Thomason, R. H. (ed.), 1974, <em>Formal Philosophy. Selected
+Papers of Richard Montague</em>, New Haven: Yale University
+Press.</li>
+
+<li>Turner, R., 1983, “Montague semantics, nominalizations and
+Scott's domains”, <em>Linguistics and Philosophy</em>, 6(2):
+259–288.</li>
+
+<li> Wernig, M., Hinzen, W. and Machery, E. (eds.), 2012, <em>The
+Oxford Handbook of Compositionality</em>, Oxford: The Oxford
+University Press </li>
+
+<li>Westerståhl, D., 2002, “On the compositionality of
+idioms. An abstract approach”, in D. Barker-Plummer, D. I.
+Beaver, J. van Benthem, and P. S. di Luzio (eds.), <em>Words, Proofs
+and Diagrams</em> (CSLI Lecture Notes 141), Stanford: CSLI, pp.
+241–271.</li>
+
+<li>Winter, Yoad, 2001, <em>Flexibility Principles in Boolean
+Semantics: Coordination, Plurality and Scope in Natural Language</em>
+(Current Studies in Linguistics 37), Cambridge, MA: MIT Press.</li>
+
+<li>Zadrozny, W., 1994, “From compositional to systematic
+semantics”, <em>Linguistics and Philosophy</em>, 17:
+329–342.</li>
+
+<li>Zimmermann, E., 1999, “Meaning postulates and the
+model-theoretic approach to natural language semantics”,
+<em>Linguistics and Philosophy</em>, 22: 529–561.</li>
+</ul>
+</div> 
+<div id="academic-tools">
+
+<h2><a name="Aca">Academic Tools</a></h2>
+
+<blockquote>
+<table>
+<tbody><tr>
+<td valign="top"><img src="../../symbols/sepman-icon.jpg" alt="sep man icon" /></td>
+<td><a href="https://plato.stanford.edu/cgi-bin/encyclopedia/archinfo.cgi?entry=montague-semantics&amp;archive=win2019" target="other">How to cite this entry</a>.</td>
+</tr>
+
+<tr>
+<td valign="top"><img src="../../symbols/sepman-icon.jpg" alt="sep man icon" /></td>
+<td><a href="https://leibniz.stanford.edu/friends/preview/montague-semantics/" target="other">Preview the PDF version of this entry</a> at the
+ <a href="https://leibniz.stanford.edu/friends/" target="other">Friends of the SEP Society</a>.</td>
+</tr>
+
+<tr>
+<td valign="top"><img src="../../symbols/inpho.png" alt="inpho icon" /></td>
+<td><a href="https://www.inphoproject.org/entity?sep=montague-semantics&amp;redirect=True" target="other">Look up this entry topic</a>
+ at the <a href="https://www.inphoproject.org/" target="other">Indiana Philosophy Ontology Project</a>
+ (InPhO).</td>
+</tr>
+
+<tr>
+<td valign="top"><img src="../../symbols/pp.gif" alt="phil papers icon" /></td>
+<td><a href="http://philpapers.org/sep/montague-semantics/" target="other">Enhanced bibliography for this entry</a>
+at <a href="http://philpapers.org/" target="other">PhilPapers</a>, with links to its database.</td>
+</tr>
+
+</tbody></table>
+</blockquote>
+
+</div>
+
+<div id="other-internet-resources">
+
+<h2><a name="Oth">Other Internet Resources</a></h2>
+
+<p>
+[Please contact the author with suggestions.]</p>
+</div>
+
+<div id="related-entries">
+
+<h2><a name="Rel">Related Entries</a></h2>
+
+<p>
+
+ <a href="../compositionality/">compositionality</a> |
+ <a href="../discourse-representation-theory/">discourse representation theory</a> |
+ <a href="../frege/">Frege, Gottlob</a> |
+ <a href="../generalized-quantifiers/">generalized quantifiers</a> |
+ <a href="../identity-transworld/">identity: transworld</a> |
+ <a href="../impossible-worlds/">impossible worlds</a> |
+ <a href="../intensional-trans-verbs/">intensional transitive verbs</a> |
+ <a href="../intentionality/">intentionality</a> |
+ <a href="../logic-intensional/">logic: intensional</a> |
+ <a href="../logical-form/">logical form</a> |
+ <a href="../logic-massexpress/">mass expressions: logic of</a> |
+ <a href="../possible-worlds/">possible worlds</a> |
+ <a href="../presupposition/">presupposition</a> |
+ <a href="../prop-attitude-reports/">propositional attitude reports</a> |
+ <a href="../propositions-structured/">propositions: structured</a> |
+ <a href="../questions/">questions</a> |
+ <a href="../reference/">reference</a> |
+ <a href="../rigid-designators/">rigid designators</a> |
+ <a href="../dynamic-semantics/">semantics: dynamic</a> |
+ <a href="../type-theory/">type theory</a>
+
+</p>
+
+</div> 
+
+</div><!-- #aueditable --><!--DO NOT MODIFY THIS LINE AND BELOW-->
+
+<!-- END ARTICLE HTML -->
+
+</div> <!-- End article-content -->
+
+  <div id="article-copyright">
+    <p>
+ <a href="../../info.html#c">Copyright © 2016</a> by
+
+<br />
+Theo M. V. Janssen
+&lt;<a href="mailto:t%2em%2ev%2ejanssen%40contact%2euva%2enl"><em>t<abbr title=" dot ">.</abbr>m<abbr title=" dot ">.</abbr>v<abbr title=" dot ">.</abbr>janssen<abbr title=" at ">@</abbr>contact<abbr title=" dot ">.</abbr>uva<abbr title=" dot ">.</abbr>nl</em></a>&gt;
+    </p>
+  </div>
+
+</div> <!-- End article -->
+
+<!-- NOTE: article banner is outside of the id="article" div. -->
+<div id="article-banner" class="scroll-block">
+     <div id="article-banner-content">
+  <a href="../../fundraising/">
+  Open access to the SEP is made possible by a world-wide funding initiative.<br />
+  Please Read How You Can Help Keep the Encyclopedia Free</a>
+ </div>
+
+
+</div> <!-- End article-banner -->
+
+    </div> <!-- End content -->
+
+    <div id="footer">
+
+      <div id="footer-menu">
+        <div class="menu-block">
+          <h4><i class="icon-book"></i> Browse</h4>
+          <ul role="menu">
+            <li><a href="../../contents.html">Table of Contents</a></li>
+            <li><a href="../../new.html">New in this Archive</a></li>
+            
+            <li><a href="../../published.html">Chronological</a></li>
+            <li><a href="../../../../archives/">Archives <i class="icon-external-link"></i></a></li>
+          </ul>
+        </div>
+        <div class="menu-block">
+          <h4><i class="icon-info-sign"></i> About</h4>
+          <ul role="menu">
+            <li><a href="../../info.html">Editorial Information</a></li>
+            <li><a href="../../about.html">About the SEP</a></li>
+            <li><a href="../../board.html">Editorial Board</a></li>
+            <li><a href="../../cite.html">How to Cite the SEP</a></li>
+            <li><a href="../../special-characters.html">Special Characters</a></li>
+            
+            <li><a href="../../../../contact.html">Contact <i class="icon-external-link"></i></a></li>
+          </ul>
+        </div>
+        <div class="menu-block">
+          <h4><i class="icon-leaf"></i> Support SEP</h4>
+          <ul role="menu">
+            <li><a href="../../../../support/">Support the SEP</a></li>
+            <li><a href="../../../../support/friends.html">PDFs for SEP Friends</a></li>
+            <li><a href="../../../../support/donate.html">Make a Donation</a></li>
+            <li><a href="../../../../support/sepia.html">SEPIA for Libraries</a></li>
+          </ul>
+        </div>
+      </div> <!-- End footer menu -->
+
+      <div id="mirrors">
+        <div id="mirror-info">
+          <h4><i class="icon-globe"></i> Mirror Sites</h4>
+          <p>View this site from another server:</p>
+        </div>
+                <div class="btn-group">
+<a class="btn dropdown-toggle" data-toggle="dropdown" href="https://plato.stanford.edu/"><span class="flag flag-usa"></span> USA (Main Site) <span class="caret"></span><span class="mirror-source">CSLI, Stanford University</span></a>          <ul class="dropdown-menu">
+            <li><a href="https://stanford.library.sydney.edu.au/archives/win2019/entries/montague-semantics/"><span class="flag flag-australia"></span> Australia <span class="mirror-source">Library, University of Sydney</span></a>           </li>
+            <li><a href="https://seop.illc.uva.nl/archives/win2019/entries/montague-semantics/"><span class="flag flag-netherlands"></span> Netherlands <span class="mirror-source">ILLC, University of Amsterdam</span></a>           </li>
+          </ul>
+        </div>
+      </div> <!-- End mirrors -->
+      
+      <div id="site-credits">
+        <p class="csli-logo"><a href="https://www-csli.stanford.edu/"><img src="../../symbols/SU_csli.png" width="355" alt="Stanford Center for the Study of Language and Information" /></a></p>
+        <p>The Stanford Encyclopedia of Philosophy is <a href="../../info.html#c">copyright © 2016</a> by <a href="http://mally.stanford.edu/">The Metaphysics Research Lab</a>, Center for the Study of Language and Information (CSLI), Stanford University</p>
+        <p>Library of Congress Catalog Data: ISSN 1095-5054</p>
+      </div> <!-- End site credits -->
+
+    </div> <!-- End footer -->
+
+  </div> <!-- End container -->
+
+   <!-- NOTE: Script required for drop-down button to work (mirrors). -->
+  <script>
+    $('.dropdown-toggle').dropdown();
+  </script>
+
+
+
+
+
+</body></html>

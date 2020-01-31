@@ -1,0 +1,2514 @@
+<!DOCTYPE html><!--[if lt IE 7]> <html class="ie6 ie"> <![endif]--><!--[if IE 7]>    <html class="ie7 ie"> <![endif]--><!--[if IE 8]>    <html class="ie8 ie"> <![endif]--><!--[if IE 9]>    <html class="ie9 ie"> <![endif]--><!--[if !IE]> --><html xmlns="http://www.w3.org/1999/xhtml"><!-- <![endif]--><head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>
+Genetic Drift (Stanford Encyclopedia of Philosophy/Winter 2019 Edition)
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="noarchive, noodp" />
+<meta property="citation_title" content="Genetic Drift" />
+<meta property="citation_author" content="Millstein, Roberta L." />
+<meta property="citation_publication_date" content="2016/09/15" />
+<meta name="DC.title" content="Genetic Drift" />
+<meta name="DC.creator" content="Millstein, Roberta L." />
+<meta name="DCTERMS.issued" content="2016-09-15" />
+<meta name="DCTERMS.modified" content="2016-09-15" />
+
+<!-- NOTE: Import webfonts using this link: -->
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,200&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" media="screen,handheld" href="../../css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" media="screen,handheld" href="../../css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css" />
+<!--[if IE 7]> <link rel="stylesheet" type="text/css" href="../../css/font-awesome-ie7.min.css"> <![endif]-->
+<link rel="stylesheet" type="text/css" media="screen,handheld" href="../../css/style.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../../css/print.css" />
+<link rel="stylesheet" type="text/css" href="../../css/entry.css" />
+<!--[if IE]> <link rel="stylesheet" type="text/css" href="../../css/ie.css" /> <![endif]-->
+<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+
+<!-- NOTE: Javascript for sticky behavior needed on article and ToC pages -->
+<script type="text/javascript" src="../../js/jquery-scrolltofixed-min.js"></script>
+<script type="text/javascript" src="../../js/entry.js"></script>
+
+<!-- SEP custom script -->
+<script type="text/javascript" src="../../js/sep.js"></script>
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom &gt; * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd &gt; * {display: block!important}
+.MJXp-script-box &gt; *  {display: table!important; height: 50%}
+.MJXp-script-box &gt; * &gt; * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box &gt; *:last-child &gt; * {vertical-align: bottom}
+.MJXp-script-box &gt; * &gt; * &gt; * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over &gt; * {display: block!important}
+.MJXp-munderover &gt; * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable &gt; * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr &gt; .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child &gt; .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr &gt; .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child &gt; .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax.MathJax_FullWidth {text-align: center; display: table-cell!important; width: 10000em!important}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: 5000em; max-height: 5000em; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax_LineBox {display: table!important}
+.MathJax_LineBox span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Main; src: url('https://plato.stanford.edu/archives/win2019/MathJax/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff?V=2.7.2') format('woff'), url('https://plato.stanford.edu/archives/win2019/MathJax/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Main-bold; src: url('https://plato.stanford.edu/archives/win2019/MathJax/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff?V=2.7.2') format('woff'), url('https://plato.stanford.edu/archives/win2019/MathJax/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Main-italic; src: url('https://plato.stanford.edu/archives/win2019/MathJax/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff?V=2.7.2') format('woff'), url('https://plato.stanford.edu/archives/win2019/MathJax/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Math-italic; src: url('https://plato.stanford.edu/archives/win2019/MathJax/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff?V=2.7.2') format('woff'), url('https://plato.stanford.edu/archives/win2019/MathJax/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Caligraphic; src: url('https://plato.stanford.edu/archives/win2019/MathJax/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff?V=2.7.2') format('woff'), url('https://plato.stanford.edu/archives/win2019/MathJax/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Size1; src: url('https://plato.stanford.edu/archives/win2019/MathJax/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff?V=2.7.2') format('woff'), url('https://plato.stanford.edu/archives/win2019/MathJax/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Size2; src: url('https://plato.stanford.edu/archives/win2019/MathJax/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff?V=2.7.2') format('woff'), url('https://plato.stanford.edu/archives/win2019/MathJax/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Size3; src: url('https://plato.stanford.edu/archives/win2019/MathJax/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff?V=2.7.2') format('woff'), url('https://plato.stanford.edu/archives/win2019/MathJax/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Size4; src: url('https://plato.stanford.edu/archives/win2019/MathJax/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff?V=2.7.2') format('woff'), url('https://plato.stanford.edu/archives/win2019/MathJax/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf?V=2.7.2') format('opentype')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<!-- NOTE: The nojs class is removed from the page if javascript is enabled. Otherwise, it drives the display when there is no javascript. -->
+<body class="archive article" id="pagetopright"><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div>
+<div id="container">
+<div id="header-wrapper">
+  <div id="header">
+    <div id="branding">
+      <div id="site-logo"><a href="../../index.html"><img src="../../symbols/sep-man-red.png" alt="SEP logo" /></a></div>
+      <div id="site-title"><a href="../../index.html">Stanford Encyclopedia of Philosophy Archive<div id="site-subtitle">Winter 2019 Edition</div></a></div>
+    </div>
+    <div id="navigation">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <button class="btn btn-navbar collapsed" data-target=".collapse-main-menu" data-toggle="collapse" type="button"> <i class="icon-reorder"></i> Menu </button>
+            <div class="nav-collapse collapse-main-menu collapse">
+              <ul class="nav">
+                <li class="dropdown"><a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-book"></i> Browse</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                    <li><a href="../../contents.html">Table of Contents</a></li>
+                    <li><a href="../../new.html">New in this Archive</a></li>
+                    
+                    <li><a href="../../published.html">Chronological</a></li>
+                    <li><a href="../../../../archives/">Archives <i class="icon-external-link"></i></a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a id="drop2" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-info-sign"></i> About</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                    <li><a href="../../info.html">Editorial Information</a></li>
+                    <li><a href="../../about.html">About the SEP</a></li>
+                    <li><a href="../../board.html">Editorial Board</a></li>
+                    <li><a href="../../cite.html">How to Cite the SEP</a></li>
+                    <li><a href="../../special-characters.html">Special Characters</a></li>
+                    
+                    <li><a href="../../../../contact.html">Contact <i class="icon-external-link"></i></a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a id="drop3" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-leaf"></i> Support SEP</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                    <li><a href="../../../../support/">Support the SEP</a></li>
+                    <li><a href="../../../../support/friends.html">PDFs for SEP Friends</a></li>
+                    <li><a href="../../../../support/donate.html">Make a Donation</a></li>
+                    <li><a href="../../../../support/sepia.html">SEPIA for Libraries</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End navigation -->
+    
+    <div id="search">
+      <form id="search-form" method="get" action="../../../../search/searcher.py">
+        <input type="search" name="query" placeholder="Search this archive" />
+<input type="hidden" name="archive" value="win2019" />
+
+        <div class="search-btn-wrapper"><button class="btn search-btn" type="submit"><i class="icon-search"></i></button></div>
+      </form>
+    </div>
+    <!-- End search --> 
+    
+  </div>
+  <!-- End header --> 
+</div>
+<!-- End header wrapper -->
+
+<div id="content">
+
+<!-- Begin article sidebar -->
+<div id="article-sidebar" class="sticky" style="z-index: 999;">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <button class="btn btn-navbar collapsed" data-target=".collapse-sidebar" data-toggle="collapse" type="button"> <i class="icon-reorder"></i> Entry Navigation </button>
+        <div id="article-nav" class="nav-collapse collapse-sidebar collapse">
+          <ul class="nav">
+            <li><a href="#toc">Entry Contents</a></li>
+            <li><a href="#Bib">Bibliography</a></li>
+            <li><a href="#Aca">Academic Tools</a></li>
+            <li><a href="https://leibniz.stanford.edu/friends/preview/genetic-drift/">Friends PDF Preview <i class="icon-external-link"></i></a></li>
+            <li><a href="https://plato.stanford.edu/cgi-bin/encyclopedia/archinfo.cgi?entry=genetic-drift&amp;archive=win2019">Author and Citation Info <i class="icon-external-link"></i></a> </li>
+            <li><a href="#pagetopright" class="back-to-top">Back to Top <i class="icon-angle-up icon2x"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div></div>
+<!-- End article sidebar --> 
+
+<!-- NOTE: Article content must have two wrapper divs: id="article" and id="article-content" -->
+<div id="article">
+<div id="article-content">
+
+<!-- BEGIN ARTICLE HTML -->
+
+
+<div id="aueditable"><!--DO NOT MODIFY THIS LINE AND ABOVE-->
+
+<h1>Genetic Drift</h1><div id="pubinfo"><em>First published Thu Sep 15, 2016</em></div>
+
+<div id="preamble">
+
+<p>
+In the 1950s, a lively debate broke out among biologists that
+continues to this day, over what might seem like the most unlikely of
+organisms: the land snail, <em>Cepaea nemoralis.</em> Yet, there are
+in fact some interesting aspects to <em>C. nemoralis</em>. This
+species of snail is polymorphic; the snail’s shell varies in
+color (pink, brown, and yellow) as well as the number of visible bands
+(anywhere from 0–5). But the colors and bands are not equally
+distributed across populations. In some populations, pink
+predominates, whereas in others, yellow or brown, and similarly, some
+banding numbers are more prevalent in some populations than in others.
+Thus, not only are there variations within populations (it is rare to
+find a population that is all one color or where all the snails have
+the same number of bands), but there are variations between
+populations. What is the explanation for this distribution of forms?
+Those whose knowledge of evolution familiarized them only with the
+theory of natural selection might assume that, for example, that in
+the populations where yellow snails were the most prevalent, it was
+because they were fitter than the other colors—that there was
+some environmental factor that favored yellow over brown and pink. And
+that in the populations where brown snails were the most prevalent,
+there was some difference in the environment that led them to be
+favored over yellow and pink snails. But is there some other
+explanation? Perhaps the distributions are in some sense due to
+chance, perhaps even in a way that can be modeled mathematically. What
+would that mean, and how would you determine which explanation was
+correct? The attempt to develop “chancy” explanations that
+are alternatives (perhaps complementary alternatives) to those due to
+natural selection is what is led biologists to develop models of
+<em>genetic drift.</em></p>
+
+<p>
+Genetic drift (variously called “random drift”,
+“random genetic drift”, or sometimes just
+“drift”) has been a source of ongoing controversy within
+the philosophy of biology and evolutionary biology communities, to the
+extent that even the question of what drift <em>is</em> has become
+controversial. There seems to be agreement that drift is a chance (or
+probabilistic or statistical) element within population genetics (see
+entry on
+ <a href="../population-genetics/">population genetics</a>)
+ and within evolutionary biology more generally, and that the term
+“random” isn’t invoking indeterminism or any
+technical mathematical meaning, but that’s about where agreement
+ends. Yet genetic drift models are a staple topic in population
+genetics textbooks and research, with genetic drift described as one
+of the main factors of evolution alongside selection, mutation, and
+migration. Some claim that genetic drift has played a major role in
+evolution (particularly molecular evolution), while others claim it to
+be minor. This article will examine these and other controversies.</p>
+
+<p>
+In order to break through the logjam of competing definitions of
+drift, this entry begins with a brief history of the concept, before
+examining various philosophical claims about the proper
+characterization of drift and whether it can be distinguished from
+natural selection; the relation of drift to debates over
+statisticalism; whether drift can be detected empirically and if so,
+how; and the proper understanding of drift as a model and as a
+(purported) law.</p>
+
+
+
+</div>
+
+<div id="toc">
+<!--Entry Contents-->
+<ul>
+<li><a href="#OrigConcGeneDrif">1. Origins of the Concept of Genetic Drift</a></li>
+<li><a href="#WhatDrifItDistNatuSele">2. What Is Drift, and Can It Be Distinguished from Natural Selection?</a>
+   <ul>
+   <li><a href="#HistDeriAccoDrifCausProcAcco">2.1 A Historically-Derived Account of Drift: The Causal Process Account</a></li>
+   <li><a href="#ReacVariSampBaseAccoDrif">2.2 Reactions to and Varieties of Sampling-Based Accounts of Drift</a></li>
+   <li><a href="#MathApprDrif">2.3 Mathematical Approaches to Drift</a></li>
+   <li><a href="#OtheAccoDrif">2.4 Other Accounts of Drift</a></li>
+   </ul></li>
+<li><a href="#InteGeneDrifStatCausDeba">3. Intersection of Genetic Drift with Statisticalist-Causalist Debates</a></li>
+<li><a href="#DeteDrifEmpi">4. Detecting Drift Empirically</a>
+   <ul>
+   <li><a href="#ClasStud">4.1 Classic Studies</a></li>
+   <li><a href="#StudDrifMoleEvol">4.2 Studies of Drift and Molecular Evolution</a></li>
+   <li><a href="#ReceEmpiIssuConcDrif">4.3 Recent Empirical Issues Concerning Drift</a></li>
+   </ul></li>
+<li><a href="#DrifModeDrifLaw">5. Drift as Models, Drift as a Law</a></li>
+<li><a href="#Conc">6. Conclusions</a></li>
+<li><a href="#Bib">Bibliography</a></li>
+<li><a href="#Aca">Academic Tools</a></li>
+<li><a href="#Oth">Other Internet Resources</a></li>
+<li><a href="#Rel">Related Entries</a></li>
+</ul>
+<!--Entry Contents-->
+
+
+<hr />
+
+</div>
+
+<div id="main-text">
+
+
+
+<h2 id="OrigConcGeneDrif">1. Origins of the Concept of Genetic Drift</h2>
+
+<p>
+Although Charles Darwin invoked “chance” in various ways
+in the <em>Origin of Species</em> (Beatty 1984), he seems not to have
+included a concept of drift in his account. He does note in passing
+that </p>
+
+<blockquote>
+
+<p>
+[v]ariations neither useful nor injurious would not be affected by
+natural selection, and would be left either a fluctuating element, as
+perhaps we see in certain polymorphic species, or would ultimately
+become fixed, owing to the nature of the organism and the nature of
+the conditions. (Darwin 1872: 63; see similar claims on p. 120 and p.
+176) </p>
+</blockquote>
+
+<p>
+As the reader will see, this is tantalizingly similar to contemporary
+conceptions of drift. But Darwin does not develop the idea further; in
+particular, he does not tell us why the distributions of such
+variations would be fluctuating over time or how it is that they would
+ultimately become fixed. The first serious (and mathematical)
+treatments of drift are usually traced to two of the founders of
+population genetics, Sewall Wright and R.A. Fisher, although neither
+claimed to have developed the ideas behind drift (Beatty 1992). Wright
+(1951) credits John Gulick (1873) with the genesis of the idea whereas
+Fisher (1922b) first discussed the idea as derived from the work of
+A.C. and A.L. Hagedoorn (1921), although Wright (1931a) cites the
+Hagedoorns too. It is unclear who first uses the term
+“drift” in this context; it appears as early as Wright
+(1929). So, let us briefly examine Gulick and the Hagedoorns in order
+to understand the origins of the term “drift”.</p>
+
+<p>
+Gulick (1873) points out that with natural selection, one can assume
+that where different forms are found, different external conditions
+will also be found (with the different forms having adapted over the
+course of generations to the different external conditions). However,
+there seem to be cases (e.g., among snails) where the external
+conditions are very similar, yet the organismic forms are very
+different. He notes that these species tend to occupy very small
+areas, even though there is reason to believe it is not because they
+lack the ability to migrate further. He then postulates a scenario:
+Suppose some members of a species migrate to a new area where they are
+free from competition and largely separated from the original
+population. New variations will arise in the new population, but
+unless they are “decidedly malformed”, they will persist.
+The new population will thus come to differentiate itself from the
+original population (e.g., with new shades of color or with variations
+of shape), perhaps rapidly if there is a “preexisting tendency
+to rapid variation”.</p>
+
+<p>
+Some points to note here that become relevant in later discussions of
+drift: 1) Drift is described in contrast to natural selection. 2) The
+variations increasing in the population are those that are neutral, or
+at least not severely deleterious. (Note that 1 and 2 are also present
+in the quote from Darwin above). 3) Drift is associated with small
+populations (although it is not fully clear why). 4) Drift is
+associated with the founding of a new population in a new area. 5)
+Changes in the population are the result of movements of organisms and
+their tendency to produce new variations, both of which are physical
+processes and not purely mathematical constructs (something that
+becomes an issue in later debates). 6) The changes described are of
+organisms in a population.</p>
+
+<p>
+Hagedoorn and Hagedoorn (1921) similarly point out that some traits of
+organisms are “trivial”, i.e., “cannot possibly be
+accounted for as useful”, such as “the shape and
+arrangement of small hairs on the seeds of some cereals” (p.
+107). They likewise maintain that such traits, which can be stable
+(“pure”, i.e., fixed) within a species, cannot be the
+product of natural selection; instead, the Hagedoorns assert, they
+must be “due to some process which accompanies selection”
+(p. 108). The Hagedoorns then proceed to describe several ways in
+which variability in a population can be reduced: a new population is
+founded which lacks some of the variability of the original
+population; a population is split in half (with the variability in the
+daughter populations differing from each other and from the original);
+and “random sampling” where even though the size of the
+population remains relatively constant from year to year, only a small
+fraction successfully reproduce. On this last point, they state, </p>
+
+<blockquote>
+
+<p>
+The group of organisms chosen by fate to become the parents of the
+next generation is usually, but always occasionally, considerably
+smaller than the number of individuals of their species. (1921:
+120)</p>
+</blockquote>
+
+<p>
+Thus, the Hagedoorns endorse points 1–5 above, while describing
+two additional processes besides #4 (the founding of a new
+population), namely the splitting of a population and the random
+sampling of parents. They further explain the relevance of #3 (small
+populations): “the smaller the group, the more limited its
+potential variability, the sooner it will be pure altogether”
+(p. 123). And finally, they maintain that drift can produce fixation
+(“purity”), or the complete loss of variation within a
+population, even in the absence of selection. Fisher (1922b) reads the
+Hagedoorns as claiming that “random survival is a more important
+factor in limiting the variability of species than preferential
+survival” (p. 321), a claim that he challenged by attempting to
+show that such a process would be too slow to overcome the rate of
+mutation (and thus the introduction of new variability—but he
+seems to say otherwise in 1922a). </p>
+
+<p>
+An essay published by Wright in 1931 provides what is perhaps one of
+the earliest <em>explicit</em> characterizations of drift:</p>
+
+<blockquote>
+
+<p>
+It has seemed to me that another factor should be much more important
+in keeping the system of gene frequencies from settling into
+equilibrium. This is the effect of <em>random sampling</em> in a
+breeding population of limited size. The gene frequencies of one
+generation may be expected to differ a little from those of the
+preceding <em>merely by chance</em>. In the course of generations this
+may bring about important changes, although the farther the
+<em>drift</em> from the theoretical equilibrium, the greater will be
+the pressure toward return. (Wright 1931b: 205; emphasis added)</p>
+</blockquote>
+
+<p>
+The paper from which this quote is taken was meant to be a summary of
+a longer paper, also published in 1931 (Wright 1986: 88). In the
+longer paper (1931a), Wright specifies that the random sampling is of
+<em>gametes</em>. (Gametes are cells that fuse together during
+fertilization, such as an egg and a sperm). So, even though Wright
+(1931a) notes that the Hagedoorns had “urged the importance of
+such random fixation as a factor in evolution”, and states that
+Fisher (1922b) had analyzed the issue, has he changed the subject to
+be random sampling of <em>gametes</em> rather than of
+“parents” (i.e., organisms)? In short, no: Wright (1932
+and elsewhere) makes it clear that he considers drift to encompass
+both random sampling of gametes and random sampling of organisms. In
+other words, he has <em>expanded</em> the phenomena that the concept
+of drift is meant to cover from that discussed by Gulick, the
+Hagedoorns, and Fisher. But Wright’s 1932 paper also emphasized
+what would become a persistent confusion between drift and inbreeding;
+both inbreeding and drift are more significant in small populations,
+so it can become easy to conflate them. But you can have random
+sampling of parents (say, through a population split) without
+inbreeding, and inbreeding without random sampling of parents. That
+alone shows that drift and inbreeding are not the same. So, not all of
+the expansions of drift were productive ones.</p>
+
+<p>
+It should be noted that while Wright and Fisher had numerous
+back-and-forth discussions and disagreements about each other’s
+claims concerning the role of drift in evolution (Provine 1986,
+Skipper 2002), they did not seem to disagree about what drift
+<em>was</em>. Wright (1948) considered the following to be an
+“acceptable statement” of his view from Fisher and E.B.
+Ford:</p>
+
+<blockquote>
+
+<p>
+Great evolutionary importance has been attached by Sewall Wright
+(1931, 1932, 1935, 1940) to the fact that small shifts in the
+gene-ratios of all segregating factors will occur from generation to
+generation owing to the errors of random sampling in the process by
+which the gametes available in any one generation are chosen to
+constitute the next. Such chance deviations will, of course, be
+greater the smaller the isolated populations concerned. (Fisher and
+Ford 1947)</p>
+</blockquote>
+
+<p>
+On the other hand, Wright’s later incorporation of fluctuations
+in mutation rate, fluctuations in migration, and fluctuations in
+selection (see, e.g., Wright 1949) as types of drift was challenged by
+Cain and Currey, who asserted that “the worker on actual
+examples must classify processes according to their biological
+significance” and that such lumping together would produce
+confusion and prevent proper analysis of actual situations (Cain &amp;
+Currey 1963: 59). They thus urged the use of the term “sampling
+drift”, which Wright adopted in the fourth volume of his 1978 magnum opus,
+<em>Evolution and the Genetics of Populations</em>. </p>
+
+<p>
+In short, drift’s founders exhibit a diversity of views about
+drift, which John Beatty helpfully describes as follows: </p>
+
+<blockquote>
+
+<p>
+drift is a heterogeneous category of evolutionary causes and effects,
+whose overall significance relative to other modes of evolution
+(especially evolution by natural selection) has been greatly disputed.
+(Beatty 1992: 273) </p>
+</blockquote>
+
+<p>
+Potential causes invoked in the discussion above include sampling of
+gametes, sampling of parents, founding of new populations, splitting
+of populations, each of which is intensified when populations are
+small, while potential effects mentioned include fluctuations of gene
+frequencies from one generation to the next, loss of variants from a
+population, and fixation of a (possibly non-adapted) type in a
+population. Are these causes and effects <em>all</em> drift? With that
+sort of confusing heterogeneity, there is little surprise that the
+concept has drawn philosophical attention. But at least we have our
+starting point for philosophical discussion (see Beatty 1992 and
+Plutynski 2007 for additional historical overview).</p>
+
+<h2 id="WhatDrifItDistNatuSele">2. What Is Drift, and Can It Be Distinguished from Natural Selection?</h2>
+
+<p>
+Philosophers have taken a variety of approaches to characterizing
+drift and distinguishing it from natural selection, including a causal
+process approach that derives from the history just presented,
+approaches that are mathematically derived, and other sorts of
+approaches. These are discussed in turn.</p>
+
+<h3 id="HistDeriAccoDrifCausProcAcco">2.1 A Historically-Derived Account of Drift: The Causal Process Account</h3>
+
+<p>
+Reflecting on the historical uses of the term “drift”,
+Beatty states that </p>
+
+<blockquote>
+
+<p>
+what most of the phenomena so designated [as drift] have in common is
+one or another biological form of random or indiscriminate sampling,
+and consequent sampling error. (Beatty 1992: 273; see also Plutynski
+et al. 2016 on the modern synthesis authors’ agreement on this
+point) </p>
+</blockquote>
+
+<p>
+Let’s begin with indiscriminate sampling. Beatty states that
+parent sampling is </p>
+
+<blockquote>
+
+<p>
+<em>the process of determining which organisms of one generation will
+be parents of the next, and how many offspring each parent will
+have</em> (1984: 188; italics in original) </p>
+</blockquote>
+
+<p>
+Beatty maintains that this parent sampling can be discriminate, that
+is, with regard to physical differences, or indiscriminate, that is,
+without regard to physical differences (1984: 189). Discriminate
+parent sampling is generally considered natural selection;
+indiscriminate parent sampling is random drift. Beatty characterizes
+gamete sampling similarly, as </p>
+
+<blockquote>
+
+<p>
+<em>the process of determining which of the two genetically different
+types of gametes produced by a heterozygotic parent is actually
+contributed to each of its offspring</em> (1984: 189; italics in
+original) </p>
+</blockquote>
+
+<p>
+He continues: </p>
+
+<blockquote>
+
+<p>
+This sort of sampling might be indiscriminate in the sense that any
+physical difference between the two types of gametes produced by a
+heterozygote might be irrelevant to whether one or the other is
+actually contributed to any particular offspring. (1984: 189) </p>
+</blockquote>
+
+<p>
+And again, the indiscriminate form of sampling is drift while
+discriminate gamete sampling would be selection.</p>
+
+<p>
+Several illustrations of indiscriminate sampling are common in the
+literature, but some are more helpful than others. One is a
+hypothetical scenario in which two genetically and phenotypically
+identical twins are walking together; one is struck by lightning
+whereas the other lives to reproduce. (The example seems to have its
+origins in Scriven 1959 and Mills and Beatty 1979, although these
+authors were making a point about fitness, not about drift). This is
+an unfortunate illustration in part because it is too easy to get
+caught up in the question of whether the twins are <em>really</em>
+genetically and physically identical, but, more importantly, it is
+misleading because in fact, drift <em>requires</em> heritable
+variation, just as selection does. The lightning example is also
+problematic because it makes drift seem exceptional and catastrophic,
+whereas it is generally considered to be pervasive (i.e., occurring in
+all populations) and not necessarily due to catastrophic or unusual
+events. Others (e.g., Matthen and Ariew 2002; Walsh, Lewens, and Ariew
+2002) use a series of coin tosses as an illustration of drift, but
+this too is problematic, because it encourages binary thinking,
+instead of allowing for multiple variants with multiple outcomes, and
+because it is unclear what the “population” of coin flips
+amounts to. </p>
+
+<p>
+A better illustration of drift has its origins in Theodosius
+Dobzhansky’s (1937) discussion of Dubinin and Romaschoff’s
+(1932) model, which asks us to imagine an urn filled with different
+colored balls. If the balls are drawn from the urn without respect to
+color, e.g., by a person drawing balls while blindfolded, then the
+balls are being indiscriminately sampled (unlike discriminate
+sampling, where someone deliberately tries to pick balls of a certain
+color). If a large sample of balls is taken, we expect the frequencies
+of colored balls in the sample drawn from the urn to be very close to
+the frequencies in the urn. If only a small sample of colored balls is
+drawn from the urn, then our sample may very well have different
+proportions of colored balls than the urn does. Multiple samplings
+taken over time, which would correspond to multiple generations, would
+tend to exhibit a pattern of fluctuating frequencies (recall the quote
+from Darwin above). The illustration thus models the population, its
+variants with their physical differences, and gives a clear
+understanding of the possible outcomes. It is also easily
+extrapolatable to, e.g., colorblind predators (Hodge 1987) and other
+indiscriminate sampling agents. It does, however, have some
+limitations; for example, it lacks an analogue for reproduction, since
+the balls do not produce offspring, multiple or otherwise.</p>
+
+<p>
+Although the characterization of drift and selection in terms of
+indiscriminate and discriminate sampling seems straightforward, with
+Beatty’s explication of indiscriminate sampling an important
+clarification of what the Hagedoorns, Fisher, and Wright seem to have
+meant by “random” sampling, Beatty (1984) raises a problem
+for the conceptual distinction between natural selection and random
+drift. The problem is as follows: For every population of organisms in
+a given environment, with a certain distribution of types and
+associated fitnesses, there is a range of possible outcomes of natural
+selection, with some more likely than others. It is, of course, more
+likely that the fitter organisms will have greater reproductive
+success in the next generation than the less fit, but it is also
+possible that they will not. (Darwin repeatedly emphasized this chance
+element of natural selection). So, what do we say about the outcomes
+where the less fit outreproduce the more fit? Beatty states: </p>
+
+<blockquote>
+
+<p>
+To the extent that those outcomes are <em>less</em> representative of
+the physical abilities of those organisms to survive and reproduce in
+the environment in question, any evolutionary change that results will
+be <em>more</em> a matter of random drift, </p>
+</blockquote>
+
+<p>
+concluding that it is </p>
+
+<blockquote>
+
+<p>
+conceptually difficult to distinguish natural selection from random
+drift, especially where <em>improbable results of natural
+selection</em> are concerned (Beatty 1984: 196; emphasis in
+original)</p>
+</blockquote>
+
+<p>
+As will be discussed further below, much of the twentieth century was
+marked by debates among biologists about the relative importance of
+drift and selection in evolution. Were those debates at least in part
+the result of conceptual unclarity? Millstein (2002) argues that we
+need not accept this inadvertent consequence of Beatty’s
+argument, and that selection can, in fact, be distinguished from
+drift. In order to do this, three extensions should be made to
+Beatty’s account. First, similar to Hodge (1987), Millstein
+suggests that a proper distinction between drift and selection relies
+on causation, specifically, that drift processes are indiscriminate
+sampling processes in which any heritable physical differences between
+entities (organisms, gametes, etc.) are <em>causally</em>
+<em>irrelevant</em> to differences in reproductive success, whereas
+natural selection processes are discriminate sampling processes in
+which any heritable physical differences between entities (organisms,
+gametes, etc.) are <em>causally relevant</em> to differences in
+reproductive success. These more precise characterizations of
+“indiscriminate sampling” and “discriminate
+sampling” are intended to replace the metaphorical
+“sampling” talk, retaining the term “sampling”
+as a useful shorthand only. Second, we should be careful to
+distinguish the <em>process</em> of drift from the <em>outcomes</em>
+that drift produces, and the <em>process</em> of selection from the
+<em>outcomes</em> that selection produces. (Of course, the importance
+of distinguishing process from outcome is not a novel insight; what is
+novel here is its application to the problem of distinguishing drift
+from selection. The distinction has sometimes been rendered as
+“process vs. product” rather than “process vs.
+outcome” in the philosophical literature, but given the
+teleological and other misleading connotations of
+“product”, the term “outcome” is preferable
+and “product” should be avoided). Third, we should
+characterize drift and selection as processes rather than outcomes (as
+in the first of the three points). If we do these three things, then
+drift and selection are conceptually distinct and the problem Beatty
+raises is dissolved; discriminate sampling processes where unlikely
+outcomes obtain are still selection processes. On this view, it is
+further acknowledged that it is possible for drift and selection to
+produce the same outcomes, which helps explain the persistence of
+biologists’ debates over the relative importance of drift and
+selection without making them seem trivial (see Millstein 2002 for
+additional discussion of Beatty’s arguments).</p>
+
+<p>
+And what are these drift processes? They are the same physical
+indiscriminate sampling processes that Gulick, the Hagedoorns, Wright,
+and Fisher (and later, Kimura, who will be discussed further below)
+sought to characterize: the sampling of gametes in the formation of
+zygotes, the sampling of parents, the founding of new populations, and
+the splitting of populations. (Note that this is not intended to be an
+exhaustive list). The outcomes are likewise those mentioned by
+drift’s founders: fluctuations of gene frequencies from one
+generation to the next, loss of variants from a population, and
+fixation of a type in a population. (Again, this is not an exhaustive
+list). Each of these outcomes is affected by population size, as any
+indiscriminate sampling process is; smaller populations undergoing
+drift tend to experience greater fluctuations in gene frequencies, a
+faster loss of variants from the population, and faster fixation of
+types in a population. Thus, the Beatty/Hodge/Millstein account of
+drift—the Causal Process Account of Drift—is one that is
+grounded in the historical development of the term and in biological
+practice, with the philosopher’s role being one of clarification
+and elaboration. Christopher Stephens (2004), Robert Northcott (2010),
+and Chris Haufe (2013) also seem to endorse the bare bones view of
+drift as a sampling process, if not the Causal Process Account of
+Drift in all of its details.</p>
+
+<!--pdf include  <div class="pagebreak">
+</div> pdf include-->
+
+<h3 id="ReacVariSampBaseAccoDrif">2.2 Reactions to and Varieties of Sampling-Based Accounts of Drift</h3>
+
+<p>
+However, the Causal Process Account of Drift has not gone
+unchallenged. Robert Brandon (2005) argues that it “does not map
+well onto the ways biologists differentiate drift from
+selection” (2005: 156), that selection and drift are the same
+process (i.e., sampling), and that the large majority of biological
+cases are not cases of indiscriminate sampling. He maintains that
+“Drift is any deviation from the expected levels of reproduction
+due to sampling error” whereas “Selection is differential
+reproduction that is due to (and in accord with) expected differences
+in reproductive success” (2005: 168–9). These definitions
+include both process <em>and</em> outcome. Millstein (2005) responds
+to each of these challenges and defends her view over his. For the
+purposes of this essay, it is important to note, as Millstein (2005)
+acknowledges, that Brandon is certainly correct in his descriptive
+claim that many biologists incorporate both process and outcome in
+their definitions of drift (see Millstein, Skipper, and Dietrich
+(2009) for examples). Indeed, the plurality of definitions of drift
+offered by contemporary biologists—some process-oriented, some
+outcome-oriented, some both, and some alternating within the same
+work—gives rise to the need for philosophical analysis, even if
+the result, in the end, is to accept that pluralism. The Causal
+Process Account of Drift is making a prescriptive claim on the grounds
+of 1) increased clarity, 2) the ability to conceptually differentiate
+biologically very different phenomena, such as selection in a
+fluctuating environment from fluctuating gene frequencies due to
+indiscriminate sampling, which have the same outcomes, while 3)
+maintaining a grounding in biological practice and (some) biological
+usage. </p>
+
+<p>
+Jessica Pfeifer (2005) weighs in on the disagreement between Millstein
+and Brandon, arguing that it is reasonable to think that the source of
+probabilities in natural selection are at least partly a result of
+abstracting from or ignoring certain features of the environment and
+that, if this view is adopted, it is not conceptually confused to
+treat selection and drift as causally distinct. On Pfeifer’s
+view, drift is caused by the distribution of ignored factors, whereas
+selection for the trait in question is caused by those features that
+are not ignored.</p>
+
+<p>
+Peter Gildenhuys (2009) argues that the term “drift” is
+used to refer to causal influences over a population that have three
+features: they are non-interactive, non-pervasive, and indiscriminate
+(NINPICs). Thus, he endorses drift as indiscriminate sampling; the
+other modifications he makes to the view seem to stem from thinking
+that the Causal Process Account precludes drift and selection from
+co-occurring and from thinking the view needs to account for location
+(e.g., an organism being in the wrong place at the wrong time) as an
+irrelevant causal factor. In any case, he acknowledges that his
+account and the Causal Process Account probably agree in practice over
+what sorts of things should be characterized as constituting drift.
+Larry Shapiro and Elliott Sober (2007) also endorse the view that
+selection and drift are distinct processes, but Sober, at least, has
+backed off this view in a recent paper co-authored with Hayley
+Clatterbuck and Richard Lewontin (Clatterbuck, Sober, and Lewontin
+2013). Like Gildenhuys, they seem to suggest that if selection and
+drift are distinct processes that they cannot co-occur, and they seem
+to think that the mere introduction of finite population size
+introduces drift.</p>
+
+<p>
+To be clear, however, there can be indiscriminate sampling processes
+and discriminate sampling processes occurring in the same population,
+even with respect to the same trait. For example, in a study of over
+900 populations, biologist Maxime Lamotte acknowledged that camouflage
+gave appropriately colored <em>Cepaea nemoralis</em> land snails a
+selective advantage in their respective environment while
+simultaneously maintaining that foundings of new populations are
+“of considerable importance because of the chance variations in
+the composition of the first colonizers” (Lamotte 1959: 80); the
+variations he refers to are variations in the colors of the snail
+colonizers (Millstein 2009). Moreover, since the Causal Process
+Account requires that variations be heritable, the non-heritable
+locations of organisms are simply irrelevant for the purposes of
+deciding on drift vs. selection; for example, the founders of a new
+population may all hail from the geographic edge of the original
+population, but they can still be an indiscriminate sample of the
+whole. Finally, historically, at least (as discussed above), small
+population size has always been associated with drift, but it was
+never the main phenomenon to be represented. Thus, the variant
+sampling accounts of drift should be evaluated in light of these
+considerations.</p>
+
+<h3 id="MathApprDrif">2.3 Mathematical Approaches to Drift</h3>
+
+<p>
+Walsh, Lewens, and Ariew (2002) provide a good entrée into
+understanding a mathematical approach to drift. They begin by
+acknowledging the historical uses of the term drift, identifying four:
+1) a “Sewall Wright Effect”, 2) a “Hagedoorn
+Effect”, 3) “Indiscriminate Sampling, and 4) “The
+Finiteness of Natural Populations” (with some of their
+characterizations not fully accurate; e.g., with the first, they
+conflate Sewall Wright’s Shifting Balance Model where drift
+plays a role with drift itself). They suggest that these phenomena are
+“disparate” although they acknowledge, citing Beatty
+(1984), that the first three can be understood in terms of sampling.
+But the fourth form, they assert, cannot. They describe the fourth
+phenomenon as follows:</p>
+
+<blockquote>
+
+<p>
+The Hardy-Weinberg Law says that in infinite populations (of diploid
+organisms) there is no change in gene frequencies when there is no
+variation in gene fitnesses. But natural populations are finite in
+size; often they are small. In finite populations there will always be
+some non-negligible chance that trait frequencies will diverge from
+expectation. (Walsh, Lewens, and Ariew 2002: 456)</p>
+</blockquote>
+
+<p>
+With respect to this understanding of drift as the Hardy-Weinberg Law
+conjoined with a finite population, Walsh, Lewens, and Ariew maintain
+that “there is no larger population literally being
+sampled” (2002: 459). Instead:</p>
+
+<blockquote>
+
+<p>
+…in these cases what happens is that the distribution of
+fitnesses in the population yields a prediction concerning the way in
+which a population will change. Drift is manifested as a difference
+from the outcome predicted by the fitnesses in the population. The law
+of large numbers tells us that the likelihood of significant
+divergence from these predictions is an inverse function of the size
+of the population. The small size of a population increases the
+chances of error. (Walsh, Lewens, and Ariew 2002: 459)</p>
+</blockquote>
+
+<p>
+Walsh, Lewens, and Ariew then state that this is the common feature
+that the four types of drift they outline all share; thus drift, on
+their view, is when a series of births, survivals, deaths, and
+reproductions diverges from the outcome predicted by differences in
+fitness. Note that, using the terminology introduced in the previous
+section, this is a purely outcome-oriented
+(“outcome-only”) definition of drift. Whatever type of
+process (if any) might have produced the outcome plays no role in the
+definition. Matthen (2010) defends a similar characterization of
+drift: “Departures from expected values are what population
+geneticists call ‘drift’” (Matthen 2010: 3).</p>
+
+<p>
+However, notice that the fourth drift “phenomenon” that
+Walsh, Lewens, and Ariew identify isn’t really a phenomenon.
+Rather, it refers to a model from population genetics, the
+Hardy-Weinberg model, and predictions based on that model. It is true
+that as a consequence of the model, there would be no deviation from
+fitness expectations with an idealized infinite population (if we make
+some philosophical assumptions about what happens in infinity; Sober
+(1984) raises questions about these assumptions), but that there would
+likely be such deviations with a finite population. But this is a
+purely mathematical approach. The purely mathematical approach
+doesn’t ask what phenomena the model is supposed to be modeling
+and why it is that finite populations are of interest. There is also
+no explanation of why a Hardy-Weinberg model with an assumption of
+finite population size should count as drift; perhaps this is because
+of a philosophical tradition of referring to this as drift (e.g., some
+parts of Sober 1984 read that way), or perhaps it is because of the
+previously-noted longstanding association between drift and small
+population sizes. In contrast, on the Causal Process Account of Drift,
+drift would occur even in infinite populations as long as there is
+indiscriminate sampling; drift-like outcomes (deviation from fitness
+expectations) are not required. </p>
+
+<p>
+Millstein, Skipper, and Dietrich (2009) challenge the outcome-only
+approach to defining drift and the purely mathematical approach that
+it is based on. Thus, there seem to be some meta-disagreements between
+the process-only and outcome-only approaches to drift; should our
+definitions of drift look to the history of biology or should they
+look to mathematics? Should we glean our understandings of drift from
+the phenomena that biologists have sought to understand (the phenomena
+that they developed models for) or from the models alone? If from the
+models alone, are we inadvertently drawing on the measure or
+operationalization of drift rather than drift itself (Plutynski 2007)?
+Differing answers to these questions seem to be at the heart of the
+differing definitions of drift.</p>
+
+<p>
+If one doesn’t interpret the model purely mathematically, but
+instead considers what phenomenon the Hardy-Weinberg Principle
+with-finite-populations is seeking to model, then there is indeed a
+larger population being sampled. The equation models the changes from
+one generation to the next; the original generation is the population
+that is being sampled, and the next generation is the
+“sample”. That sample may or may not be representative of
+the original population, e.g., a heterozygote <em>Aa</em> of the
+original generation may or may not have offspring in the proportions
+25% <em>AA</em>, 50% <em>Aa</em>, and 25% <em>aa</em>.</p>
+
+<p>
+The mathematical-oriented outcome-only definition of drift is often
+associated with the so-called “statisticalist” approach to
+evolutionary theory, but since it is simply a definition of drift and
+not a metaphysical thesis it need not be. For example, a
+non-statisticalist could consistently hold that natural selection is
+causal (and thus, evolution would not be purely statistical, as it is
+on the statisticalist interpretation), but that drift occurs when and
+only when there is a deviation of the actual outcome from fitness
+expectation. Indeed, Frédéric Bouchard and Alexander
+Rosenberg (2004) seem to hold such a view. The intersection between
+issues of drift and the debates over statisticalism will be discussed
+further below.</p>
+
+<h3 id="OtheAccoDrif">2.4 Other Accounts of Drift</h3>
+
+<p>
+Other accounts of drift are not so easily classified. For example,
+Timothy Shanahan (1992) argues that conceptually, random drift and
+natural selection are the ends of a continuum. However, to reach this
+conclusion, Shanahan must reject heritability as a necessary condition
+for natural selection. As evolutionary biologist John Endler has
+argued, this has the effect of trivializing natural selection to the
+claim that “there are differences among different
+phenotypes” (Endler 1986: 13).</p>
+
+<p>
+Grant Ramsey (2013) develops a concept he calls
+“driftability”, which locates drift in individual
+organisms rather than in a population. Ramsey points out that the
+possible lives that an organism can lead is a large and heterogeneous
+set; thus, the actual life that any particular organism leads will
+probably not be a representative sample (which he seems to equate to
+an average) of the set. Differences within the set of will lead to
+different evolutionary outcomes; this intra-organismic heterogeneity
+within the set of possible lives of an organism is driftability.</p>
+
+<p>
+Peter Godfrey-Smith (2009) characterizes drift as changes where two
+parameters, the smoothness of fitness landscapes and dependence of
+reproductive character on fitness differences, are low. (However, when
+he needs to explicate why drift has special importance in small
+populations and why it can be mathematically described in particular
+ways, he appeals to indiscriminate sampling. Perhaps, then,
+indiscriminate sampling is at the core of Godfrey-Smith’s view
+of drift).</p>
+
+<p>
+Again, these accounts, which seem to deviate significantly from
+biological usage and practice, raise meta-philosophical issues about
+how we ought to go about characterizing a scientific concept like
+“drift”. How far can the definition of a term deviate from
+scientific usage and practice and still be considered to be a
+definition of the same thing?</p>
+
+<p>
+One could also be a pluralist about drift, arguing that there is
+reason to accept more than one definition of drift, although it is
+unclear if anyone has actually endorsed this position. Marshall Abrams
+seems to come the closest, stating: </p>
+
+<blockquote>
+
+<p>
+If random drift is anything, it is not one thing…The term
+applies to many effects on populations or organisms which are said to
+be due to “chance,” and to factors which are thought to
+help to produce such effects. (2007: 673)</p>
+</blockquote>
+
+<h2 id="InteGeneDrifStatCausDeba">3. Intersection of Genetic Drift with Statisticalist-Causalist Debates</h2>
+
+<p>
+Recent debates about random drift are often entangled with debates
+over the purported purely statistical (non-causal) nature of
+evolutionary biology, but the issues are separable. There are issues
+concerning random drift that do not involve questions of
+statisticalism (as this article seeks to document), and there are
+issues concerning statisticalism that do not involve random drift
+(e.g., much of the literature focuses on natural selection rather than
+random drift). The statisticalist claim, generally traced to a pair of
+papers by Walsh, Lewens, and Ariew (2002) and Matthen and Ariew
+(2002), is essentially that evolution is a population-level
+phenomenon, and that although there are causes at the level of
+individual organisms (births, deaths, etc.), there are no causes at
+the population level, only a statistical summary of the individual
+events. Note that it is widely acknowledged that the models in
+evolutionary theory are statistical ones, so the distinctive
+statisticalist claim is that evolutionary biology is <em>purely</em>
+statistical. There are at least three alternatives to the
+statisticalist claim; one challenges the claim that evolutionary
+biology is a population-level phenomenon, arguing that it is
+constituted by causes at the level of individual organisms (e.g.,
+Bouchard and Rosenberg 2004), a second defends the view that there are
+population-level causes (e.g., Millstein 2006; Shapiro and Sober
+2007), while a third argues for causes at both levels (Pence
+forthcoming).
+</p>
+
+<p>
+It was already noted above (see
+ <a href="#MathApprDrif">section 2.3</a>)
+ that the outcome-only definition of drift is often adopted by
+statisticalists, but not exclusively so; it can also be endorsed by a
+causalist who, e.g., believes that natural selection is a causal
+process but that drift is simply deviation from selective
+expectations. Perhaps surprisingly, it would also be possible for
+someone to endorse a version of the Causal Process Account of Drift
+and yet still accept the basic statisticalist premise—if one
+thought that drift should be understood in terms of indiscriminate
+sampling, and also thought that indiscriminate sampling should be
+understood in terms of causes at the level of individual organisms,
+then the evolutionary changes wrought by drift would just be be the
+statistical summation of individual level causes. In short, it would
+be a mistake to infer one’s position on the statisticalist
+debate from one’s definition of drift, although such slippage is
+common and the issues are in truth often entangled.</p>
+
+<p>
+What, then, are the statisticalist issues that random drift is
+entangled with? The concerns raised by Walsh, Lewens, and Ariew (2002)
+and Matthen and Ariew (2002) have their origins in claims made by
+Sober (1984) in his classic <em>The Nature of Selection</em>. Sober
+characterizes evolutionary theory as a theory of forces, with its
+zero-force state described by the Hardy-Weinberg equation of
+population genetics (see the
+ <a href="../population-genetics/">population genetics entry</a>
+ for an explanation of the equation); in such a state, there is no
+selection, no mutation, no migration, no meiotic drive, random mating,
+and infinite population size. Thus, the Hardy-Weinberg equation is an
+idealized model that never obtains in the real world. It is a bit
+difficult to see where drift fits into the equation, which is no doubt
+the source of much of the confusion over how to define drift. In his
+1984 book, Sober alternatively characterizes drift in terms of random
+sampling (the process, which occurs, Sober explains, during gamete
+formation and the founding of new populations) and sampling error (the
+outcome, i.e., the deviation from fitness expectations). From the
+point of view of process, at least some types of sampling could be
+understood to be part of the Mendelian process. The Mendelian process
+includes the “process wherein organism produce gametes and
+gametes produce organisms” (Sober 1984: 35), which Sober says is
+not treated as a force, but rather as the background against which
+evolutionary forces are described. But Sober does not take this route.
+Instead, Sober contrasts drift as sampling error (again, the
+outcome—presumably introduced when one relaxes Hardy-Weinberg
+assumptions to allow for finite populations) with selection, mutation,
+and migration; all are forces, Sober asserts, but drift is a different
+sort of force. It is not “deterministic” and it does not
+have a definite direction (although it does have a magnitude,
+determined by the population size). That is, given trait frequencies
+and fitness values, Sober suggests, selection predicts a specific
+outcome for the next generation in a specific direction (and is in
+this sense “deterministic”), whereas drift could yield an
+increase any of the types present in the population (and is in this
+sense directionless). Moreover, Sober states, you cannot say <em>how
+much</em> drift has contributed a change relative to the change
+introduced by selection; to do so would be as impossible as trying to
+say, when flipping a fair coin ten times and obtaining six heads, how
+much of the result was due to the fairness of the coin and how much
+was due to the fact that it was tossed ten times. He thus concludes
+that “if drift is an evolutionary force, it is a force of a
+different color” (1984: 117); he calls it a force, he says,
+mainly to indicate its causal role.</p>
+
+<p>
+These metaphysical claims about drift (and selection and other
+evolutionary processes—but it is just drift that interests us
+here) set the stage for the statisticalists’ challenge. Matthen
+and Ariew (2002) challenge the claim that there is a defensible sense
+in which drift is a force. Aside from the fact that it does not have a
+predictable or constant direction (as Sober readily acknowledges),
+they point to a case of two similar populations subject to the same
+selective pressures, one in which the trait <i>T</i> becomes fixed and
+the other in which the alternative trait <em>T′</em> becomes
+fixed. What explains the outcome in the two cases? Exactly the same
+thing, Matthen and Ariew assert, just as exactly the same coin setup
+explains two heads and four heads in two series of ten coin tosses.
+Thus, they seem to suggest, there is no additional cause or force,
+“drift”. Walsh, Lewens, and Ariew (2002) similarly attack
+Sober’s claim that drift is a force; following Rosenberg (1994),
+they assert that “the events that are labelled
+‘drift’ events, like lightning strikes, etc. are no
+different in kind from selection events” (Walsh, Lewens, and
+Ariew 2002: 457)—and thus, drift is not a distinct sort of
+force. Moreover, they argue, drift is best interpreted statistically
+as statistical error (see argument in
+ <a href="#MathApprDrif">section 2.3</a>),
+ and so again, it is not a force.</p>
+
+<p>
+To be clear, there is a historical component to the
+statisticalists’ claims; on their view, Darwin’s
+evolutionary theory was causal, but with the introduction of
+population genetics, evolution became purely statistical. (It is
+sometimes unclear whether the statisticalists are making claims about
+models/theories or whether they are making ontological claims, or
+whether they think that the latter can be inferred from the former).
+Hodge (2016; see also Plutynski et al. 2016) challenges this
+historical claim by arguing that in fact Darwin—although he
+liked to think that his epistemological and nomological ideals were in
+descent from Newton’s—never understood natural selection
+to be a lawful force along with gravitation or inertia. Hodge further
+argues that biologists today compare and contrast natural selection
+with artificial selection and with drift in ways directly descending
+from Darwin’s view of natural selection as a causal process.</p>
+
+<p>
+A number of other philosophers have sought to challenge the
+statisticalists’ claim that drift is not a force. For example,
+Stephens (2004) defends the claim that drift is both a force and a
+cause. He asserts that if we understand drift properly as a process of
+indiscriminate sampling (instead of as an outcome, as the
+statisticalists do), we can see that it is a force, but that in a
+population of a given size it always has the <em>same</em> force,
+regardless of whether there is a large or a small deviation from
+expectation. (It may be that Sober’s inadvertent vagueness in
+his 1984 book on the process/outcome question contributed to the
+confusion, since the statisticalists were responding to Sober). He
+clarifies that, “because drift is a probabilistic cause, the
+<em>same</em> causal force can have two <em>different</em>
+outcomes” (Stephens 2004: 557; emphasis in original). Stephens
+further defends the claim that drift can be understood as a force or a
+cause by arguing (<em>contra</em> Matthen and Ariew) that drift does
+have a direction, namely, eliminating heterozygosity; that it can
+“make a difference” by affecting the probability of
+evolutionary change (more in small populations, less in large); and
+that we can cogently speak of the relative importance of drift in an
+ensemble of populations or in a population, albeit not at the level of
+individuals (see Walsh 2007 for a response to Stephens 2004, 2010 and
+Gildenhuys 2014 for a
+response to his response).</p>
+
+<p>
+Brandon (2006), however, argues that “eliminating
+heterozygosity” is not sufficient to show that drift is
+directional, given that (as Stephens would readily acknowledge) if
+there were two alleles at a locus, beginning at equal frequencies, we
+could not predict which of the two alleles would go to fixation, only
+that one of them would; Brandon likens this to saying that “a
+20-Newton force is acting on object <i>A</i>”, (2006: 325),
+which, he seems to imply, is not a directional claim. Moreover, he
+argues, drift is not a separate process from selection. Thus, drift,
+on Brandon’s view, is not a force (but it is a law; more on that
+below). Joshua Filler (2009) responds to Brandon by defending a more
+elaborated account of what a force is (in part drawing on Bigelow et
+al. 1988); on that elaborated account, drift’s direction can be
+seen as less specific than selection, mutation, and migration, but it
+gives some directional information. Thus, Filler argues, it can be
+seen as less “forcelike” than selection, mutation, and
+migration, but it is still a force. Charles Pence (forthcoming),
+however, worries that Filler’s modifications to our
+understanding of “force” may be <em>ad hoc</em>, so he
+offers an alternative defense of the claim that drift is a
+force. First, Pence argues, we already countenance forces that have
+stochastically specified directions, such as Brownian motion, and
+drift is analogous.  Second, we can create an evolutionary thought
+experiment where drift is absent, showing that it is not constitutive
+of all evolving systems; this is intended to respond to
+Brandon’s claim that drift is not separable. Importantly,
+however, Pence points out that there are essential questions that the
+entire debate has yet to address: “what exactly the use of
+‘forces’ is to do for us, and when explanations utilizing
+a force metaphor are useful or perspicuous” (Pence
+forthcoming).</p>
+
+<p>
+On the other hand, Kenneth Reisman and Patrick Forber (2005) separate
+the question of whether drift is a force from the question of whether
+drift is a cause, arguing only for the latter while not taking a stand
+on the former. In a related paper, they rely on Woodward’s (2003) manipulability
+account of causation and a 1957 study of drift by Dobzhansky and
+Pavlovsky to argue that </p>
+
+<blockquote>
+
+<p>
+decreasing the number of founding members in replicate populations
+produces an increase in the variability of evolutionary outcomes
+across those replicate populations. (Forber and Reisman 2007: 617) </p>
+</blockquote>
+
+<p>
+In other words, they argue that the conditions of the study can be
+seen to satisfy the conditions of the manipulability account, showing
+that drift ought to be understood as a (population-level) cause.
+Shapiro and Sober (2007) state that they endorse Reisman and
+Forber’s arguments as well as the view of drift as a process.
+However, it’s unclear whether Shapiro and Sober (or Reisman and
+Forber) actually do endorse the view of drift as a process. That is,
+it’s unclear why population size as a causal factor should count
+as a process.</p>
+
+<p>
+This is because it’s a bit unclear if drift is actually what is
+being manipulated in Dobzhansky and Pavlovsky’s (1957)
+experiments, or if it is just population size—and population
+size does not seem to be a process. Perhaps Reisman and Forber have
+simply shown that population size is a causal factor of evolutionary
+change in populations undergoing drift. They also seem to be taking
+Woodward’s account very literally, in that they seem to think
+that the “variable” that has to be manipulated must be a
+variable in a mathematical model; otherwise, one could (at least in
+principle) manipulate the sampling process by manipulating the
+population rather than simply the population size; Clatterbuck’s
+(2015) account, discussed in
+ <a href="#DrifModeDrifLaw">section 5</a>,
+ gives an example of this. (Population size is a variable in
+mathematical models of drift, whereas sampling, as discussed above, is
+implicit). One could also conceivably manipulate the environment so
+that sampling was discriminate rather than indiscriminate or to change
+the nature of the indiscriminate sampling. </p>
+
+<p>
+Other challenges to the statisticalists’ claims about drift as a
+cause neither endorse the view of drift as a force nor drift as a
+distinct process. For example, Brandon and Ramsey (2007) see drift and
+selection as “copossible” outcomes of the same
+process. But because there <em>is</em> a causal process—albeit
+only one rather than two—the statisticalists’ claims are
+not upheld. Abrams (2007) likewise seems loathe to adopt
+“force” talk about drift, at least in a strong realist
+sense. He argues that “both selection and drift are aspects of a
+probability distribution over future frequencies of genotypes or
+phenotypes in a population” (2007: 667). Yet selection and drift
+can be distinguished: </p>
+
+<blockquote>
+
+<p>
+Selection is the aspect of the distribution controlled by differences
+in fitness, while drift is the aspect of such a distribution
+controlled by population size (apart any from effects of population
+size on fitness). (2007: 667) </p>
+</blockquote>
+
+<p>
+This makes it sound as though Abrams is adopting a view of drift akin
+to that of Reisman and Forber, with its focus on population size, and
+indeed Abrams does elaborate on the causal role of population size,
+but (as noted above) his views on drift are more accurately pluralist
+ones.</p>
+
+<p>
+More generally, Pence (forthcoming) suggests one way of categorizing the
+different causalist approaches (although not all of these have
+explicitly addressed drift):</p>
+
+<blockquote>
+
+<p>
+At the very least, we need to distinguish between (1) the force
+interpretation, as discussed here; (2) the causal process approach
+(elaborated most notably by Millstein 2002, 2006, 2013); (3) the
+causal mechanism approach, first deployed for natural selection by
+Barros (2008) and building on the work of Machamer et al. (2000); (4)
+the manipulationist approach, discussed by Reisman and Forber (2005),
+Forber and Reisman (2007), and Shapiro and Sober (2007), building on
+the work of Woodward and Hitchcock (2003); and (5) the counterfactual
+approach, deployed for natural selection by Glennan (2009) and Huneman
+(2012) and utilizing a notion of counterfactual causal dependence or
+“relevance”. (Pence forthcoming)</p>
+</blockquote>
+
+<h2 id="DeteDrifEmpi">4. Detecting Drift Empirically</h2>
+
+<p>
+Throughout the 20<sup>th</sup> and 21<sup>st</sup> centuries,
+biologists have struggled to detect drift empirically. In particular,
+they have experienced challenges in differentiating cases of drift
+from cases of selection. The Causal Process Account of Drift in
+particular can help to make sense of why this is so, as will be
+discussed below. Drift and selection may be different sorts of causal
+processes (indiscriminate and discriminate sampling, respectively),
+but they can produce similar outcomes. Biologists have thus struggled
+to identify distinctive outcomes for drift and selection, only to find
+underdetermination re-emerge after biologists modified or added to
+their assumptions about the relevant processes (for a clear
+characterization of this, see Dietrich and Skipper 2007). Relatedly,
+biologists have also disagreed over the relative prevalence of drift
+and selection (Beatty 1995, 1997); as noted above, these disagreements
+were there almost from the outset with Fisher’s response to the
+Hagedoorns.</p>
+
+<h3 id="ClasStud">4.1 Classic Studies</h3>
+
+<p>
+The disagreements over the prevalence of drift and selection began
+almost immediately after Wright and Fisher incorporated drift into
+their evolutionary models (see Provine 1986 for an extended discussion
+of their disagreements, to which this discussion is very much
+indebted). Wright (1931a, 1932), drawing on his experience with animal
+breeding, developed the Shifting Balance Theory (SBT), which consisted
+of three phases; these have been understood either as empirical claims
+about actual conditions (Provine 1986) or descriptions of the ideal
+conditions for evolution (Skipper 2002). Skipper provides a clear
+description of the SBT as it Wright would eventually formulate it (see
+Hodge 2011 for discussion of early formulations):</p>
+
+<blockquote>
+
+<p>
+In the first phase, random genetic drift causes gene frequencies to
+change and pull subpopulations semi-isolated within the global
+population into adaptive valleys because random fluctuations in gene
+frequencies are almost always maladaptive. In phase two, mass
+selection will then act within subpopulations and increase their
+fitness, dragging them from adaptive valleys to adaptive peaks. In the
+third phase, selection between subpopulations, which Wright called
+interdemic selection, driven by differential dispersion (migration of
+organisms from more fit subpopulations to less fit subpopulations)
+would then enable the global population to be raised to its optimal
+peak. (Skipper 2002: 345)</p>
+</blockquote>
+
+<p>
+Drift, then, on Wright’s view, plays an essential role in the
+evolutionary process. Fisher, by contrast, thought that mass selection
+on large populations was the predominant and most effective mode of
+evolution, leaving very little role for drift given the large
+population sizes. (This disagreement about the relative role of drift
+in evolution is one of several things that Wright and Fisher disagreed
+about; e.g., as is clear from the above, they also disagreed about
+population structure and effective population size. See Skipper 2002,
+2009 and Plutynski 2005 for analyses of contemporary biologists who
+continue to argue the Wright-Fisher debate).</p>
+
+<p>
+Another, related issue arose concerning the character of the traits
+that were said to be subject to random drift. Wright’s early
+writings, in particular, emphasized the nonadaptive character of the
+traits undergoing drift and produced by drift (as can be see in
+Skipper’s characterization of Wright’s SBT above). But a
+number of potential confusions arise here (Provine 1986; Millstein
+2009): First, “nonadaptive” does not necessary mean
+“maladaptive”; it can also mean “neutral”.
+Second, “nonadaptive” can refer either to the lack of
+adaptive differences between organisms or species, or it can refer to
+the lack of adaptation to the environment (but authors are not always
+clear about which meaning is intended). So, one’s views on the
+prevalence of drift can be—and historically often have
+been—tied to one’s beliefs about the prevalence of
+adaptive traits (in either sense) in populations. Strictly speaking,
+however, there is no necessary connection between nonadaptive traits
+and drift; there can be indiscriminate sampling on organisms that are
+adapted to their environment and which differ in fitness, and the
+outcomes of that indiscriminate sampling can pull the population in an
+adaptive direction <em>or</em> a nonadaptive one. Thus, the proper
+contrast between selection and drift does not map onto
+“adaptive” and “nonadaptive”, but rather to
+“adaptive” and “possibly nonadaptive” (but
+also “possibly adaptive”).</p>
+
+<p>
+These theoretical considerations were soon followed by field
+examinations of drift (there were also laboratory studies, but these
+were less contentious). Two sets of studies of natural populations are
+particularly notable. One set, referred to in the introduction to this
+essay, is composed of the studies of the polymorphic land snail,
+<em>Cepaea nemoralis</em>; these studies, and debates over the
+prevalence of drift, began in the 1930s and became quite heated in
+“The Great Snail Debate” of the 1950s and 1960s (Millstein
+2008, 2009 gives more extensive discussion, from which the following
+is drawn; the moniker “The Great Snail Debate” is due to
+Provine 1986). Early researchers, most famously Arthur J. Cain and
+Philip M. Sheppard (1950, 1954), sought to demonstrate the adaptedness
+of the color and banding morphs of the snails as well as the sizes of
+the populations in which they lived. But these were challenging to
+determine; adaptedness was primarily studied indirectly, by seeking
+correlations between variants and their backgrounds (presuming
+camouflage and selection by predator), and population sizes varied
+considerably. And any correlations found were statistical ones, with
+lots of “noise”. This left the door open for drift; Maxime
+Lamotte (1959) argued that by examining the populations as a whole,
+one found greater variation among the small populations than among the
+large. This was a distinctive signature for drift, but such outcomes
+are hard to find and require a very special set of circumstances to
+obtain (large numbers of populations of varying sizes that are easy to
+count). However, Lamotte’s study is not the only classic
+evolutionary study to exploit this unique drift outcome;
+Cavalli-Sforza’s studies of blood groups in humans did so as
+well (Richardson 2006). Notably, this was not drift as an
+<em>alternative</em> to selection (Cain and Sheppard had suggested
+that selection precluded much of a role for drift), but rather, an
+argument for a substantial role for drift <em>in addition to</em> a
+substantial role for selection.</p>
+
+<p>
+Another important set of studies is of the polymorphic Scarlet Tiger
+Moth, <em>Panaxia dominula</em> (see Provine 1986 for extended
+discussion, to which the following is indebted). Fisher and Ford
+deliberately chose <em>P. dominula</em> because of its small
+population sizes, figuring that if they could make the case for
+selection against drift in its worst case, they could make a decisive
+case against Wright, who they saw as advocating a form of nonadaptive
+evolution. But rather than trying to make a case <em>for</em>
+selection, as Cain and Sheppard did, Fisher and Ford (1947) tried to
+make a case <em>against</em> drift by arguing that the fluctuations of
+gene frequencies across generations were too large to be accounted for
+by drift and that the size of the fluctuations did not differ between
+the small and the large populations, as you would expect if they were
+undergoing drift. Therefore, they concluded, the populations were
+undergoing selection. Wright’s (1948) reply challenged both the
+logic of this conclusion (disproving drift does not prove selection)
+as well as their characterization of his views, but more
+significantly, he pointed out that Fisher and Ford had not included
+data on population sizes for the years in which the gene frequency
+fluctuations were statistically significant, so, in fact, it was
+possible that the populations had been undergone constrictions in
+those years, in which case drift <em>would</em> have been able to
+produce the observed fluctuations. He also pointed out that
+fluctuations in selection or migration (which he very problematically
+suggested could be part of an expanded understanding of drift) could
+have produced the same outcomes. </p>
+
+<p>
+In short, the <em>P. dominula</em> studies turned on a slightly
+different but related proposed unique outcome for drift, that of
+fluctuations over time rather than variation at a time as for <em>C.
+nemoralis</em>, in both cases comparing small populations to large (as
+well as considering the capability of populations to produce large
+fluctuations), but with <em>P. dominula</em>, drawing definitive
+conclusions ran into difficulty from lack of data concerning the key
+variable of population size. There is also the recognition that
+fluctuating selection can produce the same outcome of fluctuations of
+gene frequencies across generations as drift can, making it difficult
+to resolve the empirical case. Finally, note that biologists have
+continued to study both <em>C. nemoralis</em> and <em>P.
+dominula</em>, with the result that additional processes have been
+identified that further complicate the empirical analyses (Millstein
+2008; Skipper 2009).</p>
+
+<h3 id="StudDrifMoleEvol">4.2 Studies of Drift and Molecular Evolution</h3>
+
+<p>
+As Dietrich (1994) has documented, early work in molecular evolution
+was focused almost exclusively on selection, something that changed
+with the advent of the neutral theory of molecular evolution and the
+work of Motoo Kimura, Jack King, and Thomas Jukes. Dietrich writes:
+</p>
+
+<blockquote>
+
+<p>
+The basis of its challenge was Kimura’s proposal that most
+changes detected at the molecular level were not acted upon by natural
+selection; they were neutral, and the mechanism of their change was
+random genetic drift. (1994: 22) </p>
+</blockquote>
+
+<p>
+To be clear, however, both selection and drift play an essential role
+in the neutral theory; on Kimura’s view, selection will quickly
+eliminate the large number of deleterious mutants and fix the small
+number of advantageous ones, leaving the remaining mutant alleles as
+neutral, whereupon they undergo a process of drift (Dietrich 2006).
+Drift would eventually cause the neutral (and nearly neutral) mutants
+to either go to fixation or be lost (although they would be
+polymorphic in the meantime), so that observed molecular differences
+would be </p>
+
+<blockquote>
+
+<p>
+the outcomes of a random process of mutation, which Kimura understood
+as produced largely from DNA replication error, processes of
+directional selection, and processes of random drift produced by
+gamete sampling. (Dietrich 2006: 670) </p>
+</blockquote>
+
+<p>
+Many of the debates about the neutral theory contrasted this approach
+(the “neutralist” approach) to evolution with a more
+selectionist (or sometimes, “panselectionist”) approach,
+causing many to refer to a “neutralist-selectionist
+controversy”.</p>
+
+<p>
+The advocates of the neutral theory initially proposed it as an
+unrealistic simple model only to have subsequent data on the
+prevalence of neutral alleles convince them of its realism. That led
+to more explicit testing of the neutral theory and debates over the
+molecular clock (Dietrich 2006). To focus on the first of these,
+Dietrich (2006) suggests that although the neutral theory promised to
+generate numerous quantitative testable predictions—and
+did—testing it has in fact proved difficult. Is this because of
+the difficulty in identifying outcomes that are unique to drift?
+Perhaps so. For example, the neutral theory predicted a certain
+measure of heterozygosity, but when Francisco Ayala and colleagues
+failed to observe that predicted outcome in a study of natural
+populations of <em>Drosophila</em>, Jack King responded by saying that
+many of the assumptions made by the model could be the source of the
+discrepancy. In other words, as has been well-discussed in the
+philosophy of science, there are no “crucial experiments”
+between two theories because theories are always tested together with
+their assumptions, any one of which can be given up rather than
+rejecting the theory. Debates over the so-called “molecular
+clock” can also be understood in terms of the search for
+distinctive outcomes for drift. At first, it was thought that only
+drift could make sense of an apparent constant rate of
+evolution—that only drift would produce such an
+outcome—yet this time it is the selectionists who modified their
+assumptions such that their models would also predict a molecular
+clock outcome (Dietrich and Skipper 2007).</p>
+
+<p>
+Subsequently,
+Tomoko Ohta began to argue for a more significant role for weakly
+selected mutants (Ohta 1973).  Essentially, Ohta’s definition of
+“nearly neutral” includes mutants that are less neutral
+than Kimura’s “nearly neutral” mutants, and larger
+amounts of them as well (Dietrich and Millstein 2008). Later
+refinements included both slightly deleterious and slightly
+advantageous mutants. This changes the processes that one would expect
+to be acting. With the (strictly) neutral theory, only drift would act
+on the neutral mutants. With the nearly neutral theory, the nearly
+neutral mutations (whether advantageous or deleterious) would subject
+to very weak selection (discriminate sampling) <em>and</em> to drift
+in the form of indiscriminate gamete sampling (Dietrich and Millstein
+2008). Because the selection is weak, it would be swamped by the
+effects of drift, but both processes would still be occurring. Ohta
+believed that the nearly neutral theory could better account for the
+results found by Ayala and his colleagues (with its large number of
+relatively rare alleles), and also, that it could better explain some
+features of the molecular clock (Dietrich and Millstein 2008).
+However, it has proven much more difficult to find unique outcomes for
+the nearly neutral theory than the neutral theory. This makes the
+nearly neutral theory more difficult to test for and less useful as a
+null hypothesis as compared to the neutral theory, even as it might
+account for the available data better.</p>
+
+<h3 id="ReceEmpiIssuConcDrif">4.3 Recent Empirical Issues Concerning Drift</h3>
+
+<p>
+Hayley Clatterbuck, Elliott Sober, and Richard Lewontin (2013) argue
+that it doesn’t make sense to talk of drift
+“dominating” selection or being “stronger
+than” selection. (Among many such claims, this would challenge
+Dietrich and Millstein’s (2008) claim, discussed in the previous
+section, that the best way to understand the nearly neutral theory is
+as weak selection dominated by drift). Clatterbuck, Sober, and
+Lewontin take selection and drift to be a population-level process or
+processes (they don’t take a stand on whether there is a one
+process or two, but they are clearly “causalists” rather
+than “statisticalists”), but they raise concerns for the
+way that biologists have understood the value <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" style="width: 1.415em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.353em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.318em, 1001.3em, 2.364em, -1000em); top: -2.177em; left: 0em;"><span class="mrow" id="MathJax-Span-2"><span class="mi" id="MathJax-Span-3" style="font-family: MathJax_Math-italic;">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.085em;"></span></span><span class="mi" id="MathJax-Span-4" style="font-family: MathJax_Math-italic;">s</span></span><span style="display: inline-block; width: 0px; height: 2.177em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.071em; border-left: 0px solid; width: 0px; height: 0.835em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>N</mi><mi>s</mi></math></span></span><script type="math/tex" id="MathJax-Element-1">Ns</script>, which is the
+effective size of the population multiplied by the selection
+coefficient. After some initial controversies over how to interpret
+this value, most biologists eventually came to the view that </p>
+
+<blockquote>
+
+<p>
+selection “dominates” drift when <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-2-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-5" style="width: 1.415em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.353em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.318em, 1001.3em, 2.364em, -1000em); top: -2.177em; left: 0em;"><span class="mrow" id="MathJax-Span-6"><span class="mi" id="MathJax-Span-7" style="font-family: MathJax_Math-italic;">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.085em;"></span></span><span class="mi" id="MathJax-Span-8" style="font-family: MathJax_Math-italic;">s</span></span><span style="display: inline-block; width: 0px; height: 2.177em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.071em; border-left: 0px solid; width: 0px; height: 0.835em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>N</mi><mi>s</mi></math></span></span><script type="math/tex" id="MathJax-Element-2">Ns</script> is much greater
+than some specified number and that drift “dominates”
+selection when <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-3-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-9" style="width: 1.415em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.353em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.318em, 1001.3em, 2.364em, -1000em); top: -2.177em; left: 0em;"><span class="mrow" id="MathJax-Span-10"><span class="mi" id="MathJax-Span-11" style="font-family: MathJax_Math-italic;">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.085em;"></span></span><span class="mi" id="MathJax-Span-12" style="font-family: MathJax_Math-italic;">s</span></span><span style="display: inline-block; width: 0px; height: 2.177em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.071em; border-left: 0px solid; width: 0px; height: 0.835em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>N</mi><mi>s</mi></math></span></span><script type="math/tex" id="MathJax-Element-3">Ns</script> is much less than that number, </p>
+</blockquote>
+
+<p>
+with proposed numbers including 1/4, 1/2, and 1; in between values are
+thought to be where the two causes are more or less equal
+(Clatterbuck, Sober, and Lewontin 2013). Clatterbuck, Sober, and
+Lewontin point out that on the standard picture, the values of
+<i>N</i> and <i>s</i> do not predict one gene frequency outcome;
+rather, they predict a probability distribution of possible gene
+frequency outcomes. But, they argue, you can change this distribution
+by changing <i>N</i> or by changing <i>s</i>, with values
+“chosen so that the first change makes more of a difference, or
+less, or the same, as you please”; thus, it is “arbitrary
+to focus on comparisons that give drift the upper hand, or that do the
+same for selection” (Clatterbuck, Sober, and Lewontin 2013:
+538). Here, the suggestion seems to be that <i>N</i> represents the
+drift cause and that <i>s</i> represents the selection
+cause—although it’s not clear why drift-as-cause should be
+equated with population-size-as-a-cause—with the conclusion that
+the causes are not separable. To say that they are separable would,
+Clatterbuck, Sober, and Lewontin say, would be akin to asking whether
+the result of four heads of a fair coin tossed ten times is due to the
+fairness of the coin or the number of tosses. They also suggest that
+it is impossible to have a population that is not undergoing drift,
+since even in an infinite population there could be deviation from
+selective expectations (again, making it hard to separate the causes).
+Finally, they argue that it doesn’t make sense to say that with
+identical setups that producing differing outcomes, that selection
+dominates in some (when the favored allele increases in frequency) and
+drift in others (when the favored allele decreases in frequency).</p>
+
+<p>
+Robert Brandon and Lenore Fleming (2014) point out, however, that
+Clatterbuck, Sober, and Lewontin’s analysis of a seemingly
+empirical question is not based on an empirical discovery, but rather,
+a conceptual analysis, and that as a conceptual analysis, it is not
+fully consistent; that is, they do not consistently treat drift as a
+causal process, but sometimes treat it as an outcome (as in the last
+point described in the previous paragraph). Brandon and Fleming cite
+several recent empirical studies where biologists seek to provide
+evidence that drift dominates selection, not relying on the simple
+<span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-4-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-13" style="width: 1.415em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.353em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.318em, 1001.3em, 2.364em, -1000em); top: -2.177em; left: 0em;"><span class="mrow" id="MathJax-Span-14"><span class="mi" id="MathJax-Span-15" style="font-family: MathJax_Math-italic;">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.085em;"></span></span><span class="mi" id="MathJax-Span-16" style="font-family: MathJax_Math-italic;">s</span></span><span style="display: inline-block; width: 0px; height: 2.177em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.071em; border-left: 0px solid; width: 0px; height: 0.835em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>N</mi><mi>s</mi></math></span></span><script type="math/tex" id="MathJax-Element-4">Ns</script> to come to that conclusion, and point out that there are other
+methods for testing the relative strengths of drift and selection,
+such as the McDonald-Kreitman (MK) test. In Brandon and
+Fleming’s view, “drift is not a process. It is, however, a
+predictable result of a process, namely probabilistic sampling”
+(2014: 581). It is somewhat unclear, however, how on their view the
+drift outcome (which outcome?) is “swamping” or
+“overriding” the selective outcome (presumably by the
+outcome being the cause of some further, as yet unidentified,
+outcome). Further elaboration on this point would be useful.</p>
+
+<p>
+It has also been suggested, most notably by John Gillespie (2000a,b,
+2001), that many purported instances of genetic drift are in fact due
+to genetic draft. Genetic draft is a process of linked selection (a
+hitchhiking process) where it is a matter of chance which of two
+neutral alleles (in a two-locus model) happens to be linked to a site
+that undergoes an advantageous mutation, and where the timing of these
+mutations, followed by a rapid selective “sweep” to
+fixation, is random. As Skipper (2006) discusses, one of the
+interesting properties of genetic draft is that it can produce an
+outcome similar to that which one would expect from genetic drift in
+small populations, namely, a reduction in genetic variation (thus the
+similar name). Gillespie argues that draft is less sensitive to
+population size than drift, which leads him to claim that draft is a
+more significant cause of evolution than drift (Skipper 2006). Thus,
+draft introduces yet another relative significance debate (Beatty
+1995, 1997) to add to the others discussed in this article: drift vs.
+selection, Wright’s SBT vs. Fisher’s mass selection,
+neutralist vs. nearly neutralist vs. selectionist molecular evolution.
+However, it is worth noting that while draft can produce one of the
+same outcomes that drift can (reduction in heterozygosity), it would
+not give rise to fluctuating gene frequencies from one generation to
+the next. So, not all drifty outcomes can be accounted for by
+draft.</p>
+
+<p>
+William Provine (2014) has taken the reduction of drift’s role a
+step further, calling random genetic drift a “fallacy” and
+arguing that no such phenomenon exists in nature, period. Provine
+notes that for both Fisher and Wright (and even Kimura), drift was
+deeply intertwined with inbreeding, to the extent that one was
+sometimes confused for the other, which seems warranted—or, at
+least, that the relationship between the two was never fully clarified
+(see, e.g., Wright 1931a). Provine defines random drift as
+“fortuitous extinction of genes” at a genic locus on a
+chromosome. According to Provine, </p>
+
+<blockquote>
+
+<p>
+Wright believed that random sampling of gametes in Mendelism produced
+“random genetic drift” at every locus [on every
+chromosome] in small populations, and also that inbreeding led to
+rampant “random genetic drift” in small populations (Provine 2014: 54). </p>
+</blockquote>
+
+<p>
+Here, Provine treats drift as an outcome, and as that outcome seems
+physically unlikely or even impossible due to gene linkage, there is,
+on his view, no drift. Wright did assert that </p>
+
+<blockquote>
+
+<p>
+[j]ust because the direction of drift is accidental, the result is a
+kaleidoscopic shifting of the average characters of the population
+through predominant types which practically are never repeated,
+(1931b: 207; see also Wright 1930: 354) </p>
+</blockquote>
+
+<p>
+but that makes drift sound like a cause, not an outcome, and it does
+not explicitly state that the “shifting” occurs at every
+locus on every chromosome. But even if he did, Wright could certainly
+have been mistaken about the effects of drift without being mistaken
+about the phenomenon itself; notably, Provine does not deny the
+existence of the random (i.e., indiscriminate) sampling of gametes,
+although he does object to the seeming reification of the term
+“gene pool” and the neglect of the relevance of
+chromosomes, points that are well-taken.</p>
+
+<h2 id="DrifModeDrifLaw">5. Drift as Models, Drift as a Law</h2>
+
+<p>
+As noted above, the phenomenon of drift is represented in mathematical
+models of population genetics. The standard mathematical model of
+drift found in textbooks is the Wright-Fisher model, the core of which
+is the binomial distribution, and it is the model that philosophers of
+biology typically appeal to. In the Wright-Fisher model—an
+idealized model, as all models are—there are assumed to be
+<i>N</i> diploid adults in a population, mating randomly, with an
+allele <i>A</i> that has a frequency of <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-5-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msub&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/msub&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-17" style="width: 1.003em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.941em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.559em, 1000.94em, 2.548em, -1000em); top: -2.177em; left: 0em;"><span class="mrow" id="MathJax-Span-18"><span class="msubsup" id="MathJax-Span-19"><span style="display: inline-block; position: relative; width: 0.932em; height: 0px;"><span style="position: absolute; clip: rect(3.383em, 1000.5em, 4.372em, -1000em); top: -4.001em; left: 0em;"><span class="mi" id="MathJax-Span-20" style="font-family: MathJax_Math-italic;">p</span><span style="display: inline-block; width: 0px; height: 4.001em;"></span></span><span style="position: absolute; top: -3.851em; left: 0.503em;"><span class="mn" id="MathJax-Span-21" style="font-size: 70.7%; font-family: MathJax_Main;">0</span><span style="display: inline-block; width: 0px; height: 4.001em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.177em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.26em; border-left: 0px solid; width: 0px; height: 0.776em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>p</mi><mn>0</mn></msub></math></span></span><script type="math/tex" id="MathJax-Element-5">p_0</script> and an alternate
+allele at the same locus. The model further assumes that adults
+produce an infinite number of gametes having the same allele
+frequency. <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-6-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-22" style="width: 1.474em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.412em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.318em, 1001.41em, 2.354em, -1000em); top: -2.177em; left: 0em;"><span class="mrow" id="MathJax-Span-23"><span class="mn" id="MathJax-Span-24" style="font-family: MathJax_Main;">2</span><span class="mi" id="MathJax-Span-25" style="font-family: MathJax_Math-italic;">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.085em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.177em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.061em; border-left: 0px solid; width: 0px; height: 0.825em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>2</mn><mi>N</mi></math></span></span><script type="math/tex" id="MathJax-Element-6">2N</script> gametes are drawn from the “gamete pool”
+at random to constitute the <i>N</i> diploid individuals of the next
+generation.</p>
+
+<p>
+However, as Millstein, Skipper, and Dietrich (2009) point out, the
+Wright-Fisher model is <em>quite</em> idealized, since, of course,
+</p>
+
+<blockquote>
+
+<p>
+populations do not reproduce by calling in their local statistician
+and asking her to pick exactly <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-7-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-26" style="width: 1.474em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.412em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.318em, 1001.41em, 2.354em, -1000em); top: -2.177em; left: 0em;"><span class="mrow" id="MathJax-Span-27"><span class="mn" id="MathJax-Span-28" style="font-family: MathJax_Main;">2</span><span class="mi" id="MathJax-Span-29" style="font-family: MathJax_Math-italic;">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.085em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.177em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.061em; border-left: 0px solid; width: 0px; height: 0.825em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>2</mn><mi>N</mi></math></span></span><script type="math/tex" id="MathJax-Element-7">2N</script> gametes at random (with
+replacement) and toss them into the next generation (Gillespie 2004:
+49) </p>
+</blockquote>
+
+<p>
+—but there are more realistic alternatives. John
+Gillespie’s model, for example, similarly assumes a diploid
+population of <i>N</i> members and a two-allele locus, with
+frequencies <i>p</i> and <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-8-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;q&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-30" style="width: 4.946em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.766em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.251em, 1004.67em, 2.604em, -1000em); top: -2.177em; left: 0em;"><span class="mrow" id="MathJax-Span-31"><span class="mi" id="MathJax-Span-32" style="font-family: MathJax_Math-italic;">q<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.014em;"></span></span><span class="mo" id="MathJax-Span-33" style="font-family: MathJax_Main; padding-left: 0.278em;">=</span><span class="mo" id="MathJax-Span-34" style="font-family: MathJax_Main; padding-left: 0.278em;">(</span><span class="mn" id="MathJax-Span-35" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-36" style="font-family: MathJax_Main; padding-left: 0.222em;">−</span><span class="mi" id="MathJax-Span-37" style="font-family: MathJax_Math-italic; padding-left: 0.222em;">p</span><span class="mo" id="MathJax-Span-38" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.177em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.318em; border-left: 0px solid; width: 0px; height: 1.151em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>q</mi><mo>=</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>p</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-8">q = (1 - p)</script>; it also similarly assumes
+random mating. Where it differs from the Wright-Fisher model is that
+each of the <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-9-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-39" style="width: 2.768em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.648em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.285em, 1002.62em, 2.548em, -1000em); top: -2.177em; left: 0em;"><span class="mrow" id="MathJax-Span-40"><span class="mn" id="MathJax-Span-41" style="font-family: MathJax_Main;">2</span><span class="mi" id="MathJax-Span-42" style="font-family: MathJax_Math-italic;">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.085em;"></span></span><span class="mi" id="MathJax-Span-43" style="font-family: MathJax_Math-italic;">p</span><span class="mi" id="MathJax-Span-44" style="font-family: MathJax_Math-italic;">A</span></span><span style="display: inline-block; width: 0px; height: 2.177em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.26em; border-left: 0px solid; width: 0px; height: 1.059em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>2</mn><mi>N</mi><mi>p</mi><mi>A</mi></math></span></span><script type="math/tex" id="MathJax-Element-9">2Np A</script> gametes constitutes the next generation with a
+<em>random number</em> of offspring gametes. There is no restriction
+on the distribution of the numbers of offspring nor on the total
+number of offspring gametes. Thus, unlike the Wright-Fisher model,
+Gillespie’s model is not tied to <em>binomial</em> sampling,
+although sampling more generally is still being modeled. Millstein,
+Skipper, and Dietrich suggest that the philosophical significance of
+such alternative models (including others such as the Moran model, the
+Cannings model, or the coalescent) is that we need to be careful about
+drawing conclusions about drift from any one particular mathematical
+model, always keeping in mind Giere’s (1988) point that models
+are built as representations of specific aspects of physical
+systems.</p>
+
+<p>
+Clatterbuck (2015) similarly reminds the philosophical community that
+it is a mistake to just focus on the Wright-Fisher model, highlighting
+the Eldon–Wakeley model in particular. She emphasizes that
+different drift models are not predictively equivalent, so that
+details of the causal network (represented by the differing
+assumptions of the different models) underlying a population can be
+seen to change the outcomes of drift. This challenges
+statisticalists’ assumptions that drift is purely mathematical.
+Relatedly, she argues that broadening our conception of drift to
+include alternative models reveals novel ways of intervening on drift
+that strengthen the causal argument against its statisticalism. For
+example, by intervening </p>
+
+<blockquote>
+
+<p>
+on the population in such a way as to increase the probability that
+individuals have a far greater number of offspring (relative to the
+population size) than allowed by the Wright–Fisher model </p>
+</blockquote>
+
+<p>
+we would increase the probability of a neutral allele increasing in
+frequency (2015: 3501). This is an improvement over Reisman and
+Forber’s manipulationist arguments (discussed above), since it
+is more clearly the drift (the sampling process) that is being
+manipulated rather than just population size.</p>
+
+<p>
+But perhaps drift is more than just a model (or a set of models);
+perhaps it is a scientific law of evolutionary biology. Or so Brandon
+(2006) argues, dubbing a “Principle of Drift” analogous to
+the Principle of Inertia in that both are intended to be
+“zero-force” laws. According to the Principle of Drift,
+</p>
+
+<ol>
+
+<li>“A population at equilibrium will tend to drift from that
+equilibrium unless acted on by an evolutionary force” </li>
+</ol>
+
+<p>
+and </p>
+
+<ol start="2">
+
+<li> “A population on evolutionary trajectory <i>t</i>, caused
+by some net evolutionary force <i>F</i>, will tend to depart from the
+extrapolated path predicted based on <i>F</i> alone (in either
+direction or magnitude or both) even if no other evolutionary force
+intervenes, unless <i>F</i> continues to act” (Brandon 2006:
+328).</li>
+</ol>
+
+<p>
+On this view, drift—and thus change—is the default state
+of evolutionary systems, challenging Sober’s view (discussed
+previously), that the Hardy-Weinberg Principle characterizes the
+zero-force state in evolutionary biology. In defending the Principle
+of Drift, Brandon challenges those who would argue that there are no
+laws of biology (e.g., Beatty 1995; see cites within), although
+Brandon (1990) had already done so by defending a Principle of
+Selection (see also the related work by McShea and Brandon 2010, in
+which drift is characterized as a special case of what they dub the
+“Zero-Force Evolutionary Law”, or ZFEL).</p>
+
+<h2 id="Conc">6. Conclusions</h2>
+
+<p>
+Philosophical discussions of random genetic drift have been lively and
+fruitful. But as they are still relatively recent, there are many
+issues yet to be explored or explored fully. Although much energy has
+been diverted toward debating statisticalism, there are many debates
+over drift that biologists are engaged in that philosophers could
+profitably weigh in on, both historical and contemporary. With respect
+to the last two sections of this article in particular (empirical
+issues concerning drift and models of drift), we may have
+only begun to scratch the surface.</p>
+
+</div>
+
+<div id="bibliography">
+
+<h2 id="Bib">Bibliography</h2>
+
+
+
+<ul class="hanging">
+
+<li>Abrams, M., 2007, “How Do Natural Selection and Random Drift
+Interact?” <em>Philosophy of Science</em>, 74(5):
+666–679.</li>
+
+<li>Beatty, John, 1984, “Chance and Natural Selection”,
+<em>Philosophy of Science</em>, 51(2): 183–211.</li>
+
+<li>–––, 1992, “Random Drift”, in
+<em>Keywords in Evolutionary Biology</em>, edited by Evelyn Fox Keller
+and Elisabeth A. Lloyd, Cambridge, MA: Harvard University Press,
+273–281. </li>
+
+<li>–––, 1995, “The Evolutionary Contingency
+Thesis”, in <em>Concepts, Theories, and Rationality in the
+Biological Sciences</em>, edited by G. Wolters and J.G. Lennox,
+Pittsburgh: University of Pittsburgh Press, 45–81.</li>
+
+<li>–––, 1997, “Why Do Biologists Argue Like
+They Do?” <em>Philosophy of Science</em>, 64(4):S432-S443.</li>
+
+<li>Bigelow, John, Brian Ellis, and Robert Pargetter, 1988,
+“Forces”, <em>Philosophy of Science</em>, 55:
+614–630.</li>
+
+<li>Bouchard, Frédéric, and Alex Rosenberg, 2004,
+“Fitness, Probability, and the Principles of Natural
+Selection”, <em>British Journal for the Philosophy of
+Science</em>, 55: 693–712.</li>
+
+<li>Brandon, Robert N., 1990, <em>Adaptation and Environment</em>,
+Princeton, NJ: Princeton University Press.</li>
+
+<li>–––, 2005, “The Difference between
+Selection and Drift: A Reply to Millstein”, <em>Biology &amp;
+Philosophy</em>, 20(1): 153–170.</li>
+
+<li>–––, 2006, “The Principle of Drift:
+Biology’s First Law”, <em>The Journal of Philosophy</em>,
+103(7): 319–335.</li>
+
+<li>Brandon, Robert N., and Lenore Fleming, 2014, “Drift
+Sometimes Dominates Selection, and Vice Versa: A Reply to Clatterbuck,
+Sober and Lewontin”, <em>Biology and Philosophy</em>, 29:
+577–585.</li>
+
+<li>Brandon, Robert N., and Grant Ramsey, 2007, “What’s
+Wrong with the Emergentist Statistical Interpretation of Natural
+Selection and Random Drift?” in <em>The Cambridge Companion to
+the Philosophy of Biology</em>, edited by David L. Hull and Michael
+Ruse, Cambridge: Cambridge University Press, 66–84.</li>
+
+<li>Cain, Arthur J. and John D. Currey, 1963, “Area Effects in
+<em>Cepaea</em>”, <em>Philosophical Transactions of the Royal
+Society of London B</em>, 246: 1–81.</li>
+
+<li>Cain, Arthur J. and Philip M. Sheppard, 1950, “Selection in
+the Polymorphic Land Snail <em>Cepaea Nemoralis</em>”,
+<em>Heredity</em>, 4(3): 275–294.</li>
+
+<li>–––, 1954, “Natural Selection in
+<em>Cepaea</em>”, <em>Genetics</em>, 39: 89–116.</li>
+
+<li>Cain, Joe and Michael Ruse (eds.), 2009, <em>Descended from Darwin:
+Insights into the History of Evolutionary Studies,
+1900–1970</em>, Philadelphia: American Philosophical
+Society.</li>
+
+<li>Clatterbuck, Hayley, 2015, “Drift Beyond
+Wright–Fisher”, <em>Synthese</em>, 192(11):
+3487–3507.</li>
+
+<li>Clatterbuck, Hayley, Elliot Sober, and Richard C. Lewontin, 2013,
+“Selection Never Dominates Drift (nor Vice Versa)”,
+<em>Biology and Philosophy</em>, 20(1): 153–170.</li>
+
+<li>Darwin, Charles, 1872, <em>The Origin of Species by Means of
+Natural Selection, or the Preservation of Favoured Races in the
+Struggle for Life</em>, Sixth ed. London: Murray.</li>
+
+<li>Dietrich, Michael R., 1994, “The Origins of the Neutral
+Theory of Molecular Evolution”, <em>Journal of the History of
+Biology</em>, 27(1): 21–59.</li>
+
+<li>–––, 2006, “Three Perspectives on
+Neutrality and Drift in Molecular Evolution”, <em>Philosophy of
+Science</em>, 73(5): 666–677.</li>
+
+<li>Dietrich, Michael R. and Roberta L. Millstein, 2008, “The
+Role of Causal Processes in the Neutral and Nearly Neutral
+Theories”, <em>Philosophy of Science</em>, 75(5):
+548–559.</li>
+
+<li>Dietrich, Michael R. and Robert A. Skipper Jr., 2007,
+“Manipulating Underdetermination in Scientific Controversy: The
+Case of the Molecular Clock”, <em>Perspectives on Science</em>,
+15: 295–326.</li>
+
+<li>Dobzhansky, Theodosius, 1937, <em>Genetics and the Origin of
+Species</em>, New York: Columbia University Press.</li>
+
+<li>Dobzhansky, Theodosius and Olga Pavlovsky, 1957, “An
+Experimental Study of Interaction between Genetic Drift and Natural
+Selection”, <em>Evolution</em>, 11: 311–319.</li>
+
+<li>Dubinin, N.P. and D.D. Romaschoff, 1932, “Die Genetische
+Struktur Der Art Und Ihre Evolution”, <em>Biologichesky
+Zhurnal</em>, 1: 52–95.</li>
+
+<li>Endler, John A., 1986, <em>Natural Selection in the Wild</em>,
+Princeton, NJ: Princeton University Press.</li>
+
+<li>Filler, Joshua, 2009, “Newtonian Forces and Evolutionary
+Biology: A Problem and Solution for Extending the Force
+Interpretation”, <em>Philosophy of Science</em>, 76:
+774–783.</li>
+
+<li>Fisher, Ronald A., 1922a, “Darwinian Evolution of
+Mutations”, <em>Eugenics Review</em>, 14: 31–34.</li>
+
+<li>–––, 1922b, “On the Dominance
+Ratio”, <em>Proceedings of the Royal Society of Edinburgh</em>,
+42: 321–341.</li>
+
+<li>Fisher, Ronald A. and E.B. Ford, 1947, “The Spread of a Gene
+in Natural Conditions in a Colony of the Moth <em>Panaxia
+Dominula</em> L”, <em>Heredity</em>, 1: 143–174.</li>
+
+<li>Forber, Patrick and Kenneth Reisman, 2007, “Can There Be
+Stochastic Evolutionary Causes?”, <em>Philosophy of
+Science</em>, 74(5): 616–627. doi:10.1086/525608</li>
+
+<li>Giere, Ronald N., 1988, <em>Explaining Science: A Cognitive
+Approach</em>, Chicago: University of Chicago Press.</li>
+
+<li>Gildenhuys, Peter, 2009, “An Explication of the Causal
+Dimension of Drift”, <em>British Journal for the Philosophy of
+Science</em>, 60(3): 521–555. doi:10.1093/bjps/axp019</li>
+
+<li>–––, 2014, “Arbitrariness and Causation in
+Classical Population Genetics”, <em>British Journal for the
+Philosophy of Science</em>, 65:
+429–444. doi:10.1093/bjps/axs042</li>
+
+<li>Gillespie, John H., 2000a, “Genetic Drift in an Infinite
+Population. The Pseudohitchhiking Model”, <em>Genetics</em>,
+155(2): 909–19.</li>
+
+<li>–––, 2000b, “The Neutral Theory in an
+Infinite Population”, <em>Gene</em>, 261(1): 11–18.</li>
+
+<li>–––, 2001, “Is the Population Size of a
+Species Relevant to Its Evolution?” <em>Evolution</em>, 55(11):
+2161–2169.</li>
+
+<li>–––, 2004, <em>Population Genetics: A Concise
+Guide</em>, Second ed. Baltimore: Johns Hopkins University Press.</li>
+
+<li>Godfrey-Smith, Peter, 2009, <em>Darwinian Populations and Natural
+Selection</em>, Oxford: Oxford University Press.</li>
+
+<li>Gulick, John T, 1873, “On Diversity of Evolution under One
+Set of External Conditions”, <em>Journal of the Linnean Society
+of London</em>, 11: 496–505.</li>
+
+<li>Hagedoorn, A.L. and A.C. Hagedoorn, 1921, <em>On the Relative
+Value of the Processes Causing Evolution</em>, The Hague:
+Nijhoff.</li>
+
+<li>Haufe, Chris, 2013, “From Necessary Chances to Biological
+Laws”, <em>The British Journal for the Philosophy of
+Science</em>, 64(2): 279–295.</li>
+
+<li>Hodge, M.J.S., 1987, “Natural Selection as a Causal,
+Empirical, and Probabilistic Theory”, in <em>The Probabilistic
+Revolution, Volume II</em>, edited by Lorenz Krüger, Gerd
+Gigerenzer and Mary S. Morgan, Cambridge, MA: MIT Press,
+233–270. </li>
+
+<li>–––, 2011, “Darwinism after Mendelism: The
+Case of Sewall Wright’s Intellectual Synthesis in His Shifting
+Balance Theory of Evolution (1931)”, <em>Studies in the History
+and Philosophy of the Biological and Biomedical Sciences</em>, 42(1):
+30–39.</li>
+
+<li>–––, 2016, “Chance and Chances in Darwin’s Early Theorizing and in Darwinian Theory Today”, in Ramsey and Pence 2016: 41–75.</li>
+
+<li>Lamotte, Maxime, 1959, “Polymorphism of Natural Populations
+of <em>Cepaea Nemoralis</em>”, <em>Cold Spring Harbor Symposia
+on Quantitative Biology</em>, 24: 65–84.</li>
+
+<li>Matthen, Mohan, 2010, “What Is Drift? A Response to
+Millstein, Skipper, and Dietrich”, <em>Philosophy and Theory in
+Biology</em>, 2:e102.</li>
+
+<li>Matthen, Mohan and André Ariew, 2002, “Two Ways of
+Thinking About Fitness and Natural Selection”, <em>The Journal
+of Philosophy</em>, 99: 55–83.</li>
+
+<li>McShea, Daniel W. and Robert N. Brandon, 2010, <em>Biology’s
+First Law: The Tendency for Diversity and Complexity to Increase in
+Evolutionary Systems</em>, Chicago: University of Chicago Press.</li>
+
+<li>Mills, Susan K. and John Beatty, 1979, “The Propensity
+Interpretation of Fitness”, <em>Philosophy of Science</em>,
+46(2): 263–286.</li>
+
+<li>Millstein, Roberta L., 2002, “Are Random Drift and Natural
+Selection Conceptually Distinct?” <em>Biology &amp;
+Philosophy</em>, 17(1): 33–53.</li>
+
+<li>–––, 2005, “Selection Vs. Drift: A
+Response to Brandon’s Reply”, <em>Biology &amp;
+Philosophy</em>, 20(1): 171–175.</li>
+
+<li>–––, 2006, “Natural Selection as a
+Population-Level Causal Process”, <em>British Journal for the
+Philosophy of Science</em>, 57(4): 627–653.</li>
+
+<li>–––, 2008, “Distinguishing Drift and
+Selection Empirically: “The Great Snail Debate” of the
+1950s”, <em>Journal of the History of Biology</em>, 41(2):
+339–367.</li>
+
+<li>–––, 2009, “Concepts of Drift and
+Selection in ‘the Great Snail Debate’ of the 1950s and
+Early 1960s”, in Cain and Ruse 2009: 271–298.</li>
+
+<li>Millstein, Roberta L., Robert A. Skipper Jr., and Michael R.
+Dietrich, 2009, “(Mis)Interpreting Mathematical Models of Drift:
+Drift as a Physical Process”, <em>Philosophy and Theory in
+Biology</em>, 1: 1–13.</li>
+
+<li>Northcott, Robert, 2010, “Walsh on Causes and
+Evolution”, <em>Philosophy of Science</em>, 77(3):
+457–467.</li>
+
+<li>Ohta, Tomoko, 1973, “Slightly Deleterious Mutant
+Substitutions in Evolution”, <em>Nature</em>, 246:
+96–98.</li>
+
+<li>Pence, Charles H., forthcoming, “Is Genetic Drift a
+Force?” <em>Synthese</em>, first online 30 January 2016.
+doi:10.1007/s11229-016-1031-2</li>
+
+<li>Pfeifer, Jessica, 2005, “Why Selection and Drift Might Be
+Distinct”, <em>Philosophy of Science</em>, 72(5):
+1135–1145.</li>
+
+<li>Plutynski, Anya, 2005, “Parsimony and the Fisher-Wright
+Debate”, <em>Biology &amp; Philosophy</em>, 20(4):
+697–713.</li>
+
+<li>–––, 2007, “Drift: A Historical and
+Conceptual Overview”, <em>Biological Theory</em>, 2(2):
+156–167.</li>
+
+<li>Plutynski, Anya, Kenneth Blake Vernon, Lucas John Matthews, and
+Daniel Molter, 2016, “Chance in the Modern Synthesis”, in
+Ramsey and Pence 2016: 76–102.</li>
+
+<li>Provine, William B., 1986, <em>Sewall Wright and Evolutionary
+Biology</em>, Chicago: University of Chicago.</li>
+
+<li>–––, 2014, <em>The “Random Genetic
+Drift” Fallacy</em>, New York: CreateSpace Independent
+Publishing Platform.</li>
+
+<li>Ramsey, Grant, 2013, “Driftability”,
+<em>Synthese</em>, 190(17): 3909–3928.</li>
+
+<li>Ramsey, Grant and Charles H. Pence (eds.), 2016, <em>Chance in
+Evolution</em>, Chicago: University of Chicago Press.</li>
+
+<li>Reisman, Kenneth and Patrick Forber, 2005, “Manipulation and
+the Causes of Evolution””, <em>Philosophy of Science</em>,
+72(5): 1113–1123. doi:10.1086/508120 </li>
+
+<li>Richardson, Robert C., 2006, “Chance and the Patterns of
+Drift: A Natural Experiment”, <em>Philosophy of Science</em>,
+73: 642–654.</li>
+
+<li>Rosenberg, Alexander, 1994, <em>Instrumental Biology or the
+Disunity of Science</em>, Chicago: University of Chicago Press.</li>
+
+<li>Scriven, Michael, 1959, “Explanation and Prediction in
+Evolutionary Theory”, <em>Science</em>, 130(3374):
+477–482. doi:10.1126/science.130.3374.477 </li>
+
+<li>Shanahan, Timothy, 1992, “Selection, Drift, and the Aims of
+Evolutionary Theory”, in <em>Trees of Life: Essays in Philosophy
+of Biology</em>, edited by Paul Griffiths, 131–161. Dordrecht:
+Kluwer.</li>
+
+<li>Shapiro, Larry and Elliott Sober, 2007,
+“Epiphenomenalism—the Do’s and the
+Don’ts”, in <em>Studies in Causality: Historical and
+Contemporary</em>, edited by G. Wolters and Peter Machamer Pittsburgh,
+PA: University of Pittsburgh Press, , 235–264.</li>
+
+<li>Skipper Jr., Robert A., 2002, “The Persistence of the R.A.
+Fisher-Sewall Wright Controversy”, <em>Biology &amp;
+Philosophy</em>, 17(3): 341–367.</li>
+
+<li>–––, 2006, “Stochastic Evolutionary
+Dynamics: Drift Versus Draft”, <em>Philosophy of Science</em>,
+73(5): 655–665.</li>
+
+<li>–––, 2009, “Revisiting the Fisher-Wright
+Controversy”, in Cain and Ruse 2009: 299–322.</li>
+
+<li>Sober, Elliott, 1984, <em>The Nature of Selection</em>, Cambridge,
+MA: MIT Press.</li>
+
+<li>Stephens, Christopher, 2004, “Selection, Drift, and the
+“Forces” of Evolution”, <em>Philosophy of
+Science</em>, 71(4): 550–570.</li>
+
+<li>–––, 2010, “Forces and Causes in
+Evolutionary Theory”, <em>Philosophy of Science</em>, 77(5):
+716–727.</li>
+
+<li>Walsh, Denis M., 2007, “The Pomp of Superfluous Causes: The
+Interpretation of Evolutionary Theory”, <em>Philosophy of
+Science</em>, 74: 281–303.</li>
+
+<li>Walsh, Denis M., Tim Lewens, and André Ariew, 2002,
+“The Trials of Life: Natural Selection and Random Drift”,
+<em>Philosophy of Science</em>, 69(3): 452–473.
+doi:10.1086/342454</li>
+
+<li>Woodward, James, 2003, <em>Making Things Happen: A Theory of
+Causal Explanation</em>, Oxford: Oxford University Press.</li>
+
+<li>Wright, Sewall, 1929, “The Evolution of Dominance”,
+<em>American Naturalist</em>, 63(689): 556–561.</li>
+
+<li>–––, 1930, “<em>The Genetical Theory of
+Natural Selection</em>: A Review”, <em>The Journal of
+Heredity</em>, 21: 349–356.</li>
+
+<li>–––, 1931a, “Evolution in Mendelian
+Populations”, <em>Genetics</em>, 16: 97–159.</li>
+
+<li>–––, 1931b, “Statistical Theory of
+Evolution”, <em>Journal of the American Statistical
+Association</em>, 26(173, Supplement): 201–208.</li>
+
+<li>–––, 1932, “The Roles of Mutation,
+Inbreeding, Crossbreeding and Selection in Evolution”,
+<em>Proceedings of the Sixth International Congress of Genetics</em>,
+1: 356–366.</li>
+
+<li>–––, 1948, “On the Roles of Directed and
+Random Changes in Gene Frequency in the Genetics of
+Populations”, <em>Evolution</em>, 2(4): 279–294.</li>
+
+<li>–––, 1949, “Population Structure in
+Evolution”, <em>Proceedings of the American Philosophical
+Society</em>, 93(6): 471–478.</li>
+
+<li>–––, 1951, “Fisher and Ford on the Sewall
+Wright Effect”, <em>American Scientist</em>, 39:
+452–458.</li>
+
+<li>–––, 1978, <em>Evolution and the Genetics of
+Populations, Volume 4: Variability within and among Natural
+Populations</em>, Chicago: University of Chicago Press.</li>
+
+<li>–––, 1986, <em>Evolution: Selected Papers</em>,
+Chicago: University of Chicago Press.</li>
+
+</ul>
+
+</div>
+
+<div id="academic-tools">
+
+<h2 id="Aca">Academic Tools</h2>
+
+<blockquote>
+<table class="vert-top">
+<tbody><tr>
+<td><img src="../../symbols/sepman-icon.jpg" alt="sep man icon" /></td>
+<td><a href="https://plato.stanford.edu/cgi-bin/encyclopedia/archinfo.cgi?entry=genetic-drift&amp;archive=win2019" target="other">How to cite this entry</a>.</td>
+</tr>
+
+<tr>
+<td><img src="../../symbols/sepman-icon.jpg" alt="sep man icon" /></td>
+<td><a href="https://leibniz.stanford.edu/friends/preview/genetic-drift/" target="other">Preview the PDF version of this entry</a> at the
+ <a href="https://leibniz.stanford.edu/friends/" target="other">Friends of the SEP Society</a>.</td>
+</tr>
+
+<tr>
+<td><img src="../../symbols/inpho.png" alt="inpho icon" /></td>
+<td><a href="https://www.inphoproject.org/entity?sep=genetic-drift&amp;redirect=True" target="other">Look up this entry topic</a>
+ at the <a href="https://www.inphoproject.org/" target="other">Indiana Philosophy Ontology Project</a>
+ (InPhO).</td>
+</tr>
+
+<tr>
+<td><img src="../../symbols/pp.gif" alt="phil papers icon" /></td>
+<td><a href="http://philpapers.org/sep/genetic-drift/" target="other">Enhanced bibliography for this entry</a>
+at <a href="http://philpapers.org/" target="other">PhilPapers</a>, with links to its database.</td>
+</tr>
+
+</tbody></table>
+</blockquote>
+
+</div>
+
+
+
+
+<div id="other-internet-resources">
+
+<h2 id="Oth">Other Internet Resources</h2>
+
+
+
+<ul>
+
+ <li><a href="http://www.amphilsoc.org/collections/view?docId=ead/Mss.Ms.Coll.63-ead.xml" target="other">Arthur J. Cain papers</a></li>
+
+ <li><a href="http://www.annualreviews.org/doi/story/10.1146/multimedia.2012.11.06.13" target="other">A Conversation with Luigi Luca Cavalli-Sforza</a></li>
+
+ <li><a href="http://darwin-online.org.uk/" target="other">Darwin Online</a></li>
+
+ <li><a href="https://digital.library.adelaide.edu.au/dspace/handle/2440/3860" target="other">R.A. Fisher Digital Archive</a></li>
+
+ <li><a href="http://maximelamotte.free.fr/" target="other">Maxime Lamotte</a></li>
+
+ <li><a href="http://www.amphilsoc.org/collections/view?docId=ead/Mss.Ms.Coll.60-ead.xml" target="other">Sewall Wright papers</a></li>
+ 
+ <li><a href="http://authors.library.caltech.edu/5456/1/hrst.mit.edu/hrs/evolution/public/index.html" target="other">Perspectives on Molecular Evolution</a></li>
+
+ </ul>
+
+</div>
+
+<div id="related-entries">
+
+<h2 id="Rel">Related Entries</h2>
+
+<p>
+
+ <a href="../adaptationism/">adaptationism</a> |
+ <a href="../biology-experiment/">biology: experiment in</a> |
+ <a href="../biology-philosophy/">biology: philosophy of</a> |
+ <a href="../causation-mani/">causation: and manipulability</a> |
+ <a href="../causation-probabilistic/">causation: probabilistic</a> |
+ <a href="../chance-randomness/">chance: versus randomness</a> |
+ <a href="../darwinism/">Darwinism</a> |
+ <a href="../evolution/">evolution</a> |
+ <a href="../fitness/">fitness</a> |
+ <a href="../gene/">gene</a> |
+ <a href="../evolutionary-genetics/">genetics: evolutionary</a> |
+ <a href="../genotype-phenotype/">genetics: genotype/phenotype distinction</a> |
+ <a href="../molecular-genetics/">genetics: molecular</a> |
+ <a href="../population-genetics/">genetics: population</a> |
+ <a href="../heredity/">heritability</a> |
+ <a href="../laws-of-nature/">laws of nature</a> |
+ <a href="../models-science/">models in science</a> |
+ <a href="../natural-selection/">natural selection</a> |
+ <a href="../probability-interpret/">probability, interpretations of</a> |
+ <a href="../replication/">replication and reproduction</a> |
+ <a href="../statistics/">statistics, philosophy of</a>
+
+</p>
+
+</div>
+
+
+
+<div id="acknowledgments">
+
+<h3>Acknowledgments</h3>
+
+<p>
+Thanks to Jon Hodge, Charles Pence, Anya Plutynski, and an anonymous
+referee for extremely helpful comments on an earlier drift, and also
+to John Beatty, Michael Dietrich, Jon Hodge, and Robert Skipper for
+ongoing discussions about the nature of drift.</p>
+
+<script type="text/javascript" src="local.js"></script>
+<script type="text/javascript" src="../../MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</div>
+
+</div><!-- #aueditable --><!--DO NOT MODIFY THIS LINE AND BELOW-->
+
+<!-- END ARTICLE HTML -->
+
+</div> <!-- End article-content -->
+
+  <div id="article-copyright">
+    <p>
+ <a href="../../info.html#c">Copyright © 2016</a> by
+
+<br />
+<a href="http://www.rlm.net/" target="other">Roberta L. Millstein</a>
+&lt;<a href="mailto:rlmillstein%40ucdavis%2eedu"><em>rlmillstein<abbr title=" at ">@</abbr>ucdavis<abbr title=" dot ">.</abbr>edu</em></a>&gt;
+    </p>
+  </div>
+
+</div> <!-- End article -->
+
+<!-- NOTE: article banner is outside of the id="article" div. -->
+<div id="article-banner" class="scroll-block">
+     <div id="article-banner-content">
+  <a href="../../fundraising/">
+  Open access to the SEP is made possible by a world-wide funding initiative.<br />
+  Please Read How You Can Help Keep the Encyclopedia Free</a>
+ </div>
+
+
+</div> <!-- End article-banner -->
+
+    </div> <!-- End content -->
+
+    <div id="footer">
+
+      <div id="footer-menu">
+        <div class="menu-block">
+          <h4><i class="icon-book"></i> Browse</h4>
+          <ul role="menu">
+            <li><a href="../../contents.html">Table of Contents</a></li>
+            <li><a href="../../new.html">New in this Archive</a></li>
+            
+            <li><a href="../../published.html">Chronological</a></li>
+            <li><a href="../../../../archives/">Archives <i class="icon-external-link"></i></a></li>
+          </ul>
+        </div>
+        <div class="menu-block">
+          <h4><i class="icon-info-sign"></i> About</h4>
+          <ul role="menu">
+            <li><a href="../../info.html">Editorial Information</a></li>
+            <li><a href="../../about.html">About the SEP</a></li>
+            <li><a href="../../board.html">Editorial Board</a></li>
+            <li><a href="../../cite.html">How to Cite the SEP</a></li>
+            <li><a href="../../special-characters.html">Special Characters</a></li>
+            
+            <li><a href="../../../../contact.html">Contact <i class="icon-external-link"></i></a></li>
+          </ul>
+        </div>
+        <div class="menu-block">
+          <h4><i class="icon-leaf"></i> Support SEP</h4>
+          <ul role="menu">
+            <li><a href="../../../../support/">Support the SEP</a></li>
+            <li><a href="../../../../support/friends.html">PDFs for SEP Friends</a></li>
+            <li><a href="../../../../support/donate.html">Make a Donation</a></li>
+            <li><a href="../../../../support/sepia.html">SEPIA for Libraries</a></li>
+          </ul>
+        </div>
+      </div> <!-- End footer menu -->
+
+      <div id="mirrors">
+        <div id="mirror-info">
+          <h4><i class="icon-globe"></i> Mirror Sites</h4>
+          <p>View this site from another server:</p>
+        </div>
+                <div class="btn-group">
+<a class="btn dropdown-toggle" data-toggle="dropdown" href="https://plato.stanford.edu/"><span class="flag flag-usa"></span> USA (Main Site) <span class="caret"></span><span class="mirror-source">CSLI, Stanford University</span></a>          <ul class="dropdown-menu">
+            <li><a href="https://stanford.library.sydney.edu.au/archives/win2019/entries/genetic-drift/"><span class="flag flag-australia"></span> Australia <span class="mirror-source">Library, University of Sydney</span></a>           </li>
+            <li><a href="https://seop.illc.uva.nl/archives/win2019/entries/genetic-drift/"><span class="flag flag-netherlands"></span> Netherlands <span class="mirror-source">ILLC, University of Amsterdam</span></a>           </li>
+          </ul>
+        </div>
+      </div> <!-- End mirrors -->
+      
+      <div id="site-credits">
+        <p class="csli-logo"><a href="https://www-csli.stanford.edu/"><img src="../../symbols/SU_csli.png" width="355" alt="Stanford Center for the Study of Language and Information" /></a></p>
+        <p>The Stanford Encyclopedia of Philosophy is <a href="../../info.html#c">copyright © 2016</a> by <a href="http://mally.stanford.edu/">The Metaphysics Research Lab</a>, Center for the Study of Language and Information (CSLI), Stanford University</p>
+        <p>Library of Congress Catalog Data: ISSN 1095-5054</p>
+      </div> <!-- End site credits -->
+
+    </div> <!-- End footer -->
+
+  </div> <!-- End container -->
+
+   <!-- NOTE: Script required for drop-down button to work (mirrors). -->
+  <script>
+    $('.dropdown-toggle').dropdown();
+  </script>
+
+
+
+
+
+<div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: MathJax_Main, sans-serif;"></div></div></body></html>

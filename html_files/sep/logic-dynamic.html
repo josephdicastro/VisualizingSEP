@@ -1,0 +1,2295 @@
+<!DOCTYPE html><!--[if lt IE 7]> <html class="ie6 ie"> <![endif]--><!--[if IE 7]>    <html class="ie7 ie"> <![endif]--><!--[if IE 8]>    <html class="ie8 ie"> <![endif]--><!--[if IE 9]>    <html class="ie9 ie"> <![endif]--><!--[if !IE]> --><html xmlns="http://www.w3.org/1999/xhtml"><!-- <![endif]--><head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>
+Propositional Dynamic Logic (Stanford Encyclopedia of Philosophy/Winter 2019 Edition)
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="noarchive, noodp" />
+<meta property="citation_title" content="Propositional Dynamic Logic" />
+<meta property="citation_author" content="Troquard, Nicolas" />
+<meta property="citation_author" content="Balbiani, Philippe" />
+<meta property="citation_publication_date" content="2007/02/01" />
+<meta name="DC.title" content="Propositional Dynamic Logic" />
+<meta name="DC.creator" content="Troquard, Nicolas" />
+<meta name="DC.creator" content="Balbiani, Philippe" />
+<meta name="DCTERMS.issued" content="2007-02-01" />
+<meta name="DCTERMS.modified" content="2019-01-25" />
+
+<!-- NOTE: Import webfonts using this link: -->
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,200&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" media="screen,handheld" href="../../css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" media="screen,handheld" href="../../css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css" />
+<!--[if IE 7]> <link rel="stylesheet" type="text/css" href="../../css/font-awesome-ie7.min.css"> <![endif]-->
+<link rel="stylesheet" type="text/css" media="screen,handheld" href="../../css/style.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../../css/print.css" />
+<link rel="stylesheet" type="text/css" href="../../css/entry.css" />
+<!--[if IE]> <link rel="stylesheet" type="text/css" href="../../css/ie.css" /> <![endif]-->
+<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+
+<!-- NOTE: Javascript for sticky behavior needed on article and ToC pages -->
+<script type="text/javascript" src="../../js/jquery-scrolltofixed-min.js"></script>
+<script type="text/javascript" src="../../js/entry.js"></script>
+
+<!-- SEP custom script -->
+<script type="text/javascript" src="../../js/sep.js"></script>
+</head>
+
+<!-- NOTE: The nojs class is removed from the page if javascript is enabled. Otherwise, it drives the display when there is no javascript. -->
+<body class="archive article" id="pagetopright">
+<div id="container">
+<div id="header-wrapper">
+  <div id="header">
+    <div id="branding">
+      <div id="site-logo"><a href="../../index.html"><img src="../../symbols/sep-man-red.png" alt="SEP logo" /></a></div>
+      <div id="site-title"><a href="../../index.html">Stanford Encyclopedia of Philosophy Archive<div id="site-subtitle">Winter 2019 Edition</div></a></div>
+    </div>
+    <div id="navigation">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <button class="btn btn-navbar collapsed" data-target=".collapse-main-menu" data-toggle="collapse" type="button"> <i class="icon-reorder"></i> Menu </button>
+            <div class="nav-collapse collapse-main-menu collapse">
+              <ul class="nav">
+                <li class="dropdown"><a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-book"></i> Browse</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                    <li><a href="../../contents.html">Table of Contents</a></li>
+                    <li><a href="../../new.html">New in this Archive</a></li>
+                    
+                    <li><a href="../../published.html">Chronological</a></li>
+                    <li><a href="../../../../archives/">Archives <i class="icon-external-link"></i></a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a id="drop2" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-info-sign"></i> About</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                    <li><a href="../../info.html">Editorial Information</a></li>
+                    <li><a href="../../about.html">About the SEP</a></li>
+                    <li><a href="../../board.html">Editorial Board</a></li>
+                    <li><a href="../../cite.html">How to Cite the SEP</a></li>
+                    <li><a href="../../special-characters.html">Special Characters</a></li>
+                    
+                    <li><a href="../../../../contact.html">Contact <i class="icon-external-link"></i></a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a id="drop3" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-leaf"></i> Support SEP</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                    <li><a href="../../../../support/">Support the SEP</a></li>
+                    <li><a href="../../../../support/friends.html">PDFs for SEP Friends</a></li>
+                    <li><a href="../../../../support/donate.html">Make a Donation</a></li>
+                    <li><a href="../../../../support/sepia.html">SEPIA for Libraries</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End navigation -->
+    
+    <div id="search">
+      <form id="search-form" method="get" action="../../../../search/searcher.py">
+        <input type="search" name="query" placeholder="Search this archive" />
+<input type="hidden" name="archive" value="win2019" />
+
+        <div class="search-btn-wrapper"><button class="btn search-btn" type="submit"><i class="icon-search"></i></button></div>
+      </form>
+    </div>
+    <!-- End search --> 
+    
+  </div>
+  <!-- End header --> 
+</div>
+<!-- End header wrapper -->
+
+<div id="content">
+
+<!-- Begin article sidebar -->
+<div id="article-sidebar" class="sticky" style="z-index: 999;">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <button class="btn btn-navbar collapsed" data-target=".collapse-sidebar" data-toggle="collapse" type="button"> <i class="icon-reorder"></i> Entry Navigation </button>
+        <div id="article-nav" class="nav-collapse collapse-sidebar collapse">
+          <ul class="nav">
+            <li><a href="#toc">Entry Contents</a></li>
+            <li><a href="#Bib">Bibliography</a></li>
+            <li><a href="#Aca">Academic Tools</a></li>
+            <li><a href="https://leibniz.stanford.edu/friends/preview/logic-dynamic/">Friends PDF Preview <i class="icon-external-link"></i></a></li>
+            <li><a href="https://plato.stanford.edu/cgi-bin/encyclopedia/archinfo.cgi?entry=logic-dynamic&amp;archive=win2019">Author and Citation Info <i class="icon-external-link"></i></a> </li>
+            <li><a href="#pagetopright" class="back-to-top">Back to Top <i class="icon-angle-up icon2x"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div></div>
+<!-- End article sidebar --> 
+
+<!-- NOTE: Article content must have two wrapper divs: id="article" and id="article-content" -->
+<div id="article">
+<div id="article-content">
+
+<!-- BEGIN ARTICLE HTML -->
+
+
+<div id="aueditable"><!--DO NOT MODIFY THIS LINE AND ABOVE-->
+
+
+<h1>Propositional Dynamic Logic</h1><div id="pubinfo"><em>First published Thu Feb 1, 2007; substantive revision Fri Jan 25, 2019</em></div>
+
+<div id="preamble">
+
+<p>
+
+Logics of programs are modal logics arising from the idea of
+associating with each computer program α of a programming
+language a modality [α].  This idea stems from the line of works
+by Engeler [1967], Hoare [1969], Yanov [1959], and others who
+formulated and studied logical languages in which the properties of
+program connectives can be expressed.  The algorithmic logic (AL)
+first developed by Salwicki [1970] and the dynamic logic (DL)
+elaborated by Pratt [1976] are proper continuations of these works. We
+will here concentrate on DL. The numerous papers devoted to DL and its
+variants as well as its multifarious applications in program
+verification and data structures show that it constitutes a useful
+tool in studying properties of programs. Pratt chose to depict DL on
+what one might call the first-order level, and it was his work that
+triggered Fischer and Ladner [1979] to define the propositional variant
+of DL a couple of years later. This article presents an introduction
+to PDL, the propositional variant of DL.</p>
+
+</div>
+
+<div id="toc">
+<!--Entry Contents-->
+<ul>
+<li><a href="#Int">1. Introduction</a></li>
+<li><a href="#DefFunRes">2. Definitions and fundamental results</a>
+    <ul>
+      <li><a href="#SynSem">2.1 Syntax and semantics</a></li>
+      <li><a href="#AxiCom">2.2 Axiomatization and completeness</a></li>
+      <li><a href="#DecCom">2.3 Decidability and complexity</a></li>
+    </ul></li>
+<li><a href="#CorStr">3. Structured programming and correctness of programs</a>
+  <ul>
+    <li><a href="#HoaCal">3.1 Hoare calculus</a></li>
+    <li><a href="#HoaPDL">3.2 Hoare calculus and PDL</a></li>
+    <li><a href="#TotCor">3.3 Total correctness</a></li>
+  </ul></li>
+
+<li><a href="#Var">4. Some variants</a>
+   <ul>
+   <li><a href="#PDLWitTes">4.1 PDL without tests</a></li>
+   <li><a href="#PDLCon">4.2 PDL with converse</a></li>
+   <li><a href="#PDLInfCycRep">4.3 PDL with repeating and looping</a></li>
+   <li><a href="#PDLInt">4.4 PDL with intersection</a></li>
+   </ul></li>
+<li><a href="#Con">5. Conclusion</a></li>
+<li><a href="#Bib">Bibliography</a></li>
+<li><a href="#Aca">Academic Tools</a></li>
+<li><a href="#Oth">Other Internet Resources</a></li>
+<li><a href="#Rel">Related Entries</a></li>
+</ul>
+<!--Entry Contents-->
+<hr />
+
+</div>
+
+<div id="main-text">
+
+<h2><a name="Int">1. Introduction</a></h2>
+
+<p>
+Dynamic Logics (DL) are modal logics for representing the states and
+the events of dynamic systems. The language of DLs is both an
+assertion language able to express properties of computation states,
+and a programming language able to express properties of system
+transitions between these states. DLs are <em>logics of programs</em>,
+and permit to talk and reason about states of affairs, processes,
+changes, and results.
+</p>
+
+<p>
+Pratt’s original dynamic logic of programs was a <em>first-order</em>
+modal logic. <em>Propositional Dynamic Logic</em> (PDL) is the
+propositional counterpart of it. It was presented as a logic in its
+own right in Fischer and Ladner [1979]. Being propositional, the
+language of PDL makes no use of terms, predicates, or functions. Thus
+in PDL, there are two syntactic categories: propositions and programs.
+</p>
+
+<p>
+To give meaning to statements in PDL, we typically work with an
+abstract semantics in terms of Labeled Transition Systems (LTS). LTSs
+can be seen as a generalization of Kripke models, where transitions
+between worlds, or states, are “labeled” by names of
+atomic programs. A valuation indicates for every state what
+<em>propositions</em> are true in it. A transition labeled π from
+one state <em>x</em> to a state <em>y</em>—noted
+<em>x</em><em>R</em>(π)<em>y</em>, or
+(<em>x</em>,<em>y</em>) ∈ <em>R</em>(π)—indicates
+that starting in <em>x</em>, there is a possible execution of the
+program π that finishes in <em>y</em>. If the proposition
+<em>A</em> is true in <em>y</em>, then the formula
+&lt;π&gt;<em>A</em> is true in <em>x</em>: i.e., in the state
+<em>x</em> there is a possible execution of the program α that
+ends in a state satisfying <em>A</em>. One recognizes in &lt;π&gt;
+a modality reminiscent of the modality of possibility (often noted
+◊) of modal logic. Unsurprisingly, there is also a corresponding
+notion of necessity (whose modality is often noted □). The
+formula [π]<em>A</em> will be true in the state <em>x</em> if
+<em>A</em> is true in every state reachable from <em>x</em> by a
+transition labeled π.
+</p>
+
+<p>
+The possible executions of complex programs can be next defined
+compositionally. For instance, a program “first α, then
+β” is a complex program, more specifically a
+<em>sequence</em>. A possible execution can be represented in an LTS
+by composing a two-step transition —hence a transition which can
+be signified by <em>R</em>(α;β)—between the states
+<em>x</em> and <em>x</em>′: there is a possible execution in
+<em>x</em> of the program α that finishes in a state <em>y</em>
+and there is a possible execution in <em>y</em> of the program β
+that finishes in <em>x</em>′. If the proposition <em>A</em> is
+true in <em>x</em>′, then the formula
+&lt;α;β&gt;<em>A</em> will be true in the state
+<em>x</em>. The programs α and β could be complex program
+themselves. Yet more programs can be expressed with more constructs
+that we will present in due time.
+</p>
+
+<p>
+A program is then seen in an extensional way: it is a binary relation
+between pairs of states of an LTS. Precisely, it is the set of pairs
+of the form (<em>x</em>,<em>y</em>) such that the program can be
+executed in the state <em>x</em> and can lead to the state
+<em>y</em>. On the other hand, a proposition is a statement about a
+state; it is either true or false in a state. A proposition can thus
+also be seen in an extensional way: the set of states of the LTS where
+it is true.
+</p>
+
+<p>With the acronym PDL, here we refer precisely to the propositional
+dynamic logic with the following program constructs: sequence,
+non-deterministic choice, unbounded iteration, and test. We present it
+in <a href="#SynSem">section 2</a>, together with some properties and
+fundamental results. In particular, we will address its axiomatization
+and its decidability.</p>
+
+<p>The Hoare calculus from Hoare [1969] is a landmark for logics of
+programs. It concerns the truth of statements of the form
+{<em>A</em>}α{<em>B</em>}—meaning that with the
+precondition <em>A</em> the program α always has <em>B</em> as a
+post-condition—and is defined axiomatically. It comes from a
+want of rigorous methods to reason about the properties of programs,
+and thus giving to the activity of programming a certain place in the
+realm of science. Burstall [1974] saw the analogy between modal logics
+and reasoning about programs, but the actual work on it started with
+Pratt [1976] when it was suggested to him by R. Moore, a student of
+his at the time. PDL comes from Pratt’s interpretation of Hoare’s
+calculus in the formalism of modal logic. An introduction to the
+genesis of PDL can be found in Pratt [1980b]. The Hoare-triple
+{<em>A</em>}α{<em>B</em>} is captured by the PDL formula
+<em>A</em> → [α]<em>B</em> meaning literally that if
+<em>A</em> is true, then every successfully terminating execution of
+α will end with <em>B</em> being true. With this connection
+realized, it is a routine to prove the initial rules of Hoare’s
+calculus using exclusively the axiomatization of PDL. This is
+something we will do in detail in <a href="#CorStr">section 3</a>
+which concentrates on the reasoning about the correctness of
+structured programs.
+</p>
+
+<p>
+Additional topics related to PDL include results concerning
+comparative power of expression, decidability, complexity, and
+completeness of a number of interesting variants obtained by extending
+or restricting PDL in various ways.
+
+Since its inception, many variants of PDL have received
+attention. These variants may consider deterministic programs,
+restricted tests, non-regular programs, programs as automata,
+complementation and intersection of programs, converse and infinite
+computations, etc. We will present some of them
+in <a href="#Var">section 4</a>, providing some pointers regarding
+their relative expressivity, their axiomatizations, and their
+computational complexity.
+</p>
+
+<p>
+We conclude in <a href="#Con">section 5</a>.
+</p>
+
+<h2><a name="DefFunRes">2. Definitions and fundamental results</a></h2>
+
+<p>We present the syntax and semantics of PDL
+in <a href="#SynSem">section 2.1</a>.  The proof theory of PDL is
+presented in <a href="#AxiCom">section 2.2</a> with axiomatizations
+and pointers to the literature on completeness. We address the problem
+of decidability and complexity in <a href="#DecCom">section
+2.3</a>.</p>
+
+<h3><a name="SynSem">2.1 Syntax and semantics</a></h3>
+
+<p>Propositional dynamic logic (PDL) is designed for representing and
+reasoning about propositional properties of programs. Its syntax is
+based upon two sets of symbols: a countable set Φ<sub>0</sub> of
+atomic formulas and a countable set Π<sub>0</sub> of atomic
+programs. Complex formulas and complex programs over this base are
+defined as follows:</p>
+
+<ul>
+
+<li>Every atomic formula is a formula</li>
+
+<li>0 (“false”) is a formula</li>
+
+<li>If <em>A</em> is a formula then ¬<em>A</em> (“not <em>A</em>”)
+is a formula</li>
+
+<li>If <em>A</em> and <em>B</em> are formulas then
+ (<em>A</em>∨<em>B</em>)
+ (“<em>A</em> or <em>B</em>”) is a formula</li>
+
+<li>If α is a program and <em>A</em> is a formula then
+[α]<em>A</em> (“every execution of α from the present
+state leads to a state where <em>A</em> is true”) is a formula</li>
+
+<li>Every atomic program is a program</li>
+
+<li>If α and β are programs then (α;β) (“do
+α followed by β”) is a program</li>
+
+<li>If α and β are programs then (α∪β) (“do
+α or β, non-deterministically”) is a program,</li>
+
+<li>If α is a program then α* (“repeat α a finite,
+but non-deterministically determined, number of times”) is a
+program.</li>
+
+<li>If <em>A</em> is a formula then <em>A</em>? (“proceed if
+<em>A</em> is true, else fail”) is a program</li>
+
+</ul>
+
+<p>The other Boolean connectives 1,
+ ∧, →, and ↔ are used as abbreviations in the standard way. In
+addition, we abbreviate ¬[α]¬<em>A</em> to
+&lt;α&gt;<em>A</em> (“some execution of α from the present
+state leads to a state where <em>A</em> is true”) as in modal
+logic. We write α<sup><em>n</em></sup> for α;…;α with
+<em>n</em> occurrences of α. More formally:</p>
+
+<ul>
+<li>α<sup>0</sup> =<sub>df</sub> 1?</li>
+
+<li>α<sup><em>n</em>+1</sup> =<sub>df</sub>
+α;α<sup><em>n</em></sup></li>
+</ul>
+
+Also:
+<ul>
+<li>α<sup>+</sup> =<sub>df</sub> α;α*</li>
+</ul>
+
+<p>
+is often useful to represent an iteration that is unbounded but occurs
+at least once.  Finally, we adopt the standard rules for omission of
+parentheses.
+</p>
+
+<p>Formulas can be used to describe the properties that hold after the
+successful execution of a program. For example, the formula
+[α∪β]<em>A</em> means that whenever program α or
+β is successfully executed, a state is reached where <em>A</em>
+holds, whereas the formula &lt;(α;β)*&gt;<em>A</em> means
+that there is a sequence of alternating executions of α and
+β such that a state is reached where <em>A</em>
+holds. Semantically speaking, formulas are interpreted by sets of
+states and programs are interpreted by binary relations over states in
+a transition system. More precisely, the meaning of PDL formulas and
+programs is interpreted over Labeled Transition Systems (LTS)
+<em>M</em> = (<em>W</em>, <em>R</em>,<em>V</em>)
+where <em>W</em> is a nonempty set of worlds or states, <em>R</em> is
+a mapping from the set Π<sub>0</sub> of atomic programs into binary
+relations on <em>W</em> and <em>V</em> is a mapping from the set
+Φ<sub>0</sub> of atomic formulas into subsets of
+<em>W</em>.</p>
+
+<p>Informally, the mapping <em>R</em> assigns to each atomic
+program π ∈ Π<sub>0</sub> some binary
+relation <em>R</em>(π) on <em>W</em> with intended meaning
+<em>x</em><em>R</em>(π)<em>y</em> iff there exists an execution of
+π from <em>x</em> that leads to <em>y</em>, whereas the mapping
+<em>V</em> assigns to each atomic formula
+<em>p</em> ∈ Φ<sub>0</sub> some subset
+<em>V</em>(<em>p</em>) of <em>W</em> with intended meaning
+<em>x</em> ∈ <em>V</em>(<em>p</em>) iff <em>p</em>
+is true in <em>x</em>. Given our readings of 0, ¬<em>A</em>,
+<em>A</em>∨<em>B</em>,
+[α]<em>A</em>, α;β, α∪β, α* and
+<em>A</em>?, it is clear that <em>R</em> and <em>V</em> must be
+extended inductively as follows to supply the intended meanings for
+the complex programs and formulas:</p>
+
+<ul>
+
+<li><em>x</em><em>R</em>(α;β)<em>y</em> iff there exists a
+world <em>z</em> such that <em>x</em><em>R</em>(α)<em>z</em> and
+<em>z</em><em>R</em>(β)<em>y</em></li>
+
+<li><em>x</em><em>R</em>(α∪β)<em>y</em> iff
+<em>x</em><em>R</em>(α)<em>y</em> or
+<em>x</em><em>R</em>(β)<em>y</em></li>
+
+<li><em>x</em><em>R</em>(α*)<em>y</em> iff there exists a
+non-negative integer <em>n</em> and there exist worlds
+<em>z</em><sub>0</sub>, …, <em>z</em><sub><em>n</em></sub> such
+that <em>z</em><sub>0</sub> = <em>x</em>,
+<em>z</em><sub><em>n</em></sub> = <em>y</em> and for all
+<em>k</em> = 1..<em>n</em>,
+<em>z</em><sub><em>k</em>−1</sub><em>R</em>(α)<em>z</em><sub><em>k</em></sub></li>
+
+<li><em>x</em><em>R</em>(<em>A</em>?)<em>y</em> iff
+<em>x</em> = <em>y</em> and
+<em>y</em> ∈ <em>V</em>(<em>A</em>)</li>
+
+<li><em>V</em>(0) = ∅</li>
+
+<li><em>V</em>(¬<em>A</em>) = <em>W</em> \<em>V</em>(<em>A</em>)</li>
+
+<li><em>V</em>(<em>A</em>∨<em>B</em>) = <em>V</em>(<em>A</em>) ∪ <em>V</em>(<em>B</em>),</li>
+
+<li><em>V</em>([α]<em>A</em>) = {<em>x</em>: for
+all worlds <em>y</em>, if <em>x</em><em>R</em>(α)<em>y</em> then
+<em>y</em> ∈ <em>V</em>(<em>A</em>)}</li>
+
+</ul>
+
+<p>If <em>x</em> ∈ <em>V</em>(<em>A</em>) then we
+say that <em>A</em> is satisfied at state <em>x</em> in <em>M</em>, or
+“<em>M</em>, <em>x</em> sat <em>A</em>”.</p>
+
+<blockquote>
+<img src="bisimilar-LTS-tras.png" alt="Two bisimilar LTSs" />
+</blockquote>
+
+<p>
+Call <em>M</em> the LTS depicted above on the left
+and <em>M</em>′ the LTS depicted on the right. Formally defined,
+we
+have <em>M</em> = (<em>W</em>, <em>R</em>, <em>V</em>)
+with <em>W</em> =
+{<em>x</em><sub>1</sub>,<em>x</em><sub>2</sub>}, <em>R</em>(π<sub>1</sub>)
+=
+{(<em>x</em><sub>1</sub>,<em>x</em><sub>1</sub>)}, <em>R</em>(π<sub>2</sub>)
+=
+{(<em>x</em><sub>1</sub>,<em>x</em><sub>2</sub>)}, <em>V</em>(<em>p</em>)
+= {<em>x</em><sub>1</sub>}, <em>V</em>(<em>q</em>) =
+{<em>x</em><sub>2</sub>}, and we have
+<em>M</em>′ = (<em>W</em>′, <em>R</em>′, <em>V</em>′)
+with <em>W</em>′ =
+{<em>y</em><sub>1</sub>,<em>y</em><sub>2</sub>,<em>y</em><sub>3</sub>,<em>y</em><sub>4</sub>},
+ <em>R</em>(π<sub>1</sub>)
+= {(<em>y</em><sub>1</sub>,<em>y</em><sub>2</sub>),
+(<em>y</em><sub>2</sub>,<em>y</em><sub>2</sub>)}, <em>R</em>′(π<sub>2</sub>)
+= {(<em>y</em><sub>1</sub>,<em>y</em><sub>3</sub>),
+(<em>y</em><sub>2</sub>,<em>y</em><sub>4</sub>)}, <em>V</em>′(<em>p</em>)
+=
+{<em>y</em><sub>1</sub>, <em>y</em><sub>2</sub>}, <em>V</em>′(<em>q</em>)
+= {<em>y</em><sub>3</sub>, <em>y</em><sub>4</sub>}. We have for
+instance:</p>
+
+<ul>
+
+<li><em>M</em>, <em>x</em><sub>1</sub> sat <em>p</em></li>
+
+<li><em>M</em>, <em>x</em><sub>2</sub> sat <em>q</em></li>
+
+<li><em>M</em>, <em>x</em><sub>1</sub> sat &lt;π<sub>1</sub>&gt;<em>p</em> ∧ &lt;π<sub>2</sub>&gt;<em>q</em></li>
+
+<li><em>M</em>, <em>x</em><sub>1</sub> sat [π<sub>1</sub>]<em>p</em> ∧
+[π<sub>1</sub>*]<em>p</em></li>
+
+<li><em>M</em>′, <em>y</em><sub>1</sub> sat &lt;π<sub>1</sub>*;π<sub>2</sub>&gt;<em>q</em></li>
+
+<li><em>M</em>′, <em>y</em><sub>2</sub> sat [π<sub>1</sub>*]<em>p</em></li>
+
+<li><em>M</em>′, <em>y</em><sub>1</sub> sat [π<sub>1</sub>∪π<sub>2</sub>](<em>q</em> ∨<em>p</em>)</li>
+
+<li><em>M</em>′, <em>y</em><sub>3</sub> sat [π<sub>1</sub>∪π<sub>2</sub>]0</li>
+
+</ul>
+
+<p>Now consider a formula
+<em>A</em>. We say that <em>A</em> is valid in <em>M</em> or
+that <em>M</em> is a model of <em>A</em>, or “<em>M</em>
+ ⊨ <em>A</em>”,
+ iff for all worlds <em>x</em>,
+<em>x</em> ∈ <em>V</em>(<em>A</em>).  <em>A</em> is
+said to be valid, or
+ “⊨
+ <em>A</em>”, iff for all models <em>M</em>, <em>M</em>
+ ⊨
+ <em>A</em>. We say that <em>A</em> is satisfiable in <em>M</em>
+or that <em>M</em> satisfies <em>A</em>, or “<em>M</em> sat
+<em>A</em>”, iff there exists a world <em>x</em> such that
+<em>x</em> ∈ <em>V</em>(<em>A</em>). <em>A</em> is
+said to be satisfiable, or “sat <em>A</em>”, iff there exists a model
+<em>M</em> such that <em>M</em> sat <em>A</em>. Interestingly,</p>
+
+<blockquote>sat <em>A</em> iff not
+ ⊨
+ ¬<em>A</em><br />
+
+ ⊨
+ <em>A</em> iff not sat ¬<em>A</em>
+ </blockquote>
+
+<p>Some remarkable formulas of PDL are valid. (The reader may try to
+prove them formally, or at least start convincing themselves on the
+few examples displayed above.)</p>
+
+<blockquote>
+ ⊨
+ [α;β]<em>A</em> ↔ [α][β]<em>A</em><br />
+
+ ⊨
+ [α∪β]<em>A</em> ↔ [α]<em>A</em>
+ ∧
+ [β]<em>A</em><br />
+
+ ⊨
+ [α*]<em>A</em> ↔ <em>A</em>
+ ∧
+ [α][α*]<em>A</em><br />
+
+ ⊨
+ [<em>A</em>?]<em>B</em> ↔ (<em>A</em> → <em>B</em>)
+ </blockquote>
+
+<p>Equivalently, we can write them under their dual form.</p>
+
+<blockquote>
+ ⊨
+ &lt;α;β&gt;<em>A</em> ↔ &lt;α&gt;&lt;β&gt;<em>A</em><br />
+
+ ⊨
+ &lt;α∪β&gt;<em>A</em> ↔ &lt;α&gt;<em>A</em>
+ ∨
+ &lt;β&gt;<em>A</em><br />
+
+ ⊨
+ &lt;α*&gt;<em>A</em> ↔ <em>A</em>
+ ∨
+ &lt;α&gt;&lt;α*&gt;<em>A</em><br />
+
+ ⊨
+ &lt;<em>A</em>?&gt;<em>B</em> ↔ <em>A</em> ∧ <em>B</em>
+ </blockquote>
+
+<p>
+One interesting notion concerns the amount of information, expressed
+with PDL formulas, that is contained in an LTS. The behavior of a
+system described as an LTS is indeed often slightly hidden in its
+form. For instance, on simple inspection, it is easy to convince
+oneself that the two LTSs depicted above have the same behavior, and
+satisfy the same PDL formulas. To finish this section on syntax and
+semantics we give the theoretical foundation of these claims.
+</p>
+
+<p>
+Given two LTSs, one may ask whether they satisfy the same formulas.
+The notion of bisimulation has become the standard measure for
+equivalence of Kripke models and Labeled Transition
+Systems. A <em>bisimulation</em> between the LTSs
+<em>M</em> = (<em>W</em>, <em>R</em>,<em>V</em>)
+and <em>M</em>′ = (<em>W</em>′,
+ <em>R</em>′, <em>V</em>′) is a binary relation
+<em>Z</em> between their states such that for all worlds <em>x</em> in
+<em>M</em> and for all worlds <em>x</em>′ in <em>M</em>′,
+if <em>xZx</em>′ then</p>
+
+<ul>
+ <li>for all atomic formulas <em>p</em> ∈
+ Φ<sub>0</sub>, <em>x</em>∈<em>V</em>(<em>p</em>) iff
+<em>x</em>′∈ <em>V</em>′(<em>p</em>)</li>
+
+ <li>for all atomic programs π ∈
+ Π<sub>0</sub> and for all worlds <em>y</em> in <em>M</em>,
+if <em>x</em><em>R</em>(π)<em>y</em> then there exists a world
+<em>y</em>′ in <em>M</em>′ such that <em>yZy</em>′
+and <em>x</em>′<em>R</em>′(π)<em>y</em>′</li>
+
+ <li>for all atomic programs π ∈
+ Π<sub>0</sub> and for all worlds <em>y</em>′ in
+<em>M</em>′, if <em>x</em>′ <em>R</em>′(π)<em>y</em>′ then
+there exists a world <em>y</em> in <em>M</em> such
+that <em>yZy</em>′ and <em>x</em><em>R</em>(π)<em>y</em></li>
+</ul>
+
+<p>
+We say that two LTSs are <em>bisimilar</em> when there exists a
+bisimulation between them.  It is known since the beginning of PDL
+that in two bisimilar LTSs <em>M</em> and <em>M</em>′,
+for all worlds <em>x</em> in <em>M</em> and for all
+worlds <em>x</em>′ in
+<em>M</em>′, if <em>xZx</em>′ then for all PDL formulas
+<em>A</em>, <em>x</em>  ∈ <em>V</em>(<em>A</em>)
+iff <em>x</em>′ 
+∈ <em>V</em>′(<em>A</em>). Thus when two LTSs are
+bisimilar under the definition of bisimulation above, it is the
+case that, if <em>xZx</em>′ then</p>
+
+<ul> 
+
+ <li>for all programs α and for all worlds <em>y</em> in <em>M</em>,
+if <em>x</em><em>R</em>(α)<em>y</em> then there exists a world
+<em>y</em>′ in <em>M</em>′ such that <em>yZy</em>′
+and <em>x</em>′<em>R</em>′(α)<em>y</em>′</li>
+
+ <li>for all programs α and for all worlds <em>y</em>′ in
+<em>M</em>′, if <em>x</em>′<em>R</em>′(α)
+<em>y</em>′ then there exists a world <em>y</em> in <em>M</em>
+such that <em>yZy</em>′ and <em>x</em><em>R</em>(α)<em>y</em></li>
+
+</ul>
+
+<p>Hence one can simply compare the behaviors of two LTSs by
+inspecting solely the atomic programs and safely extrapolate on the
+comparative behavior of these LTSs even for complex programs. We say
+that the program constructs of PDL are <em>safe for bisimulation</em>. See Van
+Benthem [1998] for precise characterizations of program constructs
+that are safe for bisimulation.</p>
+
+<p>
+It is readily seen that the two instances of LTSs above are
+bisimilar. A bisimulation <em>Z</em> between <em>M</em> and
+<em>M</em>′ can be given as: <em>Z</em> =
+{(<em>x</em><sub>1</sub>,<em>y</em><sub>1</sub>),
+(<em>x</em><sub>1</sub>,<em>y</em><sub>2</sub>),
+(<em>x</em><sub>2</sub>,<em>y</em><sub>3</sub>),
+(<em>x</em><sub>2</sub>,<em>y</em><sub>4</sub>)}. The states
+<em>x</em><sub>1</sub> and <em>y</em><sub>1</sub> satisfy exactly the
+same PDL formulas. So do the states <em>x</em><sub>1</sub> and
+<em>y</em><sub>2</sub>, etc.
+</p>
+
+<h3><a name="AxiCom">2.2 Axiomatization and completeness</a></h3>
+
+<p>The purpose of the proof theory is to provide the characterization
+of the property ⊨ <em>A</em> in terms of axioms and rules of
+inference. In this section, we define a deducibility predicate ⊢
+inductively by operations on formulas that depend only on their
+syntactic structure in such a way that for all formulas
+<em>A</em>,</p>
+
+<blockquote>
+ ⊢
+ <em>A</em> iff
+ ⊨
+ <em>A</em>.
+ </blockquote>
+
+<p>Of course, PDL is an extension of classical propositional logic. We
+first expect that all propositional tautologies hold, and all
+propositional reasoning is allowed. In particular, modus ponens is a
+valid rule: from <em>A</em> and <em>A</em> → <em>B</em>
+infer <em>B</em>. For any program α, restricting an LTS to the
+relation <em>R</em>(α) we obtain a Kripke model in which the
+logic of the modality [α] is the weakest propositional normal
+modal logic, namely, the logic K. Thus, PDL contains every instance of
+the familiar distribution axiom schema:</p>
+
+<blockquote>
+(A0)   [α](<em>A</em> → <em>B</em>) →
+([α]<em>A</em> → [α]<em>B</em>)
+</blockquote>
+
+<p>and it is closed under the following rule of inference
+(<em>necessitation</em> rule):</p>
+
+<blockquote>
+(N)    from <em>A</em>  infer  [α]<em>A</em>.
+</blockquote>
+
+<p>A modal logic is normal if it obeys (A0) and (N). Important
+properties for all α, are that [α] distributes over the
+conjunction ∧, and the rule of <em>monotony</em>, which permits
+from <em>A</em> → <em>B</em> to infer [α]<em>A</em> →
+[α]<em>B</em>, can be proven. Finally, PDL is the least normal
+modal logic containing every instance of the following axiom schemas
+</p>
+
+<blockquote>
+
+(A1)   [α;β]<em>A</em> ↔
+[α][β]<em>A</em> <br />
+
+(A2)   [α∪β]<em>A</em> ↔ [α]<em>A</em>
+ ∧
+ [β]<em>A</em><br />
+
+(A3)   [α*]<em>A</em> ↔ <em>A</em>
+ ∧
+ [α][α*]<em>A</em><br />
+
+(A4)   [<em>A</em>?]<em>B</em> ↔ (<em>A</em> →
+<em>B</em>)
+
+</blockquote>
+
+<p>and closed under the following rule of inference (<em>loop
+invariance</em> rule):</p>
+
+<blockquote>
+ (I) from <em>A</em> → [α]<em>A</em> infer <em>A</em>
+→ [α*]<em>A</em>
+ </blockquote>
+
+<p>If <em>X</em> is a set of formulas and <em>A</em> is a formula then we
+say that <em>A</em> is
+ ⊢-deducible
+ from  <em>X</em>, or “<em>X</em>
+ ⊢
+ <em>A</em>”, if there exists a sequence <em>A</em><sub>0</sub>,
+<em>A</em><sub>1</sub>, …, <em>A</em><sub><em>n</em></sub> of
+formulas such that
+<em>A</em><sub><em>n</em></sub> = <em>A</em> and for all
+<em>i</em>≤<em>n</em>, <em>A</em><sub><em>i</em></sub> is an
+instance of an axiom schema, or a formula of <em>X</em>, or comes from
+earlier formulas of the sequence by a rule of inference. Further,
+ ⊢
+ <em>A</em> iff ∅
+ ⊢
+ <em>A</em>; in this case we say that <em>A</em> is
+ ⊢-deducible.
+ <em>X</em> is said to be
+ ⊢-consistent
+ iff not <em>X</em>
+ ⊢
+ 0. It is easy to establish that (I) can be replaced by the following
+axiom schema (<em>induction</em> axiom schema):</p>
+
+<blockquote>
+ (A5)   [α*](<em>A</em> → [α]<em>A</em>) →
+(<em>A</em> → [α*]<em>A</em>)
+ </blockquote>
+
+<p>Let us first establish that (I) is a derived rule of the proof
+system based on (A1), (A2), (A3), (A4) and (A5):</p>
+
+<blockquote>
+ <table cellpadding="4">
+
+<tbody><tr valign="top">
+ <td align="left">1. </td>
+ <td align="left"><em>A</em> → [α]<em>A</em></td>
+ <td align="left" width="40%">premise</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">2. </td>
+ <td align="left">[α*](<em>A</em> →
+[α]<em>A</em>)</td>
+ <td align="left" width="40%">from 1 using (N)</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">3. </td>
+ <td align="left">[α*](<em>A</em> →
+[α]<em>A</em>) → (<em>A</em> →
+[α*]<em>A</em>)</td>
+ <td align="left" width="40%">axiom schema (A5)</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">4. </td>
+ <td align="left"><em>A</em> → [α*]<em>A</em></td>
+ <td align="left" width="40%">from 2 and 3 using modus ponens</td>
+ </tr>
+ </tbody></table>
+ </blockquote>
+
+<p>Let us next establish that (A5) is
+ ⊢-deducible:</p>
+
+ <blockquote>
+ <table cellpadding="4">
+
+<tbody><tr valign="top">
+ <td align="left">1. </td>
+ <td align="left">[α*](<em>A</em> → [α]<em>A</em>)
+↔
+ (<em>A</em> → [α]<em>A</em>)
+ ∧
+ [α][α*](<em>A</em> → [α]<em>A</em>)</td>
+ <td align="left" width="40%">axiom schema (A3)</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">2. </td>
+ <td align="left"><em>A</em>
+ ∧
+ [α*](<em>A</em> → [α]<em>A</em>) →
+ [α](<em>A</em>
+ ∧
+ [α*](<em>A</em> → [α]<em>A</em>))</td>
+ <td align="left" width="40%">from 1 using propositional reasoning and
+distributivity of [α] over ∧</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">3. </td>
+ <td align="left"><em>A</em>
+ ∧
+ [α*](<em>A</em> → [α]<em>A</em>) →
+ [α*](<em>A</em>
+ ∧
+ [α*](<em>A</em> → [α]<em>A</em>))</td>
+ <td align="left" width="40%">from 2 using (I)</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">4. </td>
+ <td align="left">[α*](<em>A</em> → [α]<em>A</em>)
+→ (<em>A</em> → [α*]<em>A</em>)</td>
+ <td align="left" width="40%">from 3 using propositional reasoning and
+distributivity of [α*] over ∧</td>
+ </tr>
+ </tbody></table>
+ </blockquote>
+
+<p>The axiomatization of PDL based on axiom schemas (A1), (A2), (A3),
+(A4) and (A5) has been proposed in Segerberg [1977]. It is immediate
+from the definitions above that ⊢ is sound with respect to
+⊨, i.e.</p>
+
+<blockquote>
+ For all formulas <em>A</em>, if ⊢<em>A</em>, then
+ ⊨<em>A</em>
+ </blockquote>
+
+<p>The proof proceeds by induction on the length of <em>A</em>’s
+deduction in  ⊢.
+ 
+The question of the completeness of ⊢  with respect to
+⊨,  i.e.,</p>
+
+<blockquote>
+ For all formulas <em>A</em>, if ⊨<em>A</em>, then
+ ⊢<em>A</em>
+</blockquote>
+
+<p>was pursued by several logicians. The line of reasoning presented
+in Segerberg [1977] was the first attempt to prove the completeness of
+⊢. Soon, Parikh came up with a proof, too. When early 1978
+Segerberg found a flaw in his argument (which he repaired eventually),
+Parikh published what can be considered the first proof of the
+completeness of ⊢ in Parikh [1978]. Different proofs of
+completeness of ⊢ have been published since, e.g. Kozen and
+Parikh [1981].</p>
+
+<p>Different alternative proof theories of PDL have also been sought
+after. Even early on, notably in Pratt [1978]. Let us then also
+mention the completeness of related theories by Nishimura [1979] and
+Vakarelov [1983].</p>
+
+<p>
+An alternative formulation of a deducibility predicate for PDL permits
+the use of an infinitary rule of inference, as for instance in
+Goldblatt [1992a]. (An infinitary rule of inference takes an infinite
+number of premises.) Let ⊢′ be the deducibility predicate
+corresponding in the language of propositional dynamic logic to the
+least normal modal logic containing every instance of the axiom
+schemas (A1), (A2), (A3) and (A4) and closed under the following
+infinitary rule of inference:</p>
+
+<blockquote>
+ (I′) from {[β][α<sup><em>n</em></sup>]<em>A</em>:
+<em>n</em> ≥ 0} infer [β][α*]<em>A</em>
+ </blockquote>
+
+<p>It can be proved that
+ ⊢′
+ is both sound and complete with respect
+ ⊨,
+ i.e.,</p>
+
+<blockquote>
+ For all formulas <em>A</em>,
+ ⊢′
+ <em>A</em> iff
+ ⊨
+ <em>A</em>
+ </blockquote>
+
+<p>In other words, as far as generating the set of all valid formulas
+is concerned, the proof systems
+ ⊢
+ and
+ ⊢′
+ are equivalent.</p>
+
+<h3><a name="DecCom">2.3 Decidability and complexity</a></h3>
+
+<p>
+The aim of the complexity theory is to establish the computability of
+the property sat <em>A</em> in terms of resources of time or
+space. The complexity of a logic <em>L</em> is often identified with
+the problem of deciding the satisfiability of its formulas, defined
+as:</p>
+
+<blockquote>
+ (L-SAT) Given a formula <em>A</em> of <em>L</em>, is <em>A</em> satisfiable?
+</blockquote>
+
+<p>In this section, we investigate the complexity of the following
+decision problem:</p>
+<blockquote>
+ (PDL-SAT) Given a formula <em>A</em> of PDL, is <em>A</em> satisfiable?
+</blockquote>
+
+<p>The complete axiomatization of PDL is a recursive definition of the
+set of valid PDL formulas, or in other words, of the set of formulas
+whose negation is not satisfiable. Hence, concerning the problem
+(PDL-SAT), we have a sub-procedure that would answer “no” if
+the PDL formula <em>A</em> were not satisfiable. The sub-procedure
+(SP1) consists in enumerating all the formulas ⊢-deducible,
+starting from the axioms and inferring other theorems with the help of
+the inference rules. Given enough time, if a formula is
+⊢-deducible, the sub-procedure would find it eventually. Thus,
+if <em>A</em> is not satisfiable, (SP1) must eventually find
+¬<em>A</em>, and answer “no” when it does.</p>
+
+<p>However, if the formula <em>A</em> is satisfiable, then (SP1) would
+never find ¬<em>A</em>. It would run forever, and one could not be
+sure about it at any time. But there is a way out of this
+uncertainty. We can also think of a second sub-procedure that answers
+“yes” if a PDL formula is satisfiable. Indeed, one of the
+earliest results on PDL was the proof that PDL has the <em>finite
+model property</em>, i.e.,</p>
+
+<blockquote>
+For all formulas <em>A</em>, if sat <em>A</em> then there exists a
+finite model <em>M</em> such that <em>M</em> sat <em>A</em>.
+</blockquote>
+
+<p>
+The finite model property offers a basis for a sub-procedure (SP2)
+that consists in enumerating one by one the finite models of PDL and
+testing whether one of them satisfies the formula. (For all
+formulas <em>A</em> and for all finite models <em>M</em>, it is easy
+to test if <em>M</em> sat <em>A</em> by applying the definition
+of <em>V</em>(<em>A</em>).)  Thus, if <em>A</em> is satisfiable, it
+must eventually find a model
+<em>M</em> such that <em>M</em> sat <em>A</em>, and answer
+“yes” when it does. Symmetrically to the first sub-procedure
+(SP1), if the formula <em>A</em> is not satisfiable, then (SP2) will
+never find a model satisfying it, it will run forever, and one could
+not be sure about it at any time.
+</p>
+
+<p>
+Now, combining (SP1) and (SP2) together we have a way of deciding
+whether a PDL formula <em>A</em> is satisfiable. It suffices to run
+them in parallel: if <em>A</em> is satisfiable then (SP2) will
+eventually answer “yes”, if <em>A</em> is not satisfiable
+then (SP1) will eventually answer “no”. The procedure
+halts when either (SP1) or (SP2) provides an answer.</p>
+
+<p>If the procedure that is obtained is sufficient to conclude that
+the problem (PDL-SAT) is decidable, it is very ineffective in
+practice. There is a result—due to Fischer and Ladner [1979] and
+Kozen and Parikh [1981]— stronger than the finite model
+property, that is <em>small model property</em>:</p>
+
+<blockquote>For all formulas <em>A</em>, if sat <em>A</em> then there
+exists a finite model <em>M</em> of size exponential in <em>A</em>
+such that <em>M</em> sat <em>A</em>. 
+</blockquote>
+
+<p>This means that we would now know when to stop looking for a model
+satisfying a formula in the procedure (SP2). Hence, we can use (SP2)
+to test whether a formula is satisfiable, but once we have exhausted
+all small models, we can conclude that the formula is not
+satisfiable. This yields a procedure that runs non-deterministically
+in exponential time (NEXPTIME): guess a model of size at most singly
+exponential, and check whether it satisfies the formula.
+
+But the key results in the complexity theory of PDL come from Fischer
+and Ladner [1979] and Pratt [1980a]. Observing that a formula of PDL
+can efficiently describe the computation of a
+linear-space–bounded alternating Turing machine, Fischer and
+Ladner [1979] first established the lower bound of exponential time of
+(PDL-SAT). The EXPTIME upper bound of (PDL-SAT) has been obtained by Pratt
+[1980a], who used the equivalent for PDL of the method of
+tableaux. Thus, (PDL-SAT) is EXPTIME-complete. (An algorithm more
+efficient in practice, although still running in deterministic
+exponential time in the worst case, is proposed in De Giacomo and
+Massacci [2000].)
+</p>
+
+<h2><a name="CorStr">3. Structured programming and correctness of programs</a></h2>
+
+<p>
+Historically, logics of programs stem from the work in the late 1960s
+of computer scientists interested in assigning meaning to programming
+languages and finding a rigorous standard for proofs about
+the programs. For example such proofs may be about the correctness of a
+program with respect to an expected behavior, or about the
+termination of a program. A seminal paper is Floyd [1967] which
+presents an analysis of the properties of structured computer programs
+using <em>flowcharts</em>.  Some early work such as Yanov [1959] or
+Engeler [1967] had advanced and studied formal languages in which the
+properties of program connectives can be expressed. The formalism of
+Hoare [1969] was a milestone in the advent of PDL. It was proposed as
+a rigorous axiomatic interpretation of Floyd’s flowcharts. We often
+talk about Hoare logic, or Floyd-Hoare logic, or Hoare calculus when
+referring to this formalism. Hoare calculus is concerned with the
+truth of statements (“Hoare triples”), such as
+{<em>A</em>}α{<em>B</em>} which establishes a connection between
+a precondition <em>A</em>, a program α, and a
+post-condition <em>B</em>. It indicates that whenever <em>A</em> holds
+as a precondition of the execution of α, then <em>B</em> holds
+as a post-condition after the successful execution of α.</p>
+
+<p>
+It was true some decades ago, and it is still the case: validating a
+program is more often than not done by testing it on a reasonable
+variety of inputs. When an input does not yield the expected output,
+the “bug” is fixed. If eventually for every tested input
+we obtain the expected output, one has a reasonable belief that the
+program has no error. However, this is a time consuming method of
+validation, and it leaves place for untested inputs that would fail.
+Finding these errors after the program has been implemented and gone
+into use is even more costly in resources.  Reasoning about program
+correctness with formal methods is crucial for critical systems since
+it offers a way of proving exhaustively that a program has no
+errors.</p>
+
+<h3><a name="HoaCal">3.1 Hoare calculus</a></h3>
+
+<p>To illustrate the sort of principles of programs captured by the
+rules in the Hoare calculus it is enough to consult some of
+them. (N.B.: the rules mean that if all the statements above the rule
+line hold—the premises—then also the statement under the
+rule line—the conclusion— holds.)</p>
+
+<blockquote>
+<table style="border-collapse:collapse;">
+<tbody><tr><td style="padding:0px;border-bottom:1px solid black; text-align:center;">
+  {<em>A</em>} α<sub>1</sub> {<em>B</em>}  {<em>B</em>} α<sub>2</sub> {<em>C</em>}
+</td><td rowspan="2"> (rule of composition)
+</td></tr>
+<tr><td style="text-align:center;">
+  {<em>A</em>} α<sub>1</sub> ; α<sub>2</sub> {<em>C</em>}
+</td></tr>
+</tbody></table>
+</blockquote>
+
+<p>The rule of composition captures the elementary sequential
+composition of programs. As premises, we have two assumptions about
+the partial correctness of two programs α<sub>1</sub> and
+α<sub>2</sub>. The first assumption is that when
+α<sub>1</sub> is executed in a state satisfying A, then it will
+finish in a state satisfying <em>B</em>, whenever it halts. The second
+assumption is that when α<sub>2</sub> is executed in a state
+satisfying <em>B</em>, then it will finish in a state satisfying
+<em>C</em>, whenever it halts. The conclusion of the rule is about the
+partial correctness of the program
+α<sub>1</sub>;α<sub>2</sub> (i.e., α<sub>1</sub>
+sequentially composed with α<sub>2</sub>), that follows from the
+two assumptions. Namely, we can conclude that if
+α<sub>1</sub>;α<sub>2</sub> is executed in a state
+satisfying <em>A</em>, then it finishes in a state satisfying
+<em>C</em>, whenever it halts.
+</p>
+
+<p>
+The rule of iteration is an important one because it captures the
+essential ability of programs to execute some portion of code
+repeatedly until a certain condition ceases to hold.</p>
+
+<blockquote>
+<table style="border-collapse:collapse;">
+<tbody><tr><td style="padding:0px;border-bottom:1px solid black; text-align:center;">
+  {<em>A</em> ∧ <em>B</em>} α {<em>A</em>} 
+</td><td rowspan="2"> (rule of iteration)
+</td></tr>
+<tr><td style="text-align:center;">
+  {<em>A</em>} <strong>while</strong> <em>B</em> <strong>do</strong> α {¬<em>B</em> ∧ <em>A</em>}
+</td></tr>
+</tbody></table>
+</blockquote>
+
+<p>Finally, the two rules of consequence are fundamental to give a
+formal basis to intuitively clear reasoning involving weaker
+post-conditions and stronger preconditions respectively.</p>
+
+<!--
+<blockquote>
+<table style="border-collapse:collapse;">
+<tr><td style="padding:0px;border-bottom:1px solid black; text-align:center;">
+  {<em>A</em>}&nbsp;&alpha;&nbsp;{<em>B</em>}&nbsp;&nbsp;<em>B</em>&nbsp;&rarr;&nbsp;<em>C</em>
+</td>
+<td rowspan="2">&nbsp;(rule of consequence 1) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+
+<td style="padding:0px;border-bottom:1px solid black; text-align:center;">
+  <em>C</em>&nbsp;&rarr;&nbsp;<em>A</em>&nbsp;&nbsp;&nbsp;&nbsp;{<em>A</em>}&nbsp;&alpha;&nbsp;{<em>B</em>}
+</td>
+<td rowspan="2">&nbsp;(rule of consequence 2)</td>
+
+</tr>
+<tr><td style="text-align:center;">
+  {<em>A</em>}&nbsp;&alpha;&nbsp;{<em>C</em>}
+</td>
+
+<td style="text-align:center;">
+  {<em>C</em>}&nbsp;&alpha;&nbsp;{<em>B</em>}
+</td>
+</tr>
+</table>
+</blockquote>
+-->
+
+<blockquote>
+<table style="border-collapse:collapse;">
+<tbody><tr><td style="padding:0px;border-bottom:1px solid black; text-align:center;">
+  {<em>A</em>} α {<em>B</em>}  <em>B</em> → <em>C</em>
+</td><td rowspan="2"> (rule of consequence 1)
+</td></tr>
+<tr><td style="text-align:center;">
+  {<em>A</em>} α {<em>C</em>}
+</td></tr>
+</tbody></table>
+</blockquote>
+
+<blockquote>
+<table style="border-collapse:collapse;">
+<tbody><tr><td style="padding:0px;border-bottom:1px solid black; text-align:center;">
+<em>C</em> → <em>A</em>   
+{<em>A</em>} α {<em>B</em>}</td><td rowspan="2"> (rule of consequence 2)
+</td></tr>
+<tr><td style="text-align:center;">
+  {<em>C</em>} α {<em>B</em>}
+</td></tr>
+</tbody></table>
+</blockquote>
+
+<p>From the formalism presented in Hoare [1969], we leave out its
+axiom schemas as it would require a first-order language. Finally, in
+subsequent work on Hoare logic, more rules are also often added. See
+Apt [1979] for an early overview.</p>
+
+<h3><a name="HoaPDL">3.2 Hoare calculus and PDL</a></h3>
+
+<p>Dynamic logics come from Pratt’s interpretation of Hoare triples
+and Hoare calculus in the formalism of modal logic. With the modality
+[α], we can express formally that all states reachable by
+executing α satisfy the formula <em>A</em>. This is done by
+writing [α]<em>A</em>. Thus, the Hoare triple
+{<em>A</em>}α{<em>B</em>} is simply captured by the PDL
+formula</p>
+
+<blockquote><em>A</em> → [α]<em>B</em></blockquote>
+
+<p>
+In addition, important programming constructs are easily introduced in PDL by
+definitional abbreviation: </p>
+
+<ul>
+<li><strong>if</strong> <em>A</em> <strong>then</strong> α
+<strong>else</strong> β =<sub>df</sub>
+((<em>A</em>?;α) ∪ (¬<em>A</em>?;β))</li>
+
+<li><strong>while</strong> <em>A</em> <strong>do</strong> α
+=<sub>df</sub> ((<em>A</em>?;α)*;¬<em>A</em>?)</li>
+
+<li><strong>repeat</strong> α <strong>until</strong>
+<em>A</em> =<sub>df</sub>
+(α;((¬<em>A</em>;α)*;<em>A</em>?))</li>
+
+<li><strong>abort</strong> =<sub>df</sub> 0?</li>
+
+<li><strong>skip</strong> =<sub>df</sub> 1?</li>
+
+</ul>
+
+<p>
+Thus, it seems that with PDL we are well-equipped to logically prove
+the correctness of structured programs. Beyond this rather hand-waving
+connection between PDL and Hoare calculus, perhaps it is not yet clear
+how they relate formally. PDL is in fact a generalization of Hoare
+calculus in the sense that all the rules of the Hoare calculus can be
+proven in the axiomatic system of PDL. (Rigorously, the Hoare calculus
+contains axioms that would require the extended language of
+first-order Dynamic Logic.) This is quite remarkable, so we will show
+here the two above rules to serve as examples.</p>
+
+<p>
+The proofs start by assuming the premises of the rules. Then by using
+these assumptions, axioms and rules of PDL, and nothing else, the
+objective is to establish that the conclusion of the rules logically
+follows. Hence, for the rule of composition, we start by assuming
+{<em>A</em>}α<sub>1</sub>{<em>B</em>}, that is <em>A</em> →
+[α<sub>1</sub>]<em>B</em> in its PDL formulation, and by
+assuming {<em>B</em>}α<sub>2</sub>{<em>C</em>}, that is
+<em>B</em> → [α<sub>2</sub>]<em>C</em>. The objective is to
+prove that
+{<em>A</em>}α<sub>1</sub>;α<sub>2</sub>{<em>C</em>}. Precisely,
+we want to establish that <em>A</em> →
+[α<sub>1</sub>;α<sub>2</sub>]<em>C</em> is
+⊢-deducible from the set of formulas {<em>A</em> →
+[α<sub>1</sub>]<em>B</em>, <em>B</em> →
+[α<sub>2</sub>]<em>C</em>}.</p>
+
+<blockquote>
+ <table cellpadding="4">
+
+<tbody><tr valign="top">
+ <td align="left">1. </td>
+ <td align="left"><em>A</em> → [α<sub>1</sub>]<em>B</em></td>
+ <td align="left" width="40%">assumption {<em>A</em>}α<sub>1</sub>{<em>B</em>}</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">2. </td>
+ <td align="left"><em>B</em> → [α<sub>2</sub>]<em>C</em></td>
+ <td align="left" width="40%">assumption {<em>B</em>}α<sub>2</sub>{<em>C</em>}</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">3. </td>
+ <td align="left">[α<sub>1</sub>]<em>B</em> → [α<sub>1</sub>][α<sub>2</sub>]<em>C</em></td>
+ <td align="left" width="40%">From 2 using monotony of [α<sub>1</sub>]</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">4. </td>
+ <td align="left"><em>A</em>  → [α<sub>1</sub>][α<sub>2</sub>]<em>C</em></td>
+ <td align="left" width="40%">from 1 and 3 using propositional reasoning</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">5. </td>
+ <td align="left">[α<sub>1</sub>;α<sub>2</sub>]<em>C</em> ↔ [α<sub>1</sub>][α<sub>2</sub>]<em>C</em></td>
+ <td align="left" width="40%">axiom schema (A1)</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">6. </td>
+ <td align="left"><em>A</em>  → [α<sub>1</sub>;α<sub>2</sub>]<em>C</em></td>
+ <td align="left" width="40%">from 4 and 5 using propositional reasoning</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">—</td>
+ <td align="left">{<em>A</em>}α<sub>1</sub>;α<sub>2</sub>{<em>C</em>}</td>
+ <td align="left" width="40%"></td>
+ </tr>
+
+ </tbody></table>
+ </blockquote>
+
+<p>
+The proof of the rule of iteration is slightly more involved.
+</p>
+
+<blockquote>
+ <table cellpadding="4">
+
+<tbody><tr valign="top">
+ <td align="left">1. </td>
+ <td align="left"><em>A</em>∧<em>B</em> → [α]<em>A</em></td>
+ <td align="left" width="40%">assumption {<em>A</em> ∧ <em>B</em>}α{<em>A</em>}</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">2. </td>
+ <td align="left"><em>A</em>  → (<em>B</em> → [α]<em>A</em>)</td>
+ <td align="left" width="40%">from 1 using propositional reasoning</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">3. </td>
+ <td align="left">[<em>B</em>?][α]<em>A</em> ↔ (<em>B</em> →[α]<em>A</em>)</td>
+ <td align="left" width="40%">axiom schema (A4)</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">4. </td>
+ <td align="left"><em>A</em>  → [<em>B</em>?][α]<em>A</em></td>
+ <td align="left" width="40%">from 2 and 3 using propositional reasoning</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">5. </td>
+ <td align="left">[<em>B</em>? ; α]<em>A</em> ↔ [<em>B</em>?][α]<em>A</em></td>
+ <td align="left" width="40%">axiom schema (A1)</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">6. </td>
+ <td align="left"><em>A</em>  → [<em>B</em>?;α]<em>A</em></td>
+ <td align="left" width="40%">from 4 and 5 using propositional reasoning</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">7. </td>
+ <td align="left"><em>A</em>  → [(<em>B</em>?;α)*]<em>A</em></td>
+ <td align="left" width="40%">from 6 using (I)</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">8. </td>
+ <td align="left"><em>A</em> → (¬<em>B</em> →
+ (¬<em>B</em>∧<em>A</em>))</td>
+ <td align="left" width="40%">propositional tautology</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">9. </td>
+ <td align="left"><em>A</em> →
+ [(<em>B</em>?;α)*](¬<em>B</em> →
+ (¬<em>B</em>∧<em>A</em>))</td>
+ <td align="left" width="40%">from 7 and 8 using monotony of
+ [(<em>B</em>?;α)*] and propositional reasoning</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">10. </td>
+ <td align="left">[¬<em>B</em>?](¬<em>B</em>∧<em>A</em>)
+ ↔ (¬<em>B</em> → (¬<em>B</em>∧<em>A</em>))</td>
+ <td align="left" width="40%">Axiom schema (A4)</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">11. </td>
+ <td align="left"><em>A</em> →
+ [(<em>B</em>?;α)*][¬<em>B</em>?](¬<em>B</em>∧<em>A</em>)</td>
+ <td align="left" width="40%">from 9 and 10 using monotony of
+ [(<em>B</em>?;α)*] and propositional reasoning</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">12. </td>
+ <td align="left">[(<em>B</em>?;α)* ;
+ ¬<em>B</em>?](¬<em>B</em>∧<em>A</em>) ↔
+ [(<em>B</em>?;α)*][¬<em>B</em>?](¬<em>B</em>∧<em>A</em>)</td>
+ <td align="left" width="40%">axiom schema (A1)</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">13. </td>
+ <td align="left"><em>A</em> → [(<em>B</em>?;α)* ;
+ ¬<em>B</em>?](¬<em>B</em>∧<em>A</em>)</td>
+ <td align="left" width="40%">from 12 using propositional reasoning</td>
+ </tr>
+
+<tr valign="top">
+ <td align="left">—</td>
+ <td align="left">{<em>A</em>} <strong>while</strong> <em>B</em> <strong>do</strong>
+ α {¬<em>B</em>∧<em>A</em>}</td>
+ <td align="left" width="40%"></td>
+ </tr>
+
+ </tbody></table>
+ </blockquote>
+
+<p>In the context of PDL, the two rules of consequence are in fact
+special cases of the rule of composition. To obtain the first rule,
+substitute α<sub>1</sub> with α and α<sub>2</sub>
+with <strong>skip</strong>. To obtain the second rule, substitute
+α<sub>1</sub> with <strong>skip</strong> and α<sub>2</sub>
+with α. It suffices to apply the axiom schema (A4), and to
+remark that [α;<strong>skip</strong>]<em>A</em> ↔
+[α]<em>A</em> and [α;<strong>skip</strong>]<em>A</em>
+↔ [α]<em>A</em> are also ⊢-deducible for
+all <em>A</em> and all α.
+</p>
+
+<h3><a name="TotCor">3.3 Total correctness</a></h3>
+
+<p>
+By Hoare’s own admission in Hoare [1979], his original calculus was
+merely a starting point and suffered quite a few
+limitations. Particularly, it only allows one to reason about
+<em>partial</em> correctness. That is, the truth of a statement
+{<em>A</em>}α{<em>B</em>} only makes sure that all executions of
+α starting in a state satisfying <em>A</em> will end in a state
+satisfying <em>B</em>, <em>or will not halt</em>. That is, a partially
+correct program may have non-terminating executions. (In fact, a
+program that has no terminating execution will always be partially
+correct. This is the case for example of the program
+<strong>while</strong> 1 <strong>do</strong>
+<strong>skip</strong>. The formula <em>A</em> →
+[<strong>while</strong> 1 <strong>do</strong>
+<strong>skip</strong>]<em>B</em> is deducible for all formulas
+<em>A</em> and <em>B</em>.) The calculus offers no basis for a proof
+that a program terminates. It can be modified so as to account for
+<em>total</em> correctness of programs: partial correctness plus
+termination. It is achieved by amending the rule of iteration. We do
+not present it here and refer the interested reader to Apt [1981].</p>
+
+<p>Let us first observe that for <em>deterministic</em> programs, one
+can already capture total correctness via formulas of the kind</p>
+
+<blockquote><em>A</em> → &lt;α&gt;<em>B</em></blockquote> 
+
+<p>The expression &lt;α&gt;<em>B</em> means that there is an
+execution of α that terminates in a state that satisfies
+<em>B</em>. Moreover, if α is deterministic, this possible
+terminating execution is the unique execution of α. Thus, if one
+first manages to prove that a program is deterministic, this trick
+works well enough to prove its total correctness.</p>
+
+<p>A general solution to the problem of total correctness exists in
+the realm of PDL. But we need to extend it a little. Pratt had already
+alluded in Pratt [1980b] that PDL is not expressive enough to capture
+the infinite looping of programs. In reaction, PDL with repeating
+(RPDL) was introduced by Streett [1982]. It contains, for all programs
+α, the expression Δα standing for a new proposition
+with semantics</p>
+
+<blockquote>
+ <em>V</em>(Δα) = {<em>x</em>: there exists an
+infinite sequence <em>x</em><sub>0</sub>, <em>x</em><sub>1</sub>,
+… of states such that
+<em>x</em><sub>0</sub> = <em>x</em> and for all
+<em>n</em> ≥ 0,
+<em>x</em><sub><em>n</em></sub><em>R</em>(α)<em>x</em><sub><em>n</em>+1</sub>}
+ </blockquote>
+
+<p>Streett [1982] conjectured that RPDL can be axiomatized by adding to the
+proof system of PDL precisely the following axiom schemas.</p>
+<blockquote>
+(A6)   Δα → &lt;α&gt;Δα<br />
+
+(A7)   [α*](<em>A</em> → &lt;α&gt;<em>A</em>)
+→ (<em>A</em> → Δα)
+</blockquote>
+
+<p>The proof of the conjecture was provided in Sakalauskaite and
+Valiev [1990]. (A version of the conjecture in the variant of
+combinatory PDL was also proved in Gargov and Passy [1988].)</p>
+
+<p>It is easy to see that in the Hoare calculus presented above, non
+termination can only come from the rule of iteration. Analogously,
+non termination of a PDL program can only come from the use of the
+unbounded iteration. The expression Δα indicates that
+α* can diverge, and this is just the kind of notion we need. We
+can now inductively define a predicate ∞ such that for a program
+α, the formula ∞(α) will be true exactly when
+α can enter a non-terminating computation.</p>
+
+<blockquote>
+∞(π) := 0    where
+π ∈ Π<sub>0</sub> <br />
+
+∞(φ?) := 0 <br /> 
+
+∞(α ∪ β) := ∞(α) ∨ ∞(β)
+<br /> 
+
+∞(α ; β) := ∞(α) ∨
+&lt;α&gt; ∞(β) <br /> 
+
+∞(α*) :=
+Δα ∨ &lt;α*&gt; ∞(α) </blockquote>
+
+<p>Finally, the total correctness of a program can be expressed via
+formulas of the kind</p>
+
+<blockquote>
+<em>A</em> → (¬∞(α) ∧ [α]<em>B</em>)
+</blockquote>
+
+<p>which means literally that if <em>A</em> is the case, then the
+program α cannot run forever and every successful execution will
+end in a state satisfying <em>B</em>.</p>
+
+<h2><a name="Var">4. Some variants</a></h2>
+
+<p> Results concerning comparative power of expression, decidability,
+complexity, axiomatization and completeness of a number of variants of
+PDL obtained by extending or restricting its syntax and its semantics
+constitute the subject of a wealth of literature. We can only say so
+much and we will address just a few of these variants leaving out
+big chunks of otherwise important work in dynamic logic.</p>
+
+<h3><a name="PDLWitTes">4.1 PDL without tests</a></h3>
+
+<p>The axiom schema [<em>A</em>?]<em>B</em> ↔ (<em>A</em> →
+<em>B</em>) seems to indicate that for every formula <em>C</em>, there
+exists an equivalent test-free formula <em>C</em>′—i.e.,
+there is a test-free formula <em>C</em>′ such that
+ ⊨ <em>C</em> ↔
+<em>C</em>′. It is interesting to observe that this assertion is
+untrue. Let PDL<sub>0</sub> be the restriction of PDL to test-free
+regular programs, i.e. programs which do not contain tests. Berman and
+Paterson [1981] considered the PDL formula
+&lt;(<em>p</em>?;π)*;¬<em>p</em>?;π;<em>p</em>?&gt;1, which
+is</p>
+
+<blockquote>
+ &lt;<strong>while</strong> <em>p</em> <strong>do</strong> π&gt;&lt;π&gt;<em>p</em>
+</blockquote>
+
+<p>and proved that there is no PDL<sub>0</sub> formula equivalent to
+it. Hence, PDL has more expressive power than PDL<sub>0</sub>. Their
+argument actually can be generalized as follows. For all
+<em>n</em> ≥ 0, let PDL<sub><em>n</em>+1</sub> be the
+subset of PDL in which programs can contain tests <em>A</em>? only if
+<em>A</em> is a PDL<sub><em>n</em></sub> formula. For all
+<em>n</em> ≥ 0, Berman and Paterson considered the
+PDL<sub><em>n</em>+1</sub> formula <em>A</em><sub><em>n</em>+1</sub>
+defined by</p>
+
+<blockquote>
+ &lt;<strong>while</strong> <em>A</em><sub><em>n</em></sub>
+<strong>do</strong> π<sub><em>n</em></sub>&gt;&lt;
+π<sub><em>n</em></sub>&gt;<em>A</em><sub><em>n</em></sub>
+ </blockquote>
+
+<p>where <em>A</em><sub>0</sub> = <em>p</em> and
+π<sub>0</sub> = π and proved that for all
+<em>n</em> ≥ 0, there is no PDL<sub><em>n</em></sub>
+formula equivalent to <em>A</em><sub><em>n</em>+1</sub>. Hence, for
+all <em>n</em> ≥ 0, PDL<sub><em>n</em>+1</sub> has
+more expressive power than PDL<sub><em>n</em></sub>.</p>
+
+<h3><a name="PDLCon">4.2 PDL with converse</a></h3>
+
+<p>CPDL is the extension of PDL with converse. It is a construct that
+has been considered since the beginning of PDL. For all programs
+α, let α<sup>-1</sup> stand for a new program with
+semantics</p>
+
+<blockquote>
+ <em>x</em><em>R</em>(α<sup>-1</sup>)<em>y</em> iff
+<em>y</em><em>R</em>(α)<em>x</em>.
+ </blockquote>
+
+<p>The converse construct allows us to express facts about states
+preceding the current one and to reason backward about programs. For
+instance, [α<sup>-1</sup>]<em>A</em> means that before executing
+α, <em>A</em> had to hold.
+<!-- The expression
+&lt;&alpha;<sup>-1</sup>&gt;<em>A</em> can also be interpreted as
+the <em>strongest post-condition</em> to hold after the termination of
+a program &alpha; started in a world satisfying <em>A</em>.--> 
+We have</p>
+
+<blockquote>
+ ⊨
+ <em>A</em> → [α]&lt;α<sup>-1</sup>&gt;<em>A</em>, 
+ <br />
+ ⊨
+ <em>A</em> → [α<sup>-1</sup>]&lt;α&gt;<em>A</em>. 
+ </blockquote>
+
+<p>The addition of the converse construct does not change the
+properties of PDL in any significant way. By adding every instance of
+the following axiom schemas:</p>
+
+<blockquote>
+
+(A8)   <em>A</em> →
+[α]&lt;α<sup>-1</sup>&gt;<em>A</em><br />
+
+(A9)   <em>A</em> →
+[α<sup>-1</sup>]&lt;α&gt;<em>A</em>
+
+</blockquote>
+
+<p>to the proof system of PDL, we obtain a sound and complete
+deducibility predicate in the extended language. See Parikh [1978]
+for details. CPDL has the small model property and (CPDL-SAT) is
+EXPTIME-complete.</p>
+
+<p>It is easy to remark that CPDL has more expressive power than PDL. To see this,
+consider the CPDL formula &lt;π<sup>-1</sup>&gt;1 and the LTSs
+<em>M</em> = (<em>W</em>, <em>R</em>, <em>V</em>)
+and
+<em>M</em>′ = (<em>W</em>′, <em>R</em>′, <em>V</em>′)
+where <em>W</em> = {<em>x</em>,<em>y</em>},
+<em>R</em>(π) = {(<em>x</em>,<em>y</em>)},
+<em>W</em>′ = {<em>y</em>′},
+<em>R</em>′(π) = ∅
+ and <em>V</em>(<em>x</em>) = <em>V</em>(<em>y</em>)
+ = <em>V</em>′(<em>y</em>′) =
+ ∅. Since <em>M</em>, <em>y</em> sat &lt;π<sup>-1</sup>&gt;1,
+ not <em>M</em>′, <em>y</em>′ sat
+ &lt;π<sup>-1</sup>&gt;1, and because for all PDL
+ formulas <em>A</em> it is the case that
+<em>M</em>, <em>y</em> sat <em>A</em> iff <em>M</em>′,
+<em>y</em>′ sat <em>A</em>, then it is clear that no PDL formula is
+equivalent to &lt;π<sup>-1</sup>&gt;1.</p>
+
+<h3><a name="PDLInfCycRep">4.3 PDL with repeating and looping</a></h3>
+
+<p>We have already exposed the power of repeating in
+<a href="#TotCor">section 3.3</a> by introducing RPDL. Here, we
+summarize more results about RPDL and its connection with other
+variations on the notion of repeating programs.</p>
+
+<p>Concerning the complexity theory of RPDL, Streett [1982] had
+already established that RPDL had the finite model property; precisely
+that every RPDL satisfiable formula <em>A</em> is satisfiable in
+a model of size at most triply exponential in the length
+of <em>A</em>. An automata-theoretic argument permitted to conclude
+that the problem (RPDL-SAT) can be solved in deterministic triple
+exponential time (3-EXPTIME). The gap between this upper bound for
+deciding (RPDL-SAT) and the simple exponential-time lower bound for
+deciding (PDL-SAT) was thus open. The problem found itself greatly
+connected to the growing interest of computer scientists in
+establishing the complexity of temporal logics, and more specifically
+of the (propositional) modal μ-calculus (MMC) due to Kozen [1983],
+because RPDL has a linear blow-up translation to MMC. Moreover,
+Streett’s argument somewhat set a precedent in the now pervasive use
+of automata techniques in proving computational properties of logics
+of programs and of temporal logics. In Vardi and Stockmeyer [1985], an
+upper bound in non-deterministic exponential time was shown. In
+Emerson and Jutla [1988] and in its final form in Emerson and Jutla
+[1999], it was shown that (MMC-SAT) and (RPDL-SAT) are
+EXPTIME-complete. If we add the converse operator
+of <a href="#PDLCon">section 4.2</a> one obtains CRPDL. The complexity
+of (CRPDL-SAT) remained open for a few years but it can be shown to be
+EXPTIME-complete, too. This is achieved by combining the techniques of
+Emerson and Jutla [1988] and Vardi [1985], as in Vardi [1998].</p>
+
+<p>In <a href="#TotCor">section 3.3</a> we have defined a predicate
+∞, where ∞(α) means that α can have
+non-terminating computation. We call LPDL the logic obtained by
+augmenting PDL with the predicate ∞. Clearly, RPDL is at least
+as expressive as LPDL; The inductive definition of ∞(α) in
+the language of RPDL is witness of it. RPDL is in fact strictly more
+expressive than LPDL. This was shown in Harel and Sherman [1982].
+
+As it can be suspected, both RPDL and LPDL have more expressive power
+than PDL. It is established by proving that some formulas of RPDL and
+of LPDL have no equivalent expression in PDL.
+
+The proof involves the technique of <em>filtration</em> which is
+designed to collapse an LTS to a finite model while leaving invariant
+the truth or falsity of certain formulas. For some set of PDL
+formulas <em>X</em>, it consists in grouping into equivalence classes
+the states of an LTS that satisfy exactly the same formulas
+in <em>X</em>. The set of equivalence classes of states thus obtained
+becomes the set of states of the filtrate model, and a transition is built
+appropriately over them.</p>
+
+<p>
+With a carefully chosen set FL(<em>A</em>) that depends on a
+PDL formula <em>A</em> (the so-called Fischer-Ladner closure of the
+set of sub-formulas of <em>A</em>), a filtration of an LTS <em>M</em>
+yields a finite filtrate <em>M</em>′, such that <em>A</em> is
+satisfiable at a world <em>u</em> in <em>M</em> if and only if it is
+satisfiable in the equivalence class containing <em>u</em> in the
+filtrate. (See Fischer and Ladner [1979].)
+</p>
+
+<p>We can now consider the filtrations of the
+LTS <em>M</em> = (<em>W</em>, <em>R</em>,<em>V</em>)
+where</p>
+
+<ul>
+
+<li><em>W</em> = {(<em>i</em>,<em>j</em>) : <em>j</em> and <em>i</em>
+positive integers, 0 ≤ <em>j</em> ≤ <em>i</em>} ∪ { u
+}</li>
+
+<li>(<em>i</em>,<em>j</em>)<em>R</em>(π)(<em>i</em>,<em>j</em>-1)
+when 1 ≤ <em>j</em> ≤ <em>i</em></li>
+
+<li><em>u</em><em>R</em>(π)(<em>i</em>,<em>i</em>) for every <em>i</em></li>
+
+<li><em>V</em>(<em>p</em>) = ∅ for every <em>p</em> ∈
+Φ<sub>0</sub></li>
+
+</ul>
+
+<p>In one sentence, what goes on in <em>M</em> is that from the
+world <em>u</em>, there is an infinite number of finite π-paths of
+growing length. We have both <em>M</em>, <em>u</em> sat
+¬Δπ and <em>M</em>, <em>u</em> sat
+¬∞(π*). Yet, for every PDL formula <em>A</em>, we
+will have both Δπ and ∞(π*) that are satisfied at
+the equivalence class of <em>u</em> in the model obtained by
+filtration of <em>M</em> with FL(<em>A</em>). Indeed, the filtration
+must collapse some states of <em>M</em> and create some loops. Thus,
+there exists no PDL formula that can express either Δπ or
+∞(π*).
+
+and yet, we will have both Δπ and ∞(π*) that are
+satisfied at the equivalence class of <em>u</em> in any finite
+filtrate of <em>M</em>. Thus, neither Δπ nor ∞(π*)
+can be expressed in PDL.</p>
+
+<p>There are other ways of making possible the assertion that a
+program can execute forever. For instance, Danecki [1984a] proposed a
+predicate <strong>sloop</strong> to qualify programs that can enter in
+strong loops, that is:</p>
+
+<blockquote>
+<em>V</em>(<strong>sloop</strong>(α)) = {<em>x</em>:
+<em>x</em><em>R</em>(α)<em>x</em>}
+</blockquote>
+
+<p>Let us call SLPDL the logic obtained by augmenting PDL
+with <strong>sloop</strong>(α). RPDL and SLPDL are essentially
+incomparable: the predicate Δ is not definable in SLPDL, and the
+predicate <strong>sloop</strong> is not definable in RPDL. SLPDL does
+not possess the finite model property. For example, the formula</p>
+
+<blockquote>
+ [π*](&lt;π&gt;1
+ ∧
+ ¬<strong>sloop</strong>(π<sup>+</sup>))
+</blockquote>
+
+<p>is satisfiable in infinite LTSs only. Nonetheless, Danecki [1984a]
+established the decidability of (SLPDL-SAT) formulas in
+deterministic exponential time.</p>
+
+<h3><a name="PDLInt">4.4 PDL with intersection</a></h3>
+
+<p> Another construct has been studied: the intersection of programs.
+By adding intersection of programs to PDL, we obtain the logic
+IPDL. In IPDL, for all programs α, β, the expression
+α∩β stands for a new program with semantics</p>
+
+<blockquote>
+ <em>x</em><em>R</em>(α∩β)<em>y</em> iff
+<em>x</em><em>R</em>(α)<em>y</em> and
+<em>x</em><em>R</em>(β)<em>y</em>
+ </blockquote>
+
+<p>For instance, the intended reading of
+&lt;α∩β&gt;<em>A</em> is that if we execute α and
+β in the present state then there exists a state reachable by
+both programs which satisfies <em>A</em>. As a result, we have</p>
+
+<blockquote>
+ ⊨
+ &lt;α∩β&gt;<em>A</em> → &lt;α&gt;<em>A</em>
+ ∧
+ &lt;β&gt;<em>A</em>
+ </blockquote>
+
+<p>but, in general, we have</p>
+
+<blockquote>not
+ ⊨
+ &lt;α&gt;<em>A</em>
+ ∧
+ &lt;β&gt;<em>A</em> → &lt;α∩β&gt;<em>A</em>
+ </blockquote>
+
+<p>Although intersection of programs plays an important role in
+various applications of PDL to artificial intelligence and computer
+science, the proof theory and the complexity theory of PDL with
+intersection remained unexplored for several years. Concerning the
+complexity theory of IPDL, difficulties appear when one considers the
+finite model property.
+
+In fact the construct <strong>sloop</strong>(α) can be
+expressed in IPDL. In propositional dynamic logic with intersection it is
+equivalent to &lt;α∩1?&gt;1. We can thus adapt the formula of  
+IPDL of <a href="#TotCor">section 4.3</a>, and we have that</p>
+
+<blockquote>
+ [π*](&lt;π&gt;1
+ ∧
+ [π<sup>+</sup>∩1?]0)
+ </blockquote>
+
+<p>is satisfiable in infinite LTSs only. In other words, IPDL does not
+possess the finite model property. Danecki [1984b] investigated the
+complexity theory of IPDL and showed that deciding (IPDL-SAT) can be
+done in deterministic double exponential time. (A modern proof
+is presented in Göller, Lohrey and Lutz [2007].) The complexity
+gap between this double exponential-time upper bound for deciding
+(IPDL-SAT) and the simple exponential-time lower bound for deciding
+(PDL-SAT) obtained by Fischer and Ladner [1979] remained open for more
+than twenty years. In 2004, Lange [2005] established the lower bound
+of exponential space of (IPDL-SAT). In 2006, Lange and Lutz [2005]
+gave a proof of a double exponential-time lower bound of the
+satisfiability problem for IPDL without tests by a reduction from the
+word problem of exponentially space-bounded alternating Turing
+machines. In this reduction, the role of the iteration construct is
+essential since, according to Massacci [2001], the satisfiability
+problem for iteration-free IPDL without tests is only
+PSPACE-complete. Adding the converse construct to IPDL, we obtain
+ICPDL. The satisfiability problem of ICPDL has been proved to be
+2-EXPTIME-complete by Göller, Lohrey and Lutz [2007].</p>
+
+<p>Concerning the proof theory of IPDL, difficulties appear when we
+realize that no axiom schema, in the language of PDL with
+intersection, “corresponds” to the semantics
+ <em>x</em><em>R</em>(α∩β)<em>y</em> iff
+<em>x</em><em>R</em>(α)<em>y</em> and
+<em>x</em><em>R</em>(β)<em>y</em> of the program
+α∩β. That is, not in the same way for example, that the
+axiom schemas (A1) and (A2) respectively “correspond” to
+the semantics of the programs α;β and
+α∪β.  For this reason, the axiomatization of PDL with
+intersection was open until the complete proof system developed in
+Balbiani and Vakarelov [2003].</p>
+
+<p>In another variant of PDL, due to Peleg [1987] and further studied
+by Goldblatt [1992b], the expression α∩β is interpreted
+“do α and β in parallel”. In this context, the
+binary relations <em>R</em>(α) and <em>R</em>(β) are no
+longer sets of pairs of the form (<em>x</em>,<em>y</em>) with
+<em>x</em>, <em>y</em> worlds, but rather sets of pairs of the form
+(<em>x</em>,<em>Y</em>) with <em>x</em> a world and <em>Y</em> a set
+of worlds. It was inspired by the Game Logic of Parikh [1985], an
+intepretation of PDL with “programs as games”. Game Logic
+provides an additional program construct that dualizes programs, thus
+permitting to define the intersection of programs as the dual of the
+non-deterministic choice between programs.</p>
+
+<h2><a name="Con">5. Conclusion</a></h2>
+
+<p>This article has focused on propositional dynamic logic and some of
+its significant variants.
+
+There are by now a number of books—Goldblatt [1982], Goldblatt
+[1992a], Harel [1979] and Harel, Kozen and Tiuryn [2000]—and
+survey papers—Harel [1984], Kozen and Tiuryn [1990], Parikh
+[1983] —treating PDL and related formalisms.
+
+The body of research on PDL is certainly instrumental in developing
+many logical theories of system dynamics. However, these theories are arguably out
+of the scope of the present article.
+
+Van Eijck and Stokhof [2006] is a more recent overview of topics
+making use of dynamic logic, addressing various themes that are of
+certain interest for philosophers: e.g., dynamics of communication, or
+natural language semantics.
+
+Recent books are going in much details on newer topics, such as
+dynamic logic of knowledge (dynamic epistemic logic) in Van Ditmarsch,
+Van Der Hoek and Kooi [2007], and the dynamic logic of continuous and
+hybrid systems (differential dynamic logic) in Platzer [2010].
+
+PDL was conceived primarily for reasoning about programs. There are
+many other applications of modal logic to reasoning about
+programs. Algorithmic logic is closer to PDL since it allows one to
+talk explicitly about programs. The reader is invited to consult the
+work studied in Mirkowska and Salwicki [1987]. Temporal logics are now
+the chief logics in theoretical computer science and have a close
+connection with logics of programs. They allow one to express the
+temporal behavior of transition systems with a language that abstracts
+away from the labels (hence the programs). See for instance Schneider
+[2004] for an overview of the foundations in this research area.</p>
+
+</div>
+
+<div id="bibliography">
+
+<h2><a name="Bib">Bibliography</a></h2>
+
+<ul class="hanging">
+
+<li>Apt, K., 1981, “Ten years of Hoare’s logic: A survey
+— Part I”, <em>ACM Transactions on Programming Languages
+and Systems</em>, 3(4): 431–483.</li>
+
+<li>Balbiani, P., and D. Vakarelov, 2003, “PDL with intersection of
+programs: a complete axiomatization”, <em>Journal of Applied
+Non-Classical Logics</em>, 13: 231-276.</li>
+
+<li>van Benthem, J., 1998, “Program constructions that are safe
+for bisimulation”, <em>Studia Logica</em>, 60:
+311–330.</li>
+
+<li>Berman, F., and M. Paterson, 1981, “Propositional dynamic logic is
+weaker without tests”, <em>Theoretical Computer Science</em>, 16:
+321–328.</li>
+
+<li>Burstall, R., 1974, “Program Proving as Hand Simulation with
+a Little Induction”, <em>Information Processing 74: Proceedings
+of IFIP Congress 74</em>, Amsterdam: North Holland Publishing Company,
+308–312.</li>
+
+<li>Danecki, R., 1984a, “Propositional dynamic logic with strong loop
+predicate”, in M. Chytil and V. Koubek, <em>Mathematical Foundations of
+Computer Science</em>, Berlin: Springer-Verlag, 573-581.</li>
+
+<li>–––, 1984b, “Nondeterministic propositional
+dynamic logic with intersection is decidable”, in A. Skowron (ed.),
+<em>Computation Theory</em>, Berlin: Springer-Verlag, 34-53.</li>
+
+<!--
+<li>De Giacomo, G., 1996, &ldquo;Eliminating &lsquo;converse&rsquo; from
+converse PDL&rdquo;, <em>Journal of Logic, Language and Information</em>, 5:
+193&ndash;208.</li>
+-->
+
+<li>De Giacomo, G., and F. Massacci, 2000, “Combining deduction and
+model checking into tableaux and algorithms for converse-PDL”,
+<em>Information and Computation</em>, 160: 109–169.</li>
+
+<li>van Ditmarsch, H., W. van Der Hoek, and B. Kooi, 2007, <em>Dynamic
+epistemic logic</em>, Dordrecht: Springer-Verlag.</li>
+
+<li>van Eijck, J., and M. Stokhof, 2006, “The Gamut of Dynamic
+Logics”, in D. Gabbay and J. Woods (eds.), <em>The Handbook of
+History of Logic</em>, Volume 7—<em>Logic and the Modalities in
+the Twentieth Century</em>, Amsterdam: Elsevier, 499–600.</li>
+
+<li>Emerson, E., and Jutla, C., 1988, “The Complexity of Tree
+Automata and Logics of Programs (Extended Abstract)”,
+in <em>Proceedings of the 29th Annual Symposium on Foundations of
+Computer Science</em>, Los Alamitos, CA: IEEE Computer Society, 328–337.</li>
+
+<li>–––, 1999, “The Complexity of Tree
+Automata and Logics of Programs”, in <em>SIAM Journal of
+Computing</em>, 29: 132–158.</li>
+
+<li>Engeler, E., 1967, “Algorithmic properties of
+structures”, <em>Mathematical Systems Theory</em>,
+1: 183–195.</li>
+
+<li>Fischer, M., and R. Ladner, 1979, “Propositional dynamic
+logic of regular programs”, <em>Journal of Computer and System
+Sciences</em>, 18: 194–211.</li>
+
+<li>Floyd, R., 1967, “Assigning meaning to programs”,
+<em>Proceedings of the American Mathematical Society Symposia on
+Applied Mathematics</em> (Volume 19), Providence, RI:
+American Mathematical Society, 19–31.</li>
+
+<li>Gargov, G., and S. Passy, 1988, “Determinism and looping in
+combinatory PDL”, <em>Theoretical Computer Science</em>,
+Amsterdam: Elsevier, 259–277.</li>
+
+<li>Goldblatt, R., 1982, <em>Axiomatising the Logic of Computer
+Programming</em>, Berlin: Springer-Verlag.</li>
+
+<li>–––, 1992a, <em>Logics of Time and
+Computation</em>, Stanford: Center for the Study of Language and
+Information Publications.</li>
+
+<li>–––, 1992b, “Parallel Action: Concurrent
+Dynamic Logic with Independent Modalities”, <em>Studia
+Logica</em>, 51: 551–578.</li>
+
+<li>Göller, S., M. Lohrey, and C. Lutz, 2007, “PDL with
+intersection and converse is 2EXP-complete”, <em>Foundations of
+Software Science and Computational Structures</em>, Berlin: Springer,
+198–212.</li>
+
+<li>Harel, D., 1979, <em>First-Order Dynamic Logic</em>, Berlin:
+Springer-Verlag.</li>
+
+<li>–––, 1983, “Recurring dominoes: making the
+highly undecidable highly understandable”, in M. Karpinski (ed.),
+<em>Foundations of Computation Theory</em>, Berlin: Springer-Verlag,
+177–194.</li>
+
+<li>–––, 1984, “Dynamic logic”, in
+D. Gabbay and F. Guenthner (eds.), <em>Handbook of Philosophical
+Logic</em> (Volume II), Dordrecht: D. Reidel, 497–604.</li>
+
+<li>Harel, D., D. Kozen, and J. Tiuryn, 2000, <em>Dynamic Logic</em>,
+Cambridge, MA: MIT Press.</li>
+
+<li>Harel, D. and Sherman, R., 1982, “Looping vs. Repeating in
+Dynamic Logic”, <em>Information and Control</em>, 55:
+175–192.</li>
+
+<li>Hoare, C., 1969, “An axiomatic basis for computer
+programming”, <em>Communications of the Association of Computing
+Machinery</em>, 12: 576–580.</li>
+
+<li>Kozen, D., 1983, “Results on the Propositional
+μ-Calculus”, <em>Theoretical Computer Science</em>, 27:
+333–354.</li>
+
+<li>Kozen, D., and R. Parikh, 1981, “An elementary proof of the
+completeness of PDL”, <em>Theoretical Computer Science</em>, 14:
+113–118.</li>
+
+<li>Kozen, D., and J. Tiuryn, 1990, “Logics of programs”,
+in J.  Van Leeuwen (ed.), <em>Handbook of Theoretical Computer
+Science</em> (Volume B), Amsterdam: Elsevier, 789–840.</li>
+
+<li>Lange, M., 2005, “A lower complexity bound for propositional
+dynamic logic with intersection”, in R. Schmidt, I.  Pratt-Hartmann,
+M. Reynolds and H. Wansing (eds.), <em>Advances in Modal Logic</em>
+(Volume 5), London: King’s College Publications, 133–147.</li>
+
+<li>Lange, M., and C. Lutz, 2005, “2-EXPTIME lower bounds for
+propositional dynamic logics with intersection”, <em>Journal of
+Symbolic Logic</em>, 70: 1072–1086.</li>
+
+<li>Lutz, C., 2005, “PDL with intersection and converse is
+decidable”. In L. Ong (ed.), <em>Computer Science
+Logic</em>, Berlin: Springer-Verlag, 413-427.</li>
+
+<li>Massacci, F., 2001, “Decision procedures for expressive
+description logics with intersection, composition, converse of roles
+and role identity”, in B. Nebel (ed.), <em>17th International Joint
+Conference on Artificial Intelligence</em>, San Francisco: Morgan
+Kaufmann, 193–198.</li>
+
+<li>Mirkowska, G., and A. Salwicki, 1987, <em>Algorithmic Logic</em>,
+Dordrecht: D. Reidel.</li>
+
+<li>Nishimura, H., 1979, “Sequential method in propositional dynamic
+logic”, <em>Acta Informatica</em>, 12: 377–400.</li>
+
+<li>Parikh, R., 1978, “The completeness of propositional dynamic
+logic”, in J. Winkowski (ed.), <em>Mathematical Foundations of
+Computer Science</em>, Berlin: Springer-Verlag, 1978, 403-415.</li>
+
+<li>–––, 1983, “Propositional logics of programs: new
+directions”, in M. Karpinski (ed.), <em>Foundations of Computation
+Theory</em>, Berlin: Springer-Verlag, 347-359.</li>
+
+<li>–––, 1985, “The logic of games and its
+applications”, <em>Annals of Discrete Mathematics</em>, 24:
+111–140.</li>
+
+<li>Peleg, D., 1987, “Concurrent dynamic
+logic”, <em>Journal of the Association of Computing
+Machinery</em>, 34: 450–479.</li>
+
+<li>Platzer, A., 2010, <em>Logical Analysis of Hybrid Systems: Proving
+Theorems for Complex Dynamics</em>, Berlin: Springer, 2010.</li>
+
+<li>Pratt, V., 1976, “Semantical considerations on Floyd-Hoare
+logic”, in <em>Proceedings of the 17th IEEE Symposium on
+Foundations of Computer Science</em>, Los Alamitos, CA: IEEE Computer Society,
+109–121.</li>
+
+<li>–––, 1978, “A practical decision method
+for propositional dynamic logic”, in <em>Proceedings of the 10th
+Annual ACM Symposium on Theory of Computing</em>, New York, NY: ACM, 326–337.</li>
+
+<li>–––, 1980a, “A near-optimal method for reasoning
+about action”, <em>Journal of Computer and System Sciences</em>, 20:
+231–254.</li>
+
+<li>–––, 1980b, “Application of Modal Logic to
+Programming”, <em>Studia Logica</em>, 39: 257–274.</li>
+
+<li>Sakalauskaite, J., and M. Valiev, 1990, “Completeness of
+propositional dynamic logic with infinite repeating”, in P. Petkov
+(ed.), <em>Mathematical Logic</em>, New York: Plenum Press,
+339–349.</li>
+
+<li>Salwicki, A., 1970, “Formalized algorithmic languages”,
+<em>Bulletin de l’Academie Polonaise des Sciences,
+Serie des sciences mathematiques, astronomiques et physiques</em>,
+18: 227–232.</li>
+
+<li>Segerberg, K., 1977, “A completeness theorem in the modal logic of
+programs”, <em>Notices of the American Mathematical Society</em>, 24:
+522.</li>
+
+<li>Schneider, K., 2004, <em>Verification of Reactive Systems</em>,
+Berlin: Springer-Verlag.</li>
+
+<li>Streett, R., 1982, “Propositional dynamic logic of looping and
+converse is elementary decidable”, <em>Information and Control</em>,
+54: 121–141.</li>
+
+<li>Vakarelov, D., 1983, “Filtration theorem for dynamic algebras with
+tests and inverse operator”, in A. Salwicki (ed.), <em>Logics of
+Programs and their Applications</em>, Berlin: Springer-Verlag,
+314–324.</li>
+
+<li>Vardi, M., 1985, “The Taming of Converse: Reasoning about
+Two-way Computations”, in <em>Lecture Notes in Computer
+Science</em> (Volume 193), Berlin-Heidelberg: Springer, 413–423.</li>
+
+<li>–––, 1998, “Reasoning about the past with
+two-way automata”, in <em>Lecture Notes in Computer Science</em>
+(Volume 1443), Berlin-Heidelberg: Springer, 628–641.</li>
+
+<li>Vardi, M., and Stockmeyer, L., 1985, “Improved Upper and
+Lower Bounds for Modal Logics of Programs: Preliminary Report”,
+in <em>Proceedings of the 17th Annual ACM Symposium on Theory of
+Computing</em>, New York, NY: ACM, 240–251.</li>
+
+<li>Yanov, J., 1959, “On equivalence of operator schemes”,
+<em>Problems of Cybernetic</em>, 1: 1–100.</li>
+
+</ul>
+
+</div>
+
+<div id="academic-tools">
+
+<h2 id="Aca">Academic Tools</h2>
+
+<blockquote>
+<table class="vert-top">
+<tbody><tr>
+<td><img src="../../symbols/sepman-icon.jpg" alt="sep man icon" /></td>
+<td><a href="https://plato.stanford.edu/cgi-bin/encyclopedia/archinfo.cgi?entry=logic-dynamic&amp;archive=win2019" target="other">How to cite this entry</a>.</td>
+</tr>
+
+<tr>
+<td><img src="../../symbols/sepman-icon.jpg" alt="sep man icon" /></td>
+<td><a href="https://leibniz.stanford.edu/friends/preview/logic-dynamic/" target="other">Preview the PDF version of this entry</a> at the
+ <a href="https://leibniz.stanford.edu/friends/" target="other">Friends of the SEP Society</a>.</td>
+</tr>
+
+<tr>
+<td><img src="../../symbols/inpho.png" alt="inpho icon" /></td>
+<td><a href="https://www.inphoproject.org/entity?sep=logic-dynamic&amp;redirect=True" target="other">Look up this entry topic</a>
+ at the <a href="https://www.inphoproject.org/" target="other">Indiana Philosophy Ontology Project</a>
+ (InPhO).</td>
+</tr>
+
+<tr>
+<td><img src="../../symbols/pp.gif" alt="phil papers icon" /></td>
+<td><a href="http://philpapers.org/sep/logic-dynamic/" target="other">Enhanced bibliography for this entry</a>
+at <a href="http://philpapers.org/" target="other">PhilPapers</a>, with links to its database.</td>
+</tr>
+
+</tbody></table>
+</blockquote>
+
+
+</div>
+
+
+<div id="other-internet-resources">
+
+<h2><a name="Oth">Other Internet Resources</a></h2>
+
+<p>[Please contact the author with suggestions.]</p>
+
+</div>
+
+<div id="related-entries">
+
+<h2><a name="Rel">Related Entries</a></h2>
+
+<p>
+
+ <a href="../computability/">computability and complexity</a> |
+ <a href="../computer-science/">computer science, philosophy of</a> |
+ <a href="../logic-action/">logic: action</a> |
+ <a href="../logic-information/">logic: and information</a> |
+ <a href="../logic-modal/">logic: modal</a> |
+ <a href="../logic-temporal/">logic: temporal</a>
+
+</p>
+
+</div>
+
+</div><!-- #aueditable --><!--DO NOT MODIFY THIS LINE AND BELOW-->
+
+<!-- END ARTICLE HTML -->
+
+</div> <!-- End article-content -->
+
+  <div id="article-copyright">
+    <p>
+ <a href="../../info.html#c">Copyright © 2019</a> by
+
+<br />
+<a href="http://www.inf.unibz.it/~ntroquard/" target="other">Nicolas Troquard</a>
+&lt;<a href="mailto:ntroquard%40unibz%2eit"><em>ntroquard<abbr title=" at ">@</abbr>unibz<abbr title=" dot ">.</abbr>it</em></a>&gt;<br />
+<a href="http://www.irit.fr/~Philippe.Balbiani/" target="other">Philippe Balbiani</a>
+
+    </p>
+  </div>
+
+</div> <!-- End article -->
+
+<!-- NOTE: article banner is outside of the id="article" div. -->
+<div id="article-banner" class="scroll-block">
+     <div id="article-banner-content">
+  <a href="../../fundraising/">
+  Open access to the SEP is made possible by a world-wide funding initiative.<br />
+  Please Read How You Can Help Keep the Encyclopedia Free</a>
+ </div>
+
+
+</div> <!-- End article-banner -->
+
+    </div> <!-- End content -->
+
+    <div id="footer">
+
+      <div id="footer-menu">
+        <div class="menu-block">
+          <h4><i class="icon-book"></i> Browse</h4>
+          <ul role="menu">
+            <li><a href="../../contents.html">Table of Contents</a></li>
+            <li><a href="../../new.html">New in this Archive</a></li>
+            
+            <li><a href="../../published.html">Chronological</a></li>
+            <li><a href="../../../../archives/">Archives <i class="icon-external-link"></i></a></li>
+          </ul>
+        </div>
+        <div class="menu-block">
+          <h4><i class="icon-info-sign"></i> About</h4>
+          <ul role="menu">
+            <li><a href="../../info.html">Editorial Information</a></li>
+            <li><a href="../../about.html">About the SEP</a></li>
+            <li><a href="../../board.html">Editorial Board</a></li>
+            <li><a href="../../cite.html">How to Cite the SEP</a></li>
+            <li><a href="../../special-characters.html">Special Characters</a></li>
+            
+            <li><a href="../../../../contact.html">Contact <i class="icon-external-link"></i></a></li>
+          </ul>
+        </div>
+        <div class="menu-block">
+          <h4><i class="icon-leaf"></i> Support SEP</h4>
+          <ul role="menu">
+            <li><a href="../../../../support/">Support the SEP</a></li>
+            <li><a href="../../../../support/friends.html">PDFs for SEP Friends</a></li>
+            <li><a href="../../../../support/donate.html">Make a Donation</a></li>
+            <li><a href="../../../../support/sepia.html">SEPIA for Libraries</a></li>
+          </ul>
+        </div>
+      </div> <!-- End footer menu -->
+
+      <div id="mirrors">
+        <div id="mirror-info">
+          <h4><i class="icon-globe"></i> Mirror Sites</h4>
+          <p>View this site from another server:</p>
+        </div>
+                <div class="btn-group">
+<a class="btn dropdown-toggle" data-toggle="dropdown" href="https://plato.stanford.edu/"><span class="flag flag-usa"></span> USA (Main Site) <span class="caret"></span><span class="mirror-source">CSLI, Stanford University</span></a>          <ul class="dropdown-menu">
+            <li><a href="https://stanford.library.sydney.edu.au/archives/win2019/entries/logic-dynamic/"><span class="flag flag-australia"></span> Australia <span class="mirror-source">Library, University of Sydney</span></a>           </li>
+            <li><a href="https://seop.illc.uva.nl/archives/win2019/entries/logic-dynamic/"><span class="flag flag-netherlands"></span> Netherlands <span class="mirror-source">ILLC, University of Amsterdam</span></a>           </li>
+          </ul>
+        </div>
+      </div> <!-- End mirrors -->
+      
+      <div id="site-credits">
+        <p class="csli-logo"><a href="https://www-csli.stanford.edu/"><img src="../../symbols/SU_csli.png" width="355" alt="Stanford Center for the Study of Language and Information" /></a></p>
+        <p>The Stanford Encyclopedia of Philosophy is <a href="../../info.html#c">copyright © 2016</a> by <a href="http://mally.stanford.edu/">The Metaphysics Research Lab</a>, Center for the Study of Language and Information (CSLI), Stanford University</p>
+        <p>Library of Congress Catalog Data: ISSN 1095-5054</p>
+      </div> <!-- End site credits -->
+
+    </div> <!-- End footer -->
+
+  </div> <!-- End container -->
+
+   <!-- NOTE: Script required for drop-down button to work (mirrors). -->
+  <script>
+    $('.dropdown-toggle').dropdown();
+  </script>
+
+
+
+
+
+</body></html>

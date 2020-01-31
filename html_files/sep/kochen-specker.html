@@ -1,0 +1,2326 @@
+<!DOCTYPE html><!--[if lt IE 7]> <html class="ie6 ie"> <![endif]--><!--[if IE 7]>    <html class="ie7 ie"> <![endif]--><!--[if IE 8]>    <html class="ie8 ie"> <![endif]--><!--[if IE 9]>    <html class="ie9 ie"> <![endif]--><!--[if !IE]> --><html xmlns="http://www.w3.org/1999/xhtml"><!-- <![endif]--><head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>
+The Kochen-Specker Theorem (Stanford Encyclopedia of Philosophy/Winter 2019 Edition)
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="noarchive, noodp" />
+<meta property="citation_title" content="The Kochen-Specker Theorem" />
+<meta property="citation_author" content="Held, Carsten" />
+<meta property="citation_publication_date" content="2000/09/11" />
+<meta name="DC.title" content="The Kochen-Specker Theorem" />
+<meta name="DC.creator" content="Held, Carsten" />
+<meta name="DCTERMS.issued" content="2000-09-11" />
+<meta name="DCTERMS.modified" content="2018-02-07" />
+
+<!-- NOTE: Import webfonts using this link: -->
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,200&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" media="screen,handheld" href="../../css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" media="screen,handheld" href="../../css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css" />
+<!--[if IE 7]> <link rel="stylesheet" type="text/css" href="../../css/font-awesome-ie7.min.css"> <![endif]-->
+<link rel="stylesheet" type="text/css" media="screen,handheld" href="../../css/style.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../../css/print.css" />
+<link rel="stylesheet" type="text/css" href="../../css/entry.css" />
+<!--[if IE]> <link rel="stylesheet" type="text/css" href="../../css/ie.css" /> <![endif]-->
+<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+
+<!-- NOTE: Javascript for sticky behavior needed on article and ToC pages -->
+<script type="text/javascript" src="../../js/jquery-scrolltofixed-min.js"></script>
+<script type="text/javascript" src="../../js/entry.js"></script>
+
+<!-- SEP custom script -->
+<script type="text/javascript" src="../../js/sep.js"></script>
+</head>
+
+<!-- NOTE: The nojs class is removed from the page if javascript is enabled. Otherwise, it drives the display when there is no javascript. -->
+<body class="archive article" id="pagetopright">
+<div id="container">
+<div id="header-wrapper">
+  <div id="header">
+    <div id="branding">
+      <div id="site-logo"><a href="../../index.html"><img src="../../symbols/sep-man-red.png" alt="SEP logo" /></a></div>
+      <div id="site-title"><a href="../../index.html">Stanford Encyclopedia of Philosophy Archive<div id="site-subtitle">Winter 2019 Edition</div></a></div>
+    </div>
+    <div id="navigation">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <button class="btn btn-navbar collapsed" data-target=".collapse-main-menu" data-toggle="collapse" type="button"> <i class="icon-reorder"></i> Menu </button>
+            <div class="nav-collapse collapse-main-menu collapse">
+              <ul class="nav">
+                <li class="dropdown"><a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-book"></i> Browse</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                    <li><a href="../../contents.html">Table of Contents</a></li>
+                    <li><a href="../../new.html">New in this Archive</a></li>
+                    
+                    <li><a href="../../published.html">Chronological</a></li>
+                    <li><a href="../../../../archives/">Archives <i class="icon-external-link"></i></a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a id="drop2" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-info-sign"></i> About</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                    <li><a href="../../info.html">Editorial Information</a></li>
+                    <li><a href="../../about.html">About the SEP</a></li>
+                    <li><a href="../../board.html">Editorial Board</a></li>
+                    <li><a href="../../cite.html">How to Cite the SEP</a></li>
+                    <li><a href="../../special-characters.html">Special Characters</a></li>
+                    
+                    <li><a href="../../../../contact.html">Contact <i class="icon-external-link"></i></a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a id="drop3" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-leaf"></i> Support SEP</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                    <li><a href="../../../../support/">Support the SEP</a></li>
+                    <li><a href="../../../../support/friends.html">PDFs for SEP Friends</a></li>
+                    <li><a href="../../../../support/donate.html">Make a Donation</a></li>
+                    <li><a href="../../../../support/sepia.html">SEPIA for Libraries</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End navigation -->
+    
+    <div id="search">
+      <form id="search-form" method="get" action="../../../../search/searcher.py">
+        <input type="search" name="query" placeholder="Search this archive" />
+<input type="hidden" name="archive" value="win2019" />
+
+        <div class="search-btn-wrapper"><button class="btn search-btn" type="submit"><i class="icon-search"></i></button></div>
+      </form>
+    </div>
+    <!-- End search --> 
+    
+  </div>
+  <!-- End header --> 
+</div>
+<!-- End header wrapper -->
+
+<div id="content">
+
+<!-- Begin article sidebar -->
+<div id="article-sidebar" class="sticky" style="z-index: 999;">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <button class="btn btn-navbar collapsed" data-target=".collapse-sidebar" data-toggle="collapse" type="button"> <i class="icon-reorder"></i> Entry Navigation </button>
+        <div id="article-nav" class="nav-collapse collapse-sidebar collapse">
+          <ul class="nav">
+            <li><a href="#toc">Entry Contents</a></li>
+            <li><a href="#Bib">Bibliography</a></li>
+            <li><a href="#Aca">Academic Tools</a></li>
+            <li><a href="https://leibniz.stanford.edu/friends/preview/kochen-specker/">Friends PDF Preview <i class="icon-external-link"></i></a></li>
+            <li><a href="https://plato.stanford.edu/cgi-bin/encyclopedia/archinfo.cgi?entry=kochen-specker&amp;archive=win2019">Author and Citation Info <i class="icon-external-link"></i></a> </li>
+            <li><a href="#pagetopright" class="back-to-top">Back to Top <i class="icon-angle-up icon2x"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div></div>
+<!-- End article sidebar --> 
+
+<!-- NOTE: Article content must have two wrapper divs: id="article" and id="article-content" -->
+<div id="article">
+<div id="article-content">
+
+<!-- BEGIN ARTICLE HTML -->
+
+
+<div id="aueditable"><!--DO NOT MODIFY THIS LINE AND ABOVE-->
+
+<h1>The Kochen-Specker Theorem</h1><div id="pubinfo"><em>First published Mon Sep 11, 2000; substantive revision Wed Feb 7, 2018</em></div>
+
+<div id="preamble">
+
+<p>
+
+The Kochen-Specker theorem is an important and subtle topic in the
+foundations of quantum mechanics (QM). The theorem demonstrates the
+impossibility of a certain type of interpretation of QM in terms of
+hidden variables (HV) that naturally suggests itself when one begins
+to consider the project of interpretating QM.We here present the
+theorem/argument and the foundational discussion surrounding it at
+different levels. The reader looking for a quick overview should read
+the following sections and subsections: 1, 2, 3.1, 3.2, 4, and
+6. Those who read the whole entry will find proofs of some non-trivial
+claims in supplementary documents.</p>
+
+</div>
+
+<div id="toc">
+<!--Entry Contents-->
+<ul>
+
+<li><a href="#intro">1. Introduction</a></li>
+
+<li><a href="#background">2. Background to the KS Theorem</a></li>
+
+<li><a href="#snp">3. Statement and Proof of the KS Theorem</a>
+
+  <ul>
+  <li><a href="#statement">3.1 Statement of the KS Theorem</a></li>
+  <li><a href="#quick">3.2 A Quick KS Argument in Four Dimensions (Cabello et al.)</a></li>
+  <li><a href="#preliminaries">3.3 The Original KS Argument. Technical Preliminaries</a></li>
+  <li><a href="#sketch">3.4 The Original KS Argument. Sketch of the Proof</a></li>
+  <li><a href="#statistical">3.5 A Statistical KS Argument in Three Dimensions (Clifton)</a></li>
+  </ul>
+
+</li>
+
+<li><a href="#functional">4. The Functional Composition Principle</a></li>
+
+<li><a href="#escaping">5. Escaping the KS Argument</a>
+
+  <ul>
+  <li><a href="#general">5.1 No General Value Definiteness</a></li>
+  <li><a href="#denial">5.2 Denial of Value Realism</a></li>
+  <li><a href="#contextuality">5.3 Contextuality</a></li>
+  </ul>
+
+</li>
+
+<li><a href="#question">6. The Question of Empirical Testing</a></li>
+
+<li><a href="#Bib">Bibliography</a></li>
+
+<li><a href="#Aca">Academic Tools</a></li>
+
+<li><a href="#Oth">Other Internet Resources</a></li>
+
+<li><a href="#Rel">Related Entries</a></li>
+</ul>
+<!--Entry Contents-->
+
+<hr />
+
+</div>
+
+<div id="main-text">
+
+<h2><a name="intro">1. Introduction</a></h2>
+
+<p>
+
+QM has the peculiar property that quantum-mechanical states imply, in
+general, only statistical restrictions on the results of
+measurements.  The natural conclusion to be drawn is that these
+states are incomplete descriptions of quantum systems. QM, thus,
+would be incomplete in the sense that a typical QM state description
+of an individual system could be supplemented with a more complete
+description in terms of an HV theory. In an HV description of the
+system the QM probabilities would be naturally interpreted as
+epistemic probabilities of the sort that arise in ordinary
+statistical mechanics. Such an HV description might not be
+practically useful, but one is tempted to think that it should at
+least be possible in principle. There are, however, two powerful
+theorems to the effect that such a description is subject to severe 
+constraints: QM, given certain at least prima facie plausible premises, 
+cannot be supplemented by an HV theory. The more famous of these two 
+theorems is Bell’s theorem which states that, given a premise of
+locality, an HV model cannot match the statistical predictions of
+QM. The second important no-go theorem against HV theories is the
+theorem of Kochen and Specker (KS) which states that, given a premise
+of noncontextuality (to be explained presently) certain sets of QM
+observables cannot consistently be assigned values at all (even
+before the question of their statistical distributions arises).</p>
+
+<p>
+
+Before seeing the workings of the KS theorem in some detail, we must
+clarify why it is of importance to philosophers of science. The
+explicit premise of HV interpretations, as understood throughout
+below, is one of <em>value
+definiteness</em>:</p>
+
+<blockquote>(VD) All observables defined for a QM system have definite
+values at all times.</blockquote>
+
+<p>
+
+(Note that for 
+<a href="../qm-bohm/" target="other">Bohmian Mechanics</a>
+ often viewed as an HV interpretation of QM, this statement would have 
+to be qualified.)
+<sup>[<a href="notes.html#note-1" id="ref-1">1</a>]</sup>
+VD is motivated by an apparently innocuous assumption about
+experimental results, which is reflected in the custom of referring to
+quantum experiments as "measurements," namely, that these experiments
+reveal vales that exist independently of being measured. (Note that we
+do not need to assume here that the values are faithfully revealed by
+measurement, but only that they exist!) This suggest a second,
+seemingly innocuous assumption, that of <em>noncontextuality</em>:</p>
+
+<blockquote>(NC) If a QM system possesses a property (value of an
+observable), then it does so independently of any measurement
+context, i.e. independently of <em>how</em> that value is eventually
+measured.</blockquote>
+
+<p>
+
+When applied to specific properties that can be measured in different
+incompatible measurements, NC says that these properties are the same
+in these different measurement situations.</p>
+
+<p>
+Now, suppose we adopt the usual association of properties of a quantum
+system, that is, yes-no observables, and projection operators on the
+system’s Hilbert space.</p>
+
+<blockquote>(O) There is a one-one correspondence between properties
+of a quantum system and projection operators on the system’s Hilbert
+space</blockquote>
+
+<p>
+The KS theorem establishes a contradiction between VD + NC + O  and QM;
+thus, acceptance of QM logically forces us to renounce either VD or
+NC or O.</p>
+
+<p>
+If a HV theory satisfying these conditions were feasible, we would
+have a natural explanation of the statistical character of QM, and an
+elegant way of resolving the infamous measurement problem haunting all
+interpreters of QM (see the entry on
+ <a href="../qm/">quantum mechanics</a>
+ and the section on the measurement problem in the entry on
+ <a href="../qt-issues/#MeasProb">philosophical issues in quantum theory</a>
+ for details). What the KS theorem shows is that a HV theory of the most
+ straightforward sort, satisfying these conditions, is not an option.  
+The HV program is left with  only options that violate one or more of
+ these conditions; see entries on
+ <a href="../qm-bohm/">Bohmian mechanics</a> and
+ <a href="../qm-modal/">modal interpretations of quantum mechanics</a>.</p>
+
+<h2><a name="background">2. Background to the KS Theorem</a></h2>
+
+<p>
+
+In the following, we will presuppose some familiarity with elementary
+QM notions like ‘state’, ‘observable’,
+‘value’ and their mathematical representatives
+‘vector’, ‘(self-adjoint) operator’ and
+‘eigenvalue’ [see the entry on
+ <a href="../qm/">quantum mechanics</a>
+ for details]. We will usually identify the observables and the operators
+on an appropriate Hilbert space which represent them; if there is a
+need to distinguish operators and observables, we write the operators
+underlined and in boldface. (Thus an operator
+<strong><u>A</u></strong> represents an observable <em>A</em>.)</p>
+
+<p>
+
+The present section states some elements of the historical and
+systematic background of the KS theorem. Most importantly, an argument
+by von Neumann (1932), a theorem by Gleason (1957), and a critical
+discussion of both plus a later argument by Bell (1966) have to be
+considered. Von Neumann, in his famous 1932 book <em>Die mathematischen
+Grundlagen der Quantenmechanik</em>, disputed the possibility of
+providing QM with an HV underpinning. He gave an argument that boils
+down to the following: Consider the mathematical fact that, if
+<strong><u>A</u></strong> and <strong><u>B</u></strong> are
+self-adjoint operators, then any real linear combination of them (any
+<strong><u>C</u></strong> = 
+ α<strong><u>A</u></strong> +
+ β<strong><u>B</u></strong>, where
+ α,
+ β are arbitrary real
+numbers) is also a self-adjoint operator. QM further dictates that:</p>
+
+<ol>
+<li>If <em>A</em> and <em>B</em> (represented by self-adjoint operators
+<strong><u>A</u></strong> and <strong><u>B</u></strong>) are
+observables on a system, then there is an observable <em>C</em>
+(represented by self-adjoint operator <strong><u>C</u></strong> defined
+as before) on the same system. </li>
+
+<li>If, for any QM state, the expectation values of <em>A</em>
+and <em>B</em> are given by &lt;<em>A</em>&gt; and &lt;<em>B</em>&gt;,
+then the expectation value of <em>C</em> is given by
+&lt;<em>C</em>&gt;=α&lt;<em>A</em>&gt; +
+β&lt;<em>B</em>&gt;.</li>
+
+</ol>
+
+<p>
+
+Now consider <em>A</em>, <em>B</em>, <em>C</em>, as above, and assume
+they have definite values <em>v</em>(<em>A</em>),
+<em>v</em>(<em>B</em>), <em>v</em>(<em>C</em>). Consider a
+‘hidden state’ <em>V</em> which determines
+<em>v</em>(<em>A</em>), <em>v</em>(<em>B</em>),
+<em>v</em>(<em>C</em>). We can then derive from <em>V</em> trivial
+‘expectation values’ which are just the possessed values
+themselves: &lt;<em>A</em>&gt;<sub><em>V</em></sub> =
+<em>v</em>(<em>A</em>), and so
+ on.<sup>[<a href="notes.html#note-2" id="ref-2">2</a>]</sup>
+ Of course, these ‘expectation values’ do not, in general,
+equal the QM ones: &lt;<em>A</em>&gt;<sub><em>V</em></sub> ≠
+&lt;<em>A</em>&gt; (we would indeed think of the latter as averages
+over the former for different hidden states <em>V</em>!). However, von
+Neumann requires that the &lt;<em>A</em>&gt;<sub><em>V</em></sub>,
+like the &lt;<em>A</em>&gt;, conform to (2). This automatically
+entails that the values themselves must conform to a condition
+parallel to (2), i.e.:</p>
+
+<ol start="3">
+<li><em>v</em>(<em>C</em>) = α<em>v</em>(<em>A</em>) +
+β<em>v</em>(<em>B</em>).</li>
+
+</ol>
+
+<p>
+
+This, however, is impossible, in general. An example very easily
+shows how (3) is violated, but because of its simplicity it also
+shows the argument’s inadequacy. (This example is not due to von
+Neumann himself, but to
+ Bell!<sup>[<a href="notes.html#note-3" id="ref-3">3</a>]</sup>) 
+ Let <em>A</em> = σ<sub>x</sub> and <em>B</em> =
+σ<sub>y</sub>, then operator <em>C</em> = (σ<sub>x</sub> +
+σ<sub>y</sub>)/√2 corresponds to the observable of the
+spin component along the direction bisecting <em>x</em> and
+<em>y</em>. Now all spin components have (in suitable units) possible
+values ±1 only, thus, the HV proponent is forced to ascribe
+±1 to <em>A</em>, <em>B</em>, <em>C</em> as values, and thus as
+‘expectation values’. But (3) now obviously cannot be
+fulfilled, since ±1 ≠ (±1 + ±1)/√2.</p>
+
+<p>
+
+The example illustrates why von Neumann’s argument is
+unsatisfying. Nobody disputes the move from (2) to (3) for compatible
+observables, i.e. those which, according to QM, are jointly measurable
+in one arrangement. The above choice of <em>A</em>, <em>B</em>,
+<em>C</em>, however, is such that any two of them are incompatible,
+i.e. are not jointly observable. For these we will not want to require
+any HV interpretation to meet (3), but only (2). The hidden values
+need not conform with (3) in general, only the averages of their
+values in a series of tests must conform with (2). The authority of
+von Neumann’s argument comes from the fact that requirements (1) and
+(2), <em>for QM states</em>, are consequences of the QM formalism, but
+this does not in itself justify extending these requirements to the
+hypothetical <em>hidden states</em>. Indeed, if (3) were
+unrestrictedly true, this would nicely explain, in the presence of
+hidden values, why (2) is. Von Neumann apparently thought that the HV
+proponent is committed to this explanation, but this seems an
+implausible restriction.</p>
+
+<p>
+
+The KS theorem remedies this defect, and thus strengthens the case
+against HV theories insofar as it assumes (3) only for sets of
+observables {<em>A</em>, <em>B</em>,
+<em>C</em>} which are all mutually compatible. The theorem requires
+that only for compatible observables assumption (3) must hold.</p>
+
+<p>
+
+A second, independent line of thought leading to the KS theorem is
+provided by Gleason’s theorem (Gleason 1957). The theorem states that
+on a Hilbert space of dimension greater than or equal to 3, the only
+possible probability measures are the measures
+μ(<em>P</em><sub>α</sub>) = Tr(<em>P</em><sub>α</sub>
+<em>W</em>), where <em>P</em><sub>α</sub> is a projection
+operator, <em>W</em> is the statistical operator characterizing the
+system’s actual state and Tr is the trace 
+ operation.<sup>[<a href="notes.html#note-4" id="ref-4">4</a>]</sup>
+ The <em>P</em><sub>α</sub> can be understood as representing
+yes-no observables, i.e. questions for whether a QM system
+‘living’ in such a Hilbert space has a property α or
+not, and every possible property α is associated uniquely with a
+vector |α&gt; in the space — so, the task is to
+unambiguously assign probabilities to all vectors in the space. Now,
+the QM measure μ is continuous, so Gleason’s theorem in effect
+proves <em>that every probability assignment to all the possible
+properties in a three-dimensional Hilbert space must be
+continuous</em>, i.e. must map all vectors in the space continuously
+into the interval [0, 1]. On the other hand, an HV theory (if
+characterized by VD + NC) would imply that of every property we can
+say whether the system has it or not. This yields a trivial
+probability function which maps all the <em>P</em><sub>α</sub>
+to either 1 or 0, and, provided that values 1 and 0 both occur (which
+follows trivially from interpreting the numbers as probabilities),
+this function must clearly be discontinuous (cf. Redhead 1987:
+28).</p>
+
+<p>The proof of Gleason’s theorem is notoriously intricate.  It is
+notable, however, that this corollary of Gleason’s theorem can be
+obtained more directly via means much more elementary than those
+employed in Gleason’s proof.  Bell (1982: 994, 1987: 164) credits
+J. M. Jauch with drawing his attention (in 1963) to Gleason’s theorem,
+and with pointing out that it implies the strengthening of von
+Neumann’s result, with the additivity requirement only for commuting
+observables.  Bell then went on to prove the result in an elementary
+way, without use of Gleason’s proof (Bell 1966).  Unknown to Bell,
+Specker had already arrived at this result, alluded to (but not
+presented) in Specker (1960), as <i>ein elementargeometrisches
+Argument</i>.<sup>[<a href="notes.html#note-5" id="ref-5">5</a>]</sup>
+The argument was presented in Kochen and Specker (1967).  Bell’s proof
+and the Kochen-Specker proof utilize similar constructions in
+3-dimensional Hilbert space, though they differ in their details.
+Kochen and Specker go on to explicitly construct a finite set of
+projections that cannot be assigned values subject to the constraint
+that the additivity requirement (3) hold when <em>A</em>
+and <em>B</em> commute.  Though Bell does not do so, one can readily
+obtain from Bell’s construction also a finite set of observables that
+cannot be assigned values subject to the additivity constraint for
+commuting observables (see Mermin 1993).</p>
+
+<p>
+
+After having offered his variant of the argument against HV theories
+from Gleason’s theorem, Bell proceeds to criticise it. His
+strategy parallels the one against von Neumann. Bell points
+out that his own Gleason-type argument against arbitrary closeness of
+two opposite-valued points presupposes non-trivial relations between
+values of non-commuting observables, which are only justified given
+an assumption of noncontextuality (NC). He proposes as an analysis of
+what went wrong that his own argument “tacitly assumed that
+measurement of an observable must yield the same value independently
+of what other measurements may be made simultaneously” (1966: 9). In
+opposition to von Neumann, the Gleason-type argument derives
+restrictions on value assignments like (3) only for sets of
+compatible observables; but still one and the same observable can be
+a member of different commuting sets, and it is essential to the
+arguments that the observable gets assigned the same value in both
+sets, i.e. that the value assignment is not sensitive to a context.</p>
+
+<h2><a name="snp">3. Statement and Proof of the KS Theorem</a></h2>
+
+<h3><a name="statement">3.1 Statement of the KS Theorem</a></h3>
+
+<p>
+
+An explicit statement of the KS theorem runs thus: </p>
+
+<blockquote>Let H be a Hilbert space of QM state vectors of
+ dimension <em>x</em> ≥ 3. There is a set <em>M</em> of observables on H, 
+containing <em>y</em> elements, such that the following two assumptions are
+contradictory: 
+
+<p>
+
+(KS1) All <em>y</em> members of <em>M</em> simultaneously have values,
+i.e.  are unambiguously mapped onto real numbers (designated, for
+observables <em>A</em>, <em>B</em>, <em>C</em>, …, by
+<em>v</em>(<em>A</em>), <em>v</em>(<em>B</em>),
+<em>v</em>(<em>C</em>), …).</p>
+
+<p>
+
+(KS2) Values of all observables in M conform to the following
+constraints:</p>
+
+<blockquote>(a) If <em>A</em>, <em>B</em>, <em>C</em> are all
+compatible and <em>C</em> = <em>A</em>+<em>B</em>, then
+<em>v</em>(<em>C</em>) =
+<em>v</em>(<em>A</em>)+<em>v</em>(<em>B</em>);
+
+<p>
+
+(b) if <em>A</em>, <em>B</em>, <em>C</em> are all compatible and
+<em>C</em> = <em>A</em>·<em>B</em>, then <em>v</em>(<em>C</em>)
+= <em>v</em>(<em>A</em>)·<em>v</em>(<em>B</em>).</p>
+</blockquote> 
+</blockquote>
+
+<p>
+
+Assumption KS1 of the theorem obviously is an equivalent of VD.
+Assumptions KS2 (a) and (b) are called the <em>Sum Rule</em> and the
+<em>Product Rule</em>, respectively, in the literature. (The reader
+should again note that, in opposition to von Neumann’s implicit
+premise, these rules non-trivially relate the values of
+<em>compatible</em> observables only.) Both are consequences of a
+deeper principle called the functional composition principle (FUNC),
+which in turn is a consequence of (among other assumptions) NC. The
+connection between NC, FUNC, Sum Rule and Product Rule will be made
+explicit in Section 4.</p>
+
+<p>
+The KS Theorem claims the existence of a set M with a certain property 
+(i.e. being such that KS1 and KS2 are 
+contradictory)<sup>[<a href="notes.html#note-6" id="ref-6">6</a>]</sup> 
+and the proof proceeds by explicitly presenting such a set, for different
+choices of <i>x</i> and <i>y</i>.  In the original KS proof <em>x</em>=3 and <em>y</em>=117. More
+recently proofs involving less observables have been given by (among
+many others) Peres (1991, 1995) for <em>x</em>=3 and <em>y</em>=33, by
+Kernaghan (1994) for <em>x</em>=4 and <em>y</em>=20 and by Cabello
+<em>et al</em>. (1996) for <em>x</em>=4 and <em>y</em>=18. The KS
+proof is notoriously complex, and we will only sketch it in Section
+3.4. The Peres proof establishes the KS result in full strength, with
+great simplicity, and, moreover, in an intuitively accessible way,
+since it operates in three dimensions; we refer the reader to Peres
+(1995: 197–99). The proofs by Kernaghan and Cabello <em>et
+al</em>. each establish a contradiction in four dimensions. These are
+weaker results, of course, than the KS theorem (since every
+contradiction in 3 dimensions is also a contradiction in higher
+dimensions, but not conversely). However, these other proofs are very
+simple and instructive. Moreover, it can be shown (Pavičić
+<em>et al</em>. 2005) that <em>y</em>=18 is the lowest number for
+which the KS theorem holds true, so we start by presenting the proof
+of Cabello and his co-workers in Section 3.2. Finally, in Section 3.5,
+we explain an argument by Clifton (1993) where <em>x</em>=3 and
+<em>y</em>=8 and an additional statistical assumption yields an easy
+and instructive KS argument.</p>
+
+<h3><a name="quick">3.2 A Quick KS Argument in Four Dimensions (Cabello <em>et al</em>.)</a></h3>
+
+<p>
+
+A particularly easy KS argument proceeds in a four-dimensional Hilbert
+space H<sub>4</sub>. We will use the following, which will be proved
+in the next section: </p>
+
+<p>
+
+(1) From KS2 we can derive a constraint on value assignments to
+projection operators, namely that for every set of projection
+operators <em>P</em><sub>1</sub>, <em>P</em><sub>2</sub>,
+<em>P</em><sub>3</sub>, <em>P</em><sub>4</sub>, corresponding to the
+four distinct eigenvalues <em>q</em><sub>1</sub>,
+<em>q</em><sub>2</sub>, <em>q</em><sub>3</sub>, <em>q</em><sub>4</sub>
+of an observable Q on H4 the following holds:</p>
+
+<blockquote>(VC1′)  
+<em>v</em>(<em>P</em><sub>1</sub>) +
+<em>v</em>(<em>P</em><sub>2</sub>) +
+<em>v</em>(<em>P</em><sub>3</sub>) +
+<em>v</em>(<em>P</em><sub>4</sub>) = 1, where
+<em>v</em>(<em>P</em><sub><em>i</em></sub>) = 1 or 0, for <em>i</em> =
+1, 2, 3, 4.</blockquote>
+
+<p>
+
+((VC1′) is a variant of (VC1) which
+we prove explicitly in the next section.) This means in effect that
+of every set of four orthogonal rays in H4 exactly one is assigned
+the number 1, the others 0.</p>
+
+<p>
+
+(2) Although the Hilbert space mentioned in the theorem, in order to
+be suited for QM, must be <em>complex</em>, it is enough, in order to
+show the inconsistency of claims KS1 and KS2, to consider a
+<em>real</em> Hilbert space of the same dimension. So, instead of H4
+we consider a real Hilbert space R4 and translate VC1′ into the
+requirement: Of every set of orthogonal rays in R4, exactly one is
+assigned the number 1 and the others 0. As usual in the literature, we
+translate all this into the following colouring problem: <em>Of every
+set of orthogonal rays in R4 exactly one must be coloured white, the
+others black.</em> This, however, is impossible, as is shown
+immediately by the following table (Cabello <em>et al</em>. 1996):</p>
+
+<table class="centered cell-center cellpad-small all-rules avoid-break">
+<tbody><tr>
+<td>0,0,<br />0,1</td>
+<td>0,0,<br />0,1</td>
+<td>1,−1,<br />1,−1</td>
+<td>1,−1,<br />1,−1</td>
+<td>0,0,<br />1,0</td>
+<td>1,−1,<br />−1,1</td>
+<td>1,1,<br />−1,1</td>
+<td>1,1,<br />−1,1</td>
+<td>1,1,<br />1,−1</td>
+</tr>
+
+<tr>
+<td>0,0,<br />1,0</td>
+<td>0,1,<br />0,0</td>
+<td>1,−1,<br />−1,1</td>
+<td>1,1,<br />1,1,</td>
+<td>0,1,<br />0,0</td>
+<td>1,1,<br />1,1</td>
+<td>1,1,<br />1,−1</td>
+<td>−1,1,<br />1,1</td>
+<td>−1,1,<br />1,1</td>
+</tr>
+
+<tr>
+<td>1,1,<br />0,0</td>
+<td>1,0,<br />1,0</td>
+<td>1,1,<br />0,0</td>
+<td>1,0,<br />−1,0</td>
+<td>1,0,<br />0,1</td>
+<td>1,0,<br />0,−1</td>
+<td>1,−1,<br />0,0</td>
+<td>1,0,<br />1,0</td>
+<td>1,0,<br />0,1</td>
+</tr>
+
+<tr>
+<td>1,−1,<br />0,0</td>
+<td>1,0,<br />−1,0</td>
+<td>0,0,<br />1,1</td>
+<td>0,1,<br />0,−1</td>
+<td>1,0,<br />0,−1</td>
+<td>0,1,<br />−1,0</td>
+<td>0,0,<br />1,1</td>
+<td>0,1,<br />0,−1</td>
+<td>0,1,<br />−1,0</td>
+</tr>
+</tbody></table>
+
+<p>
+
+There are 4 x 9 = 36 entries in this table. These entries are taken
+from a set of 18 rays and every ray appears twice.  It is easy
+to verify that every column in the table represents a set of four
+<em>orthogonal</em> rays.  Since there are 9 columns, we must end up
+with an <em>odd</em> number of the table’s entries coloured
+white. However, since every ray appears twice any time we colour one
+of them white, we commit ourselves to colouring an even number of the
+entries white. It follows that the total number of table entries
+coloured white must be even, <em>not</em> odd. Thus, a colouring of
+these 18 rays in accordance with VC1′ is impossible.  (Note for
+future reference that the first part of the argument — the
+argument for ‘odd’ — uses only VC1′, while
+the second — the argument for ‘even’ — relies
+essentially on NC, by assuming that occurrences of the same ray in
+different columns are assigned the same number!)</p>
+
+<h3><a name="preliminaries">3.3 The Original KS Argument. Technical Preliminaries.</a></h3>
+
+<p>
+
+The original KS proof operates on a three-dimensional complex Hilbert
+space H<sub>3</sub>. It requires two things: (1) sets of triples of
+rays which are orthogonal in H<sub>3</sub>; (2) a constraint to the
+effect that of every orthogonal triple one ray gets assigned the
+number 1, the two others 0.  Both can be achieved as follows: </p>
+
+<p>
+
+We consider an arbitrary operator <em>Q</em> on H<sub>3</sub> with
+three distinct eigenvalues <em>q</em><sub>1</sub>,
+<em>q</em><sub>2</sub>, <em>q</em><sub>3</sub>, its eigenvectors
+|<em>q</em><sub>1</sub>&gt;, |<em>q</em><sub>2</sub>&gt;,
+|<em>q</em><sub>3</sub>&gt;, and projection operators
+<em>P</em><sub>1</sub>, <em>P</em><sub>2</sub>, <em>P</em><sub>3</sub>
+projecting on the rays spanned by these vectors. Now,
+<em>P</em><sub>1</sub>, <em>P</em><sub>2</sub>, <em>P</em><sub>3</sub>
+are themselves observables (namely, <em>P</em><sub>i</sub> is a
+‘yes-no observable’ corresponding to the question
+‘Does the system have value <em>q</em><sub>i</sub> for
+Q?’). Moreover, <em>P</em><sub>1</sub>, <em>P</em><sub>2</sub>,
+<em>P</em><sub>3</sub> are mutually compatible, so we can apply the
+Sum Rule and Product Rule, and thereby derive a constraint on the
+assignment of values
+ (<a href="proofvc1.html" name="return-1">Proof</a>):</p>
+
+<blockquote>(VC1)   <em>v</em>(<em>P</em><sub>1</sub>) +
+<em>v</em>(<em>P</em><sub>2</sub>) + 
+<em>v</em>(<em>P</em><sub>3</sub>) = 1, where
+<em>v</em>(<em>P</em><sub><i>i</i></sub>) = 1 or 0, <br /> for <i>i</i> = 1,
+2, 3.</blockquote>
+
+<p>
+
+The arbitrary choice of an observable <em>Q</em> defines new
+observables <em>P</em><sub>1</sub>, <em>P</em><sub>2</sub>,
+<em>P</em><sub>3</sub> which, in turn, select rays in
+H<sub>3</sub>. So, to impose that observables <em>P</em><sub>1</sub>,
+<em>P</em><sub>2</sub>, <em>P</em><sub>3</sub> all have values means
+to assign numbers to rays in H<sub>3</sub>, and VC1, in particular,
+means that of an arbitrary triple of orthogonal rays, specified by
+choice of an arbitrary <em>Q</em> (briefly: an orthogonal triple in
+H<sub>3</sub>), exactly one of its rays is assigned 1, the others 0.
+Now, if we introduce different incompatible observables <em>Q</em>,
+<em>Q</em>′, <em>Q</em>″, … these observables
+select different orthogonal triples in H<sub>3</sub>. Assumption (1)
+of the KS theorem (which, effectively, is VD) now tells us that every
+one of these triples has three values, and VC1 tells us that these
+values must be for every triple, exactly {1, 0, 0}. What KS now shows
+is that, <em>for a specific finite set of orthogonal triples in
+H<sub>3</sub>, an assignment of numbers</em> {1, 0, 0} <em>to every
+one of them (matching in common rays) is impossible</em>.  Further
+reflection yields that while H<sub>3</sub> is complex, it is in fact
+enough to consider a real three-dimensional Hilbert space
+R<sub>3</sub>. For we can show that if an assignment of values
+according to VC1 is possible on H<sub>3</sub>, then it is possible on
+R<sub>3</sub>.  Contrapositively, if the assignment is impossible on
+R<sub>3</sub>, then it is impossible on H<sub>3</sub>. So we can
+fulfill the conditions necessary to get the KS proof started and at
+the same time reduce the problem to one on R<sub>3</sub>.  Now, the
+equivalent in R<sub>3</sub> of an arbitrary orthogonal triple in
+H<sub>3</sub>, is, again, an arbitrary triple of orthogonal rays
+(briefly: an orthogonal triple in R<sub>3</sub>). So, if KS want to
+show that, for a specific set of <em>n</em> orthogonal triples in
+H<sub>3</sub> (where <em>n</em> is a natural number), an assignment of
+numbers {1, 0, 0} to every one of them is impossible, it is enough for
+them to show that, <em>for a specific set of n orthogonal triples
+in</em> R<sub>3</sub>, <em>an assignment of numbers</em> {1, 0, 0}
+<em>to every one of them is impossible</em>. And this is exactly what
+they do.</p>
+
+<p>
+
+It should be stressed that at this point there is no direct connection
+between R<sub>3</sub> and physical space. KS wish to show that for an
+arbitrary QM system requiring a representation in a Hilbert space of
+at least three dimensions, the ascription of values in conjunction
+with condition (KS2) (Sum Rule and Product Rule) is impossible, and in
+order to do this it is sufficient to consider the space
+R<sub>3</sub>. This space R<sub>3</sub>, however, does not represent
+physical space for the quantum system at issue. In particular,
+orthogonality in R<sub>3</sub> is not to be confused with
+orthogonality in physical space. This becomes obvious if we move to an
+example of a QM system sitting in physical space and at the same time
+requiring a QM representation in H<sub>3</sub>, e.g. the spin degree
+of freedom of a one-particle spin-1 system.  Given an arbitrary
+direction α in physical space and an operator
+ <em>S</em><sub>α</sub>
+ representing the observable of a spin component in direction
+ α,
+ H<sub>3</sub> is spanned by the eigenvectors of
+ <em>S</em><sub>α</sub>,
+ namely
+ |<em>S</em><sub>α</sub>=1&gt;, 
+ |<em>S</em><sub>α</sub>=0&gt;,
+ |<em>S</em><sub>α</sub>=−1&gt;,
+ which are mutually orthogonal in H<sub>3</sub>. The fact that these three
+vectors corresponding to three possible results of measurement in one
+spatial direction are mutually orthogonal illustrates the different
+senses of orthogonality in H<sub>3</sub> and in physical space. (The reason
+lies, of course, in the structure of QM, which represents different
+values of an observable by different directions in H<sub>3</sub>.) </p>
+
+<p>
+
+KS themselves, in the abstract, proceed in exactly the same way, but
+they illustrate with an example that <em>does</em> establish a direct
+connection with physical space. It is important to see this
+connection, but also to be clear that it is produced by KS’s
+example and is not inherent in their mathematical result. KS propose
+to consider a one-particle spin-1 system and the measurement of the
+squared components of orthogonal directions of spin in physical space
+<em>S<sub>x</sub></em><sup>2</sup>,
+<em>S<sub>y</sub></em><sup>2</sup>,
+<em>S<sub>z</sub></em><sup>2</sup>, which are compatible (while
+<em>S<sub>x</sub></em>, 
+<em>S<sub>y</sub></em>,
+<em>S<sub>z</sub></em> themselves are
+ not).<sup>[<a href="notes.html#note-7" id="ref-7">7</a>]</sup>
+ Measurement of a squared component of spin determines only its absolute
+value. Here, they derive a slightly
+different constraint on value assignments, again using the Sum Rule
+and the Product Rule
+ (<a href="proofvc2.html" name="return-2">Proof</a>):</p>
+
+<blockquote>(VC2)  
+<em>v</em>(<em>S<sub>x</sub></em><sup>2</sup>) +
+<em>v</em>(<em>S<sub>y</sub></em><sup>2</sup>) +
+<em>v</em>(<em>S<sub>z</sub></em><sup>2</sup>) = 2, where
+<em>v</em>(<em>S</em><sub>α</sub><sup>2</sup>)
+= 1 or 0, <br /> for
+ α = <em>x</em>, <em>y</em>,
+<em>z</em>.</blockquote>
+
+<p>
+
+Now, since <em>S<sub>x</sub></em><sup>2</sup>,
+<em>S<sub>y</sub></em><sup>2</sup>,
+<em>S<sub>z</sub></em><sup>2</sup> are compatible, there is an
+observable O such that <em>S<sub>x</sub></em><sup>2</sup>,
+<em>S<sub>y</sub></em><sup>2</sup>,
+<em>S<sub>z</sub></em><sup>2</sup> are all functions of O. So, the
+choice of an arbitrary such O fixes <em>S<sub>x</sub></em><sup>2</sup>,
+<em>S<sub>y</sub></em><sup>2</sup>,
+<em>S<sub>z</sub></em><sup>2</sup> and, since the latter can be
+directly associated with mutually orthogonal rays in H<sub>3</sub>, again fixes
+the choice of an orthogonal triple in H<sub>3</sub>. The resulting problem here
+is to assign numbers {1, 1, 0} to an orthogonal triple in H<sub>3</sub>
+specified by the choice of O or, more directly, of
+<em>S<sub>x</sub></em><sup>2</sup>,
+<em>S<sub>y</sub></em><sup>2</sup>,
+<em>S<sub>z</sub></em><sup>2</sup>. This is, of course, the
+mirror-image of our previous problem of assigning numbers {1, 0, 0}
+to such a triple, and we need not consider it separately.</p>
+
+<p>
+
+However, the choice of a specific O that selects observables
+<em>S<sub>x</sub></em><sup>2</sup>, <em>S<sub>y</sub></em><sup>2</sup>,
+<em>S<sub>z</sub></em><sup>2</sup> at the same time selects three
+orthogonal rays in physical space, namely by fixing a coordinate
+system ±<em>x</em>, ±<em>y</em>, ±<em>z</em>
+(which defines along which orthogonal rays the squared spin components
+are to be measured) <em>in physical space</em>. So now, by choice of
+an observable O, there <em>is</em> a direct connection of directions
+in space with directions in H<sub>3</sub>: orthogonality in
+H<sub>3</sub> now <em>does</em> correspond to orthogonality in
+physical space. The same holds for R<sub>3</sub>, if, in order to give
+an argument for H<sub>3</sub>, we consider
+R<sub>3</sub>. Orthogonality in R<sub>3</sub> now corresponds to
+orthogonality in physical space. It is important to notice that this
+correspondence is not necessary to give the argument, even if we
+insist that the pure mathematical facts should be supplemented by a
+physical interpretation — since we have, just before, seen an
+example without any correspondence. The point is only that
+we <em>can</em> devise an example such that there is a
+correspondence. In particular, we can now follow the proof in
+R<sub>3</sub> and all along imagine a system sitting in physical
+space, namely a spin-1 particle, returning three values upon
+measurement of three physical magnitudes, associated directly with
+orthogonal directions in physical space, namely
+<em>v</em>(<em>S<sub>x</sub></em><sup>2</sup>),
+<em>v</em>(<em>S<sub>y</sub></em><sup>2</sup>),
+<em>v</em>(<em>S<sub>z</sub></em><sup>2</sup>), for arbitrary choices
+of <em>x</em>, <em>y</em>, <em>z</em>. The KS proof then shows that
+it is impossible (given its premises, of course) to assign to the
+spin-1 particle values for all these arbitrary choices. That is, the
+KS argument shows that (given the premises) a spin 1 particle cannot
+possess all the properties at once which it displays in different
+measurement arrangements.</p>
+
+<p>
+
+Three further features which have become customary in KS arguments
+need to be mentioned:</p>
+
+<p>
+
+(1) Obviously, we can unambiguously specify any ray in R<sub>3</sub> through the
+origin by just giving one point contained in it. KS thus identify
+rays with points on the unit sphere E. KS do not need to refer to
+concrete coordinates of a certain point, since their argument is
+‘coordinate-free’. We will, however, for illustration
+sometimes mention concrete points and then (a) use Cartesian
+coordinates to check orthogonality relations and (b) specify rays by
+points not lying on E. (Thus, e.g., the triple of points (0, 0, 1),
+(4, 1, 0), (1, –4, 0) is used to specify a triple of orthogonal
+rays.) Both usages conform with the recent literature (see e.g. Peres
+(1991) and Clifton (1993)).</p>
+
+<p>
+
+(2) We translate the constraints (VC1) and (VC2) on value ascriptions
+into constraints for colouring the points. We can, operating under
+(VC1) colour the points white (for “1”) and black (for
+“0”), or, operating under (VC2) colour the points white
+(for “0”) and black (for “1”). In either case
+the constraints translate into the same colouring problem.</p>
+
+<p>
+
+(3) KS illustrate orthogonality relations of rays by graphs which
+have come to be called <em>KS diagrams</em>. In such a diagram each
+ray (or point specifying a ray) is represented by a vertex. Vertices
+joined by a straight line represent orthogonal rays. The colouring
+problem then translates into the problem of colouring the vertices of
+the diagram white or black such that joined vertices cannot be both
+white and triangles have exactly one white vertex.</p>
+
+<h3><a name="sketch">3.4 The Original KS Argument. Sketch of the Proof.</a></h3>
+
+<p>
+
+KS proceed in two steps. </p>
+
+<p>
+
+(1) In the first (and decisive) step they show <em>that two rays with
+opposite colours cannot be arbitrarily close</em>. They first show that the
+diagram
+ Γ<sub>1</sub>
+ depicted in Fig. 1 (where for the time being we ignore the colours 
+specified in the figure) can be constructed, only if 
+a<sub>0</sub> and a<sub>9</sub> are separated by an angle
+ θ
+ with 0
+ ≤
+ θ
+ ≤
+ sin<sup>−1</sup>(1/3)
+ (<a href="step1.html" name="return-3">Proof</a>).</p>
+
+<blockquote><img alt="fig1" src="fig1.gif" />
+<br />
+Figure 1: Ten-point KS graph
+ Γ<sub>1</sub> with inconsistent colouring.</blockquote>
+
+<p>
+
+Consider now (for a <em>reductio ad absurdum</em>) that a<sub>0</sub> and
+a<sub>9</sub> have different colours. We arbitrarily colour
+a<sub>0</sub> white and a<sub>9</sub> black. The colouring
+constraints then force us to colour the rest of the diagram as is
+done in Fig. 1, but this requires that a<sub>5</sub> and a<sub>6</sub>
+are orthogonal and both white — which is forbidden. Hence, two
+points closer than sin<sup>−1</sup>(1/3) cannot have different
+colours. Contrapositively, two points of different colour cannot be
+closer than sin<sup>−1</sup>(1/3).</p>
+
+<p>
+
+(2) KS now construct another quite complicated KS diagram
+ Γ<sub>2</sub>
+ in the following way. They consider a realization of
+ Γ<sub>1</sub>
+ for an angle
+ θ=18°
+ &lt;
+sin<sup>−1</sup>(1/3). Now they choose three orthogonal points
+<em>p</em><sub>0</sub>, <em>q</em><sub>0</sub>, <em>r</em><sub>0</sub> and space interlocking
+copies of
+ Γ<sub>1</sub>
+ between them such that every instance of point a<sub>9</sub> of one
+ copy of
+ Γ<sub>1</sub>
+ is identified with the instance of a<sub>0</sub> of the next
+copy. In this way five interlocking copies of
+ Γ<sub>1</sub>
+ are spaced between <em>p</em><sub>0</sub> and <em>q</em><sub>0</sub> and all five
+instances of a<sub>8</sub> are identified with <em>r</em><sub>0</sub>
+(likewise five such interlocking copies are spaced between <em>q</em><sub>0</sub> and 
+<em>r</em><sub>0</sub>, identifying all copies of a<sub>8</sub> with <em>p</em><sub>0</sub>, 
+and between <em>p</em><sub>0</sub> and <em>r</em><sub>0</sub>, identifying all copies of 
+a<sub>8</sub> with <em>q</em><sub>0</sub>). That
+ Γ<sub>2</sub>
+ is constructible is borne out directly by the construction
+itself. Spacing out five copies of Γ<sub>1</sub> with angles
+ θ=18°
+ between instances of a<sub>0</sub>
+ will space out an angle of 5x18° = 90° which is exactly what
+is required. Moreover, wandering from one copy of
+ Γ<sub>1</sub>
+ to the next between, say, <em>p</em><sub>0</sub> and <em>q</em><sub>0</sub> is
+equivalent to a rotation by 18° of the copy about the axis through
+the origin and <em>r</em><sub>0</sub>, which evidently conserves the
+orthogonality between the points a<sub>0</sub> and a<sub>9</sub> of
+the copy and <em>r</em><sub>0</sub>.</p>
+
+<blockquote><img alt="fig2" src="fig2.gif" />
+<br />
+Figure 2: 117-point KS graph
+ Γ<sub>2</sub>
+<br />
+(<em>From</em> Kochen and Specker 1967, 69; <em>by permission of the
+Indiana University Mathematics Journal</em>)</blockquote>
+
+<p>
+
+However, although
+ Γ<sub>2</sub> is
+constructible it is <em>not</em> consistently colourable. From the
+first step we know that a copy of
+ Γ<sub>1</sub> with
+ θ=18°
+ requires that points a<sub>0</sub> and a<sub>9</sub> have equal
+colour.  Now, since a<sub>9</sub> in one copy of
+ Γ<sub>1</sub>
+ is identical to a<sub>0</sub> in the next copy, a<sub>9</sub> in the
+second copy must have the same colour as a<sub>0</sub> in the
+first. Indeed, by repetition of this argument all instances of
+a<sub>0</sub> must have the same colour. Now, <em>p</em><sub>0</sub>,
+<em>q</em><sub>0</sub>, <em>r</em><sub>0</sub> are identified with points
+a<sub>0</sub>, so they must be either all white or all black — both
+of which are inconsistent with the colouring constraint that exactly
+one of them be white.</p>
+
+<p>
+
+If from the 15 copies of
+ Γ<sub>1</sub>
+ used in the process of constructing
+ Γ<sub>2</sub>
+ we subtract those points that were identified with each other, we
+end up with 117 different points. So, what KS have shown is that a set
+of 117 yes-no observables cannot consistently be assigned values in
+accordance with VC1 (or, equivalently, VC2).</p>
+
+<p>
+
+Note that in the construction of
+ Γ<sub>1</sub>,
+ i.e. the set of 10 points forming 22 interlocking triples, all
+points except a<sub>9</sub> appear in more than one triple. In
+ Γ<sub>2</sub> every
+ point appears in a multiplicity of triples. It is here that the
+noncontextuality premise is crucial to the argument: we assume that
+an arbitrary point keeps its value 1 or 0 as we move from one
+orthogonal triple to the next (i.e. from one maximal set of
+compatible observables to another).</p>
+
+<h3><a name="statistical">3.5 A Statistical KS Argument in Three Dimensions (Clifton)</a></h3>
+
+<p>
+
+Recall KS’s first step, which
+establishes that two points with opposite colour cannot be
+arbitrarily close. It is this first step which carries the whole
+force of the argument. Bell had established it in a different way and
+had then argued that in a noncontextual HV interpretation points with
+opposite colour must be arbitrarily close. It is this first step
+that Clifton exploits in an argument that combines Bell’s and
+KS’s ideas.</p>
+
+<blockquote><img alt="fig3" src="fig3.gif" />
+<br />
+Figure 3: 8-point KS-Clifton graph
+ Γ<sub>3</sub> with inconsistent colouring.</blockquote>
+
+<p>
+
+Consider the KS diagram
+ Γ<sub>3</sub>
+shown in Figure 3 which obviously is a part of KS’s
+ Γ<sub>1</sub>,
+ but which has additional concrete assignments of eight points
+satisfying the orthogonality relations (and thus proving directly
+that
+ Γ<sub>3</sub>
+ is constructible). From our previous colouring constraints (joined
+points are not both white and a triangle has exactly one white point)
+we see immediately that
+ Γ<sub>3</sub>
+ is colourable only if the outermost points are not both white (which
+would require, as shown in Fig. 3, that two joined points are white —
+contrary to the constraints). Moreover, we easily calculate the angle
+between the two outermost points to be
+ cos<sup>−1</sup>(1/3).<sup>[<a href="notes.html#note-8" id="ref-8">8</a>]</sup>
+ So we conclude that if one wants to colour all eight points and
+wants to colour white one of the outer ones, then the other must be
+black. Taking into account that we can insert a diagram between any
+two points in R<sub>3</sub> which are separated by exactly the angle
+cos<sup>−1</sup>(1/3) and translating our problem back from a
+colouring problem into KS’s example (constraint VC2), we end
+with a constraint
+ VC2′: </p>
+
+<blockquote>(VC2′)   If, for
+a spin-1 system, a certain direction <em>x</em> of spin in space is
+assigned value 0, then any other direction
+ <em>x</em>′
+ which lies away from <em>x</em> by an angle cos<sup>−1</sup>(1/3)
+must be assigned value 1, or, in symbols: If
+<em>v</em>(<em>S</em><sub><em>x</em></sub>)=0, then
+ <em>v</em>(<em>S</em><sub><em>x</em>′</sub>)=1.
+</blockquote>
+
+<p>
+
+The argument so far has made use of the original KS conditions KS1
+and KS2. We now assume, in addition, that any constraint on value
+assignments will show up in the measurement statistics. In
+particular:</p>
+
+<blockquote>(3) If prob[<em>v</em>(<em>A</em>)=<em>a</em>] = 1, and
+<em>v</em>(<em>A</em>)=<em>a</em> implies
+<em>v</em>(<em>B</em>)=<em>b</em>, then
+prob[<em>v</em>(<em>B</em>)=<em>b</em>] = 1.</blockquote>
+
+<p>
+
+Despite the use of statistics, this reasoning crucially differs from
+von Neumann’s argument. Von Neumann had argued that algebraic
+relations between values should transfer into the statistics of the
+measured values, therefore the QM constraints on these statistics
+should have value constraints as their exact mirror images — which
+reasoning leads us to derive value constraints from statistical
+constraints (for arbitrary observables). Here, on the contrary, we
+derive a value constraint independently from any statistical
+reasoning, and then conclude that this constraint should transfer
+into the measurement
+ statistics.<sup>[<a href="notes.html#note-9" id="ref-9">9</a>]</sup></p>
+
+<p>
+
+Now,
+ VC2′
+ and the statistical condition (3) entail: If
+prob[<em>v</em>(<em>S</em><sub><em>x</em></sub>)=0]=1, then
+prob[<em>v</em>(<em>S</em><sub><em>x</em>′</sub>)=1]=1. This,
+however, contradicts the statistics derived from QM for a state where
+prob[<em>v</em>(<em>S</em><sub><em>x</em></sub>)=0] =
+1.<sup>[<a href="notes.html#note-10" id="ref-10">10</a>]</sup> In fact,
+there is a probability of 1/17 that
+ <em>v</em>(<em>S</em><sub><em>x</em>′</sub>=0).
+ So, in a long-run test 1/17 of the spin-1 particles will violate the
+constraint.</p>
+
+<p>
+
+If we accept
+Clifton’s statistical reasoning, we have an entirely valid KS
+argument establishing a contradiction between an HV interpretation of
+QM and the very predictions of QM. Clifton presents also a
+slightly more complex set of 13 observables yielding, along the same
+lines, a statistical contradiction of 1/3.</p>
+
+<p>
+
+Clifton’s argument uses 8 (or 13) observables, fixes a value of one of
+them (<em>S</em><sub><em>x</em></sub>) and derives a HV prediction at
+variance with a QM prediction for a second one
+(<em>S</em><sub><em>x</em>′</sub>). Hence, if a state can be
+produced where the QM system definitely has
+value <em>v</em>(<em>S</em><sub><em>x</em></sub>)=0 the predictions
+can be tested empirically. But fixing such a state experimentally is
+not an easy matter. So Clifton’s argument depends on a state that may
+be difficult to produce or isolate. Recently, a construction of 13
+observables has been found that allows for a state-independent
+statistical argument (Yu and Oh 2012).</p>
+
+<h2><a name="functional">4. The Functional Composition Principle</a></h2>
+
+<p>
+
+The key ingredients of the KS theorem are the constraints on value
+assignments spelled out in (2): the Sum Rule and Product Rule. They
+can be derived from a more general principle, called the <em>Functional
+Composition Principle</em>
+ (FUNC).<sup>[<a href="notes.html#note-11" id="ref-11">11</a>]</sup>
+ The principle trades on the mathematical fact that for a
+self-adjoint operator <strong><u>A</u></strong> operating on a
+Hilbert space, and an arbitrary function f:
+ <strong>R</strong>→<strong>R</strong>
+(where <strong>R</strong> is the set of the real numbers), we can
+define f(<strong><u>A</u></strong>) and show that it also is a
+self-adjoint operator (hence, we write
+<strong><u>f(A)</u></strong>). If we further assume that to every
+self-adjoint operator there corresponds a QM observable, then the
+principle can be formulated thus:</p>
+
+<blockquote><strong>FUNC:</strong>  Let <strong><u>A</u></strong>
+be a self-adjoint operator associated with observable A, let f:
+<strong>R</strong>
+ →
+ <strong>R</strong> be an
+arbitrary function, such that <strong><u>f(A)</u></strong> is another
+self-adjoint operator, and let
+ |φ&gt;
+ be an arbitrary state; then <strong><u>f(A)</u></strong> is associated
+uniquely with an observable <em>f</em>(<em>A</em>) such that: 
+
+<blockquote><em>v</em>(<em>f</em>(<em>A</em>))<sup>|φ&gt;</sup>
+ =
+ <em>f</em>(<em>v</em>(<em>A</em>))<sup>|φ&gt;</sup> 
+</blockquote>
+</blockquote>
+
+<p>
+
+(We introduce the state superscript above to allow for a possible
+dependence of values on the particular quantum state the system is
+prepared in.) The Sum Rule and the Product Rule are straightforward
+consequences of FUNC [<a href="srprfunc.html" name="return-4">Proof</a>].
+ FUNC itself is not derivable from the formalism
+of QM, but a statistical version of it (called STAT FUNC) is
+ [<a href="sfderiv.html" name="return-5">Proof</a>]:</p>
+
+<blockquote><strong>STAT FUNC:</strong>  Given <em>A</em>, <em>f</em>,
+ |φ&gt;
+ as defined in FUNC, then, for an
+arbitrary real number <em>b</em>: 
+
+<blockquote>prob[<em>v</em>(<em>f</em>(<em>A</em>))<sup>|φ&gt;</sup>=<em>b</em>]
+ =
+ prob[f<em>(</em><em>v</em>(<em>A</em>))<sup>|φ&gt;</sup>=<em>b</em>]</blockquote>
+</blockquote>
+
+<p>
+
+But STAT FUNC cannot only be derived from the QM formalism; it also
+follows from FUNC
+ [<a href="statfunc.html" name="return-6">Proof</a>].
+This can be seen as providing “a plausibility argument for FUNC”
+(Redhead 1987: 132): STAT FUNC is true, as a matter of the mathematics
+of QM. Now, if FUNC were true, we could derive STAT FUNC, and thus
+understand part of the mathematics of QM as a consequence of 
+ FUNC.<sup>[<a href="notes.html#note-12" id="ref-12">12</a>]</sup></p>
+
+<p> 
+
+But how can we derive FUNC itself, if not from STAT FUNC? It is a
+direct consequence of STAT FUNC and three assumptions (two of which
+are familiar from the introduction):</p>
+
+<blockquote><strong>Value Realism (VR):</strong> If there is an
+operationally defined real number α, associated with a
+self-adjoint operator <strong><u>A</u></strong> and if, for a given
+state, the statistical algorithm of QM for <strong><u>A</u></strong>
+yields a real number β with
+ β = prob(<em>v</em>(<strong><u>A</u></strong>)=α), then
+there exists an observable <em>A</em> with value α.
+
+<p>
+
+<strong>Value Definiteness (VD):</strong> All observables defined
+for a QM system have definite values at all times.</p>
+
+<p>
+
+<strong>Noncontextuality (NC):</strong> If a QM system possesses a
+property (value of an observable), then it does so independently of any
+measurement context.</p>
+</blockquote>
+
+<p>
+
+VR and NC require further explanation. First, we need to
+explain the content of VR. The statistical algorithm of QM tells us how
+to calculate a probability from a given state, a given observable and
+its possible value. Here we understand it as a mere mathematical device without
+any physical interpretation: Given a Hilbert space vector, an operator
+and its eigenvalues, the algorithm tells us how to calculate new
+numbers (which have the properties of probabilities). In addition, by
+‘operationally defined’ we here simply mean ‘made up
+from a number which we know to denote a real property’. So, VR, in
+effect, says that, if we have a real property
+ Γ
+ (value
+ Γ
+ of an observable
+G), and we are able to construct from
+ Γ
+a
+ new number
+ α
+ and find an operator
+<strong><u>A</u></strong> such that
+ α
+is
+ an eigenvalue of <strong><u>A</u></strong>, then (we have fulfilled
+everything necessary to apply the statistical algorithm; thus)
+<strong><u>A</u></strong> represents an observable A and its value
+ α
+ is a real property. </p>
+
+<p>
+
+Second, a failure of NC could be understood in two
+ways. Either the value of an observable might be context-dependent,
+although the observable itself is not; or the value of an observable
+might be context-dependent, because the observable itself is. In
+either case, the independence from context of an observable implies
+that there is a correspondence of observables and operators. This
+implication of NC is what we will use presently in the derivation of
+FUNC.  We will indeed assume that, if NC holds, this means that the
+<em>observable</em> — and <em>thereby</em> also its value — is
+independent of the measurement context, i.e. is independent of how it
+is measured. In particular, the independence from context of an
+observable implies that there is a 1:1 correspondence of observables
+and operators. This implication of NC is what we will use presently
+in the derivation of FUNC. <em>Conversely</em>, failure of NC will be
+construed solely as failure of the 1:1 correspondence.</p>
+
+<p>
+
+From VR, VD, NC and STAT FUNC, we can derive FUNC as follows.
+Consider an arbitrary state of a system and an arbitrary observable
+<em>Q</em>.  By VD, <em>Q</em> possesses a value
+<em>v</em>(<em>Q</em>)=<em>a</em>. Thus, we can form the number
+<em>f</em>(<em>v</em>(<em>Q</em>))=<em>b</em> for an arbitrary
+function <em>f</em>. For this number, by STAT FUNC,
+prob[<em>f</em>(<em>v</em>(<em>Q</em>))=<em>b</em>] =
+prob[<em>v</em>(<em>f</em>(<em>Q</em>))=<em>b</em>].  Hence, we have,
+by transforming probabilities according to STAT FUNC, created a new
+self-adjoint operator <strong><u>f(Q)</u></strong>, and associated it
+with the two real numbers <em>b</em> and
+prob[<em>f</em>(<em>v</em>(<em>Q</em>))=<em>b</em>]. Thus, by VR,
+there is an observable corresponding to <strong><u>f(Q)</u></strong>
+with value <em>b</em>, hence
+<em>f</em>(<em>v</em>(<em>Q</em>))=<em>v</em>(<em>f</em>(<em>Q</em>)). By
+NC, that observable is unique, hence FUNC follows.</p>
+
+<h2><a name="escaping">5. Escaping the KS Argument</a></h2>
+
+<p>
+
+The previous section clarifies which possibilities the HV theorist has
+to escape the KS argument: denying one of the three premises which
+together entail FUNC (hence the Sum Rule and Product Rule). </p>
+
+<h3><a name="general">5.1 No General Value Definiteness</a></h3>
+
+<p>
+
+VD, we recall, was the fundamental presupposition of a fully-fledged HV 
+interpretation. So, if, in order to escape a powerful argument
+against the possibility of HV interpretations, these interpretations
+drop their fundamental premise, this seems not to make much
+sense. But some interpreters point out that, between holding that
+only those observables which QM prescribes to have
+ values<sup>[<a href="notes.html#note-13" id="ref-13">13</a>]</sup>
+ and holding that all of them have values, there is some leeway,
+namely, to propose that a set of observables, different from the one 
+prescribed in QM (but neither, in general, more than these, nor, of course, all) 
+have values. This option is called ‘partial value definiteness.’
+One way to do this is to choose, once and for, a set of observables
+that can be assigned definite values without running afoul of the KS
+Theorem.  The best-known example of this is the de Broglie-Bohm pilot
+wave theory, on which position and functions of position always have
+definite values.  Another approach is to let the set of definite
+observables vary with the state; this is the approach taken by various
+modal interpretations.  A variant on this approach is that of Bub
+(1997), on which some observable <em>R</em> is chosen to to be
+always-definite; the set of definite observables is then expanded to
+the maximal set that avoids a KS obstruction.</p>
+
+<p>
+
+The rocks and shoals of modal interpretations are beyond the scope
+of this article (see the entry on
+ <a href="../qm-modal/">modal interpretations</a>).
+ We just note that it is by no means clear how these interpretations
+can manage to always pick out the right set of observables assumed to
+have values. ‘Right set’ 
+here minimally means that observables we perceive as having values 
+(i.e. those corresponding to the measurement apparatus’s pointer position) 
+must always be included and must always reproduce the QM statistics. We
+also mention two important results which cast doubt on the
+feasibility of modal interpretations: First, it can be shown that
+either partial value definiteness collapses into total value
+definiteness (i.e., VD) or classical reasoning about physical
+properties must be abandoned (Clifton 1995). Second, it is possible
+to derive KS theorems even in certain modal interpretations
+(Bacciagaluppi 1995, Clifton 1996).</p>
+
+<p>
+
+Recently it has been argued that the denial of VD is inconsistent with
+QM itself (Held 2008, 2012a, 2012b). The argument tries to show that
+VD is a consequence of the theory itself (QM → VD). If this is
+indeed the case we have — recalling that KS establish that QM
+&amp; VD &amp; NC implies a contradiction — an argument for the
+claim that QM alone implies contextuality. Since, in that case, QM
+also implies VD we get, all in all, an argument for the claim that QM
+must be interpreted in terms of contextual hidden variables.</p>
+
+<h3><a name="denial">5.2 Denial of Value Realism</a></h3>
+
+<p>
+
+The derivation of FUNC essentially consists in the construction of an
+observable (i.e. <em>f</em>(<em>Q</em>)) via an operator (i.e.,
+<strong><u>f(Q)</u></strong>) from the probability distribution of a
+variable (i.e. <em>f</em>(<em>v</em>(<em>Q</em>)) which number in turn
+is constructed from another variable,
+(i.e. <em>v</em>(<em>Q</em>)). Now, instead of denying that
+<em>v</em>(<em>Q</em>) exists in all cases (as the first option (5.1)
+would have it), we can reject that the existence of a number α
+and the construction of <strong><u>f(Q)</u></strong> automatically
+lead to an observable, i.e. we reject VR. This amounts to rejecting
+that for every self-adjoint operator, there is a well-defined
+observable.</p>
+
+<p>
+
+Now, in order to formulate VR we had to give a reduced reading
+to the statistical algorithm, i.e. that it is a mere mathematical
+device for calculating numbers from vectors, operators and numbers.
+This reading is very artificial and presupposes that a minimal interpretive
+apparatus required to make physical sense of some operators (like
+<strong><u>Q</u></strong>) can be withheld for others (like
+<strong><u>f(Q)</u></strong>).</p>
+
+<p>
+
+Moreover, it seems entirely implausible to assume that some operators
+— sums and products of operators that are associated with
+well-defined observables — are themselves not associated with
+well-defined observables, even if they mathematically inherit exact
+values from their summands or factors. Put in a crude example, this
+would amount to saying that to ask for a system’s energy is a
+well-defined question, while to ask for the square of the system’s
+energy is not, even if, from our answer to the first question and
+trivial mathematics, we have a well-defined answer at hand. There
+seems no good a priori reason to justify this restriction. So, to make
+rejecting VR plausible at all, an additional proposal is made: It is
+crucial to the KS argument that one and the same operator is
+constructed from different maximal ones which are incompatible:
+<strong><u>f(Q)</u></strong> is identical to
+<strong><u>g(P)</u></strong>, where <strong><u>PQ</u></strong> −
+<strong><u>QP</u></strong> ≠ 0. We now assume that only the
+construction of <strong><u>f(Q)</u></strong> via <em>Q</em>, but not
+the one via <em>P</em>, leads to a well-defined observable in a
+certain
+ context.<sup>[<a href="notes.html#note-14" id="ref-14">14</a>]</sup></p>
+
+<p>
+
+This move however, automatically makes some observables
+context-sensitive. So, this way of motivating the denial of VR
+amounts to a kind of contextualism, which we might come by cheaper,
+by directly rejecting NC, and without any tampering with the
+statistical algorithm.  (This fact explains why we did not mention
+denial of VR as a separate option in the introduction.).</p>
+
+<h3><a name="contextuality">5.3 Contextuality</a></h3>
+
+<p>
+
+Finally, we might accept VD and VR, but deny that our construction of
+an observable <em>f</em>(<em>Q</em>) is unambiguous. Thus, though
+<strong><u>f(Q)</u></strong> and <strong><u>g(P)</u></strong> are
+mathematically identical, we could assume that they correspond to
+different observables, arguing that an actual determination of
+<em>v</em>(<em>f</em>(<em>Q</em>)) must proceed via measuring
+<em>Q</em>, but the determination of
+<em>v</em>(<em>g</em>(<em>P</em>)) involves measuring <em>P</em> which
+is incompatible with <em>Q</em>. Since
+<em>v</em>(<em>f</em>(<em>Q</em>)) and
+<em>v</em>(<em>g</em>(<em>P</em>)) are thus outcomes of different
+measurement situations, there is no reason to assume that
+<em>v</em>(<em>f</em>(<em>Q</em>)) =
+<em>v</em>(<em>g</em>(<em>P</em>)). This way to block the KS proof
+comes to understanding <em>f</em>(<em>Q</em>) and
+<em>g</em>(<em>P</em>) as different observables (because of
+sensitivity to context), thus it amounts to rejecting NC. There are
+mainly two ways, in the literature, to further motivate this step.
+Accordingly, there are two important brands of contextuality to be
+discussed — causal and ontological contextuality.</p>
+
+<p>
+
+The KS argument has been presented for possessed values of a QM system
+— independently of considerations about measurement. Indeed, in
+the argument measurement was mentioned only once and in the negative
+— in NC. However, since now we consider the rejection of NC, we
+must also take into account measurement and its complications. For
+that purpose it is good to explicate yet another principle that
+manifests our innocuous realism (see the introduction above), i.e. a
+principle of faithful measurement:</p>
+
+<blockquote>
+<strong>Faithful Measurement (FM):</strong> QM measurement of an
+observable faithfully delivers the value which that observable had
+immediately prior to the measurement interaction.</blockquote>
+
+<p>
+FM is also an extremely plausible presupposition of natural science,
+in general. (Note that FM entails VD, hence we could have given a KS
+argument for possible measurement results, using FM). Consider now the
+motivation, for the HV proponent, to reject NC. Obviously, the aim is
+to save other presuppositions, especially VD. Now, VD and NC are
+independent realist convictions, but NC and FM are not quite so
+independent. Indeed, we will see that rejection of NC entails the
+rejection of FM in one version of contextuality, and strongly suggests
+it in the other. (This makes more precise the somewhat cryptic remark
+from the introduction that it is not obvious what an interpretation
+endorsing the realist principle VD, but rejecting the realist
+principle NC, should look like. Such an interpretation would have to
+violate a third realist principle, i.e. FM.)</p>
+
+<h4>Causal Contextuality</h4>
+
+<p>
+
+A property (value of an observable) might be <em>causally</em> context-dependent in the
+sense that it is causally sensitive to how it is measured. The basic
+idea is that the observed value comes about as the effect of the
+system-apparatus interaction. Hence, measuring a system via
+interaction with a <em>P</em>-measuring apparatus might yield a value
+<em>v</em>(<em>g</em>(<em>P</em>)), measuring the same system via
+interaction with a <em>Q</em>-measuring apparatus a different value
+<em>v</em>(<em>f</em>(<em>Q</em>)), although both observables are
+represented by the same operator <strong><u>f(Q)</u></strong> =
+<strong><u>g(P)</u></strong>. The difference in values is explained in
+terms of a context-dependence of the observables: The latter are
+context-dependent, since the different ways to physically realize them
+causally influence the system in different ways and thereby change the
+observed values.</p>
+
+<p>
+
+If an interpreter wanted to defend causal contextuality, this would
+entail abandoning FM, at least for observables of the type
+<em>f</em>(<em>Q</em>) (non-maximal observables): Since their values
+causally depend on the presence of certain measurement arrangements,
+these arrangements are causally necessary for the values to come
+about, thus the values cannot be present before the system-apparatus
+interaction, and FM is violated.  As an advantage of causal
+contextualism the following might be pointed out. It does not imply
+that the ontological status of the physical properties involved must
+change, i.e. does not imply that they become relational. If the
+property in an object is brought about via interaction with another
+one, it can still be one which the object has for itself after the
+interaction. However, the idea of causal contextuality is sometimes
+discussed critically, since there is reason to think that it may be
+empirically inadequate (see Shimony 1984, Stairs 1992).</p>
+
+<h4>Ontological Contextuality</h4>
+
+<p>
+
+A property (value of an observable) might be <em>ontologically</em>
+context-dependent in the sense that in order for it to be well-defined
+the specification of the observable it ‘comes from’ is
+necessary. Thus, in order to construct a well-defined observable from
+operator
+<strong><u>f(Q)</u></strong> = <strong><u>g(P)</u></strong>, we need
+to know whether it is physically realized via observable <em>P</em> or
+observable <em>Q</em>. This way out of the KS problem, was first noted
+(but not advocated) by van Fraassen (1973). There are, then, as many
+observables and kinds of physical properties for an operator
+<strong><u>f(Q)</u></strong> as there are ways to construct
+<strong><u>f(Q)</u></strong> from maximal operators. Without further
+explanation, however, this idea just amounts to an <em>ad hoc</em>
+proliferation of physical magnitudes. A defender of ontological
+contextuality certainly owes us a more explicit story about the
+dependence of observable <em>f</em>(<em>Q</em>) on observable
+<em>Q</em>. Two possibilities come to mind:</p>
+
+<p>
+
+(a) We might think that <em>v</em>(<em>f</em>(<em>Q</em>)) just is not
+a self-sustained physical property, but one which ontologically
+depends on the presence of another property
+<em>v</em>(<em>Q</em>). (Recall that in the proof of FUNC
+<em>v</em>(<em>f</em>(<em>Q</em>)) <em>is</em> constructed from
+<em>v</em>(<em>Q</em>).)  But, since the position does not reject
+questions about values of <em>f</em>(<em>Q</em>) in a
+<em>P</em>-measurement situation as illegitimate (because it does not
+trade on a notion of an observable being well-defined in one context
+only!), this seems to lead to new and pressing questions, to say the
+least. As an attempt to defend a contextualist <em>hidden
+variables</em> interpretation, this position must concede that not
+only does the system have, in the <em>Q</em>-measurement situation, a
+value <em>v</em>(<em>Q</em>), but also, in a <em>P</em>-measurement
+situation, it has a value <em>v</em>′(<em>Q</em>), although
+perhaps <em>v</em>′(<em>Q</em>) ≠
+<em>v</em>(<em>Q</em>). Now, questions for values of
+<em>f</em>(<em>Q</em>) in this situation at least are legitimate. Does
+<em>v</em>′(<em>Q</em>) imply another
+<em>v</em>′(<em>f</em>(<em>Q</em>)) ≠
+<em>v</em>(<em>f</em>(<em>Q</em>))? Or does
+<em>v</em>′(<em>Q</em>), in opposition to
+<em>v</em>(<em>Q</em>), not lead to a value of <em>f</em>(<em>Q</em>),
+at all? Neither option seems plausible, for could we not, just by
+switching for a certain prepared system between a <em>P</em>- and
+<em>Q</em>-measurement situation either switch
+<em>v</em>(<em>f</em>(<em>Q</em>)) in and out of existence or switch
+between <em>v</em>(<em>f</em>(<em>Q</em>)) and
+<em>v</em>′(<em>f</em>(<em>Q</em>))?  (b) We might think that,
+in order for <em>f</em>(<em>Q</em>) to be well-defined, one
+measurement arrangement rather than the other is necessary. The idea
+is strongly reminiscent of Bohr’s 1935 argument against EPR, and
+indeed may be viewed as the appropriate extension of Bohr’s views on
+QM to the modern HV discussion (see Held 1998, ch.7). In this version
+of ontological contextualism the property
+<em>v</em>(<em>f</em>(<em>Q</em>)), rather than depending on the
+presence of another property <em>v</em>(<em>Q</em>), is dependent on
+the presence of a <em>Q</em>-measuring apparatus. This amounts to a
+holistic position: For some properties it only makes sense to speak of
+them as pertaining to the system, if that system is part of a certain
+system-apparatus whole. Here, the question for values of
+<em>f</em>(<em>Q</em>) in a P-measurement situation <em>does</em>
+become illegitimate, since <em>f</em>(<em>Q</em>)’s being well-defined
+is tied to a <em>Q</em>-measurement situation.  But again further
+clarification is required. Does the position hold that, in opposition
+to <em>f</em>(<em>Q</em>), <em>Q</em> itself is well-defined in a
+<em>P</em>-measurement situation? If it does not, <em>Q</em> can
+hardly have a value (since not being well-defined was the reason to
+deny <em>f</em>(<em>Q</em>) a value), which means that we are not
+considering an HV interpretation of the given type any longer, and
+that there is no need to block the KS argument at all. If it does,
+what explains that, in the <em>P</em>-measurement situation,
+<em>Q</em> remains well-defined, but <em>f</em>(<em>Q</em>) loses this
+status?</p>
+
+<p>
+
+What becomes of FM in both versions of ontological contextualism?
+Well, if we remain agnostic about how the position could be made
+plausible, we can save FM, while, if we choose version (a) or (b) to
+make it plausible, we lose it. Consider first an agnostic denial of
+NC.  FM says that every QM <em>observable</em> is faithfully
+measured. Now, contextualism splits an operator which can be
+constructed from two different noncommuting operators into two
+observables, and ontological contextualism does not try to give us a
+causal story which would ruin the causal independence of the measured
+value from the measurement interaction embodied in FM. We simply
+introduce a more fine-grained conception of observables, but can still impose FM for
+these new contextual observables.</p>
+
+<p>
+
+However, the concrete versions of ontological contextualism, by
+attempting to motivate the contextual feature, ruin FM. Version (a)
+allows <em>f</em>(<em>Q</em>) to be switched ‘on and off’
+or to switch between different values upon the change between
+<em>P</em>- and <em>Q</em>-measurement situations — which is a
+flagrant violation of FM. Version (b) fares no better. It introduces
+the ontological dependence on the measuring arrangement. It is hard to
+see what else this should be, but the same causal dependence pushed to
+a higher, ‘ontological’ key.  Again, could we not, just by
+flipping back and forth the measurement arrangement, change back and
+forth whether <em>f</em>(<em>Q</em>) is well-defined, thus flip
+<em>v</em>(<em>f</em>(<em>Q</em>)) in and out of existence?</p>
+
+<p>
+
+Finally, we note that both types of ontological contextualism, in
+opposition to the causal version, <em>do</em> entail that system
+properties which we earlier thought to be intrinsic become
+relational in the sense that a system can only have these properties
+either if it has certain others, or if it is related to a certain
+measurement arrangement.</p>
+
+<h2><a name="question">6. The Question of Empirical Testing</a></h2>
+
+<p>
+
+Famously, the violation of Bell’s inequalities, prescribed by
+QM, has been confirmed experimentally. Is something similar possible
+for the KS theorem? We should distinguish three questions: (1) Is it
+possible to realize the experiment proposed by KS as a motivation of
+their theorem?  (2) Is it possible to test the principles leading to
+the theorem: the Sum Rule and Product Rule, FUNC, or NC? (3) Is it
+possible to test the theorem itself?</p>
+
+<p>
+
+(1) KS themselves describe a concrete experimental arrangement to
+measure <em>S</em><sub><em>x</em></sub><sup>2</sup>,
+<em>S</em><sub><em>y</em></sub><sup>2</sup>,
+<em>S</em><sub><em>z</em></sub><sup>2</sup> on a one-particle spin-1 system as
+functions of one maximal observable.  An orthohelium atom in the
+lowest triplet state is placed in a small electric field E of rhombic
+symmetry. The three observables in question then can be measured as
+functions of one single observable, the perturbation Hamiltonian
+H<sub>s</sub>. H<sub>s</sub>, by the geometry of E, has three
+distinct possible values, measurement of which reveals which two
+of <em>S</em><sub><em>x</em></sub><sup>2</sup>,
+<em>S</em><sub><em>y</em></sub><sup>2</sup>,
+<em>S</em><sub><em>z</em></sub><sup>2</sup> have value 1 and which one has value
+0 (see Kochen and Specker 1967: 72/311). This is, of course, a
+proposal to realize an experiment exemplifying our above value
+constraint (VC2). Could we also realize a (VC1) experiment,
+i.e. measure a set of commuting projectors projecting on eigenstates
+of one maximal observable? Peres (1995: 200) answers the question in
+the affirmative, discusses such an experiment, and refers to Swift
+and Wright (1980) for details about the technical feasibility. Kochen
+and Specker’s experimental proposal has, however, not been further
+pursued, because it does not provide a direct test of NC. Obviously, a
+measurement of H<sub>S</sub> measures one orthogonal triple only. An
+HV proponent might well assume that the hidden state changes from one
+measurement of H<sub>S</sub> to the next (even if we prepare the same
+QM state again) and thus maintain NC. </p>
+
+<p>
+
+(2) In conjunction with manifestations of FUNC, i.e. the Sum Rule and
+the Product Rule, QM yields constraints like VC1 or VC2 that
+contradict VD. So, providing concrete physical examples that could,
+given the Sum Rule and the Product Rule, instantiate VC1 or VC2 as
+just outlined is not enough. We must ask whether these rules
+themselves can be empirically supported. There was considerable
+discussion of this question in the early 80s — explicitly about
+whether the Sum Rule is empirically testable — and there was
+general agreement that it is
+ not.<sup>[<a href="notes.html#note-15" id="ref-15">15</a>]</sup></p>
+
+<p>
+
+The reason is the following. Recall that the derivation of FUNC
+established uniqueness of the new observable <em>f</em>(<em>Q</em>)
+only in its final step (via NC). It is this uniqueness which
+guarantees that one operator represents exactly one observable so that
+observables (and thereby their values) in different contexts can be
+equated. This allows one to establish indirect connections between
+different incompatible observables. Without this final step, FUNC must
+be viewed as holding relative to different contexts, the connection is
+broken and FUNC is restricted to one set of observables which are all
+mutually compatible.  Then indeed FUNC, the Sum Rule and the Product
+Rule become trivial, and empirical testing in these cases would be a
+pointless 
+ question.<sup>[<a href="notes.html#note-16" id="ref-16">16</a>]</sup>
+ It is NC that does all the work and deserves to be tested via
+checking whether for incompatible <em>P</em>, <em>Q</em> such that
+<em>f</em>(<em>Q</em>)=<em>g</em>(<em>P</em>) it is true that
+<em>v</em>(<em>f</em>(<em>Q</em>))=<em>v</em>(<em>g</em>(<em>P</em>)). However,
+though QM and a noncontextual HV theory contradict each other for a
+single system, this contradiction involves incompatible observables
+and, thus, is untestable (as we have just seen from Kochen and
+Specker’s own proposal). Physicists have, however, made ingenious
+proposals for overcoming this obstacle. It is well-known that the
+consideration of two-particle systems and products of spin components
+leads to very simple KS-type proofs (Mermin 1990b). Cabello and
+Garcìa-Alcaine (1998) have shown that for such systems QM and a
+noncontextual HV theory make different predictions for every single
+case. Their reasoning makes no reference to locality considerations,
+but as it requires two particles, such considerations might creep
+in. Simon <em>et al</em>. (2000), have mapped the
+Cabello/Garcìa-Alcaine scheme onto a combination of position and spin
+observables for a single particle. Their experiment has been carried
+out and has confirmed the QM predictions (Huang et al. 2003; see also more recently Huang et al. 2013). All the
+mentioned authors consider their experimental proposals to be empirical
+refutations of NC, but this has been doubted (Barrett and Kent 2004),
+for reasons considered in the next paragraph.</p>
+
+<p>
+
+(3) The KS theorem, by its mathematical nature, is not empirically
+testable. However, we could, along the lines of the previous
+paragraphs, try to measure a subset of a suitable KS-uncolourable
+set. Especially, it should be possible to produce cases along the
+lines of Clifton’s example (3.5) where QM and a noncontextual HV
+theory make measurably different predictions. It seems as if such
+cases could provide empirical tests of whether Nature is contextual
+(though not whether such contextuality is of the causal or ontological
+type).(For a recent version of such an approach see Tang and Yu 2017.) 
+From the 1980s on, it has been argued that such testing is
+impossible. The KS theorem, it was claimed, leaves enough loopholes for
+a HV theory at variance with QM, but able to reproduce the theory’s
+empirical predictions. Pitowsky (1983, 1985) argued that it is
+possible to restrict attention to a subset of directions in
+R<sub>3</sub> which are colourable. His argument, however, relies on a
+non-standard version of probability theory that is regarded as
+physically implausible. Meyer (1999) has exploited the
+mathematical fact that a set D<sub>M</sub> of directions in
+R<sub>3</sub> approximating the KS-set arbitrarily closely, but
+with <em>rational</em> coordinates is KS-colourable. Meyer argues that
+real measurements have finite precision and thus can never distinguish
+between a direction in R<sub>3</sub> and its approximation from
+D<sub>M</sub>. Kent (1999) has generalized the result for all Hilbert
+spaces, and Clifton and Kent (2000) have shown that also a set of
+directions D<sub>CK</sub> such that every one direction is a member of
+just <em>one</em> orthogonal triple approximates any direction
+arbitrarily closely. In D<sub>CK</sub> there are no interlocking
+triples, the question of contextuality does not arise and
+D<sub>CK</sub> trivially is KS colourable. Clifton and Kent, in
+addition, have explicitly shown that D<sub>CK</sub> is large enough to
+allow probability distributions over value assignments arbitrarily
+close to all QM distributions. Meyer, Kent and Clifton (MKC) can be
+understood as thus arguing that even an empirical test of
+KS-uncolourable directions confirming the QM predictions cannot prove
+the contextuality of Nature. Because of the test’s finite precision it
+is impossible to disprove the contention that unwittingly we have
+tested close-by members of a KS-colourable set. One quite obvious
+objection to this type of argument is that the original KS argument
+works for possessed values, not measured values, so the MKC argument,
+dealing on finite precision of measurement, misses the mark. We might
+not be able to test observables which are exactly orthogonal or
+exactly alike in different tests, but it would be a strange
+HV interpretation that asserts that such components do not exist (see
+Cabello 1999 in Other Internet Resources). Of course, such a
+noncontextual HV proposal would be immune to the KS argument, but it
+would be forced to either assume that not for every one of the
+continuously many directions in physical space there is an observable,
+or else that there are not continuously many directions in physical
+space. Neither assumption seems very attractive. </p>
+
+<p>
+
+In addition, the MKC argument is dissatisfying even for measured
+values, since it exploits the finite precision of real measurements
+only in one of the above senses, but presupposes infinite precision in
+the other. MKC assume, for measured observables, that there is finite
+precision in the choice of different orthogonal triples, such that we
+cannot, in general, have exactly the same observable twice, as a
+member of two different triples. However, MKC still assume infinite
+precision, i.e. exact orthogonality, within the triple (otherwise the
+colouring constraints could find no application, at all). It has been
+claimed that this feature can be exploited to rebut the argument and
+to re-install contextualism (see Mermin 1999 and Appleby 2000, both in
+Other Internet Resources, and Appleby 2005).</p>
+
+<p>
+
+Finally, it seems plausible to assume that probabilities vary
+continuously as we change directions in R<sub>3</sub>, so small imperfections of
+selection of observables that block the argument (but only for measured
+values!) in the single case will wash out in the long run (see Mermin
+1999, in Other Internet Resources). This in itself does not constitute
+an argument, since in the
+colourable sets of observables in MKC’s constructions
+probabilities also vary (in a sense)
+ continuously.<sup>[<a href="notes.html#note-17" id="ref-17">17</a>]</sup>
+ We might, however, exploit Mermin’s reasoning in the following
+way. Reconsider Clifton’s set of eight directions (in Figure 3)
+leading to a colouring constraint for the outermost points which
+statistically contradicts the QM statistics by a fraction of
+1/17. Using Clifton and Kent’s colourable set of directions
+D<sub>CK</sub> we are unable to derive the constraint for the eight
+points, since these eight points do not lie in D<sub>CK</sub>; namely,
+as we move, in the colourable subset, from one mutually orthogonal
+triple of rays to the next, we never hit upon exactly the same ray
+again, but only on one approximating it arbitrarily closely.  Assume a
+set S of systems wherein observables, corresponding to members of
+D<sub>CK</sub> and approximating the eight directions in Fig. 3
+arbitrarily closely, all have values — in accordance with the HV
+premise. Then we <em>can</em> derive Clifton’s constraint for the
+outermost points in the following sense. Consider the subset
+<em>S</em>′ ⊂ <em>S</em> of systems where any direction
+approximating point (1, 1, 1) gets value 1 (or colour white). In order
+to meet the predictions of QM, in <em>S</em>′ all directions
+approximating (1, 0, −1) and (1, −1, 0) must receive values such that
+the probability of value 0 (or colour black) is extremely close to
+1. Analogously, in another subset <em>S</em>″ ⊂ <em>S</em>
+of systems with directions approximating (−1, 1, 1) as having value 1
+(colour white) all directions approximating (1, 0, 1) and (1, 1, 0)
+must receive values such that the probability of value 0 (colour
+black) is extremely close to 1. Consider now members of
+<em>S</em>′ ∩ <em>S</em>″. In any of them there will
+be, for any approximation to (1, 0, −1) with value 0 (colour black),
+an exactly orthogonal point that approximates (1, 0, 1) and also has
+value 0 (colour black) such that there is a third orthogonal point
+approximating (0, 1, 0) and having value 1 (colour white). Likewise
+for (0, 0, 1). But (0, 1, 0) and (0, 0, 1) are orthogonal, and for all
+members of <em>S</em>′ ∩ <em>S</em>″ the directions
+<em>approximating</em> them both have value 1 (colour white), while QM
+predicts that the probability for values 1 for the
+<em>approximated</em> directions values is 0. In order to ensure that
+this prediction is met, <em>S</em>′ ∩ <em>S</em>″ must
+be an extremely small subset of <em>S</em>, which is to say that the
+probability for both (1, 1, 1) and (−1, 1, 1) (the leftmost and
+rightmost points in fig. 3) must be close to 0 and approximate 0
+better and better as <em>S</em> grows. QM, on the contrary, predicts a
+probability of 1/17. (Recall also that this number can be pushed up to
+1/3 by choosing a set of 13 directions!)</p>
+
+<p>
+
+Cabello (2002), using a very similar reasoning, has shown that the MKC
+models lead to predictions that testably differ from the ones of
+QM. For D<sub>CK</sub>, he effectively uses the strategy sketched
+above: QM gives probabilities for directions in the Clifton-Kent set
+which their model must match in order to reproduce QM predictions. As
+these directions are arbitrarily close to directions from a
+KS-uncolourable set (or directions leading to Clifton’s constraint),
+this leads to restrictions for these nearby points that are measurably
+violated by the QM predictions. For Meyer’s D<sub>M</sub> Cabello’s
+case is even stronger. He explicitly presents a set of nine
+<em>rational</em> vectors leading to predictions different from QM
+(for three of these directions). Hence, the Meyer argument is
+effectively rebutted (without recourse to Mermin’s requirement): Even
+if there were only observables corresponding to the rational
+directions in R<sub>3</sub> (which in itself is an implausible assumption) a
+theory assuming that they all have noncontextual values faithfully
+revealed by measurement will be measurably at variance with QM. Assume
+now that the Cabello directions were tested and the QM predictions
+reliably confirmed, then this would (modulo the reliability of the
+tests) constitute a proof that Nature is contextual. </p>
+
+<p>
+
+So, in sum it seems that, as long as we assume that there are
+continuously many QM observables (corresponding to the continuum of
+directions in physical space), statistical tests building, e.g., on
+the Clifton 1993 or the Cabello/Garcìa-Alcaine 1998 proposal
+remain entirely valid as empirical confirmations of QM and, via the KS
+theorem, of contextuality. Since these statistical violations of the
+HV programme come about as contradictions of results of QM, VD, VR,
+and NC on the one hand, and QM and experiment on the other, the
+experimental data still force upon us the trilemma of giving up either
+VD or VR or NC. As we have seen, denial of value realism in the end
+becomes identical to a kind of contextualism, hence we really have
+only two options: (1) Giving up VD, either for all observables
+forbidden to have values in the orthodox interpretation (thus giving
+up the HV programme, as defined above), or for a subset of these
+observables (as modal interpretations do). (2) Endorse a kind of
+contextualism. Moreover, as things presently stand, the choice between
+these two options seems not to be a matter of empirical testing, but
+one of pure philosophical argument.</p>
+
+</div>
+
+<div id="bibliography">
+
+<h2><a name="Bib">Bibliography</a></h2>
+
+<ul class="hanging">
+
+<li>Appleby, D.M., 2005, “The Kochen-Specker
+Theorem”, <em>Studies in History and Philosophy of Modern
+Physics</em>, 36: 1–28.</li>
+
+<li>Bacciagaluppi, G., 1995, “Kochen-Specker Theorem in the Modal
+Interpretation”, <em>International Journal of Theoretical Physics</em>,
+34: 1205–15.</li>
+
+<li>Barrett, J. and Kent, A., 2004, “Non-Contextuality, Finite
+Precision Measurement and the Kochen-Specker Theorem”, <em>Studies in
+History and Philosophy of Modern Physics</em>, 35: 151–76.
+ [<a href="http://arxiv.org/abs/quant-ph/0309017" target="other">Preprint available online</a>.]</li>
+
+<li>Bell, J. S., 1966, “On the Problem of Hidden Variables in
+Quantum Mechanics”, <em>Reviews of Modern Physics</em>, 38: 447–52;
+reprinted in his (1987) (page references are to the reprint).</li>
+
+<li>–––, 1987, <em>Speakable and Unspeakable in Quantum
+Mechanics</em>, Cambridge: Cambridge University Press</li>
+
+<li>Bohr, N., 1935, “Can Quantum Mechanical Description of Physical
+Reality be Considered Complete?” <em>Physical Review</em>, 48: 696–702;
+reprinted in J. Kalckar (ed.), <em>Niels Bohr. Collected Works</em>
+(Vol. 7), Amsterdam: Elsevier, 1996, 292–98.</li>
+
+<li>Bub, J., 1997.  <em>Interpreting the Quantum World.</em>
+Cambridge University Press.</li>
+
+<li>Cabello, A., 2002, “Finite-Precision Measurement does not Nullify the Kochen-Specker Theorem”, <em>Physical Review</em>, A 65: 05201.
+ [<a href="http://arxiv.org/abs/quant-ph/0104024" target="other">Preprint available online.</a>]</li>
+
+<li>Cabello, A., Estebaranz, J. and Garcìa-Alcaine, G., 1996,
+“Bell-Kochen-Specker Theorem: A Proof with 18 vectors”, <em>Physics
+Letters</em>, A 212: 183–87.
+ [<a href="http://arxiv.org/abs/quant-ph/9706009" target="other">Preprint available online.</a>]</li>
+
+<li>Cabello, A. and Garcìa-Alcaine, G., 1998,
+“Proposed Experimental Test of the Bell-Kochen-Specker Theorem”,
+<em>Physical Review Letters</em>, 80: 1797–99.
+ [<a href="http://arxiv.org/abs/quant-ph/9709047" target="other">Preprint available online.</a>]</li>
+
+<li>Clifton, R. K., 1993, “Getting Contextual and Nonlocal
+Elements-of-Reality the Easy Way”, <em>American Journal of Physics</em>,
+61: 443–47.</li>
+
+<li>–––, 1995, “Why Modal Interpretations of Quantum
+Mechanics Must Abandon Classical Reasoning About Physical
+Properties”, <em>International Journal of Theoretical
+Physics</em>, 34, 1303–1312.</li>
+
+<li>–––, 1996, “The Properties of Modal Interpretations
+of Quantum Mechanics,” <em>British Journal for Philosophy of
+Science</em>, 47: 371–98.</li>
+
+<li>Clifton, R. K. and Kent, A., 2000, “Simulating Quantum
+Mechanics by Non-Contextual Hidden Variables”, <em>Proceedings of the
+Royal Society of London A</em>, 456: 2101–14.
+[<a href="http://arxiv.org/abs/quant-ph/9908031" target="other">Preprint available online.</a>]</li>
+
+<li>Cooke, R.M., Keane, M., and Moran, W., 1985, “An Elementary Proof
+of Gleason’s Theorem”, <em>Mathematical Proceedings of the
+Cambridge Philosophical Society</em>, 98: 117–28; reprinted in Hughes
+1989, 321–46.</li>
+
+<li>Fine, A., 1973, “Probability and the Interpretation of Quantum
+Mechanics”, <em>British Journal for the Philosophy of Science</em>, 24:
+1–37.</li>
+
+<li>–––, 1974, “On the Completeness of Quantum Mechanics”,
+<em>Synthese</em>, 29: 257–89; reprinted in P. Suppes (ed.),
+<em>Logic and Probability in Quantum Mechanics</em>, Dordrecht:
+Reidel,  1976,  249–81.</li>
+
+<li>Fine, A. and Teller, P., 1978, “Algebraic Constraints on
+Hidden Variables”, <em>Foundations of Physics</em>, 8: 629–36.</li>
+
+<li>Gleason, A.M., 1957, “Measures on the Closed Subspaces of a
+Hilbert Space”, <em>Journal of Mathematics and Mechanics</em>, 6:
+885–93; reprinted in Hooker 1975, 123–34.</li>
+
+<li>Held, C., 1998, <em>Die Bohr-Einstein-Debatte.
+Quantenmechanik und physikalische Wirklichkeit</em>, Paderborn:
+Schöningh.</li>
+
+<li>–––, 2008, “Axiomatic Quantum Mechanics and 
+Completeness”, <em>Foundations of Physics</em>, 38:
+707–732. 
+ [<a href="https://link.springer.com/article/10.1007/s10701-008-9230-4" target="other">Available online.</a>]</li>
+
+<li>–––, 2012a,  “The Quantum Completeness Problem”, 
+in M. R. Pahlavani (ed.), <em>Measurements in Quantum Mechanics</em>, 
+Rijeka; InTech,  175–196. 
+ [<a href="http://www.intechopen.com/books/measurements-in-quantum-mechanics/the-quantum-completeness-problem" target="other">Available online.</a>]</li>
+
+<li>–––, 2012b, “Incompatibility of Standard Completeness
+and Quantum Mechanics”, <em>International Journal of Theoretical
+Physics</em>, 51(9): 2974–2984. 
+ [<a href="http://philsci-archive.pitt.edu/9080/1/Incompatibility24b.docx" target="other">Preprint available online.</a>]</li>
+
+<li>Hermann, Grete, 1935,“Die naturphilosophischen Grundlagen 
+der Quantenmechanik” <em>Abhandlungen der Fries’schen Schule</em>, 
+6.  [<a href="http://www.projects.science.uu.nl/igg/seevinck/trans.pdf">English translation, of the relevant section, by M.P. Seevinck is available online</a>.]</li>
+
+<li>Hooker, C. (ed.), 1975, <em>The Logico-Algebraic Approach to
+Quantum Mechanics</em>, Dordrecht: Reidel.</li>
+
+<li>Huang, Y.-F., Li, C.-F., Zhang, Y.-S., Pan, J.-W., and Guo, G.-C.,
+2003, “Experimental Test of the Kochen-Specker Theorem with
+Single Photons”, <em>Physical Review Letters</em>, 90 (25):
+250401-1 – 250401-4.
+[<a href="http://arxiv.org/abs/quant-ph/0209038" target="other">Preprint available online.</a>]</li>
+
+<li>Huang Y.-F., Li, M., Cao, D.-Y., Zhang, C., Zhang, Y.-S., Liu, B.-H., Li, C.-F., and Guo, G.-C., 2013, “Experimental Test of State-Independent Quantum Contextuality of an Indivisible Quantum System”, <em>Physical Review A</em>, 87: 052133-1 – 052133-10.
+ </li>
+
+<li>Hughes, R.I.G., 1989, <em>The Structure and Interpretation of
+Quantum Mechanics</em>, Cambridge, MA: Harvard University Press.</li>
+
+<li>Kent, A., 1999, “Noncontextual Hidden Variables and Physical
+Measurements”, <em>Physical Review Letters</em>, 83: 3755–57.<br />
+ [<a href="http://arxiv.org/abs/quant-ph/9906006" target="other">Preprint available online.</a>]</li>
+
+<li>Kernaghan, M., 1994, “Bell-Kochen-Specker Theorem for 20 Vectors”,
+<em>Journal of Physics</em>, A 27: L829–30.</li>
+
+<li>Kochen, S. and Specker, E., 1967, “The Problem of Hidden
+Variables in Quantum Mechanics”, <em>Journal of Mathematics and
+Mechanics</em>, 17: 59–87; reprinted in Hooker 1975, 293–328 (page
+references to original and reprint).</li>
+
+<li>Meyer, D. A., 1999, “Finite Precision Measurement Nullifies the
+Kochen-Specker Theorem”, <em>Physical Review Letters</em>, 83: 
+3751–54.
+ [<a href="http://arxiv.org/abs/quant-ph/9905080" target="other">Preprint available online.</a>]</li>
+
+<li>Mermin, N. D., 1990a, “Quantum Mysteries Revisited”,
+<em>American Journal of Physics</em>, 58: 731–34.</li>
+
+<li>–––, 1990b,  “Simple Unified Form of the Major
+No-Hidden Variables Theorems”, <em>Physical Review Letters</em>, 65:
+3373–76.</li>
+
+<li>–––, 1993, “Hidden variables and the two theorems of
+John Bell”, <em>Reviews of Modern Physics</em>, 65:
+803–815.</li>
+
+<li>Pavičić, M., Merlet, J.-P., McKay, B., and McGill,
+N. D., 2005, “Kochen-Specker Vectors”, <em>Journal of Physics</em>,
+A 38: 1577–92.
+ [<a href="http://arxiv.org/abs/quant-ph/0409014" target="other">Preprint available online.</a>]</li>
+
+<li>Peres, A., 1991, “Two Simple Proofs of the Kochen-Specker
+Theorem”, <em>Journal of Physics</em>, A 24: L175–8.</li>
+
+<li>–––, 1995,  <em>Quantum Theory: Concepts and Methods</em>,
+Dordrecht: Kluwer.</li>
+
+<li>Pitowsky, I., 1983, “Deterministic Model of Spin and Statistics”,
+<em>Physical Review</em>, D 27: 2316–26.</li>
+
+<li>–––, 1985, “Quantum Mechanics and Value Definiteness”,
+<em>Philosophy of Science</em>, 52: 154–56.</li>
+
+<li>Redhead, M., 1987, <em>Incompleteness, Nonlocality, and
+Realism. A Prolegomenon to the Philosophy of Quantum Mechanics</em>,
+Oxford: Clarendon Press.</li>
+
+<li>–––, 1995, <em>From Physics to Metaphysics</em>,
+Cambridge: Cambridge University Press.</li>
+
+<li>Shimony, A., 1984,  “Contextual Hidden Variables Theories and
+Bell’s Inequalities”, <em>British Journal for the Philosophy of
+Science</em>, 35: 25–45.</li>
+
+<li>–––, 1993, <em>Search for a Naturalistic World View,
+Volume II: Natural Science and Metaphysics</em>, Cambridge: Cambridge University
+Press.</li>
+
+<li>Simon, Christoph, Zukowski, M., Weinfurter, H., Zeilinger,
+A., 2000, “A Feasible ‘Kochen-Specker’ Experiment with Single
+Particles”, <em>Physical Review Letters</em>, 85: 1783–86.
+ [<a href="http://arxiv.org/abs/quant-ph/0009074" target="other">Preprint available online.</a>]</li>
+
+<li>Specker, E., 1960, “Die Logik nicht gleichzeitig entscheidbarer
+Aussagen”, <em>Dialectica</em>, 14: 239–46.</li>
+
+<li>Stairs, A., 1992, “Value Definiteness and Contextualism: Cut
+and Paste with Hilbert Space”, <em>PSA 1992</em>, 1: 91–103.</li>
+
+<li>Swift, A. R. and Wright, R., 1980, “Generalized Stern-Gerlach
+Experiments and the Observability of Arbitrary Spin Operators”,
+<em>Journal of Mathematical Physics</em>, 21: 77–82.</li>
+
+<li>Tang, W. and Yu, S., 2017, “Construction of
+State-independent Proofs for Quantum Contextuality”,
+<em>Physical Review A</em>, 96: 062126-1–062126-9.</li>
+
+<li>van Fraassen, B. C., 1973,  “Semantic Analysis of Quantum Logic”, in
+C.A. Hooker (ed.), <em>Contemporary Research in the Foundations and
+Philosophy of Quantum Theory</em>, Dordrecht: Reidel,  80–113.</li>
+
+<li>von Neumann, J., 1955, <em>Mathematical Foundations of Quantum
+Mechanics</em> (German edition 1932), Princeton: Princeton University
+Press.</li>
+
+<li>Yu, S. and Oh, C.H., 2012,“State-independent Proof of
+Kochen-Specker Theorem with 13 Rays”,
+<em>Physical Review Letters</em>, 108: 030402-1–030402-5.</li>
+
+</ul>
+
+</div>
+
+<div id="academic-tools"> 
+<h2 id="Aca">Academic Tools</h2>
+
+<blockquote>
+<table class="vert-top">
+<tbody><tr>
+<td><img src="../../symbols/sepman-icon.jpg" alt="sep man icon" /></td>
+<td><a href="https://plato.stanford.edu/cgi-bin/encyclopedia/archinfo.cgi?entry=kochen-specker&amp;archive=win2019" target="other">How to cite this entry</a>.</td>
+</tr>
+
+<tr>
+<td><img src="../../symbols/sepman-icon.jpg" alt="sep man icon" /></td>
+<td><a href="https://leibniz.stanford.edu/friends/preview/kochen-specker/" target="other">Preview the PDF version of this entry</a> at the
+ <a href="https://leibniz.stanford.edu/friends/" target="other">Friends of the SEP Society</a>.</td>
+</tr>
+
+<tr>
+<td><img src="../../symbols/inpho.png" alt="inpho icon" /></td>
+<td><a href="https://www.inphoproject.org/entity?sep=kochen-specker&amp;redirect=True" target="other">Look up this entry topic</a>
+ at the <a href="https://www.inphoproject.org/" target="other">Indiana Philosophy Ontology Project</a>
+ (InPhO).</td>
+</tr>
+
+<tr>
+<td><img src="../../symbols/pp.gif" alt="phil papers icon" /></td>
+<td><a href="http://philpapers.org/sep/kochen-specker/" target="other">Enhanced bibliography for this entry</a>
+at <a href="http://philpapers.org/" target="other">PhilPapers</a>, with links to its database.</td>
+</tr>
+
+</tbody></table>
+</blockquote>
+
+
+</div>
+
+<div id="other-internet-resources">
+
+<h2><a name="Oth">Other Internet Resources</a></h2>
+
+<ul>
+<li>Appleby, D. M., 2000, “Contextuality of Approximate Measurements”.
+ [<a href="http://arxiv.org/abs/quant-ph/0005010" target="other">Preprint available online</a>.]</li>
+
+<li>Cabello, A., 1999, “Comment on ‘Non-Contextual
+Hidden Variables and Physical Measurements’”.
+[<a href="http://arxiv.org/abs/quant-ph/9911024v1" target="other">Preprint available online.</a>]</li>
+
+<li>Mermin, N. D., 1999, “A Kochen-Specker Theorem for Imprecisely
+Specified Measurements”.
+ [<a href="http://arxiv.org/abs/quant-ph/9912081" target="other">Preprint available online.</a>]</li>
+
+<li>Rajan, D. and Visser, M., 2017, “Kochen-Specker Theorem Revisited”.
+ [<a href="http://arxiv.org/abs/1708.01380" target="other">Preprint available online.</a>]</li>
+
+<li><a href="http://xstructure.inr.ac.ru/x-bin/theme2.py?arxiv=quant-ph&amp;level=1&amp;index1=3004" target="other">Kochen Specker theorem on arxiv.org</a></li>
+
+<!--LINK CHECKER COMMENTED OUT (Sun Jun 17 15:17:46 PDT 2018)
+
+<li><a href="http://theory.gsi.de/~vanhees/faq/epr/node7.html" target="other">Ernst-Udo Wallenborn: 
+&ldquo;Was ist das Kochen-Specker-Theorem?&rdquo;</a><br />
+(in German, but with useful figures)</li>
+
+LINK CHECKER-->
+
+</ul>
+
+</div>
+
+<div id="related-entries">
+
+<h2><a name="Rel">Related Entries</a></h2>
+
+<p>
+
+ <a href="../qm-modal/">quantum mechanics: modal interpretations of</a> |
+ <a href="../qt-issues/">quantum theory: philosophical issues in</a>
+
+</p>
+
+</div>
+
+
+</div><!-- #aueditable --><!--DO NOT MODIFY THIS LINE AND BELOW-->
+
+<!-- END ARTICLE HTML -->
+
+</div> <!-- End article-content -->
+
+  <div id="article-copyright">
+    <p>
+ <a href="../../info.html#c">Copyright © 2018</a> by
+
+<br />
+Carsten Held
+&lt;<a href="mailto:carsten%2eheld%40mailbox%2eorg"><em>carsten<abbr title=" dot ">.</abbr>held<abbr title=" at ">@</abbr>mailbox<abbr title=" dot ">.</abbr>org</em></a>&gt;
+    </p>
+  </div>
+
+</div> <!-- End article -->
+
+<!-- NOTE: article banner is outside of the id="article" div. -->
+<div id="article-banner" class="scroll-block">
+     <div id="article-banner-content">
+  <a href="../../fundraising/">
+  Open access to the SEP is made possible by a world-wide funding initiative.<br />
+  Please Read How You Can Help Keep the Encyclopedia Free</a>
+ </div>
+
+
+</div> <!-- End article-banner -->
+
+    </div> <!-- End content -->
+
+    <div id="footer">
+
+      <div id="footer-menu">
+        <div class="menu-block">
+          <h4><i class="icon-book"></i> Browse</h4>
+          <ul role="menu">
+            <li><a href="../../contents.html">Table of Contents</a></li>
+            <li><a href="../../new.html">New in this Archive</a></li>
+            
+            <li><a href="../../published.html">Chronological</a></li>
+            <li><a href="../../../../archives/">Archives <i class="icon-external-link"></i></a></li>
+          </ul>
+        </div>
+        <div class="menu-block">
+          <h4><i class="icon-info-sign"></i> About</h4>
+          <ul role="menu">
+            <li><a href="../../info.html">Editorial Information</a></li>
+            <li><a href="../../about.html">About the SEP</a></li>
+            <li><a href="../../board.html">Editorial Board</a></li>
+            <li><a href="../../cite.html">How to Cite the SEP</a></li>
+            <li><a href="../../special-characters.html">Special Characters</a></li>
+            
+            <li><a href="../../../../contact.html">Contact <i class="icon-external-link"></i></a></li>
+          </ul>
+        </div>
+        <div class="menu-block">
+          <h4><i class="icon-leaf"></i> Support SEP</h4>
+          <ul role="menu">
+            <li><a href="../../../../support/">Support the SEP</a></li>
+            <li><a href="../../../../support/friends.html">PDFs for SEP Friends</a></li>
+            <li><a href="../../../../support/donate.html">Make a Donation</a></li>
+            <li><a href="../../../../support/sepia.html">SEPIA for Libraries</a></li>
+          </ul>
+        </div>
+      </div> <!-- End footer menu -->
+
+      <div id="mirrors">
+        <div id="mirror-info">
+          <h4><i class="icon-globe"></i> Mirror Sites</h4>
+          <p>View this site from another server:</p>
+        </div>
+                <div class="btn-group">
+<a class="btn dropdown-toggle" data-toggle="dropdown" href="https://plato.stanford.edu/"><span class="flag flag-usa"></span> USA (Main Site) <span class="caret"></span><span class="mirror-source">CSLI, Stanford University</span></a>          <ul class="dropdown-menu">
+            <li><a href="https://stanford.library.sydney.edu.au/archives/win2019/entries/kochen-specker/"><span class="flag flag-australia"></span> Australia <span class="mirror-source">Library, University of Sydney</span></a>           </li>
+            <li><a href="https://seop.illc.uva.nl/archives/win2019/entries/kochen-specker/"><span class="flag flag-netherlands"></span> Netherlands <span class="mirror-source">ILLC, University of Amsterdam</span></a>           </li>
+          </ul>
+        </div>
+      </div> <!-- End mirrors -->
+      
+      <div id="site-credits">
+        <p class="csli-logo"><a href="https://www-csli.stanford.edu/"><img src="../../symbols/SU_csli.png" width="355" alt="Stanford Center for the Study of Language and Information" /></a></p>
+        <p>The Stanford Encyclopedia of Philosophy is <a href="../../info.html#c">copyright © 2016</a> by <a href="http://mally.stanford.edu/">The Metaphysics Research Lab</a>, Center for the Study of Language and Information (CSLI), Stanford University</p>
+        <p>Library of Congress Catalog Data: ISSN 1095-5054</p>
+      </div> <!-- End site credits -->
+
+    </div> <!-- End footer -->
+
+  </div> <!-- End container -->
+
+   <!-- NOTE: Script required for drop-down button to work (mirrors). -->
+  <script>
+    $('.dropdown-toggle').dropdown();
+  </script>
+
+
+
+
+
+</body></html>

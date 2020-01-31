@@ -1,0 +1,2384 @@
+<!DOCTYPE html><!--[if lt IE 7]> <html class="ie6 ie"> <![endif]--><!--[if IE 7]>    <html class="ie7 ie"> <![endif]--><!--[if IE 8]>    <html class="ie8 ie"> <![endif]--><!--[if IE 9]>    <html class="ie9 ie"> <![endif]--><!--[if !IE]> --><html xmlns="http://www.w3.org/1999/xhtml"><!-- <![endif]--><head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>
+Zermelo’s Axiomatization of Set Theory (Stanford Encyclopedia of Philosophy/Winter 2019 Edition)
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="noarchive, noodp" />
+<meta property="citation_title" content="Zermelo’s Axiomatization of Set Theory" />
+<meta property="citation_author" content="Hallett, Michael" />
+<meta property="citation_publication_date" content="2013/07/02" />
+<meta name="DC.title" content="Zermelo’s Axiomatization of Set Theory" />
+<meta name="DC.creator" content="Hallett, Michael" />
+<meta name="DCTERMS.issued" content="2013-07-02" />
+<meta name="DCTERMS.modified" content="2013-07-02" />
+
+<!-- NOTE: Import webfonts using this link: -->
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,200&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" media="screen,handheld" href="../../css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" media="screen,handheld" href="../../css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css" />
+<!--[if IE 7]> <link rel="stylesheet" type="text/css" href="../../css/font-awesome-ie7.min.css"> <![endif]-->
+<link rel="stylesheet" type="text/css" media="screen,handheld" href="../../css/style.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../../css/print.css" />
+<link rel="stylesheet" type="text/css" href="../../css/entry.css" />
+<!--[if IE]> <link rel="stylesheet" type="text/css" href="../../css/ie.css" /> <![endif]-->
+<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+
+<!-- NOTE: Javascript for sticky behavior needed on article and ToC pages -->
+<script type="text/javascript" src="../../js/jquery-scrolltofixed-min.js"></script>
+<script type="text/javascript" src="../../js/entry.js"></script>
+
+<!-- SEP custom script -->
+<script type="text/javascript" src="../../js/sep.js"></script>
+</head>
+
+<!-- NOTE: The nojs class is removed from the page if javascript is enabled. Otherwise, it drives the display when there is no javascript. -->
+<body class="archive article" id="pagetopright">
+<div id="container">
+<div id="header-wrapper">
+  <div id="header">
+    <div id="branding">
+      <div id="site-logo"><a href="../../index.html"><img src="../../symbols/sep-man-red.png" alt="SEP logo" /></a></div>
+      <div id="site-title"><a href="../../index.html">Stanford Encyclopedia of Philosophy Archive<div id="site-subtitle">Winter 2019 Edition</div></a></div>
+    </div>
+    <div id="navigation">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <button class="btn btn-navbar collapsed" data-target=".collapse-main-menu" data-toggle="collapse" type="button"> <i class="icon-reorder"></i> Menu </button>
+            <div class="nav-collapse collapse-main-menu collapse">
+              <ul class="nav">
+                <li class="dropdown"><a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-book"></i> Browse</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                    <li><a href="../../contents.html">Table of Contents</a></li>
+                    <li><a href="../../new.html">New in this Archive</a></li>
+                    
+                    <li><a href="../../published.html">Chronological</a></li>
+                    <li><a href="../../../../archives/">Archives <i class="icon-external-link"></i></a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a id="drop2" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-info-sign"></i> About</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                    <li><a href="../../info.html">Editorial Information</a></li>
+                    <li><a href="../../about.html">About the SEP</a></li>
+                    <li><a href="../../board.html">Editorial Board</a></li>
+                    <li><a href="../../cite.html">How to Cite the SEP</a></li>
+                    <li><a href="../../special-characters.html">Special Characters</a></li>
+                    
+                    <li><a href="../../../../contact.html">Contact <i class="icon-external-link"></i></a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a id="drop3" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-leaf"></i> Support SEP</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                    <li><a href="../../../../support/">Support the SEP</a></li>
+                    <li><a href="../../../../support/friends.html">PDFs for SEP Friends</a></li>
+                    <li><a href="../../../../support/donate.html">Make a Donation</a></li>
+                    <li><a href="../../../../support/sepia.html">SEPIA for Libraries</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End navigation -->
+    
+    <div id="search">
+      <form id="search-form" method="get" action="../../../../search/searcher.py">
+        <input type="search" name="query" placeholder="Search this archive" />
+<input type="hidden" name="archive" value="win2019" />
+
+        <div class="search-btn-wrapper"><button class="btn search-btn" type="submit"><i class="icon-search"></i></button></div>
+      </form>
+    </div>
+    <!-- End search --> 
+    
+  </div>
+  <!-- End header --> 
+</div>
+<!-- End header wrapper -->
+
+<div id="content">
+
+<!-- Begin article sidebar -->
+<div id="article-sidebar" class="sticky" style="z-index: 999;">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <button class="btn btn-navbar collapsed" data-target=".collapse-sidebar" data-toggle="collapse" type="button"> <i class="icon-reorder"></i> Entry Navigation </button>
+        <div id="article-nav" class="nav-collapse collapse-sidebar collapse">
+          <ul class="nav">
+            <li><a href="#toc">Entry Contents</a></li>
+            <li><a href="#Bib">Bibliography</a></li>
+            <li><a href="#Aca">Academic Tools</a></li>
+            <li><a href="https://leibniz.stanford.edu/friends/preview/zermelo-set-theory/">Friends PDF Preview <i class="icon-external-link"></i></a></li>
+            <li><a href="https://plato.stanford.edu/cgi-bin/encyclopedia/archinfo.cgi?entry=zermelo-set-theory&amp;archive=win2019">Author and Citation Info <i class="icon-external-link"></i></a> </li>
+            <li><a href="#pagetopright" class="back-to-top">Back to Top <i class="icon-angle-up icon2x"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div></div>
+<!-- End article sidebar --> 
+
+<!-- NOTE: Article content must have two wrapper divs: id="article" and id="article-content" -->
+<div id="article">
+<div id="article-content">
+
+<!-- BEGIN ARTICLE HTML -->
+
+
+<div id="aueditable"><!--DO NOT MODIFY THIS LINE AND ABOVE-->
+
+<h1>Zermelo’s Axiomatization of Set Theory</h1><div id="pubinfo"><em>First published Tue Jul 2, 2013</em></div>
+
+<div id="preamble">
+
+<p>The first axiomatisation of set theory was given by Zermelo in his
+1908 paper “<em>Untersuchungen über die Grundlagen der
+Mengenlehre, I</em>” (Zermelo 1908b), which became the basis for
+the modern theory of sets. This entry focuses on the 1908
+axiomatisation; a further entry will consider later axiomatisations of
+set theory in the period 1920–1940, including Zermelo's second
+axiomatisation of 1930.</p>
+
+</div>
+
+<div id="toc">
+<!--Entry Contents-->
+<ul>
+<li><a href="#Axi">1. The Axioms</a></li>
+<li><a href="#BacZerAxi">2.  The Background to Zermelo's Axiomatisation</a>
+   <ul>
+   <li><a href="#HilAxiMet">2.1  Hilbert's Axiomatic Method</a>
+      <ul>
+      <li><a href="#ProEle">2.1.1  Programmatic elements</a></li>
+      <li><a href="#ProAnaZerWelOrdTheWOT">2.1.2  Proof analysis and Zermelo's Well-Ordering Theorem [WOT]</a></li>
+      </ul></li>
+   <li><a href="#WelOrdProWelOrdThe">2.2  The Well-Ordering Problem and the Well-Ordering Theorem</a>
+      <ul>
+      <li><a href="#ImpProBefZer">2.2.1  The importance of the problem before Zermelo</a></li>
+      <li><a href="#Zer190ProWelOrdThe">2.2.2  Zermelo's 1904 Proof of the Well-Ordering Theorem</a></li>
+      <li><a href="#Obj190Pro">2.2.3  Objections to the 1904 Proof</a></li>
+      <li><a href="#ZerSecProWOT190">2.2.4  Zermelo's second proof of the WOT, 1908</a></li>
+      <li><a href="#Axi190WOTPap">2.2.5  The Axioms of the 1908 WOT Paper</a></li>
+      </ul></li>
+   </ul></li>
+<li><a href="#MajProZerSys">3. The Major Problems with Zermelo's System</a>
+   <ul>
+   <li><a href="#Sep">3.1  Separation</a></li>
+   <li><a href="#Com">3.2  Completeness</a>
+      <ul>
+      <li><a href="#RepOrdMat">3.2.1  Representing Ordinary Mathematics</a></li>
+      <li><a href="#Ord">3.2.2  Ordinality</a></li>
+      <li><a href="#Car">3.2.3  Cardinality</a></li>
+      <li><a href="#Ordinals">3.2.4  Ordinals</a></li>
+      </ul></li>
+   </ul></li>
+<li><a href="#FurRea">4. Further reading</a></li>
+<li><a href="#Bib">Bibliography</a></li>
+<li><a href="#Aca">Academic Tools</a></li>
+<li><a href="#Oth">Other Internet Resources</a></li>
+<li><a href="#Rel">Related Entries</a></li>
+</ul>
+<!--Entry Contents-->
+
+<hr />
+
+</div>
+
+<div id="main-text">
+
+<h2><a name="Axi">1. The Axioms</a></h2>
+
+<p>The introduction to Zermelo's paper makes it clear that set theory is regarded as a fundamental theory:</p>
+
+<blockquote>
+  <p>Set theory is that branch of mathematics whose task is to
+  investigate mathematically the fundamental notions
+  “number”, “order”, and
+  “function”, taking them in their pristine, simple form,
+  and to develop thereby the logical foundations of all of arithmetic
+  and analysis; thus it constitutes an indispensable component of the
+  science of mathematics.
+ (1908b: 261)<sup>[<a href="notes.html#1" name="note-1">1</a>]</sup></p>
+</blockquote>
+
+<p>This is followed by an acknowledgment that it is necessary to
+replace the central assumption that we can ‘assign to an
+arbitrary logically definable notion a “set”, or
+“class”, as its “extension” ’
+(1908b: 261). Zermelo goes on:</p>
+
+<blockquote>
+  <p>In solving the problem [this presents] we must, on the one hand,
+restrict these principles [distilled from the actual operation with
+sets] sufficiently to exclude all contradictions and, on the other,
+take them sufficiently wide to retain all that is valuable in this
+theory. (1908b: 261)</p>
+</blockquote>
+
+<p>The ‘central assumption’ which Zermelo describes (let
+us call it the Comprehension Principle, or CP) had come to be seen by
+many as the principle behind the derivation of the set-theoretic
+inconsistencies. Russell (1903: §104) says the following:</p>
+
+<blockquote>
+  <p>Perhaps the best way to state the suggested solution [of the
+  Russell-Zermelo contradiction] is to say that, if a collection of
+  terms can only be defined by a variable propositional function,
+  then, though a class as many may be admitted, a class as one must be
+  denied. We took it as axiomatic that the class as one is to be found
+  wherever there is a class as many; but this axiom need not be
+  universally admitted, and appears to have been the source of the
+  contradiction. By denying it, therefore, the whole difficulty will
+  be overcome.</p>
+</blockquote>
+
+<p>But it is by no means clear that ‘the whole difficulty’
+is thereby ‘overcome’. Russell makes a clear
+identification of the principle he cites (a version of CP) as the
+source of error, but this does not in the least make it clear what is
+to take its 
+place.<sup>[<a href="notes.html#2" name="note-2">2</a>]</sup> 
+In his <i>Grundgesetze</i> (see e.g., Frege
+1903: §146–147) Frege recognises that his (in)famous Law V
+is based on a conversion principle which allows us to assume that for
+any concept (function), there is an object which contains precisely
+those things which fall under that concept (or for which the function
+returns the value ‘True’). Law V is then the principle
+which says that two such extension objects <i>a</i>, <i>b</i> stemming
+from two concepts <i>F</i>, <i>G</i> are the same if, and only
+if, <i>F</i> and <i>G</i> are extensionally equivalent. Frege clearly
+considers the ‘conversion’ of concepts to extensions as
+fundamental; he also regards it as widely used in mathematics (even if
+only implicitly), and thus that he is not ‘doing anything
+new’ by using such a principle of conversion and the attendant
+‘basic law of logic’, Law V. (The CP follows immediately
+from Law V.) Frege was made aware by Russell (1902) that his Law V is
+contradictory, since Russell's paradox flows easily from it. In the
+Appendix to <i>Grundgesetze</i> (Frege 1903), Frege says this:</p>
+
+<blockquote>
+  <p>Hardly anything more unwelcome can befall a scientific writer
+  than to have one of the foundations of his edifice shaken after the
+  work is finished. This is the position into which I was put by a
+  letter from Mr Bertrand Russell as the printing of this volume was
+  nearing completion. The matter concerns my Basic Law (V). I have
+  never concealed from myself that it is not as obvious as the others
+  nor as obvious as must properly be required of a logical
+  law. Indeed, I pointed out this very weakness in the foreword to the
+  first volume, p. VII. I would gladly have dispensed with this
+  foundation if I had known of some substitute for it. Even now, I do
+  not see how arithmetic can be founded scientifically, how the
+  numbers can be apprehended as logical objects and brought under
+  consideration, if it is not—at least
+  conditionally—permissible to pass from a concept to its
+  extension. May I always speak of the extension of a concept, of a
+  class? And if not, how are the exceptions to be recognised? May one
+  always infer from the extension of one concept's coinciding with
+  that of a second that every object falling under the first concept
+  also falls under the latter? These questions arise from Mr Russell's
+  communication. …What is at stake here is not my approach to a
+  foundation in particular, but rather the very possibility of any
+  logical foundation of
+  arithmetic. (p. 253)<sup>[<a href="notes.html#3" name="note-3">3</a>]</sup></p>
+</blockquote>
+
+<p>The difficulty could hardly be summed up more succinctly. It was
+the replacement of assumptions involving the unfettered conversion of
+concepts to objects which was Zermelo's main task in his
+axiomatisation.</p>
+
+<p>Zermelo's system was based on the presupposition that</p>
+
+<blockquote>
+  <p>Set theory is concerned with a “domain” 𝔅 of
+  individuals, which we shall call simply “objects” and
+  among which are the “sets”. If two symbols, <i>a</i>
+  and <i>b</i>, denote the same object, we write <i>a</i> = <i>b</i>,
+  otherwise
+<span class="nw"><i>a</i> ≠ <i>b</i>.</span> We say of an
+object <i>a</i> that it “exists” if it belongs to the
+domain 𝔅; likewise we say of a class 𝔎 of objects that
+“there exist objects of the class 𝔎” if 𝔅
+contains at least one individual of this class. (1908b: 262)</p>
+</blockquote>
+
+<p>Given this, the one fundamental relation is that of set membership,
+‘ε’ , which allows one to state that an
+object <i>a</i> belongs to, or is in, a set <i>b</i>, written
+‘<i>a</i> ε 
+ <i>b</i>’.<sup>[<a href="notes.html#4" name="note-4">4</a>]</sup>
+ Zermelo then laid down seven axioms which
+give a partial description of what is to be found in <i>B</i>. These
+can be described as follows:</p>
+
+<ol style="list-style-type: upper-roman">
+  <li><i>Extensionality</i><br />This says roughly that sets are
+  determined by the elements they contain.</li>
+
+  <li><i>Axiom of Elementary Sets</i><br />This asserts (a) the
+  existence of a set which contains no members (denoted
+  ‘0’ by Zermelo, now commonly denoted by
+  ‘∅’); (b) the existence, for any object <i>a</i>,
+  of the singleton set {<i>a</i>} which has <i>a</i> as its sole
+  member; and (c) the existence, for any two
+  objects <i>a</i>, <i>b</i>, of the unordered pair
+  {<i>a</i>, <i>b</i>}, which has just <i>a</i>, <i>b</i> as its
+  members.</li>
+
+<li><i>Separation</i> (<i>Aussonderungsaxiom</i>)<br />This asserts
+that, for any given set <i>a</i>, and any given ‘definite’
+property of elements in 𝔅 (more on this below), one can
+‘separate’ out from <i>a</i> as a set just those elements
+which satisfy the given property.</li>
+
+<li><i>Power Set</i><br />This says that for any set, the collection
+of all subsets of that set is also a set.</li>
+
+<li><i>Union</i><br />This says that for any set, the collection of
+the members of the members of that set also forms a set.</li>
+
+<li><i>Choice</i><br />This says that for any set of pairwise
+disjoint, non-empty sets, there exists a set (which is a subset of the
+union set to which the given set gives rise) which contains exactly
+one member from each member of the given set.</li>
+
+<!--pdf include  
+ <br />
+pdf include-->
+
+<li><i>Infinity</i><br />This final axiom asserts the existence of an
+infinitely large set which contains the empty set, and for each
+set <i>a</i> that it contains, also contains the set
+{<i>a</i>}. (Thus, this infinite set must contain ∅, {∅},
+{{∅}}, ….)</li>
+
+</ol>
+
+<p>With the inclusion of this last, Zermelo explicitly rejects any
+attempt to <i>prove</i> the existence of an infinite collection from other
+principles, as we find in Dedekind (1888: §66), or in Frege via
+the establishment of what is known as ‘Hume's Principle’.</p>
+
+<p>The four central axioms of Zermelo's system are the Axioms of
+Infinity and Power Set, which together show the existence of
+uncountable sets, the Axiom of Choice, to which we will devote some
+space below, and the Axiom of Separation. This latter allows that any
+‘definite’ property φ does in fact give rise to a set,
+namely the set of all those things which are already included in some
+set <i>a</i> and which have the property φ, in other words, gives
+rise to a certain subset of <i>a</i>, namely the subset of all the
+φ-things in <i>a</i>. Thus, it follows from this latter that there
+will generally be many sets giving partial extensions of φ, namely
+the φ-things in <i>a</i>, the φ-things in <i>b</i>, the
+φ-things in <i>c</i>, and so on. However, there will be no
+guarantee of the existence of a unique extension-set for φ, as, of
+course, there is under the CP, namely <i>a</i> = {<i>x</i> :
+φ(<i>x</i>)}.</p>
+
+<p>Zermelo shows that, on the basis of his system, the two central
+paradoxes, that of the greatest set and that of Russell, cannot
+arise. In fact, Zermelo proves:</p>
+
+<blockquote>
+  <p>Every set <i>M</i> possesses at least one
+  subset <i>M</i><sub>0</sub> that is not an element
+  of <i>M</i>. (1908b: 265)</p>
+</blockquote>
+
+<p>The proof is an easy modification of the argument for Russell's
+Paradox, using the contradiction this time as <em>a reductio</em>. By
+Separation, let <i>M</i><sub>0</sub> be the subset of <i>M</i>
+consisting of those elements <i>x</i> of <i>M</i> such
+that 
+<span class="nw"><i>x</i> ∉ <i>x</i>.</span> Now either 
+<span class="nw"><i>M</i><sub>0</sub> ∈ <i>M</i><sub>0</sub></span>
+or <i>M</i><sub>0</sub> ∉ <i>M</i><sub>0</sub>. Assume
+that 
+<span class="nw"><i>M</i><sub>0</sub> ∈ <i>M</i><sub>0</sub>.</span> Since 
+<i>M</i><sub>0</sub> is a subset
+of <i>M</i>, this tells us that 
+<span class="nw"><i>M</i><sub>0</sub> ∈ <i>M</i>.</span> But <i>M</i><sub>0</sub> is then a member of <i>M</i>
+which fails to satisfy the condition for belonging
+to <i>M</i><sub>0</sub>, showing
+that 
+<span class="nw"><i>M</i><sub>0</sub> ∉ <i>M</i><sub>0</sub>,</span> which is a
+contradiction. Hence,
+necessarily, 
+<span class="nw"><i>M</i><sub>0</sub> ∉ <i>M</i><sub>0</sub>.</span> But now
+if we suppose that <i>M</i><sub>0</sub> were in <i>M</i>,
+then <i>M</i><sub>0</sub> itself is bound to be
+in <i>M</i><sub>0</sub> by the defining condition of this
+set. Hence, 
+<span class="nw"><i>M</i><sub>0</sub> ∉ <i>M</i></span> on pain of
+contradiction. The argument for the Russell paradox is used here to
+constructive effect: one person's contradiction is another person's
+<i>reductio</i>. Zermelo comments:</p>
+
+<blockquote>
+  <p>It follows from the theorem that not all objects <i>x</i> of the
+  domain 𝔅 can be elements of one and the same set; that is,
+  the domain 𝔅 is not itself a set, and this disposes of the
+  “Russell antinomy” so far as we are concerned. (1908b:
+  265)</p> </blockquote>
+
+<p>For, in the absence of something like the CP, there is no
+overriding reason to think that there must <i>be</i> a universal
+set.<sup>[<a href="notes.html#5" name="note-5">5</a>]</sup></p>
+
+<p>But although this deals with the Russell paradox and the paradox of
+the universal set, it does not tackle the general consistency of the
+system. Zermelo was well aware of this, as is clear from the
+Introduction to his paper:</p>
+
+<blockquote>
+  <p>I have not yet even been able to prove rigorously that my axioms
+  are “consistent”, though this is certainly very
+  essential; instead I have had to confine myself to pointing out now
+  and then that the “antinomies” discovered so far vanish
+  one and all if the principles here proposed are adopted as a
+  basis. But I hope to have done at least some useful spadework hereby
+  for subsequent investigations in such deeper problems. (1908b:
+  262)</p>
+</blockquote>
+
+<p>It should be remarked in passing that Zermelo doesn't deal specifically with the
+Burali-Forti paradox either, for the simple reason that it cannot be properly
+formulated in his system, since it deals either with well-orderings
+generally or with the general concept of ordinal number. We will come
+back to this below. However, assuming that the known paradoxes <i>can</i> be
+avoided, another question comes to the fore: if the Separation Axiom
+is to be the basic principle for the workaday creation of sets, is it
+<i>adequate</i>? This question, too, will be taken up later.</p>
+
+<p>There were attempts at the statement of axioms before Zermelo, both
+publicly and in private
+ correspondence.<sup>[<a href="notes.html#6" name="note-6">6</a>]</sup> 
+In particular, Cantor, in correspondence
+with Hilbert and Dedekind in the late 1890s, had endeavoured to
+describe some principles of set 
+existence<sup>[<a href="notes.html#7" name="note-7">7</a>]</sup> 
+which he thought were legitimate, and would
+not give rise to the construction of what he called
+‘inconsistent totalities’, totalities which engender
+contradictions. (The best known of these totalities were the totality
+of all ordinals and the totality of all cardinals.) These principles
+included those of set union and a form of the replacement axiom, as
+well as principles which seem to guarantee that every cardinal number
+is an aleph, which we call for short the ‘Aleph Hypothesis
+(AH)’.</p>
+
+<p>Despite this, there are reasons for calling Zermelo's system the
+first real axiomatisation of set theory. It is clear above all that
+Zermelo's intention was to reveal the fundamental nature of the theory
+of sets and to preserve its achievements, while at the same time
+providing a general replacement for the CP.</p>
+
+<h2><a name="BacZerAxi">2.  The Background to Zermelo's Axiomatisation</a></h2>
+
+<h3><a name="HilAxiMet">2.1  Hilbert's Axiomatic Method</a></h3>
+
+<p>Hilbert's early work on the axiomatic method is an important part
+of the context of Zermelo's axiomatisation. Hilbert developed a
+particular version of the axiomatic approach to fundamental
+mathematical theories in his work on geometry in the period
+1894–1904 (see Hallett and Majer 2004). This was to be seen as a
+distinct alternative to what Hilbert called the ‘genetic
+approach’ to mathematics. (For a short, historically informed
+description, see Felgner 2010: 169–174.) Ebbinghaus's book on
+Zermelo makes it very clear how embedded Zermelo was in the Hilbert
+foundational circle in the early years of the
+century.<sup>[<a href="notes.html#8" name="note-8">8</a>]</sup>
+ This is not meant to suggest that Zermelo adopted Hilbert's approach
+to the foundations of mathematics in all its aspects. Indeed, Zermelo
+developed his own, distinctive approach to foundational matters which
+was very different from Hilbert's, something which emerges quite
+clearly from his later work. Nevertheless, there are two elements of
+Zermelo's procedure which fit very well with Hilbert's foundational
+approach in the early part of the century. The first element concerns
+what might be called the programmatic element of Hilbert's treatment
+of the foundations of mathematics as it emerged in the later 1890s,
+and especially with regard to the notion of mathematical
+existence. And the second concerns proof analysis, a highly important
+part of Hilbert's work on Euclidean geometry and geometrical systems
+generally. These matters are intricate, and cannot be discussed
+adequately here (for fuller discussion, see both Hallett 2008 and
+2010a). But it is important for understanding Zermelo's work fully
+that a rough account be given.</p>
+
+<h4><a name="ProEle">2.1.1  Programmatic elements</a></h4>
+
+<p>First, Hilbert adopted the view that a mature presentation of a
+mathematical theory must be given axiomatically. This, he claims,
+requires several things:</p>
+
+<ol>
+
+<li>The postulation of the existence of a domain, of a ‘system
+(or systems) of things’.</li>
+
+<!--pdf include  
+ <br />
+ <br />
+pdf include-->
+
+<li>The insistence, however, that nothing is known about those things
+except what is expressed in, or can be derived from, a finite list of
+axioms.</li>
+
+<li>The requirement, along with this, of finite proofs, which begin
+with axioms and proceed from these to a conclusion by a ‘finite
+number of inferences’ (i.e., acceptable inferential steps).</li>
+
+<li>The rather imprecise notion of the ‘completeness’ of
+the axiomatisation, which involves, loosely, showing that the axioms can prove all
+that they ‘ought’ to prove.</li>
+
+<li>The provision of a consistency proof for these axioms, showing
+that no contradiction is derivable by a proof constructed in the
+system given.</li>
+
+</ol>
+
+<p>For one thing, Hilbert was very clear (especially in his
+unpublished lectures on geometry: see Hallett and Majer 2004) that,
+although a domain is asserted to ‘exist’, all that is
+known about the objects in the domain is what is given to us by the
+axioms and what can be derived from these through ‘finite
+proof’. In other words, while a domain is postulated, nothing is
+taken to be known about the things in it independently of the axioms
+laid down and what they entail. The basic example was given by
+geometrical systems of points, lines and planes; although the
+geometrical domain is made up of these things, nothing can be assumed
+known about them (in particular no ‘intuitive’ geometrical
+knowledge from whatever source) other than what is given in the axioms
+or which can be derived from them by legitimate inference. (The axioms
+themselves might sum up, or be derived from, ‘intuitive’
+knowledge, but that is a different matter. And even here it is
+important that we can detach the axioms from their intuitive
+meanings.)</p>
+
+<p>Secondly, while ‘existence’ of the objects is just a
+matter (as Zermelo says) of belonging to the domain (a fact which is
+established by the axioms or by proofs from those axioms), the
+mathematical existence of the domain itself, and (correspondingly) of
+the system set out by the axioms, is established only by a consistency
+proof for the axioms. Thus, to take the prime example, the
+‘existence’ of Euclidean geometry (or more accurately
+Euclidean geometries) is shown by the consistency proofs given by
+means of analytic 
+ geometry.<sup>[<a href="notes.html#9" name="note-9">9</a>]</sup>
+ Thus, the unit of consistency is not the
+concept nor the individual propositions, but rather the system of
+axioms as a whole, and different systems necessarily give accounts of
+different primitives. The expectation is that when a domain is
+axiomatised, attention will turn (at some point) to a consistency
+proof, and this will deal finally with the question of mathematical
+existence. In any case, the task of showing existence is a
+mathematical one and there is no further ontological or metaphysical
+mystery to be solved once the axioms are laid down.</p>
+
+<p>Many aspects of Hilbert's position are summed up in this
+passage from his 1902 lectures on the foundations of geometry: the
+axioms ‘create’ the domains, and the consistency proofs
+justify their existence. As he puts it:</p>
+
+<blockquote>
+  <p>The things with which mathematics is concerned are
+defined through axioms, <i>brought into life</i>.</p>
+
+<p>The axioms can be taken quite arbitrarily. However, if these axioms
+contradict each other, then no logical consequences can be drawn from
+them; the system defined then does not exist for the
+mathematician. (Hilbert 1902: 47 or Hallett and Majer 2004: 563)</p>
+</blockquote>
+
+<p>This notion of ‘definition through axioms’, what came
+to be known as the method of ‘implicit definition’, can be
+seen in various writings of Hilbert's from around 1900. His
+attitude to existence is illustrated in the following passage from his
+famous paper on the axiomatisation of the reals:</p>
+
+<blockquote>
+  <p>The objections which have been raised against the existence of
+  the totality of all real numbers and infinite sets generally lose
+  all their justification once one has adopted the view stated above
+  [the axiomatic method]. By the set of the real numbers we do not
+  have to imagine something like the totality of all possible laws
+  governing the development of a fundamental series, but rather, as
+  has been set out, a system of things whose mutual relations are
+  given by the <i>finite and closed</i> systems of axioms I–IV [for
+  complete ordered fields] given above, and about which statements
+  only have validity in the case where one can derive them via a
+  finite number of inferences from those axioms. (Hilbert 1900b:
+  184)<sup>[<a href="notes.html#10" name="note-10">10</a>]</sup></p>
+</blockquote>
+
+<p>The parallels between this ‘axiomatic method’ of
+Hilbert's and Zermelo's axiomatisation of set theory are
+reasonably clear, if not 
+ exact.<sup>[<a href="notes.html#11" name="note-11">11</a>]</sup>
+Particularly clear are the assumption of the existence of a
+‘domain’ 𝔅, the statement of a finite list of
+axioms governing its contents, and the recognition of the requirement
+of a general consistency proof. There's also implicit
+recognition of the requirements of ‘finite proof’; this
+leads us to the second important aspect of the Hilbertian background,
+namely proof analysis and the use of the Axiom of Choice.</p>
+
+<h4><a name="ProAnaZerWelOrdTheWOT">2.1.2  Proof analysis and Zermelo's Well-Ordering Theorem [WOT]</a></h4>
+
+<p>A great deal of Hilbert's work on geometry concerned the analysis
+of proofs, of what can, or cannot, be derived from what. Much of
+Hilbert's novel work on geometry involved the clever use of
+(arithmetical) models for geometrical systems to demonstrate a
+succession of independence results, which, among other things, often
+show how finely balanced various central assumptions
+are.<sup>[<a href="notes.html#12" name="note-12">12</a>]</sup>
+Moreover, a close reading of Hilbert's work makes it clear that the
+development of an appropriate axiom system itself goes hand-in-hand
+with the reconstruction and analysis of proofs.</p>
+
+<p>One straightforward kind of proof analysis was designed to reveal
+what assumptions there are behind accepted ‘theorems’, and
+this is clearly pertinent in the case of Zermelo's Axiom of Choice
+(his sixth axiom) and the WOT. What Zermelo's work showed, in effect,
+is that the ‘choice’ principle behind the Axiom is a
+necessary and sufficient condition for WOT; and he shows this by
+furnishing a Hilbertian style proof for the theorem, i.e., a
+conclusion which follows from (fairly) clear assumptions by means of a
+finite number of inferential steps. Indeed, the Axiom is chosen so as
+to make the WOT provable, and it transpired subsequently that it also
+made provable a vast array of results, mainly (but not solely) in set
+theory and in set-theoretic algebra. To understand the importance of
+Zermelo's work, it's necessary to appreciate the centrality of the the
+WOT.</p>
+
+<h3><a name="WelOrdProWelOrdThe">2.2  The Well-Ordering Problem and the Well-Ordering Theorem</a></h3>
+
+<h4><a name="ImpProBefZer">2.2.1  The importance of the problem before Zermelo</a></h4>
+
+<p>In one of the fundamental papers in the genesis of set theory,
+Cantor (1883a) isolated the notion of a well-ordering on a collection
+as one of the central conceptual pillars on which number is
+built. Cantor took the view that the notion of a counting number must
+be based on an underlying ordering of the set of things being counted,
+an ordering in which there is a first element counted, and, following
+any collection of elements counted, there must be a next element
+counted, assuming that there are elements still uncounted. This kind
+of ordering he called a ‘well-ordering’, which we now
+define as a total-ordering with an extra condition, namely that any
+subset has a least element in the ordering. Cantor recognised that
+each distinct well-ordering of the elements gives rise to a distinct
+counting number, what he originally called an ‘<em>Anzahl</em>
+[enumeral]’, later an ‘<em>Ordnungszahl</em> [ordinal
+number]’, numbers which are conceptually quite different from
+<i>cardinal numbers</i> or <i>powers</i>, meant to express just the size of
+collections.<sup>[<a href="notes.html#13" name="note-13">13</a>]</sup>
+This distinction is hard to perceive at first sight. Before Cantor and
+the rise of the modern theory of transfinite numbers, the standard
+counting numbers were the ordinary finite
+numbers.<sup>[<a href="notes.html#14" name="note-14">14</a>]</sup>
+And, crucially, for finite collections, it turns out that any two
+orderings of the same underlying elements, which are certainly
+well-orderings in Cantor's sense, are order-isomorphic, i.e., not
+essentially
+ distinct.<sup>[<a href="notes.html#15" name="note-15">15</a>]</sup> 
+This means that one can in effect
+identify a number arrived at by counting (an ordinal number) with the
+cardinal number of the collection counted. Thus, the ordinary natural
+numbers appear in two guises, and it is possible to determine the size
+of a finite collection directly by counting it. Cantor observed that
+this ceases to be the case in rather dramatic fashion once one
+considers infinite collections; here, the same elements can give rise
+to a large variety of distinct well-orderings.</p>
+
+<p>Nevertheless, Cantor noticed that if one collects together all the
+countable ordinal numbers, i.e., the numbers representing
+well-orderings of the set of natural numbers, this collection, which
+Cantor called the <i>second number-class</i> (the first being the set of
+natural numbers), must be of greater cardinality than that of the
+collection of natural numbers itself. Moreover, this size is the
+cardinal <i>successor</i> to the size of the natural numbers in the very
+clear sense that any infinite subset of the second number-class is
+either of the power of the natural numbers or of the power of the
+whole class; thus, there can be no size which is strictly
+intermediate. The process generalises: collect together all the
+ordinal numbers representing well-orderings of the second number-class
+to form the third number-class, and this must be the immediate
+successor in size to that of the second number-class, and so on. In
+this way, Cantor could use the ordinal numbers to generate an infinite
+sequence of cardinalities or powers. This sequence was later
+ (Cantor 1895) called the aleph-sequence, ℵ<sub>0</sub> (the
+size of the natural numbers), ℵ<sub>1</sub> (expressing the
+size of the second number-class), ℵ<sub>2</sub> (expressing the
+size of the third number-class), and so on. Since the intention was
+that ordinal numbers could be generated arbitrarily far, then so too,
+it seems, could the alephs.</p>
+
+<p>This raises the possibility of reinstating the centrality of the
+ordinal numbers as the fundamental numbers even in the case of
+infinite sets, thus making ordinality the foundation of cardinality
+for all sets. In work after 1883, Cantor attempted to show that the
+alephs actually represent a scale of infinite cardinal number. For
+instance, it is shown that the ordinal numbers are comparable, i.e.,
+for any two ordinal numbers α, β, either 
+<span class="nw">α &lt; β,</span>
+<span class="nw">α = β</span> or 
+<span class="nw">α &gt; β,</span> a desirable, perhaps
+essential, property of counting numbers. Through this, comparability
+therefore transfers to the alephs, and Cantor was able to give clear
+and appropriate arithmetical operations of addition, multiplication
+and exponentiation, generalising the corresponding notions for finite
+collections, and the statement and proof of general laws concerning
+these.</p>
+
+<p>In 1878, Cantor had put forward the hypothesis that there is no
+infinite power between that of the natural numbers and the
+continuum. This became known as Cantor's Continuum Hypothesis
+(CH). With the adumbration of the number classes, CH takes on the form
+that the continuum has the power of the second number-class, and with
+the development of the aleph-scale, it assumes the form of a
+conjecture about the exponentiation operation in the generalised
+cardinal arithmetic, for it can be expressed in the form
+<span class="nw">2<sup>ℵ<sub>0</sub></sup> =
+ℵ<sub>1</sub>.</span> The <i>continuum problem</i> more generally
+construed is really the problem of where the power of the continuum is
+in the scale of aleph numbers, and the generalised continuum
+hypothesis is the conjecture that taking the power set of an infinite
+set corresponds to moving up just one level in the aleph scale. For
+example, in 1883, Cantor had assumed (without remark) that the set of
+all real functions has the size of the third number-class. Given the
+CH, this then becomes the conjecture that
+<span class="nw">2<sup>ℵ<sub>1</sub></sup> = ℵ<sub>2</sub>.</span></p>
+
+<p>But adopting the aleph scale as a framework for infinite
+cardinality depends on significant assumptions. It is clear that any
+collection in well-ordered form (given that it is represented by an
+ordinal) must have an aleph-number representing its size, so clearly
+the aleph-sequence represents the sizes (or <i>powers</i> as Cantor called
+them) of all the well-ordered sets. However, can <i>any</i> set be put into
+well-ordered form? A particular question of this form concerns the
+continuum itself: if the continuum is equivalent to the second
+number-class, then clearly it can be well-ordered, and indeed this is
+a necessary condition for showing that the continuum is represented at
+all in the scale. But <i>can</i> it be well-ordered? More generally, to
+assume that <i>any</i> cardinality is represented in the scale of aleph
+numbers is to assume in particular that <i>any</i> set can be
+well-ordered. And to assume that the aleph-sequence is <i>the</i> scale of
+infinite cardinal number is to assume at the very least that sets
+generally can be compared cardinally; i.e., that for any <i>M</i>, <i>N</i>, either
+<span class="nw"><i>M</i> ≼ <i>N</i></span> or 
+<span class="nw"><i>N</i> ≼ <i>M</i>,</span> COMP for short. But is this
+correct?</p>
+
+<p>When introducing the notion of well-ordering in 1883, Cantor
+expressed his belief that the fact that any set
+(‘manifold’) can be well-ordered is ‘a law of
+thought [Denkgesetz]’, thus putting forward what for convenience
+we can call the well-ordering hypothesis (WOH):</p>
+
+<blockquote>
+  <p>The concept of <i>well-ordered set</i> reveals itself as
+fundamental for the theory of manifolds. That it is always possible to
+arrange any <i>well-defined</i> set in the form of a <i>well-ordered</i> set is, it
+seems to me, a very basic law of thought, rich in consequences, and
+particularly remarkable in virtue of its general validity. I will
+return to this in a later memoir. (Cantor 1883a or  1932: 169)</p>
+</blockquote>
+
+<p>Cantor says nothing about what it might mean to call the
+well-ordering hypothesis a ‘law of thought’, and he never
+did return to this question directly; however, in one form or another,
+this claim is key. It could be that Cantor at this time considered the
+WOH as something like a logical
+principle.<sup>[<a href="notes.html#16" name="note-16">16</a>]</sup> This, however, is not
+particularly clear, especially since the study of formal logic
+adequate for mathematical reasoning was only in its infancy, and the
+set concept itself was new and rather unclearly delimited. Another
+suggestion is that well-orderability is intrinsic to the way that
+‘well-defined’ sets are either presented or conceived,
+e.g., that it is impossible to think of a collection's being a
+set without at the same time allowing that its elements can be
+arranged ‘discretely’ in some way, or even that such
+arrangement can be automatically deduced from the
+‘definition’. Thus, if one views sets as necessary for
+mathematics, and one holds that the concept of set itself necessarily
+involves the discrete arrangement of the elements of the set, then WOH
+might appear necessary, too. But all of this is imprecise, not least
+because the notion of set itself was imprecise and imprecisely
+formulated. One clear implication of Cantor's remark is that he
+regards the WOH as something which does not require
+proof. Nonetheless, not long after he had stated this, Cantor clearly
+had doubts both about the well-orderability of the continuum and about
+cardinal comparability (see Moore 1982: 44). All of
+this suggested that the WOH, and the associated hypothesis that the
+alephs represent the scale of infinite cardinality, do require proof,
+and cannot just be taken as ‘definitional’. Thus, it
+seemed clear that the whole Cantorian project of erecting a scale of
+infinite size depends at root on the correctness of the WOH.</p>
+
+<p>Work subsequent to 1884 suggests that Cantor felt the need to
+supply arguments for well-ordering. For instance (Cantor 1895: 493) to
+show that every infinite set <i>T</i> has a countable subset (and thus
+that ℵ<sub>0</sub> is the smallest cardinality), Cantor set
+out to <i>prove the existence</i> of a subset of <i>T</i> which is
+well-ordered like the natural numbers. The key point to observe here
+is that Cantor felt it necessary to <i>exhibit</i> a well-ordered subset
+of <i>T</i>, and did not simply proceed by first assuming (by appeal
+to his ‘<em>Denkgesetz</em>’) that <i>M</i> can be
+arranged in well-ordered form. He exhibits such a subset in the
+following way:</p>
+
+<!--pdf include  
+ <br />
+pdf include-->
+
+<blockquote>
+  <p><i>Proof.</i> If one has removed from <i>T</i> a finite number of
+  elements <i>t</i><sub>1</sub>, <i>t</i><sub>2</sub>,
+  …, <i>t</i><sub>ν−1</sub> according to some rule,
+  then the possibility always remains of extracting a further
+  element <i>t</i><sub>ν</sub>. The set {<i>t</i><sub>ν</sub>},
+  in which ν denotes an arbitrary finite, cardinal number, is a
+  subset of <i>T</i> with the cardinal number ℵ<sub>0</sub>,
+  because <span class="nw">{<i>t</i><sub>ν</sub>} ∼ {ν}.</span> (Cantor 1895:
+  493)</p>
+</blockquote>
+
+<p>In 1932, Zermelo edited Cantor's collected papers (Cantor 1932),
+and commented on this particular proof as follows:</p>
+
+<blockquote>
+  <p>The “proof” of Theorem A, which is purely intuitive
+  and logically unsatisfactory, recalls the well-known primitive
+  attempt to arrive at a <i>well-ordering</i> of a given set by successive
+  removal of arbitrary elements. We arrive at a correct proof only
+  when we <i>start from</i> an already <i>well-ordered</i> set, whose smallest
+  transfinite initial segment in fact has the cardinal number
+  ℵ<sub>0</sub> sought. (Zermelo in Cantor 1932: 352)</p>
+</blockquote>
+
+<p>The second context in which an argument was given was an attempt
+by Cantor (in correspondence first with Hilbert and then Dedekind) to
+show that every set must have an aleph-number as a
+cardinal.<sup>[<a href="notes.html#17" name="note-17">17</a>]</sup> What Cantor attempts to
+show, in effect, is the following. Assume that Ω represents the
+sequence of all ordinal numbers, and assume (for a <i>reductio</i> argument)
+that <i>V</i> is a ‘multiplicity’ which is not equivalent
+to any aleph. Then Cantor argues that Ω can be
+‘projected’ into <i>V</i>, in turn showing that <i>V</i>
+must be what he calls an ‘inconsistent multiplicity’,
+i.e., not a legitimate set. It will follow that all sets have alephs
+as cardinals, since they will always be ‘exhausted’ by
+such a projection by some ordinal or other, in which case they will be
+cardinally equivalent to some ordinal
+number-class.<sup>[<a href="notes.html#18" name="note-18">18</a>]</sup> Zermelo's
+dismissal of this attempted proof is no surprise, given the comments
+just quoted. But he also comments further here exactly on this
+‘projection’:</p>
+
+<blockquote>
+  <p>The weakness of the proof outlined lies precisely
+here. It is <i>not</i> proved that the whole series of numbers Ω can be 
+“projected into” any multiplicity <i>V</i> which does not
+have an aleph as a cardinal number, but this is rather taken from a
+somewhat vague “intuition”. Apparently <i>Cantor</i> imagines the
+numbers of Ω successively and arbitrarily assigned to elements
+of <i>V</i> in such a way that every element of <i>V</i> is only used
+once. <i>Either</i> this process must then come to an end, in that all
+elements of <i>V</i> are used up, in which case <i>V</i> would be then
+be coordinated with an <i>initial</i> segment of the number series, and its
+power consequently an aleph, contrary to assumption; <i>or</i> <i>V</i> would
+remain inexhaustible and would then contain a component equivalent to
+the whole of Ω, thus an inconsistent component. Here, the
+intuition of time [<em>Zeitanschauung</em>] is being applied to a process which
+goes beyond all intuition, and a being [<em>Wesen</em>] supposed which can make
+<i>successive</i> arbitrary choices and thereby define a subset <i>V</i>′
+of <i>V</i> which is not definable by the conditions given. (Zermelo in Cantor 1932:
+ 451)<sup>[<a href="notes.html#19" name="note-19">19</a>]</sup></p>
+</blockquote>
+
+<p>If it really is ‘successive’ selection which is relied
+on, then it seems that one must be assuming a subset of instants of
+time which is well-ordered and which forms a base ordering from which
+the ‘successive’ selections are made. In short, what is
+really presupposed is a well-ordered subset of temporal instants which
+acts as the basis for a recursive definition. Even in the case of
+countable subsets, if the ‘process’ is actually to come to
+a conclusion, the ‘being’ presupposed would presumably
+have to be able to distinguish a (countably) infinite, discrete
+sequence of instants within a finite time, and this assumption is, as
+is well-known, a notoriously controversial one. In the general case,
+the position is actually worse, for here the question of the
+well-orderability of the given set depends at the very least on the
+existence of a well-ordered subset of temporal instants of arbitrarily
+high infinite cardinality. This appears to go against the assumption
+that time is an ordinary continuum, i.e., of cardinality
+2<sup>ℵ<sub>0</sub></sup>, unless of course the power set of
+the natural numbers itself is too ‘big’ to be counted by
+any ordinal, in which case much of the point of the argument would be
+lost, for one of its aims is presumably to show that the power of the
+continuum is somewhere in the
+aleph-sequence.<sup>[<a href="notes.html#20" name="note-20">20</a>]</sup></p>
+
+<p>Part of what is at issue here, at least implicitly, is what
+constitutes a proof. It seems obvious that if a set is non-empty, then
+it must be possible to ‘choose’ an element from it (i.e.,
+there must exist an element in it). Indeed, the obviousness of this is
+enshrined in the modern logical calculus by the way the inference
+principle of Existential Instantiation (EI) usually works: from
+∃<i>x</i><i>P</i><i>x</i> one assumes <i>Pc</i>, where
+‘<i>c</i>’ is a new constant, and reasons on that basis;
+whatever can be inferred from
+<i>P</i>(<i>c</i>) (as long as it does not itself contain the new constant
+‘<i>c</i>’) is then taken to be inferable from ∃<i>x</i><i>P</i><i>x</i>
+alone. Furthermore, it is clear how this extends to finite sets (or
+finite extensions) by stringing together successive inferential
+steps. But how can such an inferential procedure be extended to
+infinite sets, if at all?</p>
+
+<p>Some evidence of the centrality of WOH is provided by Problem 1 on
+Hilbert's list of mathematical problems in his famous lecture to
+the International Congress of Mathematicians in Paris in 1900. He
+notes Cantor's conviction of the correctness of CH, and its
+‘great probability’, then goes on to mention another
+‘remarkable assertion’ of Cantor's, namely his
+belief that the continuum, although not (in its natural order) in
+well-ordered form, can be rearranged as a well-ordered set. However,
+Russell, writing at roughly the same time, expressed doubts about
+precisely this:</p>
+
+<blockquote>
+  <p>Cantor assumes as an axiom that every class is the field of some
+  well-ordered series, and deduces that all cardinals can be
+  correlated with ordinals …. This assumption seems to me
+  unwarranted, especially in view of the fact that no one has yet
+  succeeded in arranging a class of 2<sup>α<sub>0</sub></sup>
+  terms in a well-ordered series. (Russell 1903: 322–323)</p>
+</blockquote>
+
+<p>He goes on:</p>
+
+<blockquote>
+  <p>We do not know that of any two different cardinal numbers one
+must be the greater, and it may be that
+2<sup>α<sub>0</sub></sup> is neither greater nor less that
+α<sub>1</sub> and α<sub>2</sub> and their successors,
+which may be called well-ordered cardinals because they apply to
+well-ordered series. (Russell 1903:
+ 323)<sup>[<a href="notes.html#21" name="note-21">21</a>]</sup></p>
+</blockquote>
+
+<p>And recall that, at the International Congress of Mathematicians in
+Heidelberg in 1904, König had given an apparently convincing
+proof that the continuum <i>cannot</i> be an aleph. König's
+argument, as we know, turned out to contain fatal flaws, but in any
+case, the confusion it exhibits is
+instructive.<sup>[<a href="notes.html#22" name="note-22">22</a>]</sup></p>
+
+<p>In short, the clear impression in the immediate period leading up
+to Zermelo's work was <i>both</i> that only the WOH would provide a
+solid foundation on which to build a reasonable notion of infinite
+cardinal number as a proper framework for tackling CH, <i>and</i> that WOH
+requires justification, that it must become, in effect, the WOT, the
+WO-Theorem. In short, establishing the WOT was closely bound up with
+the clarification of what it is to count as a set.</p>
+
+<h4><a name="Zer190ProWelOrdThe">2.2.2  Zermelo's 1904 Proof of the Well-Ordering Theorem</a></h4>
+
+<p>Zermelo's approach to the well-ordering problem took place in
+three stages. He published a proof of WOT in 1904 (Zermelo 1904, an
+extract from a letter to Hilbert), where he first introduced the
+‘choice’ principle, a principle designed (despite the name
+it has come to bear) to move away from the Cantorian
+‘choosing’ arguments which almost universally preceded
+Zermelo's work, and which postulates that arbitrary
+‘choices’ have already been made. This paper produced an
+outcry, to which Zermelo responded by producing a new proof 
+(1908a), which again uses the choice principle, but this time
+in a somewhat different form and expressed now explicitly as an
+axiom. The first three pages of this paper give the new proof; this
+was then followed by seventeen pages which reply in great detail to
+many of the objections raised against the first proof. These consisted
+in objections to the choice principle itself, and also objections to
+the unclarity of the underlying assumptions about, and operation with,
+sets used in the proof. This paper was followed just two months later
+by Zermelo's official axiomatisation (1908b), an
+axiomatisation which to a large degree was prefigured in the paper
+(1908a).</p>
+
+<p>Zermelo's 1904 proof can be briefly described.</p>
+
+<dl class="hangindent">
+<dt>(1)</dt><dd> Let <i>M</i> be an arbitrarily given set, and let <span style="font-family:Arial"><b>M</b></span> be its power set. Assume given what Zermelo calls a
+‘covering’ of <span style="font-family:Arial"><b>M</b></span>, i.e., a function γ
+from non-empty elements of <span style="font-family:Arial"><b>M</b></span> to <i>M</i> such that
+γ(<i>X</i>) ∈ <i>X</i>, in other words, what would now be called a choice
+function. The argument then shows that such a γ determines a
+unique well-ordering
+of <i>M</i>.<sup>[<a href="notes.html#23" name="note-23">23</a>]</sup></dd>
+
+<dt>(2)</dt><dd> Using a fixed such γ, Zermelo then defines the so-called
+γ-sets <i>M</i><sub>γ</sub>. These satisfy the following
+conditions:
+<ol style="list-style-type: lower-alpha"><li><i>M</i><sub>γ</sub> ⊆ <i>M</i>;</li>
+
+<li><i>M</i><sub>γ</sub> is well-ordered by some ordering
+≺ specific to <i>M</i><sub>γ</sub>;</li>
+
+<li>If a ∈ <i>M</i><sub>γ</sub>, then <i>a</i> must
+determine an initial segment <i>A</i> of <i>M</i><sub>γ</sub>
+under ≺; but now γ and ≺ must be related in such a
+way that <span class="nw"><i>a</i> = γ(<i>M</i> − <i>A</i>),</span> i.e., <i>a</i> is the
+‘distinguished element’ (as Zermelo calls it) of the
+complement of <i>A</i> in <i>M</i>.</li>
+
+</ol></dd>
+
+<dt>(3)</dt><dd> There clearly are γ sets:
+{<i>m</i><sub>1</sub>} is one such, where 
+<span class="nw"><i>m</i><sub>1</sub> = γ(<i>M</i>)</span> and
+where we take the trivial well-ordering. The set
+<span class="nw">{<i>m</i><sub>1</sub>, <i>m</i><sub>2</sub>}</span> is also a γ-set,
+where again 
+<span class="nw"><i>m</i><sub>1</sub> = γ(<i>M</i>),</span> 
+<span class="nw"><i>m</i><sub>2</sub> = γ(<i>M</i> − {<i>m</i><sub>1</sub>}),</span> and
+<span class="nw">{<i>m</i><sub>1</sub>, <i>m</i><sub>2</sub>}</span> is given the ordering
+which places <i>m</i><sub>2</sub> after <i>m</i><sub>1</sub>. (Note
+that 
+<span class="nw">{<i>m</i><sub>1</sub>, <i>m</i><sub>2</sub>}</span> with the other
+ordering would not be a γ-set.) In fact, it is easy to see that
+if 
+<span class="nw"><i>M</i>′ ⊆ <i>M</i></span> is to be a γ-set, then
+condition (2)(c) means that ≺ is uniquely (one is tempted to
+say, recursively) determined.</dd>
+
+<dt>(4)</dt><dd> Indeed, following this, Zermelo shows that of any two distinct
+γ-sets, one is identical to an initial segment of the other, and
+the well-ordering of the latter extends the well-ordering of the
+former.</dd>
+
+<dt>(5)</dt><dd> Zermelo now considers the set <i>L</i><sub>γ</sub>,
+which is the union taken over all the γ-sets. It is not
+difficult to see that <i>L</i><sub>γ</sub> itself must be a
+γ-set, indeed, the largest such. By
+definition, 
+<span class="nw"><i>L</i><sub>γ</sub> ⊆ <i>M</i>;</span> but Zermelo shows
+that equality must hold. If not, then
+<i>M</i> − <i>L</i><sub>γ</sub> would be a non-empty subset
+of <i>M</i>, in which case we can consider
+<span class="nw">γ(<i>M</i> − <i>L</i><sub>γ</sub>)
+= <i>m</i><sub>1</sub>′.</span> Now form
+<span class="nw"><i>L</i><sub>γ</sub>′ <i>L</i><sub>γ</sub>
+∪ {<i>m</i><sub>1</sub>′},</span> and supply it with the
+well-ordering which is the same as that in <i>L</i><sub>γ</sub>,
+except that we extend it by fixing that
+<span class="nw"><i>x</i> ≺ <i>m</i><sub>1</sub>′</span> for any 
+<span class="nw"><i>x</i> ∈ <i>L</i><sub>γ</sub>.</span> Clearly
+now <i>L</i><sub>γ</sub>′ is a γ-set, but one which
+properly extends <i>L</i><sub>γ</sub>, which is a
+contradiction. Thus 
+<span class="nw"><i>L</i><sub>γ</sub>′ = <i>M</i>,</span> and so <i>M</i>
+can be well-ordered by the ordering
+of <i>L</i><sub>γ</sub>′.<sup>[<a href="notes.html#24" name="note-24">24</a>]</sup></dd>
+</dl>
+
+<p>As Zermelo points out (p. 516 of his paper), the WOT establishes a
+firm foundation for the theory of infinite cardinality; in particular,
+it shows, he says, that every set (‘for which the totality of
+its subsets etc. has a sense’) can be considered as a
+well-ordered set ‘and its power considered as an
+aleph’. Later work of Hartogs (see Hartogs 1915) showed that,
+not only does WOT imply COMP as Zermelo shows, but that COMP itself
+implies WOT, and thus in turn Zermelo's choice principle. Thus,
+it is not just COMP which is necessary for a reasonable theory of
+infinite cardinality, but WOT itself. Despite Zermelo's
+endorsement here, the correctness of the hypothesis that the scale of
+aleph numbers represents <i>all</i> cardinals (AH, for short) is a more
+complicated matter, for it involves the claim that every set is
+actually equivalent to an initial segment of the ordinals, and not
+just well-orderable. In axiomatic frameworks for sets, therefore, the
+truth of AH depends very much on which ordinals are present as sets in
+the system.</p>
+
+<p>The subsequent work showing the independence of AC from the other
+axioms of set theory vindicates Zermelo's pioneering work; in
+this respect, it puts Zermelo's revelation of the choice
+principle in a similar position as that which Hilbert ascribes to the
+Parallel Postulate in Euclid's work. Hilbert claims that Euclid
+must have realised that to establish certain ‘obvious’
+facts about triangles, rectangles etc., an entirely <i>new</i> axiom
+(Euclid's Parallel Postulate) was necessary, and moreover that
+Gauß was the first mathematician ‘for 2100 years’ to
+see that Euclid had been right (see Hallett and Majer 2004:261–263 and 343–345).
+This ‘pragmatic attitude’, which is on display in
+Zermelo's second paper on well-ordering from 1908, became, in
+effect, the reigning attitude towards the choice principle: If certain
+problems are to be solved, then the choice principle must be
+adopted. In 1908, Zermelo brings out this parallel explicitly:</p>
+
+<blockquote>
+  <p>Banishing fundamental facts or problems from science merely
+  because they cannot be dealt with by means of certain prescribed
+  principles would be like forbidding the further extension of the
+  theory of parallels in geometry because the axiom upon which this
+  theory rests has been shown to be unprovable. (Zermelo 1908a:
+  115)</p>
+</blockquote>
+
+<p>Zermelo does not in 1904 call the choice principle an axiom; it
+is, rather, designated a ‘logical principle’. What Zermelo
+has to say by way of an explanation is very short:</p>
+
+<blockquote>
+  <p>This logical principle cannot, to be sure, be reduced to a still
+  simpler one, but it is applied without hesitation everywhere in
+  mathematical deduction. (Zermelo 1904: 516)</p>
+</blockquote>
+
+<p>It is not clear from this whether he thinks of the choice principle
+as a ‘law of thought’, as the term ‘logical
+principle’ might suggest, or whether he thinks it is just
+intrinsic to mathematical reasoning whenever sets are involved, a
+position suggested by the reference to its application
+‘everywhere in mathematical deduction’. By the time of his
+second well-ordering paper of 1908, Zermelo seems to have moved away
+from the idea of AC as a ‘logical’ principle in the sense
+of a logical law, and appears to put the emphasis more on the view of
+it as intrinsic to the subject matter; there it appears as Axiom IV,
+and, as we saw, Axiom VI of Zermelo
+ 1908b.<sup>[<a href="notes.html#25" name="note-25">25</a>]</sup></p>
+
+<h4><a name="Obj190Pro">2.2.3  Objections to the 1904 Proof</a></h4>
+
+<p>There were three central objections.</p>
+
+<ol style="list-style-type: lower-alpha">
+<li>Objections to the Choice Principle. </li>
+<li>Objections to Zermelo's general operation with sets, especially well-orderings. </li>
+<li>Objections to impredicative definitions.</li>
+</ol>
+
+<p>Let us briefly deal with these. </p>
+
+<p>(a) The objections to the choice principle were of two kinds. The
+main objection was put forward by Borel in 1905 in
+the <em>Mathematische Annalen</em> (Borel 1905), the journal which
+published Zermelo's paper, and it is also widely discussed in
+correspondence between some leading French mathematicians, and also
+published in that year in the same Journal (see Hadamard et
+al. 1905). The objection is basically that Zermelo's principle fails
+to specify a ‘law’ or ‘rule’ by which the
+choices are effected; in other words, the covering used is not
+explicitly defined, which means that the resulting well-ordering is
+not explicitly defined either. In a letter to Borel, Hadamard makes it
+clear that the opposition in question is really that between the
+assumption of the existence of an object which is fully described, and
+of the existence of an object which is <i>not</i> fully described (see
+Hadamard et al. 1905, esp. 262). In his reply, Zermelo remarks that
+the inability to describe the choices is why the choice principle is
+in effect an <i>axiom</i>, which has to be added to the other principles. In
+effect, the position is that if one wants to do certain things which,
+e.g., rely on the WOT, then the choice principle is indispensable. His
+position, to repeat, is like the one that Euclidean geometry takes
+towards parallels. </p>
+
+<p> (b) An objection to the choice principle was also put forward by
+Peano. This objection seems to be that since the choice principle
+cannot be proved ‘syllogistically’ (i.e., from the
+principles of Peano's <i>Formulario</i>), then it has to be rejected (see
+Peano 1906). (Peano does think, however, that finite versions of the
+choice principle are provable, relying essentially on repeated
+applications of a version for classes of the basic logical principle
+EI mentioned above (<a href="#ImpProBefZer">§2.2.1</a>).
+Zermelo's reply is the following. Axiom systems like Peano's are
+constructed so as to be adequate for mathematics; but how does one go
+about selecting the ‘basic principles’ required? One
+cannot assemble a complete list of adequate principles, says Zermelo,
+without careful inspection of actual mathematics and thereby a careful
+assessment of what principles are actually necessary to such a list,
+and such inspection would show that the choice principle is surely one
+such; in other words, a selection of principles such as Peano's is
+very much a <i>post hoc</i> procedure. The reply to Peano is of a piece with
+the reply to Borel, and recalls strongly the invocation in Zermelo
+(1908b: 261), that it is necessary to distill principles from the
+actual operation with sets. He supports his claim that the choice
+principle is necessary by a list of seven problems which ‘in my
+opinion, could not be dealt with at all without the principle of
+choice’ (Zermelo 1908a:
+ 113).<sup>[<a href="notes.html#26" name="note-26">26</a>]</sup>
+ In particular he points out that the
+principle is indispensable for any reasonable theory of infinite
+cardinality, for only it guarantees the right results for infinite
+unions/sums, and in addition is vital for making sense of the very
+definition of infinite product. That Peano cannot establish the choice
+principle from his principles, says Zermelo, strongly suggests that
+his list of principles is not ‘complete’ (Zermelo 1908a:
+112). </p>
+
+<p> (c) Another line of objection, represented in different ways by
+Bernstein (Bernstein 1905), Jourdain (Jourdain 1904, 1905b) and Schoenflies (Schoenflies 1905), was that Zermelo's general
+operation with sets in his proof was dangerous and flirts with
+paradox. (See also Hallett 1984, 176–182.) In its imprecise form, the objection is that Zermelo is less
+than explicit about the principles he uses in 1904, and that he
+employs procedures which are reminiscent of those used crucially in
+the generation of the Burali-Forti antinomy, e.g., in showing that if
+the set
+<span class="nw"><i>L</i><sub>γ</sub> ≠ <i>M</i>,</span> then it can be extended. 
+(What if <i>L</i><sub>γ</sub> is already the collection <i>W</i>?) </p>
+
+<p> Zermelo's reply is dismissive, but there is something to the
+criticism. Certainly Zermelo's 1904 proof attempts to show that WOT
+can be proved while by-passing the general abstract theory of
+well-ordering and its association with the Cantorian ordinals, and
+therefore also bypassing the ‘the set <i>W</i>’ (as it was
+widely known) of <i>all</i> Cantorian ordinals (denoted ‘Ω’
+by Cantor), and consequently the Burali-Forti antinomy. However,
+whatever Zermelo's <i>intention</i>, there is no <i>explicit</i> attempt to exclude
+the possibility that <i>L</i><sub>γ</sub> = <i>W</i> and thus the
+suggestion that antinomy might threaten. Of course, Zermelo, referring
+to critics who ‘base their objections upon the
+“Burali-Forti antinomy” ’, declares that this
+antinomy ‘<i>is without significance</i> for my point of view, since
+the principles I employed <i>exclude</i> the existence of a set <i>W</i> [of
+all ordinals]’ (Zermelo 1908a: 128, with earlier hints on
+118–119) that the real problem is with the ‘more
+elementary’ Russell antinomy. It is also true that at the end of
+the 1904 paper, Zermelo states that the argument holds for those
+sets <i>M</i> ‘for which the totality of subsets, and so on, is
+meaningful’, which, in retrospect is clearly a hint at important
+restrictions on set formation. Even so, Zermelo's attitude is
+unfair. It could be that the remark about ‘the totality of
+subsets etc.’ is an indirect reference to difficulties with the
+comprehension principle, but even so the principle is not repudiated
+explicitly in the 1904 paper, neither does Zermelo put in its place
+another principle for the conversion of properties to sets, which is
+what the <em>Aussonderungsaxiom</em> of the 1908 axiomatisation
+does. Moreover, he does not say that the existence principles on which
+the proof is based are the <i>only</i> set existence principles, and he does
+not divorce the proof of the theorem from the Cantorian assumptions
+about well-ordering and ordinals. Indeed, Zermelo assumes that
+‘every set can be well-ordered’ is equivalent to the
+Cantorian ‘every cardinality is an aleph’ (Zermelo 1904:
+141). And despite his later claim (Zermelo 1908a: 119), he does <i>appear</i>
+to use the ordinals and the informal theory of well-ordering in his
+definition of γ-sets, where a γ-set is ‘any
+well-ordered <i>M</i><sub>γ</sub>…’, without any
+specification of how ‘well-ordered set’ is to be
+defined. What assurance is there that <i>this</i> can all be reduced to
+Zermelo's principles? One important point here is that it had not yet
+been shown that all the usual apparatus of set-theoretic mathematics
+(relations, ordering relations, functions, cardinal equivalence
+functions, order-isomorphisms, etc.) could be reduced to a few simple
+principles of set existence. All of this was to come in the wake of
+Zermelo's axiomatisation, and there is little doubt that this line of
+criticism greatly influenced the shape of the second proof given in
+1908, of which a little more below. </p>
+
+<p> (d) The last line of objection was to a general feature of the
+1904 proof, which was not changed in the second proof, namely the use
+of what became known as ‘impredicative definition’. An
+impredicative definition is one which defines an object <i>a</i> by a
+property <i>A</i> which itself involves reference, either direct or
+indirect, to all the things with that property, and this must, of
+course, include <i>a</i> itself. There is a sense, then, in which the
+definition of <i>a</i> involves a circle. Both Russell and
+Poincaré became greatly exercised about this form of
+definition, and saw the circle involved as being
+‘vicious’, responsible for all the paradoxes. If one
+thinks of definitions as like construction principles, then indeed
+they are illegitimate. But if one thinks of them rather as ways of
+singling out things which are already taken to exist, then they are
+not illegitimate. In this respect, Zermelo endorses Hilbert's view of
+existence. To show that some particular thing ‘exists’ is
+to show that it is in 𝔅, i.e., to show by means of a finite
+proof from the axioms that it exists in 𝔅. What
+‘exists’, then, is really a matter of what the axioms,
+taken as a whole, determine. If the separation, power set and choice
+principles are axioms, then for a given <i>M</i> in the domain, there
+will be choice functions/sets on the subsets of <i>M</i>, consequently
+well-orderings, and so forth; if these principles are not included as
+axioms, then such demonstrations of existence will not be
+forthcoming. From this point of view, defining within the language
+deployed is much more like what Zermelo calls
+‘determination’, since definitions, although in a certain
+sense arbitrary, have to be supported by existence proofs, and of
+course in general it will turn out that a given extension can be
+picked out by several, distinct ‘determinations’. In
+short, Zermelo's view is that definitions pick out (or determine)
+objects from among the others in the domain being axiomatised; they
+are not themselves responsible for showing their <i>existence</i>. In
+the end, the existence of a domain 𝔅 has to be guaranteed by a
+consistency proof for the collection of axioms. Precisely this view
+about impredicative definitions was put forward in Ramsey (1926:
+368–369) and then later in Gödel's 1944 essay on Russell's
+mathematical logic as part of his analysis of the various things which
+could be meant by Russell's ambiguously stated Vicious Circle
+Principle. (See Gödel 1944: 136, 127–128 of the reprinting
+in Gödel 1990. See also Hadamard's letters in Hadamard et
+al. 1905.) To support his view, Zermelo points out that impredicative
+definitions are taken as standard in established mathematics,
+particularly in the way that the least upper bound is defined; witness
+the Cauchy proof of the Fundamental Theorem of Algebra. Once again,
+Zermelo's reply is coloured by the principle of looking at the actual
+practice of mathematics.<sup>[<a href="notes.html#27" name="note-27">27</a>]</sup> </p>
+
+<h4><a name="ZerSecProWOT190">2.2.4  Zermelo's second proof of the WOT, 1908</a></h4>
+
+<p>As mentioned, Zermelo published a second proof of the WOT,
+submitted to <em>Mathematische Annalen</em> just two weeks before the
+submission of his ‘official’ axiomatisation, and published
+in the same volume as that axiomatisation. This proof is too elaborate
+to be described here; a much fuller description can be found in
+Hallett (2010b: 94–103), but some brief remarks about it must be
+made nevertheless. Recall that the purpose of the proof was, in large
+part, to reply to (some of) the criticisms raised in objection to the
+1904 proof, and not least to clarify the status of the choice
+principle. </p>
+
+<p> Suppose <i>M</i> is the set given, and suppose (using Zermelo's
+notation) that 𝔘<i>M</i> is the set of its subsets
+(‘<em>Untermengen</em>’). The basic procedure in the 1904 proof was
+to single out certain subsets of <i>M</i> and to show that these can
+in effect be ‘chained’ together, starting from modest
+beginnings (and using the choice function γ); thus we have
+{<i>m</i><sub>1</sub>}, where 
+<span class="nw"><i>m</i><sub>1</sub> = γ(<i>M</i>),</span> 
+<span class="nw">{<i>m</i><sub>1</sub>, <i>m</i><sub>2</sub>},</span> where
+again 
+<span class="nw"><i>m</i><sub>1</sub> = γ(<i>M</i>)</span>
+and 
+<span class="nw"><i>m</i><sub>2</sub> = γ(<i>M</i> −
+{<i>m</i><sub>1</sub>}),</span> and so on. In this way, the proof
+shows that one can ‘build up’ to the whole of <i>M</i>
+itself.<sup>[<a href="notes.html#28" name="note-28">28</a>]</sup> This
+‘build-up’ is one of the things which provoked scepticism,
+and particularly the step which shows that <i>M</i> itself must be
+embraced by it. In the 1908 proof, the basic idea is to start
+from <i>M</i> itself, and consider ‘cutting down’ by the
+element ‘chosen’ by the choice principle, instead of
+building up. Thus, if one accepts that if <i>M</i> is a legitimate
+set, then so is 𝔘<i>M</i>, and there is not the same danger of
+extending into inconsistent sets, not even the appearance of
+danger. Again the key thing is to show that the sets defined are in
+fact ‘chained’ together and are in the right way
+exhaustive. </p>
+
+<p> In the 1904 proof, there are points where it looks as if Zermelo
+is appealing to arbitrary well-orderings, and thus indirectly
+arbitrary ordinals. This is avoided in the 1908 proof (as it could
+have been in the 1904 proof) by focusing on the particular
+‘chain’ which the proof gives rise to. It is this chain
+itself which exhibits the well-ordering. </p>
+
+<p> In the modern understanding of set theory, to show that there is a
+well-ordering on <i>M</i> would be to show that there is a set of
+ordered pairs of members of <i>M</i> which is a relation satisfying
+the right properties of a well-ordering relation over <i>M</i>. It is
+well to remember that Zermelo's task in 1908 was constrained in that he had to
+establish the existence of a well-ordering using only the
+set-theoretical material <i>available to him</i>. This material did not
+involve the general notion of ordinal and cardinal numbers, not even
+the general notions of relation and function. What Zermelo used,
+therefore, was the <i>particular</i> relation
+<span class="nw"><i>a</i> ⊆ <i>b</i></span> of being a subset,
+and it is important to observe that the chain produced is
+ordered by this relation. </p>
+
+<p> Why would one expect this latter to work? Well, the chain produced
+is naturally a subset well-ordering, for it is both linear and also
+such that the intersection of arbitrary elements of members of the
+chain is itself a member of the chain, and thus there is a natural
+subset-least element for each subset of members of the chain. But the
+wider explanation is hinted at towards the end of Zermelo's
+proof. Suppose a set <i>M</i> is (speaking informally) <i>de facto</i>
+well-ordered by an ordering relation ≺. Call the set
+<span class="nw">ℜ<sub>≼</sub>(<i>a</i>) = {<i>x</i>
+∈ <i>M</i> : <i>a</i> ≼ <i>x</i>}</span> the
+‘remainder [<em>Rest</em>]’ determined by <i>a</i> and the ordering
+≺. Consider now the set of ‘remainders’ given by
+this ordering, i.e.,
+<span class="nw">{ℜ<sub>≼</sub>(<i>x</i>) : <i>x</i>
+∈ <i>M</i>}.</span> This set is in fact well-ordered by reverse
+inclusion, where the successor remainder to
+ℜ<sub>≼</sub>(<i>a</i>) is just the remainder determined
+by <i>a</i>'s successor <i>a</i>′ under ≺, and where
+intersections are taken at the limit elements (the intersection of a
+set of remainders is again a remainder). But not only is this set
+well-ordered by reverse inclusion, the ordering is <i>isomorphic</i> to the
+ordering ≺ on <i>M</i>, that is: </p>
+
+<blockquote>
+<i>a</i> ≺ <i>b</i> if and only if
+ℜ<sub>≼</sub>(<i>b</i>) ⊂
+ℜ<sub>≼</sub>(<i>a</i>).
+</blockquote>
+
+<p>Zermelo's 1908 construction is now meant to define a
+‘remainder set’ directly without detour through some
+≺; the resultant inclusion ordering is then
+‘mirrored’ on <i>M</i>. The key thing is to show that the
+chain of subsets of <i>M</i> picked out really matches <i>M</i>
+itself. But if there were some element <span class="nw"><i>a</i>
+∈ <i>M</i></span> which did not correspond to a remainder
+ℜ<sub>≼</sub>(<i>a</i>), then it must be possible to use
+the choice function to ‘squeeze’ another remainder into
+the chain, which would contradict the assumption that all the sets
+with the appropriate definition are already in the
+chain.<sup>[<a href="notes.html#29" name="note-29">29</a>]</sup> We
+have spoken of functions and relations here. But in fact Zermelo
+avoids such talk. He defines <i>M</i> as being
+‘well-ordered’ when each element in <i>M</i>
+‘corresponds’ uniquely to such a ‘remainder’
+(Zermelo 1908a: 111). This shows, says Zermelo, that the theory of
+well-ordering rests ‘exclusively upon the elementary notions of
+set theory’, and that ‘the uninformed are only too prone
+to look for some mystical meaning behind Cantor's relation
+<span class="nw"><i>a</i> ≺ <i>b</i>’</span> (Zermelo 1908a). </p>
+
+<p> One can be considerably more precise about the relation between
+orderings on <i>M</i> and ‘remainder inclusion orderings’
+in 𝔘<i>M</i>. Much of this was worked out in Hessenberg (1906), and
+was therefore known to Zermelo (Zermelo and Hessenberg were in regular
+contact), and simplified greatly by Kuratowski in the 1920s. We will
+have reason to refer to Kuratowski briefly in the next
+section.<sup>[<a href="notes.html#30" name="note-30">30</a>]</sup> </p>
+
+<p> What about the choice principle? In 1904, this is framed in effect
+as a choice function, whose domain is the non-empty subsets
+on <i>M</i>. But in 1908, Zermelo frames it differently: </p>
+
+<blockquote> <p>Axiom IV. A set <i>S</i> that can be decomposed into a
+set of disjoint parts <i>A</i>, <i>B</i>, <i>C</i>, …, each
+containing at least one element, possesses at least one
+subset <i>S</i><sub>1</sub> having exactly one element in common with
+each of the parts <i>A</i>, <i>B</i>, <i>C</i>, …
+considered. (Zermelo 1908a: 110)</p>
+
+</blockquote>
+
+<p>In other words, the choice principle is now cast in a <i>set</i> form, and
+not in the function form of 1904. </p>
+
+<p> In the 1908 axiomatisation, the axiom is stated in much the same
+way, but is called there (though not in the well-ordering paper) the
+‘Axiom of Choice’. However, the 1908 paper on WOT does say
+that the axiom provides a set (the <i>S</i><sub>1</sub>) of
+‘simultaneous choices’, to distinguish them from the
+‘successive choices’ used in the pre-Zermelo versions of
+well-ordering. It is to be noted that in 1921, Zermelo wrote to
+Fraenkel in partial repudiation of the designation ‘Axiom of
+Choice’, saying that ‘there is no sense in which my theory
+deals with a real
+“choice” ’.<sup>[<a href="notes.html#31" name="note-31">31</a>]</sup></p>
+
+<h4><a name="Axi190WOTPap">2.2.5  The Axioms of the 1908 WOT Paper</a></h4>
+
+<p>What axioms governing set-existence does Zermelo rely on in Zermelo
+(1908a)? At the start of the paper, Zermelo list two
+‘postulates’ that he explicitly depends on, a version of
+the separation axiom, and the power set axiom. Later on he lists Axiom
+IV, which, as noted, asserts the existence of a choice set for any set
+of disjoint non-empty sets. In addition to this, Zermelo makes use of
+the existence of various elementary sets, though he doesn't say
+exactly which principles he relies on. In the axiomatisation which
+follows two weeks later, Zermelo adopts all these axioms, but adds
+clarification about the elementary sets. He also adds the Axiom of Infinity, to
+guarantee that there are infinite sets, and the Axiom of
+Extensionality, which codifies the assumption that sets are really
+determined by their members, and not by the accidental way in which
+these members are selected. In addition, as we have noted,
+he now calls the Axiom of Choice by this name. </p>
+
+<!--pdf include  
+ <br />
+pdf include-->
+
+<h2><a name="MajProZerSys">3. The Major Problems with Zermelo's System</a></h2>
+
+<p>Zermelo's system, although it forms the root of all modern
+axiomatisations of set theory, initially faced various
+difficulties. These were: </p>
+
+<ol style="list-style-type: lower-alpha">
+  <li>Problems with the Axiom of Choice.</li>
+  <li>Problem with the formulation of the Separation Axiom.</li>
+  <li>Problems of ‘completeness’, one of Hilbert's important desiderata on the adequacy of an axiom system. Specifically, there were problems representing ordinary mathematics purely set-theoretically, and also problems representing fully the transfinite extension of mathematics which Cantor had pioneered.</li>
+</ol>
+
+<p>The problems concerning the Axiom of Choice were discussed above;
+we now discuss the difficulties with the formulation of Separation and
+those of ‘completeness’.</p>
+
+<h3><a name="Sep">3.1  Separation</a></h3>
+
+<p>The problem with the Axiom of Separation is not with the
+obviousness of the principle; it <i>seems</i> straightforward to accept that
+if one has a set of objects, one can separate off a subclass of this
+set by specifying a property, and treat this in turn as a set. The
+question here is a subtler one, namely that of how to formulate this
+principle as an axiom. What means of ‘separating off’ are
+to be accepted? What are allowable as the properties? As a matter of
+practice, we use a language to state the properties, and in informal
+mathematics, this is a mixture of natural language and special
+mathematical language. The Richard Paradox (see Richard 1905 and also
+the papers of Poincaré 1905, 1906a,b) makes it clear that one
+has to be careful when defining properties, and that the unregulated
+use of ‘ordinary language’ can lead to unexpected
+difficulties.</p>
+
+<p>Zermelo's answer to this, in moving from the system of the second
+well-ordering paper to the axiomatisation, is to try specifying what
+properties are to be allowed. He calls the properties to be allowed
+‘definite properties’
+(‘<em>Klassenaussagen</em>’ or ‘propositional
+functions’), and states:</p>
+
+<blockquote>
+  <p>A question or assertion 𝔈 is said to be
+“<i>definite</i>” if the fundamental relations of the domain, by
+means of the axioms and the universally valid laws of logic, determine
+without arbitrariness whether it holds or not. Likewise a
+“propositional function” 𝔈(<i>x</i>), in which the
+variable term <i>x</i> ranges over all individuals of a
+class 𝔎, is said to be “definite” if it is definite
+for each single individual <i>x</i> of the class 𝔎. Thus the
+question whether
+<span class="nw"><i>a</i> ε <i>b</i></span> or not is always
+definite, as is the question whether <span class="nw"><i>M</i>
+⊆ <i>N</i></span> or not.</p>
+</blockquote>
+
+<p>Zermelo asserts that this shows that paradoxes involving the
+notions of definability (e.g., Richard's) or denotation (König's)
+are avoided, implying that what is crucial is the restriction to the
+‘fundamental relations of the domain’ (so, ε,
+=).</p>
+
+<p>The basic problem is that it is not explained by Zermelo what the
+precise route is from the fundamental relations ε and = to a
+given ‘definite property’; it is this which gives rise to
+a general doubt that the Separation Axiom is not, in fact, a safe
+replacement for the comprehension principle (see Fraenkel 1927:
+104). This plays into the hands of those, who, like Poincaré,
+consider adoption of the Separation Axiom as insufficiently radical in
+the search for a solution to the paradoxes. Poincaré
+writes:</p>
+
+<blockquote>
+  <p>Mr. Zermelo does not allow himself to consider the set of all the
+objects which satisfy a certain condition because it seems to him that
+this set is never closed; that it will always be possible to introduce
+new objects. On the other hand, he has no scruple in speaking of the
+set of objects which are part of a certain <i>Menge</i> <i>M</i> and which
+also satisfy a certain condition. It seems to him that one cannot
+possess a <i>Menge</i> without possessing at the same time all its
+elements. Among these elements, he will choose those which satisfy a
+given condition, and will be able to make this choice very calmly,
+without fear of being disturbed by the introduction of new and
+unforeseen elements, since he already has all these elements in his
+hands. By positing beforehand this <i>Menge</i> <i>M</i>, he has erected an
+enclosing wall which keeps out the intruders who could come from
+without. But he does not query whether there could be intruders from
+within whom he enclosed inside his wall. (Poincaré 1909: 477;
+p. 59 of the English translation)</p>
+</blockquote>
+
+<p>Here, Poincaré is referring indirectly to his view that the
+paradoxes are due to impredicative set formation, and this of course
+will be still be possible even with the adoption of the Axiom of
+Separation.</p>
+
+<p>The problem of the lack of clarity in Zermelo's account was
+addressed by Weyl in 1910 (Weyl 1910; see especially p. 113) and then
+again by Skolem in 1922 (Skolem 1923, p. 139 of the reprint). What
+Weyl and Skolem both proposed, in effect, is that the question of what
+‘definite properties’ are can be solved by taking these to
+be the properties expressed by 1-place predicate formulas in what we
+now call first-order logic. In effect, we thus have a recursive
+definition which makes the definite properties completely transparent
+by giving each time the precise route from ε, = to the
+definite property in question. This does not deal with all aspects of
+Poincaré's worry, but it does make it quite clear what definite
+properties are, and it does also accord with Zermelo's view that the
+relations =, ε are at root the only ones
+used.<sup>[<a href="notes.html#32" name="note-32">32</a>]</sup></p>
+
+<p>Fraenkel (1922 and later) took a different approach with a rather
+complicated direct axiomatisation of the notion of definite property,
+using recursive generation from the basic properties giving a notion
+which appears to be a subset of the recursively defined first-order
+properties.</p>
+
+<p>Zermelo accepted none of these approaches, for two reasons. First,
+he thought that the recursive definitions involved make direct use of
+the notion of finite number (a fact pointed out by Weyl 1910), which
+it ought to be the business of set theory to explain, not to
+presuppose. Secondly, he became aware that using essentially a
+first-order notion condemns the axiomatic system to countable models,
+the fundamental fact pointed out in Skolem (1923). His own approach
+was, first, to give a different kind of axiomatisation (see Zermelo
+1929), and then to use (in Zermelo 1930) an essentially second-order
+notion in characterising the axiom of
+separation.<sup>[<a href="notes.html#33" name="note-33">33</a>]</sup></p>
+
+<h3><a name="Com">3.2  Completeness</a></h3>
+
+<p>There were also problems with the completeness of Zermelo's theory,
+since there were important theoretical matters with which Zermelo does
+not deal, either for want of appropriate definitions showing how
+certain constructions can be represented in a pure theory of sets, or
+because the axioms set out in Zermelo's system are not strong
+enough.</p>
+
+<h4><a name="RepOrdMat">3.2.1  Representing Ordinary Mathematics</a></h4>
+
+<p>Zermelo gives no obvious way of representing much of
+‘ordinary mathematics’, yet it is clear from his opening
+remarks that he regards the task of the theory of sets to stand as <i>the</i>
+fundamental theory which should ‘investigate mathematically the
+fundamental notions “number”, “order”, and
+“function” ’. 
+(See §1.)</p>
+
+<p>The first obvious question concerns the representation of the
+ordinary number systems. The natural numbers are represented by
+Zermelo as by ∅, {∅}, {{∅}}, …, and the Axiom
+of Infinity gives us a set of these. Moreover, it seems that, since
+both the set of natural numbers and the power set axiom are available,
+there are enough sets to represent the rationals and the reals,
+functions on reals etc. What are missing, though, are the details: how
+exactly does one represent the right equivalence classes, sequences
+etc.? And assuming that one <i>could</i> define the real numbers, how does
+one characterise the field operations on them? In addition, as
+mentioned previously, Zermelo has no natural way of representing
+either the general notions of relation or of function. This means that
+his presentation of set theory has no natural way of representing
+those parts of mathematics (like real analysis) in which the general
+notion of function plays a fundamental part.</p>
+
+<p>A further difficulty is that the lack of the notion of function
+makes the general theory of the comparison of sets by size (or indeed
+by order) cumbersome. Zermelo does develop a way of expressing, for
+disjoint sets <i>a</i>, <i>b</i>, that <i>a</i> is of the same size
+as <i>b</i>, by first defining a ‘product’ of two disjoint
+sets, and then isolating a set of unordered pairs (a certain subset of
+this product) which ‘maps’ one of the sets one-to-one onto
+the other. But this is insufficiently general, and does not in any
+case indicate any way to introduce ‘the’ size
+of <i>a</i>. Russell's method (defining the cardinality of <i>M</i> as
+the set <span class="nw"><i>card</i>(<i>M</i>) = {<i>N</i> : <i>N</i>
+∼ <i>M</i>}</span> (where ‘∼’ means
+‘cardinally equivalent to’) is clearly inappropriate,
+since with a set <span class="nw"><i>a</i> = {<i>b</i>},</span>
+<i>card</i>(<i>a</i>) (which should be the cardinal number 1) is as big as
+the universe, and the union set of <span class="nw">1</span> would indeed be the
+universal ‘set’. Over and above this, there is the more
+specific problem of defining the aleph numbers.</p>
+
+<p>The second major difficulty is along the same lines, concerning,
+not functions, but relations, and thus ordering relations and ordinal
+numbers. As we have seen
+(in <a href="#ZerSecProWOT190">§2.2.4</a>), Zermelo has the
+beginnings of an answer to this in his second proof of the WOT, for
+this uses a theory of subset-orderings to represent the underlying
+ordering of a set. It turns out that the method given in this
+particular case suggests the right way to capture the general
+notion.</p>
+
+<h4><a name="Ord">3.2.2  Ordinality</a></h4>
+
+<p>Zermelo's idea (1908a) was pursued by Kuratowski in the 1920s,
+thereby generalising and systematising work, not just of Zermelo, but
+of Hessenberg and Hausdorff too, giving a simple set of necessary and
+sufficient conditions for a subset ordering to represent a linear
+ordering. He also argues forcefully that it is in fact <i>undesirable</i> for
+set theory to go beyond this and present a general theory of ordinal
+<i>numbers</i>:</p>
+
+<blockquote>
+  <p>In reasoning with transfinite numbers one implicitly uses an
+  axiom asserting their <i>existence</i>; but it is desirable both from the
+  logical and mathematical point of view to pare down the system of
+  axioms employed in demonstrations. Besides, this reduction will free
+  such reasoning from a foreign element, which increases its
+  æsthetic value. (Kuratowski 1922: 77)</p>
+</blockquote>
+
+<p>The assumption here is clearly that the (transfinite) numbers will
+have to be added to set theory as new primitives. Kuratowski however
+undertakes to <i>prove</i> that the transfinite numbers can be dispensed with
+for a significant class of 
+ applications.<sup>[<a href="notes.html#34" name="note-34">34</a>]</sup>
+ Application of the ordinal numbers in
+analysis, topology, etc. often focuses on some process of definition
+by transfinite recursion over these numbers. Kuratowski succeeds in
+showing that in a significant class of cases of this kind, the
+ordinals can be avoided by using purely set-theoretic methods which
+are reproducible in Zermelo's system. As he notes:</p>
+
+<blockquote>
+  <p>From the viewpoint of Zermelo's axiomatic theory of sets, one can
+say that the method explained here allows us to deduce theorems of a
+certain well-determined general type <i>directly</i> from Zermelo's axioms,
+that is to say, without the introduction of any independent,
+supplementary axiom about the existence of transfinite
+numbers. (Kuratowski 1922: 
+ 77)<sup>[<a href="notes.html#35" name="note-35">35</a>]</sup></p>
+</blockquote>
+
+<p>It is in this reductionist context that Kuratowski develops his
+very general theory of maximal inclusion orderings, which shows, in
+effect, that all orderings on <i>a</i> can really be represented as
+inclusion orderings on appropriate subsets of the power set
+of <i>a</i>, thus reducing ordering to Zermelo's primitive relation
+ε.</p>
+
+<p>One immediate, and quite remarkable, result of this work is that it
+shows how one can <i>define</i> the general notions of relation and function
+in purely set-theoretic terms. It had long been recognised that
+relations/functions can be conceived as sets of ordered pairs, and
+Kuratowski's work now shows how to define the ordered pair
+primitively. The ordered pair (<i>a</i>, <i>b</i>) can be considered
+informally as the unordered pair <i>M</i> = {<i>a</i>, <i>b</i>},
+together with an ordering relation <i>a</i> &lt; <i>b</i>. Suppose
+this relation is treated now via the theory of inclusion chains. The
+only maximal inclusion chains in the power set of <i>M</i> are
+{∅, {<i>a</i>}, {<i>a</i>, <i>b</i>}} and {∅,
+{<i>b</i>}, <span class="nw">{<i>a</i>, <i>b</i>}}.</span> Using
+Kuratowski's definition of the ordering ‘&lt;’ derived
+from a maximal inclusion chain, these chains must then correspond to
+the orderings <i>a</i> &lt; <i>b</i> and <i>b</i> &lt; <i>a</i>
+on <span class="nw">{<i>a</i>, <i>b</i>}</span> respectively. If
+∅ is ignored, the resulting chain <span class="nw">{{<i>a</i>},
+{<i>a</i>, <i>b</i>}}</span> is thus associated with the
+relation <i>a</i> &lt; <i>b</i>, and so with the ordered set (pair)
+(<i>a</i>, <i>b</i>). It is then quite natural to <i>define</i>
+(<i>a</i>, <i>b</i>) as <span class="nw">{{<i>a</i>},
+{<i>a</i>, <i>b</i>}}</span> (see Kuratowski 1921: 170–171). One
+can now define the product <span class="nw"><i>a</i>
+× <i>b</i></span> of <i>a</i> and <i>b</i> as the set of all
+ordered pairs whose first member is in <i>a</i> and whose second
+member is in <i>b</i>; relations on <i>a</i> can now be treated as
+subsets of <span class="nw"><i>a</i> × <i>a</i>,</span> and
+functions from <i>a</i> to <i>b</i> as certain subsets
+of <span class="nw"><i>a</i> × <i>b</i>.</span> Thus, many of
+the representational problems faced by Zermelo's theory are solved at
+a stroke by Kuratowski's work, building as it does on Zermelo's
+own.</p>
+
+<h4><a name="Car">3.2.3  Cardinality</a></h4>
+
+<p>But there was a problem concerning cardinality which is independent
+of the problem of definitional reduction. It was pointed out by both
+Fraenkel and Skolem in the early 1920s that Zermelo's theory cannot
+provide an adequate account of cardinality. The axiom of infinity and
+the power set axiom together allow the creation of sets of
+cardinality <span class="nw">≥ ℵ<sub><i>n</i></sub></span>
+for each natural number <i>n</i>, but this (in the absence of a result
+showing that 2<sup>ℵ<sub>0</sub></sup> &gt;
+ℵ<sub><i>n</i></sub> for every natural number <i>n</i>) is not
+enough to guarantee a set whose power is <span class="nw">≥
+ℵ<sub>ω</sub>,</span> and a set of power
+ℵ<sub>ω</sub> is a natural next step (in the Cantorian
+theory) after those of power ℵ<sub><i>n</i></sub>. Fraenkel
+proposed a remedy to this (as did Skolem independently) by proposing
+what was called the <i>Ersetzungsaxiom</i>, the Axiom of Replacement (see
+Fraenkel 1922: 231 and Skolem 1923: 225–226). This says,
+roughly, that the ‘functional image’ of a set must itself
+be a set, thus if <i>a</i> is a set,
+then <span class="nw">{<i>F</i>(<i>x</i>) : <i>x</i>
+∈ <i>a</i>}</span> must also be a set, where
+‘<i>F</i>’ represents a functional correspondence. Such an
+axiom is certainly sufficient; assume that <i>a</i><sub>0</sub> is the
+set of natural numbers {0, 1, 2, …}, and now assume that to
+each number <i>n</i> is associated an <i>a</i><sub><i>n</i></sub> with
+power ℵ<sub><i>n</i></sub>. Then according to the replacement
+axiom, <i>a</i> =
+{<i>a</i><sub>0</sub>, <i>a</i><sub>1</sub>, <i>a</i><sub>2</sub>,
+…} must be a set, too. This set is countable, of course, but
+(assuming that the <i>a</i><sub><i>n</i></sub> are all disjoint) the union set of <span class="nw"><i>a</i></span> must have cardinality at
+least ℵ<sub>ω</sub>.</p>
+
+<p>The main difficulty with the Replacement Axiom is that of how to
+formulate the notion of a functional correspondence. This was not
+solved satisfactorily by Fraenkel, but the Weyl/Skolem solution works
+here, too: a functional correspondence is (in effect) just any
+first-order 2-place predicate ϕ(<i>x</i>, <i>y</i>) which
+satisfies the condition of uniqueness,
+i.e., <span class="nw">∀<i>x</i>, <i>y</i>, <i>z</i>{[ϕ(<i>x</i>, <i>y</i>)
+∧ ϕ(<i>x</i>, <i>z</i>)] → <i>y</i> = <i>z</i>}.</span>
+With this solution, the Replacement Axiom will be (as required)
+stronger than Zermelo's original Separation Axiom and indeed can
+replace it; however, in Fraenkel's system, one can prove his version
+of the Replacement Axiom from his version of the Separation Axiom,
+which shows that his separate definition of function is not
+sufficiently strong. (For details, see Hallett 1984:
+282–286.)</p>
+
+<p>Zermelo initially had doubts about the Replacement Axiom (see the
+letter to Fraenkel from 1922 published in Ebbinghaus 2007: 137), but
+he eventually accepted it, and a form of it was included in his new
+axiomatisation published in 1930 (Zermelo 1930). Skolem's formulation
+is the one usually adopted, though it should be noted that von
+Neumann's own formulation is rather different and indeed
+stronger.<sup>[<a href="notes.html#36" name="note-36">36</a>]</sup></p>
+
+<h4><a name="Ordinals">3.2.4  Ordinals</a></h4>
+
+<p>Although Kuratowski's work solved many of the representational
+problems for Zermelo's theory, and the Replacement Axiom shows how the
+most obvious cardinality gap can be closed, there still remained the
+issue (Kuratowski's view to one side) of representing accurately the
+full extent of the theory which Cantor had developed, with the
+transfinite numbers as fully fledged objects which
+‘mirror’ the size/ordering of sets. Once the ordinal
+number-classes are present, the representation of the alephs is not a
+severe problem, which means that the representation of transfinite
+numbers amounts to assuring the existence of sufficiently many
+transfinite <i>ordinal</i> numbers. Indeed, as was stated above, the
+hypothesis that the scale of aleph numbers is sufficient amounts to
+the claim that any set can be ‘counted’ by some
+ordinal. There are then two interrelated problems for the
+‘pure’ theory of sets: one is to show how to define
+ordinals as sets in such a way that the natural numbers generalise;
+the other problem is to make sure that there are enough ordinals to
+‘count’ all the sets.</p>
+
+<p>The problem was fully solved by von Neumann in his work on
+axiomatic set theory from the early 1920s. Cantor's fundamental
+theorems about ordinal numbers, showing that the ordinals are the
+<i>representatives</i> of well-ordered sets, are the theorem that every
+well-ordered set is order-isomorphic to an initial segment of the
+ordinals, and that every ordinal is itself the order-type of the set
+of ordinals which precede it. These results prove crucial in the von
+Neumann treatment. Von Neumann's basic idea was explained by him as
+follows:</p>
+
+<blockquote>
+  <p>What we really wish to do is to take as the basis of our
+considerations the proposition: ‘Every ordinal is the type of
+the set of all ordinals that precede it’. But in order to avoid
+the vague notion ‘type’, we express it in the form:
+‘Every ordinal is the set of the ordinals that precede
+it’. (von Neumann 1923, p. 347 of the English translation)</p>
+</blockquote>
+
+<p>According to von Neumann's idea, 1 is just {0}, 2 is just {0, 1}, 3
+is just {0, 1, 2} and so on. On this conception, the first transfinite
+ordinal ω is just {0, 1, 2, 3, …, <i>n</i>, …},
+and generally it's clear that the immediate successor of any ordinal
+α is just <span class="nw">α ∪ {α}.</span> If we
+identify 0 with ∅, as Zermelo did, then we have available a
+reduction of the general notion of ordinal to pure set theory, where
+the canonical well-ordering on the von Neumann ordinals is just the
+subset relation, i.e., α &lt; β just in case α ⊂
+β, which von Neumann later shows is itself equivalent to saying
+α ∈ β. (See von Neumann 1928, p. 328 of the
+reprinting.) So again, inclusion orderings are fundamental.</p>
+
+<p>Von Neumann gives a general definition of his ordinals, namely that
+a set α is an ordinal number if and only if it is a set ordered
+by inclusion, the inclusion ordering is a well-ordering, and each
+element ξ in α equals the set of elements in the initial
+segment of the ordering determined by ξ. This connects directly
+with Kuratowski's work in the following way. Suppose <i>M</i> is a
+well-ordered set which is then mirrored by an inclusion
+chain <b>M</b> in the power set of <i>M</i>. Then the first few
+elements of the inclusion chain will be the sets ∅, {<i>a</i>},
+{<i>a</i>, <i>b</i>}, {<i>a</i>, <i>b</i>, <i>c</i>}, …,
+where <i>a</i>, <i>b</i>, <i>c</i>, … are the first, second,
+third …elements in the well-ordering of <i>M</i>. The von
+Neumann ordinal corresponding to <i>M</i> will also be an inclusion
+ordering whose first elements will be</p>
+
+<blockquote>∅, {∅}, {∅, {∅}}, {∅, {∅},
+  {∅, {∅}}}, …</blockquote>
+
+<p>(in other words, 0, 1, 2, 3…), and we have 0 ⊂ 1 ⊂ 2
+⊂ 3 ⊂… in mirror image of
+<span class="nw">∅ ⊂ {<i>a</i>}</span> ⊂ <span class="nw">{<i>a</i>, <i>b</i>}</span> 
+⊂ <span class="nw">{<i>a</i>, <i>b</i>, <i>c</i>}
+⊂ …</span></p>
+
+<p>These von Neumann ordinals had, in effect, been developed before
+von Neumann's work. The fullest published theory, and closest to the
+modern account, is to be found in Mirimanoff's work published in 1917
+and 1921 (see Mirimanoff 1917a,b, 1921), though he doesn't take the
+final step of identifying the sets he characterises with the ordinals
+(for an account of Mirimanoff's work, see Hallett 1984:
+273–275). It is also clear that Russell, Grelling and Hessenberg
+were close to von Neumann's general set-theoretic definition of
+ordinals. But crucially Zermelo himself developed the von Neumann
+conception of ordinals in the years 1913–1916, (for a full
+account, see Hallett 1984: 277–280 and Ebbinghaus 2007:
+133–134). Zermelo's idea was evidently well-known to the
+Göttingen mathematicians, and there is an account of it in
+Hilbert's lectures ‘<em>Probleme der mathematischen
+Logik</em>’ from 1920,
+pp. 12–15.<sup>[<a href="notes.html#37" name="note-37">37</a>]</sup></p>
+
+<p>Despite all these anticipations, it is still right to ascribe the
+theory to von Neumann. For it was von Neumann who revealed the extent
+to which a full theory of the ordinals depends on the Axiom of
+Replacement. As he wrote later:</p>
+
+<blockquote>
+  <p>A treatment of ordinal number closely related to mine was known
+  to Zermelo in 1916, as I learned subsequently from a personal
+  communication. Nevertheless, the fundamental theorem, according to
+  which to each well-ordered set there is a similar ordinal, could not
+  be rigorously proved because the replacement axiom was unknown. (von
+  Neumann 1928: 374, n. 2)</p>
+</blockquote>
+
+<p>The theorem von Neumann states is the central result of Cantor's
+mentioned here in the second paragraph of this section. As von Neumann goes on to point out
+here (also p. 374), it is the possibility of definition by transfinite
+induction which is key, and a rigorous treatment of this requires
+being able to prove at each stage in a transfinite inductive process
+that the collection of functional correlates to a set is itself a set
+which can thus act as a new argument at the next stage. It is just
+this which the replacement axiom guarantees. Once justified,
+definition by transfinite induction can be used as the basis for
+completely general definitions of the arithmetic operations on ordinal
+numbers, for the definition of the aleph numbers, and so on. It also
+allows a fairly direct transformation of Zermelo's first (1904) proof
+of the WOT into a proof that every set can be represented by (is
+equipollent with) an ordinal number, which shows that in the Zermelo
+system with the Axiom of Replacement added there <i>are</i> enough ordinal
+numbers.<sup>[<a href="notes.html#38" name="note-38">38</a>]</sup></p>
+
+<p>It is thus remarkable that von Neumann's work, designed to show how
+the transfinite ordinals can be incorporated directly into a pure
+theory of sets, builds on and coalesces with both Kuratowski's work,
+designed to show the <i>dispensability</i> of the theory of transfinite
+ordinals, and also the axiomatic extension of Zermelo's theory
+suggested by Fraenkel and Skolem.</p>
+
+<h2><a name="FurRea">4. Further reading</a></h2>
+
+<p>For a summary of the Cantorian theory as it stood in the early
+years of the twentieth century, see Young and Young (1906), and the
+magisterial Hausdorff (1914); for further reading on the development
+of set theory, see the books Ferreiros 1999, Hallett 1984, Hawkins
+1970, and Moore 1982. See also the various papers on the history of
+set theory by Akihiro Kanamori (especially Kanamori 1996, 1997, 2003,
+2004, 2012) and the joint paper with Dreben (Dreben and Kanamori
+1997). For the place of set theory in the development of modern logic,
+see Mancosu et al., 2009, especially pages 345–352.</p>
+
+<p>For an account of the various axiom systems and the role of the
+different axioms, see Fraenkel et al. (1973). For a detailed summary
+of the role of the Axiom of Choice, and insight into the question of
+its status as a logical principle, see Bell (2009).</p>
+
+<p>This entry will be supplemented by a further entry on
+axiomatizations of set theory after Zermelo from 1920 to 1940.</p>
+
+</div>
+
+<div id="bibliography">
+
+<h2><a name="Bib">Bibliography</a></h2>
+
+<p>Most of the original sources surrounding Zermelo's work were
+written in German, and some in French; when translations of these
+works into English are available, bibliographic information for the
+translations follows the citation of the original text.  Similarly for
+older, relatively inaccessible texts that have been republished in
+more current works.</p>
+
+<ul class="hanging">
+
+<li>Bell, J., 2009, <i>The Axiom of Choice</i>, London: College Publications.</li>
+
+<li>Benacerraf, P. and H. Putnam (eds.), 1964, <i>Philosophy of Mathematics: Selected Readings</i>, Oxford: Basil Blackwell.</li>
+
+<li>––– (eds.), 1983, <i>Philosophy of Mathematics: Selected Readings</i>, Second Edition, Cambridge: Cambridge University Press.</li>
+
+<li>Bernstein, F., 1905, “Über die Reihe der transfiniten Ordnungszahlen”, <i>Mathematische Annalen</i> 60: 187–193.</li>
+
+<li>Borel, E., 1905, “Quelque remarques sur les principes de la théorie des ensembles”, <i>Mathematische Annalen</i> 60: 194–195.</li>
+
+<li>Browder, F. (ed.), 1976, <i>Mathematical Developments Arising from the Hilbert Problems</i>, Volume 28 of <i>Proceedings of Symposia in Pure Mathematics</i>, Providence: American Mathematical Society.</li>
+
+<li>Cantor, G., 1883a, “Ueber unendliche, lineare Punktmannichfaltigkeiten” <i>Mathematische Annalen</i> 21: 545–591. <span class="bibliography-comment">Reprinted in Cantor 1883b and in Cantor 1932:  165–209. English translation in Ewald 1996, Volume 2.</span></li>
+
+<li>–––, 1883b, <i>Grundlagen einer allegemeinen Mannigfaltichkeitslehre. Ein mathematisch-philosophischer Versuch in der Lehre des Unendlichen</i>, Leipzig: B. G. Teubner.</li>
+
+<li>–––, 1895, “Beiträge zur Begründung der transfiniten Mengenlehre, Erster Artikel”, <i>Mathematische Annalen</i> 46: 481–512. <span class="bibliography-comment">Reprinted in Cantor 1932: 282–311. English translation in Cantor 1915.</span></li>
+
+<li>–––, 1897, “Beiträge zur Begründung der transfiniten Mengenlehre, Zweiter Artikel”, <i>Mathematische Annalen</i> 49: 207–246. Reprinted in Cantor 1932: 312–351. English translation in Cantor 1915.</li>
+
+<li>–––, 1915, <i>Contributions to the Founding of the Theory of Transfinite Numbers</i>, La Salle: Open Court. <span class="bibliography-comment">English translation of Cantor 1895, 1897 by Philip E. B. Jourdain.</span></li>
+
+<li>–––, 1932, <i>Gesammelte Abhandlungen mathematischen und philosophischen Inhalts, mit eläuternden Anmerkungen sowie mit Ergänzungen aus dem Briefwechsel Cantor-Dedekind herausgegeben von Ernst Zermelo</i>, Berlin: Springer.</li>
+
+<li>–––, 1991, <i>Georg Cantor: Briefe. Herausgegeben von Herbert Meschkowski</i>, Berlin: Springer</li>
+
+<li>Dedekind, R., 1888, <i>Was sind und was sollen die Zahlen?</i>, Braunschweig: Vieweg und Sohn. <span class="bibliography-comment">Also reprinted in Dedekind 1932: 335–391; English translation in Ewald 1996:  787–833.</span></li>
+
+<li>–––, 1932, <i>Gesammelte mathematische Werke. Band 3. Herausgegeben von Robert Fricke, Emmy Noether and Öystein Ore</i>, Braunschweig: Friedrich Vieweg und Sohn. <span class="bibliography-comment">Reprinted with some omissions by Chelsea Publishing Co., New York, 1969.</span></li>
+
+<li>Dreben, B. and A. Kanamori, 1997, “Hilbert and set theory”, <i>Synthese</i>, 110: 77–125.</li>
+
+<li>Ebbinghaus, H.-D., 2007, <i>Ernst Zermelo: An Approach to His Life and Work</i>, Berlin: Springer.</li>
+
+<li>–––, 2010, “Introductory note to <em>Über den Begriff von Definitheit in der Axiomatik</em> [Zermelo 1929]”, in Zermelo 2010: 352–357.</li>
+
+<li>Ewald, W. (ed.), 1996, <i>From Kant to Hilbert</i>, Oxford: Oxford University Press.</li>
+
+<li>Ewald, W., W. Sieg, and M. Hallett (eds.), 2013, <i>David Hilbert's Lectures on the Foundations of Logic and Arithmetic, 1917–1933</i>, Volume 3 of <i>Hilbert's Lectures on the Foundations of Mathematics and Physics, 1891–1933</i>, Berlin: Springer.</li>
+
+<li>Felgner, U., 2010, “Introductory note to <em>Untersuchungen über die Grundlagen der Mengenlehre, I</em> [Zermelo 1908b]”, in Zermelo 2010:  160–188.</li>
+
+<li>Ferreiros, J., 1999, <i>Labyrinth of Thought: A History of Set Theory and its Role in Modern Mathematics</i>, Science Networks Historical Studies, Basel: Birkhäuser. Second Revised Edition, 2007</li>
+
+<li>Fraenkel, A., Y. Bar-Hillel,  and A. Levy, 1973, <i>Foundations of Set Theory</i>. Amsterdam: North-Holland Publishing.</li>
+
+<li>Fraenkel, A. A., 1922, “Zu den Grundlagen der Cantor-Zermeloschen Mengenlehre”, <i>Mathematische Annalen</i> 86: 230–237.</li>
+
+<li>–––, 1927, <i>Zehn Vorlesungen über die Grundlegung der Mengenlehre</i>, Leipzig: B. G. Teubner.</li>
+
+<li>Frege, G., 1879, <i>Begriffsschrift, eine der arithmetischen nachgebildete Formelsprache des reinen Denkens</i>,  Halle: Louis Nebert. <span class="bibliography-comment">Reprinted in Frege 1964, English
+translation in van Heijenoort 1967: 1–82.</span></li>
+
+<li>–––, 1893, <i>Grundgesetze der Arithmetik</i>, Band 1, Jena: Hermann Pohle. <span class="bibliography-comment">English translation by Philip Ebert and Marcus Rossberg,  <i>Frege, The Basic Laws of Arithmetic, Derived using Concept-Script</i>, Oxford: Oxford University Press, forthcoming.</span></li>
+
+<li>–––, 1903, <i>Grundgesetze der Arithmetik</i>, Band II, Jena: Hermann Pohle. <span class="bibliography-comment">English translation by Philip Ebert and Marcus Rossberg,  <i>Frege, The Basic Laws of Arithmetic, Derived using Concept-Script</i>, Oxford: Oxford University Press, forthcoming.</span></li>
+
+<li>–––, 1964, <i>Begriffsschrift und andere Aufsätze. Mit E. Husserls und H. Scholz’ Anmerkungen herausgegeben von Ignacio Angelelli</i>, Darmstadt: Wissenschaftliche Buchgesellschaft.</li>
+
+<li>Gödel, K., 1944, “Russell's mathematical logic”, in P. A. Schillp (ed.), <i>The Philosophy of Bertrand Russell</i>, pp. 125–153, La Salle: Open Court. 
+<span class="bibliography-comment">Reprinted in Benacerraf and Putnam 1964: 211–232; Benacerraf and Putnam 1983: 447–469; and in Gödel 1990:  119–141.</span></li>
+
+<li>–––, 1990, <i>Kurt Gödel: Collected Works</i>, Volume 2, edited by Solomon Feferman et al., Oxford: Oxford University Press.</li>
+
+<li>Haaparanta, L. (ed.), 2009, <i>The Development of Modern Logic</i>, Oxford: Oxford University Press.</li>
+
+<li>Hadamard, J. et al., 1905, “Cinq letters sur la théorie des ensembles”, <i>Bulletin de la société mathématique de France</i>, 33: 261–273. 
+<span class="bibliography-comment">Letters between Baire, Borel, Lebesgue and Hadamard on objections to, and defense of, Zermelo's 1904 proof
+of the well-ordering theorem.</span></li>
+
+<li>Hallett, M., 1981, “Russell, Jourdain and ‘limitation of size’”, <i>British Journal for the Philosophy of Science</i>, 32: 381–399.</li>
+
+<li>–––, 1984, <i>Cantorian Set Theory and Limitation of Size</i>, Oxford: Clarendon Press.</li>
+
+<li>–––, 2008, “The ‘purity of method’ in Hilbert's <i>Grundlagen der Geometrie</i>”, in P. Mancosu (ed.), <i>The Philosophy of Mathematical Practice</i>, pp. 198–255, Oxford: Clarendon Press.</li>
+
+<li>–––, 2010a, “Frege and Hilbert”, in M. Potter and T. Ricketts (eds.), <i>The Cambridge Companion to Frege</i>, Cambridge: Cambridge University Press.</li>
+
+<li>–––, 2010b, “Introductory note to Zermelo's two papers on the well-ordering theorem”, in Zermelo 2010:  80–115.</li>
+
+<li>Hallett, M. and U. Majer (eds.), 2004, <i>David Hilbert's Lectures on the Foundations of Geometry, 1891–1902</i>, Volume 1 of <i>Hilbert's Lectures on the Foundations of Mathematics and Physics, 1891–1933</i>, Berlin: Springer.</li>
+
+<li>Hardy, G. H., 1904, “A theorem concerning the infinite cardinal numbers”, <i>Quarterly Journal of Pure and Applied Mathematics</i> 35: 87–94.</li>
+
+<li>Hartogs, F., 1915, “Über das Problem der Wohlordnung”, <i>Mathematische Annalen</i>, 76: 438–442.</li>
+
+<li>Harward, A. E., 1905, “On the transfinite numbers”, <i>Philosophical Magazine</i> 10(6): 439–460.</li>
+
+<li>Hausdorff, F., 1914, <i>Grundzüge der Mengenlehre</i>, Leipzig: Von Veit.</li>
+
+<li>Hawkins, T., 1970, <i>Lebesgue's Theory of Integration</i>. New York: Blaisdell.
+<span class="bibliography-comment">Reprinted by the Chelsea Publishing Company, New York, 1979.</span></li>
+
+<li>van Heijenoort, J. (ed.), 1967, <i>From Frege to Gödel: A Source Book in Mathematical Logic</i>, Cambridge, Massachusetts: Harvard University Press.</li>
+
+<li>Heinzmann, G., 1986, <i>Poincaré, Russell, Zermelo et Peano. Textes de la discusion (1906–1912) sur les fondements des mathématiques: des antinomies à la prédicativité</i>, Paris: Albert Blanchard.</li>
+
+<li>Hessenberg, G., 1906, “Grundbegriffe der Mengenlehre”, <i>Abhandlungen der neuen Fries'schen Schule (Neue Folge)</i> 1: 479–706.</li>
+
+<li>Hilbert, D., 1899, “Grundlagen der Geometrie”, in <i>Festschrift zur Feier der Enthüllung des Gauss-Weber-Denkmals in Göttingen</i>, Leipzig: B. G. Teubner.
+<span class="bibliography-comment">Republished as Chapter 5 in Hallett and Majer 2004.</span></li>
+
+<li>–––, 1900a, “Mathematische Probleme”, <i>Nachrichten von der königlichen Gesellschaft der Wissenschaften zu Göttingen, mathematisch-physikalische Klasse</i>, pp. 253–296.
+<span class="bibliography-comment">English translation by Mary Winston Newson, 1902, “Mathematical Problems”  <i>Bulletin of the American Mathematical Society</i> 8: 437–479.</span></li>
+
+<li>–––, 1900b, “Über den Zahlbegriff”, <i>Jahresbericht der deutschen Mathematiker-Vereinigung</i> 8: 180–185.
+<span class="bibliography-comment">Reprinted (with small modifications) in Second to Seventh Editions of Hilbert 1899.</span></li>
+
+<li>–––, 1902, “Grundlagen der Geometrie”. Ausarbeitung by August Adler for lectures in the Sommersemester of 1902 at the Georg-August Universität, Göttingen. Library of the Mathematisches Institut.
+<span class="bibliography-comment">Published as Chapter 6 in Hallett and Majer 2004.</span></li>
+
+<li>–––, 1918, “Axiomatisches Denken”, <i>Mathematische Annalen</i>, 78: 405–415.
+<span class="bibliography-comment">Reprinted in Hilbert 1935: 146–156; English translation in Ewald 1996: volume 2, pp. 1105–1115.</span></li>
+
+<li>–––, 1920, “Probleme der mathematischen Logik”, Lecture notes for a course held in the Wintersemester of 1920 at the Georg-August Universität, Göttingen, ausgearbeitet by Moses Schönfinkel and Paul Bernays. Library of the Mathematisches Institut, Universität Göttingen. <span class="bibliography-comment">Published in Ewald et al. 2013, Chapter 2.</span></li>
+
+<li>–––, 1935, <i>Gesammelte Abhandlungen, Band 3</i>. Berlin: Julius Springer.</li>
+
+<li>Jourdain, P. E. B., 1904, “On the transfinite cardinal numbers of well-ordered aggregates”, <i>Philosophical Magazine</i> 7(6): 61–75.</li>
+
+<li>–––, 1905a, “On a proof that every aggregate can be well-ordered”, <i>Mathematische Annalen</i> 60: 465–470.</li>
+
+<li>–––, 1905b, “On transfinite numbers of the exponential form”, <i>Philosophical Magazine</i> 9(6): 42–56.</li>
+
+<li>Kanamori, A., 1996, “The mathematical development of set theory from Cantor to Cohen”, <i>Bulletin of Symbolic Logic</i> 2: 1–71.</li>
+
+<li>–––, 1997, “The mathematical import of Zermelo's well-ordering theorem”, <i>Bulletin of Symbolic Logic</i> 3: 281–311.</li>
+
+<li>–––, 2003, “The empty set, the singleton, and the ordered pair”, <i>Bulletin of Symbolic Logic</i> 9: 273–298.</li>
+
+<li>–––, 2004, “Zermelo and set theory”, <i>Bulletin of Symbolic Logic</i> 10: 487–553.</li>
+
+<li>–––, 2012, “In praise of replacement”, <i>Bulletin of Symbolic Logic</i>, 18: 46–90.</li>
+
+<li>Kuratowski, C., 1921, “Sur la notion de l'ordre dans la théorie des ensembles”, <i>Fundamenta Mathematicae</i> 2: 161–171.</li>
+
+<li>–––, 1922, “Une méthode d'élimination des nombres transfini des raisonnements mathématiques”, <i>Fundamenta Mathematicae</i> 3: 76–108.</li>
+
+<li>Mancosu, P., 2009, “Measuring the size of infinite collections of natural numbers: was Cantor's theory of infinite number inevitable?”, <i>Review of Symbolic Logic</i> 2: 612–646.</li>
+
+<li>–––, 2010, <i>The Adventure of Reason: Interplay Between Philosophy of Mathematics and Mathematical Logic, 1900–1940</i>. Oxford: Oxford University Press.</li>
+
+<li>Mancosu, P., R. Zach,  and C. Badesa,  2009, “The development of mathematical logic from Russell to Tarski, 1900–1935”, in Haaparanta 2009: 318–470.
+<span class="bibliography-comment">Reprinted in Mancosu 2010: 5–119.</span></li>
+
+<li>Mirimanoff, D., 1917a, “Les antinomies de Russell et de Burali-Forti et le problème fondamental de la théorie des ensembles”, <i>L'enseignement mathématique</i> 19: 37–52.</li>
+
+<li>–––, 1917b, “Remarques sur la théorie des ensembles et les antinomies Cantoriennes (I)”, <i>L'enseignement mathématique</i> 19: 208–217.</li>
+
+<li>–––, 1921, “Remarques sur la théorie des ensembles et les antinomies Cantoriennes (II)”, <i>L'enseignement mathématique</i> 21: 29–52.</li>
+
+<li>Moore, G., 1976, “Ernst Zemelo, A. E. Harward, and the axiomatisation of set theory”, <i>Historia Mathematica</i> 3: 206–209.</li>
+
+<li>–––, 1982, <i>Zermelo's Axiom of Choice: Its Origins, Development and Influence</i>. Berlin: Springer.</li>
+
+<li>Peano, G., 1906, “Additione”, <i>Revista di mathematica</i> 8: 143–157.
+<span class="bibliography-comment">Reprinted in Heinzmann 1986: 106–120.</span></li>
+
+<li>Peckhaus, V., 1990, <i>Hilbertprogramm und kritische Philosophie: das Göttinger Modell interdisziplinärer Zusammenarbeit zwischen Mathematik und Philosophie</i>, Volume 7 of <i>Studien zur Wissenschafts- Sozial- und Bildungsgeschichte</i>, Göttingen: Vandenhoek and Ruprecht.</li>
+
+<li>Poincaré, H., 1905, “Les mathématiques et la logique”, <i>Revue de métaphysique et de morale</i> 13: 815–835.
+<span class="bibliography-comment">Reprinted with alterations in Poincaré 1908: Part II, Chapter 3; and, with these alterations noted, in Heinzmann 1986: 11–34. English translation in Ewald 1996: 1021–1038.</span></li>
+
+<li>–––, 1906a, “Les mathématiques et la logique”, <i>Revue de métaphysique et de morale</i> 14: 17–34.
+<span class="bibliography-comment">Reprinted with alterations in Poincaré 1908: Part II, Chapter 3; and, with these alterations noted, in Heinzmann 1986: 35–53. English translation in Ewald 1996: 1038–1052.</span></li>
+
+<li>–––, 1906b, “Les mathématiques et la logique”, <i>Revue de métaphysique et de morale</i> 14: 294–317.
+<span class="bibliography-comment">Reprinted with alterations in Poincaré 1908: Part II, Chapter 5; and, with these alterations noted, in Heinzmann 1986: 35–53. English translation in Ewald 1996: 1052–1071.</span></li>
+
+<li>–––, 1908, <i>Science et méthode</i>, Paris: Ernst Flammarion.
+<span class="bibliography-comment">English translation in Poincaré 1913b, and retranslated by Francis Maitland as <em>Science and Method,</em> New York: Dover Publications.</span></li>
+
+<li>–––, 1909, “Le logique de l'infini”, <i>Revue de métaphysique et de morale</i> 17: 462–482.
+<span class="bibliography-comment">Reprinted in Poincaré 1913a: 7–31.</span></li>
+
+<li>–––, 1913a, <i>Dernières Pensées</i>, Paris: Ernest Flammarion.
+<span class="bibliography-comment">English translation published in 1963 as <em>Mathematics and Science: Last Essays,</em> New York: Dover Publications.</span></li>
+
+<li>–––, 1913b, <i>The Foundations of Science</i>, New York: Science Press.
+<span class="bibliography-comment">Preface by Poincaré and an Introduction by Josiah Royce. Contains English translation by G. B. Halsted of Poincaré 1908.</span></li>
+
+<li>Ramsey, F. P., 1926, “The foundations of mathematics”, <i>Proceedings of the London Mathematical Society</i> 25 (Second Series): 338–384.
+<span class="bibliography-comment">Reprinted in Ramsey 1931: 1–61, and Ramsey 1978: 152–212.</span></li>
+
+<li>–––, 1931, <i>The Foundations of Mathematics and Other Logical Essays</i>, R. B. Braithwaite (ed.), London: Routledge and Kegan Paul, London.</li>
+
+<li>–––, 1978, <i>Foundations: Essays in Philosophy, Logic, Mathematics and Economics</i>, D. H. Mellor (ed.), London: Routledge and Kegan Paul.</li>
+
+<li>Richard, J., 1905, “Les principes des mathématiques et le problème des ensembles”, <i>Révue général des sciences pures et appliqués</i> 16: 541.
+<span class="bibliography-comment">English translation in van Heijenoort 1967: 142–144.</span></li>
+
+<li>Russell, B., 1902, Letter to Frege.
+<span class="bibliography-comment">In Heijenoort 1967: 124–125.</span></li>
+
+<li>–––, 1903, <i>The Principles of Mathematics</i>, Volume 1, Cambridge: Cambridge University Press.</li>
+
+<li>Schoenflies, A., 1905, “Über wohlgeordnete Mengen”, <i>Mathematische Annalen</i> 60: 181–186.</li>
+
+<li>Skolem, T., 1923, “Einige Bemerkungen zur axiomatischen Begründung der Mengenlehre”, <i>Matimatikerkrongressen i Helsingfors den 4–7 Juli 1922, Den femte skandinaiska matematikerkongressen, redogörelse, 1923</i>, pp. 217–232.
+<span class="bibliography-comment">Reprinted in Skolem 1970: 137–152 which also preserves the original pagination. English translation in Heijenoort 1967: 290–301.</span></li>
+
+<li>–––, 1970, <i>Selected Papers in Logic</i>, Oslo: Universitetsforlaget. Edited by Jens Erik Fenstad.</li>
+
+<li>von Neumann, J., 1923, “Zur Einführung der transfiniten Zahlen”, <i>Acta Litterarum ac Scientiarum Regiæ Universitatis Hungaricæ Francisco-Josephinæ. Sectio Scientiæ-Mathematicæ</i> 1, pp. 199–208.
+<span class="bibliography-comment">Reprinted in von Neumann 1961: 24–33. English translation in van Heijenoort 1967: 346–354.</span></li>
+
+<li>–––, 1928, “Über die Definition durch transfinite Induktion und verwandte Fragen der allgemeinen Mengenlehre”, <i>Mathematische Annalen</i> 99: 373–391.
+<span class="bibliography-comment">Reprinted in von Neumann 1961: 320–338.</span></li>
+
+<li>–––, 1961, <i>John von Neumann: Collected Works</i>, Volume 1, Oxford: Pergamon Press.</li>
+
+<li>Weyl, H., 1910, “Über die Definitionen der mathematischen Grundbegriffe”, <i>Mathematisch-naturwissenschaftliche Blätter</i> 7, pp. 93–95, 109–113.
+<span class="bibliography-comment">Reprinted in Weyl 1968, Volume 1, 298–304.</span></li>
+
+<li>–––, 1968, <i>Gesammelte Abhandlungen</i>, 4 Volumes, Berlin: Springer.</li>
+
+<li>Young, W. H. and G. C. Young,  1906, <i>The Theory of Sets of Points</i>, Cambridge: Cambridge University Press.</li>
+
+<li>Zermelo, E., 1904, “Beweis, daß jede Menge wohlgeordnet werden kann”, <i>Mathematische Annalen</i> 59: 514–516.
+<span class="bibliography-comment">Reprinted in Zermelo 2010: 114–119, with a facing-page English translation, and an Introduction by Michael Hallett (2010b). English translation also in van Heijenoort 1967: 139–141.</span></li>
+
+<li>–––, 1908a, “Neuer Beweis für die Möglichkeit einer Wohlordnung”, <i>Mathematische Annalen</i> 65: 107–128.
+<span class="bibliography-comment">Reprinted in Zermelo 2010: 120–159, with a facing-page English translation, and an Introduction by Michael Hallett (2010b). English translation also in van Heijenoort 1967: 183–198.</span></li>
+
+<li>–––, 1908b, “Untersuchungen über die Grundlagen der Mengenlehre, I”, <i>Mathematische Annalen</i> 65: 261–281.
+<span class="bibliography-comment">Reprinted in Zermelo 2010: 189–228, with a facing-page English translation, and an Introduction by Ulrich Felgner (2010). English translation also in van Heijenoort 1967: 201–215.</span></li>
+
+<li>–––, 1929, “Über den Begriff von Definitheit in der Axiomatik”, <i>Fundamenta Mathematicae</i> 14: 339–344.
+<span class="bibliography-comment">Reprinted with facing-page English translation in Zermelo 2010: 358–367, with an Introduction by Heinz-Dieter Ebbinghaus (2010).</span></li>
+
+<li>–––, 1930, “Über Grenzzahlen und Mengenbereiche: Neue Untersuchungen über die Grundlagen der Mengenlehre”, <i>Fundamenta Mathematicae</i> 16: 29–47.
+<span class="bibliography-comment">Reprinted with facing-page English translation in Zermelo 2010: 400–431, with an Introduction by Akihiro Kanamori. English translation also in Ewald 1996, Volume 2, pp. 1219–1233.</span></li>
+
+<li>–––, 2010, <i>Collected Works. Volume I: Set Theory, Miscellanea</i>, H.-D. Ebbinghaus and A. Kanamori (eds.), Berlin: Springer.</li>
+
+</ul>
+
+</div>
+
+<div id="academic-tools">
+
+<h2><a name="Aca">Academic Tools</a></h2>
+
+<blockquote>
+<table><tbody><tr><td valign="top"><img src="../../symbols/sepman-icon.jpg" alt="sep man icon" /></td>
+<td><a href="https://plato.stanford.edu/cgi-bin/encyclopedia/archinfo.cgi?entry=zermelo-set-theory&amp;archive=win2019" target="other">How to cite this entry</a>.</td>
+</tr><tr><td valign="top"><img src="../../symbols/sepman-icon.jpg" alt="sep man icon" /></td>
+<td><a href="https://leibniz.stanford.edu/friends/preview/zermelo-set-theory/" target="other">Preview the PDF version of this entry</a> at the
+ <a href="https://leibniz.stanford.edu/friends/" target="other">Friends of the SEP Society</a>.</td>
+</tr><tr><td valign="top"><img src="../../symbols/inpho.png" alt="inpho icon" /></td>
+<td><a href="https://www.inphoproject.org/entity?sep=zermelo-set-theory&amp;redirect=True" target="other">Look up this entry topic</a>
+ at the <a href="https://www.inphoproject.org/" target="other">Indiana Philosophy Ontology Project</a>
+ (InPhO).</td>
+</tr><tr><td valign="top"><img src="../../symbols/pp.gif" alt="phil papers icon" /></td>
+<td><a href="http://philpapers.org/sep/zermelo-set-theory/" target="other">Enhanced bibliography for this entry</a>
+at <a href="http://philpapers.org/" target="other">PhilPapers</a>, with links to its database.</td>
+</tr></tbody></table></blockquote>
+
+</div>
+
+<div id="other-internet-resources">
+
+<h2><a name="Oth">Other Internet Resources</a></h2>
+
+<p>[Please contact the author with suggestions.]</p>
+
+</div>
+
+<div id="related-entries">
+
+<h2><a name="Rel">Related Entries</a></h2>
+
+<p>
+
+ <a href="../russell-paradox/">Russell’s paradox</a> |
+ <a href="../set-theory/">set theory</a> |
+ <a href="../settheory-alternative/">set theory: alternative axiomatic theories</a> |
+ <a href="../settheory-early/">set theory: early development</a>
+
+</p>
+
+</div>
+
+</div><!-- #aueditable --><!--DO NOT MODIFY THIS LINE AND BELOW-->
+
+<!-- END ARTICLE HTML -->
+
+</div> <!-- End article-content -->
+
+  <div id="article-copyright">
+    <p>
+ <a href="../../info.html#c">Copyright © 2013</a> by
+
+<br />
+Michael Hallett
+&lt;<a href="mailto:michael%2ehallett%40mcgill%2eca"><em>michael<abbr title=" dot ">.</abbr>hallett<abbr title=" at ">@</abbr>mcgill<abbr title=" dot ">.</abbr>ca</em></a>&gt;
+    </p>
+  </div>
+
+</div> <!-- End article -->
+
+<!-- NOTE: article banner is outside of the id="article" div. -->
+<div id="article-banner" class="scroll-block">
+     <div id="article-banner-content">
+  <a href="../../fundraising/">
+  Open access to the SEP is made possible by a world-wide funding initiative.<br />
+  Please Read How You Can Help Keep the Encyclopedia Free</a>
+ </div>
+
+
+</div> <!-- End article-banner -->
+
+    </div> <!-- End content -->
+
+    <div id="footer">
+
+      <div id="footer-menu">
+        <div class="menu-block">
+          <h4><i class="icon-book"></i> Browse</h4>
+          <ul role="menu">
+            <li><a href="../../contents.html">Table of Contents</a></li>
+            <li><a href="../../new.html">New in this Archive</a></li>
+            
+            <li><a href="../../published.html">Chronological</a></li>
+            <li><a href="../../../../archives/">Archives <i class="icon-external-link"></i></a></li>
+          </ul>
+        </div>
+        <div class="menu-block">
+          <h4><i class="icon-info-sign"></i> About</h4>
+          <ul role="menu">
+            <li><a href="../../info.html">Editorial Information</a></li>
+            <li><a href="../../about.html">About the SEP</a></li>
+            <li><a href="../../board.html">Editorial Board</a></li>
+            <li><a href="../../cite.html">How to Cite the SEP</a></li>
+            <li><a href="../../special-characters.html">Special Characters</a></li>
+            
+            <li><a href="../../../../contact.html">Contact <i class="icon-external-link"></i></a></li>
+          </ul>
+        </div>
+        <div class="menu-block">
+          <h4><i class="icon-leaf"></i> Support SEP</h4>
+          <ul role="menu">
+            <li><a href="../../../../support/">Support the SEP</a></li>
+            <li><a href="../../../../support/friends.html">PDFs for SEP Friends</a></li>
+            <li><a href="../../../../support/donate.html">Make a Donation</a></li>
+            <li><a href="../../../../support/sepia.html">SEPIA for Libraries</a></li>
+          </ul>
+        </div>
+      </div> <!-- End footer menu -->
+
+      <div id="mirrors">
+        <div id="mirror-info">
+          <h4><i class="icon-globe"></i> Mirror Sites</h4>
+          <p>View this site from another server:</p>
+        </div>
+                <div class="btn-group">
+<a class="btn dropdown-toggle" data-toggle="dropdown" href="https://plato.stanford.edu/"><span class="flag flag-usa"></span> USA (Main Site) <span class="caret"></span><span class="mirror-source">CSLI, Stanford University</span></a>          <ul class="dropdown-menu">
+            <li><a href="https://stanford.library.sydney.edu.au/archives/win2019/entries/zermelo-set-theory/"><span class="flag flag-australia"></span> Australia <span class="mirror-source">Library, University of Sydney</span></a>           </li>
+            <li><a href="https://seop.illc.uva.nl/archives/win2019/entries/zermelo-set-theory/"><span class="flag flag-netherlands"></span> Netherlands <span class="mirror-source">ILLC, University of Amsterdam</span></a>           </li>
+          </ul>
+        </div>
+      </div> <!-- End mirrors -->
+      
+      <div id="site-credits">
+        <p class="csli-logo"><a href="https://www-csli.stanford.edu/"><img src="../../symbols/SU_csli.png" width="355" alt="Stanford Center for the Study of Language and Information" /></a></p>
+        <p>The Stanford Encyclopedia of Philosophy is <a href="../../info.html#c">copyright © 2016</a> by <a href="http://mally.stanford.edu/">The Metaphysics Research Lab</a>, Center for the Study of Language and Information (CSLI), Stanford University</p>
+        <p>Library of Congress Catalog Data: ISSN 1095-5054</p>
+      </div> <!-- End site credits -->
+
+    </div> <!-- End footer -->
+
+  </div> <!-- End container -->
+
+   <!-- NOTE: Script required for drop-down button to work (mirrors). -->
+  <script>
+    $('.dropdown-toggle').dropdown();
+  </script>
+
+
+
+
+
+</body></html>
