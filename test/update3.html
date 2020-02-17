@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<svg width="960" height="500"></svg>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+var svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height"),
+    color = d3.scaleOrdinal(d3.schemeCategory10);
+
+    d3.json("network1.json", function (data) {
+
+        // nodes = data.nodes;
+        // links = data.links;
+
+        nodes = searchSep(data,"Immanuel Kant")[0];
+        links = searchSep(data,"Immanuel Kant")[1];
+
+        let simulation =
+            d3.forceSimulation(nodes) 
+            .force("link", d3.forceLink().id(function (d) {return d.id;}).links(links))
+            .force("charge", d3.forceManyBody().strength(-200)) // This adds repulsion between nodes. Play with the -400 for the repulsion strength
+            .force("center", d3.forceCenter(width / 2, height / 2)) // This force attracts nodes to the center of the svg area
+            .on("end", ticked);  
+    
+        let container = svg.append("g")
+        let link = container.selectAll("line")
+        let node = container.selectAll("circle")
+
+        restart();
+
+//         d3.interval(function() {
+
+//   restart();
+// }, 5000, d3.now());
+
+        function restart() {
+
+            console.log('starting sim')
+
+        // Initialize the links
+         link = link.data(links)
+        .enter()
+        .append("line")
+        .style("stroke", "#aaa")
+        .style("opacity", 0.2);
+
+        link.merge(link);
+        link.exit().remove();
+
+    // Initialize the nodes
+
+     node = node.data(nodes)
+        .enter()
+        .append("circle")
+        .attr("r", function (d) {
+            return d.num_links / 4
+        })
+        .style("fill", function (d) {
+            return color(d.entry_type)
+        })
+
+        node.merge(node)
+        node.exit().remove()
+
+      // Update and restart the simulation.
+  simulation.nodes(nodes);
+  simulation.force("link").links(links);
+  simulation.alpha(1).restart();
+
+     }
+
+    function ticked() {
+    link
+        .attr("x1", function (d) {return d.source.x;})
+        .attr("y1", function (d) {return d.source.y;})
+        .attr("x2", function (d) {return d.target.x;})
+        .attr("y2", function (d) {return d.target.y;});
+
+    node
+        .attr("cx", function (d) {return d.x;})
+        .attr("cy", function (d) {return d.y;});
+}
+
+});
+
+function searchSep(data, searchTerm) {
+    
+    //init empty arrays
+    let filtered_nodes = []
+    let filtered_links = []
+
+        //get the base node to build our graph around
+        let search_node = data.nodes.filter(node => {
+            return node.title === searchTerm
+        })
+
+        let search_id = search_node[0].id
+
+        filtered_links = data.links.filter(link => {
+            return link.source === search_id
+        })
+
+        filtered_nodes.push(search_node[0])
+
+        filtered_links.forEach(link => {
+            let target = link.target
+            data.nodes.filter(node => {
+                if (node.id === target) {
+                    filtered_nodes.push(node)
+                }
+            })
+
+        })
+
+    return [filtered_nodes, filtered_links]
+    console.log(filtered_nodes,filtered_links)
+}
+</script>
