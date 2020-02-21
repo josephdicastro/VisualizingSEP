@@ -12,10 +12,10 @@ let searchTerm = "";
 
 // set basic SVG Config data 
    let margin = {
-    top: 40,
+    top: -50,
     right: 10,
     bottom:40,
-    left: 10
+    left:120
 };
 
 let svgWidth = 750;
@@ -32,7 +32,7 @@ let svg = d3.select("#my_dataviz")
     .attr("height", height + margin.top + margin.bottom)
     .classed("svgborder",true);
 
-d3.json("sep_network.json", function (data) {
+d3.json("static/sep_network.json", function (data) {
 
     graph_data = data;
     graph = data;
@@ -49,6 +49,7 @@ d3.json("sep_network.json", function (data) {
     searchTypeOptions.on("change", function() {
         searchType = this.value;
         loadSearchMenu(graph_data);
+        console.log(searchType)
     });
 
     //setup simulation with empty values
