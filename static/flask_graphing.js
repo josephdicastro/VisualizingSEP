@@ -95,13 +95,13 @@ d3.json('/GET-DATA/', function(data) {
                        .on("tick", ticked)
 
     let zoom = d3.zoom()
-                 .scaleExtent([1, 10])
                  .on("zoom", zoom_actions);
 
     // create main svg group that will control positioning and zooming of all child elements
     let g1 = svg.append("g")
                 .attr("transform", "translate(" + width / 2  + "," + height / 2 + ")")
                 .call(zoom)
+                .on("dblclick.zoom",null)
 
     //create secondary svg group so that we can add our graph elements to
     let g = g1.append('g')
@@ -400,16 +400,18 @@ d3.json('/GET-DATA/', function(data) {
                 
                 //push onto searchCache                      
                 searchCache.push(currentSearch)
-
+                d3.select("#sideBar").style("display","block")
 
             }   else {
                 // searchTerm WAS in the searchCache, so get the nodes and links from searchCache
             filteredNodes = inSearchCache.nodes;
             filteredLinks = inSearchCache.links;
+            d3.select("#sideBar").style("display","block")
             }
         }   else { 
             filteredNodes = deepClone.nodes;
             filteredLinks = deepClone.links;
+            d3.select("#sideBar").style("display","none")
         }
 
    
