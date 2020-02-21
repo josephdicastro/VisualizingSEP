@@ -1,11 +1,14 @@
 // select page search controls
 const searchMenu = d3.select("#searchMenu");
 const searchTypeOptions = d3.selectAll("input[type='radio']")
+const button = d3.select("button")
 
 const baseURL = 'https://plato.stanford.edu/archives/win2019'
+const searchCache = [];
 
 // default to loading the philosopher list
 loadSearchMenu('thinker');
+d3.select("#searchType1").property('checked',true)
 
 function loadSearchMenu(searchType) {
 
@@ -33,7 +36,10 @@ function loadSearchMenu(searchType) {
     
 }
 
+//read in JSON from flask route. 
 d3.json('/GET-DATA/', function(data) {
+
+    const deepClone = JSON.parse(JSON.stringify(data))
 
     // listen for selections in both menus, and then run searchSep() when a change occurs 
     searchMenu.on("change", function() {
@@ -45,10 +51,15 @@ d3.json('/GET-DATA/', function(data) {
         loadSearchMenu(this.value);
     });
 
+    button.on("click", function() {
+        searchSep('all')
+        restart();
+    })
+
     
     // set basic SVG Config data 
     let margin = {
-        top: -50,
+        top: 0,
         right: 10,
         bottom:40,
         left:120
@@ -67,7 +78,9 @@ d3.json('/GET-DATA/', function(data) {
                 .append("svg")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
-                .classed("svgborder",true);
+
+
+
 
     //initialize empty arrays
     let nodes = [];
@@ -79,11 +92,21 @@ d3.json('/GET-DATA/', function(data) {
                        .force("link", d3.forceLink(links).id(function (d) {return d.id}).distance(200))
                        .force("center", d3.forceCenter())
                        .alphaTarget(1)
-                       .on("tick", ticked);
+                       .on("tick", ticked)
 
-    // create svg groups for each of the main graph elements 
-    let g = svg.append("g")
-               .attr("transform", "translate(" + width / 2  + "," + height / 2 + ")");
+    let zoom = d3.zoom()
+                 .scaleExtent([1, 10])
+                 .on("zoom", zoom_actions);
+
+    // create main svg group that will control positioning and zooming of all child elements
+    let g1 = svg.append("g")
+                .attr("transform", "translate(" + width / 2  + "," + height / 2 + ")")
+                .call(zoom)
+
+    //create secondary svg group so that we can add our graph elements to
+    let g = g1.append('g')
+
+    //create main graph elements
     let link = g.append("g")
                 .attr("stroke", "#000")
                 .attr("stroke-width", 1.5)
@@ -95,6 +118,15 @@ d3.json('/GET-DATA/', function(data) {
     let label = g.append("g")
                  .attr("display", "block")
                  .selectAll(".label");
+
+    //controls how the zoom will occur
+    function zoom_actions(){
+        let currentTransform = d3.event.transform
+        g.attr("transform", currentTransform)
+        slider.property("value",  currentTransform.k);
+    }
+
+    
 
     // ticked runs at each iteration of simulation, updating the positions of each node/link/label.
     function ticked() {
@@ -278,17 +310,21 @@ d3.json('/GET-DATA/', function(data) {
                 let firstParaText= node.first_paragraph;
                 let displayCut = "";
                 
-                //only display the first 1500 characters of the node's intro paragraph
-                if (firstParaText.length > 1500 ) {
-                    firstParaText = firstParaText.substring(0,1500);
-                    displayCut = "(Only the first 1500 characters of entry are displayed.)";
+                //only display the first 1000 characters of the node's intro paragraph
+                if (firstParaText.length > 1000 ) {
+                    firstParaText = firstParaText.substring(0,1000);
+                    lastPeriod = firstParaText.lastIndexOf('.')
+                    firstParaText = firstParaText.substring(0,lastPeriod+1)
+                    displayCut = `(Only the first ${firstParaText.length} characters of intro text are displayed.)`;
                 }   
                 
                 //select sidebar div from HTML 
-                let sidebar = d3.select("#sidebar")    
+                let sidebar = d3.select("#sideBar")    
 
                 //set text of h3 heading
-                sidebar.select("h3").text(title)
+                sidebar.select("h3")
+                       .text(title)
+                       .classed('sidebarh3',true)
                 
                 //select first paragraph from HTML, and set the text to firstParaText
                 let firstParagraph = sidebar.select("#intro")
@@ -315,38 +351,68 @@ d3.json('/GET-DATA/', function(data) {
          let filteredNodes =  [];
          let filteredLinks =  [];
 
-        //get the base node to build our graph around
-        let searchNode = data.nodes.filter(node => {
-            return node.title === searchTerm
-        })
-        
-        //get the url for the base node
-        let searchId = searchNode[0].id
-
-        // find all links from the JSON where the source URL is the URL ID of searchNode, 
-        // and create a new array of all these outgoing links from the base node
-        // ***there's a major bug here in filtering for previously-filtered nodes. FIX THIS! ***
-        filteredLinks = data.links.filter(link => {
-            return link.source === searchId
-        })
-
-        //push the base node into the first position of the new filteredNodes subset array
-        filteredNodes.push(searchNode[0])
-
-        //add all target nodes that are linked from the main node
-        filteredLinks.forEach(link => {
-            let target = link.target
-            data.nodes.filter(node => {
-                if (node.id === target) {
-                    filteredNodes.push(node)
-                }
-            })
-
-        })
-
-        //clear out all values of the current graph's nodes and links 
+              //clear out all values of the current graph's nodes and links 
         nodes.length = 0
         links.length = 0
+
+        if (searchTerm !== 'all') { 
+
+            // check to see if the current search term is in the search cahse
+            let inSearchCache = searchCache.find( ({search}) => search === searchTerm);
+            
+            if (!inSearchCache) {
+                //If searchTerm is NOT in the search cache, filter the JSON for this new term
+
+                //get the base node to build our graph around
+                
+                let searchNode = data.nodes.filter(node => {
+                    return node.title === searchTerm
+                })
+
+                //get the url for the base node
+                let searchId = searchNode[0].id
+
+                // find all links from the JSON where the source URL is the URL ID of searchNode, 
+                // and create a new array of all these outgoing links from the base node
+                // ***there's a major bug here in filtering for previously-filtered nodes. FIX THIS! ***
+                filteredLinks = data.links.filter(link => {
+                    return link.source === searchId
+                })
+
+                //push the base node into the first position of the new filteredNodes subset array
+                filteredNodes.push(searchNode[0])
+
+                //add all target nodes that are linked from the main node
+                filteredLinks.forEach(link => {
+                    let target = link.target
+                    data.nodes.filter(node => {
+                        if (node.id === target) {
+                            filteredNodes.push(node)
+                        }
+                    })
+
+                })
+                
+                //store the currentSearch term as an object
+                let currentSearch = { "search": searchTerm,
+                                    "nodes": filteredNodes,
+                                    "links": filteredLinks }
+                
+                //push onto searchCache                      
+                searchCache.push(currentSearch)
+
+
+            }   else {
+                // searchTerm WAS in the searchCache, so get the nodes and links from searchCache
+            filteredNodes = inSearchCache.nodes;
+            filteredLinks = inSearchCache.links;
+            }
+        }   else { 
+            filteredNodes = deepClone.nodes;
+            filteredLinks = deepClone.links;
+        }
+
+   
 
         //add all filteredNodes into links
         filteredNodes.forEach(function(node){
