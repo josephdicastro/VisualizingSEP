@@ -2,6 +2,7 @@
 const searchMenu = d3.select("#searchMenu");
 const searchTypeOptions = d3.selectAll("input[type='radio']")
 const button = d3.select("button")
+const introParagraph = d3.select("#intro")
 
 const baseURL = 'https://plato.stanford.edu/archives/win2019'
 const searchCache = [];
@@ -44,7 +45,9 @@ d3.json('/GET-DATA/', function(data) {
     // listen for selections in both menus, and then run searchSep() when a change occurs 
     searchMenu.on("change", function() {
         searchTerm = d3.event.target.value;
-        searchSep(searchTerm)
+        searchSep(searchTerm);
+        introParagraph.style("display", "none")
+        d3.select("#dataViz").style("display","block")
         restart();
     });
     searchTypeOptions.on("change", function() {
@@ -52,6 +55,8 @@ d3.json('/GET-DATA/', function(data) {
     });
 
     button.on("click", function() {
+        introParagraph.style("display", "none")
+        d3.select("#dataViz").style("display","block")
         searchSep('all')
         restart();
     })
@@ -74,7 +79,7 @@ d3.json('/GET-DATA/', function(data) {
     let color = d3.scaleOrdinal(d3.schemeCategory10);
 
     //append svg to div
-    let svg = d3.select("#my_dataviz")
+    let svg = d3.select("#dataViz")
                 .append("svg")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)

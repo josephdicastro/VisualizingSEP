@@ -23,7 +23,7 @@
     <div class="container-md">
         <header>
             <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-                <a href="index.html" class="navbar-brand">Visualizing SEP</a>
+                <a href="/" class="navbar-brand">Visualizing SEP</a>
                 <div id="navbarSupportedContent"
                 class="collapse 
                        navbar-collapse 
@@ -56,8 +56,38 @@
             <div class="row">
                 <div class="col-md-8">   
                     <article>
+                        <div id="intro" style="color:lightgray">
+                            <p>This website provides a visual search interface to the corpus of articles 
+                                in the Stanford Encylopedia of Philosophy. Using network mapping, this 
+                            site shows how each article in the SEP is linked to every other article.</p>
+                            <ul>
+                                <li>Each entry in the search menu is the title of an article from the SEP.</li>
+                                <li>When you select an article from the search menu, an interactive graph will 
+                                    be generated showing how that article is linked
+                                    to other related articles on the site.
+                                <ul>
+                                    <li>A preview of the article's first paragraph is also provided, <br>as well as a 
+                                        link to view the entire article at the SEP.
+                                    </li>
+                                </ul></li>
+                                <li>The search menu defaults to showing articles about philosophers, 
+                                    but it can be filtered dynamically to show either philosophers or ideas.
+                                <ul>
+                                    <li>The graph generated will always show articles about both philosophers and ideas<br>
+                                    (assuming the respective article links to both kinds).</li>
+                                    <li>Nodes colored in blue are articles about philosophers, while nodes colored in orange are 
+                                        articles about ideas.</li>
+
+                                </ul></li>
+
+                                <li>Each node is an active link, so you can explore the related articles by double-clicking on the node.</li>
+                                <li>You can see the entire network, and watch the animation of the graph being built, <br>
+                                    by clicking the "Entire Entwork" button. <br>
+                                    <b>Warning: This is VERY MEMORY INTENSIVE.</b></li>
+                            </ul>
+                        </div>
                         <!-- Create a div where the graph will take place -->
-                        <div id="my_dataviz"></div>
+                        <div id="dataViz" style="display: none;"></div>
                     </article>
                 </div>
                 <div class="col-md-4">
