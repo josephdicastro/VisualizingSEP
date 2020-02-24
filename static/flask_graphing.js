@@ -160,7 +160,7 @@ d3.json('/GET-DATA/', function(data) {
 
         //Bind data to nodes. This governs the update pattern, as the bound data updates any current elements.
         node = node.data(nodes)
-                    //philosopher nodes are colored blue; idea nodes are colored orange
+                //philosopher nodes are colored blue; idea nodes are colored orange
                 .style("fill", function(d) {return color(d.entry_type)}) 
                 .classed("node",true)
 
