@@ -10,7 +10,7 @@ const philosophers = ["[Search Philosophers...]"];
 const ideas = ["[Search Ideas...]"];
 
 //read in JSON from flask route. 
-d3.json('/static/sep_network.json', function(data) {
+d3.json('static/sep_network.json', function(data) {
 
     console.log(data)
     const deepClone = JSON.parse(JSON.stringify(data))
