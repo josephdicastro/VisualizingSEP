@@ -12,7 +12,9 @@ const ideas = ["[Search Ideas...]"];
 //read in JSON from flask route. 
 d3.json('/static/sep_network.json', function(data) {
 
+    console.log(data)
     const deepClone = JSON.parse(JSON.stringify(data))
+    console.log(deepClone)
     
     deepClone.nodes.forEach(d=> {
         if (d.entry_type === 'thinker') {
