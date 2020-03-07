@@ -4,7 +4,7 @@ This is the beginning of a large project visualizing conceptual relationships in
 
 ## Current work
 
-The project is developing a new-ish kind of visual search engine using interactive network maps of all the articles in the Stanford Encyclopedia. With this search engine, the user can explore the entire corpus of the encylopedia by searching for single articles and then seeing which other articles are directly linked to that one. For each article,  a preview of the article's first paragraph is provided, as well as a link into the full article itself.
+The project is developing a new-ish kind of visual search engine using interactive network maps of all the articles in the Stanford Encyclopedia. With this search engine, the user can explore the entire corpus of the encylopedia by searching for single articles and then seeing which other articles are directly linked to that one. This allows the user to explore the entire corpus through seeing direct links between articles. For each article,  a preview of the article's first paragraph is provided, as well as a link into the full article itself.
 
 <https://josephdicastro.github.io/VisualizingSEP/>
 
