@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+         content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous">
+
+    <link href="static/styles.css" rel="stylesheet">
+    <title>Visualizing SEP</title>
+</head>
+<body>
+    <div class="container-md">
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                <a href="/" class="navbar-brand">Visualizing SEP</a>
+                <div id="navbarSupportedContent"
+                class="collapse 
+                       navbar-collapse 
+                       justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><button name="showGraph">Entire Network</button></li>
+                    <li class="nav-item">
+                            <div>
+                                <select id="searchMenu" class="select_menu"></select>
+                            </div>
+                            <div>
+                            <form>
+                                    Filter For:
+                                    <input type="radio" id="searchType1"
+                                    name="searchType" value="thinker">
+                                <label for="thinker">Philosophers</label>
+                            
+                                <input type="radio" id="searchType2"
+                                    name="searchType" value="idea">
+                                <label for="idea">Ideas</label>
+                            </form>
+                            
+                            </div>
+
+                </ul>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div class="row">
+                <div class="col-md-8">   
+                    <article>
+                        <div id="intro" style="color:lightgray">
+                            <p>This website provides a visual search interface to the corpus of articles 
+                                in the Stanford Encylopedia of Philosophy. Using network mapping, this 
+                            site shows how each article in the SEP is linked to every other article.</p>
+                            <ul>
+                                <li>Each entry in the search menu is the title of an article from the SEP.</li>
+                                <li>When you select an article from the search menu, an interactive graph will 
+                                    be generated showing how that article is linked
+                                    to other related articles on the site.
+                                <ul>
+                                    <li>A preview of the article's first paragraph is also provided, <br>as well as a 
+                                        link to view the entire article at the SEP.
+                                    </li>
+                                </ul></li>
+                                <li>The search menu defaults to showing articles about philosophers, 
+                                    but it can be filtered dynamically to show either philosophers or ideas.
+                                <ul>
+                                    <li>The graph generated will always show articles about both philosophers and ideas<br>
+                                    (assuming the respective article links to both kinds).</li>
+                                    <li>Nodes colored in blue are articles about philosophers, while nodes colored in orange are 
+                                        articles about ideas.</li>
+
+                                </ul></li>
+
+                                <li>Each node is an active link, so you can explore the related articles by double-clicking on the node.</li>
+                                <li>You can see the entire network, and watch the animation of the graph being built, <br>
+                                    by clicking the "Entire Entwork" button. <br>
+                                    <b>Warning: This is VERY MEMORY INTENSIVE.</b></li>
+                            </ul>
+                        </div>
+                        <!-- Create a div where the graph will take place -->
+                        <div id="dataViz" style="display: none;"></div>
+                    </article>
+                </div>
+                <div class="col-md-4">
+                    <div id="sideBar">
+                        <h3></h3>
+                        <p id="intro"></p>
+                        <p id="link"></p>
+                    </div>
+                    <div id="zoomSlider"></div>
+                </div>
+            </div>
+        </main>
+        <footer class="bg-dark text-center">
+            <p style="color: rgb(212, 209, 209);">&copy; Copyright: Joseph DiCastro 2020</p>
+        </footer>
+    </div>
+</body>
+
+<script  type="text/javascript" src="https://d3js.org/d3.v4.js"></script>
+<!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
+<script  type="text/javascript" src="static/sep_graphing.js"></script>
+</html>
