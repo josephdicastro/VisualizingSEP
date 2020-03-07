@@ -3,6 +3,7 @@
 ## Functionality
 
 ### Article Search
+
     1. Description 
         - Instead of binding article titles to the search menu, create a generalized search box with type-ahead and intelligent sorting
             - Philosopher/Idea filter may not be needed
@@ -29,4 +30,4 @@
             - refactor current code, making it more Pythonic
             - get additional metadata from InPhO API
                 -   This might require an additional MongoDB collection that will collect ALL InPhO data, and parse it what's needed
-            - consider restructuring the json 
+            - consider restructuring the json
