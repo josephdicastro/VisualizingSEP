@@ -27,17 +27,10 @@ def init_beautifulsoup(htmlpage_variable, save_as=""):
 def save_html(htmlpage_variable, page_to_save):
     """ Save selected variable to an html file """
 
-    # # check if "data" directory exists within current file path. If not: create it.
-    # # "data" is where we save off the html files returned from Splinter
-    # if not os.path.exists('data'):
-    #     os.makedirs('data')
+    print(page_to_save)
+    with open(page_to_save, 'w', encoding="UTF-8") as f:
+        f.write(htmlpage_variable)
 
-    try:
-        print(page_to_save)
-        with open(page_to_save, 'w', encoding="UTF-8") as f:
-            f.write(htmlpage_variable)
-    except:
-        print("scrape failed")
 
 
 def scrape_web_page(page_url, save_as=""):
