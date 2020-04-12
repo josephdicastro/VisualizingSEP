@@ -2,9 +2,11 @@ from splinter import Browser
 from bs4 import BeautifulSoup
 import time
 import os
+import re
 
-##### Helper Functions for Web Scraping #####
-
+################################################################
+##### Helper Functions for General Web Scraping ################
+################################################################
 
 def init_splinter(headlessTF=True):
     """ opens Splinter for scraping """
@@ -27,7 +29,6 @@ def init_beautifulsoup(htmlpage_variable, save_as=""):
 def save_html(htmlpage_variable, page_to_save):
     """ Save selected variable to an html file """
 
-    print(page_to_save)
     with open(page_to_save, 'w', encoding="UTF-8") as f:
         f.write(htmlpage_variable)
 
@@ -61,3 +62,4 @@ def scrape_web_page(page_url, save_as=""):
 
     # return Beautiful Soup object of selected webpage
     return soup
+
