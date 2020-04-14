@@ -57,7 +57,7 @@ def download_sep_pages(page_list, save_as_directory):
      """    
     
     #loop where pages are rendered from
-    for page in tqdm(page_list, desc="Processing"):
+    for page in tqdm(page_list, desc='Processing'):
 
         #get baseurl and linkurl for each entry, then create absolute path reference to SEP file
         base_url = page['base_url']
@@ -67,10 +67,10 @@ def download_sep_pages(page_list, save_as_directory):
         #link_urls are all stored with the following structure: "entries/<pagename>", but 
         #We want to remove the "entries/" page from the link_url and 
         # store the file locally with just the individual page name
-        slash_pos = link_url.rfind("/",0,len(link_url)-1)
+        slash_pos = link_url.rfind('/',0,len(link_url)-1)
         page_name = link_url[slash_pos+1:len(link_url)-1]
 
-        html_save_as = f"{save_as_directory}{page_name}.html"
+        html_save_as = f'{save_as_directory}{page_name}.html'
 
         web.scrape_web_page(page_url, html_save_as)
 
@@ -94,17 +94,17 @@ def return_json_api(inpho_html_page):
     inpho_api = requests.get(inpho_html_page).url
 
      #not every SEP entry has an InPhO entry. test for this, and return "Error: No InPhO entry"
-    if inpho_api == 'https://www.inphoproject.org/entity?sep=template&redirect=True':
+    if 'redirect=True' in inpho_api:
         inpho_api = 'Error: No InPhO entry'
     else:
         #replace URL and HTML designations with appropriate end point and .json designations
-        inpho_api = inpho_api.replace("https://www.inphoproject.org/",\
-                                        "http://inpho.cogs.indiana.edu/")\
-                                .replace("html","json")
+        inpho_api = inpho_api.replace('https://www.inphoproject.org/',\
+                                        'http://inpho.cogs.indiana.edu/')\
+                                .replace('html','json')
 
         #taxonomy api urls don't include the '.json' file type reference (but don't know why), so we have to add the file type for these URLS.
         if (inpho_api.find('taxonomy')) != -1:
-            inpho_api = inpho_api + ".json"
+            inpho_api = inpho_api + '.json'
     
     return inpho_api
 
@@ -117,7 +117,7 @@ def return_json_data(api_endpoint):
         Returns:
         Complete JSON object 
     """
-
+    print(api_endpoint)
     #if invalid API_endpoint, return Error
     if api_endpoint == 'Error: No InPhO entry':
         inpho_json = "Error: No InPhO entry"
@@ -127,7 +127,7 @@ def return_json_data(api_endpoint):
         
         #if ["responseData"]["result"] in json_data, pull the child references from it
         if 'responseData' in json_data:
-            inpho_json = json_data["responseData"]["result"]
+            inpho_json = json_data['responseData']['result']
         else:
             #all good here
             inpho_json = json_data
@@ -152,20 +152,20 @@ def process_links(links_in_page):
     #links within articles take the form of '../<page>', but they have to be transformed 
     #into the form of "/entries/<page>/" for the network graphs
     for link in links_in_page:
-        link_url = link["href"].replace("..","/entries").strip()
-        last_slash_pos = link_url.find("/",9) + 1
-        #/entries/<page>/
-        link_url = link_url[0:last_slash_pos]
-        link_text = link.get_text()
-        outgoing_link = { "link": link_url, "text": link_text}
+        if '.html' not in link['href']:
+            print(link)
+            link_url = link['href'].replace('..','/entries').strip()
+            last_slash_pos = link_url.find('/',9) + 1
+            #/entries/<page>/
+            link_url = link_url[0:last_slash_pos]
+            outgoing_link = { 'link': link_url}
 
-        if outgoing_link not in unique_links:
-            unique_links.append(outgoing_link)
+            if outgoing_link not in unique_links:
+                unique_links.append(outgoing_link)
     
     return unique_links
 
 def parse_sep_file(file_to_parse):
-    """ Parse file_to_parse for the necessary information """
     """ Parse SEP file for all the necessary information 
 
         Keyword Arguments:
@@ -187,7 +187,7 @@ def parse_sep_file(file_to_parse):
     #get specific page properties
     title = soup.find(id="aueditable").find("h1").get_text()
     pubdate = soup.find(id="pubinfo").get_text()
-    copyright = str(soup.find(id="article-copyright").find("p"))
+    copyright = str(soup.find(id="article-copyright").find("p")) 
     preamble = soup.find(id="preamble")
     first_paragraph = preamble.find("p").get_text()
     first_paragraph = first_paragraph.replace('\n',' ')
