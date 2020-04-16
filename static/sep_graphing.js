@@ -10,11 +10,10 @@ const philosophers = ["[Search Philosophers...]"];
 const ideas = ["[Search Ideas...]"];
 
 //read in JSON from flask route. 
-d3.json('static/sep_network.json', function(data) {
+// d3.json('static/sep_network.json', function(data) {
+d3.json('static/network1.json', function(data) {
 
-    console.log(data)
     const deepClone = JSON.parse(JSON.stringify(data))
-    console.log(deepClone)
     
     deepClone.nodes.forEach(d=> {
         if (d.entry_type === 'thinker') {
@@ -83,7 +82,10 @@ function loadSearchMenu(searchType) {
     };
 
     let svgWidth = 750;
-    let svgHeight = 600;
+    let svgHeight = 700;
+
+    // let svgWidth = 1200;
+    // let svgHeight = 800;
 
     let width = svgWidth - margin.left - margin.right;
     let height = svgHeight - margin.top - margin.bottom;
@@ -105,8 +107,8 @@ function loadSearchMenu(searchType) {
 
     //setup structure of simulation, and bind nodes and links to the simulation. 
     let simulation = d3.forceSimulation(nodes)
-                       .force("charge", d3.forceManyBody().strength(-200))
-                       .force("link", d3.forceLink(links).id(function (d) {return d.id}).distance(200))
+                       .force("charge", d3.forceManyBody().strength(-100))
+                       .force("link", d3.forceLink(links).id(function (d) {return d.id}).distance(300))
                        .force("center", d3.forceCenter())
                        .alphaTarget(1)
                        .on("tick", ticked)
@@ -157,7 +159,7 @@ function loadSearchMenu(searchType) {
 
         label.attr("x", function (d) {return d.x + 15})
             .attr("y", function (d) {return d.y})
-            .style("font-size", "12px").style("fill", "#4393c3");
+            .style("font-size", "10px").style("fill", "#4393c3");
 
     }
 
@@ -368,11 +370,7 @@ function loadSearchMenu(searchType) {
          let filteredNodes =  [];
          let filteredLinks =  [];
 
-         let filteredOutLinks = [];
-         let filteredInLinks = [];
-         let finalLinks = [];
-
-              //clear out all values of the current graph's nodes and links 
+         //clear out all values of the current graph's nodes and links 
         nodes.length = 0
         links.length = 0
 
@@ -382,53 +380,21 @@ function loadSearchMenu(searchType) {
             let inSearchCache = searchCache.find( ({search}) => search === searchTerm);
             
             if (!inSearchCache) {
-                //If searchTerm is NOT in the search cache, filter the JSON for this new term
+                currentSearch = return_nodes_links(searchTerm)
+                filteredNodes = currentSearch.nodes;
+                filteredLinks = currentSearch.links;
 
-                //get the base node to build our graph around
-                
-                let searchNode = data.nodes.filter(node => {
-                    return node.title === searchTerm
-                })
-
-                //get the url for the base node
-                let searchID = searchNode[0].id
-
-                // find all outgoing links from the JSON where the source URL is the URL ID of searchNode, 
-                // and create a new array of all these outgoing links from the base node
-                // ***there's a major bug here in filtering for previously-filtered nodes. FIX THIS! ***
-                filteredLinks = data.links.filter(link => {
-                    return link.source === searchID
-                })
-
-                //push the base node into the first position of the new filteredNodes subset array
-                filteredNodes.push(searchNode[0])
-
-                //add all target nodes that are linked from the main node
-                filteredLinks.forEach(link => {
-                    let target = link.target
-                    data.nodes.filter(node => {
-                        if (node.id === target) {
-                            filteredNodes.push(node)
-                        }
-                    })
-
-                })
-
-                //store the currentSearch term as an object
-                let currentSearch = {   "search": searchTerm,
-                                        "nodes": filteredNodes,
-                                        "links": finalLinks }
-                
                 //push onto searchCache                      
                 searchCache.push(currentSearch)
                 d3.select("#sideBar").style("display","block")
 
             }   else {
                 // searchTerm WAS in the searchCache, so get the nodes and links from searchCache
-            filteredNodes = inSearchCache.nodes;
-            filteredLinks = inSearchCache.links;
-            d3.select("#sideBar").style("display","block")
+                filteredNodes = inSearchCache.nodes;
+                filteredLinks = inSearchCache.links;
+                d3.select("#sideBar").style("display","block")
             }
+            
         }   else { 
             filteredNodes = deepClone.nodes;
             filteredLinks = deepClone.links;
@@ -445,11 +411,53 @@ function loadSearchMenu(searchType) {
         //add all filteredlinks into the graph's links
         filteredLinks.forEach(function(link) {
             links.push(link)
+        });
+    };
+
+    function return_nodes_links(searchTerm) {
+       
+        let local_nodes = [];
+        let local_links = [];
+
+        //get the base node to build our graph around    
+        let searchNode = data.nodes.filter(node => {
+            return node.title === searchTerm
         })
 
+        //get the url for the base node
+        let searchID = searchNode[0].id 
 
+        // // find all outgoing links from the JSON where the source URL is the URL ID of searchNode
+        // local_links = data.links.filter(link => {
+        //     return link.source === searchID
+        // })
+        console.log(searchNode)
+        local_links = searchNode[0].links
 
+        //push the base node into the first position of the new filteredNodes subset array
+        local_nodes.push(searchNode[0])
 
+        //add all target nodes that are linked from the main node
+        local_links.forEach(link => {
+            let target = link.target
+            data.nodes.filter(node => {
+                if (node.id === target) {
+                    local_nodes.push(node)
+                }
+            })
+
+        })
+
+        //store the currentSearch term as an object
+        let currentSearch = {   "search": searchTerm,
+                                "nodes": local_nodes,
+                                "links": local_links }
+
+        console.log(currentSearch)
+        return currentSearch
+
+        
     }
+    
 });
 
