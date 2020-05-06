@@ -1,283 +1,288 @@
-// select page search controls
-const searchMenu = d3.select("#searchMenu");
-const searchTypeOptions = d3.selectAll("input[type='radio']")
-const button = d3.select("button")
-const introParagraph = d3.select("#intro")
+let svg = d3.select('svg')
+let articleMenu = d3.select('#articleSearchMenu')
+let introDiv = d3.select('#intro')
+let articleGraphDiv = d3.select('#articleGraph')
 
-const baseURL = 'https://plato.stanford.edu/archives/win2019'
-const searchCache = [];
-const philosophers = ["[Search Philosophers...]"];
-const ideas = ["[Search Ideas...]"];
+let svgConfig = initializeParentSVG(svg);
+let nodes = [];
+let links = [];
+let articleSearchCache = [];
 
-//read in JSON from flask route. 
-// d3.json('static/sep_network.json', function(data) {
-d3.json('static/network1.json', function(data) {
+let linkAngles = [];
 
-    const deepClone = JSON.parse(JSON.stringify(data))
-    
-    deepClone.nodes.forEach(d=> {
-        if (d.entry_type === 'thinker') {
-            philosophers.push(d.title);
-        }   else {
-            ideas.push(d.title)
-        }
+let baseURL = 'https://plato.stanford.edu/archives/spr2020';
+
+d3.json('static/sep_network.json').then(function(data) { showArticleData(data)} );
+
+function showArticleData(data) {
+    loadArticleMenu(data)
+
+    let articleSimConfig = initializeArticleSimulation(svgConfig);
+    drawArticleSimulation(data, articleSimConfig)
+
+    //UI Response features
+    articleMenu.on('change', function(){
+        let articleTitle = d3.event.target.value;
+        console.log(articleTitle)
+        showArticleGraphAreas() 
+        updateArticleGraph(data, articleTitle, articleSimConfig)
+        
     })
-
-// default to loading the philosopher list
-loadSearchMenu('thinker');
-d3.select("#searchType1").property('checked',true)
-
-function loadSearchMenu(searchType) {
-
-    // searchOptions is the array we bind to the searchMenu based on user choice
-    let searchOptions = [];
-    
-    //switch which array gets loaded into searchOptions
-    if (searchType === 'thinker') {
-        searchOptions = philosophers;
-
-    }   else {
-        searchOptions = ideas;
-
-    }
-
-    //load into searchMenu
-    searchMenu.html("");
-    searchMenu.selectAll("option")
-                .data(searchOptions)
-                .enter()
-                    .append("option")
-                    .attr("value", (d) => d)
-                    .html((d) => d)
-                .exit().remove();
-    
 }
 
-    // listen for selections in both menus, and then run searchSep() when a change occurs 
-    searchMenu.on("change", function() {
-        searchTerm = d3.event.target.value;
-        searchSep(searchTerm);
-        introParagraph.style("display", "none")
-        d3.select("#dataViz").style("display","block")
-        restart();
-    });
-    searchTypeOptions.on("change", function() {
-        loadSearchMenu(this.value);
-    });
+function loadArticleMenu(data) {
 
-    button.on("click", function() {
-        introParagraph.style("display", "none")
-        d3.select("#dataViz").style("display","block")
-        searchSep('all')
-        restart();
-    })
+    let articles = ["[Search articles...]"]
+    data.nodes.forEach(node => articles.push(node.title))
 
-    
+    //load into searchMenu
+    articleMenu.selectAll("option")
+                .data(articles)
+                .enter().append("option")
+                        .attr("value", (d) => d)
+                        .html((d) => d)
+
+}
+
+function showArticleGraphAreas() {
+    introDiv.style('display', 'none')
+    articleGraphDiv.style('display', 'block')
+}
+
+function initializeParentSVG(svg) {
     // set basic SVG Config data 
     let margin = {
-        top: 0,
-        right: 10,
-        bottom:40,
-        left:120
+        top: 20,
+        right: 20,
+        bottom:20,
+        left:20
     };
 
-    let svgWidth = 750;
-    let svgHeight = 700;
+    let areaWidth = 850;
+    let areaHeight = 600;
 
-    // let svgWidth = 1200;
-    // let svgHeight = 800;
+    let width = areaWidth - margin.left - margin.right;
+    let height = areaHeight - margin.top - margin.bottom;
 
-    let width = svgWidth - margin.left - margin.right;
-    let height = svgHeight - margin.top - margin.bottom;
+    svg.attr("viewBox", "0 0 " + width + " " + height )
+       .attr("preserveAspectRatio", "xMidYMid meet")
+    //    .style('border', '1px solid white');
 
-    let color = d3.scaleOrdinal(d3.schemeCategory10);
+    // svg.attr("width", width)
+    //     .attr('height',height )
+    //     .style('border', '1px solid white');
 
-    //append svg to div
-    let svg = d3.select("#dataViz")
-                .append("svg")
-                .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
+    return {margin, areaWidth, areaHeight, width, height, svg}
+}
+
+function initializeArticleSimulation(svgConfig) {
+    //clear out child SVG elements
+    svgConfig.svg.html("")
+
+    //create SVG group centered in the middle of the svg space
+    svg = svgConfig.svg.append('g')
+                       .attr("transform", `translate(${(svgConfig.width/2)-25},${svgConfig.height/2})`)
+                       .classed('articleGraphGroup', true)
+
+    //create secondary svg group so that we can add our graph elements to this group
+    let graph_elements = svg.append('g')
+                            .classed('articleElements', true)
+
+    // create main graph elements
+    let links = graph_elements.append("g")
+                             .classed('links',true)
+
+    let labels = graph_elements.append("g")
+                              .classed('labels',true)
+
+    let nodes = graph_elements.append("g")
+                             .classed('nodes',true)
 
 
 
-
-    //initialize empty arrays
-    let nodes = [];
-    let links = [];
-
-    //setup structure of simulation, and bind nodes and links to the simulation. 
     let simulation = d3.forceSimulation(nodes)
-                       .force("charge", d3.forceManyBody().strength(-100))
-                       .force("link", d3.forceLink(links).id(function (d) {return d.id}).distance(300))
-                       .force("center", d3.forceCenter())
-                       .alphaTarget(1)
-                       .on("tick", ticked)
+        .force("charge", d3.forceManyBody().strength())
+        .force("link", d3.forceLink(links).id(function (d) {return d.id}).distance(175))
+        .force("center", d3.forceCenter())
+        .alphaTarget(1);
 
-    let zoom = d3.zoom()
-                 .on("zoom", zoom_actions);
+    return {links, nodes, labels, simulation}
+}
 
-    // create main svg group that will control positioning and zooming of all child elements
-    let g1 = svg.append("g")
-                .attr("transform", "translate(" + width / 2  + "," + height / 2 + ")")
-                .call(zoom)
-                .on("dblclick.zoom",null)
 
-    //create secondary svg group so that we can add our graph elements to
-    let g = g1.append('g')
 
-    //create main graph elements
-    let link = g.append("g")
-                .attr("stroke", "#000")
-                .attr("stroke-width", 1.5)
-                .selectAll("line");
-    let node = g.append("g")
-                .attr("stroke", "#fff")
-                .attr("stroke-width", .75)
-                .selectAll(".node")
-    let label = g.append("g")
-                 .attr("display", "block")
-                 .selectAll(".label");
+function drawArticleSimulation(data, articleSimConfig){
 
-    //controls how the zoom will occur
-    function zoom_actions(){
-        let currentTransform = d3.event.transform
-        g.attr("transform", currentTransform)
-        slider.property("value",  currentTransform.k);
-    }
+    let centralNode = nodes[0]
+    let numTicks = 0;
+    let transitionTime = 2000;
 
+
+
+    //links
+    link = articleSimConfig.links.selectAll('.link')
+                         .data(links, function(d) {return `${d.source}-${d.target}`})
     
+    link.exit().remove();
 
-    // ticked runs at each iteration of simulation, updating the positions of each node/link/label.
-    function ticked() {
-        link.attr("x1", function (d) {return d.source.x;})
-            .attr("y1", function (d) {return d.source.y;})
-            .attr("x2", function (d) {return d.target.x;})
-            .attr("y2", function (d) {return d.target.y;});
+    link = link.enter()
+               .append('line')
+               .attr("stroke", "#999")
+               .attr("stroke-width", 1)
+               .attr("opacity", 0.3)
+               .classed('link',true).merge(link)
 
-        node.attr("cx", function (d) {return d.x;})
-            .attr("cy", function (d) {return d.y;})
+    //labels
+    label = articleSimConfig.labels.selectAll('.label')
+                           .data(nodes, function(d) {return d.title})
+                           .classed('mainLabel', function(d,i) {return i===0?true:false})
 
-        label.attr("x", function (d) {return d.x + 15})
-            .attr("y", function (d) {return d.y})
-            .style("font-size", "10px").style("fill", "#4393c3");
+    label.exit().remove();
 
-    }
+    label = label.enter()
+                 .append("text")
+                 .text(function(d) {return d.title})
+                 .attr("display", "block")
+                 .attr("font-size", '9px')
+                 .attr("fill", function(d) {return color(d.entry_type)})
+                 .classed('label',true)
+                 .classed('mainLabel', function(d,i) {return i===0?true:false})
+                 .merge(label)
 
-    //We call this each time the data changes, but here: it starts the empty simulation
-    restart();
-
-    // restart() binds binds data to the simulation. This is the main function of the entire script. 
-    function restart() {
-
-        // Nodes are the cirlces and main data points of the graph. 
-        // Apply the enter-update-exit pattern to bind all the data
-
-        //Bind data to nodes. This governs the update pattern, as the bound data updates any current elements.
-        node = node.data(nodes)
-                //philosopher nodes are colored blue; idea nodes are colored orange
-                .style("fill", function(d) {return color(d.entry_type)}) 
-                .classed("node",true)
-
-        //remove nodes  
-        node.exit()
-            .remove();
-
-        // create new nodes 
-        node = node.enter()
-                .append("g")
-                .classed("node",true)
-                .append("circle")
-                .call(function(node) { node.transition().attr("r", 10) })
-                .style("fill", function(d) {return color(d.entry_type)})
-                .merge(node)
-
-        // listen for user events 
-        node.on("mouseover", focus)
-            .on("mouseout", unfocus);
-
-        node.on("dblclick",function(d) {
-            //reset display before switching graphs
+    label.on('mouseover', function() { 
+            focus(); 
+            d3.select(this).style("cursor", "pointer"); 
+            setPreviewArea(d3.select(d3.event.target).datum())
+        })
+        .on('mouseout', function()  { 
+            unfocus(); 
+            d3.select(this).style("cursor", "default"); 
+            setPreviewArea(centralNode);
+        })
+        .on('dblclick', function(d) {
             unfocus();
-
-            //new node to build a graph from
-            let searchItem = d.title
-
-            // update searchMenu and searchTypeOptions based on node entry type
-            let entryType = d.entry_type
-
-            if (entryType === 'thinker') {
-                //set radio button value
-                searchTypeOptions.node().value = 'thinker'
-                //switch checked item
-                d3.select("#searchType1").property('checked',true)
-                //reload searchMenu
-                loadSearchMenu('thinker')
-            }   else {
-                d3.select("#searchType2").property('checked',true)
-                searchTypeOptions.node().value = 'idea'
-                loadSearchMenu('idea')
-            }      
-            //set searchMenu to value of selected Node
-            searchMenu.property('value',searchItem)
-            //build nodes and links 
-            searchSep(searchItem)
-            //run simulation again 
-            restart();
+            let articleTitle = d.title
+            articleMenu.property('value',articleTitle)
+            updateArticleGraph(data, articleTitle, articleSimConfig)
         })
 
-        // Links are the line elements that connect the nodes of the graph. 
-        // Apply the enter-update-exit pattern to bind all the data
-
-        //Bind data to links. This governs the update pattern, as the bound data updates any current elements.
-        link = link.data(links);
-
-        //remove links not needed.
-        link.exit()
-            .remove();
-
-        //create new links
-        link = link.enter().append("line")
-                .style("stroke", "#aaa")
-                .style("opacity", 0.2)
-                .merge(link);
-
-        // Labels show the title of each node on the graph.
-        // Apply the enter-update-exit pattern to bind all the data
-
-        //Bind data from the nodes (returning only the title of each node) to labels. This governs the update pattern, as the bound data updates any current elements.
-        label = label.data(nodes, function(d) {return d.title})
-                    .classed("label",true)
-
-        // remove labels that aren't needed.
-        label.exit()
-            .remove();
-
-        //create labels
-        label = label.enter()
-                    .append("text")
-                    .classed("label",true)
-                    .text(function(d) {return d.title})
-                    .merge(label) 
-        
-        //update sidebar
-        updateSidebar(nodes[0]); 
-
-        // Update and restart the simulation.
-        simulation.nodes(nodes);
-        simulation.force("link").links(links);
-        simulation.alpha(1).restart();
+    //nodes
+    node = articleSimConfig.nodes.selectAll('.node')
+                         .data(nodes, function (d) {return d.id})
     
-        // **** The following functions/declarations create the mouseover effects showing node adjacency.
+    node.exit().remove()
+
+    node = node.enter()
+                .append('circle')
+                .attr("r", 5)
+                .attr("fill", function(d) {return color(d.entry_type)})
+                .attr("stroke", "#fff")
+                .attr("stroke-width", .5)
+                .style('opacity',1)
+                .classed('node',true)
+                .merge(node)
+
+    node.on('mouseover', function() { 
+            focus(); 
+            d3.select(this).style("cursor", "pointer"); 
+            setPreviewArea(d3.select(d3.event.target).datum())
+        })
+        .on('mouseout', function()  { 
+            unfocus(); 
+            d3.select(this).style("cursor", "default"); 
+            setPreviewArea(centralNode);
+        })
+        .on('dblclick', function(d) {
+            unfocus();
+            let articleTitle = d.title
+            articleMenu.property('value',articleTitle)
+            updateArticleGraph(data, articleTitle, articleSimConfig)
+        })
+
+    //update simulation
+    articleSimConfig.simulation.on('tick', function (){
+        let tickLimit = ticksByNodeCount(nodes.length)
+
+        if (numTicks < tickLimit) {
+            link
+                .attr("x1", function(d) {return 0 })
+                .attr("y1", function(d) {return 0 })
+                .attr("x2", function(d) {return d.target.x })
+                .attr("y2", function(d) {return d.target.y })
+                .attr("linkIndex", function(d,i) { 
+                    j=i+1;
+                    linkAngles[j] = angle(0,0,d.target.x,d.target.y);
+                    return i })
+
+            node
+                .attr("cx", function(d) {return d.index === 0 ? 0: d.x })
+                .attr("cy", function(d) {return d.index === 0 ? 0: d.y });
+
+            label
+                .attr('x', function(d) {return d.index === 0 ? 0: setXpos(d.x,this.getBBox().width) })
+                .attr('y', function(d) {return d.index === 0 ? -10: d.y+4})
+                .attr("transform", function(d,i){ return i===0 ?`rotate(0)`:rotateLabel(i,d.x, d.y)})
+        }
+        numTicks++
+
+    })
+
+
+
+
+    articleSimConfig.simulation.nodes(nodes);
+    articleSimConfig.simulation.force("charge", d3.forceManyBody().strength(function() { return forceStrength(nodes.length)}))
+    articleSimConfig.simulation.force("link").links(links)
+    articleSimConfig.simulation.alpha(1).restart();
+
+    setPreviewArea(centralNode);
+
+
+    window.getSelection().removeAllRanges();
+
+    //******************** Simulation Adjustment functions************************/
+
+    function forceStrength(numberOfNodes) {
+        let strength;
+        if (numberOfNodes < 20) { strength = -1000 } else
+        if (numberOfNodes < 30) { strength = -800 } else
+        if (numberOfNodes < 40) { strength = -600 } else
+        if (numberOfNodes < 50) { strength = -400 } else
+        if (numberOfNodes < 60) { strength = -200 } else
+        if (numberOfNodes < 70) { strength = -100 } else 
+        if (numberOfNodes < 80) { strength = -50 } else 
+        if (numberOfNodes < 90) { strength = -40 } else 
+        if (numberOfNodes > 90) { strength = -30 } else 
+        console.log(numberOfNodes)
+        return strength
+    
+    }
+
+    function ticksByNodeCount(numberOfNodes) {
+        let tickLimit;
+        if (numberOfNodes < 10) { tickLimit = 50 } else
+        if (numberOfNodes < 20) { tickLimit = 80 } else
+        if (numberOfNodes < 30) { tickLimit = 100 } else
+        if (numberOfNodes < 40) { tickLimit = 150 } else
+        if (numberOfNodes < 60) { tickLimit = 200 } else
+        if (numberOfNodes < 70) { tickLimit = 250 } else 
+        if (numberOfNodes < 80) { tickLimit = 200 } else 
+        if (numberOfNodes < 90) { tickLimit = 250 } else 
+        if (numberOfNodes > 90) { tickLimit = 300 }
+
+        return tickLimit
+    }
+    //******************** MOUSE OVER FUNCTIONS FOR INTERACTIVITY ************************/
+           // **** The following functions/declarations create the mouseover effects showing node adjacency.
         // **** I found the base code online, but don't remember where. Sorry!
         // **** I updated some of the code for this project.
 
         let adjacentNodes = [];
 
-        // for every link in the links group, add source and target adjacent nodes
+        // add source and target adjacentNodes, which is used to activate highlighting
         links.forEach(function (d) {
             adjacentNodes[d.source.index + "-" + d.target.index] = true;
             adjacentNodes[d.target.index + "-" + d.source.index] = true;
- 
         });
 
         // this function compares two nodes to see if they are neighbors.
@@ -285,179 +290,183 @@ function loadSearchMenu(searchType) {
             return a == b || adjacentNodes[a + "-" + b];
         }
 
-        // This function is called when a mouseOver event happens. 
-        // It highlights the current node and the main node, and dims the rest.
+        // Highlight the current node and the main node, and dim the rest.
         function focus(d) {
             //get index of current node being mousedOver
             let index = d3.select(d3.event.target).datum().index;
 
-            node.style("opacity", function (o) {
-                return isNeighbor(index, o.index) ? 1 : 0.1;
-            });
-            label.attr("display", function (o) {
-                return isNeighbor(index, o.index) ? "block" : "none";
-            });
-            link.style("opacity", function (o) {
+            d3.selectAll('.link').attr("opacity", function (o) {
                 return o.source.index == index || o.target.index == index ? 1 : 0.1;
             });
-
-            //update sidebar with preview of mousedOver node's entry paragraph
-            updateSidebar(d3.select(d3.event.target).datum())
+            d3.selectAll('.label').attr("display", function (d) {
+                return isNeighbor(index, d.index) ? "block" : "none";
+            });
+            d3.selectAll('.node').style("opacity", function (o) {
+                return isNeighbor(index, o.index) ? 1 : 0.1;
+            });
 
         }
-        // This function is called when a mouseOut event happens. 
-        // It's also called then double-clicking on a node to create a new graph
-        function unfocus() {
-            //reset nodes to full visual strength 
-            label.attr("display", "block");
-            node.style("opacity", 1);
-            link.style("opacity", .2);
 
-            //reset sidebar to main node's text
-            updateSidebar(nodes[0]);
+        // Reset graph to default visuals
+        function unfocus() {
+            
+            d3.selectAll('.link').attr("opacity", 0.3);
+            d3.selectAll('.label').attr("display", "block");
+            d3.selectAll('.node').style("opacity", 1);
+            
+  
         } 
 
-        //This function updates the sidebar to display the selected node's first paragraph of text, 
-        // and to show the link into SEP for the full article
-        function updateSidebar(node) {
-    
-            if(node) {
-                
-                let title = node.title;
-                let sepUrl = baseURL + node.id;
-                let entryType = node.entry_type;
-                let firstParaText= node.first_paragraph;
-                let displayCut = "";
-                
-                //only display the first 1000 characters of the node's intro paragraph
-                if (firstParaText.length > 1000 ) {
-                    firstParaText = firstParaText.substring(0,1000);
-                    lastPeriod = firstParaText.lastIndexOf('.')
-                    firstParaText = firstParaText.substring(0,lastPeriod+1)
-                    displayCut = `(Only the first ${firstParaText.length} characters of intro text are displayed.)`;
-                }   
-                
-                //select sidebar div from HTML 
-                let sidebar = d3.select("#sideBar")    
+}
 
-                //set text of h3 heading
-                sidebar.select("h3")
-                       .text(title)
-                       .classed('sidebarh3',true)
-                
-                //select first paragraph from HTML, and set the text to firstParaText
-                let firstParagraph = sidebar.select("#intro")
-                                            .text(firstParaText)
-                                            .classed('firstParagraph',true)
-                    
-                //if displayCut isn't empty, then append a new paragraph to firstParagraph indicating paragraph has been truncated.
-                if (displayCut !== "") {
-                    firstParagraph.append("p")
-                                    .text(displayCut)
-                                    .classed('displayCut',true)
+function updateArticleGraph(data, articleTitle, articleSimConfig) {
 
-                }
-                //add link to SEP article
-                sidebar.select("#link").html(`Read the full article at SEP: <a href="${sepUrl}" target="_blank">${title}</a>`)
-            }
-        }
+    let articleData;
+    let inSearchCache = articleSearchCache.find( ({search}) => search === articleTitle);
+
+    if (!inSearchCache) {
+        articleData = getArticleData(data, articleTitle);
+    }   else    {
+        articleData = inSearchCache
     }
+    
+    nodes.length = 0
+    links.length = 0
 
-    //searchSep searches the entire JSON for the searchTerm, and creates the subset node/link arrays that the graph is based on.
-    function searchSep(searchTerm) {
+    articleData.nodes.forEach(node => nodes.push(node))
+    articleData.links.forEach(link => links.push(link))
 
-        // //init empty arrays
-         let filteredNodes =  [];
-         let filteredLinks =  [];
+    drawArticleSimulation(data, articleSimConfig)
 
-         //clear out all values of the current graph's nodes and links 
-        nodes.length = 0
-        links.length = 0
+}
 
-        if (searchTerm !== 'all') { 
+function getArticleData(data, articleTitle) {
 
-            // check to see if the current search term is in the search cahse
-            let inSearchCache = searchCache.find( ({search}) => search === searchTerm);
-            
-            if (!inSearchCache) {
-                currentSearch = return_nodes_links(searchTerm)
-                filteredNodes = currentSearch.nodes;
-                filteredLinks = currentSearch.links;
+    let articleNodes = [];
+    let articleLinks = [];
+    let articleData = {};
+    
+    //get the base node to build our graph around    
+    let searchNode = data.nodes.filter(node => {
+        return node.title === articleTitle
+    })
 
-                //push onto searchCache                      
-                searchCache.push(currentSearch)
-                d3.select("#sideBar").style("display","block")
+    //get the url for the base node
+    let searchID = searchNode[0].id 
 
-            }   else {
-                // searchTerm WAS in the searchCache, so get the nodes and links from searchCache
-                filteredNodes = inSearchCache.nodes;
-                filteredLinks = inSearchCache.links;
-                d3.select("#sideBar").style("display","block")
+    //populate localLinks
+    searchNode[0].links.forEach(link => articleLinks.push(link))
+
+    //push the base node into the first position of localNodes
+    articleNodes.push(searchNode[0])
+
+    //add all target nodes that are linked from the main node to LocalNodes
+    articleLinks.forEach(link => {
+        let target = link.target
+        data.nodes.filter(node => {
+            if (node.id === target) {
+                articleNodes.push(node)
             }
-            
-        }   else { 
-            filteredNodes = deepClone.nodes;
-            filteredLinks = deepClone.links;
-            d3.select("#sideBar").style("display","none")
-        }
-
-   
-
-        //add all filteredNodes into links
-        filteredNodes.forEach(function(node){
-            nodes.push(node);
-
-        });
-        //add all filteredlinks into the graph's links
-        filteredLinks.forEach(function(link) {
-            links.push(link)
-        });
-    };
-
-    function return_nodes_links(searchTerm) {
-       
-        let local_nodes = [];
-        let local_links = [];
-
-        //get the base node to build our graph around    
-        let searchNode = data.nodes.filter(node => {
-            return node.title === searchTerm
         })
 
-        //get the url for the base node
-        let searchID = searchNode[0].id 
+    })          
 
-        // // find all outgoing links from the JSON where the source URL is the URL ID of searchNode
-        // local_links = data.links.filter(link => {
-        //     return link.source === searchID
-        // })
-        console.log(searchNode)
-        local_links = searchNode[0].links
+    //store the articleData term as an object
+    articleData = { "search": articleTitle,
+                    "nodes": articleNodes,
+                    "links": articleLinks }
+    
+    articleSearchCache.push(articleData)
+    
+    return articleData
 
-        //push the base node into the first position of the new filteredNodes subset array
-        local_nodes.push(searchNode[0])
+    
+}
 
-        //add all target nodes that are linked from the main node
-        local_links.forEach(link => {
-            let target = link.target
-            data.nodes.filter(node => {
-                if (node.id === target) {
-                    local_nodes.push(node)
-                }
-            })
+function angle(x1, y1, x2, y2) {
+    var dy = y2 - y1;
+    var dx = x2 - x1;
+    var theta = Math.atan2(dy, dx); // range (-PI, PI]
+    theta *= 180 / Math.PI; // rads to degs, range (-180, 180]
+    // if (theta < 0) theta = 360 + theta; // range [0, 360)
+    return theta;
+  }
 
-        })
+function rotateLabel(labelI, xPos, yPos){
+    rotateVal = linkAngles[labelI]
+    if (xPos > 0 ){
+        // rotateReturn = 'rotate(0)'
+         rotateReturn = `rotate(${rotateVal},${xPos},${yPos})`
+    }   else {
+        // rotateReturn = 'rotate(0)'
+        rotateReturn = `rotate(${rotateVal+180},${xPos},${yPos})`
+    }
+    return rotateReturn
+}
 
-        //store the currentSearch term as an object
-        let currentSearch = {   "search": searchTerm,
-                                "nodes": local_nodes,
-                                "links": local_links }
+function setXpos(distX,textwidth) {
+    if ( distX > 0) {
+        returnX = distX + 12
+        // returnX = distX - textwidth - 12
+    }   else {
+        // returnX = distX + 12
+        returnX = distX - textwidth - 12
+    }
+    return returnX
+}
 
-        console.log(currentSearch)
-        return currentSearch
-
+function setPreviewArea(currentNode) {
+    
+    if(currentNode) {
+                
+        let title = currentNode.title;
+        let sepUrl = baseURL + currentNode.id;
+        let entryType = currentNode.entry_type;
+        let firstParaText= currentNode.first_paragraph;
+        let displayCut = "";
         
-    }
-    
-});
+        //only display the first 1000 characters of the node's intro paragraph
+        if (firstParaText.length > 1000 ) {
+            firstParaText = firstParaText.substring(0,1000);
+            lastPeriod = firstParaText.lastIndexOf('.')
+            firstParaText = firstParaText.substring(0,lastPeriod+1)
+            displayCut = `(Only the first ${firstParaText.length} characters of intro text are displayed.)`;
+        }   
+        
+        //select sidebar div from HTML 
+        let sidebar = d3.select("#sideBar")    
 
+        //set text of h3 heading
+        sidebar.select("h3")
+               .text(title)
+               .classed('sidebarh3',true)
+        
+        //select first paragraph from HTML, and set the text to firstParaText
+        let firstParagraph = sidebar.select("#intro")
+                                    .text(firstParaText)
+                                    .classed('firstParagraph',true)
+            
+        //if displayCut isn't empty, then append a new paragraph to firstParagraph indicating paragraph has been truncated.
+        if (displayCut !== "") {
+            firstParagraph.append("p")
+                            .text(displayCut)
+                            .classed('displayCut',true)
+        }
+
+        //add link to SEP article
+        sidebar.select("#link")
+        .html(`Read the full article at SEP:<br><a href="${sepUrl}" target="_blank">${title}</a>`)
+        .style('color', 'white')
+    }
+}
+
+function color(entryType){
+    let rgbValue = '';
+    if (entryType==='thinker') {
+        rgbValue = 'rgb(31, 119, 180)'
+    }   else    {
+        rgbValue = 'rgb(255, 127, 14)'
+        // rgbValue = 'rgb(255,255,0)'
+    }
+    return rgbValue
+}
