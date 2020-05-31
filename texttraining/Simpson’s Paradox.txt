@@ -1,0 +1,1162 @@
+Consider the following story:
+
+
+The label of each packet of FIXIT-Y-capsuls from the (imaginary)
+Globalfixit Pharmacuticals Ltd. carries the following recommended
+usage:
+
+Recommended for males and females with Condition Y, but not
+recommended for people with Condition Y.
+
+As the fine print on the label goes on to explain:
+
+clinical trials using FIXIT-Y showed a higher percentage of
+recoveries from Y when men took it compared with the men who took
+placebos, and similarly for women. But the group taking placebos in
+the total population had higher recovery rates overall. You can trust
+FIXIT to deliver evidence based pharmachology.
+
+The company also markets FIXIT-Z-capsuls. The label on these carry
+the advice that Z-capsuls are recommended for people who suffer from
+Z, but not for males and not for females. As the fine print on the
+label goes on to explain:
+
+ Clinical trials using FIXIT-Z showed that people taking it had
+higher recovery rates compared with those who took placebos. But both
+males and females who took placebos had higher recovery rates compared
+with the males and females who took FIXIT-Z. You can trust FIXIT to
+deliver evidence based pharmachology.
+
+
+While no capsul can be good for men and women, yet bad for people, or
+good for people while being bad for men and women, the imagined data
+(see below) on which FIXIT based its recommendations exhibit patterns
+that are both arithmetically possible and turn up in actual data sets.
+While there is nothing paradoxical about the existence of such data
+from the standpoint of arithmetic, they do pose problems for practical
+decision making (e.g., would you want to be treated with Fixit’s
+capsuls in light of the reported clinical trials?), for heuristics
+used in intuitive reasoning about probabilities, for inferences from
+data to causal relations, and more generally, for philosophical
+programs that aim to eliminate or reduce causation to regularities and
+relations between probabilities.
+
+The arithmetic, on which examples like FIXIT’s ill-judged
+recommendations are based, is unproblematic. In summary it is based
+on the fact that
+
+An association between a pair of variables can consistently be
+inverted in each subpopulation of a population when the population is
+partitioned, and conversely, associations in each subpopulation can be
+inverted when data are aggregated.
+
+
+Call this principle Simpson’s Reversal of Inequalities. Failure to
+recognise such reversals can lead to the abovementioned pitfalls about
+what to do, what to believe, what to infer, and what causes what.
+Even when actual and possible reversals are recognized, pitfalls
+remain. On a positive note, once the possibilities of Simpson’s
+Reversals are recognized, they provide a rich resource for
+constructing causal models that help to explain many facts that appear
+at first to be anomolous. Moreover, there is a test called the
+“back-door criterion” (Pearl 1993) which can be used to help
+resolve the question of whether one should base a decision on the
+statistics from the aggregate population or from the partitioned
+subpopulations.
+
+
+Section 1 provides a brief history of Simpson’s Paradox, a statement
+and diagnosis of the arithmetical structures that give rise to it, and
+the boundary conditions for its occurrence. Section 2 examines
+patterns of invalid reasoning that have their sources in Simpson’s
+Paradox and possible ways of countering its effects. A particularly
+important case where Simpson’s Paradox has been invalidly employed is
+discussed in Section 3. It has been mooted that paradoxical data
+provide counter-examples to the Sure Thing Principle in theories of
+rational choice. Why such data appear to provide counter-examples to
+the Sure Thing Principle is explained, and the appearance that they do
+so is dispelled. Section 4 discusses the roles and implications of
+paradoxical data for theories of causal inference and for analyses of
+causal relations in terms of probabilities. While the conclusions of
+this section are largely negative, Section 5 illustrates how
+apparently paradoxical data can support causal models for the
+evolution of traits that at first appear to be incompatible with a
+setting in which natural selection disadvantages individuals that
+exhibit the traits.
+ 
+1. Simpson’s Paradox: Its History, Diagnosis, and Boundary Conditions
+1.1 History
+
+
+In a seminal paper published in 1951, E. H. Simpson drew attention to
+a simple fact about fractions that has a wide variety of surprising
+applications (Simpson 1951). The applications arise from the close
+connections between proportions, percentages, probabilities, and their
+representations as fractions. While statisticians in the early 20th
+Century had known of the problems for statistics to which Simpson drew
+attention, it was his witty and surprising illustrations of them that
+earned them the title of being paradoxical (cf. Yule 1903). In 1934,
+Morris Cohen and Ernst Nagel introduced philosophers to one aspect of
+the problems posed by paradoxical data. They cited actual death rates
+in 1910 from tuberculosis in Richmond, Virginia and New York, New
+York that verified the following propositions (Cohen &
+Nagel
+ 1934):[1]
+
+
+
+The death rate for African Americans was lower in Richmond
+than in New York.
+
+
+The death rate for Caucasians was lower in Richmond than in
+New York.
+
+
+The death rate for the total combined population of African
+Americans and Caucasians was higher in Richmond than in New
+York.
+
+
+
+They next posed two questions about the data concerning mortality
+rates: “Does it follow that tuberculosis caused [italics
+added] a greater mortality in Richmond than in New York…” and
+“…are the two populations that are compared really
+comparable, that is, homogeneous?” (Cohen & Nagel 1934).
+After posing the questions, they left it as an exercise for the reader
+to answer them. Following the publication of Simpson’s paper,
+statisticians initiated a lively debate about the significance of facts
+like those that are verified by the tables Cohen and Nagel cited. The
+debate sought constraints on statistical practice that would avoid
+conundrums arising from actual and possible paradoxical data. However,
+this debate did not address the first question posed by Cohen and Nagel
+concerning causal inference. As Judea Pearl notes in his survey of the
+statistical literature on Simpson’s paradox, statisticians had an
+aversion to talk of causal relations and causal inference that was
+based on the belief that the concept of causation was unsuited to and
+unnecessary for scientific methods of inquiry and theory construction
+(Pearl 2000, 173–181).
+
+
+Philosophical interest in Simpson’s paradox was rekindled by Nancy
+Cartwright’s use of it in support of her claims that appeals to causal
+laws and causal capacities are required by scientific inquiry and by
+theories of rational choice (Cartwright 1979). She aimed to show that
+reliance on regularities and frequencies on which probability judgments
+can be based are not sufficient for representing causal relations. In
+particular, tests of scientific theories and philosophical analyses of
+causation and causal inference need to provide answers to questions
+like those posed by Cohen and Nagel: e.g., is it possible that
+tuberculosis caused greater mortality in Richmond than New York even if
+the mortality rates for each sub-population classified by race appears
+to suggest otherwise? If causal relations track regularities, what
+system of causal relations can achieve such effects? Once
+representations of causal relations that provide answers to questions
+like those posed by Cohen and Nagel are at hand, the representations
+turn out to have interpretations that provide causal models for a range
+of interesting and puzzling phenomena. These include causal models for
+the evolution of altruism as a stable trait in a population even though
+altruistic acts disadvantage those who perform them and advantage their
+competitors. (See Sober 1993, and Sober & Wilson 1998, which
+develop these themes in detail in the areas of population biology and
+sociobiology.) Examples of such models are formulated and discussed in
+Section 5.
+1.2 What is Simpson’s Paradox: A Diagnosis
+
+
+For some whole numbers we may have:
+a/bc/d(a+c)/(b+d)<A/B,<C/D, and>(A+C)/(B+D).a/b<A/B,c/d<C/D, and(a+c)/(b+d)>(A+C)/(B+D).\begin{align}
+a/b &amp;\lt A/B, \\
+c/d &amp;\lt C/D, \text{ and}\\
+(a + c)/(b + d) &amp;\gt (A + C)/(B + D).
+\end{align}
+
+
+Call this a Simpson’s Reversal of Inequalities.
+Below is an instructive illustration. The arithmetical inequalities on which
+it is based are:
+1/56/87/13<2/8<4/5>6/13.1/5<2/86/8<4/57/13>6/13.\begin{align}
+1/5 &amp;\lt 2/8 \\
+6/8 &amp;\lt 4/5 \\
+7/13 &amp;\gt 6/13. 
+\end{align}
+
+
+The following interpretation of the structure illustrates why it can
+give rise to perplexity. The example is loosely based on a
+discrimination suit that was brought against the University of
+California, Berkeley (see Bickle et al., 1975).
+
+
+
+Suppose that a University is trying to discriminate in favour of
+women when hiring staff. It advertises positions in the Department of
+History and in the Department of Geography, and only those departments.
+Five men apply for the positions in History and one is hired, and eight
+women apply and two are hired. The success rate for men is twenty
+percent, and the success rate for women is twenty-five percent. The
+History Department has favoured women over men. In the Geography
+Department eight men apply and six are hired, and five women apply and
+four are hired. The success rate for men is seventy-five percent and
+for women it is eighty percent. The Geography Department has favoured
+women over men. Yet across the University as a whole 13 men and 13
+women applied for jobs, and 7 men and 6 women were hired. The success
+rate for male applicants is greater than the success rate for female
+applicants.
+
+
+ 
+Men
+ 
+Women
+
+
+History
+1/5
+<<\lt
+2/8
+
+
+Geography
+6/8
+<<\lt
+4/5
+
+
+University
+7/13
+>>\gt
+6/13
+
+
+
+
+
+How can it be that each Department favours women applicants, and yet
+overall men fare better than women? There is a ‘bias in the
+sampling’, but it is not easy to see exactly where this bias
+arises. There were 13 male and 13 female applicants: equal sample sizes
+for both groups. Geography and History had 13 applicants each: equal
+sample sizes again. Nor does the trouble lie in the fact that the
+samples are small: multiply all the numbers by 1000 and the puzzle
+remains. Then the reversal of inequalities becomes fairly robust: you
+can add or subtract quite a few from each of those thousands without
+disturbing the Simpson’s Reversal.
+
+
+The key to this puzzling example lies in the fact that more
+women are applying for jobs that are harder to get. It is harder
+to make your way into History than into Geography. (To get into
+Geography you just have to be born; to get into History you have to do
+something memorable.) Of the women applying for jobs, more are applying
+for jobs in History than in Geography, and the reverse is true for men.
+History hired only 3 out of 13 applicants, whereas Geography hired 10
+out of 13 applicants. Hence the success rate was much higher in
+Geography, where there were more male applicants.
+1.3 Boundary Conditions for Simpson’s Reversals
+
+
+Simpson’s Reversal of Inequalities occurs for a wide range of
+values that can be substituted for aaa, bbb, ccc, ddd, AAA,
+BBB, CCC, DDD in the above schema. The values fall within a
+broad band that lies between two extremes: 
+
+
+On one extreme, slightly more women are applying for jobs
+that are much harder to get.
+
+
+ 
+Men
+ 
+Women
+
+
+History
+1/45
+<<\lt
+5/55
+
+
+Geography
+50/55
+<<\lt
+45/45
+
+
+University
+51/100
+>>\gt
+50/100
+
+
+
+
+On the other extreme, many more women are applying for jobs
+that are slightly harder to get.
+
+
+ 
+Men
+ 
+Women
+
+
+History
+4/5
+<<\lt
+90/95
+
+
+Geography
+94/95
+<<\lt
+5/5
+
+
+University
+98/100
+>>\gt
+95/100
+
+
+
+
+Further, the numerators and denominators of fractions that
+instantiate the schematic pattern can be uniformly multiplied by any
+positive number without perturbing the relations between the fractions.
+Fractions that exhibit these patterns correspond to percentages and
+probabilities. In their probabilistic form, Colin Blyth provides the
+following boundary conditions for Simpson’s Reversals (Blyth 1972). Let
+‘PPP’ represent a probability function, and take conditional
+probabilities to be ratios of unconditional probabilities in accordance
+with their orthodox definition; i.e., reading the ‘/’ in
+the context P(−∣…)P(−∣…)P(-\mid\ldots) as ‘given that’,
+P(A∣B)=P(A&B)/P(B), provided that P(B) is positive.P(A∣B)=P(A&B)/P(B), provided that P(B) is positive.
+P(A\mid B) = P(A \amp B)/P(B), \text{ provided that } P(B) \text{ is positive.}
+
+
+
+Blyth notes that from a mathematical standpoint, subject to the
+conditions
+P(A∣B&C)P(A∣B&∼C)≥δ⋅P(A∣∼B&C)≥δ⋅P(A∣∼B&∼C)P(A∣B&C)≥δ⋅P(A∣∼B&C)P(A∣B&∼C)≥δ⋅P(A∣∼B&∼C)\begin{align}
+P(A\mid B\amp C) &amp;\ge \delta \cdot P(A\mid {\sim}B\amp C) \\
+P(A\mid B\amp {\sim}C) &amp;\ge \delta \cdot P(A\mid {\sim}B\amp {\sim}C)
+\end{align}
+
+
+with δ≥1δ≥1\delta \ge 1, it is possible to have
+P(A∣B)≈0 and P(A∣∼B)≈1/δ.P(A∣B)≈0 and P(A∣∼B)≈1/δ.
+P(A\mid B) \approx 0 \text{ and } P(A\mid {\sim}B) \approx 1/\delta .
+
+
+
+On the assumption that the propositions of arithmetic are necessary,
+these possibilities are tantamount to existence conditions in
+arithmetic. The schema:
+
+ [If it is possible that AAA is necessary, then AAA]
+
+
+is valid in a large family of modal logics. The boundary conditions
+for Simpson’s Reversals allow that any probabilistic association
+between AAA and BBB can be inverted in some further partition of
+BBB. From the standpoint of arithmetic there is a partition
+{{\{C,∼∼{\sim}C}}\} within which associations between AAA and
+BBB are inverted. An important related consequence is that it is
+always mathematically possible to provide some condition or factor
+CCC that renders AAA probabilistically independent of BBB when
+CCC is conjoined with BBB as a condition on AAA and with
+∼B∼B{\sim}B as a condition on AAA. These facts of arithmetic carry no
+empirical significance by themselves. However, they do have
+methodological significance insofar as substantive empirical
+assumptions are required to identify salient partitions for making
+inferences from statistical and probability relationships.
+
+The need for substantive empirical assumptions arises in settings
+where there are instances of arithmetical possibilities that are
+marked out by Simpson’s Reversals in urn models and in possible
+and actual empirical settings. For example, consider an urn model for
+our story about the success rates for job applicants. The model
+consists of twenty-six balls. Each ball is labeled with one of the
+elements from the sets {M,∼M},{H,∼H}{M,∼M},{H,∼H}\{M, {\sim}M\}, \{H, {\sim}H\}, and {S,∼S}{S,∼S}\{S,
+{\sim}S\}, e.g., a given ball might be labeled [∼M,H,∼S][∼M,H,∼S][{\sim}M, H,
+{\sim}S] Assume that the labels are distributed to correspond to the
+distributions of job applicants. In trials of drawing balls from the
+urn with replacement, the associations between the MMM’s,
+HHH’s, and SSS’s in the sub-populations, and the
+reverse association between MMM’s and SSS’s in the
+overall population, are resilient. The resilient associations are due
+only to the structure of the model and do not have any causal
+significance. By way of contrast, substantive assumptions are required
+to draw inferences in other cases.
+
+
+Patterns in data that fall within the boundary conditions for
+Simpson’s Reversals of Inequalities can raise problems for testing and
+evaluating empirical hypotheses, e.g., testing the effectiveness and
+safety of medical procedures. A course of treatment for a malady that
+affects the staff of History and Geography can be correlated with a
+lower death rate for treated compared with untreated patients
+in History, and a lower death rate for treated compared with
+untreated patients in Geography; yet, the course of treatment may
+nevertheless correlate with a higher death rate when treated
+patients are compared with untreated patients overall. Conversely, a
+treatment can be correlated with higher mortality rates in each
+sub-population, while it is correlated with a lower mortality rate in
+the total population. In such cases it is far from clear what, if
+anything, to conclude from the correlations about the effectiveness and
+safety of the
+ treatment.[2]
+ Moreover, with patterns like those surmised
+for this example, different ways of partitioning the same data
+can produce different correlations that appear to be incompatible with
+the correlations under the initial way of partitioning the data. E.g.,
+under a partition by academic discipline, patients appear to fare worse
+when treated, even though there can be a positive correlation in the
+total population between treatments and recoveries. This is consistent
+with a positive correlation between treatments and recoveries when the
+population is partitioned by gender. While Historians and Geographers
+each fare worse given the treatment, males and females from the two
+Departments can each fare better given the treatment, and these facts
+are consistent with the combined population faring better, or with the
+combined population faring
+ worse.[3]
+
+
+The aforementioned possibilities are due to the fact that the
+following formulae are collectively consistent. Take ‘PPP’
+to be a probability function. Probability models can be provided that
+verify the consistency of the set consisting of the following
+formulae:
+P(A∣B)P(A∣B&C)P(A∣B&∼C)P(A∣B&D)P(A∣B&∼D)>P(A∣∼B)<P(A∣∼B&C)<P(A∣∼B&∼C)>P(A∣∼B&D)>P(A∣∼B&∼D)P(A∣B)>P(A∣∼B)P(A∣B&C)<P(A∣∼B&C)P(A∣B&∼C)<P(A∣∼B&∼C)P(A∣B&D)>P(A∣∼B&D)P(A∣B&∼D)>P(A∣∼B&∼D)\begin{align}
+P(A\mid B) &amp;\gt P(A\mid {\sim}B) \\
+P(A\mid B \amp C) &amp;\lt P(A\mid {\sim}B \amp C) \\
+P(A\mid B \amp {\sim}C) &amp;\lt P(A\mid {\sim}B \amp {\sim}C) \\
+P(A\mid B \amp D) &amp;\gt P(A\mid {\sim}B \amp D) \\
+P(A\mid B \amp {\sim}D) &amp;\gt P(A\mid {\sim}B \amp {\sim}D) \\
+\end{align}
+
+
+Similar inequalities are possible with signs reversed, and
+equalities that represent probabilistic independence are consistent
+with positive and/or negative associations in partitions of the
+populations. These facts are not paradoxical from an arithmetical point
+of view. However, regularities that can be represented by them cannot
+all be assigned causal significance, and probabilistic equalities that
+are sufficient for probabilistic independence cannot all be taken to
+represent causal independence.
+
+
+Standard statistical methods for significance testing offer no
+insurance against conflicting results when data are partitioned or
+consolidated. In a setting where the effectiveness of a new medical
+treatment is under test, the following data support rejecting the null
+hypothesis, at the .05 level, that treatment TTT makes no difference
+to recovery RRR, where the alternative to the null hypothesis is that
+treatment is favorable for
+ recovery.[4]
+
+RRR∼R∼R{\sim}R
+TTT369340
+∼T∼T{\sim}T152176
+
+However, in this model, when the population is further partitioned
+by gender, the opposite recommendation for males and for females is
+supported at the .05 level of significance.
+
+RMRMRM∼RM∼RM{\sim}RMR∼MR∼MR{\sim}M∼R∼M∼R∼M{\sim}R{\sim}M
+
+TTT
+48
+152
+321
+188
+∼T∼T{\sim}T
+73
+145
+79
+31
+
+
+
+Take the null hypothesis to be that there is no association between
+treatments and recoveries, and the alternative to the null hypothesis
+that treatment is less favorable for recovery than no
+treatment. Rejecting the null hypothesis falls within the .05 level of
+significance for both the MMM-tables and the ∼M∼M{\sim}M-tables. So,
+when the consolidated data are considered, treatment is favored, but
+when the population is partitioned by gender, no treatment is favored
+for both males and females. A further partition, e.g., a partition by
+age groups, can reverse the associations within partitions by
+gender. So treatments can be positively correlated with recoveries in
+the total population, negatively correlated with recoveries when the
+population is partitioned by gender, and positively correlated with
+recoveries when the population is partitioned by age. The generality
+of the boundary conditions for Simpson’s reversals of
+inequalities guarantees that there always are models in arithmetic
+that accomodate data and support conflicting
+recommendations. Arithmetic is silent on which partitions to take as
+the basis for evaluating conflicts between hypotheses given data and
+the ways data can be partitioned.
+2. Simpson’s Reversals of Inequalities as Sources of Invalid Reasoning
+
+
+Intuitive reasoning about percentages and probability relations is
+notoriously accident prone. The example that was based on the suit
+brought against Berkeley illustrated how a bias in hiring practices in
+each department of a university can be inverted when the data are
+pooled. But many people at least initially would deem it impossible
+that a higher percentage of males were successful in a setting where
+females had higher success rates in each department in which
+appointments were made. One way to view the flaw in intuitive
+reasoning that arises from Simpson’s Reversals is by noting that the
+representation of data from partitions of a population as fractions
+and the uses to which the fractions are put when data are pooled to
+get statistics on total populations is not guaranteed to maintain the
+relations between fractions within the partitions. Proper fractions
+have infinitely many equivalent representations. For example, 1/2=2/4=4/8=…2=2/4=4/8=…2 =
+2/4 = 4/8 =\ldots. Now recall the form of relations between
+fractions in terms of which Simpson’s Reversals were illustrated,
+i.e.,
+a/bc/d(a+c)/(b+d)<A/B,<C/D, and>(A+C)/(B+D).a/b<A/B,c/d<C/D, and(a+c)/(b+d)>(A+C)/(B+D).\begin{align}
+a/b &amp;\lt A/B, \\
+c/d &amp;\lt C/D, \text{ and}\\
+(a + c)/(b + d) &amp;\gt (A + C)/(B + D).
+\end{align}
+
+
+Now, treating terms as proper fractions, we can have a/b=2a/2ba/b=2a/2ba/b = 2a/2b,
+and A/B=5A/5BA/B=5A/5BA/B = 5A/5B; c/d=3c/3dc/d=3c/3dc/d = 3c/3d, and C/D=4C/4DC/D=4C/4DC/D = 4C/4D. However,
+when these equivalent representations are pooled, the resulting
+relations between fractions will often differ from the original
+relations. E.g., (2a+3c)/(2b+3d)(2a+3c)/(2b+3d)(2a + 3c)/(2b + 3d) can be more or less than
+(a+c)/(b+d)(a+c)/(b+d)(a + c)/(b + d). Hence, it is invalid to conclude that relations
+between percentages or ratios when data are pooled will conform to the
+regularities that are exhibited by the sets that comprise partitions
+of the data. Equivalent representations of ratios make different
+contributions when data are pooled.
+
+
+One way to arithmetically counter this difficulty is by
+‘normalizing’ the representations of data from
+sub-populations and only pooling the normalized representations of the
+data. Normalizing data counters the effects of skewing by providing
+constant denominators for the fractions that represent the data, and by
+representing the sub-populations that are compared as if they were of
+equal sizes in the relevant respects in terms of which they are
+compared. However, Simpson’s Reversals show that there are numerous
+ways of partitioning a population that are consistent with associations
+in the total population. A partition by gender might indicate that both
+males and females fared worse when provided with a new treatment, while
+a partition of the same population by age indicated that patients under
+fifty, and patients fifty and older both fared better given the new
+treatment. Normalizing data from different ways of partitioning the
+same population will provide incompatible conclusions about the
+associations that hold in the total population.
+
+
+A related point comes out even more vividly when fractions are
+interpreted as probabilities. It was noted above that a Simpson’s
+Reversal can take the following probabilistic form: It is possible to
+have
+P(A∣B)(A∣B&C)P(A∣B&∼C)>P(A∣∼B), where<P(A∣∼B&C) and<P(∼B&∼C).P(A∣B)>P(A∣∼B), where(A∣B&C)<P(A∣∼B&C) andP(A∣B&∼C)<P(∼B&∼C).\begin{align}
+P(A\mid B) &amp;\gt P(A\mid {\sim}B), \text{ where} \\
+(A\mid B \amp C) &amp;\lt P(A\mid {\sim}B \amp C) \text{ and}\\
+P(A\mid B \amp {\sim}C) &amp;\lt P({\sim}B \amp {\sim}C).
+\end{align}
+
+
+One way for intuitive reasoning to overlook this possibility is by
+overlooking the so-called law of total probability and its relevance
+to this setting. From the probability calculus we have the following
+equivalences that represent probabilities as weighted averages.
+P(A∣B)P(A∣∼B)=P(A∣B&C)P(B∣C)+P(A∣B&∼C)P(B∣∼C)=P(A∣∼B&C)P(∼B∣C)+P(A∣∼B&∼C)P(∼B∣∼C)P(A∣B)=P(A∣B&C)P(B∣C)+P(A∣B&∼C)P(B∣∼C)P(A∣∼B)=P(A∣∼B&C)P(∼B∣C)+P(A∣∼B&∼C)P(∼B∣∼C)\begin{align}
+P(A\mid B) &amp;= P(A\mid B \amp C)P(B\mid C) + P(A\mid B \amp {\sim}C)P(B\mid {\sim}C) \\
+P(A\mid {\sim}B) &amp;= P(A\mid {\sim}B \amp C)P({\sim}B\mid C) + P(A\mid {\sim}B \amp {\sim}C)P({\sim}B \mid {\sim}C)
+\end{align}
+
+
+Skewed weights for P(B∣C)P(B∣C)P(B\mid C), P(B∣∼C)P(B∣∼C)P(B\mid {\sim}C),
+P(∼B∣C)P(∼B∣C)P({\sim}B\mid C), and P(∼B∣∼C)P(∼B∣∼C)P({\sim}B\mid {\sim}C) create the range
+of possibilities that are marked out by the boundary conditions for
+Simpson’s Reversals. E.g., let
+P(A∣B)P(A∣∼B)=.54 and=.44P(A∣B)=.54 andP(A∣∼B)=.44\begin{align}
+P(A\mid B) &amp;= .54 \text{ and} \\
+P(A\mid {\sim}B) &amp;= .44
+\end{align}
+
+So, BBB is positively relevant to AAA. Let the weights that
+feature in the representation of these probabilities in terms of a
+factor CCC be as follows:
+P(B∣C)P(∼B∣C)P(B∣∼C)P(∼B∣∼C)=.28,=.72,=.66, and=.34P(B∣C)=.28,P(∼B∣C)=.72,P(B∣∼C)=.66, andP(∼B∣∼C)=.34\begin{align}
+P(B\mid C) &amp;= .28, \\
+P({\sim}B\mid C) &amp;= .72, \\
+P(B\mid {\sim}C) &amp;= .66, \text{ and} \\
+P({\sim}B\mid {\sim}C) &amp;= .34
+\end{align}
+
+
+Given these weightings, BBB will be positively relevant to
+AAA, but it will be negatively relevant to AAA in each of the
+cells provided by the partition {C,∼C}{C,∼C}\{C, {\sim}C\}. 
+ I.e.,[5]
+P(A∣B&C)P(A∣B&∼C)P(A∣∼B&C)P(A∣∼B&∼C)=.27,=.33,=.64, and=.66P(A∣B&C)=.27,P(A∣B&∼C)=.33,P(A∣∼B&C)=.64, andP(A∣∼B&∼C)=.66\begin{align}
+P(A\mid B\amp C) &amp;= .27, \\
+P(A\mid B\amp{\sim}C) &amp;= .33, \\
+P(A\mid {\sim}B\amp C) &amp;= .64, \text{ and} \\
+P(A\mid {\sim}B \amp {\sim}C) &amp;= .66
+\end{align}
+
+If intuitive reasoners generally ignore the roles that weights play or
+fail to play in their reasoning about probability, they are apt to be
+taken aback when Simpson’s Reversals turn up in actual or possible
+data. A disposition to ignore weightings in intuitive reasoning could
+arise from ignorance, habit, or as a defeasible heuristic when
+reasoning about probability relations. Of course it is an empirical
+question whether such oversight is the source of invalid reasoning, or
+whether another hypothesis better explains why many people find
+Simpson’s Reversals to be impossible at first, and why the reversals
+continue to be surprising even after their source has been explained
+to them.
+3. Do Paradoxical Data Provide Counter-examples to the Sure Thing Principle?
+
+
+The so-called Sure Thing Principle (hereafter STP) is fundamental
+for theories of rational decision. L. J. Savage provides the following
+formulation of it:
+
+If you would definitely prefer ggg to fff, either knowing that the
+event CCC obtained, or knowing that the event CCC did not obtain,
+then you definitely prefer ggg to fff (Savage 1954,
+21–2).
+
+
+
+In theories of rational choice in which preferences are ordered by
+the rule of maximizing expected utility, STP is a consequence of the
+fact that the expected utility of an option can be represented as a
+probabilistically weighted average of the expected utilities of
+mutually exclusive and collectively exhaustive ways the world could be
+on the assumption that the option is chosen. E.g., with
+‘EU’ representing a function that assigns expected
+utilities and ‘P’ a probability function,
+EU(A)=EU(A&B)P(B)+EU(A&∼B)P(∼B).EU(A)=EU(A&B)P(B)+EU(A&∼B)P(∼B).
+EU(A) = EU(A\amp B)P(B) + EU(A\amp {\sim}B) P({\sim}B).
+
+
+
+When you know that BBB holds, it becomes a parameter for the
+expected utility of AAA, and similarly when you know that
+∼B∼B{\sim}B holds. So if the expected value that is assigned to CCC
+is less than AAA on the assumption you know that BBB obtains, and
+similary on the assumption that BBB does not obtain, then the
+expected value of CCC is unconditionally less than the expected
+value of AAA.
+
+
+Now suppose that you are offered bets on applicants gaining jobs in
+the example concerning the two departments. Your options are to bet on
+a randomly drawn successful applicant being male, or to bet on a
+randomly drawn successful applicant being female. Let CCC be the
+event of applying for a job in History, and ∼C∼C{\sim}C be the event
+of applying for a job in Geography. (Every person in the relevant
+domain applies for exactly one position.) Given that the success rates
+for females were greater than that for males in both departments, does
+the STP recommend that you should back females as the bettor’s
+choice? One might (invalidly) reason as follows: given that females
+have a greater chance of success in their applications given CCC and
+given ∼C∼C{\sim}C, STP recommends a preference for bets on females in
+a lottery in which you are betting on the gender of successful
+applicants. Of course, this would be bad advice in the setting of the
+example, as the success rate for males was greater overall. Given a
+suitably large number of bets, a clever bookie could be assured of a
+handsome profit if bettors backed females in the competitions for
+jobs. Their success rate was lower than their male competitors’
+success rate overall despite being higher in each department.
+
+
+To see what has gone awry in the attempt to apply STP in this
+setting it suffices to note that a random draw from successful
+applicants is made from the mixture that contains males and
+females, and there are more males in the mixture. (Recall that females
+were applying in greater numbers for jobs that were harder to get.) It
+is insufficient for the applicability of the Principle that
+probabilities line up with females having a greater chance of success
+in each department. The Principle applies to preferences ,
+taken as weighted averages of utilities with probabilities supplying
+the weights. The presented options are
+
+(1)
+A randomly drawn successful applicant is female.
+
+(2)
+A randomly drawn successful applicant is male.
+
+
+
+
+To be told that a selected applicant applied for a position in
+History (C) or in Geography (∼(∼({\sim}C) does not affect the probabilities of
+success in the mixture. This is evident when the expected utilities of
+the options are explicitly represented as weighted averages. Using
+‘M’ for male, ‘∼∼{\sim}M’ for female, ‘S’
+for successful, and ‘C’ and ‘∼∼{\sim}C’ as above, the
+expected utilities for the options are as follows.
+EU(∼M&S)EU(M&S)=EU(∼M&S&C)P(C∣S&∼M)+EU(∼M&S&∼C)P(∼C∣S&∼M)=EU(M&S&C)P(C∣S&M)+EU(M&S&∼C)P(∼C∣S&M)(1)(2)(1)EU(∼M&S)=EU(∼M&S&C)P(C∣S&∼M)+EU(∼M&S&∼C)P(∼C∣S&∼M)(2)EU(M&S)=EU(M&S&C)P(C∣S&M)+EU(M&S&∼C)P(∼C∣S&M)\begin{align*}\tag{1}
+EU({\sim}M\amp S) &amp;= EU({\sim}M\amp S\amp C)P(C\mid S\amp {\sim}M) \\
+ &amp;\quad + EU({\sim}M\amp S\amp {\sim}C) P({\sim}C \mid S\amp {\sim}M) \\
+
+\tag{2}
+EU(M\amp S) &amp;= EU(M\amp S\amp C)P(C\mid S\amp M) \\
+ &amp; \quad + EU(M\amp S\amp {\sim}C) P({\sim}C\mid S\amp M)
+\end{align*}
+
+
+Given the figures that were used in the example, the probability
+relations between the weightings are as follows:
+P(C∣S&∼M)P(∼C∣S&∼M)>P(C∣S&M) and >P(∼C∣S&M).P(C∣S&∼M)>P(C∣S&M) and P(∼C∣S&∼M)>P(∼C∣S&M).\begin{align}
+P(C\mid S\amp {\sim}M) &amp;\gt P(C\mid S\amp M) \text{ and }\\
+P({\sim}C\mid S\amp {\sim}M) &amp;\gt P({\sim}C\mid S\amp M).
+\end{align}
+
+
+It is these relations that are the source of the illusion that STP
+selects Option 1. The probability of a successful female applicant
+having applied for a position in History is greater than that of her
+male competitor among the applicants in History, and similarly for
+females in Geography. If the candidates had been sorted by their
+applications to the respective departments, where females had higher
+success rates, and the drawing was done from a randomly chosen
+department (with repeated draws and replacement until a successful
+applicant is drawn) rather than from the mixture of successful
+applicants, then the best choice would be for the gender with the
+higher success rates in the respective departments, i.e.,
+females. Such an arrangement would not be affected by the fact that
+more women applied for jobs that were harder to get. But that is not
+the arrangement that has been stipulated for the bets where selection
+is made from the pooled successful applicants. The chances of
+selecting a male (or a female) from that mixture are
+independent of the department to which the successful applicants had
+applied. Accordingly, rational bettors will find STP to be
+inapplicable in the setting, because they will not have the
+preferences that its application requires, i.e., a preference for
+females, given that they applied for a job in History (C), and a
+preference for females, given that they applied for a job in Geography
+(∼C)(∼C)({\sim}C). For rational bettors,
+EU(∼M&S)=EU(∼M&S&C)=EU(∼M&S&∼C),EU(∼M&S)=EU(∼M&S&C)=EU(∼M&S&∼C),\begin{align}
+EU({\sim}M\amp S) &amp;= EU({\sim}M\amp S\amp C) \\
+  &amp;= EU({\sim}M\amp S\amp {\sim}C),
+\end{align}
+
+and similarly for MMM’s, while, on the figures provided in the
+example,
+EU(∼M&S)<EU(M&S).EU(∼M&S)<EU(M&S).
+EU({\sim}M\amp S) \lt EU(M\amp S).
+
+
+While Simpson’s Reversals do not support decisions that conflict with
+the Sure Thing Principle, they do pose problems of practical
+significance when decisions have to be taken about what to do. Should
+the associations in the total population of people guide decision
+making in a trial like that conducted by Fixit? Or should the
+associations in the subpopulations of males and females guide
+decisions about whether to take the medication? Recall that a
+different partition of the total population, e.g. by age, can exhibit
+associations like those in the total population, and the reverse of
+those in the partition based on gender. There are no a priori methods
+that answer questions about whether associations in aggregated data,
+or associations in partitions of aggregated data, are good bases for
+inference from causes to effects or for making decisions about what to
+do. Contingent hypotheses about the logical and causal structure of
+particular practical problems best serve as the decision maker’s
+guide. Given appropriate background information, the relations
+between, e.g. treatments and recoveries in the total population, might
+be the indicated basis for making treatment decisions. Given
+different background information, the relations between treatments and
+recoveries in a salient partition of the population may be idicated,
+contra the associations in the total population. In the absence of
+some contingent assumptions about logical and causal structures in
+particular cases, mere associations are not helpful in deciding what
+to do. So, while Simpson’s Reversals are not paradoxical from a
+logical point of view, they do point to conflicting associations that
+become genuinely paradoxical if they are all given causal
+significance.
+4. Simpson’s Reversals of Inequalities, Correlations, and Causation
+
+
+It is a commonplace that correlations between variables do not
+entail that they stand in causal relations. While some correlations are
+purely accidental, others can be lawful even when no causal connection
+obtains between the correlated variables—e.g., the correlation
+between falling barometers and rain is lawful because they are joint
+effects of a common cause, i.e., falling air pressure. Controlled
+experiments seek to expose correlations that are merely accidental.
+What then of robust correlations between variables that do not causally
+interact? Hans Reichenbach proposed that a robust correlation between
+variables is spurious [acausal] when there is a factor that
+‘screens off’ the correlation and serves as a common cause
+of the associated variables (Reichenbach 1971, Ch. 4). Say that AAA is
+associated with B if and only if they are not probabilistically
+independent, i.e., P(A∣B)≠P(A)P(A∣B)≠P(A)P(A\mid B) \ne P(A). Reichenbach proposed that such an
+association is spurious provided that there is a factor CCC such that
+P(A∣B&C)=P(A∣C)P(A∣B&C)=P(A∣C)P(A\mid B\amp C) = P(A\mid C).
+
+
+Simpson’s Reversal of Inequalities illustrates that from an
+arithmetical point of view, there always is a factor or proposition CCC
+that ‘screens off’ any correlation. The existence of such a
+factor cannot be sufficient for a correlation to be spurious. For
+example, suppose that the probability of AAA given BBB is greater than
+without BBB. The following diagram illustrates this possibility with
+probabilities corresponding to the proportional sizes of enclosed
+spaces with all of AAA represented by the enclosed rectangle that is
+intersected by the line dividing BBB from ∼B∼B{\sim}B.
+
+
+Figure 1. P(A∣B)>P(A∣∼B)P(A∣B)>P(A∣∼B)P(A\mid B) \gt P(A\mid {\sim}B)
+
+
+
+The boundary conditions for Simpson’s Reversals guarantee that
+there is a CCC that intersects equal parts of A&BA&BA\amp B and
+A&∼BA&∼BA\amp {\sim}B. In Section 1 it was noted that arithmetical
+possibilities are tantamount to existence conditions for arithmetical
+facts. Provided that a sample space can be partitioned sufficiently
+finely, the probabilistic relevance between AAA and BBB can be
+“washed out” by some arbitrary factor CCC within which
+the probabilities of A&BA&BA\amp B and A&∼BA&∼BA\amp {\sim}B are equal. The
+following diagram illustrates this arithmetical possibility:
+
+
+Figure 2. P(A∣B&C)=P(A∣∼B&C)P(A∣B&C)=P(A∣∼B&C)P(A\mid B\amp C) = P(A\mid {\sim}B\amp C)
+
+
+
+where CCC is represented by the parallelogram that is bisected by
+the boundary between BBB and ∼B∼B{\sim}B and comprises equal parts
+of A&BA&BA\amp B and A&∼BA&∼BA\amp {\sim}B. CCC is an arbitrary
+proposition or factor. As enclosed spaces correspond to probabilities,
+P(A∣B&C)=P(A∣∼B&C)P(A∣B&C)=P(A∣∼B&C)P(A\mid B\amp C) = P(A\mid {\sim}B\amp C). So, CCC
+‘screens off’ AAA from BBB; however, its existence is
+clearly insufficient to show that the correlation between AAA and
+BBB is spurious.  While ‘screening off’ may provide a
+necessary condition for showing that a correlation between variables
+is due to a common cause, this necessary condition is guaranteed to be
+fulfilled by the underlying arithmetic of the probability
+calculus. Further substantive conditions have to be provided over and
+above the probability relations between AAA, BBB, and CCC in order to
+identify CCC as a common cause of AAA and BBB.
+
+
+The inference that lawfully correlated variables are causally
+independent of each other if the correlation is due to a common cause
+is a special case of a more general view that causes increase the
+chances of their 
+ effects.[6]
+ When there is a common cause CCC of a correlation between variables
+BBB and AAA, BBB does not cause AAA; the raising of
+AAA’s chances is due to CCC, and while BBB might be a
+symptom of AAA, it is so by virtue of being a separate effect of
+CCC that precedes AAA. The following diagram illustrates these
+relationships. (Arrows represent the directions of causal
+connections.)
+
+
+Figure 3.
+BBB precedes AAA and CCC is a common cause of BBB and AAA
+
+
+
+Given CCC, BBB does not raise AAA’s chances. The underlying idea behind
+analyses of causation in terms of chance raising is that causes promote
+their effects. In deterministic settings, chances take only extreme
+values, and causes do not ‘raise’ an effects’ chances
+of occurring except in the degenerate sense that they raise the chances
+of their effects from zero without them to one with them (excluding
+cases of deterministic overdetermination). However, it is a contingent
+matter whether the world we inhabit is deterministic or
+indeterministic, and concepts of causation need to accommodate the
+latter possibility as well as the former. Then, representations of
+deterministic causation can be viewed as a special case of
+probabilistic causation in which causes are sufficient and necessary
+for their effects.
+
+
+In view of Simpson’s Reversals of Inequalities, probability
+relations between variables will vary widely under different partitions
+of populations or state spaces. This fact about probability relations
+provides an invaluable resource for the representation in probabilistic
+terms of the complex relations that hold between networks of causes and
+their effects. Causes not only can promote effects, but they can
+promote the absence of or inhibit effects that might occur in their
+absence. E.g., regular exercise inhibits or reduces the chances of
+cardiovascular disorders. Accordingly, whatever promotes regular
+exercise also promotes cardiovascular health even if it also promotes
+cardiovascular disease. Cartwright gives the following example. Smoking
+causes heart disease, but it also could cause smokers to take up
+exercise in greater numbers than non-smokers. In that case smoking
+could indirectly cause cardiovascular health while directly causing
+disease. With plus and minus signs indicating whether a cause promotes
+or inhibits an effect, the following diagram represents a causal set-up
+in which smoking could promote cardiovascular health while directly
+promoting disease.
+
+
+Figure 4.
+
+
+
+E.g., if smoking increases the chances of heart disease by 25%, but
+also increases the chances of regular exercise by 40% while exercise
+decreases the chances of disease by 70%, smokers will on balance
+benefit from their habit with respect to cardiovascular health. In this
+set-up, there could be a Simpson’s Reversal where smokers who exercise
+fare worse than non-smokers who exercise, and similarly for smokers who
+do not exercise compared with non-smokers, while the smokers’
+rates of disease are lower overall. The net causal effect of smoking on
+health is positive in the example due to the contribution of a third
+variable, exercising, that is an effect of smoking. It is the causal
+contributions of further variables that are the sources of Simpson’s
+Reversals in other causal set-ups where the effects of direct causal
+links are modified by the additional variables’ contributions.
+These include cases where direct effects are nullified by inhibitory
+effects of an accompanying factor, e.g., substances that are separately
+poisonous, acid and alkali, can interact to have no deleterious effect
+when they are taken together. Each acts as an antidote for the
+other.[7]
+ Further entanglements include cases where a
+cause that promotes an effect is accompanied by an inhibitory cause of
+the effect and they are both effects of a common cause. E.g.,
+
+
+Figure 5. EEE’s chance is unperturbed by CCCCCC, a common cause.
+
+
+
+An interpretation of this diagram: thrombosis can be an effect of
+pregnancy and it can also be an effect of some of the ingredients of
+birth control pills. Both pregnancy and the pills increase the chances
+of thrombosis. However, the pills decrease the chances of pregnancy,
+and the net effect on populations of women who take the pills could
+show no change in the frequency of thrombosis. Examples such as those
+that have been canvassed show that it is neither necessary nor
+sufficient for a causal relation between two variables that one raise
+the chances of the other. Cartwright (2001, 271) puts the matter in the
+following terms: ‘Causes can increase the probability of
+their effects; but they need not. And for the other way around: an
+increase in probability can be due to a causal connection; but
+lots of other things can be responsible as well.’
+
+
+Is Cartwright’s observation cause for pessimism about the program of
+analyzing causation and causal relevance in probabilistic terms? Not
+necessarily. It sets a problem about causal entanglements that are not
+tracked by probability relations and probabilistic entanglements that
+are not due to causal relations. The program of providing probabilistic
+representations of causal relations needs to provide conditions that
+disentangle causal networks. What is required is a way of locating the
+right partitions of populations, where the right ones are the
+ones whose probability relations do track causal connections while
+holding relevant background factors fixed. A number of different
+proposals have been put forward in the literature on probabilistic
+causation that aim to provide criteria for locating the right
+partitions of data for the purpose of identifying causal
+connections.
+
+
+The proposals fall into two broad categories: (1) Reductive
+proposals: these do not appeal to causal concepts and they aim to
+provide a filter on correlations that identifies which correlations are
+spurious. Correlations that are not spurious are meant to conform to
+intuitions about causal relations and to implement the roles that are
+intuitively assigned to causal relations.[8]
+ (2) Non-reductive
+proposals: these are unabashed about using causal concepts to
+distinguish between spurious and causal correlations. Proposals from
+this second group are generally skeptical about the Humean program that
+motivates reductive proposals, and set-ups that are instances of
+Simpson’s Reversals are one of their main critical scalpels (Cartwright
+1979, and especially Dupre & Cartwright 1988). Nevertheless, they
+too face the problem of providing a filter on correlations that marks
+out which of them are spurious, but they do not feel constrained to
+avoid reference to causal relations in providing criteria for selecting
+partitions that provide reliable data for causal inferences. In sum,
+both reductionists and anti-reductionists who endorse the program of
+representing causal relations in terms of probability relations propose
+that
+
+CCC causes EEE if and only if the probability of EEE is greater
+given CCC than given not CCC, provided that …X……X…\ldots X\ldots.
+
+
+
+The proviso is needed to filter cases where probability relations
+between CCC-type events and EEE-type events do not track causal relations.
+Their opinions divide on whether causal concepts need to or can be used
+without vicious circularity in spelling out the content of the proviso
+…X……X…\ldots X\ldots. Reductionists seek ways of spelling out the proviso
+in terms of homogenous reference classes, where homogeneity is spelled
+out in terms of robust correlations conditional on a set of factors
+that are held fixed. Anti-reductionists are quick to ask: which
+factors? To take all possible factors to be relevant is not only
+epistemologically intractable, but it can lead to silly conclusions
+insofar as all but absolutely fundamental causal processes can be
+manipulated by introducing some intervening factors. E.g., the
+probability of death given a heart attack is greater than without the
+heart attack, but the contribution of the heart attack is
+‘screened off’ in cases where the heart attack coincides
+with being run down by a truck. In this example, the chances of death
+are overdetermined. Cases of causal overdetermination are extreme
+examples of causal networks in which probabilistic relevance is washed
+out or inverted by the causal contributions of an exogenous variable.
+In the experimental sciences, attempts at isolating interactions
+between factors from intervening variables are standard procedure.
+However, what is achievable even in the best laboratory conditions will
+fall short of the ideal of showing that there are no intervening
+factors on which a correlation is dependent. To show the latter would
+require showing that a negative existential proposition is true.
+
+
+Anti-reductionists have a ready answer to the question of which
+factors have to be held fixed when evaluating probabilistic
+dependencies and probabilistic independence. They want all potentially
+causally relevant factors that are of interest to be held
+fixed for the purposes of identifying the probability relations between
+C and E that are due to and are apt for representing causal
+connections. According to this approach, reference classes that are
+causally homogenous provide the proper basis for evaluating probability
+relations. One then looks to background scientific theories and other
+knowledge of causal relations to determine whether reference classes
+are causally homogenous.[9]
+ In many cases, however, our curiosity about
+causal relations outstrips our current knowledge of causally relevant
+variables that need to be held fixed. Then, inferences to causal
+relations from statistical data that can always be counter-posed with
+reversed regularities in different partitions of the data can lead to
+inconsistent claims concerning causal relations.
+
+That said, reversals in data occur, researchers face the question of
+whether the associations in the aggregated data are spurious, or
+whether the associations in the partitioned data are spurious.
+Different causal models (represented by different directed acyclic
+graphs) will be apt to represent different answers in different cases
+(see the entry on
+ probabilistic causation). 
+ These models can be tested by interventions that isolate and control
+the values taken by variables that are ostensible causes of effects
+that are of interest to the researcher. Properly conducted experiments
+will isolate variables to be manipulated and then read off the effects
+of the manipulations (see the entry on
+ causation and manipulability). 
+The so-called “back-door criterion” (Pearl 1993) states
+precisely what is required for some variable to be suitably isolated
+for manipulation. So, the problems posed by Simpson reversals can be
+solved by testing different causal hypotheses that are consistent with
+the observed data where the tests by interventions provide a basis,
+over and above mere observations, for accepting some causal models as
+correct representations of causal connections and for rejecting others
+that have merely spurious associations. Simpson’s
+“paradox” is thus resolved in the sense that it is
+possible to test different causal hypotheses that reveal which
+associations are spurious. (For more on this method see Pearl
+2014.)
+5. Simpson’s Reversal of Inequalities in Evolutionary Settings
+
+
+Simpson’s Reversals of Inequalities have applications in economic
+theory and population genetics, especially in cases involving
+competition among businesses or organisms. In the above example of
+differential hiring of men and women, imagine that we were to map the
+women onto, say, ‘lemmings’ and the men onto, say,
+‘rats’. Imagine the lemmings to be altruistic and
+self-sacrificing, or alternatively imagine them to be irrational,
+inefficient or lazy—either way, by one means or another,
+imagine that they behave in ways that benefit their neighbours at their
+own expense. Imagine the rats to be selfish, rational and efficient,
+and regularly to gain benefits at the expense of their neighbours.
+
+
+Next, map the History Department onto Norway during a very severe
+winter in Norway, and suppose there are more rats than lemmings in
+Norway. Then life is tough for everyone in Norway, and it is even
+tougher for lemmings than for rats. Map the Geography Department onto
+Sweden which is in the midst of a very mild winter, and suppose there
+to be more lemmings than rats in Sweden. Then life is easier for
+everyone in Sweden, though it is even easier for free-riding and
+opportunistic rats than it is for lemmings. Finally, consider the
+reproductive rates for rats and lemmings in the total land mass of the
+two countries. (Or, if these ‘rats’ and
+‘lemmings’ were businesses, consider their relative
+bankruptcy rates.) The numbers might then display the same pattern
+that we described for hiring rates of men and women at the University
+of California:
+
+
+ 
+Lemmings
+ 
+Rats
+
+
+Norway
+
+(1×109)/(5×109)(1×109)/(5×109)(1\times 10^9)/(5\times 10^9)
+<<\lt
+
+(2×109)/(8×109)(2×109)/(8×109)(2\times 10^9)/(8\times 10^9)
+
+
+Sweden
+
+(6×109)/(8×109)(6×109)/(8×109)(6\times 10^9)/(8\times 10^9)
+<<\lt
+
+(4×109)/(5×109)(4×109)/(5×109)(4\times 10^9)/(5\times 10^9)
+
+
+Scandinavia
+
+(7×109)/(13×109)(7×109)/(13×109)(7\times 10^9)/(13\times 10^9)
+>>\gt
+
+(6×109)/(13×109)(6×109)/(13×109)(6\times 10^9)/(13\times 10^9)
+
+
+
+
+Lemmings are losing ground in Norway, and they are losing ground in
+Sweden; yet they are gaining ground in combined areas that constitute the two countries.
+
+
+The reason that lemmings are gaining ground in the combined area of the two countries is that
+more of the lemmings are living where the survival rate is
+higher. Note that the survival rate is higher there precisely
+because that is where more of the lemmings are living. Thus, if rats
+congregate together, the selfish efficiency of each rat will be bad not
+only for the poor lemmings in the neighborhood but also for other rats.
+Even if only slightly more of the rats are living in one
+region rather than another, if the benefits they gain at their
+neighbors’ expense become too extreme then this will
+reduce the survival rate of everyone in that neighborhood, rats
+included; this will precipitate a Simpson’s Reversal, and the number of
+rats will begin to go down globally when compared with lemmings.
+
+
+In both Darwinian evolutionary theory and much of economic theory, it
+is hard to see how ‘altruism’ (or, for that matter,
+systematic inefficiency) could evolve, or be sustained over the long
+term. That is, it is hard to see how a population could sustain
+heritable patterns of behaviour that benefit the competitors
+of an individual business or organisms at the expense of the long-term
+chances of survival or reproductive success for those individuals and
+others with the same dispositions. For this reason it is of
+considerable theoretical significance to explore the applications of
+Simpson’s Paradox, to see whether this might help to explain not only
+the altruism but also the irrationality, inefficiency, laziness and
+other vices that may prevail in populations, and that can cause a
+population to fall short of the economic rationalist’s or Darwinian’s
+ideal of the ruthlessly efficient pursuit by each individual of its
+own profits or long-term reproductive success. On balance, this is
+probably cheerful news.

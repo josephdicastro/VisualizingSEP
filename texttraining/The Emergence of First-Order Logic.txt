@@ -1,0 +1,1068 @@
+For anybody schooled in modern logic, first-order logic can seem an
+entirely natural object of study, and its discovery inevitable. It is
+semantically complete; it is adequate to the axiomatization of all
+ordinary mathematics; and Lindström’s theorem shows that it
+is the maximal logic satisfying the compactness and
+Löwenheim-Skolem properties. So it is not surprising that
+first-order logic has long been regarded as the “right”
+logic for investigations into the foundations of mathematics. It
+occupies the central place in modern textbooks of mathematical logic,
+with other systems relegated to the sidelines. The history, however,
+is anything but straightforward, and is certainly not a matter of a
+sudden discovery by a single researcher. The emergence is bound up
+with technical discoveries, with differing conceptions of what
+constitutes logic, with different programs of mathematical research,
+and with philosophical and conceptual reflection. So if first-order
+logic is “natural”, it is natural only in retrospect. The
+story is intricate, and at points contested; the following entry can
+only provide an overview. Discussions of various aspects of the
+development are provided by Goldfarb 1979, Moore 1988, Eklund 1996,
+Brady 2000, Ferreirós 2001, Sieg 2009, Mancosu, Zach &
+Badesa 2010, Schiemer & Reck 2013, the notes to Hilbert [LFL], and
+the encyclopedic handbook Gabbay & Woods 2009.
+ 
+1. George Boole
+
+The modern study of logic is commonly dated to 1847, with the
+appearance of Boole’s Mathematical Analysis of Logic.
+This work established that Aristotle’s syllogistic logic can be
+translated into an algebraic calculus, whose symbols Boole interpreted
+as referring either to classes or to propositions. His system
+encompasses what is today called sentential (or Boolean) logic, but it
+is also capable of expressing rudimentary quantifications. For
+instance, the proposition “All Xs are Ys” is
+represented in his system by the equation xy=xxy=xxy = x, with the
+multiplication being thought of either as an intersection of sets, or
+as logical conjunction. “Some Xs are Ys” is
+more difficult, and its expression more artificial. Boole introduces a
+(tacitly: non-empty) set V containing the items common to
+X and Y; the proposition is then written xy=Vxy=Vxy =
+V (1847: 21). Boole’s system, in modern terms, can be viewed
+as a fragment of monadic first-order logic. It is first-order because
+its notational resources cannot express a quantification that ranges
+over predicates. It is monadic because it has no notation for
+n-ary relations. And it is a fragment because it cannot express
+nested quantifications (“for every girl, there exists a boy who
+loves her”). But these are our categories: not Boole’s.
+His logical system has no symbols corresponding to the quantifiers; so
+even to call it a restricted system of quantificational logic is
+anachronistic.
+
+The two principal augmentations to Boole’s system that produced
+a recognizably modern logic were (a) the introduction, in addition to
+one-placed predicates (“x is mortal”), of
+many-placed relations (“x is the brother of
+y”; “x lies between y and
+z”); and (b) the introduction of a notation for universal
+and existential quantification. 
+
+Two logicians working in the Boolean tradition carried out these
+steps. The first step was partially carried out by Augustus De Morgan
+(in De Morgan 1864). The second was carried out by C. S. Peirce (in
+Peirce 1885). Working entirely independently, Gottlob Frege carried
+out both steps simultaneously in his Begriffsschrift of 1879.
+The subsequent history for several decades is a branching structure,
+with numerous researchers working in different traditions and only
+partially aware of one another’s accomplishments.
+2. Charles S. Peirce
+
+Peirce worked in the algebraic tradition of Boole. His first logic
+papers appeared in 1867;
+they simplify Boole’s system, re-interpret union or logical
+addition A+BA+BA+B so that it applies also when A and B
+are not disjoint, correct several mistakes, and explore connections
+between logic, arithmetic, and algebra. 
+
+Three years later, in his “Description of a Notation for the
+Logic of Relatives” (1870) Peirce produced a major expansion of
+Boole’s system. De Morgan had pointed out (De Morgan 1864) that
+the Aristotelian syllogistic was incapable of handling such inferences
+as, “If every man is an animal, then every head of a man is a
+head of an animal”. De Morgan had introduced a logic of
+relations, defined the converse and the contrary of a relation, and,
+for relations such as “X is a lover of Y”
+and “Z is a servant of W”, had explored such
+compositions of relations as “x is the lover of a servant
+of y”. This work successfully expanded the Aristotelian
+syllogistic logic, but was also limited in several ways. First, De
+Morgan only operated with binary relations. Secondly, his notation was
+clumsy. (For example: if X..LYX..LYX\pdot\pdot LY designates that X
+is a lover of Y, then X.LYX.LYX\pdot LY designates that X is
+not a lover of Y. De Morgan has no separate sign for negation,
+nor for the Boolean propositional connectives.)
+
+Peirce noticed these shortcomings, and in 1870 showed how to extend
+Boole’s logic to cover 
+
+
+the whole realm of formal logic, instead of being restricted to that
+simplest and least useful part of the subject, the logic of absolute
+terms, which, when [Boole] wrote, was the only formal logic known.
+
+
+
+He studied the composition of relations with each other and with
+class-terms, and worked out the principal laws for the resulting
+abstract algebraic system, ultimately showing that the linear
+associative algebras studied by his father (Benjamin Peirce, the
+Harvard mathematician) could all be defined in terms of what he called
+“elementary relatives”. His 1870 system, although a large
+advance both on Boole and on De Morgan, remains notationally awkward,
+and in retrospect it is clear that it needed the theory of
+quantification. But it was the first successful attempt to extend
+Boole’s system into the logic of relations.
+
+In 1880 Peirce described the procedure for reducing formulae of the
+sentential calculus to conjunctive and disjunctive normal form, and
+also in unpublished work demonstrated that the sentential calculus can
+be obtained from the single connective of joint denial (“neither
+p nor q”). His 1881, “On the Logic of
+Number”, examined the foundations of arithmetic, and analyzed
+the natural numbers in terms of discrete, linearly ordered sets
+without a maximum element. He gave informal recursive definitions of
+addition and multiplication, and proved that both operations were
+associative and commutative.
+
+In two remarkable papers, the short note 1883 and the longer “On
+the Algebra of Logic” of 1885, he introduced a modern notation
+for what he was the first to call the “quantifier”. He
+viewed his quantifiers (for which he used the symbols ΠΠ\Pi and
+Σ)Σ)\Sigma) as a generalization of the Boolean connectives, with the
+universal quantifier ΠΠ\Pi being interpreted as a (possibly
+infinite) conjunction, so that ΠxP(x)ΠxP(x)\Pi_x P(x) is understood as
+“a is P and b is P and c is
+P and …”. Similarly the existential quantifier
+ΣΣ\Sigma is understood as a (possibly infinite) sum: “a
+is P or b is P or c is P or
+…”. This flexible ΠΠ\Pi and ΣΣ\Sigma notation allowed
+him easily to express nested quantifications to any desired depth.
+Thus, in his notation, if lijlijl_{ij} represents “i is a
+lover of j”, ΣiΣjΣiΣj\Sigma_i \Sigma_j lijlijl_{ij} tells us
+that somebody loves somebody, whereas ΠiΣjΠiΣj\Pi_i \Sigma_j lijlijl_{ij}
+tells us that everybody loves somebody. (The ΣΣ\Sigma and ΠΠ\Pi
+notation is of course intended, in a Boolean spirit, to emphasize the
+analogy to arithmetical sums and products.)
+
+“On the Algebra of Logic” is remarkable for other reasons
+as well. It begins with an important passage (§2) on the
+propositional calculus, containing the first explicit use of two truth
+values. Peirce then describes a decision procedure for the calculus:
+
+
+
+[T]o find whether a formula is necessarily true substitute
+ff\mathbf{f} and vv\mathbf{v} for the letters and see whether it
+can be supposed false by any such assignment of values. (1885: 191)
+
+
+
+He gives a defense of material implication, and shows how to define
+negation in terms of implication and a special symbol for absurdity.
+In the next section (§3) he treats what he calls, following the
+Schoolmen, the “first-intentional logic of relations”. It
+is here that he coins the term “quantifier”; the
+propositional matrix of a quantified formula he calls its
+“Boolian”. In this section the quantifiers range only over
+the individuals of the universe; the “first-intentional
+logic” is thus first-order. Here, too, he was the first to
+discuss the rules for transforming a quantified formula into prenex
+normal form. The following section (§4) is headed
+“second-intentional logic”. There is a clear demarcation
+from the first-intentional logic of §3. Here the quantifiers are
+permitted to range over predicates; and he uses his new notation to
+state the modern second-order definition of identity: two objects are
+identical just in case they satisfy the same predicates.
+
+Peirce’s paper was in many respects far ahead of its time. His
+sharp distinction between propositional, first-intentional, and
+second-intentional logical systems was not to be equaled in clarity
+until Hilbert in his lectures of 1917/18. Peirce was also prescient in
+viewing the quantifiers as (possibly infinite) sums and products, a
+notation which Löwenheim was to credit with making possible the
+discovery of the Löwenheim-Skolem theorem, and which was to play
+a significant role in the formulation of Hilbert’s
+proof-theoretic program in the 1920s. (Peirce’s logical ideas
+were well-known in continental Europe, having been taken up by Ernst
+Schröder and given wide circulation in the three volumes of his
+Algebra der Logik (1890–95).) 
+
+Peirce drew these various distinctions—and, in particular, the
+distinction between first-order and second-order logic—with
+greater clarity than any logician until Hilbert’s lectures in
+1917. And, unlike Hilbert, Peirce was steeped in the writings of the
+medieval logicians. He fully appreciated the philosophical
+significance of the arguments about the reality of universals: this is
+clearly why he drew such a sharp differentiation between the logic of
+§2 and that of §3. It was thus open to him to make (or, at
+least, to consider) a nominalist argument on behalf of first-order
+logic, and against second-order logic. But apart from a few incidental
+remarks, he himself did not further develop his observations on
+second-intentional logic, and it seems likely that the modern
+distinction between first-order and higher-order logic was a
+re-discovery made independently in 1917/18 by Hilbert, rather than
+being directly inspired by Peirce.
+3. Gottlob Frege
+
+Frege’s logical contributions grew out of a different soil, and
+were made (as far as can be determined) entirely independently of the
+Anglo-American algebraic tradition of Boole, De Morgan, and Peirce.
+Instead they have their root in the work on the foundations of real
+analysis by such German mathematicians as Dirichlet, Riemann,
+Weierstrass, and Heine. From this tradition Frege took, first, the
+idea of providing a rigorous foundation for mathematics (a project
+that, in his hands, became the project of showing that arithmetic can
+be grounded in the laws of logic); and, secondly, the central
+mathematical concepts of function and variable,
+which he employed in place of the Aristotelian concepts of
+predicate and subject. This latter step led him
+naturally to a logic of relations (since the functions considered in
+mathematics were multivariate); and his analysis of mathematical
+inference also led him to introduce a notation for quantificational
+logic. (Mathematicians such as Weierstrass, in his analysis of the
+limit concept, was already sensitive to the “nesting” of
+quantifiers, and the importance of their ordering: to the difference,
+for example, between saying “for every εε\varepsilon there
+exists a δδ\delta”, and “there exists a δδ\delta such
+that for every εε\varepsilon”. What was required now, and what
+Frege supplied, was a formal language to express and make explicit the
+quantificational inferences already present in the work of the German
+analysts.) So, at a single stroke, in the Begriffsschrift of
+1879, Frege took the two major steps beyond traditional
+logic—relations and quantifiers—that the algebraic
+tradition had taken separately and decades apart. 
+
+Frege’s logical system had several advantages over Peirce. His
+axiomatic presentation of a purely syntactic calculus was considerably
+more precise, and his analysis of the number concept went deeper. His
+system permitted both variables and functions to be quantified. This
+was a central component of his program for providing a logical
+foundation for arithmetic, since, in his logical system, identity,
+cardinal number, and mathematical induction were all defined
+via higher-order quantifications. In his Grundlagen
+(1884) he distinguishes between concepts of different order, so that
+if concept A falls under concept B, then B is of
+“second-order” (§53). In the more technical treatment
+in his Grundgesetze (1893) he considered third-order
+quantifications, though his actual derivation of arithmetic proceeded
+entirely within second-order logic.
+
+Frege was thus one of the first logicians to recognize the importance
+of a hierarchy of logical levels. His discovery was virtually
+simultaneous with Peirce’s, and arrived at entirely
+independently, in pursuit of different goals. Frege’s discovery
+was to have the greater impact. It formed the basis for
+Russell’s theory of types (and also, decades later, influenced
+Carnap, who studied logic with Frege).
+
+But although Frege distinguished between logical levels, he did not
+isolate the portion of his quantificational system that ranges only
+over variables of the first order as a distinct system of logic: nor
+would it have been natural for him to have done so. In this respect,
+there is a significant contrast with Peirce. Frege’s project was
+to show that arithmetic could be grounded in the laws of logic: for
+him, there was only one logic, and logic necessarily included the
+logic of higher-order concepts. Peirce, in contrast, rejected the
+notion of a single, over-arching logic, instead thinking in terms of
+logics that vary according to the “universe of discourse”.
+Largely for this reason he came closer in his 1885 paper to isolating
+the propositional calculus, the “logic of first
+intention”, and the “logic of second intention” as
+distinct systems, each worthy of study in its own right: in that
+regard, he was closer to modern conceptions than was Frege. There is a
+further and subtler difference. Peirce’s ΣΣ\Sigma and ΠΠ\Pi
+notation for the quantifiers was explicitly conceived of in terms of
+(possibly infinite) conjunctions and disjunctions of propositions
+about individuals. This is a highly suggestive conception that is hard
+to represent in Frege’s system of notation. Löwenheim was
+to exploit it in his early work in model theory, leading to technical
+discoveries that were ultimately to call attention to first-order
+logic. But all this work lay decades in the future, and neither Frege
+nor Peirce can be credited with a modern understanding of the
+difference between first-order and higher-order logics.
+4. Ernst Schröder
+
+Frege’s contributions were not immediately understood or
+appreciated, and in the closing decade of the century logic was
+dominated by the three volumes of Ernst Schröder’s
+Vorlesungen über die Algebra der Logik (1890–95).
+Schröder provided an encyclopedic treatment of the logical work
+of Boole and Peirce, systematizing and extending their results.
+Peirce’s quantifiers make their appearance in volume two, but
+the distinction between first-and second-order quantification is not
+drawn with comparable clarity. As Frege pointed out in his review
+(1895), Schröder’s notation did not distinguish set
+membership from the subset relation, and as a result it can be
+difficult to tell whether he intends a given quantification to range
+over the subsets of a domain (i.e., to be second-order) or over its
+elements (i.e., to be first-order). Schröder employs both
+second-order and first-order quantifications; and in his third volume
+he used the technique of expanding a second-order quantification into
+an infinite product of first-order quantifications—a technique
+that was a development of the Peircian product notation, and that was
+to furnish the starting point for the investigations of
+Löwenheim. But Schröder does not extract from his wider
+system a sub-system of first-order logic, and does not treat the
+distinction of orders as itself being of any great significance,
+either mathematically or philosophically. In this sense, he is less
+clear than Peirce’s paper of 1885. (A helpful analysis of
+Schröder’s logical work is contained in Brady 2000.)
+5. Giuseppe Peano
+
+In his 1889, Giuseppe Peano, independently of Peirce and Frege,
+introduced a notation for universal quantification. If a and
+b are propositions with the free variables x,y,…x,y,…x, y, \ldots,
+then aϽx,y,…baϽx,y,…ba \mathbin{\revc_{x, y,\ldots}} b symbolized: Whatever x,y,…x,y,…x,
+y, \ldots, may be, from the proposition a one deduces
+b. One hesitates to call this a notation for the universal
+quantifier, since the quantification is not severable from the sign
+for material implication: notationally, this is a considerable step
+backwards from Peirce. Peano moreover does not distinguish first-order
+from second-order quantification. The point of his essay was to
+present the principles of arithmetic in logical symbolism, and his
+formulation of the principle of mathematical induction can be seen, by
+our lights, to be second-order: but only tacitly. This was a
+distinction to which (again unlike Peirce) he seems to have attached
+no importance. He did, however, add a range of new symbols to
+mathematical logic which were to be influential on the work of
+Whitehead and Russell in Principia Mathematica; and one of
+the symbols was the notation ∃∃\exists for the existential
+quantifier. (Oddly, Peano did not introduce a parallel symbol for the
+universal quantifier. It seems to have been Whitehead who introduced
+the (x)(x)(x) notation in Principia, and Hilbert who introduced
+the symbol ∀∀\forall.)
+6. Alfred North Whitehead and Bertrand Russell
+
+Russell’s discovery in 1901 of the Russell Paradox led him
+within a few months, in a letter to Frege (Frege [PMC]: 144) to propose
+a tentative version of the theory of types. The central idea he took
+from Frege’s theory of functions of the first, second, and
+higher orders. Russell presented a version of his theory in an
+appendix to the Principles of Mathematics (1903), and then in
+a mature form in his “Mathematical Logic as Based on the Theory
+of Types” (1908), which provided the conceptual underpinnings
+for Principia Mathematica. Russell views the universe as
+striated into levels or types. The first type comprises the
+individuals; the second type comprises the “first-order”
+propositions whose quantifiers range over the individuals of the first
+type; in general, the quantifiers in propositions of the n+1st
+type range over propositions of the nth type. Russell’s
+system in fact comprises two distinct hierarchies: one to deal with
+the paradoxes of set theory (specifically, to prohibit sets from being
+elements of themselves); the other to deal with the semantical
+paradoxes (such as the paradox of the liar). This dual structure,
+branching in two directions, gives his theory the name “ramified
+theory of types”. In order to be able to establish classical
+analysis, he was forced to adopt the axiom of reducibility, which
+provides that any function of level n+1n+1n+1 is coextensive with a
+predicate of function of lower level. The system was immensely
+complicated; in time, at the hands of Chwistek, Ramsey, Carnap,
+Tarski, and Church, it was recognized that the hierarchy dealing with
+the semantical paradoxes could be pruned away, leaving the
+“simple theory of types”. (A survey of this evolution can
+be found in Church 1974, and detailed examinations of Russell’s
+theory in Landini 1998 and Linsky 2011.)
+
+Russell and Whitehead thus possessed a notation for the two
+quantifiers, as well as a distinction between quantifications of the
+first and higher types. But this is not the same as
+possessing a conception of first-order logic, conceived as a
+free-standing logical system, worthy of study in its own right. There
+were essentially two things blocking the way. First (and in contrast
+to Peirce), their object of study was not multiple logical systems,
+but logic tout court: they show no interest in splitting off
+a fragment for separate study, let alone in arguing that the
+first-order fragment enjoys a privileged status. On the contrary: as
+with Frege, the ambition of Principia was to demonstrate that
+mathematics can be reduced to logic, and for Whitehead and Russell
+logic encompassed the full apparatus of ramified type theory (together
+with the axioms of infinity, choice, and reducibility). Secondly,
+although Principia provided an axiomatization of type theory
+(and thus can be viewed as specifying a conception of deductive
+consequence), Whitehead and Russell thought of their system as an
+interpreted system, stating the truths of logic, rather than
+as a formal calculus in the sense of Hilbert. Hilbert was to use their
+axiomatization as the starting-point for his own axiomatizations of
+various systems of logic; but until the distinction between logic and
+metalogic had been formulated, it did not naturally occur to anybody
+to pose the metalogical questions of completeness, consistency, and
+decidability, or to investigate such matters as the relationship
+between deductive and semantic completeness, or failures of
+categoricity; and it was only once such notions became the focus of
+attention that the significance of first-order logic became
+apparent.
+7. Leopold Löwenheim
+
+In 1915, Löwenheim published his landmark “Über
+Möglichkeiten im Relativkalkül”. This paper, written
+in the tradition of the Peirce-Schroeder calculus of relatives,
+established the first significant metalogical theorem; from certain
+points of view, it marks the beginning of model theory. Löwenheim
+considered a class of what he called “counting
+expressions” (Zählausdrücke) whose
+quantifiers range only over the domain of objects in the universe, but
+not over relatives; he then proved that, for any such counting
+expression, if it is satisfiable, it is satisfiable in some
+denumerable domain. In modern terminology, his “counting
+expressions” are formulas of first-order logic; but his
+terminology shows no influence either from Peirce’s logic of
+“first intention”, or from Russell’s theory of
+types. Löwenheim, like all logicians of this era, did not possess
+the distinction between an object language and a metalanguage. His
+proof is difficult to follow, and the precise details of his
+theorem—of what he believed he had proved, and what he had, in
+fact, proved—have been the subject of extensive scholarly
+discussion. (A survey of the differing interpretations is provided by
+Mancosu, Zach, & Badesa 2009, and a detailed reconstruction of the proof itself by
+Badesa 2004.) The paper appears to have had no influence until Skolem
+sharpened and extended its results in his 1920. Löwenheim, like
+Peirce and Russell, did not isolate an axiomatic system encompassing
+first-order logic, nor did he draw a distinction between syntax and
+semantics. Still less does he argue that his class of “counting
+expressions” is in some way logically privileged, and provides a
+favored foundation for mathematics. The Löwenheim theorem was in
+time to be recognized as isolating a fundamental property of
+first-order logic. But the full implications of his result were not to
+become clear until later, after Hilbert had introduced the
+metamathematical study of logical systems. (Incidentally,
+Löwenheim credited the elegant ΣΣ\Sigma and ΠΠ\Pi symbolism
+of Peirce for suggesting the infinitary expansions that were necessary
+to his proof; and it is difficult to see how he could have obtained
+his theorem with any of the other quantificational notations then on
+offer. He was still vigorously defending the advantages of the
+Peirce-Schroeder notation against the notation of Principia
+as late as Löwenheim 1940.)
+8. David Hilbert and Paul Bernays
+
+Let us briefly take stock of the situation as it existed in 1915.
+Peirce had differentiated between first-order and second-order logic,
+but had put the distinction to no mathematical use, and it dropped
+from sight. Both Frege and Russell had formulated versions of
+multi-level type theory, but neither had singled out the first-order
+fragment as an object worthy of study. The American postulate
+theorists, Edward Huntington and Oswald Veblen, had formulated various
+notions of completeness and categoricity, and Veblen had remarked that
+axiomatic deducibility might diverge from semantic implication (Awodey
+& Reck 2002: 15–19). But Veblen did not possess a precise
+characterization of formal deduction, and his observation remained
+inert. Löwenheim had proved a deep theorem about what in
+retrospect could be characterized as first-order formulas,
+but had not isolated a system of first order logic. A similar
+point holds for Hermann Weyl, who in 1910 proposed (in effect) to use
+first-order logic to make precise the concept of “definite
+property” in Zermelo’s axiom of separation. But this, too,
+is a retrospective characterization, and Weyl’s interest was in
+set theory, not in the study of a system of first-order logic.
+
+The next large step was taken by David Hilbert in his lecture course
+Prinzipien der Mathematik, delivered in Göttingen in the
+winter semester of 1917/18. Hilbert had lectured and published on
+foundational topics in the years 1899–1905; in the intervening
+time, as he concentrated on other matters, the publications had
+ceased, though the extensive classroom lecturing continued. He kept up
+with current developments, and in particular was informed about the
+logical work of Whitehead and Russell, largely through his student
+Heinrich Behmann. In September, 1917, he delivered his programmatic
+lecture “Axiomatisches Denken” in Zürich calling for
+an axiomatic treatment of logic along the lines he had earlier
+explored in his axiomatization of geometry, and explicitly proposing
+metalogical investigations:
+
+
+When we consider the matter more closely, we soon recognize that the
+question of the consistency for integers and for sets is not one that
+stands alone, but that it belongs to a vast domain of difficult
+epistemological questions which have a specifically mathematical tint:
+for example (to characterize this domain of questions briefly), the
+problem of the solvability in principle of every mathematical
+question, the problem of the subsequent checkability of the results of
+a mathematical investigation, the question of a criterion of
+simplicity for mathematical proofs, the question of the relationship
+between content and formalism in mathematics and logic, and finally
+the problem of the decidability of a mathematical question in a finite
+number of operations. (Hilbert 1917: 412–413)
+
+
+It was on this trip to Zürich that he invited Paul Bernays to
+return to Göttingen as his assistant in foundational matters.
+Although Bernays had little previous experience in foundations, this
+turned out to be a shrewd choice, and the beginning of a close and
+fruitful research partnership.
+
+The Göttingen lectures that shortly followed the Zürich
+address (and that were recorded in an official protocol by Bernays)
+are a remarkable document, and mark the birth of modern mathematical
+logic. They are substantially the same as the published monograph
+known as “Hilbert and Ackermann” (1928), and even today,
+with modest supplementation, could serve as an introductory textbook
+for logic. Hilbert for the first time clearly distinguishes
+metalanguage from object language, and step-by-step presents a
+sequence of formal logical calculi of gradually increasing strength.
+Each calculus is carefully studied in its turn; its strengths and its
+weaknesses are identified and balanced, and the analysis of the
+weaknesses is used to prepare the transition to the next calculus. He
+begins with the propositional calculus, then moves to monadic
+quantificational logic (with an extended discussion of the calculus of
+classes, and of the Aristotelian syllogism), and then to the
+“function calculus”. 
+
+The function calculus is a system of (many-sorted) first-order logic,
+with variables for sentences as well as for relations. It is here, for
+the first time, that we encounter a precise, modern formulation of
+first-order logic, clearly differentiated from the other calculi,
+given an axiomatic foundation, and with metalogical questions
+explicitly formulated. Hilbert concludes his discussion of first-order
+logic with the remark: 
+
+
+The basic discussion of the logical calculus could cease here if we
+had no other end in view for this calculus than the formalization of
+logical inference. But we cannot be satisfied with this application of
+symbolic logic. Not only do we want to be able to develop individual
+theories from their principles in a purely formal way, but we also
+want to investigate the foundations of the mathematical theories
+themselves and examine how they are related to logic and how far they
+can be built up from purely logical operations and concept formations;
+and for this purpose the logical calculus is to serve us as a tool.
+(1917/18: 188)
+
+
+This leads him next to introduce higher-order logic, and thence to a
+consideration of logical paradoxes and their resolution through
+Russell’s ramified theory of types; the axiom of reducibility is
+briefly discussed and adopted as a foundation for mathematics. The
+lecture protocol ends with the sentence: 
+
+
+Thus it is clear that the introduction of the Axiom of Reducibility is
+the appropriate means to turn the calculus of levels into a system out
+of which the foundations for higher mathematics can be developed. 
+
+
+This sentence appeared essentially unchanged when the 1917 lectures
+were re-worked as the monograph (Hilbert & Ackermann 1928).
+
+In the course of his lectures, Hilbert addresses the metalogical
+questions he had stated in “Axiomatisches Denken”, and (at
+least tacitly) shows how the questions of completeness, consistency,
+and decidability are to be answered for the propositional case. The
+completeness question for first-order logic is not explicitly raised
+in Bernays’s record of the lectures, though an attentive reader
+would easily have recognized it as an open problem. The following
+summer, Bernays produced a Habilitation thesis in which he
+developed, with full rigor, a Hilbert-style, axiomatic analysis of
+propositional logic. He presents the axiomatic system as an
+uninterpreted formal calculus; provides it with a semantics; and then
+proves the completeness theorem linking the syntax to the semantics in
+the form, “Every provable formula is universally valid, and vice
+versa”. He then proceeds to investigate questions of
+decidability, consistency, and the mutual independence of various
+combinations of axioms.
+
+The Hilbert 1917 lectures and the 1918 Bernays Habilitation are a milestone in the
+development of first-order logic. In the lectures, for the first time,
+first-order logic is presented in its own right as an axiomatic
+logical system, suitable for study using the new metalogical
+techniques. It was those metalogical techniques that represented the
+crucial advance over Peirce and Frege and Russell, and that were in
+time to bring first-order logic into focus. But that did not happen at
+once, and a great deal of work still lay ahead. In the 1917/18
+lectures Hilbert’s sequence of logical calculi were presented as
+stepping-stones on the way to full higher-order ramified type theory,
+which he continued to regard as the “right” logical
+framework for investigating the foundations of mathematics. It was
+characteristic of Hilbert to break complex mathematical phenomena into
+their elements: the sequence of calculi can be viewed as a
+decomposition of higher-order logic into its simpler component parts,
+revealing to his students precisely the steps that went into the
+building of the full system. Although he discusses the functional
+calculus, he does not single it out for special attention. In other
+words (and as with Peirce three decades earlier) first-order logic is
+introduced primarily as an expository device: its importance was not
+yet clear.
+
+Moreover, Hilbert’s own treatment of the metalogical issues is
+somewhat hasty and informal. He experiments with several versions of
+the concept of “completeness”: one has the sense that he
+was rapidly breaking new ground, and was not yet certain which
+concepts would prove the most fruitful. His proof of the completeness
+of propositional calculus is a mere sketch, and relegated to a
+footnote; the parallel problem for first-order logic is not even
+raised as a conjecture. Even more strikingly, when Bernays eventually
+in 1926 published his Habilitation, he omitted his proof of the
+completeness theorem because (as he later ruefully said) the result
+seemed at the time straightforward and unimportant. (For discussion of
+this point, see Hilbert [LFL]: 229. For readily available general
+discussions, see Sieg 1999, Zach 1999, and the essays collected in Sieg 2013; for the original
+documents and detailed analysis, see Hilbert [LFL.)
+
+In other words, even in Göttingen in the 1920s a full
+understanding of the significance of the ideas Hilbert had introduced
+in 1917 was missing. The Hilbert school throughout the 1920s regarded
+first-order logic as a fragment of type theory, and made no argument
+for it as a uniquely favored system. It was not until the monograph
+Hilbert & Ackermann 1928 (and the contemporaneous “Bologna
+Lecture”, Hilbert 1928) that Hilbert explicitly called attention
+to the completeness of first-order logic as an open question. That set
+the stage for the work of Gödel: but before coming to that, we
+need to take a chronological step backwards. 
+9. Thoralf Skolem
+
+Skolem in the winter of 1915–16 visited Göttingen, where he
+discussed set theory with Felix Bernstein; there is no sign that he
+met Hilbert. He was already at this time familiar with
+Löwenheim’s theorem, and knew of its paradoxical
+implications for Zermelo’s axiomatization of set theory:
+specifically, that a first-order axiomatization of the theory of
+non-denumerable sets would have a denumerable model. He did not at the
+time publish on these topics because, as he later said:
+
+
+I believed that it was so clear that the axiomatization of set theory
+would not be satisfactory as an ultimate foundation for mathematics
+that, by and large, mathematicians would not bother themselves with it
+very much. To my astonishment I have seen recently that many
+mathematicians regard these axioms for set theory as the ideal
+foundation for mathematics. For this reason it seemed to me that the
+time had come to publish a critique. (Skolem 1922: appendix.)
+
+
+Skolem’s first major papers were his 1920 and especially his
+1922. In the first he proved (or re-proved) in a more perspicuous form
+the downward Löwenheim-Skolem theorem. In the second he provided
+a new proof of that result. He also criticized Zermelo’s axiom
+of separation, which had taken the form: Given a set S and a
+definite proposition ϕ(x)ϕ(x)\phi(x), there exists a set
+S’ of all elements s of S such
+that ϕ(s)ϕ(s)\phi(s). Here the concept of “definite
+proposition” was left somewhat imprecise. Skolem’s
+proposal was to identify “definite propositions” with the
+formulas of first-order logic (with identity). Although Skolem
+declared this identification to be “natural” and
+“completely clear”, he did not explicitly argue for the
+restriction of quantifiers to the first level. He then gave the
+earliest satisfactory first-order formulation of Zermelo’s set
+theory, and then applied the Löwenheim-Skolem result to obtain
+the Skolem paradox. 
+
+These technical results were of great importance for the subsequent
+debate over first-order logic. But it is important not to read into
+Skolem 1922 a later understanding of the issues. Skolem at this point
+did not possess a distinction between the object language and the
+metalanguage. And although in retrospect his axiomatization of set
+theory can be interpreted to be first-order, he nowhere emphasizes
+that fact. (Indeed, Eklund (1996) presents a compelling argument that
+Skolem did not yet clearly appreciate the significance of the
+distinction between first-order and second-order logic, and that the
+reformulation of the axiom of separation is not in fact as
+unambiguously first-order as it is often taken to be.) 
+
+Skolem’s remarks about first-order logic require careful
+interpretation (see, e.g., Ferreirós 2001: 470–74), but
+clearly must be viewed against the backdrop of the
+Grundlagenkrise of the 1920s, and of the debates between
+Hilbert, Brouwer, and Weyl. There are two broad tendencies within
+logic during these years, and they pull in opposite directions. One
+tendency is towards pruning down logical and mathematical
+systems so as to accommodate the criticisms of Brouwer and his
+followers. The aim was to avoid the paradoxes, to delimit the
+territory of “legitimate” mathematics, and to place it on
+secure foundations. Set theory was in dispute, and Skolem explicitly
+presented his 1922 results as a critique of set theoretical
+foundations. Weyl already in 1910 had been led by his examination of
+Zermelo’s system to formulate a set of logical principles that
+in retrospect (and despite the idiosyncratic notation) can be seen to
+be a form of first-order logic. In general, both Weyl and Skolem
+inclined, on methodological grounds, towards some sort of
+constructivism as a means of avoiding the paradoxes; and this meant
+that they viewed quantification over, say, the totality of subsets of
+an infinite set as something to be avoided: whatever one’s grasp
+on the notion of “all integers”, the notion of “all
+properties of integers” was far less firm. To put the matter
+slightly differently: the very point of axiomatizing set theory was to
+state its philosophically problematic assumptions in such a way that
+one could clearly see what they came to. But this aim would be
+compromised if one already presupposed in the background logic the
+problematical notion of “all subsets” that one was
+attempting to elucidate. One possibility was to restrict oneself to
+first-order logic; another, to adopt some sort of predicative
+higher-order system.
+
+Similar broadly constructivist tendencies were also very much in
+evidence in the proof theoretical work of Hilbert and Bernays and
+their followers in the 1920s. Already by the time of Hilbert’s
+1921/22 lectures Hilbert had identified the introduction of the
+(classical) quantifiers as the crucial step where the transfinite
+entered logic. Hilbert, like C. S. Peirce long before, thought of the
+quantifiers as infinite conjunctions and disjunctions, and from the
+early 1920s onwards it was well understood in Göttingen that, for
+the programmatic goals of the Hilbert consistency program to be
+carried out, a finitary analysis of the quantifiers was necessary. The
+epsilon-substitution method was the principal device Hilbert
+introduced in order to attempt to attain this result. (A survey of
+this research is provided by Sieg 2009 and in the introductory notes
+to Hilbert [LFL].)
+
+But despite these constructive tendencies, many logicians of the 1920s
+(including Hilbert) continued to regard higher-order type theory, and
+not its first-order fragment, as the appropriate logic for
+investigations in the foundations of mathematics. The ultimate hope
+was to provide a consistency proof for the whole of classical
+mathematics (including set theory). But, in the meanwhile, researchers
+still were somewhat unclear about certain basic distinctions. Hilbert
+at times fails to observe the distinction between a first-order
+axiom-schema and a second-order axiom; Brouwer’s intuitionism is
+sometimes identified with “finitism”; the relationships
+between completeness (in several senses), categoricity (also in
+several senses), and first-order and higher-order logic were not yet
+understood. Indeed, Gregory Moore points out that even Gödel, in
+his 1929 proof of the completeness of first-order logic, did not fully
+understand the notion of categoricity and its relationship to
+second-order logic (Moore 1988: 125).
+10. Kurt Gödel
+
+So matters remained unclear throughout the 1920s. But the
+constructivist ambitions of the Hilbert school, the focus on the
+analysis of the quantifiers, and the explicit posing of metalogical
+questions had made the emergence of first-order logic as a system
+worthy of study in its own right all but inevitable. The crucial
+technical breakthroughs came in 1929 and 1931 with the publication, by
+Gödel, first, of the completeness theorem for first-order logic,
+and then of the incompleteness theorems. With these results (and
+others that soon followed) it finally became clear that there were
+important metalogical differences between first-order logic and
+higher-order logics. Perhaps most significantly, first-order logic is
+complete, and can be fully formalized (in the sense that a sentence is
+derivable from the axioms just in case it holds in all models).
+First-order logic moreover satisfies both compactness and the downward
+Löwenheim-Skolem property; so it has a tractable model theory.
+Second-order logic does not. By the middle of the 1930s these
+distinctions were beginning to be widely understood, as was the fact
+that categoricity can in general only be obtained in higher-order
+systems. Lindström was later to show (1969) that no logical
+system satisfying both compactness and the Löwenheim-Skolem
+property can possess greater expressive power than first-order logic:
+so in that sense, first-order logic is indeed a “natural”
+entity.
+
+But the technical results alone did not settle the matter in favor of
+first-order logic. As Schiemer & Reck point out (2013), well into
+the 1930s, even after the principal metalogical results had been
+achieved, logicians such as Gödel, Carnap, Tarski, Church, and
+Hilbert & Bernays continued to use higher-order systems (generally
+in some version of the simple theory of types). In other words, even
+after the metalogical results there was a choice to be made,
+and the choice in favor of first-order logic was not inevitable. After
+all, the metalogical results can be taken to show a severe
+limitation of first-order logic: that it is not capable of
+specifying a unique model even for the natural numbers. Hilbert in
+1917/18 had treated first-order logic as a mere stepping-stone, and
+the metalogical results can be taken to confirm the wisdom of his
+approach: If you want categoricity, then you are forced to move to a
+higher-order system.
+
+At this point in the 1930s, however, several other strands of thinking
+about logic now coalesced. The intellectual situation was highly
+complex. The famous papers by Carnap, von Neumann, and Heyting at the
+1931 Königsberg congress had identified the logicist, formalist,
+and intuitionist schools: their debates were to shape thinking about
+the foundations of mathematics for the next several decades. A search
+for secure foundations, and in particular for an avoidance of the
+set-theoretical paradoxes, was something they shared, and that helped
+to tip the balance in favor of first-order logic. In the first place
+(as Weyl and Skolem had already pointed out, and as was at least
+implicit in the Hilbert program) there were good constructivist and
+philosophical reasons for avoiding higher-order quantification
+wherever possible, and for restricting one’s logic to the first
+order. Secondly, several unambiguously first-order formulations were
+now given of Zermelo-Fraenkel set theory, and also of
+von-Neumann-Bernays-Gödel set theory (which permits a finite
+axiomatization). The first-order nature of these theories was stressed
+in a number of publications from the 1930s: by Tarski (1935), Quine
+(1936), Bernays (1937), and Gödel (1940). As a practical matter,
+these first-order set theories sufficed to formulate all existing
+mathematical practice; so for the codification of mathematical proofs,
+there was no need to resort to higher-order logic. (This confirmed an
+observation that Hilbert had already made as early as 1917, though
+without himself fully developing the point.) Thirdly, there was an
+increased tendency to distinguish between logic and set theory, and to
+view set theory as a branch of mathematics. The fact that higher-order
+logic could be construed as (in Quine’s later phrase) “set
+theory in sheep’s clothing” reinforced the other
+tendencies: “true” logic was first-order; higher-order
+logic was “really” set theory. By the end of the decade, a
+consensus had been reached that, for purposes of research in the
+foundations of mathematics, mathematical theories ought to be
+formulated in first-order terms. Classical first-order logic had
+become “standard”.
+11. Conclusions
+
+Let us now try to draw some lessons, and in particular ask whether the
+emergence of first-order logic was inevitable. I begin with an
+observation. Each stage of this complex history is conditioned by two
+sorts of shifting background consideration. One is broadly
+mathematical: the theorems that had been established. The other is
+broadly philosophical: the assumptions that were made (explicitly or
+tacitly) about logic and about the foundations of mathematics. These
+two things interacted. Each thinker in the sequence starts with some
+more or less intuitive ideas about logic. Those ideas prompt
+mathematical questions: distinctions are drawn: theorems are proved:
+consequences are noted, and the philosophical understanding is
+sharpened. At each stage, the question, “What is logic?”
+(or: “What is the correct logic?”) needs to be
+assessed against both the mathematical and the philosophical
+background: it makes little sense to ask the question in the
+abstract.
+
+Let us now consider the question: When was first-order logic
+discovered? That question is too general. It needs to be broken
+down into three subsidiary questions:
+
+(α)(α)(\alpha) When
+was first-order logic first explicitly identified as a distinct
+logical system? This question has a relatively straightforward
+answer. First-order logic was explicitly identified by Peirce in 1885,
+but then forgotten. It was independently re-discovered in
+Hilbert’s 1917/18 lectures, and given wide currency in the 1928
+monograph, Hilbert & Ackermann. Peirce was the first to identify
+it: but it was Hilbert who put the system on the map.
+(β)(β)(\beta) When
+was first-order logic recognized as being importantly different from
+higher-order systems? This is a more complicated question.
+Although Hilbert isolated first-order logic, he did not treat it as
+especially significant, and he himself continued to work in type
+theory. An awareness of the fundamental metalogical differences
+between first-order and higher-order logic only began to emerge in the
+early 1930s, mostly, though not exclusively, at the hands of
+Gödel.
+(γ)(γ)(\gamma) How
+did first-order logic come to be regarded as a privileged logical
+system—that is, as (in some sense) the “correct”
+logic for investigations in foundations of mathematics? That
+question, too, is highly complicated. Even after the Gödel
+results were widely understood, logicians continued to work in type
+theory, and it took years before first-order logic attained canonical
+status. The transition was gradual, and cannot be given a specific
+date.
+
+
+Equipped with these distinctions, let us now ask: Why was
+first-order logic not discovered earlier?
+
+It is striking that Peirce, already in 1885, had clearly
+differentiated between propositional logic, first-order logic, and
+second-order logic. He was aware that propositional logic is
+significantly weaker than quantificational logic, and, in particular,
+is inadequate to an analysis of the foundations of arithmetic. He
+could then have gone on to observe that second-order logic is in
+certain respects philosophically problematic, and that, in general,
+our grasp on quantification over objects is firmer than our
+grasp on quantification over properties. The problem arises
+even if the universe of discourse is finite. We have, for example, a
+reasonable grasp on what it means to speak (in first-order terms) of
+all the planets, or to say that there exists a
+planet with a particular property. But what does it mean to talk
+(in second-order terms) of all properties of the planets?
+What is the criterion of individuation for such properties? Is the
+property of being the outermost planet the same as the property of
+being the smallest planet? What are we to say about negative
+properties? Is it a property of the planet Saturn that it is not equal
+to the integer 17? In that case, although there are only a finite
+number of planets, our second-order quantifiers must range over
+infinitely many properties. And so on. The Quinean objections are
+familiar. 
+
+Arguments of this sort had been made in the scholastic disputes
+between realists and nominalists: and Peirce was steeped in the
+medieval literature on these topics. He need not have gone so far as
+to make point (γ)(γ)(\gamma), i.e., to argue that first-order logic is
+specially privileged. That would in any case have run contrary to his
+logical pluralism. But he did have the tools to make point
+(β)(β)(\beta), and to emphasize that there is an important gulf
+separating second-order logic from first-order, just as there is an
+important gulf separating first-order logic from the Boolean
+propositional calculus. Why did he not make these points already in
+1885?
+
+Any answer can only be speculative. One factor, a minor one, is that
+Peirce was not himself a nominalist. Another is that he operated
+within a variety of logical systems: he was temperamentally eclectic,
+and not disposed to search for the “one true logic”. There
+are also technical considerations. Peirce, unlike Hilbert, does not
+present first-intentional logic as an axiomatized system, nor does he
+urge it as a vehicle for studying the foundations of mathematics. He
+does not possess the distinction between an uninterpreted, formal,
+axiomatic calculus and its metalanguage. As a result, he does not ask
+about questions of decidability, or completeness, or categoricity; and
+without the metamathematical results a full understanding of the
+differences in expressive power between first-order and second-order
+logic was not available to him. One of the strongest arguments against
+second-order logic—that quantification over all subsets of a
+denumerable collection entails quantification over a non-denumerable
+totality—could not even have been formulated until
+Cantor’s Theorem was known. The logical and set-theoretical
+paradoxes were not yet discovered, and Zermelo had not yet axiomatized
+the theory of sets: so Peirce lacked the acute sense of motivation to
+discover a “secure foundation for mathematics”. And of
+course Peirce had no inkling of the Löwenheim-Skolem theorems, or
+the Skolem paradox, or the sequence of metalogical theorems that were
+to bring first-order logic into sharp focus. He provided a flexible
+and suggestive notation that was to prove enormously fertile, and he
+was the first to distinguish clearly between first-order and
+second-order logic: but the tools for understanding the
+mathematical significance of the distinction did not yet
+exist. (As Henri Pirenne once remarked, the Vikings discovered
+America, but they forgot about it, because they did not yet need
+it.)
+
+A related point holds for Frege and Russell. They possessed the
+conception of a hierarchy of logical levels, and in principle they,
+too, could have isolated first-order logic, and thus have accomplished
+step (α)(α)(\alpha). But they never considered isolating the lowest
+level of the hierarchy as a free-standing system. There are both
+philosophical and mathematical reasons for this. As a philosophical
+matter, the logicist project aimed to show that “mathematics can
+be reduced to logic”: and they conceived of the entire hierarchy
+of types as constituting logic. And then, as a mathematical matter,
+second-order logic was necessary to their construction of the
+integers. So they had no compelling reason, either philosophical or
+mathematical, that would have led them to focus on the first-order
+fragment.
+
+There is here an instructive contrast with Peirce. Peirce, in the
+spirit of the 19th-century algebraists, was happy to
+explore a lush abundance of logical structures: his attitude was
+fundamentally pluralist. The logicists, working in the analytical
+tradition, were more concerned to discover what the integers actually
+are: their attitude was fundamentally monistic and
+reductionist. But in order to single out first-order logic as was done
+in the 1930s, two things were needed: an awareness that there were
+distinct logical systems, and an argument for preferring one to the
+other. Peirce had the pluralism: the logicists had the urge to find a
+“correct” system: but neither had both.
+
+Let us now turn to the question, Was the emergence of first-order
+logic inevitable? It is impossible to avoid counterfactual
+considerations, and the answer must be more speculative. And here,
+too, it is necessary to distinguish between the inevitability of the
+technical results (β)(β)(\beta), and the inevitability of point
+(γ)(γ)(\gamma).
+
+Let us start with point (β)(β)(\beta). By 1928, the metalogical results
+can fairly be said to have been inevitable. Hilbert & Ackermann
+had isolated and described first-order logic; the distinction between
+mathematics and meta-mathematics was by then well understood; they had
+shown how to prove the completeness of the propositional calculus; and
+they explicitly raised the completeness of first-order logic as an
+important open problem. It was certain that, within the next few
+years, some enterprising logician would provide an answer: as it
+happened, Gödel got there first. It would then have been an
+obvious next step to inquire about the completeness of higher-order
+systems. So within a few years of Hilbert & Ackermann the basic
+metalogical theorems would have been established.
+
+If that is correct, then Hilbert’s decisive step in the 1917/18
+lectures was not the isolation of first-order logic—i.e., not
+step (α)(α)(\alpha). That was a comparatively insignificant matter. That
+step had already been taken explicitly by Peirce, and tacitly by Weyl
+and Löwenheim. Hilbert did not treat it as important, and appears
+to have viewed it primarily as an expository device, a means of
+simplifying the presentation of the logic of Principia
+Mathematica. The important step in 1917 was rather the
+introduction of techniques of metamathematics, and the explicit posing
+of questions of completeness and consistency and decidability. To pose
+these questions for systems of logic was an enormous conceptual leap,
+and Hilbert understood it as such. His own first attempts, made in his
+1905 Heidelberg address, had
+collapsed under the criticisms of Poincaré, and he had
+struggled to find a satisfactory formulation. And even after
+he had introduced his metalogical distinctions in his papers of the
+1920s, logicians of the caliber of Russell and Brouwer and Ramsey had
+difficulty in understanding what he was attempting to do.
+This development was in 1917 anything but inevitable: and
+without the introduction of the metalogical techniques the history of
+logic and proof theory in the 1920s and 1930s would have looked very
+different. Would the Gödel theorems ever have been conceived?
+Would the work of Löwenheim or Skolem or Zermelo independently
+have led to an investigation of the metalogical properties of
+first-order logic? One can in retrospect imagine an alternative path
+to the technical results (β)(β)(\beta), but there is no reason to
+suppose that they were fated to emerge either when they did, or as
+they did.
+
+A subtler issue arises if we turn now to point (γ)(γ)(\gamma) and ask:
+Was it inevitable that first-order logic would come to be regarded
+as a “privileged” logical system? As we saw, the
+metalogical results of the 1930s do not settle the primacy of
+first-order logic. The “privileging” came later, and seems
+rather to have depended on philosophical considerations: the need to
+avoid the set-theoretical paradoxes, a search for secure foundations
+for mathematics, a desire to accommodate the objections of Brouwer and
+Weyl, a sense that higher-order logics were both methodologically
+suspect and avoidable. All these things show the continuing influence
+of the Grundlagenkrise of the 1920s, which did so much to set
+the terms of the subsequent philosophical understanding of the
+foundations of mathematics.
+
+It is therefore important to stress that an alternative history was
+possible, and that the Grundlagenkrise was entirely absent
+from Hilbert’s logical writings in 1917/18. The names of Brouwer
+and Weyl are nowhere mentioned. Hilbert is of course aware of the
+paradoxes (which he had known about since 1897), but had long believed
+that Zermelo’s axiomatization had shown how to avoid them. Nor
+do we find in his writings any quest for the “one true
+logic”. On the contrary. Both in 1917/18 and in the unpublished
+lecture notes from the early 1920s the emphasis is on using the new
+metalogical techniques to explore the strengths and weaknesses of a
+diversity of logical systems. The work is explicitly undertaken in the
+spirit of his studies of the axioms of geometry. He will take up a
+system, explore it for a while, then drop it to examine something
+else. In his pluralism and in his pragmatic, experimental attitude he
+is closer to Peirce than to the logicists.
+
+The Grundlagenkrise and his public, polemical exchanges with
+Brouwer came later, and they gave a distorted picture of the
+motivations behind his logical investigations. What was the impact of
+these philosophical debates on the technical aspects of his
+program? For the formulation of first-order logic, and for the posing
+of metalogical questions, the answer is easy: there was no impact
+whatsoever. The contents of Hilbert & Ackermann 1928 were already
+present in the 1917/18 lectures. As for Hilbert’s
+proof-theoretic research of the 1920s, the main lines of development
+emerged quite independently of Brouwer and Weyl. The polemics might
+have added a sense of urgency, but it is hard to detect any influence
+on the actual mathematics.
+
+So even if we imagine the philosophical Grundlagenkrise
+entirely removed from the picture, the technical results of the
+Hilbert school would not have been significantly affected. The
+completeness and incompleteness results would, in all likelihood, have
+arrived more or less on schedule. (It is worthwhile to note that
+Bernays and Hilbert had contemplated the possibility of various sorts
+of incompleteness as early as 1928: see the discussion by Wilfried
+Sieg in Hilbert [LFL]: 792–796.) But those results would have
+emerged in a very different philosophical climate. The incompleteness
+theorems would likely have been greeted as an important technical
+contribution within the broader Hilbert program, rather than as its
+dramatic refutation. Perhaps (as Angus Macintyre 2011 has suggested)
+they would have been viewed more like the independence results in set
+theory, with less talk about the limits of mathematical
+creativity.
+
+In other words, far from being inevitable, the emergence, towards the
+end of the 1930s, of first-order logic as a privileged system
+of logic depended on two things, each independent of the other. On the
+mathematical side, it depended on Hilbert’s introduction of
+metalogical techniques; on the philosophical side, it depended on the
+arguments of the Grundlagenkrise. Neither of these things was
+inevitable: nor was the fact that they occurred at roughly the same
+time. With a different history, Hilbert’s flexible attitude
+might have prevailed, and there might have been more emphasis on
+higher-order systems, or on the exploration of algebraic logics,
+infinitary logics, category-theoretic systems, and the like: in short,
+on logical pluralism. 
+
+It is worthwhile to observe that, as the philosophical concerns of the
+Grundlagenkrise have receded, and as new approaches from the
+direction of computer science and homotopy theory have entered the
+field, the primacy of first-order logic is open to
+reconsideration.

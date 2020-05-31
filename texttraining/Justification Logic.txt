@@ -1,0 +1,2078 @@
+You may say, “I know that Abraham Lincoln was a tall man. 
+” In turn you may be asked how you know. You would almost 
+certainly not reply semantically, Hintikka-style, that Abraham 
+Lincoln was tall in all situations compatible with your knowledge. 
+Instead you would more likely say, “I read about Abraham 
+Lincoln’s height in several books, and I have seen photographs of him
+next to other people. ” One certifies knowledge by providing a 
+reason, a justification. Hintikka semantics captures knowledge as 
+true belief. Justification logics supply the missing third component 
+of Plato’s characterization of knowledge as justified true 
+belief.
+ 
+1. Why Justification Logic?
+
+
+Justification logics are epistemic logics which allow knowledge and 
+belief modalities to be ‘unfolded’ into justification
+terms: instead of ◻X□X\Box X one writes 
+t:Xt : X, and reads it as “XX is justified
+by reason tt”. One may think of traditional modal 
+operators as implicit modalities, and justification terms as
+their explicit elaborations which supplement modal logics 
+with finer-grained epistemic machinery. The family of justification 
+terms has structure and operations. Choice of operations gives rise 
+to different justification logics. For all common epistemic logics 
+their modalities can be completely unfolded into explicit 
+justification form. In this respect Justification Logic reveals and 
+uses the explicit, but hidden, content of traditional Epistemic Modal
+Logic.
+
+
+Justification logic originated as part of a successful project to 
+provide a constructive semantics for intuitionistic 
+logic—justification terms abstracted away all but the most 
+basic features of mathematical proofs. Proofs are justifications in 
+perhaps their purest form. Subsequently justification logics were 
+introduced into formal epistemology.
+This article presents the general range of justification logics as 
+currently understood. It discusses their relationships with 
+conventional modal logics. In addition to technical machinery, the 
+article examines in what way the use of explicit justification terms 
+sheds light on a number of traditional philosophical problems. The 
+subject as a whole is still under active development. What is 
+presented here is a snapshot of it at the time of writing.
+
+
+The roots of justification logic can be traced back to many different
+sources, two of which are discussed in detail: epistemology and 
+mathematical logic.
+1.1 Epistemic Tradition
+
+
+The properties of knowledge and belief have been a subject for formal
+logic at least since von Wright and Hintikka, (Hintikka 1962, von 
+Wright 1951). Knowledge and belief are both treated as modalities in 
+a way that is now very familiar—Epistemic Logic. But 
+of Plato’s three criteria for knowledge, justified, true, 
+belief, (Gettier 1963, Hendricks 2005), epistemic logic really 
+works with only two of them. Possible worlds and indistinguishability
+model belief—one believes what is so under all circumstances 
+thought possible. Factivity brings a trueness component into 
+play—if something is not so in the actual world it cannot be 
+known, only believed. But there is no representation for the 
+justification condition. Nonetheless, the modal approach has been 
+remarkably successful in permitting the development of a rich 
+mathematical theory and applications, (Fagin, Halpern, Moses, and 
+Vardi 1995, van Ditmarsch, van der Hoek, and Kooi 2007). Still, it is
+not the whole picture.
+
+
+The modal approach to the logic of knowledge is, in a sense, built 
+around the universal quantifier: XX is known in a situation 
+if XX is true in all situations indistinguishable 
+from that one. Justifications, on the other hand, bring an 
+existential quantifier into the picture: XX is known in a 
+situation if there exists a justification for XX in 
+that situation. This universal/existential dichotomy is a familiar 
+one to logicians—in formal logics there exists a proof for a 
+formula XX if and only if XX is true in all models 
+for the logic. One thinks of models as inherently non-constructive, 
+and proofs as constructive things. One will not go far wrong in 
+thinking of justifications in general as much like mathematical 
+proofs. Indeed, the first justification logic was explicitly designed
+to capture mathematical proofs in arithmetic, something which will be
+discussed further in Section 1.2.
+
+
+In Justification Logic, in addition to the category of formulas, 
+there is a second category of justifications. Justifications
+are formal terms, built up from constants and variables using various
+operation symbols. Constants represent justifications for commonly 
+accepted truths—typically axioms. Variables denote unspecified 
+justifications. Different justification logics differ on which 
+operations are allowed (and also in other ways too). If tt is
+a justification term and XX is a formula, 
+t:Xt : X is a formula, and is intended to be read:
+
+tt is a justification for X.
+
+
+
+One operation, common to all justification logics, is 
+application, written like multiplication. The idea is, if 
+ss is a justification for A→BA \rightarrow B and 
+tt is a justification for AA, then 
+[s⋅ts\cdot t] is a justification for 
+ BB[1].
+ That is, the validity of the following is generally assumed:
+s:(A→B)→(t:A→[s⋅t]:B).\tag{1}
+s :( A \rightarrow B ) \rightarrow ( t : A \rightarrow [ s\cdot t ]: B).
+
+
+
+This is the explicit version of the usual distributivity of knowledge
+operators, and modal operators generally, across implication:
+◻(A→B)→(◻A→◻B).\tag{2}
+\Box ( A \rightarrow B ) \rightarrow ( \Box A \rightarrow \Box B).
+
+
+
+In fact, formula (2) is behind many of the problems of logical 
+omniscience. It asserts that an agent knows everything that is 
+implied by the agent’s knowledge—knowledge is closed under 
+consequence. While knowable-in-principle, knowability, is closed 
+under consequence, the same cannot be said for any plausible version 
+of actual knowledge. The distinction between (1) and (2) can be 
+exploited in a discussion of the paradigmatic Red Barn Example of 
+Goldman and Kripke; here is a simplified version of the story taken 
+from (Dretske 2005).
+
+  Suppose I am driving through a neighborhood in which, unbeknownst to
+  me, papier-mâché barns are scattered, and I see that
+  the object in front of me is a barn. Because I have barn-before-me
+  percepts, I believe that the object in front of me is a barn. Our
+  intuitions suggest that I fail to know barn. But now suppose that
+  the neighborhood has no fake red barns, and I also notice that the
+  object in front of me is red, so I know a red barn is there. This
+  juxtaposition, being a red barn, which I know, entails there being a
+  barn, which I do not, “is an embarrassment”.
+
+
+
+In the first formalization of the Red Barn Example, logical 
+derivation will be performed in a basic modal logic in which ◻\Box  
+is interpreted as the ‘belief’ modality. Then some of the
+occurrences of ◻\Box  will be externally interpreted as 
+‘knowledge’ according to the problem’s description. Let 
+BB be the sentence ‘the object in front of me is a 
+barn’, and let RR be the sentence ‘the object in 
+front of me is red’.
+
+
+◻B\Box B, ‘I believe that the object in front of
+    me is a barn’;
+  
+
+◻(B∧R)\Box ( B \wedge R), ‘I believe that the
+    object in front of me is a red barn’.
+  
+
+
+
+At the metalevel, 2 is actually knowledge, whereas by the problem 
+description, 1 is not knowledge.
+
+
+◻(B∧R→B)\Box ( B \wedge R \rightarrow B), a
+    knowledge assertion of a logical axiom.
+  
+
+
+
+Within this formalization, it appears that epistemic closure in its
+modal form (2) is violated:line 2, ◻(B∧R)\Box ( B \wedge R ), and line
+3, ◻(B∧R→B)\Box ( B \wedge R \rightarrow B) are cases of knowledge whereas
+◻B\Box B (line 1) is not knowledge. The modal language here does not
+seem to help resolving this issue.
+
+
+Next consider the Red Barn Example in Justification Logic where 
+t:Ft : F is interpreted as ‘I 
+believe FF for reason tt’. Let uu be a
+specific individual justification for belief that BB, and vv,
+for belief that B∧RB \wedge R. In addition, let aa be a
+justification for the logical truth B∧R→BB \wedge R \rightarrow B. Then
+the list of assumptions is:
+
+
+u:Bu : B, ‘uu is a reason to believe
+    that the object in front of me is a barn’;
+  
+
+v:(B∧R)v :( B \wedge R), ‘vv is a
+    reason to believe that the object in front of me is a red
+    barn’;
+  
+
+a:(B∧R→B)a :( B \wedge R \rightarrow B).
+  
+
+
+
+On the metalevel, the problem description states that 2 and 3 are 
+cases of knowledge, and not merely belief, whereas 1 is belief which 
+is not knowledge. Here is how the formal reasoning goes:
+
+
+a:(B∧R→B)→(v:(B∧R)→[a⋅v]:B)a :( B \wedge R \rightarrow B ) \rightarrow ( v :( B \wedge R )
+    \rightarrow [ a\cdot v ]: B), by principle (1);
+  
+
+v:(B∧R)→[a⋅v]:Bv :( B \wedge R ) \rightarrow [ a \cdot v ]: B, from 3 and 4, by propositional
+    logic;
+  
+
+    [a⋅v]:Ba\cdot v ]: B, from 2 and 5, by
+    propositional logic.
+  
+
+
+
+Notice that conclusion 6 is [a⋅v]:Ba\cdot v ]: B, 
+and not u:Bu : B ; epistemic closure holds. By reasoning
+in justification logic it was concluded that 
+[a⋅v]:Ba\cdot v ]: B is a case of knowledge, i.e.,
+‘I know BB for reason 
+a⋅va\cdot v’. The fact that 
+u:Bu : B is not a case of knowledge does not spoil the 
+closure principle, since the latter claims knowledge specifically for
+[a⋅v]:Ba\cdot v ]: B. Hence after observing a red 
+façade, I indeed know BB, but this knowledge has 
+nothing to do with 1, which remains a case of belief rather than of 
+knowledge. The justification logic formalization represents the 
+situation fairly.
+
+
+Tracking justifications represents the structure of the Red Barn 
+Example in a way that is not captured by traditional epistemic modal 
+tools. The Justification Logic formalization models what seems to be 
+happening in such a case; closure of knowledge under logical 
+entailment is maintained even though ‘barn’ is not 
+perceptually 
+ known.[2]
+
+1.2 Mathematical Logic Tradition
+
+
+According to Brouwer, truth in constructive (intuitionistic) 
+mathematics means the existence of a proof, cf. (Troelstra and van 
+Dalen 1988). In 1931–34, Heyting and Kolmogorov gave an 
+informal description of the intended proof-based semantics for 
+intuitionistic logic (Kolmogorov 1932, Heyting 1934), which is now 
+referred to as the Brouwer-Heyting-Kolmogorov (BHK) 
+semantics. According to the BHK conditions, a formula is 
+‘true’ if it has a proof. Furthermore, a proof of a 
+compound statement is connected to proofs of its components in the 
+following way:
+
+
+    a proof of A∧BA \wedge B consists of a proof of
+    proposition AA and a proof of proposition BB;
+  
+
+    a proof of A∨BA \vee B is given by presenting either
+    a proof of AA or a proof of BB;
+  
+
+    a proof of A→BA \rightarrow B is a construction
+    transforming proofs of AA into proofs of BB;
+  
+
+    falsehood ⊥\bot  is a proposition which has no proof,
+    ¬A\neg A is shorthand for A→⊥A \rightarrow \bot .
+  
+
+
+
+Kolmogorov explicitly suggested that the proof-like objects in his 
+interpretation (“problem solutions”) came from classical 
+mathematics (Kolmogorov 1932). Indeed, from a foundational point of 
+view it does not make much sense to understand the 
+‘proofs’ above as proofs in an intuitionistic system 
+which these conditions are supposed to be specifying.
+
+
+The fundamental value of the BHK semantics is that informally but 
+unambiguously it suggests treating justifications, here mathematical 
+proofs, as objects with operations.
+
+
+In (Gödel 1933), Gödel took the first step towards 
+developing a rigorous proof-based semantics for intuitionism. 
+Gödel considered the classical modal logic
+ S4\mathsf{S4}
+ to be a calculus describing 
+properties of provability:
+
+
+    Axioms and rules of classical propositional logic;
+  
+
+◻(F→G)→(◻F→◻G)\Box ( F \rightarrow G ) \rightarrow ( \Box F \rightarrow \Box G);
+  
+
+◻F→F\Box F \rightarrow F;
+  
+
+◻F→◻◻F\Box F \rightarrow \Box \Box F;
+  
+
+    Rule of necessitation: if ⊢F\vdash F, then
+    ⊢◻F\vdash \Box F.
+
+    
+
+
+
+Based on Brouwer’s understanding of logical truth as provability, 
+Gödel defined a translation tr(F)(F) of the propositional 
+formula FF in the intuitionistic language into the language 
+of classical modal logic: tr(F)(F) is obtained by prefixing 
+every subformula of FF with the provability modality ◻\Box .
+Informally speaking, when the usual procedure of determining 
+classical truth of a formula is applied to tr(F)(F), it will 
+test the provability (not the truth) of each of FF’s 
+subformulas, in agreement with Brouwer’s ideas. From Gödel’s 
+results and the McKinsey-Tarski work on topological semantics for 
+modal logic, it follows that the translation tr(F)(F) provides 
+a proper embedding of the Intuitionistic Propositional Calculus, 
+IPC\mathsf{IPC}, into
+ S4\mathsf{S4}, i.e., an embedding of 
+intuitionistic logic into classical logic extended by the provability
+operator.
+If IPC proves F, then S4 proves tr(F).\tag{3}
+\text{If } \mathsf{IPC} \text{ proves } F, 
+ \text{ then } \mathsf{S4} \text{ proves tr}(F).
+
+
+
+Still, Gödel’s original goal of defining intuitionistic
+logic in terms of classical provability was not reached, since the
+connection of S4\mathsf{S4} to the usual mathematical notion of
+provability was not established. Moreover, Gödel noted that the
+straightforward idea of interpreting modality ◻F\Box F as F is
+provable in a given formal system T contradicted
+Gödel’s second incompleteness theorem. Indeed, ◻(◻F→F)\Box (
+\Box F \rightarrow F) can be derived in S4\mathsf{S4} by the rule
+of necessitation from the axiom ◻F→F\Box F \rightarrow F. On the other
+hand, interpreting modality ◻\Box as the predicate of formal
+provability in theory TT and FF as contradiction, converts this
+formula into a false statement that the consistency of TT is
+internally provable in TT.
+
+
+The situation after (Gödel 1933) can be described by the 
+following figure where ‘X↪YX \hookrightarrow Y’
+ should be read as ‘XX is interpreted in 
+YY’
+IPC↪S4↪?↪CLASSICAL PROOFS
+\mathsf{IPC} \hookrightarrow \mathsf{S4} \hookrightarrow ? \hookrightarrow
+ \textit{CLASSICAL PROOFS}
+
+
+
+In a public lecture in Vienna in 1938, Gödel observed that using
+the format of explicit proofs:
+t is a proof of F.\tag{4}
+t \text{ is a proof of } F.
+
+
+
+can help in interpreting his provability calculus
+ S4\mathsf{S4} (Gödel 1938). Unfortunately, 
+Gödel’s work (Gödel 1938) remained unpublished until 1995, 
+by which time the Gödelian logic of explicit proofs had already 
+been rediscovered, and axiomatized as the Logic of Proofs
+ LP\mathsf{LP} and supplied with 
+completeness theorems connecting it to both
+ S4\mathsf{S4}
+ and classical proofs (Artemov 1995).
+
+
+The Logic of Proofs
+ LP\mathsf{LP}
+ became the first in the Justification Logic 
+family. Proof terms in
+ LP\mathsf{LP}
+ are nothing but BHK terms understood as 
+classical proofs. With
+ LP\mathsf{LP},
+ propositional intuitionistic logic received 
+the desired rigorous BHK semantics:
+IPC↪S4↪LP↪CLASSICAL PROOFS
+\mathsf{IPC} \hookrightarrow \mathsf{S4} \hookrightarrow \mathsf{LP}
+ \hookrightarrow \textit{CLASSICAL PROOFS} 
+
+
+For further discussion of the mathematical logic tradition, see the 
+ Section 1 of the supplementary document 
+  Some More Technical Matters.
+1.3 Hyperintensionality
+The hyperintensional paradox was formulated by Cresswell in 1975.
+
+It is well known that it seems possible to have a situation in
+which there are two propositions pp and qq which are logically
+equivalent and yet are such that a person may believe the one but not
+the other. If we regard a proposition as a set of possible worlds then
+two logically equivalent propositions will be identical, and so if
+‘xx believes that’ is a genuine sentential functor, the
+situation described in the opening sentence could not arise. I call
+this the paradox of hyperintensional contexts. Hyperintensional
+contexts are simply contexts which do not respect logical
+equivalence.
+
+Starting with Cresswell himself, several ways of dealing with this
+have been proposed. Generally these involve adding more layers to
+familiar possible world approaches so that some way of distinguishing
+between logically equivalent sentences is available. Cresswell
+suggested that the syntactic form of sentences be taken into
+account. Justification Logic, in effect, takes sentence form into
+account through its mechanism for handling justifications for
+sentences. Thus Justification Logic addresses some of the central
+issues of hyperintensionality but, as a bonus, we automatically have
+an appropriate proof theory, model theory, complexity estimates and a
+broad variety of applications.
+A good example of a hyperintensional context is the informal
+language used by mathematicians conversing with each other. Typically
+when a mathematician says he or she knows something, the understanding
+is that a proof is at hand. But as the following illustrates, this
+kind of knowledge is essentially hyperintensional.
+
+Fermat’s Last Theorem, FLT, is logically equivalent to
+0=00=0 since both are provable, and hence denote the same
+proposition. However, the context of proofs distinguishes them
+immediately: a proof tt of 0=00=0 is not necessarily a proof of
+FLT, and vice versa.
+
+To formalize mathematical speech the justification logic
+LP{\textsf{LP}} is a natural choice since t:Xt{:}X was designed to
+have characteristics of “tt is a proof of
+XX.”
+The fact that propositions XX and YY are equivalent in
+LP{\textsf{LP}}, X↔YX\leftrightarrow Y, does not warrant the
+equivalence of the corresponding justification assertions and
+typically t:Xt{:}X and t:Yt{:}Y are not equivalent,
+t:X↮t:Yt{:}X\not\leftrightarrow t{:}Y.
+Going further LP{\textsf{LP}}, and Justification Logic in
+general, is not only sufficiently refined to distinguish justification
+assertions for logically equivalent sentences, it provides a flexible
+machinery to connect justifications of equivalent sentences and hence
+to maintain constructive closure properties necessary for a quality
+logic system. For example, let XX and YY be provably equivalent,
+i.e., there is a proof uu of X↔YX\leftrightarrow Y, and so
+u:(X↔Y)u{:}(X\leftrightarrow Y) is provable in LP{\textsf{LP}}. Suppose
+also that vv is a proof of XX, and so v:Xv{:}X. It has already
+been mentioned that this does not mean vv is a proof of
+YY—this is a hyperintensional context. However within the
+framework of Justification Logic, building on the proofs of XX and
+of X↔YX\leftrightarrow Y, we can construct a proof term
+f(u,v)f(u,v) which represents the proof of YY and so f(u,v):Yf(u,v){:}Y
+is provable. In this respect, Justification Logic goes beyond
+Cresswell’s expectations: logically equivalent sentences display
+different but constructively controlled epistemic behavior.
+2. The Basic Components of Justification Logic
+
+
+In this section the syntax and axiomatics of the most common systems 
+of justification logic are presented.
+2.1 The Language of Justification Logic
+
+
+In order to build a formal account of justification logics one must 
+make a basic structural assumption: justifications are abstract 
+objects which have structure and operations on them. A good 
+example of justifications is provided by formal proofs, which have 
+long been objects of study in mathematical logic and computer science
+(cf. Section 1.2).
+
+
+Justification Logic is a formal logical framework which incorporates 
+epistemic assertions t:Ft : F, standing for 
+‘tt is a justification for FF’. 
+Justification Logic does not directly analyze what it means for 
+tt to justify FF beyond the format 
+t:Ft : F, but rather attempts to characterize this 
+relation axiomatically. This is similar to the way Boolean logic 
+treats its connectives, say, disjunction: it does not analyze the 
+formula p∨qp \vee q but rather assumes certain logical
+axioms and truth tables about this formula.
+
+
+There are several design decisions made. Justification Logic starts 
+with the simplest base: classical Boolean logic, and for good
+reasons. Justifications provide a sufficiently serious challenge on 
+even the simplest level. The paradigmatic examples by Russell, 
+Goldman-Kripke, Gettier and others, can be handled with Boolean 
+Justification Logic. The core of Epistemic Logic consists of modal 
+systems with a classical Boolean base
+ (K, T, K4, S4, K45, KD45, S5,
+ etc.), and each of 
+them has been provided with a corresponding Justification Logic 
+companion based on Boolean logic. Finally, factivity of 
+justifications is not always assumed. This makes it possible to 
+capture the essence of discussions in epistemology involving matters 
+of belief and not knowledge.
+
+
+The basic operation on justifications are application and 
+sum. The application operation takes justifications
+ss and tt and produces a justification 
+s⋅ts\cdot t such that if s:(F→G)s :( F \rightarrow G) and t:Ft : F, then 
+[s⋅t]:Gs\cdot t ]: G. Symbolically,
+
+s:(F→G)→(t:F→[s⋅t]:G)s :( F \rightarrow G ) \rightarrow ( t : F \rightarrow [ s\cdot t ]: G)
+
+
+
+This is a basic property of justifications assumed in combinatory 
+logic and λ\lambda  -calculi (Troelstra and Schwichtenberg 
+1996), Brouwer-Heyting-Kolmogorov semantics (Troelstra and van Dalen 
+1988), Kleene realizability (Kleene 1945), the Logic of Proofs
+ LP\mathsf{LP},
+ etc.
+
+
+Any two justifications can safely be 
+combined into something with broader scope. This is done using the 
+operation sum ‘+’. If s:Fs : F, 
+then whatever evidence tt may be, the combined evidence 
+ss + tt remains a justification for FF. More 
+properly, the operation ‘+’ takes justifications 
+ss and tt and produces ss + tt, which
+is a justification for everything justified by ss or by 
+tt.
+
+s:F→[ss : F \rightarrow [ s + t]:Ft ]: F
+  and t:F→[st : F \rightarrow [ s
+  + t]:Ft ]: F
+
+
+
+As motivation, one might think of ss and tt as two 
+volumes of an encyclopedia, and ss + tt as the set of
+those two volumes. Imagine that one of the volumes, say ss, 
+contains a sufficient justification for a proposition FF, 
+i.e., s:Fs : F is the case. Then the larger set 
+ss + tt also contains a sufficient justification for 
+FF, [ss + t]:Ft ]: F. In the Logic of 
+Proofs LP\mathsf{LP}, Section 
+1.2, ‘ss + tt’ can be interpreted as a 
+concatenation of proofs ss and tt.
+2.2 Basic Justification Logic J0\mathsf{J}_{0}
+
+
+Justification terms are built from justification variables 
+x,y,zx , y , z, … and justification 
+constants a,b,ca , b , c, … (with indices 
+ii = 1, 2, 3, … which are omitted whenever it is safe)
+by means of the operations ‘⋅\cdot ’ and ‘+’. 
+More elaborate logics considered below also allow additional 
+operations on justifications. Constants denote atomic justifications 
+which the system does not analyze; variables denote unspecified 
+justifications. The Basic Logic of Justifications,
+ J0\mathsf{J}_{0} is axiomatized by the 
+following.
+
+
+Classical Logic
+Classical propositional axioms and the rule Modus Ponens
+Application Axiom
+s:(F→G)→(t:F→[s⋅t]:G)s :( F \rightarrow G ) \rightarrow ( t : F \rightarrow [ s\cdot t ]: G),
+Sum Axioms
+s:F→[ss : F \rightarrow [ s
+    + t]:F,s:F→[tt ]: F , s : F \rightarrow [ t
+    + s]:Fs ]: F.
+
+
+
+J0\mathsf{J}_{0} is the
+logic of general (not necessarily factive) justifications for an 
+absolutely skeptical agent for whom no formula is provably justified,
+i.e., J0\mathsf{J}_{0} 
+does not derive t:Ft : F for any tt and 
+FF. Such an agent is, however, capable of drawing 
+relative justification conclusions of the form
+
+  If x:A,y:Bx : A , y : B, …, z:Cz : C
+  hold, then t:Ft : F.
+
+
+
+With this capacity
+ J0\mathsf{J}_{0}
+ is able to adequately emulate other 
+Justification Logic systems in its language.
+2.3 Logical Awareness and Constant Specifications
+
+
+The Logical Awareness principle states that logical axioms 
+are justified ex officio: an agent accepts logical axioms as
+justified (including the ones concerning justifications). As just 
+stated, Logical Awareness may be too strong in some epistemic 
+situations. However Justification Logic offers the flexible mechanism
+of Constant Specifications to represent varying shades of Logical 
+Awareness.
+
+
+Of course one distinguishes between an assumption and a justified 
+assumption. In Justification Logic constants are used to represent 
+justifications of assumptions in situations where they are not 
+analyzed any further. Suppose it is desired to postulate that an 
+axiom AA is justified for the knower. One simply postulates 
+e1:Ae_{1} : A for some evidence constant 
+e1e_{1} (with index 1). If, furthermore, it is desired
+to postulate that this new principle 
+e1:Ae_{1} : A is also justified, one can 
+postulate e2:(e1:A)e_{2} :( e_{1} : A) 
+for a constant e2e_{2} (with index 2). And so on. 
+Keeping track of indices is not necessary, but it is easy and helps 
+in decision procedures (Kuznets 2008). The set of all assumptions of 
+this kind for a given logic is called a Constant 
+Specification. Here is the formal definition:
+
+
+
+A Constant Specification CSCS for a given 
+justification logic L\mathcal{L} is a set of 
+formulas of the form
+
+en:en−1e_{n} : e_{n- 1}:…:e1:A(n≥1)e_{1} : A ( n \ge  1),
+  
+
+
+where AA is an axiom of L\mathcal{L}, and 
+e1,e2e_{1} , e_{2}, …, 
+ene_{n} are similar constants with indices 1,
+2, …, nn. It is assumed that CSCS contains all 
+intermediate specifications, i.e., whenever 
+en:en−1e_{n} : e_{n- 1}:…:e1:Ae_{1} : A
+is in CSCS, then 
+en−1e_{n- 1}:…:e1:Ae_{1} : A
+is in CSCS too.
+
+
+
+There are a number of special conditions that have been placed on 
+constant specifications in the literature. The following are the most
+common.
+
+
+
+Empty
+CS=∅CS = \varnothing . This corresponds to an absolutely
+  skeptical agent. It amounts to working with the
+  logic J0\mathsf{J}_{0}.
+Finite
+CSCS is a finite set of formulas. This is a fully
+  representative case, since any specific derivation in Justification
+  Logic will involve only a finite set of constants.
+Axiomatically Appropriate
+Each axiom, including those newly acquired through the constant
+  specification itself, have justifications. In the formal setting,
+  for each axiom AA there is a constant e1e_{1} such
+  that e1:Ae_{1} : A is in CSCS, and
+  if en:en−1e_{n} : e_{n- 1}:
+ …: e1:A∈CSe_{1} : A \in CS, then en+1:en:en−1e_{n+1} : e_{n} : e_{n- 1}:
+ …: e1:A∈CSe_{1} : A \in CS, for each n≥1n \ge  1. Axiomatically
+  appropriate constant specifications are necessary for ensuring the
+  Internalization property, discussed at the end of this section.
+Total
+For each axiom AA and any constants 
+e1,e2e_{1} , e_{2}, … 
+ene_{n},
+
+  
+en:en−1e_{n} : e_{n- 1}:…:e1:A∈CSe_{1} : A \in CS.
+  
+
+The name TCS is reserved for the total constant 
+specification (for a given logic). Naturally, the total constant 
+specification is axiomatically appropriate.
+
+
+We may now specify:
+
+Logic of Justifications with given Constant Specification:
+   Let CSCS be a constant specification.
+ JCS\mathsf{J}_{CS} is the
+logic
+ J0\mathsf{J}_{0}
++ CSCS ; the axioms are those of
+ J0\mathsf{J}_{0}
+ together with the members
+of CSCS, and the only rule of inference is Modus
+Ponens. Note that
+ J0\mathsf{J}_{0} is
+ J∅\mathsf{J}_{\varnothing}.
+  
+  
+Logic of Justifications:
+J\mathsf{J}
+ is the logic
+ J0\mathsf{J}_{0} + 
+Axiom Internalization Rule. The new rule states:
+
+      For each axiom AA and any
+      constants e1,e2e_{1} , e_{2},
+      …, ene_{n}
+      infer en:en−1e_{n} : e_{n- 1}:…:e1:Ae_{1} : A.
+    
+
+The latter embodies the idea of unrestricted Logical Awareness for
+J\mathsf{J}. A similar rule appeared in the Logic of Proofs
+LP\mathsf{LP}, and has also been anticipated in Goldman’s
+(Goldman 1967). Logical Awareness, as expressed by axiomatically
+appropriate Constant Specifications, is an explicit incarnation of the
+Necessitation Rule in Modal Logic: ⊢F⇒⊢◻F\vdash F \Rightarrow \vdash \Box
+F, but restricted to axioms. Note that J\mathsf{J} coincides with
+JTCS\mathsf{J}_{TCS}.
+
+
+The key feature of Justification Logic systems is their ability to 
+internalize their own derivations as provable justification 
+assertions within their languages. This property was anticipated in 
+(Gödel 1938).
+
+
+Theorem 1: For each axiomatically appropriate 
+constant specification CSCS, JCS_{CS} enjoys 
+Internalization:
+
+If ⊢F\vdash F, then ⊢p:F\vdash p : F for some justification term pp.
+  
+
+Proof. Induction on derivation length. Suppose
+⊢\vdash  FF. If FF is a member of J0\mathsf{J}_{0},
+or a member of CSCS, there is a constant ene_{n} (where nn
+might be 1) such that en:Fe_{n} : F is in CSCS, since CSCS is
+axiomatically appropriate. Then en:Fe_{n} : F is derivable. If FF
+is obtained by Modus Ponens from X→FX \rightarrow F and
+XX, then, by the Induction Hypothesis, ⊢s:(X→F)\vdash s :( X \rightarrow
+F) and ⊢t:X\vdash t : X for some s,ts , t. Using the Application
+Axiom, ⊢[s⋅t]:F\vdash [ s\cdot t ]: F.
+
+
+
+See Section 2 of the supplementary document
+ Some More Technical Matters
+ for examples of concrete syntactic derivations in
+ justification logic.
+2.4 Extending Basic Justification Logic
+The basic justification logic J0{\textsf{J}}_0, and its extension
+with a constant specification JCS{\textsf{J}}_{CS}, is an explicit
+counterpart of the smallest normal modal logic K{\textsf{K}}. A
+proper definition of counterpart will be given in Section 4
+because the notion of realization is central, but some hints
+are already apparent at this stage of our presentation. For instance,
+it was noted in Section 1.1 that (1), s:(A→B)→(t:A→[s⋅t]:B)s{:}(A\rightarrow
+B)\rightarrow(t{:}A\rightarrow [s\cdot t]{:}B), is an explicit
+version of the familiar modal principle (2), ◻(A→B)→(◻A→◻B){\square}(A\rightarrow
+B) \rightarrow ({\square}A\rightarrow {\square}B). In a similar way
+the first justification logic LP\textsf{LP} is an explicit
+counterpart of modal S4{\textsf{S4}}. It turns out that many modal
+logics have justification logic counterparts—indeed, generally
+more than one. In what follows we begin by discussing some very
+familiar logics, leading up to S4{\textsf{S4}} and
+LP\textsf{LP}. Up to this point much of our original motivation
+applies—we have justification logics that are interpretable in
+arithmetic. Then we move on to a broader family of modal logics, and
+the arithmetic motivation is no longer applicable. The phenomenon of
+having a modal logic with a justification logic counterpart has turned
+out to be unexpectedly broad, and the implications of this are not yet
+understood.
+In almost all cases, one must add operations to the ++ and
+⋅\cdot of J0{\textsf{J}}_0, along with axioms capturing their
+intended behavior. The exception is factivity, discussed next, for
+which no additional operations are required, though additional axioms
+are. It is always understood that constant specifications cover axioms
+from the enlarged set. We continue using the terminology of Section
+2.3; for instance a constant specification is axiomatically
+appropriate if it meets the condition as stated there, for all
+axioms including any that have been added to the original set.
+Theorem 1 from Section 2.3 continues to apply to our new justification
+logics, and with the same proof: if we have a justification logic
+JLCS\textsf{JL}_{CS} with an axiomatically appropriate constant
+specification, Internalization holds.
+2.5 Factivity
+
+
+Factivity states that justifications are sufficient for an agent to 
+conclude truth. This is embodied in the following.
+
+Factivity Axiom t:F→Ft : F \rightarrow F.
+
+
+
+The Factivity Axiom has a similar motivation to the Truth Axiom of 
+Epistemic Logic, ◻F→F\Box F \rightarrow F, which is widely
+accepted as a basic property of knowledge.
+
+
+Unlike the principles of Application and Sum, factivity of 
+justifications is not required in basic Justification Logic systems, 
+which makes them capable of representing both partial and factive 
+justifications. The Factivity Axiom appeared in the Logic of Proofs 
+LP\mathsf{LP}, Section 1.2, as 
+a principal feature of mathematical proofs. Indeed, in this setting 
+Factivity is clearly valid: if there is a mathematical proof 
+tt of FF, then FF must be true.
+
+
+The Factivity Axiom is adopted for justifications that lead to 
+knowledge. However, factivity alone does not warrant knowledge, as 
+has been demonstrated by the Gettier examples (Gettier 1963).
+
+
+Logic of Factive Justifications:
+
+JT0=J0\mathsf{JT}_{0} = \mathsf{J}_{0} + Factivity;
+JT=J\mathsf{JT} = \mathsf{J} + Factivity.
+
+
+
+
+Systems JTCS\mathsf{JT}_{CS} corresponding to Constant
+Specifications CSCS are defined as in Section 2.3.
+2.6 Positive Introspection
+
+
+One of the common principles of knowledge is identifying 
+knowing and knowing that one knows. In a modal
+setting, this corresponds to ◻F→◻◻F\Box F \rightarrow \Box \Box F. This
+principle has an adequate explicit counterpart: the fact that an agent
+accepts tt as sufficient evidence for FF serves as sufficient
+evidence for t:Ft : F. Often such ‘meta-evidence’ has a
+physical form: a referee report certifying that a proof in a paper is
+correct; a computer verification output given a formal proof tt of
+FF as an input; a formal proof that tt is a proof of FF,
+etc. A Positive Introspection operation ‘!’ may
+be added to the language for this purpose; one then assumes that given
+tt, the agent produces a justification !tt of t:Ft : F such
+that t:F→!t:(t:F)t : F \rightarrow ! t :( t : F).  Positive Introspection in
+this operational form first appeared in the Logic of Proofs
+LP\mathsf{LP}.
+
+Positive Introspection Axiom: t:F→!t:(t:F)t : F \rightarrow ! t :( t : F).
+
+
+
+We then define:
+
+J4:=J\mathsf{J4} := \mathsf{J} + Positive Introspection;
+LP:=JT\mathsf{LP} := \mathsf{JT} + Positive
+ Introspection.[3]
+
+
+
+Logics J40,J4CS,LP0\mathsf{J4}_{0} , \mathsf{J4}_{CS} , \mathsf{LP}_{0}, and
+ LPCS\mathsf{LP}_{CS} are defined in
+the natural way (cf. Section 2.3).
+
+
+In the presence of the Positive Introspection Axiom, one can limit 
+the scope of the Axiom Internalization Rule to internalizing axioms 
+which are not of the form e:Ae : A. This is how it was 
+done in LP\mathsf{LP}: Axiom 
+Internalization can then be emulated by using 
+!!e:(!e:(e:A))e :(! e :( e : A)) instead of 
+e3:(e2:(e1:A))e_{3} :( e_{2} :( e_{1} : A)), etc.
+The notion of Constant Specification can also be simplified 
+accordingly. Such modifications are minor and they do not affect the 
+main theorems and applications of Justification Logic.
+2.7 Negative Introspection
+
+
+(Pacuit 2006, Rubtsova 2006) considered the Negative
+Introspection operation ‘?’ which verifies that a
+given justification assertion is false. A possible motivation for
+considering such an operation is that the positive introspection
+operation ‘!’ may well be regarded as capable of
+providing conclusive verification judgments about the
+validity of justification assertions t:Ft : F, so when tt is not a
+justification for FF, such a ‘!’ should conclude that
+¬t:F\neg t : F. This is normally the case for computer proof
+verifiers, proof checkers in formal theories, etc. This motivation is,
+however, nuanced: the examples of proof verifiers and proof checkers
+work with both tt and FF as inputs, whereas the Pacuit-Rubtsova
+format ?tt suggests that the only input for ‘?’ is a
+justification tt, and the result ?tt is supposed to justify
+propositions ¬t:F\neg t : F uniformly for all FFs for which t:Ft :
+F does not hold. Such an operation ‘?’ does not exist
+for formal mathematical proofs since ?tt should then be a single
+proof of infinitely many propositions ¬t:F\neg t : F, which is
+impossible.  The operation ‘?’ was, historically, the
+first example that did not fit into the original framework in which
+justifications were abstract versions of formal proofs.
+
+
+Negative Introspection Axiom
+¬t:F→?t:(¬t:F)\neg t : F \rightarrow ? t :( \neg t : F)
+
+
+
+We define the systems:
+
+J45=J4\mathsf{J45} = \mathsf{J4} + Negative Introspection;
+JD45=J45\mathsf{JD45} = \mathsf{J45} + ¬t:⊥\neg t : \bot ;
+JT45=J45\mathsf{JT45} = \mathsf{J45} + Factivity
+
+
+
+and naturally extend these definitions to
+ J45CS,JD45CS\mathsf{J}45_{CS} , \mathsf{JD}45_{CS}, and
+ JT45CS\mathsf{JT}45_{CS}.
+2.8 Geach Logics and More
+Justification logics involving ?? were the first examples that
+went beyond sublogics of LP{\textsf{LP}}. More recently it has been
+discovered that there is an infinite family of modal logics
+that have justification counterparts, but for which the connection
+with arithmetic proofs is weak or missing. We discuss a single case in
+some detail, and sketch others.
+Peter Geach proposed the axiom scheme
+◊◻X→◻◊X{\lozenge}{\square}X{\rightarrow}{\square}{\lozenge}X. When added
+to axiomatic S4{\textsf{S4}} it yields an interesting logic known as
+S4.2\textsf{S4.2}. Semantically, Geach’s scheme
+imposes confluence on frames. That is, if two possible
+worlds, w1w_1 and w2w_2 are accessible from the same world
+w0w_0, there is a common world w4w_4 accessible from both w1w_1
+and w2w_2. Geach’s scheme was generalized
+in Lemmon and Scott (1977) and a
+corresponding notation was introduced: Gk,l,m,n{\textsf{G}}^{k,l,m,n} is
+the scheme ◊k◻lX→◻m◊nX{\lozenge}^k{\square}^l X
+{\rightarrow}{\square}^m{\lozenge}^n X, where k,l,m,n≥0k, l, m, n\geq
+0. Semantically these schemes correspond to generalized versions of
+confluence. Some people have begun referring to the schemes
+as Geach schemes, and we will follow this practice. More
+generally, we will call a modal logic a Geach logic if it can
+be axiomatized by adding a finite set of Geach schemes to
+K{\textsf{K}}. The original Geach scheme is
+G1,1,1,1{\textsf{G}}^{1,1,1,1}, but also note that
+◻X→X{\square}X{\rightarrow}X is G0,1,0,0{\textsf{G}}^{0,1,0,0},
+◻X→◻◻X{\square}X{\rightarrow}{\square}{\square}X is
+G0,1,2,0{\textsf{G}}^{0,1,2,0},
+◊X→◻◊X{\lozenge}X{\rightarrow}{\square}{\lozenge}X is
+G1,0,1,1{\textsf{G}}^{1,0,1,1}, and X→◻◊XX{\rightarrow}{\square}{\lozenge}X
+is G0,0,1,1{\textsf{G}}^{0,0,1,1}, so Geach logics include the most common
+of the modal logics. Geach logics constitute an infinite family.
+Every Geach logic has a justification counterpart. Consider the
+original Geach logic, with axiom scheme G1,1,1,1\textsf{G}^{1,1,1,1},
+◊◻X→◻◊X{\lozenge}{\square}X{\rightarrow}{\square}{\lozenge}X added to a
+system for S4\textsf{S4}—the system S4.2\textsf{S4.2}
+mentioned above. We build a justification counterpart for
+S4.2\textsf{S4.2} axiomatically by starting with
+LP{\textsf{LP}}. Then we add two function symbols, ff and gg,
+each two-place, and adopt the following axiom scheme, calling the
+resulting justification logic J4.2\textsf{J4.2}. ¬f(t,u):¬t:X→g(t,u):¬u:¬X\lnot
+f(t,u){:}\lnot t{:}X {\rightarrow}g(t,u){:}\lnot u{:}\lnot X There
+is some informal motivation for this scheme. In LP{\textsf{LP}},
+because of the axiom scheme t:X→Xt{:}X{\rightarrow}X, we have
+provability of (t:X∧u:¬X)→⊥(t{:}X\land u{:}\lnot X){\rightarrow}\bot for any
+tt and uu, and thus provability of ¬t:X∨¬u:¬X\lnot t{:}X \lor\lnot
+u{:}\lnot X. In any context one of the disjuncts must hold. The
+scheme above is equivalent to f(t,u):¬t:X∨g(t,u):¬u:¬Xf(t,u){:}\lnot t{:}X \lor
+g(t,u){:}\lnot u{:}\lnot X, which informally says that in any
+context we have means for computing a justification for the disjunct
+that holds. It is a strong assumption, but not implausible at least in
+some circumstances.
+
+A realization theorem connects S4.2\textsf{S4.2} and
+J4.2\textsf{J4.2}, though it is not known if this has a constructive
+proof.
+As another example, consider G1,2,2,1{\textsf{G}}^{1,2,2,1},
+◊◻◻X→◻◻◊X{\lozenge}{\square}{\square}X{\rightarrow}{\square}{\square}{\lozenge}X,
+or equivalently ◻¬◻◻X∨◻◻¬◻X{\square}\lnot{\square}{\square}X \lor
+{\square}{\square}\lnot{\square}X. It has as a corresponding
+justification axiom scheme the following, where ff, gg, and
+hh are three-place function symbols. f(t,u,v):¬t:u:X∨g(t,u,v):h(t,u,v):¬v:¬Xf(t,u,v){:}\lnot
+t{:}u{:}X\lor g(t,u,v){:}h(t,u,v){:}\lnot v{:}\lnot X An intuitive
+interpretation for ff, gg, and hh is not as clear as it is
+for G1,1,1,1\textsf{G}^{1,1,1,1}, but formally things behave quite
+well.
+
+Even though the Geach family is infinite, these logics do not cover
+the full range of logics with justification counterparts. For
+instance, the normal modal logic using the axiom scheme
+◻(◻X→X){\square}({\square}X{\rightarrow}X), sometimes called shift
+reflexivity, is not a Geach logic, but it does have a
+justification counterpart. Add a one-place function symbol kk to
+the machinery building up justification terms, and adopt the
+justification axiom scheme k(t):(t:X→X)k(t){:}(t{:}X{\rightarrow}X). A
+Realization Theorem holds; this is shown
+in Fitting (2014b). We speculate that
+all logics axiomatized with Sahlquist formulas will have justification
+counterparts, but this remains a conjecture at this point.
+3. Semantics
+
+
+The now-standard semantics for justification logic originates in
+(Fitting 2005)—the models used are generally called Fitting
+models in the literature, but will be called possible world
+justification models here. Possible world justification models
+are an amalgam of the familiar possible world semantics for logics of
+knowledge and belief, due to Hintikka and Kripke, with machinery
+specific to justification terms, introduced by Mkrtychev in (Mkrtychev
+1997), (cf. Section 3.4).
+3.1 Single-Agent Possible World Justification Models for J\mathsf{J}
+
+
+To be precise, a semantics for
+ JCS\mathsf{J}_{CS}, where CSCS is any 
+constant specification, is to be defined. Formally, a possible world justification logic 
+model for
+ JCS\mathsf{J}_{CS} is a structure
+ M=⟨G,R,E,V⟩\mathcal{M} = \langle \mathcal{G} , \mathcal{R} , \mathcal{E} , \mathcal{V}\rangle . Of 
+this,
+ ⟨G,R⟩\langle \mathcal{G} , \mathcal{R}\rangle 
+ is a standard
+ K\mathsf{K}
+ frame, where G\mathcal{G} is
+ a set of possible worlds and
+ R\mathcal{R} is a binary relation on it.
+ V\mathcal{V} is a mapping from propositional variables 
+to subsets of G\mathcal{G}, specifying atomic 
+truth at possible worlds.
+
+
+The new item is E\mathcal{E}, an evidence 
+function, which originated in (Mkrtychev 1997). This maps 
+justification terms and formulas to sets of worlds. The intuitive 
+idea is, if the possible world Γ\Gamma  is in
+ E(t,X)\mathcal{E} ( t , X), then tt is 
+relevant or admissible evidence for XX at 
+world Γ\Gamma . One should not think of relevant evidence as 
+conclusive. Rather, think of it as more like evidence that can be 
+admitted in a court of law: this testimony, this document is 
+something a jury should examine, something that is pertinent, but 
+something whose truth-determining status is yet to be considered. 
+Evidence functions must meet certain conditions, but these are 
+discussed a bit later.
+
+
+Given a
+ JCS\mathsf{J}_{CS}
+ possible world justification model
+ M=⟨G,R,E,V⟩\mathcal{M} = \langle \mathcal{G} , \mathcal{R} , \mathcal{E} , \mathcal{V}\rangle , 
+truth of formula XX at possible world Γ\Gamma  is denoted by 
+M,Γ⊩X\mathcal{M} , \Gamma \Vdash X, and is 
+required to meet the following standard conditions:
+
+
+
+For each Γ∈G\Gamma \in \mathcal{G}:
+
+
+M,Γ⊩P\mathcal{M} , \Gamma \Vdash P
+    iff Γ∈V(P)\Gamma \in \mathcal{V} ( P) for PP a propositional letter;
+  
+it is not the case that
+ M,Γ⊩⊥\mathcal{M} , \Gamma \Vdash \bot ;
+
+M,Γ⊩X→Y\mathcal{M} , \Gamma \Vdash X \rightarrow Y iff it is not the
+    case that M,Γ⊩X\mathcal{M} , \Gamma \Vdash X or M,Γ⊩Y\mathcal{M} ,
+    \Gamma \Vdash Y.
+  
+
+
+
+
+These just say that atomic truth is specified arbitrarily, and 
+propositional connectives behave truth-functionally at each world. 
+The key item is the next one.
+
+
+M,Γ⊩(t:X)\mathcal{M} , \Gamma \Vdash ( t : X) if and only if Γ∈E(t,X)\Gamma
+    \in \mathcal{E} ( t , X) and, for every Δ∈G\Delta \in
+    \mathcal{G} with ΓRΔ\Gamma \mathcal{R} \Delta , we have that
+    M,Δ⊩X\mathcal{M} , \Delta \Vdash X.
+  
+
+
+
+This condition breaks into two parts. The clause requiring that
+ M,Δ⊩X\mathcal{M} , \Delta \Vdash X for every Δ∈G\Delta \in
+ \mathcal{G} such that ΓRΔ\Gamma \mathcal{R} \Delta is the familiar
+ Hintikka/Kripke condition for XX to be believed, or be believable,
+ at Γ\Gamma . The clause requiring that Γ∈E(t,X)\Gamma \in \mathcal{E} (
+ t , X) adds that tt should be relevant evidence for XX at
+ Γ\Gamma . Then, informally, t:Xt : X is true at a possible world
+ if XX is believable at that world in the usual sense of epistemic
+ logic, and tt is relevant evidence for XX at that world.
+
+
+It is important to realize that, in this semantics, one might not 
+believe something for a particular reason at a world either because 
+it is simply not believable, or because it is but the reason is not 
+appropriate.
+
+
+Some conditions must still be placed on evidence functions, and the 
+constant specification must also be brought into the picture. Suppose
+one is given ss and tt as justifications. One can 
+combine these in two different ways: simultaneously use the 
+information from both; or use the information from just one of them, 
+but first choose which one. Each gives rise to a basic operation on 
+justification terms, ⋅\cdot  and +, introduced axiomatically in 
+Section 2.2.
+
+
+Suppose ss is relevant evidence for an implication and 
+tt is relevant evidence for the antecedent. Then ss 
+and tt together provides relevant evidence for the 
+consequent. The following condition on evidence functions is assumed:
+
+E\mathcal{E}(s,X →Y)∩E(t,X)⊆E(s⋅\rightarrow Y ) \cap \mathcal{E} ( t ,
+X ) \subseteq \mathcal{E} ( s\cdot t,Y)
+
+
+
+With this condition added, the validity of
+
+s:(X→Y)→(t:X→[s⋅t]:Y)s :( X \rightarrow Y ) \rightarrow ( t : X \rightarrow [ s\cdot t ]: Y)
+
+
+
+is secured.
+
+
+If ss and tt are items of evidence, one might say 
+that something is justified by one of ss or tt, 
+without bothering to specify which, and this will still be evidence. 
+The following requirement is imposed on evidence functions.
+
+E\mathcal{E}(s,X)
+∪E(t,X)⊆E(s\cup \mathcal{E} ( t , X ) \subseteq \mathcal{E} ( s + t,X)t , X)
+
+
+
+Not surprisingly, both
+
+s:X→[ss : X \rightarrow [ s + t]:Xt ]: X
+
+
+
+and
+
+t:X→[st : X \rightarrow [ s + t]:Xt ]: X
+
+
+
+now hold.
+
+
+Finally, the Constant Specification CSCS should be taken into 
+account. Recall that constants are intended to represent reasons for 
+basic assumptions that are accepted outright. A model
+ M=⟨G,R,E,V⟩\mathcal{M} = \langle \mathcal{G} , \mathcal{R} , \mathcal{E} , \mathcal{V}\rangle
+meets Constant Specification CSCS provided: if 
+c:X∈CSc : X \in CS then
+ E\mathcal{E}(c,X) = G\mathcal{G}.
+
+Possible World Justification Model A possible world justification model for
+ JCS\mathsf{J}_{CS} is a
+structure M=⟨G,R,E,V⟩\mathcal{M} = \langle \mathcal{G} , \mathcal{R} , \mathcal{E} , \mathcal{V}\rangle 
+satisfying all the conditions listed above, and meeting Constant
+Specification CSCS.
+
+
+
+Despite their similarities, possible world justification models allow a fine-grained
+analysis that is not possible with Kripke models. See Section 3 of the
+supplementary document
+ Some More Technical Matters
+for more details.
+3.2 Weak and Strong Completeness
+
+
+A formula XX is valid in a particular model for 
+JCS\mathsf{J}_{CS} if it is true at all 
+possible worlds of the model. Axiomatics for
+ JCS\mathsf{J}_{CS} was given in 
+Sections 2.2 and 2.3. A completeness theorem now takes the expected 
+form.
+
+Theorem 2: A formula XX is provable
+ in JCS\mathsf{J}_{CS}
+ if and only if XX is valid
+ in all JCS\mathsf{J}_{CS} models.
+
+
+
+The completeness theorem as just stated is sometimes referred to as 
+weak completeness. It maybe a bit surprising that it is 
+significantly easier to prove than completeness for the modal logic 
+K\mathsf{K}. Comments on this 
+point follow. On the other hand it is very general, working for all 
+Constant Specifications.
+
+
+In (Fitting 2005) a stronger version of the semantics was also
+introduced. A model M=⟨G,R,E,V⟩\mathcal{M} = \langle \mathcal{G} , \mathcal{R}
+, \mathcal{E} , \mathcal{V}\rangle is called fully
+explanatory if it meets the following condition. For each
+Γ∈G\Gamma \in \mathcal{G}, if M,Δ⊩X\mathcal{M} , \Delta \Vdash X for
+all Δ∈G\Delta \in \mathcal{G} such that ΓRΔ\Gamma \mathcal{R} \Delta
+, then M,Γ⊩t:X\mathcal{M} , \Gamma \Vdash t : X for some justification
+term tt. Note that the condition, M,Δ⊩X\mathcal{M} , \Delta \Vdash X
+for all Δ∈G\Delta \in \mathcal{G} such that ΓRΔ\Gamma \mathcal{R}
+\Delta , is the usual condition for XX being believable at
+Γ\Gamma in the Hintikka/Kripke sense.  So, fully explanatory really
+says that if a formula is believable at a possible world, there is a
+justification for it.
+
+
+Not all weak models meet the fully explanatory condition. Models that
+do are called strong models. If constant specification 
+CSCS is rich enough so that an Internalization theorem holds, 
+then one has completeness with respect to strong models meeting 
+CSCS. Indeed, in an appropriate sense completeness with 
+respect to strong models is equivalent to being able to prove 
+Internalization.
+
+
+The proof of completeness with respect to strong models bears a close
+similarity to the proof of completeness using canonical models for 
+the modal logic K\mathsf{K}. 
+In turn, strong models can be used to give a semantic proof of the 
+Realization Theorem (cf. Section 4).
+3.3 The Single-Agent Family
+
+
+So far a possible world semantics for one justification logic has been 
+discussed, for J\mathsf{J}, 
+the counterpart of
+ K\mathsf{K}. Now things are broadened to encompass 
+justification analogs of other familiar modal logics.
+Simply by adding reflexivity of the accessibility relation
+R\mathcal{R} to the conditions for a model in Section 3.1, one
+gains the validity of t:X→Xt{:}X \rightarrow X for every tt and
+XX, and obtains a semantics for JT\mathsf{JT}, the justification logic analog of
+the modal logic T{\textsf{T}}, the weakest logic of
+knowledge. Indeed, if M,Γ⊩t:X{\mathcal{M},\Gamma{\Vdash}t{:}X} then, in particular,
+XX is true at every state accessible from Γ\Gamma. Since the
+accessibility relation is required to be reflexive,
+M,Γ⊩X{\mathcal{M},\Gamma{\Vdash}X}. Weak and strong completeness theorems are
+provable using the same machinery that applied in the case of J\textsf{J}, and a
+semantic proof of a Realization Theorem connecting  JT\mathsf{JT} and
+T{\textsf{T}} is also available. The same applies to the logics
+discussed below.
+For a justification analog of K4{\textsf{K4}} an additional unary
+operator ‘!’ is added to the term language, see Section
+2.5. Recall this operator maps justifications to justifications, where
+the idea is that if tt is a justification for XX, then !t!t
+should be a justification for t:Xt{:}X. Semantically this adds
+conditions to a model M=⟨G,R,E,V⟩\mathcal{M} = \langle
+\mathcal{G},\mathcal{R},\mathcal{E},\mathcal{V}\rangle, as
+follows.
+First, of course, R\mathcal{R} should be transitive, but not
+necessarily reflexive. Second, a monotonicity condition on evidence
+functions is required:
+If ΓRΔ and Γ∈E(t,X) then Δ∈E(t,X)\mbox{If } \Gamma \mathcal{R} \Delta \mbox{ and } \Gamma\in
+\mathcal{E}(t,X) \mbox{ then } \Delta \in \mathcal{E}(t,X) And
+finally, one more evidence function condition is needed.
+
+E(t,X)⊆E(!t,t:X)\mathcal{E}(t,X) \subseteq \mathcal{E}(!t,t{:}X) These
+conditions together entail the validity of t:X→!t:t:Xt{:}X \rightarrow
+!t{:}t{:}X and produce a semantics for J4\mathsf{J4}, a
+justification analog of K4\mathsf{K4}, with a Realization Theorem
+connecting them. Adding reflexivity leads to a logic that is called
+LP{\textsf{LP}} for historical reasons.
+
+We have discussed justification logics that are sublogics of
+LP{\textsf{LP}}, corresponding to sublogics of the modal logic
+S4\textsf{S4}. The first examples that went beyond LP{\textsf{LP}}
+were those discussed in Section 2.7, involving a negative
+introspection operator, ‘?’. Models for justification
+logics that include this operator add three conditions. First R is
+symmetric. Second, one adds a condition that has come to be known
+as strong evidence: M,Γ⊩t:X{\mathcal{M},\Gamma{\Vdash}t{:}X} for
+all Γ∈E(t,X)\Gamma\in \mathcal{E}(t, X). Finally, there is a condition on
+the evidence function:
+E(t,X)⊆E(?t,¬t:X)\mathcal{E}(t,X) \subseteq \mathcal{E}(?t, \lnot t{:}X) If this
+machinery is added to that for we get the logic , a justification
+counterpart of . Axiomatic soundness and completeness can be
+proved. In a similar way, related logics and can be formulated
+semantically. A Realization Theorem taking the operator ?? into
+account was shown in (Rubtsova 2006).
+
+Moving to Geach logics as introduced in Section 2.8, a semantic
+model for J4.2\textsf{J4.2} can also be specified. Suppose G=⟨G,R,E,V⟩G =
+\langle \mathcal{G}, \mathcal{R}, \mathcal{E}, \mathcal{V}\rangle is
+an LP{\textsf{LP}} model. We add the following requirements. First,
+the frame must be convergent, as with S4.2\textsf{S4.2}. Second, as
+with ??, E\mathcal{E} must be a strong evidence
+function. And third, E(f(t,u),¬t:X)∪E(g(t,u),¬u:¬X)=G\mathcal{E}(f(t,u), \lnot t{:}X)\cup
+\mathcal{E}(g(t,u), \lnot u{:}\lnot X) = \mathcal{G}. Completeness
+and soundness results follow in the usual way.
+In a similar way every modal logic axiomatized by Geach schemes in
+this family has a justification counterpart, with a Fitting semantics
+and a realization theorem connecting the justification counterpart
+with the corresponding modal logic. In particular, this tells us that
+the justification logic family is infinite, and certainly much broader
+than it was originally thought to be. It is also the case that some
+modal logics not previously considered, and not in this family, have
+justification counterparts as well. Investigating the consequences of
+all this is still work in progress.
+3.4 Single World Justification Models
+
+
+Single world justification models were developed considerably before
+the more general possible world justification models we have been discussing, 
+(Mkrtychev 1997). Today they can most simply be thought of as
+possible world justification models that happen to have
+a single world. The completeness proof for
+ J\mathsf{J} and the other 
+justification logics mentioned above can easily be modified to 
+establish completeness with respect to single world justification models, though of 
+course this was not the original argument. What completeness with 
+respect to single world justification models tells us is that information about the 
+possible world structure of justification models can be completely encoded 
+by the admissible evidence function, at least for the logics 
+discussed so far. Mkrtychev used single world justification models to establish 
+decidability of LP\mathsf{LP}, 
+and others have made fundamental use of them in setting complexity 
+bounds for justification logics, as well as for showing 
+conservativity results for justification logics of belief, (Kuznets 
+2000, Kuznets 2008, Milnikel 2007, Milnikel 2009). Complexity results
+have further been used to address the problem of logical omniscience.
+3.5 Ontologically Transparent Semantics
+The formal semantics for Justification Logic described above in
+3.1–3.4 defines truth value at a given world Γ\Gamma the same
+way it is done in Awareness Models: t:Ft{:}F holds at Γ\Gamma
+iff
+
+FF holds at all worlds accessible from Γ\Gamma and
+tt is admissible evidence for FF according to the given
+evidence function.
+
+These models have been playing a prominent role in Justification
+Logic. In addition, there is a different kind of semantics, so-called
+modular semantics, which focuses on making more transparent the
+ontological status of justifications. Within modular semantics
+propositions receive the usual classical truth values and
+justifications are interpreted syntactically as sets of formulas. We
+retain a classical interpretation ∗\ast of the propositional
+formulas FmFm, which, in the case of a single world, reduces to
+∗:Fm↦  {0,1}\ast: Fm \mapsto\ \ \{0,1\} i.e., each formula gets a truth value
+0 (false) or 1 (true), with the usual Boolean conditions:
+⊩A→B{\Vdash}A\rightarrow B iff ⊮A\not\Vdash A or ⊩B{\Vdash}B,
+etc. The principal issue is how to interpret justification
+terms. For sets of formulas XX and YY, we define
+X⋅Y={F∣G→F∈X and G∈Y for some G}.X\cdot Y = \{ F \mid G{\rightarrow}F \in X\ \mbox{and} \ G \in Y\
+\mbox{for some}\ G\}. Informally, X⋅YX\cdot Y is the result of
+applying Modus Ponens once between all members of XX and
+of YY (in that order). Justification terms Tm are
+interpreted as subsets of the set of formulas: ∗:Tm↦  2Fm\ast: Tm \mapsto\ \
+2^{Fm} such that (s⋅t)∗⊇s∗⋅t∗  and   (s+t)∗⊇s∗∪t∗.(s\cdot t)^\ast\supseteq s^\ast\cdot t^\ast \ \
+\mbox{and}\ \ \ (s+t)^\ast\supseteq s^\ast\cup t^\ast . These
+conditions correspond to the basic justification logic J\textsf{J};
+other systems require additional closure properties of ∗\ast. Note
+that whereas propositions in modular models are interpreted
+semantically, as truth values, justifications are interpreted
+syntactically, as sets of formulas. This is a principal feature: a
+modular model may treat distinct formulas FF and GG as equal in
+the sense that F∗=G∗F^\ast = G^\ast, but still be able to distinguish
+justification assertions t:Ft{:}F and t:Gt{:}G, for example when F∈t∗F
+\in t^\ast but G∉t∗G\not\in t^\ast yielding ⊩t:F{\Vdash}t{:}F but
+⊮t:G\not\Vdash t{:}G. In the general possible world setting, formulas
+are interpreted classically as subsets of the set WW of possible
+worlds, ∗:Fm↦  2W,\ast: Fm \mapsto\ \ 2^W , and justification terms are
+interpreted syntactically as sets of formulas at each world ∗:W×Tm↦  2Fm.\ast:
+W\times Tm \mapsto\ \ 2^{Fm}. Soundness and completeness of
+Justification Logic systems with respect to modular models have been
+demonstrated in Artemov (2012; Kuznets and
+Studer 2012).
+
+3.6 Connections with Awareness Models
+The logical omniscence problem is that in epistemic logics all
+tautologies are known and knowledge is closed under consequence, which
+is unreasonable. In Fagin and Halpern
+(1988) a simple mechanism for avoiding the problems was
+introduced. One adds to the usual Kripke model structure an awareness
+function A\cal A indicating for each world which formulas the agent
+is aware of at this world. Then a formula is taken to be known at a
+possible world Γ\Gamma if 1) the formula is true at all worlds
+accessible from Γ\Gamma (the Kripkean condition for knowledge) and
+2) the agent is aware of the formula at Γ\Gamma. Awareness
+functions can serve as a practical tool for blocking knowledge of an
+arbitrary set of formulas. However as logical structures, awareness
+models can exhibit unusual behavior due to the lack of natural closure
+properties. For example, the agent can know A∧BA\wedge B but be aware
+of nether AA nor BB and hence not know either.
+Possible world justification logic models use a forcing definition
+reminiscent of the one from the awareness models: for any given
+justification tt the justification assertion t:Ft{:}F holds at
+world Γ\Gamma iff 1) FF holds at all worlds Δ\Delta
+accessible from Γ\Gamma and 2) tt is admissible evidence for
+FF at Γ\Gamma, Γ∈E(t,F)\Gamma\in{\cal E}(t,F). The principal
+difference is in the operations on justifications and corresponding
+closure conditions on admissible evidence function E\cal E in
+Justification Logic models, which may hence be regarded as a dynamic
+version of awareness models which necessary closure properties
+specified. This idea has been explored
+in Sedlár (2013) which worked
+with the language of LP\textsf{LP}, thinking of it as a multi-agent
+modal logic, and taking justification terms as agents (more properly,
+actions of agents). This shows that Justification Logic models absorb
+the usual epistemic themes of awareness, group agency and dynamics in
+a natural way.
+4. Realization Theorems
+
+
+The natural modal epistemic counterpart of the evidence assertion 
+t:Ft : F is ◻F\Box F, read for some x, 
+x:FF. This observation leads to the notion of 
+forgetful projection which replaces each occurrence of 
+t:Ft : F by ◻F\Box F and hence converts a 
+Justification Logic sentence SS to a corresponding Modal 
+Logic sentence SoS^{o}. The forgetful 
+projection extends in the natural way from sentences to logics.
+
+
+Obviously, different Justification Logic sentences may have the same 
+forgetful projection, hence SoS^{o} loses 
+certain information that was contained in SS. However, it is 
+easily observed that the forgetful projection always maps valid 
+formulas of Justification Logic (e.g., axioms of
+ J)\mathsf{J})
+ to valid formulas of a corresponding
+Epistemic Logic (K(\mathsf{K} 
+in this case). The converse also holds: any valid formula of 
+Epistemic Logic is the forgetful projection of some valid formula of 
+Justification Logic. This follows from the Correspondence Theorem 3.
+
+Theorem 3:
+ Jo=K\mathsf{J}^{o} = \mathsf{K}.
+
+
+
+This correspondence holds for other pairs of Justification and 
+Epistemic systems, for instance
+ J4\mathsf{J4} and
+ K4\mathsf{K4}, or
+ LP\mathsf{LP} and
+ S4\mathsf{S4},
+ and many others. In such extended form, the 
+Correspondence Theorem shows that major modal logics such as
+ K,T,K4,S4,K45,S5\mathsf{K} , \mathsf{T} , \mathsf{K4} , \mathsf{S4} , \mathsf{K45} , \mathsf{S5}
+ and some others have exact Justification Logic 
+counterparts.
+
+
+At the core of the Correspondence Theorem is the following 
+Realization Theorem.
+
+Theorem 4: There is an algorithm which, for each
+modal formula FF derivable in
+ K\mathsf{K}, assigns evidence terms to each occurrence of
+modality in FF in such a way that the resulting formula
+FrF^{r} is derivable in
+ J\mathsf{J}. Moreover, the realization assigns evidence
+variables to the negative occurrences of modal operators in FF, thus
+respecting the existential reading of epistemic modality.
+
+
+
+Known realization algorithms which recover evidence terms in modal 
+theorems use cut-free derivations in the corresponding modal logics. 
+Alternatively, the Realization Theorem can be established 
+semantically by Fitting’s method or its proper modifications. 
+In principle, these semantic arguments also produce 
+realization procedures which are based on exhaustive search.
+
+
+It would be a mistake to draw the conclusion that 
+any modal logic has a reasonable Justification Logic
+counterpart. For example the logic of formal provability,
+ GL\mathsf{GL}, (Boolos 1993) contains
+the Löb Principle:
+
+
+
+(5)
+
+◻(◻F→F)→◻F\Box ( \Box F \rightarrow F ) \rightarrow \Box F,
+    
+
+
+
+
+
+which does not seem to have an epistemically acceptable explicit 
+version. Consider, for example, the case where FF is the 
+propositional constant ⊥\bot  for false. If an analogue of 
+Theorem 4 would cover the Löb Principle there would be 
+justification terms ss and tt such that 
+x:(s:⊥→⊥)→t:⊥x :( s : \bot \rightarrow \bot ) \rightarrow t : \bot . 
+But this is intuitively false for factive justification. Indeed, 
+s:⊥→⊥s : \bot \rightarrow \bot  is an instance of the Factivity Axiom.
+Apply Axiom Internalization to obtain 
+c:(s:⊥→⊥)c :( s : \bot \rightarrow \bot ) for some constant 
+cc. This choice of cc makes the antecedent of 
+c:(s:⊥→⊥)→t:⊥c :( s : \bot \rightarrow \bot ) \rightarrow t : \bot  
+intuitively true and the conclusion 
+ false[4].
+ In particular, the Löb Principle (5) is not valid for the proof 
+interpretation (cf. (Goris 2007) for a full account of which 
+principles of GL\mathsf{GL} are
+realizable).
+
+
+The Correspondence Theorem gives fresh insight into epistemic modal 
+logics. Most notably, it provides a new semantics for the major modal
+logics. In addition to the traditional Kripke-style 
+‘universal’ reading of ◻F\Box F as F holds 
+in all possible situations, there is now a rigorous 
+‘existential’ semantics for ◻F\Box F that can be
+read as there is a witness (proof, justification) for F.
+
+
+Justification semantics plays a similar role in Modal Logic to that 
+played by Kleene realizability in Intuitionistic Logic. In both 
+cases, the intended semantics is existential: the 
+Brouwer-Heyting-Kolmogorov interpretation of Intuitionistic Logic 
+(Heyting 1934, Troelstra and van Dalen 1988, van Dalen 1986) and 
+Gödel’s provability reading of
+ S4\mathsf{S4} (Gödel 1933, Gödel 1938). In both 
+cases there is a possible-world semantics of 
+universal character which is a highly potent and 
+dominant technical tool. It does not, however, address the 
+existential character of the intended semantics. It took Kleene 
+realizability (Kleene 1945, Troelstra 1998) to reveal the 
+computational semantics of Intuitionistic Logic and the Logic of 
+Proofs to provide exact BHK semantics of
+proofs for Intuitionistic and Modal Logic.
+
+
+In the epistemic context, Justification Logic and the Correspondence 
+Theorem add a new ‘justification’ component to modal 
+logics of knowledge and belief. Again, this new component was, in 
+fact, an old and central notion which has been widely discussed by 
+mainstream epistemologists but which remained out of the scope of 
+classical epistemic logic. The Correspondence Theorem tells us that 
+justifications are compatible with Hintikka-style systems and hence 
+can be safely incorporated into the foundation for Epistemic Modal 
+Logic.
+
+See Section 4 of the supplementary document
+ Some More Technical Matters
+for more on Realization Theorems.
+5. Generalizations
+
+
+So far in this article only single-agent justification logics, 
+analogous to single-agent logics of knowledge, have been considered. 
+Justification Logic can be thought of as logic of explicit 
+knowledge, related to more conventional logics of implicit 
+knowledge. A number of systems beyond those discussed above have been
+investigated in the literature, involving multiple agents, or having 
+both implicit and explicit operators, or some combination of these.
+5.1 Mixing Explicit and Implicit Knowledge
+
+
+Since justification logics provide explicit justifications, while 
+conventional logics of knowledge provide an implicit knowledge 
+operator, it is natural to consider combining the two in a single 
+system. The most common joint logic of explicit and implicit 
+knowledge is S4LP\mathsf{S4LP} 
+(Artemov and Nogina 2005). The language of
+ S4LP\mathsf{S4LP}
+ is like that of
+ LP\mathsf{LP}, but with an implicit knowledge 
+operator added, written either K\mathbf{K} or ◻\Box . The 
+axiomatics is like that of
+ LP\mathsf{LP},
+ combined with that of
+ S4\mathsf{S4}
+ for the implicit operator, together 
+with a connecting axiom, t:X→◻Xt : X \rightarrow \Box X, anything that has an explicit justification is 
+knowable.
+
+
+Semantically, possible world justification models for
+ LP\mathsf{LP} need no modification, since they already have 
+all the machinery of Hintikka/Kripke models. One models the ◻\Box  
+operator in the usual way, making use of just the accessibility 
+relation, and one models the justification terms as described in 
+Section 3.1 using both accessibility and the evidence function. Since 
+the usual condition for ◻X\Box X being true at a world is 
+one of the two clauses of the condition for t:Xt : X 
+being true, this immediately yields the validity of 
+t:X→◻Xt : X \rightarrow \Box X, and soundness follows
+easily. Axiomatic completeness is also rather straightforward.
+
+
+In S4LP\mathsf{S4LP} both 
+implicit and explicit knowledge is represented, but in possible world justification 
+model semantics a single accessibility relation serves for both. This
+is not the only way of doing it. More generally, an explicit 
+knowledge accessibility relation could be a proper extension of that 
+for implicit knowledge. This represents the vision of explicit 
+knowledge as having stricter standards for what counts as known than 
+that of implicit knowledge. Using different accessibility relations 
+for explicit and implicit knowledge becomes necessary when these 
+epistemic notions obey different logical laws, e.g.,
+ S5\mathsf{S5} for implicit knowledge 
+and LP\mathsf{LP} for explicit.
+The case of multiple accessibility relations is commonly known
+in the literature as Artemov-Fitting models, but will be called
+multi-agent possible world models here. (cf. Section 5.2).
+
+
+Curiously, while the logic
+ S4LP\mathsf{S4LP} seems quite natural, a Realization Theorem 
+has been problematic for it: no such theorem can be proved if one 
+insists on what are called normal realizations (Kuznets 
+2010). Realization of implicit knowledge modalities in
+ S4LP\mathsf{S4LP} by explicit 
+justifications which would respect the epistemic structure remains a 
+major challenge in this area.
+
+
+Interactions between implicit and explicit knowledge can sometimes be
+rather delicate. As an example, consider the following mixed 
+principle of negative introspection (again ◻\Box  should be read as 
+an implicit epistemic operator),
+
+
+
+(6)
+
+¬t:X→◻¬t:X\neg t : X \rightarrow \Box \neg t : X.
+    
+
+
+
+
+
+From the provability perspective, it is the right form of negative 
+introspection. Indeed, let ◻F\Box F be interpreted as F 
+is provable and t:Ft : F as t is a proof of 
+F in a given formal theory TT, e.g., in Peano Arithmetic
+PA\mathsf{PA}. Then (6) states 
+a provable principle. Indeed, if tt is not a proof of 
+FF then, since this statement is decidable, it can be 
+established inside TT, hence in TT this sentence is 
+provable. On the other hand, the proof pp of 
+‘tt is not a proof of FF’ depends on both
+tt and F,p=p(t,F)F , p = p ( t , F) and 
+cannot be computed given tt only. In this respect, ◻\Box  
+cannot be replaced by any specific proof term depending on tt
+only and (6) cannot be presented in an entirely explicit 
+justification-style format.
+
+
+The first examples of explicit/implicit knowledge systems appeared in
+the area of provability logic. In (Sidon 1997, Yavorskaya (Sidon) 
+2001), a logic LPP\mathsf{LPP} 
+was introduced which combined the logic of provability
+ GL\mathsf{GL} with the logic of 
+proofs LP\mathsf{LP}, but to 
+ensure that the resulting system had desirable logical properties 
+some additional operations from outside the original 
+languages of GL\mathsf{GL} and 
+LP\mathsf{LP} were added. In 
+(Nogina 2006, Nogina 2007) a complete logical system,
+ GLA\mathsf{GLA}, for proofs and 
+provability was offered, in the sum of the original 
+languages of GL\mathsf{GL}
+and
+ LP\mathsf{LP}. Both
+ LPP\mathsf{LPP} and
+ GLA\mathsf{GLA}
+ enjoy completeness relative to the 
+class of arithmetical models, and also relative to the class of 
+possible world justification models.
+
+
+Another example of a provability principle that cannot be made 
+completely explicit is the Löb Principle (5). For each of
+ LPP\mathsf{LPP} and
+ GLA\mathsf{GLA},
+ it is easy to find a proof term 
+l(x)l ( x) such that
+
+
+
+(7)
+
+x:(◻F→F)→l(x):Fx :( \Box F \rightarrow F ) \rightarrow l ( x ): F
+
+
+
+
+
+
+holds. However, there is no realization which makes all 
+three ◻\Box s in (5) explicit. In fact, the set of 
+realizable provability principles is the intersection of
+ GL\mathsf{GL} and
+ S4\mathsf{S4} (Goris 2007).
+5.2 Multi-Agent Possible World Justification Models
+
+
+In Multi-Agent possible world justification models multiple
+accessibility relations are employed, with connections between them,
+(Artemov 2006). The idea is, there are multiple agents, each with an
+implicit knowledge operator, and there are justification terms, which
+each agent understands. Loosely, everybody understands explicit
+reasons; these amount to evidence-based common knowledge.
+
+
+An nn -agent possible world justification model is a structure
+ ⟨G,R1\langle \mathcal{G} , \mathcal{R}_{1}, …,Rn,R,E,V⟩\mathcal{R}_{n}
+ , \mathcal{R} , \mathcal{E} , \mathcal{V}\rangle meeting the
+ following conditions.  G\mathcal{G} is a set of possible
+ worlds. Each of R1\mathcal{R}_{1},…,Rn\mathcal{R}_{n} is
+ an accessibility relation, one for each agent. These may be assumed
+ to be reflexive, transitive, or symmetric, as desired. They are used
+ to model implicit agent knowledge for the family of agents. The
+ accessibility relation R\mathcal{R} meets the LP\mathsf{LP}
+ conditions, reflexivity and transitivity. It is used in the modeling
+ of explicit knowledge.  E\mathcal{E} is an evidence function,
+ meeting the same conditions as those for LP\mathsf{LP} in Section
+ 3.3. V\mathcal{V} maps propositional letters to sets of worlds, as
+ usual. There is a special condition imposed: for each ii = 1,
+ …,n,Ri⊆Rn , \mathcal{R}_{i} \subseteq \mathcal{R}.
+
+
+If M=⟨G,R1\mathcal{M} = \langle \mathcal{G} , \mathcal{R}_{1},
+ …,Rn,R,E,V⟩\mathcal{R}_{n} , \mathcal{R} , \mathcal{E} ,
+ \mathcal{V}\rangle is a multi-agent possible world justification
+ model a truth-at-a-world relation,M,Γ⊩X\mathcal{M} , \Gamma \Vdash X,
+ is defined with most of the usual clauses. The ones of particular
+ interest are these:
+
+
+M,Γ⊩KiX\mathcal{M} , \Gamma \Vdash K_{i}X if and only if,
+    for every Δ∈G\Delta \in \mathcal{G} with
+    ΓRiΔ\Gamma \mathcal{R}_{i} \Delta , we have that M,Δ⊩X\mathcal{M} , \Delta \Vdash X.
+  
+
+M,Γ⊩t:X\mathcal{M} , \Gamma \Vdash t : X if and only if Γ∈E(t,X)\Gamma \in \mathcal{E} ( t , X) and, for
+    every Δ∈G\Delta \in \mathcal{G} with
+    ΓRΔ\Gamma \mathcal{R} \Delta , we have
+    that M,Δ⊩X\mathcal{M} , \Delta \Vdash X.
+  
+
+
+
+The condition Ri⊆R\mathcal{R}_{i} \subseteq \mathcal{R} entails the validity of 
+t:X→KiXt : X \rightarrow K_{i}X, for each agent ii.
+If there is only a single agent, and the accessibility relation for 
+that agent is reflexive and transitive, this provides another 
+semantics for S4LP\mathsf{S4LP}. 
+Whatever the number of agents, each agent accepts explicit reasons as
+establishing knowledge.
+
+
+A version of LP\mathsf{LP} with
+two agents was introduced and studied in (Yavorskaya (Sidon) 
+2008), though it can be generalized to any finite number of agents. In
+this, each agent has its own set of justification operators, 
+variables, and constants, rather than having a single set for 
+everybody, as above. In addition some limited communication between 
+agents may be permitted, using a new operator that allows one agent 
+to verify the correctness of the other agent’s justifications. 
+Versions of both single world and more general possible world
+justification semantics were created for the two-agent logics. This
+involves a straightforward extension of the notion of an evidence
+function, and for possible world justification models, using two
+accessibility relations. Realization theorems have been proved
+syntactically, though presumably a semantic proof would also work.
+
+
+There has been some recent exploration of the role of public 
+announcements in multi-agent justification logics (Renne 2008, Renne 
+2009).
+
+
+There is more on the notion of evidence-based common knowledge in
+Section 5 of the supplementary document
+ Some More Technical Matters.
+6. Russell’s Example: Induced Factivity
+
+
+There is a technique for using Justification Logic to analyze 
+different justifications for the same fact, in particular when some 
+of the justifications are factive and some are not. To demonstrate 
+the technique consider a well-known example:
+
+  If a man believes that the late Prime Minister’s last name began
+  with a ‘B,’ he believes what is true, since the late
+  Prime Minister was Sir Henry Campbell
+  Bannerman[5]. 
+  But if he believes that Mr. Balfour was
+  the late Prime
+  Minister[6],
+  he will still believe that the late
+  Prime Minister’s last name began with a ‘B,’ yet this
+  belief, though true, would not be thought to constitute
+  knowledge. (Russell 1912)
+
+
+
+As in the Red Barn Example, discussed in Section 1.1, here one has to
+deal with two justifications for a true statement, one of which is 
+correct and one of which is not. Let BB be a sentence 
+(propositional atom), ww be a designated justification 
+variable for the wrong reason for BB and rr a 
+designated justification variable for the right (hence factive) 
+reason for BB. Then, Russell’s example prompts the following 
+set of 
+ assumptions[7]:
+ 
+
+R={w:B,r:B,r:B→B}\mathcal{R} = \{w : B , r : B , r : B \rightarrow B\}
+
+
+
+Somewhat counter to intuition, one can logically deduce factivity of 
+ww from R\mathcal{R}:
+
+
+r:Br : B (assumption)
+  
+
+r:B→Br : B \rightarrow B (assumption)
+  
+
+BB (from 1 and 2 by Modus Ponens)
+  
+
+B→(w:B→B)B \rightarrow ( w : B \rightarrow B) (propositional axiom)
+  
+
+w:B→Bw : B \rightarrow B (from 3 and 4 by Modus Ponens)
+  
+
+
+
+However, this derivation utilizes the fact that rr is a 
+factive justification for BB to conclude 
+w:B→Bw : B \rightarrow B, which constitutes a case of 
+‘induced factivity’ for w:Bw : B. The 
+question is, how can one distinguish the ‘real’ factivity
+of r:Br : B from the ‘induced factivity’ of 
+w:Bw : B ? Some sort of truth-tracking is needed here, 
+and Justification Logic is an appropriate tool. The natural approach 
+is to consider the set of assumptions without
+r:Br : B, i.e.,
+
+S={w\mathcal{S} = \{w:B, r:B→B}B \rightarrow B\}
+
+
+
+and establish that factivity of ww, i.e., 
+w:B→Bw : B \rightarrow B is not derivable from
+ S\mathcal{S}. Here is a possible world justification model
+ M\mathcal{M} =
+ (G,R,E,V)(\mathcal{G} , \mathcal{R} , \mathcal{E} , \mathcal{V}) in which
+ S\mathcal{S} 
+holds but w:B→Bw : B \rightarrow B does not:
+
+G={1}\mathcal{G} = \{\mathbf{1}\},
+R=∅\mathcal{R} = \varnothing ,
+V(B)\mathcal{V} ( B) = ∅\varnothing  (and so
+  not-1⊩B)\mathbf{1} \Vdash B),
+E(t,F)\mathcal{E} ( t , F) =
+  {1}\{\mathbf{1}\} for all pairs (t,F)(t , F) except
+  (r,B)(r , B),and
+E(r,B)\mathcal{E} ( r , B) = ∅\varnothing .
+
+
+
+It is easy to see that the closure conditions Application 
+and Sum on E\mathcal{E} are fulfilled. At
+1,w:B\mathbf{1} , w : B holds, i.e.,
+
+1⊩w:B\mathbf{1} \Vdash w : B
+
+
+
+since ww is admissible evidence for BB at 
+1\mathbf{1} and there are no possible worlds accessible from 
+1\mathbf{1}. Furthermore,
+
+  not-1⊩r:B\mathbf{1} \Vdash r : B
+
+
+
+since, according to E,r\mathcal{E} , r is 
+not admissible evidence for BB at 1\mathbf{1}. Hence:
+
+1⊩r:B→B\mathbf{1} \Vdash r : B \rightarrow B
+
+
+
+On the other hand,
+
+  not-1⊩w:B→B\mathbf{1} \Vdash w : B \rightarrow B
+
+
+
+since BB does not hold at 1\mathbf{1}.
+7. Self-referentiality of justifications
+
+
+The Realization algorithms sometimes produce Constant Specifications 
+containing self-referential justification assertions 
+c:A(c)c : A ( c), that is, assertions in which the 
+justification (here c)c) occurs in the asserted proposition 
+(here A(c))A ( c)).
+
+
+Self-referentiality of justifications is a new phenomenon which is 
+not present in the conventional modal language. In addition to being 
+intriguing epistemic objects, such self-referential assertions 
+provide a special challenge from the semantical viewpoint because of 
+the built-in vicious circle. Indeed, to evaluate cc one would
+expect first to evaluate AA and then assign a justification 
+object for AA to cc. However, this cannot be done 
+since AA contains cc which is yet to be evaluated. 
+The question of whether or not modal logics can be realized without 
+using self-referential justifications was a major open question in 
+this area.
+
+
+The principal result by Kuznets in (Brezhnev and Kuznets 2006) states
+that self-referentiality of justifications is unavoidable in 
+realization of S4\mathsf{S4} in
+LP\mathsf{LP}. The current 
+state of things is given by the following theorem due to Kuznets:
+
+Theorem 5: Self-referentiality can be avoided in
+realizations of modal logics
+ K\mathsf{K} and
+ D\mathsf{D}.
+ Self-referentiality cannot be avoided in
+realizations of modal logics
+ T,K4,D4\mathsf{T} , \mathsf{K4} , \mathsf{D4}
+ and
+ S4\mathsf{S4}.
+
+
+
+This theorem establishes that a system of justification terms for 
+S4\mathsf{S4} will necessarily 
+be self-referential. This creates a serious, though not directly 
+visible, constraint on provability semantics. In the Gödelian 
+context of arithmetical proofs, the problem was coped with by a 
+general method of assigning arithmetical semantics to 
+self-referential assertions c:A(c)c : A ( c) stating
+that cc is a proof of A(c)A ( c). In the Logic of
+Proofs LP\mathsf{LP} it was 
+dealt with by a non-trivial fixed-point construction.
+
+
+Self-referentiality gives an interesting perspective on Moore’s 
+Paradox. See Section 6 of the
+supplementary document
+ Some More Technical Matters
+ for details.
+8. Quantifiers in Justification Logic
+
+
+While the investigation of propositional Justification Logic is far 
+from complete, there has also been sporadic work on first-order 
+versions. Quantified versions of Modal Logic already offer 
+complexities beyond standard first-order logic. Quantification has an
+even broader field to play when Justification Logics are involved. 
+Classically one quantifies over ‘objects,’ and models are
+equipped with a domain over which quantifiers range. Modally one 
+might have a single domain common to all possible worlds, or one 
+might have separate domains for each world. The role of the Barcan 
+formula is well-known here. Both constant and varying domain options 
+are available for Justification Logic as well. In addition there is a
+possibility that has no analog for Modal Logic: one might quantify 
+over justifications themselves.
+
+
+Initial results concerning the possibility of Quantified 
+Justification Logic were notably unfavorable. The arithmetical 
+provability semantics for the Logic of Proofs
+ LP\mathsf{LP}, naturally generalizes to a 
+first-order version with conventional quantifiers, and to a version 
+with quantifiers over proofs. In both cases, axiomatizability 
+questions were answered negatively.
+
+Theorem 6: The first-order logic of proofs is not
+recursively enumerable (Artemov and Yavorskaya (Sidon) 2001). The
+logic of proofs with quantifiers over proofs is not recursively
+enumerable (Yavorsky 2001).
+
+
+
+Although an arithmetic semantics is not possible, in (Fitting 2008) a
+possible world semantics, and an axiomatic proof theory, was given for 
+a version of LP\mathsf{LP} with
+quantifiers ranging over justifications. Soundness and completeness 
+were proved. At this point possible world semantics separates from 
+arithmetic semantics, which may or may not be a cause for alarm. It 
+was also shown that
+ S4\mathsf{S4}
+ embeds into the quantified logic by translating
+◻Z\Box Z as “there exists a justification xx 
+such that x:Z∗x : Z^{*},” where 
+Z∗Z^{*} is the translation of ZZ. While this 
+logic is somewhat complicated, it has found applications, e.g., in 
+(Dean and Kurokawa 2009b) it is used to analyze the Knower Paradox, 
+though objections have been raised to this analysis in (Arlo-Costa 
+and Kishida 2009).
+A First-Order Logic of Proofs, FOLP\textsf{FOLP}, with quantifiers
+over individual variables, has been presented
+in Artemov and Yavorskaya (Sidon)
+(2011). In FOLP\textsf{FOLP} proof assertions are represented
+by formulas of the form t:XAt{:}_X A where XX is a finite set of
+individual variables that are considered global parameters open for
+substitution. All occurrences of variables from XX that are free in
+AA are also free in t:XAt{:}_X A. All other free variables of AA
+are considered local and hence bound in t:XAt{:}_X A. For example, if
+A(x,y)A(x,y) is an atomic formula, then in p:{x}A(x,y)p{:}_{\{x\}} A(x,y)
+variable xx is free and variable yy is bound. Likewise, in
+p:{x,y}A(x,y)p{:}_{\{x,y\}} A(x,y) both variables are free, and in
+p:∅A(x,y)p{:}_{\emptyset} A(x,y) neither xx nor yy is free.
+Proofs (justifications) are represented by proof terms which do not
+contain individual variables. In addition to LP\textsf{LP}
+operations there is one more series of operations on proof terms,
+genx(t){\sf gen}_x(t), corresponding to generalization over individual
+variable xx. The new axiom that governs this operation is t:XA→gen:x(t)X∀xAt{:}_X
+A {\rightarrow}{\sf gen{:}_x(t)}_X\forall x A, with x∉Xx\not\in
+X. The complete list of FOLP\textsf{FOLP} principles along with
+realization of First-Order S4\textsf{S4} can be found
+in Artemov and Yavorskaya (Sidon)
+(2011). A semantics for FOLP\textsf{FOLP} has been developed
+in Fitting (2014a). Justification logics
+other than LP{\textsf{LP}} have not yet been considered in
+quantified versions, though work is in progress currently.
+9. Historical Notes
+
+
+The initial Justification Logic system, the Logic of Proofs
+ LP\mathsf{LP},
+ was introduced in 1995 in (Artemov 1995) (cf. 
+also (Artemov 2001)) where such basic properties as Internalization, 
+Realization, arithmetical completeness, were first established.
+LP\mathsf{LP} offered an intended
+provability semantics for Gödel’s provability logic
+ S4\mathsf{S4},
+ thus providing a formalization of Brouwer-Heyting-Kolmogorov
+semantics for intuitionistic propositional logic. 
+Epistemic semantics and completeness (Fitting 2005) were first 
+established for LP\mathsf{LP}. 
+Symbolic models and decidability for
+ LP\mathsf{LP}
+ are due to Mkrtychev (Mkrtychev 1997). 
+Complexity estimates first appeared in (Brezhnev and Kuznets 2006, 
+Kuznets 2000, Milnikel 2007). A comprehensive overview of all 
+decidability and complexity results can be found in (Kuznets 2008). 
+Systems J,J4\mathsf{J} , \mathsf{J4}, and
+ JT\mathsf{JT}
+ were first considered in (Brezhnev 
+2001) under different names and in a slightly different setting. 
+JT45\mathsf{JT45} appeared 
+independently in (Pacuit 2006) and (Rubtsova 2006), and
+ JD45\mathsf{JD45} in (Pacuit 2006). The
+logic of uni-conclusion proofs has been found in (Krupski 1997). 
+A more general approach to common knowledge based on justified
+knowledge was offered in (Artemov 2006).  Game
+semantics of Justification Logic and Dynamic Epistemic Logic with 
+justifications were studied in (Renne 2008, Renne 2009). Connections 
+between Justification Logic and the problem of logical omniscience 
+were examined in (Artemov and Kuznets 2009, Wang 2009).
+The name Justification Logic was introduced in
+(Artemov 2008), in which Kripke, Russell, and Gettier examples were
+formalized; this formalization has been used for the resolution of
+paradoxes, verification, hidden assumption analysis, and eliminating
+redundancies.  In (Dean and Kurokawa 2009a), Justification Logic was
+used for the analysis of Knower and Knowability paradoxes.

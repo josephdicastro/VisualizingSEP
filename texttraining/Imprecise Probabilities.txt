@@ -1,0 +1,1673 @@
+It has been argued that imprecise probabilities are a natural and
+intuitive way of overcoming some of the issues with orthodox precise
+probabilities.  Models of this type have a long pedigree, and interest
+in such models has been growing in recent years.  This article
+introduces the theory of imprecise probabilities, discusses the
+motivations for their use and their possible advantages over the
+standard precise model.  It then discusses some philosophical issues
+raised by this model.  There is also a historical appendix which
+provides an overview of some important thinkers who appear sympathetic
+to imprecise probabilities.
+
+ 
+1. Introduction
+Probability theory has been a remarkably fruitful theory, with
+applications in almost every branch of science. In philosophy, some
+important applications of probability theory go by the name
+Bayesianism; this has been an extremely successful
+program (see for example Howson and Urbach
+2006; Bovens and Hartmann 2003; Talbott 2008). But probability
+theory seems to impute much richer and more determinate attitudes than
+seems warranted. What should your rational degree of belief be that
+global mean surface temperature will have risen by more than four
+degrees by 2080? Perhaps it should be 0.75? Why not 0.75001? Why not
+0.7497? Is that event more or less likely than getting at least one
+head on two tosses of a fair coin? It seems there are many events
+about which we can (or perhaps should) take less precise attitudes
+than orthodox probability requires. Among the reasons to question the
+orthodoxy, it seems that the insistence that states of belief be
+represented by a single real-valued probability function is quite an
+unrealistic idealisation, and one that brings with it some rather
+awkward consequences that we shall discuss later. Indeed, it has long
+been recognised that probability theory offers only a rather idealised
+model of belief. As far back as the mid-nineteenth century, we find
+George Boole saying:
+
+It would be unphilosophical to affirm that the strength of that
+expectation, viewed as an emotion of the mind, is capable of being
+referred to any numerical standard. (Boole 1958
+[1854]: 244)
+
+For these, and many other reasons, there is growing interest
+in Imprecise Probability (IP) models. Broadly construed,
+these are models of belief that go beyond the probabilistic orthodoxy
+in one way or another.
+IP models are used in a number of fields including:
+
+Statistics (Walley 1991; Ruggeri et al. 2005; Augustin et
+al. 2014)
+Psychology of reasoning (Pfeifer and
+Kleiter 2007)
+Linguistic processing of
+uncertainty (Wallsten and Budescu
+1995)
+Neurological response to ambiguity and
+conflict (Smithson and Pushkarskaya
+2015)
+Philosophy (Levi 1980; Joyce 2011; Sturgeon
+2008; Kaplan 1983; Kyburg 1983)
+Behavioural economics (Ellsberg 1961;
+Camerer and Weber 1992; Smithson and Campbell 2009)
+Mathematical economics (Gilboa
+1987)
+Engineering (Ferson and Ginzburg 1996; Ferson and Hajagos 2004;
+Oberguggenberger 2014)
+Computer science (Cozman 2000; Cozman and
+Walley 2005)
+Scientific computing (Oberkampf and Roy 2010, chapter 13)
+Physics (Suppes and Zanotti 1991; Hartmann
+and Suppes 2010; Frigg et al. 2014)
+
+This article identifies a variety of motivations for IP models;
+introduces various formal models that are broadly in this area; and
+discusses some open problems for these frameworks. The focus will be
+on formal models of belief.
+1.1 A summary of terminology
+Throughout the article I adopt the convention of discussing the
+beliefs of an arbitrary intentional agent whom I shall call
+“you”. Prominent advocates of IP (including Good and
+Walley) adopt this convention.
+This article is about formal models of belief and as such, there
+needs to be a certain amount of formal machinery introduced. There is
+a set of states ΩΩ\Omega which represents
+the ways the world could
+be. Sometimes ΩΩ\Omega is described as the
+set of “possible worlds”. The objects of belief—the
+things you have beliefs about—can be represented by subsets of
+the set of ways the world could
+be ΩΩ\Omega. We can identify a
+proposition XXX with the set of states which
+make it true, or, with the set of possible worlds where it is true. If
+you have beliefs about XXX
+and YYY then you also have beliefs about
+“X∩YX∩YX\cap Y”,
+“X∪YX∪YX \cup Y” and
+“¬X¬X\neg X”;
+“XXX
+and YYY”,
+“XXX
+or YYY” and “it is not the case
+that XXX” respectively. The set of
+objects of belief is the power set
+of ΩΩ\Omega, or
+if ΩΩ\Omega is infinite, some measurable
+algebra of the subsets of ΩΩ\Omega.
+The standard view of degree of belief is that degrees of belief are
+represented by real numbers and belief states by probability
+functions; this is a normative requirement. Probability functions are
+functions, ppp, from the algebra of beliefs
+to real numbers satisfying:
+
+0=p(∅)≤p(X)≤p(Ω)=10=p(∅)≤p(X)≤p(Ω)=10 = p(\emptyset) \le p(X) \le p(\Omega) = 1
+If X∩Y=∅X∩Y=∅X\cap Y = \emptyset then p(X∪Y)=p(X)+p(Y)p(X∪Y)=p(X)+p(Y)p(X\cup Y) = p(X) + p(Y)
+
+So if your belief state or doxastic state is represented
+by ppp, then your degree of belief
+in XXX is the value assigned
+to XXX by ppp;
+that is, p(X)p(X)p(X).
+Further, learning in the Bayesian model of belief is effected
+by conditionalisation. If you learn a
+proposition EEE (and nothing further) then
+your post-learning belief in XXX is given
+by p(X∣E)=p(X∩E)/p(E)p(X∣E)=p(X∩E)/p(E)p(X\mid E) = p(X\cap E)/p(E).
+The alternative approach that will be the main focus of this
+article is the approach that represents belief by a set of
+probability functions instead of a single probability. So instead of
+having some ppp represent your belief state,
+you have PPP, a set of such
+functions. van Fraassen (1990) calls
+this your representor, Levi calls it a credal set. I
+will discuss various ways you might interpret the representor later
+but for now we can think of it as follows. Your representor is
+a credal committee: each probability function in it
+represents the opinions of one member of a committee that,
+collectively, represents your beliefs.
+From these concepts we can define some “summary
+functions” that are often used in discussions of imprecise
+probabilities. Often, it is assumed that your degree of belief in a
+proposition, XXX, is represented
+by P(X)={p(X):p∈P}P(X)={p(X):p∈P}P(X) = \{p(X) : p\in P \}. I will adopt
+this notational convention, with the proviso that I don’t
+take P(X)P(X)P(X) to be an adequate representation
+of your degree of belief
+in XXX. Your lower envelope
+of XXX
+is: P––(X)=infP(X)P_(X)=infP(X)\underline{P}(X)=\inf P(X). Likewise,
+your upper envelope
+is ¯¯¯¯P(X)=supP(X)P¯(X)=supP(X)\overline{P}(X)=\sup P(X). They
+are conjugates of each other in the following
+sense: ¯¯¯¯P(X)=1−P––(¬X)P¯(X)=1−P_(¬X)\overline{P}(X) = 1 - \underline{P}(\neg
+X).
+The standard assumption about updating for sets of probabilities is
+that your degree of belief in XXX after
+learning EEE is given
+by P(X∣E)={p(X∣E),p∈P,p(E)>0}P(X∣E)={p(X∣E),p∈P,p(E)>0}P(X\mid E) = \{p(X\mid E), p\in P, p(E)
+&gt; 0\}. Your belief state after having
+learned EEE
+is P(⋅∣E)={p(⋅∣E),p∈P,p(E)>0}P(⋅∣E)={p(⋅∣E),p∈P,p(E)>0}P(\cdot\mid E) = \{p(\cdot\mid E), p\in P,
+p(E) &gt; 0\}. That is, by the set of conditional
+probabilities.
+I would like to emphasise already that these summary
+functions—P(⋅)P(⋅)P(\cdot), P––(⋅)P_(⋅)\underline{P}(\cdot)
+and ¯¯¯¯P(⋅)P¯(⋅)\overline{P}(\cdot)—are not
+properly representative of your belief. Information is missing from
+the picture. This issue will be important later, in our discussion of
+dilation.
+We shall need to talk about decision making so we shall introduce a
+simple model of decisions in terms of gambles. We can view bounded
+real valued functions fff as
+“gambles” that are functions from some
+set ΩΩ\Omega to real numbers. A
+gamble fff pays
+out f(ω)f(ω)f(\omega)
+if ωω\omega is the true state. We assume
+that you value each further unit of this good the same (the gambles’
+pay outs are linear in utility) and you are indifferent to concerns of
+risk. Your attitude to these gambles reflects your attitudes about how
+likely the various contingencies in ΩΩ\Omega
+are. That is, gambles that win big
+if ωω\omega look more attractive the more
+likely you consider ωω\omega to be. In
+particular, consider the indicator
+function IXIXI_X on a
+proposition XXX which
+outputs 111 if XXX
+is true at the actual world and 000
+otherwise. These are a particular kind of gamble, and your attitude
+towards them straightforwardly reflects your degree of belief in the
+proposition. The more valuable you
+consider IXIXI_X, the more likely you
+consider XXX to be. Call these indicator
+gambles.
+Gambles are evaluated with respect to their expected
+value. Call Ep(f)Ep(f)E_{p}(f) the expected value of
+gamble fff with respect to
+probability ppp, and define it as: 
+Ep(f)=∑Ωp(ω)f(ω)Ep(f)=∑Ωp(ω)f(ω) {E}_p(f) = \sum_{\Omega} p(\omega) f(\omega) 
+How valuable you consider fff to be in
+state ωω\omega depends on how
+big f(ω)f(ω)f(\omega) is. How important the
+goodness of fff
+in ωω\omega is depends on how likely the
+state is, measured by p(ω)p(ω)p(\omega). The
+expectation is then the sum of these probability-weighted
+values. See Briggs (2014) for more
+discussion of expected utility.
+Then we define EP(f)EP(f)\mathbf{E}_{P}(f)
+as EP(f)={Ep(f):p∈P}EP(f)={Ep(f):p∈P}\mathbf{E}_{P}(f) = \{E_{p}(f) : p\in P
+\}. That is, the set of expected values for members
+of PPP. The same proviso holds
+of EP(f)EP(f)\mathbf{E}_{P}(f) as held
+of P(X)P(X)P(X): that is, the extent to
+which EP(f)EP(f)\mathbf{E}_{P}(f) fully represents
+your attitude to the value of a gamble is open to question. I will
+often drop the subscript “PPP”
+when no ambiguity arises from doing so. Further technical details can
+be found in the
+ formal appendix.
+1.2 Some important distinctions
+There are a number of distinctions that it is important to make in
+what follows.
+An important parameter in an IP theory is the normative force the
+theory is supposed to have. Is imprecision obligatory or is it merely
+permissible? Is it always permissible/obligatory, or only
+sometimes? Or we might be interested in a purely descriptive project
+of characterising the credal states of actual agents, with no interest
+in normative questions. This last possibility will concern us little
+in this article.
+It is also helpful to distinguish belief itself from the
+elicitation of that belief and also from your introspective access to
+those beliefs. The same goes for other attitudes (values, utilities
+and so on). It may be that you have beliefs that are not amenable to
+(precise) elicitation, in practice or even in principle. Likewise,
+your introspective access to your own beliefs might be imperfect. Such
+imperfections could be a source of
+imprecision. Bradley (2009)
+distinguishes many distinct sources of imperfect introspection. The
+imperfection could arise from your unawareness of the prospect in
+question, the boundedness of your reasoning, ignorance of relevant
+contingencies, or because of conflict in your evidence or in your
+values (pp. 240–241). See Bradley and
+Drechsler (2014) for further discussion of types of
+uncertainty.
+There are a variety of aspects of a body of evidence that could
+make a difference to how you ought to respond to it. We can
+ask how much evidence there is (weight of evidence). We can
+ask whether the evidence is balanced or whether it tells heavily in
+favour of one hypothesis over another (balance of evidence). Evidence
+can be balanced because it is incomplete: there simply isn’t
+enough of it. Evidence can also be balanced if it
+is conflicted: different pieces of evidence favour different
+hypotheses. We can further ask whether evidence tells us
+something specific—like that the bias of a coin is 2/3
+in favour of heads—or unspecific—like that the bias of a
+coin is between 2/3 and 1 in favour of heads. This specificity should
+be distinguished from vagueness or indeterminacy of evidence: that a
+coin has bias about 2/3 is vague but specific, while that a
+coin has bias definitely somewhere between 2/3 and 1 is determinate
+but unspecific. Likewise, a credal state could be indeterminate,
+fuzzy, or it could be unspecific, or it could be both. It seems like
+determinate but unspecific belief states will be rarer than
+indeterminate ones.
+Isaac Levi (1974, 1985) makes a
+distinction between “imprecise” credences and
+“indeterminate” credences (the scare quotes are indicating
+that these aren’t uses of the terms “imprecise” and
+“indeterminate” that accord with the usage I adopt in this
+article). The idea is that there are two distinct kinds of belief
+state that might require a move to an IP representation of belief. An
+“imprecise” belief in Levi’s terminology is an imperfectly
+introspected or elicited belief in mine, while an
+“indeterminate” belief is a (possibly) perfectly
+introspected belief that is still indeterminate or unspecific (or
+both). Levi argues that the interesting phenomenon is
+“indeterminate” credence. Walley
+(1991) also emphasises the distinction between cases where
+there is a “correct” but unknown probability from cases of
+“indeterminacy”.
+There is a further question about the interpretation of IP that
+cross-cuts the above. This is the question of whether we
+understand PPP as a “complete”
+or “exhaustive” representation of your beliefs, or whether
+we take the representation to be incomplete or non-exhaustive. Let’s
+talk in terms of the betting interpretation for a moment. The
+exhaustive/non-exhaustive distinction can be drawn by asking the
+following question: does PPP capture all
+and only your dispositions to bet or
+does PPP only partially capture your
+dispositions to bet? Walley emphasises this distinction and suggests
+that most models are non-exhaustive.
+Partly because of Levi’s injunction to distinguish
+“imprecise” from “indeterminate” belief, some
+have objected to the use of the term “imprecise
+probability”. Using the above distinction between indeterminate,
+unspecific and imperfectly introspected belief, we can keep separate
+the categories Levi wanted to keep separate all without using the term
+“imprecise”. We can then use “imprecise” as an
+umbrella term to cover all these cases of lack of
+precision. Conveniently, this allows us to stay in line with the
+wealth of formal work on “Imprecise Probabilities” which
+term is used to cover cases of indeterminacy. This usage goes back at
+least to Peter Walley’s influential book Statistical Reasoning
+with Imprecise Probabilities (Walley
+1991).
+So, “Imprecise” is not quite right, but neither is
+“Probability” since the formal theory of IP is really
+about previsions (sort of expectations) rather than just
+about probability (expectations of indicator functions). Helpfully, if
+I abbreviate Imprecise Probability to “IP” then I can
+exploit some useful ambiguities.
+2. Motivations
+Let’s consider, in general terms, what sort of motivations one
+might have for adopting models that fall under the umbrella of IP. The
+focus will be on models of rational belief, since these are the models
+that philosophers typically focus on, although it is worth noting that
+statistical work using IP isn’t restricted to this
+interpretation. Note that no one author endorses all of these
+arguments, and indeed, some authors who are sympathetic to IP have
+explicitly stated that they don’t consider certain of these arguments
+to be good (for example Mark Kaplan does not endorse the claim that
+concerns about descriptive realism suggest allowing
+incompleteness).
+2.1 Ellsberg decisions
+There are a number of examples of decision problems where we are
+intuitively drawn to go against the prescriptions of precise
+probabilism. And indeed, many experimental subjects do seem to express
+preferences that violate the axioms. IP offers a way of representing
+these intuitively plausible and experimentally observed choices as
+rational. One classic example of this is the Ellsberg
+problem (Ellsberg 1961).
+
+I have an urn that contains ninety marbles. Thirty marbles are
+red. The remainder are blue or yellow in some unknown proportion.
+
+Consider the indicator gambles for various events in this
+scenario. Consider a choice between a bet that wins if the marble
+drawn is red (I), versus a bet that wins if the marble drawn is blue
+(II). You might prefer I to II since I involves risk while II
+involves ambiguity. A prospect is risky if its outcome is
+uncertain but its outcomes occur with known probability. A prospect is
+ambiguous if the outcomes occur with unknown or only partially known
+probabilities. Now consider a choice between a bet that wins if the
+marble drawn is not blue (III) versus a bet that wins if the marble
+drawn is not red (IV). Now it is III that is ambiguous, while IV is
+unambiguous but risky, and thus IV might seem better to you if you
+preferred risky to ambiguous prospects. Such a pattern of preferences
+(I preferred to II but IV preferred to III) cannot be rationalised as
+the choices of a precise expected utility maximiser. The gambles are
+summarised in the table.
+
+
+
+
+R
+B
+Y
+
+
+I
+1
+0
+0
+
+
+II
+0
+1
+0
+
+
+III
+1
+0
+1
+
+
+IV
+0
+1
+1
+
+
+Table 1: The Ellsberg bets. The urn
+contains 30 red marbles and 60 blue/yellow marbles
+
+Let the probabilities for red, blue and yellow marbles
+be rrr, bbb
+and yyy respectively. If you were an
+expected utility maximiser and preferred I to II,
+then r>br>br &gt; b and a preference for IV over
+III entails that r+y<y+br+y<y+br+y &lt; y +b. No numbers
+can jointly satisfy these two constraints. Therefore, no probability
+function is such that an expected utility maximiser with that
+probability would choose in the way described above. While by no means
+universal, these preferences are a robust feature of many experimental
+subjects’ response to this sort of
+example (Camerer and Weber 1992; Fox and
+Tversky 1995). Some experiments suggest that Ellsberg-type patterns of preference are rarer than normally recognised (Binmore et al. 2012; Voorhoeve et al. 2016). For more on ambiguity attitudes, see Trautmann and van der Kuilen (2016).
+The imprecise probabilist can model the situation as
+follows: P(R)=1/3,P(B)=P(Y)=[0,2/3]P(R)=1/3,P(B)=P(Y)=[0,2/3]P(R)=1/3, P(B)=P(Y)=[0,2/3]. Note
+that this expression of the belief state misses out some important
+details. For example, for all p∈Pp∈Pp\in P, we
+have p(B)=2/3−p(Y)p(B)=2/3−p(Y)p(B)=2/3-p(Y). For the point being made
+here, this detail is not important. Modelling the ambiguity
+allows us to rationalise real agents’ preferences for bets on red. To
+flesh this story out would require a lot more to be said about
+decision making, (see section 3.3) but the
+intuition is that aversion to ambiguity explains the preference for I
+over II and IV over III.
+As Steele (2007) points out, the
+above analysis rationalises the Ellsberg choices only if we are
+dealing with genuinely indeterminate or unspecific beliefs. If we were
+dealing with a case of imperfectly introspected belief then there
+would exist some ppp in the representor such
+that rational choices maximise EpEpE_{p}. For
+the Ellsberg choices, there is no
+such ppp.
+This view on the lessons of the Ellsberg game is not
+uncontroversial. Al-Najjar and Weinstein
+(2009) offer an alternative view on the interpretation of the
+Ellsberg preferences. Their view is that the distinctive pattern of
+Ellsberg choices is due to agents applying certain heuristics to solve
+the decisions that assume that the odds are manipulable. In real-life
+situations, if someone offers you a bet, you might think that they
+must have some advantage over you in order for it to be worth their
+while offering you the bet. Such scepticism, appropriately modelled,
+can yield the Ellsberg choices within a simple game theoretic precise
+probabilistic model.
+2.2 Incompleteness and incomparability
+Various arguments for (precise) probabilism assume that some
+relation or other is complete. Whether this is a preference over acts,
+or some “qualitative probability ordering”, the relation
+is assumed to hold one way or the other between any two elements of
+the domain. This hardly seems like it should be a principle of
+rationality, especially in cases of severe uncertainty. That
+is—to take the preference example—it is reasonable to have
+no preference in either direction. This is an importantly different
+attitude to being indifferent between the options. Mark
+Kaplan argues this point as follows:
+
+Both when you are indifferent between AAA
+and BBB and when you are undecided
+between AAA
+and BBB you can be said not to prefer either
+state of affairs to the other. Nonetheless, indifference and
+indecision are distinct. When you are indifferent
+between AAA
+and BBB, your failure to prefer one to the
+other is born of a determination that they are equally
+preferable. When you are undecided, your failure to prefer one to the
+other is born of no such determination. (Kaplan
+1996: 5)
+
+There is a standard behaviourist response to the claim
+that incomparability and indifference should be distinguished. In
+short, the claim is that it is a distinction that cannot be inferred
+from actual agents’ choice behaviour. Ultimately, in a given choice
+situation you must choose one of the options. Which you choose can be
+interpreted as being (weakly) preferred. Joyce offers the following
+criticism of this appeal to behaviourism.
+
+There are just too many things worth saying that cannot be said
+within the confines of strict behaviorism… The basic difficulty
+here is that it is impossible to distinguish contexts in which an
+agent’s behavior really does reveal what she wants from contexts in
+which it does not without appealing to additional facts about her
+mental state… An even more serious shortcoming is behaviorism’s
+inability to make sense of rationalizing explanations of
+choice behavior. (Joyce 1999: 21)
+
+On top of this, behaviourists cannot make sense of the fact that
+incomparable goods are insensitive to small
+improvements. That is, if AAA
+and BBB are two goods that you have no
+preference between (for example, bets on propositions with imprecise
+probabilities) and if A+A+A^+ is a good
+slightly better than AAA, then it might
+still be incomparable with BBB. This
+distinguishes incomparability from indifference, since indifference
+“ties” will be broken by small improvements. So the claim
+that there is no behavioural difference between indifference and
+incomparability is false.
+Kaplan argues that not only is violating the completeness axiom
+permissible, it is, in fact, sometimes obligatory.
+
+[M]y reason for rejecting as falsely precise the demand that you
+adopt a … set of preferences [that satisfy the preference
+axioms] is not the usual one. It is not that this demand is not
+humanly satisfiable. For if that were all that was wrong, the
+demand might still play a useful role as a regulative ideal—an
+ideal which might then be legitimately invoked to get you to
+“solve” your decision problem as the orthodox Bayesian
+would have you do. My complaint about the orthodox Bayesian demand is
+rather that it imposes the wrong regulative ideal. For if you have
+[such a] set of preferences then you have a determinate assignment of
+[ppp] to every hypothesis—and then you
+are not giving evidence its due. (Kaplan 1983:
+571)
+
+He notes that it is not the case that it is always unreasonable or
+impossible for you to have precise beliefs: in that case precision
+could serve as a regulative ideal. Precise probabilism does still
+serve as something of a regulative ideal, but it is the belief of an
+ideal agent in an idealised evidential position. Idealised
+evidential positions are approximated by cases where you have a coin
+of a known bias. Precise probabilists and advocates of IP both agree
+that precise probabilism is an idealisation, and a regulative
+ideal. However, they differ as to what kind of idealisation is
+involved. Precise probabilists think that what precludes us from
+having precise probabilistic beliefs is merely a lack of computational
+power and introspective capacity. Imprecise probabilists think that
+even agents ideal in this sense might (and possibly should)
+fail to have precise probabilistic beliefs when they are not in an
+ideal evidential position.
+At least some of the axioms of preference are not normative
+constraints. We can now ask what can be proved in the absence of the
+“purely structural”—non-normative—axioms? This
+surely gives us a handle on what is really required of the structure
+of belief.
+It seems permissible to fail to have a preference between two
+options. Or it seems reasonable to fail to consider either of two
+possibilities more likely than the other. And these failures to assent
+to certain judgements is not the same as considering the two elements
+under consideration to be on a par in any substantive
+sense. That said, precise probabilism is serving as a regulative
+ideal. That is, precision might still be an unattained (possibly
+unattainable) goal that informs agents as to how they might improve
+their credences. Completeness of preference is what the thoroughly
+informed agent ought to have. Without complete preference, standard
+representation theorems don’t work. However, for
+each completion of the incomplete preference
+ordering—for each complete ordering that extends the incomplete
+preference relation—the theorem follows. So if we consider the
+set of probability functions that are such that some completion of the
+incomplete preference is represented by that function, then we can
+consider this set to be representing the beliefs associated with the
+incomplete preference. We also get, for each completion, a utility
+function unique up to linear transformation. This, in essence, was
+Kaplan’s position (see Kaplan 1983;
+1996).
+Joyce (1999: 102–4) and
+Jeffrey (1984: 138–41) both make
+similar claims. A particularly detailed argument along these lines for
+comparative belief can be found in Hawthorne
+(2009). Indeed, this idea has a long and distinguished history
+that goes back at least as far as B.O. Koopman
+(1940). I.J Good (1962), Terrence
+Fine (1973) and Patrick
+Suppes (1974) all discussed ideas along
+these lines. Seidenfeld, Schervish, and Kadane
+(1995) give a representation theorem for preference that don’t
+satisfy completeness. (See Evren and Ok 2011;
+Pedersen 2014; and Chu and Halpern 2008, 2004; for very general
+representation theorems).
+2.3 Weight of evidence, balance of evidence
+Evidence influences belief. Joyce
+(2005) suggests that there is an important difference between
+the weight of evidence and the balance of evidence. He argues that
+this is a distinction that precise probabilists struggle to deal with
+and that the distinction is worth representing. This idea has been
+hinted at by a great many thinkers including J.M. Keynes, Rudolf
+Carnap, C.S. Pierce and Karl Popper (see
+references in Joyce 2005; Gärdenfors and Sahlin 1982). Here’s
+Keynes’ articulation of the intuition:
+
+As the relevant evidence at our disposal increases, the magnitude
+of the probability of the argument may either decrease or increase,
+according as the new knowledge strengthens the unfavourable or the
+favourable evidence; but something seems to have increased in
+either case,—we have a more substantial basis upon which to rest
+our conclusion. I express this by saying than an accession of new
+evidence increases the weight of an
+argument. (Keynes 1921: 78, Keynes’
+emphasis)
+
+Consider tossing a coin known to be fair. Let’s say you have seen
+the outcome of a hundred tosses and roughly half have come up
+heads. Your degree of belief that the coin will land heads should be
+around a half. This is a case where there is weight of evidence behind
+the belief.
+Now consider another case: a coin of unknown bias is to be
+tossed. That is, you have not seen any data on previous tosses. In the
+absence of any relevant information about the bias, symmetry concerns
+might suggest you take the chance of heads to be around a half. This
+opinion is different from the above one. There is no weight
+of evidence, but there is nothing to suggest that your attitudes
+to HHH and TTT
+should be different. So, on balance, you should have the same
+belief in both.
+However, these two different cases get represented as having the
+same probabilistic belief,
+namely p(H)=p(T)=0.5p(H)=p(T)=0.5p(H)=p(T)=0.5. In the fair coin
+case, this probability assignment comes from having evidence that
+suggests that the chance of heads is a half, and the prescription to
+have your credences match chances (ceteris paribus). In the
+unknown bias case, by contrast, one arrives at the same assignment in
+a different way: nothing in your evidence supports one proposition
+over the other so some “principle of indifference”
+reasoning suggests that they should be assigned the same
+credence (see Hájek 2011, for discussion of the
+principle of indifference).
+If we take seriously the “ambiguity aversion” discussed
+earlier, when offered the choice between betting on the fair coin’s
+landing heads as opposed to the unknown-bias coin’s landing heads, it
+doesn’t seem unreasonable to prefer the former. Recall the preference
+for unambiguous gambles in the Ellsberg game
+in section 2.1. But if both coins have the same
+subjective probabilities attached, what rationalises this preference
+for betting on the fair coin? Joyce argues that there is a difference
+between these beliefs that is worth representing. IP does
+represent the difference. The first case is represented
+by P(H)={0.5}P(H)={0.5}P(H)=\{0.5\}, while the second is
+captured by P(H)=[0,1]P(H)=[0,1]P(H)=[0,1].
+Scott Sturgeon puts this point nicely when he says:
+
+[E]vidence and attitude aptly based on it must match in
+character. When evidence is essentially sharp, it warrants sharp
+or exact attitude; when evidence is essentially fuzzy—as it is
+most of the time—it warrants at best a fuzzy attitude. In a
+phrase: evidential precision begets attitudinal precision; and
+evidential imprecision begets attitudinal
+imprecision. (Sturgeon 2008: 159 Sturgeon’s
+emphasis)
+
+Wheeler (2014) criticises Sturgeon on
+this “character matching” thesis. However, an argument for
+IP based on the nature of evidence only requires that the character of
+the evidence sometimes allows (or mandates?) imprecise belief and not
+that the characters must always match. In
+opposition, Schoenfield (2012) argues
+that evidence always supports precise credence, but that for reasons
+of limited computational capacity, real agents needn’t be required to
+have precise credences. However, her argument only really supports the
+claim that sometimes indeterminacy is due to complexity of
+the evidence and computational complexity. She doesn’t have an
+argument against the claims Levi, Kaplan, Joyce and others make that
+there are evidential situations that warrant imprecise attitudes.
+Strictly speaking, what we have here is only half the
+story. There is a difference between the
+representations of belief as regards weight and balance. But that
+still leaves open the question of exactly what is representing the
+weight of evidence? What aspect of the belief reflects this
+difference? One might be tempted to
+view ¯¯¯¯P(H)−P––(H)P¯(H)−P_(H)\overline{P}(H)-\underline{P}(H) as a
+measure of the weight of evidence
+for HHH. Walley
+(1991) tentatively suggests as much. However, this would get
+wrong cases of conflicting evidence. (Imagine two equally reliable
+witnesses: one tells you the coin is biased towards heads, the other
+says the bias is towards tails.) The question of whether and
+how IP does better than precise probabilism has not yet received an
+adequate answer. Researchers in IP have, however, made progress on
+distinguishing cases where your beliefs happen to have certain
+symmetry properties from cases where your beliefs capture evidence
+about symmetries in the objects of belief. This is a
+distinction that the standard precise model of belief fails to
+capture (de Cooman and Miranda
+2007).
+The precise probabilist can respond to the weight/balance
+distinction argument by pointing to the property
+of resiliency (Skyrms 2011)
+or stability (Leitgeb
+2014). The idea is that probabilities determined by the weight
+of evidence change less in response to new evidence than do
+probabilities determined by balance of evidence alone. That is, if
+you’ve seen a hundred tosses of the coin, seeing it land heads doesn’t
+affect your belief much, while if you’ve not seen any tosses of the
+coin, seeing it land heads has a bigger effect on your beliefs. Thus,
+the distinction is represented in the precise probabilistic framework
+in the conditional probabilities. The distinction, though, is one that
+cannot rationalise the preference for betting on the fair coin. One
+could develop a resiliency-weighted expected value and claim that this
+is what you should maximise, but this would be as much of a departure
+from orthodox probabilism as IP is. If someone were to develop such a
+theory, then its merits could be weighed against the merits of IP type
+models.
+Another potential precise response would be to suggest that there
+is weight of evidence for HHH if many
+propositions that are evidence for HHH are
+fully believed, or if there is a chance proposition
+(about HHH) that is near to fully
+believed. This is in contrast to cases of mere balance where few
+propositions that are evidence for HHH are
+fully believed, or where probability is spread out over a number of
+chance hypotheses. The same comments made above about resiliency apply
+here: such distinctions can be made, but this doesn’t get us to a
+theory that can rationalise ambiguity aversion.
+The phenomenon of dilation (section 3.1)
+suggests that the kind of argument put forward in this section needs
+more care and further elaboration.
+2.4 Suspending judgement
+You are sometimes in a position where none of your evidence seems
+to speak for or against the truth of some proposition. Arguably, a
+reasonable attitude to take towards such a proposition is suspension
+of judgement.
+
+When there is little or no information on which to base our
+conclusions, we cannot expect reasoning (no matter how clever or
+thorough) to reveal a most probable hypothesis or a uniquely
+reasonable course of action. There are limits to the power of
+reason. (Walley 1991: 2)
+
+Consider a coin of unknown bias. The Bayesian agent must have a
+precise belief about the coin’s landing heads on the next toss. Given
+the complete lack of information about the coin, it seems like it
+would be better just to suspend judgement. That is, it would be better
+not to have any particular precise credence. It would be better to
+avoid betting on the coin. But there just isn’t room in the Bayesian
+framework to do this. The probability function must output some
+number, and that number will sanction a particular set of bets as
+desirable.
+Consider P––(X)P_(X)\underline{P}(X) as
+representing the degree to which the evidence
+supports XXX. Now
+consider I(X)=1−(P––(X)+P––(¬X))I(X)=1−(P_(X)+P_(¬X))I(X) = 1- (\underline{P}(X) +
+\underline{P}(\neg X)). This measures the degree to which the
+evidence is silent
+on XXX. Huber
+(2009) points out that precise probabilism can then be
+understood as making the claim that no evidence is ever silent on any
+proposition. That is, I(X)=0I(X)=0I(X)=0 for
+all XXX. One can never suspend
+judgement. This is a nice way of seeing the strangeness of the precise
+probabilist’s attitude to evidence. Huber is making this point about
+Dempster-Shafer belief functions (see
+ historical appendix,
+ section 7), but it carries over to IP in general.
+The committed precise probabilist would respond that
+setting p(X)=0.5p(X)=0.5p(X)=0.5 is suspending
+judgement. This is the maximally noncommittal credence in the
+case of a coin flip. More generally, suspending judgement should be
+understood in terms of maximising
+entropy (Jaynes 2003; Williamson 2010:
+49–72). The imprecise probabilist could argue that this
+only seems to be the right way to be noncommittal if you are
+wedded to the precise probabilist representation of belief. That is,
+the MaxEnt approach makes sense if you are already committed to
+representation of belief by a single precise probability, but loses
+its appeal if credal sets are available. Suspending judgement is
+something you do when the evidence doesn’t determine your
+credence. But for the precise probabilist, there is no way to signal
+the difference between suspension of judgement and strong evidence of
+probability half. This is just the weight/balance argument again.
+To make things more stark, consider the following delightfully odd
+example from Adam Elga:
+
+A stranger approaches you on the street and starts pulling out
+objects from a bag. The first three objects he pulls out are a
+regular-sized tube of toothpaste, a live jellyfish, and a travel-sized
+tube of toothpaste. To what degree should you believe that the next
+object he pulls out will be another tube of
+toothpaste? (2010: 1)
+
+In this case, unlike in the coin case, it really isn’t clear what
+intuition says about what would be the “correct” precise
+probabilist suspension of judgement. What Maximum Entropy methods
+recommend will depend on seemingly arbitrary choices about the formal
+language used to model the situation. Williamson is well aware of this
+language relativity problem. He argues that choice of a language
+encodes some of our evidence.
+Another response to this argument would be to take William James’
+response to W.K. Clifford (Clifford 1901; James
+1897). James argued that as long as your beliefs are consistent
+with the evidence, then you are free to believe what you like. So
+there is no need to ever suspend judgement. Thus, the precise
+probabilist’s inability to do so is no real flaw. This attitude, which
+is sometimes called epistemic voluntarism, is close to the
+sort of subjectivism espoused by Bruno de Finetti, Frank
+Ramsey and others.
+There does seem to be a case for an alternative method of
+suspending judgement in order to allow you to avoid making any bets
+when your evidence is very incomplete, ambiguous or imprecise. If your
+credences serve as your standard for the acceptability of bets, they
+should allow for both sides of a bet to fail to be acceptable. A
+precise probabilist cannot do this since if a bet has (precise)
+expected value eee then taking the other
+side of that bet (being the bookie) has expected
+value −e−e-e. If acceptability is understood
+as nonnegative expectation, then at least one side of any bet is
+acceptable to a precise agent. This seems unsatisfactory. Surely
+genuine suspension of judgement involves being unwilling to risk money
+on the truth of a proposition at any odds.
+Inspired by the famous “Bertrand
+paradox”, Chandler (2014)
+offers a neat argument that the precise probabilist cannot jointly
+satisfy two desiderata relating to suspension of judgment about a
+variable. First desideratum: if you suspend judgement about the value
+of a bounded real variable XXX, then it
+seems that different intervals of possible values
+for XXX of the same size should be treated
+the same by your epistemic state. Second desideratum:
+if YYY essentially describes the same
+quantity as XXX, then suspension of
+judgement about XXX should entail suspension
+of judgement about YYY. Let’s imagine now
+that you have precise probabilities and that you suspend judgement
+about XXX. By the first desideratum, you
+have a uniform distribution over values
+of XXX. Now consider Y=1/XY=1/XY =
+1/X. YYY essentially describes the
+same quantity that XXX did. But a uniform
+distribution over XXX entails a non-uniform
+distribution over YYY. So you do not suspend
+judgement over YYY. A real-world case of
+variables so related is “ice residence time in clouds” and
+“ice fall rate in clouds”. These are inversely related,
+but describe essentially the same element of a climate
+system (Stainforth et al. 2007:
+2154).
+So a precise probabilist cannot satisfy these reasonable desiderata
+of suspension of judgement. An imprecise probabilist can: for example,
+the set of all probability functions
+over XXX satisfies both desiderata. There
+may be more informative priors that also represent suspension of
+judgement, but it suffices for now to point out that IP seems better
+able to represent suspension of judgement than precise
+probabilism. Section 5.5 of Walley
+(1991),
+discusses IP’s prospects as a method for
+dealing with suspension of judgement.
+2.5 Unknown correlations
+Haenni et al. (2011) motivate
+imprecise probabilities by showing how they can arise from precise
+probability judgements. That is, if you have a precise probability
+for XXX and a precise probability
+for YYY, then you can put bounds
+on p(X∩Y)p(X∩Y)p(X\cap Y) and p(X∪Y)p(X∪Y)p(X
+\cup Y), even if you don’t know
+how XXX and YYY
+are related. These bounds give you intervals of possible probability
+values for the compound events.
+For example, you know that p(X∩Y)p(X∩Y)p(X \cap Y) is bounded above by
+p(X)p(X)p(X) and by p(Y)p(Y)p(Y) and thus by min{p(X),p(Y)}min{p(X),p(Y)}\min\{p(X),p(Y)\}. If
+p(X)>0.5p(X)>0.5p(X) \gt 0.5 and p(Y)>0.5p(Y)>0.5p(Y) \gt 0.5 then XXX and YYY must
+overlap. So p(X∩Y)p(X∩Y)p(X\cap Y) is bounded below by p(X)+p(Y)−1p(X)+p(Y)−1p(X)+p(Y)-1. But,
+by definition, p(X∩Y)p(X∩Y)p(X \cap Y) is also bounded below by 000. So we
+have the following result: if you know p(X)p(X)p(X) and you know p(Y)p(Y)p(Y),
+then, you know
+max{0,p(X)+p(Y)−1}≤p(X∩Y)≤min{p(X),p(Y)}.max{0,p(X)+p(Y)−1}≤p(X∩Y)≤min{p(X),p(Y)}.
+\max\{0,p(X)+p(Y)-1\} \le p(X \cap Y) \le \min\{p(X),p(Y)\}.
+
+Likewise, bounds can be put on p(X∪Y)p(X∪Y)p(X \cup Y). p(X∪Y)p(X∪Y)p(X\cup Y)
+can’t be bigger than when XXX and YYY are disjoint, so it is
+bounded above by p(X)+p(Y)p(X)+p(Y)p(X)+p(Y). It is also bounded above by 111, and
+thus by the minimum of those expressions. It is also bounded below by
+p(X)p(X)p(X) and by p(Y)p(Y)p(Y) and thus by their maximum. Putting this
+together,
+max{p(X),p(Y)}≤p(X∪Y)≤min{p(X)+p(Y),1}.max{p(X),p(Y)}≤p(X∪Y)≤min{p(X)+p(Y),1}.\max\{p(X),p(Y)\} \le p(X\cup Y) \le \min\{p(X)+p(Y),1\}.
+
+
+These constraints are effectively what you get from de Finetti’s
+Fundamental Theorem of Prevision (de Finetti
+1990 [1974]: 112; Schervish, Seidenfeld, and Kadane 2008).
+So if your evidence constrains your belief
+in XXX and in YYY,
+but is silent on their interaction, then you will only be able to pin
+down these compound events to certain intervals. Any choice of a
+particular probability function will go beyond the evidence in
+assuming some particular evidential relationship
+between XXX
+and YYY. That
+is, p(X)p(X)p(X) and p(X∣Y)p(X∣Y)p(X\mid
+Y) will differ in a way that has no grounding in your
+evidence.
+2.6 Nonprobabilistic chances
+What if the objective chances were not probabilities? If we endorse
+some kind of connection between known objective chances and
+belief—for example, a principle of direct inference or Lewis’
+Principal Principle (Lewis
+1986)—then we might have an additional reason to endorse
+imprecise probabilism. It seems to be a truth universally acknowledged
+that chances ought to be probabilities, but it is a
+“truth” for which very little argument has been
+offered. For example, Schaffer (2007)
+makes obeying the probability axioms one of the things required in
+order to play the “chance role”, but offers no argument
+that this should be the case.  Joyce says “some have held
+objective chances are not probabilities. This seems unlikely, but
+explaining why would take us too far
+afield” (2009: 279,
+fn.17). Various other discussions of chance—for example
+in statistical mechanics (Loewer 2001; Frigg
+2008) or “Humean
+chance” (Lewis 1986,
+1994)—take for granted that chances should be precise and
+probabilistic (Dardashti et al. 2014 is
+an exception). Obviously things are confused by the use of the concept
+of chance as a way of interpreting probability theory. There is,
+however, a perfectly good pre-theoretic notion of chance: this is what
+probability theory was originally invented to reason about, after
+all. This pre-theoretic chance still seems like the sort of thing that
+we should apportion our belief to, in some sense. And there is very
+little argument that chances must always be probabilities. If the
+chances were nonprobabilistic in a particular way, one might argue
+that your credences ought to be nonprobabilistic in the same way. What
+form a chance-coordination norm should take if chances and credences
+were to have non-probabilistic formal structures is currently an open
+problem.
+I want to give a couple of examples of this idea. First consider
+some physical process that doesn’t have a limiting frequency but has a
+frequency that varies, always staying within some interval. This would
+be a process that is chancy, but fairly predictable. It might be that
+the best description of such a system is to just put bounds on its
+relative frequency. Such processes have been studied using IP
+models (Kumar and Fine 1985; Grize and Fine
+1987; Fine 1988), and have been discussed as a potential source
+of imprecision in credence (Hájek and Smithson
+2012). A certain kind of non-standard understanding of a
+quantum-mechanical event leads naturally to upper probability
+models (Suppes and Zanotti 1991; Hartmann and
+Suppes 2010). John Norton has discussed the limits of
+probability theory as a logic of induction, using an example which, he
+claims, admits no reasonable probabilistic
+attitude (Norton 2007, 2008a,b). One
+might hope that IP offers an inductive logic along the lines Norton
+sketches. Norton himself has expressed scepticism on this
+line (Norton 2007),
+although Benétreau-Dupin (2015) has defended IP as a candidate
+system for Norton’s project.
+Finally, particular views on vagueness might well prompt a rethinking of the formal structure of chance (Bradley 2016).
+2.7 Group belief
+Suppose we wanted our epistemology to apply not just to
+individuals, but to “group agents” like committees,
+governments, companies, and so on. Such agents may be made up of
+members who disagree. Levi (1986, 1999)
+has argued that representation of such conflict is better handled with
+sets of probabilities than with precise probabilities. There is a rich
+literature on combining or aggregating the (probabilistic) opinions of
+members of groups (Genest and Zidek
+1986) but the outcome of such aggregation does not adequately
+represent the disagreement among the group. Some forms of
+aggregation also fail to respect plausible constraints on group
+belief. For example, if every member of the group agrees
+that XXX and YYY
+are probabilistically independent, then it seems plausible to require
+that the group belief respects this unanimity. It is, however, well
+known that linear pooling—a simple and popular form of
+aggregation—does not respect this desideratum. Consider two
+probability functions p,qp,qp, q such
+that p(X)=p(Y)=1/3p(X)=p(Y)=1/3p(X) = p(Y) = 1/3
+and p(X∣Y)=p(X)p(X∣Y)=p(X)p(X\mid Y)=p(X)
+while q(X)=q(Y)=2/3q(X)=q(Y)=2/3q(X) = q(Y) = 2/3
+and q(X∣Y)=q(X)q(X∣Y)=q(X)q(X\mid Y)=q(X). Consider
+aggregating these two probabilities by taking an unweighted average of
+them: r=p/2+q/2r=p/2+q/2r = p/2 + q/2. Now, calculation
+shows that r(X∩Y)=5/18r(X∩Y)=5/18r(X\cap Y) = 5/18
+while r(X)r(Y)=1/4r(X)r(Y)=1/4r(X)r(Y) = 1/4, thus demonstrating
+that rrr does not
+consider XXX
+and YYY to be independent. So such an
+aggregation method does not satisfy the above
+desideratum (Kyburg and Pittarelli 1992; Cozman
+2012). For more on judgement aggregation in groups,
+see List and Pettit (2011), especially
+chapter 2.
+
+Elkin and Wheeler (2016) argue that resolving disagreement among precise probabilist peers should involve an imprecise probability. Stewart and Quintana (2018) argue that imprecise aggregation methods have some nice properties that no precise aggregation method do.
+
+If committee members have credences and utilities that
+differ among the group, then no precise probability-utility pair
+distinct from the probabilities and utilities of the agents can
+satisfy the Pareto
+condition (Seidenfeld, Kadane, and
+Schervish 1989). The Pareto condition requires that the group
+preference respect agreement of preference among the group. That is,
+if all members of the group prefer AAA
+to BBB (that is, if each group member finds
+that AAA has higher expected utility
+than BBB) then the aggregate preference (as
+determined by the aggregate probability-utility pair) should satisfy
+that preference. Since this “consensus preservation” is a
+reasonable requirement on aggregation, this result shows that precise
+models of group agents are problematic. Walley discusses an example of
+a set of probabilities where each probability represents the beliefs
+of a member of a group, then PPP is an
+incomplete description of the beliefs of each agent, in the sense that
+if all members of PPP agree on something,
+then that thing is something each agent believes. Sets of
+probabilities allow us to represent an agent who
+is conflicted in their
+judgements (Levi 1986, 1999).
+
+Ideally rational agents may face choices where there is no best
+option available to them. Indeterminacy in probability judgement and
+unresolved conflicts between values lead to predicaments where at the
+moment of choice the rational agent recognizes more than one such
+preference ranking of the available options in [the set of available
+choices] to be permissible. (Levi 1999:
+510)
+
+Levi also argued that individual agents can be in conflict in the
+same way as groups, and thus that individuals’ credal states are also
+better represented by sets of probabilities. (Levi also argued for
+the convexity of credal states, which brings him into
+conflict with the above argument about independence (see
+ historical appendix
+section 3).) One doesn’t need to buy the claim that groups and
+individuals must be modelled in the same way to take something away
+from this idea. One merely needs to accept the idea that an individual
+can be conflicted in such a way that a reasonable
+representation of her belief state—or belief and value
+state—is in terms of sets of
+functions. Bradley (2009) calls members
+of such sets “avatars”. This suggests that we interpret an
+individual’s credal set as a credal committee made up of her
+avatars. This interpretation of the representor is due
+to Joyce (2011), though Joyce attributes
+it Adam Elga. This committee represents all the possible prior
+probabilities you could have that are consistent with the
+evidence. Each credal committee member is a fully opinionated Jamesian
+voluntarist. The committee as a whole, collectively, is a Cliffordian
+objectivist.
+3. Philosophical questions for IP
+This section collects some problems for IP noted in
+the literature.
+3.1 Dilation
+Consider two logically unrelated
+propositions HHH
+and XXX. Now consider the four “state
+descriptions” of this simple model as set out
+in Figure 1. So a=H∩Xa=H∩Xa=H\cap
+X and so on. Now define Y=a∪dY=a∪dY=a \cup
+d. Alternatively, consider three propositions related in the
+following way: YYY is defined as
+“HHH if and only
+if XXX”.
+
+
+Figure 1: A diagram of the relationships after Seidenfeld (1994); YYY is the shaded area
+
+Further imagine that p(H∣X)=p(H)=1/2p(H∣X)=p(H)=1/2p(H\mid X) = p(H) =
+1/2. No other relationships between the propositions hold
+except those required by logic and probability theory. It is
+straightforward to verify that the above constraints require
+that p(Y)=1/2p(Y)=1/2p(Y) = 1/2. The probability
+for XXX, however, is unconstrained.
+Let’s imagine you were given the above information, and took your
+representor to be the full set of probability functions that satisfied
+these constraints. Roger White suggested an intuitive gloss on how you
+might receive information about propositions so related and so
+constrained (White 2010). White’s puzzle
+goes like this. I have a proposition XXX,
+about which you know nothing at all. I have written whichever is true
+out of XXX and ¬X¬X\neg
+X on the Heads side of a fair coin. I have painted
+over the coin so you can’t see which side is heads. I then flip the
+coin and it lands with the XXX
+uppermost. HHH is the proposition that the
+coin lands heads up. YYY is the proposition
+that the coin lands with the
+“XXX” side up.
+Imagine if you had a precise prior that made you certain
+of XXX (this is compatible with the above
+constraints since XXX was
+unconstrained). Seeing XXX land uppermost
+now should be evidence that the coin has landed heads. The game set-up
+makes it such that these apparently irrelevant instances of
+evidence can carry information. Likewise, being very
+confident of XXX
+makes YYY very good evidence
+for HHH. If instead you were
+sure XXX was
+false, YYY would be solid gold evidence
+of HHH’s falsity. So it seems
+that p(H∣Y)p(H∣Y)p(H\mid Y) is proportional to prior
+belief in XXX (indeed, this can be proven
+rather easily). Given the way the events are related, observing
+whether XXX or ¬X¬X\neg
+X landed uppermost is a noisy channel to learn about whether
+or not HHH landed uppermost.
+So let’s go back to the original imprecise case and consider what
+it means to have an imprecise belief
+in XXX. Among other things, it means
+considering possible that XXX could be very
+likely. It is consistent with your belief state
+that XXX is such that if you knew what
+proposition XXX was, you would consider it
+very likely. In this case, YYY would be good
+evidence for HHH. Note that in this case
+learning that the coin landed ¬X¬X\neg X
+uppermost—call
+this Y′Y′Y'—would be just as good
+evidence
+against HHH. Likewise, XXX
+might be a proposition that you would have very low credence in, and
+thus YYY would be
+evidence against HHH.
+Since you are in a state of ignorance with respect
+to XXX, your representor contains
+probabilities that take YYY to be good
+evidence that HHH and probabilities that
+take YYY to be good evidence
+that ¬H¬H\neg H. So, despite the fact
+that P(H)={1/2}P(H)={1/2}P(H)=\{1/2\} we
+have P(H∣Y)=[0,1]P(H∣Y)=[0,1]P(H\mid Y) = [0,1]. This
+phenomenon—posteriors being wider than their priors—is
+known as dilation. The phenomenon has been thoroughly investigated in
+the mathematical literature (Walley 1991;
+Seidenfeld and Wasserman 1993; Herron, Seidenfeld, and Wasserman 1994;
+Pedersen and Wheeler 2014). Levi and Seidenfeld reported
+an example of dilation to Good following Good
+(1967). Good mentioned this correspondence in his follow up
+paper (Good 1974). Recent interest in
+dilation in the philosophical community has been generated by White’s
+paper (White 2010).
+White considers dilation to be a problem since learning YYY
+doesn’t seem to be relevant to HHH. That is, since
+you are ignorant about XXX, learning whether or not the coin landed
+XXX up doesn’t seem to tell you anything about whether the
+coin landed heads up. It seems strange to argue that your belief in
+HHH should dilate from 1/21/21/2 to [0,1][0,1][0,1] upon learning
+YYY. It feels as if this should just be irrelevant to
+HHH. However, YYY is only really irrelevant to HHH when
+p(X)=1/2p(X)=1/2p(X)=1/2. Any other precise belief you might have in XXX is such
+that YYY now affects your posterior belief in
+HHH. Figure 2 shows the situation for one
+particular belief about how likely XXX is; for one particular p∈Pp∈Pp\in
+P. The horizontal line can shift up or down, depending on what the
+committee member we focus on believes about XXX. p(H∣Y)p(H∣Y)p(H\mid Y) is
+a half only if the prior in XXX is also a half. However, the
+imprecise probabilist takes into account all the ways YYY might
+affect belief in HHH.
+
+
+Figure 2: A member of the credal committee (after Joyce (2011))
+
+Consider a group of agents who each had precise credences in the
+above coin case and differed in their priors
+on XXX. They would all start out with prior
+of a half in HHH. After
+learning YYY, these agents would differ in
+their posterior opinions about HHH based on
+their differing dispositions to update. The group belief would
+dilate. However, no agent in the group has acted in any way
+unreasonably. If we take Levi’s suggestion that individuals can be
+conflicted just like groups can, then it seems that individual agents
+can have their beliefs dilate just like groups can.
+There are two apparent problems with dilation. First, the
+belief-moving effect of apparently irrelevant evidence; and second,
+the fact that learning some evidence can cause your belief-intervals
+to widen. The above comments speak to the first of
+these. Pedersen and Wheeler
+(2014) also are focused on mitigating this worry. We
+turn now to the second worry.
+Even if we accept dilation as a fact of life for the imprecise
+probabilist, it is still weird. Even if all of the above
+argument is accepted, it still seems strange to say that your belief
+in HHH is dilated, whatever you
+learn. That is, whether you learn YYY
+or Y′Y′Y', your posterior belief
+in HHH looks the
+same: [0,1][0,1][0,1]. Or perhaps, what it shows to
+be weird is that your initial credence was precise.
+
+Hart and Titelbaum (2015) suggest that dilation is strange because conditionalising on a biconditional (which is, after all, what you are doing in the above example) is unintuitive even in the precise case. Whether all cases of dilation can be explained away in this manner remains to be seen.
+Gong and Meng (2017) likewise see dilation as a problem of mis-specified statistical inference, rather than a problem for IP per se.
+
+Beyond this seeming strangeness, White suggests a specific way that
+being subject to dilation is an indicator of a defective
+epistemology. White suggests that dilation examples show that
+imprecise probabilities violate the Reflection
+Principle (van Fraassen 1984). The
+argument goes as follows:
+ given that you know now that whether you
+learn YYY or you
+learn Y′Y′Y' your credence
+in HHH will
+be [0,1][0,1][0,1] (and you will certainly learn one
+or the other), your current credence in HHH
+should also be [0,1][0,1][0,1].
+ The general idea is that you should set your
+ credences to what you expect your credences to be in the future. More
+ specifically, your credence in XXX should
+ be the expectation of your future possible credences
+ in XXX over the things you might
+ learn. Given that, for all the things you might learn in this example
+ your credence in HHH would be the same, you
+ should have that as your prior credence also. Your prior should be
+ such that P(H)=[0,1]P(H)=[0,1]P(H) = [0,1]. So having a
+ precise prior credence in HHH to start with
+ is irrational. That’s how the argument against dilation from
+ reflection goes. Your prior PPP is not
+ fully precise though. Consider P(H∩Y)P(H∩Y)P(H \cap
+ Y). That is, the prior belief in the conjunction is
+ imprecise. So the alleged problem with dilation and reflection is not
+ as simple as “your precise belief becomes imprecise”. The
+ problem is “your precise
+ belief in HHH becomes
+ imprecise”; or rather, your precise belief
+ in HHH as represented
+ by P(H)P(H)P(H) becomes imprecise.
+The issue with reflection is more basic. What exactly does
+reflection require of imprecise probabilists in this case? Now, it is
+obviously the case that each credal committee member’s prior credence
+is its expectation over the possible future evidence (this is a
+theorem of probability theory). But somehow, it is felt,
+the credal state as a whole isn’t sensitive to reflection in
+the way the principle requires. Each p∈Pp∈Pp\in
+P satisfies the principle, but the awkward symmetries of the
+problem conspire to make PPP as a whole
+violate the principle. This looks to be the case if we focus
+on P(H)P(H)P(H) as an adequate representation of
+that part of the belief state. But as noted earlier, this is not an
+adequate way of understanding the credal state. Note that while
+learning YYY and
+learning Y′Y′Y' both prompt revision to a
+state where the posterior belief in HHH is
+represented as an interval by [0,1][0,1][0,1], the
+credal states as sets of probabilities are not the same. Call
+the state after
+learning YYY, P′P′P'
+and the state after
+learning Y′Y′Y', P′′P″P''. So P′={p(⋅∣Y),p∈P}P′={p(⋅∣Y),p∈P}P'
+= \{p(\cdot \mid Y), p\in P\}
+and P′′={p(⋅∣Y′),p∈P}P″={p(⋅∣Y′),p∈P}P'' = \{p(\cdot\mid Y'), p\in
+P\}. While it is true that P′(H)=P′′(H)P′(H)=P″(H)P'(H) =
+P''(H), P′≠P′′P′≠P″P' \neq
+P'' as sets of probabilities, since
+if p∈P′p∈P′p\in P'
+then p(Y)=1p(Y)=1p(Y) = 1 whereas
+if p∈P′′p∈P″p\in P''
+then p(Y)=0p(Y)=0p(Y) = 0. So one lesson we should
+learn from dilation is that imprecise belief is represented
+by sets of functions rather than by a set-valued
+function (see also, Joyce 2011; Topey 2012;
+Bradley and Steele 2014b).
+
+So dilation can perhaps be tamed or rationalised, and the issue with reflection can be mitigated.
+But there is still a puzzle that dilation raises:
+in the precise context we have a nice result – due to Good (1967) –
+that says roughly that learning new information has positive expected value.
+Information has positive value.
+This result is, to some extent, undermined by dilation.
+Bradley and Steele (2016) suggest that there is 
+some sense in which Good’s result can be partially salvaged in the IP setting.
+
+It seems that examples of dilation undermine the earlier claim that
+imprecise probabilities allow you to represent the difference between
+the weight and balance of evidence
+(see section 2.3):
+learning YYY appears to give rise to a
+belief which one would consider as representing less evidence
+since it is more spread out. This is so because the prior credence in
+the dilation case is precise, not through weight of evidence, but
+through the symmetry discussed earlier. We cannot take narrowness of
+the interval [P––(X),¯¯¯¯P(X)][P_(X),P¯(X)][\underline{P}(X),
+\overline{P}(X)] as a characterisation of weight of evidence
+since the interval can be narrow for reasons other than because lots
+of evidence has been accumulated. So my earlier remarks on
+weight/balance should not be read as the claim that imprecise
+probabilities can always represent the weight/balance
+distinction. What is true is that there are cases where
+imprecise probabilities can represent the distinction in a way that
+impacts on decision making. This issue is far from settled and more
+work needs to be done on this topic.
+3.2 Belief inertia
+Imagine there are two live
+hypotheses H1H1H_1
+and H2H2H_2. You have no idea how likely they
+are, but they are mutually exclusive and exhaustive. Then you acquire
+some evidence EEE. Some simple probability
+theory shows that for every p∈Pp∈Pp\in P we have
+the following relationship (using pi=p(E∣Hi)pi=p(E∣Hi)p_i = p(E\mid
+H_i) for i=1,2i=1,2i=1,2).
+p(H1∣E)=p(E∣H1)p(H1)p1p(H1)+p2p(H2)=p1p(H1)p2+(p1−p2)p(H1)p(H1∣E)=p(E∣H1)p(H1)p1p(H1)+p2p(H2)=p1p(H1)p2+(p1−p2)p(H1)\begin{align}
+p(H_1\mid E) &amp; = {{p(E\mid H_1)p(H_1)} \over {p_1 p(H_1) +p_2
+p(H_2)}} \\ &amp; = {{p_1 p(H_1)} \over {p_2 + (p_1 - p_2) p(H_1)}}\\
+\end{align}
+If your prior in H1H1H_1 is vacuous—if P(H1)=[0,1]P(H1)=[0,1]P(H_1) =
+[0,1]—then the above equation shows that your posterior is
+vacuous as well. That is, if p(H1)=0p(H1)=0p(H_1) = 0 then p(H1∣E)=0p(H1∣E)=0p(H_1\mid E) =
+0 and likewise for p(H1)=1=p(H1∣E)p(H1)=1=p(H1∣E)p(H_1) = 1 = p(H_1\mid E), and since the
+right hand side of the above equation is a continuous function of
+p(H1)p(H1)p(H_1), for every r∈[0,1]r∈[0,1]r\in [0,1] there is some p(H1)p(H1)p(H_1) such
+that p(H1∣E)=rp(H1∣E)=rp(H_1\mid E) = r. So P(H1∣E)=[0,1]P(H1∣E)=[0,1]P(H_1\mid E)=[0,1].
+It seems like the imprecise probabilist cannot learn from vacuous
+priors. This problem of belief inertia goes back at least as far as
+Levi (1980), chapter 13.
+Walley also discusses the issue, but appears unmoved by it: 
+he says that vacuous posterior probabilities are just a
+consequence of adopting a vacuous prior:
+
+The vacuous previsions really are rather trivial models. That seems
+appropriate for models of “complete ignorance” which is a
+rather trivial state of uncertainty. On the other hand, one cannot
+expect such models to be very useful in practical problems,
+notwithstanding their theoretical importance. If the vacuous
+previsions are used to model prior beliefs about a statistical
+parameter for instance, they give rise to vacuous posterior
+previsions… However, prior previsions that are close to vacuous
+and make nearly minimal claims about prior beliefs can lead to
+reasonable posterior previsions. (Walley 1991:
+93)
+
+Joyce (2011)
+and Rinard (2013) have both discussed
+this problem. Rinard’s solution to it is to argue that this shows that
+the vacuous prior is never a legitimate state of belief. Or rather,
+that we only ever need to model your beliefs using non-vacuous priors,
+even if these are incomplete descriptions of your belief state. This
+is similar to Walley’s “non-exhaustive” representation of
+belief. 
+Vallinder (2018) suggests that the problem of belief inertia is quite a general one.
+Castro and Hart (forthcoming) use the looming danger of belief inertia to argue against what I have called an "objectivist" interpretation of IP.
+
+An alternative solution to this
+problem, (inspired by Wilson 2001; and Cattaneo
+2008; 2014), would modify the update rule in such a way that
+those extreme priors that give extremely small likelihoods to the
+evidence are excised from the representor. More work would need to be
+done to make this precise and show how exactly the response would
+go.
+3.3 Decision making
+One important use that models of belief can be put to is as part of
+a theory of rational decision. IP is no different. Decision making
+with imprecise probabilities has some problems, however.
+The problem for IP decision making, in short, is that your credal
+committee can disagree on what the best course of action is, and when
+they do, it is unclear how you should act (recall the definitions
+in section 1.1). Imagine betting on a coin of
+unknown bias. Consider the indicator gambles on heads and tails. Both
+bets have imprecise expectation [0,1][0,1][0,1]. How
+are you supposed to compare these expectations? The bets are
+incomparable. (If the coin case appears to have too much exploitable
+symmetry, consider unit bets on Elga pulling toothpaste or jellyfish
+from his bag.) This incomparability, argues Williamson, leads to
+decision making paralysis, and this highlights a flaw in the
+epistemology (2010: 70). This argument
+seems to be missing the point, however, if one of our motivations for
+IP is precisely to be able to represent such incompatibility of
+prospects (see section 2.2)! The
+incommensurability of options entailed by IP is not a bug, it’s a
+feature. Decision making with imprecise probabilities is discussed
+by Seidenfeld
+(2004), Troffaes
+(2007), Seidenfeld, Schervish, and
+Kadane (2010), Bradley
+(2015), Williams
+(2014), Huntley, Hable, and Troffaes
+(2014).
+A more serious worry confronts IP when you have to make sequences
+of decisions. There is a rich literature in economics on sequences of
+decisions for agents who fail to be orthodox expected utility
+maximisers (Seidenfeld 1988; 1994; Machina
+1989; Al-Najjar and Weinstein 2009, and the references
+therein). This topic was brought to the attention
+of philosophers again after the publication of
+Elga’s (2010) paper Subjective
+Probabilities Should Be Sharp which highlights the problem with a
+simple decision example, although a very similar example appears
+in Hammond (1988) in relation to
+Seidenfeld’s discussion of Levi’s decision rule
+“E-admissibility” (Seidenfeld
+1988).
+A version of the problem is as follows. You are about to be offered
+two bets on a coin of unknown bias, AAA
+and BBB, one after the other. The bets pay
+out as follows:
+
+AAA loses 10 if the coin lands heads and wins 15 otherwise
+BBB wins 15 if the coin lands heads and loses 10 otherwise
+
+If we assume you have beliefs represented
+by P(H)=[0,1]P(H)=[0,1]P(H)=[0,1], these bets have
+expectations of [−10,15][−10,15][-10,15]. Refusing each
+bet has expectation of 0. So accepting and
+refusing AAA are incomparable with respect
+to your beliefs. Likewise for BBB. The
+problem is that refusing both bets seems to be irrational,
+since accepting both bets gets you a guaranteed payoff of 5. Elga
+argues that no decision rule for imprecise probabilities can rule out
+refusing both bets. He then argues that this shows that imprecise
+probabilities are bad epistemology. Neither argument
+works. Chandler (2014)
+and Sahlin and Weirich (2014) both point
+out that a certain kind of imprecise decision rule does make refusing
+both bets impermissible and Elga has acknowledged this in an erratum
+to his paper. Bradley and Steele (2014a)
+argue that decision rules that make refusing both bets merely
+permissible are legitimate ways to make imprecise decisions. They also
+point out that the rule that Chandler, and Sahlin and Weirich advocate
+has counterintuitive consequences in other decision problems. 
+
+
+Moss (2015) relates
+Elga-style IP decision problems to moral dilemmas and uses the analogy
+to explain the conflicting intuitions in Elga’s problem.
+Sud (2014) and Rinard (2015)
+both also offer alternative decision theories for imprecise probabilities.
+Bradley (2019) argues that all three struggle to accommodate a version of the Ellsberg decisions discussed above.
+
+
+Even if
+Elga’s argument worked and there were no good imprecise decision
+rules, that wouldn’t show that IP was a faulty model of belief. We
+want to be able to represent the suspension of judgement on various
+things, including on the relative goodness of a number of
+options. Such incommensurability inevitably brings with it some
+problems for sequential decisions (see, for
+example, Broome 2000), but this is not an argument against the
+epistemology. As Bradley and Steele note, Elga’s argument—if it
+were valid—could mutatis mutandis be used as an
+argument that there are no incommensurable goods and this seems too
+strong. 
+3.4 Interpreting IP
+Imprecise probabilities aren’t a radically new theory. They
+are merely a slight modification of existing models of belief for
+situations of ambiguity. Often your credences will be precise enough,
+and your available actions will be such that you act more or
+less as if you were a strict Bayesian. One might analogize imprecise
+probabilities as the “Theory of Relativity” to the strict
+Bayesian “Newtonian Mechanics”: all but indistinguishable
+in all but the most extreme situations. This analogy goes deeper: in
+both cases, the theories are “empirically
+indistinguishable” in normal circumstances, but they both differ
+radically in some conceptual respects. Namely, the role of absolute
+space in Newtonian mechanics/GR; how to model ignorance in the
+strict/imprecise probabilist case. Howson
+(2012) makes a similar analogy between modelling belief and
+models in science. Both involve some requirement to be somewhat
+faithful to the target system, but in each case faithfulness must be
+weighed up against various theoretical virtues like simplicity,
+computational tractability and so
+on. Likewise Hosni (2014) argues that
+what model of belief is appropriate is somewhat dependent on
+context. There is of course an important disanalogy in that models of
+belief are supposed to be normative as well as descriptive,
+whereas models in science typically only have to play a descriptive
+role. Walley (1991) discusses a similar
+view but is generally sceptical of such an interpretation.
+3.4.1 What is a belief?
+One standard interpretation of the probability calculus is that
+probabilities represent “degrees of belief” or
+“credences”. This is more or less the concept that under
+consideration so far. But what is a degree of belief? There are a
+number of ways of cashing out what it is that a representation of
+degree of belief is actually representing.
+One of the most straightforward understandings of degree of belief
+is that credences are interpreted in terms of an agent’s limiting
+willingness to bet. This is an idea which goes back
+to Ramsey (1926)
+and de Finetti (1964, 1990 [1974]). The
+idea is that your credence in XXX
+is αα\alpha just in
+case αα\alpha is the value at which you are
+indifferent between the gambles:
+
+Win 1−α1−α1-\alpha if XXX, lose αα\alpha otherwise
+Lose 1−α1−α1- \alpha  if XXX, win αα\alpha otherwise
+
+This is the “betting interpretation”. This is the
+interpretation behind Dutch book arguments: this interpretation of
+belief makes the link between betting quotients and belief strong
+enough to sanction the Dutch book theorem’s claim
+that beliefs must be probabilistic. Williamson in fact takes
+issue with IP because IP cannot be given this betting
+interpretation (2010: 68–72). He
+argues that Smith’s and Walley’s contributions notwithstanding
+(see formal appendix), the
+single-value betting interpretation makes sense as a standard for
+credence in a way that the one-sided betting interpretation
+doesn’t. The idea is that you may refuse all bets unless they are at
+extremely favourable odds by your lights. Such behaviour doesn’t speak
+to your credences. However, if you were to offer a single
+value then this tells us something about your epistemic
+state. There is something to this idea, but it must be traded off
+against the worry that forcing agents to have such single
+numbers systematically misrepresents their epistemic states. As Kaplan
+puts it
+
+The mere fact that you nominate 0.80.80.8
+under the compulsion to choose some determinate value for
+[p(X)p(X)p(X)] hardly means that you have
+a reason to choose 0.80.80.8. The
+orthodox Bayesian is, in short, guilty of advocating false
+precision. (Kaplan 1983: 569, Kaplan’s
+emphasis)
+
+A related interpretation of credence is to understand credence as
+being just a representation of an agent’s dispositions to act. This
+interpretation sees credence as that function such that your elicited
+preferences and observed actions can be represented as those of an
+expected utility maximiser with respect to that probability
+function (Briggs 2014: section 2.2). Your
+credences just are that function that represents you as a
+rational agent. For precise probabilism, “rational agent”
+means “expected utility maximiser”. For imprecise
+probabilism, rational agent must mean something slightly different. A
+slightly more sophisticated version of this sort of idea is to
+understand credence to be exactly that component of the preference
+structure that the probability function represents in the
+representation theorem. Recall the discussion of incompleteness
+(section 2.2). IP represents you as the agent
+conflicted between all the p∈Pp∈Pp \in P such
+that unless the ppp agree
+that XXX is better
+than YYY or vice versa, you find them
+incomparable. What a representation theorem actually proves is a
+matter of some dispute (see Zynda 2000; Hájek
+2008; Meacham and Weisberg 2011).
+One might take the view that credence is modelling some kind of
+mental or psychological quantity in the head. Strength of belief is a
+real psychological quantity and it is this that credence should
+measure. Unlike the above views, this interpretation of credence isn’t
+easy to operationalise. It also seems like this understanding of
+strength of belief distances credence from its role in understanding
+decision making. The above behaviourist views take belief’s
+role in decision making to be central to or even definitional of what
+belief is. This psychological interpretation seems to divorce belief
+from decision. Whether there are such stable neurological structures
+is also a matter of some controversy (Fumagalli
+2013; Smithson and Pushkarskaya 2015).
+A compromise between the behaviourist views and the psychological
+views is to say that belief is characterised in part by its
+role in decision making. This leaves room for belief to play an
+important role in other things, like assertion or reasoning and
+inference. So the answer to the question “What is degree of
+belief?” is: “Degree of belief is whatever psychological
+factors play the role imputed to belief in decision making contexts,
+assertion behaviour, reasoning and inference”. There is room in
+this characterisation to understand credence as measuring some sort of
+psychological quantity that causally relates to action, assertion and
+so on. This is a sort of functionalist reading of what belief
+is. Eriksson and Hájek (2007) argue that
+“degree of belief” should just be taken as a primitive
+concept in epistemology. The above attempts to characterise degree of
+belief then fill in the picture of the role degree of belief
+plays.
+3.4.2 What is a belief in XXX?
+So now we have a better idea of what it is that a model of belief
+should do. But which part of our model of belief is representing which
+part of the belief state? The first thing to say is
+that P(X)P(X)P(X) is not an adequate
+representation of the belief in XXX. That
+is, one of the values of the credal set approach is that it can
+capture certain kinds of non-logical relationships between
+propositions that are lost when focusing on, say, the associated set
+of probability values. For example, consider tossing a coin of unknown
+bias. P(H)=P(T)=[0,1]P(H)=P(T)=[0,1]P(H)=P(T)=[0,1], but this fails to
+represent the important fact
+that p(H)=1−p(T)p(H)=1−p(T)p(H)=1-p(T) for
+all p∈Pp∈Pp\in P. Or that getting a heads on the
+first toss is at least as likely as heads on two consecutive
+tosses. These facts that aren’t captured by the sets-of-values view
+can play an important role in reasoning and decision.
+P(X)P(X)P(X) might be a good enough
+representation of belief for some purposes. For example in the
+Ellsberg game these sets of probability values (and their associated
+sets of expectations) are enough to rationalise the non-probabilistic
+preferences. How good the representation needs to be depends on what
+it will be used for. Representing the sun as a point mass is a good
+enough representation for basic orbital calculations, but obviously
+inadequate if you are studying coronal mass ejections, solar flares or
+other phenomena that depend on details of the internal dynamics of the
+sun.
+3.5 Regress
+Imprecise probabilities is a theory born of our limitations as
+reasoning agents, and of limitations in our evidence base. If only we
+had better evidence, a single probability function would do. But since
+our evidence is weak, we must use a set. In a way, the same is true of
+precise probabilism. If only we knew the truth, we could represent
+belief with a truth-valuation function, or just a set of sentences
+that are fully believed. But since there are truths we don’t know, we
+must use a probability to represent our intermediate confidence. And
+indeed, the same problem arises for the imprecise probabilist. Is it
+reasonable to assume that we know what set of probabilities best
+represents the evidence? Perhaps we should have a set of sets of
+probabilities… Similar problems arise for theories of
+vagueness (Sorensen 2012). We objected
+to precise values for degrees of belief, so why be content with
+sets-valued beliefs with precise boundaries? This is the problem of
+“higher-order vagueness” recast as a problem for imprecise
+probabilism. Why is sets of probabilities the right level to stop the
+regress at? Why not sets of sets? Why not second-order probabilities?
+Why not single probability
+functions? Williamson (2014)
+makes this point, and argues that a single precise probability is the
+correct level at which to get off the “uncertainty
+escalator”. Williamson advocates the betting interpretation of
+belief, and his argument here presupposes that interpretation. But the
+point is still worth addressing: for a particular interpretation of
+what belief is, what sort of level of uncertainty is appropriate. For
+the functionalist interpretation suggested above, this is
+something of a pragmatic choice. The further we allow this regress to
+continue, the harder it is to deal with these belief-representing
+objects. So let’s not go further than we need.
+We have seen arguments above that IP does have some advantage over
+precise probabilism, in the capacity to represent suspending
+judgement, the difference between weight and balance of evidence and
+so on. So we must go at least this far up the uncertainty
+escalator. But for the sake of practicality we need not go any
+further, even though there are hierarchical Bayes models that would
+give us a well-defined theory of higher-order models of belief. This
+is, ultimately, a pragmatic argument. Actual human belief states are
+probably immensely complicated neurological patterns with all the
+attendant complexity, interactivity, reflexivity and vagueness. We
+are modelling belief, so it is about choosing a model at the
+right level of complexity. If you are working out the trajectory of a
+cannonball on earth, you can safely ignore the gravitational influence
+of the moon on the cannonball. Likewise, there will be contexts where
+simple models of belief are appropriate: perhaps your belief state is
+just a set of sentences of a language, or perhaps just a single
+probability function. If, however, you are modelling the tides, then
+the gravitational influence of the moon needs to be involved: the
+model needs to be more complex. This suggests that an adequate model of
+belief under severe uncertainty may need to move beyond the single
+probability paradigm. But a pragmatic argument says that we should
+only move as far as we need to. So while you need to model the moon to
+get the tides right, you can get away without having Venus in your
+model. This relates to the contextual nature of appropriateness for
+models of belief mentioned earlier. If one were attempting to
+provide a complete formal characterisation of the ontology of
+belief, then these regress worries would be significantly harder to
+avoid.
+Let’s imagine that we had a second order
+probability μμ\mu defined over the set of
+(first order) probabilities PPP. We could
+then reduce uncertainty to a single function
+by p∗(X)=∑Pμ(p)p(X)p∗(X)=∑Pμ(p)p(X)p^*(X) = \sum_P \mu(p)p(X)
+(if PPP is finite, in the interests of
+keeping things simple I discuss only this case). Now
+if p∗(X)p∗(X)p^*(X) is what is used in decision
+making, then there is no real sense in which we have a genuine IP
+model, and it cannot rationalise the Ellsberg choice, nor can it give
+rise to incomparability. If there is some alternative use
+that μμ\mu is put to, a use that allows
+incomparability and that rationalises Ellsberg choices, then it might
+be a genuine rival to credal sets, but it represents just as much of a
+departure from the orthodox theory as IP does.
+Gärdenfors and Sahlin’s Unreliable Probabilities model
+enriches a basic IP approach with a “reliability index”
+(see the
+ historical appendix).
+ Lyon (2017)
+enriches the standard IP picture in a different way: he adds a
+privileged “best guess” probability. This modification
+allows for better aggregation of elicited IP estimates. How best to
+interpret such a model is still an open question. Other enriched IP
+models are no doubt available.
+3.6 What makes a good imprecise belief?
+There are, as we have seen, certain structural properties that are
+necessary conditions on rational belief. What exactly these are
+depends on your views. However, there are further ways of assessing
+belief. Strongly believing true things and strongly believing the
+negations of false things seem like good-making-features of
+beliefs. For the case of precise credences, we can make this
+precise. There is a large literature on “scoring rules”:
+methods for measuring how good a probability is relative to the actual
+state of the world (Brier 1950; Savage 1971;
+Joyce 2009; Pettigrew 2011). These are numerical methods of
+measuring how good a probability is given the true state of the
+world.
+For the case of imprecise probabilities, however, the situation
+looks bleak. No real valued scoring rule for imprecise probabilities
+can have the desirable property of being strictly
+proper (Seidenfeld, Schervish, and Kadane
+2012). Schoenfield (2017) presents a simple version of the result. Since strict propriety is a desirable property of a
+scoring rule (Bröcker and Smith 2007; Joyce
+2009; Pettigrew 2011), this failing is serious. So further work
+is needed to develop a well-grounded theory of how to assess imprecise
+probabilities.
+Mayo-Wilson and Wheeler (2016) provide a neater version of the proof, and offer a property weaker than strict propriety that an imprecise probability scoring rule can satisfy.
+Carr (2015) and Konek (forthcoming) both present positive suggestions for moving forward with imprecise scoring rules.
+Levinstein (forthcoming) suggests that the problem really only arises for determinately imprecise credences, but not for indeterminate credence.
+4. Summary
+
+
+Imprecise probabilities offer a model of rational belief that does
+away with some of the idealisation required by the orthodox precise
+probability approach. Many motivations for such a move have been put
+forward, and many views on IP have been discussed. There are still
+several open philosophical questions relating to IP, and this is
+likely to be a rich field of research for years to come.

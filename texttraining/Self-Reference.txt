@@ -1,0 +1,1818 @@
+In the context of language, self-reference is used to denote
+a statement that refers to itself or its own referent. The most famous
+example of a self-referential sentence is the liar sentence:
+“This sentence is not true.” Self-reference is often used
+in a broader context as well. For instance, a picture could be
+considered self-referential if it contains a copy of itself (see the
+animated image above); and a piece of literature could be considered
+self-referential if it includes a reference to the work itself. In
+philosophy, self-reference is primarily studied in the context of
+language. Self-reference within language is not only a subject of
+philosophy, but also a field of individual interest in mathematics and
+computer science, in particular in relation to the foundations of
+these sciences.
+
+The philosophical interest in self-reference is to a large extent
+centered around the paradoxes. A paradox is a seemingly sound
+piece of reasoning based on apparently true assumptions that leads to
+a contradiction. The liar sentence considered above leads to a
+contradiction when we try to determine whether it is true or not. If
+we assume the sentence to be true, then what it states must be the
+case, that is, it cannot be true. If, on the other hand, we assume it
+not to be true, then what it states is actually the case, and thus it
+must be true. In either case we are led to a contradiction. Since the
+contradiction was obtained by a seemingly sound piece of reasoning
+based on apparently true assumptions, it qualifies as a paradox. It is
+known as the liar paradox. 
+
+Most paradoxes of self-reference may be categorised as either
+semantic, set-theoretic or epistemic. The
+semantic paradoxes, like the liar paradox, are primarily relevant to
+theories of truth. The set-theoretic paradoxes are relevant to the
+foundations of mathematics, and the epistemic paradoxes are relevant
+to epistemology. Even though these paradoxes are different in the
+subject matter they relate to, they share the same underlying
+structure, and may often be tackled using the same mathematical means.
+
+
+In the present entry, we will first introduce a number of the most
+well-known paradoxes of self-reference, and discuss their common
+underlying structure. Subsequently, we will discuss the profound
+consequences that these paradoxes have on a number of different areas:
+theories of truth, set theory, epistemology, foundations of
+mathematics, computability. Finally, we will present the most
+prominent approaches to solving the paradoxes. 
+ 
+1. Paradoxes of Self-Reference
+1.1 Semantic Paradoxes
+
+Paradoxes of self-reference have been known since antiquity. The
+discovery of the liar paradox is often credited to Eubulides the
+Megarian who lived in the 4th century BC. The liar paradox belongs to
+the category of semantic paradoxes, since it is based on the
+semantic notion of truth. Other well-known semantic paradoxes include
+Grelling’s paradox, Berry’s paradox, and Richard’s
+paradox.
+
+Grelling’s paradox involves a predicate defined as
+follows. Say a predicate is heterological if it is not true
+of itself, that is, if it does not itself have the property it
+expresses. Then the predicate “German” is heterological,
+since it is not itself a German word, but the predicate
+“deutsch” is not heterological. The question that leads to
+the paradox is now:
+
+Is “heterological” heterological?
+
+
+It is easy to see that we obtain a contradiction independently of
+whether we answer “yes” or “no” to this
+question (the argument runs more or less like in the liar paradox).
+Grelling’s paradox is self-referential, since the definition of
+the predicate heterological refers to all predicates,
+including the predicate heterological itself. Definitions such as this
+which depends on a set of entities, at least one of which is the
+entity being defined, are called impredicative.
+
+Berry’s paradox is another paradox based on an
+impredicative definition, or rather, an impredicative description.
+Some phrases of the English language are descriptions of natural
+numbers, for example, “the sum of five and seven” is a
+description of the number 12. Berry’s paradox arises when trying
+to determine the denotation of the following description: 
+
+the least number that cannot be referred to by a description
+containing less than 100 symbols.
+
+
+The contradiction is that this description containing 93 symbols
+denotes a number which, by definition, cannot be denoted by any
+description containing less than 100 symbols. The description is of
+course impredicative, since it implicitly refers to all
+descriptions, including itself.
+
+Richard’s paradox considers phrases of the English
+language defining real numbers rather than natural numbers. For
+example, “the ratio between the circumference and diameter of a
+circle” is a phrase defining the number ππ\pi. Assume an
+enumeration of all such phrases is given (e.g. by putting them into
+lexicographical order). Now consider the phrase:
+
+the real number whose nnnth decimal place is 1 whenever the
+nnnth decimal place of the number denoted by the nnnth
+phrase is 0; otherwise 0.
+
+
+This phrase defines a real number, so it must be among the enumerated
+phrases, say number kkk in this enumeration. But, at the same
+time, by definition, it differs from the number denoted by the
+kkkth phrase in the kkkth decimal place. Thus we have a
+contradiction. The defining phrase is obviously impredicative. The
+particular construction employed in this paradox is called
+diagonalisation. Diagonalisation is a general construction
+and proof method originally invented by Georg Cantor (1891) to prove
+the uncountability of the power set of the natural numbers. It was
+also used as a basis for Cantor’s paradox, one of the
+set-theoretic paradoxes to be considered next.
+1.2 Set-Theoretic Paradoxes
+
+The best-known set-theoretic paradoxes are Russell’s paradox and
+Cantor’s paradox. Russell’s paradox arises from
+considering the Russell set RRR of all sets that are
+not members of themselves, that is, the set defined defined by
+R={x∣x∉x}R={x∣x∉x}R = \{ x \mid  x \not\in x \}. The
+contradiction is then derived by asking whether RRR is a member
+of itself, that is, whether R∈RR∈RR \in R holds. If
+R∈RR∈RR \in R then RRR is a member of itself,
+and thus R∉RR∉RR \not\in R, by definition of RRR.
+If, on the other hand, R∉RR∉RR \not\in R then RRR
+is not a member of itself, and thus R∈RR∈RR \in R,
+again by definition of RRR.
+
+Cantor’s paradox is based on an application of
+Cantor’s theorem. Cantor’s theorem states that
+given any finite or infinite set SSS, the power set of
+SSS has strictly larger cardinality (greater size) than
+SSS. The theorem is proved by a form of diagonalisation, the
+same idea underlying Richard’s paradox. Cantor’s paradox
+considers the set of all sets. Let us call this set the universal
+set and denote it by UUU. The power set of UUU is
+denoted ℘(U)℘(U)\wp(U). Since UUU contains all
+sets it will in particular contain all elements of
+℘(U)℘(U)\wp(U). Thus ℘(U)℘(U)\wp(U) must be a subset of
+UUU and must thus have a cardinality (size) which is less than
+or equal to the cardinality of UUU. However, this immediately
+contradicts Cantor’s theorem. 
+
+The Hypergame paradox is a more recent addition to the list
+of set-theoretic paradoxes, invented by Zwicker (1987). Let us call a
+two-player game well-founded if it is bound to terminate in a
+finite number of moves. Tournament chess is an example of a
+well-founded game. We now define hypergame to be the game in
+which player 1 in the first move chooses a well-founded game to be
+played, and player 2 subsequently makes the first move in the chosen
+game. All remaining moves are then moves of the chosen game. Hypergame
+must be a well-founded game, since any play will last exactly one move
+more than some given well-founded game. However, if hypergame is
+well-founded then it must be one of the games that can be chosen in
+the first move of hypergame, that is, player 1 can choose hypergame in
+the first move. This allows player 2 to choose hypergame in the
+subsequent move, and the two players can continue choosing hypergame
+ad infinitum. Thus hypergame cannot be well-founded,
+contradicting our previous conclusion.
+1.3 Epistemic paradoxes
+
+The most well-know epistemic paradox is the paradox of the
+knower. This paradox has many equivalent formulations, one of
+them based on the sentence “This sentence is not known by
+anyone.” Let us call this sentence the knower sentence,
+abbreviated KS.KSKS.KSKS. KS is obviously quite similar to the
+liar sentence, except the central concept involved is knowledge rather
+than truth. The reasoning leading to a contradiction from KSKSKS
+is a bit more complex than in the liar paradox. First KSKSKS is
+shown to be true by the following piece of reasoning:
+
+Assume to obtain a contradiction that KSKSKS is not true. Then
+what KSKSKS expresses cannot be the case, that is, KSKSKS
+must be known by someone. Since everything known is true (this is part
+of the definition of the concept of knowledge), KSKSKS is true,
+contradicting our assumption. This concludes the proof that
+KSKSKS is true.
+
+
+The piece of reasoning just carried out to prove the truth of
+KSKSKS should be available to any agent (person) with sufficient
+reasoning capabilities. That is, an agent should be able to prove the
+truth of KSKSKS, and thus come to know that KSKSKS holds.
+However, if KSKSKS is known by someone, then what it expresses is
+not the case, and thus it cannot be true. This is a contradiction, and
+thus we have a paradox. The role of self-reference in this paradox is
+obvious, as it is based on a sentence, KSKSKS, referring directly
+to itself.
+
+The paradox of the knower is just one of many epistemic paradoxes
+involving self-reference. See the entry on
+ epistemic paradoxes
+ for further information on the class of epistemic paradoxes. A quite
+recent epistemic paradox, cast in the setting of beliefs and
+assumptions in a two-player game, is the Brandenburger-Keisler paradox
+(Brandenburger & Keisler, 2006), described in detail in the entry
+on
+ epistemic foundations of game theory.
+ For a detailed discussion and history of the paradoxes of
+self-reference in general, see the entry on
+ paradoxes and contemporary logic.
+ 
+1.4 Common Structures in the Paradoxes
+
+The paradoxes above are all quite similar in structure. In the case of
+the paradoxes of Grelling and Russell, this can be seen as follows.
+Define the extension of a predicate to be the set of objects
+it is true of. For a predicate PPP we denote its extension by
+ext(P)(P)(P). Grelling’s paradox involves the predicate
+heterological, which is true of all those predicates that are not true
+of themselves. Thus the extension of the predicate heterological is
+the set {P∣P∉{P∣P∉\{ P \mid  P \not\in ext(P)}(P)}(P) \}. Compare
+this to the Russell set RRR given by {x∣x∉x}{x∣x∉x}\{ x \mid  x \not\in x \}. The only significant difference between these
+two sets is that the first is defined on predicates whereas the second
+is defined on sets. The proofs of contradictions based on these two
+sets also share the same structure, as seen below (where
+“het” abbreviates “heterological”):
+het∈ext(het)⇔het∈{P∣P∉ext(P)}⇔het∉ext(het).R∈R⇔R∈{x∣x∉x}⇔R∉R.(Grelling)(Russell)het∈ext(het)⇔het∈{P∣P∉ext(P)}⇔het∉ext(het).R∈R⇔R∈{x∣x∉x}⇔R∉R.\begin{align*}
+\tag{Grelling}
+\het \in \ext(\het) &amp;\Leftrightarrow \het \in \{ P \mid  P \not\in \ext(P)\} \\
+ &amp;\Leftrightarrow \het \not\in \ext(\het). \\
+ &amp; \\
+\tag{Russell}
+R \in R &amp;\Leftrightarrow R \in \{ x \mid  x \not\in x\} \\
+ &amp;\Leftrightarrow R \not\in R. 
+\end{align*}
+
+We have here two paradoxes of an almost identical structure belonging
+to two distinct classes of paradoxes: one is semantic and the other
+set-theoretic. What this teaches us is that even if paradoxes seem
+different by involving different subject matters, they might be almost
+identical in their underlying structure. Thus in many cases it makes
+most sense to study the paradoxes of self-reference under one, rather
+than study, say, the semantic and set-theoretic paradoxes separately.
+
+
+Russell and Cantor’s paradoxes are also more similar than they
+appear at first. Cantor’s paradox is based on an application of
+Cantor’s theorem to the universal set UUU (cf. Section
+1.2 above). Below we give the proof of Cantor’s theorem for an
+arbitrary set SSS.
+
+
+We need to prove that ℘(S)℘(S)\wp(S) has greater cardinality than
+SSS. Assume to obtain a contradiction that this is not the
+case. Then there must exist a map fff from SSS onto
+℘(S)℘(S)\wp(S). Now consider the set C={x∈S∣x∉f(x)}C={x∈S∣x∉f(x)}C = \{ x \in S \mid x \not\in f(x)
+\}. Since fff is onto ℘(S)℘(S)\wp(S), there must exist a set c∈Sc∈Sc \in
+S such that f(c)=Cf(c)=Cf(c)=C. However, we now obtain a contradiction,
+since the following holds: 
+c∈f(c)⇔c∈{x∈S∣x∉f(x)}⇔c∉f(c).c∈f(c)⇔c∈{x∈S∣x∉f(x)}⇔c∉f(c).\begin{align*}
+c \in f(c) &amp;\Leftrightarrow c \in \{ x \in S \mid  x \not\in f(x) \} \\
+ &amp;\Leftrightarrow c \not\in f(c).
+\end{align*}
+
+
+Note the similarity between this sequence of equivalences and the
+corresponding sequences of equivalences derived for Russell’s
+and Grelling’s paradoxes above. Now consider the special case of
+Cantor’s theorem where SSS is the universal set. Then we
+can simply choose fff to be the identity function, since
+℘(U)℘(U)\wp(U) must necessarily be a subset of the universal set
+UUU. But then CCC becomes the Russell set! Thus
+Cantor’s paradox is nothing more than a slight variant of
+Russell’s paradox; the core argument leading to the
+contradiction is the same in both. 
+
+Priest (1994) gives even firmer evidence to the similarity between the
+paradoxes of self-reference by showing that they all fit into what he
+originally called the Qualified Russell’s Schema, now
+termed the Inclosure Schema. The idea behind it goes back to
+Russell himself (1905) who also considered the paradoxes of
+self-reference to have a common underlying structure. Given two
+predicates predicates PPP and QQQ, and a possibly partial function
+δδ\delta, the Inclosure Schema consists of the following two
+conditions:
+
+w={x∣P(x)}w={x∣P(x)}w = \{ x \mid  P(x) \} exists and
+Q(w)Q(w)Q(w) holds;
+if yyy is a subset of www such that
+Q(y)Q(y)Q(y) holds then:
+
+
+δ(y)∉yδ(y)∉y\delta(y) \not\in y,
+δ(y)∈wδ(y)∈w\delta(y) \in w.
+ 
+
+ If these conditions are satisfied we have the following
+contradiction: Since www is trivially a subset of www and since
+Q(w)Q(w)Q(w) holds by condition 1, we have both δ(w)∉wδ(w)∉w\delta(w) \not\in w
+and δ(w)∈wδ(w)∈w\delta(w) \in w, by 2a and 2b, respectively. Thus any triple
+(P,Q,δ)(P,Q,δ)(P,Q,\delta) satisfying the Inclosure Schema will produce a
+paradox. Priest shows how most of the well-known paradoxes of
+self-reference fit into the schema. Below we will consider only a few
+of these paradoxes, starting with Russell’s paradox. In this
+case we define the triple (P,Q,δ)(P,Q,δ)(P,Q,\delta) as follows:
+
+P(x)P(x)P(x) is the predicate “x∉xx∉xx \not\in x”.
+Q(y)Q(y)Q(y) is the universal predicate true of any
+object.
+δδ\delta is the identity function.
+
+
+Then www in the Inclosure Schema becomes the Russell set and
+the contradiction obtained from the schema becomes Russell’s
+paradox.
+
+In the case of Richard’s paradox we define the triple by:
+
+P(x)P(x)P(x) is the predicate “xxx is a
+real definable by a phrase in English.”
+Q(y)Q(y)Q(y) is the predicate “yyy is a
+denumerable set of reals definable by a phrase in English.”
+δδ\delta is the function that maps any denumerable set yyy
+of reals to the real zzz whose nnnth decimal place is 1
+whenever the nnnth decimal of the nnnth real in
+yyy is 0; otherwise 0. (Any enumeration of the elements in
+yyy will do.)
+
+
+Here w={x∣P(x)}w={x∣P(x)}w = \{ x \mid  P(x) \} becomes the
+set of all reals definable by phrases in English. For any denumerable
+subset yyy of w,δ(y)w,δ(y)w, \delta(y) is a real that by
+construction will differ from all reals in yyy (it differs from
+the nnnth real in yyy on the nnnth decimal
+place). Letting yyy equal www we thus get
+δ(w)∉wδ(w)∉w\delta(w) \not\in w. However, at the same time
+δ(w)δ(w)\delta(w) is definable by a phrase in English, so
+δ(w)∈wδ(w)∈w\delta(w) \in w, and we have a contradiction.
+This contradiction is Richard’s paradox. 
+
+The liar paradox also fits Russell’s schema, albeit in a
+slightly less direct way:
+
+P(x)P(x)P(x) is the predicate “xxx is true.”
+Q(y)Q(y)Q(y) is the predicate “yyy is definable.”
+δ(y)δ(y)\delta(y) is the sentence “this sentence does not belong
+to the set yyy.”
+
+
+Here w={x∣P(x)}w={x∣P(x)}w = \{ x \mid  P(x) \} becomes the
+set of true sentences, and δ(w)δ(w)\delta(w) becomes a version of
+the liar sentence: “this sentence does not belong to the set of
+true sentences”. 
+
+From the above it can be concluded that all, or at least most,
+paradoxes of self-reference share a common underlying 
+structure—independent of whether they are semantic, set-theoretic or
+epistemic. Priest (1994) argues that they should then also share a
+common solution. Priest calls this the principle of uniform
+solution: “same kind of paradox, same kind of
+solution.” Whether the Inclosure Schema can in full generality
+count as a necessary and sufficient condition for self-referential
+paradoxicality is however disputable (Slater, 2002; Abad, 2008;
+Badici, 2008; Zhong, 2012, and others), hence not all authors agree on
+the principle of uniform solution either. 
+
+The
+ Sorites paradox
+ is a paradox that on the surface does not involve self-reference at
+all. However, Priest (2010b, 2013) argues that it still fits the
+inclosure schema and can hence be seen as a paradox of self-reference,
+or at least a paradox that should have the same kind of solution as
+the paradoxes of self-reference. This has led Colyvan (2009), Priest
+(2010) and Weber (2010b) to all advance a dialetheic approach to
+solving the Sorites paradox. This approach to the Sorites paradox has
+been attacked by Beall (2014a, 2014b) and defended by Weber et al.
+(2014).
+1.5 Paradoxes without Negation
+
+Most paradoxes considered so far involve negation in an essential way,
+e.g. sentences saying of themselves that they are not true or
+knowable. The central role of negation will become even clearer when
+we formalise the paradoxes of self-reference in Section 2 below.
+Curry’s paradox is a similar paradox of self-reference
+that however does not directly involve negation. A semantic variant of
+Curry’s paradox comes from the following Curry sentence
+CCC: “If this sentence is true then FFF”,
+where FFF can be any statement, for instance an obviously false
+one. Suppose the Curry sentence CCC is true. Then it expresses
+a true fact, that is, if CCC is true then FFF. However,
+we already assumed CCC to be true, so we can infer FFF,
+using Modus Ponens. We have now proved that if we assume CCC to
+be true, then FFF follows. This is exactly what the Curry
+sentence itself expresses. In other words, we have proved that the
+Curry sentence itself is true! But then we also have that FFF
+is true, and this is a paradox, since FFF can be any statement,
+including things that are obviously false (Smullyan (2006) let
+FFF be the sentence “Santa Claus exists”, thereby
+using Curry’s paradox to prove the existence of Santa Claus). In
+a classical logical setting where the implication  C→FC→FC \rightarrow F
+is equivalent to ¬C∨F¬C∨F\neg C \vee F, Curry’s paradox still
+implicitly involves negation, but Curry’s paradox is still
+independently interesting since it goes through with fewer assumptions
+about the underlying logic than the liar paradox. See the entry on
+ Curry’s paradox
+ for more details. 
+1.6 Paradoxes without Self-Reference
+
+In 1985, Yablo succeeded in constructing a semantic paradox that does
+not involve self-reference in the strict sense. Instead, it consists
+of an infinite chain of sentences, each sentence expressing the
+untruth of all the subsequent ones. More precisely, for each natural
+number iii we define SiSiS_i to be the
+sentence “for all j>i,Sjj>i,Sjj\gt i,
+S_j is not true”. We can then derive
+a contradiction as follows:
+
+
+First we prove that none of the sentences
+SiSiS_i can be true. Assume to obtain a
+contradiction that SiSiS_i is true for some
+iii. Then it is true that “for all
+j>i,Sjj>i,Sjj\gt i, S_j is not
+true”. Thus none of the sentences
+SjSjS_j for j>ij>ij\gt i are true.
+In particular, Si+1Si+1S_{i+1} is not true.
+Si+1Si+1S_{i+1} is the sentence “for all
+j>i+1,Sjj>i+1,Sjj\gt i+1, S_j is not
+true”. Since this sentence is not true, there must be some
+k>i+1k>i+1k\gt i+1 for which SkSkS_k
+is true. However, this contradicts that none of the sentences
+SjSjS_j with j>ij>ij\gt i are
+true.
+
+We have now proved that none of the sentences
+SiSiS_i are true. Then, in particular, we have
+that for all j>0j>0j\gt 0, Sjj_j is not true. This
+is exactly what is expressed by S00_0, so S00_0 must
+be true. This is again a contradiction.
+
+
+Yablo calls this paradox the ωω\omega-liar, but others usually
+refer to it as Yablo’s paradox. Note that none of the
+sentences SiSiS_i refer to themselves (not
+even indirectly), but only to the ones that occur later in the
+sequence. Yablo’s paradox is semantic, but as shown by Yablo
+(2006), similar set-theoretic paradoxes involving no self-reference
+can be formulated in certain set theories. 
+
+Yablo’s paradox demonstrates that we can have logical paradoxes
+without self-reference—only a certain kind of
+non-wellfoundedness is needed to obtain a contradiction. There are
+obviously structural differences between the ordinary paradoxes of
+self-reference and Yablo’s paradox: The ordinary paradoxes of
+self-reference involve a cyclic structure of reference, whereas
+Yablo’s paradox involve an acyclic, but non-wellfounded,
+structure of reference. More precisely, the referential structure in
+self-referential paradoxes such as the liar is a reflexive relation on
+a singleton set (a cycle), whereas the referential structure in
+Yablo’s paradox is isomorphic to the usual less-than ordering on
+the natural numbers, which is a strict total order (contains no
+cycles). Even though there is this difference, Yablo’s paradox
+still share most properties with the ordinary paradoxes of
+self-reference. When solving paradoxes we might thus choose to
+consider them all under one, and refer to them as paradoxes of
+non-wellfoundedness. In the following we will however stick to
+the term paradoxes of self-reference, even though most of
+what we say will apply to Yablo’s paradox and related paradoxes
+of non-wellfoundedness as well.
+
+Given the insight that not only cyclic structures of reference can
+lead to paradox, but also certain types of non-wellfounded structures,
+it becomes interesting to study further these structures of reference
+and their potential in characterising the necessary and sufficient
+conditions for paradoxicality. This line of work was initiated by
+Gaifman (1988, 1992, 2000), and later pursued by Cook (2004), Walicki
+(2009) and others.
+
+Significant amounts of newer work on self-reference has gone into
+trying to make a complete graph-theoretical characterisation of which
+structures of reference admit paradoxes, including Rabern and Macauley
+(2013), Cook (2014) and Dyrkolbotn and Walicki (2014). A complete
+characterisation is still an open problem (Rabern, Rabern and
+Macauley, 2013), but it seems to be a relatively widespread conjecture
+that all paradoxical graphs of reference are either cyclic or contain
+a Yablo-like structure. If this conjecture turns out to be true, it
+would mean that in terms of structure of reference, all paradoxes of
+reference are either liar-like or Yablo-like. The precise
+characterisation of what it means to be a “Yablo-like
+structure” is still discussed.
+
+Even though the structure of reference involved in Yablo’s
+paradox does not contain any cycles (each sentence only refers to
+later sentences in the sequence), it is still being discussed whether
+the paradox is self-referential or not (Cook, 2014; Halbach and Zhang,
+2017). Yablo (1993) himself argues that it is non-self-referential,
+whereas Priest (1997) argues that it is self-referential. Butler
+(2017) claims that even if Priest is correct, there will be other
+Yablo-like paradoxes that are not self-referential in the sense of
+Priest. In the analysis of Yablo’s paradox, it is essential to
+note that it involves an infinite sequence of sentences,
+where each sentence refers to infinitely many other
+sentences. To formalise it in a setting of propositional logic, it is
+hence necessary to use infinitary propositional logic. Any finitary
+variant of Yablo’s sequence—where every sentence only
+refers to finitely many later sentences in the sequence—must
+necessarily be consistent (non-paradoxical) due to the compactness
+theorem in propositional logic (every finite subset of sentences in
+the sequence induces a well-founded reference relation and the
+sentences can hence consistently be assigned truth-values bottom-up).
+In finitary first- and second-order arithmetic, one can instead
+attempt to formalise Yablo’s paradox by a unary predicate
+S(x)S(x)S(x) where, for every natural numbers iii,
+S(i̲)S(i̲)S(\inumeral) represents the formalisation of the iiith
+sentence SiSiS_i of the Yablo sequence (where
+i̲i̲\inumeral is the numeral representing i)i)i). How and
+whether the Yablo paradox can truthfully be represented this way, and
+how it relates to compactness of the underlying logic, has been
+investigated by Picollo (2013). 
+
+Yablo’s paradox has also inspired the creation of similar
+paradoxes involving non-wellfounded, acyclic structures of reference
+in other areas than truth, e.g. the “Yabloesque” variant
+of the Brandenburger-Keisler paradox of epistemic game theory by
+Başkent (2016), a variant concerning provability by Cieśliński and
+Urbaniak (2013), and a variant in the context of Gödel’s
+incompleteness theorems by Leach-Krouse (2014).
+2. Why the Paradoxes Matter
+
+After having presented a number of paradoxes of self-reference and
+discussed some of their underlying similarities, we will now turn to a
+discussion of their significance. The significance of a
+paradox is its indication of a flaw or deficiency in our understanding
+of the central concepts involved in it. In case of the semantic
+paradoxes, it seems that it is our understanding of fundamental
+semantic concepts such as truth (in the liar paradox and
+Grelling’s paradox) and definability (in Berry’s
+and Richard’s paradoxes) that are deficient. In case of the
+set-theoretic paradoxes, it is our understanding of the concept of a
+set. If we fully understood these concepts, we should be able
+to deal with them without being led to contradictions. 
+
+To illustrate this, consider the case of Zeno’s classical
+paradox on Achilles and the Tortoise (see the entry
+ Zeno’s paradoxes
+ for details). In this paradox we seem able to prove that the tortoise
+can win a race against the 10 times faster Achilles if given an
+arbitrarily small head start. Zeno used this paradox as an argument
+against the possibility of motion. It has later turned out that the
+paradox rests on an inadequate understanding of infinity. More
+precisely, it rests on an implicit assumption that any infinite series
+of positive reals must have an infinite sum. The later developments of
+the mathematics of infinite series has shown that this assumption is
+invalid, and thus the paradox dissolves. The original acceptance of
+Zeno’s argument as a paradox was a symptom that the concept of
+infinity was not sufficiently well understood at the time. In analogy,
+it seems reasonable to expect that the existence of semantic and
+set-theoretic paradoxes is a symptom that the involved semantic and
+set-theoretic concepts are not yet sufficiently well understood. 
+
+Another possible answer could be that it is our understanding of the
+very concept of “contradiction” that is flawed. The
+reasoning involved in the paradoxes of self-reference all end up with
+some contradiction, a sentence concluded to be both true and false. We
+consider this an impossibility, hence the paradox, but maybe we
+don’t have to? Dialetheism is the view that there can
+be “true contradictions”, meaning that it is not
+impossible for a sentence to be both true and false. If adopting the
+view of dialetheism, all the paradoxes of self-reference dissolve and
+instead become existence proofs of certain “dialetheia”:
+sentences being both true and false. Priest (1987) is a strong
+advocate of dialetheism, and uses his principle of uniform solution
+(see Section 1.4 above) to defend the dialetheist solution. See the
+entries on
+ dialetheism
+ and
+ paraconsistent logic
+ for more information.
+
+Currently, no commonly agreed upon solution to the paradoxes of
+self-reference exists. They continue to pose foundational problems in
+semantics and set theory. No claim can be made to a solid foundation
+for these subjects until a satisfactory solution to the paradoxes has
+been provided. Problems surface when it comes to formalising semantics
+(the concept of truth) and set theory. If formalising the intuitive,
+“naive” understanding of these subjects, inconsistent
+systems linger as the paradoxes will be formalisable in these
+systems.
+2.1 Consequences of the Semantic Paradoxes
+
+The liar paradox is a significant barrier to the construction of
+formal theories of truth as it produces inconsistencies in these
+potential theories. A substantial amount of research in self-reference
+concentrates on formal theories of truth and ways to circumvent the
+liar paradox. There are two articles that have influenced the work on
+formal theories of truth and the liar paradox more than any other:
+Alfred Tarski’s “The Concept of Truth in Formalised
+Languages” (1935) and Saul Kripke’s “Outline of a
+Theory of Truth” (1975). Below we first introduce some of the
+ideas and results of Tarski’s article. Kripke’s article is
+discussed in Section 3.2.
+
+Tarski gives a number of conditions that, as he puts it, any
+adequate definition of truth must satisfy. The central of
+these conditions is what is now most often referred to as Schema
+T (or the T-schema or Convention T or the
+Tarski biconditionals):
+ϕ↔T⟨ϕ⟩, for all sentences ϕ.(Schema T)ϕ↔T⟨ϕ⟩, for all sentences ϕ.
+\tag{Schema \(T\)}
+\phi \leftrightarrow T \langle \phi \rangle,\text{ for all sentences } \phi.
+
+
+Here TTT is the predicate intended to express truth and
+⟨ϕ⟩⟨ϕ⟩\langle \phi \rangle is a name for the sentence ϕϕ\phi. Applying the
+predicate TTT to the name ⟨ϕ⟩⟨ϕ⟩\langle \phi \rangle gives the expression
+T⟨ϕ⟩T⟨ϕ⟩T\langle \phi \rangle intended to represent the phrase “ϕϕ\phi
+is true”. Schema TTT thus expresses that for every
+sentence ϕ,ϕϕ,ϕ\phi , \phi holds if and only if the sentence “ϕϕ\phi
+is true” holds. The TTT-schema is usually regarded as a
+set of sentences within a formal theory. It is customary to use
+first-order arithmetic, that is, first-order predicate logic extended
+with a set of standard axioms for arithmetic like PA (Peano
+Arithmetic) or Robinson’s Q. What is being said in the following
+will apply to any such first-order formalisation of arithmetic. In
+this setting, ⟨ϕ⟩⟨ϕ⟩\langle \phi \rangle above denotes the Gödel code
+of ϕϕ\phi, and T⟨ϕ⟩T⟨ϕ⟩T\langle \phi \rangle is short for
+T(⟨ϕ⟩)T(⟨ϕ⟩)T(\langle \phi \rangle). The reader not familiar with Gödel
+codings (also known as Gödel numberings) can just think of the
+mapping ⟨⋅⟩⟨⋅⟩\langle \cdot \rangle as a naming device or quotation mechanism for
+formulae—just like quotation marks in natural language. Often
+used notational variants for ⟨ϕ⟩⟨ϕ⟩\langle \phi \rangle are ⌜ϕ⌝┌ϕ┐\ulcorner \phi \urcorner
+and ‘ϕϕ\phi’.
+
+Tarski showed that the liar paradox is formalisable in any formal
+theory containing his schema T, and thus any such theory must be
+inconsistent. This result is often referred to as Tarski’s
+theorem on the undefinability of truth. The result is basically a
+formalisation of the liar paradox within first-order arithmetic
+extended with the TTT-schema. In order to construct such a
+formalisation it is necessary to be able to formulate self-referential
+sentences (like the liar sentence) within first-order arithmetic. This
+ability is provided by the diagonal lemma. 
+
+Diagonal lemma.
+
+Let SSS be a theory extending first-order arithmetic. For every
+formula ϕ(x)ϕ(x)\phi(x) there is a sentence ψψ\psi such that
+S⊢ψ↔ϕ⟨ψ⟩S⊢ψ↔ϕ⟨ψ⟩S \vdash \psi \leftrightarrow \phi \langle \psi \rangle.
+
+
+Here the notation S⊢αS⊢αS \vdash \alpha means that αα\alpha is
+provable in the theory S, and ϕ⟨ψ⟩ϕ⟨ψ⟩\phi \langle \psi \rangle is short for
+ϕ(⟨ψ⟩)ϕ(⟨ψ⟩)\phi(\langle \psi \rangle). Assume a formula ϕ(x)ϕ(x)\phi(x) is given that
+is intended to express some property of sentences – truth, for
+instance. Then the diagonal lemma gives the existence of a sentence
+ψψ\psi satisfying the biimplication ψ↔ϕ⟨ψ⟩ψ↔ϕ⟨ψ⟩\psi \leftrightarrow \phi \langle \psi \rangle.
+The sentence ϕ⟨ψ⟩ϕ⟨ψ⟩\phi \langle \psi \rangle can be thought of as expressing that
+the sentence ψψ\psi has the property expressed by ϕ(x)ϕ(x)\phi(x).
+The biimplication thus expresses that ψψ\psi is equivalent to the
+sentence expressing that ψψ\psi has property ϕϕ\phi. One can therefore
+think of ψψ\psi as a sentence expressing of itself that it has
+property ϕϕ\phi. In the case of truth, it would be a sentence
+expressing of itself that it is true. The sentence ψψ\psi is of course
+not self-referential in a strict sense, but mathematically it behaves
+like one. It is therefore possible to use sentences generated by the
+diagonal lemma to formalise paradoxes based on self-referential
+sentences, like the liar. The diagonal lemma is sometimes called the
+fixed-point lemma, since the equivalence ψ↔ϕ⟨ψ⟩ψ↔ϕ⟨ψ⟩\psi \leftrightarrow \phi \langle \psi \rangle can be seen as expressing that ψψ\psi is a
+fixed-point of ϕ(x)ϕ(x)\phi(x).
+
+A theory in first-order predicate logic is called
+inconsistent if a logical contradiction is provable in it.
+Tarski’s theorem (on the undefinability of truth) may now be
+stated and proved.
+
+
+Tarski’s theorem.
+
+Any theory extending first-order arithmetic and containing schema
+TTT is inconsistent.
+
+Proof. Assume the existence of a consistent formal theory
+SSS extending first-order arithmetic and containing schema
+TTT. We need to show that this assumption leads to a
+contradiction. The proof mimics the liar paradox. Apply the diagonal
+lemma to obtain a sentence λλ\lambda satisfying λ↔¬T⟨λ⟩λ↔¬T⟨λ⟩\lambda \leftrightarrow \neg T \langle \lambda \rangle in S. The sentence λλ\lambda expresses
+of itself that it is not true, so λλ\lambda corresponds to the liar
+sentence. Instantiating schema TTT with the sentence λλ\lambda
+gives us λ↔T⟨λ⟩λ↔T⟨λ⟩\lambda \leftrightarrow T\langle \lambda \rangle. We now have that
+both λ↔¬T⟨λ⟩λ↔¬T⟨λ⟩\lambda \leftrightarrow \neg T\langle \lambda \rangle and λ↔T⟨λ⟩λ↔T⟨λ⟩\lambda \leftrightarrow T\langle \lambda \rangle hold in SSS (are provable in
+S)S)S), and thus T⟨λ⟩↔¬T⟨λ⟩T⟨λ⟩↔¬T⟨λ⟩T\langle \lambda \rangle \leftrightarrow \neg T\langle \lambda \rangle must hold in SSS. This
+contradicts SSS being consistent. ◻□\Box
+
+
+Note that the contradiction T⟨λ⟩↔¬T⟨λ⟩T⟨λ⟩↔¬T⟨λ⟩T\langle \lambda \rangle \leftrightarrow \neg T\langle \lambda \rangle above expresses: The liar sentence is true
+if and only if it is not. Compare this to the informal liar presented
+in the beginning of the article. Tarski’s theorem shows that, in
+the setting of first-order arithmetic, it is not possible to give what
+Tarski considers to be an “adequate theory of truth”. The
+central question then becomes: How may the formal setting or the
+requirements for an adequate theory of truth be modified to regain
+consistency—that is, to prevent the liar paradox from
+trivialising the system? There are many different answers to this
+question, as there are many different ways to regain consistency. In
+Section 3 we will review the most influential approaches.
+2.2 Consequences of the Set-Theoretic Paradoxes
+
+The set-theoretic paradoxes constitute a significant challenge to the
+foundations of mathematics. They show that it is impossible to have a
+concept of set satisfying the unrestricted comprehension
+principle (also called full comprehension or
+unrestricted abstraction):
+
+Unrestricted comprehension:
+
+∀u(u∈{x∣ϕ(x)}↔ϕ(u))∀u(u∈{x∣ϕ(x)}↔ϕ(u))\forall u (u \in \{ x \mid \phi(x)\} \leftrightarrow \phi(u)), for
+all formulae ϕ(x)ϕ(x)\phi(x).
+
+
+In an informal setting, the formulae ϕ(x)ϕ(x)\phi(x) could be
+allowed to be arbitrary predicates. In a more formal setting they
+would be formulae of e.g. a suitable first-order language. The
+unrestricted comprehension principle says that for any property
+(expressed by ϕ)ϕ)\phi) there is the set of those entities that
+satisfy the property. This sounds as a very reasonable principle, and
+it more or less captures the intuitive concept of a set. Indeed, it is
+the concept of set originally brought forward by the father of set
+theory, Georg Cantor (1895), himself. Unfortunately, the principle is
+not sound, as it gives rise to Russell’s paradox. Consider the
+property of non-self-membership. This can be expressed by the formula
+x∉xx∉xx \not\in x. If we let ϕ(x)ϕ(x)\phi(x) be the
+formula x∉xx∉xx \not\in x then the set {x∣ϕ(x)}{x∣ϕ(x)}\{ x \mid 
+\phi(x) \} becomes the Russell set RRR, and we obtain
+the following instance of the unrestricted comprehension
+principle:
+∀u(u∈R↔u∉u).∀u(u∈R↔u∉u).
+\forall u (u \in R \leftrightarrow u \not\in u).
+
+
+Analogous to the argument in Russell’s paradox a contradiction
+is now obtained by instantiating uuu with RRR:
+R∈R↔R∉R.R∈R↔R∉R.
+R \in R \leftrightarrow R \not\in R.
+
+
+This contradiction expresses that the Russell set is a member of
+itself if and only if it is not. What has hereby been proven is the
+following.
+
+Theorem (Inconsistency of Naive Set Theory).
+
+Any theory containing the unrestricted comprehension principle is
+inconsistent.
+
+
+Compare this theorem with Tarski’s theorem. Tarski’s
+theorem expresses that if we formalise the intuitively most obvious
+principle concerning truth we end up with an inconsistent theory. The
+theorem above expresses that the same thing happens when formalising
+the intuitively most obvious principle concerning set existence and
+membership.
+
+Given the inconsistency of unrestricted comprehension, the objective
+becomes to find a way to restrict either the comprehension principle
+itself or the underlying logical principles to regain a consistent
+theory, that is, a set theory that will not be trivialised by
+Russell’s paradox. Many alternative set theories excluding the
+unrestricted comprehension principle have been developed during the
+last century, among them the type theory of Russell and Whitehead,
+Simple Type theory (ST), Gödel-Bernays set theory (GB),
+Zermelo-Fraenkel set theory (ZF), and Quine’s New Foundations
+(NF). These are all believed to be consistent, although no simple
+proofs of their consistency are known. At least they all escape the
+known paradoxes of self-reference. We will return to a discussion of
+this in Section 3.
+2.3 Consequences of the Epistemic Paradoxes
+
+The epistemic paradoxes constitute a threat to the construction of
+formal theories of knowledge, as the paradoxes become formalisable in
+many such theories. Suppose we wish to construct a formal theory of
+knowability within an extension of first-order arithmetic.
+The reason for choosing to formalise knowability rather than knowledge
+is that knowledge is always relative to a certain agent at a certain
+point in time, whereas knowability is a universal concept like truth.
+We could have chosen to work directly with knowledge instead, but it
+would require more work and make the presentation unnecessarily
+complicated. To formalise knowability we introduce a special predicate
+KKK, and use sentences of the form K⟨ϕ⟩K⟨ϕ⟩K\langle \phi \rangle to
+express that ϕϕ\phi is knowable. Analogous to the cases of truth and
+set membership, there must be certain logical principles that
+KKK needs to satisfy in order for our formal theory to qualify
+as an adequate theory of knowability. First of all, all knowable
+sentences must be true. This property can be formalised by the
+following logical principle:
+
+A1.
+K⟨ϕ⟩→ϕK⟨ϕ⟩→ϕK\langle \phi \rangle \rightarrow \phi, for all sentences
+ϕϕ\phi.
+
+
+Of course this principle must itself be knowable, that is, we get the
+following logical principle:
+
+A2.
+
+K⟨K⟨ϕ⟩→ϕ⟩K⟨K⟨ϕ⟩→ϕ⟩K\langle K\langle \phi \rangle \rightarrow \phi \rangle, for
+all sentences ϕϕ\phi.
+
+
+In addition, all theorems of first-order arithmetic ought to be
+knowable:
+
+A3.
+
+K⟨ϕ⟩K⟨ϕ⟩K\langle \phi \rangle, for all sentences ϕϕ\phi of first-order arithmetic.
+
+
+Furthermore, knowability must be closed under logical
+consequences:
+
+A4.
+
+K⟨ϕ→ψ⟩→(K⟨ϕ⟩→K⟨ψ⟩)K⟨ϕ→ψ⟩→(K⟨ϕ⟩→K⟨ψ⟩)K\langle \phi \rightarrow \psi \rangle \rightarrow  
+(K\langle \phi \rangle \rightarrow K\langle \psi \rangle),   for
+all sentences ϕϕ\phi.
+
+
+Now, the principles A1–A4 is all it takes to formalise the
+paradox of the knower. More precisely, we have the following theorem
+due to Montague (1963).
+
+
+Montague’s theorem.
+
+Any formal theory extending first-order arithmetic and containing
+axiom schemas A1–A4 is inconsistent.
+
+Proof. Assume the existence of a consistent formal theory
+SSS extending first-order arithmetic and containing axiom
+schemas A1–A4. We need to show that this assumption leads to a
+contradiction. The proof mimics the paradox of the knower. Apply the
+diagonal lemma to obtain a sentence λλ\lambda satisfying λ↔¬K⟨λ⟩λ↔¬K⟨λ⟩\lambda \leftrightarrow \neg K \langle \lambda \rangle in SSS. The sentence
+λλ\lambda expresses of itself that it is not knowable, so λλ\lambda
+roughly corresponds to the knower sentence, KSKSKS. The first
+piece of argumentation used in the paradox of the knower led to the
+conclusion that KSKSKS is indeed true. This piece of
+argumentation is mimicked by the following piece of formal reasoning
+within SSS:
+
+
+1.
+λ→¬K⟨λ⟩λ→¬K⟨λ⟩\lambda \rightarrow \neg K\langle \lambda \rangle
+by choice of λλ\lambda 
+
+2.
+¬K⟨λ⟩→λ¬K⟨λ⟩→λ\neg K\langle \lambda \rangle \rightarrow \lambda
+by choice of λλ\lambda 
+
+3.
+K⟨λ⟩→λK⟨λ⟩→λK\langle \lambda \rangle \rightarrow \lambda
+axiom A1 
+
+4.
+(K⟨λ⟩→λ)→(K⟨λ⟩→λ)→(K\langle \lambda \rangle \rightarrow \lambda) \rightarrow
+
+((λ→¬K⟨λ⟩)→¬K⟨λ⟩)((λ→¬K⟨λ⟩)→¬K⟨λ⟩) ((\lambda \rightarrow \neg K\langle \lambda \rangle) \rightarrow \neg K\langle \lambda \rangle)
+propositional tautology 
+
+5.
+(λ→¬K⟨λ⟩)→¬K⟨λ⟩(λ→¬K⟨λ⟩)→¬K⟨λ⟩(\lambda \rightarrow \neg K\langle \lambda \rangle)
+\rightarrow \neg K\langle \lambda \rangle
+modus ponens on 4,3  
+
+6.
+¬K⟨λ⟩¬K⟨λ⟩\neg K\langle \lambda \rangle
+modus ponens on 5,1 
+
+7.
+λλ\lambda
+modus ponens on 2,6  
+
+
+This proof shows that λλ\lambda, our formal version of KSKSKS, is
+provable in SSS. The proof corresponds to the informal argument
+that KSKSKS is true. As argued in the paradox of the knower, any
+agent with sufficient reasoning capabilities will be able to prove the
+truth of KSKSKS, and thus come to know that KSKSKS holds.
+Thus KSKSKS must be knowable. What this means in the present
+formal framework is that we can also prove the knowability of λλ\lambda
+in SSS:
+
+
+8.
+K⟨λ→¬K⟨λ⟩⟩K⟨λ→¬K⟨λ⟩⟩K\langle \lambda \rightarrow \neg K\langle \lambda \rangle \rangle
+by A3 and choice of λλ\lambda 
+
+9.
+K⟨¬K⟨¬K\langle \negK⟨λ⟩→λ⟩⟨λ⟩→λ⟩\langle \lambda \rangle \rightarrow \lambda \rangle
+by A3 and choice of λλ\lambda 
+
+10.
+K⟨K⟨λ⟩→λ⟩K⟨K⟨λ⟩→λ⟩K\langle K \langle \lambda \rangle \rightarrow \lambda \rangle
+axiom A2 
+
+11.
+K⟨(K⟨λ⟩→λ)→K⟨(K⟨λ⟩→λ)→K\langle(K\langle \lambda \rangle \rightarrow \lambda) \rightarrow
+
+((λ→¬K⟨λ⟩)→¬K⟨λ⟩)⟩((λ→¬K⟨λ⟩)→¬K⟨λ⟩)⟩ ((\lambda \rightarrow \neg K\langle \lambda \rangle) \rightarrow \neg K\langle \lambda \rangle)\rangle
+axiom A3 on propositional
+tautology 
+
+12.
+K⟨(λ→¬K⟨λ⟩)→¬K⟨λ⟩⟩K⟨(λ→¬K⟨λ⟩)→¬K⟨λ⟩⟩K\langle(\lambda \rightarrow \neg K\langle \lambda \rangle)
+\rightarrow \neg K\langle \lambda \rangle \rangle
+axiom A4 on 11,10  
+
+13.
+K⟨¬K⟨λ⟩⟩K⟨¬K⟨λ⟩⟩K\langle \neg K\langle \lambda \rangle \rangle
+axiom A4 on 12,8 
+
+14.
+K⟨λ⟩K⟨λ⟩K\langle \lambda \rangle
+axiom A4 on 9,13 
+
+
+This completes the proof of the knowability of λλ\lambda, corresponding
+to the informal argument that KSKSKS is known by some agent. Note
+the similarity between the two pieces of proof in lines 1–7 and
+8–14. The only difference is that in the latter all formulae are
+preceded by an extra K. This is because lines 8–14 express the
+same line of reasoning as lines 1–7 with the only difference
+that the latter is a proof of the knowability of λλ\lambda
+rather than the truth of λλ\lambda. Having concluded that
+λλ\lambda is both true and knowable, we now immediately obtain a
+contradiction as in the paradox of the knower:
+
+
+15.
+¬K⟨λ⟩¬K⟨λ⟩\neg K\langle \lambda \rangle
+modus ponens on 1,7 
+
+16.
+K⟨λ⟩∧¬K⟨λ⟩K⟨λ⟩∧¬K⟨λ⟩K\langle \lambda \rangle \wedge \neg K\langle \lambda \rangle
+
+conjunction of 14 and 15 
+
+
+This completes the proof of Montague’s theorem. ◻□\Box
+
+
+The proof above is simpler than the original proof of Montague (1963)
+and directly mimicks the reasoning underlying the paradox of the
+knower. Montague’s theorem shows that in the setting of
+first-order arithmetic we cannot have a theory of knowledge or
+knowability satisfying even the basic principles A1–A4.
+Montague’s theorem is a generalisation of Tarski’s
+theorem. If a predicate symbol KKK satisfies Tarski’s
+schema TTT then it is easy to see that it will also satisfy
+axiom schemas A1–A4. Thus axiom schemas A1–A4 constitute a
+weakening of the TTT-schema, and Montague’s theorem shows
+that even this much weaker version of the TTT-schema is
+sufficient to produce inconsistency.
+
+Formalising knowledge as a predicate in a first-order logic is
+referred to as the syntactic treatment of knowledge.
+Alternatively, one can choose to formalise knowledge as a modal
+operator in a suitable modal logic. This is referred to as the
+semantic treatment of knowledge. In the semantic treatment of
+knowledge one generally avoids problems of self-reference, and thus
+inconsistency, but it is at the expense of the expressive power of the
+formalism (the problems of self-reference are avoided by propositional
+modal logic not admitting anything equivalent to the diagonal lemma
+for constructing self-referential formulas).
+2.4 Consequences Concerning Provability and Computability
+
+The central argument given in the proof of Tarski’s theorem is
+closely related to the central argument in Gödel’s first
+incompleteness theorem (Gödel, 1931). Gödel’s theorem
+can be given the following formulation.
+
+Gödel’s first incompleteness theorem.
+
+If first-order arithmetic is ωω\omega-consistent then it is incomplete.
+
+
+A theory is called ωω\omega-consistent if the following holds
+for every formula ϕ(x)ϕ(x)\phi(x) containing xxx as its only
+free variable: If ⊢¬ϕ(n)⊢¬ϕ(n)\vdash \neg \phi(n) for every natural
+number nnn then ⊬∃xϕ(x).ω⊬∃xϕ(x).ω\not\vdash \exists x\phi(x).
+\omega-consistency is a stronger condition than ordinary consistency,
+so any ωω\omega-consistent theory will also be consistent. A theory is
+incomplete if it contains a formula which can neither be
+proved nor disproved.
+
+
+Proof sketch of Gödel’s first incompleteness
+theorem. Assume first-order arithmetic is both ωω\omega-consistent
+and complete. We need to show that this leads to a contradiction.
+Gödel constructs a formula Bew (for
+“Beweis”) in formal arithmetic satisfying, for all ϕϕ\phi
+and all nnn,
+
+(1)
+
+⊢⊢\vdashBew(n,⟨ϕ⟩)(n,⟨ϕ⟩)(n, \langle \phi \rangle) iff nnn is
+the Gödel code of a proof of ϕϕ\phi.
+
+
+Assuming the theory to be ωω\omega-consistent and complete we can prove
+that for all sentences ϕϕ\phi,
+
+(2)
+
+⊢∃x⊢∃x\vdash \exists xBew(x,⟨ϕ⟩)(x,⟨ϕ⟩)(x, \langle \phi \rangle)
+iff ⊢ϕ⊢ϕ\vdash \phi.
+
+
+The proof of (2) runs like this. First we prove the implication from
+left to right. If ⊢∃x⊢∃x\vdash \exists xBew(x,⟨ϕ⟩)(x,⟨ϕ⟩)(x,
+\langle \phi \rangle) then there is some nnn such that
+⊬¬⊬¬\not\vdash \negBew(n,⟨ϕ⟩)(n,⟨ϕ⟩)(n, \langle \phi \rangle), by
+ωω\omega-consistency. By completeness we get
+⊢⊢\vdashBew(n,⟨ϕ⟩)(n,⟨ϕ⟩)(n, \langle \phi \rangle) for this nnn. By
+(1) above we get that nnn denotes a proof of ϕϕ\phi. That is,
+ϕϕ\phi is provable, so we have ⊢ϕ⊢ϕ\vdash \phi. To prove the implication
+from right to left, note that if ⊢ϕ⊢ϕ\vdash \phi then there must be an
+nnn such that ⊢⊢\vdash Bew(n,⟨ϕ⟩)(n,⟨ϕ⟩)(n, \langle \phi \rangle),
+by (1). From this we get
+⊢∃x⊢∃x\vdash \exists xBew(x,⟨ϕ⟩)(x,⟨ϕ⟩)(x, \langle \phi \rangle), as
+required. This concludes the proof of (2). Now, when in a complete
+theory we have (2), we must also have:
+
+(3)
+
+⊢∃x⊢∃x\vdash \exists xBew(x,⟨ϕ⟩)↔ϕ(x,⟨ϕ⟩)↔ϕ(x, \langle \phi \rangle)
+\leftrightarrow \phi, for all sentences ϕϕ\phi.
+
+
+If we let ∃x∃x\exists xBew(x,⟨ϕ⟩)(x,⟨ϕ⟩)(x, \langle \phi \rangle) be
+abbreviated T⟨ϕ⟩T⟨ϕ⟩T\langle \phi \rangle then (3) becomes:
+⊢T⟨ϕ⟩↔ϕ, for all sentence ϕ.⊢T⟨ϕ⟩↔ϕ, for all sentence ϕ.
+\vdash T\langle \phi \rangle \leftrightarrow \phi, \text{ for all sentence } \phi.
+
+
+This is the TTT-schema! Thus if we assume first-order
+arithmetic to be ωω\omega-consistent and complete then schema
+TTT turns out to be interpretable in it. Now, Tarski’s
+theorem above shows that there exists no such consistent theory, and
+we thus have a contradiction. ◻□\Box
+
+
+In the proof above we reduced Gödel’s incompleteness
+theorem to an application of Tarski’s theorem in order to show
+the close link between the two (this version of the proof is due to
+Bolander, 2002). Gödel was well aware of this link, and indeed it
+seems that Gödel even proved Tarski’s theorem before Tarski
+himself did (Feferman, 1984). Gödel’s theorem can be
+interpreted as demonstrating a limitation in what can be achieved by
+purely formal procedures. It says that if first-order arithmetic is
+ωω\omega-consistent (which it is believed to be), then there must be
+arithmetical sentences that can neither be proved nor disproved by the
+formal procedures of first-order arithmetic. One might at first expect
+this limitation to be resolvable by the inclusion of additional
+axioms, but Gödel showed that the incompleteness result still
+holds when first-order arithmetic is extended with an arbitrary finite
+set of axiom schemas (or, more generally, an arbitrary recursive set
+of axioms). Thus we obtain a general limitation result saying that
+there cannot exist a formal proof procedure by which any given
+arithmetical sentence can be proved to hold or not to hold. For more
+details on Gödel’s incompleteness theorem, see the entry on
+ Kurt Gödel.
+
+The limitation result of Gödel’s theorem is closely related
+to another limitation result known as the undecidability of the
+halting problem. This is a result stating that there are
+limitations to what can be computed. We will present this result in
+the following. The result is based on the notion of a Turing
+machine, which is a generic model of a computer program running
+on a computer having unbounded memory. Thus any program running on any
+computer can be thought of as a Turing machine (see the entry on
+ Turing machines
+ for more details). When running a Turing machine, it will either
+terminate after a finite number of computation steps, or will continue
+running forever. In case it terminates after a finite number of
+computation steps we say that it halts. The halting
+problem is the problem of finding a Turing machine that can
+decide whether other Turing machines halt or not. We say that a Turing
+machine HHH decides the halting problem if the
+following holds:
+
+HHH takes as input a pair (⟨A⟩,x)(⟨A⟩,x)(\langle A\rangle ,x)
+consisting of the Gödel code ⟨A⟩⟨A⟩\langle A\rangle of a Turing
+machine AAA and an arbitrary string x.Hx.Hx. H
+returns the answer “yes” if the Turing machine AAA
+halts when given input xxx, and “no” otherwise.
+
+
+Thus if a Turing machine HHH decides the halting problem, we
+can use it to determine for an arbitrary Turing machine AAA and
+arbitrary input xxx whether AAA will halt on input
+xxx or not. The undecidability of the halting problem
+is the following result, due to Turing (1937), stating that no such
+machine can exist: 
+
+
+Theorem (Undecidability of the Halting Problem).
+
+There exists no Turing machine deciding the halting problem.
+
+Proof. Assume the existence of a Turing machine HHH
+deciding the halting problem. We need to show that this assumption
+leads to a contradiction. The proof mimics Grelling’s paradox.
+We call a Turing machine AAA heterological if
+AAA doesn’t halt on input ⟨A⟩⟨A⟩\langle A\rangle, that is, if
+AAA doesn’t halt when given its own Gödel code as
+input. Using HHH, we can construct a Turing machine GGG
+that halts if and only if it is given the Gödel code of a
+heterological Turing machine as input. GGG works as
+follows:
+
+GGG takes as input the Gödel code of a Turing machine
+AAA. Then it runs HHH on input
+(⟨A⟩,⟨A⟩)(⟨A⟩,⟨A⟩)(\langle A\rangle ,\langle A\rangle). If HHH on input
+(⟨A⟩,⟨A⟩)(⟨A⟩,⟨A⟩)(\langle A\rangle ,\langle A\rangle) returns “no” we
+know that AAA is heterological, and GGG is halted. If,
+on the other hand, HHH on input
+(⟨A⟩,⟨A⟩)(⟨A⟩,⟨A⟩)(\langle A\rangle ,\langle A\rangle) returns “yes” then
+GGG is forced into an infinite loop (that is, is forced to
+never halt).
+
+
+In analogy to Grelling’s paradox we can now ask whether
+GGG is a heterological Turing machine or not. This leads to the
+following sequence of equivalences: 
+G is heterological ⇔G doesn’t halt on input ⟨G⟩⇔H returns  “no” on input (⟨G⟩,⟨G⟩)⇔G halts on input ⟨G⟩⇔G is not heterological.G is heterological ⇔G doesn’t halt on input ⟨G⟩⇔H returns  “no” on input (⟨G⟩,⟨G⟩)⇔G halts on input ⟨G⟩⇔G is not heterological.\begin{align*}
+G \text{ is heterological } 
+ &amp;\Leftrightarrow 
+   G \text{ doesn’t halt on input } \langle G\rangle \\
+ &amp;\Leftrightarrow 
+   H \text{ returns  “no” on input } (\langle G\rangle ,\langle G\rangle) \\
+ &amp;\Leftrightarrow
+   G \text{ halts on input } \langle G\rangle \\
+ &amp;\Leftrightarrow
+   G \text{ is not heterological.}
+\end{align*}
+
+This gives the required contradiction. ◻□\Box
+
+
+From the two theorems above we see that in the areas of provability
+and computability the paradoxes of self-reference turn into limitation
+results: there are limits to what can be proven and what can be
+computed. This is actually quite similar to what happened in the areas
+of semantics, set theory and epistemology: The paradoxes of
+self-reference turned into theorems showing that there are limits to
+which properties we can consistently assume a truth predicate to have
+(Tarski’s theorem), a set theory to have (inconsistency of naive
+set theory), and a knowledge predicate to have (Montague’s
+theorem). It is hard to accept these limitation results, because most
+of them conflict with our intuitions and expectations. The central
+role played by self-reference in all of them makes them even harder to
+accept, and definitely more puzzling. However, we are forced to accept
+them, and forced to accept the fact that in these areas we cannot have
+all we might (otherwise) reasonably ask for. 
+3. Solving the paradoxes
+
+The present section takes a look at how to solve—or rather,
+circumvent—the paradoxes. To solve or circumvent a paradox one
+has to weaken some of the assumptions leading to the contradiction. It
+is very difficult to choose which assumptions to weaken, since each of
+the explicitly stated assumptions underlying a paradox appears to be
+“obviously true”—otherwise it would not qualify as
+a paradox. Below we will take a look at the most influential
+approaches to solving the paradoxes.
+
+So far the presentation has been structured according to type of
+paradox, that is, the semantic, set-theoretic and epistemic paradoxes
+have been dealt with separately. However, it has also been
+demonstrated that these three types of paradoxes are similar in
+underlying structure, and it has been argued that a solution to one
+should be a solutions to all (the principle of uniform solution).
+Therefore, in the following the presentation will be structured not
+according to type of paradox but according to type of solution. Each
+type of solution considered in the following can be applied to any of
+the paradoxes of self-reference, although in most cases the
+constructions involved were originally developed with only one type of
+paradox in mind.
+3.1 Building Explicit Hierarchies 
+
+Building hierarchies is a method to circumvent both the set-theoretic,
+semantic and epistemic paradoxes. Russell’s original solution to
+his paradox—as well as Tarski’s original solution to his
+undefinability of truth problem—was to build
+hierarchies. In Russell’s case, this led to type
+theory. In Tarski’s case, it led to what is now known as
+Tarski’s hierarchy of languages. In both cases, the
+idea is to stratify the universe of discourse (sets, sentences) into
+levels. In type theory, these levels are called types. The
+fundamental idea of type theory is to introduce the constraint that
+any set of a given type may only contain elements of lower types (that
+is, may only contain sets which are located lower in the
+stratification). This effectively blocks Russell’s paradox,
+since no set can then be a member of itself.
+
+In Tarski’s case, the stratification is obtained in the
+following way. Assume one wants to equip a language L0L0L_0 with a
+truth predicate. From Tarski’s theorem (Section 2.1) it is known
+that this truth predicate cannot be part of the language L0L0L_0
+itself—at least not as long as we want the truth predicate to
+satisfy schema TTT. Instead one builds a hierarchy of languages,
+L0,L1,L2,…L0,L1,L2,…L_0, L_1, L_2,\ldots, where each language Li+1Li+1L_{i+1} has a truth
+predicate Ti+1Ti+1T_{i+1} that only applies to the sentences of Lj,j≤iLj,j≤iL_j,
+j\le i. In this hierarchy, L0L0L_0 is called the object
+language and, for all i,Li+1i,Li+1i, L_{i+1} is called the
+meta-language of LiLiL_i. This hierarchy effectively blocks
+the liar paradox, since now a sentence can only express the truth or
+untruth of sentences at lower levels, and thus a sentence such as the
+liar that expresses its own untruth cannot be formed.
+
+Russell’s type theory can be regarded as a solution to
+Russell’s paradox, since type theory demonstrates how to
+“repair” set theory such that the paradox disappears.
+Similarly, Tarski’s hierarchy can be regarded as a solution to
+the liar paradox. It is the same stratification idea that underlies
+both of Russell’s and Tarski’s solutions. The point to
+note is that Russell’s paradox and the liar paradox depend
+crucially on circular notions (self-membership and
+self-reference). By making a stratification in which an
+object may only contain or refer to objects at lower levels,
+circularity disappears. In the case of the epistemic paradoxes, a
+similar stratification could be obtained by making an explicit
+distinction between first-order knowledge (knowledge about the
+external world), second-order knowledge (knowledge about first-order
+knowledge), third-order knowledge (knowledge about second-order
+knowledge), and so on. This stratification actually comes for free in
+the semantic treatment of knowledge, where knowledge is formalised as
+a modal operator.
+
+Building explicit hierarchies is sufficient to avoid circularity, and
+thus sufficient to block the standard paradoxes of self-reference.
+However, there also exist paradoxes such as Yablo’s that do not
+rely on circularity and self-reference. Such paradoxes can also be
+blocked by a hierarchy approach, but it is necessary to further
+require the hierarchy to be well-founded, that is, to have a lowest
+level. Otherwise, the paradoxes of non-wellfoundedness can still be
+formulated. For instance, Yablo’s paradox may be formalised in a
+descending hierarchy of languages. A descending hierarchy of
+languages consists of languages L0,L−1,L−2,…L0,L−1,L−2,…L_0, L_{-1}, L_{-2},\ldots where
+each language L−iL−iL_{-i} has a truth predicate that only applies to
+the sentences of the languages L−j,j>iL−j,j>iL_{-j}, j\gt i.  Similarly, a
+set-theoretic paradox of non-wellfoundedness may be formulated in a
+type theory allowing negative types. The conclusion drawn is that a
+stratification of the universe is not itself sufficient to avoid all
+paradoxes—the stratification also has to be well-founded. 
+
+Building an explicit (well-founded) hierarchy to solve the paradoxes
+is today by most considered an overly drastic and heavy-handed
+approach. The hierarchies introduce a number of complicating
+technicalities not present in a “flat universe”, and even
+though the paradoxes do indeed disappear, so do all non-paradoxical
+occurrences of self-reference. Kripke (1975) gives the following
+illustrative example taken from ordinary discourse. Let NNN be
+the following statement, made by Nixon,
+
+(N)(N)(N)
+
+All of Jones’ utterances about Watergate are true,
+
+
+and let JJJ be the following statement, made by Jones,
+
+(J)(J)(J)
+
+Most of Nixon’s utterances about Watergate are false.
+
+
+In a Tarskian language hierarchy, the sentence NNN would have
+to be on a higher level than all of Jones’ utterances, and,
+conversely, the sentence JJJ would have to be on a higher level
+than all of Nixon’s utterances. Since NNN is an utterance
+of Nixon, and JJJ is an utterance of Jones, NNN would
+have to be on a higher level than JJJ, and JJJ on a
+higher lever than NNN. This is obviously not possible, so in a
+hierarchy like the Tarskian, these sentences cannot even be
+formulated. The sentences NNN and JJJ are indeed both
+indirectly self-referential, since NNN makes reference to a
+totality including JJJ, and JJJ makes reference to a
+totality including NNN. Nevertheless, in most cases NNN
+and JJJ are harmless, and do not produce a paradox. A paradox
+is only produced in the special case where all of Jones’
+utterances except possibly JJJ are true, and exactly half of
+Nixon’s utterances are false, disregarding NNN. Kripke
+uses the fact that NNN and JJJ are only problematic in a
+certain special case as an argument against an approach that
+altogether excludes the possibility of formulating NNN and
+JJJ. 
+
+Another argument against the hierarchy approach is that explicit
+stratification is not part of ordinary discourse, and thus it might be
+considered somewhat ad hoc to introduce it into formal
+settings with the sole purpose of circumventing the paradoxes. Not
+having an explicit stratification in ordinary discourse obviously
+doesn’t imply the non-existence of an underlying, implicit,
+stratification, but at least it’s not explicitly represented in
+our syntax. 
+
+The arguments given above are among the reasons the work of Russell
+and Tarski has not been considered to furnish the final solutions to
+the paradoxes. Many alternative solutions have been proposed. One
+might for instance try to look for implicit hierarchies
+rather than explicit hierarchies. An implicit hierarchy is a
+hierarchy not explicitly reflected in the syntax of the language. In
+the following section we will consider some of the solutions to the
+paradoxes obtained by such implicit stratifications. 
+3.2 Building Implicit Hierarchies
+
+Tarski’s hierarchy approach to the semantic paradoxes dominated
+the field until 1975, when Kripke published his famous and highly
+influential paper, “Outline of a Theory of Truth”. This
+paper has greatly shaped most later approaches to theories of truth
+and the semantic paradoxes. It should be noted, however, that ideas
+quite similar to Kripke’s were developed simultaneously and
+independently by Martin and Woodruff (1975), and that a parallel
+approach in a set-theoretic setting was developed independently by
+Gilmore (1974).
+3.2.1 Kripke’s Theory of Truth
+
+Kripke’s ideas are based on an analysis of the problems involved
+in Tarski’s hierarchy approach. Kripke lists a number of
+arguments against having a language hierarchy in which each sentence
+lives at a fixed level, determined by its syntactic form. He proposes
+an alternative solution which still uses the idea of having levels,
+but where the levels are not becoming an explicit part of the syntax.
+Rather, the levels become stages in an iterative construction of a
+truth predicate. To explain Kripke’s construction, some
+additional technical machinery is required.
+
+At each stage in Kripke’s construction, the truth predicate is
+only partially defined, that is, it only applies to some of
+the sentences of the language. To deal with such partially defined
+predicates, a three-valued logic is employed, that is, a
+logic which operates with a third value, undefined, in
+addition to the truth values true and false. Often
+the third value is denoted “uuu” or
+“⊥⊥\bot” (bottom). A partially defined predicate only
+receives one of the classical truth values, true or
+false, when it is applied to one of the terms for which the
+predicate has been defined, and otherwise it receives the value
+undefined. There are several different three-valued logics
+available, differing in how they treat the third value. Here only one
+of them is briefly described, called Kleene’s strong
+three-valued logic. More detailed information on this and related
+logics can be found in the entry on
+ many-valued logic.
+
+In Kleene’s strong three-valued logic, the value ⊥⊥\bot
+(undefined) can be interpreted as “not yet
+defined”. So one could think of formulae with the value ⊥⊥\bot
+as formulae that actually have a classical truth value (true
+or false), but which has just not been determined yet. This
+interpretation of undefined is reflected in the truth tables
+for the logic, given below. The upper truth table is for disjunction,
+the lower for negation:
+
+
+∨∨\vee
+true
+false
+⊥⊥\bot 
+
+true
+true
+true
+true 
+
+false
+true
+false
+⊥⊥\bot 
+
+⊥⊥\bot
+true
+⊥⊥\bot
+⊥⊥\bot 
+
+
+
+¬¬\neg
+ 
+
+true
+false 
+
+false
+true 
+
+⊥⊥\bot
+⊥⊥\bot 
+
+
+These truth tables define the three-valued logic completely, as ∨∨\vee
+and ¬¬\neg are taken to form an adequate set of connectives and
+existential and universal quantification are treated as infinite
+disjunction and conjunction, respectively. 
+
+To handle partially defined truth predicates, it is necessary to
+introduce the notion of partial models. In a partial model
+for a first-order language, each nnn-place predicate symbol
+PPP is interpreted by a pair (U,V)(U,V)(U,V) of
+disjoint nnn-place relations on the domain of the model.
+UUU is called the extension of PPP and
+VVV its anti-extension. In the model, PPP is
+true of the objects in UUU, false of the objects in VVV,
+and undefined otherwise. In this way, any atomic sentence receives one
+of the truth values true, false or
+undefined in the model. Non-atomic formulae are given truth
+values in the model by using Kleene’s strong three-valued logic
+for evaluating the connectives. 
+
+Given the definition of a partial model, a partially interpreted
+language is a pair (L,M)(L,M)(L,M) where LLL is a
+first-order language and MMM is a partial model of LLL.
+Kripke recursively defines a sequence of partially interpreted
+languages L0,L1,L2,…L0,L1,L2,…L_0, L_1, L_2,\ldots, only differing in their
+interpretation of the truth predicate TTT. The first language,
+L0L0L_0, is taken to be an arbitrary language in which
+both the extension and anti-extension of TTT are the empty set.
+Thus in L0L0L_0, the truth predicate is completely
+undefined. For any αα\alpha, the language
+Lα+1Lα+1L_{\alpha +1} is like LαLαL_{\alpha}
+except that TTT is interpreted by the extension/anti-extension
+pair (U,V)(U,V)(U,V) given by:
+
+UUU is the set of Gödel codes ⟨ϕ⟩⟨ϕ⟩\langle \phi \rangle of
+sentences ϕϕ\phi true in LαLαL_{\alpha}.
+VVV is the set of Gödel codes ⟨ϕ⟩⟨ϕ⟩\langle \phi \rangle of
+sentences ϕϕ\phi false in LαLαL_{\alpha}.
+
+
+This definition immediately gives that for all αα\alpha,
+
+(4)
+
+ϕϕ\phi is true (false) in Lα⇔T⟨ϕ⟩Lα⇔T⟨ϕ⟩L_{\alpha} \Leftrightarrow T\langle \phi
+\rangle is true (false) in Lα+1Lα+1L_{\alpha +1}.
+
+
+What has been constructed is a sequence L0,L1,L2,…L0,L1,L2,…L_0,
+L_1, L_2,\ldots of partially
+interpreted languages such that TTT is interpreted in
+Lα+1Lα+1L_{\alpha +1} as the truth predicate for
+LαLαL_{\alpha}. This is just like Tarski’s
+hierarchy of languages, except that here there is no syntactic
+distinction between the different languages and their truth
+predicates.
+
+The sequence L0,L1,L2,…L0,L1,L2,…L_0, L_1,
+L_2,\ldots has an important property: For each
+αα\alpha, the interpretation of TTT in
+Lα+1Lα+1L_{\alpha +1} extends the interpretation of
+TTT in LαLαL_{\alpha}, that is, both the
+extension and anti-extension of TTT increase (or stay the same)
+when moving from LαLαL_{\alpha} to
+Lα+1Lα+1L_{\alpha +1}. This means that one can define a new
+partially interpreted language LωLωL_{\omega} by letting
+the extension of TTT be the union of all the extensions of
+TTT in L0,L1,L2,…L0,L1,L2,…L_0, L_1,
+L_2,\ldots; and similarly for the anti-extension.
+Thus in LωLωL_{\omega}, the interpretation of TTT
+extends the interpretation that TTT receives in all previous
+languages. This furnishes a strategy for continuing the iterative
+construction of a truth predicate into the transfinite: For each
+successor ordinal α+1α+1\alpha +1, define
+Lα+1Lα+1L_{\alpha +1} from LαLαL_{\alpha}
+exactly as in the finite case above; and for each limit ordinal
+σσ\sigma, define LσLσL_{\sigma} from the preceding
+languages (Li)i<σ(Li)i<σ(L_i)_{i\lt \sigma} in
+the same way as LωLωL_{\omega} was defined (for a
+detailed explanation of the ordinal numbers and their use in this
+context, see the entry on
+ the revision theory of truth).
+ A simple cardinality consideration now shows that this transfinite
+sequence of languages will eventually stabilise: There is an
+ordinal γγ\gamma such that Lγ=Lγ+1Lγ=Lγ+1L_{\gamma} = L_{\gamma +1}. Hence the following instance of (4) is
+obtained:
+
+(5)
+
+ϕϕ\phi is true (false) in Lγ⇔T⟨ϕ⟩Lγ⇔T⟨ϕ⟩L_{\gamma} \Leftrightarrow T\langle \phi
+\rangle is true (false) in LγLγL_{\gamma}.
+
+
+This shows that LγLγL_{\gamma} is actually a language
+containing its own truth predicate: Any sentence ϕϕ\phi is true (false)
+if and only if the sentence expressing its truth,
+T⟨ϕ⟩T⟨ϕ⟩T\langle \phi \rangle, is true (false). The equivalence (5) is
+nothing more than a semantic analogue of Tarski’s schema
+TTT in a three-valued setting. The construction of the language
+LγLγL_{\gamma} was one of the major contributions of
+Kripke (1975). It shows that in a three-valued logical setting it is
+actually possible for a language to contain its own truth predicate.
+It is easy to see that the third value, undefined, is
+essential to making things work: If LγLγL_{\gamma} had
+been a totally interpreted language (that is, a language with no
+undefined sentences), then LγLγL_{\gamma} would satisfy
+schema T, by (5) above. However, it immediately contradicts
+Tarski’s theorem that such a totally interpreted language can
+exist.
+
+Among the sentences that receive the value undefined in
+LγLγL_{\gamma} is the liar sentence. The solution to the
+liar paradox implicit in Kripke’s theory is this: Since both
+assuming that the liar sentence is true and that it is false leads to
+a contradiction it must be neither, it is undefined. The liar
+sentence is said to suffer from a truth-value gap. The idea
+of avoiding the liar paradox by allowing truth-value gaps did in fact
+appear several times in the literature before Kripke’s paper,
+but Kripke was among the first to make it an integral part of a
+genuine theory.
+
+As with the hierarchy solution to the liar paradox, the truth-value
+gap solution is by many considered to be problematic. The main
+criticism is that by using a three-valued semantics, one gets an
+interpreted language which is expressively weak. One cannot, for
+instance, in any of Kripke’s languages have a predicate
+expressing the property of being undefined. This is in fact
+noted by Kripke himself. If a partially interpreted language contained
+such a predicate, the following strengthened liar sentence
+within the language could be formulated: “This sentence is
+either false or undefined”. The strengthened liar sentence is
+true if and only if false or undefined, so we have a new paradox,
+called the strengthened liar paradox. The problem with the
+strengthened liar paradox is known as a revenge problem:
+Given any solution to the liar, it seems we can come up with a new
+strengthened paradox, analogous to the liar, that remains unsolved.
+The idea is that whatever semantic status the purported solution
+claims the liar sentence to have, if we are allowed freely to refer to
+this semantic status in the object language, we can generate a new
+paradox. 
+
+The inability of the Kripkean language to express its own
+undefined predicate also means that we cannot in the Kripkean
+object-language express a statement such as: “The liar sentence
+is undefined”. In fact in Kripke’s language
+LγLγL_{\gamma}, the liar sentence isisis undefined,
+so the previous sentence expresses a truth about
+LγLγL_{\gamma} that cannot be expressed within
+LγLγL_{\gamma} itself (hence the language is
+expressively incomplete). To express the true statement “The
+liar sentence is undefined”, we are forced to ascend into a
+meta-language of LγLγL_{\gamma}. As Kripke (1975)
+himself puts it: “The ghost of the Tarski hierarchy is still
+with us.” 
+3.2.2 Extensions and Alternatives to Kripke’s Theory of Truth
+
+Succeeding the work of Kripke, many attempts have been made to
+construct languages containing their own truth predicate and not
+suffering from the revenge problem of strengthened liars. Many of
+these attempts have focused on modifying or extending the underlying
+strong three-valued logic, e.g. modifying the semantics of the
+conditional (Field, 2003, 2008) or allowing an unbounded number of
+truth-values (Cook, 2007; Schlenker, 2010; Tourville and Cook, 2016).
+
+
+Kripke’s theory circumvents the liar paradox by assigning it the
+value undefined. An alternative way to circumvent the liar
+paradox would be to assign it the value both true and false
+in a suitable paraconsistent logic. This would be the correct solution
+according to the dialetheist view, cf. Section 2. One of the simplest
+paraconsistent logics is LP, which is a three-valued logic with the
+same truth tables as Kleene’s strong three-valued logic
+presented above—the only difference is that the third truth
+value is interpreted as both true and false rather than
+undefined. A reason for preferring a paraconsistent logic
+over a partial logic is that paradoxical sentences such as the liar
+can then be modelled as true contradictions (dialetheia)
+rather than truth-value gaps. We refer again to the entries on
+ dialetheism
+ and
+ paraconsistent logic
+ for more information.
+
+The choice is between truth-value gaps and truth-value
+gluts: A truth-value gap is a statement with no truth-value,
+neither true or false (like undefined in Kleene’s
+strong three-valued logic), and a truth-value glut is a statement with
+several truth-values, e.g. both true and false (like in the
+paraconsistent logic LP). There are also arguments in favour of
+allowing both gaps and gluts, e.g. by letting the set of truth-values
+form of a bilattice (Fitting, 2006; Odintsov and Wansing, 2015). The
+simplest non-trivial bilattice has exactly four values, which in the
+context of truth-values are interpreted as: true,
+false, ⊥⊥\bot (neither true nor false), and ⊤⊤\top (both
+true and false). 
+
+For a more extensive discussion of Kripke’s theory, its
+successors and rivals, see the entry on
+ the liar paradox.
+3.2.3 Implicit Hierarchies in Set Theories
+
+Building implicit rather than explicit hierarchies is also an idea
+that has been employed in set theory. New Foundations (NF) by Quine
+(1937) is a modification of simple type theory where the
+stratification into syntactic types has been replaced by a
+stratification on the comprehension principle:
+
+NF comprehension:
+
+∀u(u∈{x∣ϕ(x)}↔ϕ(u))∀u(u∈{x∣ϕ(x)}↔ϕ(u))\forall u(u \in \{ x \mid \phi(x)\} \leftrightarrow \phi(u)), for
+all stratified formulae ϕ(x)ϕ(x)\phi(x).
+
+
+A formula ϕϕ\phi is stratified if there exists a mapping
+σσ\sigma (a stratification) from the variables of ϕϕ\phi to the
+natural numbers such that if u∈vu∈vu \in v is a
+subformula of ϕϕ\phi then σ(v)=σ(u)+1σ(v)=σ(u)+1\sigma(v) = \sigma(u)+1
+and if u=vu=vu = v is a subformula of ϕϕ\phi then
+σ(v)=σ(u)σ(v)=σ(u)\sigma(v) = \sigma(u). Obviously the formula
+x∉xx∉xx \not\in x is not stratified, and thus the NF
+comprehension principle cannot be used to formulate Russell’s
+paradox in the theory. Quine’s New Foundations is essentially
+obtained from type theory by hiding the types from the syntax. Thus,
+the theory still makes use of a hierarchy approach to avoid the
+paradoxes, but the hierarchy is made implicit by not representing it
+in the syntax of formulae. Cantini (2015) has investigated the
+possibility of mimicking this implicit hierarchy approach in the
+context of theories of truth (achieving an implicitly represented
+Tarskian truth hierarchy). 
+
+Zermelo-Fraenkel set theory (ZF) is another theory that builds on the
+idea of an implicit hierarchy to circumvent the paradoxes. However, it
+does so in a much less direct way than NF. In ZF, sets are built
+bottom-up, starting with the empty set and iterating a construction of
+bigger and bigger sets using the operations of union and power set.
+This produces a hierarchy with the empty set on the lowest level,
+level 0, and with the power set operation producing a set of level
+α+1α+1\alpha +1 from a set of level αα\alpha. Analogous to Kripke’s
+iterative construction, the procedure is continued into the
+transfinite using the union operator at the limit ordinal levels. The
+hierarchy obtained is called the cumulative hierarchy. One of
+the axioms of ZF, the axiom of foundation, states that every set of ZF
+lives on a certain level in this cumulative hierarchy. In other words,
+the axiom of foundation states that there are no sets in ZF besides
+the ones that can be constructed bottom-up by the iterative procedure
+just described. Since in a cumulative hierarchy, there can be no sets
+containing themselves, no universal set, and no non-wellfounded sets,
+none of the known paradoxes can immediately be formulated in the
+theory. This does obviously not in itself ensure the consistency of
+ZF, but at least it illustrates how the idea of a set hierarchy plays
+a significant role in ZF as well. ZF has a privileged status among set
+theories, as it is today the most widely acknowledged candidate for a
+formal foundation of mathematics.
+3.3 General Fixed Point Approaches
+
+Kripke’s iterative construction of a truth predicate presented
+above may be viewed as an instance of a more general fixed point
+approach towards building formal theories of truth. Fixed point
+approaches have become central to contemporary formal theories of
+truth. The main idea is to have a truth revision operator and
+then look for fixed points of this operator. At heart of such fixed
+point approaches is some suitable fixed point theorem
+guaranteeing the existence of fixed points for certain kinds of
+operators. There are several different fixed point theorems available.
+Consider now one of the simpler ones.
+
+Fixed point theorem.
+
+Let ττ\tau be a monotone operator on a chain complete partial order
+(henceforth ccpo). Then ττ\tau has a least fixed point, that is, there
+is a least f such that τ(f)=fτ(f)=f\tau(f) = f.
+
+
+A ccpo is a partial order (D,<)(D,<)(D,\lt) in which every
+totally ordered subset of DDD has a least upper bound. The
+totally ordered subsets of DDD are called chains in
+DDD. A monotone operator on (D,<)(D,<)(D,\lt) is a
+mapping τ:D→Dτ:D→D\tau : D \rightarrow D satisfying:
+d1≤d2⇒τ(d1)≤τ(d2), for all d1,d2∈D.d1≤d2⇒τ(d1)≤τ(d2), for all d1,d2∈D. 
+d_1 \le d_2 \Rightarrow \tau(d_1) \le \tau(d_2),
+ \text{ for all } d_1, d_2 \in D.
+
+
+Kripke’s construction fits into the fixed point theorem above in
+the following way. First note that the set of partially interpreted
+languages that only differ on the interpretation of TTT forms a
+ccpo: Simply define the ordering on these languages by
+L1≤L2L1≤L2L_1 \le L_2 iff the
+interpretation of TTT in L2L2L_2 extends the
+interpretation of TTT in L1L1L_1 (that is, the
+extension and anti-extension of TTT in L1L1L_1
+are included in those of L2)L2)L_2). Then define a truth
+revision operator ττ\tau on these languages by:
+
+(6)
+
+τ(L)=L′τ(L)=L′\tau(L) = L', where T⟨ϕ⟩T⟨ϕ⟩T\langle \phi \rangle is true (false) in
+L′L′L' iff ϕϕ\phi is true (false) in LLL.
+
+
+Note that if LαLαL_{\alpha} is one of the languages in
+Kripke’s construction, then Lα+1=τ(Lα)Lα+1=τ(Lα)L_{\alpha +1} = \tau(L_{\alpha}). The idea of this truth revision
+operator ττ\tau is that if τ(L)=L′τ(L)=L′\tau(L)=L' then
+L′L′L' will be a language in which TTT is
+interpreted as the truth predicate for LLL. If therefore
+τ(L)=Lτ(L)=L\tau(L)=L for some LLL, that is, if
+LLL is a fixed point of ττ\tau, then LLL will be a
+language containing its own truth predicate. This motivates the search
+for fixed points of ττ\tau. Since ττ\tau is easily seen to be monotone,
+by the fixed point theorem it has a least fixed point. It is not hard
+to see that this fixed point is exactly the language
+LγLγL_{\gamma} constructed in Kripke’s theory of
+truth. Kripke’s construction is thus recaptured in the setting
+of fixed points for monotone operators.
+
+The point of introducing the additional machinery was not just to
+rediscover the language LγLγL_{\gamma}. The point is
+rather to have provided a much more general and abstract framework
+which may lead to new theories of truth and give further insights into
+the semantic paradoxes. It turns out that the truth revision operator
+ττ\tau defined above has many interesting fixed-points in addition to
+LγLγL_{\gamma}. It is also possible to obtain new
+theories of truth by considering alternative ways of making the set of
+interpreted languages into a ccpo. One may for instance add an
+additional truth value and consider the situation in a four-valued
+logic, as considered by Fitting (1997); or one may remove the third
+truth value undefined and construct a ccpo in a completely
+classical setting. In the classical setting, attention is restricted
+to the totally interpreted languages (languages in which every
+sentence is either true or false), and an ordering on them is defined
+by: L1≤L2L1≤L2L_1 \le L_2 holds iff the
+extension of the truth predicate in L1L1L_1 is included
+in the extension of the truth predicate in L2L2L_2,
+that is, iff L2L2L_2 points out at least as many
+sentences as true as L1L1L_1. This gives a ccpo. By
+using the fixed point theorem in this setting on a suitably defined
+revision operator, it is fairly easy to prove the existence of a
+totally interpreted language containing a positive definition of
+truth. By this is meant that the interpreted language has a
+predicate TTT satisfying the following restricted version of
+the TTT-schema:
+
+(7)
+
+ϕ↔T(⟨ϕ⟩)ϕ↔T(⟨ϕ⟩)\phi \leftrightarrow T(\langle \phi \rangle), for all
+positive sentences ϕϕ\phi,
+
+
+where the positive sentences are those built without using negation
+(¬)(¬)(\neg). Since (7) is satisfiable in a totally interpreted language,
+the first-order theory containing the sentences of (7) as axioms must
+be consistent. This should be contrasted with Tarski’s theorem
+stating that the unrestricted TTT-schema is
+inconsistent. If the unrestricted comprehension principle is similarly
+restricted to the positive formulae, we also get a consistent theory.
+This was originally shown by Gilmore (1974).
+
+The fixed point approach is also the point of departure of the
+revision theory of truth developed by Belnap and Gupta
+(1993). The revision theory of truth is the most influential theory of
+truth and the semantic paradoxes that has been developed since the
+theory of Kripke. The revision theory considers the standard truth
+revision operator ττ\tau defined by (6) as an operator on the
+totally interpreted languages. On these languages ττ\tau
+doesn’t have a fixed point: If it had such a fixed point
+LLL then LLL would be a totally interpreted language
+satisfying the full schema TTT, directly contradicting
+Tarski’s theorem. Since ττ\tau doesn’t have a fixed point
+on the totally interpreted languages, the revision theory instead
+considers transfinite sequences L1,L2L1,L2L_1,
+L_2, … ,
+Lω,Lω+1Lω,Lω+1L_{\omega},
+L_{\omega +1}, … of totally interpreted
+languages satisfying:
+
+ For any successor ordinal α+1,Lα+1=τ(Lα)α+1,Lα+1=τ(Lα)\alpha +1,
+L_{\alpha +1} = \tau(L_{\alpha}).
+For any limit ordinal σσ\sigma and any sentence ϕϕ\phi, if ϕϕ\phi
+stabilises on the value true (false) in the sequence
+(Lα)α<σ(Lα)α<σ(L_{\alpha})_{\alpha \lt \sigma} then
+ϕϕ\phi is true (false) in LσLσL_{\sigma}.
+
+
+In such a sequence, each sentence ϕϕ\phi will either eventually
+stabilise on a classical truth value (true or false), or it will never
+stabilise. An example of a sentence that will never stabilise is the
+liar sentence: If the liar sentence is true in one of the languages
+LαLαL_{\alpha} it will be false in
+Lα+1Lα+1L_{\alpha +1}, and vice versa. The revision theory
+thus gives an account of truth that correctly models the
+behaviour of the liar sentence as one that never stabilises on a truth
+value. In the revision theory it is argued that this gives a more
+correct account of truth and self-reference than Kripke’s theory
+in which the liar sentence is simply assigned the value undefined.
+Both the revision theory of truth and Kripke-style fixed-point
+theories are still being actively researched (Gupta and Standefer,
+2017; Hsiung, 2017; Schindler, 2017). A full account of the revision
+theory can be found in the entry on
+ the revision theory of truth.
+ 
+
+Studying self-referential phenomena as fixed-points is not limited to
+theories of truth. For instance, in the context of epistemic
+paradoxes, the Brandenburger-Keisler paradox has been cast as a
+fixed-point result by Abramsky and Zvesper (2015).
+4. Recent Developments
+
+Murzi and Massimiliano (2015) gives an overview of recent developments
+in approaches to solving the paradoxes: paracompleteness (allowing
+truth-value gaps), paraconsistency (allowing truth-value gluts),
+substructural logics (weakening the logical principles of classical
+logic), and the revenge problems that these approaches will or could
+lead to. Recent developments in substructural logics as a cure to the
+paradoxes include French (2016) (dropping reflexivity), Caret, Colin
+and Weber (2015), Shapiro and Lionel (2015), Mares and Paoli (2014)
+(dropping contraction), and Cobreros, Égré, Ripley and van Rooij
+(2014) (dropping transitivity). The volume by Achourioti et al. (eds.,
+2015) has several papers on self-reference and how to avoid paradoxes
+in the context of theories of truth. 
+
+Volker Halbach and Albert Visser (2014a, 2014b) has made a very
+detailed study of self-reference in arithmetic, studying what it means
+for a sentence of arithmetic to ascribe itself a property, and how
+this depends on the chosen encoding, the details of fixed-point
+construction etc.

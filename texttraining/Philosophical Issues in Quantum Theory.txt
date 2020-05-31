@@ -1,0 +1,858 @@
+This article is an overview of the philosophical issues raised by
+quantum theory, intended as a pointer to the more in-depth treatments
+of other entries in the Stanford Encyclopedia of Philosophy.
+ 
+
+
+1. Introduction
+
+Despite its status as a core part of contemporary physics, there is no
+consensus among physicists or philosophers of physics on the question
+of what, if anything, the empirical success of quantum theory is
+telling us about the physical world. This gives rise to the collection
+of philosophical issues known as “the interpretation of quantum
+mechanics”. One should not be misled by this terminology into
+thinking that what we have is an uninterpreted mathematical formalism
+with no connection to the physical world. Rather, there is a common
+core of interpretation that consists of recipes for calculating
+probabilities of outcomes of experiments performed on systems
+subjected to certain state preparation procedures. What are often
+referred to as different “interpretations” of quantum
+mechanics differ on what, if anything, is added to the common core.
+Arguably, two of the major approaches, hidden-variables theories and
+collapse theories, involve formulation of physical theories distinct
+from standard quantum mechanics; this renders the terminology of
+“interpretation” even more inappropriate. 
+
+Much of the philosophical literature connected with quantum theory
+centers on the problem of whether we should construe the theory, or a
+suitable extension or revision of it, in realist terms, and, if so,
+how this should be done. Various approaches to the “Measurement
+Problem” propose differing answers to these questions. There
+are, however, other questions of philosophical interest. These include
+the bearing of quantum nonlocality on our understanding of spacetime
+structure and causality, the question of the ontological character of
+quantum states, the implications of quantum mechanics for information
+theory, and the task of situating quantum theory with respect to other
+theories, both actual and hypothetical. In what follows, we will touch
+on each of these topics, with the main goal being to provide an entry
+into the relevant literature, including the Stanford Encyclopedia
+entries on these topics.
+2. Quantum Theory
+
+In this section we present a brief introduction to quantum theory; see
+the entry on 
+ quantum mechanics
+ for a more detailed introduction.
+2.1 Quantum states and classical states
+
+In classical physics, with any physical system is associated a state
+space, which represents the totality of possible ways of assigning
+values to the dynamical variables that characterize the state of the
+system. For example, for a system consisting of nnn point particles,
+the state of the system is given by specifying the positions and
+momenta of all of the particles with respect to some reference frame.
+For systems of a great many degrees of freedom, a complete
+specification of the state of the system may be unavailable or
+unwieldy; classical statistical mechanics deals with such a situation
+by invoking a probability distribution over the state space of the
+system. A probability distribution that assigns any probability other
+than one or zero to some physical quantities is regarded as an
+incomplete specification of the state of the system. 
+
+In quantum mechanics, things are different. There are no quantum
+states that assign definite values to all physical quantities, and
+probabilities are built into the standard formulation of the theory.
+Construction of a quantum theory of some physical system proceeds by
+first associating the dynamical degrees of freedom with operators on
+an appropriately constructed Hilbert space (see the entry on
+ quantum mechanics for details). 
+A state can be characterized by an assignment of expectation values to
+physical quantities (“observables”).  These assignments
+are required to be linear. That is, if one physical quantity
+is a linear combination of others, the corresponding expectation
+values stand in the same relation. A complete set of such expectation
+values is equivalent to a specification of probabilities for outcomes
+of all experiments that could be performed on the system. Two
+physical quantities are said to be compatible if there is a
+single experiment that yields values for them both; these are
+associated with operators that commute, that is, operators AAA,
+BBB such that AB=BAAB=BAAB = BA. Incompatible observables give rise to
+uncertainty relations; see the entry on
+ the uncertainty principle.
+
+A pure state, that is, a maximally specific assignment of expectation
+values, may be represented in a number of physically equivalent ways, for
+instance by a vector in the Hilbert space or a projection operator
+onto a one-dimensional subspace. In addition to pure states, one can
+also consider non-pure states, called mixed; these are
+represented by operators called density operators. If a pure
+state assigns a definite value to a physical quantity, a vector that
+represents the state will be an eigenvector of the corresponding
+operator. This gives rise to what has been called the
+“eigenstate-eigenvalue link”, that is, the interpretative
+principle that, if a system is assigned a state vector that
+is an eigenvector of some operator representing a physical quantity,
+then the corresponding dynamical quantity has the corresponding value,
+and this can be regarded as a property of the physical system.
+
+The noncontroversial core of quantum theory consists of rules for
+identifying, for any given system, the appropriate operators
+representing its dynamical quantities, and an appropriate Hilbert
+space for these operators to act on. In addition, there are
+prescriptions for evolving the state of system when it is acted upon
+by specified external fields or subjected to various manipulations
+(see
+ section 1.3).
+
+Whether we can or can expect to be able to go beyond this
+noncontroversial core, and take the theory to be more than a means for
+calculating probabilities of outcomes of experiments, is an issue that
+remains a topic of contemporary philosophical discussion.
+2.2 Quantum mechanics and quantum field theory
+
+Quantum mechanics is usually taken to refer to the quantized
+version of a theory of classical mechanics, involving systems with a
+fixed, finite number of degrees of freedom. Classically, a field, such
+as, for example, an electromagnetic field, is a system endowed with
+infinitely many degrees of freedom. Quantization of a field theory
+gives rise to a quantum field theory. The chief philosophical
+issues raised by quantum mechanics remain when the transition is made
+to a quantum field theory; in addition, new interpretational issues
+arise. There are interesting differences, both technical and
+interpretational, between quantum mechanical theories and quantum
+field theories; for an overview, see the entries on
+ quantum field theory
+ and
+ quantum theory: von Neumann vs. Dirac.
+
+The standard model of quantum field theory, successful as it is, does
+not yet incorporate gravitation. The attempt to develop a theory that
+does justice both the quantum phenomena and to gravitational phenomena
+gives rise to serious conceptual issues (see the entry on
+ quantum gravity).
+2.3 Quantum state evolution
+2.3.1. The Schrödinger equation
+
+The equation of motion obeyed by a quantum state vector is the
+Schrödinger equation. It is constructed by first forming
+the operator HHH corresponding to the Hamiltonian of the system,
+which represents the total energy of the system. The rate of change of
+a state vector is proportional to the result of operating on the
+vector with the Hamiltonian operator HHH.
+iℏd/dt|ψ(t)⟩=H|ψ(t)⟩.iℏd/dt|ψ(t)⟩=H|ψ(t)⟩.
+i \hbar {\,\D}/{\D t}\, \ket{\psi (t)}  = H \ket{\psi (t)}.
+
+
+There is an operator that takes a state at time 0 into a state at time
+ttt; it is given by
+U(t)=exp(−iHtℏ).U(t)=exp⁡(−iHtℏ).
+U(t) = \exp\left(\frac{{-}i H t}{\hbar}\right).
+
+
+This operator is a linear operator that implements a one-one mapping
+of the Hilbert space to itself that preserves the inner product of any
+two vectors; operators with these properties are called unitary
+operators, and, for this reason, evolution according to the
+Schrödinger equation is called unitary evolution.
+
+For our purposes, the most important features of this equation is that
+it is deterministic and linear. The state vector at
+any time, together with the equation, uniquely determines the state
+vector at any other time. Linearity means that, if two vectors
+|ψ1(0)⟩|ψ1(0)⟩\ket{\psi_1(0)} and |ψ2(0)⟩|ψ2(0)⟩\ket{\psi_2(0)} evolve into vectors
+|ψ1(t)⟩|ψ1(t)⟩\ket{\psi_1(t) } and |ψ2(t)⟩|ψ2(t)⟩\ket{\psi_2(t)}, respectively, then, if
+the state at time 0 is a linear combination of these two, the state at
+any time ttt will be the corresponding linear combination of
+|ψ1(t)⟩|ψ1(t)⟩\ket{\psi_1(t)} and |ψ2(t)⟩|ψ2(t)⟩\ket{\psi_2(t)}.
+a|ψ1(0)⟩+b|ψ2(0)⟩→a|ψ1(t)⟩+b|ψ2(t)⟩.a|ψ1(0)⟩+b|ψ2(0)⟩→a|ψ1(t)⟩+b|ψ2(t)⟩.
+a\ket{\psi_{1}(0)}  + b\ket{\psi_{2}(0)}  \rightarrow  a\ket{\psi_{1}(t)}  + b\ket{\psi_{2}(t)} . 
+
+2.3.2. The collapse postulate
+
+Textbook formulations of quantum mechanics usually include an
+additional postulate about how to assign a state vector after an
+experiment. This has its origins in von Neumann’s distinction
+between two types of processes: Process 1, which occurs upon
+performance of an experiment, and Process 2, the unitary evolution
+that takes place as long as no experiment is made (see von Neumann
+1932, 1955: §V.1). In Dirac’s formulation, the postulate
+is
+
+
+When we measure a real dynamical variable ξξ\xi, the disturbance
+involved in the act of measurement causes a jump in the state of the
+dynamical system. From physical continuity, if we make a second
+measurement of the same dynamical variable ξξ\xi immediately after
+the first, the result of the second measurement must be the same as
+that of the first. Thus after the first measurement has been made,
+there is no indeterminacy in the result of the second. Hence, after
+the first measurement has been made, the system is in an eigenstate of
+the dynamical variable ξξ\xi, the eigenvalue it belongs to being
+equal to the result of the first measurement. This conclusion must
+still hold if the second measurement is not actually made. In this way
+we see that a measurement always causes the system to jump into an
+eigenstate of the dynamical variable that is being measured, the
+eigenvalue this eigenstate belongs to being equal to the result of the
+measurement (Dirac 1935: 36).
+
+
+Dirac’s “jump” has come to be known as state
+vector collapse or wave-function collapse, and the
+postulation of a jump of this sort is called the collapse
+postulate, or projection postulate.
+
+If the quantum state vector is thought to represent only a state of
+belief or knowledge about a physical system, and not the physical
+state of the system, then one could regard an abrupt shift in the
+state vector upon measurement as a shift corresponding to
+incorporating the result of the measurement into one’s belief
+state. Neither von Neumann nor Dirac, however, seem to think of it
+this way; it is treated by both as a physical process. Note, also,
+that Dirac expresses the postulate in terms of
+“measurement”, rather than “observation”;
+there is no suggestion that a conscious observer must become aware of
+the result of the measurement in order for a collapse to occur.
+Though, in his extended discussion of the measurement process, von
+Neumann (1932, 1955, Ch. VI) does discuss the act of observation, he
+emphasizes that the collapse postulate may be applied to interactions
+with quantum systems with measuring apparatus, before an observer is
+aware of the result. A formulation of a version of the collapse
+postulate according to which a measurement is not completed until the
+result is observed is found in London and Bauer (1939). They deny,
+however, that it represents a mysterious kind of interaction between
+the observer and the quantum system; for them, the replacement of the
+pre-observation state vector with a new one is a matter of the
+observer acquiring new information. These two interpretations of the
+collapse postulate, as either a real change of the physical state of
+the system, or as a mere updating of information on the part of an
+observer, have persisted in the literature.
+
+If state vector collapse is to be regarded as a physical process, this
+raises the question of what physically distinguishes
+interventions that are to count as “measurements”, capable
+of inducing an abrupt jump in the state of the system, from other
+interventions, which induce only continuous, unitary evolution. As
+John S. Bell (1990) has argued, “measurement” is not an
+appropriate concept to appear in the formulation of any physical
+theory that might be taken to be fundamental. If, however, one
+dispenses with the postulate, this gives rise to the so-called
+“measurement problem”, which we will discuss after we have
+introduced the notion of entanglement (see
+ section 3).
+3. Entanglement, nonlocality, and nonseparability
+
+Given two disjoint physical systems, AAA and BBB, with which we
+associate Hilbert spaces HAHAH_{A} and HBHBH_{B}, the Hilbert space
+associated with the composite system is the tensor product space,
+denoted HA⊗HBHA⊗HBH_{A} \otimes H_{B}.
+
+When the two systems are independently prepared in pure states
+|ψ⟩|ψ⟩\ket{\psi} and |ϕ⟩|ϕ⟩\ket{\phi}, the state of the composite system
+is the product state |ψ⟩⊗|ϕ⟩|ψ⟩⊗|ϕ⟩\ket{\psi} \otimes \ket{\phi}
+(sometimes written with the cross, ⊗⊗\otimes, omitted).
+
+In addition to the product states, the tensor product space contains
+linear combinations of product states, that is, state vectors of the
+form
+a|ψ1⟩⊗|ϕ1⟩+b|ψ2⟩⊗|ϕ2⟩a|ψ1⟩⊗|ϕ1⟩+b|ψ2⟩⊗|ϕ2⟩
+a\ket{\psi_{1}} \otimes \ket{\phi_{1}}  + b\ket{\psi_{2}} \otimes \ket{\phi_{2}}
+
+
+The tensor product space can be defined as the smallest Hilbert space
+containing all of the product states. Any pure state represented by a
+state vector that is not a product vector is an entangled
+state.
+
+The state of the composite system assigns probabilities to outcomes of
+all experiments that can be performed on the composite system. We can
+also consider a restriction to experiments performed on system AAA,
+or a restriction to experiments performed to BBB. Such restrictions
+yields states of AAA and BBB, respectively, called the reduced
+states of the systems. When the state of the composite system
+ABABAB is an entangled state, then the reduced states of AAA and
+BBB are mixed states. To see this, suppose that in the above state
+the vectors |ϕ1⟩|ϕ1⟩\ket{\phi_{1}} and |ϕ2⟩|ϕ2⟩\ket{\phi_{2}} represent
+distinguishable states. If one confines one’s attention to
+experiments performed on AAA, it makes no difference whether an
+experiment is also performed on BBB. An experiment performed on
+BBB that distinguishes |ϕ1⟩|ϕ1⟩\ket{\phi_{1}} and |ϕ2⟩|ϕ2⟩\ket{\phi_{2}}
+projects the state of AAA into either |ψ1⟩|ψ1⟩\ket{\psi_{1}} or
+|ψ2⟩|ψ2⟩\ket{\psi_{2}}, with probabilities |a|2|a|2\abs{a}^{2} and
+|b|2|b|2\abs{b}^{2}, respectively, and probabilities for outcomes of
+experiments performed on AAA are the corresponding averages of
+probabilities for states |ψ1⟩|ψ1⟩\ket{\psi_{1}} and |ψ2⟩|ψ2⟩\ket{\psi_{2}}.
+These probabilities, as mentioned, are the same as those for the
+situation in which no experiment is performed on BBB. Thus, even if
+no experiment is performed on BBB, the probabilities of outcomes of
+experiments on AAA are exactly as if system AAA is either in the
+state represented by |ψ1⟩|ψ1⟩\ket{\psi_{1}} or the state represented by
+|ψ2⟩|ψ2⟩\ket{\psi_{2}}, with probabilities |a|2|a|2\abs{a}^{2} and
+|b|2|b|2\abs{b}^{2}, respectively.
+
+In general, any state, pure or mixed, that is neither a product state
+nor a mixture of product states, is called an entangled
+state.
+
+The existence of pure entangled states means that, if we consider a
+composite system consisting of spatially separated parts, then, even
+when the state of the system is a pure state, the state is not
+determined by the reduced states of its component parts. Thus, quantum
+states exhibit a form of nonseparability. See the entry on 
+ holism and nonseparability in physics
+ for more information.
+
+Quantum entanglement results in a form of nonlocality that is alien to
+classical physics. Even if we assume that the reduced states of AAA
+and BBB do not completely characterize their physical states, but
+must be supplemented by some further variables, there are quantum
+correlations that cannot be reduced to correlations between states of
+AAA and BBB; see the entries on
+ Bell’s Theorem
+ and
+ action at a distance in quantum mechanics.
+4. The measurement problem
+4.1 The measurement problem formulated
+
+If quantum theory is meant to be (in principle) a universal theory, it
+should be applicable, in principle, to all physical systems, including
+systems as large and complicated as our experimental apparatus.
+Consider, now, a schematized experiment. Suppose we have a quantum
+system that can be prepared in at least two distinguishable states,
+|0⟩S|0⟩S\ket{0} _{S} and |1⟩S|1⟩S\ket{1} _{S}. Let |R⟩A|R⟩A\ket{R} _{A} be a ready
+state of the apparatus, that is, a state in which the apparatus is
+ready to make a measurement.
+
+If the apparatus is working properly, and if the measurement is a
+minimally disturbing one, the coupling of the system SSS with the
+apparatus AAA should result in an evolution that predictably yields
+results of the form
+|0⟩S|R⟩A⇒|0⟩S|“0”⟩A|0⟩S|R⟩A⇒|0⟩S|“0”⟩A
+\ket{0} _{S} \ket{R}  _{A} \Rightarrow  \ket{0}  _{S}\ket{“0” }  _{A}
+
+|1⟩S|R⟩A⇒|1⟩S|“1”⟩A|1⟩S|R⟩A⇒|1⟩S|“1”⟩A
+\ket{1} _{S} \ket{R}  _{A} \Rightarrow  \ket{1}  _{S}\ket{“1”} _{A}
+
+
+where |“0”⟩A|“0”⟩A\ket{“0” } _{A} and |“1”⟩A|“1”⟩A\ket{“1”}
+_{A} are apparatus states indicating results 0 and 1,
+respectively.
+
+Now suppose that the system SSS is prepared in a superposition of
+the states |0⟩S|0⟩S\ket{0} _{S} and |1⟩S|1⟩S\ket{1}_{S}.
+|ψ(0)⟩S=a|0⟩S+b|1⟩S,|ψ(0)⟩S=a|0⟩S+b|1⟩S,
+\ket{\psi(0)} _{S} = a\ket{0} _{S} + b\ket{1} _{S},
+
+
+where aaa and bbb are both nonzero. If the evolution that leads
+from the pre-experimental state to the post-experimental state is
+linear Schrödinger evolution, then we will have
+|ψ(0)⟩S|R⟩A→a|0⟩S|“0”⟩A+b|1⟩S|“1”⟩A.|ψ(0)⟩S|R⟩A→a|0⟩S|“0”⟩A+b|1⟩S|“1”⟩A.
+\ket{\psi(0)} _{S} \ket{R} _{A} \rightarrow  a\ket{0} _{S} \ket{“0” } _{A} + b\ket{1} _{S}\ket{“1” } _{A}.
+
+
+This is not an eigenstate of the instrument reading variable, but is,
+rather, a state in which the reading variable and the system variable are
+entangled with each other. The eigenstate-eigenvalue link, applied to
+a state like this, does not yield a definite result for the instrument
+reading. The problem of what to make of this is called the
+“measurement problem” which is discussed in more detail
+below.
+4.2 Approaches to the measurement problem
+
+If quantum state evolution proceeds via the Schrödinger equation
+or some other linear equation, then, as we have seen in the previous
+section, typical experiments will lead to quantum states that are
+superpositions of terms corresponding to distinct experimental
+outcomes. It is sometimes said that this conflicts with our
+experience, according to which experimental outcome variables, such as
+pointer readings, always have definite values. This is a misleading
+way of putting the issue, as it is not immediately clear how to
+interpret states of this sort as physical states of a system that
+includes experimental apparatus, and, if we can’t say what it
+would be like to observe the apparatus to be in such a state, it makes
+no sense to say that we never observe it to be in a state like
+that.
+
+Nonetheless, we are faced with an interpretational problem. If we take
+the quantum state to be a complete description of the system, then the
+state is, contrary to what would antecedently expect, not a state
+corresponding to a unique, definite outcome. This is what led J.S.
+Bell to remark, “Either the wavefunction, as given by the
+Schrödinger equation, is not everything, or it is not
+right” (Bell 1987: 41, 2004: 201). This gives us a (prima
+facie) tidy way of classifying approaches to the measurement
+problem:
+
+ There are approaches that involve a denial that a quantum wave
+function (or any other way of representing a quantum state) yields a
+complete description of a physical system.
+ There are approaches that involve modification of the dynamics to
+produce a collapse of the wave function in appropriate
+circumstances.
+ There are approaches that reject both horns of Bell’s
+dilemma, and hold that quantum states undergo unitary evolution at all
+times and that a quantum state-description is, in principle,
+complete.
+
+
+We include in the first category approaches that deny that a quantum
+state should be thought of as representing anything in reality at all.
+These include variants of the Copenhagen interpretation, as well as
+pragmatic and other anti-realist approaches. Also in the first
+category are approaches that seek a completion of the quantum state
+description. These include hidden-variables approaches and modal
+interpretations. The second category of interpretation motivates a
+research programme of finding suitable indeterministic modifications
+of the quantum dynamics. Approaches that reject both horns of
+Bell’s dilemma are typified by Everettian, or
+“many-worlds” interpretations.
+4.2.1 Non-realist approaches to quantum mechanics
+
+From the early days of quantum mechanics, there has been a strain of
+thought that holds that the proper attitude to take towards quantum
+mechanics is an instrumentalist or pragmatic one. On such a view,
+quantum mechanics is a tool for coordinating our experience and for
+forming expectations about the outcomes of experiments. Variants of
+this view include what has been called the Copenhagen Interpretation
+(or Copenhagen Interpretations, as recent scholarship has emphasized
+differences between figures associated with this view); see the entry on
+ Copenhagen interpretation of quantum mechanics.
+ More recently, views of this sort have been advocated by physicists,
+including QBists, who hold that quantum states represent subjective or
+epistemic probabilities (see Fuchs et al. 2014). The
+philosopher Richard Healey defends a related view on which quantum
+states, though objective, do not represent physical reality (see
+Healey 2012; Healey forthcoming).
+4.2.2 Hidden-variables and modal interpretations
+
+Theories whose structure include the quantum state but include
+additional structure, with an aim of circumventing the measurement
+problem, have traditionally been called “hidden-variables
+theories”. That a quantum state description cannot be regarded
+as a complete description of physical reality was argued for in a
+famous paper by Einstein, Podolsky and Rosen (EPR) and by Einstein in
+subsequent publications (Einstein 1936, 1948, 1949). See the entry on
+ the Einstein-Podolsky-Rosen argument 
+in quantum theory. 
+
+There are a number of theorems that circumscribe the scope of possible
+hidden-variables theories. The most natural thought would be to seek a
+theory that assigns to all quantum observables definite values that
+are merely revealed upon measurement, in such a way that any
+experimental procedure that, in conventional quantum mechanics, would
+count as a “measurement” of an observable yields the
+definite value assigned to the observable. Theories of this sort are
+called noncontextual hidden-variables theory. It was shown by
+Bell (1966) and Kochen and Specker (1967) that there are no such
+theories for any system whose Hilbert space dimension is greater than
+three (see the entry on
+ the Kochen-Specker theorem).
+
+The Bell-Kochen-Specker Theorem does not rule out hidden-variables
+theories tout court. The simplest way to circumvent it is to
+pick as always-definite some observable or compatible set of
+observables that suffices to guarantee determinate outcomes of
+experiments; other observables are not assigned definite values and
+experiments thought of as “measurements” of these
+observables do not reveal pre-existing values.
+
+The most thoroughly worked-out theory of this type is the pilot wave
+theory developed by de Broglie and presented by him at the Fifth
+Solvay Conference held in Brussels in 1927, revived by David Bohm in
+1952, and currently an active area of research by a small group of
+physicists and philosophers. According to this theory, there are
+particles with definite trajectories, that are guided by the quantum
+wave function. For the history of the de Broglie theory, see the
+introductory chapters of Bacciagaluppi and Valentini 2009. For any
+overview of the de Broglie-Bohm theory and philosophical issues
+associated with it see the entry on
+ Bohmian mechanics.
+
+There have been other proposals for supplementing the quantum state
+with additional structure; these have come to be called modal
+interpretations; see the entry on
+ modal interpretations of quantum mechanics
+
+4.2.3 Dynamical Collapse Theories
+
+As already mentioned, von Neumann and Dirac wrote as if the collapse
+of the quantum state vector precipitated by an experimental
+intervention on the system is a genuine physical change, distinct from
+the usual unitary evolution. If collapse is to be taken as a genuine
+physical process, then something more needs to be said about the
+circumstances under which it occurs than merely that it happens when
+an experiment is performed. This gives rise to a research programme of
+formulating a precisely defined dynamics for the quantum state that
+approximates the linear, unitary Schrödinger evolution in
+situations for which this is well-confirmed, and produces collapse to
+an eigenstate of the outcome variable in typical experimental set-ups,
+or, failing that, a close approximation to an eigenstate. The only
+promising collapse theories are stochastic in nature; indeed, it can
+be shown that a deterministic collapse theory would permit
+superluminal signalling. (see the entry on 
+ collapse theories
+ for an overview).
+
+Prima facie, a dynamical collapse theory of this type can be
+a quantum state monist theory, one on which, in Bell’s words,
+“the wave function is everything”. In recent years, this
+has been disputed; it has been argued that collapse theories require
+“primitive ontology” in addition to the quantum state. See
+Allori et al. 2008; also the entry on
+ collapse theories,
+ and references therein.
+4.2.4 Everettian, or “many worlds” theories
+
+In his doctoral dissertation of 1957 (reprinted in Everett 2012), Hugh
+Everett III proposed that quantum mechanics be taken as it is, without
+a collapse postulate and without any “hidden variables”.
+The resulting interpretation he called the relative state
+interpretation.
+
+The basic idea is this. After an experiment, the quantum state of the
+system plus apparatus is typically a superposition of terms
+corresponding to distinct outcomes. As the apparatus interacts with
+its environment, which may include observers, these systems become
+entangled with the apparatus and quantum system, the net result of
+which is a quantum state involving, for each of the possible
+experimental outcomes, a term in which the apparatus reading
+corresponds to that outcome, there are records of that outcome in the
+environment, observers observe that outcome, etc.. Everett
+proposed that each of these terms be taken to be equally real. From a
+God’s-eye-view, there is no unique experimental outcome, but one
+can also focus on a particular determinate state of one subsystem,
+say, the experimental apparatus, and attribute to the other systems
+participating in the entangled state a relative state,
+relative to that state of the apparatus. That is, relative to the
+apparatus reading ‘+’ is a state of the environment
+recording that result and states of observers observing that result
+(see the entry on
+ Everett’s relative-state formulation of quantum mechanics,
+ for more detail on Everett’s views). 
+
+Everett’s work has inspired a family of views that go by the
+name of “Many Worlds” interpretations; the idea is that
+each of the terms of the superposition corresponds to a coherent
+world, and all of these worlds are equally real. As time goes on,
+there is a proliferation of these worlds, as situations arise that
+give rise to a further multiplicity of outcomes (see the entry
+ many-worlds interpretation of quantum mechanics,
+ and Saunders 2007, for overviews of recent discussions; Wallace 2012
+is an extended defense of an Everettian interpretation of quantum
+mechanics).
+
+There is a family of distinct, but related views, that go by the name
+of “Relational Quantum Mechanics”. These views agree with
+Everett in attributing to a system definite values of dynamical
+variables only relative to the states of other systems; they differ in
+that, unlike Everett, they do not take the quantum state as their
+basic ontology (see the entry on
+ relational quantum mechanics
+ for more detail).
+4.3 The role of decoherence
+
+A quantum state that is a superposition of two distinct terms, such
+as
+|ψ⟩=a|ψ1⟩+b|ψ2⟩,|ψ⟩=a|ψ1⟩+b|ψ2⟩,
+\ket{\psi}  = a \ket{\psi_{1}}  + b \ket{\psi_{2}} ,
+
+
+where |ψ1⟩|ψ1⟩\ket{\psi_{1}} and |ψ2⟩|ψ2⟩\ket{\psi_{2}} are distinguishable
+states, is not the same state as a mixture of |ψ1⟩|ψ1⟩\ket{\psi_{1}} and
+|ψ2⟩|ψ2⟩\ket{\psi_{2}}, which would be appropriate for a situation in
+which the state prepared was either |ψ1⟩|ψ1⟩\ket{\psi_{1}} or
+|ψ2⟩|ψ2⟩\ket{\psi_{2}}, but we don’t know which. The difference
+between a coherent superposition of two terms and a mixture has
+empirical consequences. To see this, consider the double-slit
+experiment, in which a beam of particles (such as electrons, neutrons,
+or photons) passes through two narrow slits and then impinges on a
+screen, where the particles are detected. Take |ψ1⟩|ψ1⟩\ket{\psi_{1}} to
+be a state in which a particle passes through the top slit, and
+|ψ2⟩|ψ2⟩\ket{\psi_{2}}, a state in which it passes through the bottom
+slit. The fact that the state is a superposition of these two
+alternatives is exhibited in interference fringes at the screen,
+alternating bands of high and low rates of absorption.
+
+This is often expressed in terms of a difference between classical and
+quantum probabilities. If the particles were classical particles, the
+probability of detection at some point ppp of the screen would
+simply be a weighted average of two conditional probabilities: the
+probability of detection at ppp, given that the particle passed
+through the top slit, and the probability of detection at ppp, given
+that the particle passed through the bottom slit. The appearance of
+interference is an index of nonclassicality.
+
+Suppose, now, that the electrons interact with something else (call it
+the environment) on the way to the screen, that could serve
+as a “which-way” detector; that is, the state of this
+auxiliary system becomes entangled with the state of the electron in
+such a way that its state is correlated with |ψ1⟩|ψ1⟩\ket{\psi_{1}} and
+|ψ2⟩|ψ2⟩\ket{\psi_{2}}. Then the state of the quantum system, sss, and
+its environment, eee, is
+|ψ⟩se=a|ψ1⟩s|ϕ1⟩e+b|ψ2⟩s|ϕ2⟩e|ψ⟩se=a|ψ1⟩s|ϕ1⟩e+b|ψ2⟩s|ϕ2⟩e
+\ket{\psi} _{se} = a \ket{ \psi_{1}} _{s} \ket{ \phi_{1}} _{e} + b \ket{ \psi_{2}}_{s} \ket{ \phi_{2}} _{e}
+
+
+If the environment states |ϕ1⟩e|ϕ1⟩e\ket{\phi_{1}} _{e} are
+|ϕ2⟩e|ϕ2⟩e\ket{\phi_{2}}_{e} are distinguishable states, then this
+completely destroys the interference fringes: the particles interact
+with the screen as if they determinately went through one slit or the
+other, and the pattern that emerges is the result of overlaying the
+two single-slit patterns. That is, we can treat the particles as if
+they obeyed (approximately) definite trajectories, and apply
+probabilities in a classical manner.
+
+Now, macroscopic objects are typically in interaction with a large and
+complex environment—they are constantly being bombarded with air
+molecules, photons, and the like. As a result, the reduced state of
+such a system quickly becomes a mixture of quasi-classical states, a
+phenomenon known as decoherence.
+
+A generalization of decoherence lies at the heart of an approach to
+the interpretation of quantum mechanics that goes by the name of
+decoherent histories approach (see the entry on
+ the consistent histories approach to quantum mechanics
+ for an overview).
+
+Decoherence plays important roles in the other approaches to quantum
+mechanics, though the role it plays varies with approach; see the entry on
+ the role of decoherence in quantum mechanics
+ for information on this.
+4.4 Comparison of approaches to the measurement problem
+
+All of the above approaches take it that the goal is to provide an
+account of events in the world that recovers, at least in some
+approximation, something like our familiar world of ordinary objects
+behaving classically. None of the mainstream approaches accord any
+special physical role to conscious observers. There have,
+however, been proposals in that direction (see the entry on
+ quantum approaches to consciousness
+ for discussion).
+
+All of the above-mentioned approaches are consistent with observation.
+Mere consistency, however, is not enough; the rules for connecting
+quantum theory with experimental results typically involve nontrivial
+(that is, not equal to zero or one) probabilities assigned to
+experimental outcomes. These calculated probabilities are confronted
+with empirical evidence in the form of statistical data from repeated
+experiments. Extant hidden-variables theories reproduce the quantum
+probabilities, and collapse theories have the intriguing feature of
+reproducing very close approximations to quantum probabilities for all
+experiments that have been performed so far but departing from the
+quantum probabilities for other conceivable experiments. This permits,
+in principle, an empirical discrimination between such theories and
+no-collapse theories.
+
+A criticism that has been raised against Everettian theories is that
+it is not clear whether they can even make sense of statistical
+testing of this kind, as it does not, in any straightforward way, make
+sense to talk of the probability of obtaining, say, a ‘+”
+outcome of a given experiment when it is certain that all possible
+outcomes will occur on some branch of the wavefunction. This has been
+called the “Everettian evidential problem”. It has been
+the subject of much recent work on Everettian theories; see Saunders
+(2007) for an introduction and overview.
+
+If one accepts that Everettians have a solution to the evidential
+problem, then, among the major lines of approach, none is favored in a
+straightforward way by the empirical evidence. If one is to make a
+decision as to which, if any, one should accept, it is to be made on
+other grounds. There will not be space here to give an in-depth
+overview of these ongoing discussions, but a few considerations can be
+mentioned, to give the reader a flavor of the discussions; see entries
+on particular approaches for more detail.
+
+Bohmians claim, in favor of the Bohmian approach, that a theory on
+these lines provides the most straightforward picture of events;
+ontological issues are less clear-cut when it comes to Everettian
+theories or collapse theories.
+
+Another consideration is compatibility with relativistic causal
+structure. The de Broglie-Bohm theory requires a distinguished
+relation of distant simultaneity for its formulation, and, it can be
+argued, this is an ineliminable feature of any hidden-variables theory
+of this sort, that selects some observable to always have definite
+values (see Berndl et al. 1996; Myrvold 2002). On the other
+hand, there are collapse models that are fully relativistic. On such
+models, collapses are localized events. Though probabilities of
+collapses at spacelike separation from each other are not independent,
+this probabilistic dependence does not require us to single one out as
+earlier and the other later. Thus, such theories do not require a
+distinguished relation of distant simultaneity. There remains,
+however, some discussion of how to equip such theories with beables
+(or “elements of reality”). See the entry on
+ collapse theories
+ and references therein; see also, for some recent contributions to the
+discussion, Fleming 2016, Maudlin 2016, and Myrvold 2016.
+
+In the case of Everettian theories, one must first think about how to
+formulate the question of relativistic locality. Several authors have
+approached this issue in somewhat different ways, with a common
+conclusion that Everettian quantum mechanics is, indeed, local. (See
+Vaidman 1994; Baccialuppi 2002; Chapter 8 of Wallace 2012; Tipler
+2014; Vaidman 2016; and Brown and Timpson 2016.)
+5. Ontological Issues
+
+As mentioned, a central question of interpretation of quantum
+mechanics concerns whether quantum states should be regarded as
+representing anything in physical reality. If this is answered in the
+affirmative, this gives rise to new questions, namely, what sort of
+physical reality is represented by the quantum state, and whether a
+quantum state could in principle give an exhaustive account of
+physical reality.
+5.1 The question of quantum state realism.
+
+Harrigan and Spekkens (2010) have introduced a framework for
+discussing these issues. In their terminology, a complete
+specification of the physical properties is given by the ontic
+state of a system. An ontological model posits a space of ontic
+states and associates, with any preparation procedure, a probability
+distribution over ontic states. A model is said to be
+ψψ\psi-ontic if the ontic state uniquely determines the
+quantum state; that is, if there is a function from ontic states to
+quantum states (this includes both cases in which the quantum state
+also completely determines the physical state, and cases, such as
+hidden-variables theories, in which the quantum state does not
+completely determine the physical state). In their terminology, models
+that are not ψψ\psi-ontic are called ψψ\psi-epistemic. If
+a model is not ψψ\psi-ontic, this means that it is possible for some
+ontic states to be the result of two or more preparations that lead to
+different assignments of pure quantum states; that is, the same ontic
+state may be compatible with distinct quantum states.
+
+This gives a nice way of posing the question of quantum state realism:
+are there preparations corresponding to distinct pure quantum states
+that can give rise to the same ontic state, or, conversely, are there
+ontic states compatible with distinct quantum states? Pusey, Barrett,
+and Rudolph (2012) showed that, if one adopts a natural independence
+assumption about state preparations—namely, the assumption that
+it is possible to prepare a pair of systems in such a way that the
+probabilities for ontic states of the two systems are effectively
+independent—then the answer is negative; any ontological model
+that reproduces quantum predictions and satisfies this Preparation
+Independence assumption must be a ψψ\psi-ontic model.
+
+The Pusey, Barrett and Rudolph (PBR) theorem does not close off all
+options for anti-realism about quantum states; an anti-realist about
+quantum states could reject the Preparation Independence assumption,
+or reject the framework within which the theorem is set; see
+discussion in Spekkens 2015: 92–93. See also Leifer (2014) for a
+careful and thorough overview of theorems relevant to quantum state
+realism.
+5.2 Ontological category of quantum states
+
+The major realist approaches to the measurement problem are all, in
+some sense, realist about quantum states. Merely saying this is
+insufficient to give an account of the ontology of a given
+interpretation. Among the questions to be addressed are: if quantum
+states represent something physically real, what sort of thing is it?
+This is the question of the ontological construal of quantum states.
+Another question is the EPR question, whether a description in terms
+of quantum states can be taken as, in principle, complete, or whether
+it must be supplemented by different ontology.
+
+De Broglie’s original conception of the “pilot wave”
+was that it would be a field, analogous to an electromagnetic field.
+The original conception was that each particle would have its own
+guiding wave. However, in quantum mechanics as it was developed at the
+hands of Schrödinger, for a system of two or more particles we
+don’t have individual wave functions for each particle, but,
+rather, a single wave function that is defined on nnn-tuples of
+points in space, where nnn is the number of particles. This was
+taken, by de Broglie, Schrödinger and others, to militate against
+the conception of quantum wave functions as fields. If quantum states
+represent something in physical reality, they are unlike anything
+familiar in classical physics.
+
+One response that has been taken is to insist that quantum wave
+functions are fields nonetheless, albeit fields on a space of
+enormously high dimension, namely, 3n3n3n, where nnn is the number
+of elementary particles in the universe. On this view, this
+high-dimensional space is thought of as more fundamental than the
+familiar three-dimensional space (or four-dimensional spacetime) that
+is usually taken to be the arena of physical events. See Albert (1996,
+2013), for the classic statement of the view; other proponents include
+Loewer (1996), Lewis (2004), Ney (2012, 2013a,b, 2015), and North
+(2013). Most of the discussion of this proposal has taken place within
+the context of nonrelativistic quantum mechanics, which is not a
+fundamental theory. It has been argued that considerations of how the
+wave functions of nonrelativistic quantum mechanics arise from a
+quantum field theory undermines the idea that wave functions are
+relevantly like fields on configuration space, and also the idea that
+configuration spaces can be thought of as more fundamental than
+ordinary spacetime (Myrvold 2015).
+
+A view that takes a wave function as a field on a high-dimensional
+space must be distinguished from a view that takes it to be what Belot
+(2012) has called a multi-field, which assigns properties to
+nnn-tuples of points of ordinary three-dimensional space. These are
+distinct views; proponents of the 3n3n3n-dimensional conception make
+much of the fact that it restores Separability: on this view, a
+complete specification of the way the world is, at some time, is given
+by specification of local states of affairs at each address in the
+fundamental (3n3n3n-dimensional) space. Taking a wave function to be a
+multi-field, on the other hand, involves accepting nonseparability.
+Another difference between taking wave-functions as multi-fields on
+ordinary space and taking them to be fields on a high-dimensional
+space is that, on the multi-field view, there is no question about the
+relation of ordinary three-dimensional space to some more fundamental
+space.­
+
+It has been argued that, on the de Broglie-Bohm pilot wave theory and
+related pilot wave theories, the quantum state plays a role more
+similar to that of a law in classical mechanics; its role is to
+provide dynamics for the Bohmian corpuscles, which, according to the
+theory, compose ordinary objects. See Dürr, Goldstein, and
+Zanghì 1997 and Allori et al. 2008.
+
+Dürr, Goldstein, and Zanghì (1992) introduced the term
+“primitive ontology” for what, according to a physical
+theory, makes up ordinary physical objects; on the de Broglie-Bohm
+theory, this is the Bohmian corpuscles. The conception is extended to
+interpretations of collapse theories by Allori et al. (2008).
+Primitive ontology is to be distinguished from other ontology, such as
+the quantum state, that is introduced into the theory to account for
+the behavior of the primitive ontology. The distinction is meant to be
+a guide as to how to conceive of the nonprimitive ontology of the
+theory.
+6. Quantum computing and quantum information theory
+
+Quantum mechanics has not only given rise to interpretational
+conundrums; it has given rise to new concepts in computing and in
+information theory. Quantum information theory is the study
+of the possibilities for information processing and transmission
+opened up by quantum theory. This has given rise to a different
+perspective on quantum theory, one on which, as Bub (2000, 597) put
+it, “the puzzling features of quantum mechanics are seen as a
+resource to be developed rather than a problem to be solved”
+(see the entries on
+ quantum computing
+ and
+ quantum entanglement and information).
+ 
+7. Reconstructions of quantum mechanics and beyond
+
+Another area of active research in the foundations of quantum
+mechanics is the attempt to gain deeper insight into the structure of
+the theory, and the ways in which it differs from both classical
+physics and other theories that one might construct, by characterizing
+the structure of the theory in terms of very general principles, often
+with an information-theoretic flavour.
+
+This project has its roots in early work of Mackey (1957, 1963),
+Ludwig (1964), and Piron (1964) aiming to characterize quantum
+mechanics in operational terms. This has led to the development of a
+framework of generalized probabilistic model. It also has connections
+with the investigations into quantum logic initiated by Birkhoff and
+von Neumann (1936) (see the entry
+ quantum logic and probability theory
+ for an overview).
+
+Interest in the project of deriving quantum theory from axioms with
+clear operational content was revived by the work of Hardy (2001
+[2008], Other Internet Resources).  Significant results along these
+lines include the axiomatizations of Masanes and Müller (2011)
+and Chiribella, D’Ariano, and Perinotti (2011). See Chiribella  and Spekkens 
+2015 for a snapshot of the state of the art of this
+endeavour.

@@ -1,0 +1,1486 @@
+This entry aims to clarify how systems and synthetic biology
+contribute to and extend discussions within philosophy of science.
+Unlike fields such as developmental biology or molecular biology,
+systems and synthetic biology are not easily demarcated by a focus on
+a specific subject area or level of organization. Rather, they are
+characterized by the development and application of mathematical,
+computational, and synthetic modeling strategies in response to
+complex problems and challenges within the life sciences. Proponents
+of systems and synthetic biology often stress the necessity of a
+perspective that goes beyond the scope of molecular biology and
+genetic engineering, respectively. With the emphasis on systems and
+interaction networks, the approaches explicitly engage in one of the
+oldest philosophical discussions on the relationship between parts and
+wholes, or between reductionism and holism. Such questions are,
+however, reframed in the new light of strategies for large-scale data
+production and dynamic modeling that are inspired by non-biological
+disciplines such as engineering. Systems and synthetic biology thus
+shed new light on important discussions in philosophy of biology, but
+they are also philosophically interesting for their own sake. By
+pursuing ambitious aims such as the development of multiscale
+computational models and synthetic life forms, they uncover new ground
+for philosophical analysis. Systems and synthetic biology raise
+fundamental questions about how far research can be taken through
+computational approaches, about the relation between living and
+artificial systems, and about the implications of interdisciplinary
+research for science and society.
+ 
+1. Introduction
+
+Systems biology and synthetic biology are relatively recent
+interdisciplinary approaches that aim to improve our ability to
+understand, predict, and control living systems. They both capitalize
+on large-scale data production in genomics and related fields and
+explore new paths of cross-fertilization between biology and
+non-biological disciplines such as physics, computer science,
+mathematics, chemistry, and engineering. Systems and synthetic biology
+are often described as ‘sister-disciplines’ or
+‘cousins’, focusing on the complementary and interrelated
+aims of understanding (systems biology) and
+designing (synthetic biology) living systems. Accordingly,
+they have been associated with knowledge-driven versus
+application-driven epistemologies, or with the aims of analysis versus
+synthesis. Philosophers of science examining the research practice
+have, however, argued that understanding and design are often
+interdependent, and that no simple distinction between basic and
+applied science can be made in this context (O’Malley 2009;
+Kastenhofer 2013a,b; Knuuttila & Loettgers 2013a). Moreover, the
+notions of systems and synthetic biology cover broad and highly
+diverse spectra of interdisciplinary hybrids (Calvert & Fujimura
+2011; Gramelsberger et al. 2013). This entry will therefore aim to
+reach a balance between displaying the methodological flexibility and
+variability within these fields and highlighting common themes.
+1.1 Research Practices in Systems Biology
+
+Systems biology can be interpreted as a response to limitations of
+research strategies investigating molecules and pathways in isolation.
+To clarify the significance of their approach, systems biologists
+often stress the need to complement or go beyond what is perceived as
+reductionist strategies in molecular biology (cf., De Backer et al.
+2004; van Regenmortel 2004; Wolkenhauer & Green 2013). The
+contrast between systems biology and molecular biology should not be
+overstated (see also
+ Section 4.1).
+ However, the often cited comparison reveals how systems biology is
+motivated by the need for mathematical and computational modeling
+frameworks that are better suited for studying the dynamics and
+organization of many interconnected components (Boogerd et al. 2007;
+Kitano 2001).
+
+Molecular biology has been extremely successful in generating
+knowledge on biological mechanisms through the twin strategies of
+decomposition and localization of component parts and molecular
+operations (Bechtel & Richardson 1993 [2010]). But the very
+success of the detailed study of molecular pathways has also revealed
+dynamic interfaces and crosslinks between processes and components
+that were previously assigned to distinct mechanisms or subsystems. To
+account for a vast number of interacting components and multiple
+feedback loops dynamic modeling is needed (Bechtel & Abrahamsen
+2012). Network modeling and computational simulations in systems
+biology allow for the study of larger integrated systems and thus
+provide strategies for recomposing the findings in the
+context of larger systems (Bechtel 2016; Gross & Green
+forthcoming). Systems in this context thus generally refer to
+large networks of integrated components exhibiting non-linear
+dynamics. However, there is no unified view of what constitutes a
+systems-approach (Calvert 2010; Calvert & Fujimura 2011). As
+clarified below, systems biology comprises different research
+practices with different ties to molecular biology, genomics, as well
+as to non-biological disciplines (see also Krohs & Callebaut
+2007).
+
+Systems biology research is sometimes divided into a
+systems-theoretical and a pragmatic stream
+(O’Malley and Dupré 2005). The former is historically
+related to the initial use of the term ‘systems biology’
+in 1968, denoting the merging of systems theory and biology
+(Mesarović
+ 1968).[1]
+ This definition has been taken up as providing a theoretical vision
+and reorientation also for modern systems biology (Wolkenhauer &
+Mesarović 2005; Drack & Wolkenhauer 2011).
+Systems-theoretical proponents view systems biology as an opportunity
+to revive important theoretical questions that for half a century
+stood in the shade of the success of experimental biology. Examples of
+such questions are what characterizes living systems and whether
+generic organizational principles can be identified (see
+ Section 3.2).
+ In contrast, the pragmatic stream views systems biology as a
+successor of genomics and as a powerful extension of molecular
+biology. This stream is sometimes referred to as molecular systems
+biology (De Backer et al. 2010), and practitioners within this field
+relate the emergence of systems biology to the production of data
+within genomics and other high-throughput technologies from the late
+1990s and onwards (Güttinger & Dupré 2016).
+
+Krohs and Callebaut (2007) consider omics-disciplines a third
+dimension or root of systems biology due to the impact of data-rich
+modeling strategies on the development of the
+ approach.[2]
+ Omics fields allowed for large-scale measurements of co-expression
+between vast number of genes or associated protein concentrations.
+Since modeling tools in molecular biology were considered limited for
+handling large quantitative datasets, researchers turned to the
+exploration and further development of mathematical and computational
+strategies developed in engineering and physics (Alberghina &
+Westerhoff 2005). Although not all systems biologists put equal
+emphasis on the prospects of big data, they share the view that
+mathematical and computational approaches are required to account for
+biological complexity.
+
+The first international conference on systems biology was held in 2000
+(at the first Systems Biology Institute in Tokyo), and thematic
+journal issues and dedicated journals quickly followed (Kitano
+2002a,b). Since then, many systems biology research institutions have
+emerged, and large-scale international collaborations have been
+initiated.
+1.1.1 Network Approaches in Systems Biology
+
+Research practices in systems biology can in part be understood
+through an examination of characteristics and implications of
+different styles of representation. Whereas textbooks and research
+papers in molecular and cell biology typically contain mechanistic
+diagrams tracking interactions between specific genes and proteins,
+representations in systems biology often display interactions between
+a vast number of molecular components as abstract networks of
+interconnected nodes and links. This difference in representational
+style is epistemically significant, because it highlights an
+increasing focus on the organizational structure of the system as a
+whole.
+
+By conducting correlation-based studies of how multiple genes and
+proteins are associated with each other, and how these are connected
+to specific biological processes, systems biology research has
+revealed common patterns in biological networks such as scale-free
+network architectures and multi-level hierarchies (Ravasz et al.
+2002). Systems biologists often distinguish between two major classes
+of networks based on their connectivity distribution (how components,
+or nodes, in the network are connected to other nodes).
+Exponential and scale-free network structures are
+illustrated on
+ Figure 1
+ (for details on the differences, see Albert et al. 2000). An
+exponential network is largely homogeneous with approximately the same
+number of links per node, and it is unlikely to find nodes with many
+links. In contrast, scale-free networks are inhomogeneous. Most nodes
+have only a few links but some nodes (called hubs) have a large number
+of
+ connections.[3]
+
+
+
+Figure 1: An example of a network
+representation in systems biology, showing the difference between an
+exponential network and a scale-free network. Red
+nodes are the five nodes with most links, green nodes are the first
+neighbors of red nodes (from Albert et al. 2000: 379, reprinted by
+permission from Macmillan Publishers Ltd: Nature, copyright 2000).
+
+
+Interestingly, many real-world networks such as social networks, the
+World Wide Web, and regulatory networks in biology display scale-free
+architectures. This raises important questions about whether
+real-world networks can be related to more generic structural types
+with characteristic functional capacities. The scale-free structure
+makes the average path length between any two nodes in the network
+small, and this structure has therefore been associated with
+capacities for coordinated regulation throughout the network (Albert
+et al. 2000). Moreover, scale-free networks exhibit a high error
+tolerance, understood as robustness against failure of random
+nodes and links (e.g., random gene deletion). These functional
+properties are not shared by exponential networks. However, the
+functional importance of hubs in scale-free networks at the same time
+results in fragility to attacks on central notes (Albert et al. 2000;
+Barabási & Oltvai 2004). Similarly, a multi-layered network
+structure called a bow-tie network connects many inputs and
+outputs through a central core (the knot of the bow-tie) that consists
+of a small number of elements (Kitano & Oda 2006). This structure
+has been associated with efficient information flow, but also with
+fragility towards perturbations of the intermediate nodes in the core
+of the network.
+
+Some systems biologists examine network architectures in the hope that
+smaller functional units or patterns can be identified that are akin
+to modules in electronic networks (Hartwell et al. 1999). One example
+of pattern-detection within large datasets has received special
+attention from philosophers of science, namely research on so-called
+network motifs.
+
+Network motifs are defined as “patterns of interaction that
+recurs in a network in many contexts” (Alon 2007: 268). By
+comparing the gene regulatory network of the bacterium E.
+coli to random networks, it was discovered that a few circuit
+patterns occurred more frequently than expected by chance (Shen-Orr et
+al. 2002). Statistically significant circuits were defined as network
+motifs. Two examples of network motifs are shown in
+ Figure 2,
+ called coherent and incoherent feedforward loops (cFFL and iFFL).
+
+
+
+Figure 2: Two examples of network motifs, the
+coherent and incoherent feedforward loop (cFFL and iFFL). The diagrams
+represent the regulation of a gene Z, via a direct path between a
+transcription factor X to Z, and an indirect connection from X via
+another gene or transcription factor Y to Z. Arrows represent gene
+activation (+) and a vertical bar inactivation (-). In a coherent
+feedforward loop (cFFL), all connections are activating. In the
+incoherent feedforward loop (iFFL), the path from Y to Z inhibites
+gene expression. (Adapted from Alon 2007: 47).
+
+
+Akin to common circuit types in electronic networks, it was
+hypothesized that the recurring wiring patterns may indicate
+generalizable functional behaviors. Mathematical analysis suggested
+that the cFFL may function as a sign-sensitive delay element that
+filters out noisy inputs for gene activation (e.g., sporadic levels of
+nutrients in the environment). In contrast, the regulatory function of
+the iFFL was hypothesized to be an accelerator that creates a rapid
+pulse of gene expression in response to an activation signal. These
+predicted functions have been experimentally demonstrated in living
+bacteria (Mangan et al. 2003). Moreover, similar and additional
+network motifs have been found in other species and in other
+regulatory networks important to cell-signaling, metabolism, and
+developmental processes (Alves & Sorribas 2011; Peter &
+Davidson 2015; Tyson & Novák 2010). Such results have
+sparked interesting debates on whether network motifs could be seen as
+design principles, whose functions are generalizable across
+different biological contexts (see
+ Section 2.3).
+
+Philosophers and scientists alike have debated the implications of
+research focusing on generic properties of biological networks, rather
+than the properties of specific molecular components (e.g.,
+Barabási 2002; Bechtel 2015a,b; Craver 2016). Among the
+controversial issues is how the enhanced focus on topological
+properties relates to more traditional mechanistic explanations in
+biology
+ (Section 4.2).
+ A related issue is whether functional capacities can be derived from
+an analysis of network architectures alone. Some systems biologists
+and philosophers have pointed to the limitations and possible biases
+associated with inferences of functions from automated
+pattern-detection in datasets (Calvert 2012; Keller 2005; Krohs 2012;
+see also Prill et al. 2010). Specifically, some have called for a more
+dynamic approach that can account for the context of the whole network
+and how it changes over time.
+
+Network approaches have recently been extended to also study temporal
+aspects of coordinated protein-protein interactions in cell cycles and
+evolutionary dynamics (de Lichtenberg et al. 2005; Hogeweg 2012;
+Knight & Pinney 2009). Of scientific as well as philosophical
+relevance is whether and how these approaches can extend mechanistic
+strategies in molecular biology by identifying how multiple biological
+processes are organized and coordinated in time (Green et al.
+forthcoming), and how network analysis can inform evolutionary biology
+ (Section 3.3).
+1.1.2 Research Objectives and Recent Developments
+
+Whereas engineering-inspired systems biologists search for functional
+units or modules in biological networks, another line of research
+emphasizes the need for a ‘global’ approach inspired by
+dynamical systems theory (Huang et al. 2009; Jaeger & Crombach
+2012). Drawing on Waddington’s idea of the epigenetic landscape
+of cell differentiation, the global approach represents dynamical
+states in a network through vectors, attractors, and trajectories in a
+state space (Huang 2012; for a philosophical analysis, see Fagan
+2012). The framework explores how inherent mathematical properties of
+the network architectures may constrain developmental and evolutionary
+processes, in a way analogous to how laws of motion constrain the
+possible planetary movements (Goodwin et al. 1993). The global
+approach is sometimes highlighted as being in opposition to
+mechanistic or “modular” engineering approaches (Huang
+2011; Fagan 2016). Controversies of this kind can reveal interesting
+differences in research aims as well as different standards for models
+and explanation present in systems biology
+ (Section 5.1).
+
+Systems biologists often describe their approach as one occupied with
+functional, rather than evolutionary questions (Boogerd et
+al. 2007; Hofmeyr 2007). By stressing the autonomy of functional
+biology, philosophy of systems biology can help balance the extensive
+emphasis on evolutionary biology in philosophy of biology (Pradeu
+2016). At the same time, evolutionary systems biology has
+recently emerged as a new research approach aiming to extend both
+systems biology and evolutionary biology
+ (Section 3.3).
+
+Another recent extension of systems biology is the emergence of
+systems medicine, the medical application of systems biology.
+Systems biology has from the outset been associated with ambitiouns to
+solve grand societal challenges. Examples are the aims to provide a
+better understanding of complex diseases like cancer, and the vision
+of developing patient-specific models that will allow for
+individualized disease prediction and prevention
+ (Section 5.3).
+
+The aforementioned aims are often pursued through large-scale
+international collaborations where many research teams provide data
+and models to be integrated in complex models of whole cells (e.g.,
+The Virtual Cell Project), whole organs (e.g., the
+Virtual Liver Project), and even the whole human body (e.g.,
+The Virtual Physiological Human and the Physiome
+Project). Such projects raise new exciting questions for
+philosophy of science concerning strategies for model building and
+model validation (Carusi 2014). Moreover, they provide new sources for
+philosophical discussions on reduction and explanation
+ (Section 4)
+ and on the societal applications of big data biology
+ (Section 5).
+1.2 Research Practices in Synthetic Biology
+
+The term synthetic biology was used already in the 1970s and 1980s,
+but the development of synthetic biology in its modern context is also
+connected to genomics (Morange 2009; O’Malley 2009; Gelfert
+2013). In the wake of big data production around year 2000,
+comprehensive gene regulatory networks could be constructed that
+allowed for more systematic and ambitious design projects. Just like
+systems biologists commonly define their approach in opposition to the
+focus on isolated molecules or pathways in molecular biology, so is
+synthetic biology sometimes framed as a system-oriented approach that
+moves beyond isolationist approaches in genetic engineering
+(O’Malley et al. 2008). Also in this context, however, the ties
+to precursors are diverse, and there are different views on whether
+modular approaches are compatible with biological complexity (see
+below).
+
+The term synthetic biology became an official label with the first
+Synthetic Biology Conference in 2004, organized by Drew Endy and Tom
+Knight at MIT (Bensaude-Vincent 2013). Drew Endy’s
+BioBrickTM standard has become a paradigm example of the
+aim to realize an engineering program by designing and assembling
+modular parts (Endy 2005). But the relation to engineering is complex,
+and synthetic biology displays a plurality of epistemic aims, visions
+and methodological frameworks.
+1.2.1 Aims and Visions
+
+A central research aim in synthetic biology is to modify metabolic
+pathways so as to control biochemical reactions and produce chemicals
+of societal value. Examples are biofuels, oils, rubber, biomedical
+compounds, and flavoring substances such as vanillin (Jensen &
+Keasling 2015). Synthetic organisms may also be designed for
+bioremediation. Genetically modified microorganisms can for instance
+work as biosensors that detect toxic chemicals or help clean up
+contaminated soil and water by metabolizing toxic compounds (Khalil
+& Collins 2010). Many efforts are also directed towards
+improvements of biomedical research and clinical practices, e.g.,
+through synthetic vaccines, diagnostic tools, and personalized cancer
+treatments (Christiansen 2016b).
+
+Much of synthetic biology research can be characterized as
+application-oriented innovations that utilize and modify biological
+structures. But not all practices fit this description. Some synthetic
+biologists pursue a basic science approach to understand the origin of
+life or the conditions for minimal life
+ (Section 3.2).
+ Others are driven by the wish to create artificial life in the lab,
+inspired by von Neumann’s (1966) vision of a self-reproducing
+automaton. This aim may be achieved through the design of macroscale
+‘living technology’ (Bedau 2009). Examples are 3D printers
+that can print biological tissue structures and perhaps—with
+time—also replicate
+ themselves.[4]
+ Thus, synthetic biology is an umbrella term covering very diverse
+research practices.
+1.2.2 Knowledge-Making Practices in Synthetic Biology
+
+Examining the diversity of knowledge-making practices in synthetic
+biology, O’Malley et al. (2008) suggest a distinction between
+DNA-based device construction, genome-driven cell
+engineering, and protocell creation.
+
+DNA-based device construction, or what Benner and Sismour
+(2005) characterize more broadly as the engineering trend, explores
+the extent to which interchangeable and functionally distinct
+components can be designed and implemented in a modular fashion. The
+BioBrick Foundation is a paradigmatic example of this approach
+(biobricks.org). The guiding principles for this approach are
+standardization, decoupling, and abstraction of parts and functional
+descriptions (Endy 2005). Examples of DNA-based devices are the
+repressilator (Elowitz & Leibler 2000, see
+ Section 2.1),
+ the synthetic toggle switch (Gardner et al. 2000; see
+ Section 2.3),
+ as well as production of synthetic artemisinin for antimalarial drugs
+(Keasling 2010). The orientation towards functional devices and
+machine-like control is also explicit in the so-called iGEM
+competition (Genetically Engineered Machine) where student teams
+compete in the task of constructing genetically engineered biological
+systems to address societal problems. Whether the ideal of
+constructing standardized and replaceable parts is compatible with
+biological complexity is an ongoing topic of debate
+ (Sections 2
+ and
+ 3).
+
+Genome-driven cell engineering in synthetic biology departs
+from the modularity assumption held by practitioners of DNA-based
+device construction by focusing on the functioning of whole genomes or
+whole cells (O’Malley et al. 2008). This practice includes
+transplantation of foreign or modified genomes into empty
+‘chassis cells’ to acquire new functions (Chan et al.
+2005), and synthesizing minimal genomes (Andrianantoandro et al.
+2006). The notion of a minimal genome highlights the idea
+that existing organisms may have genomes more complex than necessary
+for the basic functions of survival and reproduction. The human
+parasite Mycoplasma genitalium has been considered a model
+organism for the exploration of such questions due to its small
+genome, and it has also been the target for the first whole-cell model
+in systems biology (Karr et al. 2012). In 2010, scientists at the J.
+Craig Venter Institute (JCVI) created a synthetic genome of another
+bacterial species of the same genus, Mycoplasma mycoides
+(Gibson et al. 2010). From the synthetic DNA sequence, the researchers
+could partly control the production of new Mycoplasma
+mycoides cells. This genome was recently further reduced to a
+working approximation for the simplest synthetic minimal genome
+(JCVI-syn 3.0), allowing cells to function and reproduce with only 473
+genes (Hutchison et al. 2016; see also Sung et al. 2016). At the same
+time as lower boundaries for biological complexity are explored, other
+synthetic biologists aim to manipulate and control the functions of
+genomes of more complex species, such as yeast and algae (Calvert
+& Frow 2015; Georgianna & Mayfield 2012).
+
+The third category of synthetic biology, protocell creation,
+takes on the ambitious aim to construct simple approximations of
+living cells de novo (O’Malley et al. 2008).
+Researchers within this stream are often interested in the fundamental
+question of what life is, and the notion of applied science may not be
+an appropriate description of this research approach (see
+ Section 3.2).
+ Historically, the theoretical discussion of what life is has often
+been coupled to wet-lab synthesis of compounds associated with early
+or minimal
+ life.[5]
+ Synthetic biology takes this approach further through synthesis and
+manipulation of vesicles resembling primitive cells, as well as
+through advanced computational simulations of gene regulatory networks
+(Luisi 2006; Kauffman 2015). This research practice connects to
+projects within genome-driven cell engineering investigating the
+minimal requirements for a living system to function, survive, and
+reproduce. Research on protocells may focus primarily on understanding
+the origin of life as we know it, or aim to create synthetic life
+forms in other and simpler ways (Rasmussen et al. 2008).
+
+Deplazes (2009) has suggested the following extended classification of
+practices within synthetic biology: i) bioengineering, ii) synthetic
+genomics, iii) protocell synthetic biology, iv) unnatural molecular
+biology, and v) in silico approaches (see
+ Figure 3).
+ While the categories of work on protocells and synthetic genomes
+overlap with the categorization by O’Malley et al. (2008),
+DNA-based device construction is here further divided into
+bioengineering (exemplified by assembly standards like
+BioBricksTM) and unnatural molecular biology.
+Unnatural molecular biology aims to create systems with different
+components, e.g., artificial nucleic acids based on a different coding
+system. Philosophers have debated whether the term
+‘unnatural’ distinguishes practices in synthetic biology
+from other bioengineering approaches (Lewens 2013; Preston 2013). But
+the emphasis on synthetic artifacts underscores the affinity to
+synthetic chemistry and perhaps also to the ‘chemist style of
+thinking’, emphasizing synthesis and invention in addition to
+analysis and discovery (Bensaude-Vincent 2009, 2013, 2015).
+
+
+
+Figure 3: Schematic representation of
+the five categories of synthetic biology and their connections. (From
+Deplazes 2009: 431, Copyright 2009 by John Wiley & Sons, Inc.
+reprinted by permission of John Wiley & Sons, Inc.).
+
+
+Deplazes’ fifth category, in silico synthetic biology,
+focuses on the development and practical implementation of computer
+simulations. Deplazes argues that in silico synthetic
+modeling should be a distinct category because many of the
+computational models have “little or no direct reference to
+living organisms” (Deplazes 2009: 430). As
+ Figure 3
+ illustrates, computer simulations are central to all research
+practices in synthetic biology. But the characteristics of various
+roles of simulations can shed new light on philosophical discussions
+of the relation between models and target systems, and between
+modeling, experimentation, and synthesis (Knuuttila & Loettgers
+2013a,b; Carusi et al. 2012).
+
+Abstracting from the variety of research practices, a distinctive
+feature of synthetic biology is that it aims “to go beyond mere
+modeling and to treat biological systems as fully constructible
+objects” (O’Malley 2009: 381; see also Schyfter 2013).
+Thus, synthetic biology opens new philosophical questions concerning
+the relation between synthesis and analysis, between artificial and
+natural target systems, and between machine and organism (Holm &
+Powell 2013; Nordman 2015).
+2. Design Approaches in Biology
+2.1 Designing and Understanding Life
+
+Systems and synthetic biology offer new opportunities to reconsider
+the relative prospects and limitations of engineering approaches for
+biological research (Braillard 2015; Calcott et al. 2015). Engineering
+approaches are often considered inadequate to grasp biological
+complexity. Specifically, design thinking has often been associated
+with adaptationism, i.e., the assumption that biological traits are
+optimally “designed” by natural selection (Orzack &
+Forber 2010). Accordingly, critics have argued that the engineering
+approach may lead to a simplified understanding of evolution as driven
+solely by natural selection (Lynch 2007). But whereas some approaches
+in systems biology can be described as adaptationist (Green 2014), it
+cannot be assumed that design approaches always entail adaptationist
+implications. It has been argued that systems biologists typically
+adopt a ‘thin’ notion of design focusing primarily on the
+relations between structures and functions (Green et al. 2015b).
+Because research in systems and synthetic biology often is often
+dissociated from evolutionary considerations, these research practices
+may force philosophers to reexamine the concepts of biological
+function and design beyond traditional aetiological
+accounts (Holm 2012; Preston 2008).
+
+It is, however, still debatable whether the thin notion of design is
+compatible with biological complexity. Some scholars have raised
+concerns that the machine-view of organisms may lead to a neglect of
+distinct biological features such as autonomy, evolvability, and
+intrinsic purposiveness (Nicholson 2013: 669; see also Jacob 1977;
+Kogge & Richter 2013). Design approaches may implicitly enforce
+the view that operations and outputs of specific parts are stable and
+predictable across different contexts. In biology, context-sensitivity
+and degeneracy between genotype-phenotype-relations provide severe
+limitations to the utility of this heuristic (Boudry & Pigliucci
+2013; Güttinger 2013; see also
+ Section 3.1).
+ Yet, as outlined in the following sections, the ties to engineering
+are multi-faceted in both systems and synthetic biology.
+2.2 Reverse and Forward Engineering
+
+Feynman’s ‘last blackboard’ statement in 1988 that
+“what I cannot create, I do not understand” is often cited
+in the context of synthetic biology and has sparked philosophical
+reflections on the relation between understanding and design
+(O’Malley 2009; Holm 2012; Calvert & Frow 2013). Although
+synthetic biology is distinct from systems biology in the explicit aim
+to design synthetic systems, it is often described as a practice
+relying on systems biology as a theoretical foundation for design
+(Barrett et al. 2006).
+
+Synthetic and systems biology are sometimes described through the
+complementary aims of forward and reverse engineering. Forward
+engineering refers to the design of systems with novel functions,
+often by drawing on an existing high-level model (e.g., an existing
+code or living cell). Forward engineering, or re-engineering, can lead
+to more complex systems, but simplicity may also be pursued through
+implementation of a more abstract coding language or through reduction
+or rewiring of (genetic) circuits. Reverse engineering refers
+to the aim to understand the functioning of a system
+‘backwards’ by examining an existing system in contexts
+where consulting a design protocol is not an option. The search for
+recurring network motifs
+ (Section 1.1.1)
+ is an example of how systems biologists may reverse engineer the
+structure of a system to understand its functional capacities. Because
+functional features such as robustness are not only important to the
+survival oforganisms but also to design problems in engineering,
+reverse engineering of organizational features that underpin such
+capacities is an important aim in both fields (Hartwell et al. 1999;
+Csete & Doyle 2002; Kitano 2004; Stelling et al. 2004).
+
+In engineering, the notion of reverse engineering is often associated
+with the aim to identify generic features of system design, or
+design principles, that can be reused in new systems.
+Similarly, the notion of reverse engineering is often used in research
+contexts in systems biology where the aim is to identify biological
+design principles that can increase the understanding of
+structure-function relations across different systems (Csete &
+Doyle 2002; Doyle & Stelling 2006; Voit 2003).
+2.3 Design Principles in Biology
+
+Systems and synthetic biology not only adopt mathematical tools from
+electronic and control engineering but also a conceptual framework in
+which biological functions are understood in terms of control
+principles and generic representations such as feedback control
+(Gramelsberger 2013; MacLeod & Nersessian 2013a,b). The search for
+functional principles, with applications to different systems in
+biology and engineering, dates back to the ideals of cybernetics and
+biochemical systems theory (Wiener 1948; Savageau 1976). Negative
+feedback control has long been a central principle in mechanical and
+electronic engineering to maintain stable concentrations and minimize
+fluctuations. An important insight from cybernetics is that the same
+formalization can also describe biological processes, e.g., where a
+reaction is inhibited as a result of accumulation of the product of
+the same reaction. An abstract model of negative feedback can
+therefore denote a functional principle that holds for a larger class
+of systems (Green & Wolkenhauer 2013).
+
+Characteristic of the search for design principles in modern systems
+biology is that the strategy is enforced through automated
+pattern-detection in network models based on large biological
+datasets, as exemplified by the search for network motifs
+ (Section 1.1.1).
+ The hope is that simple control principles, using e.g., positive and
+negative feedback, can make up basic building blocks of biological
+functioning such as filters, switches, oscillators, amplifiers,
+detectors etc. (Alon 2007; Tyson et al. 2003). One such example is the
+so-called toggle-switch, a simple regulatory circuit that is
+considered a design principle in both systems and synthetic
+biology.
+
+Like a toggle-switch that turns an electrical device ON or OFF,
+genetic toggle-switches have been found to regulate many biological
+processes such as the cell cycle of budding yeast and developmental
+processes in fruit flies (Tyson et al. 2003; Jaeger & Crombach
+2012). A genetic toggle-switch is a double-negative feedback loop that
+shifts the system between two distinct stable states of gene
+expression—allowing synthesis of one protein while another is
+repressed. Synthetic biologists have succeeded in constructing a
+synthetic toggle switch in E. coli (Gardner et al. 2000), and
+the toggle switch is now considered part of the design composites or
+‘computational templates’ for building new synthetic
+systems (Choffnes et al. 2011; Humphreys 2004). The dynamic behavior
+of genetic toggle-switches have also been investigated in studies of
+parameter spaces for robust functioning of network motifs (Tyson &
+Novák 2010), and in approaches combining the modeling framework
+of dynamical systems theory with reverse engineering of gene
+regulatory networks from experimental data (Huang et al. 2009; Jaeger
+& Crombach 2012).
+
+Because of the abstract nature of proposed design principles, an
+interesting philosophical question is how such strategies relate to
+discussions about the possibilities of laws in biology. Biological
+systems are often taken to be too contingent, diverse, and
+context-dependent to allow for derivation of laws or general
+principles akin to those found in physics (Burian et al. 1996). The
+quest for design principles in biology is therefore an interesting
+test case to explore whether more abstract descriptions of generic
+features of functional organization can be formulated also in the
+context of biology (Green 2015b). A related question is how the
+enhanced focus on generic principles and topological features of
+biological networks relates to mechanistic accounts of biological
+explanation
+ (Section 4.2).
+
+An important question for such debates is whether generalizable
+functions can be inferred from organizational structures, relatively
+independently of cellular, organismal, and environmental contexts.
+Commenting on the proposal of network motifs as design principles,
+some systems biologists have questioned whether functional
+‘units’ can be meaningfully isolated from the workings of
+the network as a whole (Huang 2011; Isalan et al. 2008). The search
+for network motifs and other functional units make apparent that
+systems biology research does not necessarily give up assumptions of
+modularity. Rather, than departing from strategies of decomposition
+(Bechtel & Richardson 1993 [2010]; see
+ Section 1),
+ the notion of modularity may be reconfigured via strategies for
+structural decomposition of larger networks (Alon 2007).
+Whether systems biology presents more holistic approach to biological
+complexity is therefore an issue of debate in both philosophy of
+science and systems biology itself.
+
+3. Revisiting Biological Complexity
+
+Engineering is often promoted through the idea of rational design.
+Some synthetic biologists have adopted a similar vision of synthetic
+organisms as structures that can be assembled via replaceable and
+standardized components, akin to Lego-bricks (front cover of
+Science, 2 September 2011 [333(6047)]). Yet, philosophers
+have argued that the actual research practices in synthetic and
+systems biology paint a different picture (Knuuttila & Loettgers
+2013a, 2014).
+3.1 Reverse and Forward Tinkering?
+
+Rather than following a fixed design protocol, research in synthetic
+biology often progresses through what is taken to be the opposite of
+rational design, namely kludging: a solution that is klumsy,
+lame, ugly, dumb but good
+enough (O’Malley 2009, 2011b). The research process can
+perhaps be described as reverse and forward tinkering, in
+which opportunities for modular decomposition and recomposition are
+explored in iterative cycles to arrive at piecemeal solutions. Some
+have argued that synthetic biology exhibits a reflexive double bind to
+engineering, because the design assumptions guiding the construction
+of the synthetic systems are continuously reevaluated (Knuuttila &
+Loettgers 2013a). That is, synthetic biology does not only progress
+through similarities between biology and engineering. Through the
+exploration of engineering approaches, important differences (or
+negative analogies) between biological and engineered systems
+are discovered (Knuuttila & Loettgers 2014)
+
+An example of a possible negative analogy discussed in this context is
+the role of noise in biological versus engineered systems. In
+engineering, oscillations are often associated with noise and lack of
+precision, but oscillatory dynamics are characteristic of many
+biological processes including metabolism and day and night rhythms
+(Knuuttila & Loettgers 2013a; see also Bechtel 2016). To study
+oscillations in gene expression, synthetic biologists at the Elowitz
+lab constructed a synthetic genetic circuit called the
+repressilator (Elowitz & Leibler 2000). The repressilator
+was designed to test whether the oscillatory dynamics of gene
+expression could be mathematically described via connected feedback
+loops in a simple regulatory circuit and implemented in a synthetic
+model.
+
+Interestingly, important insights resulted from the repressilator
+because it failed to produce regular oscillations as
+predicted by the underlying mathematical model. The mismatch between
+the mathematical and synthetic model led to a reevaluation of the
+assumptions underlying the deterministic mathematical model (Knuuttila
+& Loettgers 2013a, 2014). Subsequent investigation of the dynamics
+of a stochastic version of the same model suggested that noise may be
+an inherent feature of oscillations in gene expression in living
+cells. The exploration of the functional role of noise and the
+potentials for stochastic modeling has since developed into an
+important research program of interest to biologists and engineers
+alike (Briat et al. 2016; Munsky et al. 2009; O’Malley 2011b).
+The repressilator and similar examples also sparked debates on whether
+design procedures in synthetic biology need to account for cellular
+contexts, distributed organization of functions, and other features
+that are unlike modular machines (Güttinger
+ 2013).[6]
+
+
+To what extent the ideal of precision engineering is pursued in
+synthetic biology is therefore debatable. Some have stressed the
+centrality of the engineering perspective because the construction of
+synthetic models is guided by knowledge on which design principles can
+be expected to create specific dynamic behaviors (e.g., Gramelsberger
+2013). Others have emphasized that synthetic modeling, as a kind of
+material recomposition strategy, offer material constraints
+that always involve open-ended aspects (Knuuttila & Loettgers
+2013b). The latter view highlights exploratory features of the
+triangulation of mathematical, computational, and synthetic
+approaches. The notion of exploratory experimentation has
+also been used to characterize research processes in systems biology
+where scholars search for structural and functional patterns in
+biological networks without being driven by a specific biological
+hypothesis (O’Malley & Soyer 2012; Steinle 1997). Research
+on network motifs
+ (Section 1.1.1)
+ is one example where engineering approaches were applied in an
+exploratory fashion to guide the generation of hypotheses on
+biological functions (Alon 2007). Also in this context, the analysis
+may lead to a reevaluation of design assumptions, e.g., whether the
+functions of network motifs are independent of the network context
+they are embedded in (Isalan et al. 2008).
+
+It should also be noted that synthetic biologists often aim to produce
+biological technology that is more machine-like than natural organisms
+(Kastenhofer 2013a,b; O’Malley 2011b). An alternative response
+to biological complexity may therefore be to make the designed system
+simpler, for instance through genetic rewiring that ensures a higher
+degree of modularity (Knuuttila & Loettgers 2013a). The explicit
+aim to simplify synthetic models has been interpreted as a sign of the
+acknowledgment of biological complexity, and it is therefore debated
+whether thecriticism of the machine-view in synthetic biology is
+misguided (cf., Holm 2015; Nicholson 2013). The heuristic value of
+design approaches is, however, an ongoing topic of debate in both
+systems and synthetic biology.
+3.2 Defining and Creating Minimal Life
+
+Unlike DNA-based device construction and genome-driven cell
+engineering, synthetic biologists in the practice of protocell
+creation engage in classical theoretical discussions on what life
+is, and how it originated and evolved (O’Malley et al. 2008;
+Luisi 2006). This research stream connects to discussions of the
+fundamental properties of life in systems biology (Cornish-Bowden
+2006; Letelier et al. 2011; Wolkenhauer and Hofmeyr 2007) and
+philosophy (Bich 2010; Bich & Damiano 2007; Bedau & Cleland
+2010; Moreno & Mossio 2015).
+
+One strand of research attempts to design minimal cells resembling
+early cellular life-forms. Inspired by Maturana and Varela’s
+(1972/1980) formulation of autopoiesis, some synthetic biologists
+experiment on conditions for minimal cells through chemical models
+that combine the continuous formation and destruction of the
+compartment (the cell membrane) with metabolic processes inside the
+cell (e.g., Zepik et al. 2001). This research program specializes in
+synthesis of lipid compartments, such as vesicles, to study
+coordinated processes that possibly resemble self-maintenance in the
+pre-biotic world (Luisi 2006). Moreover, vesicles have been used to
+experiment on how catalytic molecules such as ribozymes and peptides
+could become entrapped in lipid compartments and create precursors for
+metabolic circuits (de Souza et al. 2014).
+
+An important research goal is to provide a model for the fundamental
+features that distinguish living systems from the non-living. So far,
+however, there is no consensus on the defining features of life
+(Tirard et al. 2010). Whether this should be seen as a disappointment,
+indicating the uselessness of attempts to define life, is an ongoing
+issue of philosophical debate (Cleland 2012; Ruiz-Mirazo et al. 2010).
+Different views on this question may depend on different
+interpretations of what the project of defining life entails in
+philosophy and science, e.g., whether the aim is to establish
+demarcate a natural kind (Cleland 2012) or to provide operational
+definitions of practical use in model and theory construction (Bich
+& Green 2017; Luisi 1998). More specific topics of debate are
+whether definitions of life must include Darwinian evolution, how
+evolution and units of selection should be defined, and whether it is
+fruitful to attempt to categorize all the varieties of life forms
+under one definition (Dupré & O’Malley 2009; Laland
+et al. 2009; Szostak et al. 2001)
+
+Systems biologists engaging in debates on the properties of life often
+stress the relevance of insights from classical philosophers. Examples
+are references to Aristotle or Kant in discussions on whether our
+current notion of causation can adequately capture how parts and
+wholes in living systems stand in reciprocal causes and effect
+relationships (Drack & Wolkenhauer 2011; Hofmeyr 2017). Other
+important sources of inspiration are Rosen’s formalization of
+metabolism-repair systems, (mathematical) general systems theory, and
+category theory (e.g., Drack 2015; Rosen 1991; Mesarović et al.
+2004; Letelier et al. 2011). The systems-theoretical stream is also
+influenced by mathematical biophysics (Rashevsky 1961),
+Waddington’s theoretical biology (Fagan 2012), Biochemical
+Systems Theory (Savageau 1976; Hofmeyr 2007), and classical
+systems-oriented physiology (Noble 2008).
+
+Systems-theoretical and organizational accounts often highlight the
+functional roles of constraints, autonomy, and causal closure of the
+processes of self-maintenance (Moreno & Mossio 2015; Wolkenhauer
+& Hofmeyr 2007). While also stressing the utility of the search
+for general principles, some prefer the term organizing
+principles instead of design principles (Mesarović et al.
+2004; Green & Wolkenhauer 2013). This choice of terminology
+signals the view that understanding living systems requires a
+systems-theoretical approach in a broader sense than cybernetics. An
+intriguing question in this context is whether a different kind of
+formal or mathematical framework is required—one that is adapted
+to biology rather than to engineering or physics (Bich & Damiano
+2008; Gramelsberger 2017; Rosen 1991).
+
+Another debated issue in discussions about the fundamental properties
+of life is the relative priority of autonomy, openness and
+collaboration. Whereas much research in philosophy and origin of life
+has focused on individual organisms, recent insights from microbiology
+have extended the focus on individual cells to also include the
+collaborative interactions of cell colonies (Dupré &
+O’Malley 2009; Bich & Green 2017). A recent experiment in
+synthetic biology investigated the dynamics of colonies of giant
+oleate-based vesicles under hypothesized prebiotic conditions (Carrara
+et al. 2012). The experiment showed that that the permeability of the
+vesicles to catalysts and macromolecules were much higher for the
+colonies, compared to individual vesicles. In some cases, the colonies
+also attracted each other and exchanged material. The results raise
+important questions about whether life has arisen from
+‘cooperative mechanisms’ between prebiotic systems, and
+whether we need to rethink ontological assumptions about what
+constitutes a ‘unity of life’.
+3.3 Evolutionary Systems Biology
+
+Systems biology is often defined as an approach primarily concerned
+with functional questions (Boogerd et al. 2007). Evolutionary systems
+biology (ESB) explicitly seeks to expand this focus through
+investigations of the evolutionary dynamics of interacting networks
+(Soyer 2012). ESB aims to put the results of systems biology in a
+proper evolutionary context and also to enhance and extend current
+evolutionary biology. Specifically, ESB aims to develop more detailed
+models of genotype-phenotype maps to study causal changes over
+evolutionary time-scales and to enhance the predictive potential of
+evolutionary models. These aims are pursued by combining methods from
+molecular and evolutionary biology with in silico evolution,
+comparative genomic analysis, as well as with dynamical modeling of
+network architectures that are reverse engineered from large
+experimental datasets (Soyer & O’Malley 2013).
+
+ESB can be considered a meeting ground not only for systems biology
+and evolutionary biology but also for the integrated study of
+developmental phenomena in an evolutionary perspective (O’Malley
+et al. 2015). Systems biology complements statistical sequence
+analysis in population genetics and studies of constraints on
+evolutionary pathways in EvoDevo through in silico modelling
+of large data-sets (Jaeger & Crombach 2012; Kim et al. 2011;
+Knight & Pinney 2009). Recently, ESB also draws on synthetic
+modelling of intracellular networks to investigate how the
+evolutionary potential of a lineage is affected by specific
+combinations of mutations (Palmer & Kishony 2013).
+
+An important line of investigation in ESB examines the evolutionary
+background for global network architectures, modular structures, and
+recurring network motifs
+ (Section 1.1.1;
+ see also Krohs 2009). The structures may have arisen due to natural
+selection, but ESB also takes seriously the possibilities that
+patterns can arise as side-effects of genomic evolution and drift, or
+from a combination of selective and non-selective factors (Knight
+& Pinney 2009; Steinacher & Soyer 2012). An example of an
+insight from simulations of evolving yeast networks is that
+hierarchical structures with an overabundance of network motifs
+(feedforward loops) can emerge by non-selective tinkering
+with promoter regions (Cordero & Hogeweg 2006). In extended
+models, the integrated effects of selective and non-selective factors
+can be studied at multiple levels (Hogeweg 2012). With the emphasis on
+pattern-generation and the potential for future evolutionary change,
+ESB takes up Hugo de Vries’ challenge to explain not only the
+survival of the fittest but also the arrival of the
+fittest (Wagner 2012, 2014). The hope is that evolutionary simulations
+can extend evolutionary biology by providing a forward-looking
+account.
+
+Evolutionary biology has traditionally been considered as a historical
+discipline that provides explanations without giving predictions. ESB
+offers an opportunity to develop more detailed models of evolving
+genotype-phenotype relations and to explore whether some evolutionary
+pathways are predictable given enough information about the network
+structures, dynamic states, and environmental conditions. Unlike
+forward engineering in synthetic biology, the aim is not to shape new
+designs but to understand the possible trajectories of change under
+different conditions. That is, ESB goes beyond historical accounts in
+exploring the potential for evolvability or innovation—what some
+have called the ‘tinkering potential’ of system evolution
+(Koonin & Wolf 2010). Research on evolvability can, however, also
+inform and inspire functional analysis and design in synthetic biology
+(Calvert & Frow 2015; Lewens 2013). Thus, the relation between
+biology and engineering must also be reexamined in this context.
+
+The need to account for tinkering and contingency in evolution is
+often taken to highlight the limitations of engineering approaches in
+biology (Jacob 1977; Lynch 2007). Interestingly, however, some systems
+biologists and philosophers emphasize that a non-adaptationist
+framework can be reached through further cross-fertilization of
+biology and engineering (Calcott et al. 2015). ESB opens for an
+extended view on engineering by considering engineering fields with
+focus on modification of existing systems. For instance, there are
+interesting similarities between evolvability in biology and
+a diachronic engineering goal in software engineering, where
+the aim is to design systems that can be adapted to future functional
+requests without having to rewrite the code from scratch (Calcott
+2014).
+
+The ambition to predict evolutionary trajectories, even for simple
+organisms, may turn out to be extremely difficult. But ESB provides
+new ways to investigate whether evolutionary pathways follow some
+recognizable dynamical patterns. Simulations of how gene regulatory
+networks change over evolutionary time-scales can be coupled to
+experimental evolution in bacteria or insects. For instance, the
+development of bacterial antibiotic resistance has been shown to be
+constrained by interactions between different mutations (Weinreich et
+al. 2006). Such insights are expected to make evolutionary biology
+informative also for the development and combination of antibiotics
+used in medical treatment (Toprak et al. 2012; Palmer & Krishony
+2013).
+
+Some proponents expect that ESB will uncover regularities or stable
+evolutionary patterns across various types of networks and species.
+Such regularities may not resemble universal laws, but the hope is
+that some general principles underlying evolutionary dynamics can be
+identified, referred to as “laws of evolution” (Koonin
+2011), “evolutionary design principles” (Steinacher &
+Soyer 2012) or “generic principles” of evolution (Jaeger
+& Monk 2013). ESB thus offers excellent cases for debating the
+possibility of turning evolutionary biology into a more predictive
+field with generalizable principles (Lobkovsky & Koonin 2012; Papp
+et al. 2011). Moreover, it is a rich field for discussing the
+implications of an ‘extended modern synthesis’ that
+combines molecular, mathematical, computational, synthetic, and
+population genetic approaches to evolution (Pigliucci 2007;
+O’Malley et al. 2015).
+4. Revisiting Classical Philosophical Questions
+
+With the emphasis on systems and interacting networks, both systems
+and synthetic biology explicitly engage in one of the oldest
+philosophical discussions on the relationship between the whole and
+its parts, or between holism and reductionism. This section examines
+how classical questions are reframed in the new light of strategies
+for large-scale data production and dynamic modeling.
+4.1 Reductionism and the Sum of the Parts
+
+As mentioned in the introduction, proponents of systems biology often
+explicitly define their approach in contrast to reductionist
+strategies in molecular biology. Molecular biology is depicted as a
+field studying molecular components and pathways in isolation, whereas
+systems biology integrates the pieces of the puzzle in the context of
+the system as a whole (van Regenmortel 2004; Keller 2005; Kitano
+2002a,b). The contrast between molecular biology and systems biology
+is often overstated, and much of systems biology research is also
+focused on specific molecular difference-makers (De Backer et al.
+2010; Gross 2017; O’Malley & Dupré 2005). However,
+systems biology may give a novel interpretation of Aristotle’s
+dictum that the whole is more than the sum of the parts by
+specifying what more means in the context of contemporary
+biology.
+4.1.1. Modular and Bottom-Up Reductionism
+
+When systems biologists criticize reduction in molecular biology, the
+issue at stake is typically the limitations of studying biological
+parts or modules in isolation. Because the target of the criticism
+often differs from the more traditional philosophical focus on
+reduction of higher-level to lower-level explanations (Brigandt &
+Love 2017, the notion of modular reductionism has been
+suggested (Gross & Green forthcoming). An anti-reductionist stance
+towards modular reductionism needs not reject the idea that living
+systems can be modelled and explained bottom up. For
+instance, while global approaches within these fields reject the
+modularity assumption, some keep the focus on genomes and molecular
+networks as the primary determinants of biological functions
+(O’Malley et al.
+ 2008).[7]
+
+
+Many systems biologists have, however, also argued against reduction
+of higher-level models and explanations, and there is an ongoing
+debate about how far genomics, proteomics, etc. will take us in
+solving complex problems like understanding cancer (cf.,
+Barabási et al. 2011; Hood et al. 2015; Wolkenhauer & Green
+2013). Similarly, researchers involved in projects aiming to simulate
+multiscale structures like the human heart emphasize the need to
+include macroscale parameters as they provide functionally important
+constraints on the behavior of microscale processes (Bassingthwaighte
+et al. 2009; Kohl & Noble 2009). An interesting reframing of
+Aristotle’s dictum in this discussion is that living systems at
+the same time are more and less than the sum of the
+parts (see Hofmeyr 2017; Noble 2012). In other words, the system as a
+whole constrains the degree of freedom of lower-level parts and
+provides a functional organization of these that are required for some
+system capacities (see below).
+
+Given the increasing emphasis on comprehensive multiscale models,
+systems biology research may have a unique potential for philosophical
+insights considering the explanatory role of macroscale properties and
+top-down effects. Systems biologists for instance point to how enzyme
+activity is constrained by the chemical environment and the cellular
+context (Hofmeyr 2017), or how the biophysical properties of muscle
+fibers and cell membranes provide functional constraints on ionic
+oscillations central to the generation of heart rhythms (Noble 2012).
+Interpreting top-down effects as constraining relations may exemplify
+what philosophers of science have called ‘medium downward
+causation’ (Emmeche et al. 2000), which interprets downward
+causation as boundary conditions. Noble (2012) explicitly endorses
+such a view when arguing that downward causation is necessary by
+pointing out how equations describing the kinetics of ion channels in
+cardiac modeling cannot be solved without defining the boundary
+conditions (e.g., the cell voltage). Multi-scale modeling may thus
+help to give a more concrete mathematical reinterpretation of the
+controversial notion of downwards causation (see also Ellis et al.
+2011; Gross & Green forthcoming). Moreover, discussions of
+downward causation in systems biology have practical as well as
+theoretical implications for cancer research as some proponents
+disagree on whether cancer is a genetic or tissue-based disease
+(Bertolaso 2011; Soto et al. 2008; see also
+ Section 5.3).
+4.1.2 Emergence and Predictability
+
+Discussions of downward causation are often connected to debates about
+whether biological systems exhibit emergent properties.
+Emergence in the context of systems biology typically means that
+systems properties are explanatorily irreducible to the properties of
+parts (also called synchronic emergence). However, it is debatable
+which sense of emergence (weak or strong) systems biology supports
+(cf., Alberghina & Westerhoff 2005; Boogerd et al. 2005, 2007;
+Emmeche et al. 2000; Kolodkin et al. 2011). Moreover, systems
+biologists have different views on whether biological systems also
+exhibit diachronic emergence, i.e., system properties that
+are inherently unpredictable (Ellis et al. 2011).
+
+Some systems biologists stress that biological complexity forces life
+scientists to draw on abstract and idealized models, and that there
+are practical and in principle limitations to our ability to fully
+predict and control living systems (Noble 2012; Bassingthwaighte et
+al. 2009). Others are more optimistic that the limitations can be
+overcome by upscaling computational models. Some even argue that
+systems biology breaks with the methodological principle of
+Ockham’s razor (Kolodkin & Westerhoff 2011; see also Hofmeyr
+2017; Gross 2017). These debates center on fundamental questions about
+how far biological research can be taken by integrating more
+parameters and data points (Kolodkin et al. 2012), and how far we can
+‘extend ourselves’ through computational approaches
+(Humphreys 2004; Vermeulen 2011).
+
+Large-scale modeling projects such as the Vitual Cell, the
+Physiome Project, and the Virtual Physiological Human
+offer exciting cases for philosophical analysis of the prospects and
+challenges associated with parameterizing and validating complex
+models (Carusi et al. 2012; Carusi 2014; Hunter et al. 2013).
+Ultimately, such projects may push the boundaries for prediction and
+control in the life science, or may reveal deeper challenges of
+biological complexity.
+4.2 Explanatory Pluralism
+
+Systems biology also brings new insights to discussions of scientific
+explanation. The integration of different disciplinary inputs and
+emphasis on mathematical modeling make systems biology a particularly
+interesting case for discussions of whether the mechanistic account
+can fully capture the diversity of explanatory practices in
+contemporary biology.
+
+Mechanistic accounts initially emphasized the differences between the
+explanatory ideal of covering laws in physics and explanations in
+molecular biology (Craver & Tabery 2015). Mechanistic explanations
+cite how biological functions arise from the interactions and
+organization of component parts or entities (Bechtel & Richardson
+1993; Machamer et al. 2000; Glennan 2002). Since research in systems
+biology is often integrated with research in molecular and cell
+biology, some have argued that many cases in systems biology can
+readily be seen as an extension of mechanistic research (Boogerd et
+al. 2013; Richardson & Stephan 2007). However, the increasingly
+important role of mathematical and computational modeling for
+understanding non-linear dynamics, cyclic organization, and complex
+feedback relations have led some proponents to argue for a modified
+account of dynamic mechanistic explanations (Bechtel &
+Abrahamsen 2011, 2012; Brigandt
+ 2013).[8]
+
+
+Inspired by network analysis in systems biology, proponents of the
+dynamical mechanistic account have further argued for increased
+attention to strategies of abstraction used to identify organizational
+features and generalizable aspects of mechanisms (Bechtel 2015b; Levy
+& Bechtel 2013). The emphasis on spatial organization and mutual
+relations between components may possibly be better described as
+constitutive rather than causal aspects (Fagan
+2015). Whereas causal relations are often prioritized in mechanistic
+accounts (or the two aspects conflated), distinguishing between these
+can help identify the distinct contributions of causal mechanistic
+modeling and mathematical analysis of network dynamics. To account for
+case examples from systems biology, Fagan (2015) suggests a joint
+account of collaborative explanations in which diverse
+perspectives are combined to account for the mutual relations of
+spatial organization and binding among components as well as the
+causal relations in the system.
+
+Whereas the aforementioned accounts emphasize the importance of
+mathematical modeling for an updated mechanistic account, others view
+the emphasis on quantitative and dynamic aspects as a departure from
+mechanistic explanations. The interpretation of network models is
+often conducted in an abstract mathematical or engineering-inspired
+framework, and it has been stressed that it is hard or perhaps
+impossible to reconstruct a causal story from these models (Issad
+& Malaterre 2015; Gross 2015). Insofar as mathematical models are
+primarily used as inputs to or heuristics for mechanistic
+explanations, e.g., as mechanistic schemas, the reliance on these
+modeling strategies do not provide a challenge for mechanistic
+accounts (Darden 2002; Matthiessen 2015). Yet, although abstract
+modeling is compatible with mechanistic research, an important
+contested issue is whether abstract models are developed towards
+research aims that are distinct from mechanistic explanations.
+
+Some have pointed to examples where the modeling process does not
+proceed from abstract to more detailed models but in the opposite
+direction, suggesting that mechanistic details may be vehicles for
+more generic explanations rather than the other way around (Braillard
+2010; Green & Jones 2016). It has been argued that systems
+biologists sometimes aim for non-causal explanations. One candidate of
+non-causal explanations, called topological explanations,
+emphasizes how networks architectures generically determine dynamic
+behaviors, independently of the causal details of the network (Huneman
+2010). Mathematical analysis of network structures underlying
+biological robustness has been argued to exemplify this explanatory
+goal (Jones 2014).
+
+Another candidate is what Wouters (2007) in the context of comparative
+physiology calls design explanations. Design explanations do
+not describe how a biological function is causally produced but
+clarify why a given design (and not an alternative design) is present.
+They do so by pointing to constraints on the possible designs that
+make some designs good, some suboptimal, and others impossible (see
+Shinar & Feinberg 2011 for a candidate example from systems
+biology). The relevance of design explanations for systems biology
+lies in the interest to specify relations between functional
+capacities (e.g., robustness) and system organization (e.g., integral
+feedback control) via design principles that are independent of
+specific contexts of implementation (Braillard 2010; Boogerd
+2017).
+
+Others have discussed whether explanations in systems biology are
+mergers of mathematical explanations and mechanistic
+explanations (Baker 2005; Brigandt 2013; Mekios 2015) or introduce a
+new explanatory category called Causally Interpreted Model
+Explanations (Issad & Malaterre 2015). These proposals are
+not considered as alternatives to mechanistic accounts but are
+proposed as ingredients in a pluralistic approach to biological
+explanation (Brigandt et al. forthcoming; Mekios 2015). There is,
+however, currently no consensus on whether the differences are
+sufficiently significant to support an explanatory pluralism involving
+non-mechanistic explanations.
+
+Although much, or perhaps most, of the philosophical work on systems
+biology has focused on explanation, one cannot assume that explanation
+is the sole aim of systems biology research (MacLeod & Nersessian
+2015; Kastenhofer 2013a,b). Philosophers have debated whether research
+on the relation between biological robustness and integral feedback
+control should be considered as a stepping-stone for mechanistic
+explanations, or whether the perspective from control engineering
+constitute a non-mechanistic explanatory framework (Braillard 2010;
+Brigandt et al. forthcoming; Matthiessen 2015; Green & Jones
+2016). But another important reason why some systems biologists seek
+generality and simplicity of their models may be that they—like
+synthetic biologists—wish to explore whether the same function
+could be realized in other or simpler ways (Briat et al. 2016). Thus,
+mathematical and computational modeling in synthetic and systems
+biology also call for philosophers to examine other epistemic aims
+than explanation. Examples are prediction, control, and design, and
+well as theoretical and practical interests in understanding the
+minimal requirements for biological functions and life itself. 
+5. Social and Societal Implications
+5.1 Interdisciplinary Integration, Collaboration and Education
+
+Large-scale interdisciplinary collaboration is increasingly
+highlighted as a necessary requirement for addressing the grand
+challenges of modern science and society (Vermeulen 2010; Calvert
+2010; Andersen 2016). Since interdisciplinarity is a hallmark of
+systems and synthetic biology, both approaches offer rich sources for
+philosophical analysis of the epistemic features of interdisciplinary
+integration (O’Malley & Soyer 2012), interdisciplinary
+identities (Calvert 2012), and of large-scale collaboration across
+different universities (Calvert & Frow 2015; for examples of
+large-scale projects see the list of internet resources below).
+
+Studying the prospects and challenges of interdisciplinary integration
+also offers a window to the cognitive processes involved in
+interdisciplinary problem-solving, where research cannot rely on a
+single theoretical framework (MacLeod & Nersessian 2013a,b).
+Through this process, different epistemic ideals operating in
+contemporary science often become apparent. While combining different
+conceptual frameworks can lead to innovation and scientific progress,
+the existence of different epistemic standards and values can also
+pose challenges for interdisciplinary collaboration (Calvert &
+Fujimura 2011; Carusi 2011; Kastenhofer 2007; Rowbottom 2011).
+Philosophical analysis has been proposed to help facilitate
+collaboration in situations where epistemic standards clash.
+Philosophy of science can help explicate the differences and the
+backgrounds for these, and uncover ‘blind spots’
+considering the aims, values, constraints, and challenges of other
+disciplines (Nersessian 2017).
+
+One divide that is commonly highlighted is the gap between
+experimental biologists and modelers with a background in engineering,
+mathematics, or physics. Empirical analyses of collaborations between
+modelers and experimentalists in systems biology show that these two
+groups often have different views on what kinds of data and models are
+most relevant (Nersessian 2017; Rowbottom 2011). For instance,
+modelers may not be interested in studying biological systems at the
+same level of detail as experimental biologists, and experimentalists
+may find highly abstract and idealized models inspired by physics or
+engineering misleading. From the perspective of engineers or
+physicists, the preoccupation with molecular details involves a risk
+of missing out on dynamic patterns that could be captured with more
+generic models (Lazebnik 2002). Experimentalists, in contrast, may
+find that such generic models often lack specificity or merely
+reproduce current biological knowledge (Fagan 2016). These differences
+may in part be grounded in different explanatory standards. It has
+been suggested that experimentalists typically aim for mechanistic
+explanations, whereas modelers often aim for more generic models or
+formulation of law-like principles and explanations (Fagan 2016; Green
+et al. 2015a).
+
+Making explanatory standards and values more explicit, and clarifying
+the relative prospects and limitations of different research
+strategies, are ways in which philosophy of science could contribute
+to science and science education. At the same time, collaborative
+practices in synthetic and systems biology may call for an extension
+of the scope of philosophical analysis. Whereas philosophers
+traditionally have focused on logical and argumentative relations in
+scientific texts, understanding collaborative practices in systems and
+synthetic biology may further require the exploration of the
+aesthetic, cognitive, and creative dimensions of scientific practice
+(Carusi 2011; Ginsberg et al. 2015). Important questions are which
+aspects underlie choices of visualization strategies, and how the
+representation of biological data through diagrams, heat maps, network
+models, or state spaces influence biological reasoning and
+collaboration (Abrahamsen & Bechtel 2015; Carusi 2012; Jones &
+Wolkenhauer 2012).
+5.2 Biology in the Digital Age
+
+The emergence of systems biology and synthetic biology in the 21th
+century is to a large extent driven by the development of techniques
+and strategies for producing, digitalizing, collecting, disseminating,
+and standardizing data. A first step in these research practices is
+often to consult online databases or bio-ontologies that are used for
+data sharing, data integration, annotation, and curation of
+experimental datasets (Leonelli 2016). For instance, the search for
+network motifs
+ (Section 1.1.1)
+ started with the development of network models based on data
+downloaded from the database RegulonDB as well as other sources
+(Shen-Orr et al. 2002). Numerous databases, bio-ontologies, and
+software tools have been developed, emphasizing the ideals of Open
+Data and large-scale collaborative efforts (Leonelli 2013). These
+practices raise questions as to whether some projects within systems
+and synthetic biology may be described as ‘big science’
+(Vermeulen 2010), and about the epistemic and social implications of
+data-intensive research practices and collaborations.
+
+A highly debated issue is the extent to which big data will radically
+change or even revolutionize scientific methods, shifting the focus
+from hypothesis-driven inquiry to data-driven discoveries (e.g., Allen
+2001; Kell & Olivier 2004; Mazzocchi 2015). The massive
+data-production and investments in collection and curation of data
+make possible the development of more comprehensive models which some
+expect to be more predictive (Hood et al. 2015). Data-intensive
+strategies are sometimes application-oriented, e.g., the use of
+Genome-Wide Association Studies (GWAS) to identify biomarkers for
+genomic risk profiling (Maher 2008; Hey 2015). Yet, data are often
+produced and compiled without specific aims in mind and are used and
+reused for multiple purposes (Leonelli 2016). Data-intensive systems
+biology research thus highlights the need to reconsider the relation
+between data and evidence, and between basic and applied science.
+
+Whereas some have seen data-intensive strategies as a more bias-free
+approach, others have criticized the idea that data can speak for
+themselves and pointed to problematic aspects of top-down pattern
+inference from large datasets (Kell & Olivier 2004; Krohs 2012).
+Important philosophical questions are therefore whether new insights
+can result from data-intensive strategies, and how choices concerning
+collection, sampling, standardization, visualization, and
+interpretation of data affect the result of the analysis.
+Specifically, the results of correlation-based methods such as GWAS
+are sensitive to sampling procedures and specific statistical
+thresholds, and the clinical validity and utility of genetic
+biomarkers is a debated issue (e.g., Hey 2015; Maher 2008; McPherson
+and Tybjaerg-Hansen 2016).
+
+Since the aim of bio-ontologies is to provide a standardized language
+and repository for shared information, choices concerning vocabulary
+and categorizations become important philosophical topics. Since the
+call for standardization may be compromised by context-dependencies of
+data production and use, data-curation and the creation of data
+infrastructures are gaining currency as topics within philosophy of
+science and social science (Leonelli 2016). Data-intensive practices
+also have implications for the institutional organization of science,
+as exemplified by the push for open access on one hand and commercial
+interests in big data on the other (Calvert & Frow 2015;
+Kastenhofer 2013a,b; Leonelli 2013, 2014; Royal Society 2012;
+Vermeulen 2011). As contexts for ownership of data change, also
+reward-systems in terms of authorship and credits may need to be
+reconsidered (Ankeny & Leonelli 2015).
+5.3 Applications and Ethical Issues
+
+Systems biology and synthetic biology are expected to help address
+societal challenges with payoffs for biomedical research, health care,
+and environmental resource management. While offering new exciting
+potentials, concerns have also been raised about the social and
+ethical implications of the new techno-scientific strategies.
+
+Systems medicine, the medical application of systems biology, aims for
+major breakthroughs towards understanding of complex diseases such as
+cancer and heart conditions (Voit & Brigham 2008; Wolkenhauer et
+al. 2013). Ambitious projects within systems biology such as the
+Virtual Physiological Human raise intriguing questions about
+how computational modeling will influence future biomedical research
+(Kohl & Noble 2009; Kolodkin et al. 2011; Hunter et al. 2013).
+Multi-scale cardiac models are already being developed with important
+implications for the potential to address physiological variability,
+and for philosophical discussions of model validation and the relation
+between experiment and simulation (Carusi et al. 2012; Carusi
+2014).
+
+One of the important problems in contemporary medicine is how to
+account for patient-specific variation. Systems medicine is sometimes
+highlighted as a route to so-called personalized medicine (Hood &
+Flores
+ 2012)[9]
+ or digitalized medicine (Topol 2012). Proponents are optimistic that
+large-scale modeling of patient-specific data can result in a
+paradigm-shift from a one-size-fits-all model in traditional medicine,
+toward a more efficient systemic approach that can tailor disease
+prevention, diagnosis, and treatment to individual patients. The aim
+to personalize medicine is as old as the medical profession itself,
+but it is now promoted through data-intensive computational strategies
+with exciting new potentials (Tutton 2014). Moreover, the potential
+combination of systems medicine and synthetic biology opens for a
+constructive personalized medicine, where predictive modeling
+and synthetic interventions could be combined (O’Malley
+2011a).
+
+Developments in systems and synthetic biology have encouraged
+philosophers to revisit traditional conceptions of disease as
+dysfunctional states (Holm 2013, 2014), or broken mechanisms (Gross
+2011). Rather than focusing on the function or dysfunction of specific
+mechanisms, network approaches to disease may suggest a more dynamic
+approach to disease focusing on how network states can be reorganized
+(Del Sol et al. 2010; Huang et al. 2009). Since cancer research is a
+major priority of systems biology research, epistemic and social
+implications of cancer research can be expected to gain more attention
+in future philosophy of systems biology (Bertolaso 2016).
+
+In 2005, the Cancer Genome Atlas (TCGA) was launched to catalogue
+cancer-related mutations through tumor sequencing. TCGA and similar
+developments in cancer genomics have revealed an astonishing diversity
+of tumor types, suggesting that finer-grained disease-categories may
+be needed. This line of research has opened new research venues, such
+as the development of multi-action remedies targeting numerous
+disease-related pathways identified via genomic analysis. The
+discovered diversity of mutations identified in sequenced tumors has,
+however, also led to heated debates on whether the behavior and
+identity of cancer cells can fully be understood through the current
+focus on somatic mutations. Some have stressed the need to move beyond
+gene-centric or cell-centric approaches and to consider cancer as a
+problem of tissue-organization (Soto & Sonnenschein 2011). These
+debates have philosophical implications for discussions about
+(downward) causation and reductionism as well as practical
+implications for how cancer should be approached experimentally
+(Bertolaso 2011; Soto et al. 2008).
+
+Data-intensive strategies aiming to identify biomarkers and genetic
+risk factors are expected to improve prediction, early detection, and
+prevention of common diseases (Hood & Flores 2012; Hood et al.
+2015). Against this optimism, some have raised concerns about
+uncertainties and potential harmful results associated with genetic
+risk profiling, including the risk of overdiagnosis and unnecessary
+medicalization of healthy individuals (Green & Vogt 2016; Vogt et
+al. 2016a,b). Since predictive modeling as envisioned in systems
+medicine is dependent on access to patient-specific data, concerns
+regarding data security and social responsibilities are also brought
+up (Juengst et al. 2012). Philosophers and social scientists have for
+instance critically examined how risk information is communicated to
+the public by companies capitalizing on personalized genomics, and
+discussed how such information may affect health outcomes and
+perceptions of health (Bartol 2013; Prainsack 2014; Reydon et al.
+2012). More generally, systems medicine has spurred debates about
+whether the vision to predict and control future health outcomes is
+compatible with a humanistic approach to medicine and social
+complexity (Tutton 2014; Vogt et al. 2014).
+
+Ethical implications associated with the issue of control are also
+debated in the context of synthetic biology, e.g., through reflections
+on whether the attempt to create synthetic organisms may downgrade the
+value of or respect for life (cf. Douglas et al. 2013; Christiansen
+2016a). Other ethical debates in synthetic biology consider the risk
+of negative consequences of specific synthetic applications.
+Discussions often involve so-called dual-use problems where the
+benefits of genetically modified organisms are weighted against
+potential problems and risks. Examples are biohazards associated with
+intentional or unintentional release of synthetic pathogens, or the
+possibility that synthetic production of biomedical compounds opens
+for efficient and inexpensive production of illegal drugs
+(Christiansen 2016b).
+
+Finally, concerns have been raised about the commercialization of
+biotechnologies in both systems and synthetic biology. Examples are
+applications of broad patents concerning minimal genomes or synthetic
+genes (O’Malley et al. 2008), and vested interests in access to
+health data and lowering of diagnostic thresholds (Vogt et al. 2016a).
+Socioeconomic concerns have also been raised that industrial
+production via synthetic organisms may outcompete conventional farming
+in developing countries (Christiansen 2016b). Thus, the strong push to
+address societal problems through systems and synthetic biology gives
+rise to new exciting possibilities but also calls for critical
+examination from philosophers and social scientists.
+6. Concluding Remarks
+
+Systems and synthetic biology are often described as distinguishable
+in their emphasis on analysis versus synthesis, but the ties to
+engineering approaches are complex and multi-faceted in both fields.
+Systems and synthetic biology have been addressed together in this
+entry because many scientific and philosophical issues overlap. Both
+approaches draw inspiration from engineering, mathematics, physics,
+and computer science, but in various different ways and towards the
+different aims of understanding, predicting, and modifying biological
+systems. Accordingly, both approaches provide excellent sources for
+philosophical discussions of interdisciplinary integration,
+particularly the implications of the increasing embedding of
+mathematical and computational approaches in biology. Some practices
+encourage philosophers to revisit classical philosophical topics such
+as reductionism and scientific explanation, but systems and synthetic
+biology also broaden the scope of philosophical topics to include
+data-intensive practices and modeling strategies towards the aims of
+design and control.
+
+Since this entry has examined the philosophical implications of both
+systems biology and synthetic biology, much attention has been given
+to the implications of engineering approaches, including the quest for
+so-called design principles. It is, however, important to note that
+systems biology and synthetic biology cover a broad spectrum of
+research practices, some of which are more strongly inspired by
+chemistry or physics than engineering. This entry should thus be taken
+as an attempt to only cover some ground of the vast philosophical
+landscape that these research fields reach into. With the rapid
+development of both approaches and their explicit aim to address grand
+scientific and societal challenges, exciting times lie ahead for
+philosophy of biology.

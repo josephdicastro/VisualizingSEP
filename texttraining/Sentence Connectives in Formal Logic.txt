@@ -1,0 +1,4268 @@
+Natural language sentence-linking words (like “and”,
+“or”) have traditionally had aspects of their use
+simulated by corresponding connectives in various systems of formal
+logic. (In fact we use the word “connective” more
+generously, so that there don’t have to be two or more sentences
+linked, allowing us to consider the analogues of words like
+“not” and “necessarily” as connectives too.)
+Among the questions this enterprise has raised are the following.
+(1) Which such naturally occurring sentence connectives call for a
+treatment of this kind? (Which of them should be counted as
+‘logical constants’?) (2) Do the aspects of their use
+which are simulated in that process exhaust what we might think of as
+their meanings, or is there typically some mismatch here? Of
+course this second question depends on the particular formal treatment
+given, since different logics may disagree on the formal principles
+accorded to their representatives—for example in the case of
+“if”, but according to one famous line of thought
+(developed by H. P. Grice) when we focus specifically on their
+treatment in classical propositional logic, any such apparent
+discrepancies can be explained away by appeal to pragmatic principles
+regulating ordinary cooperative conversation, and do not reflect
+differences of meaning (semantic differences).
+
+Neither question (1) nor question (2) will be addressed here. Instead,
+this entry focusses on the properties of—and relations
+between—the formal representatives of these connectives.
+Examples of such properties include truth-functionality and a
+replacement property called congruentiality, and of such relations
+what we call the subconnective relation—relating one
+connective to another when (roughly speaking) every logical principle
+holding for the first of a pair of connectives also holds for the
+second. In fact, all of these concepts are subject to a further
+relativity. For instance a connective is or is not congruential
+according to a given logic, with a similar relativity in the
+case of whether one connective is a subconnective of another. On the
+other hand, as truth-functionality is defined below, a connective is
+or is not truth-functional with respect to a class of
+truth-value assignments—and various interesting further
+relations give rise to a corresponding logic-relative version of this
+concept depending on the different ways a class of truth-value
+assignments is linked to a logic (which in turn depends on how we
+think of a logic—as an ordinary consequence relation, for
+example, or as a ‘multiple conclusion’ consequence
+relation: see further note 1 below). For some other properties, the
+further relativity is a bit different. For example, whether a given
+connective is uniquely characterized—in the sense of
+being governed by rules which when reduplicated to govern a new
+connective render compounds formed from the same component sentences
+using the original and the new connective completely
+interchangeable—is relative not just to a logic but to a
+particular proof system (set of rules systematizing the logic).
+
+Section 1 introduces the idea of formal sentential languages as
+(absolutely free) algebras, their primitive connectives having the
+status of the fundamental operations of these algebras, and explains
+the notion of a consequence relation on such a language. At a more
+general level, Galois connections are also introduced, and a simple
+observation made concerning what we call binary relational
+connections, to be applied in later sections. Section 2 introduces the
+fundamental idea of a valuation for a language (a bivalent truth-value
+assignment to its formulas). Truth-functionality and a generalization
+thereof called pseudo-truth-functionality (of a connective with
+respect to a class of valuations) are explained, as well as the idea
+of sequents and sequent-to-sequent rules. We then move to a more
+general conception of sequents as originally conceived, allowing a set
+of formulas to play the conclusion role rather than just a single
+formula, as well as to the associated idea of generalized consequence
+relations, emphasizing Carnap’s motivation for making this
+generalization. That motivation can be summarised with reference to
+one connective. We take negation as our example. Consider the
+consequence relation determined by the class of all valuations on
+which the usual negation truth-function connective is associated with
+the negation connective. This can be regarded as the classical logic
+of negation, at least if logics are identified with consequence
+relations. Now, there are additional valuations consistent with this
+consequence relation on which the negation truth-function is
+not associated with the negation connective. (The terminology
+of a valuation’s being consistent with a consequence relation is
+adapted from Dana Scott. A precise definition appears in Section 2.)
+But when we consider instead generalized consequence relations, the
+analogous discrepancy does not arise. Section 2 includes a statement
+of a result of D. Gabbay which isolates precisely the truth-functions
+for which such discrepancies do not arise (roughly: generalizations of
+the conjunction truth-function and various projection functions), as
+well as of a result of W. Rautenberg showing that despite this
+expressive weakness in the apparatus of consequence relations, they
+are sufficiently discriminating—without the need to pass to
+generalized consequence relations—to distinguish the logical
+properties of any two truth-functions (of the same arity).
+
+Section 3 picks up the theme of sequent-to-sequent rules,
+concentrating on semantic analysis in the style of J. W. Garson of
+such rules, and also on the existence and uniqueness of connectives
+satisfying given rules (a topic introduced by H. Hiż). These last
+two are seen to be connected with what we call cut-inductivity and
+id-inductivity of specifically sequent-calculus rules, via, in the
+former case, a proposal identifying the existence of a connective
+(with prescribed logical behaviour, given the perspective provided by
+a logic not explicitly providing such a connective) with conservative
+extension (of the given logic by rules for the new connective
+detailing that behaviour). This proposal was made by N. D. Belnap;
+some problems for conservative extension as a sufficient condition for
+granting the existence or intelligibility of a new connective with
+such-and-such logical properties are noted. Section 4 collects several
+cases of interest in which one might wonder about the existence of
+connectives with various such properties. For instance (this being
+Example 3 out of a total of seven) one might ask if it makes sense to
+have a 1-ary connective with the property that two applications of
+this connective are equivalent to a single application of (classical)
+negation. Section 5 assembles supplementary notes and references.
+ 
+1. Preliminaries
+
+The connectives of the formal languages of propositional logic are
+typically expected to exhibit salient features of the
+sentence-connecting devices of natural languages, and especially such
+devices as are regarded as items of logical vocabulary (and,
+or, not, if–then,…), though it
+will be no part of our concern to inquire as to what their
+‘logicality’ consists in. This is an issue which arises
+for expressions and constructions such as quantifiers, the identity
+predicate, and so on, and not just for sentence connectives; for this
+issue the entry “Logical Constants” by John MacFarlane
+(2015) should be consulted. The formal languages concerned may be
+taken to agree in constructing their formulas ultimately on the basis
+of the same countably infinite supply of propositional
+variables—or ‘sentence
+letters’—p1,
+p2,…, the first three of which we write for
+convenience as p, q, r. Where they differ
+is in respect of their stock of primitive connectives. So for example,
+we have the language L = (L, ∧,
+→, ¬, ⊥) with (set of) formulas L and
+connectives as indicated, of arities 2, 2, 1 and 0. (We have no qualms
+in the last two cases in speaking of connectives, even when there are
+not two or more formulas to ‘connect’. Note that 0-ary or
+nullary connectives are already formulas—sometimes called
+sentential constants—in their own right.) As the notation
+suggests (with boldface capitals for algebras and the corresponding
+italic capitals for their universes), we are thinking—in the
+Polish tradition—of languages as algebras, identifying the
+primitive connectives with the fundamental operations of such
+algebras, and in particular, as absolutely free algebras of their
+similarity types (in the present instance, ⟨2,2,1,0⟩) with
+the pi as free generators. This allows us
+to speak in the usual fashion of the main connective of a
+given formula, the variables occurring in and more generally
+the subformulas of such and such a formula, and so on,
+without restricting ourselves to construing the formulas as obtained
+specifically by concatenating various symbols.
+
+Alongside this ‘syntactic operation’ sense of
+connective—explained above for the primitive
+connectives and extended to derived connectives
+presently—another use of the term is indispensable: to refer to
+a connective with particular logical behaviour, as when people want to
+compare the behaviour of intuitionistic and classical implication. In
+due course we will see the notion of a consequence relation as one way
+of specifying such behaviour. If ⊢ is such a relation there is a
+unique language in the above sense which is the language of ⊢
+and we can think of this ‘logically loaded’ sense of
+connective as applying to the ordered pair ⟨#,
+⊢⟩; thus in the case of intuitionistic implication this
+would be ⟨→,
+⊢I L⟩, where
+⊢I L is the consequence relation of
+intuitionistic logic. (In fact it would be preferable to take
+equivalence classes of such pairs under a relation of translational
+equivalence but we will make no further explicit use of these ordered
+pairs or any such equivalence classes, and keep this aspect of the
+discussion relatively informal. Instead of saying “⟨#,
+⊢⟩”, we will say things like “# as it behaves
+according to ⊢”. It would be better still to use not
+consequence relations—or the later introduced generalized
+consequence relations—as the second coordinate of the
+representatives ⟨#, ⊢⟩ but instead to insert here a
+reference to a proof system—a set of sequent-to-sequent rules of
+the kind introduced below, that is—since important differences
+between logics fail to show up at the level which would individuate
+them merely as consequence
+ relations.[1])
+
+The ‘languages as algebras’ perspective also allows us the
+convenience of defining matrix evaluations (see Section
+ 5)
+ as just homomorphisms from the algebra of formulas to the algebra of
+the matrix in question, of defining derived connectives and
+(sentential) contexts as term functions (formerly known as polynomial
+functions) and algebraic functions (now commonly called polynomial
+functions) respectively, and so on. This treatment would need some
+emendation were the discussion to embrace infinitary connectives,
+branching connectives, and various other exotic devices, but there
+will be enough to consider without touching on these.
+
+For example, there is the issue raised by the use of the notation
+above for the operations of L. Such a choice suggests that
+∧, →, ¬ will represent conjunction, implication (or the
+conditional) and negation—that is, be intended to capture some
+aspect of the behaviour of and, if–then, and
+not, respectively—and that ⊥ will be some kind of
+falsity constant. (Similarly, while we are fixing notation, if we had
+written “∨”, “↔”, or
+“⊤”, we would be arousing expectations of
+disjunction, equivalence—or biconditionality—and a truth
+constant, respectively.) We can think of this as a matter of the
+inference patterns to be sanctioned by some proof system offered for
+L, or as a matter of how the formulas of this language are to
+be interpreted by assigning suitable semantic values to them
+(truth-values being the simplest candidates here). We refer to the
+former as a proof-theoretic or syntactical characterization of the
+logic and the latter as a semantical characterization. The terminology
+is somewhat unfortunate in that a perfectly respectable view in the
+philosophy of logic (going back at least to Gentzen) has it that the
+meanings of items of logical vocabulary, such as the
+connectives of current concern, for a particular reasoner, are given
+by a specification of the set of primitive rules, or a
+favoured subset thereof, governing those items in a proof system
+representing that reasoner’s (perhaps idealized) inferential
+ practices.[2]
+ We take up some of those issues later, beginning with a reprise of
+the semantical side of the story at the start of the following
+section.
+
+We need first some general preliminaries, and forgetting the intended
+application(s) for a moment, let us define, given sets S and
+T, a pair of functions (f, g) to be a
+Galois connection between S and T when
+ f: ℘(S) →
+℘(T) and g:
+℘(T)→ ℘(S), and for all
+S0, S1 ⊆ S,
+T0, T1 ⊆ T, we
+have S0 ⊆
+g(f(S0)), T0
+⊆ f(g(T0)),
+S0 ⊆ S1 ⇒
+f(S1) ⊆
+f(S0), and T0
+⊆ T1 ⇒
+g(T1) ⊆
+g(T0). It is well known that the
+composition of g with f (respectively, f
+with g) in such a case is a closure operation on
+S (respectively, on T) in the sense of being a
+function (we do the S case) C:
+℘(S) → ℘(S) satisfying,
+for all subsets S0, S1, of
+S:
+
+S0 ⊆ C(S0)
+    C(S0) ⊆
+C(S0 ∪ S1)
+    C(C(S0))
+⊆ C(S0).
+
+
+Further, where R ⊆ S × T, the
+triple ⟨R, S, T⟩, which we may
+call a binary relational connection (between S and
+T), induces a Galois connection (fR,gR)
+between S and T when we put, for all
+S0 ⊆ S, T0⊆
+T:
+
+ fR(S0) =
+{t ∈ T : for all s ∈
+S0 R(s, t)}
+
+gR(T0) = {s
+∈ S : for all t ∈ T0
+R(s, t)}.
+
+
+(“S” and “T” here are
+mnemonic for “Source” and “Target”
+respectively; note that we do not require S ∩ T
+= ∅, or even that S ≠ T.) Suppose we
+consider, not the sentential languages of our opening paragraph but
+rather first-order languages, and take S as the set of closed
+formulas of such a language and T as the set of models
+(interpretations, structures,…) for that language, then with
+R as the relation holding between a closed formula φ and
+a structure M when M
+⊨ φ,
+fR(S0) and
+gR(T0) are usually
+denoted by Mod(S0) and
+Th(T0). (The labels are intended to
+suggest “class of all models of” and “theory
+of”, respectively.) In this case the derived closure operations
+Th ○ Mod (mapping
+S0 to
+Th(Mod(S0))) and
+Mod ○ Th (understood
+analogously) on S and T respectively deliver the set
+of first-order consequences of S0 and the set of
+all models verifying all the sentences verified by every M
+∈ T0. When there is
+only one such M in the latter case, what
+is delivered is the class of structures elementarily equivalent to
+M. (Here we are thinking of classical
+first-order model theory.)
+
+Returning to the former case: as this use of the term
+‘consequences’ reminds us, a closure operation on the set
+of formulas of some language is conventionally called a
+consequence operation, and perhaps to use the notation
+Cn(⋅) rather than simply C(⋅), though it
+is often more convenient to talk in terms of the corresponding
+consequence relation, holding between a set of formulas
+Γ and an individual formula φ—notated in some such way
+as “Γ ⊩ φ”, “Γ ⊢
+φ”, etc.—when φ ∈ Cn(Γ); when
+the relation has been defined semantically it is not uncommon to press
+“⊨” into service in this role. (This will occur once
+or twice below.) Certain shortcuts are usually taken with this
+notation, so that one writes, for example “Γ, Δ,
+φ, ψ ⊢ χ” and “⊢ φ” to
+mean “Γ ∪ Δ ∪ {φ,ψ} ⊢
+χ” and “∅ ⊢ φ”, respectively.
+(For the moment, capital Greek letters range over sets of formulas.)
+The conditions given earlier for C’s being a closure
+operation can be recast as conditions definitive of a consequence
+relation, conditions we do not give explicitly here. A consequence
+relation ⊢ on some language is finitary if whenever
+Γ ⊢ φ then we have Γ0 ⊢ φ
+for some finite Γ0 ⊆ Γ; to be
+substitution-invariant whenever Γ ⊢ φ then
+s(Γ) ⊢ s(φ) where s is any
+substitution, i.e., any endomorphism of the algebra of formulas (and
+s(Γ) is {s(ψ) | ψ ∈ Γ});
+and, finally, to be congruential when φ ⊣⊢
+ψ implies χ(φ) ⊣⊢ χ(ψ), in which the
+notation is to be understood as follows. “φ ⊣⊢
+ψ” abbreviates “φ ⊢
+ψ and ψ⊢ φ”
+(and if we are decorating the turnstile “⊢” with
+superscripts or subscripts, these are written only on the ⊢ and
+not also on the ⊣ part of the composite notation); χ is some
+formula constructed from propositional variables including at least
+one, pk, say—to indicate which we
+may sometimes write χ =
+χ(pk)—and χ(φ), for a
+formula φ, is the result of substituting φ for all occurrences
+of pk in χ. (So χ(φ) is
+s(χ) for the unique substitution s for which
+s(pi) =
+pi for i ≠ k and
+s(pk) = φ.) The
+χ(⋅) notation amounts to thinking of χ as a (sentential)
+context, and putting φ into this context amounts to
+producing the formula χ(φ); more generally, we can think of an
+n-ary context as a formula containing n
+distinguished propositional variables
+pk1,…,
+pkn, say—and
+perhaps additional variables
+ too.[3]
+ If there are no additional variables, then the formula
+χ(pk1,…,
+pkn) can be thought
+of as a derived or composite connective of the language under
+consideration. Returning to the 1-ary case, when φ ⊣⊢
+ψ we describe φ and ψ as equivalent according to
+⊢, and, following Smiley (1962), when for all χ(⋅), the
+formulas χ(φ) and χ(ψ) are equivalent according to
+⊢, we describe φ and ψ as synonymous (according
+to ⊢). Thus a congruential consequence relation is one for which
+any equivalent formulas are synonymous.
+
+The characterization of the (classical first-order) consequence
+relation given above was semantic, in that we described it in terms of
+the consequence operation
+Th ○ Mod which invokes the
+structures for the language and what is true in them. A proof system
+for first-order logic provides a direct syntactic account of when
+φ is a consequence of Γ, in terms of derivability using
+rules (and perhaps axioms) sensitive only to the form of the formulas
+involved. We could discuss the properties of sentence connectives in
+terms of such quantified languages (in which open as well as closed
+sentences can be their arguments) but to avoid extraneous
+complications prefer the setting of the propositional languages with
+which we began. And, as in the discussion to this point, we will
+generally just say “connective”, rather than
+“sentence connective”.
+
+Any binary relational connection ⟨R, S,
+T⟩, as above, will be said to have conjunctive
+combinations on the left (right) if for any
+s0, s1 ∈ S there
+exists s2 ∈ S such that for all
+t ∈ T, R(s2,
+t) just in case R(s0,
+t) and R(s1,
+t) (respectively, for any t0,
+t1 ∈ T there exists
+t2 ∈ T such that for all s
+∈ S, R(s, t2) just
+in case R(s, t0) and
+R(s, t1)); we call
+s2 (respectively, t2) a
+conjunctive combination of s0 and
+s1 (t0 and
+t1) in this case. Replacing the two
+“and”s after the words “just in case” by
+“or” gives the notion of disjunctive combinations
+on the left and right of ⟨R,
+S, T⟩. Both notions admit of an obvious
+generalization to the case in which {s0,
+s1} is replaced by an arbitrary subset
+S0 of S, and similarly on the T
+side. We write ∏L S0 and
+∑L S0 for conjunctive and
+disjunctive combinations, respectively, in this case, and similarly on
+the right (with an “R” subscript), when we know
+either that such a combination is unique or that, while not unique,
+what is being said would be correct however a representative
+combination were chosen. The subscript is omitted when no confusion is
+likely. If, as above S0 = {s0,
+s1}, instead of writing
+∏S0 (respectively,
+∑S0), we write s0 ⋅
+s1 (respectively, s0 +
+s1), and similarly on the right. To illustrate
+these concepts, consider the connection ⟨R, S,
+T⟩ with S some non-empty set, T its
+power set, and R the relation of membership (∈). There
+are conjunctive combinations and disjunctive combinations on the
+right, being intersections and unions respectively, but there are in
+general neither conjunctive nor disjunctive combinations on the left.
+Taking the former case, a conjunctive combination of
+s0 and s1, where these are
+distinct elements of S, would be an element of S
+belonging to precisely those subsets of S to which each of
+s0, s1, belongs—which is
+impossible since the unit set of this element—as with any unit
+set—contains only one element, and so not both of
+s0, s1. By analogy with the
+above definitions of conjunctive and disjunctive combinations we can
+also consider the existence of negative objects on the left and right
+of a relational connection, and note that again the set-theoretic
+example just given presents is with negative objects on the right (for
+S0 ⊆ S, the corresponding negative
+object is S ∖ S0), but not on the
+left (“no negative individuals”, as philosophers might put
+it, and the point would stand if we switched to the case in which
+T comprised properties—rather than sets—of
+individuals, reconstruing R accordingly). This absence of
+combinations simultaneously on the left and right of a relational
+connection is typical of non-degenerate cases, in that one can easily
+verify that if a relational connection has conjunctive combinations on
+the left and disjunctive combinations on the right, or vice versa,
+then it satisfies the following (rather strong) crossover
+condition:
+
+for all s0, s1 ∈
+S, all t0, t1 ∈
+T, if R(s0,
+t0) and R(s1,
+t1), then either
+R(s0, t1) or
+R(s1, t0).
+
+
+(To see this, assume the antecedent and consider the relation
+R as it relates s0 +
+s1 and t0 ⋅
+t1—or, for the “vice versa”,
+s0 ⋅ s1 and
+t0 + t1.)
+2. Sequents and Valuations
+
+Let us return to the propositional languages with which we began. A
+valuation for such an L is a function from L
+to the two-element set {T, F} (of truth-values). As in the case of
+first-order languages touched on above, we put the set of formulas
+L in the source position (i.e. on the left) of our relational
+connections ⟨L, V, R⟩, with the
+set V of all valuations for L as the target (on the
+right), and R (the “is true on” relation) relates
+φ ∈ L to v
+∈ V just in case
+v(φ) = T. In view of the one-to-correspondence between
+sets and characteristic functions, this relational connection is just
+a mild variant of the ∈-based relational connection considered
+above, in particular sharing with it the feature that it has
+conjunctive and disjunctive combinations on the right but not the
+left, and the feature that no two elements from the left bear the
+relation R to exactly the same elements on the right, and no
+two elements on the right have have exactly the same elements from the
+left bearing the relation R to them. To get some interesting
+logic under way, some of these features needed to be disturbed, though
+as we shall see, one of them—the existence of conjunctive
+combinations on the right—will prove surprisingly tenacious. If
+our interest lies in classical logic, we will be especially keen to
+discard most of (the above) V and concentrate only on Boolean
+valuations, in the sense to be explained now. A function from {T,
+F}n to {T, F} is called an
+n-ary truth-function, and we say that an
+n-ary truth-function f is associated with
+the n-ary connective # of L on the valuation
+v (for L)—or alternatively, under these same
+conditions, that # is associated with f on
+v—just in case for all
+φ1,…,φn ∈
+L:
+
+v(#(φ1,…,φn)) =
+f(v(φ1),…,v(φn)).
+
+
+We describe the connective # as truth-functional with respect
+to a class U of valuations when there is some f such
+that for each v ∈ U, f is associated
+with # on v, and as pseudo-truth-functional with
+respect to U when U is a union of classes of
+valuations with respect to each of which classes # is
+ truth-functional.[4]
+ A valuation v is #-Boolean, speaking informally, when the
+expected truth-function is associated with # on v. More
+specifically, v, assumed to be a valuation for a language
+supporting the connectives to be mentioned here, is ∧-Boolean when
+the binary truth-function f∧ with
+f∧(x, y) = T iff x
+= y = T is associated with ∧ on v, ∨-Boolean
+when a similar association holds for ∨ and
+f∨ defined by f∨(x,
+y) =
+F iff x = y = F. We
+assume that the idea is now clear without providing separate
+definitions of “→-Boolean”,
+“↔-Boolean”, “¬-Boolean”,
+“⊥-Boolean”, etc. A Boolean valuation for L is
+just a valuation for L which is #-Boolean for each primitive
+connective # of L for which a notion of #-Boolean valuation has
+been defined. (This is just a way of registering an intended
+truth-functional interpretation for the connectives # in question.)
+Similarly we call any connective # for which a notion of #-Boolean
+valuation has been defined, a Boolean connective, even when discussing
+its behaviour according to a logic not determined by a class of
+Boolean valuations. (This terminology will be explained in due
+course.)
+
+A set of truth-functions is strongly functionally complete if
+every truth-function can be obtained by composition from functions in
+the set, together with the projection functions, and weakly
+functionally complete if every truth-function can be obtained
+from functions in the set, together with the projection functions and
+the operation of passing from an (n+1)-ary function to an
+n-ary function by dropping an inessential argument (an
+argument on which the function does not depend, that is). This
+terminology is transferred from truth-functions to Boolean connectives
+via the conventional association of such connectives with
+truth-functions described in the previous paragraph. Thus for example
+each of the sets {∧,¬}, {→,¬} is weakly functionally
+complete, while {→,⊥} is strongly functionally complete.
+This weak/strong distinction is not usually registered in the literature, and functional
+completeness simpliciter is understood as weak functional
+completeness. These notions also apply in matrix semantics generally
+(see Section
+ 5),
+ and there are analogous notions of expressive completeness tailored
+to other areas; two distinct versions of expressive completeness in
+the area of intuitionistic logic (the distinction being orthogonal to
+the weak/strong distinction just drawn) are contrasted in Rousseau
+(1968), for example. None of these matters will occupy us further
+here.
+
+It is often useful to take a more fine-grained look at the
+truth-functions in play in the above discussion. Assuming the
+identification of n-ary functions with certain
+(n+1)-ary relations and the latter with sets of ordered
+(n+1)-tuples, we use the term determinant for the
+elements of a truth-function. Thus the four determinants of the
+truth-function f→ associated with → on
+→-Boolean valuations are ⟨T, T, T⟩, ⟨T, F,
+F⟩, ⟨F, T, T⟩, and ⟨F, F, T⟩. Note that the
+final entry is the ‘output’ value for the function
+concerned. Such determinants will occupy us extensively below.
+
+In saying that a consequence relation ⊢ is determined
+by a class V of valuations what is meant that Γ
+⊢ ψ if and only if for all v ∈ V,
+whenever v(φ) = T for each φ ∈ Γ, then
+v(ψ)= T. When ⊢ has been described by means of some
+proof system (some collection of rules), then the “only
+if” (“if”) direction of this claim amounts to the
+claim that ⊢ is sound (respectively, complete)
+with respect to V. Take the language whose sole primitive
+connective is ∧ and the class of ∧-Boolean valuations. A
+simple proof system is provided by the rules indicated in the obvious
+way by the following figures:
+
+
+
+
+
+
+(∧I)
+
+
+
+
+φ   ψ  
+
+ φ ∧ ψ 
+
+  
+ 
+
+
+
+     (∧E)
+
+
+
+
+
+
+
+φ ∧ ψ  
+
+ φ  
+ 
+ , 
+
+
+
+
+φ ∧ ψ  
+
+ ψ  
+  
+  
+  
+
+
+
+The rule on the left is usually called ∧-Introduction while the
+two on the right are collectively known as
+∧-Elimination—thus “(∧I)” and
+“(∧E)”—because they take us, respectively, to
+and from a formula with ∧ as main connective, and they enable us
+to define a consequence relation, ⊢∧ in purely
+syntactic terms thus: Γ ⊢∧ φ just in
+case starting with formulas all of which lie in Γ, successive
+application of the above rules allows us to pass eventually to the
+formula φ. And then one can show, not only that this is the
+consequence relation determined by the class of ∧-Boolean
+valuations—so that if one began with that class and sought a
+syntactic codification of the logic it gave rise to, one’s
+search would be at an end—but further that the valuations
+consistent with ⊢∧ are precisely the
+∧-Boolean valuations. Here we calling v consistent
+with ⊢ when for no Γ, ψ, for which Γ
+⊢ ψ, do we have v(φ) = T for all φ ∈
+Γ while v(ψ) = F; the “but further” in
+the preceding sentence is explained by the fact that every consequence
+relation ⊢ is determined by the class Val(⊢) of all
+valuations consistent with ⊢, which in the case of
+⊢∧ are precisely the ∧-Boolean valuations.
+(See the discussion of Gabbay’s result on the
+projection-conjunction truth-functions below for the extent of this
+phenomenon, which, for example, none of ∨, →, ¬ exhibits.)
+The significance of this is that if one started not with the class of
+∧-Boolean valuations (or any other kind of valuational semantics),
+but with the rules (∧I) and (∧E) themselves, then that class
+of valuations would force itself on one’s attention anyway as
+the only class of valuations, preservation of truth on each of which
+coincided with derivability using those rules. (We return to this
+theme below, in connection with Carnap, by which time we will have
+traded in formula-to-formula rules for sequent-to-sequent rules,
+allowing for the convenient representation of inferences in which
+assumptions are discharged.) Moreover, the rules have a considerable
+claim to the status of rules in accordance with which one must reason
+if one is understanding ∧ as “and”, as providing a
+codification of the way in which conjunctive premisses and conclusions
+are reasoned from and to in natural day-to-day reasoning.
+
+Now, as Gerhard Gentzen observed, when we come to formulate similarly
+compelling principles for introducing and eliminating the other
+connectives, we find ourselves having to make reference to the
+discharging of assumptions temporarily made for the sake of
+argument. Such is the case for instance with formulating an
+introduction rule for → and with formulating an elimination rule
+for ∨. In the case of the former rule, for example, Gentzen took it
+that the way to derive φ → ψ is to assume φ and use
+the various rules and other assumptions to derive ψ, at which
+point the rule (also called Conditional Proof) allows us to claim that
+we have derived φ → ψ from the remaining assumptions,
+without having to record this conclusion as depending on φ (as
+ψ itself did before the rule was applied). Thus to extend the
+present approach, known as natural deduction, from ∧ to
+these and other connectives, it is necessary to keep track not only of
+what formulas we are dealing with at a given stage but also of the set
+of initial formulas, or assumptions, on which that formula depends. We
+want to say, in the case of the rule just described, that it entitles
+us to pass from ψ, as depending on Γ ∪ {φ}, to φ
+→ ψ, as depending on Γ. The ordered pair of a finite
+set of formulas and an individual formula, ⟨Γ, φ⟩
+whose first entry records the set of formulas on which its second
+entry depends, we write in the more suggestive notation Γ
+≻ φ, and call a sequent, or more explicitly, a
+sequent of the logical framework Set-Fmla.
+For the variant framework Set-Fmla0,
+we
+allow also the case in which there is no formula to the right of the
+“≻”. Some principles for reasoning about sequents
+which do not involve any specific connectives and were called by
+Gentzen, structural rules (as opposed to operational
+rules) are the following, which are respectively a zero-premiss, a
+one-premiss and a two-premiss sequent-to-sequent rule:
+
+
+
+
+
+
+(Id)
+ φ ≻ φ  
+ 
+
+
+
+(Weakening)
+
+
+
+
+Γ ≻ ψ  
+
+ Γ,φ ≻ ψ
+ 
+  
+ 
+
+
+
+(Cut)
+
+
+
+
+Γ,φ ≻ ψ   Δ ≻
+φ  
+
+ Γ, Δ ≻
+ψ  
+  
+  
+
+
+
+As the notation makes clear, we use the same shortcuts in formulations
+involving the regular turnstile (⊢) as for the current variant
+(≻), despite the difference in role played by these two symbols:
+the former is a metalinguistic predicate and the latter a device for
+separating the two sides of a sequent. (“≻”,
+arranging formulas into sequents, is, as Lemmon (1965) says of his
+corresponding notation, the formal analogue of the word
+“therefore”, which arranges sentences into arguments. The
+former is, by contrast, for making comments about such
+arguments—for example to the effect that they are valid. Of
+course there is a little slack in the analogy for Set-Fmla,
+since we allow the
+case where there are no premisses.) Any collection Σ of sequents
+which is closed under the structural rules above gives rise to a
+corresponding (finitary) consequence relation: Γ
+⊢Σ φ iff for some finite
+Γ0 ⊆ Γ, we have Γ0≻
+φ ∈ Σ. We should also have a sequent-based analogue of
+the notion of a valuation’s being consistent with a consequence
+relation; accordingly we say that a sequent Γ ≻ φ
+holds on the valuation v just in case we do not have
+v(ψ) = T for each ψ ∈
+Γ while also v(φ) = F. (When Γ is empty, the
+sequent holds on v just in case v(φ) = T. It
+would be uncouth to speak of a sequent as being true on a valuation,
+however, just as one would not speak of the truth of an argument. Such
+usages are on a par with, and closely allied to, the mistaken
+conception of ≻ as a kind of connective.)
+
+We can now formulate the desired →-introduction rule so that the
+assumption discharge feature is visible in what happens on the left of
+the sequent-separator as we move from premiss-sequent to
+conclusion-sequent. We write the elimination rule alongside in a
+similar notation; included also are the natural deduction rules for
+∨; the earlier rules for ∧ should be imagined as re-written
+along similar lines, with assumption-dependencies made explicit:
+
+
+
+ (→I) 
+
+
+
+
+Γ,φ ≻ ψ  
+
+ Γ ≻ φ
+→ ψ  
+  
+
+
+
+ (→E) 
+
+
+
+
+Γ ≻ φ → ψ   Δ
+≻ φ  
+
+ Γ, Δ ≻
+ψ  
+  
+
+
+
+ (∨I) 
+
+
+
+
+
+
+
+Γ ≻ φ  
+
+ Γ ≻ φ ∨
+ψ  
+ 
+  ,  
+
+
+
+
+Γ ≻ ψ  
+
+ Γ ≻ φ ∨
+ψ  
+  
+  
+
+
+
+ (∨E) 
+
+
+
+
+Γ ≻ φ ∨
+ψ   Δ,φ ≻
+χ   Θ,ψ ≻ χ  
+
+ Γ, Δ, Θ
+≻ χ  
+  
+
+
+
+Along with the ∧ rules reformulated in the above
+sequent-to-sequent style, and the structural rule
+(Id)—(Weakening) and (Cut) being derivable—these rules
+render provable exactly those sequents in {∧,∨,→}-fragment
+of intuitionistic logic, while for the corresponding fragment of
+classical logic, one would need to add a further principle governing
+implication, such as the following subcontrariety rule:
+
+
+
+
+
+
+(Subc→) 
+
+
+
+
+Γ, φ → ψ ≻ χ    Γ, φ ≻ χ
+ 
+
+ Γ ≻ χ 
+
+  
+  
+
+
+
+(Equivalently, in view of Weakening, one could give a formulation with
+“Δ” as a set-variable for the right sequent premiss,
+and carry both “Γ” and “Δ” down to
+the conclusion-sequent, as in the formulation of (→E) above.) In
+the terminology of Dummett (1991) all of the rules we have seen are
+pure (their schematic formulation involves mention only of a
+single connective) and simple (each formulation mentions it
+only once), this last rule is also oblique: a discharged
+assumption has the connective in question as its main connective. One
+can trade in this obliqueness for a loss of simplicity, changing the
+→-elimination rule from the familiar Modus Ponens principle above
+to a version incorporating Peirce’s Law (“(p
+→ q) → p ≻ p”), due
+to
+ Kanger:[5]
+
+
+
+
+Γ ≻ φ → ψ   Δ
+≻ (φ → χ) → φ  
+
+ Γ, Δ ≻
+ψ  
+
+
+
+or sacrifice purity and have a zero-premiss rule ≻ φ ∨
+(φ → ψ), or again just leave the implicational rules as
+they are and rely on further rules (not given here) governing negation
+to make up the shortfall and render such classically but not
+intuitionistically acceptable →-sequents—such as
+Peirce’s Law above—provable with their aid. (The same
+tensions would then arise for the ¬ rules, if one regards
+obliqueness as undesirable, with “double negation
+elimination” principles abandoning simplicity, or
+“excluded middle” principles, abandoning purity. Note that
+by a ‘classically acceptable sequent’ here is meant a
+sequent holding on all Boolean valuations.) An alternative for
+capturing the classical logic of → is to change from the logical
+framework Set-Fmla to
+Set-Set, in which
+finite (possibly empty) sets of formulas appear on the right of the
+≻, just as on the left. Then the above →-Introduction rule
+can be remain intact, but with a set variable to collect side-formulas
+on the right: from Γ, φ≻ψ, Δ to
+Γ≻φ→ψ, Δ. (Suitable modifications
+should also be made to the remaining rules in this case.) These
+‘multiple-succedent’ sequents are more popularly
+associated with a different approach to logic from the natural
+deduction approach (though they have often appeared in this setting),
+namely the sequent calculus approach, in which instead of being
+inserted or removed from the right of the ≻, by suitable
+introduction or elimination rules, together with the possible
+discharge of assumptions, the rules—again, ideally, pure and
+simple—always insert a connective, either to the left or the
+right, of the “≻”. The left insertion rules do the
+work of the elimination rules of the natural deduction approach, while
+the right insertion rules do the work of—indeed, are
+just—the natural deduction introduction rules. The left
+insertion rules, (# Left) for #
+∈ {∧,∨,→} are then as follows for
+the classical case, with the right insertion rules (#
+Right) being the natural deduction introduction rules as above,
+with a set-variable on the right of the ≻ for the classical
+Set-Set case:
+
+
+
+
+
+
+(∧ Left)
+
+
+
+
+
+
+
+Γ,φ ≻ Δ  
+
+ Γ,φ ∧ ψ
+≻ Δ  
+ 
+  ,  
+
+
+
+
+Γ,ψ ≻ Δ  
+
+ Γ,φ ∧ ψ
+≻ Δ  
+  
+  
+  
+
+
+
+
+(∨ Left)
+
+
+
+
+Γ,φ ≻
+Δ   Γ′, ψ ≻ Δ′
+ 
+
+
+Γ,Γ′,φ ∨ ψ ≻ Δ,
+Δ′  
+  
+  
+
+
+
+
+(→ Left)
+
+
+
+
+Γ ≻ φ,
+Δ   Γ′,ψ ≻ Δ′
+ 
+
+
+Γ,Γ′,φ → ψ ≻ Δ,
+Δ′  
+  
+  
+
+
+
+For formulations restricted to Set-Fmla0,
+and thus suitable for the
+intuitionistic sequent calculus, we require that Δ in (∧
+Left) contains at most one formula, and for (∨ Left) and (→
+Left), that Δ ∪ Δ′ contains at most one formula.
+Indeed, one easily sees that using the structural rules mentioned
+earlier and the operational rules described here, there will always be
+exactly one formula, since proofs all begin with (Id) and no rule
+removes all formulas from the right-hand side (or
+‘succedent’) in the transition from premiss sequents to
+conclusion sequent. This changes if we add the rules for negation,
+here giving both the left and the right insertion rules, initially for
+the Set-Set case:
+
+
+
+
+
+
+(¬ Left)  
+
+
+
+
+Γ ≻ φ Δ  
+
+ Γ,¬φ ≻
+Δ  
+  
+ 
+
+
+
+       (¬
+Right)  
+
+
+
+
+Γ,φ ≻ Δ  
+
+ Γ ≻ ¬φ,
+Δ  
+  
+  
+
+
+
+A Set-Set sequent
+Γ≻ Δ holds on a valuation v if and only if
+it is not the case that v verifies every formula in Γ
+while falsifying every formula in Δ; note that this coincides
+with the definition of “holding on v” given for
+Set-Fmla in the case
+in which Δ = {ψ} for some ψ. Similarly, we have the
+notion of a generalized consequence relation in which
+suitably two-sided versions of the conditions definitive of
+consequence relations are given, which can be found in Shoesmith and
+Smiley (1978), Chapter 2, for example (under the name
+‘multiple-conclusion consequence relation’). If ⊩ is
+such a relation on a language L then an L-valuation
+v is said to be consistent with ⊩ when there
+do not exist Γ, Δ, with v(φ)
+= T for all φ ∈ Γ and
+v(ψ) = F for all ψ
+∈ Δ. The class of all such
+valuations is denoted, much as in the consequence relation case, by
+Val(⊩). Sometimes formulations appear below with the phrase
+“(generalized) consequence relation”, meaning that the
+claim being made or considered applies both in the case of consequence
+relations and in the case of generalized consequence relations.
+
+One should distinguish sharply between logical frameworks,
+that is, choices as to what kind of thing a sequent is (e.g., Set-Fmla
+vs. Set-Set),
+on the one hand,
+and approaches to logic, that is, choices as to what kind of
+sequent-to-sequent rules are to be used (e.g., natural deduction
+vs. sequent calculus), on the other. Gentzen (1934) used
+Set-Set for a
+classical sequent calculus and Set-Fmla
+for the intuitionistic case. (More accurately,
+since he had finite sequences of formulas in mind rather than sets,
+and in the latter case allowed empty but not multiple succedents, we
+should really say something long the lines of Seq-Seq
+and Seq-Fmla0,
+respectively. Additional structural rules are then needed to allow
+permutation of formulas in a sequence.) Rudolf Carnap (1943) had a
+rather different reason for passing from Set-Fmla
+to Set-Set,
+one which is
+semantically based rather than grounded in considerations of
+proof-theoretic elegance.
+
+Let us forget about → and ¬ and the rules governing them, and
+consider the formulas constructed with the aid only of ∧ and ∨.
+On sequents of Set-Fmla
+in this fragment, classical and intuitionistic
+logic agree, and the consequence relation
+concerned—⊢∧,∨, we may call it—is
+the consequence relation determined by the class of all ∧- and
+∨-Boolean valuations. Carnap’s point is one anticipated
+earlier with the remark that every v ∈
+Val(⊢∧) is ∧-Boolean, which extends to the
+case of ⊢∧,∨: all valuations in
+Val(⊢∧,∨) are ∧-Boolean, but they are not
+all ∨-Boolean, for the simple reason that for any consequence
+relation ⊢, Val(⊢) is always closed under conjunctive
+combinations, and it is easy to find ∨-Boolean u,
+v, with u ⋅ v not
+ ∨-Boolean.[6]
+ It is interesting to see this as an appeal to the considerations of
+Section
+ 1
+ as follows. Consider the binary relational connection between the set
+of formulas in a language one of whose connectives is ∨ and the
+class of Boolean valuations, with the relation is true on. We
+have disjunctive combinations on the left, with φ
++ ψ as φ ∨ ψ, since the
+valuations on the right are all ∨-Boolean; therefore we cannot in
+general have conjunctive combinations on the left, since the crossover
+condition is not satisfied for this connection. The closure claim
+applies quite generally, with ∏ V ∈
+Val(⊢) whenever V ⊆ Val(⊢). This fact
+appears in the philosophical literature in the fact that
+supervaluations over classes of bivalent valuations deliver the same
+consequence relation as the original valuations, which is accordingly
+classical when the valuations are Boolean. (Supervaluations are
+supposed to be non-bivalent, in verifying those formulas verified by
+all the underlying valuations and falsifying those formulas false on
+all the underlying valuations, with those in neither category being
+neither true nor false on the supervaluation. But everything in this
+definition after the words “verified by all the underlying
+valuations” is mere rhetoric, since all that matters—for a
+sequent’s holding on a valuation or a valuation’s being
+consistent with a consequence relation—is truth-preservation;
+setting it to one side, we can identify the supervaluation over
+V with ∏ V. Likewise in the case of
+‘subvaluations’—as in Hyde (2005)—where it is
+∑ V that would be relevant.) A special case arises
+with V = ∅, for which ∏ V is the
+unique valuation vT assigning T to every formula
+(of the language in question, to which the claim of uniqueness is
+understood as relativized).
+
+One may wonder which truth-functions are like that associated (on
+∧-Boolean valuations) with ∧ in this respect. More precisely,
+let ⊢ be the consequence relation determined by the class of
+valuations on each of which an n-ary connective
+#f is associated with the n-ary
+truth-function f. Our question is: for which choices of
+f does ⊢ enforce the interpretation of
+#f as f in the sense that on every
+v ∈ Val(⊢), #f is associated
+with f. This question was answered in Dov Gabbay (1978) and
+(1981) (Chapter 1, Section 3) as follows. Say that f (as
+above) is a projection-conjunction truth-function just in
+case for some J ⊆ {1,…,n} we have, for
+all x1,…,xn
+(xi ∈ {T, F}):
+
+f(x1,…,xn)
+= T if and only if for all j ∈ J,
+xj = T.
+
+
+Then the truth-functions f for which every valuation
+consistent with ⊢ (as above) associates #f
+with f are precisely the projection-conjunction
+truth-functions. (Gabbay calls #f, as it behaves
+according to ⊢, strongly classical in these cases,
+though his own definition is not formulated in these terms.) By way of
+example: when n = 1, these are the identity and the
+constant-true functions, while for n = 2, they are the first
+projection, second projection, constant true and (Boolean) conjunction
+truth-functions. (The constant true cases arise by taking J
+as ∅.) The remaining 12 binary truth-functions thus exhibit the
+behaviour we saw with the disjunction truth-function; the
+corresponding connectives are what Gabbay calls weakly
+classical: determined by a class of valuations over which the
+connective is associated with a certain truth-function despite the
+existence of further consistent valuation on which it is not so
+associated. It is easy to see that the latter phenomenon does not
+arise in the case of generalized consequence relations ⊩, since
+we can easily write down unconditional conditions on such relations
+which enforce the association with a particular truth-function on
+valuations in Val(⊩). This is best seen as proceeding
+determinant by determinant. The unenforceable determinant in the case
+of disjunction is ⟨F, F, F⟩, dictating that when the
+disjuncts have the values listed in the first two positions, the
+disjunction has the value listed in the final position. This
+determinant induces in a familiar way (e.g., Segerberg 1982,
+§3.3) the following condition on ⊩: that for all φ,
+ψ, we have φ ∨ ψ ⊩ φ, ψ. Alternatively
+put, in Set-Set, as
+opposed to Set-Fmla,
+there is a set of formulas holding on precisely the ∨-Boolean
+valuations, namely that containing, for all formulas φ, ψ, the
+sequents φ ≻ φ ∨ ψ, and ψ ≻ φ ∨
+ψ, and—the new case not already available in Set-Fmla—φ
+∨
+ψ ≻ φ, ψ. In view of this, we can say that in Set-Set
+though not in Set-Fmla,
+the class of
+∨-Boolean valuations is sequent-definable, and the same
+goes for connectives associated with all the other truth-functions not
+meeting the projection-conjunction test (such as negation and material
+implication). As the ∨ example makes clear, by contrast with the
+case of consequence relations, Val(⊩), for a generalized
+consequence relation ⊩, need not be closed under conjunctive
+ combinations.[7]
+ Again, one can see this in the light of the considerations of Section
+ 1,
+ thinking of the relational connection between Set-Set
+sequents and
+arbitrary valuations, with the relation being ‘holds on’.
+This connection supplies disjunctive combinations on the left, with
+σ + σ′ being the least common weakening of σ
+and
+ σ′.[8]
+ Thus it cannot also supply conjunctive combinations on the right,
+since it does not satisfy the crossover condition.
+
+This approximately Carnapian concern with
+sequent-definability—in particular the exclusion of unwanted
+non-Boolean valuations—can be taken to a higher level by moving
+from questions about sequents and the valuations they hold, to
+questions about rules and the valuations they preserve the property of
+holding on, as we shall see in Section
+ 3,
+ after making some further points about the apparatus of consequence
+relations, or logics in the framework Set-Fmla.
+The
+determinant-induced conditions on generalized consequence relations
+alluded to above can be converted into conditions on consequence
+relations in a straightforward way, illustrated here in the case of
+negation, with the condition
+
+for all φ: φ, ¬φ ⊩ ∅
+
+
+(induced by ⟨T, F⟩) becoming
+
+for all φ, ψ,: φ, ¬φ ⊢ ψ
+
+
+and the condition
+
+for all φ: ⊩ φ, ¬φ
+
+
+(induced by ⟨F, T⟩) turning into the conditional
+condition on consequence relations ⊩:
+
+for all Γ, φ, ψ, if Γ, φ ⊢ ψ and
+Γ, ¬φ ⊢ ψ then Γ ⊢ ψ.
+
+
+In a proof system in Set-Fmla
+such conditional requirements emerge as
+sequent-to-sequent rules, closure under which (along with containing
+all the sequents corresponding to the unconditional requirements) will
+suffice to secure completeness—in this case that any unprovable
+sequent fails to hold on some ¬-Boolean valuation—without
+the strong classicality property of having the provable sequents hold
+only on such valuations. (The process just described
+transforms the Set-Set
+condition, φ ∨ ψ ≻ φ,
+ψ (all φ, ψ), induced by the Set-Fmla
+unenforceable ∨
+determinant ⟨F, F, F⟩, into the
+conditional condition of closure under the rule (∨E).) If
+a generalized consequence relation ⊩ with a Boolean connective #
+in its language satisfies all the conditions induced by the
+determinants of the associated truth-function we call ⊩
+#-classical. Similarly for a consequence relation which
+satisfies the conditions on consequence
+relations—conditional conditions
+included—derived, as just described, from these
+determinant-induced conditions on generalized consequence relations.
+(These versions of #-classicality can often be simplified on a
+case-by-case basis. For example, the ∧-classicality of a
+consequence relation or generalized consequence relation—we use
+the former notation here—is equivalent to its being the case
+that for all φ, ψ, we have (1) φ, ψ
+⊢ φ ∧ ψ, (2) φ ∧
+ψ ⊢ φ, and (3) φ ∧ ψ
+⊢ ψ. Here we see a three-part condition, instead of
+the four-part condition comprising the conditions induced by each of
+the four determinants.)
+
+Consideration of the determinant-induced conditions on generalized
+consequence relations allows us incidentally to observe, somewhat
+surprisingly, that consequence relations (and the Set-Fmla
+framework) manage
+to distinguish the logics of any two truth-functions of the same
+arity. More precisely, suppose that f and g are
+distinct n-ary truth-functions, # is an n-ary
+connective, and Vf and
+Vg are the classes of valuations on
+which, respectively, f and g are associated with #;
+then the consequence relations determined by
+Vf and Vg
+are distinct. By way of illustration, suppose that n = 3 and
+f and g differ on some determinant beginning with T,
+F, F. (Thus we are considering the case in which the first component
+of a #-compound is true on a given valuation and the second and third
+are false.) Without loss of generality, we can assume that ⟨T, F,
+F, T⟩ ∈ f while ⟨T, F, F, F⟩ ∈
+g. The conditions on a generalized consequence relation
+⊩ induced by these determinants are respectively φ
+⊩ ψ, χ, #(φ, ψ, χ)
+and φ, #(φ, ψ, χ) ⊩ ψ,
+χ. Thus in particular, taking φ as p and each
+of ψ, χ, as q, for the generalized consequence
+relation ⊩f, say, determined by
+Vf and that,
+⊩g, determined by
+Vg, we have:
+
+
+
+ p ⊩f q,
+#(p, q, q) 
+    and    
+ p, #(p, q, q)
+⊩g q.  
+
+
+
+Note that p, #(p, q, q)
+⊮f q, since otherwise it would
+follow (by the ‘cut’ condition on generalized consequence
+relations) from the first inset ⊩-statement here that p
+⊩f q, which is not the case. Thus
+in view of the second ⊩-statement, ⊩f
+and ⊩g differ on the sequent σ =
+p, #(p, q, q)≻ q,
+since σ ∈ ⊩g while σ
+∉ ⊩f. But σ is a sequent of
+Set-Fmla, so the
+consequence relations, ⊢f and
+⊢g, say, determined respectively by
+Vf and Vg
+also differ (namely, on σ). We have worked through a simple
+illustration of the general result claimed above, but this case is
+sufficiently representative for the general proof to be
+reconstructed.
+
+Indeed the real moral is more general still. We did not need to use,
+in our worked example, more than the fact that there was some
+determinant respected by every valuation in
+Vf with the opposite determinant
+respected by every valuation in Vg, where
+V respects a determinant ⟨x1,…,xn,xn+1⟩
+for # (with each xi
+∈ {T, F}) just in case for all formulas φ1,…,φn,
+v(φi) =
+xi for i
+= 1,…, n implies v(#(φ1,…,φn)
+= xn+1, and determinants are
+opposite if they differ in precisely their final positions.
+(Actually, inspection of the worked example shows that we also need
+the classes playing the role of Vf and
+Vg also to contain enough valuations to
+assign different truth-values to any pair of distinct propositional
+variables.) Take the 1-ary connective ☐ of any familiar modal
+logic (e.g., S5), for example. We expect it to satisfy the
+determinant ⟨F, F⟩, in the sense that the appropriate
+consequence relation should satisfy the condition induced by this
+determinant, since what is necessarily true is true—and thus if
+φ is false, ☐φ should be false—while we do not
+want any determinant of the form ⟨T, x⟩ to be
+satisfied. In this case we can describe ☐ as partially
+determined according to the consequence relation in question. On
+the other hand, if a consequence relation ⊢ (or a generalized
+consequence relation ⊩) satisfies, for each n-tuple of
+truth-values, the condition induced by exactly one determinant for the
+n-ary connective #, whose first n entries are as
+given by that n-tuple (the final, n+1st,
+entry being either a T or an F), then we say # is fully
+determined according to ⊢ (or ⊩). By the
+determinant-induced conditions on a consequence relation here is meant
+the conditions on a consequence relation derived as explained (or at
+least illustrated) above from the directly determinant-induced
+conditions on a generalized consequence relation. As one might expect,
+this property of connectives relative to consequence relations has an
+intimate relation with the similar property introduced at the start of
+this section:
+
+A connective # in the language of a consequence relation ⊢ is
+fully determined according to ⊢ if and only if there is some
+class of valuations V such that ⊢ is determined by
+V and # is truth-functional with respect to V.
+
+
+Note that the two occurrences of the word ‘determined’
+here mean quite different things. “Fully determined”, as
+defined above, is a variation on Segerberg’s terminology in his
+(1982) of ‘type-determined’, varied so as to lend itself
+to other modifications—partially determined,
+completely undetermined, overdetermined,…
+(though this last will not be getting attention here)—while the
+second occurrence of the word is the usual sound and complete
+sense of “determined”. Turning to generalized consequence
+relations, we find the connection to be more intimate still:
+
+A connective # in the language of a generalized consequence relation
+⊩ is fully determined according to ⊩ if and only if # is
+truth-functional with respect to Val(⊩).
+
+
+This implies the statement given for consequence relations (putting
+“⊩” in place of “⊢”) since a
+generalized consequence relation, like a consequence relation, is
+always determined by the class of all valuations consistent with it.
+(But only the weaker statement above is available for consequence
+relations, as such cases as that of ∨ illustrates, since the
+consequence relation determined by the class of ∨-Boolean
+valuations—with respect to to which ∨ is by definition
+truth-functional—is also determined by other classes of
+valuations, with respect to it is not.) Indeed another way of putting
+the contrast between the consequence relations claim above and the
+generalized consequence relations claim is that while for consequence
+relations #‘s being fully determined according to ⊢ is
+equivalent to some class of valuations which determines
+⊢ having # truth-functional with respect to it, for generalized
+consequence relations we can say that #‘s being fully determined
+according to ⊩ is equivalent to every class of
+valuations which determines ⊩ having # truth-functional with
+respect to it.
+
+Along with truth-functionality, we also included a definition of
+pseudo-truth-functionality with respect to V. A simple way of
+seeing the relation between these two concepts is in an
+∀/∃ scope contrast (in which “f”
+ranges over truth-functions of the same arity as #): # is
+truth-functional with respect to V when
+
+∃f∀v ∈ V[f is
+associated with # on v],
+
+
+whereas # is pseudo-truth-functional with respect to V
+when
+
+∀v ∈ V∃f[f is
+associated with # on v].
+
+
+It is natural to ask after a syntactical condition related to
+pseudo-truth-functionality in the same way(s) as full determination is
+related to truth-functionality. Say that an n-ary connective
+# is left-extensional in its ith position
+(1 ≤ i ≤ n) or right-extensional in
+its ith position, according to a generalized
+consequence relation ⊩, when the condition
+(LEi) or (REi) is satisfied,
+respectively, for all formulas
+φ1,…,φn,ψ in the
+language of ⊩ we have:
+
+
+
+
+
+
+LEi
+:
+ φi, ψ,
+#(φ1,…,φn) ⊩
+#(φ1,…,φi−1,ψ,φi+1,…,φn),
+ 
+  
+
+
+
+
+REi
+:
+ #(φ1,…,φn)
+⊩
+#(φ1,…,φi−1,ψ,φi+1,…,φn),
+φi, ψ.  
+  
+
+
+
+# is left-extensional (right-extensional) according to ⊩ if it
+is left-extensional (respectively, right-extensional) in its
+ith position for each i (1
+≤ i ≤ n), and finally #
+is extensional according to ⊩ when # is both left- and
+right-extensional according to ⊩. For n = 1 we drop the
+subscript, the above conditions reducing to (LE) and (RE):
+
+
+
+
+
+
+LE
+:
+ φ, ψ, #φ ⊩ #ψ,  
+  
+
+
+
+
+RE
+:
+ #φ⊩ #ψ, φ, ψ.  
+  
+
+
+
+Thus (LE) requires that each v ∈ Val(⊩)
+“treats truths alike” when they are embedded under #, in
+the sense that when v(φ) =
+v(ψ) = T, then v(#φ)
+= v(#ψ), while (RE) requires that falsehoods be
+treated alike in that v(φ) =
+v(ψ) = F likewise implies that v(#φ)
+= v(#ψ). (It may
+help to remark that for ↔-classical ⊢ together these amount
+to requiring that φ ↔ ψ ⊢ #φ
+↔ #ψ. But we are trying to keep the discussion
+‘pure’ so that definitions make sense even when the
+connective—here #—with the property being defined is the
+sole connective in the language.) The conditions
+(LEi) already make sense as conditions on
+consequence relations (writing ⊢ for ⊩) since there is a
+single formula on the right, and we will speak of # as
+left-extensional according to ⊢ when they are all satisfied,
+while the conditions (REi) need to be converted
+into conditional conditions as above in the discussion of
+determinant-induced conditions. We will illustrate this only for the
+n = 1 case, with (RE) becoming (RE′), understood as
+demanding for all Γ, φ, ψ, χ:
+
+
+
+RE′
+:
+ If Γ, #ψ ⊢ χ and Γ , φ ⊢
+χ and Γ , ψ ⊢ χ, then Γ, #φ ⊢
+χ.  
+
+
+
+Taking it that the intention is clear for the general case what
+(RE′i) should be as a condition on
+consequence relations, we say that # is right-extensional according to
+⊢ when (RE′i) is satisfied for each
+i up to the arity of #, and that # is extensional according
+to ⊢ just in case # is both left- and right-extensional
+according to ⊢. Then paralleling the above results for
+truth-functionality are the following for
+pseudo-truth-functionality:
+
+A connective # in the language of a consequence relation ⊢ is
+extensional according to ⊢ if and only if there is some class of
+valuations V such that ⊢ is determined by V
+and # is pseudo-truth-functional with respect to V.
+
+
+A connective # in the language of a generalized consequence relation
+⊩ is extensional according to ⊩ if and only if # is
+pseudo-truth-functional with respect to Val(⊩).
+
+
+Whether for consequence relations or for generalized consequence
+relations, we have the following—in general,
+irreversible—implications for the three properties of being
+fully determined, being extensional, and being congruential (as
+explained below) according to any given (generalized) consequence
+ relation:[9]
+
+fully determined ⇒ extensional ⇒
+congruential.
+
+
+where this last concept is defined by saying that # is
+congruential in the ith position
+according to a consequence relation or generalized consequence
+relation ⊢ or ⊩ (we state the condition only using the
+“⊢” notation) just in case for all formulas
+φ1,…,φn,ψ:
+
+φi ⊣⊢ ψ implies
+#(φ1,…,φn)
+⊣⊢
+#(φ1,…,φi−1,ψ,φi+1,…,φn),
+
+
+and calling # congruential according to ⊢ when # is congruential
+in each of its positions according to ⊢. Clearly a consequence
+relation is congruential in the sense of Section
+ 1—which
+ of course also makes sense for generalized consequence
+relations—precisely when each primitive connective in its
+language is congruential in every position according to it. A similar
+lifting of properties of connectives—‘according to’
+(generalized) consequence relations—can be made in the other
+cases too, for example calling a consequence relation fully determined
+when each of the primitive connectives of its language is fully
+determined according to it. Thus we may say that the consequence
+relation ⊢CL of classical logic (with any
+given stock of primitive connectives—though we will not further
+decorate the notation to indicate a particular fragment) is fully
+determined and thus also extensional (and congruential), while the
+consequence relation ⊢I L of
+intuitionistic logic is congruential but not extensional, since for
+example, ¬, is not right-extensional according to
+⊢I L. The consequence relation
+determined by the well-known three-element matrix of Łukasiewicz
+is not even congruential, since (again) ¬ is not congruential
+according to this relation. There is a weaker property than
+extensionality as here defined (for the sake of the above connection
+with pseudo-truth-functionality) which properly implies left
+extensionality but not right extensionality and which, unlike left
+extensionality itself, implies congruentiality. We could define #,
+here taken for illustrative purposes again as 1-ary, to be weakly
+extensional according to a consequence relation ⊢ when for all
+Γ, φ, ψ:
+
+Γ, φ ⊢ ψ and Γ, ψ ⊢ φ imply
+Γ, #φ ⊢ # ψ.
+
+
+Thus weak extensionality is congruentiality ‘with side
+formulas’ (collected into Γ). The obvious adaptation of
+this notion to generalized consequence relations would be to allow
+side-formulas on the right too (replacing the
+above“⊢” by “⊩” and adding a set
+variable “Δ” to the right-hand sides, that is): this
+turns out to be equivalent to extensionality for generalized
+consequence relations as defined above in terms of
+(LEi) and (REi).
+⊢I L is weakly extensional in this
+sense, and weak extensionality according to ⊢ ⊇
+⊢I L is a property of some theoretical
+significance for the case in which the language of ⊢ adds new
+connectives in the spirit of the original intuitionistic 
+primitives.[10]
+
+
+Returning to the subject of extensionality, one area in which
+extensional but not fully determined connectives arises is when one
+takes hybrids of the latter. By the hybrid of disjunction and
+conjunction, for example, understanding ∨ and ∧ to have the
+inferential powers conferred on them by a particular logic, is meant a
+binary connective whose inferential powers are those shared ∧ and
+∨. (See Rautenberg 1989 for this example, and Rautenberg 1991
+and references therein for more in this vein.) Note that the
+connectives hybridized and the resulting hybrid are connectives in the
+‘logically loaded’ sense of Section
+ 1
+ above.
+
+There are various ways of defining the hybridization process depend on
+how much generality one wants, but the following minimally general
+definition is the easiest to work with. Start with two (generalized)
+consequence relations each on the same language, that language having
+a single primitive connective, #, say. The hybrid connective is then #
+as it behaves according to the intersection of the (generalized)
+consequence relations. This way of defining things requires us to
+re-notate the connectives to be hybridized. Thus sticking with the
+example just mentioned, we consider a copy of the pure ∧ fragment
+of ⊢CL, called ⊢∧ earlier
+in this section, but writing # for ∧—but let us still call
+this consequence relation ⊢∧—and similarly
+with the ∨ fragment. We are then interested in the behaviour of #
+according to ⊢∧ ∩ ⊢∨.
+(Where V∧ and V∨ are
+the classes of valuations on which # is associated respectively with
+the Boolean ∧ truth-function and with the Boolean ∨
+truth-function, our intersective consequence relation is that
+determined by V∧ ∪
+V∨.) This behaviour includes the semilattice
+properties of idempotence, commutativity and associativity, for
+example, since these are common to Boolean disjunction and
+conjunction. This particular hybrid connective is partially
+determined, since for example φ, ψ ≻
+φ # ψ (a sequent formulation of the condition induced
+on consequence relations by ⟨T, T,
+T⟩) belongs to ⊢∧
+∩ ⊢∨. This by itself does not show that
+the hybrid is not fully determined, however, and to avoid
+entanglement with some issues about rules, this point is best
+illustrated in terms of the corresponding generalized consequence
+relations and their intersection, the latter satisfying neither of the
+conditions induced by the determinants beginning T, F: for ⟨T, F,
+T⟩, the condition that φ, φ # ψ ⊩ ψ
+(failing for # as ∨) or the determinant ⟨T, F, F⟩, for
+which the induced condition is φ ⊩ φ #
+ψ, ψ (failing for # as ∧). (Among issues about
+non-zero-premiss sequent-to-sequent rules that call for care is the
+fact that while for any such rule under which each of the intersected
+consequence relations is closed, their intersection is likewise
+closed, the converse is false: the hybrid consequence relation may be
+closed under rules under which the originals are not. In the present
+instance the rule: from φ ≻ ψ to ψ
+≻ φ is an example. Similarly for generalized consequence
+relations the rule: from Γ ≻ Δ to
+Δ ≻ Γ makes the same point. This second version
+shows that the current example of hybridization, as conducted in Set-Set,
+yields a symmetric
+generalized consequence
+ relation.[11])
+
+Let us note in view of the recent reference to ⊢∧
+∩
+⊢∨, there has been an interest in how one
+might form something like the union rather than the intersection of
+the two consequence relations involved here. Not quite the union,
+since that would not be a consequence relation, but something
+answering to the intuitive idea of a consequence relation embodying
+the combined logic of conjunction and disjunction. (This is the theme
+of Béziau and Coniglio (2010), further taken up in Humberstone
+(2015).) The situation is not exactly dual to that of hybrids, to
+which topic we return in the folowing paragraph, because the envisaged
+hybrid logic contains one connective with the common logical
+properties of (in the present instance) conjunction and disjunction,
+whereas the combined logic is based on the language with the two
+connectives. (The precise dual would be a consequence relation on a
+language with a single connective, roughly speaking giving that
+connective all the logical powers possessed by either disjunction or
+conjunction, and by a result of Wolfgang Rautenberg cited below,
+according to this consequence relation any formula follows from any
+other. Indeed, this particular instance of Rautenberg’s
+observation is already well known in the literature on Tonk,
+recalled in §3 below: any consequence
+relation in a language including a binary connective which satisfies,
+relative to that consequence relation, both an ∨-Introduction
+condition and also an ∧-Elimination condition will be one of these
+trivial consequence relations.
+
+The hybrid of two fully determined connectives may even be completely
+undetermined (satisfy no determinant-induced conditions at all, that
+is). This will be the case, for example, if we hybridize not
+conjunction and disjunction, but conjunction and negated conjunction
+(sometimes called nand). By using negation in this way, we
+prevent any overlap in the determinant-induced conditions which are
+satisfied by the hybrid, though there still remain some non-trivial
+properties (commutativity, for example) as well as
+extensionality—the point of this mention of hybrids—since
+any hybrid of fully determined connectives will still be extensional
+(according to the intersection, that is). Of course, one can also
+hybridize connectives which are not themselves fully, or even
+partially determined—for example, one could investigate the
+common properties of ☐ and ♢ according to the smallest
+normal modal logic (commonly called K), though this example
+would for its most natural development require us to go beyond the
+simple account of hybrids given here, since it would have to attend to
+the simultaneous presence of the Boolean connectives alongside these
+modal operators. A better known modal example of hybrids is that of
+the ☐ operator in Łukasiewicz’s Ł-modal logic
+(not that Łukasiewicz used this notation for his necessity
+operator), which is a hybrid of 1-ary connectives for the 1-place
+identity and constant-false truth-functions. (See Chapter 1 of Prior
+(1957) on this point; further references may be found in Section
+ 5.)
+
+The hybrid of two connectives is a subconnective of each of
+them in the sense that whatever sequents (of the logical framework in
+play) are provable for it are provable for them. And
+conversely—but for the moment the subconnective relation itself
+will be the focus of attention. Intuitionistic negation is in this
+sense a subconnective, indeed a proper subconnective (in the
+sense that we do not have the converse) of classical negation. As with
+hybrids, there are various options, of differing degrees of generality
+in their application, for defining this relation. In the case of a
+language with only a single primitive connective, #, we can say that #
+as it behaves according to (e.g.) the consequence relation ⊢ is
+a subconnective of # as it behaves according to ⊢′ just in
+case ⊢ ⊆ ⊢′. If we want to allow different
+connectives of the same arity, say # and #′, then we can put
+this instead by saying that σ(#) ∈ ⊢ only if
+σ(#′) ∈ ⊢′, for all σ(#),
+understanding the latter to denote a sequent with various occurrences
+of # in its constituent formulas, with σ(#′) the result of
+replacing all such occurrences by #′. This kind of formulation
+lends itself to wider applicability since we can allow other
+connectives in the formulas of σ(#), provided these are in the
+language of ⊢′. There is no reason to restrict attention
+to primitive connectives in making such comparisons. For example, each
+of ☐ and ☐☐ is a subconnective of the other in
+several well-known modal logics, as is shown in Zolin (2000), where
+logics are developed axiomatically as sets of formulas (sequents of
+the logical framework Fmla, as we would
+ say[12])
+ so the “σ(#)” would become “φ(#)”
+and the point is that in the logics concerned φ(☐) and
+φ(☐☐) are always equi-provable—though in the
+interesting cases (e.g., those of K, KT, KTB),
+not provably equivalent. Note that this is an intra-logical
+application of the subconnective idea (corresponding to the case of
+⊢ = ⊢′ above, for which we definitely need
+to work with notationally distinguished # and #′). Zolin calls
+such mutual subconnectives analogous (‘analogous
+modalities’). A philosophically famous example of this
+phenomenon from bimodal (or more specifically, doxastic-epistemic)
+logic was reported in Byrd (1973).
+
+Earlier in this section we saw that, where
+Vf and Vg
+are the classes of valuations for a language with n-ary
+connective # on which distinct truth-functions f and
+g are associated with # respectively, the consequence
+relations determined by Vf and
+Vg were always distinct. In the present
+terminology, this means that either # as it behaves according to the
+first of these consequence relations is not a subconnective of # as it
+behaves according to the second, or vice versa. This is obvious for
+generalized consequence relations as one can read off the difference
+from the unconditional conditions induced by the determinants of
+f and g, but we saw (in a worked example) that such
+differences are also guaranteed to emerge at the relatively cruder
+level of consequence relations. A stronger conclusion can be drawn
+from Theorem 4 of Rautenberg (1981) (see also Rautenberg 1985, p. 4), which will not be proved here, and for the statement of which we
+need to explain that a non-trivial consequence relation
+⊢ is one for which there exist formulas φ, ψ in the
+language of ⊢ such that φ ⊬ ψ; for some of the
+matrix terminology here, see Section
+ 5:
+
+Let M be any two-element matrix with one designated value. Then
+the consequence relation ⊨M determined by
+M is not properly included in any non-trivial
+substitution-invariant consequence relation on the same language.
+
+
+As one very special case of this maximality result, in which the
+algebra reduct of M has only a single fundamental operation
+(f, as above, say), we get a stronger conclusion about the
+consequence relations ⊢f and
+⊢g determined by
+Vf and Vg
+than our earlier conclusion that these consequence relations are
+distinct: we get the conclusion that neither is included in the other.
+Taking the A and D of M = (A,
+D) as ({T, F}, f) and {T}, the consequence relation
+⊢f is what Rautenberg is calling
+⊨M, and if this were properly included in
+⊢g we should have a contradiction with the
+above result, since the latter consequence relation is certainly
+non-trivial and substitution-invariant. Thus informally speaking, even
+in the relatively undiscriminating framework Set-Fmla,
+the logic of one
+truth-function never subsumes that of another. Less informally: even
+in Set-Fmla, a fully
+determined connective is never a proper subconnective of another fully
+determined connective.
+
+We conclude this section with two observations prompted by this
+result. The first concerns whether anything was gained by our earlier
+looking at the argument for the weaker result (understood in the light
+of the above conventions) to the effect that, f ≠
+g implies ⊢f ≠
+⊢g. The answer to this question is that
+although the result is weaker, the proof yields something stronger:
+any difference in determinants yields a difference in unconditional
+determinant-induced conditions. Considered as sequents (with
+propositional variables replacing the schematic letters in the induced
+conditions) these have a very special form, and, transferring
+Dummett’s terminology (seen earlier in this section) for rules,
+across to sequents, we note that they are all included in the class of
+pure and simple sequents: sequents in which there is only one
+connective to occur and it occurs only once in the sequent. Suitably
+abstracting from our earlier worked example, we can see that any
+connectives satisfying the conditions induced by even one pair of
+opposite determinants (whether or not any remaining
+determinant-induced conditions are satisfied) are bound to differ on a
+pair of pure and simple sequents. But the analogue of
+Rautenberg’s result does not hold in this form: that the set of
+pure and simple sequents satisfied by the one and the set satisfied by
+the other are incomparable with respect to inclusion. For example,
+consider the case of the 1-ary truth-functions Boolean negation and
+the constant-false function. We can cite #p ⊢
+q as an example of a pure and simple sequent which holds on
+every valuation on which 1-ary # is associated with the constant-false
+function but not on every valuation on which it is associated with the
+negation function. But an inspection of possible cases reveals that
+there is no pure and simple sequent valid for the negation
+interpretation of # which is not also valid for the constant-false
+interpretation. (Of course there are sequents doing this—e.g.,
+p ≻ ## p but, though pure, they are not
+simple. And, yes, in Set-Set,
+we can always find pure and simple witnesses to
+the non-inclusion of the one logic in the other: the
+determinant-induced conditions on generalized consequence relations
+will serve in this capacity.)
+
+For the second observation, we note a more linguistic reformulation of
+Rautenberg’s result, for which we first need a brief digression
+on defined connectives. A connective derived by composition from a set
+of primitive connectives yields a defined connective in one of two
+ways, depending on one’s views of definition. On one view,
+isolating the derived connective is already giving a definition: one
+has a formula φ(p1,…,
+pn) in which exactly the exhibited
+variables occur, which since it is constructed from these variables
+via the primitive connectives constitutes a derived connective,
+applying to formulas
+ψ1,…, ψn to yield
+the formula φ(ψ1,…,ψn)
+which results from substituting ψi
+uniformly for
+pi in φ(p1,…,
+pn). We can introduce a shorthand
+to such substitution-instances, denoting φ(ψ1,…,ψn)
+by “#(ψ1,…,ψn)”,
+for instance—as in calling the formula ¬(ψ1
+∧ ¬
+ψ2) by the name “ψ1 →
+ψ2”. (Of course this would only be a good idea if
+there is nothing better to mean, or which is already meant, by
+→—as there would be in intuitionistic logic, for instance.)
+That is the first view of
+ definition.[13]
+ On the second view, rather than just being a metalinguistic
+abbreviation, the defined connective is an addition to the object
+language: we add (to continue with the example just given) a new
+primitive connective →, along with a stipulation that compounds
+of the form ψ1 → ψ2 are to be
+synonymous with those of the corresponding form
+¬(ψ1 ∧ ¬ ψ2). We need not
+choose between these views here, but some formulations are sensitive
+to which view is taken. In particular, if we have classical logic with
+primitives ¬ and ∧, we may still wish to consider its
+implicational fragment—in Set-Fmla,
+say, where this would be the restriction of
+⊢CL to formulas constructed using only the
+connective →. On the first view of definition, we cannot
+literally do that, since to use → is ipso facto to use
+¬ and ∧, so what is meant is rather than the only occurrences
+of ¬ and ∧ are such as occur in subformulas of the form
+ψ1 → ψ2 in virtue of these being
+the formulas ¬(ψ1 ∧ ¬ψ2). On
+the second view of definition, we have expanded the
+language-as-algebra by adding a new fundamental operation → and
+can now consider the subalgebra generated by the propositional
+variables of the reduct of this algebra obtained by discarding the
+other fundamental operations.
+
+Now let φ1 and φ2 any two classically
+non-equivalent formulas in the same variables,
+p1,…, pn for
+definiteness, and consider the consequence relations
+⊢1 and ⊢2, where ⊢1
+is the restriction of ⊢CL to formulas
+constructed using the n-ary connective # defined thus:
+
+#(ψ1,…,ψn) =
+φ1(ψ1,…,ψn),
+
+
+and ⊢2 is the analogous restriction of
+⊢CL this time to the #-fragment with # defined
+by:
+
+#(ψ1,…,ψn) =
+φ2(ψ1,…,ψn).
+
+
+Since each of φ1 and φ2 fixes an
+n-ary truth-function of the variables involved, and these
+truth-functions are distinct (since φ1 and
+φ2 were to be non-equivalent) the above
+Vf / Vg
+application of Rautenberg’s result tells us that neither of
+⊢1, ⊢2, is included in the other.
+Concentrating on the connectives involved, we can put this by saying
+that in classical logic any two non-equivalent connectives are
+incomparable with respect to the subconnective relation (understood as
+relating the consequence relations on languages in which no further
+connectives appear). We close by observing that the analogous claim
+would be false for intuitionistic logic. A counterexample is provided
+by the connectives defined by φ #1
+ψ = ¬φ∨ ¬ψ and φ
+#2 ψ = ¬(φ ∧ ψ). These are
+intuitionistically non-equivalent, in the sense of not always yielding
+⊢I L-equivalent compounds from the same
+components, while—by an argument not given here—for any
+intuitionistically provable sequent σ(#1) involving
+formulas constructed from the variables by means of #1, the
+corresponding sequent σ(#2) is also
+intuitionistically provable (though not conversely). So, by contrast
+with what can happen in the classical setting, we have non-equivalent
+connectives one of which is a proper subconnective of the
+other—understanding this last phrase subject to the same
+parenthetical qualification as above.
+3. Rules and Connectives
+
+For this section the focus will be on rules governing the various
+connectives, beginning with a deferred topic from Section
+ 2:
+ the transfer of Carnap-inspired questions of the range of valuations
+on which the sequents provable in this or that logic hold to question
+about the range of valuations on which the sequent-to-sequent rules
+preserve the property of holding. We will also revisit the
+sequent-calculus operational rules from early in Section
+ 2
+ and look at some of their properties, as well as at some interesting
+variations on the structural rules which work alongside them. One
+topic—or pair of topics—raised by such investigations is
+the issue of the existence and uniqueness of connectives exhibiting
+prescribed logical behaviour (such as might be enshrined in various
+rules), an issue bearing on all approaches to logic and not just the
+sequent calculus approach. Finally we look at a pair of concepts
+applying to connectives as they behave in particular logics: the
+concept of a universally representative connective and the concept of
+a ‘special’ connective.
+
+Beginning, then, with the preservation behaviour of rules (as in
+Garson 1990 and 2001) it is necessary first to distinguish a
+(sequent-to-sequent) rule’s having a local preservation
+characteristic with respect to a class V of
+valuations—that for each v ∈ V, the rule
+preserves the property of holding on v—from its having
+a global preservation characteristic with respect to V: if
+the premiss-sequents hold on every v ∈ V, then
+the conclusion-sequent holds on every v ∈ V.
+For brevity, a sequent will be called V-valid when
+it holds on each v ∈ V. Then we distinguish the
+local range of a rule ρ, denoted Loc(ρ) from its
+global range, Glo(ρ), taking the definitions as relative
+to a background language the class of all valuations for which we
+denote by U:
+
+Loc(ρ) = {v ∈ U : ρ preserves
+the property of holding on v}
+
+Glo(ρ) = {V ⊆ U : ρ preserves
+V-validity}.
+
+
+It is also natural to define the local and global range of a
+collection R of rules, by setting Loc(R) =
+∩ρ ∈
+RLoc(ρ) and
+
+Glo(R) = {V ⊆ U : each ρ
+∈ R preserves V-validity}.
+
+
+Note that while the local range of a rule or set of rules is a set of
+valuations, the global range is a set of sets of valuations. But in
+some cases there is an especially simple relationship between the two,
+namely that Glo(R) =
+℘(Loc(R)). This happens whenever R
+comprises only zero-premiss rules, and, more interestingly, when the
+rules in R are interderivable with a set of such rules, given
+the structural rules (Id), (Weakening), and
+ (Cut),[14]
+ as in the case of the natural deduction rules for conjunction
+R = {(∧I), (∧E)} or the corresponding sequent
+calculus rules {∧ Right, ∧ Left} where
+Loc(R) comprises precisely the ∧-Boolean
+valuations. Evidently, the strong classicality phenomenon of Section
+ 2
+ is making its presence felt here, and we should contrast the
+situation with disjunction (in Set-Fmla).
+For R = {(∨I), (∨E)},
+Loc(R) is the class of ∨-Boolean valuations, but
+the same is the case if (∨E)—the rule of current interest
+since it has no zero-premiss equivalent—is replaced by another
+which is far from interderivable with it (even given the structural
+rules and (∨I)):
+
+
+
+
+A ≻ B  
+
+ A ∨ B
+≻ B  
+
+
+
+Thus the local range is not very informative as to the precise
+significance of such a rule as (∨E) and it is natural if one thinks
+of the rules as giving the meanings of the connectives they govern (a
+perspective mentioned in Section
+ 1)
+ and wants to distill this information into a semantics in terms of
+valuations, to consider the global range. To do so we make use of the
+partial order ≤ on the underlying set U of valuations (for
+the language under consideration) defined by: u ≤
+v if and only for all formulas φ, if u(φ) =
+T then v(φ) =
+ T.[15]
+ As Garson (2001) observes, the global range of the introduction and
+elimination rules for ∨ (and again we could equally well cite the
+sequent calculus rules in this connection) is the set of all
+V ⊆ U such that for all u ∈
+V and all formulas φ and ψ, the following condition
+is
+ satisfied:[16]
+
+
+
+
+[∨]Garson      
+ u(φ ∨ ψ) = T iff for all formulas χ
+such that u(χ) = F, there exists
+v ∈ V with u
+≤ v, v(χ)
+= F and either v(φ)
+= T or v(ψ)
+= T.  
+
+
+
+While we cannot go into the details of Garson’s program here,
+its aim should be noted: to arrive at the ‘natural
+semantics’ implicit in the rules governing a connective # (here
+assumed n-ary) in the sense of a characterization of their
+global range as comprising those V of valuations satisfying a
+condition of the form: ∀u ∈ V,
+u(#(φ1,…,φn)) =
+T if and only if …, where the dots are replaced by something
+which would render this biconditional suitable as a clause in the
+inductive definition of truth on a valuation u ∈
+V. Garson worries about the use of ≤ on this score in what
+we are calling [∨]Garson (and has various suggestions to
+offer), as well as about the explicit quantification over χ which
+introduces an potential element of circularity or impredicativity (in
+particular because χ need not have a lower complexity—be
+constructed with the aid of fewer primitive connectives, that
+is—than φ ∨ ψ itself); related concerns are aired in
+Woods (2013). One way of getting rid of the latter feature is to
+massage [∨]Garson into the following equivalent form,
+which makes extensive use of conjunctive combinations of valuations,
+and uses the notation |χ| which, for a formula χ, denotes the
+set of v∈ V such that v(χ) =
+T:
+
+u(φ ∨ ψ) = T iff ∃ U0,
+U1 ⊆ V: U0
+⊆ |φ|, U1 ⊆ |ψ|,
+ 
+and u = ∏ U0 ⋅
+∏ U1.
+
+
+In place of this last “∏ U0 ⋅
+∏ U1”, we could equally well have
+written “∏ (U0 ∪
+U1)”, of course. The form as written is more
+suggestive of the many variations on the semantic treatment of
+disjunction in the literature—the Beth semantics for
+intuitionistic logic, for instance, and the treatment of disjunction
+for relevant (or ‘relevance’) and other substructural
+logics to be found in Ono and Komori (1985), Orłowska (1985,
+455), and Bell (1986), to cite only some papers
+from the 1980s.[17]
+We will not discuss other
+connectives from this perspective here, or comment further on
+Garson’s program. See Garson (2001) for a discussion of the
+global ranges of the usual sets of introduction and elimination rules
+for →, ¬ and
+ ↔.[18]
+ Garson’s approach to these matters has, it should be noted,
+undergone further evolution since the publications cited in this
+discussion: see Garson (2013).
+
+The idea which, has just re-surfaced in our discussion, apropos of
+Garson, that the natural deduction introduction and elimination rules
+together, or perhaps just the introduction rules alone
+(Gentzen’s preferred
+ position),[19]
+ somehow fix the meanings of the connectives they govern, often goes
+hand in hand with considerations of the existence and the uniqueness
+of a connective answering to the said rules, considerations first
+raised by H. Hiż, according to Belnap (1962). Belnap was replying
+to Prior (1960) in which the idea that any old set of rules could be
+stipulated to fix the meaning of a proposed connective, was contested
+with the aid of the subsequently much-discussed example Tonk,
+a supposed binary connective for which an
+introduction rule allowed the passage from (arbitrary) φ to φ
+Tonk ψ, as with ∨-introduction from the
+first disjunct, and an elimination rule allowed the passage from φ
+Tonk ψ to ψ, as with ∧-elimination
+to the second conjunct. (This was the point anticipated in §2
+when the Tonk problem was mentioned apropos of
+the dual to hybridizing conjunction and disjunction.) Since this
+allowed, by successively applying (Tonk-I) and
+then (Tonk-E), any ψ to be derived from
+any φ, Prior took this to show that no coherent meaning had been
+conferred on Tonk by the proposed rules, and
+to refute the general thesis that the meaning of a connective can be
+fixed by means of rules governing it. (Prior saw Popper and Kneale as
+the targets of his argument, which does not touch Gentzen’s view
+that the meaning is fixed by the totality of introduction rules for a
+connective, coupled with the fact that these are the totality of such
+rules. Since there is only the one way of introducing Tonk,
+namely that provided by (Tonk-I),
+where the premiss is φ the meaning of
+φ Tonk ψ is simply that of φ and
+the appropriate elimination rule is not that given by Prior
+but rather one licensing an elimination to the first
+“tonkjunct”.) Belnap responded that what was wrong with
+Prior’s Tonk rules was that a proof
+system antecedently endorsed for the connectives in use would be
+non-conservatively extended by the enrichment of the language with
+Tonk in tandem with supplementing the proof
+system with the (Tonk-I) and then (Tonk-E),
+since they allow the derivation of the
+sequent φ ≻ ψ even for Tonk-free
+φ,
+ ψ.[20]
+ Later in this section, we return to Tonk and
+examine its behaviour in a sequent calculus setting.
+
+Of course, one expects the addition of new rules to make for the
+provability of new sequents, but the extension should be
+conservative in the sense that no new sequents exclusively
+involving the old vocabulary become provable. Belnap’s
+discussion suggests that the existence of a connective obeying certain
+rules should be conceded by someone endorsing a particular proof
+system if and only if the addition of that connective to the language
+and those rules to the proof system yields a conservative extension.
+(There are other things one might mean by the question of whether from
+the perspective of a given logic, a connective with such-and-such
+logical powers exists—most evidently, whether or not such a
+connective is already definable in the logic. Showing that rules
+ascribing the powers in question would extend the logic
+non-conservatively would be one dramatic way of showing no such
+connective to be definable, but since it could fail to be definable
+while still being conservatively addable, the questions need to be
+kept distinct.)
+
+One snag for such a suggestion is that examples can be found involving two connectives with associated sets of rules
+each of which sets of rules yields a conservative extension of an initial proof system,
+apparently requiring the answer “yes, there does exist such a
+connective” in each case from the perspective of that original system, while extending the initial proof system with
+both sets of rules at once is non-conservative—undermining this double
+endorsement.[21] We may conclude that while yielding a non-conservative
+extension of a favoured proof system is sufficient to denying the
+existence or intelligibility of a connective with such-and-such
+logical properties, there may be other grounds for returning such a
+verdict. Boolean negation comes under just such a critique in Chapter
+5 of Priest (2006), where such problems for Belnap’s account are
+raised and references to the technical literature establishing the
+conservativity of extending certain logics in the relevance tradition
+with suitable principles governing this connection can also be found.
+(For an earlier presentation of this point, see also Belnap and Dunn
+1981, p. 344, and for a related discussion, Restall 1993, esp.
+§5.) It should be noted also that the conservativity test raises
+issues of its own, independently of the question of whether passing it
+is necessary and sufficient (and what we have been querying is the
+sufficiency half of this package) for acknowledging the existence of a
+connective. For example, there are sentential connectives which
+conservatively extend intuitionistic propositional logic in
+any of its conventional presentations as a proof system, but
+non-conservatively extend intuitionistic predicate logic. The
+best known is dual intuitionistic implication (see
+López-Escobar
+ 1985).[22]
+ Returning to the conservative extension criterion of existence, let
+us note that a related connective, dual intuitionistic negation, can
+be added conservatively to intuitionistic predicate (and a
+fortiori propositional logic) but already at the propositional
+level produces violations of the disjunction
+property—that ≻ φ ∨
+ψ should only be provable if at least one of
+≻ φ, ≻ ψ, is provable—which on
+some accounts (e.g., Gabbay 1977 and 1981) renders it illegitimate
+from an intuitionistic perspective. Finally, it should be observed
+that an adherent of intuitionistic logic might be expected to take a
+dim view of a proposed new connective with rules conservatively
+extending that logic but not conserving synonymies, in the sense that
+formulas in the original language which are synonymous according to
+⊢I L are no
+longer so according to the consequence relation associated with the
+extended proof system. This happens in at least the most
+straightforward extension of intuitionistic logic by what is called
+strong
+ negation.[23]
+
+The issue of uniqueness, as opposed to existence, of connectives (in
+the logically loaded sense of the term, naturally) is best approached
+by considering when a collection of rules governing a connective
+uniquely characterize that connective in the sense that if
+accompanied by corresponding rules governing a ‘duplicate’
+version of that connective (of the same arity) result in the synonymy
+of compounds formed from the appropriately many components and the
+original connective with compounds formed from the duplicate
+connective from the same components. In a congruential setting the
+reference to synonymy can be replaced by one of equivalence, in the
+sense of ⊣⊢-equivalence in the consequence relation or
+Set-Fmla framework,
+with suitable variations for other frameworks. Without the assumption
+of congruentiality one should perhaps distinguish unique
+characterization to within synonymy from unique characterization to
+within equivalence. And because the rules in question may not be pure,
+but involve other connectives, it may be necessary to speak of # being
+uniquely characterized (by the given rules) in terms of the
+other connectives involved, so that when the reduplicated system is
+considered, # is replaced by its duplicate, #′, say, while the
+other connectives remain as they are. We will not be considering these
+complications here. It is easy to see that the natural deduction rules
+for the various connectives given in Section
+ 2
+ as well as the sequent calculus rules all uniquely characterize the
+connectives they govern. (Note that, since this includes the
+introduction and elimination rules for →, which are shared by any
+natural deduction system for intuitionistic logic, the rules may
+uniquely characterize a connective which is not fully
+determined—not amenable to a truth-functional interpretation.
+The same applies in respect of negation, though we did not cover this
+in our discussion of natural deduction.) This feature is sometimes
+regarded as necessary for the connectives concerned to be regarded as
+logical constants, although, as explained in Section
+ 1,
+ we are not pursuing that issue here.
+
+A related issue involving both uniqueness and existence does deserve
+attention, however, arising over competition between logics, differing
+on the rules governing a connective where the first logic has rules
+which suffice to characterize uniquely a connective and the second has
+all these and more governing that connective. The standard example of
+this is provided by intuitionistic logic and classical logic in
+respect of negation. The fact that the classical rules go beyond the
+intuitionistic rules and yet the latter already suffice for unique
+characterization means that there is no ‘live and let
+live’ option available for the intuitionist, of recognising that
+the intelligibility of two distinct negation connectives, classical
+and intuitionistic, which can cohabit in the same proof system each
+with their respect rules. This should be possible according to those
+who think that any difference in the logical principles governing a
+connective reflect a difference as to what is meant by the connective
+(W. V. Quine’s view—see Section
+ 5
+ below), since once a difference in meaning is acknowledged, the
+previously ambiguous connective, “¬”, in the present
+instance, should be replaceable by connectives registering the
+disambiguation—¬i and ¬c,
+say—and the intuitionistic and classical logician should be able
+to use whichever they take a special interest in, with no further fear
+of talking at cross-purposes in each other’s company. But of
+course this is not a possibility, since the rules governing
+¬i characterize it uniquely and those governing
+¬c duplicate them—think of ¬c as
+¬i′, in terms of the above
+discussion—and do more (securing the provability of
+¬c¬cp ≻ p, for
+example). The result is that the two connectives form equivalent
+compounds in the reduplicated system and all of the intuitionistically
+unwanted properties of ¬c spill over to infect
+¬i: we can now prove ¬i
+¬ip ≻ p, and so on. The
+conciliatory offer of a purportedly disambiguating notation along
+these lines is one no advocate of intuitionistic logic can afford to
+accept. (By imposing restrictions on some of the intuitionistic rules,
+one can produce candidates for the title of ‘combined
+classical-and-intuitionistic proof system’—as, for
+example, in Fariñas del Cerro and Herzig (2001)—but,
+especially on views according to which the rules of one’s logic
+articulate the meanings of the connectives they govern, resistance to
+any such restrictions is entirely understandable. Imagine an encounter
+with aliens in which they told us that to explain what they meant by
+some items of their vocabulary we had to be prepared to restrict the
+principle that ψ followed from φ and ψ for
+certain choices of ψ involving translations of that vocabulary
+into English.)
+
+The above line of thought points in some interesting further
+directions. For example, the intuitionistic natural deduction rules
+governing ∧ (in Set-Fmla),
+which are the same as the classical ones, are
+themselves stronger than the following
+ rules:[24]
+
+
+
+
+
+
+
+χ ≻ φ   χ ≻ ψ
+ 
+
+ χ ≻ φ ∧
+ψ  
+ 
+
+
+
+
+χ ≻ φ ∧ ψ  
+
+ χ ≻ φ 
+
+ 
+
+
+
+
+χ ≻ φ ∧ ψ  
+
+ χ ≻ ψ 
+
+  
+
+
+
+We can take the intuitionistic (and classical) rules to differ from
+these in replacing the formula variable χ with a set-of-formulas
+variable Γ. The latter set is stronger in the sense that there
+are sequents provable with its rules (e.g., p, q
+≻ p ∧ q) which are not provable on the
+basis of the displayed rules (together with the standard structural
+rules, if desired). But clearly the displayed rules uniquely
+characterize ∧, since, once we reduplicate them for ∧′,
+we can take χ in the second and third (collectively,
+(∧E)-style) rules to be φ ∧ ψ, to derive both φ
+∧ ψ ≻ φ and φ ∧ ψ ≻ ψ, from
+which by the reduplicated version of the first
+(“(∧′I)”) rule we derive φ ∧ ψ
+≻ φ ∧′ ψ—with a similar derivation for
+the converse sequent.
+
+This example may seem far-fetched from the point of view of
+motivation, but the dialectical upshot is clear—if the ¬
+rules are objectionable in being stronger than needed for unique
+characterization, the same holds for the intuitionistic ∧ rules;
+in any case there are in fact variations on this theme is that have
+been seriously proposed as weakenings of classical (or intuitionistic)
+logic in the construction of quantum (or ortho-) logic, in which the
+rule (∨E) is subjected to restrictions blocking arbitrary sets of
+side-formulas—the Δ and θ of our formulation of this
+rule in Section
+ 2—exactly
+ as with the ∧ rules inset above (which would be fully general in
+the respect at issue if our chosen framework were what would naturally
+be called Fmla-Fmla, a
+framework occasionally used for logical
+ investigations).[25]
+ One could explore the idea of a requirement that all rules should be
+maximally general in respect of side formulas, to resist such
+pressures to weaken the intuitionistic rules, though what this amounts
+to depends on the logical framework, and it may be hard to hold the
+line without succumbing to a similar pull in the direction of
+generality which would take us over from Set-Fmla
+to Set-Set.
+
+The sensitivity to logical framework of issues of unique
+characterization is well illustrated with the case of modal logic. It
+is possible to fabricate special purpose logical frameworks which
+allow for the formulation of rules uniquely characterizing ☐ in
+all normal modal logics (Blamey and Humberstone 1991), but without
+such exotic devices, unique characterization is limited to the case in
+which ☐ is fully determined—among the normal modal
+logics, then, just to that for which ⊢ ☐φ for all
+φ, and that in which φ ⊣⊢ ☐φ for all
+φ.
+ (Note  34 is relevant here. The “⊢” just used stands for the
+local consequence relation concerned so we could equally well have
+written, “⊢ φ ↔ ☐ φ”. Even more
+exotic logical frameworks for modal logic – taking us further still from the idea of an argument with premisses and
+conclusion(s), that is – have been proposed than that just alluded to, several of which are described in Poggiolesi and Restall 2012
+and in the literature cited in their bibliography.)
+
+This same framework-sensitivity issue can be illustrated by
+considering substructural logics in multiset-based frameworks.
+Classical Linear Logic has two versions of the propositional constants
+(or 0-ary connectives) ⊥ and ⊤, called (in the relevance
+tradition—see Avron 1988—rather than in the notation of
+the seminal paper Girard 1987) F and f in the
+former case and T and t in the latter, with the
+following Mset-Mset
+rules, the Greek letters now standing for finite multisets of formulas
+(and commas for multiset union):
+
+
+
+ (F Left)
+
+ Γ, F
+≻ Δ  
+
+         (T
+Right) 
+ Γ ≻
+T, Δ  
+
+ (t Left)
+
+
+
+
+
+Γ ≻ Δ  
+
+ Γ, t ≻
+Δ  
+ 
+
+         (t
+Right) 
+ ≻ t
+ 
+
+ (f Left)
+
+ f ≻
+
+
+         (f
+Right) 
+
+
+
+
+Γ ≻ Δ  
+
+ Γ ≻ f,
+Δ  
+  
+
+
+
+If we were doing classical logic with multisets, we would need the
+structural rules (Id), (Weakening) and (Cut) from Section
+ 2,
+ set-variables now reinterpreted as multiset variables, and the
+further rule of Contraction to allow double occurrences of formulas on
+the left or right of the ≻ to be replaced by single occurrences.
+For linear logic we retain only (Id) and (Cut), disallowing weakenings
+and contractions, which has the effect that there are now also two
+versions of conjunction and of disjunction, multiplicative and
+additive—into which distinction we cannot go further here,
+except to say that for binary connectives it lines up with the
+intensional/extensional distinction in the relevance
+ tradition.[26]
+ A sequent calculus presentation of the favoured logic from this
+tradition, R, can be obtained from that for Classical Linear
+Logic (without two of its characteristic 1-ary connectives, called
+exponentials, which are there to mark formulas for which weakening and
+contraction are permitted) by allowing contraction (while still
+banning
+ weakening).[27]
+ We return to R in Example 6 of Section
+ 4;
+ it is for the sake of that return that the rules governing t
+and T have been given here alongside those for f and
+F, the latter pair being of current interest. Notice that
+even though there is only one rule for F, namely a left
+insertion rule (with no premiss sequents), this rule suffices to
+characterize F uniquely, since in the combined language with
+F′ governed by a like rule we can prove—just by
+appealing to the appropriate instance of the rule F ≻
+F′ and F′ ≻ F. The weaker
+system of Intuitionistic Linear Logic is cast in the framework Mset-Fmla0
+disallowing the appearance of more than one formula on the right, and
+this application of the left rule for F is available there,
+as also in Mset-Fmla,
+requiring exactly one formula on the right (since we have exactly one
+formula—F or F′—there in the
+present case). When we turn to f, again we find that the
+rules uniquely characterize this connective, since (f Left)
+provides the premiss for an application of (f′ Right)
+with Γ consisting of (one occurrence of) f and Δ
+empty, yielding f ≻ f′, with the
+converse proved similarly. (Note that while F ≻
+f is a special case of the (left) rule for F, there
+is no proof of the converse sequent. One cannot begin with f
+≻ and then weaken in an F on the right, since we do not
+have
+ Weakening.[28])
+ Again, these derivations go through in Mset-Fmla0,
+but
+this time we note that they do not go through in Mset-Fmla,
+since the left
+insertion rule has no applications in that framework. When attention
+is restricted to Mset-Fmla,
+there is no set of pure rules available which
+uniquely characterize f. The Mset-Mset
+(or Mset-Fmla0)
+sequent calculus rules for ¬, which can be taken to be those given
+in Section
+ 2
+ with the set-variables taken as multiset-variables (suitably
+restricted for Mset-Fmla0),
+uniquely characterize ¬, but
+have no direct application in Mset-Fmla
+or any other framework with a fixed multiset
+cardinality on the right (or the left, for that matter). We can say in
+this framework that the rules governing ¬ uniquely characterize
+this connective in terms of → and f—on
+the basis of which it would indeed be explicitly definable (¬
+φ as φ → f), but since here f is not
+uniquely characterized (even though → is), this still leaves
+¬ without its (perhaps) expected uniqueness, as is even more
+evident in Fmla. These considerations continue
+to apply in the presence of contraction (and ∧/∨) distribution,
+accounting for the complaint sometimes made that relevant logic does
+not operate with a uniquely characterized negation. The point here has
+not been either to press or to reply to such complaints, but to note
+their framework sensitivity: they do not arise for Mset-Mset
+or Mset-Fmla0.
+
+The existence and uniqueness questions for connectives turn out in the
+case of sequent calculus rules to be intimately connected with the
+structural rules (Id) and (Cut). Let us call the left and right
+insertion rules governing an n-ary connective #—or
+derivatively, the connective thereby
+governed—Id-inductive if the provability of
+#(φ1,…,φn) ≻
+#(φ1,…,φn) follows from
+the provability of each φi ≻
+φi (i = 1,…,n) by
+means of those rules (without assistance from other structural rules).
+Thus means that no provable sequents are lost if the rule (Id) itself
+is restricted to having applications φ ≻ φ for φ a
+propositional variable. And let us say that the rules in question are
+Cut-inductive if an application of the rule (Cut) with the
+formula #(φ1,…,φn) as
+cut-formula (i.e., as the φ of our representation of the rule
+(Cut) in Section
+ 2
+ or the analogous rule in Set-Set
+or the multiset based frameworks) can be
+dispensed with if the premiss sequents for the application of the rule
+have been derived by (# Left) and (# Right) and (Cut) is allowed with
+the components φ1,…,φn
+as cut-formulas (but again, not allowing the use of other structural
+rules).
+
+All the connectives of the standard sequent calculi, including the
+cases of classical and intuitionistic linear logic, are inserted by
+rules which are both Id-inductive and Cut-inductive, as we illustrate
+here with the rules for →. For definiteness, think of these as
+the Left and Right rules of classical linear logic. To show
+Id-inductivity, we must show that φ → ψ
+≻ φ → ψ is provable using the → rules,
+given (‘the inductive hypothesis’) that φ
+≻ φ and ψ
+≻ ψ are. (We write φ and ψ rather than
+φ1 and φ2.) From the last two sequents,
+(→ Left) delivers: φ → ψ, φ ≻ ψ. From
+this an application of (→ Right) gives the desired conclusion:
+φ → ψ ≻ φ →
+ψ.
+
+For Cut-inductivity suppose (1) Γ, Γ′, φ →
+ψ ≻ Δ, Δ′ has arisen by (→ Left) from
+(1a) Γ ≻ φ, Δ and (2a) Γ′, ψ
+≻ Δ′, while (2) Γ′′ ≻ φ
+→ ψ, Δ′′ has arisen by (→ Right) from
+(2a) Γ′′, φ ≻ ψ,
+Δ′′. We need to show that a cut on (1) and (2) with
+cut-formula φ → ψ can be avoided on the hypothesis that
+we can help ourselves to cuts with cut-formulas φ, ψ. From
+(1a) and (2a), cutting on φ, we get (3) Γ,
+Γ′′ ≻ ψ, Δ′′. Then
+cutting on ψ, (2b) and (3) deliver the desired conclusion:
+Γ, Γ′, Γ′′ ≻ Δ,
+Δ′, Δ′′, without the need to use φ
+→ ψ as a cut-formula with (1) and (2) as premisses.
+
+Cut-inductivity is one aspect of a procedure which has traditionally
+been a professional obsession of proof-theorists: the provision of
+‘Cut Elimination’ theorems to the effect that this or that
+sequent calculus with the rule (Cut) can have this rule removed
+without the loss of any provable sequents. Obviously more is needed to
+show this than the Cut-inductivity of the (pairs of) rules, since
+there are also, inter alia, potential interactions with the
+other structural (and operational) rules to be taken care of. Such
+results are of interest because much follows from the subformula
+property—any sequent provable has a proof in which the only
+formulas to appear are subformulas of those in the sequent
+concerned—which itself follows from the result since all the
+remaining rules insert material rather than remove it in the course of
+the
+ proof.[29]
+ But from the perspective of the philosophy of logic, Cut-inductivity
+and its somewhat less well-publicized companion, Id-inductivity,
+should be considered on a par, as the following somewhat
+impressionistic semantical remark (Girard, Taylor and Lafont 1989,
+p. 31) of Girard suggests, apropos of (Cut), in which C
+represents the cut formula (and (Id) with C on the left and
+right of the “≻”):
+
+The identity axiom says that C (on the left) is stronger than
+C (on the right); this rule [ = (Cut)] states the converse
+truth, i.e. C (on the right) is stronger than C (on
+the left).
+
+
+The point of isolating Id- and Cut-inductivity here, however, has less
+to do with matters of truth (on which, and for further references to
+Girard on which, see further Hösli and Jäger 1994) than
+with uniqueness and existence—not that the semantical issues are
+unconnected with this, of course. The former link is perhaps already
+clear. At the last step of establishing Id-inductivity for →,
+above, we passed from φ → ψ, φ ≻ ψ,
+obtained by (→ Left), to φ → ψ ≻ φ →
+ψ, by (→ Left): but this is just what the uniqueness proof in
+the reduplicated sequent calculus would do, except that the final step
+would be an application of (→′ Right) and would establish
+φ → ψ ≻ φ →′ ψ, with the
+converse proved by interchanging the rules used for → and
+→′.
+
+To see the connection between existence—or more specifically,
+the conservative extension side of the existence
+question—convert the natural deduction rules for Tonk
+given earlier into sequent calculus rules (here
+for Set-Fmla):
+
+
+
+ (Tonk Left) 
+
+
+
+
+Γ,ψ ≻ χ  
+
+ Γ, φ Tonk
+ψ ≻ χ  
+  
+
+
+
+ (Tonk Right) 
+
+
+
+
+Γ ≻ φ  
+
+ Γ ≻ φ Tonk
+ψ  
+  
+
+
+
+By applying the right insertion rule with premiss sequent (courtesy of
+(Id)) φ ≻ φ and the left rule with premiss ψ ≻
+ψ we arrive at the point at which our natural deduction derivation
+started to go bad: we have:
+
+
+
+ φ ≻ φ Tonk ψ 
+ and 
+ φ Tonk ψ ≻ ψ 
+
+
+
+
+and an appeal to (Cut) here, with φ Tonk
+ψ as cut-formula, amounts to bringing home the bad
+ news.[30]
+ But of course this example simply makes vivid the fact that the Tonk
+rules in play are not Cut-inductive and there
+is no Cut-free proof of the desired sequent (at least in general: take
+φ = p, ψ = q). This is hardly surprising
+since the subformula property which Cut Elimination secures itself
+guarantees that the rules for one connective conservatively extend the
+subsystem comprising the rules for the remaining connectives. In the
+present case, the point of the example was that there was no proof of,
+for example, p ≻ q which did not
+detour—in violation of the subformula property—via
+formulas involving Tonk.
+
+We can look at what is roughly speaking a mirror-image of the Tonk
+example to reinforce the contrast between
+Cut-inductivity and Id-inductivity and their respective links with
+existence and uniqueness, and then sort out the “roughly
+speaking” part of this description, which will show them as
+providing, rather, special—one might say canonical—cases
+of the satisfaction of the existence ( = conservative extension) and
+uniqueness conditions. We conduct the discussion in Set-Set
+rather than Set-Fmla
+to avoid a mass of
+complications. The above Tonk rules combine a
+left insertion rule familiar from the sequent calculus treatment of
+∧ and a right insertion rule familiar from that of ∨; their
+reformulation for the change of framework just announced requires an
+idle Δ parameter on the right of the sequents in the premisses
+and conclusions of the rules as schematically presented above
+(replacing the χ in the one case, accompanying the displayed
+succedent formulas in the other). For our mirror image
+ example,[31]
+ consider a binary connective Knot with rules
+combining instead the left insertion rule for ∨ with the right
+insertion rule for ∧:
+
+
+
+ (Knot Left) 
+
+
+
+
+Γ,φ ≻ Δ   Γ,ψ
+≻ Δ  
+
+ Γ, φ Knot
+ψ ≻ Δ  
+  
+
+
+
+ (Knot Right) 
+
+
+
+
+Γ ≻ φ, Δ   Γ
+≻ ψ, Δ  
+
+ Γ ≻ φ Knot
+ψ, Δ  
+  
+
+
+
+These rules are Cut-inductive, as the interested reader may confirm,
+but not Id-inductive, since they do not uniquely characterize Knot.
+To see this, note that both are derivable
+rules for ∧ and also for ∨, and of course we cannot prove φ
+∨ ψ ≻ φ ∧ ψ in general. By contrast, neither
+∧ nor ∨ satisfies both of the left and right rules for
+Tonk. The upshot of the Knot
+rules is best visualised in terms of the
+zero-premiss rules (sequent-schemata) with which they are
+interderivable given the structural rules: φ,
+ψ ≻ φ Knot ψ (the
+right rule) and φ Knot
+ψ ≻ φ, ψ (the left rule). An incidental
+point: since these are the sequent formulations of conditions induced
+by the determinants ⟨T, T, T⟩ and
+⟨F, F, F⟩ one might think of them
+together as expressing idempotence and therefore as being
+interchangeable with the simpler pair φ ≻ φ Knot
+φ and φ Knot
+φ ≻ φ. But while the latter two can be derived from the
+earlier pair (just take ψ as φ), the converse derivation is
+not possible without further principles—conspicuously, a sequent
+version of the extensionality conditions on generalized consequence
+relations mentioned in Section
+ 2.
+ We could call binary # for which φ, ψ ⊩φ # ψ
+and conversely, strongly idempotent according to the
+generalized consequence relation ⊩. Then ∧ and ∨ are not
+the only Boolean candidates for a connective behaving as the Knot
+rules dictate—strongly idempotent
+according to the generalized consequence relation
+⊩CL determined by the class of Boolean
+valuations: we also have the binary projection to the first coordinate
+(φ # ψ equivalent to φ), to the second coordinate (φ #
+ψ equivalent to ψ), and venturing further afield, the Set-Fmla
+hybrids of any two
+of these connectives. Of these perhaps the most interesting is the
+hybrid of the two projection connectives, since this—let us
+write is as “•”—can be used to define all other
+hybrids explicitly from the connectives to be hybridized; for example
+if we want the common properties (as explained in Section
+ 2)
+ of → and ∨, we have them in the following compound of φ
+and ψ: (φ → ψ) • (φ ∨
+ ψ).[32]
+
+If the treatment of Knot were genuinely the
+mirror image of that of Tonk, we would be able
+to say that just as the Knot rules are
+Cut-inductive but not Id-inductive, so the Tonk
+rules are Id-inductive but not Cut-inductive.
+(The twofold demand of Cut- and Id-inductivity is a promising
+candidate for the notion of harmony as it applies to the
+relation between right and left insertion rules in a sequent
+ calculus.[33])
+ And while the failure of Cut-inductivity was indeed noted, nothing
+was said on the subject of Id-inductivity for these rules. Spoiling
+the intended duality, the situation is that the Tonk
+rules fail on this score too—though this
+can be remedied by a simple variation. First, we should note that
+Prior’s point could equally well have been made by combining the
+∨ introduction rule from the second (rather than the to
+first) disjunct with the ∧ elimination rule to the first
+(rather than to the second) conjunct. Call the connective with these
+rules Tonk*
+
+
+
+
+
+
+
+
+ Tonk* Left 
+
+
+
+
+Γ,ψ ≻ Δ  
+
+ Γ, φ Tonk*
+ψ ≻ Δ  
+  
+ 
+
+
+
+        Tonk*
+Right 
+
+
+
+
+Γ ≻ ψ, Δ  
+
+ Γ ≻ φ Tonk*
+ψ, Δ  
+  
+  
+
+
+
+
+
+This suffers from the same defects in respect of the analogy with
+Knot, so, finally, let Tonk+
+be governed by the rules for Tonk
+and also the rules for Tonk*.
+It is Tonk+
+that has Knot
+as its mirror image, since just as we Knot
+has the full force of the (∧ Right) and
+(∨ Left) rules, Tonk+ enjoys the
+full force of the (∧ Left) and (∨ Right) rules. (So here we
+arrive at the reason that Knot was originally
+described as only roughly speaking a mirror image of Tonk.)
+And this time the rules are indeed
+Id-inductive without being Cut-inductive. Indeed, Id-inductivity is
+secured by two independent routes: by the interaction of the Tonk
+Left rule for Tonk+
+with the Tonk*
+Right rule to Tonk+,
+and then again by the interaction
+of Tonk+‘s Tonk*
+Left rule with its Tonk
+Right rule. (To give the former in more detail,
+by way of example, the Tonk Left rule for
+Tonk+ gives φ Tonk+
+ψ ≻ψ from
+(Id)-for-ψ, from which applying the Tonk*
+Right rule for Tonk+ we obtain
+φ Tonk+ ψ ≻ φ
+Tonk+ ψ.)
+
+Let us sum up the lessons for the relations between existence and
+Cut-inductivity and between uniqueness and Id-inductivity that can be
+extracted from the foregoing discussion. Sequent calculus rules which
+are Id-inductive uniquely characterize the connective they govern, but
+not necessarily conversely: the Tonk rules are
+not Id-inductive, but they do uniquely characterize Tonk,
+since they are already so strong that any
+sequent with at least one formula on the left and at least one on the
+right can be proved with their aid, and hence, in the reduplicated
+system with Tonk′, we can certainly
+prove φ Tonk ψ ≻ φ Tonk′
+ψ and the converse
+sequent—without even using the Tonk′
+rules! (This is the kind of thing we
+have in mind in calling this a non-canonical form of uniqueness.) On
+the ‘existence’ side: it is not clear to the author
+whether any Cut-inductive rules governing a connective guarantee that
+they are conservative over the (system consisting of the) rules
+governing other connective—since Cut Elimination may fail for
+other reasons; nor do the examples just considered settle the
+converse, as we see from the following tabular summary of our
+findings, in which (a “Yes” by) “unique” means
+the rules uniquely characterize the connective, and
+“conservative” means that we have a conservative extension
+of any system of sequent-calculus rules not involving the given
+connective; Tonk* is not listed separately
+since it patterns the same way as Tonk:
+
+
+
+Id-inductive
+Unique
+Cut-inductive
+Conservative 
+
+Tonk
+No
+Yes
+No
+No 
+
+Tonk+
+Yes
+Yes
+No
+No 
+
+Knot
+No
+No
+Yes
+Yes 
+
+
+That is enough on the subject of Tonk and
+variations. We will make one point about unique characterization and
+then give some examples of non-conservative extension which will
+involve introducing the important concepts of special and
+universally representative connectives. Some further
+‘existence’ examples are deferred to the following
+section.
+
+The above discussion has included such phrases as “the hybrid of
+∧ and ∨”; the totality of principles governing such a
+connective being those common to ∧ and ∨, we obviously do not
+have a connective uniquely characterized by those principles—in
+which case is it legitimate to speak of the hybrid…? I
+take this way of speaking to be as harmless as speaking of “the
+☐ operator of S5”, where again the logical
+principles involved are insufficient to characterize the connective
+uniquely—in terms of the Boolean connectives or
+otherwise—at least if we are Fmla, Set-Fmla
+or Set-Set,
+and in the latter
+cases, working with the so-called local (generalized)
+consequence
+ relation.[34]
+ (See Section
+ 5
+ for the distinction between the local and the global consequence
+relations determined by a class of models.) One could say that in the
+monomodal, unreduplicated case, we have a single connective playing a
+certain role and we can refer to it in that context as the
+connective playing the role in question, while conceding, as we learn
+from the reduplicated case, that this is a role that can be played
+simultaneously (i.e. in a single logic) by several non-equivalent
+connectives. This is the kind of situation Łukasiewicz had in
+mind when, in his (1953), he likened certain pairs of connectives to
+“twins who cannot be distinguished when met separately, but are
+instantly recognised as two when seen together”.
+
+We saw earlier that combining the intuitionistic and classical rules
+in a single proof system did not work well, and another suggestion
+that comes to mind is that we could perhaps extend intuitionistic
+logic with a new connective, 1-ary #, say, which does what according
+to the intuitionist, negation (¬) itself cannot do: serve as a
+left inverse for ¬ in the sense of rendering equivalent
+#¬φ and φ for all
+ φ.[35]
+ This again represents an offer the intuitionist cannot afford to
+accept, assuming that any (the rules for any) proposed new connectives
+should conserve synonymy, as suggested above. (The even stronger
+demand that the consequence relation associated with the extended
+proof systems should be congruential does not seem unreasonable.) The
+reason is that ¬p and ¬¬¬p are
+intuitionistically equivalent (and thus synonymous according to
+⊢I L) so the conservation of synonymy
+requires that #¬p and #¬¬¬p should
+be equivalent—since we have this ‘Law of Triple
+Negation’ equivalence in intuitionistic logic—from which
+the left inverse condition above delivers, taking φ as
+¬p in the former case and as ¬¬¬p in
+the latter, the equivalence of p with
+¬¬p—a straightforwardly non-conservative
+extension, then. (A similar argument shows that adding binary # with
+φ # (φ ↔ ψ) equivalent to ψ—a possibility
+suggesting itself since, by contrast with the classical case, ↔
+itself cannot serve as # here—is also non-conservative.) Nor,
+incidentally, could the intuitionist acknowledge the existence of a
+right inverse for negation, a # with arbitrary φ
+equivalent to ¬ # φ, as this makes every formula equivalent to
+a negated formula and hence to its own double negation. This argument,
+which is well known (see, e.g., Koslow (1992), p. 97), does not even
+require the ‘conservation of synonymies’ constraint.
+
+These last non-existence proofs force our attention on the fact that
+negated formulas are ‘special’ in intuitionistic logic in
+that each such formula is equivalent to its own double negation while
+this is not so for arbitrary formulas. Let us back up and give a clear
+explanation of the notion of specialness as well as a contrasting
+notion, in slightly more general terms; for definiteness only, we
+tailor the account to Set-Fmla.
+We also begin with the contrasting notion. Say
+that an n-ary relation R among the formulas of a
+language is universally representative according to a
+consequence relation on that language if for any formulas
+φ1,…,φn of the language,
+there are formulas
+ψ1,…,ψn, respectively
+synonymous with φ1,…,φn
+according to ⊢, with
+R(ψ1,…,ψn). (If
+n = 1, we speak instead of a universally representative
+class of formulas—a class of formulas such that every
+formula is synonymous with some formula in the class; likewise in the
+case of the notion special, defined below.) If ⊢ is
+congruential then we can replace “synonymous” in this
+definition with “equivalent” (i.e. such that
+φi ⊣⊢ ψi,
+for i = 1,…,n). Say that R is
+special according to ⊢ if there is some Set-Fmla
+sequent σ(p1,…,
+pn) constructed using not
+necessarily just the variables exhibited, for which for any formulas
+ψ1,…,ψn with
+R(ψ1,…,ψn), we
+have σ(ψ1,…,ψn)
+∈ ⊢, while we do not have, for all formulas
+φ1,…,φn, σ(φ1,…,φn)
+∈ ⊢. For substitution-invariant ⊢, this last
+condition can be simplified to:
+σ(p1,…,
+pn) ∉
+ ⊢.[36]
+ A consequence of these definitions is that no relation is both
+universally representative and special according to any given ⊢.
+A simple example of a special relation—according to more or less
+any ‘naturally occurring’ consequence relation with ∨
+in its language is relation R obtaining between φ and
+ψ just in case ψ is a disjunction of which φ is a
+disjunct. Here take σ(p, q) as p
+≻ q which is (e.g., in intuitionistic logic, though
+classical logic or any of many others would do as well)
+unprovable—i.e., not p
+⊢I L q—while φ
+⊢I L ψ for all φ, ψ for
+which R(φ, ψ). A more interesting example is the
+relation of being (intuitionistically) head-linked, i.e.,
+that relation R such that for all φ, ψ,
+R(φ, ψ) if and only if:
+
+for some formulas χ, φ0, ψ0, we have
+φ ⊣⊢I L φ0
+→ χ and ψ
+⊣⊢I L ψ0 →
+χ.
+
+
+The analogous relation for classical logic would be universally
+representative (and thus not special), at least in any fragment which,
+as well as having →, has either ⊥ or ∧, since any φ
+and ψ are here respectively equivalent to (φ → ⊥)
+→ ⊥ and (ψ → ⊥) → ⊥, where they are
+linked explicitly by having a common χ at the head of the main
+implication. (Alternatively with ∧, replace ⊥ here by φ
+∧ ψ.) But in the intuitionistic case the relation of being
+head-linked is special since, for example, with Peirce’s law
+σ(p,q) = (p → q) →
+p ≻ p, we have σ(p, q)
+intuitionistically unprovable but we have σ(φ,ψ) ∈
+⊢I L for any head-linked 
+φ, ψ.
+
+Concentrating now on 1-ary relations between—i.e., classes
+of—formulas, we transfer the above terminology to connectives by
+saying that a connective is universally representative or
+special according to a consequence relation if the class of
+formulas with the given connective as main connective is itself a
+universally representative class or a special class of formulas,
+respectively, according to the consequence relation in question. While
+every non-constant
+ connective[37]
+ is universally representative according to
+⊢CL our discussion of inverses for
+intuitionistic ¬ shows that ¬ is special according to ⊢,
+since we can take σ(p) as ¬¬p ≻
+p and every substitution instance of this IL-unprovable
+sequent in which p is replaced by a negated formula is
+IL-provable. Negation is therefore not universally representative in
+intuitionistic logic. (This means that we could usefully speak, from
+the perspective of ⊢I L, of negative
+propositions, thinking of the equivalence class, with respect
+to the relation of synonymy, of a formula as the proposition thereby
+expressed, and meaning by this the equivalence classes of negated
+formulas. Classically, the corresponding notion is not useful since
+all propositions would count as negative, just as for both
+⊢CL and ⊢I L,
+there are no specifically conjunctive or disjunctive
+propositions.)
+
+Although the properties of being special and being universally
+representative according to a given logic are mutually exclusive, they
+are not jointly exhaustive. For example, ⊥ is neither universally
+representative nor special in minimal logic (according to the
+consequence relation associated with the Johansson’s
+Minimalkalkül, that is). Nor does the connective ☐
+have either of these properties in the modal logic KD
+(sometimes just called D), though this example is far from
+selected at random: in the sublogic K, ☐ is special (since
+☐⊥ → φ is provable for all ☐-formulas φ,
+though not for arbitrary φ), and in the extension KD4 it is
+special again (since φ → ☐φ is provable for all
+☐-formulas φ, though not for all formulas).
+4. Selected Existence Questions
+4.1 Conditions not Corresponding to Rules (Example 1)
+
+For conditions other than those corresponding to (closure under
+certain) rules we can also ask whether a connective satisfying the
+condition in question can safely—i.e. conservatively—be
+postulated to exist. One such condition is the following, here
+expressed as a condition on a consequence relation ⊢ with a
+binary connective # in its language, all variables understood as
+universally quantified:
+
+Γ ⊢ φ # ψ if and only if Γ ⊢ φ or
+Γ ⊢ ψ.
+
+
+It is because of the “or” on the right that this
+condition—more precisely, its ‘only if’
+half—does not correspond to a sequent-to-sequent rule. Still we
+can ask whether some Set-Fmla
+proof system including the rule (∨E) (or the
+sequent calculus rule (∨ Left)), e.g. for classical logic, has a
+conservative extension to a proof system for a language with the
+additional connective #, whose associated consequence relation
+satisfies the above condition for this
+ #.[38]
+ To see that the answer to this question is negative, note that the
+binary relation R⊢ defined in terms of the
+#-supporting extension ⊢:
+R⊢(φ,ψ) iff φ ⊢ ψ,
+gives rise to a binary relational connection (L, L,
+R⊢) which provides conjunctive
+(yes—conjunctive) combinations on the left, since
+⊢ is ∨-classical, φ ⋅L ψ
+here being φ ∨ ψ, while the inset condition above (take
+Γ = {χ}) secures disjunctive objects on the right, with
+φ +R ψ being φ # ψ.
+(“L” and “R” subscripts from
+Section
+ 1
+ restored here to prevent confusion, since the source and target
+coincide.) Thus the crossover condition from Section
+ 1
+ is satisfied, which says that if φ1 ⊢
+ψ1 and φ2 ⊢ ψ2 then
+either φ1 ⊢ ψ2 or
+φ2 ⊢ ψ1. Taking φ1
+= ψ1 = χ and φ2 = ψ2
+= χ′, we have the antecedent of this conditional (by (Id)),
+so we conclude that for all formulas χ, χ′, either χ
+⊢ χ′ or χ′ ⊢ χ, which includes
+#-free formulas of the original language (e.g., χ = p,
+χ′ = q) for which neither is a consequence of the
+other by the original consequence relation, showing any proposed
+extension along the above lines to be non-conservative.
+4.2 Pollard-Style Nonconservativity (Example 2)
+
+This is really a whole range of examples. As we required (∨E) for
+Example 1, here we require (→I). Let us call a consequence
+relation ⊢ →-introductive if Γ, φ
+⊢ ψ always implies Γ ⊢ φ →
+ ψ.[39]
+ Now suppose ⊢ ⊇ ⊢I L and
+⊢ is →-introductive, and either (i) for some n-ary
+connective #, ⊢ satisfies the conditions induced (on consequence
+relations) by the determinant ⟨F,…, F,T⟩ (n
+occurrences of “F”) for #, as well as some determinant
+with F as its final entry, or (ii) ⊢ satisfies the conditions
+induced by the determinant ⟨T,…,T, F⟩ (n
+occurrences of “T”) as well as some determinant with T as
+final entry (for n-ary #). Then it follows that ⊢
+⊇ ⊢CL.
+
+The implication from (i) to the conclusion that ⊢ ⊇
+⊢CL has been stressed in several publications
+by S. Pollard (Pollard 2002, Pollard and Martin 1996); there is a
+similar proof for the implication from (ii). Neither proof is given
+here—only an illustration (of case (ii)). The truth-function
+known as exclusive disjunction (or xor), which differs from
+that associated on Boolean valuations with ∨ (“inclusive
+disjunction”) by having ⟨T, T, F⟩ instead of the
+determinant ⟨T, T, T⟩, will serve as an example, since as
+well as the determinant just mentioned, which has T’s except for
+the final F, we have a T-final determinant (e.g.) ⟨T, F, T⟩.
+The induced conditions on generalized consequence relations for these
+two determinants are respectively:
+
+
+
+ φ, ψ, φ # ψ ⊩ 
+    and    
+ φ ⊩ ψ, φ # ψ.  
+
+
+
+For the following, we will take it that, as well as →, the
+connectives ∨, ¬, ⊤ and ⊥ are available, though in
+fact the result just given requires is correct for any fragment with
+→ (with ⊢CL understood as the restriction
+of the classical consequence relation to the fragment in question).
+Then we can write the induced conditions on our consequence relation
+⊢ as, respectively, rather than using a new schematic letter on
+the right for the first, and converting the second into conditional
+form:
+
+
+
+ φ, ψ, φ # ψ ⊢ ⊥ 
+    and    
+ φ ⊢ ψ ∨ (φ # ψ).  
+
+
+
+Now making use of the hypothesis that ⊢ is
+→-introductive—which does not follow from the fact
+that ⊢I L is →-introductive and
+⊢ ⊇ ⊢I L—the first
+condition now allows for successive rewriting, first as
+
+φ # ψ ⊢ φ → (ψ → ⊥),
+
+
+and then as
+
+φ # ψ ⊢ φ → ¬ψ.
+
+
+The fact that ⊢ is an →-introductive extension of
+⊢I L suffices for ⊢ to be
+∨-classical, and in particular for it to be
+‘∨-eliminative’ in the sense that whenever Γ
+⊢ χ1 ∨ χ2 and also
+Γ′, χ1 ⊢ θ and
+Γ′′, χ2 ⊢ θ, we have
+Γ, Γ′, Γ′′ ⊢ θ. Thus
+from the fact that φ ⊢ ψ ∨ (φ # ψ), inset on
+the right above, and that φ # ψ ⊢ φ →
+¬ψ, we may conclude that φ ⊢ ψ
+∨ (φ → ¬ψ). Not only does this
+fail—e.g., with the schematic letters replaced by distinct
+propositional variables—for ⊢I L,
+making the extension non-conservative, it takes us all the way to
+⊢CL, as claimed in the general formulation
+((i) and (ii)) of the result. To see this most easily in the present
+case, take φ as ⊤.
+
+Does any of this mean that there is a problem in finding an
+intuitionistic analogue of exclusive disjunction? Not at all. There
+are many derived binary connectives all of which form compounds
+equivalent in classical logic to the exclusive disjunction of φ
+with ψ and which are in the interesting cases not equivalent to
+each other intuitionistically—for example, φ ↔
+¬ψ and ¬(φ ↔ ψ) and (φ ∨ ψ) ∧
+¬(φ ∧ ψ). As it happens, the third of these (which is
+IL-equivalent to (φ ∧ ¬ψ) ∨ (¬
+φ ∧ ψ)) has an especially close relationship with
+the truth-function of exclusive disjunction, like that between
+intuitionistic ¬ and the negation truth-function, which can be
+explained in terms of the Kripke semantics for intuitionistic logic
+(not explained in this entry) by saying that the compound in question
+is true at a point just in case at every accessible point it is true
+when evaluated by using the corresponding boolean function and the
+truth-values of the components at that
+ point.[40]
+ Note that the negation truth-function itself has its
+determinant-induced conditions rules dangerous to the health of
+intuitionistic logic under both (i) and (ii) of the result at the
+start of this example: no single connective can conservatively form
+from a formula a contrary of that formula (as ⟨T,
+F⟩ demands) and also a subcontrary of
+that formula (as ⟨F, T⟩ demands). As it is often put,
+standard intuitionistic negation (¬) forms the deductively weakest
+contrary of a formula, while dual intuitionistic negation (mentioned
+only in passing in this entry) forms its deductively strongest
+ subcontrary.[41]
+4.3 Negation by Iteration (Example 3)
+
+Could there be a 1-ary connective # two successive applications of
+which amounted to a single application of (say) classical
+ negation?[42]
+ If we work in Set-Set
+an austere version of this question amounts to asking about the fate
+of # subjected, alongside the standard structural rules, to the
+condition that for all φ:
+
+
+
+ φ, ##φ ≻ 
+  and  
+ ≻ φ, ##φ  
+
+
+
+should both be provable, to which it is natural to add immediately
+that # should be congruential according to the generalized consequence
+relation associated with this proof system. Without the latter
+addition, we could just think of “##” as an
+idiosyncratically long-winded way of writing “¬”. With
+it, we are insisting that a single occurrence of “#” is
+genuinely responsive to the content of what it applies to. It is not
+hard to see that there is no (two-valued) truth-functional
+interpretation available for #, not just in the weak sense that it
+might be said that (for example) ☐ in S4 does not admit
+of such an interpretation—that this logic is determined by (
+= both sound and complete with respect to) no
+class of valuations over which ☐ is truth-functional—but
+in the stronger sense that the envisaged logic of # is not even
+sound with respect to such a class of valuations, at least if
+that class is non-constant in the sense defined at the end of
+note 20.[43]
+ In the paper cited, this congruential logic of what is there and in
+an earlier paper there referred to as demi-negation is discussed and
+equipped with a Kripke-style semantics (essentially re-working an
+earlier 4-valued matrix semantics) the upshot of which is that
+classical propositional logic or any fragment thereof is
+conservatively extended by the two zero-premiss rules inset
+above—or alternatively, assuming ¬ is in the fragment, by
+the equivalence of ¬φ and ##φ—and a congruentiality
+rule for #. Nevertheless it is hard to imagine, “from the
+inside”, speaking a language with a connective for which this
+provided a suitable formal treatment. The description suggested at p.
+257 of Dalla Chiara, Giuntini, and Greechie (2004), a study in quantum
+logic, of such a connective as expressing a kind of tentative
+negation, seems wrong, since iterating tentative negation would not
+produce (untentative) negation: If you tentatively negate the
+tentative negation of φ you would appear to be headed (however
+tentatively) back in the direction of φ rather than towards ¬
+φ. On the same page of Dalla Chiara et al. (2004),
+Deutsch et al. (2000) are approvingly quoted as saying the
+following—in which, since composition is more like
+multiplication than addition, demi-negation is referred to as the
+‘square root’ of negation:
+
+Logicians are now entitled to propose a new logical operation
+√not. Why? Because a faithful physical model for it
+exists in nature.
+
+
+I do not recall logicians having to seek the blessing of physicists
+before pursuing this or that line of inquiry, or of the interest,
+significance or legitimacy (“now entitled to propose...”,
+no less) of such inquiries being dependent on empirical and
+theoretical findings in physics, when what is under investigation is
+most naturally taken to be an a priori matter: the coherence
+of a connective with given inferential properties. This is not at all
+to deny that the ‘quantum machines’ described in Deutsch
+et al. (2000) (or Chiara, Giuntini, and Greechie 2004,
+257–259) may help us get a feel for the connective in
+ question.[44]
+4.4 Logical Subtraction (Example 4)
+
+Suppose one wants to say more about the weather than that it rained on
+a particular Saturday. One wants to strengthen one’s commitments
+so that they include not only rain on Saturday but also rain on the
+following Sunday. With ∧ (assuming some background ∧-classical
+consequence relation) there is nothing easier. Abbreviating “It
+rained on the Saturday in question” to Sat and
+“It rained on Sunday” to Sun, one can convert
+one’s original statement into one making the stronger claim by
+passing from Sat to Sat ∧ Sun. Now
+suppose one wanted a similar device but working in the reverse
+direction. One starts with a claim whose content is given by Sat
+∧ Sun and wants to modify this using a connective
+which removes commitments in much the way that ∧ adds them, and
+using this connective, often called logical subtraction
+(though a case could be made for ‘logical division’ in
+view of the usual association of conjunction with multiplication), one
+wants to take away the commitment to rain on Sunday, leaving only the
+original claim. That is, one would like a connective added to the
+language of one’s favoured consequence relation, in such a way
+that the added connective was governed by rules making the extension
+conservative, but for which one had the equivalence (writing ⊢)
+for the extended consequence relation:
+
+(Sat ∧ Sun) −  Sun
+⊣⊢ Sat.
+
+
+An early and plausible suggestion for the treatment of logical
+subtraction was made in Hudson (1975). According to this suggestion,
+no new connective is required, at least if we already have a
+reasonable implication connective at our disposal, because if we are
+to think of φ − ψ as giving us
+the result of taking away the content of ψ from that of φ,
+then this should be the weakest statement which, together with ψ,
+has φ as a consequence. But this is just ψ → φ, if
+the standard natural deduction rules for → from Section
+ 2
+ are accepted (as in intuitionistic and classical logic). Yet this
+does not give us the inset equivalence above. If we treat
+(Sat ∧ Sun) − Sun as Sun
+→ (Sat ∧ Sun), then this is equivalent (in
+the logics just mentioned and many others) to Sun → 
+Sat, whereas we wanted the stronger Sat itself (stronger
+according to those logics, again).
+
+The example above used an interpreted language with atomic sentences
+Sat and Sun. The inset equivalence presented
+involving them would not be reasonable for all sentences. Modulating
+back to the issue of a formal propositional logic involving the
+envisaged new connective, such an equivalence would not be reasonable
+for arbitrary φ and ψ in place of them, since we would expect
+the new connective to be congruential according to the desired
+consequence relation, and any unrestricted such equivalence would then
+deliver from φ1 ∧ ψ ⊣⊢
+φ2 ∧ ψ—by “subtracting ψ from
+both sides” (in view of congruentiality)—the conclusion
+that φ1 ⊣⊢ φ2, and it easy
+to find counterexamples to such cancellation inferences for even quite
+weak initial logics. Since the counterexamples arise for
+φ1, φ2, in the language unexpanded by
+“−”, the sense in which a generalized version of the
+earlier equivalence would not be reasonable is that it would not be
+conservative over the initial logic. Here we say no more about how to
+constrain the equivalence in question, or, more generally, about
+whether there really is any such logical subtraction connective as
+we have been
+ envisaging.[45]
+4.5 A Multiple Existence Question (Example 5)
+
+A much more straightforward example, this time considering several
+connectives at once. Suppose we ask whether one can conservatively add
+to intuitionistic logic three binary connectives #1,
+#2, #3, satisfying for all φ, ψ:
+
+
+
+ φ ⊣⊢ (φ #1 ψ) → (φ
+#3 ψ) 
+  and  
+ ψ ⊣⊢ (φ #2 ψ) → (φ
+#3 ψ).  
+
+
+
+In classical logic we can take φ #1 ψ and φ
+#2 ψ as (equivalent to) ¬φ and ¬ψ
+respectively, and φ #3 ψ as ⊥. There are no
+three candidates playing the desired role in any conservative
+extension of intuitionistic logic, however, because the inset
+equivalences render arbitrary φ and ψ head-linked in the sense
+of Section
+ 3,
+ with φ #3 ψ as the head formula.
+4.6 An Example Related to Algebraizability (Example 6)
+
+The present example comes from the relevant logic R. The
+sentential constants T and t whose sequent calculus
+treatment we saw in Section
+ 3
+ are treated in axiomatic developments of R by means of the
+axiom schemas φ → T for the former cases and both
+t and t → (φ → φ), though these
+last two can be replaced by φ ↔ (t → φ).
+Here ↔ itself can be regarded as an abbreviation either of (φ
+→ ψ) ∧ (ψ → φ), or as (φ
+→ ψ) ○ (ψ → φ),
+where ∧ and ○ are the additive or ‘extensional’
+(as the relevance tradition would have it) conjunction and the
+multiplicative or ‘intensional’ conjunction (also called
+fusion) respectively. While in linear logic neither
+p ○ q nor p ∧ q provably
+implies the other, in R, thanks to the presence of contraction,
+the latter implies the
+ former.[46]
+ A well-known further side effect of contraction is that φ ○
+ψ and φ ∧ ψ are also equivalent whenever φ is an
+implicational formula and ψ is its converse, so the two
+alternative readings of φ ↔ ψ above are equivalent in
+R. Now consider the possible existence of a new nullary
+connective for R in the ‘truth constants’ family,
+T, subject to the axiom schema:
+
+φ ↔ (T ↔ φ).
+
+
+This looks harmless enough, the principles governing t,
+T and T all holding for the
+undifferentiated ⊤ constant of classical and intuitionistic
+logic, but here notationally distinguished so as not to prejudice
+questions of the logical relations between
+ them.[47]
+
+But in R, this harmless appearance is deceptive. For in this
+logic the connective ↔ is what we have called special.
+After the well-known extension, R-Mingle or RM, of
+R by the Mingle schema φ → (φ
+→
+ φ),[48]
+ let us call a formula φ for which this is already provable in
+R a Mingler. Since RM is a proper extension of
+R, not all formulas are Minglers in R. But again thanks
+to contraction, all ↔-formulas are Minglers, rendering ↔
+special in R. Now we can see that the addition of T,
+subject to the schema inset above, would
+extend R non-conservatively because now every formula φ
+would be equivalent to the corresponding ↔-formula T
+↔ φ, so even for T-free
+φ we should have the Mingle theorem
+φ → (φ → φ). Thus no devotee of R should
+be prepared to countenance the existence of T
+behaving as envisaged (or indeed any pair
+#1, #2 of 1-ary connectives with φ provably
+equivalent to #1φ ↔ #2φ).
+
+The fact that the biconditional connective is special in R may
+appear to conflict with the fact, established in Blok and Pigozzi
+(1989) that this logic is what the authors call
+algebraizable. This term is applied to consequence relations
+⊢ which are translationally equivalent to the quasi-equational
+consequence relation ⊨K of a class of algebras
+of the same similarity type as the language of ⊢. That is, for
+equations
+e1,…,en, we
+have
+e1,…,en−1⊨K
+en just in case for any algebra A
+∈ K and any assignment of elements of A to the
+variables in the ei, if all of
+e1,…,en−1
+come out true in A on that assignment, so does
+en. The translational equivalence idea
+means that there is a translation τ from formulas of the
+(sentential) language of ⊢ to equations of the language of
+K, and a translation τ′ back in the other direction,
+which are mutually inverse in the sense that φ ⊣⊢
+τ′(τ(φ)) and e
+⫤⊨K τ(τ′(e)) for
+all formulas φ and equations e, and, for all formulas
+φ1,…,φn and equations
+e1,…,en,
+either of the following conditions is satisfied (from which it follows
+that both are):
+
+φ1,…,φn−1 ⊢
+φn if and only if
+τ(φ1),…,τ(φn−1)
+⊨K τ(φn)
+
+
+and
+
+e1,…,en−1
+⊨K en if and only
+if
+τ′(e1),…,τ′(en−1)
+⊢ τ′(en).
+
+
+This account of algebraizability has been oversimplified for
+expository purposes in one respect: Blok and Pigozzi (1989) do not
+require the translation of a formula (what we are calling τ)
+should yield a single equation, but allow a set of equations,
+and similarly in the converse direction, τ′(e) is
+allowed to be a set of formulas. It follows from the present
+definition, with the single equation/single formula restriction
+removed, that the formulas in the latter set function collectively as
+an equivalence-like compound satisfying some further congruence
+conditions, which in the case of ⊢R can be
+taken to be ↔. Accordingly, the fact that
+⊢R—explained presently—is
+algebraizable, entails, in view of the “φ ⊣⊢
+τ′(τ(φ))” condition, that, loosely speaking,
+every formula is equivalent to an equivalence. But does this not clash
+with our finding that ↔ is special in R?
+
+Well, first, the consequence relation ⊢R needs
+to be explained. Blok and Pigozzi have in mind the least consequence
+relation for which φ, φ → ψ ⊢
+ψ and φ, ψ⊢ φ ∧
+ψ and ⊢ φ for all φ provable in the
+Fmla logic R. (This third condition can
+be restricted to all axioms of any axiomatization of R with
+formula-to-formula rules corresponding to the first and second
+conditions.) Now the loose summary just given to the effect that every
+formula is equivalent to an equivalence makes a misleading double use
+of the equivalence vocabulary for two different things: equivalence as
+mutual consequence (“⊣⊢”) and equivalence as
+the biconditional connective. Removing the conflation, it means that
+for every φ there exist ψ, χ, with φ
+⊣⊢Rψ ↔
+ χ.[49]
+ This is a very different matter from having
+⊢Rφ ↔(ψ ↔ χ). The latter
+would indeed be equivalent to the provability in the sequent calculus
+described for R in Section
+ 3
+ of φ ≻ ψ ↔ χ and the converse sequent. But the
+apparently matching ⊢R-statements mean
+something very different, building in the structural features (such as
+weakening) that the substructural sequent calculus was designed to
+avoid. Note in particular that ⊢R is not
+→-introductive, in the sense of Example 2 above.
+4.7 Two-Dimensional Isotopes of Boolean Connectives (Longer Example 7) 
+
+Could there exist a connective #′ which, when appearing outside
+of the scope of some specified range of operators – typically,
+non-Boolean connectives – behaves just like a given Boolean
+connective #, while behaving differently from # when occurring within
+the scope of one of the operators in the range in question?
+Understanding all of this as happening under the aegis of some
+particular consequence relation, on which more will be said in the
+following paragraph, the situation envisaged would be like this. A
+#′-compound would be equivalent to a #-compound of the same
+components, each compound having the other as a consequence by the
+relevant consequence relation, without being synonymous with that
+compound (synonymy as explained in Section
+ 1).
+ The remainder of this example assumes some familiarity with the basic
+modal logic of “actually”. The semantics of this logic can
+be presented, as in the first two pages of Davies and Humberstone
+(1980), using models with a distinguished point (or world), with a
+formula Aφ evaluated as true at any point in the model
+just in case φ is true at the distinguished point. The
+generally valid formulas are then those true every point in
+all such models, and the generally valid sequents are those for which
+truth is preserved from left to right at each point in all such
+models. The real-world valid formulas (sequents) are those
+which are true (resp. truth-preserving) at the distinguished point in
+all models.
+
+Alternatively, the semantics can be reformulated so that the models
+feature no such privileged point and truth (in a model) is relativized
+to a pair of points, one of which plays the ‘real world’
+role formerly played by the distinguished element, the other playing
+the role of the world of at which the formula is being locally
+evaluated, as in notes 4 and 16 of Davies and Humberstone (1980).
+General validity is a matter of truth or its preservation relative to
+arbitrary such pairs in all models, and diagonal validity (as
+real-world validity is often suggestively called in this setting)
+attends instead only to pairs whose first and second coordinates
+coincide. On either style of presentation, the formulation in terms of
+sequents gives a consequence relation in the obvious way, and for
+present purposes the following terminology will be convenient.
+Formulas will be said to be diagonally equivalent when each
+is a consequence of the other by the consequence relation capturing
+diagonal (or ‘real-world’) validity and to be
+unrestrictedly equivalent when this holds instead for the
+general consequence relation. (We avoid the phrase “generally
+equivalent”, since it is hard not to hear this as meaning
+“equivalent, for the most part”; this terminology is
+adapted from the reference to general consequence on p. 15 of
+Fusco 2015 as unrestricted consequence.) The current distinction
+between diagonal and unrestricted equivalence provides a useful formal
+modeling of Dummett’s well-known distinction between sameness of
+assertive (or assertoric) content, on the one hand, and sameness of
+ingredient sense on the
+ other.[50]
+ The idea of applying such a contrast to the case of specific pairs of
+connectives – as with the #, #′ pairs from the start of
+the preceding paragraph – appears, however, to be new with Fusco
+(2015), to which we turn presently. The consequence relation in play
+in the #, #′ discussion above is taken as the diagonal
+consequence relation (with the associated relation of weak
+equivalence), according to which these connectives are
+non-congruential, providing for mutual consequence without synonymy,
+rather than the finer-grained general consequence relation (associated
+with unrestricted equivalence). The latter consequence relation is
+congruential, but at the cost of not directly reflecting the felt
+a priori equivalence of Aφ with φ.
+
+The aspect of Fusco (2015) of present concern is the treatment of
+disjunction, with special reference to the problems with which it is
+associated in deontic logic – such as Ross’s Paradox, and
+the representation of Free Choice permission. The issue is discussed
+further in Section 3 of Fusco (2019). (For general background,
+including these problems, see McNamara 2019; more detail on the
+specifically disjunction-related issues arising is provided in Aloni
+2016.) Fusco (2015) argues, on grounds we do not go into here (since
+they involve several parts of an elaborate theory of deontic notions),
+that these problems of deontically embedded “or” in
+English (and corresponding vocabulary in other natural languages) are
+best treated rendering it formally by means of “ or
+”, with φ or
+ψ defined as:
+
+(1)   (A(φ ∧ ¬ψ) → φ) ∧
+(A(¬φ ∧ ψ) → ψ) ∧
+(A(φ ↔ ψ) → (φ ∨ ψ)).
+
+
+This is a suggested definition, at least for φ, ψ, constructed
+using just Boolean connectives, from a planned sequel to Fusco (2015)
+and (2019), spelling out in the object language a semantic
+characterization supplied in the first of those papers. An
+unrestrictedly equivalent definition (or more accurately, definiens)
+which some readers may prefer is the following:
+
+(2)   (A(φ ∧ ¬ψ) ∧ φ) ∨
+(A(¬φ ∧ ψ) ∧ ψ) ∨
+(A(φ ↔ ψ) ∧ (φ ∨ ψ)).
+
+
+By contrast, instances of the following schema, giving the treatment
+of “whether φ or ψ ” in Lewis (1982) for Boolean
+φ, ψ (though not in general, as explained in the last
+paragraph of note 51 below), would only be diagonally equivalent to the
+corresponding instances of the above pair:
+
+(3)   (Aφ ∧ φ) ∨ (Aψ ∧
+ψ).
+
+
+So as to have concrete formulas to discuss, consider the instances of
+these three schemata with distinct sentence letters p and
+q taken as φ and ψ, respectively, and we will now use
+(1)–(3) to refer to these concrete instances. The first pair are
+unrestrictedly equivalent and all three are diagonally equivalent,
+with (3) having (1) and (2) as general consequences though not
+ conversely.[51]
+ All are diagonally equivalent to the Boolean disjunction p
+∨ q, which we may put by saying that all are
+two-dimensional isotopes of the one-dimensional, i.e.
+A-free, formula p ∨ q, or, more
+usefully, that their respective equivalence classes w.r.t. the
+relation of unrestricted equivalence, stand in this
+‘isotope’ relation. Similarly, we can speak of the (in the
+above presentation, derived) connective or
+as a two-dimensional isotope of the Boolean ∨,
+thinking of the formula (2) as a context of the variables p,
+q. (On the other hand, what is referred to in note 51  as Groenendijk–Stokhof’s “or”
+is not a two-dimensional isotope of
+Boolean disjunction, p or q,
+so understood, being diagonally
+equivalent to a Boolean tautology, rather than to
+p ∨ q.)
+
+What is the point of considering such two-dimensional isotopes of
+Boolean disjunction? Fusco’s idea is the following. Arguably,
+people have thought that the correct treatment of inclusive
+“or” in English is given by (Boolean) “∨”,
+once they have learned to diagnose as pragmatic distraction any
+apparent anomalies, because this simple connective with its
+truth-functional semantics captures the way “or” behaves
+when it appears unembedded (or only ‘Booleanly’ embedded).
+The presumption has then been that any residual anomalies arising from
+problematic embeddings will be eventually also then be explained away
+pragmatically. But what if we had on our hands a two-dimensional
+isotope of ∨ that was specially hand-crafted to deal with these
+anomalies, such as Fusco’s or? The
+unembedded behaviour of ∨ and or, in view
+of the diagonal equivalence of compounds formed using the two
+disjunctions, would be the same, so or-disjunction
+would have all the benefits of
+Boolean disjunction without the drawback of not faring very
+satisfactorily when appearing in the scope of certain intensional
+operators. On this matter of agreement in logical behaviour when
+unembedded, consider, for example, the introduction and elimination
+rules in a natural deduction system. What they introduce or eliminate
+is the main connective of a formula, so they would not differ in their
+intuitive acceptability in the case of “or” whether this
+was rendered as Boolean disjunction ∨ or as Fusco’s
+two-dimensional or
+ connective.[52]
+ More generally, the conditions defining ∨-classicality (indeed
+#-classicality for any #) of consequence relations or generalized
+consequence relations pertain only to unembedded occurrences of ∨
+(or more generally of #). In the case of Fusco (2015), the obligation
+operator O is interpreted by universal quantification over
+suitably accessible points with the relata of this relation being the
+worlds of local evaluation rather than the world taken as the actual
+world, which remains the same, so while p or q
+is a diagonal (though not a
+general) consequence of p, O(p or q)
+is not a diagonal consequence of
+ Op.[53]
+ Putting it very informally, this is because from the perspective of
+some world of evaluation, w, with w itself
+considered as actual (since we are working the diagonal case), every
+world deontically accessible to w, qua world of evaluation,
+may be a p-world, whereas at w if what is true is
+q but not p, then what is required for the truth at
+w of O(p or q)
+is that all the accessible
+worlds be q-worlds, since in moving out to the
+w-accessible worlds we are not changing the status of
+w as the world playing the actual world role. (We are in the
+‘middle disjunct’ case of (2) with this example.) This
+illustrates how Fusco has arranged matters so that
+p or q and
+p ∨ q end up exhibiting the same
+behaviour when unembedded but differing behaviour when embedded
+– in the present instance, in the scope of the obligation
+operator. The story with the permissibility operator, written as may
+or M in Fusco (2015), and not there
+treated as dual to O, is more complicated, so the interested
+reader is referred to that discussion for the details as well as the
+motivation behind the choice of or in this
+setting. For present purposes, the main point to stress is the general
+strategy of using the two-dimensional semantics to model differences
+in ingredient sense compatible with a given assertoric content.
+
+One may wonder how much room for manoeuvre is made available by this
+general strategy, which, since are concentrating on connectives here,
+amounts to asking how many two-dimensional isotopes a given Boolean
+connective has. A simpler case than that of the binary connectives
+with which we have been preoccupied is that of the one-place
+connectives. A ‘unarized’ version of the whether
+featuring in (3) above arises by choosing the case in which ψ is
+¬φ. This can be written more simply as
+Aφ ↔ φ, used (in effect) as the
+definition of what was written as Oφ on p. 119 of
+Humberstone (2002). (There is no intention, in using
+“O” here, to evoke any deontic associations.) If
+we took O as primitive, we could instead define A by
+taking Aφ to abbreviate
+Oφ ↔ φ if we wanted. Either way, if an
+epistemic operator K is treated in the same way semantically
+as the deontic obligation operator above (though with its own
+accessibility relation, of course, or even just using neighbourhood
+semantics here, as in Lewis 1982, p. 202), then for purely
+Boolean φ, KOφ, alias
+K(Aφ ↔ φ) ends up
+unrestrictedly equivalent to
+(Aφ ∧ Kφ) ∨ (A¬φ ∧ K¬φ)
+and thus not a bad approximation to something saying that our
+cognitive subject knows whether (or not)
+ φ.[54]
+
+Our main concern here, though, is with formulas constructed just using
+A and the Boolean connectives, and in particular, since we
+are considering the 1-place case, with such formulas as can be
+constructed with the aid of these devices and a single sentence
+letter, p, say. To see how many two-dimensional isotopes a
+given 1-ary Boolean connective (equivalently, Boolean formula in just
+one variable) might have, since there are only four such connectives
+(or formulas), to within equivalence – and for these formulas
+there is of course no contrast between diagonal and unrestricted
+equivalence – we should ask how many equivalence classes w.r.t.
+the relation of unrestricted equivalence there are of the one-variable
+‘two-dimensional formulas’ (i.e., here, just
+Boolean-with-A formulas). This question is easy to answer if
+we bear the following things in mind: first, that every formula is
+unrestrictedly equivalent to one in which A occurs, if at
+all, then just immediately before a sentence letter, and secondly,
+that w.r.t. the general consequence relation, the formulas p
+and Ap are completely independent (by contrast with the
+diagonal consequence relation, w.r.t. which they are equivalent). Thus
+the (unrestricted) equivalence-classes of one-variable formulas
+collectively manifest the same Boolean algebraic structure as do the
+equivalence classes of purely Boolean two-variable formulas. So you
+can take your favourite Hasse diagram of this 16-element Boolean
+algebra[55]
+ and, leaving all occurrences
+of p intact, replace every occurrence of q with
+Ap, and you now have a picture of all the two-dimensional
+one-variable formulas (to within unrestricted equivalence) and the
+logical relations among them. Each of these 16 equivalence classes (or
+any of the formulas in such a class) is a two-dimensional isotope of
+the Boolean equivalence class (or any of its elements) we get by
+erasing all occurrences of A in the formulas it contains.
+Thus the two-dimensional formulas p, Ap, and
+Op most recently encountered, including the first as a
+degenerate case of a two-dimensional formula for a streamlined
+account, are two-dimensional isotopes of p, p, and
+p ↔ p (or ⊤), respectively. You
+will find that each element of the 4-element Boolean algebra has four
+distinct elements of the 16-element algebra mapped to it by this
+erasure-of-A mapping. (This would usually be put by speaking
+of the principal congruence generated by identifying
+p’s equivalence class with Ap’s –
+alias q’s – equivalence class: the smallest
+congruence relation w.r.t. which these two elements of the algebra are
+congruent.) For example, p (or its equivalence class) has, to
+within unrestricted equivalence, the four two-dimensional isotopes
+p ∧ Ap, the logically strongest
+isotope w.r.t. general consequence (lowest in the 16-element algebra)
+and p ∨ Ap, the weakest isotope
+(highest in the 16-element algebra), and between these two (and
+mutually incomparable), p and Ap. 
+
+Returning to the case of binary connectives or two-variable
+two-dimensional formulas, we could reason similarly. (The interested
+reader is left to work the general n-variable case.)
+216 = 65,536 is the number of equivalence classes of
+4-variable formulas, the exponent 16 here being chosen as
+24, the number of equivalence classes of 2-variable
+formulas. So if the variables are p, q, r,
+s, when we collapse the former Boolean algebra into the
+latter by identifying r with p (thinking of
+r as Ap) and s with q (thinking of
+s as Aq) we are moving from 65,536 elements to 16,
+and a similarly equitable distribution renders each element of the
+16-element algebra as the image of 65,536/16 elements of the larger
+algebra, which equals 4096 (= 212 = 216/
+24). There is a simpler route to this conclusion, and that
+is by consideration of such Stalnaker-inspired matrices as feature in
+Fusco’s discussion (see note 51). This is a 4-by-4 matrix since
+we have to take into account the local (‘world of
+evaluation’) truth-value and the actual truth-value of the first
+component (four possible combinations) of a binary compound and
+similarly for the second component, and reading down the diagonal
+gives the truth-table for the Boolean connective of which the original
+is a two-dimensional isotope. Thus in Fusco’s case, this
+descending diagonal reads “T, T, T, F”, just like the
+descending vertical column of a familiar truth-table as conventionally
+displayed. The latter feature is retained however we label with Ts and
+Fs (or 1s and 0s if preferred) the non-diagonal cells, of which there
+are 12 (16 minus the four on the diagonal). Since each of these cells
+can be filled with either a T or an F, so we are back calculating
+212 and getting the answer 4096, whichever binary
+truth-function our original diagonal had displayed, including of
+course that associated with ∨. Thus, if you like Fusco’s
+general strategy for responding to difficulties like those faced by
+what seemed to be Boolean disjunction behaving badly when deontically
+embedded, there is plenty of room to tweak the details of her proposed
+solution. 
+5. Notes and Sources
+ 
+Unless otherwise stated, page and (sub)section references in this
+initial paragraph all pertain to Humberstone (2011), where several of
+the topics touched on this entry are treated at greater length. For
+example, the treatment of unique characterization in Section
+ 3 of the present entry is largely based on
+§4.3 there. (Some issues touched on here are, however, not
+treated there at all or are addressed in greater detail here.) In
+connection with note 6 in the present entry,
+concerning Carnap's observation that the most familiar logical
+frameworks do not force a Boolean interpretation on the connectives
+treated by the rules they make available, references to some of the
+many discussions of this theme can be found under ‘Strong
+vs. Weak Claim’ on p. 101. Apropos of
+note 10 (on sentence-position extensionality) in
+the present entry, referring the reader to this opening paragraph, see
+§3.2 and subsections 4.37–8. For the end of
+note 11 (the commutativity/symmetry distinction
+etc.), what is relevant is subsection 3.34, “Operations
+vs. Relations” (though for more on specifically the relational
+side of that contrast, see Humberstone 2013, especially §4). In
+connection with note 17 (on
+‘non-homophonic’ semantic treatments of disjunction), see
+subsections 6.43–6.46 for a survey of some of these treatments,
+and for note 21 (on separately conservative but
+jointly non-conservative extension by new connectives with
+prescribed inferential properties), see p. 568f. 
+For note 32 (on
+some of Rautenberg's work on what we are calling hybrids of connectives), see alternatively subsection 3.24. For
+note 41 (appended to a discussion of contrariety
+and subcontrariety), a more detailed discussion can be found in
+subsection 8.11 and references given there (especially in Remark
+8.11.1). Expanding on note 45: §5.2 goes
+into more detail on logical subtraction
+(Example 4.4 above); interesting work by
+Stephen Yablo on this topic, mentioned there as then unpublished,
+subsequently appeared in Yablo (2014), Chapters 8 and 9 being of
+particular relevance. Apropos of note 55: for an example of a Hasse diagram of the 16-element Boolean algebra, nodes labelled with representatives of the classical equivalence classes of two-variable formulas, see Figure
+2.13a on p. 225. The bearing on logical theory of the topic of the following paragraph of the present section, Galois connections, is stressed in material on pp. 58f., 75 and 80 in §1.1; the list of
+‘Galois connection’ oriented discussions of logical
+matters given in the bottom paragraph of p. 101 should be
+supplemented by a reference to Bimbó and Dunn (2008). Finally,
+to supplement the Urquhart reference given at the end of the present section
+on head linkage as a special relation in intuitionistic logic, see
+subsection 9.25. The remainder of the present section gives further
+additional notes and sources on the present entry working through in
+order.
+
+The Galois connections described in the opening section are what are
+sometimes called contravariant (as opposed to covariant) Galois
+connections; they were introduced in somewhat different terminology by
+Garrett Birkhoff (1967). Closure operations as defined in the opening
+section are sometimes called closure operators. Note that the
+definition given, although standard, is much less restrictive than the
+notion of a specifically topological closure operation (in
+particular, not requiring C(X
+∪ Y) = C(X)
+∪ C(Y)
+or C(∅) = ∅,). Some
+authors discuss matters of logical theory placing a particular
+emphasis on closure operations and their systems of closed sets (sets
+X with C(X) =
+X); see Pollard and Martin (1996) and references there
+cited.
+
+The phrase “logical frameworks” has been used in ways
+other than that introduced in Section
+ 2,
+ e.g., in Huet and Plotkin (1991). The use of “≻”
+here as a sequent separator is occasioned by current HTML font
+limitations; its general use for that purpose is not recommended.
+Carnap’s observation about logic pursued in 
+Set-Fmla
+not being capable
+of enforcing the intended truth-functional interpretation of various
+connectives (such as ∨, ¬, and →) has received extensive
+attention in the literature, as was mentioned in the first paragraph of this section. The term “congruential”
+used here is taken from Segerberg (1982); it is based on a related use
+of the term by D. Makinson (for modal logics in Fmla
+containing ☐ φ ↔ ☐ ψ
+whenever they contain φ ↔ ψ). In some quarters the term
+“self-extensional” is used for congruentiality, while in
+others the term “extensional”—used quite differently
+here—is used for this property.
+
+The emphasis on (bivalent) valuations throughout our discussion may
+suggest some limitation of scope: are we not excluding
+‘many-valued logic’ (or better: matrix semantics)? And
+what about Kripke style semantics in which truth is doubly relativized
+not only to a model but to a point therein? No, there is no
+limitation. Every (generalized) consequence relation is determined by
+a class of valuations. The matrix assignments of values to formulas
+are homomorphisms from the algebra L of formulas to the algebra
+A—presumed to be of the same similarity type of
+L—of a matrix (A, D), where D
+⊆ A; D is called the set of designated elements
+of the matrix. Thus the compositional semantics is done in terms of
+such homomorphisms, any one of which, h, say, gives rise to a
+bivalent valuation vh defined by setting
+vh(φ) = T iff h(φ)
+∈ D, and a Set-Fmla
+or Set-Set
+sequent is valid in the matrix just in case it
+holds—in the usual bivalent sense—on the valuation
+vh for every such homomorphism
+h, the (generalized) consequence relation determined by the
+matrix is the (generalized) consequence relation determined by the
+class of all such vh,
+ etc.[56]
+ Similarly for classes of matrices, with the quantification now over
+all vh where h is a homomorphism
+from the language to any matrix in the class. Likewise, in the
+Kripke-semantical case, any model M and
+point x therein gives rise to the valuation
+vMx
+defined by
+vMx(φ)
+= T iff
+M⊨x
+φ,
+and the (generalized) consequence relation determined by a class of
+models is that determined by all such vMx
+with M
+in the class. (This is the so-called
+local (generalized) consequence relation; for the global
+variant, use valuations vM
+with vM(φ)
+= T iff for all points
+x in the model, M⊨x
+φ.) There is
+an obvious further adaptation of these definitions if one wants a
+formulation in terms of determination by (“soundness and
+completeness with respect to”) a class of frames rather than
+models.
+
+As well as Prior (1957) cited in Section
+ 2
+ on the Ł-modal system, the following references are useful:
+Smiley (1961), Smiley (1962), Porte (1979), Font and Hájek
+(2002). The original paper is Łukasiewicz (1953).
+
+The problem with a live-and-let-live attitude toward differences
+between logics differing over the logical powers of a connective when
+the weaker set of powers already suffice for unique characterization
+(¬i vs. ¬c in Section
+ 3)
+ was already pointed out in Popper (1948), and often re-surfaces in
+subsequent literature e.g., Harris (1982), Hand (1993), Fariñas del Cerro and Herzig (1996); see also the opening paragraph of the present section. Uniquely
+characterized connectives are sometimes spoken of as implicitly
+defined, but there are definite risks involved in the latter
+usage—see Došen and Schroeder-Heister (1985). The
+“implicit” in the title of Caicedo (2004) does not carry
+quite the same risks, and refers to a special case of unique
+characterization, essentially amounting to unique characterization by
+zero-premiss rules in Fmla—i.e., by
+axioms. Similarly, the “functionally dependent”
+connectives of Smiley (1962) are those uniquely characterized by
+zero-premiss rules, taken in concert with the standard structural
+rules, in Set-Fmla—though
+Smiley’s definition is put
+in terms of consequence relations. This class of connectives may well
+coincide with the class of projection-conjunction connectives. It does
+not include disjunction or implication, as treated in intuitionistic
+or classical logic, which are uniquely characterized by rules
+essentially containing a non-zero-premiss rule—though these
+would be uniquely characterized by zero-premiss rules (together with
+the structural rules) in Set-Set.
+Makinson (2014) also addresses questions of
+existence and uniqueness in connection with connectives, but his
+existence questions concern, not the existence of a connective
+satisfying certain rules (or more generally, certain conditions), but
+the existence of rules (or this or that kind) satisfied by a given
+connective, where connectives are individuated semantically (more
+specifically, by association with bivalent truth-functions). The
+various notions of uniqueness considered by Makinson do apply to
+connectives rather than rules, and are defined in terms of the rules
+satisfied but the connectives themselves are again individuated
+truth-functionally and so none ends up amouting to unique
+characterization as understood here. See note 1, p. 365, in
+Makinson (2014) for a discussion contrasting his concerns with those
+found “in some proof-theoretic studies”, and citing
+Došen and Schroeder-Heister (1988). (In fact in the footnote,
+though not in the bibliography, the date is given as 1998.) 
+
+Id-inductivity is called ‘regularity’ in Kaminski (1988);
+for Id-inductivity and Cut-inductivity and related concepts (under
+different names), see also Ciabattoni (2004) and Ciabattoni and Terui
+(2006).
+
+A study of Popper’s generally under-appreciated work in logic is
+provided in Schroeder-Heister (1984). The faulty view that differences
+over logic amount to talking at cross purposes was defended in
+writings by W. V. Quine to which references may be found in Morton
+(1973), where this view is subjected to a somewhat milder version of
+the criticism in Section
+ 3.
+ A full discussion of substructural logics, also mentioned in Section
+ 3,
+ and related topics is provided in Restall (2000).
+
+Aside from the papers by Prior, Belnap, Stevenson and Peacocke (and
+Read 1988) mentioned in Section
+ 3,
+ the Tonk example is discussed in (at least)
+the following places: Wagner (1981), Hart (1982), §4.12 in
+Tennant (1978). Interest continues unabated, as witnessed by the
+following publications from the period 2004–2006 alone: Hodes
+(2004), Cook (2005), Tennant (2005), Bonnay and Simmenauer (2005),
+Chapter 5 of Priest (2006) and Wansing (2006). Subsequent treatments
+of interest include Avron (2010) and Rahmann (2012). Although Tonk
+is Prior’s best known example of
+non-conservative extension, he also noted the non-conservative effect
+of familiar logical principles concerning conjunction when added to a
+purely implicational intermediate logic; references, details, and
+further discussion can be found in Humberstone (2014). For the notion
+– or perhaps better, notions – of harmony between
+rules (especially in natural deduction), see the Tonk
+references just given, and also Chapter 23 of
+Tennant (1987), Weir (1986), Dummett (1991) (passim), Milne
+(1994) and (2002), and Read (2000), as well as the following more
+recent investigations: Read (2010), Steinberger (2011), Francez and
+Dyckhoff (2012), Hjortland (2012), Francez (2014), Milne (2015), Read
+(2015), Schroeder-Heister (2015) and Dicher (2016). For general background in
+proof-theoretic semantics informing these discussions, two useful
+references are Schroeder-Heister (2014) and the editor’s
+contribution (Chapter 1) to Wansing (2015). The subject of harmony is
+also briefly touched on in Makinson (2014), esp. p. 369.
+
+Material of interest on the subjects of special and universally
+representative connectives can be found in Jankov (1969), Pahi (1971),
+de Jongh and Chagrova (1995), in addition to the references cited in
+Section
+ 3.
+ For the fact that the relation of head linkage is special in
+intuitionistic logic, see Urquhart (1974) — not that this terminology appears there.

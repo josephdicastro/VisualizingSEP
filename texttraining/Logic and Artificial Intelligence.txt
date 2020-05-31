@@ -1,0 +1,3457 @@
+Artificial Intelligence (referred to hereafter by its nickname,
+“AI”) is the subfield of Computer Science devoted to developing
+programs that enable computers to display behavior that can (broadly)
+be characterized as
+ intelligent.[1]
+ Most research in AI is devoted to
+fairly narrow applications, such as planning or speech-to-speech
+translation in limited, well defined task domains. But substantial
+interest remains in the long-range goal of building generally
+intelligent, autonomous
+ agents,[2]
+ even if the goal of fully human-like intelligence is elusive and
+is seldom pursued explicitly and as such.
+
+
+Throughout its relatively short history, AI has been heavily
+influenced by logical ideas. AI has drawn on many research
+methodologies:  the value and relative importance of logical formalisms
+is questioned by some leading practitioners, and has been debated in
+the literature from time to
+ time.[3]
+ But most members of the AI community
+would agree that logic has an important role to play in at least some
+central areas of AI research, and an influential minority considers
+logic to be the most important factor in enabling strategic,
+fundamental advances.
+
+
+The relations between AI and philosophical logic are part of a
+larger story. It is hard to find a major philosophical theme that
+doesn’t become entangled with issues having to do with reasoning.
+Implicatures, for instance, have to correspond to inferences that can
+be carried out by a rational interpreter of discourse. Whatever
+causality is, causal relations should be inferrable in everyday common
+sense settings. Whatever belief is, it should be possible for rational
+agents to make plausible inferences about the beliefs of other agents.
+The goals and standing constraints that inform a rational agent’s
+behavior must permit the formation of reasonable plans.
+
+
+In each of these cases, compatibility with an acceptable account of
+the relevant reasoning is essential for a successful philosophical
+theory. But the methods in the contemporary philosophical inventory are
+too crude to provide anything like an adequate account of reasoning
+that is this complex and this entangled in broad world knowledge.
+
+
+Bringing an eclectic set of conceptual tools to the problem of
+idealized reasoning in realistic settings, and using computers to model
+and test the theories, research in AI has transformed the study of
+reasoning—especially of practical, common sense reasoning. This
+process and its outcome is well documented in
+ Russell & Norvig 2010.
+
+
+The new insights and theories that have emerged from AI are of great
+potential value in informing and constraining many areas of
+philosophical inquiry. The special case of philosophical logic that
+forms the theme of this article may provide support for the more
+general point. Although logic in AI grew out of philosophical logic,
+in its new setting it has produced new theories and ambitious programs
+that would not have been possible outside of a community devoted to
+building full-scale computational models of rational agency.
+
+
+This entry assumes an audience consisting primarily of
+philosophers who have little or no familiarity with AI. The
+entry concentrates on the issues that arise when
+logic is used in understanding problems in intelligent reasoning and
+guiding the design of mechanized reasoning systems. Logic in AI is by
+now a very large and not very well demarcated field—nothing
+like complete coverage has been achieved here. 
+ Sections 3
+ and
+ Section 4
+ provide an overview with some historical and
+technical details concerning nonmonotonic logic and reasoning about
+action and change, a topic that is not only central in AI but that
+should be of considerable interest to philosophers. The remaining
+sections provide brief and more or less inadequate sketches of
+selected topics, with references to the primary literature.
+
+Minker 2000b is a comprehensive
+collection of survey papers and original contributions to the field of
+logic-based AI, with extensive references to the literature.  Jack Minker’s
+introduction, Minker 2000a, is a useful
+orientation to the field. This volume is 
+a good beginning point for readers who wish to pursue this topic
+further.  Brachman
+& Levesque 2004a provides an introduction to the field of
+knowledge representation in textbook form.  
+Davis 1991a and
+Mueller 2006a are book-length treatments
+of the challenging problem of formalizing commonsense reasoning.  
+Antonelli 2012a is a good entry point
+for readers interested in nonmonotonic logic, and
+Shanahan 2009a is a useful discussion of
+the frame problem.  
+Wooldridge 2000a deals with logical
+formalizations of rational agents.
+
+
+Contents of this entry:
+ 
+1. Logic and Artificial Intelligence
+1.1 The Role of Logic in Artificial Intelligence
+
+
+Theoretical computer science developed out of logic, the theory of
+computation (if this is to be considered a different subject from
+logic), and some related areas of
+ mathematics.[4]
+ So theoretically minded
+computer scientists are well informed about logic even when they aren’t
+logicians. Computer scientists in general are familiar with the idea
+that logic provides techniques for analyzing the inferential properties
+of languages, and with the distinction between a high-level logical
+analysis of a reasoning problem and its implementations. Logic, for
+instance, can provide a specification for a programming language by
+characterizing a mapping from programs to the computations that they
+license. A compiler that implements the language can be incomplete, or
+even unsound, as long as in some sense it approximates the logical
+specification. This makes it possible for the involvement of logic in
+AI applications to vary from relatively weak uses in which the logic
+informs the implementation process with analytic insights, to strong
+uses in which the implementation algorithm can be shown to be sound and
+complete. In some cases, a working system is inspired by ideas from
+logic and then acquires features that at first seem logically problematic
+but can later be explained by developing new ideas in logical theory.
+This sort of thing has happened, for instance, in logic
+programming.
+
+
+In particular, logical theories in AI are independent from
+implementations. They can be used to provide insights into the
+reasoning problem without directly informing the implementation. Direct
+implementations of ideas from logic—theorem-proving and
+model-construction techniques—are used in AI, but the AI theorists who
+rely on logic to model their problem areas are free to use other
+implementation techniques as well. Thus, in
+ Moore 1995b
+ (Chapter 1), Robert C.
+Moore distinguishes three uses of logic in AI; as a tool of analysis,
+as a basis for knowledge representation, and as a programming
+language.
+
+
+A large part of the effort of developing limited-objective reasoning
+systems goes into the management of large, complex bodies of
+declarative information. It is generally recognized in AI that it is
+important to treat the representation of this information, and the
+reasoning that goes along with it, as a separate task, with its own
+research problems.
+
+
+The evolution of expert systems illustrates the point. The earliest
+expert systems, such as MYCIN (a program that reasons
+about bacterial infections, see
+ Buchanan & Shortliffe 1984),
+were based entirely on large systems of procedural rules, with no
+separate representation of the background knowledge—for instance, the
+taxonomy of the infectious organisms about which the system reasoned
+was not represented.
+
+
+Later generation expert systems show a greater modularity in their
+design. A separate knowledge representation component is useful for
+software engineering purposes—it is much better to have a single
+representation of a general fact that can have many different uses,
+since this makes the system easier to develop and to modify. And this
+design turns out to be essential in enabling these systems to deliver
+explanations as well as mere
+ conclusions.[5]
+1.2 Knowledge Representation
+
+
+In response to the need to design this declarative component, a
+subfield of AI known as knowledge representation emerged
+during the 1980s. Knowledge representation deals primarily with the
+representational and reasoning challenges of this separate component.
+The best place to get a feel for this subject is the proceedings of the
+meetings that are now held every other year: see
+ Brachman et al. 1989,
+ Allen et al. 1991,
+ Nebel et al. 1992,
+ Doyle et al. 1994,
+ Aiello et al. 1996,
+ Cohn et al. 1998,
+ Cohn et al. 2000,
+ Fensel et al. 2002,
+ Dubois et al. 2004,
+ Doherty et al. 2006,
+ Brewka & Lang 2008,
+ Lin et al. 2010,
+ Eiter et al. 2012,
+ Baral et al. 2012,
+ and
+ Baral et al. 2016.
+
+
+Typical articles in the proceedings of the KR and Reasoning
+conferences deal with the following topics.
+
+Topics in logical theory and the theory of computation, including 
+
+ 
+Nonmonotonic logic
+Complexity theory
+
+Studies in application areas, including 
+
+ 
+Temporal reasoning
+Formalisms for reasoning about planning, action and change, and causality
+Metareasoning
+Reasoning about context
+Reasoning about values and desires
+Reasoning about the mental states of other agents, and especially
+about knowledge and belief
+Spatial reasoning
+Reasoning about vagueness
+
+Argumentation and argumentation theory
+Aggregation problems of many kinds, such as the integration of
+	conflicting knowledge sources
+Studies in application techniques, including 
+
+ 
+Logic programming
+Description logics
+Theorem proving
+Model construction
+
+
+Studies of large-scale applications, including 
+
+ 
+Cognitive robotics
+Merging, updating, and correcting knowledge bases
+
+
+
+
+These topics hardly overlap at all with the contents of the Journal
+of Symbolic Logic, the principal research archive for mathematical
+logic. But there is substantial overlap in theoretical emphasis with
+The Journal of Philosophical Logic, where topics such as tense
+logic, epistemic logic, logical approaches to practical reasoning,
+belief change, and vagueness account for a large percentage of the
+contributions. Very few JPL publications, however, deal with
+complexity theory or with potential applications to automated
+reasoning. 
+1.3 Philosophical Logic
+
+
+A history of philosophical logic is yet to be written.  
+Though philosophical logic has traditionally been distinguised from
+mathematical logic, the distinction may well be incidental in relation
+to the overall goals of the subject, since technical rigor and the use
+of mathematical methods seem to be essential in all areas of logical
+research. However, the distinction between the two subfields has been
+magnified by differences in the sorts of professional training that
+are available to logicians, and by the views of individuals on what is
+important for the field. 
+
+
+The statement of policy presented in
+Journal of Symbolic Logic (1936, Volume 1, No. 1) lists
+bringing together the mathematicians and philosophers working in logic
+among the goals of the new journal. Probably at this time both the
+mathematicians and the philosophers shared a sense that their subject
+was considered to be somewhat marginal by their colleagues, and may
+have felt a primary loyalty to logic as a subject rather than to any
+academic discipline.  Articles in the first volume of the JSL
+were divided about equally between professional mathematicians and
+philosophers, and the early volumes of the JSL do not show
+any strong differences between the two groups as to topic.
+
+
+This situation changed in the 1960s. The 1969 volume of the
+JSL contained 39 articles by mathematicians, and only nine by
+philosophers. By the early 1970s, many philosophers felt that
+philosophical papers on logic were unlikely to be accepted by the
+JSL, and that if they were accepted they were unlikely to be
+read by philosophers. At this point, the goals of the two groups had
+diverged considerably. Mathematicians were pursuing the development of
+an increasingly technical and complex body of methods and theorems.
+Many philosophers felt that this pursuit was increasingly irrelevant to
+the goal of illuminating philosophical issues. These divisions led to
+the founding of the Journal of Philosophical Logic in 1972.
+The list of sample topics in the first issue included:
+
+Contributions to branches of logical theory directly related to
+philosophical concerns, such as inductive logic, modal logic, deontic
+logic, quantum logic, tense logic, free logic, logic of questions,
+logic of commands, logic of preference, logic of conditionals,
+many-valued logic, relevance logics;
+Contributions to philosophical discussions that utilize the
+machinery of formal logic …;
+Discussions of philosophical issues relating to logic and the
+logical structure of language, …;
+Philosophical work relating to the special sciences, ….
+
+
+
+Most of the articles over the subsequent 28 years of the JPL
+belong to the first of these four categories. But the description with
+which this list begins is not particularly illuminating: why should
+these particular topics be of interest to philosophers? Their most
+important shared feature is a sense that despite successes in
+formalizing areas of mathematical logic, the scope of logic remained
+severely limited. There are unsolved problems in formalizing the
+nonmathematical sciences that seem to require thinking through new and
+different logical issues (quantum logic and the logic of induction,
+for instance). The remaining topics cover a part, at least, of the
+even more pressing problems involved in extending logical theory to
+nonscientific reasoning. The dominant goal, then, of philosophical
+logic is the extension of logical methods to nonmathematical reasoning
+domains. This goal has a theoretical dimension if (as many
+philosophical logicians seem to feel) it requires reworking and
+extending logical formalisms. 
+
+
+The development and testing of applications, such as the problem of
+formalizing the reasoning involved in getting to the airport, posed as
+a challenge in
+ McCarthy 1959
+ (see
+ Section 2.2,
+ below), doesn’t even appear as a
+category in the list of JPL topics, and in fact most of the
+philosophical logic literature is theoretical in nature, and is tested
+using philosophical techniques. Essentially, this means that the
+theories are motivated and tested with small-scale, artificial
+examples, selected by the theoreticians. These examples usually serve
+more as demonstrations or illustrations than as tests.
+1.4 Logic in AI and Philosophical Logic
+
+
+The rough comparison in
+ Section 1.2
+ of the
+contents of the main publications for research in logical AI and
+philosophical logic suggests the following picture. Theoretical work in
+logical AI and in philosophical logic overlap to a large extent. Both
+are interested in developing nonmetamathematical applications of logic,
+and the core topics are very similar. This overlap is due not only to
+commonality of interest, but to direct influence of philosophical logic
+on logical AI; there is ample evidence, as we will see, that the first
+generation at least of AI logicists read and were influenced by the
+literature in philosophical logic.
+
+
+Since that point, the specialties have diverged. New logical
+theories have emerged in logical AI (nonmonotonic logic is the most
+important example) which are not widely known in philosophical logic.
+Other differences are due to the AI community’s interest in the
+theoretical analysis of algorithms and, of course, with their sense of
+the importance of implementations. Some have to do with the emerging
+development in computer science of ambitious applications using
+unprecedentedly large bodies of logical axioms. The sheer size of these
+applications produces new problems and new methodologies. And other
+differences originate in the interest of philosophical logicians in
+some topics (metaphysical topics, for instance) that are primarily
+inspired by purely philosophical considerations.
+
+
+Concern for applications can be a great influence on how research is
+carried out and presented. The tradition in philosophical logic
+predates applications in automated reasoning, and to this day remains
+relatively uninterested in such applications. The methodology depends
+on intuitions, but without any generally accepted methodology for
+articulating and deploying these intuitions. And the ideas are
+illustrated and informed by artificial, small-scale
+ examples.[6]
+ In general,
+the philosophical literature does not deal with implementability or
+efficiency of the reasoning, or indeed with any features of the
+reasoning process. And it is hard to find cases in which the
+philosophical theories are illustrated or tested with realistic,
+large-scale reasoning problems.
+
+
+These differences, however, are much more a matter of style than of
+substance or of strategic research goals. It is difficult to think
+through the details of the reasoning process without the computational
+tools to make the process concrete, and difficult to develop
+large-scale formalizations of reasoning problems without computational
+tools for entering, testing, and maintaining the formalizations.
+Because the core theoretical topics (modal, conditional and temporal
+logic, belief revision, and the logic of context) are so similar, and
+because the ultimate goal (the formalization of nonmathematical
+reasoning) is the same, one can see logic in AI as a continuous
+extension of the philosophical logic tradition.
+
+
+The early influence of philosophical logic on logic in AI was
+profound. The bibliography of
+ McCarthy & Hayes 1969,
+ one
+of the most influential early papers in logical AI, illustrates the
+point well. There are 58 citations in the bibliography. Of these, 35
+refer to the philosophical logic literature. (There are 17 computer
+science citations, one mathematical logic citation, one economics
+citation, and one psychology citation.) This paper was written at a
+time when there were hardly any references to logical AI in the
+computer science literature. Naturally, as logical AI has matured and
+developed as a branch of computer science, the proportion of
+cross-disciplinary citations has decreased. A sampling of articles from
+the first Knowledge Representation conference,
+ Brachman et al. 1989,
+ held in
+1989, shows only 12 philosophical logic citations out of a total of 522
+sampled citations; a sampling of articles from
+ Cohn et al. 1998,
+ held in 1998,
+shows 23 philosophical logic citations out of a total of 468
+sampled.[7]
+
+
+Despite the dramatic decrease in quantity of explicit citations, the
+contemporary literature in logical AI reflects an indirect acquaintance
+with the earlier literature in philosophical logic, since many of the
+computational papers that are explicitly cited in the modern works were
+influenced by this literature. Of course, the influence becomes
+increasingly distant as time passes, and this trend is accelerated by
+the fact that new theoretical topics have been invented in logical AI
+that were at best only dimly prefigured in the philosophical
+literature.
+
+
+Although philosophical logic is now a relatively small field in
+comparison to logical AI, it remains a viable area of research, with new
+work appearing regularly. But references to contemporary research in
+philosophical logic are rare in the AI literature. Similarly, the
+papers currently published in The Journal of Philosophical
+Logic, at least, do not show much influence from
+ AI.[8]
+ In Europe,
+the lines are harder to draw between professional divisions among
+logicians: some European journals, especially the Journal of Logic,
+Language, and Information, are successful in maintaining a focus
+in logic while attracting authors from all the disciplines in which
+logic is represented.
+1.5 The Role of Artificial Intelligence in Logic
+
+
+The importance of applications in logical AI, and the scale of these
+applications, represents a new methodology for logic—one that would
+have been impossible without mechanized reasoning. This methodology
+forces theoreticians to think through problems on a new scale and at a
+new level of detail, and this in turn has a profound effect on the
+resulting theories. The effects of this methodology will be illustrated
+in the sections below, dealing with various topics in logical AI. But
+the point is illustrated well by reasoning about action and change.
+This topic was investigated in the philosophical literature. Reasoning
+about change, at least, is part of tense logic, and the consequences of
+action are investigated in the literature on “seeing to it that”; see,
+for instance,
+ Belnap 1996.
+ The latter
+theory has no very robust account of action. The central construct is a
+variation on a branching-time modality of the sort that has been
+familiar since
+ Prior 1967.
+ Although it
+represents an interesting development in philosophical logic, the scale
+of the accomplishment is very different from the research tradition in
+logical AI reported in
+ Section 4,
+ below. The
+formalisms in this tradition not only support the formalization of
+complex, realistic planning problems, but provide entirely new insights
+into reasoning about the causal effects of actions, the persistence of
+states, and the interactions between actions and continuous physical
+processes. Developments such as this would have been impossible without
+the interactions between the logical theories and large-scale,
+practical applications in automated planning.
+
+
+In
+ Carnap 1955,
+ Rudolf Carnap attempted
+to clarify intensional analyses of linguistic meaning, and to justify
+from a methodological point of view, by imagining how the analysis
+could be applied to the linguistic usage of a hypothetical robot.
+Carnap hoped that the fact that we could imagine ourselves to know the
+internal structure of the robot would help to make the case for an
+empirical science of semantics more plausible. This hope proved to be
+unjustified; the philosophical issue that concerned Carnap remains
+controversial to this day, and thought experiments with robots have not
+proved to be particularly rewarding in addressing it. Real robots,
+though, with real
+ applications,[9]
+ are a very different matter. Though it
+is hard to tell whether they will prove to be helpful in clarifying
+fundamental philosophical problems, they provide a laboratory for logic
+that is revolutionary in its potential impact on the subject. They
+motivate the development of entirely new logical theories that should
+prove to be as important for philosophy as the fundamental
+developments in logic of the late nineteenth century proved to be.
+
+
+The emergence of separate mathematical and philosophical
+subspecialties within logic was not an entirely healthy thing for the
+field. The process of making mathematical logic rigorous and of
+demonstrating the usefulness of the techniques in achieving mathematical
+ends that was pursued so successfully in the first half of the
+twentieth century represents a coherent refinement of logical
+methodology. All logicians should be pleased and proud that logic is
+now an area with a body of results and problems that is as substantial
+and challenging as those associated with most areas of mathematics.
+
+
+But these methodological advances were gained at the expense of
+coverage. In the final analysis, logic deals with reasoning—and
+relatively little of the reasoning we do is mathematical, while almost
+all of the mathematical reasoning that nonmathematicians do is mere
+calculation. To have both rigor and scope, logic needs to keep its
+mathematical and its philosophical side united in a single discipline.
+In recent years, neither the mathematical nor the philosophical
+professions—and this is especially true in the United
+States—have done a great deal to promote this unity. But the
+needs of Computer Science provide strong unifying motives. The
+professional standards for logical research in Computer Science
+certainly require rigor, but the field also puts its practitioners into
+contact with reasoning domains that are not strictly mathematical, and
+creates needs for innovative logical theorizing.
+
+
+The most innovative and ambitious area of Computer Science, in terms
+of its coverage of reasoning, and the one that is closest in spirit to
+philosophical logic, is AI. This article will attempt to provide an
+introduction, for outsiders who are familiar with logic, to the aspects
+of AI that are closest to the philosophical logic tradition. This area
+of logic deserves, and urgently needs, to be studied by historians.  But
+such a study will not be found here.
+2. John McCarthy and Common Sense Logicism[10]
+2.1 Logical AI
+
+
+The most influential figure in logical AI is John McCarthy. McCarthy
+was one of the founders of AI, and consistently advocated a research
+methodology that uses logical techniques to formalize the reasoning
+problems that AI needs to solve. All but the most recent work in
+McCarthy’s research program can be found in
+ Lifschitz 1990a,
+ which also contains an
+introduction to McCarthy’s work
+ Lifschitz 1990b;
+ for additional historical background, see
+ Israel 1991.
+
+
+McCarthy’s methodological position has not changed substantially
+since it was first articulated in
+ McCarthy 1959
+ and elaborated and amended
+in
+ McCarthy & Hayes 1969.
+ The motivation for using logic is that—even if the
+eventual implementations do not directly and simply use logical
+reasoning techniques like theorem proving—a logical formalization
+helps us to understand the reasoning problem itself. The claim is that
+without an understanding of what the reasoning problems are, it will
+not be possible to implement their solutions. Plausible as this
+Platonic argument may seem, it is in fact controversial in the context
+of AI; an alternative methodology would seek to learn or evolve the
+desired behaviors. The representations and reasoning that this
+methodology would produce might well be too complex to characterize or
+to understand at a conceptual level.
+
+
+From
+ McCarthy & Hayes 1969,
+ it is clear that McCarthy thought of his methodology for AI as
+overlapping to a large extent with traditional philosophy, but adding
+to it the need to inform the design of programs capable of manifesting
+general intelligence. This idea is not uncongenial to some philosophers
+(see, for instance,
+ Carnap 1956
+(pp. 244–247) and
+ Pollock 1995).
+ In
+practice, the actual theories that have emerged from McCarthy’s
+methodology are influenced most strongly by work in philosophical
+logic, and the research tradition in logical AI represents a more or
+less direct development of this work, with some changes in emphasis.
+This review will concentrate on logical AI in relation to philosophical
+logic, without further comment on relations to philosophy in general or
+to the feasibility of developing human-level intelligent systems.
+2.2 The Formalization of Common Sense
+
+
+McCarthy’s long-term objective was to formalize common sense
+reasoning, the prescientific reasoning that is used in dealing
+with everyday problems. An early example of such a problem, mentioned
+in
+ McCarthy 1959,
+ is getting from
+home to the airport. Other examples include:
+
+Narrative understanding. The reasoning involved in
+reconstructing implicit information from narratives, such as sequencing
+of eventualities, and inferred causal connections.
+Diagnosis. For instance, detecting faults in physical
+devices.
+Spatial Reasoning. For instance, reasoning about the parts
+of rigid bodies and their shapes, and their relation to the shape of
+the whole.
+Reasoning about the attitudes of other agents. For
+instance, making informed guesses about the beliefs and desires of
+other agents, not from “keyhole observation” but from conversational
+clues of the sort that could be obtained in a brief, interactive
+interview.
+
+
+
+Stated baldly, the goal of formalizing common sense would probably
+seem outrageous to most philosophers, who are trained to think of
+common sense as rather elusive. But whether or not the ultimate goal
+is appropriate and achievable, the specific formalization projects
+that have emerged from this program have been successful in several
+ways.  They have succeeded in breaking new territory for logic by
+extending the scope of the reasoning problems to which logical
+techniques can be successfully applied. They have demonstrated that
+logical techniques can contribute usefully to the solution of specific
+AI problems—planning is the most successful of these, but some
+success has been achieved in other areas as
+well.[11] They
+form the basis of one approach to developing complete, autonomous
+agents.[12] And
+they have illuminated many specific forms of nonscientific
+reasoning—for instance, qualitative reasoning about the behavior
+of physical devices.[13]
+ Although McCarthy has advocated this program of formalization
+since 1959—an almost prehistorical date for AI—the program has
+not been taken on board and pursued by a dedicated community until
+recently.  Research in this area has gained much momentum since 1990.
+For further discussion and details, see 
+ Section 8.
+3. Nonmonotonic Reasoning and Nonmonotonic Logics
+3.1 Nonmonotonicity
+
+
+Aristotle believed that most reasoning, including reasoning about
+what to do and about sublunary natural phenomena, dealt with things
+that hold “always or for the most part.” But Aristotelian logic deals
+only with patterns of inference that hold without exception. We find at
+the very beginning of logic a discrepancy between the scope of logical
+theory and common sense reasoning. Nonmonotonic logic is the first
+sustained attempt within logical theory to remedy this discrepancy. As
+such, it represents a potential for a sweeping expansion of the scope
+of logic, as well as a significant body of technical results.
+
+
+The consequence relations of classical logics are monotonic. That
+is, if a set Γ of formulas implies a consequence C then
+a larger set Γ ∪ A will also imply C. A
+logic is nonmonotonic if its consequence relation lacks this
+property. Preferred models provide a general way to induce a
+nonmonotonic consequence relation. Invoke a function that for each
+Γ produces a subset
+ MΓ of the models of Γ; in general,
+we will expect
+ MΓ to
+be a proper subset of these models. We then say that Γ implies
+C if C is satisfied by every model in
+ MΓ. As long as we do not
+suppose that
+ MΓ∪{A} ⊆
+ MΓ, we can easily have an
+implication relation between Γ and C without imposing
+this relation on supersets of
+ Γ.[14]
+
+
+This model theoretic behavior corresponds to expectation-guided
+reasoning, where the expectations allow certain cases to be neglected.
+Here is an important difference between common sense and mathematics.
+Mathematicians are trained to reject a proof by cases unless the cases
+exhaust all the possibilities; but typical instances of common sense
+reasoning neglect some alternatives. In fact, it is reasonable to
+routinely ignore improbable possibilities. Standing in a kitchen in
+California, wondering if there is time to wash the dishes before leaving
+for work, one might not take the possibility of an earthquake into
+account.
+
+
+There seem to be many legitimate reasons for neglecting certain
+cases in common sense reasoning. A qualitative judgment that the
+probability of a case is negligible is one reason. But, for instance,
+in a planning context it may be reasonable to ignore even nonnegligible
+probabilities, as long as there is no practical point in planning on
+these cases.
+
+
+The motivations for nonmonotonicity seem to involve a number of
+complex factors; probability (perhaps in some qualitative sense),
+normality, expectations that are reasonable in the sense that one can’t
+be reasonably blamed for having them, mutual acceptance, and factors
+having to do with limited rationality.  It may well be that no one has
+succeeded in disentangling and clarifying these motivating
+considerations. In the early stages of its emergence in logical AI,
+many researchers seem to have thought of nonmonotonic reasoning as a
+general method for reasoning about uncertainty; but by the end of the
+1980s, implementations of fully quantitative probabilistic reasoning
+were not only possible in principle, but were clearly preferable in
+many sorts of applications to methods involving nonmonotonic logic. A
+plausible and realistic rationale for nonmonotonic logic has to fit it
+into a broader picture of reasoning about uncertainty that also
+includes probabilistic
+ reasoning.[15]
+3.2 Historical Motivations
+
+
+Three influential papers on nonmonotonic logic appeared in 1980:
+ McDermott & Doyle 1980,
+ Reiter 1980,
+ and
+ McCarthy 1980.
+ In each case, the
+formalisms presented in these papers were the result of a gestation
+period of several years or more. To set out the historical influences
+accurately, it would be necessary to interview the authors, and this 
+has not been done. However, there seem to have been two motivating factors:
+strategic considerations having to do with the long-range goals of AI,
+and much more specific, tactical considerations arising from the
+analysis of the reasoning systems that were being deployed in the
+1970s.
+
+Section 2.2
+ drew attention to McCarthy’s
+proposed goal of formalizing common sense reasoning. The brief
+discussion above in
+ Section 3.1
+ suggests that
+monotonicity may be an obstacle in pursuing this goal. An additional
+motive was found in
+ Minsky 1974,
+ which was
+widely read at the time. This paper presents an assortment of
+challenges for AI, focusing at the outset on the problem of natural
+language
+ understanding.[16]
+ Minsky advocates frame-based
+knowledge representation
+ techniques[17]
+ and (conceiving of the use of these
+representations as an alternative to logic), he throws out a number of
+loosely connected challenges for the logical approach, including the
+problem of building large-scale representations, of reasoning
+efficiently, of representing control knowledge, and of providing for
+the flexible revision of defeasible beliefs. In retrospect, 
+most AI researchers would tend to agree that these problems are general
+challenges to any research program in AI (including the one Minsky
+himself advocated at the time) and that logical techniques are an
+important element in addressing some, perhaps all, of the issues. (For
+instance, a well structured logical design can be a great help in
+scaling up knowledge representation.)
+
+
+Minsky apparently intended to provide general arguments against
+logical methods in AI, but
+ McDermott & Doyle 1980
+ and
+ McCarthy 1980
+ interpret
+ Minsky 1974
+ as a challenge that can be met by
+developing logics that lack the monotonicity property. Perhaps
+unintentionally, the paper seems to have provided some incentive
+to the nonmonotonic logicians by stressing monotonicity as a source of
+the alleged shortcomings of logic. In fact, the term
+‘monotonicity’ apparently makes its first appearance in
+print in Minsky’s 1974 paper.
+
+
+The development of nonmonotonic logic also owes a great deal to the
+applied side of AI. In fact, the need for a nonmonotonic analysis of a
+number of AI applications was as persuasive as the strategic
+considerations urged by McCarthy, and in many ways more influential on
+the shape of the formalisms that emerged. Here, we mention three
+such applications that appear to have been important for some of the
+early nonmonotonic logicians: belief revision, closed-world reasoning,
+and planning.
+3.2.1 Belief Revision
+Doyle 1979
+provides an analysis and algorithm for a “truth maintenance
+system”. The TMS answers a general need, providing a mechanism
+for updating the “beliefs” of knowledge bases. The idea of
+the TMS is to keep track of the support of beliefs, and to use the
+record of these support dependencies when it is necessary to revise
+beliefs.
+
+
+
+In a TMS, part of the support for a belief can consist in the
+absence of some other belief. This introduces nonmonotonicity.
+For instance, it provides for defaults; that Wednesday is the default
+day for scheduling a meeting means the belief that the meeting will be
+on Wednesday depends on the absence of special-case beliefs
+entailing that it will not be on Wednesday.
+
+
+The TMS algorithm and its refinements had a significant impact on AI
+applications, and this created the need for a logical analysis. (In
+even fairly simple cases, it can be hard in the absence of analytic
+tools to see what consequences a TMS should deliver.) This provided a
+natural and highly specific challenge for those seeking to develop a
+nonmonotonic logic. The TMS also provided specific intuitions: the idea
+that the key to nonmonotonicity has to do with inferences based on
+unprovability was important for the modal approaches to nonmonotonic
+logic and for default logic. And the TMS’s emphasis on interactions
+between arguments began a theme in nonmonotonic logic that remains
+important to this day. (See the discussion of argument-based
+approaches, in
+ Section 3.4,
+ below.)
+3.2.2 Closed-world reasoning
+
+
+The study of databases belongs to computer science, not specifically to
+AI. But one of the research paradigms in the scientific analysis of
+databases uses logical models of the representations and reasoning
+ (see
+ Minker 1997
+ for a recent survey of the
+field), and this area has interacted with logical AI. The deductive
+database paradigm was taking shape at about the same time that many AI
+researchers were thinking through the problems of nonmonotonic logic,
+and provided several specific examples of nonmonotonic reasoning that
+called for analyses. Of these, perhaps the most important is the
+closed-world assumption, according to which—at least as
+far as simple facts are concerned, represented in the database as
+positive or negative literals—the system assumes that it knows
+all that there is to be known. It is the closed world assumption that
+justifies a negative answer to a query “Is there a direct flight
+from Detroit to Bologna?” when the system finds no such flight in
+its data. This is another case of inference from the absence of a
+proof; a negative is proved, in effect, by the failure of a systematic
+attempt to prove the positive. This idea, which was investigated in
+papers such as
+ Reiter 1978
+ and
+ Clark 1978
+ also provided a challenge for
+nonmonotonic logics, as well as specific intuitions—note that
+again, the idea of inference rules depending on the absence of a proof
+is present here. 
+3.2.3 Planning
+
+
+Rational planning is impossible without the ability to reason about
+the outcomes of a series of contemplated actions. Predictive reasoning
+of this sort is local; in a complex world with many features, we
+assume that most things will be unchanged by the performance of an
+action. But this locality has proved to be difficult to formalize. The
+problem of how to formalize this “causal
+inertia”[18] is known as the Frame
+Problem. 
+
+
+It is very natural to suppose that inertia holds by default;
+variables are unchanged by the performance of an action unless there is
+a special reason to think that they will change. This suggests that
+nonmonotonic temporal formalisms should provide an appropriate
+foundation for reasoning about action and change. So attempts to
+formalize the reasoning needed in planning also created a need for
+nonmonotonic logics. One of the earliest attempts to formalize
+nonmonotonic reasoning,
+ Sandewall 1972,
+addresses the frame problem. Inertial defaults are an especially
+important and instructive case study; no more will be said about them
+here, since they are discussed in detail in
+ Section 4.4,
+ below.
+3.3 The Earliest Formalisms
+
+
+The three 1980 papers mentioned at the beginning of
+ Section 3.2
+ represent three approaches to
+nonmonotonic logic that remain important subfields to this day:
+circumscription (McCarthy), modal approaches (Doyle
+& McDermott) and default logic (Reiter).
+
+
+In
+ McCarthy 1993a,
+ McCarthy urges
+us, when considering the early history of circumscription, to take into
+account a group of three papers: McCarthy
+ 1986,
+ 1980,
+ and
+ 1987.
+ The first paper connects the
+strategic ideas of
+ McCarthy & Hayes 1969
+ with the need for a nonmonotonic logic, and
+sketches the logical ideas of domain circumscription, which is
+now classified as the simplest case of circumscription. The second
+paper provides more thorough logical foundations, and introduces the
+more general and powerful predicate circumscription approach.
+The third paper concentrates on developing techniques for formalizing
+challenging common sense examples.
+
+
+All forms of circumscription involve restricting attention to models
+in which certain sets are minimized; for this reason, circumscription
+can be grouped with the preferred models approaches to nonmonotonicity:
+see
+ Section 3.4,
+ below. McCarthy’s
+formalism is fairly conservative; though it raises interesting logical
+issues in higher-order logic and complexity, it uses familiar logical
+frameworks. And much of the focus is on the development of
+formalization techniques. The other varieties of nonmonotonic logic,
+including default logic and the modal nonmonotonic logics, raise issues
+of the sort that are familiar to philosophical logicians, having to do
+with the design of new logics, the systematic investigation of
+questions concerning validity, and managing the proliferation of
+alternative logics.
+
+
+As the discussion above of truth maintenance indicated, it is very
+natural to think of nonmonotonic inferences as being hedged.
+That is, a nonmonotonic inference may require not merely the presence
+of a set of proved conclusions, but the absence of certain
+other conclusions. The general form of such a rule is:
+DR:
+
+ In the presence of
+{A1,…,An} and in the
+absence of {B1,…,Bn},
+conclude C.
+
+
+An important special case of DR is a normal
+default, a simple rule to the effect that C holds by
+default, conditionally on assumptions
+A1,…,An. This can be
+formalized by taking the condition that must be absent to simply be the
+negation of the conclusion.
+NDR:
+
+ In the presence of
+{A1,…,An} and in the
+absence of ¬C, conclude C.
+
+
+At first sight, it is somewhat perplexing how to formalize this
+notion of nonmonotonic inference, since it seems to require a circular
+definition of provability that can’t be replaced with an inductive
+definition, as in the nonmonotonic case. The difficulty with the early
+theory of
+ Sandewall 1972
+ is that it does
+not address this difficulty successfully.
+ McDermott & Doyle 1980
+ and
+ Reiter 1980
+ use fixpoint definitions to
+solve the problem. In both cases, the logical task is (1) to develop a
+formalism in which rules like DR can be expressed, and
+(2) to define the relation between a theory DT (which may
+incorporate such rules) and the theories E which could count
+as reasonable consequences of DT. In the terminology that
+later became standard, we need to define the relation between a theory
+DT and its extensions.
+
+
+In retrospect, we can identify two sorts of approaches to
+nonmonotonic logic: those based on preference and those based
+on conflict. Theories of the first sort (like circumscription)
+involve a relatively straightforward modification of the ordinary
+model-theoretic definition of logical consequence that takes into
+account a preference relation over models. Theories of the second sort
+(like default logic) involve a more radical rethinking of logical
+ideas. The possibility of multiple extensions—different possible
+coherent, inferentially complete conclusion sets that can be drawn from
+a single set of premises—means that we have to think of logical
+consequence not as a function taking a set of axioms into its logical
+closure, but as a relation between a set of axioms and
+alternative logical closures. Since logical consequence is so
+fundamental, this represents a major theoretical departure. With
+multiple extensions, we can still retrieve a consequence relation
+between a theory and a formula in various ways, the simplest being to
+say that DT nonmonotonically implies C if C
+is a member of every extension of DT. Still, the
+conflict-based account of consequence provides a much richer underlying
+structure than the preferential one.
+
+
+Reiter approaches the formalization problem conservatively.
+Nonmonotonicity is not expressed in the language of default logic,
+which is the same as the language of first-order logic. But a theory
+may involve a set of default rules—rules of the form
+DR.
+ Reiter 1980
+provides a fixpoint definition of the extensions of such a theory, and
+develops the theoretical groundwork for the approach, proving a number
+of the basic theorems.
+
+
+Of these theorems, we mention one in particular, which will be used
+in
+ Section 4.5,
+ in connection with the Yale
+Shooting Anomaly. The idea is to take a conjectured extension (which
+will be a set T*) and to use this set for consistency checks
+in a proof-like process that successively applies default rules in
+<W,D> to stages that begin with
+W.
+
+
+We define a default proof process
+T0,T1,… for W,
+D, relative to T*, as follows.
+
+Let T0 = W.
+If no default rule in D is nonvacuously applicable to
+Ti relative to T*, then
+Ti+1 =
+ThFOL(Ti), where
+ThFOL(T) is the logical closure in
+FOL of T.
+Otherwise, choose some default rule 
+
+
+
+
+A  :  B1,…, Bn
+
+
+C
+
+
+
+
+
+that is nonvacuously applicable to Ti
+relative to T*, and let 
+Ti+1 =
+ThFOL(Ti∪{
+C}).
+
+
+
+
+In other words, as long as we can nonvacuously close the stage we are
+working on under an applicable default, we do so; otherwise, we do
+nothing. A theorem of Reiter’s says that, under these circumstances: 
+T is an extension of <W,
+D> if and only if there is a proof process
+T0, T1,... for W,
+D, relative to T, such that 
+
+
+
+
+T =
+
+∪
+0≤ i
+
+Ti .
+
+
+
+
+
+
+Thus, we can show that T is an extension by (1) using
+T for consistency checks in a default reasoning process from
+<W, D>, (2) taking the limit T′
+of this process, and (3) verifying that in fact T′ =
+T. 
+
+
+The modal approach represents a “higher level of nonmonotonic
+involvement” than default logic. The unprovability construct is
+represented explicitly in the language, by means of a modal operator
+L informally interpreted as ‘provable’ (or, as
+ in
+ McDermott & Doyle 1980,
+ by
+the dual of this operator).[19]
+ Although McDermott and Doyle’s
+terminology is different from Reiter’s, the logical ideas are very
+similar—the essence of their approach, like Reiter’s, is a
+fixpoint definition of the extensions of a nonmonotonic logic.
+Incorporating nonmonoticity in the object language creates some
+additional complexities, which in the early modal approach show up
+mainly in proliferation of the logics and difficulties in evaluating
+the merits of the alternatives. As better foundations for the modal
+approach emerged, it became possible to prove the expected theorems
+concerning equivalence of modal formalisms with default
+ logic.[20]
+
+
+Reiter’s paper
+ Reiter 1980
+ appears to
+have developed primarily out of tactical considerations. The earlier
+paper
+ Reiter 1978
+ is largely concerned
+with providing an account of database queries. Unlike the other seminal
+papers in nonmonotonic logic, Reiter’s shows specific influence from
+the earlier and independent work on nonmonotonicity in logic
+programming—the work seems to have been largely inspired by the
+need to provide logical foundations for the nonmonotonic reasoning
+found in deductive databases. Doyle and McDermott’s paper shows both
+strategic and tactical motivation—citing the earlier literature
+in logicist AI, it motivates nonmonotonic logic as part of a program of
+modeling common sense rationality. But the theory is also clearly
+influenced by the need to provide a formal account of truth
+maintenance.
+3.4 Approaches to Nonmonotonic Logic
+
+
+Nonmonotonic logic is a complex, robust research field. Providing a
+survey of the subject is made difficult by the fact that there are many
+different foundational paradigms for formalizing nonmonotonic
+reasoning, and the relations between these paradigms is not simple. An
+adequate account of even a significant part of the field requires a
+something like a book-length treatment. A number of books are
+available, including
+ Łukaszewicz 1990,
+ Brewka 1991,
+ Besnard 1992,
+ Marek & Truszczynski 1994,
+ Antoniou 1997,
+ Brewka et al. 1997,
+ Schlechta 1997,
+ Antonelli 2005,
+ Makinson 2005b,
+ and
+ Horty 2012.
+ Two
+collections are especially useful:
+ Ginsberg 1987
+ and
+ Gabbay et al. 1994.
+ The former is a useful source for readers interested in the
+early history of the subject, and has an excellent introduction. The
+handbook chapters in
+ Gabbay et al. 1994
+ provide overviews of important topics and approaches.
+My current recommendation for readers interested in a quick, readable
+introduction to the topic would be
+ Brewka et al. 1997
+ and self-selected chapters of
+ Gabbay et al. 1994.
+Some other sources include 
+Bochman 2004,
+Makinson 2005,
+Antoniou and Wang 2007,
+Bochman 2007,
+ and
+Schlechta 2007.
+We rely
+on these references for technical background, and will concentrate on
+intellectual motivation, basic ideas, and potential long-term
+signifgicance for logic.
+3.4.1 Preference Semantics
+
+
+At the outset in
+ Section 3.1,
+ it was mentioned how
+preferred models could be used to characterize a nonmonotonic
+consequence relation. This general model theory of nonmonotonicity
+emerged in
+ Shoham 1988,
+ five years after
+the work discussed in
+ Section 3.2,
+ and
+represents a much more general and abstract approach. 
+
+
+Preferential semantics relies on a function S taking a set
+K of models into a subset S(K) of
+K. The crucial definition of preferential entailment
+stipulates that A is a (nonmonotonic) consequence of Γ
+if every model M of S(Models(Γ))
+implies A. Shoham’s theory is based on a partial order
+≼ over models: S(K) can then be characterized
+as the set of models in K that are ≼-minimal
+in K. To ensure that no set can preferentially entail a
+contradiction unless it classically entails a contradiction, infinite
+descending ≼ chains need to be disallowed.
+
+
+This treatment of nonmonotonicity is similar to the earlier modal
+semantic theories of conditionals—the similarities are
+particularly evident using the more general theories of conditional
+semantics, such as the one presented in
+ Chellas 1975.
+ Of course, the consequence
+relation of the classical conditional logics is monotonic, and
+conditional semantics uses possible worlds, not models. But the
+left-nonmonotonicity of conditionals (the fact that A
+ C does not imply
+[A
+ ∧
+ B]
+ 
+C) creates issues that
+parallel those in nonmonotonic logics. Early work in nonmonotonic logic
+does not seem to be aware of the analogy with conditional logic. But
+the interrelations between the two have become an important theme more
+recently; see, for instance,
+ Gärdenfors & Makinson 1994,
+ Boutilier 1992,
+ Pearl 1994,
+ Gabbay 1995,
+ Benferat et al. 1997,
+ Delgrande 1998,
+ Arlo-Costa & Shapiro 1992,
+ Alcourrón 1995,
+ Asher 1995,
+ and
+ Thomason 2007.
+
+
+Preference semantics raises an opportunity for formulating and
+proving representation theorems relating conditions over preference
+relations to properties of the abstract consequence relation. This line
+of investigation began with
+ Lehmann & Magidor 1992.
+3.4.2 Modal and epistemic theories
+
+
+Neither Doyle or McDermott pursued the modal approach much beyond
+the initial stages of
+ McDermott 1982,
+and
+ McDermott & Doyle 1980.
+ With a helpful suggestion from Robert Stalnaker (see
+ Stalnaker 1993),
+ however, Robert C. Moore
+produced a modal theory that improves in many ways on the earlier
+ideas. Moore gives the modal operator of his system an epistemic
+interpretation, based on the conception of a default rule as one that
+licenses a conclusion for a reasoning agent unless something that the
+agent knows blocks the conclusion. In Moore’s autoepistemic
+logic, an extension E of a theory T is a
+superset of T that is stable, i.e., that is
+deductively closed, and that satisfies the following two rules:
+
+If A∈E then
+ □A∈E.
+If A∉E then
+ ¬□A∈E.
+
+
+
+It is also usual to impose a groundedness condition on
+autoepistemic extensions of T, ensuring that every member of
+an extension has some reason tracing back to T. Various such
+conditions have been considered; the simplest one restricts extensions
+to those satisfying 
+
+E is the set of nonmodal consequences of
+T∪{A :
+ □A∈E} ∪
+ {¬□A : A∉E}.
+
+
+
+Autoepistemic logic remains a popular approach to nonmonotonic logic,
+in part because of its usefulness in providing theoretical foundations
+for logic programming. For more recent references, see
+ Marek & Truszczynski 1991,
+ Moore 1995b,
+ Marek & Truszczynski 1989,
+ Konolige 1994,
+ Antoniou 1997,
+ Moore 1993,
+ and
+ Deneker et al. 2003.
+
+
+Epistemic logic has inspired other approaches to nonmonotonic logic.
+Like other modal theories of nonmonotonicity, these use modality to
+reflect consistency in the object language, and so allow default rules
+along the lines of DR to be expressed. But instead of
+consistency, these use ignorance. See
+ Halpern & Moses 1985
+ and
+ Levesque 1987
+ for variations on this idea.
+These theories are explained, and compared to other nonmonotonic
+logics, in
+ Meyer & van der Hoek 1995.
+ In more recent work, Levesque’s ideas are systematically
+presented and applied to the theory of knowledge bases in
+ Levesque & Lakemeyer 2000.
+3.5 Further Topics
+
+
+This brief historical introduction to nonmonotonic logic leaves
+untouched a number of general topics that might well be of
+interest to a nonspecialist. These include graph-based and
+proof-theoretic approaches to nonmonotonic logic, results that
+interrelate the various formalisms, complexity results, tractable
+special cases of nonmonotonic reasoning, relations between nonmonotonic
+and abductive reasoning, relations to probability logics, the logical
+intuitions and apparent patterns of validity underlying nonmonotonic
+logics, and the techniques used to formalize domains using nonmonotonic
+logics. For these and other topics, the reader is referred to the
+literature. As a start, the chapters in
+ Gabbay et al. 1994
+ are highly
+recommended.
+4. Reasoning about Action and Change[21]
+4.1 Priorian Tense Logic
+
+
+Time and temporal reasoning have been associated with logic since the
+origins of scientific logic with Aristotle. The idea of a logic of
+tense in the modern sense has been familiar since at least the work of
+Jan Łukasiewicz (see, for instance,
+ Łukasiewicz 1970),
+ but the shape
+of what is commonly known as tense logic was standardized by Arthur
+Prior’s work in the 1950s and 1960s: see Prior
+ 1956,
+ 1967,
+ 1968.[22]
+ As the topic was developed in
+philosophical logic, tense logic proved to be a species of modal logic;
+Prior’s work was heavily influenced by both Hintikka and Kripke, and by
+the idea that the truth of tense-logical formulas is relative to
+world-states or temporal stages of the world; these are the
+tense-theoretic analogues of the timeless possible worlds of ordinary
+modal logic. Thus, the central logical problems and techniques of tense
+logic were borrowed from modal logic. For instance, it became a
+research theme to work out the relations between axiomatic systems and
+the corresponding model theoretic constraints on temporal orderings.
+See, for instance,
+ Burgess 1984
+ and
+ van Benthem 1983.
+
+
+Priorian tense logic shares with modal logic a technical
+concentration on issues that arise from using the first-order theory of
+relations to explain the logical phenomena, an expectation that the
+important temporal operators will be quantifiers over world-states, and
+a rather remote and foundational approach to actual specimens of
+temporal reasoning. Of course, these temporal logics do yield
+validities, such as
+A→PFA
+
+
+(if A, then it was the case that A was going to be
+the case), which certainly are intuitively valid. But at most, these
+can only play a broadly foundational role in accounting for realistic
+reasoning about time. It is hard to think of realistic examples in
+which they play a leading part. 
+
+
+This characteristic, of course, is one that modal logic shares with
+most traditional and modern logical theories; the connection with
+everyday reasoning is rather weak. Although modern logical techniques
+do account with some success for the reasoning involved in verifying
+mathematical proofs and logic puzzles, they do not explain other cases
+of technical or common sense reasoning with much detail or
+plausibility. Even in cases like legal reasoning, where logicians and
+logically-minded legal theorists have put much effort into formalizing
+the reasoning, the utility of the results is controversial.
+4.2 Planning Problems and the Situation Calculus
+
+
+Planning problems provide one of the most fruitful showcases for
+combining logical analysis with AI applications. On the one hand there
+are many practically important applications of automated planning, and
+on the other logical formalizations of planning are genuinely helpful
+in understanding the problems, and in designing algorithms.
+
+
+The classical representation of an AI planning problem, as described
+in
+ Amarel 1968,
+ evidently originates in
+early work of Herbert Simon’s, published in a 1966 CMU technical
+report,
+ Simon 1966.
+ In such a problem, an
+agent in an initial world-state is equipped with a set of
+actions, which are thought of as partial functions
+transforming world-states into world-states. Actions are feasible only
+in world-states that meet certain constraints.  (These constraints are
+now called the “preconditions” of the action.)  A planning
+problem then becomes a search for a series of feasible actions that
+successively transform the initial world-state into a desired
+world-state.
+
+
+The Situation Calculus, developed by John McCarthy, is the
+origin of most of the later work in formalizing reasoning about action
+and change. It was first described in 1969, in
+ McCarthy 1983;
+ the earliest generally
+accessible publication on the topic is
+ McCarthy & Hayes 1969.
+
+
+Apparently, Priorian tense logic had no influence on
+ Amarel 1968.
+ But there is no important
+difference between Amarel’s world-states and those of Priorian tense
+logic. The “situations” of the Situation Calculus are these same
+world-states, under a new
+ name.[23]
+ They resemble possible worlds in
+modal logic in providing abstract locations that support a consistent
+and complete collection of truths. As in tense logic, these locations
+are ordered, and change is represented by the variation in truths from
+one location to another. The crucial difference between the Situation
+Calculus and tense logic is that change in the situation is
+dynamic—changes do not merely occur, but occur for a
+reason.
+
+
+This difference, of course, is inspired by the intended use of the
+Situation Calculus: it is meant to formalize Simon’s representation of
+the planning problem, in which a single agent reasons about the
+scenarios in which a series of actions is
+ performed.[24]
+ In this
+model, what drives change is the performance of actions, so the
+fundamental model theoretic relation is the relation
+RESULT(a,s,s′)
+
+
+between an action a, an initial situation s in which a is performed,
+and a resulting situation s′ immediately subsequent to the
+performance of the action. Usually (though this is not absolutely
+necessary) the deterministic assumption is made that s′ is
+unique. In general, actions can be successfully performed only under
+certain limited circumstances. This could be modeled by allowing for
+cases in which there is no s′ such that
+RESULT(a,s,s′). But usually, it is assumed that
+RESULT is in fact a total function, but that in cases in
+which s does not meet the “preconditions” of a, there are no
+restrictions on the s′ satisfying
+RESULT(a,s,s′), so that the causal effects of a
+will be entirely unconstrained in such cases. 
+
+
+A planning problem starts with a limited repertoire of actions
+(where sets of preconditions and effects are associated with each
+action), an initial situation, and a goal (which can be treated as a
+formula). A planning problem is a matter of finding a sequence of
+actions that will achieve the goal, given the initial situation. That
+is, given a goal G and initial situation s, the problem will
+consist of finding a sequence s1,...,sn of
+actions which will transform s into a final situation that satisfies
+G. This means (assuming that RESULT is a
+function) that G will be satisfied by the situation
+sn, where s0 = s and si+1 is
+the s′ such that
+RESULT(ai+1,si,s′).
+The planning problem is in effect a search for a sequence of actions
+meeting these conditions. The success conditions for the search can be
+characterized in a formalism like the Situation Calculus, which allows
+information about the results of actions to be expressed.
+
+
+Nothing has been said up till now about the actual language of the
+Situation Calculus. The crucial thing is how change is to be expressed.
+With tense logic in mind, it would be natural to invoke a modality like
+[a]A,
+ with the truth condition
+⊨s[a]A iff
+ ⊨s′A, where
+RESULT(a,s,s′).
+
+
+This formalization, in the style of dynamic logic, is in fact a leading
+candidate; see
+ Section 4.7,
+ below. 
+
+
+But
+ McCarthy & Hayes 1969
+ deploys a language that is much closer to first-order logic.
+(This formalization style is characteristic of McCarthy’s work; see
+ McCarthy 1979.)
+ Actions are treated as
+individuals. And certain propositions whose truth values can change
+over time (propositional fluents) are also treated as
+individuals. Where s is a situation and f is a fluent,
+Holds(f,s) says that f is true in s.
+4.3 Formalizing Microworlds
+
+
+Since the pioneering work of the nineteenth and early twentieth
+century logicians, the process of formalizing mathematical domains has
+largely become a matter of routine. Although (as with set theory) there
+may be controversies about what axioms and logical infrastructure best
+serve to formalize an area of mathematics, the methods of formalization
+and the criteria for evaluating them are relatively unproblematic. This
+methodological clarity has not been successfully extended to other
+domains; even the formalization of the empirical sciences presents
+difficult problems that have not yet been
+ resolved.[25]
+
+
+ The formalization of temporal reasoning, and in particular of
+reasoning about actions and plans, is the best-developed successful
+extension of modern formalization techniques to domains other than
+mathematical theories.  This departure has required the creation of
+new methodologies.  One methodological innovation will emerge in
+ Section 4.5:
+the development of a library of scenarios for
+testing the adequacy of various formalisms, and the creation of
+specialized domains like the blocks-world domain (mentioned above,
+in Section 4.2) that serve a laboratories for testing ideas. 
+For more on the blocks world, see
+ Genesereth & Nilsson 1987;
+ Davis 1991.
+ McCarthy’s ideas about
+elaboration tolerance
+McCarthy 1999
+ provide one interesting attempt to provide a criterion for the
+adequacy of formalizations. Another idea that has emerged in the course of
+formalizing common sense domains is the importance of an explicit
+ontology; see, for instance,
+ Fikes 1996 and
+ Lenat & Guha 1989.
+ Another is the potential usefulness of explicit
+representations of context; see
+ Guha, 1991.
+  Another is the use of simulation techniques: see,
+for instance, 
+ Johnstone & Williamson 2007
+
+4.4 Prediction and the Frame Problem
+
+
+To tell whether a plan achieves its goal, you need to see whether
+the goal holds in the plan’s final state. Doing this requires
+predictive reasoning, a type of reasoning that was neglected
+in the tense-logical literature. As in mechanics, prediction involves
+the inference of later states from earlier ones. But (in the case of
+simple planning problems at least) the dynamics are determined by
+actions rather than by differential equations. The investigation of
+this qualitative form of temporal reasoning, and of related sorts of
+reasoning (e.g., plan recognition, which seeks to infer goals from
+observed actions, and narrative explanation, which seeks to fill in
+implicit information in a temporal narrative) is one of the most
+impressive chapters in the brief history of common sense logicism.
+
+
+The essence of prediction is the problem of inferring what holds in
+the situation that ensues from performing an action, given information
+about the initial situation. It is often assumed that the agent has complete
+knowledge about the initial situation—this assumption is usual in
+classical formalizations of 
+planning.[26]
+
+
+A large part of the qualitative dynamics that is needed for planning
+consists in inferring what does not change. Take a simple plan
+to type the word ‘cat’ using word processing software: 
+the natural plan is to first enter ‘c’, then enter ‘a’,
+then enter ‘t’. Part of one’s confidence in this plan is that
+the actions are independent: for instance, entering ‘a’
+does not also erase the ‘c’. The required inference can be
+thought of as a form of inertia. The Frame Problem is
+the problem of how to formalize the required inertial reasoning.
+
+
+The Frame Problem was named and introduced in
+ McCarthy & Hayes 1969.
+Unlike most of the philosophically interesting technical problems to
+emerge in AI, it has attracted the interest of philosophers; most of
+the relevant papers, and background information, can be found in
+ Ford & Pylyshyn 1996;
+ Pylyshyn 1987.
+ Both of these volumes
+document interactions between AI and philosophy.
+
+
+The quality of these interactions is discouraging. Like any realistic
+common sense reasoning problem, the Frame Problem is open-ended, and
+can depend on a wide variety of circumstances. If you put $20 in a
+wallet, put the wallet in your pocket, and go to the store, you can
+safely assume that the $20 is still in the wallet.  But if you leave the
+$20 on the counter at the store while shopping, you can’t safely
+assume it will be there later.  This may account for the
+temptation that makes some 
+philosophers[27]
+ want to construe the Frame Problem
+very broadly, so that very soon it becomes indiscernible from the
+problem of formalizing general common sense in arbitrary domains. Such
+a broad construal may serve to introduce speculative discussions
+concerning the nature of AI, but it loses all contact with the
+genuine, new logical problems in temporal reasoning that have been
+discovered by the AI community. It provides a forum for repeating some
+familiar philosophical themes, but it brings nothing new to
+philosophy. This way of interpreting the Frame Problem is disappointing, because
+philosophy can use all the help it can get; the AI community has
+succeeded in extending and enriching the application of logic to
+common sense reasoning in dramatic ways that are highly relevant to
+philosophy. The clearest account of these developments to be found in
+the volumes edited by Pylyshyn is
+ Morgenstern 1996.
+ An extended treatment can be found in
+ Shanahan 1997;
+ also see
+ Sandewall 1994 and
+ Shanahan 2009.
+
+ The purely logical Frame Problem can be solved using monotonic logic,
+by simply writing explicit axioms stating what does not
+change when an action is performed. This technique can be successfully
+applied to quite complex formalization
+problems.[28]
+But nonmonotonic solutions to the framework have been
+extensively investigated and deployed; these lead to new and
+interesting lines of logical development.
+
+
+Some philosophers
+ (Fodor 1987,
+ Lormand 1996)
+ have felt that contrived
+propositions will pose special difficulties in connection with the
+Frame Problem. As Shanahan points out
+ Shanahan 1997
+ [p. 24]) Fodor’s
+“fridgeon” example is readily formalized in the Situation Calculus and
+poses no special problems. However, as Lormand suggests, Goodman’s
+examples
+ Goodman, 1946
+ do create
+problems if they are admitted as fluents; there will be anomalous
+extensions in which objects change from green to blue in order to
+preserve their grueness.
+
+
+This is one of the few points about the Frame Problem made by a philosopher 
+that raises a genuine difficulty for
+the formal solutions. But the difficulty is peripheral, since the
+example is not realistic. Recall that fluents are represented as
+first-order individuals. Although fluents are situation-dependent
+functions, an axiom of comprehension is certainly not assumed for
+fluents. In fact, it is generally supposed that the domain of fluents
+will be a very limited set of the totality of situation-dependent
+functions; typically, it will be a relatively small finite set of
+variables representing features of the domain considered to be
+important.  In particular cases these will be chosen in much the same
+way that a set of variables is chosen in statistical modeling.
+
+
+There doesn’t seem to be a systematic account in the AI literature of
+how to choose an appropriate set of fluents, but it would certainly be
+part of such an account that all fluents should correspond to
+projectable predicates, in Goodman’s sense.
+4.5 Nonmonotonic Treatments of Inertia and a 
+Package of Problems
+
+
+The idea behind nonmonotonic solutions to the Frame Problem is to
+treat inertia as a default; changes are assumed to occur only if there
+is some special reason for them to occur. In an action-centered account
+of change, this means that absence of change is assumed when an action
+is performed unless a reason for the change can be found in axioms for
+the action.
+
+
+For explicitness, let’s use Reiter’s default logic to illustrate
+the formalization. Recall that in Reiter’s theory, defaults are
+represented as rules, not formulas, so that they are not subject to
+quantification. To formalize inertia, then, we need to use default rule
+schemata. For each fluent f, action a, and situation s, the set of
+these schemata will include an instance of the following schema:
+
+
+
+IR(f, a, s)   
+
+  T : Holds(f,s) ↔ Holds(f,RESULT(a,s))
+
+
+Holds(f,s) ↔ Holds(f,RESULT(a,s))
+
+
+
+
+
+This way of doing things makes any case in which a fluent changes
+truth value a prima facie anomaly. But it follows from
+Reiter’s account of extensions that such defaults are overridden when
+they conflict with the monotonic theory of situation dynamics. So if,
+for instance, there is a monotonic causal axiom for the action
+blacken ensuring that blackening a block will make it black in
+the resulting situation, then the appropriate instance of
+IR will be inefficacious, and there will be no
+extension in which a white block remains white when it is
+blackened.
+
+
+The Frame Problem somehow managed to capture the attention of a wide
+community—but if one is interested in understanding the complex
+problems that arise in generalizing formalisms like the Situation
+Calculus, while at the same time ensuring that they deliver plausible
+solutions to a wide variety of scenarios, it is more useful to consider
+a larger range of problems. For the AI community, the larger problems
+include the Frame Problem itself, the Qualification Problem, the
+Ramification Problem, generalizability along a number of important
+dimensions including incomplete information, concurrency (multiple
+agents), and continuous change, and finally a large assortment of
+specific challenges such as the scenarios mentioned later in this
+section.
+
+
+The Qualification Problem arises generally in connection
+with the formalization of common sense generalizations. Typically,
+these involve exceptions, and these exceptions—especially if
+one is willing to entertain far-fetched circumstances—can
+iterate endlessly. The same phenomenon, under a label like ‘the
+problem of ceteris paribus generalizations’, is familiar
+from analytic philosophy. It also comes up in the semantics of
+generic constructions found in natural languages.[29] In a sense, this
+problem is addressed at a general level by nonmonotonic logics,
+which—though they do not provide a way to enumerate
+exceptions—do allow common sense generalizations to be
+formulated as defaults, as well as enabling further qualifications to
+be added nondestructively. Ideally, then, the initial generalization
+can be stated as an axiom and qualifications can be added
+incrementally in the form of further axioms.
+
+
+The Qualification Problem was raised in
+ McCarthy 1986,
+ where it was motivated
+chiefly by generalizations concerning the consequences of actions;
+McCarthy considers in some detail the generalization that turning the
+ignition key in an automobile will start the car. Much the same point,
+in fact, can be made about virtually any action, including stacking one
+block on another—the standard action that is used to illustrate
+the Situation Calculus. A circumscriptive approach to the Qualification
+Problem is presented in
+ Lifschitz 1987;
+this explicitly introduces the precondition relation between an action
+and its preconditions into the formalism, and circumscriptively
+minimizes preconditions, eliminating from preferred models any “unknown
+preconditions” that might render an action inefficacious.
+
+
+Several dimensions of the Qualification Problem remain as broad,
+challenging research problems. For one thing, not every nonmonotonic
+logic provides graceful mechanisms for qualification. Default logic,
+for instance, does not deliver the intuitively desired conclusions.
+Suppose one formalizes the common sense generalization that if you press
+the ‘a’ key on a computer it will type ‘a’ as
+a normal default:
+
+
+  T : VALUE(text, RESULT(Press-a,s)) = VALUE(text,s) + ‘a’
+
+
+  VALUE(text, RESULT(Press-a,s)) = VALUE(text,s) + ‘a’
+
+
+
+
+If we then formalize the exception to this generalization that if you
+press the ‘a’ key while the Alt key is depressed the cursor
+moves to the beginning of the current sentence as a normal default
+along the same lines, we  get two extensions: one in which
+pressing ‘a’ while the Alt key is depressed adds
+‘a’ to the text and another in which it moves the cursor.
+
+
+The problem is that default logic does not provide for more specific
+defaults to override ones that are more general. This principle of
+specificity has been discussed at length in the literature.
+Incorporating it in a nonmonotonic logic can complicate the theory
+considerably; see, for instance,
+ Asher & Morreau 1991
+ and
+ Horty 1994.
+ And,
+as
+ Elkan 1995
+ points out, the Qualification
+Problem raises computational issues. 
+
+
+Relatively little attention has been given to the Qualification
+Problem for characterizing actions, in comparison with other problems
+in temporal reasoning. In particular, the standard accounts of
+unsuccessful actions are somewhat unintuitive. In the
+formalization of
+ Lifschitz 1987,
+ for instance, actions with some unsatisfied preconditions are only
+distinguished from actions whose preconditions all succeed in that
+the conventional effects of the action will only be ensured when the
+preconditions are met. It is as if an action of spending $1,000,000
+can be performed at any moment—although if you don’t have the
+money, no effects in particular will be guaranteed. 
+ [30] And there
+is no distinction between actions that cannot even be attempted (like
+boarding a plane in London when you are in Sydney), actions that can
+be attempted, but in which the attempt can be expected to go wrong
+(like making a withdrawal when you have insufficient funds), actions
+that can be attempted with reasonable hope of success, and actions
+that can be attempted with guaranteed success. As J.L. Austin made
+clear in
+ Austin 1961,
+ the ways in which actions can be
+attempted, and in which attempted actions can fail, are a well
+developed part of common sense reasoning. Obviously, in contemplating a
+plan containing actions that may fail, one may need to reason about the
+consequences of failure. Formalizing the pathology of actions,
+providing a systematic theory of ways in which actions and the plans
+that contain them can go wrong, would be a useful addition to planning
+formalisms, and one that would illuminate important themes in
+philosophy.
+
+
+The challenge posed by the Ramification Problem
+(characterized first in
+ Finger 1987)
+ is
+to formalize the indirect consequences of actions, where “indirect”
+effects are not
+ delayed,[31]
+ but are temporally immediate but causally derivative. If one walks into
+a room, the direct effect is that one is now in the room. There are also
+many indirect effects: for instance, that one’s shirt also is now in the
+room.
+
+
+ You can see from this that the formulation of the problem
+presupposes a distinction between direct consequences of actions (ones
+that attach directly to an action, and that are ensured by the
+successful performance of the action) and other consequences. This
+assumption is generally accepted without question in the AI literature
+on action formalisms. You can make a good case for its common sense
+plausibility—for instance, many of our words for actions
+(‘to warm’, to ‘lengthen’, ‘to
+ensure’) are derived from the effects that are conventionally
+associated with them. And in these cases, success is entailed: if
+someone has warmed something, this entails that it became warm.
+[32] A typical
+example is discussed in
+ Lin 1995:
+a certain suitcase has two locks, and is open if and only if both locks
+are open. Then (assuming that actions are not performed concurrently)
+opening one lock will open the suitcase if and only if the other lock
+is open. Here, opening a lock is an action, with direct consequences;
+opening a suitcase is not an action, it is an indirect effect.
+
+
+Obviously, the Ramification Problem is intimately connected with the
+Frame Problem. In approaches that adopt nonmonotonic solutions to the
+Frame Problem, inertial defaults will need to be overridden by
+conclusions about ramifications in order to obtain correct results. In
+case the left lock of the suitcase is open, for instance, and an action
+of opening the right lock is performed, then the default conclusion
+that the suitcase remains closed needs somehow to be suppressed. Some
+approaches to the Ramification Problem depend on the development of
+theories of common sense causation, and therefore are closely related
+to the causal approaches to reasoning about time and action discussed
+below in
+ Section 4.6.
+ See, for
+ instance,
+ Giunchiglia et al. 1997,
+ Thielscher 1989,
+ Lin 1995.
+
+
+Philosophical logicians have been content to illustrate their ideas
+with relatively small-scale examples. The formalization of even
+large-scale mathematical theories is relatively unproblematic. Logicist
+AI is the first branch of logic to undertake the task of formalizing
+large examples involving nontrivial common sense reasoning. In doing
+so, the field has had to invent new methods. An important part of the
+methodology that has emerged in formalizing action and change is the
+prominence that is given to challenges, posed in the form of
+scenarios. These scenarios represent formalization problems
+which usually involve relatively simple, realistic examples designed to
+challenge the logical theories in specific ways. Typically, there will
+be clear common sense intuitions about the inferences that should be
+drawn in these cases. The challenge is to design a logical formalism
+that will provide general, well-motivated solutions to these benchmark
+problems.
+
+
+Among the many scenarios that have been discussed in the literature
+are the Baby Scenario, the Bus Ride Scenario, the Chess Board Scenario,
+the Ferryboat Connection Scenario, the Furniture Assembly Scenario, the
+Hiding Turkey Scenario, the Kitchen Sink Scenario, the Russian Turkey
+Scenario, the Stanford Murder Mystery, the Stockholm Delivery Scenario,
+the Stolen Car Scenario, the Stuffy Room Scenario, the Ticketed Car
+Scenario, the Walking Turkey Scenario, and the Yale Shooting Anomaly.
+Accounts of these can be found in
+ Shanahan 1997
+ and
+ Sandewall 1994;
+ see
+especially
+ Sandewall 1994[Chapters 2
+ and 7].
+
+
+Many of these scenarios are designed to test advanced problems that
+will not be discussed here—for instance, challenges dealing with
+multiple agents, or with continuous changes. Here, we concentrate
+on one of the earliest, and probably the most subtle of these
+scenarios: the Yale Shooting Anomaly, first reported in
+ Hanks & McDermott 1985
+ and
+published in
+ Hanks & McDermott 1986;
+ Hanks & McDermott 1987.
+
+
+The Yale Shooting Anomaly involves three actions: load,
+shoot, and wait. A propositional fluent
+Loaded tracks whether a certain pistol is loaded; another
+fluent, Alive, tracks whether a certain person, Fred, is
+alive. load has no preconditions; its only effect is
+Loaded. The fluent shoot has Loaded as its
+only precondition and Alive as a negative effect;
+wait has no preconditions and no effects.
+
+
+Causal information regarding the axioms is formalized as
+follows.
+
+
+Load
+∀sHolds(Loaded,
+RESULT(load,s))
+
+
+Shoot 1
+∀s[Holds(Loaded,s) →
+Holds(¬Alive,
+RESULT(shoot,s))]
+
+
+Shoot 2
+∀s[Holds(Loaded,s) →
+Holds(¬Loaded,
+RESULT(shoot,s))]
+
+
+
+
+There is no Wait Axiom—that is, wait has no
+preconditions and no effects.
+
+
+We will formalize the inertial reasoning in this scenario using a
+nonmonotonic logic—to be specific, we use Reiter’s default logic.
+The set D of defaults for this theory consists of all
+instances of the inertial schema IR. In the initial
+situation, Fred is alive and the pistol is unloaded.
+
+
+
+IC1
+Holds(Alive,s0)
+
+
+IC2
+¬Holds(Loaded,s0)
+
+
+
+
+
+The monotonic theory W of the scenario consists of: (1) the
+action axioms Load, Shoot 1 and
+Shoot 2 and (2) the initial conditions
+IC1 and IC2. Let s1 =
+RESULT(load,s0), s2 =
+RESULT(wait,s1), and s3 =
+RESULT(shoot,s2). 
+
+
+The Yale Shooting Anomaly arises because this theory
+allows an extension in which the actions are load;
+shoot; wait, and in the final situation
+s3, the pistol is unloaded and Fred is alive. The
+initial situation in the Anomaly and the three actions, with their
+resulting situations, can be pictured as follows.
+
+
+
+s0
+load
+
+ →
+s1
+wait
+
+ →
+s2
+shoot
+
+ →
+s3
+
+
+
+
+
+The natural, expected outcome of these axioms is that the pistol is
+loaded and Fred is alive after waiting, so that shooting yields a final
+outcome in which Fred is not alive and the pistol is unloaded. There is
+no problem in showing that this corresponds to an extension; the
+problem is the presence of the other, anomalous extension, which looks
+like this.
+
+
+
+Alive
+
+¬Loaded
+
+s0
+load
+
+ → 
+Alive
+
+Loaded
+
+s1
+wait
+
+ →
+Alive
+
+¬Loaded
+
+s2
+shoot
+
+ →
+Alive
+
+¬Loaded
+
+s3
+
+
+
+
+
+Here is a narrative version of this extension. At first, Fred is
+alive and the pistol is unloaded. After loading, the pistol is loaded
+and Fred remains alive. After waiting, the pistol becomes unloaded and
+Fred remains alive. Shooting is then vacuous since the pistol is
+unloaded, so finally, after shooting, Fred remains alive and the pistol
+remains unloaded.
+
+
+The best way to see clearly that this is an extension is to work
+through the proof. Less formally, though, you can see that the expected
+extension violates just one default: the frame default for
+Alive is violated when Fred changes state in the last step.
+But the anomalous extension also violates only one default: the frame
+default for Loaded is violated when the pistol spontaneously
+becomes unloaded while waiting. So, if you just go by the number of
+defaults that are violated, both extensions are equally good.
+
+
+The Yale Shooting Anomaly represents a major obstacle in developing
+a theory of predictive reasoning. A plausible, well-motivated logical
+solution to the Frame Problem runs afoul of a simple, crisp example in
+which it clearly delivers the wrong results. Naturally, the literature
+concerning the Yale Shooting Problem is extensive. Surveys of some of
+this work, with bibliographical references, can be found in
+ Shanahan 1997;
+ Morgenstern 1996.
+4.6 Some Emergent Frameworks
+
+
+Many formalisms have been proposed to deal with the problems
+surveyed in the previous section. Some are more or less neglected
+today. Several are still advocated and defended by leading experts;
+some of these are associated with research groups who are not only
+interested in developments of logical theory, but in applications in
+planning and cognitive robotics.
+
+
+The leading approaches provide solutions to the main problems
+mentioned in
+ Section 4.5,
+ and to many of the
+scenarios designed to test and illustrate theories of reasoning about
+action and change. It is commonly agreed that good solutions need to be
+generalizable to more complex cases than the early planning formalisms,
+and that in particular the solutions they offer should be deployable
+even when continuous time, concurrent actions, and various kinds of
+ignorance are allowed. Also, it is generally agreed that the formalisms
+should support several kinds of reasoning, and, in particular, not only
+prediction and plan verification but retrodiction, i.e.,
+construction of a sequence of states and actions from partial
+information, presented in narrative form.
+
+
+We describe four approaches here: (1) Features and fluents
+(Sandewall), (2) Motivated Action Theory (Morgenstern and Stein), (3)
+State Minimization in the Event Calculus (Shanahan) and (4) Causal
+Theories (Lifschitz and others). The accounts of the first three in
+what follows will be fairly brief; fortunately, each approach is well
+documented in a single reference. The fourth approach is most likely
+to be interesting to philosophers and to contain elements that will be
+of lasting importance regardless of future developments in this
+area.
+4.6.1 Features and fluents
+
+
+This approach, described in
+ Sandewall 1994,
+ uses preference semantics as a way to organize nonmonotonic
+solutions to the problems of reasoning about action and change. Rather
+than introducing a single logical framework, Sandewall considers a
+number of temporal logics, including ones that use discrete,
+continuous, and branching time. The properties of the logics are
+systematically tested against a large suite of test scenarios. 
+4.6.2 Motivated Action Theory
+
+
+This theory grew out of direct consideration of the problems in
+temporal reasoning described above in
+ Section 4.5,
+ and especially the Yale Shooting Scenario. In
+ Morgenstern & Stein 1994,
+Morgenstern and Stein seek to find a general, intuitively motivated
+logical framework that solves the difficulties. They settle on the idea
+that unmotivated actions are to be minimized, where an action
+(“actions” construed generally enough to include any change) can be
+motivated directly, e.g. by an axiom, or indirectly, through chains of
+motivations. The key technical idea of the paper is a (rather
+complicated) definition of motivation in an interval-based temporal
+logic. In
+ Morgenstern 1996,
+Morgenstern presents a summary of the theory, along with reasons for
+rejecting its causal rivals. The most important of these reasons is
+that these theories, based on the Situation Calculus, do not appear to
+generalize to cases allowing for concurrency and ignorance. She also
+cites the failure of early causal theories to deal with retrodiction. 
+4.6.3 State-Based Minimization in the Event Calculus
+
+
+In
+ Baker 1989,
+ Andrew Baker presented a
+solution to the version of the Yale Shooting problem in the Situation
+Calculus, using a circumscriptive inertial axiom. The very brief
+account of circumscription above in
+ Section 3
+indicated that circumscription uses preferred models in which the
+extensions of certain predicates are minimized. In the course of this
+minimization, a set of parameters (including, of course, the predicates
+to be minimized) is allowed to vary; the rest are held constant. Which
+parameters vary and which are held constant is determined by the
+application. 
+
+
+In the earliest circumscriptive solutions to the Frame Problem, the
+inertial rule CIR is stated using an abnormality
+predicate.
+CIR 
+∀f∀s∀a[¬Ab(f,a,s) →
+[Holds(f,s) ↔
+Holds(f,RESULT(a,s))]]
+
+
+
+This axiom uses a biconditional, so that it can be used for
+retrodiction; this is typical of the more recent formulations of common
+sense inertia. In circumscribing, the abnormality predicate is
+minimized while the Holds predicate is allowed to vary and all
+other parameters are fixed. This formalization succumbs to the Yale
+Shooting Anomaly in much the same way that default logic does.
+(Circumscription does not involve multiple extensions, so the problem
+emerges as the nonderivability of the conclusion that Fred is alive
+after the occurrence of the shooting.)
+
+
+In Baker’s reformulation of the problem, separate axioms ensure the
+existence of a situation corresponding to each Boolean combination of
+fluents, and the RESULT function is allowed to vary,
+while the Holds predicate is held constant. In this setting,
+the RESULT function needs to be specified for
+“counterfactual”actions—in particular, for shooting as well as
+for waiting in the Yale Shooting Anomaly. It is this feature that
+eliminates the incorrect model for that scenario; for details, see
+ Baker 1989
+ and
+ Shanahan 1997,
+ Chapter 6.
+
+
+This idea, which Shanahan calls “State-Based Minimization,” is
+developed and extended in
+ Shanahan 1997,
+in the context of a temporal logic deriving from the Event Calculus of
+Kowalski and Sergot; see
+ Kowalski & Sergot 1986.
+ Shanahan’s formalism has the advantage of being
+closely connected to implementations using logic programming.
+4.6.4 Causal Theories
+
+
+Recall that in the anomalous model of the Yale Shooting Scenario the
+gun becomes unloaded after the performance of the wait action,
+an action which has no conventional effects—the unloading, then,
+is uncaused. In the context of a nonmonotonic logic—and without
+such a logic, the Yale Shooting Anomaly would not arise—it is
+very natural to formalize this by treating uncaused eventualities as
+abnormalities to be minimized. 
+
+
+This strategy was pursued by Hector Geffner in
+ Geffner 1992
+1990,
+ where he formalizes this simple causal
+solution to the Yale Shooting Anomaly. But the solution is presented in
+the context of an ambitious general project in nonmonotonic logic that
+not only develops properties of the preferred model approach and shows
+how to apply it to a number of reasoning problems, but that relates
+nonmonotonic logic to probabilities, using ideas deriving from
+ Adams 1975.
+ In
+ Geffner 1992,
+ the causal theory is sketched;
+it is not developed to show its adequacy in dealing with the battery of
+problems presented above, and in particular the Ramification Problem is
+left untouched.
+
+
+The work beginning with
+ Lifschitz 1987
+ has contributed to a sustained line of research in the causal
+approach—not only by Lifschitz and students of his such as Enrico
+Giunchiglia and Hudson Turner, but by researchers at other sites. For
+work in this area, and further references, see
+ Thielscher 1989,
+ Gustaffson & Doherty 1996,
+ Baral 1995,
+ Nakashima et al. 1997,
+ Lifschitz 1997,
+ Giunchiglia & Lifschitz 1998,
+ Lin 1995,
+ Haugh 1987,
+ Lifschitz 1998,
+ Turner 1999,
+ McCain & Turner 1995,
+ Elkan 1991,
+ McCain & Turner 1997,
+ Thielscher 1996,
+ and
+ Gelfond & Lifschitz 1998.
+
+
+Here, we briefly describe some of theories developed by the
+Texas Action Group, leading up to the causal solution presented in
+ Turner 1999.
+ Turner returns to the ideas
+ of
+ Geffner 1992,
+ but places them in a simpler
+logical setting and applies them to the formalization of more complex
+scenarios that illustrate the interactions of causal inertia with other
+considerations, especially the Ramification Problem.
+
+
+Ramification is induced by the presence of static laws
+which relate the direct consequences of actions to other changes. 
+Let’s use a car-starting scenario to illustrate the difficulties. There
+is one action, turn-on, which turns on the ignition; let’s
+suppose that this action has no preconditions. There is a fluent
+Ig tracking whether the ignition is on, a fluent Dead
+tracking whether the battery is dead, and a fluent Run
+tracking whether the engine is running. A static law says that if the
+ignition is on and the battery isn’t dead, the engine is running.
+(Let’s suppose that every other source of failure has already been
+eliminated in this scenario; the only possible reason for not starting
+is the battery.) We want to consider a transition in which
+turn-on is performed in a situation in which the ignition is
+not on, the battery is not dead, and the car isn’t running.
+
+
+Of course, we want a planning agent to be able to infer in such a
+case that a performance of turn-on will result in a situation
+in which the ignition is on, the battery isn’t dead, and the engine is
+running. But contraposition of laws makes it difficult to devise a
+principled solution. Informally, this difficulty is this: we can
+conclude by contraposing our only static law that if the ignition is on
+and the engine isn’t running, then the battery is dead. This law not
+only is true in our scenario, but would be used to explain a failed
+attempt to start the car. But if we allow it to be used for prediction,
+then it is hard to see how to rule out an outcome of turn-on
+in which the ignition is on, the battery is dead, and the engine isn’t
+running. The battery is dead in this outcome because of causal inertia.
+The engine isn’t running because of the contraposed causal law.
+
+
+Readers who want to explore in some detail the
+problems of embedding a nonmonotonic solution to the Frame Problem in
+relatively expressive action languages  can look to
+ Gelfond & Lifschitz 1998.
+This paper presents an
+increasingly powerful and sophisticated series of action languages.
+Their language incorporates an ad hoc or at least purely
+syntactic solution to the Ramification Problem.
+
+
+A theory in language
+ B
+ consists of
+two sets of axioms:
+
+Static laws of the form F→L, where
+L is a literal and F is a conjunction of literals or
+is T.
+Dynamic laws of the form A Causes
+L if F, where A is an
+action term and F is a boolean formula.
+
+
+
+Gelfond and Lifschitz impose a weak closure condition on static
+laws: where s is a set of literals, s is
+restricted-closed with respect to a
+ B theory
+ T,
+ RBClT(s)
+if and only
+if every literal that would be added by starting with s and
+forward-chaining through the static laws of
+ B
+ is already in s. In other words:
+RBClT(s) 
+iff for all
+static laws F→L of T, if s
+entails F then L∈s.
+
+
+The closure operation induced by this condition is used in defining
+RESULT(a,s) for the language
+ B.
+ Of course, this solution treats logically equivalent
+static laws differently; for instance, a theory whose only static law
+is [P ∧ ¬Q] →R will in general
+determine a very different RESULT function than one
+whose only static law is [P ∧ ¬R] →Q.
+
+
+This has some somewhat counterintuitive effects. In the car-starting
+scenario, Gelfond and Lifschitz’ language
+ B
+ indeed yields the desired conclusion that the car will
+start when there is one dynamic law,
+
+turn-on Causes Ig 
+if T,
+
+
+when the only static law is 
+[Ig ∧ ¬Dead] → Run,
+
+
+when the initial state is s = {¬Ig,
+¬Dead, ¬Run}, and when the action
+turn-on is performed. 
+
+
+However, if we add a true static law saying that if the ignition is
+on and the engine isn’t running the battery is dead, we get an anomaly.
+With the addition of this law, there is a model in which preserving the
+fact that the car is not running makes the battery become dead when the
+ignition is turned on.
+
+
+If the two static laws,
+[Ig ∧ ¬Dead] → Run
+and [Ig ∧ ¬Run]
+→ Dead, are reformulated using causal language, the
+former sounds correct, while the second is distinctly problematic:
+compare
+If the battery isn’t dead, the ignition’s being on will
+cause the engine to run.
+
+
+with 
+If the engine isn’t running, the ignition’s being on will
+cause the battery to be dead.
+
+
+This makes it very plausible to suppose that the source of the
+problem is a representation of underlying causal information in action
+language
+ B
+ that is somehow
+inadequate.
+
+
+Gelfond and Lifschitz go on to describe another action
+ language,
+ C, which invokes an explicit notion of
+causality—motivated, in all likelihood, in part by the need to provide a
+more principled solution to the problem. Instead of describing that
+language, we now discuss the similar theory of
+ Turner 1999.
+
+
+Turner’s idea is to treat Caused as a modal operator
+[ c ], making this the
+basis of a modal nonmonotonic logic. In the preferred models of this
+logic, the caused propositions coincide with the propositions that are
+true, and this must be the only possibility consistent with the
+extensional part of the model. To make this more explicit, recall that
+in the possible worlds interpretation of S5, it is
+possible to identify possible worlds with state descriptions,
+which we can represent as sets I of literals (atomic formulas
+and their negations). Making this identification, then, we can think of
+a model as a pair <I, S>, where S is a
+set of interpretations (complete, consistent sets of literals)
+including I. The modal operator
+[ c ] is given the
+standard semantics: where S is a set of interpretations and
+where I ∈ S, 
+S ⊨I [ c 
+] A if and only if 
+S ⊨I′ A for all
+I′ ∈S. <I, S>
+satisfies a set of formulas T if and only if
+S ⊨I A for all
+A ∈ T.
+
+
+Turner’s preferred models of T are the pairs
+<I, S> such that: (1) <I,
+S> satisfies T, (2) S = {I}, and
+(3) <I, S> is the unique interpretation
+<I′, S′> meeting conditions (1) and
+(2) with I′ = I. Condition (2) guarantees the
+“universality of causation”; it validates A ↔
+[ c ]A.
+Condition (3) “grounds” causality in noncausal information (in the
+models in which we are interested, this will be information about the
+occurrence of events), in the strongest sense: it is uniquely
+determined by this information.
+
+
+Although it is not evident from the formulation, Turner’s account of
+preferred models is related to the constructions of more general
+nonmonotonic logics, such as default logic. Consult
+ Turner 1999
+ for details.
+
+
+The axioms that specify the effects of actions treat these effects
+as caused; for instance, the axiom schema for loading would read as
+follows:
+
+
+
+Causal-Load
+
+[ c ]Holds(load,
+ RESULT(load, s))[33]
+
+
+
+
+
+Ramifications of the immediate effects of actions are also treated as
+caused. And the nonmonotonic inertial axiom schemata take the form 
+
+[[[ c ]Holds(f,s)]
+ ∧
+Holds(f,RESULT(a,s))] →
+[ c ]Holds(f,R
+ESULT(a,s))
+
+and 
+
+[[[ c ]¬Holds(f,s)]
+ ∧
+¬Holds(f,RESULT(a,s))] → 
+     
+  [ c ]¬Holds(f,RESULT(a,s)).
+
+
+
+Thus, a true proposition can be caused either because it is the direct
+or indirect effect of an action, or because it involves the persistence
+of a caused proposition. Initial conditions are also considered to be
+caused, by stipulation. 
+
+
+To illustrate the workings of this approach, let’s consider the
+simplest case of inertia: we have a language with just one constant
+denoting a fluent, f, and one action-denoting constant, wait.
+As in the Yale Shooting Problem, there are no axioms for wait;
+this action can always be performed and has no associated effects. Let
+s1 be RESULT(wait,s
+0). The theory T contains an initial condition for
+f, Holds(f,s0) and a statement that the initial
+condition is caused,
+[ c ] Holds(f,s
+0), as well as the inertial schemata.
+
+
+Two models of T satisfy conditions (1) and (2):
+
+M1 =
+<I1,{I1}> and
+M2 =
+<I2,{I2}>,
+
+where
+I1 = {Holds(f,s0),
+Holds(f,s1)} and I2 =
+{Holds(f,s0),
+¬Holds(f,s1)}.
+
+M1 is the intended model, in which nothing
+changes. It satisfies Condition (3), since if
+<I1, S> satisfies T it
+satisfies
+[ c ]Holds(f,s
+1) by the inertial axiom
+
+[[[ c ]Holds(f,s)]
+ ∧ Holds(f,s1)] →
+[ c ]Holds(f,s
+1).
+
+
+Therefore, S = {I1}.
+
+M2 is an anomalous model, in which the fluent
+ceases spontaneously. This model does not satisfy Condition (3), since
+M3 =
+<I2,{I1,
+I2}> also satisfies T; in particular,
+it satisfies the inertial axiom for f because it fails to satisfy
+Holds(f,s1). So, while M1 is a
+preferred model, M2 is not.
+
+
+Turner’s approach avoids the problem of contraposition by giving
+causal relations the form
+[BACKGROUND-CONDITIONS
+ ∧
+ CAUSE] →
+[ c ]EFFECT.
+
+
+When contraposed, this becomes 
+[CAUSE
+ ∧
+¬[ c ]
+EFFECT] → ¬BACKGROUND-
+CONDITIONS,
+
+
+which does not have the form of a causal law. This solution is less
+than fully satisfactory at solving the intuitive difficulties, because
+Turner’s semantics seems intuitively to validate formulas such as
+
+[ c ][[¬Dead
+ ∧ Ig] →
+Run],
+
+
+and in this form, contraposition would be restored. The task of
+clarifying the foundations of causal theories of action and change may
+not yet be complete.
+
+
+But the apparent usefulness of a “principle of universal causality”
+in accounting for a range of problems in qualitative common sense
+reasoning will be tantalizing to philosophers. And the causal theory,
+as initiated by Geffner and developed by Turner, has many interesting
+detailed features. For instance, while philosophical work on causality
+has concentrated on the causal relation, this work in logical AI shows
+that a great deal can be done by using only a nonrelational causal
+predicate.
+
+
+The relation between causality and conditionals can be explored and
+exploited in various ways.  Lewis 1977
+undertakes to account for causality in terms of conditionals.  In the
+reverse direction, Lent and Thomason 2015
+uses Turner’s causal approach to construct models for conditional logics,
+in the restricted case where the antecedent is the conjunction of an
+action expression and simple situational conditions.  The motivation for
+this idea is than an explicit solution to the frame problem automatically
+provides a semantics for such conditionals.
+
+
+Morgenstern’s two chief criticisms of the causal approach to
+reasoning about actions are that it does not give an adequate account
+of explanation[34]
+ and that the logical context in
+which it works (the Situation Calculus) is limited. As work on the
+approach continues, progress is being made in these areas. But the
+constraints that a successful logic of action and change must meet are
+so complex that it seems to be a reasonable research methodology to
+concentrate initially on a restricted logical setting.
+
+
+For another approach to nonmonotonic causal reasoning, based on
+input-output logics (Makinson
+& van der Torre 2000), see Bochman
+2004.
+4.7 Action Formalisms and Natural Language
+
+
+Although for many AI logicists, the goal of action formalisms is to
+illuminate an important aspect of common sense reasoning, most of their
+research is uninformed by an important source of insights into the
+common sense view of time—namely, natural language. Linguists
+concerned with the semantics of temporal constructions in natural
+language, like the AI community, have begun with ideas from
+philosophical logic but have discovered that these ideas need to be
+modified in order to deal with the phenomena. A chief discovery of the
+AI logicists has been the importance of actions and their relation to
+change. Similarly, an important discovery of the “natural language
+logicists” has been the importance of different kinds of events
+(including structured composite events) in interpreting natural
+language. From work such as this the idea of “natural language
+metaphysics” (see, for instance,
+ Bach 1989)
+has emerged. 
+
+
+The goal of articulating a logical framework tailored to a
+representational system that is motivated by systematic evidence about
+meanings in natural languages is not acknowledged by all linguistic
+semanticists. Nevertheless, it is a significant theme in the linguistic
+literature. This goal is remarkably similar to those of the common
+sense logicists, but the research methodology is entirely
+different.
+
+
+Can the insights of these separate traditions be reconciled and
+unified? Is it possible to constrain theories of temporal
+representations and reasoning with the insights and research
+methodologies of both traditions? In
+ Steedman 1995
+ (and
+ 2000,
+ listed in the Other
+Internet Resources Section), these important questions are addressed,
+and a theory is developed that extends action formalisms like the
+Situation Calculus, and that incorporates many of the insights from
+linguistic semantics. The project reported in
+ Steedman 2000
+ is still incomplete, but the
+results reported there make a convincing case that the event-based
+ideas from linguistics can be fruitfully combined with the
+action-centered formalisms in the AI literature. The possibility of
+this unification is one of the most exciting logical developments in
+this area, bringing together as it does two independent descendants of
+the earlier work in the logic of time.
+5. Causal Reasoning
+
+
+In
+ Section 4.6,
+ we traced the reasons
+for the development of theories incorporating causality in work on
+reasoning about action and change. This is not the only area of AI in
+which causality has emerged. Causality figures in qualitative reasoning
+about devices; for Herbert Simon’s important work in this area, which
+goes back to the 1950s, see
+ Simon 1952;
+ 1977;
+ Iwasaki & Simon 1986.
+ Both these
+traditions are important. But the most robust and highly developed
+program in AI relating to causality is that of Judea Pearl and his
+students and associates, which derives from statistical techniques
+known as structural equation models.  
+Halpern and Pearl 2001 introduced
+the idea that causal relations among events could be inferred from
+these models: Bayesian belief networks could be interpreted as 
+causal networks.
+
+
+Pearl’s program has developed into a far-reaching campaign to
+rehabilitate causality in statistical thinking. We shall not discuss this
+topic here. For one thing, this survey omits probabilistic reasoning in
+AI. For another, Pearl’s views on causality are systematically and
+comprehensively presented in a recent book-length study,
+ Pearl 2000.
+
+
+But it is important to point out that the work on causality discussed
+ in
+ Section 4.6
+ and Pearl’s ideas do share
+some common themes. On both approaches: action is central for
+causality. Also there is a focus on causality as a tool in reasoning
+that is necessitated in part by limited resources. Another important
+theme is the deployment and systematic study of formalisms in which
+causality is related to other constructs (in particular, to probability
+and to qualitative change) and a variety of realistic reasoning
+problems are addressed.
+
+
+These commonalities provide reason to hope that we will see a
+science of causality emerging from the AI research, unifying the
+contributions of the probabilistic, the qualitative physics, and the
+nonmonotonic traditions, and illuminating the various phases of causal
+reasoning.
+
+
+ A recent landmark in this direction is 
+Halpern 2016, which develops and
+applies the general theory of event causality that arises from the
+causal network approach.  Although Halpern is a computer scientist,  a
+large part of this book is philosophical, exploring notions such
+as blame and explanation.  But the book also explores practical
+applications of the approach that would not occur to philosophers,
+in areas such as software fault diagnosis.
+
+
+Whether you take causality to be a fundamental construct in natural
+science, or a fundamental common sense phenomenon, depends on whether
+you have in mind an idealized nature described by differential
+equations or you have in mind the view of nature we have to take in
+order to act, either in everyday situations, or for that matter in
+designing experiments in the laboratory. The fact that, as Bertrand
+Russell noted (see
+ Russell 1957),
+causality is not to be found as a theoretical primitive in contemporary
+physical theories is at odds with its seeming importance in so many
+familiar areas of reasoning. The rigorous theories emerging in AI that
+are beginning to illuminate the workings of causality are important not
+only in themselves, but in their potentiality to illuminate wider
+philosophical issues.
+6. Spatial Reasoning
+
+
+The precomputational literature in philosophical logic relating to
+spatial reasoning is very sparse in relation, for instance, to the
+temporal literature. The need to support computational reasoning about
+space, however, in application areas such as motion planning and
+manipulation in physical space, the indexing and retrieval of images,
+geographic information systems, diagrammatic reasoning, and the design
+of high-level graphics programs has led to new interest in spatial
+representations and spatial reasoning. Of course, the geometrical
+tradition provides an exceptionally strong mathematical resource for
+this enterprise. But as in many other AI-related areas, it is not clear
+that the available mathematical theories are appropriate for informing
+these applications, and many computer scientists have felt it
+worthwhile to develop new foundations. Some of this work is closely
+related to the research in qualitative reasoning mentioned above in
+ Section 2.2,
+ and in some cases has been carried
+out by the same individuals. 
+
+
+The literature in spatial reasoning is extensive; for references to
+some areas not discussed here, see
+ Stock 1997,
+ Kapur & Mundy 1988,
+ Hammer 1995,
+ Wilson 1998,
+ Osherson & Lasnik 1990,
+ Renz & Nebel 1999,
+ Yeap & Jeffries 1999,
+ Forbus et al. 1991,
+ Chen 1990,
+ Burger & Bhanu 1992,
+ Allwein & Barwise 1996,
+ Glasgow et al. 1995,
+ and
+ Kosslyn 1990.
+ Here, we discuss only one
+trend, which is closely connected with parallel work in philosophical
+logic.
+
+
+Qualitative approaches to space were introduced into the logical
+literature early in the twentieth century by Lesniewski; see
+ Lesniewski 1916,
+ which presents the idea
+of a mereology, or qualitative theory of the part-whole
+relation between physical individuals. This idea of a logical theory of
+relations among regions or the objects that occupy them, which does not
+depend on construing regions as sets of points, remained an active area
+of philosophical logic, even though it attracted relatively few
+researchers. More recent work in the philosophical literature,
+especially
+ Casati & Varzi 1999,
+ Simons 1987,
+ Casati & Varzi 1996,
+ Clarke 1981,
+ Clarke 1985,
+ as directly influential on
+current computational work.
+
+
+The Regional Connection Calculus (RCC), developed by computer
+scientists at the University of Leeds, is based on a primitive
+C relating regions of space: the intended interpretation of
+C(x, y) is that the intersection of the
+closures of the values of x and y is nonempty.
+ (See
+ Cohn et al. 1997,
+ Cohn 1996)
+ for details and references.) One
+area of research concerns the definability of shapes in RCC. The extent
+of what can be defined with this simple primitive is surprising, but
+the technicalities quickly become complex; see, for instance,
+ Gotts 1994,
+ Gotts 1996).
+ The work cited in
+ Cohn et al. 1997
+ describes constraint propagation techniques and
+encodings in intuitionistic propositional logic as ways of supporting
+implemented reasoning based on RCC and some of its extensions. More
+recent work based on RCC addresses representation and reasoning about
+motion, which of course combines spatial and temporal issues; see
+ Wolter & Zakharyaschev 2000).
+ For more information about qualitative theories of movement,
+with references to other approaches, see
+ Galton 1997.
+7. Reasoning about Knowledge
+
+
+Epistemic logic is another area in which logic in computer science
+have been influenced by philosophical logic. The classical source for
+epistemic logic is
+ Hintikka 1962,
+ in which Jaakko Hintikka
+showed that a modal approach to single-agent epistemic attitudes could
+be informative and rewarding. This work discusses at length the
+question of exactly which constraints are appropriate for knowledge and
+belief, when these attitudes are viewed as explicated by a model
+theoretic relation over possible worlds; in both cases, Hintikka argues
+for S4 type operators. 
+
+
+In several papers (including
+ McCarthy 1979),
+ John McCarthy has recommended an approach to formalizing
+knowledge that uses first-order logic, but that quantifies explicitly
+over such things as individual concepts. In this section, we discuss
+the approach taken by most computer scientists, who, unlike McCarthy,
+use a modal language to formalize propositional attitudes.
+
+
+The logical aspects of modal epistemic logic were not significantly
+developed after Hintikka’s 1962 presentation; instead, the
+philosophical literature (which is not extensive, compared with many
+other topics in the area) concentrates on the issue of
+hyperintensionality, or closure of epistemic attitudes under
+logical consequence. This topic is especially challenging, turning out
+to be closely related to the semantic paradoxes, and the philosophical
+literature is inconclusive. Intuitions seem to conflict, and it is
+difficult to find ways to model the important phenomena using logical
+techniques.[35]
+
+Fagin et al. 1984
+ begins a
+tradition in computational logic that revives the modal approach to
+epistemic logic, developing generalized logical foundations and
+applications that had not occurred to the philosophers. The technical
+idea is to simplify the modality, using S5 (or deontic
+S5 for belief), but to introduce multiple agents, and
+to concentrate on reasoning having to do with agents’ attitudes about
+one another’s attitudes. Such logics have direct applications in the
+analysis of distributed systems, dynamic systems in which
+change is effected by message actions, which change the knowledge of
+agents according to rules determined by a communications
+protocol.
+
+
+As such, this work belongs to a separate area of computer science,
+but one that overlaps to some extent with AI. Later, this work has
+interacted with a research tradition in economics that is concerned
+with the role of knowledge in games and bargaining; see, for
+ instance,
+ Geanakopolos 1994;
+ Osborne & Rubenstein 1994
+[Chapter 5].
+
+
+For some reason, the multi-agent case did not occur to philosophical
+logicians.[36]
+ This is another example of the way
+in which need for an application (in this case, the need for a theory
+of distributed systems) provided the inspiration for an important
+logical development. The logical details are extensively and systematically 
+recorded in
+ Fagin et al. 1995;
+ this is
+essential reading for anyone seriously interested in this topic.
+
+
+Much of the interdisciplinary work in applications of the logic of
+knowledge is reported in the proceedings of a series of conferences
+initiated in 1986 with
+ Halpern 1986.
+ These
+conferences record one of the most successful collaborations of
+philosophers with logicians in Computer Science, although the group of
+involved philosophers has been relatively small. The focus of the
+conferences has gradually shifted from Computer Science to
+Economics.
+
+
+AI applications deal with with knowledge in the form of stored
+representations, and the tradition in AI with which we are concerned
+here thinks of reasoning as the manipulation of symbolic
+representations. Also, it is mainly due to AI that the problem of
+limited rationality has become a topic of serious interest, providing a
+counterbalance to the idealizations of philosophy and
+economics.[37]
+ So you would think that a logical
+model of propositional attitudes that is committed to closure under
+logical consequence would be highly unpopular in AI. But this is not
+so; the possible worlds approach to attitudes is not only the leading
+theory in the areas discussed in
+ Fagin et al. 1995,
+ but has even been advocated in robotics
+applications; see
+ Rosenschein & Kaelbling 1995;
+ Rosenschein 1989.
+ Nevertheless, the issue of hyperintensionality has been
+investigated in the AI literature; see
+ Perlis 1985;
+ Konolige 1986;
+ Lakemeyer 1997;
+ Levesque 1984).
+ Though there are some new
+positive results here, the AI work in this area has, for the most
+part, been as inconclusive as that in philosophy.
+
+
+The philosophical literature on a related topic, the logic of
+perception, has not been extensive; the main reference is
+ Hintikka 1970.[38]
+ But sensation is
+addressed in recent work in the AI literature which is concerned with
+developing logical frameworks for general-purpose applications in
+robotics. The main idea in this area is to add sensing actions to the
+repertoire of a planning formalism of the sort discussed in
+ Section 4.
+ The earliest work in this area was carried
+out in the 1980s by Robert Moore; see
+ Moore 1995b;
+ Moore 1985.
+ For some of the
+contemporary work in cognitive robotics, see
+ Baral et al. 2000,
+ Bacchus et al. 1999,
+ Golden & Weld, 1996,
+ Pirri & Finzi 1999,
+ and
+ Thielscher 2000.
+8. Towards a Formalization of Common Sense
+
+John McCarthy’s explicit long-term goal—the
+formalization of common sense knowledge—has been adopted and
+pursued by a relatively small, but active, subcommunity of AI
+researchers.  A larger group (those involved in knowledge
+representation, cognitive robotics, and qualitative physics) can be
+considered to work on specialized projects that support the larger
+goal.  Anything like a formalization of common sense is so far from
+being accomplished that—if it is achievable at all—it is
+not even possible to estimate when we could expect the task to be
+completed.  However, since 2001 (the date of a symposium on common
+sense reasoning held at The Courant Institute—see
+ The Common Sense 2001 Homepage) something like
+a cooperative, sustained effort in this direction has begun to
+emerge.  This effort is yielding a better sense of how to develop a
+workable methodology for formalizing common sense, and of how to
+divide the larger problem up into more manageable parts.  Many of the
+papers presented at this conference were presented in expanded form
+in 2004 in an issue of Artificial Intelligence.  The
+introduction to this issue, 
+Davis & Morgenstern 2004, provides a useful survey and
+appreciation of the general research area.
+	
+
+This cooperative formalization effort (1) seeks to account for
+many areas of knowledge, and at the same time (2) attempts to see how
+this formalized knowledge can be brought to bear on moderately
+complex common-sense reasoning problems.  The first book-length
+treatment of this topic, Davis 1991,
+divides the general problem into the following subtopics.
+
+ Quantities and Measurements
+ Time
+ Space
+ Physics
+ Minds
+ Plans and Goals
+ Society
+
+
+
+Several of these topics overlap with concerns of the
+qualitative physics and qualitative reasoning community.  Although it
+can be hard to tell where common sense ends and physics begins, the
+formalization of common sense reasoning can be seen as a more general
+formalization project that can draw on a tradition in qualitative
+physics that has gone through many years of development and by now is
+fairly 
+ mature.[39]
+
+
+ And a few of them overlap with
+the work on the formalization of planning that was described above in
+Section 4.  Minds and society, however, are new and
+different topics; the former has to do with common sense psychology
+and its application in introspective and interpersonal reasoning, and
+the latter, of course, should have to do with social and political
+knowledge and reasoning, but this is the least-developed area of
+formalized common sense knowledge: the chapter on this topic in Davis 1991 is very brief, and discusses
+mutual attitudes and communication.  More recently, Andrew S. Gordon
+and Jerry Hobbs have undertaken a large-scale, ambitious
+formalization of common-sense psychology.  See, for instance, 
+ Hobbs & Gordon 2005. 
+
+
+A more recent book-length treatment of the formalization of
+common sense, 
+ Mueller, 2006, follows a similar
+pattern.  More than half of the book is devoted to reasoning about
+actions and change.  There are short chapters on space and mental
+states, and a longer treatment of default reasoning.  Although
+logical techniques and formalization methods take center stage in
+this book, it also contains material on nonlogical methods and
+on implementations related to the  formalizations.
+
+Even when attempted on a moderate scale, the formalization of
+common sense knowledge puts considerable pressure on the resources of
+even the most powerful logical systems that were devised for the
+formalization of mathematics.  As we tried to show in discussing the
+special case of action and planning in Section 4,
+this pressure may lead us to seek logics that can facilitate the
+formalization projects: for instance, nonmonotomic logics and logics
+that explicitly represent context.  
+	
+
+When larger-scale formalizations are attempted, other
+challenges arise that are similar to those that software engineering
+tries to address.  Even fairly small programs and systems of axioms
+are difficult to comprehend and can be highly unpredicable, yielding
+unexpected consequences and unanticipated interactions.  The creation
+and use of larger programs and formalizations raises questions of how
+to enable teams of developers to produce coherent results when
+modules are integrated, how to maintain and test large systems, and
+how to use knowledge sources such as dictionaries and knowledge bases
+to automatically generate axioms.  
+
+You can think of the philosophical methodology of providing
+analyses as a collection of attempts to formalize or partially
+formalize various common sense notions.  These attempts are far
+smaller in scale, less systematic, and more heterogeneous than the
+parallel effort that is emerging in AI.  Philosophers have never
+chosen a specific domain comparable to the planning domain and
+mounted a sustained attempt to formalize it, along with a companion
+effort to develop appropriate logics.  And no matter how complex the
+notions with which they which they are concerned, philosophers have
+never allowed their analyses to grow to the complexity where 
+methodological issues arise similar to those that apply to the
+development and maintenance of large software systems. 
+
+The techniques emerging in AI are of great potential
+significance for philosophy because it is easy to suspect that many
+philosophically important phenomena have the sort of complexity that
+can only be dealt with by accepting the problems that go along with
+developing complex formalizations.  Limitations of the philosophical
+methods that were used throughout the twentieth century and are still
+in use may make it impossible to produce theories that do justice to
+the subject matter.  
+
+It would therefore be a great mistake for philosophers to
+disparage and ignore the large-scale formalizations that are
+beginning to emerge in AI because these efforts begin to raise
+engineering issues.  It may well be that, although philosophy
+requires us to address complex phenomena in a rigorous way, the
+traditional philosophical methods are capable of doing justice
+to the complexity.  Methods that promise to do this are worth taking
+seriously.
+
+Among other methods borrowed from computer science, 
+the common sense reasoning community has sought to develop 
+suites of “benchmark problems”.  The idea is to publicize
+problems that are difficult but not impossibly difficult, to
+encourage the community to create solutions, and compare
+the solutions.
+
+
+Probably the best-studied problem to date is Ernest Davis’
+“egg-cracking problem.”  This is formulated as follows on the
+Common Sense Reasoning Problem webpage.
+
+
+  A cook is cracking a raw egg against a glass bowl.  Properly 
+  performed, the impact of the egg against the edge of the bowl will
+  crack the eggshell in half.  Holding the egg over the bowl, the cook
+  will separate the two halves of the shell with his fingers, enlarging
+  the crack, and the contents of the egg will fall gently into the bowl.
+  The end result is that the entire contents of the egg will be in the
+  bowl, with the egg unbroken, and that the two halves of the shell are
+  in the cook’s fingers.
+ 
+
+Variants:  What happens if: The cook brings the egg to impact
+  very quickly?  Very slowly?  The cook lays the egg in the bowl and
+  exerts steady pressure with his hand?  The cook, having cracked the
+  egg, attempts to peel it off its contents like a hard-boiled egg?
+  The bowl is made of looseleaf paper?  Of soft clay?  The bowl is smaller
+  than the egg?  The bowl is upside down?  The cook tries this
+  procedure with a hard-boiled egg?  With a coconut?  With an
+  M&M? [40]
+
+
+Along with the problem itself  three solutions are posted:
+ Shanahan 2004, 
+ Lifschitz 1998b,
+ and a version of
+  Morgenstern 2001.  Comparing the
+solutions is instructive: similarities outweigh differences.  All the
+authors think of this as a planning problem, and use a versions of
+the Situation Calculus or the Event Calculus in the formalization.
+Each axiomatization is modular, with, for instance, separate modules
+devoted to the relevant geometrical and material properties.  Each
+author provides a “proof of concept” for the formalization by showing
+that the axioms support a proof of the correctness of a plan to crack
+the egg in the simple case.  None of the authors considers all of
+Davis’ elaborations of the problem, but the axioms are framed with
+elaboration in mind and some elaborations are considered.  It isn’t
+clear whether any of the authors actually implemented the
+formalization (for instance, using a theorem prover). 
+
+The egg-cracking case raises the problem of how to evaluate
+moderately large formalizations of common sense problems.
+Morgenstern and Shanahan express this issue explicitly.  Morgenstern
+suggests that the important criteria are (1) Epistemological adequacy
+(correspondence to intuitive reasoning, as experienced by people who
+engage in it), (2) Faithfulness to the real world, (3) Reusability,
+and (4) Elaboration tolerance.  It isn’t clear whether the first two
+of these criteria are too subjective to be useful.  To these,
+Shanahan adds (5) Usability, which probably is presupposed by
+Morgenstern’s third criterion.
+
+
+There is anecdotal evidence that the larger AI community is
+somewhat skeptical about such research projects—or, if not
+skeptical, at least puzzled about how to evaluate them.  In
+considering these doubts, it is necessary to appreciate the
+complexity of these formalization problems, and the preliminary and
+tentative status of the research program.  Nevertheless, this
+criticism has some legitimacy, the common sense reasoning community
+is sensitive to these criticisms, and is working to develop and
+refine the methods and criteria for evaluating this work.
+
+As long as formalization problems remain relatively simple,
+we can treat formalization as an art rather than as a discipline with
+a well-articulated methodology.  But the trends we’ve been
+discussing show that formalization of even moderate-sized realistic
+common sense reasoning problems is not merely an art.  Just as
+programming systems, expert systems and knowledge bases have created
+corresponding software engineering disciplines, large-scale
+formalization projects require a carefully thought through and tested
+methodology.
+
+9. Logical Approaches to Natural Language and 
+Communication
+
+
+Over the last twenty-five years or so, many profound relations have
+emerged between logic and grammar. Computational linguistics (or
+natural language processing) is a branch of AI, and it is fairly
+natural to classify some of these developments under logic and AI. But
+many of them also belong to an independent tradition in logical
+foundations of linguistics; and in many cases it is hard (and
+pointless) to attempt a classification. This sketch will concentrate on
+developments that have to do with reasoning about linguistics; other
+applications of logic to linguistics are described in
+ van Benthem & ter Meulen 1996.
+9.1 Parsing and Deduction
+
+
+Grammar formalisms—special-purpose systems for the description
+of linguistic systems and subsystems—can be thought of as logics
+designed to axiomatize the association of linguistic structures with
+strings of symbols. You might be able to infer from such a system, for
+instance, that ‘assignments’ is the plural form of the
+nominalization of the verb ‘assign’. So you can look at the
+process of parsing a string of words—of finding the
+linguistic structures, if any, that are associated with it—as a
+search for a proof in a certain logical system.
+
+
+This approach has been highly successful as an analytic tool. It
+makes model-theoretic techniques applicable to linguistic reasoning,
+This makes the underlying reasoning problems much more transparent, and
+makes it possible to apply many well-developed areas of logic to
+grammar formalisms. For more information on these topics, see
+ Buszkowski 1996;
+ Shieber 1992.
+9.2 Feature Structure Logic
+
+
+The usefulness and scope of logical methods in relation to
+linguistics is greatly increased by the development of techniques for
+analyzing the way information attaches to linguistic units. It is very
+natural to represent the information attaching, say, to a lexical item
+in the form of a set of functions (or attributes) that produce values
+in some linguistic domain. A pronoun x may have a number, a
+person, and a case: if x = ‘we’ then
+
+
+number(x) = plural,
+person(x) = first,
+case(x) = nominative.
+
+
+
+
+In more general cases, the values of these functions may themselves be
+linguistic units that take on values for certain attributes. 
+
+
+Allowing these functions to be partial provides a useful
+informational representation of the stages of a linguistic parse; much
+of the work of parsing involves completing this partial information,
+subject to constraints imposed by linguistic agreement conditions.
+Feature structures—sets of identities that serve to evaluate
+linguistic features—have a natural algebraic interpretation, and
+there is an elegant treatment of their logic. For more information and
+references, see
+ Rounds 1996.
+9.3 Logic and Discourse
+
+
+The reasoning associated with discourse is the probably the least
+well understood area of computational linguistics. Although logical
+techniques do not yet play a major role in discourse, they seem to
+offer one of the most promising ways of providing a uniform account of
+the many forms of reasoning that are involved in generating and
+interpreting language in interactive conversation.
+
+
+We  briefly mention three contributions to this area. Building on
+the fact that the rules governing conversation are exception-ridden,
+Alex Lascarides and Nicholas Asher have developed techniques for
+formalizing discourse phenomena based on nonmonotonic logic; see
+ Asher & Lascarides 1994,
+ Asher & Lascarides 1997.
+ Jerry
+Hobbs and various co-workers look at the inference processes used in
+discourse as abductive, and propose to formalize abduction as
+a search for a proof in which certain “low-cost” assumptions may be
+made which serve as data or additional axioms for the proof.
+ Hobbs et al. 1993
+ shows how an
+impressive range of discourse phenomena can be formalized using this
+idea. In practice, this abductive account looks rather similar to that
+of Lascarides and Asher, because it involves deploying axioms about
+discourse (in the form of Horn clause rules supplemented with weights
+giving the assumption costs of premises) that in effect are
+nonmonotonic.
+
+
+In more recent work, Matthew Stone shows in
+ Stone 1998
+ how modal logic can inform the
+complex reasoning involved in natural language generation. Generating a
+coherent, appropriately phrased text that usefully performs a
+task-oriented communication task is difficult to formalize because it
+requires the integration of complex and sophisticated domain
+information with discourse planning, user modeling, and linguistic
+constraints. Stone shows that modal logic can be used to modularize the
+formalization of the information required in this task; he also shows
+how modal theorem proving can be used to implement the reasoning.
+10. Taxonomic Representation and Reasoning
+10.1 Concept-Based Classification
+
+
+Traditionally, the task of representing large amounts of domain
+information for general-purpose reasoning has been one of the most
+important areas of knowledge representation. Systems that exploit the
+intuitive taxonomic organization of domains are useful for this
+purpose; taxonomic hierarchies not only help to organize the process of
+knowledge acquisition, but provide a useful connection to rule-based
+reasoning.[41]
+
+
+For domains in which complex definitions are a natural way to
+organize information, knowledge engineering services based on
+definitions of concepts have been extremely successful. Like
+variable-free versions of first-order logic (see, for instance,
+ Quine 1960,
+ these systems are centered on
+concepts or first-order predicates, and provide a number of mechanisms
+for their definition. The fundamental algorithm associated with these
+taxonomic logics is a classifier which inputs a system of
+definitions and outputs the entailment relations between defined and
+primitive concepts. For background on these systems, see
+ Woods & Schmolze 1992
+ and
+ Brachman et al. 1991.
+
+
+The simplest taxonomic logics can be regarded as subsystems of
+first-order logic with complex predicates; but they have been extended
+in many ways, and the issues raised by many of these extensions overlap
+in many cases with topics in philosophical logic.
+10.2 Nonmonotonic Inheritance
+
+
+Much more complex logical issues arise when the organization of a
+domain into hierarchies is allowed to have exceptions. One way to
+approach this topic is to explore how to make a taxonomic logic
+nonmonotonic; but nonmonotonic inheritance is a topic in its
+own right. Although there are strong affinities to nonmonotonic logic,
+nonmonotonic logic relies more heavily on graph-based representations
+than on traditional logical ideas, and seems to provide a much
+finer-grained approach to nonmonotonic reasoning that raises entirely
+new issues, and which quickly becomes problematic. For this reason,
+systems of nonmonotonic inheritance tend to be expressively weak, and
+their relations to the more powerful nonmonotonic logic has never been
+fully clarified. For background on this topic, see
+ Thomason 1992,
+ Horty 1994.
+11. Contextual Reasoning
+
+
+In the tradition in philosophical logic dealing with contextual
+effects on the interpretation of expressions, as well as in the more
+recent tradition in dynamic logic, context is primarily formalized as
+an assignment of values to variables, and the language is designed to
+make explicit reasoning about context either very limited or outright
+impossible.
+
+
+Concern in AI about the representation of large and apparently
+heterogeneous domains and about the integration of disparate knowledge
+sources, as well as interests in formalizing common sense of the sort
+discussed in
+ Section 2.2,
+ above, have led to
+interest in the AI community in formalizing languages that take context
+into account more explicitly.
+
+
+In
+ McCarthy 1993b,
+ McCarthy
+recommends the study of languages containing a construct
+ist(c,φ),
+
+
+where ist is read “is-true.” This is analogous to the
+Holds construct of the situation calculus—but now
+c stands for a context, and φ is a possibly complex
+propositional representation, which many (including McCarthy) take to
+refer to a sentence. 
+
+
+There are analogies here both to modal logic and to languages with an
+explicit truth predicate. But the applications that are envisioned for
+a logic of context create opportunities and problems that are in many
+ways new.  Work on the logic of context subsequent to McCarthy’s
+original suggestion, includes 
+McCarthy &
+Buvac 1998, Guha 1991, and some of
+the papers in the conference volumes
+Akman et al. 2001,
+ Bouquet et al. 1999.
+For extensions of Richard Montague’s Intensional Logic motivated by
+McCarthy’s suggestions, see Thomason 2003
+and 2005.
+
+
+For some reason, work on the explicit formalization of context hasn’t
+been actively pursued by the computational community beyond this point.
+Philosophical interest in context, and especially in the interaction
+of context with propositional attitudes and modals, continues to be
+strong; but the very general logical frameworks for context that 
+McCarthy envisioned have yet not been taken up by philosophers.
+12. Prospects for a Logical Theory of Practical Reason
+
+
+There is reason to hope that the combination of logical
+methods with planning applications in AI can enable the development of
+a far more comprehensive and adequate theory of practical reasoning
+than has heretofore been possible. As with many problems having to do
+with common sense reasoning, the scale and complexity of the
+formalizations that are required are beyond the traditional techniques
+of philosophical logic. However, with computational methods of
+implementing and testing the formalizations and with areas such as
+cognitive robotics to serve as laboratories for developing and testing
+ideas, we can hope to radically advance a problem that has seen little
+progress since it was first proposed by Aristotle: the problem of
+devising a formalization of practical reasoning that is genuinely
+applicable to common sense reasoning problems. 
+
+
+The classical work in deontic logic that was begun by von Wright
+(see
+ von Wright 1983)
+ is one source of
+ideas; see
+ (Horty 2001,
+ van der Torre 1997).
+ In fact, as the
+more recent work in deontic logic shows, nonmonotonic logic provides a
+natural and useful supplement to the classical deontic logic.  One
+recent work (Horty 2012) seeks 
+to base deontic logic on a prioritized version of Reiter’s default logic.
+
+
+
+An even more robust account of practical reasoning begins to emerge
+when these ideas are supplemented with work on the foundations of
+planning and reasoning about action that were discussed in
+ Section 4,
+ above. But this development can be pursued
+even further, by extending the formalism to include preferences and
+intentions.[42]
+
+
+Ultimately, what is needed is a model of an intelligent reasoning
+and acting agent. Developing such a model need not be entirely a matter
+of logic, but according to one school of thought, logic has a central
+role to play in it; see, for instance,
+ Baral & Gelfond 2000,
+ Wobcke et al. 1998,
+ Rao & Georgeff 1991,
+ Burkhard et al. 1998).

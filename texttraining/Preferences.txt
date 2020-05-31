@@ -1,0 +1,1937 @@
+The notion of preference has a central role in many disciplines,
+including moral philosophy and decision theory. Preferences and their
+logical properties also have a central role in rational choice theory,
+a subject that in its turn permeates modern economics, as well as
+other branches of formalized social science. The notion of preference
+and the way it is analysed vary between these disciplines. A treatment
+is still lacking that takes into account the needs of all usages and
+tries to combine them in a unified approach. This entry surveys the
+most important philosophical uses of the preference concept and
+investigates their compatibilities and conflicts.
+ 
+1. The Basic Concept of Preference
+
+In common parlance, the term "preference" assumes different meanings,
+including that of comparative evaluation, prioritisation or favouring,
+and choice ranking (See for instance the Oxford English
+Dictionary). In this entry, we discuss the notion of preference
+as subjective comparative evaluations, of the form
+“Agent A prefers X to Y”. This
+characterisation distinguishes preference from other evaluative
+concepts. 
+
+Preferences are evaluations: they concern matters of value,
+typically in relation to practical reasoning, i.e. questions about what
+should be done. This distinguishes preferences from concepts that
+concern matters of fact. 
+
+Furthermore, preferences are subjective in that the
+evaluation is typically attributed to an agent – where this
+agent might be either an individual or a collective. This
+distinguishes them from statements to the effect that
+“X is better than Y” in an objective
+sense. The logic of preference has often also been used to represent
+such objective evaluations (e.g. Broome 1991b), but the substantial
+notion of preference includes this subjective element. 
+
+Finally, preferences are comparative in that they express the
+evaluation of an item X  relative to another item
+Y. This distinguishes them from monadic concepts like
+“good”, “is desired”, etc. which only evaluate
+one item. 
+
+Most philosophers take the evaluated items to be propositions. In
+contrast to this, economists commonly conceive of items as bundles of
+ goods.[1] 
+They are represented as vectors, where each position in the
+vector represents a specific good, and the scalar at that position
+denotes the number of units of that good. For convenience, economists
+often operate in two-goods worlds, where one good—the
+numeraire—stands for all the other goods (money is the
+most common numeraire). However, this approach has a difficult ambiguity. If
+preferences are subjective evaluations of the alternatives, then what
+matters are the results that can be obtained with the help of these
+goods, not the goods themselves. Whether an agent has a preference
+e.g. for a batch of wood over a crate of bricks will depend on whether
+she intends to use it to generate warmth, build a shelter or create a
+sculpture. Economists have tried to solve this ambiguity by coupling
+preferences over goods with household production functions (Lancaster
+1966, Becker and Michael 1973); but as these components are very
+difficult to determine, it is often thought more parsimonious to stick
+with the sentential or propositional representations of states of the
+world. 
+
+Serious engagement with preferences began in the 20th
+century. In the social sciences, the preference concept became
+important for explanatory and predictive purposes with Irving
+Fisher’s (1892) and Vilfredo Pareto’s (1909)
+methodological criticisms of hedonistic cardinal utility. Previously,
+economists largely agreed that decisions were motivated by the
+individual’s quest for pleasure, and that the difference in
+quantity of pleasure derived from different alternatives was an
+important influence on decisions. In that framework, the notion of
+preference, to the extent that it was used at all, was merely derived
+from hedonistic utility: X is preferred to Y iff
+X yields more utility than Y. Pareto argued that
+because an accurate measurement procedure for cardinal hedonic utility
+was not available, social scientists should constrain themselves to
+merely ordinal comparisons (Bruni and Guala 2001). This argument
+turned preference into a fundamental notion of the social sciences,
+replacing (hedonic) utility. 
+
+Economists in the 1930s (Hicks and Allen 1934) radicalised
+Pareto’s idea and argued that cardinal utility should be
+excluded in order to expunge economics from psychological hedonism.
+However, their concept of preference retained psychological content:
+people are assumed to act purposefully and therefore to have
+preferences that really constitute mental evaluations, rather than
+being ex-post rationalisations of behaviour (Lewin 1996). Furthermore,
+Ramsey (1926) and later von Neumann and Morgenstern (1944) devised
+formal tools allowing the representation of preference magnitudes as
+utility functions. This new utility, however, was very different from
+the older hedonic concept: here the preference concept is basic, and
+the cardinal utility function merely derived. 
+
+Psychologists also sought to move away from the old psychophysical
+assumptions and began seeing mental concepts like preferences with
+increased suspicion. Instead, they sought not only to connect and
+measure psychological events, but indeed replace them by the
+behavioural criteria with which they were hitherto connected. (See the
+entry on
+ behaviorism).
+ Again, it was an economist, Paul Samuelson, who formulated this
+principle most explicitly for the concept of preference. In 1938 he
+suggested to “start anew … dropping off the last vestiges
+of the utility analysis” (1938, pp. 61–62). Preferences
+were supposed to be defined in terms of choice, thus eliminating
+reference to mental states altogether. Although this approach was highly influential at
+the time, economists have largely not followed Samuelson in this
+radical proposal (Hausman 2012), and it might indeed be the case that
+Samuelson himself later changed his mind (Hands 2014). With the
+increasing convergence of (parts of) economics and psychology, the
+ordinal psychological interpretation of preferences appears to
+currently dominate in these disciplines. However, there is an ongoing
+discussion amongst philosophers whether the current concept of
+preference used by economists is this mental,
+“folk-theoretic” notion or a seperate theoretical concept
+(Mäki 2000, Ross 2014). 
+
+In philosophy, the concept of preference gained increased attention in
+the wake of the conceptual developments in the social sciences.
+Because the hedonic utility notion was increasingly questioned,
+utilitarian philosophers sought alternative foundations for their
+ethical theories. Today, preferentialism defends satisfaction
+of individual preferences as the only intrinsic value bearer, and thus
+is a subcategory of the broad welfarist family of value theories,
+which identify intrinsic value with well-being. Few people defend the
+view that well-being is constituted by the satisfaction of
+any preference, but a number of authors defend refined
+versions of preferentialism (e.g. Rawls 1971, Scanlon 1998).
+Philosophers have also discussed the formal properties of preferences
+in preference logic. To this we turn in the next section.
+
+2. Preference logic
+
+Although not all philosophical references to preference make use of
+formal tools, preferences are almost always assumed to have structural
+properties of a type that is best described in a formalized language.
+The study of the structural properties of preferences can be traced
+back to Book III of Aristotle’s Topics. Since the early
+twentieth century several philosophers have studied the structure of
+preferences with logical tools. In 1957 and in 1963, respectively,
+Sören Halldén and Georg Henrik von Wright proposed the
+first complete systems of preference logic (Halldén 1957, von
+Wright 1963). The subject also has important roots in utility theory
+and in the theory of games and decisions. The preferences studied in
+preference logic are usually the preferences of rational individuals,
+but preference logic is also used in psychology and behavioural
+economics, where the emphasis is on actual preferences as revealed in
+behaviour.
+2.1 Concepts and notation
+
+There are two fundamental comparative value concepts, namely
+“better” (strict preference) and “equal in value
+to” (indifference) (Halldén 1957, 10). These terms are
+used to express the wishes of persons, but they are also used for
+other purposes, for instance to express objective or intersubjectively
+valid betterness that does not coincide with the pattern of wishes of
+any individual person. However, the structural (logical) properties of
+betterness and value equality do not seem to differ between the cases
+when they correspond to what we usually call “preferences”
+and the cases when they do not. The term “preference
+logic” is standardly used to cover the logic of these concepts
+even in cases when we would typically not use the term
+“preference” in a non-formalized context.
+
+The relations of preference and indifference between alternatives are
+usually denoted by the symbols ≻ and ∼ or alternatively by
+P and I. In accordance with a long-standing
+philosophical tradition, A≻B is taken to
+represent “B is worse than A”, as well
+as “A is better than B”. The objects
+of preference are represented by the relata of the preference relation
+(A and B in A≻B). In order
+to make the formal structure determinate enough, every preference
+relation is assumed to range over a specified set of relata. In most
+applications, the relata are assumed to be mutually exclusive, i.e.
+none of them is compatible with, or included in, any of the others.
+Preferences over a set of mutually exclusive relata are referred to as
+exclusionary preferences. When the set of relata are mutually
+exclusive, it is customary to call them an alternative set,
+or set of alternatives, A.
+
+
+The following four properties of the two exclusionary comparative
+relations are usually taken to be part of the meaning of the concepts
+of (strict) preference and indifference:
+
+(1) A≻B →
+¬(B≻A)    (asymmetry of
+preference)
+
+
+(2) A∼B → B∼A
+   (symmetry of indifference)
+
+
+(3) A∼A    (reflexivity of
+indifference)
+
+
+(4) A≻B →
+¬(A∼B)
+   (incompatibility of preference and
+indifference)
+
+
+It follows from (1) that strict preference is irreflexive, i.e. that
+¬(A≻A).
+
+The relation ≽, “at least as good as” (or more
+precisely: “better than or equal in value to”), can be
+defined as follows:
+
+A≽B ↔ A≻B ∨
+A∼B    (weak preference)
+
+
+The alternative notation R is sometimes used instead of
+≽.
+
+For reasons of convenience, weak preference is usually taken to be the
+primitive relation of preference logic. Then both (strict) preference
+and indifference are introduced as derived relations, as follows:
+
+A≻B if and only if A≽B
+and ¬(B≽A)
+
+
+A∼B if and only if A≽B
+and B≽A
+
+
+≻ is the strict part of ≽ and ∼ its
+symmetric part.
+
+Two common notational conventions should be mentioned. First, chains
+of relations can be contracted. Hence,
+A≽B≽C abbreviates
+A≽B ∧ B≽C, and
+A≻B≻C∼D
+abbreviates A≻B ∧
+B≻C ∧ C∼D. Second,
+the ancestral symbol * is used to contract repeated uses of the same
+relation; hence ≻* stands for ≻ repeated any finite
+non-zero number of times (and similarly for the other relations). Thus
+A≻*C denotes that either
+A≻C or there are B1
+… Bn such that
+A≻B1 ∧
+B1≻B2 ∧ …
+Bn−1≻Bn
+∧ Bn≻C.
+2.2 Completeness
+
+In most applications of preference logic, it is taken for granted that
+the following property, called completeness or
+connectedness, should be satisfied:
+
+A≽B ∨ B≽A
+
+
+or equivalently:
+
+A≻B ∨ A∼B ∨
+B≻A
+
+
+The following weaker version of the property is sometimes useful: 
+
+If A≠B, then A≽B ∨
+B≽A (weak connectivity)
+
+(Completeness holds if and only if both weak
+connectivity and reflexivity of indifference hold.)
+
+
+Completeness (connectedness) is commonly assumed in many applications,
+not least in economics. Bayesian decision theory is a case in point.
+The Bayesian decision maker is assumed to make her choices in
+accordance with a complete preference ordering over the available
+options. However, in many everyday cases, we do not have, and do not
+need, complete preferences. Consider a person who has to choose
+between five objects A, B, C, D,
+and E. If she knows that she prefers A to the
+others, she does not have to make up her mind about the relative
+ranking among B, C, D, and E.
+
+In terms of resolvability, there are three major types of preference
+incompleteness. First, incompleteness may be uniquely
+resolvable, i.e. resolvable in exactly one way. The most natural
+reason for this type of incompleteness is lack of knowledge or
+reflection. Behind what we perceive as an incomplete preference
+relation there may be a complete preference relation that we can
+arrive at through observation, introspection, logical inference, or
+some other means of discovery. 
+
+Secondly, incompleteness may be multiply resolvable, i.e.
+possible to resolve in several different ways. In this case it is
+genuinely undetermined what will be the outcome of extending the
+relation to cover the previously uncovered cases.
+
+Thirdly, incompleteness may be irresolvable. The most natural
+reason for this is that the alternatives differ in terms of advantages
+or disadvantages that we are unable to put on the same footing. A
+person may be unable to say which she prefers—the death of two
+specified acquaintances or the death of a specified friend. She may
+also be unable to say whether she prefers the destruction of the
+pyramids in Giza or the extinction of the giant panda. In
+environmental economics, as a third example, it is a controversial
+issue whether and to what extent environmental damage is comparable to
+monetary loss.
+
+Two alternatives are called “incommensurable” whenever it
+is impossible to measure them with the same unit of measurement. Cases
+of irresolvable incompleteness are often also cases of
+incommensurability (Chang 1997). In moral philosophy, irresolvable
+incompleteness is usually discussed in terms of the related notion of
+a moral dilemma.
+2.3 Transitivity
+
+By far the most discussed logical property of preferences is the
+following:
+
+A≽B ∧ B≽C →
+A≽C    (transitivity of
+weak preference)
+
+
+The corresponding properties of the other two relations are defined
+analogously:
+
+A∼B ∧ B∼C →
+A∼C    (transitivity of
+indifference)
+
+
+A≻B ∧ B≻C →
+A≻C    (transitivity of
+strict preference)
+
+
+A weak preference relation ≽ is called quasi-transitive
+if its strict part ≻ is transitive.
+
+Many other properties have been defined that are related to
+transitivity. The following three are among the most important of
+these:
+
+A∼B ∧ B≻C →
+A≻C
+   (IP-transitivity)
+
+
+A≻B ∧ B∼C →
+A≻C
+   (PI-transitivity)
+
+
+There is no series
+A1,…,An of
+alternatives such that A1
+≻…≻An≻A1
+   (acyclicity)
+
+
+All of these are weakenings of the transitivity of ≽. In other
+words, if ≽ satisfies transitivity then ≻  and ∼
+are also transitive, and furthermore, IP-transitivity, PI-transitivity
+and acyclicity hold.
+
+Furthermore, if ≽ is transitive, then no cycles containing
+≻ are possible, i.e. there are no A and B such
+that A≽*B≻A. Preferences with
+such a ≻-containing cycle are called cyclic
+preferences.
+
+Transitivity is a controversial property, and many examples have been
+offered to show that it does not hold in general. A classic type of
+counterexample to transitivity is the so-called Sorites Paradox. It
+employs a series of objects that are so arranged that we cannot
+distinguish between two adjacent members of the series, whereas we can
+distinguish between members at greater distance (Armstrong 1939,
+Armstrong 1948, Luce 1956). Consider 1000 cups of coffee, numbered
+C0, C1,
+C2, … up to C999. Cup
+C0 contains no sugar, cup C1
+one grain of sugar, cup C2 two grains etc. Since
+one cannot taste the difference between C999 and
+C998, one might consider them to be equally good
+(of equal value),
+C999∼C998. For the same
+reason, we have C998∼C997,
+etc. all the way up to
+C1∼C0, but clearly
+C0 ≻ C999. This
+contradicts transitivity of indifference, and therefore also
+transitivity of weak preference.
+
+In a famous example proposed by Warren S. Quinn, a device has been
+implanted into the body of a person (the self-torturer). The device
+has 1001 settings, from 0 (off) to 1000. Each increase leads to a
+negligible increase in pain. Each week, the self-torturer “has
+only two options—to stay put or to advance the dial one setting.
+But he may advance only one step each week, and he may never
+retreat. At each advance he gets $10,000.” In this way
+he may “eventually reach settings that will be so painful that
+he would then gladly relinquish his fortune and return to 0”
+(Quinn 1990, 79).
+
+In an important type of counterexample to transitivity of strict
+preference, different properties of the alternatives dominate in
+different pairwise comparisons. Consider an agent choosing between
+three boxes of Christmas ornaments (Schumm 1987). Each box contains
+three balls, coloured red, blue and green, respectively; they are
+represented by the vectors
+⟨R1,G1,B1⟩,
+⟨R2,G2,B2⟩,
+and
+⟨R3,G3,B3⟩.
+The agent strictly prefers box 1 to box 2, since they contain (to her)
+equally attractive blue and green balls, but the red ball of box 1 is
+more attractive than that of box 2. She prefers box 2 to box 3, since
+they are equal but for the green ball of box 2, which is more
+attractive than that of box 3. And finally, she prefers box 3 to box
+1, since they are equal but for the blue ball of box 3, which is more
+attractive than that of box 1. Thus,
+
+R1≻R2∼R3∼R1,
+
+G1∼G2≻G3∼G1,
+
+B1∼B2∼B3≻B1;
+and
+
+⟨R1,G1,B1⟩≻⟨R2,G2,B2⟩≻⟨R3,G3,B3⟩≻⟨R1,G1,B1⟩.
+
+
+The described situation yields a preference cycle, which contradicts
+transitivity of strict preference. (Notice the structural similarity
+to Condorcet’s Paradox, see the entry on
+ voting methods.)
+
+These and similar examples can be used to show that actual human
+beings may have cyclic preferences. It does not necessarily follow,
+however, that the same applies to the idealized rational
+agents of preference logic. Perhaps such patterns are due to
+irrationality or to factors, such as lack of knowledge or
+discrimination, that prevent actual humans from being rational. There
+is a strong tradition, not least in economic applications, to regard
+full ≽-transitivity as a necessary prerequisite of
+rationality.
+
+The most famous argument in favour of preference transitivity is the
+money pump argument. The basic idea was developed by F.P. Ramsey
+(1928a, 182), who pointed out that if a subject’s behaviour
+violated axioms of probability and preference, then “[h]e could
+have a book made against him by a cunning better and would then stand
+to lose in any event”. The argument is developed in more detail
+in Davidson et al. (1955). 
+
+The following example can be used to show how the argument works in a
+non-probabilistic context: A certain stamp-collector
+has cyclic preferences with respect to three stamps, denoted
+A, B, and C. She prefers A to
+B, B to C, and C to A.
+Following Ramsey, we may assume that there is an amount of money, say
+10 cents, that she is prepared to pay for exchanging B for
+A, C for B, or A for C.
+She comes into a stamp shop with stamp A. The stamp-dealer
+offers her to trade in A for C, if she pays 10
+cents. She accepts the deal.
+
+For a precise notation, let ⟨X,V⟩ denote
+that the collector owns stamp X and has paid V cents
+to the dealer. She has now moved from the state
+⟨A,0⟩ to the state ⟨C,10⟩.
+
+Next, the stamp-dealer takes out stamp B from a drawer, and
+offers her to swap C for B, against another payment
+of 10 cents. She accepts, thus moving from the state
+⟨C,10⟩ to ⟨B,20⟩. The shop-owner
+can go on like this forever. What causes the trouble is the following
+sequence of preferences:
+
+⟨C,10⟩ ≻ ⟨A,0⟩
+
+⟨B,20⟩ ≻ ⟨C,10⟩
+
+⟨A,30⟩ ≻ ⟨B,20⟩
+
+⟨C,40⟩ ≻ ⟨A,30⟩
+
+⟨B,50⟩ ≻ ⟨C,40⟩
+
+⟨A,60⟩ ≻ ⟨B,50⟩
+
+…
+
+
+The money-pump argument relies on a particular, far from
+uncontroversial, way to combine preferences in two dimensions, which
+is only possible if two crucial assumptions are satisfied: (1) The
+primary alternatives (the stamps) can be combined with some other
+commodity (money) to form composite alternatives. (2) Irrespectively
+of the previous transactions there is always, for each preferred
+change of primary alternatives, some non-zero loss of the auxiliary
+commodity (money) that is worth that change. The money-pump can be
+used to extract money from a subject with cyclic preferences only if
+these two conditions are satisfied.
+
+Another argument for the normative appropriateness of preference
+transitivity suggests that transitivity is constitutive of the meaning
+of preference, in addition to the minimal properties mentioned in
+section 2.1. Drawing an analogy to length measurement, Davidson (1976,
+273) asks: “If length is not transitive, what does it mean to
+use a number to measure length at all? We could find or invent an
+answer, but unless or until we do, we must strive to interpret
+‘longer than’ so that it comes out transitive. Similarly
+for ‘preferred to’”. Violating transitivity,
+Davidson claims, thus undermines the very meaning of preferring on
+option over others. 
+
+Yet another argument rests on the importance of preferences for
+choice. When agents choose at once from all the elements of an
+alternative set, then preferences should be choice guiding.
+They should have such a structure that they can be used to guide our
+choice among the elements of that set. But when choosing e.g. from
+{A,B,C}, a preference relation ≻ such that
+A≻B≻C≻A does not
+guide choice at all: any or none of the alternatives should be chosen
+according to ≻. The transitivity of preference, it is therefore
+suggested, is a necessary condition for a meaningful connection
+between preferences and choice. A critic, however, can point out that
+preferences are important even when they cannot guide choices. Take
+e.g. preferences over lottery outcomes: these are real preferences,
+regardless of the fact that one cannot choose between lottery
+outcomes. Further, the necessary criteria for choice guidance are much
+weaker than weak transitivity (Hansson 2001, 23–25; compare also
+versions of decision theory in which transitivity fails, e.g. Fishburn
+1991). Last, the indifference relation does not satisfy choice
+guidance either. That does not make it irrational to be indifferent
+between alternatives. Thus choice guidance can be an argument for the
+normative appropriateness of transitivity only under certain
+restrictions, if at all (For further discussion, see Anand 1993). 
+2.4 Order typology
+
+One more property of preference relations needs to be specified. A
+relation is antisymmetric if
+
+A≽B ∧ B≽A →
+A=B    (antisymmetry of
+preference)
+
+
+The categories summarized in the table below (based on Sen 1970a) are
+standardly used to denominate preference relations that satisfy
+certain logical properties.
+
+
+
+Properties
+Name(s) 
+
+1.
+reflexive, transitive
+Preorder, Quasi-order 
+
+2.
+reflexive, transitive,
+anti-symmetric
+Partial order 
+
+3.
+irreflexive, transitive
+Strict partial order 
+
+4.
+reflexive, transitive, complete
+Total preorder, Complete quasi-ordering, Weak ordering 
+
+5.
+reflexive, transitive, complete,
+anti-symmetric
+Chain, Linear ordering, Complete
+ordering 
+
+6.
+asymmetric, transitive, weakly
+connected
+Strict total order, Strong ordering 
+
+2.5 Combinative preferences
+
+Sections 2.1–2.4 were devoted to exclusionary preferences, i.e.
+preferences that refer to a set of mutually exclusive alternatives. In
+practice, people also have preferences between relata that are not
+mutually exclusive. These are called combinative preferences.
+
+
+Relata of combinative preferences typically are not specified enough
+to be mutually exclusive. To say that one prefers having a dog over
+having a cat does neglect the possibility that one may have both at
+the same time. Depending on how one interprets it, this preference
+expression may say very different things. It may mean that one prefers
+a dog (and no cat) to a cat (and no dog). Or, if one already has a
+cat, it may mean that one prefers a dog and a cat to just having a
+cat. Or, if one already has a dog, it may mean that one prefers just a
+dog to both a cat and a dog. Combinative preferences are usually taken
+to have states of affairs as their relata. These are represented by
+sentences in sentential logic. It is usually assumed that logically
+equivalent expressions can be substituted for each other.
+
+Properties such as completeness, transitivity and acyclicity can be
+transferred from exclusionary to combinative preferences. In addition,
+there are interesting logical properties that can be expressed with
+combinative preferences but not with exclusionary preferences. The
+following are some examples of these (some of which are
+controversial):
+
+p≽q →
+p≽(p∨q)≽q
+   (disjunctive interpolation)
+
+
+p≽q →
+¬q≽¬p
+   (contraposition of weak preference)
+
+
+p∼q → ¬q∼¬p
+   (contraposition of indifference)
+
+
+p≻q → ¬q≻
+¬p    (contraposition of strict
+preference)
+
+
+p≽q ↔
+(p∧¬q)≽(q∧¬p)
+   (conjunctive expansion of weak preference)
+
+
+p≻q ↔
+(p∧¬q)≻(q∧¬p)
+   (conjunctive expansion of strict
+preference)
+
+
+p∼q ↔
+(p∧¬q)∼(q∧¬p)
+   (conjunctive expansion of indifference)
+
+
+(p∨q)≽r ↔
+p≽r ∧ q≽r
+   (left disjunctive distribution of ≽)
+
+
+p≽(q∨r) ↔
+p≽q ∧ p≽r
+   (right disjunctive distribution of ≽)
+
+
+Combinative preferences can be derived from exclusionary preferences,
+which are then taken to be more basic. In most variants of this
+approach, the underlying alternatives (to which the exclusionary
+preferences refer) have been possible worlds, represented by maximal
+consistent subsets of the language (Rescher 1967, von Wright 1972). 
+However, it has been argued that a more realistic
+approach should be based on smaller alternatives that cover all the
+aspects under consideration – but not all the aspects that might
+have been considered. This approach may be seen as an application of
+Simon’s “bounded rationality view” (Simon 1957,
+196–200).
+
+The derivation of combinative preferences from exclusionary
+preferences can be produced with a representation function. By this is
+meant a function f that takes us from a pair
+⟨p,q⟩ of sentences to a set
+f(⟨p,q⟩) of pairs of alternatives
+(perhaps possible worlds). Then
+p≽fq holds if and only if
+A≽B for all ⟨A,B⟩
+∈ f(⟨p,q⟩) (Hansson 2001,
+70–73).
+2.6 Preference-based monadic value predicates
+
+In addition to the comparative notions, “better” and
+“of equal value”, informal discourse on values contains
+monadic (one-place) value predicates, such as “good”,
+“best”, “very bad”, “fairly good”,
+etc. Predicates representing these notions can be inserted into a
+formal structure that contains a preference relation.
+
+Two major attempts have been made to define the principal monadic
+predicates “good” and “bad” in terms of the
+preference relation. One of these defines “good” as
+“better than its negation” and “bad” as
+“worse than its negation” (Brogan 1919).
+
+GN p ↔ p≻¬p
+   (negation-related good)
+
+
+BN p ↔ ¬p≻p
+   (negation-related bad)
+
+
+The other definition requires that we introduce, prior to
+“good” and “bad”, a set of neutral
+propositions. Goodness is predicated of everything that is better than
+some neutral proposition, and badness of everything that is worse than
+some neutral proposition. The best-known variant of this approach was
+proposed by Chisholm and Sosa (1966). According to these authors, a
+state of affairs is indifferent if and only if it is neither better
+nor worse than its negation. Furthermore, a state of affairs is good
+if and only if it is better than some indifferent state of affairs,
+and bad if and only if some indifferent state of affairs is better
+than it.
+
+GI p ↔
+(∃q)(p≻q∼¬q)
+   (indifference-related good)
+
+
+BI p ↔
+(∃q)(¬q∼q≻p)
+   (indifference-related bad)
+
+
+The negation-related and the indifference-related “good”
+respectively “bad” do not necessarily coincide. Both
+definitions have been developed with complete preference relations in
+mind, but extensions are available that cover the more general cases.
+(Hansson 2001)
+
+A proposal for defining preferences in terms of the monadic predicates
+for “good” and “bad” was put forward by van
+Benthem (1982, p. 195). It assumes that goodness and badness are
+defined in relation to an alternative set, so that for instance
+G{x,y}x means that x is
+good among the alternatives in {x,y} and
+B{x,z,w}x that x is bad
+among the alternatives in {x,z,w}. This gives rise to the
+following definitions: 
+
+x ≻ y if and only if
+G{x,y}x &
+¬G{x,y}y (goodness-based
+preference)
+
+
+x ≻ y if and only if
+B{x,y}y &
+¬B{x,y}x (badness-based
+preference)
+
+
+However, these two definitions are not equivalent, and neither of them
+is plausible in all cases. For instance, let x be good and
+not bad in the context {x,y}, and let y be neither
+good nor bad in the same context. Then x ≻ y
+holds according to first definition but ¬(x ≻
+y) according to the second. To avoid such problems, Hansson
+and Liu (2014) proposed the following definition: 
+
+x ≻ y if and only if either
+G{x,y}x &
+¬G{x,y}y or
+B{x,y}y &
+¬B{x,y}x (bivalently based
+preference)
+
+3. Numerical Representation of Preference 
+
+Preferences can be represented numerically.
+A≻B is then expressed by a numerical utility
+function u that assigns a higher value to A than to
+B, while A∼B is represented by
+assigning the same value to the two. Such numerical representations
+might serve different purposes, one being that utility functions can
+be analysed with the tools of maximisation under constraints, as done
+in economics. It is important, however, to stress the limitations of
+such representations. First, not all preferences can be represented
+numerically. Second, there are different scales by which preferences
+can be represented, which require premises of different strengths.
+Third, the resulting utility representation must be clearly
+distinguished from the older hedonistic concept of utility. 
+3.1 Representing preferences ordinally
+
+The simplest form of numerical representation stipulates the following
+equivalence: 
+
+A≻B iff
+u(A)>u(B)
+   (Ordinal representation)
+
+
+Any function u that assigns a larger number to A
+than to B will work as such a representation. Consequently,
+the function u can be replaced with any function
+u’ as long as u’ is a positive
+monotone transformation of u. As this transformation
+property is the defining characteristic of ordinal scales, we
+call this an ordinal preference representation (See the entry on
+  measurement in science.)
+
+A preference relation has an ordinal representation only if it
+satisfies both completeness and transitivity. However, even if
+A is finite, there can be
+complete and transitive preference relations on A
+that cannot be represented by a utility
+function (for a counter-example based on a lexicographic preference
+relation, see Debreu
+ 1954).[2]
+
+
+An incomplete preference ordering also has a value
+representation of the following type:
+
+If A≻B, then
+u(A)>u(B)
+
+
+The inverse is obviously not true. However, under fairly wide
+circumstances, given the set of all utility functions thus
+defined, one can find the preference relation (Aumann 1962). 
+3.2 Representing preferences cardinally
+
+Ordinal numerical representations of preference are just a convenient
+tool – they do not represent any information that cannot be
+represented by the relation ≻ itself. However, there is
+relevant information about preferences that is not represented by the
+relation ≻ itself. For example, when an agent expresses
+two preferences, say A≻B and
+C≻B, one might ask how much the agent
+prefers A to B, in particular in comparison how much
+she prefers C to B. To answer this question, one
+needs to determine both a measurement procedure for measuring
+preference intensities and a measurement scale for representing these
+measurements. 
+
+Measurement scales that represent magnitudes of intervals between
+properties, or even magnitudes of ratios between properties, are
+called cardinal scales. Although the discussion in the social
+sciences often merely distinguishes between ordinal and cardinal
+preference measures, it is important to further distinguish between
+interval and ratio scales among the latter, as these require different
+assumptions to hold. An interval scale allows for meaningful
+comparisons of differences. (43 °C is as much hotter than 41
+°C as 29 °C is hotter than 27 °C.) In addition, a ratio
+scale is allows for meaningful comparisons of ratios. (12 m is twice
+as long as 6 m.) Although there have been some attempts to measure
+preferences on a ratio scale (in particular, see Kahneman and
+Tversky’s (1979) Prospect Theory, which requires a
+natural zero point and thus a ratio scale), most efforts have focussed
+on measuring preferences on an interval scale. 
+
+The basic idea of interval preference measurement is to assume that
+acts have uncertain consequences, and that each act is equivalent to a
+lottery between these outcomes. An agent who expresses a preference
+for an act over others by choosing it thus expresses a preference for
+the equivalent lottery over the lotteries equivalent to other acts.
+The utilities of these acts are then determined as the expected
+utilities of the equivalent lotteries, calculated as the
+probability-weighted average of the lottery’s consequences. This
+approach was pioneered by Ramsey (1928) and refined by von Neumann and
+Morgenstern (1944); other approaches have been presented by Savage
+(1954/72) and Jeffrey (1965/90). There are substantial differences
+between these approaches and their respective assumptions. For more
+detail, see
+ decision theory.
+3.3 Alternative utility-based representations of preference
+
+As mentioned in section 3.1, all transitive and complete preference
+relations can be represented by a utility function according to the
+following simple relationship
+
+A≻B iff
+u(A)
+>
+u(B)
+
+
+However, as can be seen from the Sorites paradox discussed in section
+2.3, this recipe for the representation of preferences is too
+demanding for some purposes. If u(A)>
+u(B), but
+u(A)-u(B) is so small that it
+cannot be discerned, then A≻B cannot be
+expected to hold. One way to represent this feature is to employ a
+cardinal utility function and to introduce a fixed limit of
+indiscernibility, such that A≻B holds if and
+only if u(A)−u(B) is larger
+than that limit. Such a limit is commonly called a just noticeable
+difference (JND).
+
+A≻B iff
+u(A)−u(B)>δ,
+   (JND representation, δ>0)
+
+
+If the set of alternatives is finite, then ≽ has a JND
+representation if and only if ≽ is complete, and satisfies the
+two properties that for all
+A,B,C,D:
+A≻B ∧ B≻C →
+A≻D ∨ D≻C and
+A≻B ∧ C≻D →
+A≻D ∨ C≻B.
+
+Another interesting construction is to assign to each alternative an
+interval instead of a single number. This requires two real-valued
+functions, umax and umin, such
+that for all A, umax(A)≥
+umin(A). Here,
+umax(A) represents the upper limit of the
+interval assigned to A, and
+umin(A) its lower limit. A
+≻B holds if and only if all elements of the interval
+assigned to A have higher value than all elements of the
+B interval:
+
+A≻B iff
+umin(A)>
+umax(B)    (Interval
+representation)
+
+
+It has been shown that a preference relation ≽ has an interval
+representation if and only if it satisfies completeness and the
+property that for all A,B,C,D:
+A≻B ∧ C≻D →
+A≻D ∨ C≻B.
+
+A final generalization is to let the threshold of discrimination
+depend on both relata.
+
+A≻B iff
+u(A)−u(B)>σ(A,
+B)    (Doubly variable threshold
+representation, σ(A,B)>0)
+
+
+If the set of alternatives is finite, then ≽ has a doubly
+variable threshold representation if and only if it satisfies
+acyclicity.
+
+For more details on these representations, see Scott and Suppes (1958)
+and Abbas (1995) 
+4. Preferences combination
+
+In practical decision making, there are often several preference
+relations that have to be taken into account. The different preference
+relations represent different aspects of the subject matter concerned
+by the decision. For instance, when choosing among alternative
+architectural designs for a new building, we will have a whole set of
+aspects, each of which can be expressed with a preference relation:
+costs, sustainability, aesthetics, fire safety etc. In some cases, the
+various preference relations represent the wishes or interests of
+different persons. This applies for instance when a group of people
+with different preferences plan a joint vacation trip. 
+4.1 Managing preference conflicts
+
+The most convenient way to represent problems with multiple preference
+aspects is to introduce a vector ⟨
+≽1,…,≽n ⟩ whose
+elements are the preference relations we have to take into account.
+For simplicity, we can assume that all these preferences are complete
+(or we can treat incompleteness as indifference). We can call such a
+vector conflict free if and only if it has no elements
+≽k and ≽m such
+that X ≻kY and Y
+≻mX for any alternatives X
+and Y. If ⟨
+≽1,…,≽n ⟩ is
+conflict free, then we can define a combined preference relation
+≽ such that (1) X≻Y if there is some
+≽k such that
+X≻kY, (2)
+Y≻X if there is some
+≽k such that
+Y≻kX, and (3) otherwise
+X∼Y. This is a plausible construction for
+conflict free preferences, since the combined preference relation does
+not contradict any of the strict preferences expressed in the
+component vectors. 
+
+For conflictual preference vectors, i.e. vectors that are not
+conflict free, there is no such simple solution that is plausible in
+all applications. There are four common ways to deal with conflicts
+among preferences.
+
+1. Reduction to a single dimension. Such reductions are
+usually performed by first translating all preference relations into
+some numerical value, and then, for each alternative, adding up the
+values assigned to it for all aspects. In utilitarian moral
+philosophy, a fictional value unit, “utile”, is used for
+this purpose. In economics, monetary units are used. Such reductions
+are standardly used in cost-benefit analysis. However in many cases
+there is uncertainty or disagreement on how the reductions should be
+performed. 
+
+2. Assuming that all conflicts cancel each other out. This
+amounts to extending the above definition of a combined preference
+relation so that X∼Y will hold in all cases of
+conflict, i.e. whenever there are ≽k and
+≽m such that X
+≻kY and Y
+≻mX. Although usually not expressed
+in this way, this is the effect of applying efficiency as the sole
+criterion (e.g. Pareto efficiency as the sole criterion in a
+multi-person case). This method has the obvious disadvantage that it
+sometimes lets a small disadvantage in one dimension outweigh a large
+advantage in another dimension. 
+
+3. Majoritarian solutions. Another way to deal with conflicts
+is to look for the alternatives that are favoured by most (although
+not all) of the preference relations. This requires that the aspects
+covered by the different preference relations are valued equally.
+Therefore, this solution is commonly used when the elements of the
+vector correspond to the wishes or interests of different persons, but
+not when they correspond to more general aspects of a decision (such
+as sustainability and aesthetics in the example of of choosing an
+architectural design). 
+
+4. Intuitive weighing. In practice, decision makers often
+weigh different preference dimensions against each other intuitively,
+without any prior attempt to reduce the multi-dimensionality of the
+decision. This way of dealing with multiple preferences has practical
+advantages, but it also has the disadvantage of lacking efficient
+mechanisms for ensuring consistency in decision-making. 
+
+5. Modifying at least one of the conflicting preference
+relations. This is what happens when people involved in
+negotiations or discussions approach each other’s views in ways that
+make their preference relations less conflicting. The Delphi method is
+a systematized procedure that can be used to reduce interindividual
+differences in preferences. On an intraindividual level, strivings for
+a reflective equilibrium can take the form of adjusting preference
+relations that concern different aspects of an issue to each
+other. From a psychological point of view, such changes can be
+described as reductions of cognitive dissonance in value issues.
+
+Voting procedures are often described as methods for aggregating or
+combining preferences. Such aggregation can also be performed by a
+benevolent planner striving to take the wishes and/or interests of all
+concerned persons into account. The aggregation of preferences is a
+major topic of social choice theory. See the entry on 
+ social choice theory.
+4.2 Total and partial preferences
+
+Consider again the choice among alternative architectural designs for
+a new building. As indicated above, our preferences can be expressed
+with a vector ⟨
+≽1,…,≽n ⟩, each of
+whose elements represents our partial preferences with
+respect to some particular aspect such as sustainability or
+aesthetics. If we manage to aggregate the vector to a single
+preference relation ≽, then ≽ represents our total
+preferences, or, as they are also called, our “preferences
+tout court” or “preferences all things
+considered”. 
+
+Some authors have argued that the preference notion in economics
+always refers to total preferences (Hausman 2012). However, there are
+also economists who recognize partial preferences, often identifying
+them with preferences over properties or characteristics of economic
+goods (Lancaster 1966). In contrast, philosophers often treat partial
+preferences as referring to different reasons that one may have to
+prefer one of the options to another (Pettit 1991, Osherson and
+Weinstein 2012). 
+
+Authors who recognize partial preferences usually give them priority,
+and consider total preferences to be completely determined by the
+partial preferences. In other words, they assume that a total
+preference relation is uniquely determined by the partial preference
+relations through a process of aggregation. There are different views
+on the nature of this process. According to a quantitative
+approach, each partial preference is connected with a cardinal partial
+utility function for the aspect in question, and the total preference
+relation can be obtained by aggregating these partial utility
+functions using an appropriate set of weights. This requires strong
+assumptions of preference independence in order to justify additivity
+of utility (Keeney and Raiffa 1993). 
+
+An alternative strategy employs tools from social choice
+theory to map a vector of partial preferences into a total
+preference relation. This approach only makes use of ordinal
+information, and disregards any utility information that has no impact
+on the partial preference relations. Unsurprisingly, the impossibility
+results of social choice theory affect this method. Steedman and
+Krause (1986) have shown that there is no rule for deriving total
+preferences from a preference vector that satisfies four seemingly
+plausible conditions and also yields a transitive and complete total
+preference ordering. When applied to an intrapersonal conflict this
+means that an agent may be rational in the sense of having a complete
+and transitive (partial) relation for each of the aspects, but may
+still be irrational either in the sense of not satisfying plausible
+conditions on the relations between partial and total preferences, or
+in the sense of not having a complete and transitive total preference
+ordering for her overall appraisal of the options in question. This
+argument connects with a long philosophical tradition, including Plato
+and Bishop Butler, that draws an analogy between intrapersonal
+conflicts and citizens’ conflicting preferences within a state.
+
+
+There are also authors who reject the idea that total preferences are
+uniquely derivable from partial preferences. Instead they claim that
+total preferences are constructed at the moment of
+elicitation, and thus influenced by contexts and framings of the
+elicitation procedure that are not encoded in pre-existing partial
+preferences (Payne, Bettman and Johnson 1993). Total preferences seem
+to be influenced by direct affective responses that are independent of
+cognitive processes (Zajone 1980). For instance, food preferences seem
+to be partly determined by habituation and are therefore difficult to
+explain as the outcome of a process exclusively based on well-behaved
+partial preferences. According to this view, partial preferences are
+in many cases ex post rationalisations of total preferences,
+rather than the basis from which total preferences are derived. 
+
+A closely related standpoint was expressed by Nozick (1981, 244):
+“Reasons do not come with previously assigned weights; the
+decision process is not one of discovering such precise weights but of
+assigning them. The process not only weighs reasons, it (also) weights
+them.” According to Kranz (1991, 34), “[p]eople do and
+should act as problem solvers, not maximizers, because they have
+many different and incommensurable … goals to achieve”.
+Much in the same vein, Levi (1986, 246) maintained that “an
+agent may terminate deliberation and take decisions without having
+resolved the moral, political, economic and aesthetic conflicts
+relevant to their predicaments”. 
+5. Preferences and choice
+
+There is a strong tradition, particularly in economics, to relate
+preference to choice. Preference is linked to hypothetical choice, and
+choice to revealed preference. We begin this section by presenting
+choice functions and some of their main properties. We then proceed to
+discuss how choice functions and their properties can be derived from
+preferences. Finally we view the relationship from the other end, and
+introduce some approaches to inferring preferences from observed
+choices.
+5.1 Choice functions and their properties
+
+Given an alternative set A, we can
+represent (hypothetical) choice as a function C that,
+for any given subset B of A,
+delivers those elements of B
+that a deliberating agent has not ruled out
+for choice. For brevity’s sake we will call them ‘chosen
+elements’. The formal definition of a choice function is as
+follows:
+
+C is a choice function for A
+if and only if it is a function such that
+for all B ⊆ A:
+(1) C(B)
+⊆ B,
+and (2) if B
+≠ ∅, then 
+C(B) ≠
+∅.
+
+
+A large number of rationality properties have been proposed for choice
+functions. The two most important of these are described here.
+
+If B ⊆ A
+then B ∩
+C(A)
+⊆ C(B)
+   (Property
+α, “Chernoff”)
+
+
+This property states that if some element of subset B
+of A is chosen
+from A, then it is also chosen from
+B. According to property α,
+removing some of the alternatives that are not chosen does not
+influence choice. This property has often been assumed to hold, but
+counterarguments have been raised against it. Consider the following
+example. Erna is invited to an acquaintance’s house for
+dinner. Her choice for dessert is between an apple (which is the last
+piece of fruit in the fruit basket) (X) and nothing instead
+(Y). Because Erna is polite, she chooses Y. Had she
+faced a choice between an apple (X), nothing (Y) and
+an orange (Z), she would have taken the apple. Thus her
+choices are:
+
+C({X,Y,Z}) ={X}
+
+
+and
+
+C({X,Y}) ={Y},
+
+
+which violate property α. More generally, property α has
+been contested with reference to cases when alternatives are preferred
+for their position in an alternative set, when the set of alternatives
+itself constitutes important information about the alternative chosen,
+or when certain alternatives provide the chooser with the freedom to
+reject them (Sen 1993,
+ 501–503).[3]
+
+The second property states that if X and Y are both
+chosen from B, a subset of A,
+then one of them cannot be chosen in A
+without the other also being chosen.
+
+If B ⊆ A
+and X, Y ∈
+C(B), then
+X ∈ C(A)
+iff Y ∈ C(A)
+   (Property
+β)
+
+
+To exemplify property β, suppose that we have three restaurants,
+X, Y and Z, within walking distance, and
+two additional restaurants, V and W, that we can
+reach by car. Furthermore suppose that we begin by choosing among the
+restaurants within walking distance. We agree that the choice is
+between X and Y, but we find no reasons to choose
+one of them rather than the other, i.e. C({X, Y,
+Z})={X, Y}. Then we find out that we do in fact have access to a car.
+Property β says that if X is one of the chosen
+restaurants in this situation, then so is Y, and vice versa.
+In other words: X∈C({X,
+Y, Z, V, W}) holds if and only if
+Y ∈C({X, Y, Z,
+V, W}). 
+
+A third property, γ, is described in
+ footnote.[4]
+
+
+The above properties are mainly found in the social choice literature.
+A related property in the economic literature is the so-called
+Weak Axiom of Revealed Preferences (WARP). It says that if
+X is chosen when Y is available, then there must not
+be an alternative set B containing both
+alternatives for which Y is chosen and X is not.
+
+
+If X,Y∈A
+and X∈C(A),
+then for all B,
+if X∈B,
+and
+Y∈C(B),
+then X∈C(B)
+   (WARP)
+
+
+WARP is equivalent to the combination of properties α and β
+(Sen 1971, 50). A stronger version, SARP, is discussed in the first
+part of the supplementary document
+
+The Strong Axiom of Revealed Preference
+
+
+Counterexamples have been offered to show that these properties are
+not plausible in all situations. Consider an agent who chooses to stay
+at a friend’s house for a cup of tea (T) rather than to
+go home (H), but who leaves in a hurry when the friend offers
+a choice between tea and cocaine (C) at his next visit. Then
+C({T,H}) ={T} and
+C({T,H,C}) ={H}, and hence the
+visitor violates both properties α and β. 
+5.2 Determining choice from preference
+
+A choice function that is defined on the basis of a preference
+relation is called relational (also binary). The
+most obvious way to construct a choice function from a preference
+relation ≽ is to have the function always choose the elements
+that are best according to ≽:
+
+The best choice connection
+CB(B) =
+{X ∈ B |
+∀Y ∈ B:
+(X≽Y)} 
+
+
+CB is a choice function (i.e. satisfies
+the defining criteria for a choice function given in section 5.1) if
+and only if ≽ is complete and acyclical. It will then 
+satisfy properties α and γ. Furthermore,
+CB satisfies property β if and only
+if ≽ is transitive and complete (Sen 1970a, 19).
+
+When the underlying preference relation is incomplete, there may not
+be an element that is preferred to all other elements. A function
+C constructed according to the best choice connection
+will then be empty, and hence not a choice function. To avoid this, an
+alternative connection constructs the choice function as choosing
+those elements that are not dispreferred to any other elements of the
+set:
+
+The non-dominance choice connection
+CL(B) =
+{X ∈ B |
+∀Y ∈ B:
+¬(Y≻X)}
+
+
+CL is a choice function if and only if
+≽ is acyclical. It will then satisfy properties
+α and γ. Furthermore, CL
+satisfies property β if and only if ≽ is transitive and
+complete (Herzberger 1973).
+
+When the preference relation over A is
+cyclical, neither CB nor
+CL may be a relational choice function for
+A. In the simplest case, with a cyclical
+preference
+A≻B≻C≻A,
+CB(A,B,C) =
+CL(A,B,C) =
+∅. Schwarz (1972) therefore proposes a third relational choice
+function, which operates even on the basis of cyclical preferences.
+Its basic idea is to select elements that are not dominated by
+non-cyclical preference.
+5.3 Inferring preference from choice
+
+The close connections between preference axioms and choice axioms can
+also be employed to construct a preference ordering from a choice
+function that satisfies certain axioms. In economics, the revealed
+preference approach has been used to define preference in terms
+of choice. Historically, this approach developed out of the pursuit of
+behaviouristic foundations for economic theories—i.e. the
+attempt to eliminate the preference framework altogether. Today, it
+serves to derive preference orderings from an agent’s observed
+choices, and to test the empirical validity of the preference axioms
+by testing for the violation of choice axioms (Grüne-Yanoff
+2004).
+
+There are many ways to construct preference relations from observed
+choices. The simplest defines an alternative X as “at
+least as good as” an alternative Y if and only if
+X is chosen from some set of alternatives that also contains
+Y.
+
+
+X≽SY iff for some
+B,
+X∈C(B)
+and Y∈B
+(1) 
+
+X≻SY iff
+X≽SY and not
+Y≽SX 
+ 
+
+X∼SY iff
+X≽SY and
+Y≽SX
+ 
+
+
+If the choice function is defined over all subsets of B,
+≽S is complete.
+≻S does not necessarily satisfy transitivity
+of strict preference, transitivity of indifference, IP- or
+PI-transitivity. Two further methods are described in the
+supplementary document:
+
+The Strong Axiom of Revealed Preference
+
+
+The above-discussed theoretical effort sees preferences as completely
+tied to choices. Various caveats concerning this connection are in
+order. First, it must be pointed out that choices and preferences are
+in fact entities of quite different categories. Preferences are
+states of mind whereas choices are actions. The
+strong behaviourist program, which sought to eliminate the notion of
+preference by reducing it to choices, is therefore rightly regarded
+with suspicion today (Hausman 2012). 
+
+Secondly, it is necessary to distinguish between those agents who
+indeed have preferences as states of minds—e.g. humans, and
+maybe higher animals—and those agents who do not—e.g.
+machines, plants or institutions. The former category may choose on
+the basis of their preferences, and hence the above-discussed effort
+can aim at eliciting the preferences on which their choices are based.
+The latter category, despite their lack of states of mind, may
+nevertheless exhibit behaviour that can be interpreted as relational
+choice. In those cases, one can only speak of preferences
+reconstructed from choice, without claiming that these
+preferences describe mental states at all (Gul and Pesendorfer 2008,
+Hands 2013, Ross 2014). 
+
+Thirdly, it seems obvious that there are preferences over alternatives
+that one cannot choose between—for example preferences for
+winning a certain prize of a lottery, or for particular configurations
+of Paradise. This contradicts the claim that preferences exclusively
+transpire from choices. One way to substantiate preferences over
+alternatives that one cannot choose between is to ask people what they
+prefer. Their answers can be interpreted as further choice
+evidence—as verbal or writing behaviour. This
+interpretation treats their answers on a par with all other forms of
+behaviour. It thus acknowledges that their answers are possibly
+influenced by other preferences, e.g. for privacy, status or pretend
+play, and explains why answers may not be true. Alternatively, their
+answers can be interpreted as introspective reports. This
+interpretation treats answers as agents’ privileged access to
+their own minds; and it becomes difficult to explain
+“false” answers. 
+
+Fourthly, some choices are not based on stable preferences over
+actions, but are constructed from more basic cognitive and evaluative
+elements. A simple choice—like e.g. choosing between two pieces
+of candy—might be based on a preference for a world in which one
+eats candy X over a world in which one eats candy Y.
+But more complex choices—e.g. choosing one’s higher
+education—depend on what one believes these choices to
+bring about, and how one evaluates the consequences of these choices.
+In those cases, a more complex framework specifies beliefs about the
+probability or plausibility of possible states of the world,
+preferences over the consequences of choices in those worlds, and an
+aggregation mechanism of these preferences under those beliefs. Often,
+this framework yields a preference relation over actions much like the
+simple case. However, alternative frameworks have been developed in
+which this is not the case (e.g. Loomes and Sugden 1982). 
+
+Last, the introspective concept of preference is closely connected to
+the notion of welfare. An agent who prefers X to
+Y is expected to judge herself to be better off with
+X than with Y. But if preferences are tightly linked
+to choice, the welfare interpretation is jeopardized. As Sen argues,
+people choose not only on the basis of their concern for their own
+welfare, but also on the basis of commitments—e.g.
+traditions, habits, moral maxims, etc. (Sen 1977). So it seems that
+preferences can either be interpreted as welfare judgements,
+or as the basis of choices, but not as both at the same time.
+We discuss the relation of preference and welfare in the next
+section.
+6. Preference and welfare
+
+Preference relates to welfare in rather intricate ways. Welfare is a
+fundamental concept in moral philosophy and economics. It refers to
+the fundamental good for individual human beings, and it is therefore
+an anthropocentric and individualist concept. In order to clarify the
+relationship between preference and welfare we need to distinguish
+between three variants of the concept of welfare. 
+
+According to the material view, a person’s welfare is a
+matter of her material conditions, such as access to food, shelter,
+healthcare and, generally speaking, the necessities and perhaps
+luxuries of life. This view of welfare has been criticized for being
+materialistic in the sense of pursuing material possessions at the
+expense of higher values. It also has to face the difficulties
+inherent in weighing different material goods against each other. 
+
+The other two principal views both treat welfare as a mental rather
+than a material issue. The wish-based mental view uses each
+person’s wishes (i.e. preferences in the informal sense of that
+word) as the criterion of welfare (Sen 1979). A person is considered
+to have more welfare, the more her wishes are satisfied. If this view
+is applied within a utilitarian framework, then it gives rise to
+preference utilitarianism. This view of welfare has difficulties in
+dealing with misinformed and self-defeating wishes. It can also have
+difficulties with certain types of other-regarding wishes, e.g.
+malevolent ones. The usual way to deal with this is to require that
+preferences are filtered (“laundered”) and/or refined
+before they are used to judge a person’s welfare. 
+
+The filtering (“laundering”) of preferences can be
+justified by the everyday experience that some preferences are much
+more important for a person’s well-being than others. It can be
+argued that a plausible preference-based account of welfare cannot be
+based on total preferences, but would have to be based on a subset of
+“core” preferences that are important for the individual.
+The determination of that subset is expectedly contentious. If it is
+to be determined by others than the individual whose welfare is
+concerned, then problems of paternalism will be difficult to avoid.
+
+
+Refinement of preferences is usually assumed to result in the
+person’s (hypothetical) “rational” or “ideally
+considered” preferences. “My ideally considered
+preferences are those I would have if I were to engage in
+thoroughgoing deliberation about my preferences with full pertinent
+information, in a calm mood, while thinking clearly and making no
+reasoning errors.” (Arneson 1989, 83; cf. Brandt 1979 and Rosati 2009) A problem
+for this view is that there does not seem to be any easy way to
+determine, based on a person’s preferences and circumstances,
+what her ideally considered preferences would be. 
+
+Finally, the state-dependent mental view identifies a
+person’s welfare with some mental state such as happiness or
+satisfaction. It is assumed that the relevant states of mind can at
+least in principle be judged by external assessors. If such a view is
+applied within a utilitarian framework, then it can give rise to
+hedonistic utilitarianism. This view can be criticized for paternalism
+and for being uncritical towards arrangements in which individuals are
+happy in spite of being oppressed or deprived. Furthermore, the
+difficulties involved in comparing mental properties such as happiness
+in different persons creates a problem for views that depend on such
+comparisons for the determination of welfare. However, recent work on
+the measurement of happiness and life satisfaction has challenged that
+view, and may have opened up new avenues for research in both
+economics and moral philosophy. (Ng 1997) 
+
+Only one of these three views, namely the wish-based one, refers to
+what we usually call preferences. However, the other two can also be
+expressed in terms of preference (betterness) relations. We can use
+such relations to order material conditions respectively mental states
+in terms of how they satisfy the criteria of welfare that we have
+chosen to apply. It is important to distinguish between on the one
+hand preferences in the common sense of comparative likings, and on
+the other hand the use of a preference relation to express grades of
+any property whose structure satisfies the common formal requirement
+of such a relation. 
+
+A common problem for attempts to account for welfare in terms of
+preference is that we expect a person’s view of her own welfare
+to be essentially self-regarding, but her preferences can refer to
+concerns that are not self-regarding, such as her concerns for other
+people, her views on social justice, and her commitments for instance
+to traditions, conventions, and moral ideas (Sen 1977). Our choices
+are influenced by this wide range of preferences. Therefore, it does
+not seem possible to link preferences strongly to welfare and at the
+same time link them strongly to choice. 
+7. Preference change
+
+Preferences relate to time in several ways. Preference at one point in
+time can refer to what happens or happened at other points in time.
+Furthermore, preferences can change over time, due to changes in
+beliefs, values, tastes, or a combination of these. Section 7.1
+explains why preference change requires explanatory and theoretical
+ treatment.[5]
+ In the following sections, three types of explanatory models are
+discussed. (For more detail, see Grüne-Yanoff and Hansson 2009.) 
+Time preference models (section 7.2) only refer to
+the temporal relationship between the occurrence of a preference and
+the objects it refers to. Doxastic change models (section
+7.3) investigate how a change of an agent’s beliefs leads to a
+change in her preferences. Valuational change models (section
+7.4) investigate how a change in an agent’s basic evaluations
+leads to a change in her preferences.
+7.1 Evidence for preference change
+
+Some authors have argued that preference change is only a superficial
+perception, and that the underlying preferences remain stable over
+time. But there are at least four arguments to the effect that
+people’s preferences really do change over time. First, many
+successful explanations of behavioural change have interpreted the
+empirical behavioural evidence as preference change. These
+explanations can be differentiated into models of external
+influences and models of internal coherence. External
+influence models attempt to establish general links between external
+events and agents’ preference formations. They include, for
+example, social imitation (Leibenstein 1950), parental influence
+(Cavalli-Sforza 1973), habit formation (Pollack 1976), and the effect
+of production patterns on consumption (Duesenberry 1949). Internal
+coherence models take certain external influences as given, and model
+preference change as an accommodation of these external influences.
+They include, for example, religious convictions (Iannaccone 1990) and
+the effect of cognitive dissonance on preferences (Elster 1982).
+
+A second argument for preference change is based on the correlations
+between physiological changes and changes in behaviour. Changes in
+blood sugar levels, for example, are correlated to feeding behaviour,
+sexual behaviour varies with hormonal changes, and many behavioural
+patterns change with increasing age (for references and discussion,
+see Loewenstein 1996). These correlations are not deterministic, such
+behavioural changes can be resisted in many cases. It is plausible to
+incorporate these potential physiological effects as visceral
+preferences in the general preference framework, and to treat the
+relevant physiological changes as closely connected with preference
+changes.
+
+Third, most humans have introspective evidence for their own
+preferences changing over time. The favourite activities of a child
+are replaced by new pleasures as we grow up. Thus was the experience
+of Shakespeare’s Benedick: “…but doth not the
+appetite alter? A man loves the meat in his youth that he cannot
+endure in his age” (Much ado about nothing Act II,
+Scene III). Even in adult life, we are literally overcome by sudden
+and very radical ("transformative") changes of preference. Laurie A. Paul (2014) has investigated the types of decision-making that this involves. It would be strange to
+claim in such cases that it is only our beliefs about the different types of
+activities that change. Explanations in terms of preference change are
+much more in line with how we spontaneously interpret our experiences
+of such changes.
+
+Last, certain concepts like taste refinement or self-restraint cannot
+easily be understood without a notion of real preference change. In
+particular, self-restraint presupposes that the motivational
+components of one’s self can change, for example, through
+maturation or social influence; and that one can and should plan
+one’s future self by curbing certain appetites or by designing
+the environment in ways that affect one’s preferences.
+7.2 Time preferences
+
+The value that we assign to obtaining an advantage or disadvantage
+usually varies with the point in time when we obtain it. In typical
+cases, values decrease with time. For instance, most of us would
+prefer receiving a large sum of money now to receiving it five years
+later. Analytically, this temporal factor of evaluations is often
+separated from time-independent factors of evaluations.
+
+The standard approach to this issue in economic analysis treats
+preference as based on value. Value is dealt with in a bifactorial
+model, in which the value of a future good is assumed to be equal to
+the product of two factors. One of these factors is a time-independent
+evaluation of the good in question, i.e. the value of obtaining it
+immediately. The other factor represents the subject’s pure time
+preferences. It is a function of the length of the delay, and is the
+same for all types of goods. The most common type of time preference
+function can be written
+
+v(A,ti) =
+v(A,ti−1) / (1 +
+r)t
+
+
+where r is a discount rate and t =
+ti−ti−1 the duration of the
+delay. This is the discounted utility model, proposed by
+Samuelson (1937), which still dominates in economic analysis.
+
+The choice of a discount rate can have a large impact on the
+calculated values. It is therefore often politically controversial. As
+one example of this, the discount rate used in assessing the economic
+effects of climate change can have significant consequences for the
+policy recommendations that are based on these assessments.
+
+There is a some evidence that the standard discounted utility model
+does not adequately represent human behaviour. For a simple example,
+consider a person who prefers one apple today to two apples tomorrow,
+but yet (today) prefers two apples in 51 days to one apple in 50 days.
+Although this is a plausible preference pattern, it is incompatible
+with the exponentially discounted utility model. It can
+however be accounted for in a bifactorial model with a declining
+discount rate. Pioneered by Ainslie (1992), psychologists and
+behavioural economists have therefore proposed to replace
+Samuelson’s exponential discounting model with a model of
+hyperbolic discounting. The hyperbolic model discounts the future
+consumption with a parameter inversely proportional to the delay of
+the consumption, and hence covers examples like the above. 
+
+Other deviations from the discounted utility model have also been
+demonstrated. Experimental evidence indicates that we tend to discount
+gains more than losses, and small amounts more than large amounts.
+Discount rates also differ between different goods (such as money and
+health). For some—but only some—types of goods, improving
+sequences of outcomes are preferred to declining sequences. These are
+all patterns that cannot be handled in the bifactorial model with its
+object-independent time preferences (Loewenstein et al 2002). Given
+the empirical evidence, it is an open question whether the concept of
+“time preferences” is at all descriptively adequate.
+
+It is a separate question whether pure time preferences are rational.
+Critics argue that one should want one’s life, as a
+whole, to go as well as possible, and that counting some parts of
+life more than others interferes with this goal (Pigou, 1920; Ramsey,
+1928b; Rawls 1971). According to this view, it is irrational to prefer
+a smaller immediate good to a greater future good, because now and
+later are equally parts of one life. Choosing the smaller good or the
+greater bad makes one’s life, as a whole, turn out worse:
+“Rationality requires an impartial concern for all parts of our
+life. The mere difference of location in time, of something’s
+being earlier or later, is not a rational ground for having more or
+less regard for it” (Rawls 1971, 293). Critics of pure temporal
+preferences often attribute apparent departures from temporal
+neutrality to a cognitive illusion (which causes people to
+see future pleasures or pains in some diminished form) or to a
+weakness of will (which causes people to choose options
+against their better judgment).
+
+Against the temporal neutrality of preferences, some have argued that
+there is no enduring, irreducible entity over time to whom all future
+utility can be ascribed; they deny that all parts of one’s
+future are equally parts of oneself (Parfit 1984). They
+argue, instead, that a person is a succession of overlapping selves
+related to varying degrees by memories, physical continuities, and
+similarities of character and interests, etc. By this view, it may be
+just as rational to discount one’s “own” future
+preferences, as to discount the preferences of another distinct
+individual, because the divisions between the stages of one’s
+life may be as “deep” as the distinctions between
+individuals.
+
+A quite different critical approach to discounting is connected with
+the idea of sustainability. If sustainability is interpreted as
+meaning that future generations should have access to the same
+resources as those that the present generation has at its disposal,
+then sustainability is sure to be in conflict with economic policies
+based on exponential discounting. However, there are also views on
+sustainability that allow us to use up natural resources if we replace
+them by non-natural resources such as new technologies that will
+compensate for the loss. Such a “weak” notion of
+sustainability appears to be compatible with policies based on
+discounting of future effects, but their compatibility with
+sustainability has been challenged. (Ng 2005)
+7.3 Doxastic preference change
+
+Two kinds of beliefs are especially important for doxastic models. The
+first is the belief that the presence of state X makes a
+desired state Y more likely. Take for example the belief that
+fluoride prevents dental cavities. This can lead a person to prefer
+fluoride toothpaste to others. If she comes to disbelieve this
+connection, she may well abandon this preference. More generally, if
+X∧Y is preferred to
+X∧¬Y, then a rise of the probability that
+Y given X will result in a rise in the desirability
+of X, and vice versa.
+
+The second kind of belief relevant for doxastic preference change
+concerns prospects that influence the preference for other prospects
+without being probabilistically related. For example, one’s
+preference for winning a trip to Florida in the lottery will crucially
+depend on one’s belief about the weather there during the
+specified travel time, even though these two prospects are
+probabilistically unrelated. More generally, if
+X∧Y is preferred to
+X∧¬Y, with X and Y
+probabilistically not correlated, then a rise of the probability that
+X will result in a rise in the desirability of Y
+(even if it does not affect the probability of Y), and vice
+versa.
+
+Jeffrey (1977) provides a simple model of preference change as the
+consequence of an agent coming to believe a proposition A to
+be true. His model incorporates both kinds of belief relevant for
+doxastic preference change. It is based on the notion of conditional
+preferences. Jeffrey treats preferences as a relation over
+propositions, viz. sets of possible worlds. They are represented by a
+utility function U (see section 2), such that:
+
+X≽Y iff U(X) ≥
+U(Y)
+
+
+U(X) in turn is defined as the weighted
+average of the utility u of all the possible worlds
+w in which X is true:
+
+U(X) = [1/P(X)]
+∑w∈X [u(w)
+× P(w|X)]
+
+
+where P is the probability weight (Jeffrey’s original
+notation here is adapted to the discrete case).
+⟨u,P⟩ represents the unconditional
+preference ≽ if P is the probability distribution based
+on the agent’s actual information. The conditional preference
+ordering ≽A, in contrast, is represented by
+the tuple ⟨u,PA⟩, where
+PA is the probability distribution based on the
+counterfactual scenario that the agent accepts proposition A
+as true. That is, the agent imagines that if he changed his whole
+belief system from P to PA (and
+hence specifically P(A)<1 to
+PA(A)=1), then he would have the
+preference relation ≽A as represented by
+⟨u,PA⟩ (for more
+discussion on the existence and uniqueness conditions of conditional
+preferences, see Luce and Krantz 1971, Joyce 1999, chapter 4, Bradley
+1999). Jeffrey shows that the posterior utility function
+UA is related to the prior
+utility function U as follows:
+
+
+UA(X)
+=
+[1/PA(X)]
+∑w∈X [u(w)
+× PA(w|X)]
+
+
+
+=
+[P(A)/P(A∩X)]
+∑w∈X∩A
+[u(w) ×
+P(w|A∩X)/P(A)]
+
+
+
+=
+U(A∩X) 
+
+
+Conditional preferences allow modelling doxastic preference change.
+What matters for an agent’s evaluation and behaviour are his
+unconditional preferences, ≽t, which are
+unconditional only in the sense that they rely on the agent’s
+actual information at time t. When the agent accepts a new
+proposition A at time t+1, his
+conditional-on-A preferences become his unconditional
+preferences at t+1: ≽t+1 =
+≽A.
+
+Jeffrey’s model is restricted in two ways. First, it requires an
+unchanging evaluative function u defined over the atoms of
+the propositional space, viz. possible worlds. Thus for all
+doxastically changed preference orderings, the preferences over worlds
+remain identical. Second, the model only considers the effects of a
+belief change to certainty. But it is plausible that one’s
+preference—say, for a vacation in Florida—changes just
+because one believes that it is more likely that there will be a
+hurricane next week. Jeffrey’s model can be generalised by
+introducing a more general probability updating rule (e.g., Jeffrey
+conditionalisation). An alternative solution was proposed by Bradley
+(2005). It is based on relatively strong assumptions on the relation
+between prior and posterior unconditional preferences.
+
+An important discussion from economics needs mentioning, namely the
+question whether models of doxastic preference change are capable in
+principle to represent all preference changes. This question
+originates with an important paper by Stigler and Becker (1977), who
+argued that a wide range of phenomena which are commonly thought of as
+preference changes—like addiction, habitual behaviour, fashions
+and the effects of marketing—can be explained by stable,
+well-behaved preferences. In a rather informal fashion, they argue
+that such explanations involve only changes in information (more
+precisely: prices and income), while leaving preferences intact. As a
+result of this, economists largely abandoned the discussion of
+preference change, believing that all preference change phenomena can
+be explained in this way. Prima facie, their proposed explanations
+exhibit important similarities to the discussed accounts of doxastic
+preference change. The results from that discussion, which show that
+models of doxastic preference change are subject to relatively strong
+constraints, may therefore put doubt on the orthodox position in
+economics that models of doxastic preference change are capable in
+principle to represent all preference changes.
+7.4 Valuational preference change
+
+If an agent forms a specific preference as a result of some
+experience, further changes in her overall preference state are often
+necessary to regain consistency. A model of preference change can
+therefore be constructed as an input-output model in the same style as
+standard models of belief change. (Hansson 1995, Liu 2011) Changes in
+preference are triggered by inputs that are represented by sentences
+expressing new preference patterns. Hence, if the subject grows tired
+of her previous favourite brand of mustard, A, and starts to
+like brand C better, then this will be represented by a
+change with the sentence “C is better than
+A”, in formal language C≻A, as
+an input. However, a change in which the previous preference
+A≻C is replaced by the new preference
+C≻A can take place in different ways. For
+instance, there may be a third brand B that was previously
+placed between A and C in the preference ordering.
+The instruction to make the new preference relation satisfy
+C≻A does not tell us where B should
+be placed in the new ordering. The new ordering may for instance be
+either C≻A≻B or
+C≻B≻A. One way to deal with
+this is to include additional information in the input, for instance
+specifying which element(s) of the alternative set should be moved
+while the others keep their previous positions. In our example, if
+only C is going to be moved, then the outcome should satisfy
+C≻A≻B. These and other
+considerations make it necessary to modify the standard model of
+belief change in order to accommodate the subject matter of
+preferences.
+8. Preference criticism
+
+In scholarly discussions, preferences are usually taken to be open to
+rational criticism only insofar as (i) they have been inconsistent,
+violating some of the rationally justifiable preference axioms, or
+(ii) they (in combination with beliefs) commit the agent to
+inconsistent inferences. 
+
+Can there be rationally justifiable claims that certain
+intrinsic preferences – i.e preferences that are not
+dependent on other preferences – are wrong, or should be
+changed? The Humean position answers no. Hume distinguished reason
+from the passion, and argued “that reason alone can never be a
+motive to any action of the will; that it can never oppose passion in
+the direction of the will” (Treatise, Book II, Part
+III, Section III). Humeans often took this distinction between beliefs
+and desires to imply not only that beliefs alone cannot motivate
+action, but also that desires are not open to similar rational
+criticism as beliefs. Therefore, Humeans conclude, preferences can
+only be criticised if they are extrinsic – i.e.
+instrumentally derived from other preferences on the basis of beliefs
+– or inconsistent. Such criticism of extrinsic preferences would
+seem ultimately to be a criticism of false beliefs, and it could be
+argued that it is therefore not really criticism of preferences
+(Broome 1993). 
+
+Several authors have argued for a more substantial criticism of
+preferences, including that of intrinsic ones. Some critics argue that
+some or all preferences are in fact a kind of belief, and hence open
+to the same rational criticism as beliefs. Two defences have been
+presented to counter this challenge. First, it has been claimed that
+that desires (standing for motivation in general) are fundamentally
+distinct from epistemic states in their direction of fit.
+Beliefs are directed to fit the world; hence their insufficient fit
+provides the basis for their criticism. Desires are directed to fit
+the world to them; hence they lack this basis for criticism (Smith
+1987). Second, Humeans have argued that treating desires as beliefs is
+incompatible with Bayesian decision theory and also with other,
+non-quantitative, decision theories (Lewis 1988, Collins 1991,
+Byrne/Hajek 1997). 
+
+Some proponents of the criticizability of preferences have referred to
+second-order preferences. An addict may prefer not to prefer smoking;
+a malevolent person may prefer not to prefer evil actions; an indolent
+may prefer not to prefer to shun work; a daydreamer may prefer not to
+prefer what cannot be realised, etc. First-order preferences are
+criticisable if they do not comply with second-order preferences. (For
+accounts of second-order preferences, see Frankfurt 1971, Sen 1977.)
+Second-order preferences may trigger attempts to change one’s
+preferences. Methods of self-restraint, self-command and
+self-improvement have been extensively described (Schelling 1984,
+Elster 1989, 2000). Already Hume described the possibility of
+rationally choosing such expedience (Grüne-Yanoff & McClennen
+2006). 
+
+Critics have argued against the possibility of rationally choosing
+such indirect preference-modifying strategies. Millgram (1998) argues
+that knowledge of the way such desires-at-will were brought about
+makes it impossible for them to actually function as the desires they
+are intended to be. He gives the example of a car salesman, who, in
+order to be successful in his work, makes himself prefer the various
+useless knick-knacks that the brand he represents offers for its cars.
+When the salesman is laid off, the car-dealer offers him a car with
+all the useless extras that he made himself prefer. Because he
+remembers how he acquired these preferences, he chooses not to act on
+them. So, Millgram argues, the desire-at-will was not genuine.What is
+missing, he points out, are the backward-directed inferential
+commitments that genuine preferences bring with them. Only if one
+forgets that one acquired a specific preference at will, or if one
+also acquires the inferential commitments of such a preference, can
+preferring-at-will be successful.

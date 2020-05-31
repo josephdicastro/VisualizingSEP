@@ -1,0 +1,1687 @@
+Kenneth Arrow’s “impossibility” theorem—or
+“general possibility” theorem, as he called
+it—answers a very basic question in the theory of collective
+decision-making. Say there are some alternatives to choose among. They
+could be policies, public projects, candidates in an election,
+distributions of income and labour requirements among the members of a
+society, or just about anything else. There are some people whose
+preferences will inform this choice, and the question is: which
+procedures are there for deriving, from what is known or can be found
+out about their preferences, a collective or “social”
+ordering of the alternatives from better to worse? The answer is
+startling. Arrow’s theorem says there are no such procedures
+whatsoever—none, anyway, that satisfy certain apparently quite
+reasonable assumptions concerning the autonomy of the people and the
+rationality of their preferences. The technical framework in which
+Arrow gave the question of social orderings a precise sense and its
+rigorous answer is now widely used for studying problems in welfare
+economics. The impossibility theorem itself set much of the agenda for
+contemporary social choice theory. Arrow accomplished this while still
+a graduate student. In 1972, he received the Nobel Prize in economics
+for his contributions.
+ 
+1. The Will of the People?
+Some of the trouble with social orderings is visible in a simple
+but important example. Say there are three
+alternatives AAA, BBB and CCC to choose
+among. There is a group of three people 1, 2 and 3 whose preferences
+are to inform this choice, and they are asked to rank the alternatives
+by their own lights from better to worse. Their individual preference
+orderings turn out to be:
+
+ABC
+BCA
+CAB
+
+That is, person 1 prefers AAA to BBB,
+prefers BBB to CCC, and prefers AAA
+to CCC; person 2 prefers BBB to CCC, and so
+on. Now, we might hope somehow to arrive at a single
+“social” ordering of the alternatives that reflects the
+preferences of all three. Then we could choose whichever alternative
+is, socially, best—or, if there is a tie for first place, we
+could choose some alternative that is as good as any other. Suppose,
+taking the alternatives pair by pair, we put the matter to a vote: we
+count one alternative as socially preferred to another if
+there are more voters who prefer it than there are who prefer the
+other one. We determine in this way that AAA is socially
+preferred to BBB, since two voters (1 and 3) prefer AAA
+to BBB, but only one (voter 2) prefers BBB
+to AAA. Similarly, there is a social preference for BBB
+to CCC. We might therefore expect to find that AAA is
+socially preferred to CCC. By this reckoning, though, it is
+just the other way around, since there are two voters who
+prefer CCC to AAA. We do not have a
+social ordering of the alternatives at all. We have
+a cycle. Starting from any alternative, moving to a socially
+preferred one, and from there to the next, you soon find
+yourself back where you 
+started.[1]
+This is the “paradox of voting”. Discovered by the
+Marquis de Condorcet (1785), it shows that possibilities for
+choosing rationally can be lost when individual preferences are
+aggregated into social preferences. Voter 1 has AAA at the top
+of his individual ordering. This voter’s preferences can
+be maximized, by choosing AAA. The preferences of 2 or
+3 can also be maximized, by choosing instead their maxima, BBB
+or CCC. Pairwise majority decision doesn’t result in a social
+maximum, though. AAA isn’t one because a majority prefers
+something else, CCC.  Likewise, BBB and CCC are
+not social maxima. The individual preferences lend themselves to
+maximization; but, because they cycle, the social preferences do
+not.
+Are there other aggregation procedures that are better than
+pairwise majority decision, or do the different ones have shortcomings
+of their own? Condorcet, his contemporary Jean Charles de Borda
+(1781), and later Charles Dodgson (1844) and Duncan Black (1948),
+among others, all addressed this question by studying various
+procedures and comparing their properties. Arrow broke new ground by
+coming at it from the opposite direction. Starting with various
+requirements that aggregation procedures might be expected to meet, he
+asked which procedures fill the bill. Among his requirements
+is Social Ordering, which insists that the result of
+aggregation is always an ordering of the alternatives, never a
+cycle. After the introduction in
+ Section 2 of
+the technical framework that Arrow set up in order to study social
+choice,
+ Section 3.1 sets out further conditions
+that he imposed. Briefly, these are: Unrestricted Domain
+which says that aggregation procedures must be able to handle any
+individual preferences at all; Weak Pareto, which requires
+them to respect unanimous individual
+preferences; Non-Dictatorship, which rules out procedures by
+which social preferences always agree with the strict preferences of
+some one individual; and finally Independence of Irrelevant
+Alternatives, which says that the social comparison among any two
+given alternatives is to depend on individual preferences among only
+that pair. Arrow’s theorem, stated in
+ Section 3.2, tells us that, except in
+ the very simplest of cases, no
+aggregation procedure whatsoever meets all the requirements.
+The tenor of Arrow’s theorem is deeply antithetical to the
+political ideals of the Enlightenment. It turns out that Condorcet’s
+paradox is indeed not an isolated anomaly, the failure of one specific
+voting method. Rather, it manifests a much wider problem with the very
+idea of collecting many individual preferences into one. On the face
+of it, anyway, there simply cannot be a common will of all the people
+concerning collective decisions, that assimilates the tastes and
+values of all the individual men and women who make up a society.
+There are some who, following Riker (1982), take Arrow’s theorem to
+show that democracy, conceived as government by the will of the
+people, is an incoherent illusion. Others argue that some conditions
+of the theorem are unreasonable, and from their point of view the
+prospects for collective choice look much brighter. After presenting
+the theorem itself, this entry will take up some main points of
+critical discussion. Section 4 considers the
+meaning and scope of Arrow’s conditions. Section 5
+discusses aggregation procedures that are available when not all of
+Arrows conditions need be satisfied, or when different underlying
+assumptions are made about the nature of social
+choice. Section 6 concludes with an overview of
+proposals to study within Arrow’s technical framework certain
+aggregation problems other than the one that concerned him. 
+Amartya Sen once expressed regret that the theory of social choice
+does not share with poetry the amiable characteristic of communicating
+before it is understood (Sen 1986). Arrow’s theorem is not especially
+difficult to understand and much about it is readily communicated, if
+not in poetry, then at least in plain English.  Informal presentations
+go only so far, though, and where they stop sometimes
+misunderstandings start. This exposition uses a minimum of technical
+language for the sake of clarity.
+2.  Arrow’s Framework
+The problem of finding an aggregation procedure arises, as Arrow
+framed it, in connection with some given alternatives between which
+there is a choice is to be made. The nature of these alternatives
+depends on the kind of choice problem that is being studied. In the
+theory of elections, the alternatives are people who might stand as
+candidates in an election. In welfare economics they are different
+states of a society, such as distributions of income and labour
+requirements. The alternatives conventionally are referred to using
+lower case letters from the end of the alphabet
+as x,y,z,…x,y,z,…x, y, z, \ldots; the set of all
+these alternatives is XXX. The people whose tastes and values
+will inform the choice are assumed to be finite in number, and they
+are enumerated 1,…,n1,…,n1, \ldots, n.
+Arrow’s problem arises, then, only after some alternatives
+and people have been fixed. It is for them that an aggregation
+procedure is sought. Crucially, though, this problem
+arises before relevant information about the people’s
+preferences among the alternatives has been gathered, whether that is
+by polling or some other method for eliciting or determining
+preferences. The question that Arrow’s theorem answers is, more
+precisely, this: Which procedures are there for arriving at a social
+ordering of some given alternatives, on the basis of some given
+people’s preferences among them, no matter what these preferences turn
+out to be?
+In practice, meanwhile, we sometimes must select a procedure for
+making social decisions without knowing for which alternatives and
+people it will be used. In recurring elections for some public office,
+for instance, there is a different slate of candidates each time, and
+a different population of voters, and we must use the same voting
+method to determine the winner, no matter who the candidates and
+voters are and no matter how many of them there happen to be. Such
+procedures are not directly available for study within Arrow’s
+framework, with its fixed set XXX of alternatives and people
+1,…,n1,…,n1, \ldots, n. Arrow’s theorem is still relevant to them,
+though. It tells us that even when the alternatives and
+people are held fixed, then still there is no “good”
+method for deriving social orderings. Now, if there is no good method
+for voting even once, with the particular candidates and voters who
+are involved on that occasion, then nor, presumably, is there a good
+method that can be used repeatedly, with different candidates and
+voters each time.
+2.1 Individual Preferences
+Arrow assumed that social orderings will be derived, if at all,
+from information about people’s preferences. This information is, in
+his framework, merely ordinal. It is the kind of information
+that is implicated in Condorcet’s paradox of voting,
+in Section 1, where each person ranks the
+alternatives from better to worse but there is nothing beyond this
+about how strong anybody’s preferences are, or about how the
+preferences of one person compare in strength to those of another. In
+confining aggregation procedures to ordinal information, Arrow argued
+that:
+
+ [I]t seems to make no sense to add the utility of
+one individual, a psychic magnitude in his mind, with the utility of
+another individual. (Arrow 1951 [1963]: 11)
+
+ His point was that even if people do have
+stronger and weaker preferences, and even if the strengths of their
+preferences can somehow be measured and made available as a basis for
+social decisions, nevertheless ordinal information is all that
+matters because preferences are “interpersonally
+incomparable”. Intuitively, what this means is that there is no
+saying how much more strongly someone must prefer one thing to
+another in order to make up for the fact that someone else’s
+preference is just the other way around. Arrow saw no reason to
+provide aggregation procedures with information about the strength of preferences
+because he thought that they cannot put such information to
+meaningful use. 
+Accordingly, the preferences of individual people are represented
+in Arrow’s framework by binary relations RiRiR_{i} among the
+alternatives: xRiyxRiyxR_{i}y means that individual iii weakly
+prefers alternative xxx to alternative yyy. That is, either
+iii strictly prefers xxx to yyy, or else iii
+is indifferent between them, finding them equally good. Each
+individual preference relation RiRiR_{i} is assumed to
+be connected (for all alternatives xxx and yyy, either
+xRiyxRiyxR_{i}y, or yRixyRixyR_{i}x, or both) and transitive (for all
+xxx, yyy and zzz, if xRiyxRiyxR_{i}y and yRizyRizyR_{i}z, then
+xRizxRizxR_{i}z). That these relations have these structural properties
+was, for Arrow, a matter of the “rationality” of the
+preferences they represent; for further discussion, see the entries on
+Preferences and Philosophy of Economics. Connected, transitive
+relations are called weak orderings. They are
+“weak” in that they allow ties—in this connection,
+indifference.
+
+A preference profile is a list ⟨R1,…,Rn⟩⟨R1,…,Rn⟩\langle R_{1}, \ldots,
+R_{n}\rangle of weak orderings of the set XXX of alternatives, one
+for each of the people 1,…,n1,…,n1, \ldots, n. The list of three
+individual orderings in the paradox of voting is an example of a
+preference profile for the alternatives AAA, BBB, and CCC and people
+1, 2, and 3. A profile is a representation of the individual
+preferences of everybody who will be consulted in the choice among the
+alternatives. It is in the form of profiles that Arrow’s aggregation
+procedures receive information about individual preferences. Often it
+is convenient to write ⟨Ri⟩⟨Ri⟩\langle R_{i}\rangle instead of ⟨R1,…,Rn⟩⟨R1,…,Rn⟩\langle
+R_{1}, \ldots, R_{n}\rangle. Other profiles are written ⟨R∗i⟩⟨Ri∗⟩\langle
+R^*_{i}\rangle, and so on.
+In restricting individual inputs to weak orderings of the
+alternatives, Arrow overlooked the possibility that people could input
+information about their preferences in the form of ordinal scores or
+grades. Graded inputs enable an “escape” from Arrow’s
+impossibility that is explained in Section
+5.3. Amartya Sen extended Arrow’s framework to take into account
+not only ordinal information about people’s preferences among pairs of
+alternatives, but also cardinal information about the utility
+they derive from each one. In this way he was able to investigate the
+consequences of other assumptions than Arrow’s about the measurability
+and interpersonal comparability of individual
+preferences. See Section 5.4 and the
+entry social choice theory for details
+and references.
+2.2 Multiple Profiles
+Arrow required aggregation procedures to derive social orderings
+from more than just a single profile, representing
+everyone’s actual preferences. In his framework they must
+reckon with many profiles, representing preferences that the
+people could have.
+Variety among preferences is the result, in Arrow’s account, of the
+different standards by which we assess our options. Our preferences
+depend on our “tastes” in personal consumption but
+importantly, for social choice, they also depend on our socially
+directed “values”. Now, we are to some extent free to have
+various tastes, values, and preferences; and we are free, also, to
+have these independently of one another. Any individual can have a
+range of preferences, then, and for any given sets of people and
+alternatives there are many possible preference profiles. One profile
+⟨Ri⟩⟨Ri⟩\langle R_{i}\rangle represents the preferences of these people
+among their alternatives in, if you will, one possible world.  Another
+profile ⟨R∗i⟩⟨Ri∗⟩\langle
+R^*_{i}\rangle represents preferences of the same
+people, and among the same alternatives, but in another possible world
+where their tastes and values are different.
+Arrow’s rationale for requiring aggregation procedures to handle
+many profiles was epistemic. As he framed the question of collective
+choice, a procedure is sought for deriving a social ordering of some
+given alternatives on the basis of some given people’s tastes and
+values. It is sought, though, before it is known just what these
+tastes and values happen to be. The variety among profiles to be
+reckoned with is a measure, in Arrow’s account of the matter, of how
+much is known or assumed about everybody’s preferences a
+priori, which is to say before these have been elicited. When
+less is known, there are more profiles from which a social ordering
+might have to be derived. When more is known, there are fewer of
+them.
+There are other reasons for working with many profiles, even when
+people’s actual preferences are known fully in advance. Serge Kolm (1996)
+suggested that counterfactual preferences are relevant when we
+come to justify the use of some given procedure.
+Sensitivity analysis, used to manage uncertainty about errors in the
+input, and to determine which information is critical in the sense
+that the output turns on it, also requires that procedures handle a
+range of inputs.
+With many profiles in play there can be “interprofile”
+conditions on aggregation procedures. These coordinate the results of
+aggregation at several profiles at once. One such condition that plays
+a crucial role in Arrow’s theorem is Independence of Irrelevant
+Alternatives. It requires that whenever everybody’s preferences
+among two alternatives are in one profile the same as in another, the
+collective ordering must also be the same at the two profiles, as far
+as these alternatives are concerned. There is to be this much
+similarity among social orderings even as people’s tastes and values
+change. Sections 3.1
+and 4.5 discuss in more detail the meaning of
+this controversial requirement, and the extent to which it is
+reasonable to impose it on aggregation procedures.
+Ian Little raised the following objection in an early discussion
+of (Arrow 1951):
+
+If tastes change, we may expect a new ordering of all the
+conceivable states; but we do not require that the difference between
+the new and the old ordering should bear any particular relation to
+the changes of taste which have occurred. We have, so to speak, a new
+world and a new order; and we do not demand correspondence between the
+change in the world and the change in the order (Little 1952:
+423–424).
+
+Little apparently agreed with Arrow that there might be a different
+social ordering were people’s tastes different, but unlike Arrow he
+thought that it wouldn’t have to be similar to the actual or current
+ordering in any special way. Little’s objection was taken to support
+the “single profile” approach to social welfare judgments
+of Abram Bergson (1938) and Paul Samuelson (1947), and there was a
+debate about which approach was best, theirs or Arrow’s.  Arguably,
+what was at issue in this debate was not—or should not have
+been—whether aggregation procedures must handle more than a
+single preference profile, but instead whether there should be any
+coordination of the output at different profiles. Among others Sen
+(1977) and Fleurbaey and Mongin (2005) have made this point. If they
+are right then the substance of Little’s objection can be accommodated
+within Arrow’s multi-profile framework simply by not imposing any
+interprofile constraints. Be this as it may, Arrow’s framework is
+nowadays the dominant one. 
+2.3 Social Welfare Functions
+Sometimes a certain amount is known about everybody’s preferences
+before these have been elicited. Profiles that are compatible with
+what is known represent preferences that the people could have, and
+might turn out actually to have, and it is from these
+“admissible” profiles that we may hope to derive social
+orderings. Technically, a domain, in Arrow’s framework, is a
+set of admissible profiles, each concerning the same alternatives XXX
+and people 1,…,n1,…,n1, \ldots, n. A social welfare function fff
+assigns to each profile ⟨Ri⟩⟨Ri⟩\langle R_{i}\rangle in some domain a binary
+relation f⟨Ri⟩f⟨Ri⟩f\langle R_{i}\rangle on XXX. Intuitively, fff is an
+aggregation procedure and f⟨Ri⟩f⟨Ri⟩f\langle R_{i}\rangle represents the
+social preferences that it derives from ⟨Ri⟩⟨Ri⟩\langle R_{i}\rangle.
+Arrow’s social welfare functions are sometimes called
+“constitutions”.
+Arrow incorporated into the notion of a social welfare function the
+further requirement that f⟨Ri⟩f⟨Ri⟩f\langle R_{i}\rangle is always a weak
+ordering of the set XXX of alternatives.  Informally speaking, this
+means that the output of the social welfare function must always be a
+ranking of the alternatives from better to worse, perhaps with
+ties. It may never be a cycle. This requirement will appear here, as
+it does in other contemporary presentations of Arrow’s theorem, as a
+separate condition of Social Ordering that social welfare
+functions might be required to meet.  See
+ Section 3.1. This way, we can consider the
+ consequences of dropping this
+condition without changing any basic parts of the framework.
+See Section 4.2.
+Arrow established a convention that is still widely observed of
+using ‘RRR’ to denote the social preference derived from
+“⟨Ri⟩⟨Ri⟩\langle R_{i}\rangle”. The social welfare function used to derive it
+is, in his notation, left implicit. One advantage of writing
+‘f⟨Ri⟩f⟨Ri⟩f\langle R_{i}\rangle’ instead of ‘RRR’ is
+that when we state the conditions of the impossibility theorem, in the
+next section, the social welfare function will figure explicitly in
+them. This makes it quite clear that what these conditions constrain
+is the functional relationship between individual and social
+preferences. Focusing attention on this was an important innovation of
+Arrow’s approach.
+3. Impossibility
+With the conceptual framework now in
+place, Section 3.1 sets out the
+“conditions” or constraints that Arrow imposed on social
+welfare functions, and Section 3.2 states the
+theorem itself.  Section 4 explains the
+conditions more fully, discusses reasons that Arrow gave for imposing
+them, and considers whether it is proper to do so. 
+Arrow’s conditions often are called axioms, and his approach is
+said to be axiomatic. This might be found misleading. Unlike axioms of
+logic or geometry, Arrow’s conditions are not supposed to express more
+or less indubitable truths, or to constitute an implicit definition of
+the object of study. Arrow himself took them to be questionable
+“value judgments” that “express the doctrines of
+citizens’ sovereignty and rationality in a very general form”
+(Arrow 1951 [1963]: 31). Indeed, as we will see
+in Section 4, and as Arrow himself recognized,
+sometimes it is not even desirable that social welfare functions
+should satisfy all conditions of the impossibility theorem.
+Arrow restated the conditions in the second edition of Social
+Choice and Individual Values (Arrow 1963). They appear here in
+the canonical form into which they have settled since then.
+3.1 These Conditions…
+A first requirement is that the social welfare function fff can
+handle any combination of any individual preferences at all:
+
+Unrestricted Domain (U): The domain of fff
+includes every list ⟨R1,…,Rn⟩⟨R1,…,Rn⟩\langle R_{1}, \ldots, R_{n}\rangle of nnn
+weak orderings of XXX.
+
+Condition U requires that fff is defined for each
+“logically possible” profile of individual preferences. A
+second requirement is that, in each case, fff produces an ordering of
+the alternatives, perhaps with ties:
+
+Social Ordering (SO): For any profile ⟨Ri⟩⟨Ri⟩\langle
+R_{i}\rangle in the domain, f⟨Ri⟩f⟨Ri⟩f\langle R_{i}\rangle is a weak
+ordering of XXX.
+
+Notice that, as the paradox of voting in
+ Section 1 shows, these two conditions
+ U and SO by
+themselves already rule out aggregating preferences by pairwise
+majority decision, if there are at least three alternatives to choose
+between, and three people whose preferences are to be taken into
+account.
+To state the next requirements it is convenient to use some
+shorthand. For any given individual ordering RiRiR_{i}, let PiPiP_{i} be
+the strict or asymmetrical part of Ri:xPiyRi:xPiyR_{i}: xP_{i}y
+if xRiyxRiyxR_{i}y but not yRixyRixyR_{i}x. Intuitively, xPiyxPiyxP_{i}y means
+that iii really does prefer xxx to yyy, in that iii is not indifferent
+between them. Similarly, let PPP be the strict part of f⟨Ri⟩f⟨Ri⟩f\langle
+R_{i}\rangle. The next condition of Arrow’s theorem is: 
+
+Weak Pareto (WP): For any profile ⟨Ri⟩⟨Ri⟩\langle
+R_{i}\rangle in the domain of fff, and any alternatives xxx
+and yyy, if for all iii, xPiyxPiyxP_{i}y,
+then xPyxPyxPy. 
+
+WP requires fff to respect unanimous strict
+preferences. That is, whenever everyone strictly prefers one
+alternative to another, the social ordering that fff derives must
+agree. Pairwise majority decision
+satisfies 
+WP.[2]
+ Many other well-known voting methods such
+as Borda counting satisfy it as well (see
+ Section 5.2). So WP requires
+ that fff is to this extent like
+them.
+The next condition ensures that social preferences are not based
+entirely on the preferences of any one person. Person ddd is
+a dictator of fff if for any alternatives xxx and yyy, and
+for any profile ⟨…,Rd,…⟩⟨…,Rd,…⟩\langle\ldots, R_{d},\ldots\rangle in the domain of
+fff: if xPdyxPdyxP_{d}y, then xPyxPyxPy. When a dictator strictly prefers one
+thing to another, the society always does as well. Other people’s
+preferences can still influence social preferences. So can
+“non-welfare” features of the alternatives such as, in
+the case of social states, the extent to which people are equal,
+their rights are respected, and so on. But all these can make a
+difference only when the dictator is indifferent between two
+alternatives, having no strict preference one way or the other. The
+condition is now simply:
+
+Nondictatorship (D): fff has no dictator.
+
+To illustrate, pick some person ddd, any one at all, and from each
+profile ⟨Ri⟩⟨Ri⟩\langle R_{i}\rangle in the domain take the ordering RdRdR_{d}
+representing the preferences of ddd. Now, in each case, let the social
+preference be that. In other words, for each profile ⟨Ri⟩⟨Ri⟩\langle
+R_{i}\rangle, let f⟨Ri⟩f⟨Ri⟩f\langle R_{i}\rangle be RdRdR_{d}.  This social
+welfare function fff bases the social ordering entirely on the
+preferences of ddd, its dictator. It is intuitively undemocratic
+and D rules it out.
+To state the last condition of Arrow’s theorem, another piece of
+shorthand is handy. For any given relation RRR, and any set SSS, let
+R|SR|SR|S be the restriction of RRR to SSS. It is that part of RRR
+concerning just the elements of 
+SSS.[3]
+ The restriction of ⟨R1,…,Rn⟩⟨R1,…,Rn⟩\langle
+R_{1}, \ldots, R_{n}\rangle to SSS, written ⟨R1,…,Rn⟩|S⟨R1,…,Rn⟩|S\langle
+R_{1}, \ldots, R_{n}\rangle|S, is just ⟨R1|S,…,Rn|S⟩⟨R1|S,…,Rn|S⟩\langle R_{1}|S,
+\ldots, R_{n}|S\rangle. Take for instance the profile from the
+paradox of voting in Section 1:
+
+ ABC
+ BCA
+ CAB
+
+Its restriction to the set {A,C}{A,C}\{A,C\} of alternatives is:
+
+AC
+CA
+CA
+
+Now the remaining condition can be stated: 
+
+Independence of Irrelevant Alternatives (I): For
+all alternatives xxx and yyy in XXX, and all profiles ⟨Ri⟩⟨Ri⟩\langle
+R_{i}\rangle and ⟨R∗i⟩⟨Ri∗⟩\langle R^*_{i}\rangle in the domain of fff, if
+⟨Ri⟩|{x,y}=⟨R∗i⟩|{x,y}⟨Ri⟩|{x,y}=⟨Ri∗⟩|{x,y}\langle R_{i}\rangle|\{x,y\} = \langle R^*_{i}\rangle|\{x,y\}, then
+f⟨Ri⟩|{x,y}=f⟨R∗i⟩|{x,y}f⟨Ri⟩|{x,y}=f⟨Ri∗⟩|{x,y}f\langle R_{i}\rangle |\{x,y\} = f\langle R^*_{i}\rangle
+|\{x,y\}.
+
+I says that whenever two profiles ⟨Ri⟩⟨Ri⟩\langle R_{i}\rangle
+and ⟨R∗i⟩⟨Ri∗⟩\langle R^*_{i}\rangle are identical, as far as some
+alternatives xxx and yyy are concerned, so too must the social
+preference relations f⟨Ri⟩f⟨Ri⟩f\langle R_{i}\rangle and f⟨R∗i⟩f⟨Ri∗⟩f\langle
+R^*_{i}\rangle be identical, as far as xxx and yyy are concerned. For
+example, consider the profile:
+
+BAC
+CAB
+BCA
+
+Its restriction to the pair {AAA,CCC} is identical to that of the
+profile of the paradox of voting. Suppose the domain of a social
+welfare function includes both of these profiles. Then, to
+satisfy I, it must derive from each one the same social
+preference among AAA and CCC. The social preference among AAA and CCC
+is, in this sense, to be “independent” of anybody’s
+preferences among either of them and the remaining
+“irrelevant” alternative BBB. The same is to hold for any
+two profiles in the domain, and for any other pair taken from the set
+XXX = {AAA, BBB, CCC} of all alternatives. Some voting methods do not
+satisfy I (see Section 5.2), but
+pairwise majority decision does. To see whether xxx is socially
+preferred to yyy, by this method, you need look no further than the
+individual preferences among xxx and yyy. 
+3.2 …are Incompatible
+Arrow discovered that, except in the very simplest of cases, the
+five conditions of Section 3.1 are
+incompatible.
+
+Arrow’s Theorem: Suppose there are more than two
+alternatives. Then no social welfare function fff
+satisfies U, SO, WP, D,
+and I.
+
+Arrow (1951) has the original proof of this
+“impossibility” theorem. See among many other works Kelly
+1978, Campbell and Kelly 2002, Geanakoplos 2005 and Gaertner 2009 for
+variants and different proofs.
+4. The Conditions, again
+Taken separately, the conditions of Arrow’s theorem do not seem
+severe. Apparently, they ask of an aggregation procedure only that it
+will come up with a social preference ordering no matter what
+everybody prefers (U and SO), that it will resemble
+certain democratic arrangements in some ways (WP
+and I), and that it will not resemble certain undemocratic
+arrangements in another way (D). Taken together, though,
+these conditions exclude all possibility of deriving social
+preferences. It is time to consider them more closely. 
+4.1 Unrestricted Domain
+Arrow’s domain condition U says that the domain of the
+social welfare function includes every list of nnn weak orderings of
+XXX. For example, suppose the alternatives are AAA, BBB, and CCC, and
+that the people are 1, 2, and 3. There are 13 weak orderings of three
+alternatives, so the unrestricted domain contains 2197 (that is,
+13313313^{3}) lists of weak orderings of AAA, BBB, and CCC. A social
+welfare function fff for these alternatives and people, if it
+satisfies U, maps each one of these “logically
+possible” preference profiles onto a collective preference among
+AAA, BBB, and CCC.
+In Arrow’s account, the different profiles in a domain represent
+preferences that the people might turn out to have. To
+impose U, on his epistemic rationale, amounts to assuming
+that they might have any preferences at all: it is only when their
+preferences could be anything that it makes sense to require the
+social welfare function to be ready for everything. Arrow wrote in
+support of U:
+
+ If we do not wish to require any prior knowledge
+of the tastes of individuals before specifying our social welfare
+function, that function will have to be defined for every logically
+possible set of individual orderings. (Arrow 1951 [1963]: 24)
+
+There have been misunderstandings. Some think U requires
+of social welfare functions that they can handle “any old”
+alternatives. It does nothing of the sort. What it requires is that the
+social welfare function can handle the widest possible range
+of preferences among whichever alternatives there are to
+choose among, and whether there happen to be many of these or only a
+few of them is beside the point: the domain of a social welfare
+function can be completely unrestricted even if there are in XXX just
+two alternatives. One way to sustain this unorthodox understanding
+of U is, perhaps, to think of Arrow’s x,y,z,…x,y,z,…x, y, z, \ldots not as alternatives properly
+speaking—not as candidates in elections, social states, or what
+have you—but as names or labels that represent these on
+different occasions for choosing. Then, it might be thought, variety
+among the alternatives to which the labels can be attached will generate
+variety among the profiles that an aggregation procedure might be
+expected to handle.  Blackorby et al. (2006) toy with this idea at one
+point, but they quickly set it aside. It does not seem to have been
+explored in the literature.
+Of course, there is nothing to keep anyone from reinterpreting
+Arrow’s basic notions, including the set XXX of alternatives, in any
+way they like; a theorem is a theorem no matter what interpretation
+it is given. It is important to realize, though, that to interpret
+x,y,z,…x,y,z,…x, y, z, \ldots as labels is not standard, and can
+only make nonsense of much of the theory of social choice to which
+Arrow’s theorem has given 
+rise.[4]
+Arrow already knew that U is a stronger domain condition
+than is needed for an impossibility result. The free triple
+property and the chain property are weaker conditions
+that replace U in some versions of Arrow’s theorem (Campbell
+and Kelly 2002). These versions, being more informative, are, from a
+logical point of view, better. U is simpler to state than
+their domain conditions, though, and might be found more
+intuitive. Notice that the weaker domain conditions still require a
+lot of variety among profiles. A typical proof of an Arrow-style
+impossibility theorem requires that the domain is unrestricted with
+respect to some three alternatives. In this case there is always a
+preference profile like the one implicated in the paradox of voting
+in Section 1, from which pairwise majority
+decision derives a cycle.
+Whether it is sensible to impose U or any other domain
+condition on a social welfare function depends very much on the
+particulars of the choice problem being studied. Sometimes, in the
+nature of the alternatives under consideration, and the way in which
+individual preferences among them are determined, imposing U
+certainly is not appropriate. If for instance the alternatives are
+different ways of dividing up a pie among some people, and it is known
+prior to selecting a social welfare function that these people are
+selfish, each caring only about the size of his own piece, then it
+makes no obvious sense to require of a suitable function that it can
+handle cases in which some people prefer to have less for themselves
+than to have more. The social welfare function will never be called on
+to handle such cases for the simple reason that they will never arise.
+Arrow made this point as follows:
+
+[I]t has frequently been assumed or implied in welfare economics
+that each individual values different social states solely according
+to his consumption under them. If this be the case, we should only
+require that our social welfare function be defined for those sets of
+individual orderings which are of the type described; only such should
+be admissible (Arrow 1951 [1963]: 24).
+
+Section 5.1 considers some of the
+possibilities that open up when there is no need to reckon with all
+“logically possible” individual preferences.
+4.2 Social Ordering
+Condition SO requires that the result of aggregating
+individual preferences is always a weak ordering of the alternatives,
+a binary relation among them that is both transitive and connected.
+Intuitively, the result has to be a ranking of the
+alternatives from better to worse, perhaps with ties. There is never
+to be a cycle of social preferences, like the one derived by pairwise
+majority decision in the paradox of voting,
+in Section 1.
+Arrow did not state SO as a separate
+condition. He built it into the very notion of a social
+welfare function, arguing that the result of aggregating
+preferences will have to be an ordering if it is to “reflect
+rational choice-making” (Arrow 1951 [1963]: 19). Criticized by
+Buchanan (1954) for transferring properties of individual
+choice to collective choice, Arrow in the second edition of Social
+Choice and Individual Values gave a different rationale. There he
+argued that transitivity is important because it ensures that
+collective choices are independent of the path taken to them (Arrow
+1951 [1963]: 120). He did not develop this idea further.
+Charles Plott (1973) elaborated a suitable notion of path
+independence. Suppose we arrive at our choice by what he
+called divide and conquer: first we divide the alternatives
+into some smaller sets—say, because these are more
+manageable—and we choose from each one. Then we gather together
+all the alternatives that we have chosen from the smaller sets, and we
+choose again from among these. There are many ways of making the
+initial division, and a choice procedure is said to be path
+independent if the choice we arrive at in the end is independent
+of which division we start with (Plott 1973: 1080). In Arrow’s
+account, social choices are made from some given
+“environment” SSS of feasible alternatives by maximizing a
+social ordering RRR: the choice C(S)C(S)C(S) from among SSS is the set of
+those xxx within SSS such that for any yyy within S,xRyS,xRyS, xRy.  It is not
+difficult to see how intransitivity of RRR can result in path
+dependence. Consider again the paradox of voting
+of Section 1.  AAA is strictly favoured above
+BBB, and BBB above CCC; but, contrary to transitivity, CCC is strictly
+favoured above AAA. Starting with the division {{A,B},{B,C}}{{A,B},{B,C}}\{\{A,B\}, \{B,C\}\},
+our choice from among {A,B,C}{A,B,C}\{A,B,C\} will be {A}{A}\{A\}; but starting
+instead with {{A,C},{B,C}}{{A,C},{B,C}}\{\{A,C\}, \{B,C\}\} we will arrive in the end at
+{B}{B}\{B\}.
+Plott’s analysis reveals a subtlety. The full strength
+of SO is not needed to secure path independence of
+choice. It is sufficient that social preference is a (complete
+and) quasi-transitive relation, having a strict component
+that is transitive but an indifference component that, perhaps, is
+not transitive. Sen (1969: Theorem V) demonstrated the compatibility
+of this weaker requirement with all of Arrow’s other conditions, but
+noted that the aggregation function he came up with would not
+generally be found attractive. Its unattractiveness was no
+accident. Allan Gibbard showed that the only social welfare functions
+made available by allowing intransitivity of social indifference,
+while keeping Arrow’s other requirements in place, are what he
+called liberum veto oligarchies (Gibbard 1969, 2014). There
+has in every case to be some group of individuals, the oligarchs,
+such that the society always strictly prefers one alternative to
+another if all of the oligarchs strictly prefer it, but never does so
+if that would go against the strict preference of any
+oligarch.[5] A
+dictatorship, in Arrow’s sense, is a liberum veto oligarchy of
+one. Relaxing SO by limiting the transitivity requirement to
+strict social preferences therefore does not seem a promising way of
+securing, in spite of Arrow’s theorem, the existence of acceptable
+social welfare functions.
+
+4.3 Weak Pareto
+Condition WP requires that whenever everybody ranks one
+alternative strictly above another the social ordering agrees. This
+has long been a basic assumption in welfare economics and might seem
+completely uncontroversial. That the community should prefer one
+social state to another whenever each individual does, Arrow argued in
+connection with compensation, is “not debatable except perhaps
+on a philosophy of systematically denying people whatever they
+want” (Arrow 1951 [1963]: 34).
+But WP is not as harmless as it might seem, and in
+combination with U it tightly constrains the possibilities
+for social choice. This is evident from Sen’s (1970) demonstration
+that these two conditions conflict with the idea that for each person
+there is a personal domain of states of affairs, within which his
+preferences must prevail in case of conflict with others’. This
+important problem of the “Paretian libertarian” meanwhile
+has its own extensive literature. For further discussion, see the
+entry social choice theory.
+We may think of WP as a vestige of what Sen called:
+
+Welfarism: The judgement of the relative goodness of
+alternative states of affairs must be based exclusively on, and taken
+as an increasing function of, the respective collections of
+individual utilities in these states (Sen 1979: 468).
+
+In Arrow’s ordinal framework, welfarism insists that individual
+preference orderings are the only basis for deriving social
+preferences. Non-welfare factors—physical characteristics of
+social states, people’s motives in having the preferences they do,
+respect for rights, equality—none of these are to make any
+difference except indirectly, through their reflections in individual
+preferences. WP asserts the demands of welfarism in the
+special case in which everybody’s strict preferences coincide. Sen
+argued that even these limited demands might be found excessive on
+moral grounds (Sen 1979: Section IV). Section 4.5 
+has further discussion of welfarism.
+
+
+4.4 Non-Dictatorship
+Someone is a dictator, in Arrow’s sense, if whenever he strictly
+prefers one alternative to another the society always prefers it as
+well. The preferences of people other than the dictator can still make
+a difference, and so can non-welfare factors, but only when the
+dictator is indifferent between two alternatives, having no strict
+preference one way or the other. Arrow’s non-dictatorship
+condition D says that there is to be no dictator. Plainly it
+rules out many undemocratic arrangements, such as identifying social
+preferences in every case with the individual preferences of some one
+person. This apparently straightforward condition has attracted very
+little attention in the literature. 
+In fact there is more to the non-dictatorship condition than meets
+the eye. An Arrovian dictator is just someone whose strict preferences
+invariably are a subset of the society’s strict preferences, and that
+by itself doesn’t mean that his preferences form a basis for social
+preferences, or that the dictator has any power or control over
+these. Aanund Hylland once made a related point while objecting to the
+unreflective imposition of D in single profile analyses of
+social choice:
+
+In the single-profile model, a dictator is a
+person whose individual preferences coincide with the social ones in
+the one and only profile under consideration. Nothing is necessarily
+wrong with that; the decision process can be perfectly democratic, and
+one person simply turns out to be on the winning side on all
+issues. (Hylland 1986: 51, footnote 10) 
+The non-dictatorship condition for this reason sometimes goes too
+far. Even pairwise majority voting, that paradigm of a democratic
+procedure, is in Arrow’s sense sometimes a dictatorship. Consider
+Zelig. He has no tastes, values or preferences of his own but
+temporarily takes on those of another, whoever is close at hand. He is
+a human chameleon, the ultimate
+conformist.[6]
+Zelig one day finds himself on a committee of three that will choose
+among several options using the method of pairwise majority voting
+and, given his peculiar character, the range of individual orderings
+that can arise is somewhat restricted. In each admissible profile, two
+of the three individual orderings are identical: Zelig’s and that of
+whoever is seated closest to him at the committee
+meeting.[7] Now
+suppose it so happens that Zelig strictly prefers one option xxx to
+another, yyy. Then someone else does too; that makes two of the
+three and so, when they vote, the result is a strict collective
+preference for xxx above yyy. The committee’s decision procedure
+is, in Arrow’s sense, a dictatorship, and Zelig is the dictator. But
+of course really Zelig is a follower, not a leader, and majority
+voting is as democratic as can be. It’s just that this one mad little
+fellow has a way of always ending up on the winning side.
+Arrow imposed D in conjunction with the
+requirement U that the domain is completely
+unrestricted. Perhaps this condition expresses something closer to its
+intended meaning then. With an unrestricted domain, a dictator, unlike
+Zelig, is someone whose preferences conflict with everybody else’s in
+a range of cases, and it is in each instance his preferences that
+agree with social preferences, not theirs. However this may be, the
+example of Zelig shows that whether it is appropriate to
+impose D on social welfare functions depends on the details
+of the choice problem at hand.  The name of this condition is
+misleading. Sometimes there is nothing undemocratic about having a
+“dictator”, in Arrow’s technical sense.
+4.5 Independence of Irrelevant Alternatives
+Arrow’s independence condition requires that whenever all
+individual preferences among a pair of alternatives are the same in
+one profile as they are in another, the social preference among these
+alternatives must also be the same for the two profiles. Speaking
+figuratively, what this means is that when the social welfare function
+goes about the work of aggregating individual orderings, it has to
+take each pair of alternatives separately, paying no attention to
+preferences for alternatives other than them. Some aggregation
+procedures work this way. Pairwise majority decision does: it counts
+xxx as weakly preferred to yyy, socially, if as many people weakly
+prefer xxx to yyy as the other way around, and plainly there is no
+need to look beyond xxx and yyy to find this out.
+Condition I is not Arrow’s formulation. It is a simpler
+one that has since become the standard in expositions of the
+impossibility theorem. Arrow’s formulation concerns choices made from
+within various “environments” SSS of feasible options by
+maximizing social orderings:
+
+Independence of Irrelevant Alternatives (choice
+version): For all environments SSS within XXX, and all profiles
+⟨Ri⟩⟨Ri⟩\langle R_{i}\rangle and ⟨R∗i⟩⟨Ri∗⟩\langle R^*_{i}\rangle in the domain of
+fff, if ⟨Ri⟩|S=⟨R∗i⟩|S⟨Ri⟩|S=⟨Ri∗⟩|S\langle R_{i}\rangle|S = \langle R^*_{i}\rangle|S, then
+C(S)=C∗(S)C(S)=C∗(S)C(S)= C^*(S).
+
+Here C(S)C(S)C(S) is the set of those options from SSS that are, in
+the sense of the social ordering f⟨Ri⟩f⟨Ri⟩f\langle R_{i}\rangle, as good as
+any other; and C∗(S)C∗(S)C^*(S) stands for the maxima by f⟨R∗i⟩f⟨Ri∗⟩f\langle
+R^*_{i}\rangle. This is Arrow’s Condition 3 (Arrow 1951 [1963]:
+27).[8] 
+Iain McLean (2003) finds a first statement
+of Independence, and appreciation of its significance,
+already in (Condorcet 1785). Meanwhile much controversy has surrounded
+this condition, and not a little confusion. Some of each can be traced
+to an example with which Arrow sought to
+motivate it. When one candidate in an election dies
+after polling, he wrote,
+
+[…] the choice to be made among the set SSS of surviving
+candidates should be independent of the preferences of individuals for
+candidates not in SSS. […] Therefore, we may require of our
+social welfare function that the choice made by society from a given
+environment depend only on the orderings of individuals among the
+alternatives in that environment (Arrow 1951 [1963]: 26).
+
+Evidently Arrow took this for his choice version
+of the independence condition. He continued:
+
+Alternatively stated, if we consider two sets of individual
+orderings such that, for each individual, his ordering of those
+particular alternatives in a given environment is the same each time,
+then we require that the choice made by society from that environment
+be the same when individual values are given by the first set of
+orderings as they are when given by the second (Arrow 1951 [1963]:
+26–27).
+
+It is not clear why Arrow thought the case of the dead candidate
+involves different values and preference profiles. As he set the
+example up, it is natural to imagine that everybody’s values and
+preferences stay the same while one candidate becomes unfeasible
+(“we’d all still prefer AAA, but sadly he’s not with us any
+more”). Apparently, then, Arrow’s example misses its mark. There
+has been much discussion of this point in the literature. Hansson
+(1973) argues that Arrow confused his independence condition for
+another; compare Bordes and Tideman (1991) for a contrary view. For
+discussion of several notions of independence whose differences have
+not always been appreciated, see Ray (1973).
+The following condition has also been called Independence
+of Irrelevant Alternatives:
+
+(I∗I∗I^*) For all xxx and yyy, and all ⟨Ri⟩⟨Ri⟩\langle R_{i}\rangle and
+⟨R∗i⟩⟨Ri∗⟩\langle R_{i}^*\rangle in the domain of fff, if for all i:xRiyi:xRiyi: xR_{i}y
+if and only if xR∗iyxRi∗yxR^*_{i}y, then xf⟨Ri⟩yxf⟨Ri⟩yx f\langle R_{i}\rangle y if and
+only if xf⟨R∗i⟩yxf⟨Ri∗⟩yx f\langle R_{i}^*\rangle y.
+
+If the intention is to express Arrow’s independence condition this
+is a mistake because I∗I∗I^*, though similar in appearance
+to I, has a different content. I says that whenever
+everybody’s preferences concerning a pair of options are the same in
+one profile as they are in another, the social preference must also be
+the same at the two profiles, as far as this pair is concerned. This
+is not what I∗I∗I^* says because the embedded antecedent ‘for
+all i:xRiyi:xRiyi: xR_{i}y if and only if xR∗iyxRi∗yxR^*_{i}y’ is satisfied
+not only when everybody’s preferences among xxx and yyy are the
+same in ⟨Ri⟩⟨Ri⟩\langle R_{i}\rangle as they are in ⟨R∗i⟩⟨Ri∗⟩\langle
+R_{i}^*\rangle, but in other instances as well.  For example,
+suppose that in ⟨Ri⟩⟨Ri⟩\langle R_{i}\rangle everybody is indifferent
+between some social state TTT and another state SSS (in which case
+for all iii, both TRiSTRiST R_{i} S and SRiTSRiTS R_{i} T), while in
+⟨R∗i⟩⟨Ri∗⟩\langle R_{i}^*\rangle everybody strictly prefers TTT to SSS
+(for all iii, TR∗iSTRi∗ST R^*_{i} S but not SR∗iTSRi∗TS R^*_{i} T). Then the
+antecedent ‘for all i:TRiSi:TRiSi: T R_{i} S if and only if TR∗iSTRi∗ST R^*_{i}
+S’ is satisfied, although individual preferences among TTT
+and SSS are not the same in the two profiles. I∗I∗I^* sometimes
+constrains fff though III does not and it is a more demanding
+condition.
+The additional demands of I∗I∗I^* are sometimes excessive. Let TTT be
+the result of reforming some tried and true status quo, SSS. Now
+suppose we favor reform if it is generally thought that change will be
+for the better, but not otherwise. Then we will be on the lookout for
+a social welfare function fff that derives a strict social preference
+for TTT above SSS when everybody strictly prefers TTT to SSS, but a
+strict preference for SSS above TTT when everyone is indifferent
+between these states. I∗I∗I^* rules out
+every fff that conforms to this desideratum because it requires a weak
+social preference for TTT to SSS in both cases or in neither.
+Independence of Irrelevant Alternatives might be said to
+require that the social comparison among any given pair of
+alternatives, say social states, depends only on individual
+preferences among this pair. This is correct but it leaves some room
+for misunderstanding. I says that the
+only preferences that count are those concerning just these
+two social states. That doesn’t mean that preferences are the only
+thing that counts, though. And, indeed, as far as I is
+concerned, non-welfare features of the two states may also make a
+difference. 
+The doctrine that individual preferences are the only
+basis for comparing the goodness of social states is welfarism
+(mentioned already in Section 4.3). An example
+illustrates how nasty it can be:
+In the status quo SSS, Peter is filthy rich and Paul is abjectly
+poor. Would it be better to take from Peter and give to Paul?  Let TTT
+be the social state resulting from transferring a little of Peter’s
+vast wealth to Paul. Paul prefers TTT to SSS (“I need to
+eat”) and Peter prefers SSS to TTT (“not my
+problem”). This is one case. Compare it to another. Social state
+T∗T∗T^* arises from a different status quo S∗S∗S^*, also by taking from
+Peter and giving to Paul. This time, though, their fortunes are
+reversed. In S∗S∗S^* it is Peter who is poor and Paul is the rich one,
+so this is a matter of taking from the poor to give to the rich. Even
+so, we may assume, the pattern of Peter’s and Paul’s preferences is
+the same in the second case as it is in the first, because each of
+them prefers to have more for himself than to have less. Paul prefers
+T∗T∗T^* to S∗S∗S^* (“I need another Bugatti”) and Peter
+prefers S∗S∗S^* to T∗T∗T^* (“wish it were my problem”). Since
+everybody’s preferences are the same in the two cases, welfarism
+requires that the relative social goodness is the same as well. In
+particular, it allows us to count TTT socially better than SSS only if
+we also count T∗T∗T^* better than S∗S∗S^*.  Whatever we think about taking
+from the rich to give to the poor, though, taking from the poor to
+give to the rich is quite another thing. As Samuelson said of a
+similar case, “[o]ne need not be a doctrinaire egalitarian to be
+speechless at this requirement” (Samuelson 1977: 83).
+Condition I does not express welfarism. Applied to this
+example, I states that there is to be no change in the social
+comparison among the status quo SSS and the result TTT of
+redistribution unless Peter’s preferences among these states change,
+or Paul’s do (assume they are the only people involved). In this
+sense, the social preference among these states may be said to depend
+“only” on individual preferences among them. I
+says the same about S∗S∗S^* and T∗T∗T^* or about any other pair of
+alternatives. But I is silent about any relationship between
+the social comparison among SSS and TTT, on the one hand, and the
+social comparison among S∗S∗S^* and T∗T∗T^*, on the other. In particular,
+it leaves a social welfare function free to count TTT socially better
+than SSS (for increasing equality), while also counting T∗T∗T^*
+worse than S∗S∗S^* (for decreasing equality). Intuitively
+speaking, I allows a social welfare function to “shift
+gears” as we go from one pair of social states to the next,
+depending on the non-welfare features encountered there. 
+The condition that expresses welfarism is:
+
+Strong Neutrality (SN): For all alternatives xxx,
+yyy, zzz and www, and all profiles ⟨Ri⟩⟨Ri⟩\langle R_{i}\rangle and ⟨R∗i⟩⟨Ri∗⟩\langle
+R_{i}^*\rangle: IF for all iii: xRiyxRiyxR_{i}y if and only if zR∗iwzRi∗wzR^*_{i}w,
+and yRixyRixyR_{i}x if and only if wR∗izwRi∗zwR^*_{i}z, THEN xf⟨Ri⟩yxf⟨Ri⟩yx f\langle
+R_{i}\rangle y if and only if zf⟨R∗i⟩wzf⟨Ri∗⟩wz f\langle R_{i}^*\rangle w, and yf⟨Ri⟩xyf⟨Ri⟩xy
+f\langle R_{i}\rangle x if and only if wf⟨R∗i⟩zwf⟨Ri∗⟩zw f\langle R_{i}^*\rangle
+z.
+
+ SN is more demanding than 
+I.[9]
+I requires consistency for each
+pair of alternatives separately, as we go from one profile in the
+domain to the next. SN also requires this, but in addition it requires consistency as
+we go from one pair to the next, whether that is within a
+single profile or among several different ones. This is
+how SN keeps non-welfare features from making any difference:
+by compelling the social welfare function to treat any two pairs of
+alternatives the same way, if the pattern of individual preference is
+the same for both.
+Since I∗I∗I^* and SN are logically stronger than I,
+obviously a version of Arrow’s theorem can be had using either one of
+them instead of I. Such a theorem will be less interesting,
+though—not only because it is logically weaker but also because,
+as we have seen, these more demanding conditions often are unreasonable.
+The meaning of Independence of Irrelevant Alternatives is
+not easily grasped, and its ramifications are not immediately obvious.
+It is therefore surprising to see just how little has been said, over
+the many decades that have passed since Arrow published his famous
+theorem, to justify imposing this condition on social welfare
+functions. Let us turn, now, to some arguments for and against.
+We have discussed Arrow’s attempt to motivate I using the
+example of the dead candidate in an election. In the second edition
+of Social Choice and Individual Values he offered another
+rationale. Independence, he argued, embodies the principle
+that welfare judgments are to be based on observable behavior. Having
+expressed approval for Bergson’s use of indifference maps, Arrow
+continued:
+
+The Condition of Independence of Irrelevant Alternatives extends
+the requirement of observability one step farther. Given the set of
+alternatives available for society to choose among, it could be
+expected that, ideally, one could observe all preferences among the
+available alternatives, but there would be no way to observe
+preferences among alternatives not feasible for society. (Arrow 1963:
+110)
+
+Arrow seems to be saying that social decisions have to be made on
+the basis of preferences for feasible alternatives because these are
+the only ones that are observable. Arguably, though, this is
+insufficient support. Arrow’s choice version of Independence,
+as we have seen, concerns all environments SSS. The
+observability argument, though, apparently just concerns some
+“given” feasible alternatives. See Hansson (1973: 38) on
+this point.
+Gerry Mackie (2003) argues that there has been equivocation on the
+notion of irrelevance. It is true that we often take nonfeasible
+alternatives to be irrelevant. That presumably is why, in elections,
+we do not ordinarily put the names of dead people on ballots, along
+with those of the live candidates. But I also excludes from
+consideration information on preferences for alternatives that, in an
+ordinary sense, are relevant. An example illustrates Mackie’s
+point. George W. Bush, Al Gore, and Ralph Nader ran in the United
+States presidential election of 2000. Say we want to know whether
+there was a social preference for Gore above Bush.  I
+requires that this question be answerable independently of whether the
+people preferred either of them to, say, Abraham Lincoln, or preferred
+George Washington to Lincoln. This seems right. Neither Lincoln nor
+Washington ran for President that year. They were, intuitively,
+irrelevant alternatives.  But I also requires that the
+ranking of Gore with respect to Bush should be independent of voters’
+preferences for Nader, and this does not seem right because
+he was on the ballot and, in the ordinary sense, he was a
+relevant alternative to them. Certainly Arrow’s observability
+criterion does not rule out using information on preferences for
+Nader. They were as observable as any in that election.
+A different rationale has been suggested for
+imposing I specifically
+in the case of voting. Many voting procedures are known to present
+opportunities for voters to manipulate outcomes by misrepresenting
+their preferences. Section 5.2 discusses the
+example of Borda counting, which allows voters to promote their own
+favorite candidates by strategically putting others’ favorites at the
+bottom of their lists. Borda counting, it will be seen,
+violates I. Proofs of the Gibbard-Sattherthwaite theorem
+(Gibbard 1973, Sattherthwaite 1975) associate vulnerability to
+strategic voting systematically with violation of I, and Iain
+McLean argues on this ground that voting methods ought to satisfy this
+condition: “Take out [I] and you have gross
+manipulability” (McLean 2003: 16). This matter of strategic
+voting did not play a part in Arrow’s presentation of the
+impossibility theorem, though, and was not dealt with seriously in
+the literature until after its publication. See the entry
+on social choice theory for discussion
+of this important theme in contemporary theory of social choice.
+5. Possibilities
+Arrow’s theorem, it has been said, is about the impossibility of
+trying to do too much with too little information. This remark directs
+attention towards two main avenues leading from Arrow-inspired gloom
+toward a sunnier view of the possibilities for collective decision
+making: not trying to do so much, and using more information. One way
+of not trying to do so much is to relax the requirement, it is a part
+of SO, that all social preferences are
+transitive.  Section 4.2 briefly considered this
+idea but found it unpromising. Another way is to soften the demand
+of U that there be a social ordering for each
+“logically possible” preference profile. That is, we can
+restrict the domains of social welfare
+functions. Section 5.1 discusses this important
+“escape route” from Arrow’s theorem in some detail. One
+way of using more information is to loosen the independence
+constraint I. This allows social welfare functions to make
+use of more of the information that is carried by individual
+preference orderings. See Section 5.2. Another
+way is to extend Arrow’s framework so as to allow individuals to
+contribute richer information than is carried by preference
+orderings. This information can come in the form of scores or grades,
+as discussed in Section 5.3, or in the form of
+cardinal measurements of individual utilities,
+in Section 5.4.
+5.1 Domain Restrictions
+Sometimes, in the nature of the alternatives under consideration
+and how individual preferences among them are determined, not all
+individual preferences can arise. When studying such a case within
+Arrow’s framework there is no need for a social welfare function that
+can handle each and every nnn-tuple of individual orderings. Some but
+not all profiles are admissible, and the domain is said to
+be restricted. In fortunate cases, it is then possible to find a
+social welfare function that meets all assumptions and conditions of
+Arrow’s theorem—apart, of course, from U. Such domains
+are said to be Arrow consistent. This Section considers some
+important examples of Arrow consistent domains.
+For a simple illustration, consider the following profile: 
+
+ABC
+ABC
+CBA
+
+Here, two of the three people have the same strict preference
+ordering. Reckoning the collective preference by pairwise majority
+decision, it is easy to see that the result is the ordering of this
+majority: ABC. Consider now a domain made up entirely of
+such profiles, in which most of the three voters share the same
+strict preferences. On such a domain, pairwise majority decision
+always derives an ordering and so it satisfies SO. This
+social welfare function is nondictatorial as well provided the
+domain, though restricted, still retains a certain variety. In the
+above profile, voter 333 strictly prefers BBB to AAA. Both of the
+others strictly prefer AAA to BBB, though, and that is the
+social preference: with this profile in the domain, 333 is no
+dictator. Pairwise majority
+decision satisfies 
+D if each of the voters disagrees in this way with both of
+the others, in some or other profile.[10]
+It always satisfies WP
+and I. On such a domain, we have now seen, this aggregation
+procedure satisfies all of Arrow’s non-domain conditions. Such a
+domain is Arrow consistent.
+Full identity of preferences is not needed for Arrow
+consistency. It can be enough that everybody’s preferences are
+similar, even if they never entirely agree. An example illustrates the
+case of single peaked domains.
+Suppose three bears get together to decide how hot their common pot
+of porridge will be. Papa bear likes hot porridge, the hotter the
+better. Mama bear likes cold porridge, the colder the better. Baby
+bear most likes warm porridge; hot porridge is next best as far as he
+is concerned (“it will always cool off”), and he doesn’t
+like cold porridge at all. These preferences among hot, warm and cold
+porridge can be represented as a preference profile:
+
+Papa: Hot Warm Cold
+Mama: Cold Warm Hot
+Baby: Warm Hot Cold
+
+Or else they can be pictured like this:
+
+
+
+Figure 1
+
+
+This preference profile is single peaked. Each bear has a
+“bliss point” somewhere along the ordering of the options
+by their temperature, and each bear likes options less and less as we
+move along this common ordering away from the bliss point, on either
+side. Single peaked preferences arise with respect to the
+left-right orientation of political candidates, the cost of
+alternative public projects, and other salient attributes of
+options. Single peaked profiles, in which everybody’s
+preferences are single peaked with respect to a common ordering, arise
+naturally when everybody cares about the same thing in the options
+under consideration—temperature, left-right orientation, cost,
+or what have you—even if, as with the bears, there is no further
+consensus about which options are better than which.
+Duncan Black (1948) showed that if the number of
+voters is odd, and their preference profile is single peaked,
+pairwise majority decision always delivers up an
+ordering.[11]
+Furthermore, he showed, the maximum of this ordering is the bliss
+point of the median voter—the voter whose bliss point
+has, on the common ordering, as many voters’ bliss points to one side
+as it has to the other. In the example this is Baby bear, and warm
+porridge is the collective maximum.  This example illustrates the way
+in which single peakedness can facilitate compromise.
+Say the number of voters is odd. Now consider a
+single-peaked domain—one that is made up entirely of
+single peaked profiles. Black’s result tells us that pairwise
+majority decision on this domain satisfies SO. Provided the
+domain is sufficiently inclusive (so that for each iii there is
+within the domain some profile in which iii is not the median voter)
+it also satisfies D. Pairwise majority decision always
+satisfies WP and I, so such a domain is Arrow
+consistent. With an even number of voters, single peakedness
+does not ensure satisfaction of SO. For example, suppose
+there are just two voters and that their individual orderings are:
+
+CAB
+BCA
+
+Pairwise majority decision derives from this profile a weak social
+preference for AAA to BBB, since there is one who weakly prefers AAA
+to BBB, and one who weakly prefers BBB to AAA. Similarly, it derives
+a weak social preference for BBB to CCC. Transitivity requires a weak
+social preference for AAA to CCC, but there is none. On the contrary,
+there is a strict social preference for CCC above AAA, since that is
+the unanimous preference of the voters.  Still, this profile is
+single peaked with respect to the common ordering BCABCABCA:
+
+
+
+Figure 2
+
+
+Majority decision with “phantom” voters can be used to
+establish Arrow consistency when the number of people is even. Let
+there be 2n2n2n people, and let each profile in the domain be single
+peaked with respect to one and the same ordering of the
+alternatives. Let R2n+1R2n+1R_{2n+1} be an ordering that also is single peaked
+with respect to this common ordering.  R2n+1R2n+1R_{2n+1} represents the
+preferences of a “phantom” voter. Now take each profile
+⟨R1,…,R2n⟩⟨R1,…,R2n⟩\langle R_{1},\ldots, R_{2n}\rangle in the domain and expand it
+into ⟨R1,…,R2n,R2n+1⟩⟨R1,…,R2n,R2n+1⟩\langle R_{1},\ldots, R_{2n}, R_{2n+1}\rangle, by adding
+R2n+1R2n+1R_{2n+1}. The set of all the expanded profiles is a single peaked
+domain and, because the real voters together with the phantom are odd
+in number, Black’s result applies to it. Let ggg be pairwise majority
+decision for the expanded domain. We obtain a social welfare function
+fff for the original domain by assigning to each profile the ordering
+that ggg assigns to its expansion. That is, we put:
+f⟨R1,…,R2n⟩=g⟨R1,…,R2n,R2n+1⟩.f⟨R1,…,R2n⟩=g⟨R1,…,R2n,R2n+1⟩.
+f\langle R_{1},\ldots, R_{2n}\rangle = 
+ g\langle R_{1},\ldots, R_{2n}, R_{2n+1}\rangle.
+
+This fff satisfies SO because ggg does. It
+satisfies WP because there are more real voters than
+phantoms (2n2n2n to 111; we could have used any odd number of phantoms
+smaller than 2n2n2n). fff satisfies I because the phantom
+ordering is the same in all profiles of the expanded domain. If the
+domain includes sufficient variety among profiles then fff also
+satisfies D and is Arrow consistent. This nice idea of
+phantom voters was introduced by Moulin (1980), who used it to
+characterize a class of voting schemes that are non-manipulable, in
+that they do not provide opportunities for strategic
+voting. 
+Domain restrictions have been the focus of much
+research in recent decades. Gaertner (2001) provides a general
+overview. Le Breton and Weymark (2006) survey work on domain
+restrictions that arise naturally when analyzing economic problems in
+Arrow’s framework. Miller (1992) suggests that deliberation can
+facilitate rational social choice by transforming initial preferences
+into single peaked preferences.  List and Dryzek (2003) argue that
+deliberation can bring about a “structuration” of
+individual preferences that facilitates democratic decision making
+even without achieving full single-peakedness. List et al. (2013)
+present empirical evidence that deliberation sometimes does have this
+effect.
+As Samuelson described it, the single profile approach might seem
+to amount to the most severe of domain restrictions:
+
+
+[O]ne and only one of the […] possible
+patterns of individuals’ orderings is needed. […]
+From it (not from each of them all) comes a social
+ordering. (Samuelson 1967: 48–49)
+
+ According to Sen (1977), though, the
+Bergson-Samuelson social welfare function has more than a single
+profile in its domain. It has in fact a completely unrestricted
+domain, for while according to Samuelson only one profile is needed
+“it could be any one” (Samuelson 1967: 49). What
+distinguishes the single profile approach, on Sen’s way of
+understanding it, is that there is to be no coordinating the behavior
+of the social welfare function at several different profiles, by
+imposing on it interprofile conditions such as I
+and SN (see Section 4.5). Either
+way, though, and just as Samuelson insisted, Arrow’s theorem does not
+limit the single profile approach because one of its conditions is
+inappropriate in connection with it. Either U is
+inappropriate (if there is a single profile in the domain) or
+else I is inappropriate (if there are no interprofile
+constraints).
+Certain impossibility theorems that are closely related to Arrow’s
+have been thought relevant to single-profile choice even so. These
+theorems do not use Arrow’s interprofile condition III but
+use instead an intraprofile neutrality condition. This
+condition says that whenever within any single profile the
+pattern of individual preferences for one pair xxx,yyy of options is
+the same as for another pair z,wz,wz,w, the social ordering derived
+from this profile must also be the same for xxx, yyy as it is for zzz,
+www:
+
+Single-Profile Neutrality (SPN): For any ⟨Ri⟩⟨Ri⟩\langle
+R_{i}\rangle, and any alternatives xxx, yyy, zzz and www: IF for all
+i:xRiyi:xRiyi: xR_{i}y if and only if zRiwzRiwzR_{i}w, and yRixyRixyR_{i}x if and only if
+wRizwRizwR_{i}z, THEN xf⟨Ri⟩yxf⟨Ri⟩yx f\langle R_{i}\rangle y if and only if zf⟨Ri⟩wzf⟨Ri⟩wz f\langle
+R_{i}\rangle w, and yf⟨Ri⟩xyf⟨Ri⟩xy f\langle R_{i}\rangle x if and only if wf⟨Ri⟩zwf⟨Ri⟩zw
+f\langle R_{i}\rangle z.
+
+SPN follows from the strong neutrality (SN)
+condition of Section 4.5, on identifying
+⟨Ri⟩⟨Ri⟩\langle R_{i}\rangle with ⟨R∗i⟩⟨Ri∗⟩\langle R_{i}^*\rangle. Parks (1976),
+and independently Kemp and Ng (1976), showed that there are
+“single profile” versions of Arrow’s theorem
+using SPN instead of I. These theorems were
+supposed to block the Bergson-Samuelson approach. In fact,
+condition SPN is just as easily set aside as SN,
+and for the same reason: both exclude non-welfare information that is
+relevant to the comparison of social states from an ethical
+standpoint. Samuelson (1977) ridiculed SPN using an example
+about redistributing chocolate. It is similar in structure to the
+example of Peter and Paul, in
+ Section 4.5.
+5.2 More Ordinal Information
+Independence of Irrelevant Alternatives severely limits
+which information about individual preferences may be used for
+what. It requires a social welfare function, when assembling the
+social preference among a pair of alternatives, to take into account
+only those of people’s preferences that concern just this pair. This
+Section discusses two kinds of information that is implicit in
+preferences for other alternatives, and illustrates their use in social
+decision making: information about the positions of alternatives in
+individual orderings, and information about the fairness of social
+states. 
+Positional voting methods take into account where the
+candidates come in the different individual orderings—whether it
+is first, or second, … or last. Borda counting is an
+important example. Named after Jean-Charles de Borda, a contemporary
+of Condorcet, it had already been proposed in the 13th
+Century by the pioneering writer and social theorist Ramon
+Lull. Nicholas of Cusa in the 15th Century recommended it
+for electing Holy Roman Emperors. Borda counting is used in some
+political elections and on many other occasions for voting, in clubs
+and other organizations.  Consider the profile:
+
+ABCD
+BACD
+BACD
+
+Let each candidate receive four points for coming first in some
+voter’s ordering, three for coming second, two for a third place and a
+single point for coming last; the alternatives then are ordered by the
+total number of points they receive, from all the voters. The Borda
+count of AAA is then 10 (or 4+3+34+3+34+3+3) and that of BBB is 11 (3+4+4)(3+4+4)(3+4+4),
+so BBB outranks AAA in the social ordering. This method
+applies with the obvious adaptation to any election with a finite
+number of candidates.
+Now suppose voter 111 moves BBB from second place to last on his
+own list, and we have the profile:
+
+ACDB
+BACD
+BACD
+
+Then BBB will receive just 9 points (1+4+4)(1+4+4)(1+4+4). AAA receives
+the same 10 as before, though, and now outranks BBB. This example
+illustrates two important points.  First, Borda counting does not
+satisfy Arrow’s condition I, since while each voter’s ranking
+of AAA with respect to BBB is the same in the two profiles, the
+social ordering of this pair is different. Second, Borda counting
+provides opportunities for voters to manipulate the outcome of an
+election by strategic voting. If everybody’s preferences are as in the
+first profile, voter 111 might do well to misrepresent his
+preferences by putting BBB at the bottom of his list. In this way,
+he can promote his own favorite, AAA, to the top of the social
+ordering (he will get away with this, of course, only if the other
+voters do not see what he is up to and adjust their own rankings
+accordingly, by putting his favorite AAA at the bottom). The
+susceptibility of Borda counting to strategic voting has long been
+known. When this was raised as an objection, Borda’s indignant
+response is said to have been that his scheme was intended for honest
+people. Lull and Nicholas of Cusa recommended, before voting by this
+method, earnest oaths to tell the truth and stripping oneself of all
+sins.
+
+For further discussion of positionalist voting methods, see the
+entries voting methods
+and social choice theory; for an
+analytical overview, see Pattanaik’s (2002) handbook article. Barberà
+(2010) reviews what is known about strategic voting. 
+Mark Fleurbaey (2007) has shown that social welfare functions need
+more ordinal information than I allows them if they are to
+respond appropriately to a certain fairness of social states. He gives
+the example of Ann, who has ten apples and two oranges, and Bob, with
+three apples and eleven oranges. This allocation is said to be
+“envy free” if, intuitively, she is at least as happy with
+her own basket of fruit as she would be with his and, similarly, he is
+as happy with his own basket as he would be with hers. Let the
+distribution of fruit in one social state SSS be as described, and
+consider the state S∗S∗S^* in which the allocations are reversed. That
+is, in S∗S∗S^* it is Ann that has three apples and eleven oranges,
+while Bob has ten apples and two oranges. More technically, SSS
+is envy free if Ann weakly prefers SSS to S∗S∗S^*, and Bob
+does too. We might expect that, other things being equal, the envy
+freeness of a social state will promote it in the social ordering
+above an alternative state that is not envy free. But I does
+not allow this.
+
+To see why not, consider whether it would be socially preferable,
+starting from the status quo SSS, to take one apple and one orange
+from Bob and give both of them to Ann. Let TTT be the state arising
+from this transfer. We assume for the sake of the example that Ann
+always strictly prefers having more of everything for herself to
+having less, and that Bob’s preferences are similarly self-interested,
+so that in all admissible profiles Ann strictly prefers TTT to
+SSS, while Bob strictly prefers SSS to TTT. Their preferences
+among these states are opposite and do not by themselves entail a
+social preference one way or the other. Now, consider first a profile
+in which the status quo SSS is envy free but TTT is not. (Let both
+Ann and Bob be indifferent between the baskets each one has in SSS
+but not between those in TTT, in which both agree that Bob is worse
+off.) Relative to this profile, a social welfare function promoting
+envy freeness comes out against the transfer from Bob to Ann by
+ranking SSS strictly above TTT. But consider another profile, in
+which it is TTT that is envy free (now Ann and Bob are indifferent
+between the baskets in TTT, and agree that in SSS Ann is worse off
+than Bob). Relative to this second profile, TTT outranks SSS in
+the social ordering. In direct conflict with I, the social
+preference among SSS and TTT switches as we go from one profile to
+the other, although the individual preferences among SSS and TTT
+stay the same. The social ranking of SSS and TTT turns on
+preferences among these states and the “irrelevant”
+S∗S∗S^* and similarly defined T∗T∗T^*, because the fairness of SSS
+and TTT does.
+Fleurbaey recommends a weaker condition, attributing it to Hansson
+(1973) and to Pazner (1979):
+
+Weak Independence: Social preferences on a pair of options
+should only depend on the population’s preferences on these two
+options and on what options are indifferent to each of these options
+for each individual (Fleurbaey 2007: 23).
+
+Fleurbaey (2007) discusses social welfare functions satisfying weak
+independence together with Arrow’s conditions apart, of course,
+from I. The approach to social welfare that is sketched there
+is developed at length in (Fleurbaey and Maniquet 2011).
+5.3 Even More Ordinal Information: Scores and Grades
+
+Another way to have social orderings in spite of Arrow’s theorem is to
+allow people to contribute more ordinal information about their
+preferences than is admissible within Arrow’s framework. Arrow’s
+purpose in limiting individual inputs to weak orderings of the
+alternatives was to exclude cardinal information about utilities. This
+limitation, though, is too tight for its purpose. One way for people
+to communicate their preferences is to grade their
+alternatives. Now, although in general grades do not carry cardinal
+information, Arrow’s framework has no provision for people to input
+their preferences using them. This might seeem a small oversight on
+Arrow’s part but it is critical, because there are ways of aggregating
+graded inputs that are not avaliable for preferance orderings, and
+with them comes another “escape” from Arrow’s
+impossibility. Showing how it goes requires a slight extension of
+Arrow’s framework.
+
+Let a grade language LLL be a strictly ordered collection
+of expressions, the grades. The grades could be adjectival expressions
+of a natural language, such as excellent, 
+good, acceptable, poor and terrible,
+or they could be characters such as the familiar letter grades of
+academic evaluation. They could be numerals (then often
+called scores) or the strings of stars commonly used to
+evaluate hotels and restaurants. They could be any symbols that come
+in some fixed order (from “top” to
+“bottom”).
+
+A grade function GiGiG_{i} maps the set XXX of alternatives
+into some given grade language LLL. Intuitively, Gi(x)Gi(x)G_{i}(x) is
+iii’s grade for alternative xxx. A grade function GiGiG_{i}
+contains as much information as some weak ordering RiRiR_{i}
+of the alternatives. This can be seen by putting xRiyxRiyxR_{i}y if
+Gi(x)≥Gi(y)Gi(x)≥Gi(y)G_{i}(x) \ge G_{i}(y): iii weakly prefers xxx to yyy if
+iii’s grade for xxx is at least as high as iii’s grade for
+yyy. In general GiGiG_{i} contains more information than
+the corresponding ordering because we cannot always go in reverse:
+different grade functions correspond to the same ordering. For
+instance, one way to convey that AAA is preferable to BBB is to
+say that whereas AAA is good, BBB is
+merely acceptable; another is to say that whereas AAA
+is good, BBB is terrible, but this doesn’t come to
+the same thing because acceptable and terrible
+don’t. The additional information in grades is in general not cardinal
+information because for instance the expressions 
+good, acceptable and terrible, ordinary
+adjectives of English, do not carry cardinal information about how
+good AAA and BBB are.
+
+A grade profile is a list ⟨G1,…,Gn⟩⟨G1,…,Gn⟩\langle G_{1}, \ldots,
+G_{n}\rangle of grade functions, one for each of the people 1,…,n1,…,n1,
+\ldots, n. Notions of a multiprofile domain and a social welfare
+function fff are defined as in Arrow’s framework, putting grade
+profiles instead of Arrow’s profiles of weak orders (the output of a
+social welfare function is not a social grading of the alternatives
+but a social ordering of them, just in Arrow’s original
+framework). The conditions of Arrow’s theorem are reformulated
+accordingly; for instance, the reformulated domain assumption is: 
+
+Unrestricted Domain (U): The domain of fff
+includes every list ⟨G1,…,Gn⟩⟨G1,…,Gn⟩\langle G_{1}, \ldots, G_{n}\rangle of nnn
+grade functions defined on XXX.
+
+ Arrow’s independence condition becomes:
+
+Independence of Irrelevant Alternatives (I): For
+all alternatives xxx and yyy in XXX, and all profiles ⟨Gi⟩⟨Gi⟩\langle
+G_{i}\rangle and ⟨G∗i⟩⟨Gi∗⟩\langle G^*_{i}\rangle in the domain of fff, if
+⟨Gi⟩|{x,y}=⟨G∗i⟩|{x,y}⟨Gi⟩|{x,y}=⟨Gi∗⟩|{x,y}\langle G_{i}\rangle|\{x,y\} = \langle G^*_{i}\rangle|\{x,y\}, then
+f⟨Gi⟩|{x,y}=f⟨G∗i⟩|{x,y}f⟨Gi⟩|{x,y}=f⟨Gi∗⟩|{x,y}f\langle G_{i}\rangle |\{x,y\} = f\langle G^*_{i}\rangle
+|\{x,y\}.
+
+
+Intuitively, the reformulated independence assumption says that
+whether one alternative ranks higher than another in the social
+ordering depends only on everybody’s grades for these two
+alternatives. Other alternatives are in this matter
+“irrelevant.”
+
+There are social welfare functions that satisfy all conditions of
+Arrow’s theorem, reformulated for graded inputs. With an odd number
+nnn of people, for instance, the social welfare function median
+grading fills the bill. Given a profile ⟨Gi⟩⟨Gi⟩\langle G_{i}\rangle
+of grade functions, the median grade for an alternative xxx
+is the grade that is in the middle, when we list all the grades
+G1(x),…,Gn(x)G1(x),…,Gn(x)G_{1}(x), \ldots, G_{n}(x) for xxx in order, from top to
+bottom. The social ordering associated with this profile goes by the
+alternatives’ median grades: xf⟨Gi⟩yxf⟨Gi⟩yx f\langle G_{i}\rangle y means that
+the median grade for xxx is either the same as the median grade for
+yyy, or else it is higher.
+
+To verify that median grading satisfies the reformulated conditions,
+take for instance the nondictatorship condition. A person ddd is
+a dictator of fff if for any alternatives xxx and yyy,
+and for any profile ⟨…,Gd,…⟩⟨…,Gd,…⟩\langle\ldots, G_{d},\ldots\rangle in the
+domain of fff: if xPdyxPdyxP_{d}y, then xPyxPyxPy. When fff is median
+grading, this means that whenever a dictator expresses a strict
+preference for one alternative over another, by giving it a higher
+grade, this alternative also ranks strictly higher in the social
+ordering, having a higher median grade. Except in the trivial case of
+a language with only a single grade (which makes it impossible to
+express strict preferences, giving everybody vacuous dictatorial
+powers), and provided there are at least two alternatives and three
+people, median grading on an unrestricted domain has no dictator. To
+see that it is so, consider any given person ppp, and any two
+alternatives AAA and BBB. In an unrestricted domain there is some
+profile in which ppp’s grade for AAA is higher than ppp’s grade
+for BBB, but in which everybody else’s grades for these alternatives
+are just the other way around: everybody other than ppp gives to
+BBB the same grade that ppp gives to AAA, and gives to AAA the
+same grade that ppp gives to BBB. In this profile, the median
+grade for AAA is ppp’s grade for BBB, and the median grade for
+BBB is ppp’s grade for AAA, which is higher. So although ppp
+strictly prefers AAA to BBB, BBB ranks strictly higher than
+AAA in the social ordering, and ppp is not a dictator. Repeating
+this demonstration for each person, no one else is a dictator
+either. Satisfaction of the other reformulated conditions on the
+unrestricted domain of grade profiles is similarly
+straightforward.
+
+Michel Balinski and Rida Laraki (2007) showed that scoring and grading
+enable an “escape” from Arrow’s impossibility while
+staying within an ordinal framework. Their theory of majority
+judgment is a generalization of median grading that makes more
+use than it does of the ordinal information in grade profiles
+(Balinski and Laraki 2010). Balinski and Laraki insist that people
+must share what they call a “common language” of grades,
+without giving this notion a precise sense. Indeed it can be shown
+that, when different people might have very different thresholds for
+awarding grades, there is in grade profiles no more information than
+in the corresponding profiles of weak orderings. Then a close relative
+of Arrow’s impossibility returns (Morreau 2016).
+
+Arrow came to realize, late in his life, that scoring and grading
+create possibilities for democracy that his framework unnecessarily
+rules out of consideration. In a 2012 interview he noted:
+
+Now there’s another possible way of thinking about it, which is not
+included in my theorem ……\ldots [E]ach voter does not just give a
+ranking. But says, this is good. And this is not good. Or this is very
+good. And this is bad. So I have three or four classes ……\ldots This
+changes the nature of voting.
+
+
+For a transcript of this interview, see the Other Internet Resources.
+5.4 Cardinal Information
+
+Amartya Sen (1970) extended Arrow’s framework by representing the
+preferences of individuals iii as utility functions UiUiU_{i} that
+map the alternatives onto real numbers: Ui(x)Ui(x)U_{i}(x) is the utility
+that iii obtains from xxx.  A preference profile in Sen’s
+framework is a list ⟨U1,…,Un⟩⟨U1,…,Un⟩\langle U_{1}, \ldots, U_{n}\rangle of utility
+functions, and a domain is a set of these. An aggregation function,
+now a social welfare functional, maps each profile in some
+domain onto a weak ordering of the alternatives.
+Sen showed how to study various assumptions concerning the
+measurability and interpersonal comparability of utilities by
+coordinating the social orderings derived from profiles that,
+depending on these assumptions, carry the same information. For
+instance, ordinal measurement with interpersonal
+noncomparability—built by Arrow right into his technical
+framework—amounts, in Sen’s more flexible set up, to a
+requirement that the same social ordering is to be derived from any
+utility profiles that reduce to the same list of orderings. At the
+other extreme, utilities are measured on a ratio scale with full
+interpersonal comparability if those profiles yield the same social
+ordering that can be obtained from each other by rescaling, or
+multiplying all utility functions by the same positive real number.
+Sen explored different combinations of such assumptions.
+One important finding was that having cardinal utilities is not by
+itself enough to avoid an impossibility result. In addition, utilities
+have to be interpersonally comparable. Intuitively speaking, to put
+information about preference strengths to good use it has to be
+possible to compare the strengths of different individuals’
+preferences. See Sen (1970: Theorem 8*2). Interpersonal comparability
+opens up many possibilities for aggregating utilities and preferences.
+Two important ones can be read off from classical utilitarianism and
+Rawls’s difference principle. For details, see the entry
+on social choice theory.
+6. Reinterpretations
+
+The Arrow-Sen framework lends itself to the study of a range of
+aggregation problems other than those for which it was originally
+developed. This Section briefly discusses some of them. 
+6.1 Judgment Aggregation
+
+On an epistemic conception, the value of democratic institutions lies,
+in part, in their tendency to arrive at the truth in matters relevant
+to public decisions (see Estlund 2008, but compare Peter 2011). This
+idea receives some support from Condorcet’s jury theorem. It tells us,
+simply put, that if individual people are more likely than not to
+judge correctly in some matter of fact, independently of one another,
+then the collective judgment of a sufficiently large group, arrived at
+by majority voting, is almost certain to be correct (Condorcet
+1785). The phenomenon of the “wisdom of crowds”,
+facilitated by cognitive diversity among individuals, provides further
+and arguably better support for the epistemic conception (Page 2007,
+Landemore 2012). But there are theoretical limits to the possibilities
+for collective judgment on matters of fact. Starting with Kornhauser
+and Sager’s (1986) discussion of group deliberation in legal settings,
+work on the theory of judgment aggregation has explored paradoxes and
+impossibility theorems closely related to those that Condorcet and
+Arrow discovered in connection with preference aggregation. See List
+(2012) and the entry social choice
+theory for overviews.
+6.2 Multi-Criterial Decision
+In many decision problems there are several criteria by which to
+compare alternatives and, putting these criteria in place of people,
+it is natural to study such problems within the Arrow-Sen framework.
+Arrow’s theorem, if analogues of its various assumptions and
+conditions are appropriate, then tells us that there is no procedure
+for arriving at an “overall” ordering that assimilates
+different criterial comparisons.
+The Arrow-Sen framework has been used to study multi-criterial
+evaluation in industrial decision making (Arrow and Raynaud 1986) and
+in engineering design (Scott and Antonsson 2000; compare Franssen
+2005). Anandi Hattiangadi (forthcoming) argues that Arrow’s theorem
+limits the possibilities for an interpretationist metasemantics, in
+which the correct interpretation of linguistic expressions is the one
+that is, judging by relevant criteria, overall best.
+Kenneth May (1954) used Arrow’s framework to study the
+determination of individual preferences. It had been found
+experimentally that people’s preferences, elicited separately for
+different pairs of options, often are cyclical. May explained this by
+analogy with the paradox of voting as the result of preferring one
+alternative to another when it is better by more criteria than not.
+More generally, he reinterpreted Arrow’s theorem as an argument that
+intransitivity of individual preferences is to be expected when
+different criteria “pull in different directions”. Susan
+Hurley (1985, 1989) considered a similar problem in practical
+deliberation when the criteria are moral values. She argued that
+Arrow’s theorem does not apply in this case. One strand of her
+argument is that, unlike a person, a moral criterion can rank any
+given alternatives just one way. It cannot “change its
+mind” about them (Hurley 1985: 511), and this makes it
+inappropriate to impose the analogue of the domain
+condition U on procedures for weighing moral reasons.  
+There are multicriterial problems in theoretical deliberation as
+well. Okasha (2011) uses the Arrow-Sen framework to study the problem
+of choosing among rival scientific theories by criteria including fit
+to data, simplicity, and scope. He argues that the impossibility
+theorem threatens the rationality of theory choice. See Morreau (2015)
+for a reason to think that it does not apply to this problem, and
+Morreau (2014) for a demonstration that impossibility theorems
+relevant to single profile choice (see 
+Sections 2.2 and 5.1) 
+might sometimes apply even so. In related work, Jacob Stegenga (2013)
+argues that Arrow’s theorem limits the possibilities for combining
+different kinds of evidence. Eleonora Cresto and Diego Tajer
+(forthcoming) counter that confirmational holism requires a
+restriction on the domains of evidence-aggregation functions that
+blocks Stegenga’s argument: they cast the Duhem problem in a positive
+light as one aspect of a phenomenon that makes evidence aggregation
+possible.
+6.3 Overall Similarity
+Things are more similar to each other in one respect, less similar
+in another. Much philosophy relies on notions of aggregate or
+“overall” similarity and Arrow’s framework has also been used
+to study these.
+Overall similarity lies at the foundation of David Lewis’s
+metaphysics (Lewis 1968, 1973a, 1973b). He wrote little about how
+similarities and differences in various respects might go together to
+yield overall similarities, though (Lewis 1979) gives some idea of
+what he had in mind. The Arrow-Sen framework lends itself to studying
+this aggregation problem as well; and an impossibility theorem, if it
+applies, limits the possibilities for arriving at overall similarities
+of the sort that Lewis presupposes. Morreau (2010) presents the case
+that a variant of Arrow’s theorem does apply. Kroedel and Huber (2013)
+take a more optimistic view of overall similarity.
+According to Popper (1963), some scientific theories, though false,
+are closer to the truth than others. Work on his notion
+of verisimilitude has distinguished “likeness”
+and “content” dimensions, and the question arises whether
+these can be combined into a single ordering of theories by their
+overall verisimilitude. Zwart and Franssen (2007) argue that Arrow’s
+theorem does not apply to this problem but, using a theorem inspired
+by it, they argue that there is no good way to combine the different
+dimensions even so. See Schurz and Weingartner (2010) and Oddie (2013)
+for constructive criticism of their views.

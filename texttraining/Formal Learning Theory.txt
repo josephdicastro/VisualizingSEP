@@ -1,0 +1,1036 @@
+Formal learning theory is the mathematical embodiment of a normative
+epistemology. It deals with the question of how an agent should use
+observations about her environment to arrive at correct and
+informative conclusions. Philosophers such as Putnam, Glymour and
+Kelly have developed learning theory as a normative framework for
+scientific reasoning and inductive inference. 
+
+Terminology. Cognitive science and related fields typically
+use the term “learning” for the process of gaining
+information through observation— hence the name “learning
+theory”. To most cognitive scientists, the term “learning
+theory” suggests the empirical study of human and animal
+learning stemming from the behaviourist paradigm in psychology. The
+epithet “formal” distinguishes the subject of this entry
+from behaviourist learning theory. Philosophical terms for
+learning-theoretic epistemology include “logical
+reliability” (Kelly [1996], Glymour [1991]) and
+“means-ends epistemology” (Schulte [1999]).
+
+Because many developments in, and applications of, formal learning
+theory come from computer science, the term “computational
+learning theory” is also common. Many results on learning theory
+in computer science are concerned with Valiant’s and Vapnik’s notion
+of learning generalizations that are probably approximately correct
+(PAC learning) (Valiant [1984]). This notion of empirical success was
+introduced to philosophers by Gilbert Harmann in his Nicode lectures,
+and elaborated in a subsequent book [2007]. Valiant himself provides
+an accessible account of PAC learning and its relationship to the
+problem of induction in a recent book (Valiant [2013, Ch. 5]). The
+present article describes a nonstatistical tradition of learning
+theory stemming from the seminal work of Hilary Putnam [1963] and Mark
+E. Gold [1967]. 
+
+Philosophical characteristics. In contrast to other
+philosophical approaches to inductive inference, learning theory does
+not aim to describe a universal inductive method or explicate general
+axioms of inductive rationality. Rather, learning theory pursues a
+context-dependent means-ends analysis: For a given empirical problem
+and a set of cognitive goals, what is the best method for achieving
+the goals? Most of learning theory examines  which investigative
+strategies reliably and efficiently lead to correct beliefs about the
+world. 
+
+Article Overview. Compared to traditional philosphical
+discussions of inductive inference, learning theory provides a
+radically new way of thinking about induction and scientific method.
+The main aim of this article is explain the main concepts of the
+theory through examples. Running examples are repeated throughout the
+entry; at the same time, the sections are meant to be as independent
+of each other as possible. We use the examples to illustrate some
+theorems of philosophical interest, and to highlight the key
+philosophical ideas and insights behind learning theory. 
+
+Readers interested in the mathematical substance of learning theory
+will find some references in the
+ Bibliography,
+ and a summary of the basic definitions in the
+ Supplementary Document.
+ A text by Jain et al. collects many of the main definitions and
+theorems [1999]. New results appear in proceedings of annual
+conferences, such as the Conferences on Learning Theory (COLT) and
+Algorithmic Learning Theory (ALT). The philosophical issues and
+motivation pertaining to learning-theoretic epistemology are discussed
+extensively in the works of philosophers such as Putnam, Glymour and
+Kelly (Putnam [1963], Glymour [1991], Glymour and Kelly [1992], Kelly
+[1996]). 
+ 
+1. Convergence to the Truth and Nothing But the Truth
+
+Learning-theoretic analysis assesses dispositions for forming beliefs.
+Several terms for belief acquisition processes are in common use in
+philosophy; I will use “inductive strategy”,
+“inference method” and most frequently “inductive
+method” to mean the same thing. The best way to understand how
+learning theory evaluates inductive methods is to work through some
+examples. The following presentation begins with some very simple
+inductive problems and moves on to more complicated and more realistic
+settings.
+1.1 Simple Universal Generalization
+
+Let’s revisit the classic question of whether all ravens are black.
+Imagine an ornithologist who tackles this problem by examining one
+raven after another. There is exactly one observation sequence in
+which only black ravens are found; all others feature at least one
+nonblack raven. The figure below illustrates the possible observation
+sequences. Dots in the figure denote points at which an observation
+may be made. A black bird to the left of a dot indicates that at this
+stage, a black raven is observed. Similarly, a white bird to the right
+of a dot indicates that a nonblack raven is observed. Given a 
+complete sequence  of observations, either all observed ravens are
+black or nonblack; the figure labels complete observation sequences
+with the statement that is true of them. The gray fan indicates that
+after the observation of a white raven, the claim that not all ravens
+are black holds on all observation sequences resulting from further
+observations.
+
+
+
+
+If the world is such that only black ravens are found, we would like
+the ornithologist to settle on this generalization. (It may be
+possible that some nonblack ravens remain forever hidden from sight,
+but even then the generalization “all ravens are black” at
+least gets the observations right.) If the world is such that
+eventually a nonblack raven is found, then we would like the
+ornithologist to arrive at the conclusion that not all ravens are
+black. This specifies a set of goals of inquiry. For any given
+inductive method that might represent the ornithologist’s disposition
+to adopt conjectures in the light of the evidence, we can ask whether
+that method measures up to these goals or not. There are infinitely
+many possible methods to consider; we’ll look at just two, a skeptical
+one and one that boldly generalizes. The  bold method 
+conjectures that all ravens are black after seeing that the first
+raven is black. It hangs on to this conjecture unless some nonblack
+raven appears. The skeptical method does not go beyond what is
+entailed by the evidence. So if a nonblack raven is found, the
+skeptical method concludes that not all ravens are black, but
+otherwise the method does not make a conjecture one way or another.
+The figure below illustrates both the bold and the skeptical
+method.
+
+
+
+
+Do these methods attain the goals we set out? Consider the bold
+method. There are two possibilities: either all observed ravens are
+black, or some nonblack raven is found. In the first case, the method
+conjectures that all ravens are black and never abandons this
+conjecture. In the second case, the method concludes that not all
+ravens are black as soon as the first nonblack raven is found. Hence
+no matter how the evidence comes in, eventually the method
+gives the right answer as to whether all ravens are black and
+sticks with this answer. Learning theorists call such methods
+reliable because they settle on the right answer no matter
+what observations the world provides.
+
+The skeptical method does not measure up so well. If a nonblack raven
+appears, then the method does arrive at the correct conclusion that
+not all ravens are black. But if all ravens are black, the skeptic
+never takes an “inductive leap” to adopt this
+generalization. So in that case, the skeptic fails to provide the
+right answer to the question of whether all ravens are black.
+
+This illustrates how means-ends analysis can evaluate methods: the
+bold method meets the goal of reliably arriving at the right answer,
+whereas the skeptical method does not. Note the character of this
+argument against the skeptic: The problem, in this view, is not that
+the skeptic violates some canon of rationality, or fails to appreciate
+the “uniformity of nature”. The learning-theoretic
+analysis concedes to the skeptic that no matter how many black ravens
+have been observed in the past, the next one could be white. The issue
+is that if all observed ravens are indeed black, then the skeptic
+never answers the question “are all ravens
+black?”. Getting the right answer to that question requires
+generalizing from the evidence even though the generalization
+could be wrong.
+
+As for the bold method, it’s important to be clear on what it does and
+does not achieve. The method will eventually settle on the right
+answer—but it (or we) may never be certain that it has
+done so. As
+ William James
+ put it, “no bell tolls” when science has found the right
+answer. We are certain that the method will eventually settle on the
+right answer; but we may never be certain that the current answer is
+the right one. This is a subtle point; the next example illustrates it
+further.
+1.2 The New Riddle of Induction
+
+Nelson Goodman posed a famous puzzle about inductive inference known
+as the (New) Riddle of Induction ([Goodman 1983]). Our next example is
+inspired by his puzzle. Goodman considered generalizations about
+emeralds, involving the familiar colours of green and blue, as well as
+certain unusual ones:
+
+Suppose that all emeralds examined before a certain time t
+are green ... Our evidence statements assert that emerald a
+is green, that emerald b is green, and so on..
+
+
+Now let us introduce another predicate less familiar than
+“green”. It is the predicate “grue” and it
+applies to all things examined before t just in case they are
+green but to other things just in case they are blue. Then at time
+t we have, for each evidence statement asserting that a given
+emerald is green, a parallel evidence statement asserting that emerald
+is grue. The question is whether we should conjecture that all
+emeralds are green rather than that all emeralds are grue when we
+obtain a sample of green emeralds examined before time t, and
+if so, why.
+
+
+Clearly we have a family of grue predicates in this problem, one for
+each different “critical time” t; let’s write
+grue(t) to denote these grue predicates. Following Goodman,
+let us refer to methods as  projection rules  in discussing
+this example. A projection rule succeeds in a world just in case it
+settles on a generalization that is correct in that world. Thus in a
+world in which all examined emeralds are found to be green, we want
+our projection rule to converge to the proposition that all emeralds
+are green. If all examined emeralds are grue(t), we want our
+projection rule to converge to the proposition that all emeralds are
+grue(t). Note that this stipulation treats green and grue
+predicates completely on a par, with no bias towards either. As
+before, let us consider two rules: the  natural projection rule
+which conjectures that all emeralds are green as long as only green
+emeralds are found, and the gruesome rule which keeps
+projecting the next grue predicate consistent with the available
+evidence. Expressed in the green-blue vocabulary, the gruesome
+projection rule conjectures that after observing some number of
+n green emeralds, all future ones will be blue. The figures
+below illustrates the possible observation sequences, the natural
+projection rule, and the gruesome projection rule. 
+
+
+
+
+The following figure shows the gruesome projection rule. 
+
+
+
+
+How do these rules measure up to the goal of arriving at a true
+generalization? Suppose for the sake of the example that the only
+serious possibilities under consideration are: (1) Either all emeralds
+are green or (2) all emeralds are grue(t) for some critical
+time t. Then the natural projection rule settles on the
+correct generalization no matter what the correct generalization is.
+For if all emeralds are green, the natural projection rule asserts
+this fact from the beginning. And suppose that all emeralds are
+grue(t) for some critical time t. Then at time
+t, a blue emerald will be observed. At this point the natural
+projection rule settles on the conjecture that all emeralds are
+grue(t), which must be correct given our assumption about the
+possible observation sequences. Thus no matter what evidence is
+obtained in the course of inquiry—consistent with our background
+assumptions—the natural projection rule eventually settles on a
+correct generalization about the colour of emeralds.
+
+The gruesome rule does not do as well. For if all emeralds are green,
+the rule will never conjecture this fact because it keeps projecting
+grue predicates. Hence there is a possible observation
+sequence—namely those on which all emeralds are green—on
+which the gruesome rule fails to converge to the right generalization.
+So means-ends analysis would recommend the natural projection rule
+over the gruesome rule. 
+ 1.3 Discussion.  
+
+The means-ends analysis of the Riddle of Induction illustrates a
+number of philosophically important points that holds for
+learning-theoretic analysis in general.
+
+
+
+Equal Treatment of All Hypotheses. As in the previous example,
+nothing in this argument hinges on arguments to the effect that
+certain possibilities are not to be taken seriously a priori. In
+particular, nothing in the argument says that generalizations with
+grue predicates are ill-formed, unlawlike, or in some other way a
+priori inferior to “all emeralds are green”.
+
+
+Language Invariance. The analysis does not depend on the
+vocabulary in which the evidence and generalizations are framed. For
+ease of exposition, I have mostly used the green-blue reference frame.
+However, grue-bleen speakers would agree that the aim of reliably
+settling on a correct generalization requires the natural projection
+rule rather than the gruesome one, even if they would want to express
+the conjectures of the natural rule in their grue-bleen language
+rather than the blue-green language that we have used so far.
+
+
+Dependence on Context. Though the analysis does not depend on
+language, it does depend on assumptions about what the possible
+observation sequences are. The example as described above seems to
+comprise the possibilities that correspond to the colour predicates
+Goodman himself discussed. But means-ends analysis applies just as
+much to other sets of possible predicates. Schulte [1999] and
+Chart [2000] discuss a number of other versions of the Riddle of
+Induction, in some of which means-ends analysis favours projecting
+that all emeralds are grue on a sample of all green emeralds.
+
+1.4 Falsificationism and Generalizations with Exceptions 
+
+Our first two examples feature simple universal generalizations. Some
+subtle aspects of the concept of long-run reliability, particularly
+its relationship to falsificationism, become apparent if we consider
+generalizations that allow for exceptions. To illustrate, let us
+return to the world of ravens. This time the ornithological community
+is more guarded in its generalizations concerning the colour of
+ravens. Two competing hypotheses are under investigation.
+
+That basically all ravens are black, but there may be a finite
+number of exceptions to that rule.
+That basically all ravens are white, but there may be a finite
+number of exceptions to that rule.
+
+
+Assuming that one or the other of these hypotheses is correct, is
+there an inductive method that reliably settles on the right one? What
+makes this problem more difficult than our first two is that each
+hypothesis under investigation is consistent with any finite amount of
+evidence. If 100 white ravens and 50 black ravens are found, either
+the 50 black ravens or the 100 white ravens may be the exception to
+the rule. In terminology made familiar by
+ Karl Popper’s
+ work, we may say that neither hypothesis is falsifiable. As a
+consequence, the inductive strategy from the previous two examples
+will not work here. This strategy was basically to adopt a
+“bold” universal generalization, such as “all ravens
+are black” or “all emeralds are green”, and to hang
+on to this conjecture as long as it “passes muster”.
+However, when rules with possible exceptions are under investigation,
+this strategy is unreliable. For example, suppose that an inquirer
+first adopts the hypothesis that “all but finitely many ravens
+are white”. It may be the case that from then on, only black
+ravens are found. But each of these apparent counterinstances can be
+“explained away” as an exception. If the inquirer follows
+the principle of hanging on to her conjecture until the evidence is
+logically inconsistent with the conjecture, she will never abandon her
+false belief that all but finitely many ravens are white, much less
+arrive at the correct belief that all but finitely many ravens are
+black.
+
+Reliable inquiry requires a more subtle investigative strategy. Here
+is one (of many). Begin inquiry with either competing hypothesis, say
+“all but finitely many ravens are black”. Choose some
+cut-off ratio to represent a “clear majority”; for
+definiteness, let’s say 70%. If the current conjecture is that all but
+finitely many ravens are black, change your mind to conjecture that
+all but finitely many ravens are white just in case over 70% of
+observed ravens are in fact white. Proceed likewise if the current
+conjecture is that all but finitely many ravens are white when over
+70% of observed ravens are in fact black.
+
+A bit of thought shows that this rule reliably identifies the correct
+hypothesis in the long run, no matter which of the two competing
+hypotheses is correct. For if all but finitely many ravens are black,
+eventually the nonblack exceptions to the rule will be exhausted, and
+an arbitrarily large majority of observed ravens will be black.
+Similarly if all but finitely many ravens are white.
+
+Generalizations with exceptions illustrate the relationship between
+Popperian falsificationism and the learning-theoretic idea of reliable
+convergence to the truth. In some settings of inquiry, notably those
+involving universal generalizations, a naively Popperian
+“conjectures-and-refutations” approach of hanging on to
+conjectures until the evidence falsifies them does yield a reliable
+inductive method. In other problems, like the current example, it does
+not. Generally speaking problems with unfalsifiable hypotheses require
+something other than the conjectures-and-refutations recipe for
+reliable methods (this assertion hinges on what exactly one means by
+“falsifiable hypothesis”; see
+ Section 3
+ (The Limits of Inquiry and the Complexity of Empirical Problems). The moral is that relying on
+falsifications is sometimes, but not always, the best way for
+inquiry to proceed.
+2. Case Studies from Scientific Practice
+
+This section provides further examples to illustrate
+learning-theoretic analysis. The examples in this section are more
+realistic and address methodological issues arising in scientific
+practice. The space constraints of the encyclopedia format allow only
+an outline of the full analysis; there are references to more detailed
+discussions below. More case studies may be found in [Kelly 1996, Ch.
+7.7, Harrell 2000]. Readers who wish to proceed
+to the further development of the theory and philosophy of means-ends
+epistemology can skip this section without loss of continuity. 
+2.1 Conservation Laws in Particle Physics 
+
+One of the hallmarks of elementary particle physics is the discovery
+of new conservation laws that apply only in the subatomic realm [Ford
+1963, Ne’eman and Kirsh 1983, Feynman 1965]. (Feynman groups one of
+them, the conservation of Baryon Number, with the other “great
+conservation laws” of energy, charge and momentum.) Simplifying
+somewhat, conservation principles serve to explain why certain
+processes involving elementary particles do  not  occur: the
+explanation is that some conservation principle was violated (cf.
+Omnes [1971, Ch.2] and Ford [1963]). So a goal of particle inquiry is
+to find a set of conservation principles such that for every process
+that is possible according to the (already known) laws of physics, but
+fails to be observed experimentally, there is some conservation
+principle that rules out that process. And if a process is in fact
+observed to occur, then it ought to satisfy all conservation laws that
+we have introduced.
+
+This constitutes an inference problem to which we may apply means-ends
+analysis. An inference method produces a set of conservation
+principles in response to reports of observed processes. Means-ends
+analysis asks which methods are guaranteed to settle on conservation
+principles that account for all observations, that is, that rule out
+unobserved processes and allow observed processes. Schulte [2008]
+describes an inductive method that accomplishes this goal.  Informally
+the method may be described as follows. 
+
+Suppose we have observed a set of reactions among elementary
+particles.
+Conjecture a set of conservation laws that permits the observed
+reactions and rules out as many unobserved reactions as
+possible. 
+
+
+The logic of conservation laws is such that the observation of some
+reactions entails the possibility of other unobserved ones. The
+learning-theoretic method rules out all reactions that are not
+entailed. It turns out that the conservation principles that this
+method would posit on the currently available evidence are 
+empirically equivalent  to the ones that physicists have
+introduced. Specifically, their predictions agree exactly with the
+conservation of charge, baryon number, muon number, tau number and
+Lepton number that is part of the Standard Model of particle physics. 
+
+For some physical processes, the only way to get empirically adequate
+conservation principles is by positing that some hidden particles have
+gone undetected. Schulte [2009] extends the analysis such that
+an inductive method may not only introduce conservation laws, but also
+posit unseen particles. The basic principle is again to posit unseen
+particles in such a way that we rule out as many unobserved reactions
+as possible. When this method is applied to the known particle data,
+it rediscovers the existence of an electron antineutrino. This is one
+of the particles of key concern in current particle physics. 
+2.2 Causal Connections
+
+There has been a substantive body of research on learning causal
+relationships as represented in a causal graph [Spirtes et al. 2000].
+Kelly suggested a learning-theoretic analysis of inferring causality
+where the evidence is provided in the form of observed significant
+correlations among variables of interest (a modern version of
+Hume’s “constant conjunctions”). The following
+inductive method is guaranteed to converge to an empirically adequate
+causal graph as more and more correlations are observed [Schulte, Luo
+and Greiner 2007].
+
+Suppose we have observed a set of correlations or associations
+among a set of variables of interest. 
+Select a causal graph that explains the observed correlations
+with a minimum number of direct causal links.
+
+2.3 Models of Cognitive Architecture 
+
+Some philosophers of mind have argued that the mind is composed of
+fairly independent modules. Each module has its own
+“input” from other modules and sends “output”
+to other modules. For example, an “auditory analysis
+system” module might take as input a heard word and send a
+phonetic analysis to an “auditory input lexicon”. The idea
+of modular organization raises the empirical question of what mental
+modules there are and how they are linked to each other. A prominent
+tradition of research in cognitive neuroscience has attempted to
+develop a model of mental architecture along these lines by studying
+the responses of normal and abnormal subjects to various stimuli. The
+idea is to compare normal reactions with abnormal ones—often
+caused by brain damage—so as to draw inferences about which
+mental capacities depend on each other and how.
+
+Glymour [1994] asked the reliabilist question whether there are
+inference methods that are guaranteed to eventually settle on a true
+theory of mental organization, given exhaustive evidence about normal
+and abnormal capacities and reactions. He argued that for some
+possible mental architectures, no amount of evidence of the
+stimulus-response kind can distinguish between them. Since the
+available evidence determines the conjectures of an inductive method,
+it follows that there is no guarantee that a method will settle on the
+true model of cognitive architecture.
+
+In further discussion, Bub [1994] showed that if we grant certain
+restrictive assumptions about how mental modules are connected, then a
+complete set of behavioural observations would allow a
+neuropsychologist to ascertain the module structure of a (normal)
+mind. In fact, under Bub’s assumptions there is a reliable method for
+identifying the modular structure. Glymour has also explored to what
+extent richer kinds of evidence would resolve underdetermination of
+mental architecture. (One example of richer evidence are double
+disassocations. An example of a double dissocation would be a pair of
+patients, one who has a normal capacity for understanding spoken
+words, but fails to understand written ones, and another who
+understands written words but not spoken ones.)
+2.4 Discussion
+
+These studies illustrate some general features of learning theory:
+
+1. Generality. The basic notions of the theory are very
+general. Essentially, the theory applies whenever one has a question
+that prompts inquiry, a number of candidate answers, and some evidence
+for deciding among the answers. Thus means-ends analysis can be
+applied in any discipline aimed at empirical knowledge, for example
+physics or psychology.
+
+2. Context Dependence. Learning theory is pure normative a
+priori epistemology in the sense that it deals with standards for
+assessing methods in possible settings of inquiry. But the approach
+does not aim for universal, context-free methodological maxims. The
+methodological recommendations depend on contingent factors, such as
+the operative methodological norms, the questions under investigation,
+the background assumptions that the agent brings to inquiry, the
+observational means at her disposal, her cognitive capacities, and her
+epistemic aims. As a consequence, to evaluate specific methods in a
+given domain, as in the case studies mentioned, one has to study the
+details of the case in question. The means-ends analysis often rewards
+this study by pointing out what the crucial methodological features of
+a given scientific enterprise are, and by explaining precisely why and
+how these features are connected to the success of the enterprise in
+attaining its epistemic aims.
+
+3. Trade-offs. In the perspective of means-ends epistemology,
+inquiry involves an ongoing struggle with hard choices, rather than
+the execution of a universal “scientific method”. The
+inquirer has to balance conflicting values, and may consider various
+strategies such as accepting difficulties in the short run hoping to
+resolve them in the long run. For example in the conservation law
+problem, there can be conflicts between theoretical parsimony, i.e.,
+positing fewer conservation laws, and ontological parsimony, i.e.,
+introducing fewer hidden particles. For another example, a particle
+theorist may accept positing undetected particles in the hopes that
+they will eventually be observed as science progresses. The ongoing
+search for the Higgs boson illustrates this strategy. An important
+learning-theoretic project is to examine when such tradeoffs arise and
+what the options for resolving them are. Section 4 extends
+learning-theoretic analysis to consider goals in addition to long-run
+reliability.
+3. The Limits of Inquiry and the Complexity of Empirical Problems
+
+After seeing a number of examples like the ones described above, one
+begins to wonder what the pattern is. What is it about an empirical
+question that allows inquiry to reliably arrive at the correct answer?
+What general insights can we gain into how reliable methods go about
+testing hypotheses? Learning theorists answer these questions with
+characterization theorems. Characterization theorems are
+generally of the form “it is possible to attain this standard of
+empirical success in a given inductive problem if and only if the
+inductive problem meets the following conditions”. 
+
+A fundamental result describes the conditions under which a method can
+reliably find the correct hypothesis among a countably infinite or
+finite number H1, H2,
+…, Hn, …. of mutually exclusive
+hypotheses that jointly cover all possibilities consistent with the
+inquirer’s background assumptions.  This is possible just in case
+each of the hypotheses is a countable disjunction of refutable
+empirical claims . By “refutable” I mean that if the
+claim is false, the evidence combined with the inquirer’s background
+assumptions will eventually conclusively falsify that disjunct within
+the hypothesis (see Kelly [1996, Ch. 3.3]).
+For illustration, let’s return to the ornithological example with two
+alternative hypotheses: (1) all but finitely many swans are white, and
+(2) all but finitely many swans are black. As we saw, it is possible
+in the long run to reliably settle which of these two hypotheses is
+correct. Hence by the characterization theorem, each of the two
+hypotheses must be a disjunction of refutable empirical claims. To see
+that this indeed is so, observe that “all but finitely many
+swans are white” is logically equivalent to the disjunction
+
+at most 1 swan is black or at most 2 swans are black … or at
+most n swans are black … or…,
+ and similarly for “all but finitely many swans are
+black”. Each of the claims in the disjunction is refutable, in
+the sense of being eventually falsified whenever it is false. For
+example, take the claim that “at most 3 swans are black”.
+If this is false, more than 3 black swans will be found, at which
+point the claim is conclusively falsified.
+
+
+A recent characterization theorem due to Baltag, Gierasimczuk, and
+Smets emphasizes the topological concept of separability [Baltag et
+al. 2015]. In epistemic terms, topological separation means (lack of)
+ underdetermination
+ by evidence. For example, the classic first axiom of separation
+requires that for any two possible states of the world, there are two
+possible observation sequences, each consistent with one state of the
+world but not the other. Thus the first separation axiom entails that
+a complete observation sequence determines a unique state of the
+world. Baltag et al. define a topological notion of what it means for
+evidence to separate competing hypotheses in an inductive problem, and
+prove that this concept of inductive separability characterizes which
+inductive problems allow reliable learning. 
+
+A few points will help explain the significance of characterization
+theorems.
+
+1. Structure of Reliable Methods. Characterization theorems
+tell us how the structure of reliable methods is attuned to the
+structure of the hypotheses under investigation. For example, the
+theorem mentioned establishes a connection between falsifiability and
+testability, but one that is more attenuated than the naïve
+Popperian envisions: it is not necessary that the hypotheses under
+test be directly falsifiable; rather, there must be ways of
+strengthening each hypothesis that yield a countable number of
+refutable “subhypotheses”. We can think of these refutable
+subhypotheses as different ways in which the main hypothesis may be
+true. (For example, one way in which “all but finitely many
+ravens are white” is true is if there are are at most 10 black
+ravens; another is if there are at most 100 black ravens, etc.)
+
+2. Import of Background Assumptions. The characterization
+result draws a line between the solvable and unsolvable problems.
+Background knowledge reduces the inductive complexity of a problem;
+with enough background knowledge, the problem crosses the threshold
+between the unsolvable and the solvable. In many domains of empirical
+inquiry, the pivotal background assumptions are those that make
+reliable inquiry feasible. (Kuhn [1970] makes similar points about the
+importance of background assumptions embodied in a
+“paradigm”). 
+
+3. Language Invariance. Learning-theoretic characterization
+theorems concern what Kelly calls the “temporal
+entanglement” of various observation sequences [Kelly
+2000]. Ultimately they rest on entailment relations between given
+evidence, background assumptions and empirical claims. Since logical
+entailment does not depend on the language we use to frame evidence
+and hypotheses, the inductive complexity of an empirical problem as
+determined by the characterization theorems is
+language-invariant. 
+4. The Long Run in the Short Run: Reliable and Stable Beliefs
+
+A longstanding criticism of convergence to the truth as an aim of
+inquiry is that, while fine in itself, this aim is consistent with any
+crazy behaviour in the short run [Salmon 1991]. For example, we saw in
+the New Riddle of Induction that a reliable projection rule can
+conjecture that the next emerald will be blue no matter how many green
+emeralds have been found—as long as eventually the rule
+projects “all emeralds are green”. One response is that if
+means-ends analysis takes into account other epistemic aims in
+addition to long-run convergence, then it can provide
+strong guidance for what to conjecture in the short run.
+
+To illustrate this point, let us return to the Goodmanian Riddle of
+Induction. Ever since Plato, philosophers have considered the idea
+that stable true belief is better than unstable true belief,
+and epistemologists such as Sklar [1975] have advocated similar
+principles of “epistemic conservatism”. Kuhn tells us that
+a major reason for conservatism in paradigm debates is the cost of
+changing scientific beliefs [Kuhn 1970]. In this spirit, learning
+theorists have examined methods that minimize the number of times that
+they change their theories before settling on their final conjecture
+[Putnam 1965, Kelly 1996, Jain 1999]. Such
+methods are said to minimize mind changes. 
+4.1 Example: The New Riddle of Induction
+
+The New Riddle of Induction turns out to be a nice illustration of
+this idea. Consider the natural projection rule (conjecture that all
+emeralds are green on a sample of green emeralds). If all emeralds are
+green, this rule never changes its conjecture. And if all emeralds are
+grue(t) for some critical time t, then the natural
+projection rule abandons its conjecture “all emeralds are
+green” at time t—one mind change—and
+thereafter correctly projects “all emeralds are
+grue(t)”. Remarkably, rules that project grue rather
+than green do not do as well. For example, consider a rule that
+conjectures that all emeralds are grue(3) after observing one green
+emerald. If two more green emeralds are observed, the rule’s
+conjecture is falsified and it must eventually change its mind, say to
+conjecture that all emeralds are green (supposing that green emeralds
+continue to be found). But then at that point, a blue emerald may
+appear, forcing a second mind change. This argument can be generalized
+to show that  the aim of minimizing mind changes allows only the
+green predicate to be projected on a sample of all green emeralds 
+[Schulte 1999]. We saw in
+ Section 1.2
+ above how the natural projection rule changes its mind at most once;
+the figure below illustrates in a typical case how an unnatural
+projection rule may have to change its mind twice or more.
+
+
+
+4.2 More Examples
+
+The same reasoning applies to the question about whether all ravens
+are black. The bold generalizer that conjectures that all ravens are
+black after observing samples of only black ravens succeeds with at
+most one mind change: if indeed all ravens are black, the generalizer
+never changes its mind at all. And if there is a nonblack raven, the
+refutation occasions one mind change, but afterwards the question is
+settled. 
+
+Contrast this with the contrary method that asserts that there is a
+nonblack raven after observing a sample of all black ones. If only
+black ravens continue to be observed, the contrary method has to
+eventually change its mind and assert that “all ravens are
+black”, or else it fails to arrive at the correct
+generalization. But then at that point, a nonblack raven may appear,
+forcing a second mind change. Thus the goal of stable belief places
+strong constraints on what a method may conjecture in the short run
+for this problem: on observing only black ravens, the options are
+“all ravens are black” or “no opinion yet”,
+but not “there is a nonblack raven”. 
+
+In the conservation law problem, the restrictive method described in
+ Section 2.1
+ is the only method that minimizes mind changes. Recall that the
+restrictive method adopts a set of conservation laws that rule out as
+many unobserved reactions as possible. It can be shown that if there
+are n known elementary particles whose reactions are observed,
+this method requires at most n mind changes. (The number of
+elementary particles in the Standard Model is around n = 200).
+
+
+For learning causal graphs, the following variant of the method
+described in
+ Section 2.2
+ minimizes the number of mind changes.
+
+
+Suppose we have observed a set of correlations or associations
+among a set of variables of interest. 
+If there is a unique causal graph that explains the observed
+correlations with a minimum number of direct causal links,
+select this graph.
+If there is more than one causal graph that explains the observed
+correlations with a minimum number of direct causal links, output
+“no opinion yet” (or conjecture the disjunction of the
+minimum edge graphs).
+
+
+This example illustrates that sometimes minimizing mind changes
+requires withholding beliefs. Intuitively, this occurs when there are
+two or more equally simple explanations of the data, and the inquirer
+has to wait until further observations decide between these
+possibilities. Jumping to one of the simple conclusions might lead to
+an unnecessary mind change in case an alternative equally simple
+explanation turns out to be correct. In such cases there is a
+trade-off between the goals of achieving stable belief, on the one
+hand, and quickly settling on a true belief on the other [Schulte
+1999]. We discuss the connection between simplicity and stable belief
+in the next section.
+5. Simplicity, Stable Belief, and Ockham’s Razor
+
+A strong intuition about inductive inference and scientific method is
+that we should prefer simpler hypotheses over complex ones; see the
+ entry on simplicity.
+ Statisticians, computer scientists, and other researchers concerned
+with learning from observations have made extensive use of a
+preference for simplicity to solve practical inductive problems
+[Domingos 1999]. From a foundational point of view, simplicity is
+problematic for at least two reasons. 
+
+
+The justification problem: Why adopt simple hypotheses? One
+obvious answer is that the world is simple and therefore a complex
+theory is false. However, the apriori claim that the world is simple
+is highly controversial—see the
+ entry on simplicity.
+ From a learning-theoretic perspective, dismissing complex hypotheses
+impairs the reliability of inductive methods. In Kelly’s
+metaphor, a fixed bias is like a stopped watch: We may happen to use
+the watch when it is pointing at the right time, but the watch is not
+a reliable instrument for telling time [Kelly 2007a, 2010].
+
+The description problem: Epistemologists have worried that
+simplicity is not an objective feature of a hypothesis, but rather
+“depends on the mode of presentation”, as Nozick puts it.
+Goodman’s Riddle illustrates this point. If generalizations are
+framed in blue-green terms, “all emeralds are green”
+appears simpler than “all emeralds are first green and then
+blue”. But in a grue-bleen language, “all emeralds are
+grue” appears simpler than “all emeralds are first grue
+and then bleen”.
+
+
+Learning theorists have engaged in recent and ongoing efforts to apply
+means-ends epistemology to develop a theory of the connection between
+simplicity and induction that addresses these concerns [Kelly 2010,
+Harmann and Kulkarni 2007, Luo and Schulte 2006, Steel 2009]. It turns
+out that a fruitful perspective is to examine the relationship between
+the structure of a hypothesis space and the mind change complexity of
+the corresponding inductive problem. The fundamental idea is that,
+while simplicity does not enjoy an a priori connection with truth,
+choosing simple hypotheses can help an inquirer find the truth more
+efficiently, in the sense of avoiding mind changes.
+Kelly’s road metaphor illustrates the idea. Consider two routes
+to the destination, one via a straight highway, the other via back
+roads. Both routes eventually lead to the same point, but the back
+roads entail more twists and turns [Kelly 2007a, 2010]. 
+
+A formalization of this idea takes the form of an Ockham
+Theorem: A theorem that shows (under appropriate restrictions)
+that an inductive method finds the truth as efficiently as possible
+for a given problem if and only if the method is the Ockham
+method, that is, it selects the simplest hypothesis consistent
+with the data. An Ockham theorem provides a justification for
+Ockham’s inductive razor as a means towards epistemic aims. 
+
+Whether an Ockham theorem is true depends on the description of the
+Ockham method, that is, on the exact definition of simplicity for a
+set of hypotheses. There is a body of mathematical results that
+establish Ockham theorems using a language-invariant simplicity
+measure, which we explain next.
+5.1 Defining Simplicity
+
+Say that a hypothesis H from a background set of possible
+hypotheses H is verifiable if there is an evidence
+sequence such that H is the only hypothesis from H that
+is consistent with the evidence sequence. For example, in the black
+raven problem above, the hypothesis “there is a nonblack
+raven” is verifiable since it is entailed by an observation of a
+nonblack raven. The hypothesis “all ravens are black” is
+not verifiable, since it is not entailed by any finite evidence
+sequence. The following procedure assigns a simplicity rank to each
+hypothesis H from a set of hypotheses H [Apsitis 1994,
+Luo and Schulte 2006].
+
+Assign all verifiable hypotheses simplicity rank 0. 
+Remove the verifiable hypotheses from the hypothesis space to form
+a new hypothesis space H1.
+Assign simplicity rank 1 to the hypotheses that are verifiable
+given H1. 
+Remove the newly verifiable hypotheses with simplicity rank 1 from
+the hypothesis space to form a new hypothesis space
+H2.
+Continue removing hypotheses until no new hypotheses are
+verifiable given the current hypothesis space. 
+The simplicity rank of each hypothesis H is the first stage
+at which it is removed by this procedure. In other words, it is the
+index of the first restricted hypothesis space that makes H
+verifiable. 
+
+
+Hypotheses with higher simplicity rank are regarded as simpler than
+those with lower ranks. Simplicity ranks are defined in terms of
+logical entailment relations, hence are language-invariant. Simplicity
+ranks as defined can be seen as degrees of falsifiability in
+the following sense. Consider a hypothesis of simplicity rank 1. Such
+a hypothesis is falsifiable because an evidence sequence that verifies
+an alternative hypothesis of rank 0 falsifies it. Moreover, a
+hypothesis of simplicity rank 1 is persistently falsifiable in the
+sense that it remains falsifiable no matter what evidence sequence
+consistent with it is observed. A hypothesis of simplicity rank
+n+1 is persistently falsifiable by hypotheses of rank n.
+Let us illustrate the definition in our running examples. 
+ 5.2 Examples 
+
+
+
+In the Riddle of Induction, the verifiable hypotheses are the grue
+hypotheses with critical time t: any sequence of t green emeralds
+followed by blue ones entails the corresponding grue(t)
+generalization. Thus the grue hypotheses receive simplicity rank 0.
+After the grue hypotheses are eliminated, the only remaining
+hypothesis is “all emeralds are green”. Given that it is
+the only possibility in the restricted hypothesis space, “all
+emeralds are green” is entailed by any sequence of green
+emeralds. Therefore “all emeralds are green” has
+simplicity rank 1. After removing the all green hypothesis, no
+hypotheses remain.
+
+
+In the raven color problem, the verifiable hypothesis is “a
+nonblack raven will be observed”, which receives simplicity rank
+0. After removing the hypothesis that a nonblack raven will be
+observed, the only remaining possibility is that only black ravens
+will be observed, hence this hypothesis is verifiable in the
+restricted hypothesis space and receives simplicity rank 1.
+
+
+The simplicity rank of a causal graph is given by the number of direct
+links not contained in the graph.
+Therefore the fewer direct links are posited by the causal model, the
+higher its simplicity rank.
+
+
+The simplicity rank of a set of conservation laws is given by the
+number of independent laws. (Independence in the sense of linear
+algebra.) Therefore the more nonredundant laws are introduced by a
+theory, the higher its simplicity rank. Each law rules out some
+reactions, so maximizing the number of independent laws given the
+observed reactions is equivalent to ruling out as many unobserved
+reactions as possible.
+
+ 5.3 Stable Belief and Simplicity: An Ockham Theorem  
+
+The following theorem shows the connection between the mind-change
+complexity of an inductive problem and the simplicity ranking as
+defined.
+
+Theorem. Let H be a set of empirical hypotheses. Then
+there is a method that reliably identifies a correct hypothesis from
+H in the limit with at most n mind changes if and only if the
+elimination procedure defined above terminates with an empty set of
+hypotheses after n stages.
+
+
+Thus for an inductive problem to be solvable with at most n
+mind changes, the maximum simplicity rank of any possible hypothesis
+is n. In the Riddle of Induction, the maximum simplicity rank
+is 1, and therefore this problem can be solved with at most 1 mind
+change. The next result provides an Ockham theorem connecting
+simplicity and mind change performance. 
+
+
+Ockham Theorem. Let H be a set of empirical hypotheses
+with optimal mind change bound n. Then an inductive method is mind
+change optimal if and only if it satisfies the following
+conditions.
+
+Whenever the method adopts one of the hypotheses from H,
+this hypothesis is the uniquely simplest one consistent with the
+evidence.
+If the method changes its mind at inquiry time t+1, the
+uniquely simplest hypothesis at time t is falsified at time
+t+1.
+
+
+
+This theorem says that a mind-change optimal method may withhold a
+conjecture as a skeptic would, but if it does adopt a definite
+hypothesis, the hypothesis must be the simplest one, in the sense of
+having the maximum simplicity rank. Thus the mind change optimal
+methods discussed in
+ Section 4
+ are all Ockham methods that adopt the simplest hypothesis consistent
+with the data. The Ockham theorem shows a remarkable reversal from the
+long-standing objection that long-run reliability imposes too few
+constraints on short-run conjectures: If we add to long-run
+convergence to the truth the goal of achieving stable belief, then in
+fact there is a unique inductive method that achieves this goal
+in a given empirical problem. Thus the methodological analysis
+switches from offering no short-run prescriptions to offering a
+complete prescription.
+
+While these results establish a fruitful connection between simplicity
+and mind-change optimality, a limitation of the approach is that it
+requires that some hypotheses must be conclusively entailed by some
+evidence sequence. This is typically not the case for statistical
+models, where the probability of a hypothesis may become arbitrarily
+small but usually not 0. For instance, consider a coin flip problem
+and the hypothesis “the probability of heads is 90%”. If
+we observe one million tails, the probability of the hypothesis is
+very small indeed, but it is not 0, because any number of tails is
+logically consistent with a high probability of heads. Kevin Kelly has
+developed a notion of simplicity that is appropriate for statistical
+models and proved Ockham theorems for this setting (see
+ Other Internet Resources).
+ 
+6. Other Approaches: Categorical vs. Hypothetical Imperatives
+
+Kant distinguished between categorical imperatives that one ought to
+follow regardless of one’s personal aim and circumstances, and
+hypothetical imperatives that direct us to employ our means towards
+our chosen end. One way to think of learning theory is as the study of
+hypothetical imperatives for empirical inquiry. Many epistemologists
+have proposed various categorical imperatives for inductive inquiry,
+for example in the form of an “inductive logic” or norms
+of “epistemic rationality”. In principle, there are three
+possible relationships between hypothetical and categorical
+imperatives for empirical inquiry.
+
+1. The categorical imperative will lead an inquirer to obtain his
+cognitive goals. In that case means-ends analysis vindicates
+the categorical imperative. For example, when faced with a simple
+universal generalization such as “all ravens are black”,
+we saw above that following the Popperian recipe of adopting the
+falsifiable generalization and sticking to it until a counterexample
+appears leads to a reliable method.
+
+2. The categorical imperative may prevent an inquirer from
+achieving his aims. In that case the categorical imperative
+restricts the scope of inquiry. For example, in the case of
+the two alternative generalizations with exceptions, the principle of
+maintaining a universal generalization until it is falsified leads to
+an unreliable method (cf. [Kelly 1996, Ch. 9.4]).
+
+3. Some methods meet both the categorical imperative and the
+goals of inquiry, and others don’t. Then we may take the best of both
+worlds and choose those methods that attain the goals of inquiry and
+satisfy categorical imperatives. (See the further discussion in this
+section.)
+
+For a proposed norm of inquiry, we can apply means-ends analysis to
+ask whether the norm helps or hinders the aims of inquiry. This was
+the spirit of Putnam’s critique of Carnap’s confirmation functions
+[Putnam 1963]: the thrust of his essay was that Carnap’s methods were
+not as reliable in detecting general patterns as other methods would
+be. More recently, learning theorists have investigated the power of
+Bayesian conditioning (see the entry on
+ Bayesian epistemology).
+ John Earman has conjectured that if there is any reliable method for
+a given problem, then there is a reliable method that proceeds by
+Bayesian updating [Earman 1992, Ch.9, Sec.6]. Cory Juhl [1997]
+provided a partial confirmation of Earman’s conjecture: He proved that
+it holds when there are only two potential evidence items (e.g.,
+“emerald is green” vs. “emerald is blue”). The
+general case is still open.
+
+Epistemic conservatism is a methodological norm that has been
+prominent in philosophy at least since Quine’s notion of
+“minimal mutilation” of our beliefs [1951]. One version of
+epistemic conservatism, as we saw above, holds that inquiry should
+seek stable belief. Another formulation, closer to Quine’s, is the
+general precept that belief changes in light of new evidence should be
+minimal. Fairly recent work in philosophical logic has proposed a
+number of criteria for minimal belief change known as the AGM
+axioms [Gärdenfors 1988]. Learning theorists have shown that
+whenever there is a reliable method for investigating an empirical
+question, there is one that proceeds via minimal changes (as defined
+by the AGM postulates). The properties of reliable inquiry with
+minimal belief changes are investigated in [Martin
+and Osherson 1998, Kelly 1999, Baltag et al. 2015].
+
+Much of computational learning theory focuses on inquirers with
+bounded rationality, that is, agents with cognitive
+limitations such as a finite memory or bounded computational
+capacities. Many categorical norms that do not interfere with
+empirical success for logically omniscient agents nonetheless limit
+the scope of cognitively bounded agents. For example, consider the
+norm of consistency: Believe that a hypothesis is false as soon as the
+evidence is logically inconsistent with it. The consistency principle
+is part of both Bayesian confirmation theory and AGM belief revision.
+Kelly and Schulte [1995] show that consistency prevents even agents
+with infinitely uncomputable cognitive powers from reliably assessing
+certain hypotheses. The moral is that if a theory is sufficiently
+complex, agents who are not logically omniscient may be unable to
+determine immediately whether a given piece of evidence is consistent
+with the theory, and need to collect more data to detect the
+inconsistency. But the consistency principle—and a fortiori,
+Bayesian updating and AGM belief revision— do not acknowledge
+the usefulness of “wait and see more” as a scientific strategy.
+
+More reflection on these and other philosophical issues in means-ends
+epistemology can be found in sources such as [Glymour 1991], [Kelly
+1996, Chs. 2,3], [Glymour and Kelly 1992], [Kelly et al.
+1997], [Glymour 1994], [Bub 1994]. Of
+particular interest in the philosophy of science may be
+learning-theoretic models that accommodate historicist and relativist
+conceptions of inquiry, chiefly by expanding the notion of an
+inductive method so that methods may actively select paradigms for
+inquiry; for more details on this topic, see [Kelly 2000, Kelly 1996,
+Ch.13]. Booklength introductions to the mathematics of learning theory
+are [Kelly 1996, Martin and Osherson 1998, Jain et al. 1999].
+“Induction, Algorithmic Learning Theory and Philosophy” is
+a recent collection of writings on learning theory [Friend et al.
+2007]. Contributions include introductory papers (Harizanov, Schulte),
+mathematical advances (Martin, Sharma, Stephan, Kalantari),
+philosophical reflections on the strengths and implications of
+learning theory (Glymour, Larvor, Friend), applications of the theory
+to philosophical problems (Kelly), and a discussion of
+learning-theoretic thinking in the history of philosophy (Goethe).
+Supplementary Document: Basic Formal Definitions

@@ -1,0 +1,629 @@
+Fuzzy logic is intended to model logical reasoning with vague or
+imprecise statements like “Petr is young (rich, tall, hungry,
+etc.)”. It refers to a family of many-valued logics (see entry
+on
+ many-valued logic)
+ and thus stipulates that the truth value (which, in this case amounts
+to a degree of truth) of a logically compound proposition, like
+“Carles is tall and Chris is rich”, is determined by the
+truth value of its components. In other words, like in classical
+logic, one imposes truth-functionality.
+
+Fuzzy logic emerged in the context of the theory of fuzzy sets,
+introduced by Zadeh (1965). A fuzzy set assigns a degree of
+membership, typically a real number from the interval [0,1][0,1][0,1], to
+elements of a universe. Fuzzy logic arises by assigning degrees of
+truth to propositions. The standard set of truth values (degrees) is
+[0,1][0,1][0,1], where 000 represents “totally false”, 111
+represents “totally true”, and the other numbers refer to
+partial truth, i.e., intermediate degrees of
+ truth.[1]
+
+
+“Fuzzy logic” is often understood in a very wide sense
+which includes all kinds of formalisms and techniques referring to the
+systematic handling of degrees of some kind (see, e.g.,
+Nguyen & Walker 2000). In particular in engineering contexts
+(fuzzy control, fuzzy classification, soft computing) it is aimed at
+efficient computational methods tolerant to suboptimality and
+imprecision (see, e.g., Ross 2010). This entry focuses on fuzzy logic
+in a narrow sense, established as a discipline of mathematical logic
+following the seminal monograph by Petr Hájek (1998) and
+nowadays usually referred to as “mathematical fuzzy logic”
+(see Cintula, Fermüller, Hájek, & Noguera 2011 and
+2015). It focuses on logics based on a truth-functional account of
+partial truth and studies them in the spirit of classical mathematical
+logic (syntax, model theoretic semantics, proof systems, completeness,
+etc.; both, at propositional and the predicate level).
+ 
+1. Fuzzy connectives based on t-norms
+
+The standard set of truth degrees for fuzzy logics is the real unit
+interval [0,1][0,1][0,1] with its natural ordering ≤≤\leq, ranging from
+total falsity (represented by 000) to total truth (represented by
+111) through a continuum of intermediate truth degrees. The most
+fundamental assumption of (mainstream) mathematical fuzzy logic is
+that connectives are to be interpreted truth-functionally over the set
+of truth-degrees. Such truth-functions are assumed to behave
+classically on the extremal values 000 and 111. A very natural
+behavior of conjunction and disjunction is achieved by imposing x∧y=min{x,y}x∧y=min{x,y}x
+\land y = \min\{x,y\} and x∨y=max{x,y}x∨y=max{x,y}x \lor y = \max\{x,y\} for each x,y∈[0,1]x,y∈[0,1]x,y
+\in [0,1].
+
+Another, non-idempotent, conjunction &&\&amp; is typically added to
+account for the intuition that applying a partially true hypothesis
+twice might lead to a different degree of truth than using it only
+once. Such a conjunction is usually interpreted by a binary operation
+on [0,1][0,1][0,1], which is not necessarily idempotent, but still
+associative, commutative, non-decreasing in both arguments and has
+111 as neutral element. These operations are called t-norms
+(triangular norms) and their mathematical properties have
+been thoroughly studied (e.g., by Klement, Mesiar, & Pap 2000).
+Prominent examples of t-norms are the already mentioned function
+minmin\min, the standard product of real numbers, and the
+Łukasiewicz t-norm: x∗Ły=max{x+y−1,0}x∗Ły=max{x+y−1,0}x *_{Ł} y=\max\{x+y-1,0\}. These
+three t-norms are actually continuous functions and any other
+continuous t-norm can be described as an ordinal sum of these
+three basic ones (see, Ling 1965; Mostert & Shields 1957).
+
+Negation is interpreted by a non-increasing function assigning 000
+to 111 and vice versa; usual choices are the Łukasiewicz
+negation ¬Łx=1−x¬Łx=1−x\neg_{Ł} x = 1 - x and the Gödel negation:
+¬G0=1¬G0=1\neg_\mathrm{G} 0 = 1 and ¬Gx=0¬Gx=0\neg_\mathrm{G} x = 0 for each x>0x>0x
+&gt; 0. It is also usual to introduce a constant symbol
+0¯¯¯0¯\overline{0} for total falsity, hence interpreted as 000.
+Finally, a suitable choice for implication is the residuum of the
+t-norm ∗∗\ast, that is, the unique function ⇒⇒\Rightarrow
+satisfying the so-called residuation condition: x∗y≤zx∗y≤zx \ast y
+\leq z, if and only if, x≤y⇒zx≤y⇒zx \leq y \Rightarrow z. Such a function
+exists (and is defined as x⇒y=max{z∣x∗z≤y}x⇒y=max{z∣x∗z≤y}x \Rightarrow y = \max\{z \mid x \ast z
+\leq y\}) if, and only if, the t-norm is left-continuous.
+2. MTL: A fundamental fuzzy logic
+
+The weakest logic with connectives interpreted by truth-functions of
+the type described above is MTL (Monoidal T-norm based Logic,
+Esteva & Godo 2001). It is a logic with the primitive connectives
+&,→,∧,&,→,∧,\mathbin{\&amp;}, \to, \wedge, and 0¯¯¯0¯\overline{0}, and derivable
+connectives defined as: 
+
+φ∨ψ¬φφ↔ψ1¯¯¯=((φ→ψ)→ψ)∧((ψ→φ)→φ),=φ→0¯¯¯,=(φ→ψ)∧(ψ→φ),and=¬0¯¯¯.φ∨ψ=((φ→ψ)→ψ)∧((ψ→φ)→φ),¬φ=φ→0¯,φ↔ψ=(φ→ψ)∧(ψ→φ),and1¯=¬0¯.
+\begin{align}
+\varphi \lor \psi &amp;= ((\varphi \to \psi) \to \psi) \land ((\psi \to \varphi) \to \varphi),\\
+\neg \varphi &amp;= \varphi \to \overline{0}, \\
+\varphi \leftrightarrow \psi &amp;= (\varphi \to \psi) \land (\psi \to \varphi), and \\
+\overline{1} &amp;= \neg \overline{0}.
+\end{align}
+
+
+ MTL is defined as a consequence
+relation over the semantics given by all left-continuous t-norms.
+Namely, given a particular left-continuous t-norm ∗∗\ast, an
+evaluation e∗e∗e_\ast is a mapping from propositional variables to
+[0,1][0,1][0,1], extended to all formulas by interpreting &&\&amp; as
+∗∗\ast, the implication →→\to as its residuum ⇒⇒\Rightarrow, and
+∧∧\land and 0¯¯¯0¯\overline{0} as minmin\min and 000,
+respectively.
+
+
+A formula φφ\varphi is a consequence of a set of formulas ΓΓ\Gamma
+in MTL, denoted Γ⊨MTLφΓ⊨MTLφ\Gamma \models_\mathrm{MTL} \varphi, if for each
+left-continuous t-norm ∗∗\ast and each evaluation e∗e∗e_\ast such
+that e(ψ)=1e(ψ)=1e(\psi) = 1 for each ψ∈Γψ∈Γ\psi \in \Gamma we have e(φ)=1e(φ)=1e(\varphi)
+= 1; that is: each evaluation that makes the premises totally true
+must also make the conclusion totally true. Formulas φφ\varphi that
+always evaluate to 111 (⊨MTLφ⊨MTLφ\models_\mathrm{MTL}\varphi) are called
+tautologies of MTL. Note that the formula (φ&ψ)→(φ∧ψ)(φ&ψ)→(φ∧ψ)(\varphi \mathbin{\&amp;}
+\psi) \to (\varphi \land \psi) is a tautology in MTL, i.e., the
+conjunction &&\&amp; is stronger than ∧∧\land.
+
+MTL can also be presented by a Hilbert-style proof system with the
+following axioms:
+(φ→ψ)φ&ψφ&ψφ∧ψφ∧ψ(χ→φ)(φ&ψ→χ)(φ→(ψ→χ))((φ→ψ)→χ)0¯¯¯→((ψ→χ)→(φ→χ))→φ→ψ&φ→φ→ψ∧φ→((χ→ψ)→(χ→φ∧ψ))→(φ→(ψ→χ))→(φ&ψ→χ)→(((ψ→φ)→χ)→χ)→φ(φ→ψ)→((ψ→χ)→(φ→χ))φ&ψ→φφ&ψ→ψ&φφ∧ψ→φφ∧ψ→ψ∧φ(χ→φ)→((χ→ψ)→(χ→φ∧ψ))(φ&ψ→χ)→(φ→(ψ→χ))(φ→(ψ→χ))→(φ&ψ→χ)((φ→ψ)→χ)→(((ψ→φ)→χ)→χ)0¯→φ
+\begin{align}
+  (\varphi \to \psi) &amp; \to ((\psi \to \chi) \to (\varphi \to \chi)) \\
+  \varphi \mathbin{\&amp;} \psi &amp; \to \varphi \\
+  \varphi\mathbin{\&amp;}\psi &amp; \to\psi\mathbin{\&amp;}\varphi \\
+  \varphi \land \psi &amp; \to \varphi \\
+  \varphi \land \psi &amp; \to \psi \land \varphi \\
+  (\chi \to \varphi) &amp; \to ((\chi\to \psi) \to (\chi \to \varphi\wedge \psi)) \\
+  (\varphi\mathbin{\&amp;}\psi \to \chi) &amp; \to (\varphi\to(\psi \to \chi)) \\
+  (\varphi\to(\psi \to \chi)) &amp; \to (\varphi\mathbin{\&amp;}\psi \to \chi) \\
+  ((\varphi \to \psi) \to \chi) &amp; \to (((\psi \to \varphi)\to \chi)\to \chi) \\
+  \overline{0}&amp; \to\varphi \\
+\end{align}
+
+
+and modus ponens as the only inference rule: from φφ\varphi
+and φ→ψφ→ψ\varphi \to \psi, infer ψψ\psi. This system is a complete
+axiomatization of the logic MTL: Γ⊨MTLφΓ⊨MTLφ\Gamma \models_\mathrm{MTL}
+\varphi iff Γ⊢MTLφΓ⊢MTLφ\Gamma \vdash_\mathrm{MTL} \varphi, where the latter
+relation denotes derivability from instances of the above axioms and
+formulas in ΓΓ\Gamma. The validity problem of MTLMTL\mathrm{MTL} is
+known to be decidable, however its computational complexity has not
+yet been determined.
+3. Łukasiewicz logic
+
+
+Łukasiewicz logic can be defined by adding ((φ→ψ)→ψ)→((ψ→φ)→φ)((φ→ψ)→ψ)→((ψ→φ)→φ)((\varphi \to \psi)
+\to \psi) \to ((\psi \to \varphi) \to \varphi) to the Hilbert-style
+
+ system for MTL. It corresponds to the finitary version of
+the consequence relation defined with respect to evaluations based on
+the Łukasiewicz t-norm (in symbols: for each finite set
+of formulas ΓΓ\Gamma and each formula φφ\varphi, we have Γ⊨ŁφΓ⊨Łφ\Gamma
+\models_{Ł} \varphi iff Γ⊢ŁφΓ⊢Łφ\Gamma \vdash_{Ł}
+ \varphi).[2]
+
+This logic was an early example of a many-valued logic, introduced by
+Łukasiewicz & Tarski (1930), well before the inception of the
+theory of fuzzy sets, by means of an equivalent axiomatic system (with
+modus ponens as the only inference rule):
+φ(φ→ψ)((φ→ψ)→ψ)(¬ψ→¬φ)((φ→ψ)→(ψ→φ)→((ψ→χ)→(φ→χ))→((ψ→φ)→φ)→(φ→ψ)→(ψ→φ))→(ψ→φ)φ→(ψ→φ)(φ→ψ)→((ψ→χ)→(φ→χ))((φ→ψ)→ψ)→((ψ→φ)→φ)(¬ψ→¬φ)→(φ→ψ)((φ→ψ)→(ψ→φ))→(ψ→φ)
+\begin{align}
+\varphi &amp;\to (\psi \to \varphi)\\
+(\varphi \to \psi) &amp;\to ((\psi \to \chi) \to (\varphi \to \chi))\\
+((\varphi \to \psi) \to \psi) &amp;\to ((\psi \to \varphi) \to \varphi)\\
+(\neg \psi \to \neg \varphi) &amp;\to (\varphi \to \psi)\\
+((\varphi \to \psi) &amp;\to (\psi \to \varphi)) \to (\psi \to \varphi)\\ 
+\end{align}
+
+
+Łukasiewicz logic is the only t-norm based fuzzy logic where all
+connectives are interpreted by continuous functions, including the
+implication which, as the residuum of ŁŁ_{Ł}, is given by the
+function x→Ły=min{1,1−x+y}x→Ły=min{1,1−x+y}x \to_{Ł} y=\min\{1,1-x+y\}. McNaughton’s
+theorem (1951) states that real-valued functions over [0,1] that
+interpret formulas of Łukasiewicz logic are exactly the
+continuous piecewise linear functions with integer coefficients. In
+terms of computational complexity, the validity problem for this logic
+is asymptotically not worse than in classical logic: it remains
+coNP-complete.
+4. Gödel–Dummett logic
+
+Gödel–Dummett logic, also known as Dummett’s LC or
+simply Gödel logic, is another early example of a many-valued
+logic with truth values in [0,1][0,1][0,1]. It was introduced by Michael
+Dummett (1959) as the extension of intuitionistic logic (see entry on
+ intuitionistic logic)
+ by the axiom 
+
+(φ→ψ)∨(ψ→φ).(φ→ψ)∨(ψ→φ).(\varphi \to \psi) \lor (\psi \to \varphi).
+
+ This formula enforces a linear order in the
+underlying (Kripke-style as well as algebraic) semantics. It also
+appears in the context of Gödel’s observation that it is
+impossible to characterize intuitionistic logic by finite truth tables
+(Gödel 1932). Gödel–Dummett logic can alternatively be
+obtained as an axiomatic extension of MTL by adding the axiom
+φ→φ&φφ→φ&φ\varphi \to \varphi \mathbin{\&amp;} \varphi, which amounts to
+requiring the idempotence of &&\&amp;, and hence making the
+interpretation of both conjunctions coincide. In the fuzzy logic
+setting the Gödel–Dummett logic can be seen as the
+consequence relation given by the minimum t-norm. It is distinguished
+as the only t-norm based logic where the truth of a formula in a given
+evaluation does not depend on the specific values assigned to the
+propositional variables, but only on the relative order of these
+values. In this sense, Gödel–Dummett logic can be seen as a
+logic of comparative truth. Like for Łukasiewicz logic, the
+computational complexity of testing validity remains
+coNP-complete.
+
+
+5. Other notable fuzzy logics
+
+Besides MTL (the logic of all left-continuous t-norms) and
+Łukasiewicz and Gödel–Dummett logics (each induced by
+one particular t-norm), one can consider logics induced by
+other sets of t-norms or, in general, arbitrary axiomatic extensions
+of MTL. In particular, the logic of all continuous t-norms
+(Hájek’s Basic Fuzzy Logic) is obtained by adding the
+axiom 
+
+(φ&(φ→ψ))→(ψ&(ψ→φ))(φ&(φ→ψ))→(ψ&(ψ→φ))(\varphi\mathbin{\&amp;}(\varphi\to{{\psi}})) \to
+(\psi\mathbin{\&amp;}(\psi\to\varphi))
+
+ to those of MTL. Actually, for any set of continuous
+t-norms there is a finite axiomatization of the corresponding logic
+(Esteva, Godo, & Montagna 2003; Haniková 2014). In
+particular the logic of the last prominent continuous t-norm
+(algebraic product), known as Product logic, is the extension of
+Hájek’s Basic Fuzzy Logic by the axiom: 
+
+¬φ∨((φ→φ&ψ)→ψ)¬φ∨((φ→φ&ψ)→ψ)\neg\varphi \vee ((\varphi\to\varphi\mathbin{\&amp;}{{\psi}})\to{{\psi}})
+
+ On
+the other hand, not all axiomatic extensions of MTL can be given a
+semantics of t-norms. For example, classical logic can be axiomatized
+as MTL +++ φ∨¬φφ∨¬φ\varphi\vee\neg \varphi, but the axiom of excluded
+middle is not a tautology under any t-norm based interpretation.
+
+
+There are also reasons to consider weaker fuzzy logics. For example,
+it can be argued that the assumptions forcing the interpretation of
+the conjunction to be a t-norm are too strong. In particular, the
+assumption that 111 is the neutral element of conjunction enforces a
+definition of tautology as a formula always evaluated to 111 and the
+consequence relation as preservation of the value 111 – that
+is, 111 is the only designated value in the
+ semantics.[3]
+ A natural way to introduce logics with more than one designated truth
+degree is to assume that the neutral element for ∗∗\ast is a number
+t<1t<1t &lt;1. (It can be shown that in this situation the designated
+truth degrees are exactly those greater than or equal to ttt.) Such
+interpretations of conjunctions are called uninorms. The
+resulting logic was axiomatized by Metcalfe & Montagna (2007).
+
+Analogously one may argue against commutativity or even against
+associativity of conjunction. Axiomatizations of resulting logics are
+described in the literature (see Cintula, Horčík, &
+Noguera 2013; Jenei & Montagna 2003); an exception is the logic of
+non-commutative uninorms for which a natural axiomatic system is not
+known.
+
+Finally, taking into account that fuzzy logics, unlike classical
+logic, are typically not functionally complete, one can increase their
+expressive power by adding new connectives. The most commonly
+considered connectives are: truth constants r¯r¯\bar r for each
+rational number r∈(0,1)r∈(0,1)r\in (0,1); unary connectives ∼∼\sim and
+△△\triangle interpreted as ∼x=1−x∼x=1−x{\sim}x = 1-x and △x=1△x=1\triangle x = 1
+if x=1x=1x=1 and 000 otherwise; a binary connective ⊙⊙\odot
+interpreted as the usual algebraic product, etc. (Baaz 1996; Esteva,
+Gispert, Godo, & Noguera 2007; Esteva, Godo, & Montagna 2001;
+Esteva, Godo, Hájek, & Navara 2000).
+
+A thorough overview of all the kinds of propositional fuzzy logics
+mentioned in this section (and a general theory thereof) can be found
+in the Handbook of Mathematical Fuzzy Logic (3 volumes,
+Cintula et al. 2011a,b, 2015).
+6. Predicate logics
+
+Given any propositional fuzzy logic L there is a uniform way to
+introduce its first-order counterpart L∀∀\forall in a predicate
+language PLPL\mathcal{P\!L} (defined as in the classical case). In
+this section, for simplicity, we present it for t-norm based
+logics.
+
+The semantics is given by structures in which predicate symbols are
+interpreted as functions mapping tuples of domain elements into truth
+values. More precisely, a structure MM{\mathbf M} consists of a
+non-empty domain of elements MMM, a function fM:Mn→MfM:Mn→Mf_{\mathbf M}\colon
+M^n\to M for each nnn-ary function symbol f∈PLf∈PLf\in \mathcal{P\!L},
+and a function PM:Mn→[0,1]PM:Mn→[0,1]P_{\mathbf M}\colon M^n\to [0,1] for each nnn-ary
+predicate symbol P∈PLP∈PLP\in \mathcal{P\!L}. Fixing an evaluation
+vv{\mathrm v} of object variables in MMM, one defines values of
+terms (∥f(t1,…,tn)∥v=fM(∥t1∥v,…,∥tn∥v)‖f(t1,…,tn)‖v=fM(‖t1‖v,…,‖tn‖v)\|f(t_1,\dots,t_n)\|_{\mathrm v} = f_{\mathbf
+M}(\|t_1\|_{\mathrm v},\dots,\|t_n\|_{\mathrm v})) and truth values
+of atomic formulas (∥P(t1,…,tn)∥v=PM(∥t1∥v,…,∥tn∥v)‖P(t1,…,tn)‖v=PM(‖t1‖v,…,‖tn‖v)\|P(t_1,\dots,t_n)\|_{\mathrm v} = P_{\mathbf
+M}(\|t_1\|_{\mathrm v},\dots,\|t_n\|_{\mathrm v})). Truth values of
+a universally/existentially quantified formula are computed as
+infimum/supremum of truth values of instances of the formula where the
+quantified variable runs over all elements of the domain MMM.
+Formally: 
+
+∥(∀x)φ∥v∥(∃x)φ∥v=inf{∥φ∥v[x:a]∣a∈M}=sup{∥φ∥v[x:a]∣a∈M},‖(∀x)φ‖v=inf{‖φ‖v[x:a]∣a∈M}‖(∃x)φ‖v=sup{‖φ‖v[x:a]∣a∈M},
+\begin{align}
+\|(\forall x)\varphi\|_{\mathrm v} &amp; = \inf\{\|\varphi\|_{{\mathrm v}[x{:}a]} \mid a\in M\}\\
+  \|(\exists x)\varphi\|_{\mathrm v} &amp; = \sup\{\|\varphi\|_{{\mathrm v}[x{:}a]}\mid a\in M\},\\
+  \end{align}
+
+
+ where v[x:a]v[x:a]{\mathrm v}[x{:}a] is the evaluation
+sending xxx to aaa and keeping values of other variables
+unchanged. The values of other formulas are computed using the truth
+functions for the propositional connectives of L.
+
+
+The first-order logic L∀∀\forall is then defined as the consequence
+relation given by preservation of total truth (value 111), as in the
+propositional case. More precisely, we say that a first-order formula
+φφ\varphi is a consequence of a set of formulas ΓΓ\Gamma (in
+symbols: Γ⊨L∀φΓ⊨L∀φ\Gamma \models_{\mathrm{L}\forall} \varphi) if
+∥φ∥v=1‖φ‖v=1\|\varphi\|_{\mathrm v} = 1 for each evaluation v, whenever
+∥ψ∥v=1‖ψ‖v=1\|\psi\|_{\mathrm v} = 1 for each evaluation v and each ψ∈Γψ∈Γ\psi \in
+\Gamma.
+
+L∀∀\forall can be given a Hilbert-style calculus with the following
+axioms:
+
+(P) The (first-order)
+instances of the axioms of the propositional logic L
+(∀1)(∀1)(\forall1) 
+(∀x)φ(x)→φ(t)(∀x)φ(x)→φ(t)(\forall x)\varphi(x)\to\varphi(t), where the term ttt is
+substitutable for xxx in
+ (∃1)(∃1)(\exists1) 
+φ(t)→(∃x)φ(x)φ(t)→(∃x)φ(x)\varphi(t)\to(\exists x)\varphi(x), where the term ttt is
+substitutable for xxx in
+(∀2)(∀2)(\forall2) 
+(∀x)(χ→φ)→(χ→(∀(x)φ)(∀x)(χ→φ)→(χ→(∀(x)φ)(\forall x)(\chi\to\varphi)\to(\chi\to (\forall(x)\varphi), where
+xxx is not free in χχ\chi
+(∃2)(∃2)(\exists2) 
+(∀x)(φ→χ)→((∃x)φ→χ)(∀x)(φ→χ)→((∃x)φ→χ)(\forall x)(\varphi\to\chi)\to((\exists x)\varphi\to\chi), where
+xxx is not free in χχ\chi
+(∀3)(∀3)(\forall3) 
+(∀x)(χ∨φ)→χ∨(∀x)φ(∀x)(χ∨φ)→χ∨(∀x)φ(\forall x)(\chi\vee\varphi)\to\chi\vee(\forall x)\varphi, where
+xxx is not free in χχ\chi.
+
+
+The deduction rules of L∀∀\forall are those of L plus the rule of
+generalization: from φφ\varphi infer (∀x)φ(∀x)φ(\forall
+x)\varphi.
+
+For many notable propositional fuzzy logics (including MTL and
+Gödel logic) the above axiomatic system is sound and complete
+with respect to the semantics (i.e., Γ⊨L∀φΓ⊨L∀φ\Gamma
+\models_{\mathrm{L}\forall} \varphi iff Γ⊢L∀φΓ⊢L∀φ\Gamma
+\vdash_{\mathrm{L}\forall} \varphi for each ΓΓ\Gamma and each
+φφ\varphi; Cintula, Horčík, & Noguera 2014).
+
+However, the first-order Łukasiewicz logic is not recursively
+axiomatizable as shown by Scarpellini (1962; Ragaz (1981) proved that
+the set of tautologies is actually Σ2Σ2\Sigma_2-complete in the sense
+of arithmetical hierarchy). Completeness can be achieved either by
+including an infinitary inference rule (Hay 1963) or by generalizing
+the set of truth-values (see next section). The situation is even more
+complicated in the case of Hájek’s Basic Fuzzy Logic,
+where the set of first-order tautologies of all structures given by
+continuous t-norms is as complex as true arithmetics (Montagna
+2001).
+7. Algebraic semantics
+
+One of the main tools in the study of fuzzy logic is that of algebraic
+semantics (see entry on
+ algebraic semantics).
+ Roughly speaking, the idea is to replace the real unit interval with
+an arbitrary set and interpret the connectives as operations of
+corresponding arities on that set.
+
+An MTL-algebra (introduced by Esteva & Godo (2001)) is a tuple
+A=⟨A,&,→,∧,∨,0¯¯¯,1¯¯¯⟩A=⟨A,&,→,∧,∨,0¯,1¯⟩{\mathbf A} = \langle A, \&amp;, \to, \wedge, \vee, \overline{0},
+\overline{1} \rangle where
+
+⟨A,∧,∨,0¯¯¯,1¯¯¯⟩⟨A,∧,∨,0¯,1¯⟩\langle A, \wedge, \vee, \overline{0}, \overline{1} \rangle is
+a bounded lattice
+⟨A,&,1¯¯¯⟩⟨A,&,1¯⟩\langle A, \&amp;, \overline{1} \rangle is a commutative
+monoid
+(x→y)∨(y→x)=1¯¯¯(x→y)∨(y→x)=1¯(x\to y)\vee(y\to x) = \overline{1}
+x&y≤zx&y≤zx\mathbin{\&amp;} y \leq z iff x≤y→zx≤y→zx \leq y\to z (where
+≤≤\leq is the lattice order induced by ∧∧\wedge or ∨∨\vee).
+
+
+MTL-algebras are a generalization of the t-norm based semantics
+explained above and provide a sound and complete semantics for
+ MTL.[4]
+
+
+MTL-chains are those whose lattice order is total and they are the
+basic building blocks of the whole class of algebras, in the sense
+that each MTL-algebra can be decomposed as a subdirect
+product of chains. This implies that the logic is also complete
+with respect to the semantics of MTL-chains, which is then used as the
+first step in the proof of its completeness with respect to the t-norm
+based semantics (Jenei & Montagna 2002).
+
+Algebraic semantics is a universal tool that can be used for any
+logic. In particular, for any arbitrary fuzzy logic studied in the
+literature (even those not supporting a t-norm based semantics such as
+finite-valued fuzzy logics or the logic of non-commutative uninorms)
+one can find a corresponding class of algebras which can be decomposed
+as subdirect products of chains. This fact has led Běhounek &
+Cintula (2006) to propose a definition of fuzzy logics as logics that
+are complete with respect to totally ordered algebraic structures.
+
+The use of algebraic semantics for first-order logics usually yields
+lower complexity for testing validity or satisfiability than standard
+semantics (Montagna & Noguera 2010).
+8. Proof theory
+
+It has been a considerable challenge to come up with analytic proof
+systems for fuzzy logics. These are systems that share important
+features, like the eliminability of cuts and the subformula property,
+with Gentzen’s sequent calculi for classical and intuitionistic
+logic (see entry on
+ the development of proof theory).
+ A major breakthrough has been achieved with the introduction of a
+so-called hypersequent calculus for Gödel–Dummett logic by
+Arnon Avron (1991). Hypersequent calculi arise from sequent calculi by
+considering finite multisets or sequences of sequents, interpreted as
+disjunctions of sequents, as main object of inference. In the case of
+Gödel–Dummett logic one lifts the rules of Gentzen’s
+intuitionistic sequent calculus by simply adding side-hypersequents to
+the upper and lower sequents. For example, the sequent rule for
+introducing disjunction on the right hand side 
+
+Γ1⇒ϕΓ2⇒ψΓ1,Γ2⇒ϕ∨ψΓ1⇒ϕΓ2⇒ψΓ1,Γ2⇒ϕ∨ψ\frac{\Gamma_1 \Rightarrow \phi \hspace{3ex} \Gamma_2 \Rightarrow
+\psi}{\Gamma_1,\Gamma_2 \Rightarrow \phi \vee \psi}
+
+ where
+Γ1Γ1\Gamma_1 and Γ2Γ2\Gamma_2 are finite sequences of formulas, is
+turned into the following hypersequent rule: 
+
+H∣Γ1⇒ϕH′∣Γ2⇒ψH∣H′∣Γ1,Γ2⇒ϕ∨ψH∣Γ1⇒ϕH′∣Γ2⇒ψH∣H′∣Γ1,Γ2⇒ϕ∨ψ\frac{H \mid \Gamma_1 \Rightarrow \phi \hspace{3ex} H' \mid \Gamma_2
+\Rightarrow \psi}{H \mid H' \mid \Gamma_1,\Gamma_2 \Rightarrow \phi
+\vee \psi }
+
+ where HHH
+and H′H′H' denote the side-hypersequents, i.e., finite sequences or
+multisets of sequents. This by itself does not change the
+corresponding logic (intuitionistic logic, in this case). The crucial
+additional structural rule is the so-called communication rule:
+
+H∣Γ1,Π1⇒Δ1H′∣Γ2,Π2⇒Δ2H∣H′∣Γ1,Γ2⇒Δ1∣Π2,Π2⇒Δ2H∣Γ1,Π1⇒Δ1H′∣Γ2,Π2⇒Δ2H∣H′∣Γ1,Γ2⇒Δ1∣Π2,Π2⇒Δ2\frac{H \mid \Gamma_1,\Pi_1 \Rightarrow \Delta_1 \hspace{3ex} H'
+\mid \Gamma_2,\Pi_2 \Rightarrow \Delta_2}{H \mid H' \mid
+\Gamma_1,\Gamma_2 \Rightarrow \Delta_1 \mid \Pi_2,\Pi_2 \Rightarrow
+\Delta_2}
+
+ Here Γ1,Γ2,Π1,Π2Γ1,Γ2,Π1,Π2\Gamma_1, \Gamma_2,\Pi_1, \Pi_2 are finite lists
+of formulas; Δ1Δ1\Delta_1 and Δ2Δ2\Delta_2 are either single formulas
+or remain empty; HHH and H′H′H' denote the side-hypersequents, like
+above.
+
+
+To obtain a hypersequent calculus for the fundamental fuzzy logic MTL
+one has to add the communication rule to a sequent system for
+contraction-free version of intuitionistic logic. Analytic proof
+systems for other fuzzy logics, in particular Łukasiewicz logic,
+call for a more radical departure from traditional calculi, where the
+sequent components of hypersequents are interpreted differently than
+intuitionistic or classical sequents. Also so-called labeled proof
+systems and various tableau calculi have been suggested. A detailed
+presentation of the corresponding state of the art can be found in
+Metcalfe, Olivetti, & Gabbay 2008 and Metcalfe 2011.
+9. Semantics justifying truth functionality
+
+It is desirable, not only from a philosophical point of view, but also
+to a get a better grip on potential applications of fuzzy logics to
+relate the meaning of intermediary truth values and corresponding
+logical connectives to basic models of reasoning with vague and
+imprecise notions. A number of such semantics that seek to justify
+particular choices of truth functional connectives have been
+introduced. Just two of them are briefly described here.
+
+Voting semantics is based on the idea that different agents (voters)
+may coherently judge the same proposition differently. The proportion
+of agents that accept a proposition φφ\varphi as true may be seen as
+a truth value. Without further restrictions this does not lead to a
+truth functional semantics, but rather to an assignment of
+probabilities to propositions. But if one assigns a fixed level of
+skepticism to each agent and imposes some natural conditions that
+keep the judgments on logically complex statements consistent with
+those levels, then one can recover minmin\min, maxmax\max, and 1−x1−x1-x as
+truth functions for conjunction, disjunction and negation,
+respectively. Details can be found in Lawry 1998.
+
+Another intriguing model of reasoning that provides a justification
+for all propositional connectives of standard Łukasiewicz logic
+has been introduced by Giles (1974). It consists in a game, where two
+players, I and you, systematically reduce logically complex assertions
+(formulas) to simpler ones according to rules like the following:
+
+If I assert φ∨ψφ∨ψ\varphi \lor \psi, then I have to assert either
+φφ\varphi or ψψ\psi.
+If I assert φ∧ψφ∧ψ\varphi \land \psi, then you choose one of the
+conjuncts and I have to assert either φφ\varphi or ψψ\psi,
+accordingly.
+If I assert φ→ψφ→ψ\varphi \to \psi, then I have to assert ψψ\psi
+if you assert φφ\varphi.
+
+
+The rules for quantified statements refer to a fixed domain, assuming
+that there is a constant symbol for each domain element one
+stipulates:
+
+If I assert (∀x)φ(x)(∀x)φ(x)(\forall x) \varphi(x), then I have to assert
+φ(c)φ(c)\varphi(c), for a constant ccc chosen by you.
+If I assert (∃x)φ(x)(∃x)φ(x)(\exists x) \varphi(x), then I have to assert
+φ(c)φ(c)\varphi(c), for a constant ccc chosen by myself.
+
+
+The rules for your assertions are dual. At each state of the game an
+occurrence of a non-atomic formula in either the multiset of current
+assertions by me or by you is chosen and gets replaced by subformulas,
+as indicated by these rules, until only atomic assertions remain. A
+final game state is then evaluated according to the following betting
+scheme.
+
+For each atomic formula there is a corresponding experiment which may
+either fail or succeed, but may show dispersion, i.e., it may yield
+different results when repeated. A fixed failure probability, called
+risk value, is assigned to each experiment and thus to each atomic
+formula. The players have to pay $$\$1 to the other player for each
+of their atomic assertion where the associated experiments fails. For
+any game starting with my assertion of φφ\varphi my expected overall
+loss of money if we both play rationally can be shown to correspond
+inversely to the truth value of φφ\varphi evaluated in an
+interpretation of Łukasiewicz logic that assigns the inverse of
+the risk values as truth values to atomic formulas. In particular, a
+formula is valid in Łukasiewicz logic if and only if, for every
+risk value assignment, I have a strategy that guarantees that my
+expected overall loss at the end of game is 000 or negative.
+
+Fermüller & Metcalfe (2009) have pointed out a correspondence
+between optimal strategies in Giles’s game and cut-free proofs
+in a hypersequent system for Łukasiewicz logic. The game has also
+been extended by Fermüller & Roschger (2014) to characterize
+various types of (semi-)fuzzy quantifiers, intended to model natural
+language expressions like “about half” or “almost
+all”.
+
+Paris (2000) provides an overview over other semantics supporting
+various choices of truth functions; in particular, re-randomizing
+semantics (Hisdal 1988), similarity semantics (e.g., Ruspini 1991),
+acceptability semantics (Paris 1997), and approximation semantics
+(Paris 2000). Let us also mention the resource-based semantics of
+Běhounek (2009). Moreover there are different forms of evaluation
+games for various fuzzy logics, besides the one of Giles for
+Łukasiewicz logic outlined above. An overview over those semantic
+games can be found in Fermüller 2015.
+10. Fuzzy logic and vagueness
+
+Modeling reasoning with vague predicates and propositions is often
+cited as the main motivation for introducing fuzzy logics. There are
+many alternative theories of vagueness (see entry on
+ vagueness),
+ but there is a general agreement that the susceptibility to the
+sorites paradox (see entry on
+ sorites paradox)
+ is a main feature of vagueness. Consider the following version of the
+paradox:
+
+(1)101001010010^{100}
+is a huge number.
+(2)If nnn is
+a huge number, then n−1n−1n-1 is also huge.
+
+
+At the face of it, it seems not be unreasonable to accept these two
+assumptions. By instantiating nnn with 101001010010^{100} in
+ (2)
+ and applying modus ponens with
+ (1)
+ as the other premise we conclude that 10100−110100−110^{100}-1 is huge. By
+simply repeating this type of inference we arrive at the unreasonable
+statement
+
+(3)000 is a
+huge number.
+
+
+Fuzzy logic suggests an analysis of the sorites paradox that
+respects the intuition that statement
+ (2),
+ while arguably not totally true, is almost true.
+
+There are various ways to model this form of reasoning in t-norm based
+fuzzy logics that dissolve the paradox. For example, one may declare
+that any instance of modus ponens is sound if the degree of
+truth of the conclusion is not lower than that of the strong
+conjunction of its premises.[5]
+ As indicated, one stipulates that every instance of
+ (2)
+ is true to degree 1−ϵ1−ϵ1-\epsilon, for some very small number
+ϵϵ\epsilon. Even if we declare
+ (1)
+ to be perfectly true, the statement that 10100−110100−110^{100}-1 is huge, too,
+might then be less than perfectly true without sacrificing the
+soundness of instantiation and modus ponens. If, moreover,
+the degree of truth of the conjunction of two not perfectly true (or
+not perfectly false) statements is less than that of each conjunct, we
+may safely declare that statement
+ (3)
+ is perfectly false and nevertheless insist on the soundness of each
+step in the indicated chain of inferences. Informally speaking, the
+paradox disappears by assuming that repeatedly decreasing some
+perfectly huge number by a small amount leads to numbers of which it
+is less and less true that they are huge too.
+
+An alternative truth degree based solution to the sorites
+paradox has been proposed by Hájek & Novák
+(2003). They introduce a new truth functional connective modeling the
+expression “it is almost true that”. In this manner they
+formalize sorites-style reasoning within an axiomatic theory
+of an appropriate t-norm based fuzzy logic.
+
+Smith (2008; see also 2005) has argued that the so-called
+closeness principle captures the essence of vagueness. It
+expresses that statements of the same form about indistinguishable
+objects should remain close in respect of truth. It is a hallmark of
+many approaches to the paradox that employ fuzzy logic that they are
+compatible with this
+ principle.[6]

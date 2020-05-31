@@ -1,0 +1,1869 @@
+Quantum mechanics is generally regarded as the physical theory that is
+our best candidate for a fundamental and universal description of the
+physical world. The conceptual framework employed by this theory
+differs drastically from that of classical physics. Indeed, the
+transition from classical to quantum physics marks a genuine
+revolution in our understanding of the physical world.
+
+One striking aspect of the difference between classical and quantum
+physics is that whereas classical mechanics presupposes that exact
+simultaneous values can be assigned to all physical quantities,
+quantum mechanics denies this possibility, the prime example being the
+position and momentum of a particle. According to quantum mechanics,
+the more precisely the position (momentum) of a particle is given, the
+less precisely can one say what its momentum (position) is. This is (a
+simplistic and preliminary formulation of) the quantum mechanical
+uncertainty principle for position and momentum. The uncertainty
+principle played an important role in many discussions on the
+philosophical implications of quantum mechanics, in particular in
+discussions on the consistency of the so-called Copenhagen
+interpretation, the interpretation endorsed by the founding fathers
+Heisenberg and Bohr.
+
+This should not suggest that the uncertainty principle is the only
+aspect of the conceptual difference between classical and quantum
+physics: the implications of quantum mechanics for notions as
+(non)-locality, entanglement and identity play no less havoc with
+classical intuitions.
+ 
+1. Introduction
+
+The uncertainty principle is certainly one of the most famous aspects
+of quantum mechanics. It has often been regarded as the most
+distinctive feature in which quantum mechanics differs from classical
+theories of the physical world. Roughly speaking, the uncertainty
+principle (for position and momentum) states that one cannot assign
+exact simultaneous values to the position and momentum of a physical
+system. Rather, these quantities can only be determined with some
+characteristic “uncertainties” that cannot become
+arbitrarily small simultaneously. But what is the exact meaning of
+this principle, and indeed, is it really a principle of quantum
+mechanics? (In his original work, Heisenberg only speaks of
+uncertainty relations.) And, in particular, what does it mean to say
+that a quantity is determined only up to some uncertainty? These are
+the main questions we will explore in the following, focusing on the
+views of Heisenberg and Bohr.
+
+The notion of “uncertainty” occurs in several different
+meanings in the physical literature. It may refer to a lack of
+knowledge of a quantity by an observer, or to the experimental
+inaccuracy with which a quantity is measured, or to some ambiguity in
+the definition of a quantity, or to a statistical spread in an
+ensemble of similarly prepared systems. Also, several different names
+are used for such uncertainties: inaccuracy, spread, imprecision,
+indefiniteness, indeterminateness, indeterminacy, latitude, etc. As we
+shall see, even Heisenberg and Bohr did not decide on a single
+terminology for quantum mechanical uncertainties. Forestalling a
+discussion about which name is the most appropriate one in quantum
+mechanics, we use the name “uncertainty principle” simply
+because it is the most common one in the literature.
+2. Heisenberg
+2.1 Heisenberg’s road to the uncertainty relations
+
+Heisenberg introduced his famous relations in an article of 1927,
+entitled Ueber den anschaulichen Inhalt der quantentheoretischen
+Kinematik und Mechanik. A (partial) translation of this title is:
+“On the anschaulich content of quantum theoretical
+kinematics and mechanics”. Here, the term anschaulich
+is particularly notable. Apparently, it is one of those German words
+that defy an unambiguous translation into other languages.
+Heisenberg’s title is translated as “On the physical
+content …” by Wheeler and Zurek (1983). His
+collected works (Heisenberg 1984) translate it as “On the
+perceptible content …”, while Cassidy’s
+biography of Heisenberg (Cassidy 1992), refers to the paper as
+“On the perceptual content …”. Literally,
+the closest translation of the term anschaulich is
+“visualizable”. But, as in most languages, words that make
+reference to vision are not always intended literally. Seeing is
+widely used as a metaphor for understanding, especially for immediate
+understanding. Hence, anschaulich also means
+“intelligible” or
+ “intuitive”.[1]
+
+
+Why was this issue of the Anschaulichkeit of quantum
+mechanics such a prominent concern to Heisenberg? This question has
+already been considered by a number of commentators (Jammer 1974;
+Miller 1982; de Regt 1997; Beller 1999). For the answer, it turns out,
+we must go back a little in time. In 1925 Heisenberg had developed the
+first coherent mathematical formalism for quantum theory (Heisenberg
+1925). His leading idea was that only those quantities that are in
+principle observable should play a role in the theory, and that all
+attempts to form a picture of what goes on inside the atom should be
+avoided. In atomic physics the observational data were obtained from
+spectroscopy and associated with atomic transitions. Thus, Heisenberg
+was led to consider the “transition quantities” as the
+basic ingredients of the theory. Max Born, later that year, realized
+that the transition quantities obeyed the rules of matrix calculus, a
+branch of mathematics that was not so well-known then as it is now. In
+a famous series of papers Heisenberg, Born and Jordan developed this
+idea into the matrix mechanics version of quantum theory.
+
+Formally, matrix mechanics remains close to classical mechanics. The
+central idea is that all physical quantities must be represented by
+infinite self-adjoint matrices (later identified with operators on a
+Hilbert space). It is postulated that the matrices QQ\bQ
+and PP\bP representing the canonical position and
+momentum variables of a particle satisfy the so-called canonical
+commutation rule
+
+QP−PQ=iℏQP−PQ=iℏ(1)\tag{1} 
+\bQ\bP - \bP\bQ = i\hslash
+
+
+ where ℏ=h/2πℏ=h/2π\hslash = h/2\pi, hhh denotes
+Planck’s constant, and boldface type is used to represent
+matrices (or operators). The new theory scored spectacular empirical
+success by encompassing nearly all spectroscopic data known at the
+time, especially after the concept of the electron spin was included
+in the theoretical framework.
+
+It came as a big surprise, therefore, when one year later, Erwin
+Schrödinger presented an alternative theory, that became known as
+wave mechanics. Schrödinger assumed that an electron in an atom
+could be represented as an oscillating charge cloud, evolving
+continuously in space and time according to a wave equation. The
+discrete frequencies in the atomic spectra were not due to
+discontinuous transitions (quantum jumps) as in matrix mechanics, but
+to a resonance phenomenon. Schrödinger also showed that the two
+theories were equivalent.[2]
+
+
+Even so, the two approaches differed greatly in interpretation and
+spirit. Whereas Heisenberg eschewed the use of visualizable pictures,
+and accepted discontinuous transitions as a primitive notion,
+Schrödinger claimed as an advantage of his theory that it was
+anschaulich. In Schrödinger’s vocabulary, this
+meant that the theory represented the observational data by means of
+continuously evolving causal processes in space and time. He
+considered this condition of Anschaulichkeit to be an
+essential requirement on any acceptable physical theory.
+Schrödinger was not alone in appreciating this aspect of his
+theory. Many other leading physicists were attracted to wave mechanics
+for the same reason. For a while, in 1926, before it emerged that wave
+mechanics had serious problems of its own, Schrödinger’s
+approach seemed to gather more support in the physics community than
+matrix mechanics.
+
+Understandably, Heisenberg was unhappy about this development. In a
+letter of 8 June 1926 to Pauli he confessed that “The more I
+think about the physical part of Schrödinger’s theory, the
+more disgusting I find it”, and: “What Schrödinger
+writes about the Anschaulichkeit of his theory, … I
+consider Mist” (Pauli 1979: 328). Again, this last
+German term is translated differently by various commentators: as
+“junk” (Miller 1982) “rubbish” (Beller 1999)
+“crap” (Cassidy 1992), “poppycock”
+(Bacciagaluppi & Valentini 2009) and perhaps more literally, as
+“bullshit” (Moore 1989; de Regt 1997). Nevertheless, in
+published writings, Heisenberg voiced a more balanced opinion. In a
+paper in Die Naturwissenschaften (1926) he summarized the
+peculiar situation that the simultaneous development of two competing
+theories had brought about. Although he argued that
+Schrödinger’s interpretation was untenable, he admitted
+that matrix mechanics did not provide the Anschaulichkeit
+which made wave mechanics so attractive. He concluded: 
+
+
+to obtain a contradiction-free anschaulich interpretation, we
+still lack some essential feature in our image of the structure of
+matter. 
+
+
+The purpose of his 1927 paper was to provide exactly this lacking
+feature.
+2.2 Heisenberg’s argument
+
+Let us now look at the argument that led Heisenberg to his uncertainty
+relations. He started by redefining the notion of
+Anschaulichkeit. Whereas Schrödinger associated this
+term with the provision of a causal space-time picture of the
+phenomena, Heisenberg, by contrast, declared:
+
+
+We believe we have gained anschaulich understanding of a
+physical theory, if in all simple cases, we can grasp the experimental
+consequences qualitatively and see that the theory does not lead to
+any contradictions. Heisenberg 1927: 172)
+
+
+His goal was, of course, to show that, in this new sense of the word,
+matrix mechanics could lay the same claim to Anschaulichkeit
+as wave mechanics.
+
+To do this, he adopted an operational assumption: terms like
+“the position of a particle” have meaning only if one
+specifies a suitable experiment by which “the position of a
+particle” can be measured. We will call this assumption the
+“measurement=meaning principle”. In general, there is no
+lack of such experiments, even in the domain of atomic physics.
+However, experiments are never completely accurate. We should be
+prepared to accept, therefore, that in general the meaning of these
+quantities is also determined only up to some characteristic
+inaccuracy.
+
+As an example, he considered the measurement of the position of an
+electron by a microscope. The accuracy of such a measurement is
+limited by the wave length of the light illuminating the electron.
+Thus, it is possible, in principle, to make such a position
+measurement as accurate as one wishes, by using light of a very short
+wave length, e.g., γγ\gamma-rays. But for γγ\gamma-rays, the
+Compton effect cannot be ignored: the interaction of the electron and
+the illuminating light should then be considered as a collision of at
+least one photon with the electron. In such a collision, the electron
+suffers a recoil which disturbs its momentum. Moreover, the shorter
+the wave length, the larger is this change in momentum. Thus, at the
+moment when the position of the particle is accurately known,
+Heisenberg argued, its momentum cannot be accurately known:
+
+
+At the instant of time when the position is determined, that is, at
+the instant when the photon is scattered by the electron, the electron
+undergoes a discontinuous change in momentum. This change is the
+greater the smaller the wavelength of the light employed, i.e., the
+more exact the determination of the position. At the instant at which
+the position of the electron is known, its momentum therefore can be
+known only up to magnitudes which correspond to that discontinuous
+change; thus, the more precisely the position is determined, the less
+precisely the momentum is known, and conversely. (Heisenberg 1927:
+174–5)
+
+
+This is the first formulation of the uncertainty principle. In its
+present form it is an epistemological principle, since it limits what
+we can know about the electron. From “elementary
+formulae of the Compton effect” Heisenberg estimated the
+“imprecisions” to be of the order 
+
+δpδq∼hδpδq∼h(2)\tag{2} \delta p\delta q \sim h
+
+
+He continued: “In this circumstance we see the direct
+anschaulich content of the relation QP−PQ=iℏQP−PQ=iℏ\boldsymbol{QP} -
+\boldsymbol{PQ} = i\hslash.”
+
+He went on to consider other experiments, designed to measure other
+physical quantities and obtained analogous relations for time and
+energy: 
+
+δtδE∼hδtδE∼h(3)\tag{3} \delta t \delta E \sim h
+
+ and action JJJ and angle www 
+
+δwδJ∼hδwδJ∼h(4)\tag{4} \delta w \delta J \sim h
+
+ which
+he saw as corresponding to the “well-known” relations
+
+tE−Et=iℏ or wJ−Jw=iℏtE−Et=iℏ or wJ−Jw=iℏ(5)\tag{5} 
+\boldsymbol{tE} - \boldsymbol{Et} = 
+ i\hslash \text{ or } \boldsymbol{wJ} - \boldsymbol{Jw} = i\hslash
+
+
+However, these generalisations are not as straightforward as
+Heisenberg suggested. In particular, the status of the time variable
+in his several illustrations of relation
+ (3)
+ is not at all clear (Hilgevoord 2005; see also
+ Section 2.5).
+
+Heisenberg summarized his findings in a general conclusion: all
+concepts used in classical mechanics are also well-defined in the
+realm of atomic processes. But, as a pure fact of experience (rein
+erfahrungsgemäß), experiments that serve to provide
+such a definition for one quantity are subject to particular
+indeterminacies, obeying relations
+ (2)–(4)
+ which prohibit them from providing a simultaneous definition of two
+canonically conjugate quantities. Note that in this formulation the
+emphasis has slightly shifted: he now speaks of a limit on the
+definition of concepts, i.e., not merely on what we can know,
+but what we can meaningfully say about a particle. Of course,
+this stronger formulation follows by application of the above
+measurement=meaning principle: if there are, as Heisenberg claims, no
+experiments that allow a simultaneous precise measurement of two
+conjugate quantities, then these quantities are also not
+simultaneously well-defined.
+
+Heisenberg’s paper has an interesting “Addition in
+proof” mentioning critical remarks by Bohr, who saw the paper
+only after it had been sent to the publisher. Among other things, Bohr
+pointed out that in the microscope experiment it is not the change of
+the momentum of the electron that is important, but rather the
+circumstance that this change cannot be precisely determined in the
+same experiment. An improved version of the argument,
+responding to this objection, is given in Heisenberg’s Chicago
+lectures of 1930.
+
+Here (Heisenberg 1930: 16), it is assumed that the electron is
+illuminated by light of wavelength λλ\lambda and that the scattered
+light enters a microscope with aperture angle εε\varepsilon.
+According to the laws of classical optics, the accuracy of the
+microscope depends on both the wave length and the aperture angle;
+Abbe’s criterium for its “resolving power”, i.e.,
+the size of the smallest discernable details, gives 
+
+
+δq∼λsinε.δq∼λsinε.(6)\tag{6} 
+\delta q \sim \frac{\lambda}{\sin \varepsilon}.
+
+
+On the other hand, the direction of a scattered photon, when it enters
+the microscope, is unknown within the angle εε\varepsilon, rendering
+the momentum change of the electron uncertain by an amount 
+
+δp∼hsinελδp∼hsinελ(7)\tag{7} 
+\delta p \sim \frac{h \sin \varepsilon}{\lambda}
+
+leading again to the result
+ (2).
+
+Let us now analyse Heisenberg’s argument in more detail. Note
+that, even in this improved version, Heisenberg’s argument is
+incomplete. According to Heisenberg’s “measurement=meaning
+principle”, one must also specify, in the given context, what
+the meaning is of the phrase “momentum of the electron”,
+in order to make sense of the claim that this momentum is changed by
+the position measurement. A solution to this problem can again be
+found in the Chicago lectures (Heisenberg 1930: 15). Here, he assumes
+that initially the momentum of the electron is precisely known, e.g.,
+it has been measured in a previous experiment with an inaccuracy
+δpiδpi\delta p_{i}, which may be arbitrarily small. Then, its position
+is measured with inaccuracy δqδq\delta q, and after this, its final
+momentum is measured with an inaccuracy δpfδpf\delta p_{f}. All three
+measurements can be performed with arbitrary precision. Thus, the
+three quantities δpi,δqδpi,δq\delta p_{i}, \delta q, and δpfδpf\delta p_{f} can
+be made as small as one wishes. If we assume further that the initial
+momentum has not changed until the position measurement, we can speak
+of a definite momentum until the time of the position measurement.
+Moreover we can give operational meaning to the idea that the momentum
+is changed during the position measurement: the outcome of the second
+momentum measurement (say pfpfp_{f} will generally differ from the
+initial value pipip_{i}. In fact, one can also show that this change
+is discontinuous, by varying the time between the three
+measurements.
+
+Let us try to see, adopting this more elaborate set-up, if we can
+complete Heisenberg’s argument. We have now been able to give
+empirical meaning to the “change of momentum” of the
+electron, pf−pipf−pip_{f} - p_{i}. Heisenberg’s argument claims that
+the order of magnitude of this change is at least inversely
+proportional to the inaccuracy of the position measurement:
+
+
+|pf−pi|δq∼h|pf−pi|δq∼h(8)\tag{8} \abs{p_{f} - p_{i}} \delta q \sim h
+
+
+However, can we now draw the conclusion that the momentum is only
+imprecisely defined? Certainly not. Before the position measurement,
+its value was pipip_{i}, after the measurement it is pfpfp_{f}. One
+might, perhaps, claim that the value at the very instant of the
+position measurement is not yet defined, but we could simply settle
+this by a convention, e.g., we might assign the mean value (pi+pf)/2(pi+pf)/2(p_{i} +
+p_{f})/2 to the momentum at this instant. But then, the momentum is
+precisely determined at all instants, and Heisenberg’s
+formulation of the uncertainty principle no longer follows. The above
+attempt of completing Heisenberg’s argument thus overshoots its
+mark.
+
+A solution to this problem can again be found in the Chicago Lectures.
+Heisenberg admits that position and momentum can be known exactly. He
+writes:
+
+
+If the velocity of the electron is at first known, and the position
+then exactly measured, the position of the electron for times previous
+to the position measurement may be calculated. For these past times,
+δpδqδpδq\delta p\delta q is smaller than the usual bound. (Heisenberg
+1930: 15)
+
+
+Indeed, Heisenberg says: “the uncertainty relation does not hold
+for the past”.
+
+Apparently, when Heisenberg refers to the uncertainty or imprecision
+of a quantity, he means that the value of this quantity cannot be
+given beforehand. In the sequence of measurements we have
+considered above, the uncertainty in the momentum after the
+measurement of position has occurred, refers to the idea that the
+value of the momentum is not fixed just before the final
+momentum measurement takes place. Once this measurement is performed,
+and reveals a value pfpfp_{f}, the uncertainty relation no longer
+holds; these values then belong to the past. Clearly, then, Heisenberg
+is concerned with unpredictability: the point is not that the
+momentum of a particle changes, due to a position measurement, but
+rather that it changes by an unpredictable amount. It is, however
+always possible to measure, and hence define, the size of this change
+in a subsequent measurement of the final momentum with arbitrary
+precision.
+
+Although Heisenberg admits that we can consistently attribute values
+of momentum and position to an electron in the past, he sees little
+merit in such talk. He points out that these values can never be used
+as initial conditions in a prediction about the future behavior of the
+electron, or subjected to experimental verification. Whether or not we
+grant them physical reality is, as he puts it, a matter of personal
+taste. Heisenberg’s own taste is, of course, to deny their
+physical reality. For example, he writes, 
+
+
+I believe that one can formulate the emergence of the classical
+“path” of a particle succinctly as follows: the
+“path” comes into being only because we observe it.
+(Heisenberg 1927: 185) 
+
+
+Apparently, in his view, a measurement does not only serve to give
+meaning to a quantity, it creates a particular value for this
+quantity. This may be called the “measurement=creation”
+principle. It is an ontological principle, for it states what is
+physically real.
+
+This then leads to the following picture. First we measure the
+momentum of the electron very accurately. By “measurement=
+meaning”, this entails that the term “the momentum of the
+particle” is now well-defined. Moreover, by the
+“measurement=creation” principle, we may say that this
+momentum is physically real. Next, the position is measured with
+inaccuracy δqδq\delta q. At this instant, the position of the particle
+becomes well-defined and, again, one can regard this as a physically
+real attribute of the particle. However, the momentum has now changed
+by an amount that is unpredictable by an order of magnitude 
+|pf−pi|∼h/δq|pf−pi|∼h/δq\abs{p_{f} - p_{i}} \sim h/\delta q. The meaning and validity of
+this claim can be verified by a subsequent momentum measurement.
+
+The question is then what status we shall assign to the momentum of
+the electron just before its final measurement. Is it real? According
+to Heisenberg it is not. Before the final measurement, the best we can
+attribute to the electron is some unsharp, or fuzzy momentum. These
+terms are meant here in an ontological sense, characterizing a real
+attribute of the electron.
+2.3 The interpretation of Heisenberg’s uncertainty relations
+
+Heisenberg’s relations were soon considered to be a cornerstone
+of the Copenhagen interpretation of quantum mechanics. Just a few
+months later, Kennard (1927) already called them the “essential
+core” of the new theory. Taken together with Heisenberg’s
+contention that they provide the intuitive content of the theory and
+their prominent role in later discussions on the Copenhagen
+interpretation, a dominant view emerged in which the uncertainty
+relations were regarded as a fundamental principle of the theory.
+
+The interpretation of these relations has often been debated. Do
+Heisenberg’s relations express restrictions on the experiments
+we can perform on quantum systems, and, therefore, restrictions on the
+information we can gather about such systems; or do they express
+restrictions on the meaning of the concepts we use to describe quantum
+systems? Or else, are they restrictions of an ontological nature,
+i.e., do they assert that a quantum system simply does not possess a
+definite value for its position and momentum at the same time? The
+difference between these interpretations is partly reflected in the
+various names by which the relations are known, e.g., as
+“inaccuracy relations”, or: “uncertainty”,
+“indeterminacy” or “unsharpness relations”.
+The debate between these views has been addressed by many authors, but
+it has never been settled completely. Let it suffice here to make only
+two general observations.
+
+First, it is clear that in Heisenberg’s own view all the above
+questions stand or fall together. Indeed, we have seen that he adopted
+an operational “measurement=meaning” principle according
+to which the meaningfulness of a physical quantity was equivalent to
+the existence of an experiment purporting to measure that quantity.
+Similarly, his “measurement=creation” principle allowed
+him to attribute physical reality to such quantities. Hence,
+Heisenberg’s discussions moved rather freely and quickly from
+talk about experimental inaccuracies to epistemological or ontological
+issues and back again.
+
+However, ontological questions seemed to be of somewhat less interest
+to him. For example, there is a passage (Heisenberg 1927: 197), where
+he discusses the idea that, behind our observational data, there might
+still exist a hidden reality in which quantum systems have definite
+values for position and momentum, unaffected by the uncertainty
+relations. He emphatically dismisses this conception as an unfruitful
+and meaningless speculation, because, as he says, the aim of physics
+is only to describe observable data. Similarly, in the Chicago
+Lectures, he warns against the fact that the human language permits
+the utterance of statements which have no empirical content, but
+nevertheless produce a picture in our imagination. He notes, 
+
+
+One should be especially careful in using the words
+“reality”, “actually”, etc., since these words
+very often lead to statements of the type just mentioned. (Heisenberg
+1930: 11) 
+
+
+So, Heisenberg also endorsed an interpretation of his relations as
+rejecting a reality in which particles have simultaneous definite
+values for position and momentum.
+
+The second observation is that although for Heisenberg experimental,
+informational, epistemological and ontological formulations of his
+relations were, so to say, just different sides of the same coin, this
+is not so for those who do not share his operational principles or his
+view on the task of physics. Alternative points of view, in which
+e.g., the ontological reading of the uncertainty relations is denied,
+are therefore still viable. The statement, often found in the
+literature of the thirties, that Heisenberg had proved the
+impossibility of associating a definite position and momentum to a
+particle is certainly wrong. But the precise meaning one can
+coherently attach to Heisenberg’s relations depends rather
+heavily on the interpretation one favors for quantum mechanics as a
+whole. And because no agreement has been reached on this latter issue,
+one cannot expect agreement on the meaning of the uncertainty
+relations either.
+2.4 Uncertainty relations or uncertainty principle?
+
+Let us now move to another question about Heisenberg’s
+relations: do they express a principle of quantum theory?
+Probably the first influential author to call these relations a
+“principle” was Eddington, who, in his Gifford Lectures of
+1928 referred to them as the “Principle of Indeterminacy”.
+In the English literature the name uncertainty principle became most
+common. It is used both by Condon and Robertson in 1929, and also in
+the English version of Heisenberg’s Chicago Lectures (Heisenberg
+1930), although, remarkably, nowhere in the original German version of
+the same book (see also Cassidy 1998). Indeed, Heisenberg never seems
+to have endorsed the name “principle” for his relations.
+His favourite terminology was “inaccuracy relations”
+(Ungenauigkeitsrelationen) or “indeterminacy
+relations” (Unbestimmtheitsrelationen). We know only
+one passage, in Heisenberg’s own Gifford lectures, delivered in
+1955–56 (Heisenberg 1958: 43), where he mentioned that his
+relations “are usually called relations of uncertainty or
+principle of indeterminacy”. But this can well be read as his
+yielding to common practice rather than his own preference.
+
+But does the relation
+ (2)
+ qualify as a principle of quantum mechanics? Several authors,
+foremost Karl Popper (1967), have contested this view. Popper argued
+that the uncertainty relations cannot be granted the status of a
+principle on the grounds that they are derivable from the theory,
+whereas one cannot obtain the theory from the uncertainty relations.
+(The argument being that one can never derive any equation, say, the
+Schrödinger equation, or the commutation relation
+ (1),
+ from an inequality.)
+
+Popper’s argument is, of course, correct but we think it misses
+the point. There are many statements in physical theories which are
+called principles even though they are in fact derivable from other
+statements in the theory in question. A more appropriate departing
+point for this issue is not the question of logical priority but
+rather Einstein’s distinction between “constructive
+theories” and “principle theories”.
+
+Einstein proposed this famous classification in Einstein 1919.
+Constructive theories are theories which postulate the existence of
+simple entities behind the phenomena. They endeavour to reconstruct
+the phenomena by framing hypotheses about these entities. Principle
+theories, on the other hand, start from empirical principles, i.e.,
+general statements of empirical regularities, employing no or only a
+bare minimum of theoretical terms. The purpose is to build up the
+theory from such principles. That is, one aims to show how these
+empirical principles provide sufficient conditions for the
+introduction of further theoretical concepts and structure.
+
+The prime example of a theory of principle is thermodynamics. Here the
+role of the empirical principles is played by the statements of the
+impossibility of various kinds of perpetual motion machines. These are
+regarded as expressions of brute empirical fact, providing the
+appropriate conditions for the introduction of the concepts of energy
+and entropy and their properties. (There is a lot to be said about the
+tenability of this view, but that is not our topic here.)
+
+Now obviously, once the formal thermodynamic theory is built, one can
+also derive the impossibility of the various kinds of
+perpetual motion. (They would violate the laws of energy conservation
+and entropy increase.) But this derivation should not misguide one
+into thinking that they were no principles of the theory after all.
+The point is just that empirical principles are statements that do not
+rely on the theoretical concepts (in this case entropy and energy) for
+their meaning. They are interpretable independently of these concepts
+and, further, their validity on the empirical level still provides the
+physical content of the theory.
+
+A similar example is provided by special relativity, another theory of
+principle, which Einstein deliberately designed after the ideal of
+thermodynamics. Here, the empirical principles are the light postulate
+and the relativity principle. Again, once we have built up the modern
+theoretical formalism of the theory (Minkowski space-time), it is
+straightforward to prove the validity of these principles. But again
+this does not count as an argument for claiming that they were no
+principles after all. So the question whether the term
+“principle” is justified for Heisenberg’s relations,
+should, in our view, be understood as the question whether they are
+conceived of as empirical principles.
+
+One can easily show that this idea was never far from
+Heisenberg’s intentions. We have already seen that Heisenberg
+presented the relations as the result of a “pure fact of
+experience”. A few months after his 1927 paper, he wrote a
+popular paper “Über die Grundprincipien der
+Quantenmechanik” (“On the fundamental principles of
+quantum mechanics”) where he made the point even more clearly.
+Here Heisenberg described his recent break-through in the
+interpretation of the theory as follows: “It seems to be a
+general law of nature that we cannot determine position and velocity
+simultaneously with arbitrary accuracy”. Now actually, and in
+spite of its title, the paper does not identify or discuss any
+“fundamental principle” of quantum mechanics. So, it must
+have seemed obvious to his readers that he intended to claim that the
+uncertainty relation was a fundamental principle, forced upon us as an
+empirical law of nature, rather than a result derived from the
+formalism of the theory.
+
+This reading of Heisenberg’s intentions is corroborated by the
+fact that, even in his 1927 paper, applications of his relation
+frequently present the conclusion as a matter of principle. For
+example, he says “In a stationary state of an atom its phase is
+in principle indeterminate” (Heisenberg 1927: 177,
+[emphasis added]). Similarly, in a paper of 1928, he described the
+content of his relations as: 
+
+
+It has turned out that it is in principle impossible to know,
+to measure the position and velocity of a piece of matter with
+arbitrary accuracy. (Heisenberg 1984: 26, [emphasis added])
+
+
+So, although Heisenberg did not originate the tradition of calling his
+relations a principle, it is not implausible to attribute the view to
+him that the uncertainty relations represent an empirical principle
+that could serve as a foundation of quantum mechanics. In fact, his
+1927 paper expressed this desire explicitly: 
+
+
+Surely, one would like to be able to deduce the quantitative laws of
+quantum mechanics directly from their anschaulich
+foundations, that is, essentially, relation
+ [(2)].
+ (ibid: 196) 
+
+
+This is not to say that Heisenberg was successful in reaching this
+goal, or that he did not express other opinions on other
+occasions.
+
+Let us conclude this section with three remarks. First, if the
+uncertainty relation is to serve as an empirical principle, one might
+well ask what its direct empirical support is. In Heisenberg’s
+analysis, no such support is mentioned. His arguments concerned
+thought experiments in which the validity of the theory, at least at a
+rudimentary level, is implicitly taken for granted. Jammer (1974: 82)
+conducted a literature search for high precision experiments that
+could seriously test the uncertainty relations and concluded they were
+still scarce in 1974. Real experimental support for the uncertainty
+relations in experiments in which the inaccuracies are close to the
+quantum limit have come about only more recently (see Kaiser, Werner,
+and George 1983; Uffink 1985; Nairz, Andt, and Zeilinger 2002).
+
+A second point is the question whether the theoretical structure or
+the quantitative laws of quantum theory can indeed be derived on the
+basis of the uncertainty principle, as Heisenberg wished. Serious
+attempts to build up quantum theory as a full-fledged Theory of
+Principle on the basis of the uncertainty principle have never been
+carried out. Indeed, the most Heisenberg could and did claim in this
+respect was that the uncertainty relations created “room”
+(Heisenberg 1927: 180) or “freedom” (Heisenberg 1931: 43)
+for the introduction of some non-classical mode of description of
+experimental data, not that they uniquely lead to the formalism of
+quantum mechanics. A serious proposal to approach quantum mechanics as
+a theory of principle was provided more recently by Bub (2000) and
+Chiribella & Spekkens (2016). But, remarkably, this proposal does
+not use the uncertainty relation as one of its fundamental principles.
+Third, it is remarkable that in his later years Heisenberg put a
+somewhat different gloss on his relations. In his autobiography
+Der Teil und das Ganze of 1969 he described how he had found
+his relations inspired by a remark by Einstein that “it is the
+theory which decides what one can observe”—thus giving
+precedence to theory above experience, rather than the other way
+around. Some years later he even admitted that his famous discussions
+of thought experiments were actually trivial since 
+
+
+… if the process of observation itself is subject to the laws
+of quantum theory, it must be possible to represent its result in the
+mathematical scheme of this theory. (Heisenberg 1975: 6)
+
+2.5 Mathematical elaboration
+
+When Heisenberg introduced his relation, his argument was based only
+on qualitative examples. He did not provide a general, exact
+derivation of his
+ relations.[3]
+ Indeed, he did not even give a definition of the uncertainties
+δqδq\delta q, etc., occurring in these relations. Of course, this was
+consistent with the announced goal of that paper, i.e., to provide
+some qualitative understanding of quantum mechanics for simple
+experiments.
+
+The first mathematically exact formulation of the uncertainty
+relations is due to Kennard. He proved in 1927 the theorem that for
+all normalized state vectors |ψ⟩|ψ⟩\ket{\psi} the following
+inequality holds:
+
+ΔψPΔψQ≥ℏ/2ΔψPΔψQ≥ℏ/2(9)\tag{9} 
+\Delta_{\psi}\bP \Delta_{\psi}\bQ \ge \hslash/2 
+
+
+Here, ΔψPΔψP\Delta_{\psi}\bP and
+ΔψQΔψQ\Delta_{\psi}\bQ are standard deviations of position
+and momentum in the state vector |ψ⟩|ψ⟩\ket{\psi}, i.e.,
+
+(ΔψP)2=⟨P2⟩ψ−⟨P⟩2ψ(ΔψQ)2=⟨Q2⟩ψ−⟨Q⟩2ψ(ΔψP)2(ΔψQ)2=⟨P2⟩ψ−⟨P⟩2ψ=⟨Q2⟩ψ−⟨Q⟩2ψ(10)\tag{10}
+\begin{align*}
+(\Delta_{\psi}\bP)^2 &amp;=   
+  \expval{\bP^2}_{\psi} - \expval{\bP}_{\psi}^2 \\
+(\Delta_{\psi}\bQ)^2 &amp;=  
+  \expval{\bQ^2}_{\psi} - \expval{\bQ}_{\psi}^2
+\end{align*}
+
+
+ where ⟨⋅⟩ψ=⟨ψ∣⋅∣ψ⟩⟨⋅⟩ψ=⟨ψ∣⋅∣ψ⟩\expval{\cdot}_{\psi} = \expvalexp{\cdot}{\psi}
+denotes the expectation value
+in state |ψ⟩|ψ⟩\ket{\psi}. Equivalently we can use the wave
+function ψ(q)ψ(q)\psi(q) and its Fourier transform: 
+
+ψ(q)=⟨q∣ψ⟩˜ψ(p)=⟨p∣ψ⟩=1√2πℏ∫dqe−ipq/ℏψ(q)ψ(q)ψ~(p)=⟨q∣ψ⟩=⟨p∣ψ⟩=12πℏ−−−√∫dqe−ipq/ℏψ(q)(11)\begin{align*} 
+\tag{11} \psi(q) &amp;= \braket{q}{\psi} \\
+\notag \tilde{\psi}(p) &amp; = \braket{p}{\psi} 
+   =\frac{1}{\sqrt{2\pi \hbar} }\int \! \! dq\, e^{-ipq/\hbar} \psi(q) 
+\end{align*}
+
+ to write
+(ΔψQ)2=∫dq|ψ(q)|2q2−(∫dq|ψ(q)|2q)2(ΔψP)2=∫dp|˜ψ(p)|2p2−(∫dp|˜ψ(p)|2p)2(ΔψQ)2(ΔψP)2=∫dq|ψ(q)|2q2−(∫dq|ψ(q)|2q)2=∫dp|ψ~(p)|2p2−(∫dp|ψ~(p)|2p)2\begin{align*} 
+(\Delta_\psi {\bQ})^2 &amp; = \! \int\!\! dq\, \abs{\psi(q)}^2 q^2 - 
+  \left(\int \!\!dq \, \abs{\psi(q)}^2 q \right)^2 \\ 
+(\Delta_\psi {\bP})^2 &amp; = \! \int \!\!dp \, \abs{\tilde{\psi}(p)}^2 p^2 - 
+  \left(\int\!\!dp \, \abs{\tilde{\psi}(p)}^2 p \right)^2 
+\end{align*}
+ The inequality
+ (9)
+ was generalized by Robertson (1929) who proved that for all
+observables (self-adjoint operators) A\bA and
+B\bB: 
+
+ΔψAΔψB≥12|⟨[A,B]⟩ψ|\tag{12} 
+\Delta _{\psi}\bA \Delta_{\psi}\bB \ge 
+  \frac{1}{2} \abs{\expval{[\bA,\bB]}_{\psi}}
+
+
+ where [A,B]:=AB−BA[\bA,\bB] := \bA\bB - \bB\bA denotes the commutator.
+
+Since the above inequalities
+ (9)
+ and
+ (12)
+ have the virtue of being exact, in contrast to Heisenberg’s
+original semi-quantitative formulation, it is tempting to regard them
+as the exact counterpart of Heisenberg’s relations
+ (2)–(4).
+ Indeed, such was Heisenberg’s own view. In his Chicago Lectures
+(Heisenberg 1930: 15–19), he presented Kennard’s
+derivation of relation
+ (9)
+ and claimed that “this proof does not differ at all in
+mathematical content” from his semi-quantitative argument, the
+only difference being that now “the proof is carried through
+exactly”.
+
+But it may be useful to point out that both in status and intended
+role there is a difference between Kennard’s inequality and
+Heisenberg’s previous formulation
+ (2).
+ The inequalities discussed here are not statements of empirical fact,
+but theorems of the quantum mechanical formalism. As such, they
+presuppose the validity of this formalism, and in particular the
+commutation relation
+ (1),
+ rather than elucidating its intuitive content or to create
+“room” or “freedom” for the validity of this
+formalism. At best, one should see the above inequalities as showing
+that the formalism is consistent with Heisenberg’s empirical
+principle.
+
+This situation is similar to that arising in other theories of
+principle where, as noted in
+ Section 2.4,
+ one often finds that, next to an empirical principle, the formalism
+also provides a corresponding theorem. And similarly, this situation
+should not, by itself, cast doubt on the question whether
+Heisenberg’s relation can be regarded as a principle of quantum
+mechanics.
+
+There is a second notable difference between
+ (2)
+ and
+ (9).
+ Heisenberg did not give a general definition for the
+“uncertainties” δp\delta p and δq\delta q. The most
+definite remark he made about them was that they could be taken as
+“something like the mean error”. In the discussions of
+thought experiments, he and Bohr would always quantify uncertainties
+on a case-to-case basis by choosing some parameters which happened to
+be relevant to the experiment at hand. By contrast, the inequalities
+ (9)
+ and
+ (12)
+ employ a single specific expression as a measure for
+“uncertainty”: the standard deviation. At the time, this
+choice was not unnatural, given that this expression is well-known and
+widely used in error theory and the description of statistical
+fluctuations. However, there was very little or no discussion of
+whether this choice was appropriate for a general formulation of the
+uncertainty relations. A standard deviation reflects the spread or
+expected fluctuations in a series of measurements of an observable in
+a given state. It is not at all easy to connect this idea with the
+concept of the “inaccuracy” of a measurement, such as the
+resolving power of a microscope. In fact, even though Heisenberg had
+taken Kennard’s inequality as the precise formulation of the
+uncertainty relation, he and Bohr never relied on standard deviations
+in their many discussions of thought experiments, and indeed, it has
+been shown (Uffink and Hilgevoord 1985; Hilgevoord and Uffink 1988)
+that these discussions cannot be framed in terms of standard
+deviations.
+
+Another problem with the above elaboration is that the
+“well-known” relations
+ (5)
+ are actually false if energy E\boldsymbol{E} and action
+J\boldsymbol{J} are to be positive operators (Jordan 1927). In that
+case, self-adjoint operators t\boldsymbol{t} and w\boldsymbol{w}
+do not exist and inequalities analogous to
+ (9)
+ cannot be derived. Also, these inequalities do not hold for angle and
+angular momentum (Uffink 1990). These obstacles have led to a quite
+extensive literature on time-energy and angle-action uncertainty
+relations (Busch 1990; Hilgevoord 1996, 1998, 2005; Muga et al. 2002;
+Hilgevoord and Atkinson 2011; Pashby 2015).
+3. Bohr
+
+In spite of the fact that Heisenberg’s and Bohr’s views on
+quantum mechanics are often lumped together as (part of) “the
+Copenhagen interpretation”, there is considerable difference
+between their views on the uncertainty relations.
+3.1 From wave-particle duality to complementarity
+
+Long before the development of modern quantum mechanics, Bohr had been
+particularly concerned with the problem of particle-wave duality,
+i.e., the problem that experimental evidence on the behaviour of both
+light and matter seemed to demand a wave picture in some cases, and a
+particle picture in others. Yet these pictures are mutually exclusive.
+Whereas a particle is always localized, the very definition of the
+notions of wavelength and frequency requires an extension in space and
+in time. Moreover, the classical particle picture is incompatible with
+the characteristic phenomenon of interference.
+
+His long struggle with wave-particle duality had prepared him for a
+radical step when the dispute between matrix and wave mechanics broke
+out in 1926–27. For the main contestants, Heisenberg and
+Schrödinger, the issue at stake was which view could claim to
+provide a single coherent and universal framework for the description
+of the observational data. The choice was, essentially between a
+description in terms of continuously evolving waves, or else one of
+particles undergoing discontinuous quantum jumps. By contrast, Bohr
+insisted that elements from both views were equally valid and equally
+needed for an exhaustive description of the data. His way out of the
+contradiction was to renounce the idea that the pictures refer, in a
+literal one-to-one correspondence, to physical reality. Instead, the
+applicability of these pictures was to become dependent on the
+experimental context. This is the gist of the viewpoint he called
+“complementarity”.
+
+Bohr first conceived the general outline of his complementarity
+argument in early 1927, during a skiing holiday in Norway, at the same
+time when Heisenberg wrote his uncertainty paper. When he returned to
+Copenhagen and found Heisenberg’s manuscript, they got into an
+intense discussion. On the one hand, Bohr was quite enthusiastic about
+Heisenberg’s ideas which seemed to fit wonderfully with his own
+thinking. Indeed, in his subsequent work, Bohr always presented the
+uncertainty relations as the symbolic expression of his
+complementarity viewpoint. On the other hand, he criticized Heisenberg
+severely for his suggestion that these relations were due to
+discontinuous changes occurring during a measurement process. Rather,
+Bohr argued, their proper derivation should start from the
+indispensability of both particle and wave concepts. He pointed out
+that the uncertainties in the experiment did not exclusively arise
+from the discontinuities but also from the fact that in the experiment
+we need to take into account both the particle theory and the wave
+theory. It is not so much the unknown disturbance which renders the
+momentum of the electron uncertain but rather the fact that the
+position and the momentum of the electron cannot be simultaneously
+defined in this experiment (see the “Addition in Proof” to
+Heisenberg’s paper).
+
+We shall not go too deeply into the matter of Bohr’s
+interpretation of quantum mechanics since we are mostly interested in
+Bohr’s view on the uncertainty principle. For a more detailed
+discussion of the former we refer to Scheibe (1973), Folse (1985),
+Honner (1987) and Murdoch (1987). It may be useful, however, to sketch
+some of the main points.  Central in Bohr’s considerations is
+the language we use in physics. No matter how abstract and
+subtle the concepts of modern physics may be, they are essentially an
+extension of our ordinary language and a means to communicate the
+results of our experiments.  These results, obtained under
+well-defined experimental circumstances, are what Bohr calls the
+“phenomena”. A phenomenon is “the comprehension of
+the effects observed under given experimental conditions” (Bohr
+1939: 24), it is the resultant of a physical object, a measuring
+apparatus and the interaction between them in a concrete experimental
+situation. The essential difference between classical and quantum
+physics is that in quantum physics the interaction between the object
+and the apparatus cannot be made arbitrarily small; the interaction
+must at least comprise one quantum.  This is expressed by Bohr’s
+quantum postulate:
+
+
+[… the] essence [of the formulation of the quantum theory] may
+be expressed in the so-called quantum postulate, which attributes to
+any atomic process an essential discontinuity or rather individuality,
+completely foreign to classical theories and symbolized by
+Planck’s quantum of action. (Bohr 1928: 580)
+
+
+A phenomenon, therefore, is an indivisible whole and the result of a
+measurement cannot be considered as an autonomous manifestation of the
+object itself independently of the measurement context. The quantum
+postulate forces upon us a new way of describing physical
+phenomena:
+
+
+In this situation, we are faced with the necessity of a radical
+revision of the foundation for the description and explanation of
+physical phenomena. Here, it must above all be recognized that,
+however far quantum effects transcend the scope of classical physical
+analysis, the account of the experimental arrangement and the record
+of the observations must always be expressed in common language
+supplemented with the terminology of classical physics. (Bohr 1948:
+313)
+
+
+This is what Scheibe (1973) has called the “buffer
+postulate” because it prevents the quantum from penetrating into
+the classical description: A phenomenon must always be described in
+classical terms; Planck’s constant does not occur in this
+description.
+
+Together, the two postulates induce the following reasoning. In every
+phenomenon the interaction between the object and the apparatus
+comprises at least one quantum. But the description of the phenomenon
+must use classical notions in which the quantum of action does not
+occur. Hence, the interaction cannot be analysed in this description.
+On the other hand, the classical character of the description allows
+us to speak in terms of the object itself. Instead of saying:
+“the interaction between a particle and a photographic plate has
+resulted in a black spot in a certain place on the plate”, we
+are allowed to forgo mentioning the apparatus and say: “the
+particle has been found in this place”. The experimental
+context, rather than changing or disturbing pre-existing properties of
+the object, defines what can meaningfully be said about the
+object.
+
+Because the interaction between object and apparatus is left out in
+our description of the phenomenon, we do not get the whole picture.
+Yet, any attempt to extend our description by performing the
+measurement of a different observable quantity of the object, or
+indeed, on the measurement apparatus, produces a new phenomenon and we
+are again confronted with the same situation. Because of the
+unanalyzable interaction in both measurements, the two descriptions
+cannot, generally, be united into a single picture. They are what Bohr
+calls complementary descriptions:
+
+
+[the quantum of action]…forces us to adopt a new mode of
+description designated as complementary in the sense that any given
+application of classical concepts precludes the simultaneous use of
+other classical concepts which in a different connection are equally
+necessary for the elucidation of the phenomena. (Bohr 1929: 10)
+
+
+The most important example of complementary descriptions is provided
+by the measurements of the position and momentum of an object. If one
+wants to measure the position of the object relative to a given
+spatial frame of reference, the measuring instrument must be rigidly
+fixed to the bodies which define the frame of reference. But this
+implies the impossibility of investigating the exchange of momentum
+between the object and the instrument and we are cut off from
+obtaining any information about the momentum of the object. If, on the
+other hand, one wants to measure the momentum of an object the
+measuring instrument must be able to move relative to the spatial
+reference frame. Bohr here assumes that a momentum measurement
+involves the registration of the recoil of some movable part of the
+instrument and the use of the law of momentum conservation. The
+looseness of the part of the instrument with which the object
+interacts entails that the instrument cannot serve to accurately
+determine the position of the object. Since a measuring instrument
+cannot be rigidly fixed to the spatial reference frame and, at the
+same time, be movable relative to it, the experiments which serve to
+precisely determine the position and the momentum of an object are
+mutually exclusive. Of course, in itself, this is not at all typical
+for quantum mechanics. But, because the interaction between object and
+instrument during the measurement can neither be neglected nor
+determined the two measurements cannot be combined. This means that in
+the description of the object one must choose between the assignment
+of a precise position or of a precise momentum.
+
+Similar considerations hold with respect to the measurement of time
+and energy. Just as the spatial coordinate system must be fixed by
+means of solid bodies so must the time coordinate be fixed by means of
+unperturbed, synchronised clocks. But it is precisely this requirement
+which prevents one from taking into account of the exchange of energy
+with the instrument if this is to serve its purpose. Conversely, any
+conclusion about the object based on the conservation of energy
+prevents following its development in time.
+
+The conclusion is that in quantum mechanics we are confronted with a
+complementarity between two descriptions which are united in the
+classical mode of description: the space-time description (or
+coordination) of a process and the description based on the
+applicability of the dynamical conservation laws. The quantum forces
+us to give up the classical mode of description (also called the
+“causal” mode of description by
+ Bohr[4]:
+ it is impossible to form a classical picture of what is going on when
+radiation interacts with matter as, e.g., in the Compton effect.
+
+
+Any arrangement suited to study the exchange of energy and momentum
+between the electron and the photon must involve a latitude in the
+space-time description sufficient for the definition of wave-number
+and frequency which enter in the relation [E=hνE = h\nu and p=hσp =
+h\sigma]. Conversely, any attempt of locating the collision between
+the photon and the electron more accurately would, on account of the
+unavoidable interaction with the fixed scales and clocks defining the
+space-time reference frame, exclude all closer account as regards the
+balance of momentum and energy. (Bohr 1949: 210)
+
+
+A causal description of the process cannot be attained; we have to
+content ourselves with complementary descriptions. “The
+viewpoint of complementarity may be regarded”, according to
+Bohr, “as a rational generalization of the very ideal of
+causality”.
+
+In addition to complementary descriptions Bohr also talks about
+complementary phenomena and complementary quantities. Position and
+momentum, as well as time and energy, are complementary
+ quantities.[5]
+
+
+We have seen that Bohr’s approach to quantum theory puts heavy
+emphasis on the language used to communicate experimental
+observations, which, in his opinion, must always remain classical. By
+comparison, he seemed to put little value on arguments starting from
+the mathematical formalism of quantum theory. This informal approach
+is typical of all of Bohr’s discussions on the meaning of
+quantum mechanics. One might say that for Bohr the conceptual
+clarification of the situation has primary importance while the
+formalism is only a symbolic representation of this situation.
+
+This is remarkable since, finally, it is the formalism which needs to
+be interpreted. This neglect of the formalism is one of the reasons
+why it is so difficult to get a clear understanding of Bohr’s
+interpretation of quantum mechanics and why it has aroused so much
+controversy. We close this section by citing from an article of 1948
+to show how Bohr conceived the role of the formalism of quantum
+mechanics:
+
+
+The entire formalism is to be considered as a tool for deriving
+predictions, of definite or statistical character, as regards
+information obtainable under experimental conditions described in
+classical terms and specified by means of parameters entering into the
+algebraic or differential equations of which the matrices or the
+wave-functions, respectively, are solutions. These symbols themselves,
+as is indicated already by the use of imaginary numbers, are not
+susceptible to pictorial interpretation; and even derived real
+functions like densities and currents are only to be regarded as
+expressing the probabilities for the occurrence of individual events
+observable under well-defined experimental conditions. (Bohr 1948:
+314)
+
+3.2 Bohr’s view on the uncertainty relations
+
+In his Como lecture, published in 1928, Bohr gave his own version of a
+derivation of the uncertainty relations between position and momentum
+and between time and energy. He started from the relations
+
+E=hν and p=h/λ\tag{13} E = h\nu \text{ and } p = h/\lambda
+
+
+ which connect the notions of energy EE and momentum
+pp from the particle picture with those of frequency ν\nu and
+wavelength λ\lambda from the wave picture. He noticed that a wave
+packet of limited extension in space and time can only be built up by
+the superposition of a number of elementary waves with a large range
+of wave numbers and frequencies. Denoting the spatial and temporal
+extensions of the wave packet by Δx\Delta x and Δt\Delta t, and
+the extensions in the wave number σ:=1/λ\sigma := 1/\lambda and
+frequency by Δσ\Delta \sigma and Δν\Delta \nu, it follows from
+Fourier analysis that in the most favorable case ΔxΔσ≈ΔtΔν≈1\Delta x \Delta
+\sigma \approx \Delta t \Delta \nu \approx 1, and, using (13), one
+obtains the relations 
+
+ΔtΔE≈ΔxΔp≈h\tag{14} \Delta t \Delta E \approx \Delta x \Delta p \approx h
+
+
+Note that Δx,Δσ\Delta x, \Delta \sigma, etc., are not standard
+deviations but unspecified measures of the size of a wave packet. (The
+original text has equality signs instead of approximate equality
+signs, but, since Bohr does not define the spreads exactly the use of
+approximate equality signs seems more in line with his intentions.
+Moreover, Bohr himself used approximate equality signs in later
+presentations.) These equations determine, according to Bohr: 
+
+
+the highest possible accuracy in the definition of the energy and
+momentum of the individuals associated with the wave field. (Bohr
+1928: 571).
+
+
+He noted, 
+
+
+This circumstance may be regarded as a simple symbolic expression of
+the complementary nature of the space-time description and the claims
+of causality.
+ (ibid).[6]
+
+
+
+We note a few points about Bohr’s view on the uncertainty
+relations. First of all, Bohr does not refer to discontinuous
+changes in the relevant quantities during the measurement
+process. Rather, he emphasizes the possibility of defining
+these quantities. This view is markedly different from
+Heisenberg’s view. A draft version of the Como lecture is even
+more explicit on the difference between Bohr and Heisenberg:
+
+
+These reciprocal uncertainty relations were given in a recent paper of
+Heisenberg as the expression of the statistical element which, due to
+the feature of discontinuity implied in the quantum postulate,
+characterizes any interpretation of observations by means of classical
+concepts. It must be remembered, however, that the uncertainty in
+question is not simply a consequence of a discontinuous change of
+energy and momentum say during an interaction between radiation and
+material particles employed in measuring the space-time coordinates of
+the individuals. According to the above considerations the question is
+rather that of the impossibility of defining rigorously such a change
+when the space-time coordination of the individuals is also
+considered. (Bohr 1985: 93)
+
+
+Indeed, Bohr not only rejected Heisenberg’s argument that these
+relations are due to discontinuous disturbances implied by the act of
+measuring, but also his view that the measurement process
+creates a definite result:
+
+
+The unaccustomed features of the situation with which we are
+confronted in quantum theory necessitate the greatest caution as
+regard all questions of terminology. Speaking, as it is often done of
+disturbing a phenomenon by observation, or even of creating physical
+attributes to objects by measuring processes is liable to be
+confusing, since all such sentences imply a departure from conventions
+of basic language which even though it can be practical for the sake
+of brevity, can never be unambiguous. (Bohr 1939: 24)
+
+
+Nor did he approve of an epistemological formulation or one in terms
+of experimental inaccuracies:
+
+
+[…] a sentence like “we cannot know both the momentum and
+the position of an atomic object” raises at once questions as to
+the physical reality of two such attributes of the object, which can
+be answered only by referring to the mutual exclusive conditions for
+an unambiguous use of space-time concepts, on the one hand, and
+dynamical conservation laws on the other hand. (Bohr 1948: 315; also
+Bohr 1949: 211)
+
+It would in particular not be out of place in this connection to warn
+against a misunderstanding likely to arise when one tries to express
+the content of Heisenberg’s well-known indeterminacy relation by
+such a statement as “the position and momentum of a particle
+cannot simultaneously be measured with arbitrary accuracy”.
+According to such a formulation it would appear as though we had to do
+with some arbitrary renunciation of the measurement of either the one
+or the other of two well-defined attributes of the object, which would
+not preclude the possibility of a future theory taking both attributes
+into account on the lines of the classical physics. (Bohr 1937:
+292)
+
+
+Instead, Bohr always stressed that the uncertainty relations are first
+and foremost an expression of complementarity. This may seem odd since
+complementarity is a dichotomic relation between two types of
+description whereas the uncertainty relations allow for intermediate
+situations between two extremes. They “express” the
+dichotomy in the sense that if we take the energy and momentum to be
+perfectly well-defined, symbolically ΔE=Δp\Delta E = \Delta p = 0, the
+position and time variables are completely undefined, Δx=Δt=∞\Delta x =
+\Delta t = \infty, and vice versa. But they also allow intermediate
+situations in which the mentioned uncertainties are all non-zero and
+finite. This more positive aspect of the uncertainty relation is
+mentioned in the Como lecture:
+
+
+At the same time, however, the general character of this relation
+makes it possible to a certain extent to reconcile the conservation
+laws with the space-time coordination of observations, the idea of a
+coincidence of well-defined events in space-time points being replaced
+by that of unsharply defined individuals within space-time regions.
+(Bohr 1928: 571)
+
+
+However, Bohr never followed up on this suggestion that we might be
+able to strike a compromise between the two mutually exclusive modes
+of description in terms of unsharply defined quantities. Indeed, an
+attempt to do so, would take the formalism of quantum theory more
+seriously than the concepts of classical language, and this step Bohr
+refused to take. Instead, in his later writings he would be content
+with stating that the uncertainty relations simply defy an unambiguous
+interpretation in classical terms:
+
+
+These so-called indeterminacy relations explicitly bear out the
+limitation of causal analysis, but it is important to recognize that
+no unambiguous interpretation of such a relation can be given in words
+suited to describe a situation in which physical attributes are
+objectified in a classical way. (Bohr 1948: 315)
+
+
+Finally, on a more formal level, we note that Bohr’s derivation
+does not rely on the commutation relations
+ (1)
+ and
+ (5),
+ but on Fourier analysis. These two approaches are equivalent as far
+as the relationship between position and momentum is concerned, but
+this is not so for time and energy since most physical systems do not
+have a time operator. Indeed, in his discussion with Einstein (Bohr
+1949), Bohr considered time as a simple classical variable. This even
+holds for his famous discussion of the “clock-in-the-box”
+thought-experiment where the time, as defined by the clock in the box,
+is treated from the point of view of classical general relativity.
+Thus, in an approach based on commutation relations, the
+position-momentum and time-energy uncertainty relations are not on
+equal footing, which is contrary to Bohr’s approach in terms of
+Fourier analysis. For more details see (Hilgevoord 1996 and 1998).
+4. The Minimal Interpretation
+
+In the previous two sections we have seen how both Heisenberg and Bohr
+attributed a far-reaching status to the uncertainty relations. They
+both argued that these relations place fundamental limits on the
+applicability of the usual classical concepts. Moreover, they both
+believed that these limitations were inevitable and forced upon us.
+However, we have also seen that they reached such conclusions by
+starting from radical and controversial assumptions. This entails, of
+course, that their radical conclusions remain unconvincing for those
+who reject these assumptions. Indeed, the operationalist-positivist
+viewpoint adopted by these authors has long since lost its appeal
+among philosophers of physics.
+
+So the question may be asked what alternative views of the uncertainty
+relations are still viable. Of course, this problem is intimately
+connected with that of the interpretation of the wave function, and
+hence of quantum mechanics as a whole. Since there is no consensus
+about the latter, one cannot expect consensus about the interpretation
+of the uncertainty relations either. Here we only describe a point of
+view, which we call the “minimal interpretation”, that
+seems to be shared by both the adherents of the Copenhagen
+interpretation and of other views.
+
+In quantum mechanics a system is supposed to be described by its wave
+function, also called its quantum state or state vector. Given the
+state vector |ψ⟩\ket{\psi}, one can derive probability
+distributions for all the physical quantities pertaining to the
+system, usually called its observables, such as its position,
+momentum, angular momentum, energy, etc. The operational meaning of
+these probability distributions is that they correspond to the
+distribution of the values obtained for these quantities in a long
+series of repetitions of the measurement. More precisely, one imagines
+a great number of copies of the system under consideration, all
+prepared in the same way. On each copy the momentum, say, is measured.
+Generally, the outcomes of these measurements differ and a
+distribution of outcomes is obtained. The theoretical momentum
+distribution derived from the quantum state is supposed to coincide
+with the hypothetical distribution of outcomes obtained in an infinite
+series of repetitions of the momentum measurement. The same holds,
+mutatis mutandis, for all the other physical quantities
+pertaining to the system. Note that no simultaneous measurements of
+two or more quantities are required in defining the operational
+meaning of the probability distributions.
+
+The uncertainty relations discussed above can be considered as
+statements about the spreads of the probability distributions of the
+several physical quantities arising from the same state. For example,
+the uncertainty relation between the position and momentum of a system
+may be understood as the statement that the position and momentum
+distributions cannot both be arbitrarily narrow—in some sense of
+the word “narrow”—in any quantum state. Inequality
+ (9)
+ is an example of such a relation in which the standard deviation is
+employed as a measure of spread. From this characterization of
+uncertainty relations follows that a more detailed interpretation of
+the quantum state than the one given in the previous paragraph is not
+required to study uncertainty relations as such. In particular, a
+further ontological or linguistic interpretation of the notion of
+uncertainty, as limits on the applicability of our concepts given by
+Heisenberg or Bohr, need not be supposed.
+
+Of course, this minimal interpretation leaves the question open
+whether it makes sense to attribute precise values of position and
+momentum to an individual system. Some interpretations of quantum
+mechanics, e.g., those of Heisenberg and Bohr, deny this; while
+others, e.g., the interpretation of de Broglie and Bohm insist that
+each individual system has a definite position and momentum (see the
+entry on
+ Bohmian mechanics).
+ The only requirement is that, as an empirical fact, it is not
+possible to prepare pure ensembles in which all systems have the same
+values for these quantities, or ensembles in which the spreads are
+smaller than allowed by quantum theory. Although interpretations of
+quantum mechanics, in which each system has a definite value for its
+position and momentum are still viable, this is not to say that they
+are without strange features of their own; they do not imply a return
+to classical physics.
+
+We end with a few remarks on this minimal interpretation. First, it
+may be noted that the minimal interpretation of the uncertainty
+relations is little more than filling in the empirical meaning of
+inequality
+ (9).
+ As such, this view shares many of the limitations we have noted above
+about this inequality. Indeed, it is not straightforward to relate the
+spread in a statistical distribution of measurement results with the
+inaccuracy of this measurement, such as, e.g., the resolving
+power of a microscope, or of a disturbance of the system by
+the measurement. Moreover, the minimal interpretation does not address
+the question whether one can make simultaneous accurate
+measurements of position and momentum.
+
+As a matter of fact, one can show that the standard formalism of
+quantum mechanics does not allow such simultaneous measurements. But
+this is not a consequence of relation
+ (9).
+ Rather, it follows from the fact that this formalism simply does not
+contain any observable that would accomplish such a task. The
+extension of this formalism that allows observables to be represented
+by positive-operator-valued measures or POVM’s, does allow the
+formal introduction of observables describing joint measurements (see
+also
+ section 6.1).
+ But even here, for the case of position and momentum, one finds that
+such measurements have to be “unsharp”, which entails that
+they cannot be regarded as simultaneous accurate measurements.
+
+If one feels that statements about inaccuracy of measurement, or the
+possibility of simultaneous measurements, belong to any satisfactory
+formulation of the uncertainty principle, one will need to look for
+other formulations of the uncertainty principle. Some candidates for
+such formulations will be discussed in
+ Section 6.
+ First, however, we will look at formulations of the uncertainty
+principle that stay firmly within the minimal interpretation, and
+differ from
+ (9)
+ only by using measures of uncertainty other than the standard
+deviation.
+5. Alternative measures of uncertainty
+
+While the standard deviation is the most well-known quantitative
+measure for uncertainty or the spread in the probability distribution,
+it is not the only one, and indeed it has distinctive drawbacks that
+other such measures may lack. For example, in the definition of the
+standard deviations
+ (11)
+ one can see that that the probability density function 
+|ψ(q)|2\abs{\psi(q)}^2 is weighed by a quadratic factor q2q^2 that
+puts increasing emphasis on its tails. Therefore, the value of
+ΔψQ\Delta_\psi \bQ will depend predominantly at how this
+density behaves at the tails: if these falls off very quickly, e.g.,
+like a Gaussian, it will be small, but if the tails drop off only
+slowly the standard deviation may be very large, even when most
+probability is concentrated in a small interval.
+
+The upshot of this objection is that having a lower bound on the
+product of the standard deviations of position and momentum, as the
+Heisenberg-Kennard uncertainty relation
+ (9)
+ gives, does not by itself rule out a state where both the
+probability densities for position and momentum are extremely
+concentrated, in the sense of having more than (1−ϵ)(1- \epsilon) of
+their probability concentrated in a a region of size smaller than
+δ\delta, for any choice of ϵ,δ>0\epsilon, \delta &gt;0. This means,
+in our view, that relation
+ (9)
+ actually fails to express what most physicists would take to be the
+very core idea of the uncertainty principle.
+
+One way to deal with this objection is to consider alternative
+measures to quantify the spread or uncertainty associated with a
+probability density. Here we discuss two such proposals.
+5.1 Landau-Pollak uncertainty relations
+
+The most straightforward alternative is to pick some value α\alpha
+close to one, say α=0.9\alpha = 0.9, and ask for the width of the
+smallest interval that supports the fraction α\alpha of the total
+probability distribution in position and similarly for momentum:
+Wα(Q,ψ):=inf|I|{I:∫I|ψ(q)|2dq≥α}Wβ(P,ψ):=infI{∫I|˜ψ(p)|2dp≥β}\begin{align*} 
+\tag{15} W_{\alpha}(\bQ, \psi) &amp;:=
+ \inf_{\abs{I}} \left\{ I: \int_I {\abs{\psi(q)}}^2 dq \geq \alpha \right\} \\ 
+\notag W_{\beta}(\bP,\psi) &amp;:= \inf_I \left\{\int_I \abs{\tilde\psi(p)}^2 dp \geq \beta \right\} 
+\end{align*}
+
+In a previous work (Uffink and Hilgevoord 1985) we called such
+measures bulk widths, because they indicate how concentrated
+the ”bulk” (i.e., fraction α\alpha or β\beta) of the
+probability distribution is. Landau and Pollak (1961) obtained an
+uncertainty relation in terms of these bulk widths. 
+
+Wα(Q,ψ)Wβ(P,ψ)≥2πℏ(αβ−√(1−α)(1−β))2if α+β≥1/2\begin{align*}
+\tag{16} W_\alpha (\bQ, \psi) W_\beta (\bP, \psi) &amp;\geq 
+ 2\pi \hbar \left( \alpha \beta - \sqrt{(1-\alpha)(1-\beta)} \right)^2 \\
+\notag &amp;\mbox{if } \alpha+ \beta \geq 1/2 
+\end{align*}\label{LP}
+
+
+This Landau-Pollak inequality shows that if the choices of α,β\alpha,
+\beta are not too low, there is a state-independent lower bound on
+the product of the bulk widths of the position and momentum
+distribution for any quantum state.
+
+Note that bulk widths are not so sensitive to the behavior of the
+tails of the distributions and, therefore, the Landau-Pollak
+inequality is immune to the objection above.Thus, this inequality
+expresses constraints on quantum mechanical states not contained in
+relation
+ (9).
+ Further, by the well-known Bienaymé-Chebyshev inequality, one
+has 
+Wα(Q,ψ)≤2√1−αΔψQWβ(P,ψ)≤2√1−βΔψP\begin{align*} 
+\tag{17} W_\alpha (\bQ,\psi) &amp;\leq \frac{2}{\sqrt {1- \alpha}} \Delta_\psi \bQ \\ 
+\notag   W_\beta (\bP, \psi) &amp;\leq \frac{2}{\sqrt {1- \beta}} \Delta_\psi \bP 
+\end{align*}
+
+ so that inequality
+ (16)
+ implies (by choosing α,β\alpha,\beta optimal) that ΔψQΔψP≥0.12ℏ \Delta_\psi
+\bQ \Delta_\psi \bP \geq 0.12 \hbar . This,
+obviously, is not the best lower bound for the product of standard
+deviations, but the important point is here that the Landau-Pollak
+inequality
+ (16)
+ in terms of bulk widths implies the existence of a lower
+bound on the product of standard deviations, while conversely, the
+Heisenberg-Kennard equality
+ (9)
+ does not imply any bound on the product of bulk widths. A
+generalization of this approach to non-commuting observables in a
+finite-dimensional Hilbert space is discussed in Uffink 1990.
+5.2 Entropic uncertainty relations
+
+Another approach to express the uncertainty principle is to use
+entropic measures of uncertainty. The foremost example of these is the
+Shannon entropy, which for the position and momentum
+distribution of a given state vector |ψ⟩\ket{\psi} may be
+defined as: 
+H(Q,ψ):=−∫|ψ(q)|2ln|ψ(q)|2dqH(P,ψ):=−∫|˜ψ(p)|2ln|˜ψ(p)|2dp\begin{align*} 
+\tag{18} H(\bQ, \psi) &amp;:= -\int \abs{\psi(q)}^2 \ln \abs{\psi(q)}^2 dq \\ 
+\notag   H(\bP, \psi) &amp;:= -\int \abs{\tilde{\psi}(p)}^2 \ln \abs{\tilde{\psi}(p)}^2 dp 
+\end{align*}
+
+ One can then show (see Beckner 1975;
+Białinicki-Birula and Micielski 1975) that 
+
+H(Q,ψ)+H(P,ψ)≥ln(eπℏ)\tag{19} H(\bQ, \psi) + H(\bP,\psi) \geq \ln (e \pi \hbar) 
+
+
+A nice feature of this entropic uncertainty relation is that it
+provides a strict improvement of the Heisenberg-Kennard relation. That
+is to say, one can show (independently of quantum theory) that for any
+probability density function p(x)p(x) 
+−∫p(x)lnp(x)dx≤ln(√2πeΔx)\tag{20} -\int\!  p(x) \ln p(x) dx \leq  \ln (\sqrt{2 \pi e} \Delta x )
+
+Applying this to the inequality
+ (19)
+ we get: 
+ℏ2≤(2πe)−1exp(H(Q,ψ)+H(P,ψ))≤ΔψQΔψP\tag{21}
+\frac{\hslash}{2} \leq(2\pi e)^{-1} \exp (H(\bQ, \psi) + H(\bP,\psi)) \leq 
+  \Delta_\psi \bQ\Delta_\psi \bP
+
+
+ showing that the entropic uncertainty relation
+implies the Heisenberg-Kennard uncertainty relation. A drawback of
+this relation is that it does not completely evade the objection
+mentioned above, (i.e., these entropic measures of uncertainty can
+become as large as one pleases while 1−ϵ1-\epsilon of the probability
+in the distribution is concentrated on a very small interval), but the
+examples needed to show this are admittedly more far-fetched.
+
+For non-commuting observables in a nn-dimensional Hilbert space,
+one can similarly define an entropic uncertainty in the probability
+distribution |⟨ai∣ψ⟩|2\abs{\braket{a_i}{\psi}}^2 for a
+given state |ψ⟩\ket{\psi} and a complete set of
+eigenstates |ai⟩\ket{a_i}, (i=1,…n) (i= 1, \ldots n), of the
+observable A\bA: 
+H(A,ψ):=−n∑i=1|⟨ai∣ψ⟩|2ln|⟨ai∣ψ⟩|2\tag{22} 
+H(\bA ,\psi) := -\sum_{i=1}^n \abs{\braket{a_i}{\psi}}^2 \ln \abs{\braket{a_i}{\psi}}^2
+
+
+ and H(B,ψ)H(\bB,\psi) similarly in terms of the probability distribution 
+|⟨bj∣ψ⟩|2\abs{\braket{b_j}{\psi}}^2 for a complete set
+of eigenstates |bj⟩\ket{b_j}, (j=1,…,nj =1, \ldots, n) of
+observable B\bB. Then we obtain the uncertainty relation
+(Maassen and Uffink 1988):
+H(bA,ψ)+H(B,ψ)≥2lnmaxi,j|⟨ai∣bj⟩|,\tag{23} 
+H( bA, \psi) + H(\bB, \psi) \geq 2 \ln \max_{i,j} \abs{\braket{a_i}{b_j}},
+
+
+ which was further generalized and improved
+by (Frank and Lieb 2012). The most important advantage of these
+relations is that, in contrast to Robertson’s inequality
+ (12),
+ the lower bound is a positive constant, independent of the state.
+6. Uncertainty relations for inaccuracy and disturbance
+
+Both the standard deviation and the alternative measures of
+uncertainty considered in the previous subsection (and many more that
+we have not mentioned!) are designed to indicate the width or spread
+of a single given probability distribution. Applied to quantum
+mechanics, where the probability distributions for position and
+momentum are obtained from a given quantum state vector, one can use
+them to formulate uncertainty relations that characterize the spread
+in those distribution for any given state. The resulting inequalities
+then express limitations on what state-preparations quantum mechanics
+allows. They are thus expressions of what may be called a
+preparation uncertainty principle:
+
+
+In quantum mechanics, it is impossible to prepare any system in a
+state |ψ⟩\ket{\psi} such that its position and momentum
+are both precisely predictable, in the sense of having both the
+expected spread in a measurement of position and the expected spread
+in a momentum measurement arbitrarily small.
+
+
+The relations
+ (9,
+ 16,
+ 19)
+ all belong to this category; the mere difference being that they
+employ different measures of spread: viz. the standard deviation, the
+bulk width or the Shannon entropy.
+
+Note that in this formulation, there is no reference to simultaneous
+or joint measurements, nor to any notion of accuracy like the
+resolving power of the measurement instrument, nor to the issue of how
+much the system in the state that is being measured is
+disturbed by this measurement. This section is devoted to
+attempts that go beyond the mold of this preparation uncertain
+principle.
+6.1 The recent debate on error-disturbance relations
+
+We have seen that in 1927 Heisenberg argued that the measurement of
+(say) position must necessarily disturb the conjugate variable (i.e.,
+momentum) by an amount that is inversely proportional to the
+inaccuracy of measurement of the former. We have also seen that this
+idea was not maintained in the Kennard’s uncertainty relation
+ (9),
+ a relation that was embraced by Heisenberg (1930) and most textbooks.
+
+A rather natural question thus arises whether there are further
+inequalities in quantum mechanics that would address
+Heisenberg’s original thinking more directly, i.e., that do deal
+with how much one variable is disturbed by the accurate measurement of
+another. That is, we will look at attempts that would establish a
+claim which may be called a measurement uncertainty
+principle.
+
+
+In quantum mechanics, there is no measurement procedure by which one
+can accurately measure the position of a system without disturbing it
+momentum, in the sense that some measure of inaccuracy in position and
+some measure of the disturbance of momentum of the system by the
+measurement cannot both be arbitrarily small.
+
+
+This formulation of the uncertainty principle has always remained
+controversial. Uncertainty relations that would express this alleged
+principle are often called “error-disturbance” relations
+or “noise-disturbance” relations We will look at two
+recent proposals to search for such relations: Ozawa (2003) and Busch,
+Lahti, and Werner (2013).
+
+In Ozawa’s approach, we assume that a system S\cal S of
+interest in state |ψ⟩\ket{\psi} is coupled to a
+measurement device M\cal M in state |χ⟩\ket{\chi}, and
+their interaction is governed by a unitary operator UU. On the
+Hilbert space of the joint system the observable Q\bQ of
+the system S\cal S we are interested in is represented by
+Qin=Q⊗1\tag{24} \bQ_{\rm in}  =   \bQ  \otimes \mathbb{1}
+
+ The measurement interaction will allow us to perform an
+(inaccurate) measurement of this quantity by reading off a pointer
+observable Q′\boldsymbol{Q'} of the measurement device after the
+interaction. Hence this inaccurate observable may be represented as
+Q′out=U†(1⊗Q′)U\tag{25}
+\bQ'_{\rm out} = U^\dagger( \mathbb{1} \otimes \bQ') U
+
+The measure of noise in the measurement of Q\bQ is then
+chosen as: 
+ϵψ(Q):=⟨(Q′out−Qin)2⟩1/2ψ⊗χ\tag{26} 
+\epsilon_\psi(\bQ) := \expval{(\bQ'_{\rm out} - \bQ_{\rm in})^2}_{\psi \otimes \chi}^{1/2}
+
+A comparison of the initial momentum 
+ Pin=P⊗1\bP_{\rm in} = \bP \otimes \mathbb{1} 
+and the final momentum after the measurement 
+ Pout=U†(P⊗1)U\bP_{\rm out} = U^\dagger (\bP \otimes \mathbb{1})U is made by choosing 
+a measure of the disturbance of P\bP by the measurement procedure: 
+ηψ(P):=⟨(Pin−Pout)2⟩1/2ψ⊗χ\tag{27} 
+\eta_\psi(\bP):= \expval{(\bP_{\rm in} - \bP_{\rm out})^2}_{\psi\otimes\chi}^{1/2}
+
+
+ Ozawa
+obtained an inequality involving those two measures, which, however,
+is more involved than previous uncertainty relations. For our
+purposes, however, the important point is that Ozawa showed that the
+product ϵψ(Q)ηψ(P)\epsilon_\psi (\bQ) \eta_\psi (\bP)
+has no positive lower bound. His conclusion from this was that
+Heisenberg’s noise-disturbance relation is violated.
+
+Yet, whether Ozawa’s result indeed succeeds in formulating
+Heisenberg’s qualitative discussion of disturbance and accuracy
+in the microscope example has come under dispute. See Busch, Lahti and
+Werner (2013, and 2014 (Other Internet Resources)), and Ozawa (2013,
+Other Internet Resources).
+
+An objection raised in this dispute is that a quantity like
+⟨(Q′out−Qin)2⟩1/2\expval{(\bQ'_{\rm out} - \bQ_{\rm in})^2}^{1/2} tells us very
+little about how good the observable Q′out{\bQ'}_{\rm out} can stand in
+as an inaccurate measurement of Qin\bQ_{\rm in}. The main point to
+observe here is that these operators generally do not commute, and
+that measurements of Q′out\bQ'_{\rm out}, of Qin\bQ_{\rm in} and of
+their difference will require altogether three different measurement
+contexts. To require that ϵψ(Q)\epsilon_\psi(\bQ) vanishes, for
+example, means only that the state prepared belongs to the linear
+subspace corresponding to the zero eigenvalue of the operator 
+Q′out−Qin\bQ'_{\rm out} - {\bQ}_{\rm in}, and therefore that 
+⟨Q′out⟩ψ=⟨Qin⟩ψ\expval{\bQ'_{\rm out}}_\psi = \expval{\bQ_{\rm in}}_\psi, 
+but this does not preclude that the probability
+distribution of Qout\bQ_{\rm out} in state ψ\psi might be wildly
+different from that of Qin\bQ_{\rm in}. But then no one would think
+of Qout\bQ_{\rm out} as an accurate measurement of Qin\bQ_{\rm in}
+so that the definition of ϵψ(Q)\epsilon_\psi(\bQ) does not express what
+it is supposed to express. A similar objection can also be raised
+against ηψ(P)\eta_\psi (\bP).
+
+Another observation is that Ozawa’s conclusion that there is no
+lower bound for his error-disturbance product for is not at all
+surprising. That is, even without probing the system by a measurement
+apparatus, one can show that such a lower bound does not exist. If the
+initial state of a system is prepared at time t=0t=0 as a Gaussian
+quasi-monochromatic wave packet with ⟨Q0⟩ψ=0\expval{\bQ_0}_\psi =0 and 
+evolves freely, we can use a time-of-flight
+measurement to learn about its later position. Ehrenfest’s
+theorem tells us: ⟨Qt⟩ψ=tm⟨P⟩ψ\expval{\bQ_t}_\psi = \frac{t}{m} \expval{\bP}_\psi.
+
+Hence, as an approximative measurement of the position
+Qt\bQ_t, one could propose the observable
+Q′t=tmP\bQ'_t = \frac{t}{m}\bP. It is known that
+under the stated conditions (and with mm and tt large) this
+approximation holds very well, i.e., we do not only have 
+⟨Q′t−Qt⟩ψ=0\expval{\bQ'_t -\bQ_t}_\psi =0, but also 
+⟨(Q′t−Qt)2⟩≈0\expval{(\bQ'_t -\bQ_t)^2} \approx 0,
+as nearly as we please. But since Q′t\bQ'_t is just the
+momentum multiplied by a constant, its measurement will obviously not
+disturb the momentum of the system. In other words, for this example,
+one has ϵψ(Q)\epsilon_\psi (\bQ) as small as we please with
+zero disturbance of the momentum. Therefore, any hopes that there
+could be a positive lower bound for the product ϵψ(Q)ηψ(P)\epsilon_\psi
+(\bQ) \eta_\psi (\bP) seem to be dashed, even
+with the simplest of measurement schemes, i.e. a free evolution.
+
+Ozawa’s results do not show that Heisenberg’s analysis of
+the microscope argument was wrong. Rather, they throw doubt on the
+appropriateness of the definitions he used to formalize
+Heisenberg’s informal argument.
+
+An entirely different analysis of the problem of substantiating a
+measurement uncertainty relation was offered by Busch, Lahti, and
+Werner (2013). These authors consider a measurement device M\cal M
+that makes a joint unsharp measurement of both position and momentum.
+To describe such joint unsharp measurements, they employ the extended
+modern formalism that characterizes obervables not by self-adjoint
+operators but by positive-operator-valued measures (POVM’s). In
+the present case, this means that the measurement procedure is
+characterized by a collection of positive operators, M(p,q)M(p,q), where
+the pair p,qp,q represent the outcome variables of the measurement,
+with 
+
+M(p,q)≥0,∬dpdqM(p,q)=1.\tag{28}
+M(p,q) \geq 0, \iint \! dp dq \, M(p,q) =\mathbb{1} .
+
+
+The two marginals of this POVM, 
+M1(q)=∫dpM(p,q)M2(p)=∫dqM(p,q)\tag{29}
+\begin{align*}
+M_1(q)   &amp;= \int\! dp  M(p,q)\\
+M_2(p)   &amp;= \int\! dq  M(p,q)
+\end{align*}
+
+
+ are also POVM’s in
+their own right and represent the unsharp position Q′Q' and unsharp
+momentum P′P' observables respectively. (Note that these do
+not refer to a self-adjoint operator!)
+
+For a system prepared in a state |ψ⟩\ket{\psi}, the joint
+probability density of obtaining outcomes (p,q)(p,q) in the joint
+unsharp measurement
+ (28)
+ is then 
+
+ρ(p,q):=⟨ψ∣M(p,q)∣ψ⟩,\tag{30}
+\rho(p,q) := \expvalexp{M(p,q)}{\psi},
+
+ while the marginals of this joint probability
+distribution give the distributions for Q′Q' and P′P'.
+
+μ′(q):=∫dpρ(p,q)=⟨ψ∣M1(q)∣ψ⟩ν′(p):=∫dpρ(p,q)=⟨ψ∣M2(q)∣ψ⟩\begin{align*} 
+\tag{31} \mu'(q) &amp;: = \int \! dp \, \rho(p,q) = \expvalexp{M_1(q)}{\psi} \\
+\notag  \nu'(p) &amp;:= \int \! dp \, \rho(p,q) = \expvalexp{M_2(q)}{\psi} 
+\end{align*}
+
+
+ Since a joint sharp measurement of position and momentum
+is impossible in quantum mechanics, these marginal distributions
+ (31)
+ obtained from MM will differ from that of ideal measurements of
+Q\bQ and of P\bP on the system of interest
+in state |ψ⟩\ket{\psi}. However, one can indicate how
+much these marginals deviate from separate exact position and momentum
+measurements on the state |ψ⟩\ket{\psi} by a pairwise
+comparison of
+ (31)
+ to the exact distributions 
+
+μ(q):=|⟨q∣ψ⟩|2ν(p):=|⟨p∣ψ⟩|2\begin{align*}
+\tag{32} \mu(q)  &amp;:= \abs{\braket{q}{\psi}}^2 \\
+\notag   \nu(p)  &amp;:= \abs{\braket{p}{\psi}}^2
+\end{align*}
+
+
+In order to do so, BLW propose a distance function DD between
+probability distributions, such that D(μ,μ′)D(\mu, \mu') tells us how
+close the marginal position distribution μ′(q)\mu'(q) for the unsharp
+position Q′Q' is to the exact distribution μ(q)\mu(q) in a sharp
+position measurement, and likewise, D(ν,ν′)D(\nu ,\nu') tells us how
+close the marginal momentum distribution ν′(p)\nu'(p) for P′P' is to
+the the exact momentum distribution ν(p)\nu(p).
+
+The distance they chose is the Wasserstein-2 distance, a.k.a. (a
+variation on) the earth-movers distance.
+
+Definition (Wasserstein-2 distance)
+
+Let μ(x)\mu(x) and μ′(y)\mu'(y) be any two probability distributions on
+the real line, and γ(x,y)\gamma(x,y) any joint probability distribution
+that has μ′\mu' and μ\mu as its marginals. Then: 
+
+D(μ,μ′):=infγ(∬(x−y)2γ(x,y)dxdy)1/2\tag{33} 
+D(\mu, \mu') := \inf_\gamma \left(\iint (x-y)^2 \gamma (x,y) dx dy \right)^{1/2}
+
+
+Applying this definition to the case at hand, i.e.  pairwise to the
+quantum mechanical distributions μ′(q)\mu'(q) and μ(q)\mu(q) and to
+ν′(p)\nu'(p) and ν(p)\nu(p) in
+ (31)
+ and
+ (32),
+ BLW’s final step is to take a supremum over all possible input
+states |ψ⟩\ket{\psi} to obtain 
+Δ(Q,Q′)=sup|ψ⟩D(μ,μ′)Δ(P,P′)=sup|ψ⟩D(ν,ν′)\tag{34}
+\begin{align*}
+\Delta(Q, Q') &amp; =   \sup_{\ket{\psi}}  D(\mu, \mu')  \\
+\Delta(P, P') &amp; =   \sup_{\ket{\psi}}  D(\nu, \nu')
+\end{align*}
+
+ From these
+definitions, they obtain 
+Δ(Q,Q′)Δ(P,P′)≥ℏ2\tag{35}\Delta(Q, Q')   \Delta (P,P')   \geq   \frac{\hbar}{2}
+
+Arguing that Δ(Q,Q′)\Delta(Q, Q') provides a sensible measure for the
+inaccuracy or noise about position, and Δ(P,P′)\Delta(P, P') for the
+disturbance of momentum by any such joint unsharp measurement, the
+authors conclude, in contrast to Ozawa’s analysis, that an
+error-disturbance uncertainty relation does hold, which they take as
+“a remarkable vindication of Heisenberg’s
+intuitions” in the microscope thought experiment.
+
+In comparison of the two, there are a few positive remarks to make
+about the Busch-Lahti-Werner (BLW) approach. First of all, by focusing
+on the distance
+ (33)
+ this approach is comparing entire probability distributions
+rather than just the expectations of operator differences. When this
+distance is very small, one is justified to conclude that the
+distribution has changed very little under the measurement procedure.
+This brings us closer to the conclusion that the error or disturbance
+introduced is small. Secondly, by introducing a supremum over all
+states to obtain Δ(Q,Q′)\Delta( Q, Q'), it follows that when this latter
+expression is small, the measured distribution μ′\mu' differs only
+little from the exact distribution μ\mu whatever the state of
+the system is. As the authors argue, this means that
+Δ(Q,Q′)\Delta(Q,Q') can be seen as a figure-of-merit of the measurement
+device alone, and in this sense analogous to the resolving power of a
+microscope.
+
+But we also think there is an undesirable feature of the BLW approach.
+This is due to the supremum over states appearing twice, both
+in Δ(Q,Q′)\Delta(Q,Q') and in Δ(P,P′)\Delta(P,P'). This feature, we argue,
+deprives their result from practical applicability.
+
+To elucidate: In concrete applications, one would prepare a system in
+some state (not exactly known) and perform a given joint measurement
+MM of Q′Q' and P′P'. If it is given that, say, Δ(Q,Q′)\Delta(Q,Q')
+is very small, one can safely infer that QQ has been measured with
+small inaccuracy, since this guarantees that the measured position
+distribution differs very little from what an exact position
+measurement would give, regardless of the state of the system. Now,
+one would like to be able to infer that in this case the disturbance
+of the momentum PP from P′P' must be considerable for the
+state prepared. But the BLW only gives us: 
+Δ(P,P′)=sup|ψ⟩D(ν,ν′)≥ℏ2Δ(Q,Q′)
+\Delta(P, P') = \sup_{\ket{\psi}} D(\nu, \nu') \geq 
+   \frac{\hbar}{2 \Delta(Q, Q')}
+
+
+ and this
+does not imply anything for the state in question! Thus, the BLW
+uncertainty relation does not rule out that for some states it might
+be possible to perform a joint measurement in which both D(μ,μ′)D(\mu,
+\mu') and D(ν,ν′)D(\nu, \nu') are very small, and in this sense have
+negligibe error and disturbance. It seems premature to say that this
+vindicates Heisenberg’s intuitions.
+
+Summing up, we emphasize that there is no contradiction between the
+BLW analysis and the Ozawa analysis: where Ozawa claims that the
+product of two quantities might for some states be less than the usual
+limit, BLW show that product of different quantities will satisfy this
+limit. The dispute is not about mathematically validity, but about how
+reasonable these quantities are to capture Heisenberg’s
+qualitative considerations. The present authors feel that, in this
+dispute, Ozawa’s analysis fail to be convincing. On the other
+hand, we also think that the BLW uncertainty relation is not
+satisfactory. Also, we would like to remark that both protagonists
+employ measures that are akin to standard deviations in being very
+sensitive to the tail behavior of probability distributions, and thus
+face a similar objection as raised in
+ section 5.
+ The final word in this dispute on whether a measurement uncertainty
+principle holds has not been reached, in our view.

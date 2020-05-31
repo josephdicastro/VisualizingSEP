@@ -1,0 +1,852 @@
+In the early years of the twentieth century, Gottlob Frege and David
+Hilbert, two titans of mathematical logic, engaged in a controversy
+regarding the correct understanding of the role of axioms in
+mathematical theories, and the correct way to demonstrate consistency
+and independence results for such axioms. The controversy touches on a
+number of difficult questions in logic and the philosophy of logic,
+and marks an important turning-point in the development of modern
+logic. This entry gives an overview of that controversy and of its
+philosophical underpinnings.
+ 
+1. Introduction
+
+In June 1899, at a ceremony marking the installation of the new
+Gauss-Weber monument in Göttingen, David Hilbert delivered a
+lecture on the foundations of geometry. Published later that year by
+Teubner under the title “Grundlagen der
+Geometrie” (“Foundations of Geometry”), the
+piece stands as a watershed in the development of modern mathematics
+and logic. Though the subject-matter of the work is geometry, its
+lasting influence concerns more broadly the role of axioms in
+mathematical theories, and the systematic treatment of such
+metatheoretical questions as consistency and independence. By
+presenting a rich trove of consistency and independence
+demonstrations, Hilbert displays here the power of the
+“formal” approach to axioms, and lays the groundwork for
+what soon becomes our own contemporary model-theoretic approach to
+formal systems. (For the historical background to Hilbert’s
+treatment of axioms, see Hallett 2012 and
+ Nineteenth Century Geometry;
+ for the role of Hilbert’s work in the development of model
+theory, see
+ model theory
+ and Eder & Schiemer 2018.)
+
+Hilbert’s lecture and monograph inspired a sharp reaction from
+his contemporary Gottlob Frege, who found both Hilbert’s
+understanding of axioms, and his approach to consistency and
+independence demonstrations, virtually incomprehensible and at any
+rate seriously flawed. Frege’s reaction is first laid out in his
+correspondence with Hilbert from December 1899 to September 1900, and
+subsequently in two series of essays (both entitled “On the
+Foundations of Geometry”) published in 1903 and 1906. Hilbert
+was never moved by Frege’s criticisms, and did not respond to
+them after 1900. Frege, for his part, was never convinced of the
+reliability of Hilbert’s methods, and held until the end that
+the latter’s consistency and independence proofs were fatally
+ flawed.[1]
+
+
+In this philosophical debate between the two mathematicians, we see a
+clash between two quite different ways of understanding the nature of
+mathematical theories and of their justification. The difference of
+opinion over the success of Hilbert’s consistency and
+independence proofs is, as detailed below, the result of significant
+differences of opinion over such fundamental issues as: how to
+understand the content of a mathematical theory, what a successful
+axiomatization consists in, what the “truths” of a
+mathematical theory really are, and finally, what one is really asking
+when one asks about the consistency of a set of axioms or the
+independence of a given mathematical statement from others.
+
+In what follows, we look briefly at Hilbert’s technique in
+Foundations of Geometry, detail Frege’s various
+criticisms thereof, and finally outline the overall conceptions of
+logic that give rise to the differences.
+2. Hilbert’s Foundations of Geometry
+
+Hilbert’s work in Foundations of Geometry (hereafter
+referred to as “FG”) consists primarily of laying out a
+clear and precise set of axioms for Euclidean geometry, and of
+demonstrating in detail the relations of those axioms to one another
+and to some of the fundamental theorems of geometry. In particular,
+Hilbert demonstrates the consistency of various sub-groups of the
+axioms, the independence of a number of axioms from others, and
+various relations of provability and of independence of important
+theorems from specific sub-groups of the axioms. Included are new
+demonstrations of the consistency of the entire set of axioms for
+Euclidean geometry, and of the independence of the axiom of parallels
+from the other Euclidean axioms.
+
+The notion of “independence” at issue here is that of
+non-provability: to say that a given statement is independent
+of a collection of statements is to say that it is not provable
+from them, or equivalently that the collection does not logically
+entail that statement. Consistency, too, is understood in terms of
+provability: to say that a collection of statements is consistent is
+to say that no contradiction is provable from it. Hence the two
+notions, consistency and independence, are inter-definable: a set of
+statements is consistent if an arbitrarily-chosen contradiction is
+independent of it, and a statement S is independent of a set
+C if the set C∪∼SC∪∼SC \cup {\sim}S is consistent.
+
+Hilbert’s consistency demonstrations in FG are all
+demonstrations of relative consistency, which is to say that
+in each case the consistency of a set AX of geometric axioms is
+reduced to that of a familiar background theory B,
+demonstrating that AX is consistent if B is. The
+important technique Hilbert employs is the reinterpretation
+of the geometric terms appearing in AX in such a way that, as
+reinterpreted, the members of AX express theorems of B.
+For example, Hilbert’s first consistency-proof interprets the
+terms “point”, “line”, and “lies
+on” as standing respectively for a particular collection of
+ordered pairs of real numbers, for a collection of ratios of real
+numbers, and for an algebraically-defined relation between such pairs
+and ratios; under this reinterpretation, the geometric sentences in
+question express theorems of the background theory of real
+numbers.
+
+That such a reinterpretation strategy guarantees relative consistency
+can be seen via the following reasoning: If the set AX were
+inconsistent, then it would logically imply a contradiction. But as
+logical implication is independent of the specific meanings of such
+terms as “point” and “line”, AX would
+continue to imply a contradiction under its reinterpretation. But that
+is just to say that a set of theorems of B would imply a
+contradiction, hence that B itself would be inconsistent.
+
+Independence is demonstrated in exactly the same way. To show that a
+statement I is independent of a set AX of statements
+(relative to the consistency of B), one interprets the relevant
+geometric terms in such a way that the members of AX, as
+interpreted, express theorems of B, while I expresses
+the negation of a theorem of B. That is, the independence of
+I from AX (relative to the consistency of B) is
+demonstrated by proving the consistency of AX∪{∼I}AX∪{∼I}\textit{AX} \cup
+\{{\sim}I\} relative to that of B.
+
+The general idea of using interpretation to prove consistency was not
+novel in FG; similar strategies had been recently applied in various
+mathematical schools to show consistency and independence in
+arithmetic and in class theory, as well as
+ geometry.[2]
+ The technique also has antecedents in the earlier use of geometric
+models to prove the consistency of non-Euclidean geometries.
+ [3]
+ Hilbert’s work in FG brings however a significant advance in
+terms of the clarity and systematic application of the technique, and
+an influential account of the nature of the metatheoretic reasoning
+involved in demonstrating consistency and independence via
+reinterpretation. Once Hilbert’s technique is applied to the
+sentences of a fully formalized language, a development that took
+place in stages over the three decades following FG, we obtain
+essentially the modern understanding of models, whose use today in
+demonstrations of consistency and independence differs only in detail
+from that of Hilbert’s
+ technique.[4]
+
+Hilbert’s central idea, again, is to focus not on particular
+geometrical concepts like point and line, but to pay
+attention instead to the logical relations that are said, by the
+axioms, to hold between those concepts. The question of the
+independence of the parallels axiom from the other Euclidean axioms
+has entirely to do with the logical structure exhibited by these
+axioms, and nothing to do with whether it is geometric points
+and lines one is talking about, or some other subject-matter
+altogether. As Hilbert says,
+
+
+[I]t is surely obvious that every theory is only a scaffolding or
+schema of concepts together with their necessary relations to one
+another, and that the basic elements can be thought of in any way one
+likes. If in speaking of my points I think of some system of things,
+e.g., the system: love, law, chimney-sweep … and then assume
+all my axioms as relations between these things, then my propositions,
+e.g., Pythagoras’ theorem, are also valid for these things. In
+other words: any theory can always be applied to infinitely many
+systems of basic elements. (Letter to Frege of December 29, 1899, as
+excerpted by Frege [ellipsis Hilbert’s or Frege’s] in
+Frege 1980: 40)
+
+
+This understanding of the geometric terms as susceptible of multiple
+interpretations enables one to see the geometric sentences themselves,
+and sets of them, as providing definitions of a certain kind,
+a kind typically referred to as “implicit definition”.
+Specifically: A set AX of sentences containing n
+reinterpretable terms implicitly defines an n-place relation
+RAXRAXR_{\textit{AX}} holding of just those n-tuples which, when
+taken respectively as the interpretations of AX’s
+reinterpretable terms, render the members of AX true. (For
+example: if AX is the set {There are at least two
+points; Every point lies on at least two
+lines}, then RAXRAXR_{\textit{AX}} is the relation that holds
+of any triple ⟨P,LO,L⟩⟨P,LO,L⟩\langle P, \textit{LO}, L\rangle such that P
+has at least two members, L has at least two members, and
+LO is a relation that holds between each member of P and
+at least two members of L.) The defined relation is simply the
+abstract structure, or as Hilbert puts it the
+“scaffolding”, shared by any such
+ n-tuple.[5]
+
+
+When a set of sentences provides an implicit definition of a relation,
+one can ask whether that relation (and, by extension, the set of
+sentences itself) is satisfiable. That is, one can ask
+whether there is an n-tuple which, when serving as the
+interpretation of the relevant terms in the sentences, will make each
+sentence true. Each of Hilbert’s consistency-demonstrations in
+FG provides an n-tuple that satisfies the relevant defined
+relation, and hence provides a proof of the satisfiability of that
+relation. Satisfiability in this sense is sufficient for consistency,
+via the reasoning given
+ above.[6]
+
+
+We can now redescribe Hilbert’s technique, in a nutshell, as
+follows: Given a set AX of sentences, Hilbert appeals to a
+background theory B to construct an interpretation of
+AX’s geometric terms under which the members of AX
+express theorems of B. This interpretation is, assuming the
+consistency of B, an n-tuple satisfying the relation
+RAXRAXR_{\textit{AX}} defined by AX. Its existence demonstrates
+the satisfiability of RAXRAXR_{\textit{AX}} and consequently the
+consistency of AX relative to that of B. Similarly for
+the independence of I from AX. 
+3. Frege—Background And Initial Differences
+
+For Frege, things are radically different. Frege takes it that the
+sentences we use in mathematics are important only because of
+the nonlinguistic propositions (or, as he puts it, the
+“thoughts”) they express. Mathematicians working in French
+and in German are working on the same subject because, as Frege sees
+it, their sentences express the same thoughts. Each thought is about a
+determinate subject-matter, and says something true or false about
+that
+ subject-matter.[7]
+ Thoughts are also on this view the things that logically imply or
+contradict one another, the things that are true or false, and the
+things that together constitute mathematical theories. Hence, in
+Frege’s view, thoughts, rather than sentences, are the items
+about which the questions of consistency and independence arise. 
+
+Because each thought has a determinate subject-matter, it makes no
+sense to talk about the “reinterpretation” of thoughts.
+The kind of reinterpretation that Hilbert engages in, i.e., of
+assigning different meanings to specific words, is something that can
+apply only to sentences, from the Fregean point of view. Accordingly,
+the first difficulty Frege notes with Hilbert’s approach is that
+it is not clear what Hilbert means by “axioms:” if he
+means the kinds of things for which issues of consistency and
+independence can arise, then he must be talking about thoughts, while
+if he means the kinds of things that are susceptible of multiple
+interpretations, then he must be talking about sentences.
+
+The difficulties multiply from here. When Hilbert provides a specific
+reinterpretation of the geometric terms en route to proving
+the relative consistency of a set AX of sentences, Frege notes
+that we now have two different sets of thoughts in play: the set we
+might call “AXGAXG\textit{AX}_{G}” of thoughts expressed
+when AX’s terms take their ordinary geometric meanings
+(e.g., on which “point” means point) and the set
+we might call “AXRAXR\textit{AX}_{R}” of thoughts expressed
+when AX’s terms take the meanings assigned by
+Hilbert’s re-interpretation (on which, e.g., “point”
+means pair of real numbers). Hilbert’s reinterpretation
+strategy involves, from Frege’s point of view, simply shifting
+our attention from the set AXGAXG\textit{AX}_{G} of thoughts ordinarily
+expressed by the sentences AX (and in whose consistency we are
+interested) to the new set AXRAXR\textit{AX}_{R} of thoughts expressed
+by AX under the reinterpretation. And the fact that the
+reinterpreted sentences express truths about real numbers has little
+to do, from Frege’s perspective, with the consistency and
+independence questions that arise for the original thoughts about
+points, lines, and planes.
+
+In addition to the confusing (as Frege sees it) practice of shifting
+back and forth between different sets of thoughts while discussing a
+given set of sentences, Hilbert’s procedure also involves, as
+Frege sees it, two further questionable aspects.
+
+The first concerns the need for consistency proofs. On Frege’s
+view, the axioms of a theory always form a collection of true
+thoughts; and since truth implies consistency, the consistency of a
+collection of axioms is never in need of demonstration. For Hilbert on
+the other hand, the fact that a collection of sentences is taken as
+axiomatic is no guarantee of truth (or of truth under a given
+interpretation), and a demonstration of consistency is often a crucial
+step in establishing the mathematical respectability of that
+collection of axioms.
+
+Secondly, Hilbert and Frege differ importantly over the connection
+between truth and consistency. Taking a theory to be axiomatized by a
+set of multiply-interpretable sentences, Hilbert’s view is that the
+consistency of such a set suffices for the existence of the (or a)
+collection of mathematical entities mentioned in the theory. The
+consistency, for example, of a theory of complex numbers is all
+that’s needed to justify the mathematical practice of reasoning in
+terms of such numbers. For Frege on the other hand, consistency can
+never guarantee existence. His preferred example to make this point is
+that the consistency (in Hilbert’s sense) of the trio of
+sentences 
+
+A is an intelligent being
+A is omnipresent
+A is omnipotent
+
+
+is insufficient to guarantee their instantiation. (See, e.g.,
+Frege’s letter to Hilbert of 6 January 1900; Frege 1980: 47.)
+
+
+The central difference between Frege and Hilbert over the nature of
+axioms, i.e., over the question whether axioms are determinately true
+claims about a fixed subject-matter or reinterpretable sentences
+expressing multiply-instantiable conditions, lies at the heart of the
+difference between an older way of thinking of theories, exemplified
+by Frege, and a new way that gathered strength at the end of the
+nineteenth century. Perhaps most clearly illustrated in Dedekind 1888,
+the central idea of the new approach is to understand mathematical
+theories as characterizing general “structural” conditions that
+might be had in common by any number of different ordered domains.
+Just as, in algebra, the axioms for a group give general
+conditions that can be satisfied by any manner of object whatsoever
+under appropriate relations, so too on the new view the axioms of
+geometry specify multiply-instantiable conditions. Viewing theories
+from this modern perspective, it is entirely appropriate to take
+axioms as Hilbert does, since reinterpretable sentences are the right
+vehicles to express the multiply-instantiable conditions in
+ question.[8]
+ From the point of view of the earlier fixed-domain conception of
+theories, on the other hand, such reinterpretable sentences are
+entirely inappropriate as axioms, since they fail to fix a determinate
+subject-matter. On this question, i.e., the issue of the fixed-domain
+(Fregean) vs. multiply-instantiable structure (Hilbertian) conception
+of mathematical theories, the jury is still out: this debate continues
+to animate contemporary philosophy of mathematics (see entry on
+ philosophy of mathematics).
+ 
+
+The second issue that divides Frege and Hilbert, regarding the
+justifiability of the inference from consistency to existence, is also
+still alive. While everybody (including presumably Hilbert) would
+agree with Frege that outside of the mathematical domain we cannot
+safely infer existence from consistency, the question remains whether
+we can (or must) do so within mathematics. The Fregean point of view
+is that the existence of mathematical objects can only be proven (if
+at all) by appeal to more fundamental principles, while the Hilbertian
+point of view is that in appropriate purely-mathematical cases, there
+is nothing more to be demonstrated, in order to establish existence,
+than the consistency of a theory (see entries on
+ philosophy of mathematics
+ and
+ Platonism in the philosophy of mathematics).
+ 
+
+Despite these differences, Frege and Hilbert agree that there are
+important mathematical questions to be asked regarding consistency and
+independence, and they agree that, e.g., the classic question of the
+independence of the parallels axiom from the remainder of Euclidean
+geometry is a significant one. But they disagree, as noted above,
+about whether Hilbert’s procedure suffices to settle these
+questions. We turn next to the issue of Frege’s rationale for
+rejecting Hilbert’s method for proving consistency and
+independence. 
+4. The Deeper Disagreement
+
+As noted above, Frege views Hilbert’s reinterpretations as
+involving a shift of attention from geometric thoughts (whose
+consistency and independence are at issue) to thoughts of a wholly
+different kind, those about the background theory B (whose consistency
+and independence are not in question). Regarding consistency proofs,
+his view is that Hilbert makes an illegitimate inference from the
+consistency of a collection AXRAXR\textit{AX}_{R} of thoughts about real
+numbers to the consistency of a collection AXGAXG\textit{AX}_{G} of
+thoughts about geometric points, lines, and planes. Frege acknowledges
+that Hilbert’s set AX of sentences can be understood as
+providing an implicit definition of an abstract relation
+RAXRAXR_{\textit{AX}}, one that is satisfied by Hilbert’s
+constructed n-tuples, and that the consistency (i.e.,
+satisfiability) of AXRAXR\textit{AX}_{R} entails the consistency of that
+defined relation. But here too, Frege takes it that Hilbert’s
+crucial inference, from the consistency of RAXRAXR_{\textit{AX}} to the
+consistency of AXGAXG\textit{AX}_{G}, is problematic. As Frege himself
+puts it, referring to AXRAXR\textit{AX}_{R} and AXGAXG\textit{AX}_{G} as
+“special geometries”, and to RAXRAXR_{\textit{AX}} as the
+“general case:” 
+
+
+[G]iven that the axioms in special geometries are all special cases of
+general axioms, one can conclude from lack of contradiction in a
+special geometry to lack of contradiction in the general case, but not
+to lack of contradiction in another special case. (Letter of January
+6, 1900 in Frege 1980: 48)
+
+
+Once he has pointed out what he takes to be the questionable
+inference, Frege takes it that the burden of argument is squarely with
+Hilbert: if Hilbert thinks that the consistency of AXGAXG\textit{AX}_{G}
+follows from either the consistency of AXRAXR\textit{AX}_{R} or from the
+satisfiability of RAXRAXR_{\textit{AX}}, then it is up to Hilbert to
+show this. Frege does not go out of his way to demonstrate that the
+crucial inference is invalid, but seems to take his point to have been
+essentially made once he has pointed out the need for a justification
+here. 
+
+From Hilbert’s point of view, of course, there is no need for
+such a justification. The differences that Frege insists on over and
+over again between the sets of sentences (AX) and the different
+sets of thoughts (AXGAXG\textit{AX}_{G}, AXRAXR\textit{AX}_{R} etc.) are
+entirely inconsequential from Hilbert’s standpoint. Because
+consistency as Hilbert understands it applies to the
+“scaffolding” of concepts and relations defined by
+AX when its geometric terms are taken as place-holders, the
+consistency he has in mind holds (to put it in terms of thoughts) of
+AXGAXG\textit{AX}_{G} iff it holds of AXRAXR\textit{AX}_{R}, since both
+sets of thoughts are instantiations of the same
+“scaffolding”. The same point can be put in terms of
+sentences: Frege insists that the consistency-question that arises for
+the sentences under their geometric interpretation is a different
+issue from the one that arises for those sentences under their
+real-number interpretation; for Hilbert on the other hand, there is
+just one question, and it is answered in the affirmative if there is
+any interpretation under which the sentences express truths. Hence
+while Frege takes it that Hilbert owes an explanation of the inference
+from the consistency of AXRAXR\textit{AX}_{R} to that of
+AXGAXG\textit{AX}_{G}, for Hilbert there is simply no inference.
+
+Frege’s lack of clarity about his reasons for rejecting
+Hilbert’s procedure leaves an interpretive gap, with respect to
+which there is room for controversy. We should recall, to begin with,
+that Hilbert is clearly right that his own reinterpretation strategy
+suffices for the relative consistency and independence results he
+claims. If consistency and independence are understood, as above, in
+terms of non-provability, and if proof is, as Hilbert
+assumes, independent of the meanings of geometric terms, then
+AXRAXR\textit{AX}_{R}, AXGAXG\textit{AX}_{G}, and even AX itself
+are all consistent if one of them is. Frege’s rejection of
+Hilbert’s technique must involve, then, either some confusion
+about what Hilbert has established, or a different understanding of
+what is at issue in claims of consistency and independence. 
+
+One way to understand Frege’s contribution to the Frege-Hilbert
+debate, then, is to recognize the contributions Frege makes in
+clarifying Hilbert’s own approach to axioms, but to hold that
+Frege’s negative assessment of Hilbert’s technique for
+proving consistency and independence is mistaken. On this account,
+despite the difference between Frege and Hilbert over the nature of
+axioms, nevertheless the satisfiability of RAXRAXR_{\textit{AX}} does
+show the consistency of the collection of axioms in question, whether
+one conceives of those axioms in Hilbert’s way as sentences
+(i.e., as the collection AX) or in Frege’s way as
+thoughts (i.e., as the collection AXGAXG\textit{AX}_{G}). Similarly for
+independence. Frege’s mistake, on this view, is to have failed
+to notice that the kind of non-provability result (i.e.,
+consistency or independence) that Hilbert takes his reinterpretations
+to demonstrate for geometric sentences entails a corresponding
+non-provability (consistency or independence) result for geometric
+thoughts (see Resnik 1974, Currie 1982, Dummett 1975). 
+
+The alternative interpretation argues that Frege’s understanding
+of consistency and independence is sufficiently different from
+Hilbert’s that the entailment in question does not hold: that
+the satisfiability of RAXRAXR_{\textit{AX}}, and the consequent
+consistency in Hilbert’s sense of AX, does not entail the
+consistency in Frege’s sense of AXGAXG\textit{AX}_{G}. Similarly
+for independence. According to this interpretation, Frege is right to
+claim that Hilbert’s demonstrations fail to show consistency and
+independence in the sense in which he, Frege, understands these
+ terms.[9]
+
+The central idea of the alternative interpretation is that for Frege,
+the question whether a given thought is logically entailed by a
+collection of thoughts is sensitive not just to the formal structure
+of the sentences used to express those thoughts, but also to the
+contents of the simple (e.g., geometric) terms that appear in those
+sentences. If this is correct, then we see immediately that the
+consistency of AXRAXR\textit{AX}_{R} need not entail the consistency of
+AXGAXG\textit{AX}_{G}, since the question whether AXGAXG\textit{AX}_{G}
+logically entails a contradiction may turn in part on the specifically
+geometric parts of the thoughts in question, i.e., on the usual
+geometric meanings of AX’s geometric terms. To choose an
+illustrative example, though not one that Frege himself gives,
+consider the pair of sentences
+
+Point B lies on a line between points A and
+C; 
+Point B does not lie on a line between points C and
+A.
+
+
+This pair of sentences is demonstrably consistent in Hilbert’s
+sense. But on the interpretation of Frege suggested here, this
+consistency (in Hilbert’s sense) does not ensure that the
+thoughts expressed by these sentences under their ordinary
+interpretation form a consistent collection. If, for example, Frege
+understands the relation ’between’ as susceptible to
+conceptual analysis, in accordance with which the first thought can be
+seen to logically entail the negation of the second, then the pair of
+thoughts are inconsistent with one another in the straightforward
+sense of logically entailing a contradiction. 
+
+The idea that Frege takes logical entailment to be sensitive to
+conceptual analysis in the way just suggested is taken, on this
+account, to be evident in the strategy Frege employs in his life-long
+attempt to demonstrate his logicist thesis, the thesis that the truths
+of arithmetic are provable from pure logic. In the course of that
+project, Frege regularly provides demonstrations that a given thought
+τ follows logically from a set T of thoughts, in a way that
+involves two steps. First, Frege subjects τ and/or the members of
+T to conceptual analysis, bringing out previously-unrecognized
+conceptual complexity in those thoughts. Secondly, he proves the
+thus-analyzed version of τ from the thus-analyzed members of
+T. For example, Frege takes himself to demonstrate that the
+thought expressed by
+
+(i) The sum of two
+multiples of a number is a multiple of that number
+
+
+follows logically from the thoughts expressed by
+
+(ii)
+∀m∀n∀p((m+n)+p=m+(n+p))∀m∀n∀p((m+n)+p=m+(n+p))\forall m\; \forall n\; \forall p((m+n)+p = m+(n+p))
+
+
+
+and by
+
+(ii)
+∀n(n=n+0).∀n(n=n+0).\forall n (n = n+0).
+
+
+
+The demonstration proceeds by providing a careful analysis of the
+notion of “multiple of” in terms of addition, giving us in
+place of (i) a more-complex (i′) which is then proven from (ii)
+and
+ (iii).[10]
+ Similarly, a significant part of Frege’s logicist project
+consists of the careful analysis of such arithmetical notions as
+zero and successor, analysis which brings out
+previously-unnoticed complexity, and facilitates the proof of
+arithmetical truths. (For a discussion of the logicist project, see
+entries on
+ Frege
+ and
+ logicism and neologicism.)
+ 
+
+As Frege puts it in the early pages of his Foundations of
+Arithmetic, when we are trying to prove the truths of arithmetic
+from the simplest possible starting-points,
+
+
+… we very soon come to propositions which cannot be proved so
+long as we do not succeed in analysing concepts which occur in them
+into simpler concepts or in reducing them to something of greater
+generality. (Frege 1884: §4)
+
+
+In short: the components of thoughts can sometimes be analyzed in
+terms of simpler or more general constituents, in a way that brings to
+light previously-hidden relations of logical entailment. Hence when we
+want to know whether a given thought is logically entailed by a set of
+thoughts, we need to pay attention, from Frege’s point of view,
+not just to the overall structure exhibited by the sentences
+expressing those thoughts, but also to the contents of the individual
+terms that appear in those sentences.
+
+The connection between this aspect of Frege’s work and his views
+regarding independence, on the interpretation in question, is as
+follows. Because we can sometimes discover that a thought τ is
+logically entailed by a set T of thoughts only after a careful
+analysis of some of the apparently-simple components of those
+thoughts, so too we will sometimes be able to discover that a set of
+thoughts is inconsistent, i.e., that it logically entails a
+contradiction, on the basis of such conceptual analysis. Hence the
+consistency of the set of thoughts expressed by a set Σ of
+sentences is something which turns not just on the overall structure
+of the sentences in Σ, but on the meanings of the terms
+appearing in Σ’s sentences.
+
+To clarify this last point, let’s look at a non-mathematical
+example, one which neither Hilbert nor Frege explicitly dealt with.
+Consider the set of sentences {Jones had a nightmare, Jones
+didn’t have a dream}, or equivalently its first-order rendition,
+{Nj,∼Dj}{Nj,∼Dj}\{Nj, {{\sim}Dj}\}. The set is clearly consistent in the sense
+used by Hilbert in FG; it is a straightforward matter to provide
+interpretations of “Jones”, “x had a
+nightmare” and “x had a dream” (or of
+“j”, “N”, and
+“D”) such that the sentences, so interpreted,
+express truths. (Consider, for example, an interpretation on which
+“j” is assigned the number 7,
+“N” the set of prime numbers, and
+“D” the set of numbers greater than 12.) But from
+the Fregean point of view, the thoughts expressed are arguably
+inconsistent, since part of what it is to have a nightmare is to have
+a dream. The inconsistency from Frege’s point of view can be
+demonstrated by providing an analysis of the thoughts expressed, and
+noting that the results of this analysis yield the set {Jones had a
+disturbing dream, Jones didn’t have a dream}.
+
+For the same reason, two sets of thoughts that are structurally
+similar in the sense that they can be expressed, under different
+interpretations, by the same set of sentences, can differ with respect
+to Frege-consistency. As applied to the geometric context, the central
+idea, on this account of Frege’s objection to Hilbert, is that
+the kinds of re-interpretation in which Hilbert engages can take one
+from a consistent set of thoughts (e.g., AXRAXR\textit{AX}_{R}) to an
+inconsistent one (e.g., AXGAXG\textit{AX}_{G}) because of the shift in
+subject-matter, hence invalidating the inference from the consistency
+of the first to the consistency of the second. 
+
+Frege does not claim to be able to give specific geometric analyses
+which contradict particular consistency-claims of Hilbert’s, and
+there is no evidence that he takes any of those claims to be false.
+That he might well have had some such analyses in mind is hinted at in
+a letter to Hilbert in which he claims that in his own unfinished
+investigations into the foundations of geometry, he was able to
+“make do with fewer primitive terms”, which presumably
+means that he takes some of the terms treated as primitive by Hilbert
+to be susceptible of analysis via others (see the letter to Hilbert of
+December 27, 1899 in Frege 1980: 34). Any such analysis would reveal
+relations of logical dependence (from Frege’s point of view)
+where Hilbert would find independence. 
+
+Because none of Frege’s work on this topic has survived, we have
+no details about the specific analyses he might have given. The
+crucial point in Frege’s criticism of Hilbert, however, on this
+account, is not a disagreement about particular analyses or the
+consequent failure of particular consistency and independence claims,
+but is instead about the general methodology of consistency and
+independence proofs. Because for Hilbert the consistency of a set of
+sentences turns entirely on the overall structure they exhibit, while
+for Frege the consistency of the set of thoughts expressed turns
+additionally on the contents of the non-logical terms appearing in the
+sentences, on this account, Hilbert-consistency doesn’t imply
+Frege-consistency.
+5. Lingering Issues
+
+We have surveyed two ways of understanding Frege’s objections to
+Hilbert’s techniques for proving consistency and independence.
+The first takes Frege to be fundamentally mistaken, with the error
+located in his failure to appreciate the connection between the
+satisfiability of a set of reinterpretable sentences and the
+associated independence/consistency claims. The second takes Frege to
+be fundamentally correct in the sense that (i) he understands the
+consistency and independence of thoughts to turn not just on the
+surface syntax of the sentences that express them but also on the
+contents of the simple terms used in their expression, and (ii)
+consistency and independence, so understood, are not demonstrable in
+Hilbert’s manner. 
+
+Neither of these interpretive options is entirely unproblematic. An
+important difficulty with the first is its attribution to Frege of a
+severe degree of confusion about the force of Hilbert’s
+re-interpretations, which is arguably in some tension with the fact
+that, generally speaking, Frege’s account of Hilbert’s
+methodological procedure in FG is considerably clearer than is
+Hilbert’s own. A further source of difficulty is that the
+understanding of independence attributed on this account to Frege is
+in tension with the understanding of logical entailment that figures
+centrally in his logicist work, an understanding on which the contents
+of mathematical terms can be crucial to questions of logical
+entailment. The second interpretation, though more charitable to
+Frege, arguably suffers from the lack of explicit mention by Frege of
+the relevance of conceptual analysis to questions of consistency and
+independence. 
+
+A final source of potential difficulty for any account of
+Frege’s views of independence and consistency is the very
+interesting Part (iii) of the 1906 “Foundations of
+Geometry” essay. The importance of that text, and the
+interpretive difficulties it poses, can be sketched as follows.
+
+The 1906 “Foundations of Geometry” essay is primarily a
+re-statement of Frege’s earlier objections (discussed above) to
+Hilbert’s treatment of consistency and independence. After a
+rehearsal of those objections, Frege turns in Part iii to the problem
+of giving a positive method for proving independence. How, he asks,
+might one prove a given thought independent of a collection
+of thoughts? In answer, Frege provides a sketch of a potential method,
+and ends the discussion by noting that the method sketched is still
+incomplete, and that it faces some difficulties. Despite the obvious
+incompleteness, Frege never (as far as we can tell) returns to the
+proposal, and would seem in the end to have found it unsatisfactory.
+That he thought it unsatisfactory in principle is indicated by his
+claim four years later, in a note to Jourdain, that the unprovability
+of the parallels axiom cannot be proven (see Frege 1980: 183n). That
+is, he would seem by 1910 to hold that there is no systematic method
+for proving
+ independence.[11]
+
+The 1906 proposal itself can be outlined as follows. Suppose, says
+Frege, that we have a collection C of sentences each of which
+expresses a determinate thought, and a sentence S that similarly
+expresses a determinate thought. The heart of the proposed method for
+proving the independence of the S-thought from the C-thoughts is that
+we employ a mapping μ of terms to terms (and hence also of
+sentences to sentences) that preserves syntactic type (mapping names
+to names, one-place predicates to one-place predicates, etc.) and maps
+’logical’ terms to themselves. Then: the S-thought is
+independent of the C-thoughts if μ maps S to a false sentence while
+mapping all the members of C to true sentences. (For discussion and
+development of Frege’s proposal, see Antonelli & May 2000,
+Eder 2016. For discussion
+of Frege’s reasons for rejecting the proposal, see Ricketts
+1997, Eder 2013, Blanchette 2014.) 
+
+The first intriguing thing about the proposal is its striking
+similarity to Hilbert’s method. Assuming Frege’s language
+to be rich enough to include terms for all of the objects, functions
+and sets that Hilbert might use in reinterpretations, there will
+arguably be a mapping of the kind Frege describes if and only if there
+is a reinterpretation of the kind Hilbert uses to show (his version
+of) independence: where Hilbert’s reinterpretation provides a
+term t with new content, Frege’s method would simply map
+t to a new term with that very content. And this would mean
+that, despite all of the objections raised by Frege, Hilbert’s
+method would in the end suffice to demonstrate what Frege regards as
+the independence of thoughts. If this is correct, then we have reason
+to doubt any interpretation of Frege on which his rejection of
+Hilbert’s method is justified. 
+
+The central reasons one might doubt the strong equivalence just
+suggested between Hilbert’s method and Frege’s proposal
+are that (i) it is not clear just what kind of language Frege has in
+mind, and (ii) it is not clear whether the class of terms Frege would
+count as “logical”, i.e., the class whose members μ
+must map to themselves, is the same as the class of terms that Hilbert
+would count as having a fixed interpretation. If Frege’s class
+of fixed terms is wider than is Hilbert’s, and/or Frege’s
+language lacks some of the terminology of Hilbert’s, then a
+demonstration of independence in Hilbert’s sense will not imply
+the existence of a mapping demonstrating independence in Frege’s
+sense. One way to think of the crucial question is as the question
+whether terms like “number” or “between”,
+terms that Frege treats as susceptible to conceptual analysis, will be
+allowed in the language that Frege is concerned with (as opposed, say,
+to requiring the language to contain only “fully-analyzed”
+terms), and whether such terms will be amongst those that μ maps to
+arbitrary new terminology. Frege himself notes the importance of the
+second terminological demarcation problem just raised, i.e., the
+problem of determining which terms are mapped to themselves, and
+remarks that this problem is one that would need to be addressed in
+order to turn his sketch into a workable strategy. Because he never
+answers the question of the fixed terminology or of the kind of
+language in question, Frege’s proposal is not sufficiently
+determinate for a clear comparison with Hilbert’s. We are left,
+then, with the interpretive issue of making sense of Frege’s
+proposal of a method and subsequent apparent repudiation of it, while
+recognizing the incomplete nature of that proposal. (For further
+discussion of the 1906 text, see: Ricketts 1997, Tappenden 2000,
+Blanchette 2014.) 
+6. Conclusion
+
+Because claims of consistency and of independence are fundamentally
+claims of non-entailment or of unprovability, it is
+not obvious, even once we are in possession of strong techniques for
+proving mathematical results, how one might go about proving
+consistency and independence. What Hilbert offers us, in 1899, is a
+systematic and powerful technique that can be used across all
+formalized disciplines to do just this: to prove consistency and
+independence. In doing so, he lays the groundwork, in concert with
+various of his contemporaries, for the emergence of contemporary
+model-theoretic techniques. (For further discussion, see Mancosu,
+Zach, & Badesa 2009; also see entry on
+ nineteenth-century geometry.)
+ 
+
+What we find through Frege’s rejection and Hilbert’s
+defense of that technique is a clarification of the assumptions that
+are essential for its success. As we have seen, the crucial feature of
+proof that must be assumed, in order for a Hilbert-style
+reinterpretation to demonstrate an unprovability result, is
+that provability is insensitive to the contents of those terms that
+Hilbert takes to be reinterpretable—in this case, the geometric
+terms. The alternative view of consistency and independence, on which
+entailment and provability are sensitive to the contents of geometric
+terms, is one with respect to which Hilbert-style reinterpretations
+cannot demonstrate consistency and independence so understood. As
+outlined above, the reading of Frege on which he holds such a view of
+consistency and independence provides a rationale for his objections
+to Hilbert, and an alternative account of what is at stake in claims
+of geometric consistency and independence. 
+
+Despite the clear failure of communication between Hilbert and Frege,
+their debate brings to light a number of important issues, not least
+of which are (i) the role of schematically-understood sentences in
+providing implicit definitions, which Frege articulates more clearly
+on Hilbert’s behalf than Hilbert had yet done, and (ii) the
+extent to which the logical relations are to be treated as
+“formal”. On this last issue, the difference between Frege
+and Hilbert is instructive. Long before the debate with Hilbert, Frege
+already held that logical rigor requires the use of formal systems of
+deduction, “formal” in the sense that all thoughts are
+expressed via precisely-determined sentences, and that all
+inference-rules and axioms are presented syntactically (see, e.g.,
+Frege 1879). Most important for our purposes is the fact that
+Frege’s formal systems are entirely modern in the sense that the
+derivability in such a system of a sentence from a set of sentences
+turns just on the syntactic form of those sentences. The famous
+conceptual analyses on which much of Frege’s work turns are all
+provided prior to proof; it is on the basis of conceptual analyses
+that one arrives at the appropriate sentences to treat within the
+formal system, but the analyses themselves play no role within the
+proofs proper. Hence when it comes to the positive work of
+demonstrating that a given sentence is derivable from a set of
+sentences, Frege is just like Hilbert: meanings don’t matter.
+Indeed, at the time of their correspondence, Frege’s work was
+considerably more “formal” than Hilbert’s, since
+Hilbert at this time was not using an explicit syntactically-defined
+system of deduction.
+
+Nevertheless, Frege’s conception of logic has the result that
+there is only a one-way connection between logical implication as this
+holds between thoughts and formal derivability as this holds between
+sentences. Given a good formal system, a sentence σ is deducible
+from a set Σ only if the thought expressed by σ is in fact
+logically entailed by the thoughts expressed by the members of
+Σ. (This simply requires that one’s axioms and rules of
+inference are well-chosen.) But the converse is false: that σ is
+not deducible in such a system from Σ is no guarantee
+that the thought expressed by σ is independent of the set of
+thoughts expressed by the members of Σ. For it may well be, as
+in the cases treated explicitly by Frege’s own analyses, that
+further analysis of the thoughts and their components will yield a
+more-complex structure. When this happens, the analysis may return
+yet-more complex (sets of) sentences σ′ and Σ′
+such that σ′ is, after all, deducible from Σ′.
+According to the more-charitable of the two interpretive options
+outlined above, this is the explanation of Frege’s rejection of
+Hilbert’s treatment of consistency and independence in geometry.
+As we might put it, because considerable logical complexity can lie
+undiscovered in the thoughts expressed by relatively-simple sentences,
+non-derivability is no guarantee of independence, in the Fregean
+scheme of things. There is a significant gap, as one might put it,
+between the logical and the formal.
+
+For Hilbert on the other hand, at least in the context of axiomatized
+geometry, the logical relations simply are the formally-describable
+relations, since they have entirely to do with the structure exhibited
+by the sentences in question, or equivalently with the
+“scaffolding” of concepts defined by these sentences. It
+is because consistency in Hilbert’s sense turns just on this
+abstract structure, and not on the contents of the terms instantiating
+the structure, that the reinterpretation strategy is effective.
+
+Hilbert is clearly the winner in this debate, in the sense that
+roughly his conception of consistency is what one means today by
+“consistency” in the context of formal theories, and a
+near relative of his methodology for consistency-proofs is now
+standard. We now routinely take consistency and independence, as
+Hilbert does, to hold independently of the meanings of the so-called
+“non-logical” terms, and hence to be straightforwardly
+demonstrable in essentially Hilbert’s way. This is not to say
+that Frege’s objections have been met, but rather that they have
+essentially been sidestepped via the enshrinement of the formal notion
+of consistency, and a lack of concern, at least under that title, with
+what Frege called “consistency”.

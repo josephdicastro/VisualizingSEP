@@ -1,0 +1,1151 @@
+Set theory is the mathematical theory of well-determined
+collections, called sets, of objects that are called
+members, or elements, of the set. Pure set theory
+deals exclusively with sets, so the only sets under consideration are
+those whose members are also sets. The theory of the
+hereditarily-finite sets, namely those finite sets whose
+elements are also finite sets, the elements of which are also finite,
+and so on, is formally equivalent to arithmetic. So, the essence of
+set theory is the study of infinite sets, and therefore it can be
+defined as the mathematical theory of the actual—as opposed to
+potential—infinite.
+The notion of set is so simple that it is usually introduced
+informally, and regarded as self-evident. In set theory, however, as
+is usual in mathematics, sets are given axiomatically, so their
+existence and basic properties are postulated by the appropriate
+formal axioms. The axioms of set theory imply the existence of a
+set-theoretic universe so rich that all mathematical objects can be
+construed as sets. Also, the formal language of pure set theory allows
+one to formalize all mathematical notions and arguments. Thus, set theory
+has become the standard foundation for mathematics, as every
+mathematical object can be viewed as a set, and every theorem of
+mathematics can be logically deduced in the Predicate Calculus from
+the axioms of set theory.
+Both aspects of set theory, namely, as the mathematical science of
+the infinite, and as the foundation of mathematics, are of
+philosophical importance.
+ 
+1. The origins
+Set theory, as a separate mathematical discipline, begins in the
+work of Georg Cantor. One might say that set theory was born in late
+1873, when he made the amazing discovery that the linear continuum,
+that is, the real line, is not countable, meaning that its points
+cannot be counted using the natural numbers. So, even though the set
+of natural numbers and the set of real numbers are both infinite,
+there are more real numbers than there are natural numbers, which
+opened the door to the investigation of the different sizes of
+infinity. See the entry on the
+ early development of set theory
+ for a discussion of the origin of
+set-theoretic ideas and their use by different mathematicians and
+philosophers before and around Cantor’s time.
+According to Cantor, two sets AAA and BBB have the same size, or
+cardinality, if they are bijectable, i.e., the elements of
+AAA can be put in a one-to-one correspondence with the elements of
+BBB. Thus, the set NN\mathbb{N} of natural numbers and the set
+RR\mathbb{R} of real numbers have different cardinalities. In 1878
+Cantor formulated the famous Continuum Hypothesis (CH), which
+asserts that every infinite set of real numbers is either countable,
+i.e., it has the same cardinality as NN\mathbb{N}, or has the same
+cardinality as RR\mathbb{R}. In other words, there are only two
+possible sizes of infinite sets of real numbers. The CH is the most
+famous problem of set theory. Cantor himself devoted much effort to
+it, and so did many other leading mathematicians of the first half of
+the twentieth century, such as Hilbert, who listed the CH as the first
+problem in his celebrated list of 23 unsolved mathematical problems
+presented in 1900 at the Second International Congress of
+Mathematicians, in Paris. The attempts to prove the CH led to major
+discoveries in set theory, such as the theory of constructible sets,
+and the forcing technique, which showed that the CH can neither be
+proved nor disproved from the usual axioms of set theory. To this day,
+the CH remains open.
+Early on, some inconsistencies, or paradoxes, arose from a naive
+use of the notion of set; in particular, from the deceivingly natural
+assumption that every property determines a set, namely the set of
+objects that have the property. One example is Russell’s
+Paradox, also known to Zermelo: 
+ consider the property of sets of not being members of
+themselves. If the property determines a set, call it AAA, then AAA is
+a member of itself if and only if AAA is not a member of
+itself.
+ Thus, some collections, like the collection of all sets, the
+collection of all ordinals numbers, or the collection of all cardinal
+numbers, are not sets. Such collections are called proper
+classes.
+In order to avoid the paradoxes and put it on a firm footing, set
+theory had to be axiomatized. The first axiomatization was due to
+Zermelo (1908) and it came as a result of the need to spell out the
+basic set-theoretic principles underlying his proof of Cantor’s
+Well-Ordering Principle. Zermelo’s axiomatization avoids Russell’s
+Paradox by means of the Separation axiom, which is formulated as
+quantifying over properties of sets, and thus it is a second-order
+statement. Further work by Skolem and Fraenkel led to the
+formalization of the Separation axiom in terms of formulas of
+first-order, instead of the informal notion of property, as well as to
+the introduction of the axiom of Replacement, which is also formulated
+as an axiom schema for first-order formulas (see next section). The
+axiom of Replacement is needed for a proper development of the theory
+of transfinite ordinals and cardinals, using transfinite recursion
+(see Section 3). It is also needed to
+prove the existence of such simple sets as the set of hereditarily
+finite sets, i.e., those finite sets whose elements are finite, the
+elements of which are also finite, and so on; or to prove basic
+set-theoretic facts such as that every set is contained in a
+transitive set, i.e., a set that contains all elements of its elements
+(see Mathias 2001 for the weaknesses of Zermelo set theory). A further
+addition, by von Neumann, of the axiom of Foundation, led to the
+standard axiom system of set theory, known as the Zermelo-Fraenkel
+axioms plus the Axiom of Choice, or ZFC.
+Other axiomatizations of set theory, such as those of von
+Neumann-Bernays-Gödel (NBG), or Morse-Kelley (MK), allow also for
+a formal treatment of proper classes.
+2. The axioms of set theory
+ZFC is an axiom system formulated in first-order logic with
+equality and with only one binary relation symbol ∈∈\in for
+membership. Thus, we write A∈BA∈BA\in B to express that AAA is a member of
+the set BBB. See the
+
+Supplement on Basic Set Theory
+
+
+ for further details. See also the
+
+Supplement on Zermelo-Fraenkel Set Theory
+
+ for a formalized version of the axioms and further comments. We
+state below the axioms of ZFC informally.
+2.1 The axioms of ZFC
+
+Extensionality: If two sets AAA and BBB have
+the same elements, then they are equal.
+Null Set: There exists a set, denoted by
+∅∅{\varnothing} and called the empty set, which has no
+elements.
+Pair: Given any sets AAA and BBB, there
+exists a set, denoted by {A,B}{A,B}\{ A,B\}, which contains AAA and BBB as its
+only elements. In particular, there exists the set {A}{A}\{ A\} which has
+AAA as its only element.
+Power Set: For every set AAA there exists a
+set, denoted by P(A)P(A)\mathcal{P}(A) and called the power set of
+AAA, whose elements are all the subsets of AAA.
+Union: For every set AAA, there exists a set,
+denoted by ⋃A⋃A\bigcup A and called the union of AAA, whose
+elements are all the elements of the elements of AAA.
+Infinity: There exists an infinite set. In
+particular, there exists a set ZZZ that contains ∅∅{\varnothing} and
+such that if A∈ZA∈ZA\in Z, then ⋃{A,{A}}∈Z⋃{A,{A}}∈Z\bigcup\{ A, \{ A\}\}\in Z.
+Separation: For every set AAA and every given
+property, there is a set containing exactly the elements of AAA that
+have that property. A property is given by a formula
+φφ\varphi of the first-order language of set theory.
+Thus, Separation is not a single axiom but an axiom schema, that
+is, an infinite list of axioms, one for each formula
+φφ\varphi.
+Replacement: For every given definable
+function with domain a set AAA, there is a set whose elements are
+all the values of the function.
+Replacement is also an axiom schema, as definable functions are
+given by formulas.
+Foundation: Every non-empty set AAA contains
+an ∈∈\in-minimal element, that is, an element such that no element of
+AAA belongs to it.
+
+These are the axioms of Zermelo-Fraenkel set theory, or ZF. The
+axioms of Null Set and Pair follow from the other ZF axioms, so they
+may be omitted. Also, Replacement implies Separation.
+Finally, there is the Axiom of Choice (AC):
+
+Choice: For every set AAA of
+pairwise-disjoint non-empty sets, there exists a set that contains
+exactly one element from each set in AAA.
+
+The AC was, for a long time, a controversial axiom. On the one
+hand, it is very useful and of wide use in mathematics. On the other
+hand, it has rather unintuitive consequences, such as the
+Banach-Tarski Paradox, which says that the unit ball can be
+partitioned into finitely-many pieces, which can then be rearranged to
+form two unit balls. The objections to the axiom arise from the fact
+that it asserts the existence of sets that cannot be explicitly
+defined. But Gödel’s 1938 proof of its consistency, relative to
+the consistency of ZF, dispelled any suspicions left about it.
+The Axiom of Choice is equivalent, modulo ZF, to the
+Well-ordering Principle, which asserts that every set can be
+well-ordered, i.e., it can be linearly ordered so that every non-empty
+subset has a minimal element.
+Although not formally necessary, besides the symbol ∈∈\in one
+normally uses for convenience other auxiliary defined symbols. For
+example, A⊆BA⊆BA\subseteq B expresses that AAA is a subset of
+BBB, i.e., every member of AAA is a member of BBB. Other symbols are
+used to denote sets obtained by performing basic operations, such as
+A∪BA∪BA\cup B, which denotes the union of AAA and BBB, i.e., the
+set whose elements are those of AAA and BBB; or A∩BA∩BA\cap B, which
+denotes the intersection of AAA and BBB, i.e., the set whose
+elements are those common to AAA and BBB. The ordered pair
+(A,B)(A,B)(A,B) is defined as the set {{A},{A,B}}{{A},{A,B}}\{ \{ A\},\{ A,B\}\}. Thus, two
+ordered pairs (A,B)(A,B)(A,B) and (C,D)(C,D)(C,D) are equal if and only if A=CA=CA=C and
+B=DB=DB=D. And the Cartesian product A×BA×BA\times B is defined as
+the set of all ordered pairs (C,D)(C,D)(C,D) such that C∈AC∈AC\in A and D∈BD∈BD\in
+B. Given any formula φ(x,y1,…,yn)φ(x,y1,…,yn)\varphi(x,y_1,\ldots ,y_n), and sets
+A,B1,…,BnA,B1,…,BnA,B_1,\ldots ,B_n, one can form the set of all those elements of AAA
+that satisfy the formula φ(x,B1,…,Bn)φ(x,B1,…,Bn)\varphi(x,B_1,\ldots ,B_n). This set is
+denoted by {a∈A:φ(a,B1,…,Bn)}{a∈A:φ(a,B1,…,Bn)}\{ a\in A: \varphi(a,B_1,\ldots ,B_n)\}. In ZF one can
+easily prove that all these sets exist. See the supplement on
+ Basic Set Theory for further
+discussion.
+3. The theory of transfinite ordinals and cardinals
+In ZFC one can develop the Cantorian theory of transfinite (i.e.,
+infinite) ordinal and cardinal numbers. Following the definition given
+by Von Neumann in the early 1920s, the ordinal numbers, or
+ordinals, for short, are obtained by starting with the empty
+set and performing two operations: taking the immediate successor, and
+passing to the limit. Thus, the first ordinal number is
+∅∅{\varnothing}. Given an ordinal αα\alpha, its immediate
+successor, denoted by α+1α+1\alpha +1, is the set α∪{α}α∪{α}\alpha \cup \{
+\alpha \}. And given a non-empty set XXX of ordinals such that for
+every α∈Xα∈X\alpha \in X the successor α+1α+1\alpha +1 is also in XXX, one
+obtains the limit ordinal ⋃X⋃X\bigcup X. One shows that every
+ordinal is (strictly) well-ordered by ∈∈\in, i.e., it is linearly
+ordered by ∈∈\in and there is no infinite ∈∈\in-descending
+sequence. Also, every well-ordered set is isomorphic to a unique
+ordinal, called its order-type.
+Note that every ordinal is the set of its predecessors. However,
+the class ONONON of all ordinals is not a set. Otherwise, ONONON would be
+an ordinal greater than all the ordinals, which is impossible. The
+first infinite ordinal, which is the set of all finite ordinals, is
+denoted by the Greek letter omega (ωω\omega). In ZFC, one identifies
+the finite ordinals with the natural numbers. Thus, ∅=0∅=0{\varnothing}=0,
+{∅}=1{∅}=1\{ {\varnothing}\}=1, {∅,{∅}}=2{∅,{∅}}=2\{ {\varnothing}, \{ {\varnothing}\}\}=2,
+etc., hence ωω\omega is just the set NN\mathbb{N} of natural
+numbers.
+One can extend the operations of addition and multiplication of
+natural numbers to all the ordinals. For example, the ordinal α+βα+β\alpha
++\beta is the order-type of the well-ordering obtained by
+concatenating a well-ordered set of order-type αα\alpha and a
+well-ordered set of order-type ββ\beta. The sequence of ordinals,
+well-ordered by ∈∈\in, starts as follows
+
+0, 1, 2,…, nnn,…, ωω\omega, ω+1ω+1\omega+1,
+ω+2ω+2\omega+2,…, ω+ωω+ω\omega +\omega,…, n⋅ωn⋅ωn\cdot \omega,
+…, ω⋅ωω⋅ω\omega \cdot \omega,…, ωnωn\omega^n, …,
+ωωωω\omega^\omega, …
+
+The ordinals satisfy the principle of transfinite
+induction: suppose that CCC is a class of ordinals such that
+whenever CCC contains all ordinals ββ\beta smaller than some ordinal
+αα\alpha, then αα\alpha is also in CCC. Then the class CCC contains
+all ordinals. Using transfinite induction one can prove in ZFC (and
+one needs the axiom of Replacement) the important principle of
+transfinite recursion, which says that, given any definable
+class-function G:V→VG:V→VG:V\to V, one can define a class-function F:ON→VF:ON→VF:ON\to V
+such that F(α)F(α)F(\alpha) is the value of the function GGG applied to the
+function FFF restricted to αα\alpha. One uses transfinite recursion,
+for example, in order to define properly the arithmetical operations
+of addition, product, and exponentiation on the ordinals.
+Recall that an infinite set is countable if it is
+bijectable, i.e., it can be put into a one-to-one correspondence, with
+ωω\omega. All the ordinals displayed above are either finite or
+countable. But the set of all finite and countable ordinals is also an
+ordinal, called ω1ω1\omega_1, and is not countable. Similarly, the set
+of all ordinals that are bijectable with some ordinal less than or
+equal to ω1ω1\omega_1 is also an ordinal, called ω2ω2\omega_2, and is not
+bijectable with ω1ω1\omega_1, and so on.
+3.1 Cardinals
+A cardinal is an ordinal that is not bijectable with any
+smaller ordinal. Thus, every finite ordinal is a cardinal, and
+ωω\omega, ω1ω1\omega_1, ω2ω2\omega_2, etc. are also cardinals. The
+infinite cardinals are represented by the letter aleph (ℵℵ\aleph) of
+the Hebrew alphabet, and their sequence is indexed by the ordinals. It
+starts like this
+
+ℵ0ℵ0\aleph_0, ℵ1ℵ1\aleph_1, ℵ2ℵ2\aleph_2, …, ℵωℵω\aleph_\omega,
+ℵω+1ℵω+1\aleph_{\omega +1}, …, ℵω+ωℵω+ω\aleph_{\omega +\omega}, …,
+ℵω2ℵω2\aleph_{\omega^2}, …, ℵωωℵωω\aleph_{\omega^\omega}, …,
+ℵω1ℵω1\aleph_{\omega_1}, …, ℵω2ℵω2\aleph_{\omega_2}, …
+
+Thus, ω=ℵ0ω=ℵ0\omega=\aleph_0, ω1=ℵ1ω1=ℵ1\omega_1=\aleph_1, ω2=ℵ2ω2=ℵ2\omega_2=\aleph_2,
+etc. For every cardinal there is a bigger one, and the limit of an
+increasing sequence of cardinals is also a cardinal. Thus, the class
+of all cardinals is not a set, but a proper class.
+An infinite cardinal κκ\kappa is called regular if it is
+not the union of less than κκ\kappa smaller cardinals. Thus,
+ℵ0ℵ0\aleph_0 is regular, and so are all infinite successor cardinals,
+such as ℵ1ℵ1\aleph_1. Non-regular infinite cardinals are called
+singular. The first singular cardinal is ℵωℵω\aleph_\omega, as
+it is the union of countably-many smaller cardinals, namely
+ℵω=⋃n<ωℵnℵω=⋃n<ωℵn\aleph_\omega =\bigcup_{n&lt;\omega} \aleph_n.
+The cofinality of a cardinal κκ\kappa, denoted by
+cf(κ)cf(κ)cf(\kappa) is the smallest cardinal λλ\lambda such that κκ\kappa is
+the union of λλ\lambda-many smaller ordinals. Thus,
+cf(ℵω)=ℵ0cf(ℵω)=ℵ0cf(\aleph_\omega)=\aleph_0.
+By the AC (in the form of the Well-Ordering Principle), every set
+AAA can be well-ordered, hence it is bijectable with a unique
+cardinal, called the cardinality of AAA. Given two cardinals
+κκ\kappa and λλ\lambda, the sum κ+λκ+λ\kappa +\lambda is defined as the
+cardinality of the set consisting of the union of any two disjoint
+sets, one of cardinality κκ\kappa and one of cardinality
+λλ\lambda. And the product κ⋅λκ⋅λ\kappa \cdot \lambda is defined as the
+cardinality of the Cartesian product κ×λκ×λ\kappa \times \lambda. The
+operations of sum and product of infinite cardinals are trivial, for
+if κκ\kappa and λλ\lambda are infinite cardinals, then κ+λ=κ⋅λ=maximum{κ,λ}κ+λ=κ⋅λ=maximum{κ,λ}\kappa
++\lambda =\kappa \cdot \lambda = maximum \{ \kappa ,\lambda\}.
+In contrast, cardinal exponentiation is highly non-trivial, for
+even the value of the simplest non-trivial infinite exponential,
+namely 2ℵ02ℵ02^{\aleph_0}, is not known and cannot be determined in ZFC
+(see below). The cardinal κλκλ\kappa^\lambda is defined as the
+cardinality of the Cartesian product of λλ\lambda copies of κκ\kappa;
+equivalently, as the cardinality of the set of all functions from
+λλ\lambda into κκ\kappa. König’s theorem asserts that
+κcf(κ)>κκcf(κ)>κ\kappa^{cf(\kappa)}&gt;\kappa, which implies that the cofinality of
+the cardinal 2ℵ02ℵ02^{\aleph_0}, whatever that cardinal is, must be
+uncountable. But this is essentially all that ZFC can prove about the
+value of the exponential 2ℵ02ℵ02^{\aleph_0}.
+In the case of exponentiation of singular cardinals, ZFC has a lot
+more to say. In 1989, Shelah proved the remarkable result that if
+ℵωℵω\aleph_\omega is a strong limit, that is,
+2ℵn<ℵω2ℵn<ℵω2^{\aleph_n}&lt;\aleph_\omega, for every n<ωn<ωn&lt;\omega, then
+2ℵω<ℵω42ℵω<ℵω42^{\aleph_\omega}&lt;\aleph_{\omega_4} (see Shelah (1994)). The
+technique developed by Shelah to prove this and similar theorems, in
+ZFC, is called pcf theory (for possible
+cofinalities), and has found many applications in other areas of
+mathematics.
+4. The universe VVV of all sets
+A posteriori, the ZF axioms other than
+Extensionality—which needs no justification because it just
+states a defining property of sets—may be justified by their use
+in building the cumulative hierarchy of sets. Namely, in ZF
+we define using transfinite recursion the class-function that assigns
+to each ordinal αα\alpha the set VαVαV_\alpha, given as follows:
+
+V0=∅V0=∅V_0={\varnothing}
+Vα+1=P(Vα)Vα+1=P(Vα)V_{\alpha +1}=\mathcal{P}(V_\alpha)
+Vα=⋃β<αVβVα=⋃β<αVβV_\alpha =\bigcup_{\beta &lt;\alpha}V_\beta, whenever αα\alpha is
+a limit ordinal.
+
+The Power Set axiom is used to obtain Vα+1Vα+1V_{\alpha +1} from
+VαVαV_\alpha. Replacement and Union allow one to form VαVαV_\alpha for
+αα\alpha a limit ordinal. Indeed, consider the function that assigns
+to each β<αβ<α\beta &lt;\alpha the set VβVβV_\beta. By Replacement, the
+collection of all the VβVβV_\beta, for β<αβ<α\beta &lt;\alpha, is a set,
+hence the Union axiom applied to that set yields VαVαV_\alpha. The axiom
+of Infinity is needed to prove the existence of ωω\omega and hence of
+the transfinite sequence of ordinals. Finally, the axiom of Foundation
+is equivalent, assuming the other axioms, to the statement that every
+set belongs to some VαVαV_\alpha, for some ordinal αα\alpha. Thus, ZF
+proves that the set theoretic universe, denoted by VVV, is the union
+of all the VαVαV_\alpha, αα\alpha an ordinal.
+The proper class VVV, together with the ∈∈\in relation, satisfies
+all the ZFC axioms, and is thus a model of ZFC. It is the intended
+model of ZFC, and one may think of ZFC as providing a description of
+VVV, a description however that is highly incomplete, as we shall see
+below.
+One important property of VVV is the so-called
+Reflection Principle. Namely, for each formula
+φ(x1,…,xn)φ(x1,…,xn)\varphi(x_1,\ldots ,x_n), ZFC proves that there exists some VαVαV_\alpha
+that reflects it, that is, for every
+a1,…,an∈Vαa1,…,an∈Vαa_1,\ldots,a_n\in V_\alpha,
+
+φ(a1,…,an)φ(a1,…,an)\varphi(a_1,\ldots ,a_n) holds in VVV if and only if
+φ(a1,…,an)φ(a1,…,an)\varphi(a_1,\ldots,a_n) holds in VαVαV_\alpha.
+
+Thus, VVV cannot be characterized by any sentence, as any sentence
+that is true in VVV must be also true in some initial segment
+VαVαV_\alpha. In particular, ZFC is not finitely axiomatizable, for
+otherwise ZFC would prove that, for unboundedly many ordinals
+αα\alpha, VαVαV_\alpha is a model of ZFC, contradicting Gödel’s
+second incompleteness theorem (see
+ Section 5.2).
+The Reflection Principle encapsulates the essence of ZF set theory,
+for as shown by Levy (1960), the axioms of Extensionality, Separation,
+and Foundation, together with the Reflection Principle, formulated as
+the axiom schema asserting that each formula is reflected by some set
+that contains all elements and all subsets of its elements (note that
+the VαVαV_\alpha are like this), is equivalent to ZF.
+5. Set theory as the foundation of mathematics
+Every mathematical object may be viewed as a set. For example, the
+natural numbers are identified with the finite ordinals, so
+N=ωN=ω\mathbb{N}=\omega. The set of integers ZZ\mathbb{Z} may be defined
+as the set of equivalence classes of pairs of natural numbers under
+the equivalence relation (n,m)≡(n′,m′)(n,m)≡(n′,m′)(n, m)\equiv (n',m') if and only if
+n+m′=m+n′n+m′=m+n′n+m'=m+n'. By identifying every natural number nnn with the
+equivalence class of the pair (n,0)(n,0)(n,0), one may extend naturally the
+operations of sum and product of natural numbers to ZZ\mathbb{Z} (see
+Enderton (1977) for details, and Levy (1979) for a different
+construction). Further, one may define the rationals QQ\mathbb{Q} as
+the set of equivalence classes of pairs (n,m)(n,m)(n,m) of integers, where
+m≠0m≠0m\ne 0, under the equivalence relation (n,m)≡(n′,m′)(n,m)≡(n′,m′)(n,m)\equiv (n',m') if and
+only if n⋅m′=m⋅n′n⋅m′=m⋅n′n\cdot m'=m\cdot n'. Again, the operations +++ and ⋅⋅\cdot
+on ZZ\mathbb{Z} may be extended naturally to QQ\mathbb{Q}. Moreover,
+the ordering ≤Q≤Q\leq_{\mathbb{Q}} on the rationals is given by: r≤Qsr≤Qsr
+\leq_{\mathbb{Q}} s if and only if there exists t∈Qt∈Qt\in \mathbb{Q}
+such that s=r+ts=r+ts=r+t. The real numbers may be defined as Dedekind cuts of
+QQ\mathbb{Q}, namely, a real number is given by a pair (A,B)(A,B)(A,B) of
+non-empty disjoint sets such that A∪B=QA∪B=QA\cup B=\mathbb{Q}, and
+a≤Qba≤Qba\leq_{\mathbb{Q}}b for every a∈Aa∈Aa\in A and b∈Bb∈Bb\in B. One can then
+extend again the operations of +++ and ⋅⋅\cdot on QQ\mathbb{Q}, as
+well as the ordering ≤Q≤Q\leq_{\mathbb{Q}}, to the set of real numbers
+RR\mathbb{R}.
+Let us emphasize that it is not claimed that, e.g., real numbers
+are Dedekind cuts of rationals, as they could also be defined
+using Cauchy sequences, or in other different ways. What is important,
+from a foundational point of view, is that the set-theoretic version
+of RR\mathbb{R}, together with the usual algebraic operations,
+satisfies the categorical axioms that the real numbers satisfy, namely
+those of a complete ordered field. The metaphysical question of what
+the real numbers really are is irrelevant here.
+Algebraic structures can also be viewed as sets, as any nnn-ary
+relation on the elements of a set AAA can be viewed as a set of
+nnn-tuples (a1,…,an)(a1,…,an)(a_1,\ldots ,a_n) of elements of AAA. And any nnn-ary
+function fff on AAA, with values on some set BBB, can be seen as the
+set of n+1n+1n+1-tuples ((a1,…,an),b)((a1,…,an),b)((a_1,\ldots ,a_n),b) such that bbb is the value
+of fff on (a1,…,am)(a1,…,am)(a_1,\ldots ,a_m). Thus, for example, a group is
+just a triple (A,+,0)(A,+,0)(A, +, 0), where AAA is a non-empty set, +++ is a
+binary function on AAA that is associative, 000 is an element of AAA
+such that a+0=0+a=aa+0=0+a=aa+0=0+a=a, for all a∈Aa∈Aa\in A, and for every a∈Aa∈Aa\in A there
+is an element of AAA, denoted by −a−a-a, such that
+a+(−a)=(−a)+a=0a+(−a)=(−a)+a=0a+(-a)=(-a)+a=0. Also, a topological space is just a set
+XXX together with a topology ττ\tau on it, i.e., ττ\tau is a subset of
+P(X)P(X)\mathcal{P}(X) containing XXX and ∅∅{\varnothing}, and closed under
+arbitrary unions and finite intersections. Any mathematical object
+whatsoever can always be viewed as a set, or a proper class. The
+properties of the object can then be expressed in the language of set
+theory. Any mathematical statement can be formalized into the language
+of set theory, and any mathematical theorem can be derived, using the
+calculus of first-order logic, from the axioms of ZFC, or from some
+extension of ZFC. It is in this sense that set theory provides a
+foundation for mathematics.
+The foundational role of set theory for mathematics, while
+significant, is by no means the only justification for its study. The
+ideas and techniques developed within set theory, such as infinite
+combinatorics, forcing, or the theory of large cardinals, have turned
+it into a deep and fascinating mathematical theory, worthy of study by
+itself, and with important applications to practically all areas of
+mathematics.
+5.1 Metamathematics
+The remarkable fact that virtually all of mathematics can be
+formalized within ZFC, makes possible a mathematical study of
+mathematics itself. Thus, any questions about the existence of some
+mathematical object, or the provability of a conjecture or hypothesis
+can be given a mathematically precise formulation. This makes
+metamathematics possible, namely the mathematical study of
+mathematics itself. So, the question about the provability or
+unprovability of any given mathematical statement becomes a sensible
+mathematical question. When faced with an open mathematical problem or
+conjecture, it makes sense to ask for its provability or unprovability
+in the ZFC formal system. Unfortunately, the answer may be neither,
+because ZFC, if consistent, is incomplete.
+5.2 The incompleteness phenomenon
+Gödel’s completeness theorem for first-order logic implies
+that ZFC is consistent—i.e., no contradiction can be
+derived from it—if and only if it has a model. A model
+of ZFC is a pair (M,E)(M,E)(M,E), where MMM is a non-empty set and EEE is a
+binary relation on MMM such that all the axioms of ZFC are true when
+interpreted in (M,E)(M,E)(M,E), i.e., when the variables that appear in the
+axioms range over elements of MMM, and ∈∈\in is interpreted as
+EEE. Thus, if φφ\varphi is a sentence of the language of set theory
+and one can find a model of ZFC in which φφ\varphi holds, then its
+negation ¬φ¬φ\neg \varphi cannot be proved in ZFC. Hence, if one can
+find a model of φφ\varphi and also a model of ¬φ¬φ\neg \varphi, then
+φφ\varphi is neither provable nor disprovable in ZFC, in which case we
+say that φφ\varphi is undecidable in, or independent
+of, ZFC.
+In 1931, Gödel announced his striking incompleteness theorems,
+which assert that any reasonable formal system for mathematics is
+necessarily incomplete. In particular, if ZFC is consistent, then
+there are undecidable propositions in ZFC. Moreover, Gödel’s
+second incompleteness theorem implies that the formal (arithmetical)
+statement CON(ZFC)CON(ZFC)CON(ZFC), which asserts that ZFC is consistent, while
+true, cannot be proved in ZFC. And neither can its negation. Thus,
+CON(ZFC)CON(ZFC)CON(ZFC) is undecidable in ZFC.
+If ZFC is consistent, then it cannot prove the existence of a model
+of ZFC, for otherwise ZFC would prove its own consistency. Thus, a
+proof of consistency or of undecidability of a given sentence
+φφ\varphi is always a relative consistency proof. That is,
+one assumes that ZFC is consistent, hence it has a model, and then one
+constructs another model of ZFC where the sentence φφ\varphi is
+true. We shall see several examples in the next sections.
+6. The set theory of the continuum
+From Cantor and until about 1940, set theory developed mostly
+around the study of the continuum, that is, the real line
+RR\mathbb{R}. The main topic was the study of the so-called regularity
+properties, as well as other structural properties, of
+simply-definable sets of real numbers, an area of mathematics that is
+known as Descriptive Set Theory.
+6.1 Descriptive Set Theory
+Descriptive Set Theory is the study of the properties and structure
+of definable sets of real numbers and, more generally, of definable
+subsets of RnRn\mathbb{R}^n and other Polish spaces (i.e.,
+topological spaces that are homeomorphic to a separable complete metric space), such as the Baire space
+NN\mathcal{N} of all functions f:N→Nf:N→Nf:\mathbb{N} \to \mathbb{N}, the
+space of complex numbers, Hilbert space, and separable Banach
+spaces. The simplest sets of real numbers are the basic open sets
+(i.e., the open intervals with rational endpoints), and their
+complements. The sets that are obtained in a countable number of steps
+by starting from the basic open sets and applying the operations of
+taking the complement and forming a countable union of previously
+obtained sets are the Borel sets. All Borel sets are
+regular, that is, they enjoy all the classical regularity
+properties. One example of a regularity property is the
+Lebesgue measurability: a set of reals is Lebesgue measurable
+if it differs from a Borel set by a null set, namely, a set that can
+be covered by sets of basic open intervals of arbitrarily-small total
+length. Thus, trivially, every Borel set is Lebesgue measurable, but
+sets more complicated than the Borel ones may not be. Other classical
+regularity properties are the Baire property (a set of reals
+has the Baire property if it differs from an open set by a meager set,
+namely, a set that is a countable union of sets that are not dense in
+any interval), and the perfect set property (a set of reals
+has the perfect set property if it is either countable or contains a
+perfect set, namely, a nonempty closed set with no isolated points). In ZFC one
+can prove that there exist non-regular sets of reals, but the AC is
+necessary for this (Solovay 1970).
+The analytic sets, also called Σ11Σ11\mathbf{\Sigma}^1_1, are
+the continuous images of Borel sets. And the co-analytic, or
+Π11Π11\mathbf{\Pi}^1_1, sets are the complements of analytic sets.
+Starting from the analytic (or the co-analytic) sets and applying
+the operations of projection (from the product space R×NR×N\mathbb{R}\times
+\mathcal{N} to RR\mathbb{R}) and complementation, one obtains the
+projective sets. The projective sets form a hierarchy of
+increasing complexity. For example, if A⊆R×NA⊆R×NA\subseteq \mathbb{R}\times
+\mathcal{N} is co-analytic, then the projection {x∈R:∃y∈N((x,y)∈A)}{x∈R:∃y∈N((x,y)∈A)}\{ x\in \mathbb{R}:
+\exists y\in \mathcal{N}((x,y)\in A)\} is a projective set in the
+next level of complexity above the co-analytic sets. Those sets are
+called Σ12Σ21\mathbf{\Sigma}^1_2, and their complements are called
+Π12Π21\mathbf{\Pi}^1_2.
+The projective sets come up very naturally in mathematical
+practice, for it turns out that a set AAA of reals is projective if
+and only if it is definable in the structure
+R=(R,+,⋅,Z).R=(R,+,⋅,Z).\mathcal{R}=(\mathbb{R}, +,\cdot ,\mathbb{Z}).
+That is, there is a first-order formula φ(x,y1,…,yn)φ(x,y1,…,yn)\varphi ( x, y_1,\ldots,
+y_n) in the language for the structure such that for some r1,…,rn∈Rr1,…,rn∈Rr_1,\ldots
+,r_n\in \mathbb{R},
+A={x∈R:R⊨φ(x,r1,…,rn)}.A={x∈R:R⊨φ(x,r1,…,rn)}.A=\{ x\in \mathbb{R}: \mathcal{R}\models \varphi(x,r_1,\ldots
+,r_n)\}.
+ZFC proves that every analytic set, and therefore every co-analytic
+set, is Lebesgue measurable and has the Baire property. It also proves
+that every analytic set has the perfect set property. But the perfect
+set property for co-analytic sets implies that the first uncountable
+cardinal, ℵ1ℵ1\aleph_1, is a large cardinal in the constructible
+universe LLL (see Section 7), namely a
+so-called inaccessible cardinal (see
+ Section 10), 
+which implies that one cannot prove in ZFC that every
+co-analytic set has the perfect set property.
+The theory of projective sets of complexity greater than
+co-analytic is completely undetermined by ZFC. For example, in LLL
+there is a Σ12Σ21\mathbf{\Sigma}^1_2 set that is not Lebesgue measurable
+and does not have the Baire property, whereas if Martin’s axiom holds
+(see Section 11), every such set has those
+regularity properties. There is, however, an axiom, called the axiom
+of Projective Determinacy, or PD, that is consistent with ZFC, modulo
+the consistency of some large cardinals (in fact, it follows from the existence of some large cardinals), and implies that all
+projective sets are regular. Moreover, PD settles essentially all
+questions about the projective sets. See the entry on
+ large cardinals and determinacy
+ for further details.
+6.2 Determinacy
+A regularity property of sets that subsumes all other classical
+regularity properties is that of being determined. For
+simplicity, we shall work with the Baire space NN\mathcal{N}. Recall
+that the elements of NN\mathcal{N} are functions f:N→Nf:N→Nf:\mathbb{N} \to
+\mathbb{N}, that is, sequences of natural numbers of length
+ωω\omega. The space NN\mathcal{N} is topologically equivalent (i.e.,
+homeomorphic) to the set of irrational points of RR\mathbb{R}. So,
+since we are interested in the regularity properties of subsets of
+RR\mathbb{R}, and since countable sets, such as the set of rationals,
+are negligible in terms of those properties, we may as well work with
+NN\mathcal{N}, instead of RR\mathbb{R}.
+Given A⊆NA⊆NA\subseteq \mathcal{N}, the game
+associated to AAA, denoted by GAGA{\mathcal G}_A, has two players, I and
+II, who play alternatively ni∈Nni∈Nn_i\in \mathbb{N}: I plays n0n0n_0, then II
+plays n1n1n_1, then I plays n2n2n_2, and so on. So, at stage 2k2k2k, player
+I plays n2kn2kn_{2k} and at stage 2k+12k+12k+1, player II plays n2k+1n2k+1n_{2k+1} . We
+may visualize a run of the game as follows:
+
+
+II\mathbf{I}
+n0n0n_0
+
+n2n2n_2
+
+n4n4n_4
+
+⋯⋯\cdots
+
+n2kn2kn_{2k}
+
+⋯⋯\cdots
+
+
+
+IIII\mathbf{II}
+
+n1n1n_1
+
+n3n3n_3
+
+⋯⋯\cdots
+
+⋯⋯\cdots
+
+n2k+1n2k+1n_{2k+1}
+
+⋯⋯\cdots
+
+
+After infinitely many moves, the two players produce an infinite
+sequence n0,n1,n2,…n0,n1,n2,…n_0, n_1,n_2,\ldots of natural numbers. Player I wins the
+game if the sequence belongs to AAA. Otherwise, player II wins.
+The game GAGA{\mathcal{G}}_A is determined if
+there is a winning strategy for one of the players. A winning
+strategy for one of the players, say for player II, is a function
+σσ\sigma from the set of finite sequences of natural numbers into
+NN\mathbb{N}, such that if the player plays according to this
+function, i.e., she plays σ(n0,…,n2k)σ(n0,…,n2k)\sigma (n_0,\ldots ,n_{2k}) at the kkk-th
+turn, she will always win the game, no matter what the other player
+does.
+We say that a subset AAA of NN\mathcal{N} is determined if
+and only if the game GAGA{\mathcal{G}}_A is determined.
+One can prove in ZFC—and the use of the AC is
+necessary—that there are non-determined sets. Thus, the
+Axiom of Determinacy (AD), which asserts that all subsets of
+NN\mathcal{N} are determined, is incompatible with the AC. But Donald
+Martin proved, in ZFC, that every Borel set is determined. Further, he
+showed that if there exists a large cardinal called measurable (see
+ Section 10), then even the analytic sets are
+determined. The axiom of Projective Determinacy (PD) asserts
+that every projective set is determined. It turns out that PD implies
+that all projective sets of reals are regular, and Woodin has shown
+that, in a certain sense, PD settles essentially all questions about
+the projective sets. Moreover, PD seems to be necessary for
+this. Another axiom, ADL(R)ADL(R)AD^{L(\Bbb R )}, asserts that the AD holds in
+L(R)L(R)L(\Bbb R), which is the least transitive class that contains all the
+ordinals and all the real numbers, and satisfies the ZF axioms (see
+ Section 7). So, ADL(R)ADL(R)AD^{L(\Bbb R )} implies that
+every set of reals that belongs to L(R)L(R)L(\Bbb R) is regular. Also, since
+L(R)L(R)L(\Bbb R) contains all projective sets, ADL(R)ADL(R)AD^{L(\Bbb R )} implies
+PD.
+6.3 The Continuum Hypothesis
+The Continuum Hypothesis (CH), formulated by Cantor in 1878,
+asserts that every infinite set of real numbers has cardinality either
+ℵ0ℵ0\aleph_0 or the same cardinality as RR\mathbb{R}. Thus, the CH is
+equivalent to 2ℵ0=ℵ12ℵ0=ℵ12^{\aleph_0}=\aleph_1.
+Cantor proved in 1883 that closed sets of real numbers have the
+perfect set property, from which it follows that every uncountable
+closed set of real numbers has the same cardinality as
+RR\mathbb{R}. Thus, the CH holds for closed sets. More than thirty
+years later, Pavel Aleksandrov extended the result to all Borel sets,
+and then Mikhail Suslin to all analytic sets. Thus, all analytic sets
+satisfy the CH. However, the efforts to prove that co-analytic sets
+satisfy the CH would not succeed, as this is not provable in ZFC.
+In 1938 Gödel proved the consistency of the CH with
+ZFC. Assuming that ZF is consistent, he built a model of ZFC, known as
+the constructible universe, in which the CH holds. Thus, the
+proof shows that if ZF is consistent, then so is ZF together with the
+AC and the CH. Hence, assuming ZF is consistent, the AC cannot be
+disproved in ZF and the CH cannot be disproved in ZFC.
+See the entry on the
+ continuum hypothesis
+ for the current status of the problem, including the
+latest results by Woodin.
+7. Gödel’s constructible universe
+Gödel’s constructible universe, denoted by LLL, is defined by
+transfinite recursion on the ordinals, similarly as VVV, but at
+successor steps, instead of taking the power set of VαVαV_\alpha to
+obtain Vα+1Vα+1V_{\alpha +1}, one only takes those subsets of LαLαL_\alpha
+that are definable in LαLαL_\alpha, using elements of LαLαL_\alpha as
+parameters. Thus, letting PDef(X)PDef(X)\mathcal{P}^{Def}(X) to denote the set of
+all the subsets of XXX that are definable in the structure (X,∈)(X,∈)(X,\in )
+by a formula of the language of set theory, using elements of XXX as
+parameters of the definition, we let
+
+L0=∅L0=∅L_0={\varnothing}
+Lα+1=PDef(Lα)Lα+1=PDef(Lα)L_{\alpha +1}=\mathcal{P}^{Def}(L_\alpha)
+Lλ=⋃α<λLαLλ=⋃α<λLαL_\lambda =\bigcup_{\alpha &lt;\lambda}L_\alpha, whenever
+λλ\lambda is a limit ordinal.
+
+Then LLL is the union of all the LαLαL_\alpha, for αα\alpha an
+ordinal, i.e., L=⋃α∈ONLαL=⋃α∈ONLαL=\bigcup_{\alpha \in ON}L_\alpha.
+Gödel showed that LLL satisfies all the ZFC axioms, and also
+the CH. In fact, it satisfies the Generalized Continuum
+Hypothesis (GCH), namely 2ℵα=ℵα+12ℵα=ℵα+12^{\aleph_\alpha}=\aleph_{\alpha +1},
+for every ordinal αα\alpha.
+The statement V=LV=LV=L, called the axiom of constructibility,
+asserts that every set belongs to LLL. It holds in LLL, hence it is
+consistent with ZFC, and implies both the AC and the GCH.
+The proper class LLL, together with the ∈∈\in relation restricted
+to LLL, is an inner model of ZFC, that is, a
+transitive (i.e., it contains all elements of its elements)
+class that contains all ordinals and satisfies all the ZFC axioms. It
+is in fact the smallest inner model of ZFC, as any other inner model
+contains it.
+More generally, given any set AAA, one can build the smallest
+transitive model of ZF that contains AAA and all the ordinals in a
+similar manner as LLL, but now starting with the transitive closure of
+{A}{A}\{A \}, i.e., the smallest transitive set that contains AAA, instead
+of ∅∅{\varnothing}. The resulting model, L(A)L(A)L(A), need not be however a
+model of the AC. One very important such model is L(R)L(R)L(\mathbb{R}), the
+smallest transitive model of ZF that contains all the ordinals and all
+the real numbers.
+The theory of constructible sets owes much to the work of Ronald
+Jensen. He developed the so-called fine structure theory of
+LLL and isolated some combinatorial principles, such as the diamond
+(♢♢\diamondsuit) and square (□◻\Box), which can be used to carry out
+complicated constructions of uncountable mathematical objects. Fine
+structure theory plays also an important role in the analysis of
+bigger LLL-like models, such as L(R)L(R)L(\mathbb{R}) or the inner models
+for large cardinals (see 
+Section 10.1).
+8. Forcing
+In 1963, twenty-five years after Gödel’s proof of the
+consistency of the CH and the AC, relative to the consistency of ZF, Paul Cohen (1966)
+proved the consistency of the negation of the CH, and also of the negation of the AC, relative to the
+consistency of ZF. Thus, if ZF is consistent, then the CH is
+undecidable in ZFC, and the AC is undecidable in ZF.  To achieve this, Cohen
+devised a new and extremely powerful technique, called
+forcing, for expanding countable transitive models of ZF.
+Since the axiom V=LV=LV=L implies the AC and the CH, any model of the
+negation of the AC or the CH must violate V=LV=LV=L. So, let’s illustrate
+the idea of forcing in the case of building a model for the negation
+of V=LV=LV=L. We start with a transitive model MMM of ZFC, which we may
+assume, without loss of generality, to be a model of V=LV=LV=L. To violate
+V=LV=LV=L we need to expand MMM by adding a new set rrr so that, in the
+expanded model, rrr will be non-constructible. Since all
+hereditarily-finite sets are constructible, we aim to add an infinite
+set of natural numbers. The first problem we face is that MMM may
+contain already all subsets of ωω\omega. Fortunately, by the
+Löwenheim-Skolem theorem for first-order logic, MMM has a
+countable elementary submodel NNN. So, since we are only interested in
+the statements that hold in MMM, and not in MMM itself, we may as well
+work with NNN instead of MMM, and so we may assume that MMM itself is
+countable. Then, since P(ω)P(ω)\mathcal{P}(\omega) is uncountable, there are
+plenty of subsets of ωω\omega that do not belong to MMM. But,
+unfortunately, we cannot just pick any infinite subset rrr of ωω\omega
+that does not belong to MMM and add it to MMM. The reason is that rrr
+may encode a lot of information, so that when added to MMM, MMM is no
+longer a model of ZFC, or it is still a model of V=LV=LV=L. To avoid this,
+one needs to pick rrr with great care. The idea is to pick rrr
+generic over MMM, meaning that rrr is built from its finite
+approximations in such a way that it does not have any property that
+is definable in MMM and can be avoided. For example, by viewing rrr as
+an infinite sequence of natural numbers in the increasing order, the
+property of rrr containing only finitely-many even numbers can be
+avoided, because given any finite approximation to rrr—i.e., any
+finite increasing sequence of natural numbers—one can always
+extend it by adding more even numbers, so that at the end of the
+construction rrr will contain infinitely-many even numbers; while the
+property of containing the number 7 cannot be avoided, because when a
+finite approximation to rrr contains the number 7, then it stays there
+no matter how the construction of rrr proceeds. Since MMM is
+countable, there are such generic rrr. Then the expanded model M[r]M[r]M[r],
+which includes MMM and contains the new set rrr, is called a
+generic extension of MMM. Since we assumed MMM is a
+transitive model of V=LV=LV=L, the model M[r]M[r]M[r] is just Lα(r)Lα(r)L_\alpha (r),
+where αα\alpha is the supremum of the ordinals of MMM. Then one can
+show, using the forcing relation between finite
+approximations to rrr and formulas in the language of set theory
+expanded with so-called names for sets in the generic
+extension, that M[r]M[r]M[r] is a model of ZFC and rrr is not constructible
+in M[r]M[r]M[r], hence the axiom of constructibility V=LV=LV=L fails.
+In general, a forcing extension of a model MMM is obtained by
+adding to MMM a generic subset GGG of some partially ordered set
+PP\mathbb{P} that belongs to MMM. In the above example, PP\mathbb{P}
+would be the set of all finite increasing sequences of natural
+numbers, seen as finite approximations to the infinite sequence rrr,
+ordered by ⊆⊆\subseteq; and GGG would be the set of all finite initial
+segments of rrr.
+In the case of the consistency proof of the negation of the CH, one
+starts from a model MMM and adds ℵ2ℵ2\aleph_2 new subsets of ωω\omega,
+so that in the generic extension the CH fails. In this case one needs
+to use an appropriate partial ordering PP\mathbb{P} so that the
+ℵ2ℵ2\aleph_2 of MMM is not collapsed, i.e., it is the same as
+the ℵ2ℵ2\aleph_2 of the generic extension, and thus the generic
+extension M[G]M[G]M[G] will satisfy the sentence that says that there are
+ℵ2ℵ2\aleph_2 real numbers.
+8.1 Other applications of forcing
+Besides the CH, many other mathematical conjectures and problems
+about the continuum, and other infinite mathematical objects, have
+been shown undecidable in ZFC using the forcing technique.
+One important example is Suslin’s Hypothesis (SH). Cantor
+had shown that every linearly ordered set SSS without endpoints that
+is dense (i.e., between any two different elements of SSS there is
+another one), complete (i.e., every subset of SSS that is bounded
+above has a supremum), and with a countable dense subset is isomorphic
+to the real line. Suslin conjectured that this is still true if one
+relaxes the requirement of containing a countable dense subset to
+being ccc, i.e., every collection of pairwise-disjoint
+intervals is countable. In the early 1970s, Thomas Jech produced a
+consistent counterexample using forcing, and Ronald Jensen showed that
+a counterexample exists in LLL. About the same time, Robert Solovay
+and Stanley Tennenbaum (1971) developed and used for the first time
+the iterated forcing technique to produce a model where the SH holds,
+thus showing its independence from ZFC. In order to make sure that the
+SH holds in the generic extension, one needs to destroy all
+counterexamples, but by destroying one particular counterexample one
+may inadvertently create new ones, and so one needs to force again and
+again; in fact one needs to go on for at least ω2ω2\omega_2-many
+steps. This is why a forcing iteration is needed.
+Among other famous mathematical problems that have been shown
+undecidable in ZFC thanks to the forcing technique, especially using
+iterated forcing and sometimes combined with large cardinals, we may
+mention the Measure Problem and the Borel Conjecture in measure
+theory, Kaplansky’s Conjecture on Banach algebras, and Whitehead’s
+Problem in group theory.
+9. The search for new axioms
+As a result of 50 years of development of the forcing technique,
+and its applications to many open problems in mathematics, there are
+now literally thousands of questions, in practically all areas of
+mathematics, that have been shown independent of ZFC. These include
+almost all questions about the structure of uncountable sets. One
+might say that the undecidability phenomenon is pervasive, to the
+point that the investigation of the uncountable has been rendered
+nearly impossible in ZFC alone (see however Shelah (1994) for
+remarkable exceptions).
+This prompts the question about the truth-value of the statements
+that are undecided by ZFC. Should one be content with them being
+undecidable? Does it make sense at all to ask for their truth-value?
+There are several possible reactions to this. One is the skeptic’s
+position: the statements that are undecidable in ZFC have no definite
+answer; and they may even be inherently vague. Another, the common one
+among mathematicians, is Gödel’s position: the undecidability
+only shows that the ZFC system is too weak to answer those questions,
+and therefore one should search for new axioms that once added to ZFC
+would answer them. The search for new axioms has been known as
+Gödel’s Program. See Hauser (2006) for a thorough
+philosophical discussion of the Program, and also the entry on
+  large cardinals and determinacy
+ for philosophical considerations on the justification
+of new axioms for set theory.
+A central theme of set theory is thus the search and classification
+of new axioms. These fall currently into two main types: the axioms of
+large cardinals and the forcing axioms.
+10. Large cardinals
+One cannot prove in ZFC that there exists a regular limit cardinal
+κκ\kappa, for if κκ\kappa is such a cardinal, then LκLκL_\kappa is a
+model of ZFC, and so ZFC would prove its own consistency,
+contradicting Gödel’s second incompleteness theorem. Thus, the
+existence of a regular limit cardinal must be postulated as a new
+axiom. Such a cardinal is called weakly inaccessible. If, in
+addition κκ\kappa is a strong limit, i.e., 2λ<κ2λ<κ2^\lambda &lt;\kappa, for
+every cardinal λ<κλ<κ\lambda &lt;\kappa, then κκ\kappa is called
+strongly inaccessible. A cardinal κκ\kappa is strongly
+inaccessible if and only if it is regular and VκVκV_\kappa  is a model
+of ZFC. If the GCH holds, then every weakly inaccessible cardinal is
+strongly inaccessible.
+Large cardinals are uncountable cardinals satisfying some
+properties that make them very large, and whose existence cannot be
+proved in ZFC. The first weakly inaccessible cardinal is just the
+smallest of all large cardinals. Beyond inaccessible cardinals there
+is a rich and complex variety of large cardinals, which form a linear
+hierarchy in terms of consistency strength, and in many cases also in
+terms of outright implication. See the entry on
+ independence and large cardinals
+ for more details.
+To formulate the next stronger large-cardinal notion, let us say
+that a subset CCC of an infinite cardinal κκ\kappa is closed
+if every limit of elements of CCC is also in CCC; and is
+unbounded if for every α<κα<κ\alpha &lt;\kappa there exists
+β∈Cβ∈C\beta\in C greater than αα\alpha. For example, the set of limit
+ordinals less than κκ\kappa is closed and unbounded. Also, a subset
+SSS of κκ\kappa is called stationary if it intersects every
+closed unbounded subset of κκ\kappa. If κκ\kappa is regular and
+uncountable, then the set of all ordinals less than κκ\kappa of
+cofinality ωω\omega is an example of a stationary set. A regular
+cardinal κκ\kappa is called Mahlo if the set of strongly
+inaccessible cardinals smaller than κκ\kappa is stationary. Thus, the
+first Mahlo cardinal is much larger than the first strongly
+inaccessible cardinal, as there are κκ\kappa-many strongly
+inaccessible cardinals smaller than κκ\kappa.
+Much stronger large cardinal notions arise from considering strong
+reflection properties. Recall that the Reflection Principle
+ (Section 4), which is provable in ZFC, asserts
+that every true sentence (i.e., every sentence that holds in
+VVV) is true in some VαVαV_\alpha. A strengthening of this principle to
+second-order sentences yields some large cardinals. For example,
+κκ\kappa is strongly inaccessible if and only if every Σ11Σ11\Sigma^1_1
+sentence (i.e., existential second-order sentence in the language of
+set theory, with one additional predicate symbol) true in any 
+structure of the form (Vκ,∈,A)(Vκ,∈,A)(V_\kappa ,\in, A), where A⊆VκA⊆VκA\subseteq V_\kappa, is true
+in some (Vα,∈,A∩Vα)(Vα,∈,A∩Vα)(V_\alpha ,\in ,A\cap V_\alpha), with α<κα<κ\alpha &lt;\kappa. The
+same type of reflection, but now for Π11Π11\Pi^1_1 sentences (i.e.,
+universal second-order sentences), yields a much stronger large
+cardinal property of κκ\kappa, called weak compactness. Every
+weakly compact cardinal κκ\kappa is Mahlo, and the set of Mahlo
+cardinals smaller than κκ\kappa is stationary. By allowing reflection
+for more complex second-order, or even higher-order, sentences one
+obtains large cardinal notions stronger than weak compactness.
+The most famous large cardinals, called measurable, were
+discovered by Stanisław Ulam in 1930 as a result of his solution
+to the Measure Problem. A (two-valued) measure, or
+ultrafilter, on a cardinal κκ\kappa is a subset UUU of
+P(κ)P(κ)\mathcal{P}(\kappa) that has the following properties: (i) the
+intersection of any two elements of UUU is in UUU; (ii) if X∈UX∈UX\in U and
+YYY is a subset of κκ\kappa such that X⊆YX⊆YX\subseteq Y, then Y∈UY∈UY\in U;
+and (iii) for every X⊆κX⊆κX\subseteq\kappa, either X∈UX∈UX\in U or κ−X∈Uκ−X∈U\kappa
+-X\in U, but not both. A measure UUU is called
+κκ\kappa-complete if every intersection of less than κκ\kappa
+elements of UUU is also in UUU. And a measure is called
+non-principal if there is no α<κα<κ\alpha &lt;\kappa that belongs
+to all elements of UUU. A cardinal κκ\kappa is called
+measurable if there exists a measure on κκ\kappa that is
+κκ\kappa-complete and non-principal.
+Measurable cardinals can be characterized by elementary embeddings
+of the universe VVV into some transitive class MMM. That such an
+embedding j:V→Mj:V→Mj:V\to M is elementary means that jjj preserves
+truth, i.e., for every formula φ(x1,…,xn)φ(x1,…,xn)\varphi (x_1,\ldots ,x_n) of the
+language of set theory, and every a1,…,ana1,…,ana_1,\ldots ,a_n, the sentence
+φ(a1,…,an)φ(a1,…,an)\varphi (a_1,\ldots ,a_n) holds in VVV if and only if φ(j(a1),…,j(an))φ(j(a1),…,j(an))\varphi
+(j(a_1),\ldots ,j(a_n)) holds in MMM. It turns out that a cardinal
+κκ\kappa is measurable if and only if there exists an elementary
+embedding j:V→Mj:V→Mj:V\to M, with MMM transitive, so that κκ\kappa is the
+first ordinal moved by jjj, i.e., the first ordinal such that
+j(κ)≠κj(κ)≠κj(\kappa)\ne \kappa. We say that κκ\kappa is the critical
+point of jjj, and write crit(j)=κcrit(j)=κcrit(j)=\kappa. The embedding jjj is
+definable from a κκ\kappa-complete non-principal measure on κκ\kappa,
+using the so-called ultrapower construction. Conversely, if
+j:V→Mj:V→Mj:V\to M is an elementary embedding, with MMM transitive and
+κ=crit(j)κ=crit(j)\kappa=crit(j), then the set U={X⊆κ:κ∈j(X)}U={X⊆κ:κ∈j(X)}U=\{ X\subseteq \kappa:\kappa\in
+j(X)\} is a κκ\kappa-complete non-principal ultrafilter on
+κκ\kappa. A measure UUU obtained in this way from jjj is called
+normal.
+Every measurable cardinal κκ\kappa is weakly compact, and there are
+many weakly compact cardinals smaller than κκ\kappa. In fact, below
+κκ\kappa there are many cardinals that are totally
+indescribable, i.e., they reflect all sentences, of any
+complexity, and in any higher-order language.
+If κκ\kappa is measurable and j:V→Mj:V→Mj:V\to M is given by the ultrapower
+construction, then Vκ⊆MVκ⊆MV_\kappa \subseteq M, and every sequence of
+length less than or equal to κκ\kappa of elements of MMM belongs to
+MMM. Thus, MMM is quite similar to VVV, but it cannot be VVV
+itself. Indeed, a famous theorem of Kenneth Kunen shows that there
+cannot be any elementary embedding j:V→Vj:V→Vj:V\to V, other than the trivial
+one, i.e., the identity. All known proofs of this result use the Axiom
+of Choice, and it is an outstanding important question if the axiom is
+necessary. Kunen’s Theorem opens the door to formulating large
+cardinal notions stronger than measurability by requiring that MMM is
+closer to VVV.
+For example, κκ\kappa is called strong if for every
+ordinal αα\alpha there exists an elementary embedding j:V→Mj:V→Mj:V\to M, for
+some MMM transitive, such that κ=crit(j)κ=crit(j)\kappa =crit(j) and Vα⊆MVα⊆MV_\alpha
+\subseteq M.
+Another important, and much stronger large cardinal notion is
+supercompactness. A cardinal κκ\kappa is supercompact if for
+every αα\alpha there exists an elementary embedding j:V→Mj:V→Mj:V\to M, with
+MMM transitive and critical point κκ\kappa, so that
+j(κ)>αj(κ)>αj(\kappa)&gt;\alpha and every sequence of elements of MMM of length
+αα\alpha belongs to MMM.
+Woodin cardinals fall between strong and supercompact. Every
+supercompact cardinal is Woodin, and if δδ\delta is Woodin, then
+VδVδV_\delta is a model of ZFC in which there is a proper class of
+strong cardinals. Thus, while a Woodin cardinal δδ\delta need not be
+itself very strong—the first one is not even weakly
+compact—it implies the existence of many large cardinals in
+VδVδV_\delta.
+Beyond supercompact cardinals we find the extendible
+cardinals, the huge, the super huge, etc.
+Kunen’s theorem about the non-existence of a non-trivial elementary
+embedding j:V→Vj:V→Vj:V\to V actually shows that there cannot be an elementary
+embedding j:Vλ+2→Vλ+2j:Vλ+2→Vλ+2j:V_{\lambda +2}\to V_{\lambda +2} different from the
+identity, for any λλ\lambda.
+The strongest large cardinal notions not known to be inconsistent,
+modulo ZFC, are the following:
+
+There exists an elementary embedding j:Vλ+1→Vλ+1j:Vλ+1→Vλ+1j:V_{\lambda +1}\to
+V_{\lambda +1} different from the identity.
+There exists an elementary embedding j:L(Vλ+1)→L(Vλ+1)j:L(Vλ+1)→L(Vλ+1)j:L(V_{\lambda +1})\to
+L(V_{\lambda +1}) different from the identity.
+
+Large cardinals form a linear hierarchy of increasing consistency
+strength. In fact they are the stepping stones of the interpretability
+hierarchy of mathematical theories. See the entry on
+ independence and large cardinals
+ for more details. Given any sentence φφ\varphi, exactly
+one the following three possibilities holds about the theory ZFC plus
+φφ\varphi:
+
+ZFC plus φφ\varphi is inconsistent.
+ZFC plus φφ\varphi is equiconsistent with ZFC.
+ZFC plus φφ\varphi is equiconsistent with ZFC plus the existence of
+some large cardinal.
+
+Thus, large cardinals can be used to prove that a given sentence
+φφ\varphi does not imply another sentence ψψ\psi, modulo ZFC, by
+showing that ZFC plus ψψ\psi implies the consistency of some large
+cardinal, whereas ZFC plus φφ\varphi is consistent assuming the
+existence of a smaller large cardinal, or just assuming the
+consistency of ZFC. In other words, ψψ\psi has higher consistency
+strength than φφ\varphi, modulo ZFC. Then, by Gödel’s second
+incompleteness theorem, ZFC plus φφ\varphi cannot prove ψψ\psi,
+assuming ZFC plus φφ\varphi is consistent.
+As we already pointed out, one cannot prove in ZFC that large
+cardinals exist. But everything indicates that their existence not
+only cannot be disproved, but in fact the assumption of their
+existence is a very reasonable axiom of set theory. For one thing,
+there is a lot of evidence for their consistency, especially for those
+large cardinals for which it is possible to construct an inner
+model.
+10.1 Inner models of large cardinals
+An inner model of ZFC is a transitive proper class that
+contains all the ordinals and satisfies all ZFC axioms. Thus, LLL is
+the smallest inner model, while VVV is the largest. Some large
+cardinals, such as inaccessible, Mahlo, or weakly-compact, may exist
+in LLL. That is, if κκ\kappa has one of these large cardinal
+properties, then it also has the property in LLL. But some large
+cardinals cannot exist in LLL. Indeed, Scott (1961) showed that if
+there exists a measurable cardinal κκ\kappa, then V≠LV≠LV\ne L. It is
+important to notice that κκ\kappa does belong to LLL, since LLL
+contains all ordinals, but it is not measurable in LLL because a
+κκ\kappa-complete non-principal measure on κκ\kappa cannot exist
+there.
+If κκ\kappa is a measurable cardinal, then one can construct an
+LLL-like model in which κκ\kappa is measurable by taking a
+κκ\kappa-complete non-principal and normal measure UUU on κκ\kappa,
+and proceeding as in the definition of LLL, but now using UUU as an
+additional predicate. The resulting model, called L[U]L[U]L[U], is an inner
+model of ZFC in which κκ\kappa is measurable, and in fact κκ\kappa is
+the only measurable cardinal. The model is canonical, in the sense
+that any other normal measure witnessing the measurability of κκ\kappa
+would yield the same model, and has many of the properties of LLL. For
+instance, it has a projective well ordering of the reals, and it
+satisfies the GCH.
+Building similar LLL-like models for stronger large cardinals, such
+as strong, or Woodin, is much harder. Those models are of the form
+L[E]L[E]L[E], where EEE is a sequence of extenders, each extender
+being a system of measures, that encode the relevant elementary
+embeddings.
+The largest LLL-like inner models for large cardinals that have
+been obtained so far can contain Woodin limits of Woodin cardinals
+(Neeman 2002). However, building an LLL-like model for a supercompact
+cardinal is still a challenge. The supercompact barrier seems to be
+the crucial one, for Woodin has shown that for a kind of LLL-like
+inner model for a supercompact cardinal, which he calls the
+Ultimate-LLL, all stronger large cardinals that may exist in VVV, such as
+extendible, huge, I1, etc. would also exist in the model. The
+construction of Ultimate-LLL is still incomplete, and it is not clear
+yet that it will succeed, for it rests upon some technical hypotheses
+that need to be confirmed.
+10.2 Consequences of large cardinals
+The existence of large cardinals has dramatic consequences, even
+for simply-definable small sets, like the projective sets of real
+numbers. For example, Solovay (1970) proved, assuming that there
+exists a measurable cardinal, that all Σ12Σ21\mathbf{\Sigma}^1_2 sets of
+reals are Lebesgue measurable and have the Baire property, which
+cannot be proved in ZFC alone. And Shelah and Woodin (1990) showed
+that the existence of a proper class of Woodin cardinals implies that
+the theory of L(R)L(R)L(\mathbb{R}), even with real numbers as parameters,
+cannot be changed by forcing, which implies that all sets of real
+numbers that belong to L(R)L(R)L(\mathbb{R}) are regular. Further, under a
+weaker large-cardinal hypothesis, namely the existence of infinitely
+many Woodin cardinals, Martin and Steel (1989) proved that every
+projective set of real numbers is determined, i.e., the axiom of PD
+holds, hence all projective sets are regular. Moreover, Woodin showed
+that the existence of infinitely many Woodin cardinals, plus a
+measurable cardinal above all of them, implies that every set of reals
+in L(R)L(R)L(\mathbb{R}) is determined, i.e., the axiom ADL(R)ADL(R)AD^{L(\mathbb{R})}
+holds, hence all sets of real numbers that belong to L(R)L(R)L(\mathbb{R}),
+and therefore all projective sets, are regular. He also showed that
+Woodin cardinals provide the optimal large cardinal assumptions by
+proving that the following two statements:
+
+There are infinitely many Woodin cardinals.
+ADL(R)ADL(R)AD^{L({\Bbb R})}.
+
+are equiconsistent, i.e., ZFC plus 1 is consistent if and only if
+ZFC plus 2 is consistent. See the entry on
+ large cardinals and determinacy
+ for more details and related results.
+Another area in which large cardinals play an important role is the
+exponentiation of singular cardinals. The so-called Singular
+Cardinal Hypothesis (SCH) completely determines the behavior of
+the exponentiation for singular cardinals, modulo the exponentiation
+for regular cardinals. The SCH follows from the GCH, and so it holds
+in LLL. A consequence of the SCH is that if
+2ℵn<ℵω2ℵn<ℵω2^{\aleph_n}&lt;\aleph_\omega, for all finite nnn, then
+2ℵω=ℵω+12ℵω=ℵω+12^{\aleph_{\omega}}=\aleph_{\omega +1}. Thus, if the GCH holds for
+cardinals smaller than ℵωℵω\aleph_\omega, then it also holds at
+ℵωℵω\aleph_\omega. The SCH holds above the first supercompact cardinal
+(Solovay). But Magidor (1977) showed that, remarkably, assuming the
+existence of large cardinals it is possible to build a model of ZFC
+where the GCH first fails at ℵωℵω\aleph_\omega, hence the SCH
+fails. Large cardinals stronger than measurable are actually needed
+for this. In contrast, however, ZFC alone suffices to prove that if
+the SCH holds for all cardinals smaller than ℵω1ℵω1\aleph_{\omega_1}, then
+it also holds for ℵω1ℵω1\aleph_{\omega_1}. Moreover, if the SCH holds for
+all singular cardinals of countable cofinality, then it holds for all
+singular cardinals (Silver).
+11. Forcing axioms
+Forcing axioms are axioms of set theory that assert that certain
+existential statements are absolute between the universe VVV of all
+sets and its (ideal) forcing extensions, i.e., some existential
+statements that hold in some forcing extensions of VVV are already
+true in VVV. The first forcing axiom was formulated by Donald Martin
+in the wake of the Solovay-Tennenbaum proof of the consistency of
+Suslin’s Hypothesis, and is now known as Martin’s Axiom
+(MA). Before we state it, let us say that a partial ordering
+is a non-empty set PPP together with a binary relation ≤≤\leq on PPP
+that is reflexive and transitive. Two elements, ppp and qqq, of PPP
+are called compatible if there exists r∈Pr∈Pr\in P such that
+r≤pr≤pr\leq p and r≤qr≤qr\leq q. An antichain of PPP is a subset of
+PPP whose elements are pairwise-incompatible. A partial ordering PPP
+is called ccc if every antichain of PPP is countable. A
+non-empty subset GGG of PPP is called a filter if (i) every
+two elements of GGG are compatible, and (ii) if p∈Gp∈Gp\in G and p≤qp≤qp\leq
+q, then also q∈Gq∈Gq\in G. Finally, a subset DDD of PPP is called
+dense if for every p∈Pp∈Pp\in P there is q∈Dq∈Dq\in D such that
+q≤pq≤pq\leq p.
+MA asserts the following:
+
+For every ccc partial ordering PPP and every set {Dα:α<ω1}{Dα:α<ω1}\{ D_\alpha
+:\alpha &lt;\omega_1\} of dense subsets of PPP, there exists a filter
+G⊆PG⊆PG\subseteq P that is generic for the set, i.e., G∩Dα≠∅G∩Dα≠∅G\cap
+D_\alpha \ne {\varnothing}, for all α<ω1α<ω1\alpha
+&lt;\omega_1.
+Martin and Solovay (1970) proved that MA is consistent with ZFC,
+using iterated forcing with the ccc property. At first sight, MA may
+not look like an axiom, namely an obvious, or at least reasonable,
+assertion about sets, but rather like a technical statement about ccc
+partial orderings. It does look more natural, however, when expressed
+in topological terms, for it is simply a generalization of the
+well-known Baire Category Theorem, which asserts that in every compact
+Hausdorff topological space the intersection of countably-many dense
+open sets is non-empty. Indeed, MA is equivalent to:
+
+In every compact Hausdorff ccc topological space, the intersection
+of ℵ1ℵ1\aleph_1-many dense open sets is non-empty.
+MA has many different equivalent formulations and has been used
+very successfully to settle a large number of open problems in other
+areas of mathematics. For example, it implies Suslin’s Hypothesis and
+that every Σ12Σ21\mathbf{\Sigma}^1_2 set of reals is Lebesgue measurable
+and has the Baire property. It also implies the negation of the CH and
+that 2ℵ02ℵ02^{\aleph_0} is a regular cardinal, but it does not decide what
+cardinal it is. See Fremlin (1984) for many more consequences of MA
+and other equivalent formulations. In spite of this, the status of MA
+as an axiom of set theory is still unclear. Perhaps the most natural
+formulation of MA, from a foundational point of view, is in terms of
+reflection. Writing HC for the set of hereditarily-countable sets
+(i.e., countable sets whose elements are countable, the elements of
+which are also countable, and so on), MA is equivalent to:
+
+For every ccc partial ordering PPP, if an existential statement
+about HCHCHC holds in an (ideal) generic extension of VVV obtained by
+forcing with PPP, then the statement is true, i.e., it holds in
+VVV. In other words, if a set having a property that depends only on
+sets in HCHCHC exists in some (ideal) generic extension of VVV obtained
+by forcing with a ccc partial ordering, then a set with that property
+already exists in VVV.
+The notion of ideal generic extension of VVV can be made precise in
+terms of so-called Boolean-valued models, which provide an alternative
+version of forcing.
+Much stronger forcing axioms than MA were introduced in the 1980s,
+such as J. Baumgartner’s Proper Forcing Axiom (PFA), and the
+stronger Martin’s Maximum (MM) of Foreman, Magidor, and
+Shelah (1988), which is essentially the strongest possible forcing
+axiom. Both the PFA and MM are consistent relative to the existence of
+a supercompact cardinal. The PFA asserts the same as MA, but for
+partial orderings that have a property weaker than the ccc, called
+properness, introduced by Shelah. And MM asserts the same for
+the wider class of partial orderings that, when forcing with them, do
+not destroy stationary subsets of ω1ω1\omega_1.
+Strong forcing axioms, such as the PFA and MM imply that all
+projective sets of reals are determined (PD), and have many other
+strong consequences in infinite combinatorics. Notably, they imply
+that the cardinality of the continuum is ℵ2ℵ2\aleph_2.

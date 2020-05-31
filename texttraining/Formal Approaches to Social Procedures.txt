@@ -1,0 +1,713 @@
+Social procedures that have algorithmic aspects can often be improved
+by redesign. This holds for voting and other peaceful decision making
+procedures, for match-making, for auctioning, for fair division of
+estates, and for many procedures of distributive justice. The
+algorithmic aspects can be analyzed with formal methods. The term
+“social software” was coined by Rohit Parikh (2002)
+for the emerging interdisciplinary
+enterprise that is concerned with the design and analysis of
+algorithms that regulate social processes. Such analysis and
+(re-)design uses methods from logic, game theory and theoretical
+computer
+ science.[1]
+ The goals of research in formal approaches to social procedures are
+modeling social situations, developing theories of correctness, and
+(re-)designing social procedures, ideally leading to new social
+behavior.
+
+Logic, game theory and computer science are not the only disciplines
+that have something to say about social mechanisms. Such mechanisms
+are also an object of study in voting theory, in auction theory, in
+social choice theory, in social epistemology, in mechanism design
+theory, and in algorithmic game theory. Multi-agent interaction at a
+more abstract level is studied in artificial intelligence and
+distributed computing, so all these disciplines have something to say
+about the formal analysis of social interaction.
+ 
+1. Social Procedures as Algorithms
+
+Social software cannot be seen as a clearly defined research field on
+its own, but rather an umbrella for certain types of research in
+computer science, logic, and game theory. Nevertheless, the social
+software perspective on social procedures and intelligent interaction,
+emphasizing algorithms and information, has already produced a wide
+variety of important insights. In this article, a number of examples
+will be discussed and pointers will be given to related discussions in
+philosophy.
+
+The prototypical example of an algorithm in
+mathematics (see also entry on
+ computability and complexity)
+ is Euclid’s recipe for finding the greatest common divisor
+(GCD) of two positive whole numbers AAA and BBB. The GCD of two
+numbers is the greatest number that divides both numbers without
+residue.
+
+
+If AAA is larger than BBB, then replace AAA by A−BA−BA - B,
+otherwise, if BBB is larger than AAA, replace BBB by B−AB−AB - A.
+Continue like this until AAA equals BBB.
+
+
+The final A=BA=BA = B yields the greatest common divisor of the numbers
+AAA and BBB that you started with. For instance, suppose you start
+the algorithm with A=20A=20A = 20, B=12B=12B = 12. Then in the first step,
+AAA gets replaced by 20−12=820−12=820 - 12 = 8, so 888 becomes the new
+AAA. In the second step, BBB gets replaced by 12−8=412−8=412 - 8 = 4, so
+444 becomes the new BBB. In the third step, AAA gets replaced by
+8−4=48−4=48 - 4 = 4, so 444 becomes the new AAA and the two numbers
+AAA and BBB have become equal. The algorithm yields 444 as the
+GCD of 202020 and 121212.
+
+Euclid’s recipe is formal, and we can
+analyze it with formal means. The correctness of Euclid’s
+algorithm follows from the insight that if you have two numbers AAA
+and BBB with AAA larger than BBB, and you replace AAA by A−BA−BA -
+B, then the set of common divisors of the number pair does not
+change.
+
+Algorithms come in many forms and flavors, for example, sequential and
+parallel ones. For interesting introductions to algorithms in computer
+science, see Harel & Feldman (2004) and Miller & Boxer (2012).
+In a similar manner as these algorithms, social procedures can be
+analyzed with the formal tools of logic and theoretical computer
+ science.[2]
+
+It appears that most amenable to a formal approach are those social
+procedures for which one wants to guarantee that given certain
+starting conditions, the procedure preserves or creates specific
+desired properties. Examples are social procedures for fair division
+(Section
+ 2),
+ matching (Section
+ 3),
+ communication (Section
+ 4).
+ Finally, the formal perspective is useful for situations requiring
+participants’ strategic reasoning (Section
+ 5).
+ A common element is that in all these situations, agents’
+knowledge and lack of knowledge of other agents’ mental states
+play an important role. As a counterpart to the examples in the
+current article, Van Benthem (2018) provides an intriguing overview
+about the current roles of social perspectives in computer science
+itself, highlighting social agency and information. 
+2. Fairness
+
+Formal methods by themselves do not solve philosophical issues, as the
+following tale from Padma (2007)
+illustrates.
+
+
+Two farmers, Ram and Shyam were eating chapatis. Ram had 3 pieces of
+the flat, round bread and Shyam had 5. A traveller who looked hungry
+and tired rode up to the two men. Ram and Shyam decided to share their
+chapatis with him. The 3 men stacked the 8 chapatis (like pancakes)
+and cut the stack into 3 equal parts. They shared the pieces equally
+and ate until nothing was left. The traveller, who was a nobleman, was
+so grateful that he gave the two farmers 8 gold coins for his share of
+the food.
+
+After the traveller left, Ram and Shyam wondered how they should share
+the 8 gold coins. Ram said that there were 8 coins and only 2 people,
+so each person should get an equal share of 4 coins. “But
+that’s not fair,” said Shyam, “since I had 5
+chapatis to begin with.” Ram could see his point, but he
+didn’t really want to give 5 of the coins to Shyam. So he
+suggested they go see Maulvi, who was very wise. Shyam agreed.
+
+Ram and Shyam told the whole story to Maulvi. After thinking for a
+long time, he said that the fairest way to share the coins was to give
+Shyam 7 coins and Ram only 1 coin. Both men were surprised. But when
+they asked Maulvi to explain his reasoning, they were satisfied that
+it was a fair division of the 8 coins.
+
+
+Here are reasons the participants could have given to explain each
+mentioned division as being fair:
+
+
+
+Ram: “If the traveller hadn’t arrived, we would have
+shared the chapatis equally. So it is only fair
+if we now share the eight coins equally as well.”
+
+
+Shyam: “If the traveller hadn’t arrived, you would have
+bought one chapati from me at the going rate for chapatis. Now that
+the traveller was so generous, the going rate suddenly went up to one
+gold coin for a chapati. So your chapatis turned out to be worth three
+gold coins and mine five gold coins.”
+
+
+Maulvi: “The traveller has eaten one third of eight chapatis.
+Ram had only three chapatis to start with, and therefore he has eaten
+1/31/31/3 chapati from Ram and 7/37/37/3 chapatis from Shyam. So it is
+only fair if Ram gets one coin and Shyam gets seven.”
+
+
+A moral of this could be that there is no obviously correct notion of
+fairness, in this case, and in many cases. Formal analysis always
+starts from an intuition and can help to turn that intuition into a
+more precise definition. Then one can check if a given procedure fits
+the definition; however, if it fits, that does not show that the
+definition is right.
+2.1 Fair Division
+
+Social procedures are as old as the world. Divide and
+choose (also known as “I cut, you choose”) is
+a procedure for two-person fair division of some desirable or
+undesirable heterogeneous good. One person divides the good into what
+she believes to be equal shares, and the other person chooses. If the
+two participants have different value judgements on parts of the
+goods, it is possible that both participants feel that they received
+more than 50 percent of the goods. Indeed, let XXX be a set
+representing the good to be divided. A valuation function VVV for
+XXX is a function from P(X)P(X){{\cal P}}(X) to [0,1][0,1][0,1] with the
+properties that V(∅)=0V(∅)=0V(\emptyset) = 0, V(X)=1V(X)=1V(X) = 1, and for all
+subsets AAA, BBB, it holds that A⊆B⊆XA⊆B⊆XA \subseteq B \subseteq X
+implies V(A)≤V(B)V(A)≤V(B)V(A) \leq V(B) (for explanation of notation, see
+supplement on
+ basic set theory).
+ Suppose VmVmV_m and VyVyV_y are functions for my and your valuation
+of the contents of XXX. If VmVmV_m and VyVyV_y are different, this
+means that you and I value some items in XXX differently. It
+follows, as was already observed by Steinhaus in 1948, that there
+exists a division that gives both parties more than their due part;
+“this fact disproves the common opinion that differences in
+estimation make fair division difficult” (Steinhaus
+1948).
+
+It matters whether the valuations are known to the other party. Such
+knowledge can be used to advantage by the one who cuts. First consider
+the case that your valuation is unknown to me, and vice versa. Then if
+I cut, the best I can do is pick sets A,B⊆XA,B⊆XA, B \subseteq X with A∩B=∅A∩B=∅A
+\cap B = \emptyset, A∪B=XA∪B=XA \cup B = X, and Vm(A)=Vm(B)Vm(A)=Vm(B)V_m(A) = V_m(B). If
+you choose, you will use VyVyV_y to pick the maximum of {Vy(A),Vy(B)}{Vy(A),Vy(B)}\{ V_y(A),
+V_y(B) \}. It follows immediately that cutting guarantees a fair
+share, but no more than that, while choosing holds a promise for a
+better deal. So if you ever get the choice between cutting and
+choosing in a situation where both parties only know their own
+valuation, then it is to your advantage to leave the cutting to the
+other person.
+
+However, if the valuations are common knowledge (see entry on
+ common knowledge),
+ the situation is reversed, for then it is more advantageous to take
+the role of cutter. As cutter, you can attempt to make a division intp
+sets AAA and BBB with AAA slightly more valuable than BBB
+according to the valuation of the other party, while BBB is much
+more valuable than AAA according to your own valuation.
+
+The example shows that issues of knowledge and ignorance, are crucial
+for analysis of fair division protocols. Epistemic logic (see entry on
+ epistemic logic)
+ can shed much light on many subtle aspects of knowledge and ignorance
+in social interactions, and in particular in fair division problems;
+for an interesting cake-cutting experiment showing the importance of
+knowledge and ignorance, see Kyropoulou et al.
+2019. Still, in traditional studies of fair division the role
+of knowledge is not taken into account, as is witnessed by the
+comprehensive study of “cake cutting algorithms” in Robertson
+& Webb (1998).
+2.2 Cutting a Cake Among More than Two Participants
+
+In the social choice literature (Brams 2005;
+Brams & Taylor 1996) it is common practice to use cake
+cutting as a metaphor for a division of a single
+heterogeneous good. Dividing a piece of land at
+inheritance would be an example. The cake has different toppings that
+cannot all be cut into pieces with the same composition: it may have
+candied cherries on top that someone likes but another person abhors,
+and so on. A cake division is simply fair if
+each of nnn players feels she received at least 1/n1/n1/n of the cake,
+according to her individual valuation of its parts. A procedure may be
+simply fair without ruling out the possibility of hard feelings. A
+cake division is called envy-free if each person
+feels that nobody else received a larger piece. A sure sign of a
+division being envy-free is that nobody wishes to trade pieces with
+anyone else. It turns out to be very hard to design cake cutting
+procedures that are both fair and envy-free. The I cut, you
+choose procedure is fair, and it is envy-free simply
+because the rest of the cake is a single piece, so there is no
+possibility for envy. See the entry on
+ economics and economic justice
+ for philosophical discussions of envy-freeness.
+
+R. Parikh (2002) analyzes the so-called
+Banach-Knaster algorithm for cake cutting when the cake has to be
+divided fairly among at least three persons, which goes like this:
+
+
+I cut a piece intended for myself. All others consider it. If nobody
+objects, I get my piece. If someone raises an objection, she has the
+right to cut off a slice and put that back with the rest of the cake.
+She then asks if she can have the reduced piece. If nobody objects,
+she gets it, otherwise someone else takes the knife and reduces the
+piece a bit further, and so on, until someone gets the trimmed piece.
+Then on to the next round, with n−1n−1n-1 players. When two players are
+left, they use the Divide and choose
+algorithm.
+
+
+Parikh’s discussion shows how the methods of theoretical
+computer science can be used to argue that the procedure is fair. The
+key ingredient of the procedure is a loop operation:
+
+
+Continue to trim the piece until there are no further objections about
+the size.
+
+
+Suppose rrr stands for the action of trimming a piece of cake and
+putting it back with the main part of the cake, according to the
+Banach-Knaster algorithm, and suppose F(m,k)F(m,k)F(m,k) is the proposition
+that the main part of the cake is large enough for kkk people. Then
+surely F(m,n)F(m,n)F(m,n) holds at the beginning: the whole cake is large
+enough for the whole group to begin with. Moreover, Parikh (1983,
+2002) uses his game logic to prove that
+F(m,k)F(m,k)F(m,k) is invariant under the action rrr: If F(m,k)F(m,k)F(m,k) is true
+before rrr, then it will still be true after rrr has occurred.
+Clearly, if one can show that F(m,k)F(m,k)F(m,k) continues to hold through the
+algorithm, for kkk running through n,…,1n,…,1n, \ldots, 1, then this
+establishes that the division is
+ fair.[3]
+2.3 Solomon’s Judgement
+
+A variation on Divide and choose was played by
+King Solomon in the famous Judgement of Solomon, in a dispute among
+two women who both claimed to be the mother of a child. The full story
+is in 1 Kings 3:16–28. Two women who lived in the same house
+both had an infant son. One of the women claimed that the other woman
+had stolen her child, after accidentally smothering her own son during
+sleep. The other woman denied this and reversed the charge. After
+hearing their stories, King Solomon called for a sword and declared
+that there was only one fair solution: cut the living child in two and
+give both women half of it. Upon hearing this, the true mother cried
+out that she was willing to give up the child if it could be spared,
+while the fake mother agreed with the judgement. This behaviour
+revealed to Solomon who was the real mother, and her child was given
+back to her.
+
+This procedure is not repeatable. As the Bible story puts it:
+
+
+And all Israel heard of the judgment which the king had judged; and
+they feared the king; for they saw that the wisdom of God was in him,
+to do justice.
+
+
+Obviously, in a second similar dispute, both women would exclaim
+“Give it to her, but let it live!”
+
+Solomon’s handling of the situation can be turned into a social
+procedure that is repeatable, as follows. Solomon does not call for a
+sword, but instead explains to the two women the following procedure.
+First he is going to ask the first woman if she is willing to give up
+the child. If the answer is “yes”, the dispute is
+resolved, with no further questions asked. Otherwise he will ask the
+other woman if she is willing to give up the child. Again, if the
+answer is “yes” the dispute is resolved. If they both
+refuse, then the child is his, and then he will allow one of the women
+to buy it back, at a price that is to be determined as follows. They
+will both write an amount of money on a sheet of paper, without their
+names. If the two bids are AAA and BBB, then the price of the
+child is set at A+B2A+B2\frac{A + B}{2}, and fate will determine which
+woman is going to get the child at that price, where the other woman
+has to pay a small fine. If the two women are rational, one of them
+will give up the child when being first asked (see Moore
+1992 and Pauly 2005; for philosophical
+discussions of rationality, see the entries on
+ practical reason
+ &
+ game theory and ethics).
+
+Both Moore (1992) and Pauly (2005)
+discuss the importance of reasoning
+about common knowledge and ignorance in the King Solomon cases. For
+example, King Solomon is ignorant of who is the real mother, but both
+women commonly know from the start who is the true mother, and that
+the true mother will therefore bid much higher than the other one.
+This makes the procedure safe. Again, epistemic logic and in
+particular common knowledge help to shed light on a tricky social
+procedure. For a more traditionally philosophical introduction to the
+fair division problem, including more extensive explanations of
+fairness, manipulability and envy-freeness, see the entry on
+ economics and economic justice.
+
+The next section shows that the perspective of social software can
+also shed light on social matching problems. These range from
+marriages to the assignment of resident doctors to hospitals, college
+admission procedures, and the assignment of students to housing.
+3. The Stable Marriage Problem
+
+Suppose equal sets of men and women are given, all of them seeking to
+marry someone of the opposite gender, and each man has listed his
+preferences for the women by means of a strict ordering, and similarly
+for each woman. A stable marriage match is a
+one-to-one mapping between the men and women with the property that if
+a man prefers another woman over his own wife, then that woman does
+not prefer him to her own husband, and if a
+woman prefers another man over her own husband, then that man does
+not prefer her to his own wife.
+3.1 The Gale-Shapley Algorithm
+
+The computer scientists Gale and Shapley proved that stable matchings
+always exist, and gave an algorithm for finding such matchings, the
+so-called Gale-Shapley algorithm (Gale &
+Shapley 1962):
+
+
+Initially, all men and all women are free (unengaged).
+
+Next, in a number of rounds, each free man proposes to the
+most-preferred woman to whom he has not yet proposed and ticks her off
+from his list. If the woman is free, she accepts, and they become
+engaged. If the woman is not free, she compares the proponent to her
+current fiancé. If she likes him better, she dumps the
+fiancé who becomes free again, and the proponent and his woman
+of choice become engaged.
+
+This goes on until all men and women are engaged.
+
+
+As an example, suppose that there are three men a,b,ca,b,ca, b, c and three
+women d,e,fd,e,fd, e, f, and the lists of preferences are as follows (with
+the most preferred one first in the list): a:edfa:edfa: edf, b:fedb:fedb: {\it
+fed}, c:dfec:dfec: {\it dfe}, d:abcd:abcd: {\it abc}, e:cdae:cdae: {\it cda}, g:acbg:acbg:
+{\it acb}. So a:edfa:edfa: {\it edf} means that aaa prefers eee to
+ddd and ddd to fff. It is assumed that preferences are
+transitive, so aaa also prefers eee to fff.
+
+An example of a stable match for this situation is represented as
+three pairs (a,e)(a,e)(a,e), (b,f)(b,f)(b,f), (c,d)(c,d)(c,d). Note that woman ddd
+ends up with the man that is at the bottom of her list. But this match
+is still stable, for although ccc is willing to swap her husband for
+any of the other two men, these two candidates will not agree, for
+they both happen to be married to the woman who is on the top of their
+own list.
+
+To check that the Gale-Shapley algorithm always produces stable
+matchings, we can proceed as follows. Obviously, the situation where
+no-one is engaged is stable.
+
+What does it mean for EEE, an “engagement” mapping, to
+be stable on the set of women WWW and the set of men MMM? Let us
+use m>wm′m>wm′m &gt;_w m' for “www prefers mmm over m′m′m'”
+(so bigger is better).
+
+(1) For all (m,w)∈E(m,w)∈E(m,w) \in
+E: if there is w′w′w' with w′>mww′>mww' &gt;_m w then there is no m′m′m'
+with (m′,w′)∈E(m′,w′)∈E(m',w') \in E and m>w′m′m>w′m′m &gt;_{w'} m';
+(2) For all (m,w)∈E(m,w)∈E(m,w) \in
+E: if there is m′m′m' with m′>wmm′>wmm' &gt;_w m then there is no w′w′w'
+with (m′,w′)∈E(m′,w′)∈E(m',w') \in E and w>m′w′w>m′w′w &gt;_{m'} w'. 
+
+
+What does it mean for a man to be free?
+
+(3) The set of free men
+should equal the set of all men minus the men that are engaged.
+
+
+
+Next, inspect what happens in a single step in the algorithm. The
+precondition for the step is that there is at least one free man mmm
+left. Such a free man mmm proposes to the highest woman www on his
+list to whom he has not yet proposed.
+
+There are two cases. If www is free, www accepts the proposal, and
+they become engaged. Is the new set of engaged pairs stable? We only
+have to check for the new pair (w,m)(w,m)(w,m).
+
+
+
+Suppose that there is a free w′w′w' with w′>mww′>mww' &gt;_m w. This cannot
+be, for www is at the top of mmm's list.
+
+
+Suppose there is m′m′m' with m′>wmm′>wmm' &gt;_w m. Then if m′m′m' is
+engaged, let us say to w′w′w', this must mean that not w>m′w′w>m′w′w &gt;_{m'}
+w'. For otherwise m′m′m' would have proposed to www instead of to
+w′w′w'.
+
+
+The new list of free men equals the old list, minus mmm. This is
+correct, for mmm just got engaged.
+
+
+Now the other case: suppose that www is already engaged. There are
+two subcases. In case www prefers her own current fiancé,
+nothing happens. The resulting list of engaged pairs is still stable.
+The list of free men remains the same, for mmm proposed and got
+rejected.
+
+In case www prefers mmm to her own fiancé m′m′m', she
+swaps: (m,w)(m,w)(m,w) replaces (m′,w)(m′,w)(m',w) in the set of engaged pairs.
+Again, it is easy to see that the resulting list of engaged pairs is
+stable. Man mmm gets replaced by m′m′m' in the set of free men. This
+is also correct.
+
+Note that the Gale-Shapley matching algorithm is hugely favourable to
+the party that is doing the proposing. The proposing party gets a
+chance to make proposals to any candidate, in order of preference. But
+at the start of the procedure the receiving party has to say
+“yes” to any proposal! The result of swapping the roles of
+the men and the women in the algorithm will also compute a stable
+match, but one that is more advantageous to the women. 
+
+The Gale-Shapley procedure runs in time quadratic in the number of men
+and women (see, e.g., Cechlérová et al. 2005). Pini et
+al. (2011) show how participants can easily manipulate the outcome of
+the procedure by misrepresenting their true preferences. Fortunately,
+Pini et al. also present an alternative procedure for which
+manipulation is hard, in that coming up with an individually
+profitable misrepresentation of one’s preferences is a
+computationally complex task.
+
+The Gale-Shapley algorithm has many important applications, also
+outside of the area of marriage brokering; Gale and Shapley themselves
+discuss college admission procedures (1962).
+The next subsection presents another
+application.
+3.2 A University Housing Assignment Procedure
+
+Using the perspective of social software, Parikh and Pauly (2012)
+investigate a variant of the
+Gale-Shapley algorithm that is used in the Stanford Housing Draw to
+assign students to rooms. The situation is more complex than in the
+marriage setting, because students do not give a complete order on all
+houses, but only on 8 of them; moreover, they may choose to enter the
+Draw in groups. In the housing context, the students turn out to have
+an incentive to honestly submit their true preferences: the draw is
+non-manipulable for them. However, in theory
+they could still strategize about choosing the subset of 8 houses on
+which they submit their preferences.
+
+The issue of knowledge is interesting in this case. Even though the
+algorithm can be found on the Stanford webpages, most students and
+administrators do not fully understand how it works. Therefore, the
+Stanford Housing Draw cannot be assumed as common knowledge among the
+students. An interesting phenomenon seems to occur: even while
+admitting not to understand the algorithm, most students would say
+that they believe it to be fair (Parikh &
+Pauly 2012).
+4. The Logic of Communication
+
+Communication protocols are important in distributed computing:
+computing with distributed systems, where a distributed system is a
+set of computers that are connected through a communication network.
+Communication protocols are also interesting from a philosophical
+perspective, especially in the context of discussions of the value of
+privacy (see entries on
+ privacy
+ and
+ computer and information ethics).
+ The formal approach can help in answering philosophical questions
+such as “Does more security automatically lead to less
+privacy?”.
+4.1 Communication and Distributed Computing
+
+In the following example, the inspiration does not only flow from
+social problems to formal solutions, but also the other way, from
+successful social practices to formal procedures. Many algorithms for
+distributed computing are related to social protocols for
+communication in everyday life. An example is the use of a
+“talking stick” to regulate discussion and decision making
+in a group of peers, with the rules that the talking stick gets passed
+around and only the person who is holding the stick is allowed to talk
+(Nerburn 1999).
+
+A computer communication protocol based on this social procedure is
+the token ring protocol. A token ring in
+distributed computing is a network where each computer is connected to
+exactly two other computers in such a way that each computer is
+reachable in the network, and where a single “token”
+circulates around the ring-shaped network. Communication can only be
+initiated by the current owner of the token.
+
+Sometimes the token gets lost through computer or network failure. In
+such cases the token has to be regenerated, with a guarantee that only
+one computer has the token. This problem of regenerating the token in
+a token ring is called the leader election
+problem. Here is an algorithm for it:
+
+
+Assume that communication takes place clockwise, and each computer can
+distinguish its clockwise neighbour from its counterclockwise
+neighbour. Assume that all computers have different identifiers
+(positive whole numbers) and each computer knows its identifier.
+
+Each computer sends its identifier around the ring. When a computer
+ccc receives an identifier, ccc compares it to its own. If the
+identifier is greater than its own, ccc passes it on. If it is less
+than its own, ccc discards it. If it is equal to its own, ccc
+declares itself to be the leader.
+
+
+It is not hard to see that this guarantees the computer with the
+highest identifier imaximaxi_{\text{max}} to become the leader (see Lynch
+1996). No assumptions need to be made
+about the number of computers in the ring, nor about any computer
+knowing anything about the size of the ring or the identifiers of the
+other computers. A next stage of the protocol could be for the leader
+to send around a request to register as non-leader and halt.
+
+One further level of abstraction is from distributed computers or
+processes to interacting intelligent agents, or multi-agent systems.
+These agents can be computers, robots, humans, teams of humans, or
+some mix of these. It is commonly assumed that the agents have a
+degree of autonomy, that the agents have a restricted local view of
+the system as a whole, and that there is no designated controller of
+the whole system (see Wooldridge 2002 [2009]).
+4.2 Common Knowledge and Social Procedures
+
+Many social procedures are designed to create common knowledge (Lewis
+1969; van Ditmarsch et al. 2009; and entry on
+ common knowledge).
+ The old-fashioned ritual that takes place when you withdraw a large
+amount of money from your bank account and have it paid out to you in
+cash by the cashier is an example.
+
+How and whether common knowledge can be achieved depends on available
+communication facilities. Public announcement or publicly observable
+ritual (the cashier ritual mentioned above) can create common
+knowledge. But, as Halpern and Moses (1984)
+proved, message exchange in a
+distributed environment, where there is no guarantee that messages get
+delivered, cannot. Halpern and Moses use the example of two generals
+who are planning a coordinated attack on a city. The generals are on
+two hills on opposite sides of the city, each with their own army, and
+they know that they can only succeed in capturing the city if their
+two armies attack at the same time. But the valley that separates the
+two hills is in enemy hands, and any messengers that are sent from one
+army base to the other run a severe risk to get captured. The generals
+have agreed on a joint attack, but still have to settle the time. So
+the generals start sending messages, for example, “Let’s
+attack at 9:00 AM”. But they cannot be sure that the messengers
+succeed in delivering their message. And if they get through, there is
+no guarantee that the message of acknowledgement will get delivered.
+And so on.
+
+Even if common knowledge is sometimes hard to achieve in practice, it
+serves as necessary presumption in regulating society. Roman lawgivers
+found out long ago that if citizens within their jurisdiction could
+plead innocence because of being unaware of the law, no offender could
+ever get convicted. So they invented principles like
+Ignorantia legis neminem excusat,
+“ignorance of the law excuses no one”. Societies that
+abide by the rule of law have to be organized in such a way that
+citizens in principle are in a position to know
+the law. The laws have to be properly published and distributed, for
+example, by being printed in a government gazette to which every
+citizen has access.
+
+In his book “Rational Ritual” (2001),
+Michael Suk-Young Chwe points out the
+importance of the size of groups for which
+common knowledge gets established. A brand name that is common
+knowledge in a large group is worth a lot of money. Chwe analyzes the
+example of advertisements broadcasted during the American football
+Super Bowl. He compares the enormous cost of making something common
+knowledge by means of such advertisements to the obvious benefits.
+Part of the benefit is in the fact that the advertisements create
+common knowledge. An important consideration when deciding to buy a
+smartphone of a particular brand, for example, is the knowledge that
+others are going to buy the same model too.
+
+Of course in many social situations, you may want to prevent
+common knowledge from arising, for example, if you want to keep a
+secret from certain others. There are also more interesting cases
+where everybody knows some fact, for example that a particular country
+possesses nuclear weapons, but where it would lead to political
+problems to make this fact common knowledge by making a public
+announcement. For a number of such social situations where maintaining
+privacy and ignorance are crucial, see van Eijck and Verbrugge (2009).
+An interesting recent development is the study of dynamic-epistemic
+logic-based epistemic planning, which enables us to
+synthesize communication protocols in order to create certain exact
+configurations of levels of higher-order knowledge within a group
+(Bolander and Andersen 2011, Löwe, Pacuit, and Witzel 2011).
+5. Strategic Reasoning and Cooperation
+
+The large field of game theory is extensively explained in other
+lemmas in this encyclopedia (see among others the entry on
+ game theory).
+ This field of research has been very active since the appearance of
+the seminal book (Von Neumann and Morgenstern 1944). Similarly, social
+choice theory and in particular voting theory (see entries on
+ social choice theory
+ and
+ voting methods)
+ were already thriving fields of research long before the term social
+software came along.
+
+It is useful to investigate how formal methods and an algorithmic
+perspective can help solve societal problems. For example, in the case
+of the famous prisoner’s dilemma (see entry on
+ prisoner’s dilemma)
+ it is interesting to try to design policies that make cheating the
+other agent less profitable by penalizing it. Notice that this
+“social software engineering” takes place at the
+meta-level, on top of the level of the prisoners choosing their
+strategies (van Eijck 2015).
+
+A related recent trend in game theory that is relevant for social
+software, is to step away from solution concepts such as the Nash
+equilibrium and instead to focus on the process of rational
+deliberation: the “theory of play” (see van Benthem,
+Pacuit and Roy, 2011, as well as the entry
+ logics for analyzing games).
+ This type of research delineates both the normative principles
+guiding the players’ strategic reasoning, and the psychological
+phenomena explaining the differences between predicted and observed
+behavior in games (Camerer 2003; Ghosh and Verbrugge 2018; Pacuit
+2015; Meijering et al. 2012, 2014; Top et al. 2018).
+
+In Section 4.2 we briefly discussed the role of the study of knowledge
+and belief when analyzing social procedures. In this vein, the field
+of epistemic game theory focuses on agents’ beliefs about other
+agents’ strategies and those agents’ beliefs about other
+agents’ strategies, and so on, up to the idealized case of
+common knowledge among a group of agents that they are all rational
+(see the entry on
+ epistemic foundations of game theory;
+ Perea 2012; Brandenburger 2014).
+
+It turns out that in voting theory in particular, it is useful to
+design a logic to explicitly model the knowledge that agents bring to
+bear when they are voting. It is especially interesting to model what
+happens in a group when agents vote strategically by misrepresenting
+their own preferences in order to manipulate the outcome (van Eijck
+2015; van Ditmarsch et al. 2012).
+
+In recent years in the research area of multi-agent systems, formal
+approaches to social procedures have also been used to help design
+actual software, for example for cooperative problem solving in teams,
+coalition formation, knowledge fusion, auctions, and negotiations
+among software agents (Bulling et al. 2015; Chalkiadakis et al. 2011;
+Dunin-Kęplicz and Verbrugge 2010; Pauly 2002; Shoham and
+Leyton-Brown 2009; Vazirani et al. 2007). This literature is mostly
+normative in nature.
+
+In contrast, another fascinating area of research, evolutionary game
+theory (see entry on
+ evolutionary game theory),
+ investigates how features like altruism, social norms, moral behavior
+and cooperation could actually have evolved. This area combines both
+normative and descriptive work (Axelrod 1984; Bowles and Gintis 2011;
+Sigmund 2010). As a particular social software contribution to this
+area, Gärdenfors (2012) characterized how much cognition and
+communication are required for several kinds of cooperation, from
+simple flocking behavior, through reciprocal altruism
+(“I’ll scratch your back if you scratch mine”), up
+to fully fledged teamwork.
+6. Conclusion
+
+In conclusion, the formal perspective on social procedures and
+intelligent interaction, which emphasizes algorithms and information,
+has produced a wide variety of important insights. It has also led to
+interesting philosophical discussions. The main challenge for the
+future appears to be to unify this currently relatively scattered
+field, in which many contributors do not seem to be aware of relevant
+work in other subfields.

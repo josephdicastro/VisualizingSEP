@@ -1,0 +1,2481 @@
+Second-order logic has a subtle role in the philosophy of mathematics.
+It is stronger than first order logic in that it incorporates
+“for all properties” into the syntax, while first order
+logic can only say “for all elements”. At the same time it
+is arguably weaker than set theory in that its quantifiers range over
+one limited domain at a time, while set theory has the universalist
+approach in that its quantifiers range over all possible domains. This
+stronger-than-first-order-logic/weaker-than-set-theory duality is the
+source of lively debate, not least because set theory is usually
+construed as based on first order logic. How can second-order logic be
+at the same time stronger and weaker? To make the situation even more
+complex, it was suggested early on that in order that the strength of
+second-order logic can be exploited to its full extent and in order
+that “for all properties” can be given an exact
+interpretation, a first order set-theoretical background has to be
+assumed. This seemed to undermine the claimed strength of second-order
+logic as well as its role as the primary foundation of mathematics. It
+also seemed to attach second-order logic to aspects of set theory
+which second-order logic might have wanted to bypass: the higher
+infinite, the independence results, and the difficulties in finding
+new convincing axioms. Setting aside philosophical questions, it is
+undeniable and manifested by a continued stream of interesting
+results, that second-order logic is part and parcel of a
+logician’s toolbox.
+ 
+1. Introduction
+
+Second-order
+ logic[1]
+ was introduced by Frege in his Begriffsschrift (1879) who also coined
+the term “second order” (“zweiter
+Ordnung”) in (1884: §53). It was widely used in logic
+until the 1930s, when set theory started to take over as a foundation
+of mathematics. It is difficult to say exactly why this happened, but
+set theory has certain simplicity in being based on one single binary
+predicate x∈yx∈yx\in y, compared to second- and higher-order logics,
+including type theory. Discussion among philosophers of the merits of
+second-order logic especially in comparison to set theory continues to
+this day (Shapiro 1991). Meanwhile second-order logic has become a
+standard tool of computer science logic, finite model theory in
+particular. Central questions of theoretical computer science, such as
+the P = NP? question, can be seen as questions about second-order
+logic in the finite context.
+
+Ultimately second-order logic is just another formal language. It can
+be given the standard treatment making syntax, semantics and proof
+theory exact by working in a mathematical metatheory which we choose
+to be set theory. It would be possible to use second-order logic
+itself as metatheory, but it would be more complicated, simply because
+second-order logic is less developed than set theory.
+
+The distinction between first order logic and second-order logic is
+easiest to understand in elementary mathematics. Let us consider
+number theory. The objects of our study are the natural numbers 0, 1,
+2,… and their arithmetic. With first order logic we can
+formulate statements about number theory by using atomic expressions
+x=y,x=y,x = y, x+y=zx+y=zx+y = z and x×y=zx×y=zx\times y = z combined with the
+propositional operations ∧,∧,\land, ¬,¬,\neg, ∨,∨,\lor, →→\to and
+the quantifiers ∀x∀x\forall x and ∃x∃x\exists x. Here the variables
+x, y, z,… are thought to range over the
+natural numbers. With second-order logic we can express more: we have
+variables x, y, z,… as in first order
+logic for numbers. In addition we have variables X, Y,
+Z,… for properties of numbers and relations between
+numbers as well as quantifiers ∀X∀X\forall X and ∃X∃X\exists X for
+these variables. We have the atomic expressions of first order logic
+and also new atomic expressions of the form X(y1,…,yn)X(y1,…,yn)X(y_1,\ldots,
+y_n).
+
+An interesting and much studied question arises: what properties of
+natural numbers can be expressed in first order logic and what can be
+expressed in second-order logic? The question is equally interesting
+if “expressed” is replaced by “proved”, once a
+suitable proof system is given in both cases. We can replace natural
+numbers by some other mathematical context, for example real numbers,
+complex numbers, and so on.
+
+With just the constant 000 and the unary function n↦n+n↦n+n \mapsto n^+
+(where n+n+n^+ means n+1n+1n+1) we can express in second-order logic the
+Induction Axiom 
+∀X([X(0)∧∀y(X(y)→X(y+))]→∀yX(y)),(1)∀X([X(0)∧∀y(X(y)→X(y+))]→∀yX(y)),\tag{1}\label{ind} \forall X\left(\left[X(0) \land \forall
+y\left(X(y) \to X(y^+)\right)\right] \to \forall y\,X(y)\right), 
+
+of natural numbers. This, together with the axioms ∀x¬(x+=0)∀x¬(x+=0)\forall
+x\,\neg(x^+=0) and ∀x∀y(x+=y+→x=y)∀x∀y(x+=y+→x=y)\forall x\,\forall y(x^+=y^+\to x=y)
+characterizes the natural numbers with their successor operation up to
+isomorphism. In first order logic any theory which has a countably
+infinite model has also an uncountable model (by the Upward
+Löwenheim Skolem Theorem). Hence (11\ref{ind}) cannot be expressed
+in first order logic. Another typical second-order expression is the
+Completeness Axiom of the linear order ≤≤\le of the real
+numbers: 
+∀X([∃yX(y)∧∃z∀y(X(y)→y≤z)]→∃z∀y(∃u(X(u)∧y≤u)∨z≤y)),(2)∀X([∃yX(y)∧∃z∀y(X(y)→y≤z)]→∃z∀y(∃u(X(u)∧y≤u)∨z≤y)),\tag{2}\label{comp} \forall X\left(\left[\exists y\,X(y) \land
+\exists z\,\forall y(X(y) \to y \le z)\right] \to\\ \exists z\,\forall
+y\left(\exists u\left(X(u) \land y \le u\right) \lor z \le
+y\right)\right), 
+
+This, together with the axioms of ordered fields characterizes the
+ordered field of real numbers up to isomorphism. In first order logic
+any countable theory which has an infinite model has also a countable
+model (by the Downward Löwenheim Skolem Theorem). Hence
+(22\ref{comp}) cannot be expressed in first order logic.
+
+To early logicians it seemed natural to use second-order logic on a
+par with first order logic, as if there were not much difference. This
+included Russell, Löwenheim, Hilbert, and Zermelo. Essentially
+only Skolem emphasized the difference (see Moore 1988 for the
+emergence of first order logic). In 1929 Gödel proved his
+Completeness Theorem and the next year his Incompleteness Theorem. It
+became gradually obvious that second-order logic is very different
+from first order logic. One of the first indicators was the
+incompleteness phenomenon. Gödel showed that any effective
+axiomatization of number theory is incomplete. On the other hand,
+there was a simple finite categorical—hence complete
+ (§10)—axiomatization
+ of the structure (N,(N,(\oN, +,+,+, ×)×)\times) in second-order logic
+(see also the discussion related to (11\ref{ind})). This showed that
+there cannot be such a complete axiomatization of second-order logic
+as there was for first order logic. What became known in the case of
+first order logic as Gödel’s Completeness Theorem simply
+cannot hold for second-order logic.
+
+The situation changed somewhat when Henkin proved the Completeness
+Theorem for second-order logic with respect to so-called general
+models
+ (§9).
+ Now it became possible to use second-order logic in the same way as
+first order logic, if only one keeps in mind that the semantics is
+based on general models. The ability of second-order logic to
+characterize mathematical structures up to isomorphism does not extend
+to general models (except in the form of internal
+categoricity—see
+ §10).
+ Any second-order theory with an infinite general model has general
+models of all infinite cardinalities, and therefore cannot be
+categorical in the context of general models. We shall discuss general
+models and the related Henkin models in
+ §9.
+2. The Syntax of Second-Order Logic
+
+A vocabulary in second-order logic is just as a vocabulary in
+first order logic, that is, a set L of relation,
+function and constant symbols. Each relation and
+function symbol has an arity, which is a positive natural
+number.
+
+Second-order logic has several kinds of variables. It has
+individual variables denoted by lower case letters
+x,y,z,…x,y,z,…x, y, z, \ldots possibly with subscripts. It has property
+and relation variables denoted by upper case letters
+X,Y,Z,…X,Y,Z,…X,Y,Z,\ldots possibly with subscripts. Finally, it has
+function variables denoted by upper case letters F,G,H,…F,G,H,…F, G, H,
+\ldots possibly with subscripts. Sometimes function variables are
+omitted as, after all, functions are special kinds of relations. Each
+relation and function variable has an arity, which is a positive
+natural number.
+
+It is noteworthy that although we have property variables we do not
+have variables for properties of properties. Such variables would be
+part of the formalism of third order logic, see
+ §12.
+
+The terms of second-order logic are defined recursively as
+follows: Constant symbols and individual variables are terms. If
+t1,…,tnt1,…,tnt_1,\ldots,t_n are terms, U is an n-ary function
+symbol and F is an n-ary function variable, then
+U(t1,…,tn)U(t1,…,tn)U(t_1,\ldots,t_n) and F(t1,…,tn)F(t1,…,tn)F(t_1,\ldots,t_n) are terms. Note that
+terms denote individuals, not relations or properties. Thus X
+alone is not a term but x is.
+
+The atomic formulas of second-order logic are defined from
+terms as follows: If t and t′t′t' are terms, then t=t′t=t′t = t' is
+an atomic formula. If R is an n-ary relation symbol and
+t1,…,tnt1,…,tnt_1,\ldots,t_n are terms, then R(t1,…,tn)R(t1,…,tn)R(t_1,\ldots,t_n) is an atomic
+formula. If X is an n-ary relation variable, then also
+X(t1,…,tn)X(t1,…,tn)X(t_1,\ldots,t_n) is an atomic formula. The intuitive meaning of
+X(t1,…,tn)X(t1,…,tn)X(t_1,\ldots,t_n) is that the elements t1,…,tnt1,…,tnt_1,\ldots, t_n are in
+the relation X or are predicated by X. We do
+not allow atomic formulas of the form X=YX=YX = Y, although they would
+have an obvious meaning. We achieve the same effect by using
+quantifiers.
+
+
+Definition 1 The formulas of second-order
+logic are defined as follows: Atomic formulas are formulas. If
+ϕϕ\phi and ψψ\psi are formulas, then ¬ϕ¬ϕ\neg\phi, ϕ∧ψϕ∧ψ\phi\land
+\psi, ϕ∨ψϕ∨ψ\phi\lor \psi, ϕ→ψϕ→ψ\phi \to \psi and ϕ↔ψϕ↔ψ\phi
+\leftrightarrow \psi are formulas. If ϕϕ\phi is a formula,
+x an individual variable, X a relation variable and
+F a function variable, then ∃xϕ∃xϕ\exists x\phi, ∀xϕ∀xϕ\forall
+x\phi, ∃Xϕ∃Xϕ\exists X\phi, ∀Xϕ,∃Fϕ∀Xϕ,∃Fϕ\forall X\phi, \exists F\phi and
+∀Fϕ∀Fϕ\forall F\phi are formulas.
+
+
+An important special case is monadic second-order logic where
+no function variables are allowed and the relation variables are
+required to be monadic (a.k.a. unary), i.e., of arity one.
+
+We did not take X=YX=YX=Y as an atomic formula (although we could have)
+but having introduced the quantifiers we can use 
+∀x1…∀xn(X(x1,…,xn)↔Y(x1,…,xn))(3)∀x1…∀xn(X(x1,…,xn)↔Y(x1,…,xn))\tag{3}\label{XY} \forall x_1\ldots \forall
+x_n(X(x_1,\ldots,x_n)\leftrightarrow Y(x_1,\ldots,x_n)) 
+
+as a substitute for X=YX=YX=Y. The advantage of taking X=YX=YX=Y as a
+basic atomic formula would be that using (33\ref{XY}) brings along extra
+quantifiers. Sometimes it is interesting to minimize the number of
+quantifiers in a formula.
+
+The concepts of a free and bound occurrence
+of a variable in a formula are defined in the usual way. A formula is
+called a sentence if it has no free variables. The concept of
+a term being free for a variable in a formula is
+defined as in first order logic.
+
+3. The Semantics of Second-Order Logic
+
+In order to define the semantics of second-order logic we have to
+agree what our metalanguage is. This fact has nothing to do
+with second-order logic but is rather a general feature of semantics
+(Tarski 1933 [1956]). The most commonly used metalanguage for
+second-order logic is set theory. We thus give a
+set-theoretical interpretation of second-order logic, interpreting
+“properties” as sets. This is the most common choice and
+brings out the main features of second-order logic. We cannot
+interpret all properties by sets, e.g. the property of being
+identical to oneself. But if the domain that the individual variables
+range over is taken to be a set, then we can meaningfully interpret
+properties of individuals in that domain as sets. If we want to
+interpret second-order logic in a domain which is too large to be a
+set, we can use the set-theoretical concept of a class (see entry on
+ set theory
+ for more on classes). 
+
+We use the same concept of an L-structure (or equivalently, an
+L-model) as in first order logic. That is, an
+L-structure MM\mm has a domain M,
+which is any non-empty set, an interpretation cM∈McM∈Mc^\mm \in M
+of any constant symbol c of L, an interpretation RM⊆MnRM⊆MnR^\mm
+\subseteq M^n of any n-ary relation symbol R of
+L, as well as an interpretation HM:Mn→MHM:Mn→MH^\mm : M^n \to M of any
+n-ary function symbol H of L.
+
+Given an L-structure MM\mm, an assignment is a
+function s from variables to the domain M of MM\mm
+such that: if x is an individual variable, then s(x)∈Ms(x)∈Ms(x) \in M;
+if X is relation variable of arity n, then s(X)⊆Mns(X)⊆Mns(X)
+\subseteq M^n; if F is function variable of arity n,
+then s(F):Mn→Ms(F):Mn→Ms(F) : M^n \to M. We use s(P/X)s(P/X)s(P/X) to denote the assignment
+which is otherwise as s except that the value at X has
+been changed to P. Similarly s(a/x)s(a/x)s(a/x) and s(f/F)s(f/F)s(f/F).
+
+The value tM⟨s⟩tM⟨s⟩t^\mm\langle s\rangle of a term t in a model
+MM\mm under the interpretation s is defined as in first order
+logic.
+
+The concept M⊨ϕM⊨ϕ\mm\models\phi of the truth of the sentence
+ϕϕ\phi in MM\mm can now be defined by first defining the auxiliary
+concept M⊨sϕM⊨sϕ\mm\models_s\phi of the assignment sss satisfying
+ϕϕ\phi in MM\mm (see entry on
+ Tarski's truth definitions
+ for more details): 
+
+
+Definition 2 (Tarski’s Truth Definition) The
+truth definition for second-order logic extends the respective truth
+definition for first order logic by the clauses:
+
+M⊨sX(t1,…,tn)M⊨sX(t1,…,tn)\mm \models_s X(t_1,\ldots,t_n) iff (tM1⟨s⟩,…,tMn⟨s⟩)∈s(X)(tM1⟨s⟩,…,tMn⟨s⟩)∈s(X)(t^\mm_1 \langle
+s\rangle,\ldots,t^\mm_n \langle s\rangle) \in s(X).
+M⊨s∃XϕM⊨s∃Xϕ\mm\models_s \exists X\,\phi iff M⊨s(P/X)ϕM⊨s(P/X)ϕ\mm\models_{s(P/X)} \phi
+for some P⊆MnP⊆MnP \subseteq M^n.
+M⊨s∃FϕM⊨s∃Fϕ\mm\models_s \exists F\,\phi iff M⊨s(f/F)ϕM⊨s(f/F)ϕ\mm\models_{s(f/F)} \phi
+for some f:Mn→M.f:Mn→M.f:M^n \to M.
+
+
+and similarly for the universal quantifiers. For a sentence ϕϕ\phi
+we define M⊨ϕM⊨ϕ\mm\models\phi to mean M⊨sϕM⊨sϕ\mm\models_s\phi for all
+(equivalently some) s, and then say ϕϕ\phi is true
+in MM\mm.
+
+
+In clause 1 of the above definition we follow the common practice of
+giving a set-theoretical interpretation to the predication
+X(t1,…,tn)X(t1,…,tn)X(t_1,\ldots,t_n). Having interpreted X as a subset of
+MnMnM^n, we interpret predication X(t1,…,tn)X(t1,…,tn)X(t_1,\ldots,t_n) as membership
+(tM1⟨s⟩,…,tMn⟨s⟩)∈s(X)(tM1⟨s⟩,…,tMn⟨s⟩)∈s(X)(t^\mm_1 \langle s\rangle,\ldots,t^\mm_n \langle s\rangle) \in
+s(X). In clause 2 we interpret quantification over properties and
+relations as quantification over subsets of the cartesian product
+MnMnM^n. Respectively, in clause 3 we interpret quantification over
+functions as quantification over sets that are functions Mn→MMn→MM^n\to M
+in the set-theoretical sense.
+
+Now that the semantics of second-order logic is defined we can define
+what it means for a formula ϕϕ\phi to be valid and for two
+formulas ϕϕ\phi and ψψ\psi to be logically equivalent. As
+in logic in general, we say that ϕϕ\phi is (logically) valid if
+M⊨sϕM⊨sϕ\mm\models_s\phi holds for all MM\mm and all s. Likewise,
+we define ϕϕ\phi and ψψ\psi to be logically equivalent,
+ϕ≡ψϕ≡ψ\phi\equiv\psi, if ϕ↔ψϕ↔ψ\phi\leftrightarrow\psi is valid. Two
+models MM\mm and NN\mn are said to be second-order
+equivalent, in symbols M≡L2NM≡L2N\mm\equiv_{L^2}\mn if for all
+sentences ϕϕ\phi we have M⊨ϕ⟺N⊨ψM⊨ϕ⟺N⊨ψ\mm\models\phi\iff\mn\models\psi.
+
+The truth definition involves the concepts “for some P⊆MnP⊆MnP
+\subseteq M^n” and “for some f:Mn→Mf:Mn→Mf:M^n \to M”.
+Since we assume set theory as our metalanguage, we can interpret these
+in the sense of set theory. Thus we interpret “for some P⊆MnP⊆MnP
+\subseteq M^n” as “for some set P⊆MnP⊆MnP \subseteq
+M^n” and “for some f:Mn→Mf:Mn→Mf:M^n\to M” as “for
+some set which is a function f:Mn→Mf:Mn→Mf:M^n\to M”.
+
+For infinite M the collection of subsets of MnMnM^n and the set
+of functions Mn→MMn→MM^n\to M are famously complex. Currently set theory
+(ZFC) cannot even decide how many subsets of an infinite set
+there are. The situation is quite different with first order logic.
+The respective concept “for some a∈Ma∈Ma \in M” is
+unproblematic, relatively speaking. Of course, depending on what
+M is, “for some a∈Ma∈Ma \in M” can be quite
+problematic too. To reflect the difficulties involved with finding a
+P⊆MnP⊆MnP \subseteq M^n or an f:Mn→Mf:Mn→Mf:M^n \to M we sometimes say we
+“guess” a P⊆MnP⊆MnP \subseteq M^n or an f:Mn→Mf:Mn→Mf:M^n \to M.
+
+When we use set theory as the metatheory for the semantics of
+first order logic, the reliance on the metatheory is of a
+lower degree than when we use set theory as the metatheory for the
+semantics of second order logic. The central concept, which
+explains the difference, is that of absoluteness. For
+details, see
+ §6.
+
+3.1 The Ehrenfeucht-Fraïssé game of second-order logic
+
+The Ehrenfeucht-Fraïssé game is a game-theoretic
+tool for investigating to what extent two models are similar (see
+entry on
+ logic and games
+ for a general introduction to Ehrenfeucht-Fraïssé games).
+Two isomorphic models would be very similar but normally we are
+interested in similarity of models that are not isomorphic. The
+Ehrenfeucht-Fraïssé game of second-order logic
+characterizes A≡L2NA≡L2N\ma\equiv_{L^2}\mn, i.e. the proposition that
+exactly the same second-order sentences are true in AA\ma and
+BB\mb, just as the Ehrenfeucht-Fraïssé game of first
+order logic characterizes the first order elementary equivalence
+A≡NA≡N\ma\equiv\mn. See the entry on
+ first-order model theory
+ for more on elementary equivalence.
+
+For simplicity we disallow function and constant symbols as well as
+function variables in this section. Suppose AA\ma and BB\mb are
+two models of the same finite relational vocabulary. In the game which
+we denote by G2n(A,B)G2n(A,B)G^2_n(\ma,\mb) two players I and II pick one at a
+time subsets (or elements) of A or subsets (or elements) of
+B. During round i of the game player I can pick a
+relation AiAiA_i on A (or an element aiaia_i of A) and
+then player II has to pick a relation BiBiB_i on B of the same
+arity as AiAiA_i (or an element bibib_i of on B) and vice
+versa: Player I can instead pick a relation BiBiB_i on B (or an
+element bibib_i of B) and then II picks a relation AiAiA_i on
+A of the same arity as BiBiB_i (or an element aiaia_i) of
+A. After n rounds the pairs of played elements
+(ai,bi)(ai,bi)(a_i,b_i) form a binary relation R on A×BA×BA\times B. If
+this relation is a partial isomorphism of the structures AA\ma and
+BB\mb expanded by the played relations AiAiA_i and BiBiB_i, i.e., it
+preserves atomic formulas and their negations, we say that II has won.
+The models AA\ma and BB\mb satisfy the same second-order sentences
+if and only if for each n∈Nn∈Nn\in \oN Player II has a winning strategy
+in G2n(A,B)G2n(A,B)G^2_n(\ma,\mb). A model class (i.e. a class of models of a
+fixed vocabulary, closed under isomorphisms) K is definable in
+second-order logic if and only if there is an n such that if
+A∈KA∈K\ma\in K and Player II has a winning strategy in the
+G2n(A,B)G2n(A,B)G^2_n(\ma,\mb), then B∈KB∈K\mb\in K.
+
+The first order version G1n(A,B)G1n(A,B)G^1_n(\ma,\mb), where players play only
+individual elements, i.e., no relations are played, is very useful in
+working with first order logic. Unfortunately the game
+G2n(A,B)G2n(A,B)G^2_n(\ma,\mb) is much more complex. It is very difficult to
+invent winning strategies for Player II except in the trivial case
+when A≅BA≅B\ma\cong\mb. If Player I plays a binary relation R on
+A, Player II should be able to play a binary relation R′R′R' on
+B such that whatever challenges Player I makes in the rest of
+the game, even involving new binary relations, the relations R
+and R′R′R' look similar. If V=LV=LV=L, then countable second-order
+equivalent models (with a finite vocabulary) are actually isomorphic
+(Ajtai 1979). For details, see
+ §10.
+ Thus consistently in countable models there is no other winning
+strategy for Player II than an isomorphism. Perhaps this explains why
+the game is not as useful in second-order logic as it is in first
+order logic. However, if we restrict to monadic second-order logic,
+which in terms of the Ehrenfeucht-Fraïssé game means
+restricting the game to unary predicates, the situation
+changes. A unary predicate just divides the model into two parts. If
+Player I divides A into two parts, Player II should find a
+similar division in B. This is more reasonable and there
+actually are useful strategies for Player II. For examples in the
+finite context see
+ §16.
+
+
+
+4. Properties of Second-Order Formulas
+
+Many syntactic operations that we are used to in first order logic
+work equally well in second-order logic. One such is the operation of
+relativization, in which we want to limit what a formula
+expresses to a fixed part of the universe. For example, we may
+consider models where a certain unary predicate U is used for
+the set of natural numbers. Then we relativize our axioms of
+arithmetic to the predicate U. Some other part of the model may
+be used for the power set of the set of natural numbers. Then we
+relativize our axioms of power set (see
+ §5.3)
+ to that part, and so on.
+
+If MM\mm is a structure and A⊆MA⊆MA\subseteq M, then MAMA\mm^{A} is
+obtained by restricting the relations RMRMR^\mm and functions
+FMFMF^\mm to A. This does not always result in a structure but
+if it does, it is called the relativization of MM\mm to
+A. Suppose
+ϕ=ϕ(x1,…,xn,X1,…,Xm,F1,…,Fk)ϕ=ϕ(x1,…,xn,X1,…,Xm,F1,…,Fk)\phi=\phi(x_1,\ldots,x_n,X_1,\ldots,X_m,F_1,\ldots,F_k) is a
+second-order formula and U is a unary relation variable. There
+is a second-order formula ϕUϕU\phi^{U}, the relativization of ϕϕ\phi
+to U, such that for all MM\mm for which MUMMUM\mm^{U^\mm} is a
+structure: 
+M⊨ϕU⟺MUM⊨ϕ.M⊨ϕU⟺MUM⊨ϕ.\mm\models\phi^{U}\iff \mm^{U^\mm}\models\phi.
+
+
+Intuitively, ϕUϕU\phi^{U} says about UMUMU^\mm what ϕϕ\phi says
+about M. To obtain ϕUϕU\phi^{U} from ϕϕ\phi one restricts all
+the first order quantifiers to elements of U and second-order
+quantifiers to subsets, relations and functions on U.
+
+Hierarchies based on quantifier structure are a useful method to
+compare the definability of concepts in different systems. In first
+order logic it was observed very early on that formulas can be brought
+into a logically equivalent Prenex Normal Form in which all
+quantifiers occur in the beginning of the formula. This is possible
+also in second-order logic and the proof is essentially the same.
+Moreover, using the equivalence (which is reminiscent of a principle
+of set theory called Axiom of Choice, to which we return in Section
+5.4., since in the below formula the relation YYY in a sense chooses
+one XXX for each xxx and puts them together into one relation
+YYY – see entry on
+ Axiom of Choice
+ for more on the topic.)
+∀x∃Xϕ≡∃Y∀xϕ′,∀x∃Xϕ≡∃Y∀xϕ′,\forall x\,\exists X\,\phi\equiv \exists Y\,\forall x\,\phi',
+
+
+where the arity of Y is one higher than the arity of X,
+and ϕ′ϕ′\phi' is obtained from ϕϕ\phi by replacing everywhere
+X(t1,…,tn)X(t1,…,tn)X(t_1,\ldots,t_n) by Y(x,t1,…,tn)Y(x,t1,…,tn)Y(x,t_1,\ldots,t_n), one can bring every
+second-order logic formula to a logically equivalent normal form 
+Q1X1…QnXnϕ,(4)Q1X1…QnXnϕ,\tag{4}\label{qqq}
+Q_1X_1\ldots Q_nX_n\phi,
+
+
+where each QiQiQ_i is either ∃∃\exists or ∀∀\forall and ϕϕ\phi
+is first order.
+
+
+
+
+Notation
+The QiQiQ_i in (44\ref{qqq}) are: 
+
+Σ11Σ11\Sigma^1_1
+All existential 
+
+Π11Π11\Pi^1_1
+All universal 
+
+Σ12Σ12\Sigma^1_2
+First existential, then universal 
+
+Π12Π12\Pi^1_2
+First universal, then existential 
+
+⋮⋮\vdots
+⋮⋮\vdots 
+
+
+
+Notation
+The formula is logically equivalent to: 
+
+Δ11Δ11\Delta^1_1
+Both Σ11Σ11\Sigma^1_1 and Π11Π11\Pi^1_1 formulas 
+
+Δ12Δ12\Delta^1_2
+Both Σ12Σ12\Sigma^1_2 and Π12Π12\Pi^1_2 formulas 
+
+⋮⋮\vdots
+⋮⋮\vdots 
+
+
+Table 1: The hierarchy of second-order
+formulas.
+
+
+
+By restricting what kind of quantifiers the sequence Q1X1…QnXnQ1X1…QnXnQ_1X_1\ldots
+Q_nX_n of the Prenex Normal Form (44\ref{qqq}) can contain we obtain
+the classes of Σ1nΣ1n\Sigma^1_n-, Π1nΠ1n\Pi^1_n- and
+Δ1nΔ1n\Delta^1_n-formulas, as indicated in
+ Table 1.
+ For example, the second-order formulas (1) and (2) are
+Π11Π11\Pi^1_1-formulas.
+
+We have considered above only quantifiers that bind relation variables
+but the situation is exactly the same if we had bound function
+variables.
+
+These classes of formulas have some obvious closure properties: They
+are all closed, up to logical equivalence, under ∧,∨∧,∨\land , \lor, and
+first order quantifiers. Moreover, the hierarchy is proper in the
+sense that for all n≥1n≥1n\ge 1 
+Σ1n⊈Π1n and Π1n⊈Σ1n,(5)Σ1n⊈Π1n and Π1n⊈Σ1n,\tag{5}\label{kurat}
+\Sigma^1_n \nsubseteq \Pi^1_n\text{ and } \Pi^1_n  \nsubseteq \Sigma^1_n,
+
+
+which can be proved with a diagonalisation argument. The classes
+Δ1nΔ1n\Delta^1_n are closed under ∧,∨,¬∧,∨,¬\land , \lor, \neg and first order
+quantifiers. By Craig’s Interpolation Theorem,
+Δ11Δ11\Delta^1_1-formulas are logically equivalent to first order
+formulas
+ [2].
+
+There is a sense in which Π11Π11\Pi^1_1, or equivalently Σ11Σ11\Sigma^1_1,
+already has the full power of second-order logic, although the above
+hierarchy result (55\ref{kurat}) shows that this cannot literally be
+true. To see this, i.e., to see what the reduction of second-order
+logic to its Π11Π11\Pi^1_1-part means, let L be a vocabulary,
+E a binary and U a unary relation symbol, both not in
+L. Let θθ\theta be the second-order Π11Π11\Pi^1_1-formula
+
+∀X(ϕ1∧ϕ2∧ϕ3),(6)∀X(ϕ1∧ϕ2∧ϕ3),\tag{6}\label{ex6}
+\forall X(\phi_1\land\phi_2\land\phi_3),
+
+
+where 
+ϕ1 is ∀x∀y(∀z(E(z,x)↔E(z,y))→x=y)ϕ2 is ∀x∀y(E(x,y)→(U(x)∧¬U(y)))ϕ3 is ∀x((X(x)→U(x))→∃y∀z(X(z)↔E(z,y))).ϕ1 is ∀x∀y(∀z(E(z,x)↔E(z,y))→x=y)ϕ2 is ∀x∀y(E(x,y)→(U(x)∧¬U(y)))ϕ3 is ∀x((X(x)→U(x))→∃y∀z(X(z)↔E(z,y))).\begin{align}
+\phi_1&amp;\text{ is }\quad \forall x\,\forall y(\forall z(E(z,x)\leftrightarrow E(z,y))\to x=y)\\
+\phi_2&amp;\text{ is }\quad \forall x\,\forall y(E(x,y)\to (U(x)\land\neg U(y)))\\
+\phi_3&amp;\text{ is }\quad \forall x ((X(x)\to U(x))\to\exists y\,\forall z(X(z)\leftrightarrow E(z,y))).
+\end{align}
+
+
+It is easy to
+ see[3]
+ that models of θθ\theta are, up to isomorphism, models MM\mm
+where M=UM∪P(UM)M=UM∪P(UM)M=U^\mm\cup\P(U^\mm), UM∩P(UM)=∅UM∩P(UM)=∅U^\mm\cap\P(U^\mm)=\emptyset and
+for all a,b∈Ma,b∈Ma,b\in M, EM(a,b)↔a∈bEM(a,b)↔a∈bE^\mm(a,b)\leftrightarrow a\in b. In such a
+model monadic second-order formulas ϕϕ\phi over UMUMU^\mm can be
+reduced to first order formulas ϕ∗ϕ∗\phi^* over M. This
+reduction, due to Hintikka (1955) and further developed by Montague
+(1963), shows that Π11Π11\Pi^1_1-formulas alone are enough to express
+any second-order property with extra predicates. The idea can be
+extended to third and higher order logic.
+
+As a consequence, checking the validity of a second-order sentence
+ϕϕ\phi can be recursively reduced to checking the validity of the
+Σ11Σ11\Sigma^1_1-sentence θ→ϕ∗θ→ϕ∗\theta\to\phi^*. Likewise checking whether
+a second-order sentence ϕϕ\phi has a model of cardinality κκ\kappa
+can be reduced to asking whether the Π11Π11\Pi^1_1-sentence
+θ∧ϕ∗θ∧ϕ∗\theta\land\phi^* has a model of cardinality 2κ2κ2^\kappa. This
+means that the Löwenheim
+ number[4]
+ and the Hanf
+ number[5]
+ of the entire second-order logic are the same as those of the
+fragment Π11Π11\Pi^1_1.
+
+Summing up, upon first inspection the levels Σ1nΣ1n\Sigma^1_n and
+Π1nΠ1n\Pi^1_n of the hierarchy of second-order formulas grow strictly in
+expressive power as n increases, but a more careful analysis
+reveals that already the first level Σ11∪Π11Σ11∪Π11\Sigma^1_1\cup \Pi^1_1 has
+the power of all the levels Σ1n,Π1nΣ1n,Π1n\Sigma^1_n, \Pi^1_n even if the power
+is somewhat implicit and needs to be brought to light.
+
+In set theory there is the Levy-hierarchy of ΣnΣn\Sigma_n-
+and ΠnΠn\Pi_n-formulas (Lévy 1965). Formulas where all
+quantifiers are bounded, i.e., of the form ∀x∈y∀x∈y\forall x\in y or of
+the form ∃x∈y∃x∈y\exists x\in y for some x and y, are called
+Σ0Σ0\Sigma_0 or equivalently Π0Π0\Pi_0. Formulas of the form ∀xϕ∀xϕ\forall
+x\,\phi, where ϕϕ\phi is ΣnΣn\Sigma_n, are called Πn+1Πn+1\Pi_{n+1}.
+Formulas of the form ∃xϕ∃xϕ\exists x\,\phi, where ϕϕ\phi is ΠnΠn\Pi_n,
+are called Σn+1Σn+1\Sigma_{n+1}. This is a strict hierarchy roughly for
+the same reason why the hierarchy of second-order Σ1nΣ1n\Sigma^1_n- and
+Π1nΠ1n\Pi^1_n-formulas is strict. But there is no known method to reduce
+the truth of an arbitrary formula to the truth of a formula on the
+Σ1∪Π1Σ1∪Π1\Sigma_1\cup\Pi_1 level. In fact, if the decision problem,
+Löwenheim-Skolem number and Hanf number are suitably defined for
+Σn∪ΠnΣn∪Πn\Sigma_n\cup \Pi_n-formulas of set theory, the decision problem
+gets more and more complicated, and the numbers obtained get bigger
+and bigger as n increases (see
+ Theorem 4;
+ Väänänen 1979).
+
+The hierarchy Σ1n∪Π1nΣ1n∪Π1n\Sigma_n^1\cup \Pi_n^1 inside second-order logic and
+the hierarchy Σn∪ΠnΣn∪Πn\Sigma_n\cup\Pi_n in set theory, are compared to
+each other in
+ §7.
+
+5. The Infamous Power of Second-Order Logic
+
+5.1 Putting distance between second- and first-order logic
+
+Second-order logic has some remarkable qualities which we will now
+uncover in detail. Above we characterized the structure of the natural
+numbers by means of (11\ref{ind}). This application of second-order
+logic is perhaps the most famous and most important. We now
+reformulate this in a slightly more general form in order to get more
+power out of it. Suppose U is a unary relation variable
+(“the set of natural numbers”), G a unary function
+variable (“the successor function”), and z an
+individual variable (“the zero”). Let
+θPA(U,G,z)θPA(U,G,z)\theta_{\textrm{PA}}(U,G,z) be the sentence 
+U(z)∧∀x(U(x)→(U(G(x))∧¬G(x)=z))∧∀x∀y((U(x)∧U(y)∧G(x)=G(y))→x=y)∧∀X([X(z)∧∀x((U(x)∧X(x))→X(G(x)))]→∀x(U(x)→X(x))),(7)U(z)∧∀x(U(x)→(U(G(x))∧¬G(x)=z))∧∀x∀y((U(x)∧U(y)∧G(x)=G(y))→x=y)∧∀X([X(z)∧∀x((U(x)∧X(x))→X(G(x)))]→∀x(U(x)→X(x))),\tag{7}
+\begin{align}
+&amp;U(z)\land{}\\
+&amp;\forall x(U(x)\to(U(G(x))\land\neg G(x)=z))\land{}\\
+&amp;\forall x\,\forall y((U(x)\land U(y)\land G(x)=G(y))\to x=y)\land{}\\
+&amp;\forall X([X(z) \land  \forall x((U(x)\land X(x)) \to X(G(x)))] \to {}\\
+&amp;\forall x(U(x)\to X(x))),
+\end{align}
+
+
+Then (N,A,g,a)⊨θPA(U,G,z)(N,A,g,a)⊨θPA(U,G,z)(N,A,g,a)\models\theta_{\textrm{PA}}(U,G,z) if and only if
+(N,A,g,a)(N,A,g,a)(N,A,g,a) is isomorphic to a structure (M,N,s,0)(M,N,s,0)(M,\oN,s,0) where
+N⊆MN⊆M\oN\subseteq M and s(n)=n+1s(n)=n+1s(n)=n+1. Thus we have used second-order
+logic to say that the U-part of any model of
+θPA(U,G,z)θPA(U,G,z)\theta_{\textrm{PA}}(U,G,z), together with the function G
+and the individual z are isomorphic to the natural numbers
+NN\oN with their successor function and zero. There are many ways to
+see that no first order sentence can have this property. For example,
+by the Compactness Theorem such a sentence would have also a
+non-standard model where some element is different from each
+in the sequence z, G(z)G(z)G(z), G(G(z))G(G(z))G(G(z)), G(G(G(z)))G(G(G(z)))G(G(G(z))),
+……\ldots. Such a model cannot be isomorphic to the natural numbers
+NN\oN with their successor function and zero. Hereupon we may
+conclude that the Compactness Theorem does not hold for second-order
+logic in the form that it holds for first order logic.
+
+In models of θPA(U,G,z)θPA(U,G,z)\theta_{\textrm{PA}}(U,G,z) the formula
+θ+(U,G,z,H)θ+(U,G,z,H)\theta_+(U,G,z,H) 
+{∀x(U(x)→H(x,z)=x)∧∀x∀y(U(x)→(U(y)→H(x,G(y))=G(H(x,y)))){∀x(U(x)→H(x,z)=x)∧∀x∀y(U(x)→(U(y)→H(x,G(y))=G(H(x,y))))\left\{\begin{array}{l}
+\forall x(U(x)\to H(x,z)=x)\land\\
+\forall x\,\forall y(U(x)\to (U(y)\to H(x,G(y))=G(H(x,y))))\\
+\end{array}\right.
+
+
+and the formula θ×(U,G,z,H,J)θ×(U,G,z,H,J)\theta_\times(U,G,z,H,J) 
+{∀x(U(x)→J(x,z)=z)∧∀x∀y(U(x)→(U(y)→J(x,G(y))=H(J(x,y),x))){∀x(U(x)→J(x,z)=z)∧∀x∀y(U(x)→(U(y)→J(x,G(y))=H(J(x,y),x)))\left\{\begin{array}{l}
+\forall x(U(x)\to J(x,z)=z)\land\\
+\forall x\,\forall y(U(x)\to (U(y)\to J(x,G(y))=H(J(x,y),x)))\\
+\end{array}\right.
+
+
+define unique functions m+n=H(m,n)m+n=H(m,n)m+n=H(m,n) and m⋅n=J(m,n)m⋅n=J(m,n)m\cdot n=J(m,n). A
+first order sentence ϕ(+,⋅,0)ϕ(+,⋅,0)\phi(+,\cdot,0) of arithmetic is true in
+(N,+,⋅,0)(N,+,⋅,0)(\oN,+,\cdot,0) if and only if 
+∀U∀G∀z∀H∀J((θPA(U,G,z)∧θ+(U,G,z,H)∧θ×(U,G,z,H,J))→(ϕ(H,J,z))U)∀U∀G∀z∀H∀J((θPA(U,G,z)∧θ+(U,G,z,H)∧θ×(U,G,z,H,J))→(ϕ(H,J,z))U)
+\forall U\,
+\forall G\,
+\forall z\,
+\forall H\,
+\forall J  \left(\left(
+\theta_{\textrm{PA}} (U,G,z) 
+\land \theta_+(U,G,z,H)  
+          \land \theta_\times(U,G,z,H,J)
+\right)
+\to {}\\
+(\phi(H,J,z))^{U}\right)
+
+
+is valid. We know that truth of first order sentences in
+(N,+,⋅,0)(N,+,⋅,0)(\oN,+,\cdot,0) is undecidable, and even non-arithmetical by
+results of Gödel (1931 [1986: 144–195]) and Tarski (1933
+[1956]). This shows that second-order logic is not completely
+axiomatizable by effective means, or decidable even in the empty
+vocabulary. That is, there is no decidable second-order theory with an
+infinite model. This is in sharp contrast to first order logic where
+the following theories are decidable: first order logic with empty
+vocabulary, first order logic with monadic predicates, dense linear
+order, Pressburger arithmetic (first order theory of (N,+,0)(N,+,0)(\oN,+,0)),
+real closed fields (first order theory of (R,+,⋅,0,1)(R,+,⋅,0,1)(\oR,+,\cdot,0,1)),
+theory of algebraically closed fields, and the first order theory of
+(C,+,⋅,0,1)(C,+,⋅,0,1)(\oC,+,\cdot,0,1). In second-order logic none of the respective
+second-order theories are decidable. However, if we restrict
+second-order logic to monadic second-order logic, we obtain
+many important decidable theories (see
+ §8).
+
+
+5.2 The collapse of the Completeness Theorem
+
+The Completeness Theorem is one of the cornerstones of our
+understanding of first order logic. Also many extensions of first
+order logic have a Completeness Theorem, most notably the extension of
+first order logic by the
+ generalized quantifier
+ “There are uncountably many” and the
+ infinitary language
+Lω1ωLω1ωL_{\omega_1\omega}. We shall now see that there is no hope of a
+Completeness Theorem for second-order logic. Later in
+ §9.1
+ we shall modify the semantics so that a Completeness Theorem can be
+proved.
+
+Behind the failure of the Completeness Theorem is the fact that
+second-order logic is—almost by definition—able to say
+that a set is the power set of another set. What this means is the
+following: Let L be a vocabulary. Let E be a binary and
+U a unary relation symbol, both not in L. Let
+θPow(U,E)θPow(U,E)\theta_{\textrm{Pow}}(U,E) be the second-order formula
+(66\ref{ex6}). Let us consider the conjunction 
+θPA(U,G,z)∧θPow(U,E).(8)θPA(U,G,z)∧θPow(U,E).\tag{8}\label{papow}
+\theta_{\textrm{PA}}(U,G,z)\land\theta_{\textrm{Pow}}(U,E).
+
+
+Models of this formula are, up to isomorphism, of the form
+(M,∈,N,g,a)(M,∈,N,g,a)(M,\in,N,g,a), where P(N)=MP(N)=M\P(N)=M, N∩P(N)=∅N∩P(N)=∅N\cap\P(N)=\emptyset and
+NNN is countably infinite. Thus the models are necessarily
+uncountable. This shows that second-order logic, unlike first order
+logic, has sentences with models but only uncountable ones. Thus the
+Downward Löwenheim-Skolem Theorem fails for second-order logic,
+as we already noted above. Combining (88\ref{papow}) with the
+observations in
+ §5.1
+ yields the following result (by validity we mean the set of
+Gödel numbers of valid formulas):
+
+
+Theorem 3 (Hintikka 1955; Montague 1963) Validity in
+second-order logic is not second-order definable over
+(N,+,⋅,0)(N,+,⋅,0)(\oN,+,\cdot,0).
+
+
+In consequence, validity in second-order logic is not Σ1nΣ1n\Sigma^1_n
+for any n. Since building power sets in the style of
+θPow(U,E)θPow(U,E)\theta_{\textrm{Pow}}(U,E) can be iterated, we can see that
+validity in second-order logic is not ΣmnΣmn\Sigma^m_n for any m
+and n. We extend this result further below in
+ Theorem 6.
+
+
+5.3 “Set theory in sheep’s clothing”
+
+Second-order logic hides in its semantics some of the most difficult
+problems of set theory. In the words of Resnik (1988: 75):
+
+
+In Philosophy of Logic [Quine 1970], W. V. Quine summed up a popular
+opinion among mathematical logicians by referring to second-order
+logic as “set theory in sheep’s clothing”.
+
+
+Let us see where this opinion might come from. First we observe that a
+very simple, indeed a very basic, second-order formula can say that
+two sets have the same cardinality: Suppose P and R are
+unary relation variables. Let θ≤(P,R)θ≤(P,R)\theta_{\le}(P,R) be the formula
+
+∃F(∀x∀y((F(x)=F(y)→x=y)∧(P(x)→R(F(x)))).∃F(∀x∀y((F(x)=F(y)→x=y)∧(P(x)→R(F(x)))).
+\exists F\left(\forall x\,\forall y\left(
+(F(x)=F(y)\to x=y)
+\land(P(x)\to R(F(x))
+\right)\right).
+
+
+Now M⊨sϕ≤(P,R)M⊨sϕ≤(P,R)\mm\models_s\phi_\le(P,R) if and only if |s(P)|≤|s(R)||s(P)|≤|s(R)||s(P)|\le |s(R)|.
+Let θEQ(P,R)θEQ(P,R)\theta_{\textrm{EQ}}(P,R) be the formula
+θ\le(P,R)∧θ\le(R,P)θ\le(P,R)∧θ\le(R,P)\theta_{\textrm{\le}}(P,R)\land \theta_{\textrm{\le}}(R,P). Now
+M⊨sϕ(P,R)M⊨sϕ(P,R)\mm\models_s\phi(P,R) if and only if |s(P)|=|s(R)||s(P)|=|s(R)||s(P)|=|s(R)|. Let
+θ′EC(Y)θ′EC(Y)\theta'_{\textrm{EC}}(Y) be 
+∃F(∀x∀y((F(x)=F(y)→x=y)∧R(F(x)))∧∀x∃y(R(x)→x=F(y))).∃F(∀x∀y((F(x)=F(y)→x=y)∧R(F(x)))∧∀x∃y(R(x)→x=F(y))).
+\exists F\left(
+\forall x\,\forall y((F(x)=F(y)\to x=y)\land R(F(x)))
+ \land {}\\
+\forall x\,\exists y(R(x)\to x=F(y))
+\right).
+
+
+Now M⊨sϕ(P,R)M⊨sϕ(P,R)\mm\models_s\phi(P,R) if and only if the sets M and
+s(R)s(R)s(R) have the same cardinality. We will use these formulas to
+launch an attack on the Continuum Hypothesis, the notorious problem of
+set theory, proved independent of ZFC by Cohen in 1963 (Cohen
+1966).
+
+Let θCHθCH\theta_{\textrm{CH}} be the sentence 
+∃E∃U∃G∃z(θPow(E,U)∧θPA(U,G,z)∧∀Y(θ′EC(Y)∨θ≤(Y,U))).(9)∃E∃U∃G∃z(θPow(E,U)∧θPA(U,G,z)∧∀Y(θ′EC(Y)∨θ≤(Y,U))).
+\exists E\,\exists U\,\exists G\,\exists z\left(
+\theta_{\textrm{Pow}}(E,U)
+\land\theta_{\textrm{PA}}(U,G,z) 
+\land {}\\
+\forall Y(\theta'_{\textrm{EC}}(Y)\lor\theta_{\le}(Y,U))
+\right). \tag{9}
+
+
+Now θCHθCH\theta_{\textrm{CH}}, which is a sentence of the empty
+vocabulary, has a model if and only if the Continuum Hypothesis CH
+holds. Similarly, there is a sentence θ¬CHθ¬CH\theta_{\neg \textrm{CH}},
+which has a model if and only if the Continuum Hypothesis CH does not
+hold. This shows that the dependence of the semantics of second-order
+logic on the metatheoretic set theory is so deep that even questions
+that ZFC cannot solve can determine the truth or falsity of a sentence
+in a model.
+
+The curious quality of second-order logic is that the truth of a
+sentence such as θCHθCH\theta_{\textrm{CH}} in a big enough model of the
+empty vocabulary is equivalent to the truth of the Continuum
+Hypothesis in the set-theoretical universe. By the same technique
+almost any set-theoretical statement can be turned into a sentence of
+second-order logic, the truth of which in a big enough model of the
+empty vocabulary is equivalent to the truth of the statement in the
+set-theoretical universe. Somehow second-order logic manages to read
+the background set theory correctly. Does this mean that second-order
+logic is set theory in “sheep’s clothing”?
+
+
+5.4 Does second-order logic depend on the Axiom of Choice?
+
+The Axiom of Choice (AC) is a philosophical puzzle in the foundations
+of mathematics. Roughly speaking, this axiom, that originally emerged
+in set theory, says that if we have a set AAA of non-empty disjoint
+sets, then we can form a new set BBB which contains exactly one
+element from each set in AAA. What can be seen as a problem is the
+fact that when AAA is infinite, forming the set BBB seems to
+require making an infinite number of choices. See entry on
+ Axiom of Choice
+ for a thorough definition and discussion. On the one hand the Axiom
+of Choice seems magic, for example when it implies that the wildest
+sets have a well-ordering. On the other hand it seems innocuous, for
+example when it implies that the Cartesian product of a family of
+non-empty sets is non-empty. The Axiom of Choice is typically used to
+construct odd “paradoxical” sets, such as a non-Lebesgue
+measurable set of real numbers, a well-ordering of the real numbers, a
+paradoxical decomposition of the sphere (see entry on
+ set theory),
+ and so on. Such sets are usually in one sense or another undefinable.
+For example, a non-Lebesgue measurable set of real numbers
+has to be undefinable in second-order logic over
+(N,+,⋅)(N,+,⋅)(\oN,+,\cdot), if there are sufficiently large cardinals (see the
+entry on
+ large cardinals and determinacy).
+
+The puzzling Axiom of Choice arises also in the middle of second-order
+logic: Let θθ\theta be the sentence 
+∀X(∀x∃yX(x,y)→∃F∀xX(x,F(x))).∀X(∀x∃yX(x,y)→∃F∀xX(x,F(x))).
+\forall X(\forall x\,\exists y\,X(x,y)\to\exists F\,\forall x\,X(x,F(x))).
+
+
+Then R⊨θR⊨θ\oR\models\theta essentially says that if a binary relation
+XXX relates to each x∈Rx∈Rx\in\oR a non-empty set {y∈R:X(x,y}{y∈R:X(x,y}\{y\in\oR :
+X(x,y\}, then there is a function FFF which chooses for each
+x∈Rx∈Rx\in\oR some y=F(x)y=F(x)y=F(x) such that X(x,y)X(x,y)X(x,y). In set theory this
+is one of many equivalent ways of saying that the Axiom of Choice
+holds for (continuum size) families of subsets of RR\oR. The basic
+tenet of second-order logic is that “all” properties of
+elements of a fixed domain exist and we can quantify over them. In
+set-theoretical terms this means that all subsets, definable or not,
+of a set of any cardinality exists and we can quantify over them. In
+this spirit the Axiom of Choice seems innocent and is usually accepted
+in the literature of second-order logic.
+
+By Cohen’s results (1966) there are N and N′N′N'
+satisfying the axioms of ZF (without the Axiom of Choice) such that
+“N⊨θN⊨θ\oN\models\theta” holds in N but does not hold
+in N′N′N'. This is a further demonstration of the dependence of the
+semantics of second-order logic on the metatheory.
+
+
+6. Non-Absoluteness of Truth in Second-Order Logic
+
+Absoluteness is one of the most important concepts of logic. It was
+used already in 1939 by Gödel in his analysis of the hierarchy of
+constructible sets (1939 [1990: 46]) towards proving the consistency
+of the Continuum Hypothesis. It is briefly mentioned by Gödel
+three years earlier in connection with the notion of computability
+(1936 [1986: 397]).
+
+Intuitively speaking, a concept is absolute if its meaning is
+independent of the formalism used, or in other words, if its meaning
+in the formal sense is the same as its meaning in the “real
+world”. This may sound very vague and inexact. However,
+absoluteness has a perfectly exact technical definition in set
+theory.
+
+Recall that a set a is called transitive if every
+element of an element of a is an element of a. A
+transitive model is a model (M,∈)(M,∈)(M,\in) such that M is
+transitive. By the Mostowski Collapsing Lemma (Mostowski 1949) every
+well-founded model (M,E)(M,E)(M,E) of the Axiom of Extensionality is
+isomorphic to a transitive model. A basic property of transitive
+models (M,∈)(M,∈)(M,\in) is that if a,b∈Ma,b∈Ma,b\in M, then M⊨a⊆bM⊨a⊆bM\models a\subseteq
+b if and only if a⊆ba⊆ba\subseteq b. (If all elements of a that
+are in M are in b then all elements of a are in
+b, as by transitivity of M, elements of a are
+necessarily elements of M.) We could express this by saying
+that the formula x⊆yx⊆yx\subseteq y is absolute in transitive models.
+More generally, we say that a formula ϕ(x1,…,xn)ϕ(x1,…,xn)\phi(x_1,\ldots,x_n) of the
+first order language of set theory is absolute relative to
+ZFC if there is a finite T⊆ZFCT⊆ZFCT\subseteq \ZFC such that for all
+transitive models (M,∈)(M,∈)(M,\in) of T and all a1,…,an∈Ma1,…,an∈Ma_1,\ldots,a_n\in
+M we have 
+ϕ(a1,…,an) if and only if (M,∈)⊨ϕ(a1,…,an).ϕ(a1,…,an) if and only if (M,∈)⊨ϕ(a1,…,an).\phi(a_1,\ldots,a_n)\text{ if and only if }(M,\in)\models\phi(a_1,\ldots,a_n).
+
+
+This definition of absoluteness is equivalent to the following more
+syntactic condition (Feferman & Kreisel 1966): there are a
+Σ1Σ1\Sigma_1-formula ∃yψ(y,x1,…,xn)∃yψ(y,x1,…,xn)\exists y\,\psi(y,x_1,\ldots,x_n) and a
+Π1Π1\Pi_1-formula ∀yθ(y,x1,…,xn)∀yθ(y,x1,…,xn)\forall y\,\theta(y,x_1,\ldots,x_n) such that
+
+ZFC⊢∀x1…∀xn(ϕ(x1,…,xn)↔∃yψ(y,x1,…,xn))ZFC⊢∀x1…∀xn(ϕ(x1,…,xn)↔∃yψ(y,x1,…,xn))\ZFC\vdash\forall x_1\ldots\forall x_n(\phi(x_1,\ldots,x_n)\leftrightarrow \exists y\,\psi(y,x_1,\ldots,x_n))
+
+
+and 
+ZFC⊢∀x1…∀xn(ϕ(x1,…,xn)↔∀yθ(y,x1,…,xn)).ZFC⊢∀x1…∀xn(ϕ(x1,…,xn)↔∀yθ(y,x1,…,xn)).\ZFC\vdash\forall x_1\ldots\forall x_n(\phi(x_1,\ldots,x_n)\leftrightarrow \forall y\,\theta(y,x_1,\ldots,x_n)).
+
+
+In such a case we say that ϕ(x1,…,xn)ϕ(x1,…,xn)\phi(x_1,\ldots,x_n) is
+ΔZFC1ΔZFC1\Delta_1^{\text{ZFC}}.
+
+For first order logic it can be proved that
+“M⊨sϕM⊨sϕ\mm\models_s\phi” is an absolute property of MM\mm,
+s and ϕϕ\phi relative to ZFC. In fact, this is true even if
+ZFC is replaced by the weaker Kripke-Platek set theory KP (see Barwise
+1972a). The usual Tarski Truth Definition of first order logic can be
+written in ΔZFC1ΔZFC1\Delta_1^{\text{ZFC}} form. For second-order logic the
+propositions “ϕϕ\phi is a second-order formula”,
+“MM\mm is an L-structure” and “s is
+an assignment” are all absolute relative to ZFC as well, but
+“M⊨sϕM⊨sϕ\mm\models_s\phi” is not, as we shall now see. This
+is a crucial property of second-order logic. One may consider it a
+weakness, if one thinks of absoluteness as a desirable property, or a
+strength, if one takes non-absoluteness as a sign of expressive power.
+Whether a weakness or not, it is an important feature of second-order
+logic and a dominating topic in discussions about it. Second-order
+logic is, however, not the only non-absolute logic. For example,
+L(Q1)L(Q1)L(Q_1) (see the entry on
+ generalized quantifiers)
+ and Lω1ω1Lω1ω1L_{\omega_1\omega_1} (see then entry on
+ infinitary languages)
+ are non-absolute, while L(Q0)L(Q0)L(Q_0) and Lω1ωLω1ωL_{\omega_1\omega} are
+absolute. The reason why L(Q0)L(Q0)L(Q_0) is absolute is essentially that
+the property of a set being infinite is absolute in transitive models
+of ZFC. Although the set of sentences of Lω1ωLω1ωL_{\omega_1\omega} may
+vary from one transitive model of ZFC to another, the truth of a
+sentence of Lω1ωLω1ωL_{\omega_1\omega} in a model is absolute in
+transitive models of ZFC essentially because the truth has a simple
+inductive definition which only refers to subformulas of the sentence
+and elements of the model.
+
+Recall the definition of the sentence θEC(P,R)θEC(P,R)\theta_{\textrm{EC}}(P,R) in
+ §5.3,
+ which says that the interpretations of the predicates P and
+R have the same cardinality. Cardinality is not an absolute
+property. Two sets (even two ordinals) can be of different cardinality
+in one transitive model of ZFC and of the same cardinality in a
+transitive extension. It is easy to see that “M⊨sθEC(P,R)M⊨sθEC(P,R)\mm\models_s\theta_{\textrm{EC}}(P,R)”
+is not absolute relative to ZFC. Essentially, the reason is that two
+sets have the same cardinality if there is a bijection between them.
+In a small transitive set it may happen that the sets are there but
+the bijection manifesting their equicardinality is not. The bijection
+may be one obtained by the method of forcing. Or the lack of the
+bijection may be the result of applying the Downward
+Löwenheim-Skolem
+ Theorem[6].
+
+A more serious case of non-absoluteness is the sentence
+θCHθCH\theta_{\textrm{CH}} of
+ §5.3.
+ The sentence θCHθCH\theta_{\textrm{CH}} of the empty vocabulary has a
+model if and only if the Continuum Hypothesis is true. If T⊆ZFCT⊆ZFCT\subseteq
+\ZFC is finite, then there are countable transitive models
+M⊆M′M⊆M′M\subseteq M' such that one, say M, satisfies CH and the
+other, in this case M′M′M', does not (by Cohen 1966). In M the
+sentence θCHθCH\theta_{\textrm{CH}} has a model AA\ma, that is,
+M⊨“A⊨θCH”M⊨“A⊨θCH”M\models
+\textrm{“}\ma\models\theta_{\textrm{CH}}\textrm{”}. In
+M′M′M' the same sentence has no models, in particular M′⊭“A⊨θCH”M′⊭“A⊨θCH”M'\not\models
+\textrm{“}\ma\models\theta_{\textrm{CH}}\textrm{”}. Thus
+the property of a model satisfying a second-order sentence is not
+absolute relative to ZFC. Even the property of a second-order sentence
+having a model is not absolute relative to ZFC, because in
+M the sentence θCHθCH\theta_{\textrm{CH}} has a model but in
+M′M′M' not. For first order logic the property of a sentence of having
+a model is co-re and therefore arithmetical. Arithmetical properties
+are always absolute relative to ZFC. The situation is similar if the
+Continuum Hypothesis is replaced by the Axiom of Choice (see
+ §5.4).
+
+The CH and the AC are central questions of set theory and subjects of
+continuing debate. While the AC is mostly accepted as an axiom, and is
+part of the ZFC axiom system, the CH is widely considered an open
+problem. There are even suggestions (e.g., Feferman 1999) that it
+cannot be solved by any axiom system with the kind of general
+acceptance that ZFC has. The formalist position in the foundations of
+mathematics goes further and maintains that the question, what the
+truth value of CH is, is meaningless. Both CH and its negation are
+consistent with ZFC, assuming ZFC itself is consistent. According to
+the formalist position the status of CH has been solved with this. The
+semantics of second-order logic depending on these hard questions of
+set theory puts second-order logic into the same “basket”
+with set theory. Criticism of set theory becomes criticism of
+second-order logic and vice versa.
+
+Another indication of the dependence of second-order logic on set
+theory as the metatheory is the result of Barwise to the effect that
+the existence of the Hanf number of second-order logic is not provable
+in set theory without a highly complex use of the Replacement Axiom
+(for details, see Barwise 1972b).
+
+
+7. Model Theory of Second-Order Logic
+
+Let us start by noting that there are some trivial consequences of
+second-order logic being able to quantify over relations. For example,
+the Craig Interpolation Theorem holds for second-order logic for
+trivial reasons: If the finite relational vocabulary of ϕϕ\phi is
+L, the finite relational vocabulary of ϕ′ϕ′\phi' is L′L′L' and
+⊨ϕ→ϕ′,⊨ϕ→ϕ′,\models\phi\to\phi', then there is θθ\theta such that
+⊨ϕ→θ and ⊨θ→ϕ′⊨ϕ→θ and ⊨θ→ϕ′\models\phi\to\theta\text{ and } \models\theta\to\phi' and the
+vocabulary of θθ\theta is L∩L′L∩L′L\cap L', because we can let
+θθ\theta be the sentence ∃X1…∃Xnϕ∃X1…∃Xnϕ\exists X_1\ldots\exists X_n\,\phi,
+where L∖L′={X1,…,Xn}L∖L′={X1,…,Xn}L\setminus L'=\{X_1,\ldots, X_n\}. We can additionally
+demand that every predicate symbol occurring positively in θθ\theta
+occurs positively in ϕϕ\phi and ψψ\psi, and every predicate symbol
+occurring negatively in θθ\theta occurs negatively in ϕϕ\phi and
+ψψ\psi (the Lyndon Interpolation Theorem [Lyndon 1959]). In
+the same way the Beth Definability Theorem holds for trivial reasons,
+also some preservation
+ results[7]
+ have a trivial proof. For a negative result, see Craig 1965.
+
+However, second-order logic does not have a model theory in the same
+sense as first order logic does. There is no Compactness Theorem to
+produce non-standard models. One reason why first order logic has such
+a rich model theory is that first order logic is relatively weak.
+Countable first order theories that have infinite models have models
+of all infinite cardinalities. This is a consequence of a weakness of
+first order logic: its sentences cannot limit the size of the model
+unless the size is finite. In model theory this weakness is turned to
+a strength: the structure of models of first order theories can be
+analyzed in interesting ways. See the entry on
+ model theory
+ for examples of this.
+
+Second-order theories can typically have just one model up to
+isomorphism. Thus if we investigate the class of models of a
+second-order sentence, the class may very well consist of just one
+model, up to isomorphism. With just one model one cannot really
+develop a model theory. One ends up investigating the one and only
+model and there are no compelling reasons to use logic in the study of
+it. If the one and only model is an algebraic structure, one should
+use algebra to study it. If it is an ordered structure, one should use
+the general theory of ordered structures to study it, and so on. It is
+unlikely that being second-order characterizable (see
+ §7.1)
+ tells much about the structure. It reveals more about second-order
+logic in general. For example, being able to characterize the
+structure of natural numbers means that the Compactness Theorem and
+the Completeness Theorem fail. Being able to characterize the ordered
+field of real numbers means that both the Downward and the Upward
+Löwenheim-Skolem Theorems fail. It is from this
+perspective—to understand second-order logic itself—that
+it is interesting to know exactly which structures are second-order
+characterizable up to isomorphism.
+
+Let us finally compare the two hierarchies, the model theoretic
+hierarchy Σ1n∪Π1nΣ1n∪Π1n\Sigma_n^1\cup\Pi_n^1 inside second-order logic and the
+Levy hierarchy Σn∪ΠnΣn∪Πn\Sigma_n\cup\Pi_n in set theory.
+
+
+Theorem 4
+
+The set of Gödel numbers of valid second-order sentences is
+the complete Π2Π2\Pi_2-set of natural numbers. (Tharp 1973)
+The Löwenheim-Skolem number of second-order logic is the
+supremum of all Π2Π2\Pi_2-definable ordinals. (Krawczyk & Marek
+1977)
+The Hanf number of second-order logic is the supremum of all
+Σ2Σ2\Sigma_2-definable ordinals. (Krawczyk & Marek 1977)
+Every model class which is definable in second-order logic is
+Δ2Δ2\Delta_2-definable in set theory. (Väänänen
+1979)
+
+
+
+In the light of the above theorem second-order logic sits firmly on
+the Σ2∪Π2Σ2∪Π2\Sigma_2\cup\Pi_2-level of set theoretic definability. This is
+a reason to consider second-order logic weaker than first
+order set theory. This sounds paradoxical. How can second-order logic,
+with all the power and non-first order properties it has, be weaker
+than first order logic based set theory, when first order logic cannot
+even express finiteness, countability, uncountability, and so on?
+Nevertheless the message of
+ Theorem 4
+ is undeniable. Perhaps this would not be so puzzling if we thought of
+set theory as a very high order logic over the singleton of the empty
+set. After all, set theory permits endless iterations of the power set
+operation, while second-order logic permits only one iteration.
+
+We start below with a subsection on models that can be characterized
+in second-order logic by one sentence up to isomorphism. Another
+approach to the model theory of second-order logic is to focus on
+models with large cardinal (inaccessible, measurable,
+supercompact cardinals) properties. This is the topic of
+ §7.2.
+ Finally, in
+ §7.3
+ we consider the possibility of allowing the so-called general models
+introduced in
+ §9.1.
+ In this case second-order logic becomes very much like first order
+logic. However, general models are mostly interesting when they are
+so-called Henkin models, i.e., they satisfy the so-called
+Comprehension Axioms. In Henkin models second-order logic satisfies
+the Compactness Theorem and other principles familiar from first order
+model theory but no general structure- or classification theory exists
+yet, perhaps because the Comprehension Axioms bring in a lot of
+complicated structure into the models.
+
+7.1 Second-order characterizable structures
+
+A structure AA\ma is second-order characterizable if there
+is a second-order sentence θAθA\theta_\ma such that
+B⊨θA⟺B≅AB⊨θA⟺B≅A\mb\models\theta_\ma\iff\mb\cong\ma for all structures BB\mb of
+the same vocabulary as AA\ma.
+
+
+Example 5: The following structures are second-order
+characterizable:
+
+Natural numbers: (N,+,⋅)(N,+,⋅)(\oN,+,\cdot).
+Real numbers: (R,+,⋅,0,1)(R,+,⋅,0,1)(\oR,+,\cdot,0,1).
+Complex numbers: (C,+,⋅,0,1)(C,+,⋅,0,1)(\oC,+,\cdot,0,1).
+The first uncountable ordinal (ω1,<)(ω1,<)(\omega_1,&lt;).
+The level (Vκ,∈)(Vκ,∈)(V_\kappa,\in) of the cumulative hierarchy, where
+κκ\kappa is the first strongly inaccessible cardinal
+>ω>ω&gt;\omega.
+The well-order (κ,<)(κ,<)(\kappa,&lt;) of the first weakly compact
+cardinal >ω>ω&gt;\omega.
+
+
+
+Are all structures second-order characterizable? There are
+only countably many second-order sentences, hence only countably many
+(up to isomorphism) second-order characterizable structures. Therefore
+there are lots of structures of every infinite cardinality which are
+not second-order characterizable. However, it is not easy to give
+examples. One example is (κ,<)(κ,<)(\kappa,&lt;), where κκ\kappa is the
+first measurable cardinal (>ω>ω&gt;\omega). See
+ §7.2
+ for an explanation. Another example is (N,<,A)(N,<,A)(\oN,&lt;,A), where
+A is the set of Gödel numbers of valid second-order
+sentences in the vocabulary of one binary relation. For an
+explanation, see
+ §7.2.
+ One may ask whether there is an example which arises from
+mathematical practice outside of mathematical logic. What about
+(R,+,×,<,A)(R,+,×,<,A)(\oR,+,\times,&lt;,A), where A is a Hamel basis (a basis
+for the vector space where the reals are the vectors, rationals are
+the scalars and vector addition is the usual addition of reals)? It is
+consistent, relative to the consistency of ZF that no such structure
+(R,+,×,<,A)(R,+,×,<,A)(\oR,+,\times,&lt;,A) is second-order characterizable (Hyttinen,
+Kangas, & Väänänen 2013).
+
+A special property of second-order characterizable structures is that
+their reducts are also second-order characterizable, because we can
+use existential second-order quantifiers to “guess” the
+missing relations and functions. Therefore it is interesting to find
+characterizable structures that have as many (but only finitely many)
+relations and functions as possible. We can endow NN\oN with any
+finite number of recursive functions f1,…,fnf1,…,fnf_1,\ldots, f_n  and
+relations R1,…,RmR1,…,RmR_1,\ldots, R_m obtaining the structure
+(N,f1,…,fn,R1,…,Rm)(N,f1,…,fn,R1,…,Rm)(\oN,f_1,\ldots, f_n,R_1,\ldots, R_m) and this is second-order
+characterizable. We can endow RR\oR with any familiar analytic
+functions such as trigonometric functions or any other functions given
+by a convergent power series the coefficients of which are given by a
+recursive function, and the result is second-order
+characterizable.
+
+It is easy to see that the second-order theory of a second-order
+characterizable structure AA\ma is Turing-reducible to the
+second-order theory of any bigger second-order characterizable
+structure BB\mb, as for all second-order ϕϕ\phi: 
+A⊨ϕ⟺B⊨∃P(θPA∧ϕP).A⊨ϕ⟺B⊨∃P(θPA∧ϕP).\ma\models\phi\iff\mb\models\exists P(\theta_\ma^{P}\land\phi^{P}).
+
+
+The bigger the characterizable structure is, the more complex is the
+second-order theory. That there is no largest characterizable
+structure can be seen as follows: If AA\ma is second-order
+characterizable, then so is the reduct of AA\ma to the empty
+ vocabulary[8],
+ that is, the cardinality |A||A||A| of AA\ma is characterizable. Such
+cardinal numbers were studied by Garland (1974). For example, if
+κκ\kappa is characterizable, then so are κ+κ+\kappa^+ and
+2κ2κ2^\kappa.
+
+If ϕϕ\phi is a second-order sentence, we define 
+Mod(ϕ)={M:M⊨ϕ}.Mod(ϕ)={M:M⊨ϕ}.\Mod(\phi)=\{\mm: \mm\models\phi\}.
+
+
+If ϕϕ\phi characterizes a model AA\ma, then Mod(ϕ)Mod(ϕ)\Mod(\phi) is just
+the class of models isomorphic to AA\ma. If we look at
+Mod(ϕ)Mod(ϕ)\Mod(\phi) from the perspective of set theory, we know it is
+Δ2Δ2\Delta_2
+ (Theorem 4).
+ On the other hand, the set of Gödel numbers of valid
+second-order sentences is Π2Π2\Pi_2-complete
+ (Theorem 4),
+ hence not Σ2Σ2\Sigma_2 and in particular, not Δ2Δ2\Delta_2. This
+contemplation leads us to the following extension of
+ Theorem 3
+ above:
+
+
+Theorem 6 (Väänänen 2012) Second-order
+validity is not second-order definable on any second-order
+characterizable structure.
+
+
+This raises the question, how can we understand second-order validity
+from the second-order perspective? In view of the above theorem we
+cannot understand second-order validity as something that can be
+expressed in second-order logic on some structure which itself can be
+characterized in second-order logic. The reference to set theory seems
+inevitable in understanding second-order validity. Let us discuss what
+this might mean from the point of view of structuralism. Parsons
+defines structuralism as follows:
+
+
+By the “structuralist view” of mathematical objects, I
+mean the view that reference to mathematical objects is always in the
+context of some background structure, and that the objects involved
+have no more to them than can be expressed in terms of the basic
+relations of the structure. (Parsons 1990: 303)
+
+
+Structuralism in this sense (for other kinds of structuralism, see,
+e.g., Hellman 2001) seems to fit well into the second-order logic
+framework. Contrary to set theory, second-order logic always assumes
+an underlying (limited) structure which is supposed to reflect one
+particular aspect of mathematics such as the semi-ring of natural
+numbers, the ordered field of real numbers, the field of complex
+numbers, the well-ordered structure (ω1,<)(ω1,<)(\omega_1,&lt;), and so on.
+Ideally, these underlying structures are second-order characterizable.
+This leads to a problem with universal truths such as validity, but
+also with less complex ones such as the statement that every linear
+order has a completion, or that every field has an algebraic closure.
+Such universal truths are not about any particular structure.
+
+
+7.2 Second-order logic and large cardinals
+
+We refer to the SEP entries
+ independence and large cardinals
+ and
+ large cardinals and determinacy
+ for the definition of concepts related to large cardinals.
+
+The following early result on the connection between model theory of
+second-order logic and large cardinals is a model for other more
+delicate results. It is a kind of Downward Löwenheim-Skolem
+Theorem for second-order logic. It says that if a second-order
+sentence has a model of the cardinality of a measurable cardinal, then
+it has a smaller submodel:
+
+
+Theorem 7 (Scott 1961) Suppose κκ\kappa is a
+measurable cardinal. If ϕϕ\phi is a second-order sentence and
+ϕϕ\phi has a model MM\mm of cardinality κκ\kappa, then for every
+X⊆MX⊆MX\subseteq M of cardinality <κ<κ&lt;\kappa there is
+N⊆MN⊆M\mn\subseteq\mm such that X⊆NX⊆NX\subseteq N and N⊨ϕN⊨ϕ\mn\models\phi.
+ [9]
+
+
+A particular consequence is that the first measurable cardinal cannot
+be second-order characterizable as a model of the empty vocabulary (a
+fact that was referred to above in
+ §7.1).
+ Theorem 7 resembles remarkably the Downward Löwenheim-Skolem
+Theorem of first order logic. The only difference is that one has to
+start with a big model, a model of the size of a measurable cardinal.
+Smaller cardinals need not work. For example, if λλ\lambda is the
+least weakly compact cardinal >ω>ω&gt;\omega, then there is a sentence
+ϕϕ\phi which has λλ\lambda (with the empty vocabulary) as a model
+but no smaller models. The
+ sentence[10]
+ϕϕ\phi says that λλ\lambda is inaccessible (>ω>ω&gt;\omega) and
+that every λλ\lambda-tree (a tree of height λλ\lambda with all
+levels of size <λ<λ&lt;\lambda) has a branch of length
+λλ\lambda.
+
+If we want to obtain a Downward Löwenheim-Skolem Theorem which
+works for any structure, not only for structures of a measurable
+cardinality, we have to look at even bigger cardinals: The
+LST-number of second-order logic is defined to be the least
+(if any exist) κκ\kappa such that if AA\ma is any structure and
+ϕϕ\phi is a second-order sentence true in AA\ma, then there is a
+substructure BB\mb of AA\ma which also satisfies ϕ.ϕ.\phi.
+
+
+Theorem 8 (Magidor 1971) The LST-number of
+second-order logic exists if and only if there are supercompact
+cardinals >ω>ω&gt;\omega and then it is the smallest of them.
+
+
+Second-order logic is said to satisfy strong
+κκ\kappa-compactness if every second-order theory, every
+subset of size <κ<κ&lt;\kappa of which has a model, has itself a
+model.
+
+
+Theorem 9 (Magidor 1971) The least κκ\kappa such
+that second-order logic satisfies the strong κκ\kappa-compactness
+is the least extendible
+cardinal.
+
+
+
+7.3 The model theory of general and Henkin models
+
+The situation changes completely if we adopt so-called general models
+ (§9.1).
+ With general models second-order logic has similar model theoretic
+properties as first order logic, as it can simply be thought of as
+many sorted first order logic (see
+ §9.1
+ and Manzano 1996). By and large, results of many-sorted first order
+logic translate immediately to second-order logic.
+
+
+
+8. Decidability Results
+
+The second-order theory of even the empty vocabulary is undecidable,
+as we noted in
+ §5.1.
+ In contrast, monadic second-order logic gives rise to many
+important decidability results. Let us first observe that (not only in
+the empty vocabulary but also) in a monadic vocabulary, i.e., one
+consisting of monadic predicates only, monadic second-order logic is
+certainly decidable as proved already in 1915 by Löwenheim (1915)
+in one of the earliest papers on the mathematical aspects of formal
+logic. Löwenheim’s result can be proved easily by
+quantifier elimination, or alternatively by the more recent method of
+Ehrenfeucht-Fraïssé-games (see
+ §3).
+ However, monadic third (and higher) order logic in monadic
+vocabulary, with quantifiers over not only subsets and also over sets
+of subsets of the domain, is undecidable (Tharp 1973). We now focus on
+vocabularies which are not merely monadic.
+
+Compared to a monadic vocabulary, the other extreme can be described
+as follows: Let P be a ternary predicate (a “pairing
+function”) on a non-empty set S. Suppose that for every
+x,y∈Sx,y∈Sx,y\in S there is z∈Sz∈Sz\in S with (x,y,z)∈P(x,y,z)∈P(x, y, z) \in P and for
+every z∈Sz∈Sz\in S there is at most one pair (x,y)(x,y)(x, y) with (x,y,z)∈P(x,y,z)∈P(x, y, z)
+\in P. Then the true (full) second-order theory of S is
+interpretable in the monadic theory of (S,P)(S,P)(S, P) (Gurevich 1985). In
+other words, in a context where a pairing function is present, as in
+set theory and number theory, no special advantage arises from
+limiting second-order logic to its monadic fragment.
+
+The next step from a vocabulary consisting of only monadic predicates
+is a vocabulary with exactly one unary function. To describe some
+highly non-trivial results in this case we introduce the following
+concept, which has independent interest: The spectrum of a
+first or second-order sentence is the set of cardinalities of its
+finite models. Spectra were introduced by Scholz, see Durand, Jones,
+Makowsky, and More (2012) for a history. A spectrum is of course
+always recursive. In fact, a set of natural numbers is a spectrum of a
+first order sentence iff it is in NEXPTIME, that is, recognizable by a
+nondeterministic Turing machine in exponential time (Jones &
+Selman 1974). In the case of sentences with just one unary function
+symbol there is a surprising characterization. Let us call a set
+S of natural numbers eventually periodic if there are
+natural numbers N and p with p>0p>0p &gt; 0 such that for
+every n with n>Nn>Nn &gt; N, we have n∈Sn∈Sn \in S iff n+p∈Sn+p∈Sn +p \in
+S.
+
+
+Theorem 10 (Durand, Fagin, & Loescher 1998; Shelah
+2004) Suppose the vocabulary has just one unary function.
+Then a set of natural numbers is the spectrum of a monadic
+second-order sentence if and only if it is the spectrum of a first
+order sentence if and only if it is eventually periodic.
+
+
+In graphs monadic second-order logic can still express most
+interesting properties. For example, the connectivity of the
+graph (here E is the edge relation) can be expressed by the
+sentence 
+∀X((∃xX(x)∧∀x∀y((X(x)∧xEy)→X(y)))→∀xX(x))∀X((∃xX(x)∧∀x∀y((X(x)∧xEy)→X(y)))→∀xX(x))\forall X((\exists x\,X(x)\land\forall x\forall y((X(x)\land xEy)\to
+X(y)))\to\forall x\,X(x)) 
+
+and the 3-colorability of the graph by the sentence 
+∃X∃Y∃Z(∀x(X(x)∨Y(x)∨Z(x))∧∀x∀y(((X(x)∧X(y))∨(Y(x)∧Y(y))∨(Z(x)∧Z(y)))→¬xEy))∃X∃Y∃Z(∀x(X(x)∨Y(x)∨Z(x))∧∀x∀y(((X(x)∧X(y))∨(Y(x)∧Y(y))∨(Z(x)∧Z(y)))→¬xEy))\begin{align}
+&amp;\exists X\,\exists Y\,\exists Z ( \forall x(
+X(x)
+\lor Y(x)
+\lor Z(x)
+)\land{}\\
+&amp;\quad\forall x\,\forall y ((
+(X(x)\land X(y))
+\lor(Y(x)\land Y(y))
+\lor(Z(x)\land Z(y))
+)\to{}\\
+&amp;\quad\neg xEy))
+\end{align}
+
+There is a wealth of decidability results of monadic second-order
+logic on linear orders, trees and graphs.
+
+
+Theorem 11 (Büchi 1962; Elgot 1961; Rabin 1968)
+The monadic second-order theory of (N,s)(N,s)(\oN,s), i.e., the successor
+function on NN\oN and of the full infinite binary tree, i.e., two
+successor functions on NN\oN, are both decidable.
+
+
+The proof goes via a reduction to automata. An automaton is a
+restricted form of a Turing machine. In an automaton the machine never
+writes on the tape, so the tape just contains the input (Rabin &
+Scott 1959). However, the computation may be infinite. The input is
+considered accepted in the case of an infinite computation if
+an accepting state is reached infinitely many times. (There are also
+more complicated criteria of acceptance). With monadic second-order
+logic we can guess an accepting computation of the automaton. It is
+possible but more difficult to show that an automaton can check the
+truth of a monadic second-order sentence. The monadic second-order
+theory of ordinals (α,<)(α,<)(\alpha,&lt;) have been studied extensively
+from the point of view of decidability. For example, the monadic
+second-order theory of all countable ordinals, the theory of
+ω1ω1\omega_1, and the theory of all ordinals <ω2<ω2&lt;\omega_2 are
+decidable (Büchi 1973), but ZFC cannot decide whether the monadic
+second-order theory of ω2ω2\omega_2 is decidable (Gurevich, Magidor,
+& Shelah 1983).
+
+
+9. Axioms of Second-Order Logic
+
+The deductive system of second-order logic, presented first explicitly
+in Hilbert-Ackermann (Hilbert & Ackermann 1938), is based on the
+obvious extension of axioms and rules of first order logic together
+with the Comprehension Axiom Schema, defined as follows:
+Suppose ϕ(x1,…,xn)ϕ(x1,…,xn)\phi(x_1,\ldots,x_n) is a second-order formula with
+x1,…,xnx1,…,xnx_1,\ldots, x_n among its free individual variables and the
+second-order variable R is not free in ϕϕ\phi. Then
+the following formula is an instance of the Comprehension Axiom
+Schema: 
+∃R∀x1…xn(ϕ(x1,…,xn)↔R(x1,…,xn)).(10)∃R∀x1…xn(ϕ(x1,…,xn)↔R(x1,…,xn)).\tag{10}\label{CA} \exists R\,\forall x_1\ldots x_n(\phi(x_1,\ldots,
+x_n)\leftrightarrow R(x_1,\ldots, x_n)).  
+
+There is a similar schema for second-order formulas that define a
+function but we omit it here.
+
+An example of a very simple second-order inference in number theory
+would be 
+2+5<9∃R R(2+5,9)∃F∃R R(F(2,5),9)2+5<9∃R R(2+5,9)∃F∃R R(F(2,5),9)
+\frac{\dfrac{2+5&lt;9}{\exists R\ R(2+5,9)}}{\exists F\,\exists R\ R(F(2,5),9)}
+
+
+A priori (1010\ref{CA}) might appear very strong as it stipulates the
+existence of a relation. However, such an R seems reasonable to
+accept because it is definable: 
+R={(a1…an)∈Mn:M⊨ϕ(a1,…,an)}.R={(a1…an)∈Mn:M⊨ϕ(a1,…,an)}.R=\{(a_1\ldots a_n) \in M^n: \mm\models \phi(a_1,\ldots, a_n)\}.
+
+
+Our Comprehension Axiom Schema is impredicative in the sense
+that the bound n-ary relation variables which may potentially
+occur in the formula ϕ(a1,…,an)ϕ(a1,…,an)\phi(a_1,\ldots, a_n) have R in their
+range. In this sense second-order logic is utterly impredicative. The
+Comprehension Axiom Schema has weaker forms that are less
+impredicative. In the Arithmetic Comprehension Schema we
+assume ϕ(a1,…,an)ϕ(a1,…,an)\phi(a_1,\ldots, a_n) is first order. In the
+Π11Π11\Pi^1_1-Comprehension Schema we assume ϕ(a1,…,an)ϕ(a1,…,an)\phi(a_1,\ldots, a_n)
+is Π11Π11\Pi^1_1. In mathematical practice these two weaker principles
+usually suffice, see Simpson (1999 [2009]) and
+ §14.
+
+Hilbert-Ackermann (1938) added to the proof system of second-order
+logic also two different schemas that they call Axioms of
+Choice. We are used to thinking of the Axiom of Choice as a
+set-theoretical principle. But second-order logic has the same
+situation with choice principles as set theory. It makes perfect sense
+in second-order logic to ask whether there is a well-order of the
+domain. The existence of such a well-order does in general not follow
+from the Comprehension Schema because the well-order may be---and is
+likely to be---undefinable. So the only way to get a well-order of,
+say, the real numbers, in second-order logic is to assume some form of
+second-order Axiom of Choice. The first choice principle is 
+∀x1…xm∃xm+1R(x1,…,xm+1)→∃F∀x1…∀xmR(x1,…,xm,F(x1…xm))(AC)∀x1…xm∃xm+1R(x1,…,xm+1)→∃F∀x1…∀xmR(x1,…,xm,F(x1…xm))\tag{AC}\forall x_1\ldots x_m\exists
+x_{m+1}\, R(x_1,\ldots, x_{m+1}) \rightarrow {}\\ \exists F\,\forall
+x_1\ldots\forall x_m\, R(x_1,\ldots, x_m, F(x_1\ldots x_m))
+
+and the second is 
+∀x1…xm∃Fφ→∃F′∀x1…xmφ′,\tag{AC′} \forall x_1\ldots x_m\exists F\,\varphi\rightarrow\exists
+F'\,\forall x_1\ldots x_m\varphi', 
+
+where the formula φ′\varphi' is obtained from the formula
+φ\varphi by replacing everywhere F(t1,…,tk)F(t_1,\ldots, t_k) by
+F′(t1…tk,x1,…,xm)F'(t_1\ldots t_k,x_1,\ldots, x_m).
+
+The first Axiom of Choice (AC) says intuitively that if a set 
+{an+1∈M:M⊨R(a1,…,an,an+1)}\{a_{n+1}\in M : \mm\models R(a_1,\ldots,a_n, a_{n+1})\}
+
+
+is non-empty, then there is a function which picks an element
+an+1a_{n+1} from the set, using the parameters a1,…,ana_1,\ldots,a_{n} as
+arguments. The second Axiom of Choice (AC′) is a kind of
+second-order choice: We have for all a1,…,ana_1,\ldots,a_n a function
+F with the property ϕ\phi, so in fact F depends on
+a1,…,ana_1,\ldots, a_n and should be denoted Fa1…anF_{a_1\ldots a_n}. What
+(AC′) says now is that we can collect the functions
+Fa1…anF_{a_1\ldots a_n} together to form just one function F′F' of
+higher arity such that 
+F′(a1,…,an+1)=Fa1…an(an+1).F'(a_1,\ldots,a_{n+1})=F_{a_1\ldots a_n}(a_{n+1}).
+
+
+Although F′F' appears to be definable, this is not the case, as the
+mapping 
+(a1,…,an)↦Fa1…an(a_1,\ldots,a_n)\mapsto F_{a_1\ldots a_n}
+
+
+may be highly undefinable.
+
+Naturally, we may also want to assume the Well-ordering
+Principle which states that there is a binary relation which is a
+total order on the individuals and satisfies the condition that every
+non-empty set of individuals has a least element in the order. It is
+easy to see that this principle implies (AC′). In ZFC there are
+hundreds of equivalent formulations of the Axiom of Choice or weaker
+versions of it. Most of the formulations that are equivalent in ZFC
+are non-equivalent in second-order logic. This is because set theory
+allows free movement between sets and their power sets, but
+second-order logic does
+ not[11].
+ To obtain similar equivalence proofs as in set theory, one would have
+to move between second-order logic and third order logic, see
+Gaßner (1994).
+
+9.1 General models and Henkin models
+
+The concept of “general model” was introduced by Henkin
+(1950) in order to obtain a Completeness Theorem for second-order
+logic. General models are not the intended models of the axioms in the
+sense that bound relation and function variables do not range in these
+models over all relations and functions, only over a
+collection of them. The generally accepted attitude towards them is
+that they are not what one wants but they are necessary for obtaining
+a smooth theory. They are like irrational numbers in calculus: it
+would be ideal if all lengths that we encounter in calculus (or
+geometry) were commensurable, but that is not how things turned out.
+Some lengths are incommensurable, and we end up accepting irrational
+numbers in order to have a smooth general theory of lengths and their
+proportions. General models can be also compared to transitive models
+of set theory. One transitive model may say one thing is true, another
+says just the opposite is true. But together the transitive models
+help us understand the axioms of set theory. The current methods in
+the metamathematical investigation of the axioms of set theory, namely
+inner models and forcing extensions, all use transitive models of set
+theory in an essential way. Similarly general models of second-order
+logic help us investigate metamathematical properties of second-order
+logic and its axioms.
+
+
+Definition 12 A general model is a pair
+(M,G)(\mm,\G), where M\mm is a usual L-structure and G\G
+is a set of subsets, relations (of any arity) and functions (of any
+arity) on M. In monadic second-order logic G\G is assumed to
+contain unary predicates only.
+
+
+We can define the concept 
+(M,G)⊨sϕ(\mm,\G)\models_s\phi
+
+
+for second-order ϕ\phi by induction on ϕ\phi by stipulating 
+(M,G)⊨s∃Xϕ⟺(M,G)⊨s(P/X)ϕ for some P∈G.(M,G)⊨s∃Fϕ⟺(M,G)⊨s(f/X)ϕ for some f∈G.
+\begin{align}
+(\mm,\G)\models_s\exists X\,\phi &amp; \iff (\mm,\G)\models_{s(P/X)} \phi\text{ for some  $P\in \G$}.\\
+(\mm,\G)\models_s\exists F\,\phi &amp;\iff (\mm,\G)\models_{s(f/X)} \phi\text{ for some  $f\in \G$}.
+\end{align}
+
+
+The difference to the original truth definition of second-order logic
+is thus that the interpretations of the second-order variables cannot
+be quite arbitrary, they have to be found in G\G. The smaller the
+G\G is, the weaker the logic. On the other hand, if G⋆\G^\star is
+the set of all relations and functions on M, then the
+truth definition for the general model (M,G⋆)(\mm,\G^\star) is the same
+as the original truth definition. We call such general models
+full and indeed identify (M,G⋆)(\mm,\G^\star) with M\mm. The
+other extreme is that G=∅\G=\emptyset. Then we are back in first
+order logic. To distinguish second-order logic with general models
+from the original second-order logic, we call the latter
+full.
+
+
+Definition 13 A general model which satisfies all the
+axioms of second-order logic, including the Comprehension Axiom Schema
+and the Axioms of Choice, is called a Henkin model.
+
+
+Note that there is no sentence of second-order logic which
+says that the model is full. That is, there is no
+second-order ϕ\phi such that for all general models (M,G)(\mm,\G) it
+holds that 
+(M,G)⊨ϕ⟺(M,G) is full.
+(\mm,\G)\models\phi\iff (\mm,\G) \text{ is full.}
+
+
+If we attempt to use ∀X∃Y∀x(X(x)↔Y(x))\forall X\,\exists Y\,\forall
+x(X(x)\leftrightarrow Y(x)) as such a ϕ\phi, we just obtain the
+result that ϕ\phi is always true and says that the general model
+(M,G)(\mm,\G) is “full” in its own sense of
+“full”, not in the sense of the metatheory.
+
+A natural attempt to get a Henkin model (M,G)(\mm,\G) would be to let
+G\G consist of first order definable relations and
+functions on M\mm. However, in this way we get only Arithmetic
+Comprehension, not the full Comprehension Axiom.
+
+An easy way to obtain a Henkin model (M,G)(\mm,\G) is to take a
+transitive model N of ZFC such that M∈N\mm\in N and let G\G
+consist of all relations and functions on M that are elements
+of N. It follows from N⊨ZFCN\models ZFC that (M,G)(\mm,\G) is a
+Henkin model.
+
+Truth in a general model, namely the proposition
+“(M,G)⊨sϕ(\mm,\G)\models_s\phi” is absolute relative to ZFC,
+contrary to the truth definition of (full) second-order logic. In this
+respect second-order logic with general models resembles first order
+logic. As we will see, it resembles first order logic in many other
+respects, too.
+
+Second-order logic with general models can be thought of in terms of
+many sorted logic. Many sorted logic is first order logic
+with several different sorts of variables. Respectively,
+relations and functions may be between elements of different sorts.
+Here “sort” just means that variables of different
+“sorts” are kept apart by giving them different names.
+Otherwise the variables are just ordinary first order variables.
+Structures M\mm of many-sorted logic have a separate domain MsM_s
+for each sort s. We may think of second-order logic as many
+sorted logic in which the individual variables are of a sort sin\si,
+for each n the n-ary relation variables are of a sort
+sren\sr, and the n-ary function variables of a sort sfuns_n^{\rm
+fu}. In addition there is an n+1n+1-ary relation symbol Aren\sA
+between n-tuples of individuals and n-ary relation
+variables indicating which n-tuples are in a relation and which
+are not. Finally there is an n+1n+1-ary function symbol Afun\sF
+between n-tuples of individual, individuals, and n-ary
+function variables indicating what value a function variable gives to
+each n-tuple. There are obvious first order axioms which
+guarantee that the many sorted logic just described faithfully mirrors
+second-order logic with general models.
+ [12]
+
+For more on the reduction of second-order logic to many-sorted logic,
+we refer to Manzano (1996). For example, the proof theory of
+second-order logic can be understood via the translation to many
+sorted logic. For more on the proof theory of second-order logic, see
+Buss (1998). There is a translation of many sorted logic further to
+single sorted first order logic due essentially to Herbrand (1930),
+see also Wang (1952) and Schmidt (1951). This can be used to obtain
+many of the basic properties of first order logic first for many
+sorted logic and then further for second-order logic with general
+models.
+
+The most important application of general models is the Completeness
+Theorem:
+
+
+Theorem 14 (Henkin 1950) A second-order sentence
+follows from the axioms if and only if it is true in all Henkin
+models.
+ [13]
+
+
+Respectively, we obtain the Compactness
+ Theorem[14]
+ as well as the downward and the upward versions of the
+Löwenheim-Skolem
+ Theorem.[15]
+
+One way to think about Henkin models is that they fill the gaps left
+by full models, just as irrational numbers fill the gaps left by
+rational numbers. They are needed in order to obtain a smooth theory
+of second-order logic. They manifest “paradoxical”
+phenomena that we do not see among full models. For example we obtain
+non-standard models of number theory, countable models of the axioms
+of real numbers, etc. The categorical sentences characterizing
+mathematical structures among full models now suddenly have also other
+“models”, namely Henkin models, and they come in all
+infinite cardinalities.
+
+If ϕ\phi is a second-order sentence we define 
+ModH(ϕ)={(M,G):(M,G)⊨ϕ}\tag{11}\label{henkin}
+\textit{Mod}_H(\phi)=\{(\mm,\G) : (\mm,\G)\models\phi\} 
+
+
+Obviously, Mod(ϕ)⊆ModH(ϕ)\Mod(\phi)\subseteq \textit{Mod}_H(\phi). If ϕ\phi
+characterizes M\mm up to isomorphism, then M∈Mod(ϕ)\mm\in \Mod(\phi) .
+In all non-trivial
+ cases[16]
+ModH(ϕ)≠{M}\textit{Mod}_H(\phi)\ne \{\mm\}. We can think of
+ModH(ϕ)\textit{Mod}_H(\phi) as a class of “approximations” of
+M\mm. One of the approximations is the “real” M\mm
+but by means of deductions in second-order logic we cannot tell which.
+Because of the inherent weakness of formal systems, going back to
+Skolem and Gödel, infinite structures are shrouded by Henkin
+models and cannot be gotten perfectly into focus by deductive
+means.
+
+The Fraenkel-Mostowski method is a construction of Henkin
+models which was first used in set theory to obtain models where Axiom
+of Choice fails, and later used in second-order logic to obtain
+similar models before the method of forcing emerged. The method goes
+as follows: Suppose A\ma is a structure and H is a group of
+permutations on A. A subset B of AnA^n is called
+symmetric if there is a finite set E⊆AE\subseteq A, called a
+support of B, such that for all π∈H\pi\in H which fix
+E
+ pointwise[17],
+ 
+∀x1…∀xn((x1,…,xn)∈B→(π(x1),…,π(xn))∈B).\forall x_1\ldots\forall x_n((x_1,\ldots, x_n)\in B\to (\pi(x_1),\ldots, \pi(x_n))\in B).
+
+
+The respective condition for a function f:An→Af:A^n\to A is 
+∀x1…∀xn((x1,…,xn)∈B→f(π(x1),…,π(xn))∈B∧f(π(x1),…,π(xn))=π(f(x1,…,xn)))
+\forall x_1\ldots\forall x_n ((x_1,\ldots ,x_n) \in B
+\to  f(\pi(x_1), \ldots ,\pi(x_n)) \in B  \land {}\\
+f(\pi(x_1),\ldots ,\pi(x_n)) = \pi (f (x_1,\ldots ,x_n
+)))
+
+
+Let G\G be the set of symmetric relations and functions on
+A. The pair (A,G)(\ma,\G) is always a Henkin model.
+
+Among the early applications of the Fraenkel-Mostowski method were the
+result of Mostowski (1938) that one cannot prove from the
+Comprehension Axiom Schema alone the equivalence of two different
+definitions of finiteness and of Lindenbaum and Mostowski (1938) that
+Zermelo's axioms for set theory are not enough to prove the Axiom of
+Choice, or even just that every infinite set is the disjoint union of
+two infinite sets.
+
+The Fraenkel model arises if H is the group of all
+permutations of an infinite set A. In the Freankel model the
+set A is infinite but Dedekind-finite (i.e., A has no
+one-one function into a proper subset) and cannot be well-ordered, not
+even linearly ordered. Moreover, the set A is not the disjoint
+union of two infinite sets. There is no choice function for two
+element subsets of A.
+
+The Mostowski model arises if A=QA=\oQ and H is the
+group of automorphisms of (Q,<)(\oQ,&lt;). In the Mostowski model the
+set A can be linearly ordered but not well-ordered. The Axiom
+of Choice holds for (sets of) non-empty finite sets.
+
+For more on Fraenkel-Mostowski models as Henkin models for
+second-order logic, see Gaßner (1994).
+
+9.2 Axioms of infinity
+
+The axioms of second-order logic are trivially true in a (full) model
+with just one element. This raises the question how to guarantee that
+there are more than one element in the domain. Of course, we can add,
+for every n, an axiom which says that there are more than
+n elements. There are various ways to say in second-order logic
+with one axiom that there are infinitely many
+individuals. These are equivalent in full models but may be
+non-equivalent in Henkin models. Some are equivalent if the Axiom of
+Choice is assumed. Let us call a second-order sentence ϕ\phi of the
+empty vocabulary an Axiom of Infinity if 
+A⊨ϕ if and only if A is infinite.\ma\models\phi\text{ if and only if $A$ is infinite}.
+
+
+An axiom of infinity can say in second-order logic that a proper
+subset of the domain has the same cardinality as the entire domain
+(i.e., that the domain is not Dedekind-finite), or that there is a
+partial order without a maximal element, or that there is a set with a
+unary function and a constant which constitute a structure isomorphic
+to (N,s,0)(\oN,s,0), or that the domain is the union of two disjoint sets
+which have the same cardinality as the domain, and so on. As is the
+case in set theory without the Axiom of Choice, the different
+formulations of infiniteness need not be equivalent. In second-order
+logic the situation is even more diffuse because of the variety of
+different formulations of the Axiom of Choice. We refer to Asser
+(1981) for a discussion of the different variants and to Hasenjaeger
+(1961) for a proof that the various non-equivalent forms of Axioms of
+Infinity form in a sense a dense set. For a survey of different
+concepts of finiteness, see de la Cruz (2002).
+
+
+10. Categoricity
+
+A theory in second (or first) order logic is said to be
+categorical if any two of its models are isomorphic. A single
+sentence (which has a model) is categorical if and only if it
+characterizes some model up to isomorphism (see
+ §7.1).
+ A nice property of a categorical theory Γ\Gamma is (semantic)
+completeness: Any sentence ϕ\phi in the language in which
+the theory is written is decided by Γ\Gamma in the following sense.
+Either every model of Γ\Gamma satisfies ϕ\phi or every model of
+Γ\Gamma satisfies ¬ϕ\neg\phi. In other words, either ϕ\phi or
+¬ϕ\neg\phi is a (semantic) logical consequence of Γ\Gamma. The
+reason is very simple: Γ\Gamma has, up to isomorphism, only one
+model M. Since isomorphism preserves truth in second-order
+logic, ϕ\phi or ¬ϕ\neg\phi is a (semantic) logical consequence of
+Γ\Gamma according to whether ϕ\phi is true in M or false
+in M.
+
+If ϕ\phi is a second-order sentence we defined above Mod(ϕ)\Mod(\phi)
+as the class {M:M⊨ϕ}\{\mm : \mm\models\phi\}. If ϕ\phi characterizes
+M\mm up to isomorphism, then, up to isomorphism, 
+Mod(ϕ)={M}.\Mod(\phi)=\{\mm\}.
+
+
+The project of axiomatizing mathematical structures with second-order
+sentences was so successful in the first quarter of the twentieth
+century that Carnap even proposed that every mathematical
+structure is determined, up to isomorphism, by its second-order
+theory. There are trivial cardinality reasons why this could not
+possibly hold for all models of size 2ω2^\omega and larger. There
+are simply not enough second-order theories in comparison with the
+number of non-isomorphic models. However, the proposal of Carnap is
+trivially true for finite models, and not entirely unreasonable for
+countable models. In fact Ajtai (1979) showed that it is consistent
+with ZFC, provided ZFC itself is consistent, that any two countable
+structures in a finite vocabulary that satisfy the same second-order
+sentences are isomorphic. Ajtai showed that it is also consistent with
+ZFC, provided ZFC itself is consistent, that there are two countable
+structures in a finite vocabulary that satisfy the same second-order
+sentences without being isomorphic. Thus Carnap’s conjecture
+(for countable models) is independent of ZFC.
+
+Solovay has made a posting in FOM (2006
+ Other Internet Resources)
+ in which he shows that the related statement that every complete
+second-order sentence θ\theta is categorical, is independent
+of ZFC.
+
+There is a strong form of categoricity which holds for Henkin
+structures in important cases and agrees with the usual concept of
+categoricity in the case of full Henkin models. It builds on the
+remarkable ability of second-order logic to express its own
+categoricity. The isomorphism (M,R)≅(M′,R′)(M,R)\cong(M',R') of two structures
+(M,R)(M,R) and (M′,R′)(M',R'), where the predicates R and R′R'
+are, say, binary, can be expressed in second-order logic as follows,
+letting A=(A,M,M′,R,R′)\ma=(A,M,M',R,R'), where A is any set containing
+M∪M′M\cup M', M=UAM=U^\ma, M′=U′AM'={U'}^\ma, R=PAR=P^\ma and
+R′=P′AR'=P'^\ma. Now 
+(M,R)≅(M′,R′)⟺A⊨ISOM(U,P,U′,P′),(M,R)\cong(M',R')\iff\ma\models\isom(U,P,U',P'),
+
+
+where ISOM(U,P,U′,P′)\isom(U,P,U',P') is the sentence 
+∃F[∀x(U(x)→U′(F(x)))∧∀x∃y(U′(x)→(U(y)∧x=F(y)))∧∀x∀y((U(x)∧U(y))→[(F(x)=F(y)→x=y)∧(P(x,y)↔P′(F(x),F(y)))])].
+\begin{align}
+&amp;\exists F[
+\forall x(U(x)\to U'(F(x))) \land {}\\
+&amp;\quad  \forall x\,\exists y
+(
+U'(x)\to 
+(
+U(y)\land 
+x=F(y)
+)
+) 
+ \land {}\\
+&amp;\quad\forall x\,\forall y(
+(
+U(x) \land U(y)) \to {}\\
+&amp;\quad[
+(F(x)=F(y)\to x=y)   \land {}\\
+&amp;\quad(P(x,y)\leftrightarrow P'(F(x),F(y)))
+]
+)
+].
+\end{align}
+
+
+This suggests that the categoricity of a sentence θ(P)\theta(P) with a
+binary predicate symbol P can be redefined
+ equivalently,[18]
+ letting CATEG(θ(P))\categ(\theta(P)) be the sentence 
+∀P∀P′∀U∀U′((θ(P)U∧θ(P′)U′)→ISOM(U,P,U′,P′)),\forall P\,\forall P'\,\forall U\,\forall U'\left(\left(\theta(P)^{U}\land\theta(P')^{U'}\right)\to\isom(U,P,U',P')\right),
+
+
+as 
+⊨CATEG(θ(P)).\tag{12}\label{redef}
+\models\categ(\theta(P)).
+
+
+In fact, this is how Tarski defines categoricity in 1956 (page 387).
+This leads us to define:
+
+
+Definition 15 We say that θ(P)\theta(P) is
+internally categorical if 
+⊢CATEG(θ(P)).\tag{13}\label{internal}
+\vdash\categ(\theta(P)).
+
+
+
+Internal categoricity could also be called provable
+categoricity. The phrase ‘internal categoricity’ was
+introduced in the context of arithmetic in Walmsley (2002). It was
+advocated more generally in Väänänen (2012), with more
+details in Väänänen and Wang (2015). We refer to Button
+and Walsh (2016) for a recent discussion on this concept.
+
+Note that (13\ref{internal}) is stronger than (12\ref{redef}) because
+provable sentences are certainly valid. Owing to the Completeness
+Theorem we can rewrite (13\ref{internal}) as 
+(A,G)⊨CATEG(θ(P)) for all Henkin models (A,G).\tag{14}\label{internals}
+(\ma,\G)\models\categ(\theta(P))\text{ for all Henkin models $(\ma,\G)$}.
+
+
+Thus internal categoricity means categoricity not only for ordinary
+models, i.e., full Henkin models, but categoricity inside an arbitrary
+Henkin model. Note that categoricity is a meta-theoretical concept as
+it refers to the semantics of second-order logic. In
+CATEG(θ(P))\categ(\theta(P)) the categoricity of θ(P)\theta(P) is written in
+the language of second-order logic. That is, the categoricity, despite
+being a meta-theoretical concept, is written in the object language.
+It can be asked, whether this leads us to a different concept? Be that
+as it may, when the meaning of CATEG(θ(P))\categ(\theta(P)) is uncovered by
+considering its semantics in the meta-theory, the meaning is the same
+as the meaning we give to the categoricity of θ(P)\theta(P). In the
+concept of internal categoricity we take advantage of this situation
+by switching from semantical meaning to proof-theoretic meaning. We
+insist that CATEG(θ(P))\categ(\theta(P)) is (not only valid but even)
+provable. Proof-theory requires less meta-theory than semantics. We
+can investigate provability of second-order sentences even in number
+theory by using numbers to code sentences and proofs, as Gödel
+did in his proof of the Incompleteness Theorem. Of course, the
+Completeness Theorem brings us back to the semantics.
+
+To verify the categoricity of a second-order sentence one has to go
+through infinite structures in a way which essentially calls for set
+theory. The situation with internal categoricity is different. To
+verify the internal categoricity of a second-order sentence one just
+has to produce a proof. So there is a dramatic difference. And still
+internal categoricity is stronger than categoricity. So it would be
+foolish to establish categoricity if one could establish even internal
+categoricity. Fortunately, the classical examples of categorical
+sentences are all internally categorical:
+
+
+Theorem 16 (Väänänen & Wang 2015)
+The received second-order sentences characterizing the structures
+(N,<)(\oN,&lt;) and (R,<,+,⋅,0,1)(\oR,&lt;,+,\cdot,0,1) are internally
+categorical.
+
+
+The concept of internal categoricity provides a bridge between full
+semantics and Henkin semantics. It works in the same way in both cases
+and shows that the full semantics is a limit case of Henkin semantics
+but does not have a monopoly when it comes to categoricity.
+
+11. Logics Between First and Second Order
+
+First order logic and second-order logic are in a sense two opposite
+extremes. There are many logics between them i.e., logics that extend
+properly first order logic, and are properly contained in second-order
+logic. One example is the extension of first order logic by the
+generalized quantifier known as the Henkin quantifier:
+(∀x∃y∀u∃v)ϕ(x,y,u,v,z1,…,zn)\left( \begin{array}{cc}
+\forall x&amp;\exists y\\
+\forall u&amp;\exists v
+\end{array}\right)\phi(x,y,u,v,z_1,\ldots,z_n)
+
+
+which has the meaning 
+∃f∃g∀x∀uϕ(x,f(x),u,g(u),z1,…,zn).\exists f\,\exists g\,\forall x\,\forall u\,\phi(x,f(x),u,g(u),z_1,\ldots,z_n).
+
+
+The extension L(H)L(H) of first order logic by the Henkin quantifier
+is almost the same as second-order logic: they have the same
+Δ\Delta-extension (Krynicki & Lachlan
+ 1979).[19]
+
+The equicardinality or Härtig quantifier 
+Ixyϕ(x,z1,…,zn)ψ(x,z1,…,zn)Ixy\,\phi(x,z_1,\ldots,z_n)\psi(x,z_1,\ldots,z_n)
+
+
+has the meaning “there are as many elements x satisfying
+ϕ(x,z1,…,zn)\phi(x,z_1,\ldots,z_n) as there are elements y satisfying
+ψ(y,z1,…,zn)\psi(y,z_1,\ldots,z_n)”, i.e.,
+∃f∀x[(ϕ(x,z1,…,zn)↔ψ(f(x),z1,…,zn))∧∀x∀y(f(x)=f(y)→x=y)∧∀y∃x(ψ(y,z1,…,zn)→f(x)=y)]
+\begin{align}
+&amp;\exists f\,\forall x[
+(\phi(x,z_1,\ldots,z_n)\leftrightarrow\psi(f(x),z_1,\ldots,z_n))
+\land {}\\
+&amp;\quad\forall x\,\forall y(f(x)=f(y)\to x=y)
+\land {}\\
+&amp;\quad\forall y\,\exists x(\psi(y,z_1,\ldots,z_n)\to f(x)=y)
+]
+\end{align}
+
+
+The extension L(I)L(I) of first order logic by the Härtig
+quantifier is
+ weaker[20]
+ than second-order logic as its Löwenheim number can be
+<2ω&lt;2^\omega, but if V=LV=L, then it is Δ\Delta-equivalent
+with second-order logic (Väänänen 1980).
+
+Here are some other generalized quantifiers that are clearly
+second-order definable:
+Q0xϕ(x,z1,…,zn)⟺∃X(|X|≥ℵ0∧∀x∈Xϕ(x,z1,…,zn))Q1xϕ(x,z1,…,zn)⟺∃X(|X|≥ℵ1∧∀x∈Xϕ(x,z1,…,zn))QMM1xyϕ(x,y,z1,…,zn)⟺∃X(|X|≥ℵ1∧∀x,y∈Xϕ(x,y,z1,…,zn))Qcofωxyϕ(x,y,z1,…,zn)⟺{(x,y):ϕ(x,y,z1,…,zn)}
+\begin{align}
+Q_0x\,\phi(x,z_1,\ldots,z_n)&amp; \iff\exists X(
+|X|\ge\aleph_0
+\land \forall x\in X\phi(x,z_1,\ldots,z_n)
+)\\
+Q_1x\,\phi(x,z_1,\ldots,z_n)&amp;\iff\exists X(
+ |X|\ge\aleph_1
+\land{} \forall x\in X\phi(x,z_1,\ldots,z_n)
+)\\
+Q^{MM}_1xy\,\phi(x,y,z_1,\ldots,z_n)&amp;\iff\exists X(
+|X|\ge\aleph_1
+\land{} \forall x,y\in X\phi(x,y,z_1,\ldots,z_n)
+)\\
+Q^{cof}_\omega xy\,\phi(x,y,z_1,\ldots,z_n)&amp;\iff \{(x,y):\phi(x,y,z_1,\ldots,z_n)\}
+\end{align}
+
+
+
+is a linear order of cofinality ω\omega
+
+
+In weak second-order logic we have no function variables and
+the relation variables range over finite relations only. The resulting
+logic is in many ways similar to the extension of first order logic by
+the generalized quantifier Q0Q_0. Another way to limit the power of
+second-order logic is the following: Suppose ψ\psi is a first order
+formula with an n-ary relation variable X and no
+non-logical symbols. For infinite A, we define A⊨sQψXϕ\ma\models_s
+Q_{\psi}X\phi if and only if there is a relation P⊆MnP\subseteq M^n
+such that A⊨s(P/X)ϕ∧ψ\ma\models_{s(P/X)}\phi\land\psi. The quantifier
+QψQ_{\psi} allows second-order quantification over relations that
+satisfies ψ\psi. If ψ\psi is ∀x(x=x)\forall x(x=x) we obtain the
+usual second-order quantifier which we denote QIIQ_{II}. If moreover
+n=1 n=1 we obtain the monadic second-order quantifier which we denote
+QmonQ_{mon}. If n=1n=1 and ψ\psi says that X is a
+singleton, we obtain the usual first order quantifier which we now
+denote QIQ_I. Finally, if ψ\psi says X is the graph of a
+permutation of the model, we denote this quantifier by Q1−1Q_{1-1}.
+Rather surprisingly, it turns out that with the right concept of
+interpretability the quantifiers QI,Qmon,Q1−1Q_I,Q_{mon},Q_{1-1} and
+QIIQ_{II} are, up to biinterpretability, the only
+second-order quantifiers of the form QψQ_{\psi} (Shelah 1973).
+
+12. Higher Order Logic vis-à-vis Type Theory
+
+There are many ways to further extend second-order logic. The most
+obvious is third, fourth, and so on order logic. The general
+principle, already recognized by Tarski (1933 [1956]), is that in
+higher order logic one can formalize the semantics—define
+truth—of lower order logic. Therefore one certainly gains
+expressive power by using higher order logic. Let us take number
+theory as an example. With first order logic we can express properties
+such as “n is a prime number” and propositions such
+as “there are infinitely many prime numbers”,
+Fermat’s Last Theorem and Goldbach’s Conjecture. First
+order properties of natural numbers fall into a natural hierarchy
+called the arithmetical hierarchy the levels of which are
+denoted Σ0n\Sigma^0_n and Π0n\Pi^0_n. With second-order logic we can
+talk about properties of sets of natural numbers, or in other words,
+properties of real numbers. In particular, we can define the
+rationals. A continuous function on the real numbers is determined by
+its values on rationals. Also, an open set is determined by which
+rational points it contains. Using these observations we can talk
+about continuous functions and open sets of reals. Basic facts in
+calculus, such as Bolzano’s Theorem stating that “If a
+continuous function has values of opposite sign inside an interval,
+then it has a root in that interval” are expressible in
+second-order logic over the structure (N,+,⋅)(\oN,+,\cdot) of natural
+numbers. Second-order properties of natural numbers fall into a
+natural hierarchy called the analytical hierarchy and its
+levels are denoted Σ1n\Sigma^1_n and Π1n\Pi^1_n. With third order
+logic we can talk about sets of real numbers. We can write
+the Continuum Hypothesis in third order logic and ask the hard
+question, whether the model (N,+,⋅)(\oN,+,\cdot) satisfies this sentence.
+Third order properties of natural numbers have again a natural
+hierarchy and its levels are denoted Σ2n\Sigma^2_n and
+Π2n\Pi^2_n.
+
+It is obvious that if we keep a base model, such as (N,+,⋅)(\oN,+,\cdot)
+fixed, and move to higher and higher order logic, we can express more
+and more complicated concepts and propositions. However,
+third order logic over 
+N1=(N,+,⋅)\mn_1=(\oN,+,\cdot)
+
+
+is nothing more than second order logic over 
+N2=(P(N),E,N,+,⋅),\mn_2=(\P(\oN),E,\oN,+,\cdot),
+
+
+where E⊆N×P(N)E\subseteq \oN\times\P(\oN) is the relation nEr⟺n∈rnEr\iff n\in
+r, which again is nothing more than first order logic over
+
+N3=(P(P(N))),E′,P(N),E,N,+,⋅),\mn_3=(\P(\P(\oN))),E',\P(\oN),E,\oN,+,\cdot),
+
+
+where E′⊆P(N)×P(P(N)E'\subseteq \P(\oN)\times\P(\P(\oN) is the relation
+rE′X⟺r∈XrE'X\iff r\in X. Moreover, second-order logic over N1\mn_1 is
+nothing more than first order logic over N2\mn_2. When this line of
+thought is taken to its limit we can see that first order logic over
+the cumulative hierarchy of sets covers higher order logic over any
+individual level VαV_\alpha of the hierarchy. In a sense, first
+order logic over the cumulative hierarchy of sets is a very very high
+order logic over N1\mn_1.
+
+There is a marked similarity in the way N2\mn_2 arises from
+N1\mn_1 and in the way N3\mn_3 arises from N2\mn_2. In both
+cases we simply add a power set construction on top of what the model
+already has. Second-order logic alone is very good with power sets as
+we saw in
+ §5.3.
+ A consequence of this is that all the higher order logics (of any
+finite order and up to a point also of infinite order) from
+second-order on have Turing-equivalent decision problems and the same
+Hanf- and Löwenheim numbers (see
+ §4).
+ Thus, even though higher than second-order logics are strictly
+speaking stronger than second-order logic no difference can be seen by
+the usual criteria of strength of expressive power.
+
+Type theory is a systematic approach to higher order logics.
+Variables are assigned types just as in second-order logic we have
+variables for individual type, relation type and function type. In a
+higher order logic it would make sense to have variables for relations
+between objects of any lower types as well as functions mapping
+objects of lower type to objects of lower type. In set theory objects
+have a rank. Elements of a set have a lower rank than the set itself.
+However, the difference between set-theoretical rank and typing in
+type theory is that in set theory the rank can be computed when the
+set is known while in type theory the type of an object can be seen
+from the type of the variable that the object is the value of. In a
+sense type theory imposes from the syntax a type for each object
+considered while in set theory a set has a rank given by the
+semantics. Arguably set theory gained dominance over type theory after
+the 1930s because of its simpler syntax and semantics. On the other
+hand type theory is used in computer science, especially in the theory
+of programming languages (see SEP entry on
+ type theory).
+
+13. Foundations of Mathematics
+
+Mathematics can be based on set theory. This means that mathematical
+objects are construed as sets and their properties are derived from
+the axioms of set theory. The intuitive informal picture behind set
+theory is that there is a cumulative hierarchy VαV_\alpha
+(α\alpha an ordinal) of sets and the axioms are intended to
+describe the basic properties of such sets. This kind of set
+theoretical foundation of mathematics has become widely accepted among
+working mathematicians. We refer to the SEP entry on
+ set theory
+ for more details. Alternatives to set theory are at least
+ category theory,
+ constructive mathematics, and second-order logic.
+
+If one tries to follow as a logician the language mathematicians use
+in their research, one cannot help seeing that they use second-order
+concepts very freely. For example, the Induction Axiom is without
+doubt used by mathematicians in the second-order form depicted in
+(1\ref{ind}). In their natural language mathematicians do not hesitate
+to use higher order concepts, and indeed do not always even (need to)
+know the difference.
+
+Second-order logic as a foundation for mathematics focuses on
+mathematical structures rather than mathematical
+“objects”, as set theory does. In principle every
+structure has its own “foundation” based on the special
+features of the structure. The role of second-order logic is to
+provide a common framework for this. The intuitive informal picture
+behind second-order logic on a structure is that there is a domain
+A of individuals and then separate domains for all n-ary
+relations for all n∈Nn\in\oN and for all n-ary functions for
+all n∈Nn\in\oN, associated with A. In comparison to the
+informal picture of set theory, we have only the domains of subsets,
+relations and functions, not iterations such as sets of sets, sets of
+sets of sets and so on, as in set theory. Therefore the intuitive
+picture behind second-order logic is simpler than the picture behind
+set theory. In particular, there is no transfinite iteration over all
+ordinals. Most structures A\ma used in mathematics have a
+second-order characterization θA\theta_\ma, see
+ §10.
+ Proving (second order) properties ϕ\phi of such structures means
+deriving ϕ\phi from θA\theta_\ma. Opinions differ as to whether
+this derivation should be a syntactic (formal) derivation using some
+(incomplete) axiom system of second-order logic or whether it should
+be a semantic derivation (of the form “Every model of the
+assumptions is a model of the conclusion”). For a working
+mathematician there is not much difference and probably a semantic
+derivation is usually favored.
+
+Suppose a mathematician wants to convince someone about the truth of
+Bolzano’s Theorem “If a continuous function on the reals
+has negative values as well as positive values inside an interval,
+then it has a root in that interval”. They would start with the
+ordered field of real numbers. It would be (thought to be) clear what
+this means because the second-order axiomatization of the field is
+categorical. Then they would take an arbitrary continuous function
+f on this field such that it has values of opposite sign inside
+a fixed interval (a,b)(a,b). It would be clear what this means because
+second-order logic has variables for functions. Let c,d∈(a,b)c,d\in (a,b)
+such that f(c)<0f(c)&lt;0 and f(d)>0f(d)&gt;0. Without loss of generality,
+c<dc&lt;d. Let X={e∈(a,b):f(e)<0}X=\{e\in(a,b) : f(e)&lt;0\}. Since we have
+relation variables for subsets of the domain, we can think of X
+simply as a value of such a relation variable. It is obvious that
+X exists, but a priori we could have imposed contradictory
+conditions on X (e.g., X={e:e∉X}X=\{e : e\notin X\}) and then we
+should not be able to claim that it exists. However, in this case the
+Comprehension Axiom Schema implies that X exists. Clearly,
+X≠∅X\ne\emptyset and X is bounded from above by d. One
+of the second-order axioms characterizing the field of real numbers is
+that every non-empty set which is bounded from above has a supremum.
+Thus we can let z to be the supremum of X. Now it
+follows from basic properties of continuous functions that
+f(z)=0f(z)=0.
+
+It would be difficult to tell in the above proof whether it was a
+syntactical derivation from the axioms or a semantic argument. On the
+surface it looks like a semantic argument. But every step can be
+derived from the axioms, so it could be considered a shorthand version
+of a syntactic derivation.
+
+Syntactic derivations in second-order logic based on the Comprehension
+Axiom Schema and Axioms of Choice are very much like syntactic
+derivations in set theory. In neither case would a working
+mathematicians write all the details of the argument but would resort
+to shorthand notation. In both cases—second-order logic and set
+theory—we can interpret the proofs as shorthand versions of
+syntactic formal proofs or as semantic proofs. First order logic
+satisfies the Completeness Theorem with the help of which semantic
+proofs can be turned into syntactic formal proofs. Since the
+Completeness Theorem uses the concept of a first order structure,
+sentences proved from the axioms are true in all models of the axioms,
+both countable models and non-standard models. Are they true in the
+intuitive model of cumulative hierarchy of sets? By the Reflection
+Theorem such sentences are true in the class of all sets, but since
+the intuitive model is informal, we cannot prove that the
+class of all sets is the same as the intuitive model.
+
+On the other hand, in order for the Completeness Theorem to be
+applicable, a semantic argument has to be such that it works whatever
+model of set theory we are using. This means that a semantic argument
+in set theory should not use properties of individual models of set
+theory unless they are universal first order properties of all models
+of ZFC. In practice this means that if a property such as CHCH,
+◊\Diamond, 2ℵ0=ℵ22^{\aleph_0}=\aleph_2, and so on, is used, it is
+mentioned separately as an assumption. Non-first order properties of
+models cannot be used at all, or else the Completeness Theorem cannot
+be used. Still, sometimes non-first order properties are
+used. For example, we may have an argument that every
+countable model of ZFC satisfies ϕ\phi. But then, by the
+Downward Löwenheim-Skolem Theorem, every model of ZFC
+satisfies ϕ\phi. Thus we have been able to eliminate the non-first
+order assumption of the countability of the model.
+
+Second-order logic satisfies the Completeness Theorem if Henkin models
+are used. Thus semantic arguments in second-order logic can be turned
+into syntactic formal proofs, but as with set theory the semantic
+argument has to be valid in all Henkin models, not only in
+all of the full Henkin models. Thus, as in set theory, the
+semantic argument cannot use properties of the Henkin models that are
+not shared by all Henkin models, In particular, fullness (see
+ §9.1)
+ cannot be assumed because in general models it is not a second-order
+property. What happens to categoricity when fullness is abandoned? We
+still have internal categoricity, so we can use categoricity in proofs
+as long as we make sure we work inside one model. One certain way to
+make sure of this is that we base everything on the axioms, the
+Comprehension Axiom Schema and the Axioms of Choice.
+
+When second-order logic is used as a foundation for mathematics, a
+situation may emerge in which third order logic is needed. For
+example, a topology is usually defined as a family of sets
+and is therefore a third order object. It would be well in the spirit
+of second-order logic to simply include third (or higher) order logic
+when needed. Naturally, the Comprehension Axiom Schema and the Axioms
+of Choice have to be then assumed for third order quantifiers.
+
+We have devoted a fair amount of space in this entry to the power of
+second-order logic to characterize structures (see
+ §7.1).
+ Putting it briefly, if a structure has mathematical interest, it is
+second-order characterizable. Structures constructed by means of the
+Axiom of Choice may escape being second-order characterizable. But
+what is the power of second-order logic to demonstrate the
+existence of structures? The axioms, including the
+Comprehension Axioms and the Axioms of Choice, can be satisfied in a
+one element domain. So we cannot prove from the axioms that
+there are any structures of any size >1&gt;1. This undermines
+Quine’s characterization of second-order logic as “set
+theory in sheep’s clothing” (1970, section heading in
+chapter 5), meant probably to suggest that the ontological commitments
+of second-order logic are on the same level as those of set
+theory.
+
+Perhaps the philosophy of second-order logic is that if a structure
+can be characterized, it exists, echoing Hilbert’s formalist
+philosophy. However, even in that sense we need to know that the
+characterizing sentence θA\theta_\ma is consistent. A trivial
+approach is to observe that A\ma itself certainly satisfies
+θA\theta_\ma, but this clearly begs the question. Still, this is how
+Hilbert argues for the consistency of his axioms for the real numbers
+(1900). If A=(N,+,⋅)\ma=(\oN,+,\cdot), an Axiom of Infinity saying that
+that a proper subset of the domain has the same cardinality as the
+entire domain, is what is needed. In combination with the
+Comprehension Axiom Schema the existence of A\ma follows. For
+(R,+,⋅,0,1)(\oR,+,\cdot,0,1) this is not enough, we need a stronger Axiom of
+Infinity, for example the existence of a dense order which satisfies
+the Completeness Axiom: Every bounded non-empty set has a supremum. It
+seems inevitable that when we move from a structure to a bigger
+structure we need to make a largeness assumption. Such assumptions are
+called Large Domain Assumptions in Väänänen (2012). In
+set theory this aspect is taken care of at the outset by assuming the
+Power Set Axiom and the Replacement Axioms which together make sure
+that there are large enough sets. In second-order logic we have to
+assume new and new Large Domain Assumptions, as we move along. This
+can be seen as a drawback, having to make new assumptions all the
+time. On the other hand it can be seen as an asset, not having to make
+too ambitious assumptions before they are really needed.
+
+14. Second-Order Arithmetic
+
+Owing to the central role that real numbers play in mathematics, the
+second-order theory of natural numbers, known as second-order
+arithmetic (Simpson 1999 [2009]), and denoted Z2Z_2, is an
+important foundational theory. It is stronger than (first order) Peano
+arithmetic but weaker than set theory. It has variables for
+individuals thought of as natural numbers as well as variables for
+sets of natural numbers thought of as real numbers. In addition there
+are ++ and ×\times for arithmetic operations on the individuals.
+As axioms Z2Z_2 has some rather obvious axioms about ++ and
+×\times, the Induction Axiom (1\ref{ind}), and the axioms of
+second-order logic, including the Comprehension Principles (10\ref{CA}).
+A surprising amount of mathematics can be derived in Z2Z_2. We refer
+to Simpson (1999 [2009]) for details. In a sense, Z2Z_2 is a great
+success story for second-order logic.
+
+Reverse mathematics uses Z2Z_2 to isolate the exact axioms
+on which well-known theorems from mathematics rely. In a textbook such
+theorems are proved perhaps in an informal set theory, but how much
+set theory is actually needed in each case? For example, we may ask
+what is the weakest set of axioms from which the Bolzano-Weierstrass
+ Theorem[21]
+ can be proved? How much set theory, comprehension, choice, induction,
+etc is needed? Since Z2Z_2 is a natural and sufficient environment
+for many mathematical theorems, it is an appropriate framework for
+answering questions raised by the reverse mathematics program. The
+main (but not the only) distinctions that are made in reverse
+mathematics concern the amount of the Comprehension Principle that is
+needed in proving this or that mathematical result. In particular, the
+role of Arithmetic and Π11\Pi^1_1-Comprehension Principles is
+clarified. The basic theory of real numbers can be developed on the
+basis of Arithmetic Comprehension only, but proofs relying on the
+notion of a countable ordinal require the Π11\Pi^1_1-Comprehension
+Principle. Again, we refer to Simpson (1999 [2009]) for details.
+
+15. Second-Order Set Theory
+
+We have up to now treated set theory (ZFC) as a first order theory.
+However, when Zermelo (1930) introduced the axioms which constitute
+the modern ZFC axiom system, he formulated the axioms in second-order
+logic. In particular, his Separation Axiom is 
+∀x∀X∃y∀z(z∈Y↔(z∈x∧X(z)))\forall x\,\forall X\,\exists y\,\forall z(z\in Y\leftrightarrow (z\in x\land X(z)))
+
+
+and the Replacement Axiom is 
+∀x∀F∃y∀z(z∈y↔∃u(u∈x∧z=F(u))).\forall x\,\forall F\,\exists y\,\forall z(z\in y\leftrightarrow\exists u(u\in x\land z=F(u))).
+
+
+Second-order ZFC, ZFC2\ZFC^2, is simply the received first order ZFC
+with the Separation Schema replaced by the above single Separation
+Axiom, and the Replacement Schema replaced by the above single
+Replacement Axiom. Accordingly, ZFC2\ZFC^2 is a finite axiom system.
+Zermelo proved that the models of ZFC2\ZFC^2 are, up to isomorphism,
+of the form (Vκ,∈)(V_\kappa,\in), where κ\kappa is (strongly)
+inaccessible >ω&gt;\omega.
+
+Kreisel (1967) has pointed out that second-order set theory in a sense
+decides the CH, i.e., decides whether it is true or not, even if we do
+not know which way the decision goes. More exactly ZFC2⊨CH\ZFC^2\models
+CH or ZFC2⊨¬CH\ZFC^2\models \neg CH, because CHCH is true if and only
+if Vκ⊨CHV_\kappa\models CH for inaccessible κ\kappa, i.e., if and
+only if ZFC2⊨CH\ZFC^2\models CH. Of course we can express CH in first
+order set theory, too, so the situation is not really different from
+first order set theory. Many set theorists think that the concept of
+set is definitive enough to decide eventually also CH even if ZFC does
+not decide it. Likewise, we may argue that the concept of second-order
+semantics is definitive enough to decide CH even if the current axioms
+of second-order logic cannot do it.
+
+The question arises, why do we not use second-order set theory
+ZFC2\ZFC^2 as the metatheory of second-order logic, as recommended in
+Shapiro (1991). In fact we could use it. However, the question might
+rise, what is the semantics of our metatheory? In principle such
+questions can lead to an infinite regress. By using first order set
+theory as the metatheory, the question about the semantics of the
+metatheory would simply be the question about the semantics of first
+order logic. We have pointed out in
+ §6
+ that semantics of first order logic is absolute relative to ZFC. This
+gives some assurance that we need not continue asking, what the
+metatheory is.
+
+16. Finite Model Theory
+
+The rise of mathematical logic in the first half of the twentieth
+century was interwoven with different approaches to understanding the
+infinite structures of the natural and the real numbers. With the
+emergence of computer science in the second half of the twentieth
+century logic went through a process of rebirth. The concepts of a
+computation and of a database both emphasized the need to understand
+not so much the finite/infinite distinction as the new measures of
+degrees of finiteness. For example, the question whether a problem can
+be decided in polynomial time arose to challenge the well-developed
+theory of what can be decided in finite time. The analogy between
+finite relational structures and databases led to the emergence of
+finite model theory. For a good review we refer to Fagin
+(1993).
+
+In the context of finite models second-order logic does not suffer
+from the same philosophical problems as in the context of infinite
+models. It is just one language among many others. One of the early
+successes was the result of Fagin (1974) to the effect that classes of
+models definable in existential second-order logic, i.e., in the
+Σ11\Sigma^1_1-fragment, are exactly those that are NP, i.e., that can
+be recognized by a non-deterministic Turing machine running in time
+which is polynomial in the size of the encoding of the model as a
+binary sequence. The question whether NP is closed under complements
+is notoriously open. From the point of view of second-order logic this
+is surprising because on all models, finite or infinite,
+Σ11\Sigma^1_1 is of course not closed under complements. For example,
+the class of infinite models (in the empty vocabulary) is
+Σ11\Sigma^1_1 but not Π11\Pi^1_1. Also, the class of well-orders is
+Π11\Pi^1_1 but not Σ11\Sigma^1_1. Therefore the following early
+result about second-order logic on finite models was remarkable. Here
+MON-Σ11\mon\Sigma^1_1 refers to Σ11\Sigma^1_1 in monadic second-order
+logic, similarly MON-Π11\mon\Pi^1_1.
+
+
+Theorem 17 (Fagin 1975) Connectivity of graphs is not
+definable in MON-Σ11\mon\Sigma^1_1. Hence
+MON-Σ11≠MON-Π11\mon\Sigma^1_1\ne\mon\Pi^1_1.
+
+
+This has subsequently been extended to graphs with certain other
+structure present, see Fagin, Stockmeyer, and Vardi (1995). The proofs
+use the Ehrenfeucht-Fraïssé games (see
+ §3.1)
+ and their elaborations.
+
+Let Σ11,m\Sigma^1_{1,m} denote the class of Σ11\Sigma^1_1-formulas
+∃X1…∃Xkϕ\exists X_1\ldots\exists X_k\phi, where the bound second-order
+variables XiX_i are at most m-ary and ϕ\phi is first
+order. Similarly Π11,m\Pi^1_{1,m} and Δ11,m\Delta^1_{1,m}.
+
+
+Theorem 18 (Ajtai 1983) The property of a finite
+structure (A,R)(A,R), where R is n+1n+1-ary, of |R||R| being
+even, is Δ11,n+1\Delta^1_{1,n+1} but not Σ11,n\Sigma^1_{1,n} or
+Π11,n\Pi^1_{1,n}.
+
+
+This highly non-trivial theorem is one of the corner stones of the
+study of second-order logic on finite structures. We do not know
+whether Δ11\Delta^1_1 is different from Σ11\Sigma^1_1 on finite
+structures, but the above theorem gives an arity-based hierarchy
+result inside Δ11\Delta^1_1.

@@ -1,0 +1,1136 @@
+Dependence logic is an extension of first-order logic which adds to it
+dependence atoms, that is, expressions of the form
+=(x1…xn,y)=(x1…xn,y)\eqord(x_1 \ldots x_n, y) which assert that the value of yyy is
+functionally dependent on (in other words, determined by) the values
+of x1…xnx1…xnx_1 \ldots x_n. These atoms permit the specification of
+non-linearly ordered dependency patterns between variables,
+much in the same sense of IF-Logic slashed quantifiers; but,
+differently from IF-logic, dependence logic separates quantification
+from the specification of such dependence/independence conditions. The
+principal semantics of dependence logic, called team
+semantics, generalizes Tarski’s semantics by letting
+expressions be satisfied or not satisfied with respect to
+sets of variable assignments rather than with respect to
+single assignments. This semantics pre-dates the development of
+dependence logic proper, and it was originally developed by Wilfrid
+Hodges in the context of IF-logic (Hodges 1997). There also exists a
+game-theoretic semantics for dependence logic, based on games of
+imperfect information and roughly analogous to the game-theoretic
+semantics for independence-friendly logic (Väänänen
+2007a). Sensu stricto, the term “dependence
+logic” refers exclusively to the language obtained by adding the
+above-mentioned functional dependence atoms to the language of
+first-order logic; but the term is also used, in a more general sense,
+to refer to the the area of research that studies the properties of
+logics obtained by adding various notions of dependence and
+independence to first order logic, such as independence
+logic (Grädel & Väänänen 2013),
+intuitionistic dependence logic (Yang 2013) or inclusion
+logic (Galliani 2012, Galliani & Hella 2013), or even those
+of logics extending other logical frameworks through similar
+atoms, as in the case of modal dependence logic
+(Väänänen 2008). In this article, the term
+“dependence logic” will be used to refer to dependence
+logic proper, and the term “logics of dependence and
+independence” will instead be used to refer to its variants and
+generalizations.
+ 
+
+1. Dependency patterns in first order logic and its extensions
+
+One feature of first order logic which accounts for much of its
+expressivity and applicability is the fact that it allows quantifiers
+to be nested, and, hence, it permits the specification of
+dependency patterns between quantified variables. Consider,
+for example, the (hopefully false) statement that “every boy
+loves some girl that loves some other boy”. It can be
+straightforwardly translated into first order logic as 
+∀x(BOY(x)→∃y(GIRL(y)∧LOVES(x,y)∧∃z(BOY(z)∧x≠z∧LOVES(y,z))))∀x(BOY(x)→∃y(GIRL(y)∧LOVES(x,y)∧∃z(BOY(z)∧x≠z∧LOVES(y,z))))(1)\tag{1} \label{eq:boygirl1}
+\begin{align}
+&amp;\forall x (\boy(x) \rightarrow \exists y (\girl(y) \land \loves(x, y) \land  {} \\ 
+&amp;\quad  \exists z (\boy(z) \land x \not = z \land \loves(y, z))))
+\end{align}
+
+
+whose truth condition, according to Tarski’s usual semantics, is
+precisely what one would expect: the above expression is true if and
+only if for every boy bbb it is possible to find a girl ggg and a
+boy b′b′b' such that bbb loves ggg and ggg loves b′b′b' and
+bbb and b′b′b' are not the same. The identity of the girl ggg may
+of course depend on the identity of the first boy bbb—after
+all, for this expression to be true we do not require that all boys
+are in love with all girls—and, furthermore, the identity of the
+second boy b′b′b' may depend on both the identity of the
+first boy bbb (since b′b′b' must be different from bbb) and from
+the identity of the girl ggg that bbb loves. So the dependency
+pattern between our quantified variables is as follows: yyy
+depends on xxx, while zzz depends on both xxx and yyy. From a
+syntactic perspective, this is reflected by the fact that ∃y∃y\exists
+y is in the scope of ∀x∀x\forall x while ∃z∃z\exists z is
+in the scope of both ∀x∀x\forall x and ∃y∃y\exists y.
+
+Differences in the dependency patterns between operators can be used
+to formalize important distinctions, such as for example the one
+between the continuity of a function fff 
+∀x∀ϵ∃δ∀x′(|x−x′|<δ→|f(x)−f(x′)|<ϵ)∀x∀ϵ∃δ∀x′(|x−x′|<δ→|f(x)−f(x′)|<ϵ)\forall x \forall \epsilon \exists \delta \forall x' (|x - x'| &lt;
+ \delta \rightarrow |f(x) - f(x')| &lt; \epsilon)
+
+and its uniform continuity 
+∀ϵ∃δ∀x∀x′(|x−x′|<δ→|f(x)−f(x′)|<ϵ)∀ϵ∃δ∀x∀x′(|x−x′|<δ→|f(x)−f(x′)|<ϵ)\forall \epsilon \exists \delta \forall x \forall x' (|x - x'|
+ &lt; \delta \rightarrow |f(x) - f(x')| &lt; \epsilon)
+
+or, in intensional extensions of first order logic, to express the
+difference between De Dicto and De Re readings
+(e.g., “It is possible for every person to be crazy” may
+be understood either as stating that it for every person ppp, it is
+possible for ppp to be crazy, ∀x(PERSON(x)→⬦CRAZY(x))∀x(PERSON(x)→⬦CRAZY(x))\forall x (\person (x)
+\rightarrow \Diamond \crazy (x)), or as stating that it is
+possible that everyone is crazy together, ⬦∀x(PERSON(x)→CRAZY(x))⬦∀x(PERSON(x)→CRAZY(x))\Diamond \forall x
+(\person (x) \rightarrow \crazy (x))).
+
+Dependency patterns between quantified variables in first order logic
+are necessarily transitive, as it is made evident by their
+connections with the scopes of the corresponding sub-expressions: if
+∃y∃y\exists y is in the scope of ∀x∀x\forall x and ∃z∃z\exists z is in
+the scope of ∃y∃y\exists y then necessarily ∃z∃z\exists z will be in
+the scope of (and, therefore, dependent from) ∀x∀x\forall x.
+Furthermore, the set of all quantifiers in whose scope some subformula
+αα\alpha lies is linearly ordered: if αα\alpha is in the scope of
+Q1x1Q1x1Q_1 x_1 and Q2x2Q2x2Q_2 x_2, then either Q1x1Q1x1Q_1 x_1 is in the scope
+of Q2x2Q2x2Q_2 x_2 or vice versa.
+
+This limits the expressive possibilities of first order logic. For
+example, let us suppose that we wish to amend our previous assertion
+about boys and girls as follows: every boy loves some girl that loves
+some other boy, and this second boy can be chosen independently on the
+first one. What this means, intuitively speaking, is simple enough:
+for every boy bbb we can find a girl ggg such that bbb loves
+ggg, and for every such girl we can find a boy b′b′b' such that
+ggg loves b′b′b' and b≠b′b≠b′b \not = b', and furthermore we can find
+the identity of the second boy b′b′b' without knowing that of bbb,
+on the basis of the identity of the girl ggg alone. This can still
+be the true in some scenarios, such as for example if two boys b1b1b_1
+and b2b2b_2 love respectively two girls g1g1g_1 and g2g2g_2, who
+however love only b2b2b_2 and b1b1b_1 respectively. However, it is
+easily seen that it is not equivalent to our previous statement: for
+example, if our universe consists (as in (b) above) of two boys bbb
+and b′b′b' and a girl ggg, and bbb and b′b′b' both love ggg who
+loves both of them, then our previous assertion is true but the
+current one is false.
+
+
+
+Two scenarios in which (11\ref{eq:boygirl1}) is true. In (a), zzz
+can be chosen independently from xxx; in (b), it cannot.
+
+
+However, it is not clear how to formalize this condition in first
+order logic. In essence, we would need to modify
+(11\ref{eq:boygirl1}) so that zzz is not in the scope of xxx,
+and hence it does not depend on it; however, we would still want zzz
+to depend on yyy and yyy on xxx. As just discussed, however,
+such a dependency pattern is not realizable in first-order logic. We
+can sidestep the issue by resorting to higher-order quantification:
+indeed, one can see that the expression 
+∃F∀x(BOY(x)→∃y(GIRL(y)∧LOVES(x,y)∧BOY(F(y))∧x≠F(y)∧LOVES(y,F(y))))∃F∀x(BOY(x)→∃y(GIRL(y)∧LOVES(x,y)∧BOY(F(y))∧x≠F(y)∧LOVES(y,F(y))))(2)\tag{2}\label{boygirl2}
+\begin{align}
+&amp;\exists F \forall x (\boy (x) \rightarrow  \exists y(\girl (y)
+  \land \loves (x, y)  \land \boy (F(y)) \land {} \\
+&amp;\quad  x \not = F(y) \land \loves (y,F(y))))
+\end{align}
+
+captures our intended interpretation, but only at the cost of explicit
+existential quantification over functions.
+
+A possible alternative would be to expand the syntax of first order
+logic in order to lift the restrictions about dependency patterns
+between quantified variables. This is the route taken by branching
+quantifier logic (Henkin 1961), in which the truth conditions of (22\ref{boygirl2})
+correspond to those of 
+(∀x∃y∀z∃w)(BOY(x)→(GIRL(y)∧LOVES(x,y)∧(y=z→(BOY(w)∧x≠w∧LOVES(z,w))))),(∀x∀z∃y∃w)(BOY(x)→(GIRL(y)∧LOVES(x,y)∧(y=z→(BOY(w)∧x≠w∧LOVES(z,w))))),(3)\tag{3}\label{boygirl3}
+\begin{align}
+&amp;\left(\begin{smallmatrix}
+            \forall x &amp;\exists y\\
+            \forall z &amp;\exists w
+        \end{smallmatrix}
+\right)(\boy (x) \rightarrow  (\girl (y) \land \loves (x,y) \land {}\\
+&amp;\quad  (y = z \rightarrow (\boy (w) \land x \not = w \land \loves (z,w))))),
+\end{align}
+    
+
+and to independence-friendly logic, in which
+(22\ref{boygirl2}) is equivalent to 
+∀x∃y(BOY(x)→(GIRL(y)∧LOVES(x,y)∧(∃z/x)(BOY(z)∧x≠z∧LOVES(y,z)))).∀x∃y(BOY(x)→(GIRL(y)∧LOVES(x,y)∧(∃z/x)(BOY(z)∧x≠z∧LOVES(y,z)))).(4)\tag{4}\label{boygirl4}
+\begin{align}
+&amp;\forall x \exists y (\boy (x) \rightarrow  (\girl (y) \land
+ \loves (x,y) \land (\exists z/x) (\boy (z) \land {} \\
+&amp;\quad x \not = z \land \loves (y,z)))).\end{align}
+ 
+
+We will not give here a detailed explanation of the semantics of these
+two formalisms; suffice to say, in (33\ref{boygirl3}) the value of
+www does not depend on the values of xxx and yyy (although it
+may depend on the value of zzz), as they belong to different
+“rows” of the complex quantifier
+(∀x∃y∀z∃w)(∀x∀z∃y∃w)\left(\begin{smallmatrix} \forall x &amp;\exists y\\ \forall z
+&amp;\exists w \end{smallmatrix}\right), while in
+(44\ref{boygirl4}) the value of zzz does not depend on the value
+of xxx, because this dependency is explicitly “slashed
+away” by the quantifier (∃z/x∃z/x\exists z / x).
+
+One feature common to branching quantifier logic and independence
+friendly logic, as we can see, is that they do not separate the
+quantification of variables from the specification of non-standard
+patterns of dependence: as in the case of first order logic, whether a
+quantified variable v1v1v_1 will or will not depend on some other
+quantified variable v2v2v_2 will be determined by the respective
+position and form of their quantifiers.
+
+Dependence logic takes a different approach to the problem of
+extending first order logic in order to represent
+(22\ref{boygirl2}). Compared to (11\ref{eq:boygirl1}), the only
+novel condition is the one that states that the value of zzz is
+determined by (that is, functionally dependent on) the value
+of yyy; and this corresponds to a new atomic condition =(y,z)=(y,z)\eqord(y,
+z), called a dependence atom, whose intended meaning is
+that (the value of) zzz is a function of the value of yyy.
+Differently from the cases of branching quantifier logic or
+independence-friendly logic, this is a condition over the values that
+yyy and zzz can take, not a condition over the behaviour of the
+quantifier ∃z∃z\exists z: indeed, there is in general no reason to
+require that zzz is a quantified variable at all—it might well
+be a free variable instead, or some complex term involving multiple
+variables.
+
+In dependence logic, (22\ref{boygirl2}) can be formalized as 
+∀x∃y∃z(=(y,z)∧(BOY(x)→(GIRL(y)∧LOVES(x,y)→(BOY(z)∧x≠z∧LOVES(y,z)))))∀x∃y∃z(=(y,z)∧(BOY(x)→(GIRL(y)∧LOVES(x,y)→(BOY(z)∧x≠z∧LOVES(y,z)))))(5)\tag{5}\label{boygirl5}
+\begin{align}
+&amp;\forall x \exists y \exists z (\eqord(y,z) \land ( \boy (x) 
+ \rightarrow (\girl (y) \land \loves (x,y) \rightarrow {}\\ 
+&amp;\quad (\boy (z) \land x \not = z \land \loves (y,z)))))
+\end{align}        
+
+The truth conditions of (22\ref{boygirl2}), (33\ref{boygirl3}),
+(44\ref{boygirl4}) and (55\ref{boygirl5}) are precisely the same:
+any model that satisfies one of these expressions (in the respective
+languages) satisfies all four. More in general, as we will see, the
+expressive powers of existential second-order logic,
+independence-friendly logic and dependence logic with respect to
+definability of classes of models are precisely the same. This
+is, however, not the case for formulas with free variables; and
+furthermore, these logics can be extended and modified along markedly
+different lines.
+2. Team semantics
+
+Team semantics, first developed by Wilfrid Hodges in the context of
+independence friendly logic (Hodges 1997), is a generalization of
+Tarski’s semantics for first order logic to the case of multiple
+assignments of elements to variables. Sets of such assignments, called
+teams for historical reasons, constitute the fundamental
+semantic notion of team semantics, and formulas are satisfied or not
+satisfied with respect to them rather than with respect to single
+assignments. The connection between team semantics and Tarski
+semantics is shown by the following result, which holds in dependence
+logic as well as in all its first order variants:
+
+
+Conservativity:
+
+A first order formula is satisfied by a team XXX (in the sense of
+team semantics) if and only if all assignments s∈Xs∈Xs \in X satisfy it
+(in the sense of Tarski semantics). 
+
+
+More in general, teams can be understood as belief sets,
+representing the set of all states of the world (=assignments) that
+some agent believes possible. Then a team XXX will satisfy some
+formula ϕϕ\phi if and only if ϕϕ\phi holds when XXX is the set
+of all possible states; and in this case, we will write X⊨ϕX⊨ϕX \models
+\phi (or M,X⊨ϕM,X⊨ϕM, X \models \phi if the choice of the model MMM is
+not clear). In this section, we will examine the rules of team
+semantics and their interpretation in terms of this principle; then,
+in the next section, we will discuss how it also arises from the
+imperfect-information game-theoretic semantics for dependence
+logic.
+
+The condition for the new dependence atoms =(x1…xn,y)=(x1…xn,y)\eqord(x_1 \ldots x_n,
+y), which correspond to the statement that the value of yyy is a
+function of the values of x1…xnx1…xnx_1 \ldots x_n, is easily
+understood:
+
+
+TS-dep:
+
+X⊨ =(x1…xn,y)X⊨ =(x1…xn,y)X \models ~\eqord(x_1 \ldots x_n, y) if and only if any two
+assignments s1,s2∈Xs1,s2∈Xs_1, s_2 \in X which agree on the values of x1…xnx1…xnx_1
+\ldots x_n also agree on the value of yyy. 
+
+
+For example, suppose that XXX is a set of assignments over the three
+variables x1x1x_1, x2x2x_2 and yyy, where x1x1x_1 represents the
+nationality of a candidate to a position, x2x2x_2 represents their
+score (according to a suitable evaluation method) and yyy represents
+whether they were accepted or rejected. Then the atom =(x2,y)=(x2,y)\eqord(x_2,
+y) corresponds to the statement that the offer is determined by the
+score alone: if two candidates have the same score they will receive
+exactly the same offer, regardless of any other factor. A special case
+of dependence atom is given by the constancy atoms
+=(y)=(y)\eqord(y), which—as per the above semantics—are
+satisfied by a team if and only if all of its assignments agree over
+the value of yyy.
+
+
+assignmentx1x2ys0000s1011s2101s3112assignments0s1s2s3x10011x20101y0112\begin{array}{l | c c c}
+            \textbf{assignment}&amp; \mathbf{x_1} &amp; \mathbf{x_2} &amp; \mathbf{y}\\
+            \hline
+            s_0 &amp; 0 &amp; 0 &amp; 0 \\
+            s_1 &amp; 0 &amp; 1 &amp; 1 \\
+            s_2 &amp; 1 &amp; 0 &amp; 1 \\
+            s_3 &amp; 1 &amp; 1 &amp; 2
+    \end{array}
+
+
+Table 1: A team XXX in which y=x1+x2y=x1+x2y = x_1
++ x_2. Here yyy is a function of x1x1x_1 and x2x2x_2, and hence
+=(x1x2,y)=(x1x2,y)=\!\!(x_1 x_2, y) holds; however, yyy is not a function of
+x1x1x_1 alone, so =(x1,y)=(x1,y)=\!\!(x_1, y) does not hold.
+
+
+Under the same interpretation, the rules for first-order literals and
+conjunctions (for simplicity, we will assume that our expressions are
+in negation normal form; and, as is customary, we will assume that the
+negations of dependence atoms are never satisfied) are easy to
+derive:
+
+
+TS-lit:
+
+For all first-order literals αα\alpha, X⊨αX⊨αX \models \alpha if and
+only if for all assignments s∈Xs∈Xs \in X, s⊨αs⊨αs \models \alpha in the
+usual Tarski semantics sense; 
+
+TS-∧∧\land:
+
+X⊨ϕ∧ψX⊨ϕ∧ψX \models \phi \land \psi if and only if X⊨ϕX⊨ϕX \models \phi and
+X⊨ψX⊨ψX \models \psi.
+
+
+It is worth pointing out that, as we can already see by these rules,
+the law of the excluded middle does not hold in dependence
+logic (just as it does not hold in independence friendly logic): for
+example, if a team XXX contains both assignments sss with s(x)=s(y)s(x)=s(y)s(x) =
+s(y) and assignments s′s′s' with s′(x)≠s′(y)s′(x)≠s′(y)s'(x) \not = s'(y) then X⊭x=yX⊭x=yX
+\not \models x=y and X⊭x≠yX⊭x≠yX \not \models x\not = y. In this section,
+in any case, we will present the language of dependence logic without
+an explicit negation operator; then, later, we will discuss the
+consequences of adding it to its language.
+
+What about universal quantification? In which circumstances should a
+universally quantified expression ∀vψ∀vψ\forall v \psi hold in a team?
+Again, we must recall the intuition according to which a team
+represents a set of possible states of things. If we wish to evaluate
+∀vψ∀vψ\forall v \psi, with respect to which possible states of things
+should we evaluate ψψ\psi? The natural answer is that we should
+consider all states of things that differ from ones in XXX only with
+respect to the value of vvv. This justifies the following rule:
+
+
+TS-∀∀\forall:
+
+X⊨∀vψX⊨∀vψX \models \forall v \psi if and only if X[M/v]⊨ϕX[M/v]⊨ϕX[M/v] \models \phi,
+where X[M/v]X[M/v]X[M/v] is the set {s′:∃s∈X s.t. s′∼vx}{s′:∃s∈X s.t. s′∼vx}\{s' : \exists s \in X \mbox{ s.t. } s'
+\sim_v x\} 
+
+
+where s′∼vss′∼vss' \sim_v s means that the two assignments sss and s′s′s'
+differ from each other at most with respect to the value of the
+variable vvv.
+
+
+X=assignmentxs00s11⇒X[M/y]=assignmentxys′000s′101s′210s′311X=assignments0s1x01⇒X[M/y]=assignments′0s′1s′2s′3x0011y0101     X=
+    \begin{array}{l | c} 
+        \textbf{assignment} &amp; x\\
+        \hline
+        s_0 &amp; 0\\
+        s_1 &amp; 1
+\end{array}
+\Rightarrow
+        X[M/y]=
+    \begin{array}{l | c | c} 
+        \textbf{assignment} &amp; x &amp; y\\
+        \hline
+        s'_0 &amp; 0 &amp; 0\\
+        s'_1 &amp; 0 &amp; 1\\
+        s'_2 &amp; 1 &amp; 0\\
+        s'_3 &amp; 1 &amp; 1
+\end{array}
+
+
+Table 2: XXX and X[M/y]X[M/y]X[M/y] in a model
+with two elements 000 and 111.
+
+
+Let us now consider disjunction. When should ϕ∨ψϕ∨ψ\phi \lor \psi hold?
+To answer this, let us recall—once again—that teams can be
+understood as sets of possible states of things, and that therefore
+the union of two teams YYY and ZZZ represents all states of things
+which may occur if YYY or ZZZ is the case. Therefore, if the two
+formulas ϕϕ\phi and ψψ\psi are satisfied by the set of teams
+{Y1…Yn,…}{Y1…Yn,…}\{Y_1 \ldots Y_n, \ldots\} and {Z1…Zn,…}{Z1…Zn,…}\{Z_1 \ldots Z_n, \ldots\}
+respectively, their disjunction ϕ∨ψϕ∨ψ\phi \lor \psi should be satisfied
+by the set of teams {Yi∪Zj:i,j∈1,…}{Yi∪Zj:i,j∈1,…}\{Y_i \cup Z_j : i,j \in 1, \ldots\}, or,
+equivalently,
+
+
+TS-∨\lor:
+
+X⊨ϕ∨ψX \models \phi \lor \psi if and only if X=Y∪ZX=Y \cup Z for two
+teams YY and ZZ such that Y⊨ϕY \models \phi and Z⊨ψZ \models
+\psi. 
+
+
+It is worth pointing out here that we do not require, in
+general, that YY and ZZ are disjoint. Because of the
+downwards closure property, which we will discuss soon, this
+additional condition would make no difference for the semantics of
+dependence logic proper; but in the case of certain extensions and
+variants of dependence logic, that additional requirement would
+conflict with the principle of locality according to which
+the satisfaction conditions of an expression depend only on the values
+of the variables which occur free in it (Galliani 2012).
+
+It is also important to note that, in dependence logic, disjunction is
+not idempotent: for example, =(x,y)∨=(x,y)\eqord(x,y) \lor \eqord(x,y)
+is not equivalent to =(x,y)\eqord(x,y), and it is satisfied by a team
+XX if and only if for every three assignments in XX
+which agree on xx at least two agree on yy. This may
+appear somewhat counter-intuitive; but it is a straightforward
+consequence of the fact that, under our interpretation, =(x,y)∨=(x,y)\eqord(x,y)
+\lor \eqord(x,y) is to be read as “every possible state of
+things comes from one of two sets of states of things, and in both of
+them yy is a function of xx”. Since the union of functions
+is not in general a function, it comes to little surprise that
+disjunction in dependence logic is not indempotent.
+
+Finally, we consider the case of existential quantification. When is
+the expression ∃vψ\exists v \psi satisfied by a team? In order to
+answer this, we may begin by considering the interpretation of the
+restriction operator which, given any team XX, results in
+the team X∖vX_{\backslash v} obtained by removing the variable vv
+(if present) from all assignments s∈Xs \in X (and then, since XX
+is a set, by collapsing identical assignments). This could be
+understood as a forgetting operation, through which we delete
+all information about the value of vv—for example, because
+what we believed about this value was unreliable, or because this
+value has been altered. Now suppose that X∖v=Y∖vX_{\backslash v} =
+Y_{\backslash v}: then, in our interpretation, this means that the
+sets of possible states of things represented by XX and YY
+disagree at most with respect to the value of vv. Thus, if YY
+satisfies the condition ϕ\phi, we may say that XX would satisfy
+ϕ\phi if not for the value of yy, or, equivalently,
+that XX satisfies ∃vψ\exists v \psi. This justifies the following
+rule:
+
+
+TS-∃\exists:
+
+X⊨∃vψX \models \exists v \psi if and only if there exists some YY,
+over the variables of XX and vv, such that X∖v=Y∖vX_{\backslash v} =
+Y_{\backslash v} and Y⊨ψY \models \psi. 
+
+
+It is straightforward to verify that this is the case if and only if
+YY is of the form X[F/y]={s[a/y]:s∈X,a∈F(s)}X[F/y] = \{s[a/y] : s \in X, a \in F(s)\} for
+some function FF from assignments in XX to nonempty sets of
+elements of our model.
+
+It is worth pointing out here that it is not in general required by
+the above definition that XX and YY contain the same number of
+assignments: a single assignment in XX may well correspond to
+multiple assignments in YY, and—if vv is already a
+variable occurring in the assignments of XX—a single
+assignment in YY may also correspond to multiple assignments in
+XX.
+
+
+X=assignmentxs00s11⇒X[F/y]=assignmentxys′000s′101s′210 
+        X=
+    \begin{array}{l | c} 
+        \textbf{assignment} &amp; x\\
+        \hline
+        s_0 &amp; 0\\
+        s_1 &amp; 1
+\end{array}
+\Rightarrow
+        X[F/y]=
+    \begin{array}{l | c | c} 
+        \textbf{assignment} &amp; x &amp; y\\
+        \hline
+        s'_0 &amp; 0 &amp; 0\\
+        s'_1 &amp; 0 &amp; 1\\
+        s'_2 &amp; 1 &amp; 0
+\end{array}
+
+
+Table 3: XX and X[F/y]X[F/y] for
+F(s0)={0,1}F(s_0) = \{0,1\}, F(s1)={0}F(s_1) = \{0\}
+
+
+We will postpone an in-depth discussion of the properties of
+dependence logic to after the specification of its game-theoretic
+semantics. However, we conclude this section with the following three
+important consequences of the above-given rules:
+
+
+Locality:
+
+If the restrictions of XX and YY to the variables occurring free
+in ϕ\phi are the same then X⊨ϕX \models \phi if and only if Y⊨ϕY
+\models \phi. 
+
+Downwards closure:
+
+If X⊨ϕX \models \phi and Y⊆XY \subseteq X then Y⊨ϕY \models \phi.
+
+
+Empty set property:
+
+If ∅\emptyset is the team containing no assignments then
+∅⊨ϕ\emptyset \models \phi for all dependence logic formulas ϕ\phi.
+
+
+
+The locality principle, together with the conservativity principle
+mentioned at the beginning of this section, constitutes an important
+“sanity condition” that any variant and extension of
+dependence logic should satisfy. The same cannot be said about
+downwards closure and the empty set property, which—as we will
+see—are violated by variants of dependence logic.
+
+Finally, we need to define the truth of a dependence logic
+sentence with respect to a model. Since a sentence has no free
+variables, by the locality principle we have at once that either all
+nonempty teams satisfy it or no nonempty team satisfies it. This is
+analogous to the case of Tarski’s semantics, in which a sentence
+is either satisfied by all variable assignments or by none of them.
+Thus, we can define truth in the usual way:
+
+
+Truth in team semantics:
+
+A sentence ϕ\phi is true in a model MM if and only if M,{∅}⊨ϕM,
+\{\emptyset\} \models \phi, where {∅}\{\emptyset\} is the team
+containing only the empty assignment. In this case, we write that M⊨ϕM
+\models \phi. 
+
+2.1 Game-theoretic semantics
+
+As mentioned, the game-theoretic semantics for dependence logic is a
+variant of the imperfect-information semantics for
+independence-friendly logic, which is itself an adaptation of the
+game-theoretic semantics of first-order logic. We refer the reader to
+Väänänen 2007a for a formal, detailed definition of
+this semantics.
+
+In game-theoretic semantics, a sentence ϕ\phi and a model MM are
+made to correspond to a (usually two-player) game GM(ϕ)G_M(\phi). Then
+truth is defined in terms of the existence of winning
+strategies for one of the players (who, in this work, will be
+called simply “Player 00”): in other words, if
+σ0\sigma_0 is a (possibly non-deterministic) strategy for Player
+00 and Π(GM(ϕ),σ0)\Pi(G_M(\phi), \sigma_0) is the set of all plays which
+are compatible with σ0\sigma_0 then ϕ\phi is true if and only if
+every play in Π(GM(ϕ),σ0)\Pi(G_M(\phi), \sigma_0) is winning for Player
+00. It is possible to think of the game GM(ϕ)G_M(\phi) as a debate
+between two players, one of whom (Player 00) wishes to demonstrate
+that it is the case that ϕ\phi while the other (Player 11)
+wishes to demonstrate that it is not the case that ϕ\phi.
+
+As in the case of first-order logic and independence-friendly logic,
+in the imperfect-information game for dependence logic the positions
+of the game are pairs (θ,s)(\theta, s), where θ\theta is an instance
+of a subformula of ϕ\phi (that is, multiple occurrences of the same
+expression as a subformula of ϕ\phi are to be considered
+separately) and ss is a variable assignment over the model
+ MM.[1]
+ The initial position is (ϕ,∅)(\phi, \emptyset), where ∅\emptyset is
+the empty assignment; and a non-deterministic strategy σ0\sigma_0
+for Player 00 selects, for every disjunction and existential
+quantification, one or more successors of the current
+position according to the following rules:
+
+
+
+If the current position is of the form (ψ∨θ,s)(\psi \lor \theta, s) then
+its successors are (ψ,s)(\psi, s) and (θ,s)(\theta, s);
+
+
+If the current position is of the form (∃vψ,s)(\exists v \psi, s) then
+its successors are all positions (ψ,s′)(\psi, s') with s′∼vss' \sim_v
+s.
+
+
+Similarly, the successors of (ψ∧θ,s)(\psi \land \theta, s) are (ψ,s)(\psi,
+s) and (θ,s)(\theta, s), and the successors of (∀vψ,s)(\forall v \psi,
+s) are all positions of the form (ψ,s′)(\psi, s') for s′∼vss' \sim_v s;
+but a strategy for Player 00 cannot specify a successor for these
+positions, as it is assumed that Player 11 chooses which position
+follows them.
+
+A sequence of positions ¯ρ=ρ0ρ1…ρn\overline \rho = \rho_0 \rho_1 \ldots
+\rho_n is a play of GM(ϕ)G_M(\phi) if and only if
+
+
+
+ρ0=(ϕ,∅)\rho_0 = (\phi, \emptyset);
+
+
+For all i=1…ni = 1 \ldots n, ρi\rho_{i} is a successor of
+ρi−1\rho_{i-1}.
+
+
+If furthermore ρi+1∈σ0(ρi)\rho_{i+1} \in \sigma_0(\rho_i) whenever ρi\rho_i
+corresponds to a disjunction or an existential quantifier, we say that
+¯ρ\overline \rho respects the strategy σ0\sigma_0; and as
+mentioned, we write Π(GM(ϕ),σ0)\Pi(G_M(\phi), \sigma_0) for the set of all
+plays over GM(ϕ)G_M(\phi) which respect σ0\sigma_0.
+
+We say that a strategy σ0\sigma_0 is winning if every play
+¯ρ\overline \rho which ends in a position (α,s)(\alpha, s) where
+α\alpha is a first-order literal is such that the assignment ss
+satisfies α\alpha in the usual sense of Tarski’s semantics.
+Dependence atoms—and the plays which ends in dependence
+atoms—are of no relevance for deciding whether a given strategy
+is winning. However, they are used to specify whether a given strategy
+is uniform:
+
+
+Uniformity condition
+
+A strategy σ0\sigma_0 for GM(ϕ)G_M(\phi) is uniform if any two plays
+¯ρ,¯γ∈Π(GM(ϕ),σ0)\overline \rho, \overline \gamma \in \Pi(G_M(\phi), \sigma_0)
+which end in two positions (=(x1…xn,y),s)(\eqord(x_1 \ldots x_n, y), s),
+(=(x1…xn,y),s′)(\eqord(x_1 \ldots x_n, y), s') for the same instance of the
+dependence atom =(x1…xn,y)\eqord(x_1 \ldots x_n, y) we have that 
+If s(x1)…s(xn)=s′(x1)…s′(xn) then s(y)=s′(y).\textrm{If } s(x_1)\ldots s(x_n) = s'(x_1) \ldots s'(x_n) 
+\textrm{ then } s(y) = s'(y).
+
+
+Then we can define truth in game-theoretic semantics as follows:
+
+
+Truth in game-theoretic semantics:
+
+A sentence ϕ\phi is true in a model MM (with respect to
+game-theoretic semantics) if and only if Player 00 has a uniform
+winning strategy in GM(ϕ)G_M(\phi).
+
+
+It can be shown that this notion is equivalent to the notion of truth
+in team semantics. In fact, we can show more than this. If, for any
+team XX and formula ϕ\phi, the game GM,X(ϕ)G_{M,X}(\phi) is played
+as GM(ϕ)G_M(\phi) but with the initial position chosen randomly for
+every play from {(ϕ,s):s∈X}\{(\phi, s) : s \in X\}, then the following
+holds:
+
+
+Equivalence of GTS and team semantics:
+
+A formula ϕ\phi is satisfied by a team XX (with respect to a
+model MM) if and only if Player 00 has a uniform winning
+strategy in GM,X(ϕ)G_{M,X}(\phi).
+
+
+This result, as an aside, makes it clear why the team semantics of
+dependence logic satisfies the empty set property and the downwards
+closure property. Indeed, if X=∅X = \emptyset then every strategy for
+Player 00 in GM,X(ϕ)G_{M, X}(\phi) is trivially winning and uniform;
+and if X⊆YX \subseteq Y then any uniform winning strategy for Player
+00 in GM,X(ϕ)G_{M, X}(\phi) is also a uniform winning strategy for
+Player 00 in GM,Y(ϕ)G_{M, Y}(\phi).
+3. Properties
+3.1 Expressivity
+
+Sentence-wise, dependence logic is equivalent to the existential
+fragment Σ11\Sigma_1^1 of second-order logic. More precisely, it can
+be proved (Väänänen 2007a) that
+
+
+Sentence-wise equivalence of dependence logic and
+Σ11\Sigma_1^1:
+
+For every dependence logic sentence ϕ\phi there exists a
+Σ11\Sigma_1^1 sentence ϕ∗\phi^* such that 
+M⊨ϕ⇔M⊨ϕ∗ for all models M.\tag{6}\label{eq:DLESO} 
+M \models \phi \Leftrightarrow M \models \phi^* \textrm{ for all models } M.
+            
+
+Similarly, for every Σ11\Sigma_1^1 sentence ϕ∗\phi^* there exists a
+dependence logic sentence ϕ\phi such that (6\ref{eq:DLESO})
+holds.
+
+
+Since Fagin’s Theorem (Fagin 1974) shows that a property of
+finite models is definable in Σ11\Sigma_1^1 if and only if it is
+recognizable in polynomial time by a nondeterministic Turing machine
+(that is, if and only if it is in NPTIME), it follows at once that
+
+
+Dependence logic and NPTIME:
+
+For any dependence logic sentence ϕ\phi, the class of all finite
+models which satisfy it is in NPTIME. Furthermore,for any NPTIME class
+K\mathcal K of finite models, there exists a dependence logic
+sentence ϕ\phi such that M⊨ϕM \models \phi if and only if M∈KM \in
+\mathcal K.
+
+
+Another direct consequence of the equivalence between dependence logic
+and Σ11\Sigma_1^1 on the level of sentences is that the compactness
+theorem and the Löwenheim-Skolem theorem both hold for dependence
+logic too (Väänänen 2007a):
+
+
+Compactness:
+
+If a set Φ\Phi of finite dependence logic sentences is not
+satisfiable in any model then some finite subset Φ0⊆fΦ\Phi_0 \subseteq_f
+\Phi of it is already not satisfiable.
+
+Löwenheim-Skolem theorem:
+
+If a dependence logic sentence has an infinite model then it has
+models of all infinite cardinalities.
+
+
+However, matters are more delicate when it comes to formulas with free
+variables. Then it is possible to show (Kontinen &
+Väänänen 2009) that dependence logic corresponds to the
+downwards-closed fragment of existential second order
+logic:
+
+
+Team definability in dependence logic
+
+A set X\mathcal X of teams over a model MM and a set VV of
+variables is of the form {X:M,X⊨ϕ}\{X : M, X \models \phi\} for some
+dependence logic formula ϕ\phi, with free variables in VV, if
+and only if
+
+
+
+X\mathcal X is nonempty;
+
+
+X\mathcal X is downwards closed, that is, Y⊆X∈X⇒Y∈XY \subseteq X \in
+\mathcal X \Rightarrow Y \in \mathcal X;
+
+
+X\mathcal X is Σ11\Sigma_1^1-definable in MM, that is, there
+exists a Σ11\Sigma_1^1 sentence Ψ(R)\Psi(R), over the
+vocabulary of MM plus the new |V||V|-ary relation symbol RR,
+such that 
+X∈X if and only if M,Rel(X)⊨Ψ(R)X \in \mathcal X \textrm{ if and only if } M, \textrm{Rel}(X) \models \Psi(R)
+
+where Rel(X)\textrm{Rel}(X) is the |V||V|-ary relation {s(V):s∈X}\{s(V) : s \in
+X\} which corresponds to the team XX.
+
+
+3.2 Hierarchies in dependence logic
+
+In Durand & Kontinen 2012, the effect of restricting the number of
+dependent variables of dependence atoms or the number of universal
+quantifiers was examined. It was shown that both of these ways of
+defining fragments of dependence logic give rise of hierarchies:
+
+
+
+For all kk, let D(k−∀)\mathcal D(k-\forall) be dependence logic
+restricted to at most kk universal quantifiers and let D(k−dep)\mathcal
+D(k-dep) be dependence logic restricted to dependency atoms of the
+form =(→x,y)\eqord(\vec x, y) for |→x|≤k|\vec x| \leq k. Then 
+D(k−∀)<D(k+1−dep),D(k−∀)≤D(k−dep)≤D(k+1−dep)
+\begin{align*}
+\mathcal D(k-\forall) &amp;&lt; \mathcal D(k+1-dep),\\
+\mathcal D(k-\forall) &amp;\leq \mathcal D(k-dep) \leq \mathcal D(k+1 - dep)
+\end{align*}
+
+
+and
+D(k−∀)<D(2k+2−∀)
+\mathcal D(k-\forall) &lt; \mathcal D(2k + 2 - \forall)
+
+
+with respect to the expressive power of sentences.
+
+3.3 Negation in dependence logic
+
+So far, we assumed that all dependence logic expressions are in
+negation normal form, and that dependence atoms are never negated.
+Adding an explicit negation operator to the language of dependence
+logic, on the other hand, is somewhat problematic, owing to the fact
+that existential second order logic is not closed under negation.
+Indeed, the “obvious” negation rule 
+X⊨∼ϕ if and only if X⊭ϕX \models \sim \phi \textrm{ if and only if } X \not \models \phi
+
+greatly increases the expressive power of dependence logic, extending
+it to team logic (Väänänen 2007a,b), which is,
+in a very strong sense, equivalent to full second order logic
+(Kontinen & Nurmi 2009).
+
+A less strong, “dual” negation ¬\lnot can be defined in
+terms of de Morgan’s rules, ¬(ϕ∨[∧]ψ)≡(¬ϕ)∧[∨](¬ψ)\lnot(\phi \lor [\land] \psi)
+\equiv (\lnot \phi) \land [\lor] (\lnot \psi) and ¬(∃v[∀v]ϕ)≡∀v[∃v](¬ϕ)\lnot (\exists v
+[\forall v] \phi) \equiv \forall v [\exists v] (\lnot \phi), plus
+the law of double negation ¬¬ϕ≡ψ\lnot \lnot \phi \equiv \psi and the
+rule 
+X⊨¬=(→x,y) if and only if X=∅X \models {\lnot \eqord}(\vec x, y) \textrm{ if and only if } X = \emptyset
+
+for negations of dependence atoms (Väänänen 2007a,b).
+The resulting language is expressively equivalent to negation-free
+dependence logic, and, in fact, the description of dependence logic of
+Väänänen 2007a considers this negation as part of its
+language; however, as shown in Kontinen & Väänänen
+2011, the satisfaction conditions of a dependence logic formula and
+those of its negation have little connection to one another. More
+precisely:
+
+
+Dual negation and dependence logic:
+
+For any two dependence logic formulas ϕ\phi and ψ\psi such that
+ϕ∧ψ\phi \land \psi is not satisfiable, there exists a dependence
+logic formula θ\theta such that 
+M,X⊨θ if and only if M,X⊨ϕM, X \models \theta \textrm{ if and only if } M, X \models \phi
+
+and
+M,X⊨¬θ if and only if M,X⊨ψM, X \models \lnot \theta \textrm{ if and only if } M, X \models \psi
+
+for all models MM and teams XX.
+
+
+Thus, nothing in general can be said about the dual negation of
+ϕ\phi except that it is equivalent to some dependence logic
+expression which is not satisfied by any team which satisfies
+ϕ\phi. Since, as already mentioned, the law of the excluded middle
+fails in dependence logic, this is not a very informative property; in
+particular, it is possible to find in dependence logic (with dual
+negation) equivalent expressions with non-equivalent negations, like
+for example x≠x∧y≠yx \not = x \land y \not = y and
+¬=(x,y)\lnot\eqord(x,y).
+3.4 Truth, validity and proof systems in dependence logic
+
+Like independence friendly logic, dependence logic can define its own
+truth operator (Väänänen 2007a), that is, if for all
+formulas ϕ\phi we have that ⌈ϕ⌉\lceil \phi\rceil is the Gödel
+number of ϕ\phi then we can find a formula τ(x)\tau(x), with xx
+as its only free variable, such that 
+M⊨ϕ if and only if M⊨τ(⌈ϕ⌉)M \models \phi \textrm{ if and only if } M \models \tau(\lceil \phi \rceil)
+
+for all models MM which satisfy Peano’s axioms for natural
+numbers. This is not in contradiction with Tarski’s
+undefinability theorem, because dependence logic is not closed under
+contradictory negation.
+
+The problem of deciding whether a dependence logic sentence is valid
+(that is, true in all models) is non-arithmetical, and in fact
+complete with respect to the Π2\Pi_2 class of the Levy hierarchy.
+Nonetheless, the proof theory of dependence logic has been studied. In
+particular, in Kontinen & Väänänen 2013, a sound
+and complete proof system has been developed for the problem of
+finding the first order consequences of a dependence logic
+theory.
+4. Variants of dependence logic
+
+In this section, we will briefly summarize the properties of the most
+studied variants of dependence logic. Many such variants exist, and
+much work has been done on their classification and comparison. In
+this work, we will only mention those variants which are of special
+significance because of their relationship with dependence logic
+proper.
+4.1 Independence Logic
+
+Rather than extending first order logic with dependence atoms
+=(→x,y)\eqord(\vec x, y), independence logic (Grädel &
+Väänänen 2013) extends it with independence
+atoms →x⊥→z→y\vec x \mathop{\bot_{\vec z}} \vec y, whose intended
+interpretation is “for any possible choice of →z\vec z, the
+possible values of →x\vec x and →y\vec y are
+independent”—in other words, given any fixed choice of
+→z\vec z, knowing the value taken by →x\vec x would not convey any
+information about the value taken by →y\vec y. This is a notion of
+significant conceptual importance: for example, one may want to
+express that—if one does not know the encryption
+key—seeing the encrypted version of a message carries no
+information about the corresponding clear-text version. If xx
+represents the encrypted message and yy represents the plain-text
+one, then this corresponds to the condition x⊥yx \mathop{\bot} y,
+where →z\vec z in this case is empty. Similarly, if kk represents
+the key then x⊥kx \mathop{\bot} k represents the claim that the key
+cannot be inferred from the encrypted message; and the conjunction
+dependence atom =(k,x,y)\eqord(k, x, y) (which, as we will soon see, can
+be represented in independence logic) represents the claim that the
+plain-text message can be decoded given the encrypted message and the
+key.
+
+Formally, the satisfaction rule for independence atoms can be given as
+follows:
+
+
+TS-indep:
+
+M⊨X→x⊥→z→yM \models_X \vec x \mathop{\bot_{\vec z}} \vec y if and only if
+for all s,s′∈Xs, s' \in X with s(→z)=s′(→z)s(\vec z) = s'(\vec z) there exists a
+s″∈Xs'' \in X with s″(→z→x)=s(→x→z)s''(\vec z\, \vec x) = s(\vec{x}\, \vec{z}) and
+s″(→y)=s′(→y)s''(\vec y) = s'(\vec y).
+
+
+assignmentx1x2x3s0000s1011s2101s3110\begin{array}{l | c c c}
+            \textbf{assignment}&amp; \mathbf{x_1} &amp; \mathbf{x_2} &amp; \mathbf{x_3}\\
+            \hline
+            s_0 &amp; 0 &amp; 0 &amp; 0 \\
+            s_1 &amp; 0 &amp; 1 &amp; 1 \\
+            s_2 &amp; 1 &amp; 0 &amp; 1 \\
+            s_3 &amp; 1 &amp; 1 &amp; 0 
+    \end{array}
+
+
+Independence logic is strictly more expressive than dependence logic:
+indeed, it lacks the downwards closure property, and the dependence
+atom =(→x,y)\eqord(\vec x, y) is equivalent to the independence atom y⊥→xyy
+\mathop{\bot_{\vec x}} y. Furthermore, it can also be shown
+(Galliani & Väänänen 2014) that conditioned
+independence atoms →x⊥→y→z\vec x \mathop{\bot_{\vec y}} \vec z can be
+defined in terms of unconditional independence atoms →x⊥→y\vec x
+\mathop{\bot} \vec y.
+
+Sentence-wise, independence logic is also equivalent to existential
+second order logic Σ11\Sigma_1^1; but formula-wise, it is more
+expressive, and it was shown in Galliani 2012 that it can capture all
+nonempty Σ11\Sigma_1^1-definable team properties.
+4.2 Inclusion logic
+
+Inclusion logic (Galliani 2012, Galliani & Hella 2013) extends
+first-order logic with inclusion atoms →x⊆→y\vec x \subseteq
+\vec y, reminiscent of the inclusion dependencies of database
+theory. Its semantics is:
+
+
+TS-inc:
+
+M⊨X→x⊆→yM \models_X \vec x \subseteq \vec y if and only if for all s∈Xs \in
+X there exists a s′∈Xs' \in X such that s(→x)=s′(→y)s(\vec x) = s'(\vec
+y).
+
+
+assignmentx1x2s000s101s212s323\begin{array}{l | c c}
+            \textbf{assignment}&amp; \mathbf{x_1} &amp; \mathbf{x_2}\\
+            \hline
+            s_0 &amp; 0 &amp; 0 \\
+            s_1 &amp; 0 &amp; 1 \\
+            s_2 &amp; 1 &amp; 2 \\
+            s_3 &amp; 2 &amp; 3 
+    \end{array}
+
+
+Differently from dependence and independence logic, inclusion logic is
+(sentence-wise) strictly weaker than existential second order logic.
+In fact, it can be shown (Galliani & Hella 2013) to be equivalent
+to the positive fragment of greatest fixed point logic, and,
+therefore, to capture PTIME properties of models over finite ordered
+models. Formula-wise, inclusion logic is strictly weaker than
+independence logic but incomparable with dependence logic: indeed, the
+satisfiability conditions of its formulas are not downwards closed,
+but they are closed by unions in the sense that 
+M,Xi⊨ϕ∀i∈I⇒M,⋃iXi⊨ϕ.M, X_i \models \phi \forall i \in I \Rightarrow M, \bigcup_i X_i \models \phi.
+4.3 Team Logic
+
+Team logic (Väänänen 2007a,b; Kontinen & Nurmi
+2009) extends dependence logic by adding to it a contradictory
+negation ¬\lnot. It is equi-expressive with full second order
+logic, both in terms of definability of classes of models
+(Väänänen 2007b) and with respect to the classes of teams that team logic
+expressions can define with respect to a given model (Kontinen &
+Nurmi 2009).
+4.4 Intuitionistic Dependence Logic
+
+Intuitionistic dependence logic (Abramsky &
+Väänänen 2009; Yang 2013) extends dependence logic by
+adding an implication connective ϕ→ψ\phi \rightarrow \psi, whose
+satisfaction rules are given in team semantics by
+
+
+TS-→\rightarrow:
+
+X⊨ϕ→ψX \models \phi \rightarrow \psi if and only if for all subsets
+YY of XX, if Y⊨ϕY \models \phi then Y⊨ψY \models \psi.
+
+
+This operator is called the “intuitionistic implication”,
+because of the similarity between its semantics and the one of the
+implication operator in Kripke’s semantics for intuitionistic
+logic (Kripke 1965). Its interpretation in terms of belief is quite
+straightforward: if the assignments in XX represent the states
+of thing that some agent believes possible, then a subset YY
+of XX may represent the result of a belief update in which
+the agent rejects some previously believed possible states of thing,
+and ϕ→ψ\phi \rightarrow \psi states than any such update that would
+cause ϕ\phi to hold would also cause ψ\psi to hold. From this
+standpoint, this is a very natural concept which permits us to
+describe predictions about how such an agent’s overall belief
+state would react to belief updates.
+
+However, because of the second order universal quantification implicit
+in its semantics, this connective suffices to greatly increase the
+expressive complexity of the logic: in particular, as shown in Yang
+2013, any sentence of second order logic is equivalent to some
+sentence of intuitionistic dependence logic. Intuitionistic dependence
+logic retains the downwards closure property: if a team satisfies an
+intuitionistic dependence logic formula then so do all of its
+subsets.
+4.5 Propositional Dependence Logic
+
+The dependence and independence atoms considered so far express
+relationships between the possible values of variables in a
+set of assignments. However, the same notions of dependence and
+independence can be equally naturally be applied to proposition
+themselves, as it happens in natural language expression such as for
+instance “Whether he will or will not pass the course depends
+only on the content of his final exam”.
+
+Propositional Dependence Logic consider such atoms within the context
+of propositional logic. Propositional dependence logic teams are sets
+of valuations vv from propositional atoms p1…pnp_1 \ldots
+p_n to {T,F}\{T, F\}. Its semantic rules – and their
+justifications – mirror very closely the ones of first order
+team semantics, and the rule for dependence atoms is
+
+
+PTS-dep:
+
+X⊨=(p1…pn,q)X \models \eqord(p_1 \ldots p_n, q) if and only if any two
+valuations v1,v2∈Xv_1, v_2 \in X which agree on the values of p1…pnp_1
+\ldots p_n also agree on the value of qq.
+
+
+Many of the variants and generalizations of first order dependence
+logic can be lowered to the propositional level without any
+difficulty: thus, for example, it is possible to study the properties
+of propositional inclusion logic, propositional team logic,
+propositional intuitionistic dependence logic and so on.
+
+Whereas (first order) dependence logic is strictly more expressive
+than first order logic, propositional dependence logic is not more
+expressive than propositional logic, as it follows immediately from
+the fact that all propositional functions are expressible in
+propositional logic. There exists, however, a close relation between
+the teams of propositional dependence logic and the information
+states of inquisitive logic (Groenendijk 2009; Ciardelli
+& Roelofsen 2011), a semantic framework for the study of the
+notion of meaning and information exchange: in particular, the
+implication of inquisitive logic is exactly the same as the one of
+propositional intuitionistic dependence logic.
+
+Axiomatizations for propositional dependence logic and many of its
+extensions can be found in Yang & Väänänen
+2016.
+4.6 Modal Dependence Logic
+
+Modal dependence logic (Väänänen 2008) and its variants
+extend modal logic by adding to it the same dependence atoms
+=(p1…pn,q)\eqord(p_1 \ldots p_n, q) already considered in the case of
+propositional dependence logic.
+
+Its satisfaction conditions can be defined through a variant of team
+semantics in which teams are replaced by sets of possible
+worlds.
+
+Much research has investigated the complexity-theoretic properties of
+this logic, of its fragments, and its extensions (Ebbing, Lohmann,
+& Yang 2011; Ebbing & Lohmann 2012; Lohmann & Vollmer
+2013).
+5. Applications of dependence logic
+5.1 Dependence logic and database theory
+
+There is a straightforward connection between the teams of team
+semantics and the relations studied in relational database theory:
+given a team XX and a tuple of variables →v=v1…vk\vec v = v_1 \ldots
+v_k occurring in its assignments, it is possible to define the
+relation X(→v)={⟨s(v1),…,s(vn)⟩:s∈X}X(\vec v) = \{\langle s(v_1), \ldots, s(v_n)\rangle : s \in
+X\}. Furthermore, the dependency atoms studied in dependence logic
+and its variants are analogous to – and in many cases, derived
+from – dependencies considered in database theory such as
+functional dependencies (Väänänen 2007a),
+multivalued dependencies (Engström 2012), and
+inclusion and exclusion dependencies (Galliani 2012). The
+relationship between dependence logic and database theory contributed
+not only to the further development of dependence logic, but also to
+that of database theory: for instance, in Hannula & Kontinen 2016
+a finite axiomatization of the unrestricted implication problem for
+inclusion, functional, and embedded multivalued database-theoretic
+dependencies was found through the study of a similar problem within
+the context of team semantics.
+5.2 Dependence logic and belief representation
+
+As discussed in Yang 2014 and Yang & Väänänen 2016,
+there exists a close connection between (propositional) intuitionistic
+dependence logic and inquisitive logic (Ciardelli &
+Roelofsen, 2011), a framework for the study of meaning and information
+exchange between agents. More in general, the dependency atoms and
+connectives of studied in team semantics admit natural interpretations
+in terms of belief states and belief updates, as
+discussed in Galliani 2015. At this time, the exact nature of the
+relationship between such logics and dynamic-epistemic logic and its
+variants (Van Ditmarsch, van Der Hoek, & Kooi 2007) is largely
+unexplored, but there is ample reason to suspect further connections
+between these two areas of mathematical and philosophical logic.
+5.3 Dependence logic and Arrow’s theorem
+
+Arrow’s theorem (Arrow 1950) is a profoundly influential result
+of social choice theory that, in brief, shows that no voting system
+(that is, no system for converting rankings of individual preferences
+between alternatives into a global, societal-level preference ranking)
+exists that can satisfy three reasonable-sounding conditions,
+namely
+
+
+
+If every voter prefers AA to BB, the group as a whole prefers
+AA and BB;
+
+
+Whether the group as a whole prefers AA to BB or vice versa
+depends exclusively on every voter’s preferences concerning
+AA and BB, and not on their preferences concerning
+other possible alternatives;
+
+
+No single voter is a dictator, that is, the group’s
+preferences are not determined by the preferences of any single
+voter.
+
+
+As the wording itself suggests, the second and third conditions admit
+a natural reading in terms of dependence and independence: in fact, as
+shown in Pacuit & Yang 2016, Arrow’s theorem can be
+formalized in independence logic and proved in a suitable natural
+deduction system.
+5.4 Quantum team logic and Bell’s inequalities
+
+In Hyttinen, Paolini, & Väänänen 2015 a variant of
+propositional team logic, called quantum team logic, is
+introduced. In this formalism, teams are replaced by quantum
+teams, which differ from the ordinary teams of propositional team
+logic in that they allow for the values of certain variables to be
+indeterminate with respect to certain valuations and in that
+they allow for multiple instances of the same valuation (thus adding a
+quantitative aspect to team semantics). A semantics is then defined
+over quantum teams for a language that allows for the specification of
+inequalities concerning the probabilities of events, and a
+sound and complete proof system is developed for it; and finally, it
+is shown that Bell’s inequalities admit counterexamples
+in this systems, as they do according to the predictions of quantum
+mechanics and according to experimental evidence (Einstein, Podolsky,
+& Rosen 1935; Bell 1964; Aspect, Grangier, & Roger 1981),
+while they do not so in the classical version of this
+framework.

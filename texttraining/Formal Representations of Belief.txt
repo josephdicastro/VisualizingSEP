@@ -1,0 +1,2067 @@
+Epistemology is the study of knowledge and justified belief. Belief is
+thus central to epistemology. It comes in a qualitative form, as when
+Sophia believes that Vienna is the capital of Austria, and a
+quantitative form, as when Sophia’s degree of belief that Vienna
+is the capital of Austria is at least twice her degree of belief that
+tomorrow it will be sunny in Vienna. Formal epistemology, as opposed
+to mainstream epistemology (Hendricks 2006), is epistemology done in a
+formal way, that is, by employing tools from logic and mathematics.
+The goal of this entry is to give the reader an overview of the formal
+tools available to epistemologists for the representation of belief. A
+particular focus will be on the relation between formal
+representations of qualitative belief and formal representations of
+quantitative degrees of belief. 
+ 
+1. Preliminaries
+1.1 Formal Epistemology versus Mainstream Epistemology
+
+One can ask many questions about belief and the relation between
+belief and degrees of belief. Many of them can be asked and answered
+informally as well as formally. None of them can be asked or answered
+only informally in the sense that it would be logically
+impossible to ask or answer them formally — although it is, of
+course, often impossible for us to do so. Just think of how
+you would come up with a counterexample to the claim that some
+questions can be asked or answered only informally. You would list
+objects, and properties of these, and maybe even relations between
+them. But then you already have your formal model of the situation you
+are talking about. On the other hand, some epistemological questions
+can only be answered formally, as is illustrated by the following
+example (modeled after one given by Sven Ove Hansson in Hendricks
+& Simons 2005).
+
+Consider the following two proposals for a link between the
+qualitative notion of belief and the quantitative notion of degree of
+belief. According to the first proposal an agent should believe a
+proposition if and only if her degree of belief that the proposition
+is true is higher than her degree of belief that the proposition is
+false (Weatherson 2005). According to the second proposal (known as
+the Lockean thesis and discussed in section 2.6) an agent
+should believe a proposition if and only if her degree of belief for
+this proposition is higher than a certain threshold. We can ask
+formally as well as, maybe, informally under which conditions these
+two proposals are equivalent. However, we can answer this question
+only formally.
+
+This provides one reason why we should care about formal
+representations of belief, and formal epistemology in
+general. For different reasons why formal epistemology is important
+see Hájek (2006).
+1.2 The Objects of Belief
+
+Before we can investigate the relation between various beliefs and
+degrees of belief, we have to get clear about the relata of the
+(degree of) belief relation. Belief is commonly assumed to be a
+relation between a doxastic agent at a particular time to an object of
+belief. Degree of belief is commonly assumed to be a relation between
+a number, a doxastic agent at a particular time, and an object of
+belief. For the purposes of this entry we may focus on ideal doxastic
+agents who do not suffer from the computational and other physical
+limitations of ordinary doxastic agents such as people and computer
+programs. These ideal doxastic agents get to voluntarily decide what
+to believe (and to what degree of numerical precision); they never
+forget any of their (degrees of) beliefs; and they always believe
+believe all logical and conceptual truths (to a maximal degree). We
+may define an agent to be ideal just in case any action that
+is physically possible is an action that is possible for her. Such
+ideal agents ought to do exactly that which they ought to do if they
+could, where the ‘can’ in ‘could’ expresses
+possibility for the agent, not metaphysical possibility.
+
+It is difficult to state what the objects of belief are. Are they
+sentences, or propositions expressed by sentences, or possible worlds
+(whatever these are: see Stalnaker 2003), or something altogether
+different? The received view is that the objects of belief are
+propositions, i.e., sets of possible worlds or truth
+conditions. A more refined view is that the possible worlds comprised
+by those propositions are centered at an (ideal doxastic)
+agent at a given time (for an overview see Ninan 2010). Whereas a(n)
+(uncentered) possible world completely specifies a way the world might
+be, a centered possible world additionally specifies who one is when
+in a given (uncentered) possible world. In the latter case
+propositions are often called properties. Most
+epistemologists stay very general and assume only that there is a
+non-empty set WWW of possibilities such that exactly one element of
+WWW corresponds to the actual world. If the possibilities in WWW
+are centered, the assumption is that there is exactly one element of
+WWW that corresponds to your current time slice in the actual world
+(Lewis 1986 holds that this element not merely corresponds to, but is
+identical with, your current time slice in the actual world).
+
+Centered propositions are needed to adequately represent self-locating
+beliefs such as Sophia’s belief that she lives in Vienna, which
+may well be different from her belief that Sophia lives in Vienna
+(these two beliefs differ if Sophia does not believe that she is
+Sophia). Self-locating beliefs have important epistemological
+consequences (Elga 2000, Lewis 2001, Bostrom 2007, Meacham 2008,
+Bradley 2012, Titelbaum 2013, Halpern 2015), and centered propositions
+are ably argued by Egan (2006) to correspond to what philosophers have
+traditionally called secondary qualities (Locke 1690/1975).
+Lewis’ (1979, 133ff) claim that the difference between centered
+and uncentered propositions plays little role in how belief and other
+attitudes are formally represented, and postulated to behave in a
+rational way, can only be upheld for synchronic constraints on the
+statics of belief. For diachronic constraints on the dynamics of
+belief this claim is false, because the actual centered world (your
+current time slice in the actual uncentered world) is continually
+changing as time goes by. We will bracket these complications, though,
+and assume that, unless noted otherwise, the difference between
+centered and uncentered possibilities and propositions has no effect
+on the topic at issue.
+1.3 The Structure of the Objects of Belief
+
+Propositions have a certain set-theoretic structure. The set of all
+possibilities, WWW, is a proposition. Furthermore, if AAA and
+BBB are propositions, then so are the complement of AAA with
+respect to W,W∖AW,W∖AW, W \setminus A, as well as the intersection of AAA
+and B,A∩BB,A∩BB, A\cap B. In other words, the set of propositions is a
+(finitary) field or algebra AA\mathbf{A} over a
+non-empty set WWW of possibilities: a set that contains WWW and is
+closed under complementation and finite intersection. Sometimes the
+field AA\mathbf{A} of propositions is assumed to be closed not only
+under finite, but also under countable intersection. This means that
+A1∩…An∩…A1∩…An∩…A_{1}\cap \ldots A_{n} \cap \ldots is a proposition (an element of
+A)A)\mathbf{A}), if each of A1,…,An,…A1,…,An,…A_{1},\ldots, A_{n}, \ldots is. Such a
+field AA\mathbf{A} is called a σσ\sigma-field. Finally, a
+field AA\mathbf{A} is complete just in case the
+intersection ⋂B=⋂A∈BA⋂B=⋂A∈BA\bigcap \bB = \bigcap_{A\in \bB}A is in
+AA\mathbf{A}, for each subset BB\bB of AA\mathbf{A}.
+
+If Sophia believes today (to degree .55) that tomorrow it will be
+sunny in Vienna, but she does not believe today (to degree .55) that
+tomorrow it will not be not sunny in Vienna, propositions cannot be
+the objects of Sophia’s (degrees of) belief(s) today. That
+tomorrow it will be sunny in Vienna and that tomorrow it will not be
+not sunny in Vienna is one and the same proposition (if stated by the
+same agent at the same time). It is merely expressed by two different,
+but logically equivalent sentences. (Some philosophers think that
+propositions are too coarse-grained as objects of belief, while
+sentences are too fine-grained. They take the objects of belief to be
+structured propositions. These are usually taken to be more
+fine-grained than ordinary propositions, but less fine-grained than
+sentences. For an overview see the entry on
+ structured propositions.
+ Other philosophers think that ordinary propositions are just fine,
+but that they should be viewed as sets of epistemic or
+doxastic rather than metaphysical or
+logical possibilities.)
+
+Sometimes sentences of a formal language LL\mathbf{L} are taken to
+be the objects of belief. In this case the above mentioned
+set-theoretic structure translates into the following requirements:
+the tautological sentence ⊤⊤\top is a sentence of the language
+LL\mathbf{L}; and whenever αα\alpha and ββ\beta are sentences of
+LL\mathbf{L}, then so are the negation of αα\alpha, ¬α¬α\neg
+\alpha, as well as the conjunction of αα\alpha and ββ\beta,
+alpha∧βalpha∧βalpha \wedge \beta. However, as long as logically equivalent
+sentences are required to be assigned the same degree of belief
+— and all accounts considered here require this — the
+difference between taking the objects of beliefs to be sentences of a
+formal language LL\mathbf{L} and taking them to be propositions from
+a finitary field AA\mathbf{A} is mainly cosmetic. The reason is that
+each language LL\mathbf{L} induces a finitary field AA\mathbf{A}
+over the set of all models or classical truth value assignments for
+LL\mathbf{L}, ModLModLMod_{\mathbf{L}}: AA\mathbf{A} is the set of
+propositions over ModLModLMod_{\mathbf{L}} that are expressed by the
+sentences in LL\mathbf{L}. AA\mathbf{A} in turn induces a unique
+σσ\sigma-field, viz. the smallest σσ\sigma-field
+σ(A)σ(A)\sigma(\mathbf{A}) that contains AA\mathbf{A}
+(σ(A)σ(A)\sigma(\mathbf{A}) is the intersection of all σσ\sigma-fields
+that contain AA\mathbf{A} as a subset). AA\mathbf{A} also induces
+a unique complete field, viz. the smallest complete field
+γ(A)γ(A)\gamma(\mathbf{A}) that contains AA\mathbf{A}
+(γ(A)γ(A)\gamma(\mathbf{A}) is the intersection of all complete fields
+that contain AA\mathbf{A} as a subset). In the present case where
+AA\mathbf{A} is generated by ModLModLMod_{\mathbf{L}},
+γ(A)γ(A)\gamma(\mathbf{A}) is the powerset of ModLModLMod_{\mathbf{L}},
+℘(ModL)℘(ModL)\wp(Mod_{\mathbf{L}}).
+
+σ(A)σ(A)\sigma(\mathbf{A}), and hence γ(A)γ(A)\gamma(\mathbf{A}), will often
+contain propositions that are not expressed by a sentence of
+LL\mathbf{L}. For instance, let αiαi\alpha_{i} be the sentence
+“You should donate at least iii dollars to the Society for
+Exact Philosophy (SEP)”, for each natural number iii. Assume
+our language LL\mathbf{L} contains each αiαi\alpha_{i} and whatever
+else it needs to contain to be a language (e.g. the negation of each
+αiαi\alpha_{i}, ¬αi¬αi\neg \alpha_{i}, as well as the conjunction of any two
+αiαi\alpha_{i} and αjαj\alpha_{j}, αi∧αj).Lαi∧αj).L\alpha_{i}\wedge \alpha_{j}).
+\mathbf{L} generates the following finitary field AA\mathbf{A} of
+propositions: A={Mod(α)⊆ModL:α∈L}A={Mod(α)⊆ModL:α∈L}\mathbf{A} = \{Mod(\alpha) \subseteq Mod_{\mathbf{L}}:
+\alpha \in \mathbf{L}\}, where Mod(α)Mod(α)Mod(\alpha) is the set of models
+in which αα\alpha is true. AA\mathbf{A} in turn induces
+σ(A)σ(A)\sigma(\mathbf{A}). σ(A)σ(A)\sigma(\mathbf{A}) contains the proposition
+that there is no upper bound on the number of dollars you should
+donate to the SEP, Mod(α1)∩…∩Mod(αn)∩…Mod(α1)∩…∩Mod(αn)∩…Mod(\alpha_{1})\cap \ldots \cap Mod(\alpha_{n})
+\cap \ldots, while there is no sentence in LL\mathbf{L} that
+expresses this proposition.
+
+Hence, if we start with a language LL\mathbf{L}, we automatically
+get a field AA\mathbf{A} induced by LL\mathbf{L}. As we do not
+always get a language LL\mathbf{L} from a field AA\mathbf{A}, the
+semantic framework of propositions is more general than the syntactic
+framework of sentences.
+2. Subjective Probability Theory
+
+Subjective probability theory is the best developed account of degrees
+of belief. As a consequence, there is much more material to be
+presented here than in the case of other accounts. This section is
+structured into six subsections. The topics of these subsections will
+also be discussed in the sections on Dempster-Shafer theory,
+possibility theory, ranking theory, belief revision theory, and
+nonmonotonic reasoning. However, as there is less (philosophical)
+literature about these latter accounts, there will not be separate
+subsections there.
+2.1 The Formal Structure
+
+Sophia believes to degree .55 that tomorrow it will be sunny in
+Vienna. Normally degrees of belief are taken to be real numbers from
+the interval [0,1], but we will consider an alternative below. If the
+ideal doxastic agent is certain that a proposition is true, her degree
+of belief for this proposition is 1. If the ideal doxastic agent is
+certain that a proposition is false, her degree of belief for this
+proposition is 0. However, these are extreme cases. Usually we are not
+certain that a proposition is true. Nor are we usually certain that a
+proposition is false. That does not mean, though, that we are agnostic
+with respect to the question whether the proposition we are concerned
+with is true. Our belief that it is true may well be much stronger
+than our belief that it is false. Degrees of belief quantify this
+strength of belief.
+
+The dominant theory of degrees of belief is the theory of subjective
+probabilities (for an accessible exposition see Easwaran 2011a,
+2011b). On this view, degrees of belief simply follow the laws of
+probability. Here is the standard definition due to Kolmogorov (1956).
+Let AA\mathbf{A} be a field of propositions over a set WWW of
+possibilities. A function Pr: A→ℜ\mathbf{A} \rightarrow \Re from
+A\mathbf{A} into the set of real numbers, ℜ\Re, is a (finitely
+additive and non-conditional) probability measure on
+A\mathbf{A} if and only if for all propositions A,BA, B in
+A\mathbf{A}:
+Pr(A)≥0Pr(W)=1Pr(A∪B)=Pr(A)+Pr(B) if A∩B=∅\begin{align}
+\tag{1}
+  \Pr(A) &amp;\ge 0 \\
+\tag{2}
+  \Pr(W) &amp;= 1 \\
+\tag{3}
+ \Pr(A\cup B) &amp;= \Pr(A) + \Pr(B)
+ \text{ if } A\cap B = \varnothing
+\end{align}
+
+The triple ⟨W,A,Pr⟩\langle W, \mathbf{A}, \Pr\rangle is a (finitely
+additive) probability space. Suppose A\mathbf{A} is also
+closed under countable intersections (and thus a σ\sigma-field).
+Suppose Pr additionally satisfies, for all propositions A1,…An,…A_{1},
+\ldots A_{n}, \ldots in A\mathbf{A},
+Pr(A1∪…∪An∪…)=Pr(A1)+…+Pr(An)+… if Ai∩Aj=∅ whenever i≠j.\begin{align}
+\tag{4}
+\Pr(A_{1}\cup &amp;\ldots \cup A_{n} \cup \ldots)
+ = \Pr(A_{1}) + \ldots + \Pr(A_{n}) +\ldots \\
+ &amp;\text{ if } A_{i} \cap A_{j} = \varnothing \text{ whenever } i \ne j.
+\end{align}
+
+Then Pr is a σ\sigma- or countably additive probability
+measure on A\mathbf{A} (Kolmogorov 1956, ch. 2, actually gives a
+different but equivalent definition; see e.g. Huber 2007a, sct. 4.1).
+In this case ⟨W,A,Pr⟩\langle W, \mathbf{A}, \Pr\rangle is a σ\sigma- or
+countably additive probability space.
+
+A probability measure Pr on A\mathbf{A} is regular just in
+case Pr(A)>0\Pr(A) \gt 0 for every non-empty or consistent proposition
+AA in A\mathbf{A}. Let APr\mathbf{A}^{\Pr} be the set of all
+propositions AA in A\mathbf{A} with Pr(A)>0\Pr(A) \gt 0. The
+conditional probability measure Pr(⋅∣−):A×APr→ℜ\Pr(\cdot\mid -):
+\mathbf{A}\times \mathbf{A}^{\Pr} \rightarrow \Re on A\mathbf{A}
+(based on the non-conditional probability measure Pr on
+A)\mathbf{A}) is defined for all pairs of propositions AA in
+A\mathbf{A} and BB in APr\mathbf{A}^{Pr} by the ratio
+Pr(A∣B)=Pr(A∩B)Pr(B).\tag{5}
+\Pr(A\mid B) = \frac{\Pr(A\cap B)}{\Pr(B)}.
+
+
+(Kolmogorov 1956, ch. 1, §4). The domain of the second argument
+place of Pr(⋅∣−)\Pr(\cdot \mid -) is restricted to APr\mathbf{A}^{Pr},
+since the ratio Pr(A∩B)/Pr(B)\Pr(A\cap B)/\Pr(B) is not defined if Pr(B)=0\Pr(B) =
+0. Note that Pr(⋅∣B)\Pr(\cdot\mid B) is a probability measure on
+A\mathbf{A}, for every proposition BB in APr\mathbf{A}^{Pr}.
+Some authors take conditional probability measures Pr(⋅,given −):A×(A∖{∅})→ℜ\Pr(\cdot,
+\text{given } -): \mathbf{A}\times(\mathbf{A}\setminus \{\varnothing
+\}) \rightarrow \Re as primitive and define (non-conditional)
+probability measures in terms of them as Pr(A)=Pr(A\Pr(A) = \Pr(A, given
+W)W) for all propositions AA in A\mathbf{A} (see Hájek
+2003). Conditional probabilities are usually assumed to be
+Popper-Rényi measures (Popper 1955, Rényi 1955,
+Rényi 1970, Stalnaker 1970, Spohn 1986). Spohn (2012, 202ff)
+critizices Popper-Rényi measures for their lack of a complete
+dynamics, a feature already pointed out by Harper (1976), and for
+their lack of a reasonable notion of independence. Relative
+probabilities (Heinemann 1997, Other Internet Resources) are claimed
+not to suffer from these two shortcomings.
+2.2 Interpretations
+
+What does it mean to say that Sophia’s subjective probability
+for the proposition that tomorrow it will be sunny in Vienna equals
+.55? This is a difficult question. Let us first answer a different
+one. How do we measure Sophia’s subjective probabilities? On one
+account Sophia’s subjective probability for AA is measured by
+her betting ratio for AA, i.e., the highest price she is
+willing to pay for a bet that returns $1 if AA, and $0 otherwise.
+On a slightly different account Sophia’s subjective probability
+for AA is measured by her fair betting ratio for AA,
+i.e., that number r=b/(a+b)r = b/(a + b) such that she considers the
+following bet to be fair: $aa if AA, and $−b-b otherwise (a,b≥0(a,
+b \ge 0 with inequality for at least one). As we may say it: Sophia
+considers it to be fair to bet you bb to aa that AA.
+
+It need not be irrational for Sophia to be willing to bet you $5.5 to
+$4.5 that tomorrow it will be sunny in Vienna, but not be willing to
+bet you $550,000 to $450,000 that this proposition is true. This
+reveals one assumption of the measurement of probabilistic degrees of
+belief in terms of (fair) betting ratios: the ideal doxastic agent is
+assumed to be neither risk averse nor risk prone. Gamblers in the
+casino are risk prone: they pay more for playing roulette than the
+fair monetary value according to reasonable subjective probabilities
+(this may be perfectly rational if the additional cost is what the
+gambler is willing to spend on the thrill she gets out of playing
+roulette). Sophia, on the other hand, is risk averse when she refuses
+to bet you $100,000 to $900,000 that it will be sunny in Vienna
+tomorrow, while she is happy to bet you $5 to $5 that this proposition
+is true. This may be perfectly rational as well: as a moderately
+wealthy philosopher, she might lose her standard of living along with
+this bet. Note that it does not help to say that Sophia’s fair
+betting ratio for AA is that number r=b/(a+b)r = b/(a + b) such that she
+considers the following bet to be fair: $1−r=a/(a+b)1 - r = a/(a + b) if
+AA, and $−r=−b/(a+b)-r = -b/(a + b) otherwise (a,b≥0(a, b \ge 0 with
+inequality for at least one). Just as stakes of $1,000,000 may be too
+high for the measurement to work, stakes of $1 may be too low.
+
+Another assumption is that the agent’s (fair) betting ratio for
+a proposition is independent of the truth value of this proposition.
+Obviously we cannot measure Sophia’s subjective probability for
+the proposition that she will be a billionaire by the end of the week
+by offering her a bet that returns $1 if she will, and $0 otherwise.
+Sophia’s subjective probability for being a billionaire by the
+end of the week will be fairly low. However, assuming her to be
+rational and that being abillionaire is something she desires, her
+betting ratio for this proposition will be fairly high.
+
+Ramsey (1926) avoids the first assumption by using utilities instead
+of money. He avoids the second assumption by presupposing the
+existence of an “ethically neutral” proposition (a
+proposition whose truth or falsity does not affect the agent’s
+utilities) which the agent takes to be just as likely to be true as
+she takes it to be false. See Section 3.5 of the entry on
+ interpretations of probability.
+
+Let us return to our question of what it means for Sophia to assign a
+certain subjective probability to a given proposition. It is one thing
+for Sophia to be willing to bet at particular odds or to consider
+particular odds as fair. It is another thing for Sophia to have a
+subjective probability of .55 that tomorrow it will be sunny in
+Vienna. Sophia’s subjective probabilities are measured by, but
+not identical to her (fair) betting ratios. The latter are
+operationally defined and observable. The former are unobservable,
+theoretical entities that, following Eriksson & Hájek
+(2007), we should take as primitive.
+2.3 Justifications
+
+The theory of subjective probabilities is not an adequate description
+of people’s doxastic states (Kahneman & Slovic & Tversky
+1982). It is a normative theory that tells us how an ideal
+doxastic agent’s degrees of belief should behave. The
+thesis that an ideal doxastic agent’s degrees of belief should
+obey the probability calculus is known as probabilism. So,
+why should such an agent’s degrees of belief obey the
+probability calculus?
+
+The Dutch Book Argument provides an answer to this question.
+(Cox’s theorem, Cox 1946, and the representation theorem of
+measurement theory, Krantz & Luce & Suppes & Tversky 1971,
+provide two further answers. For criticism of the latter see Meacham
+& Weisberg 2011.) On its standard, pragmatic reading, the Dutch
+Book Argument starts with a link between degrees of belief and betting
+ratios. The second premise says that it is (pragmatically) defective
+to accept a series of bets which guarantees a loss. Such a series of
+bets is called a Dutch Book (hence the name ‘Dutch Book
+Argument’). The third ingredient is the Dutch Book Theorem. The
+standard, pragmatic version says that an agent’s betting ratios
+obey the probability calculus if and only if an agent who has these
+betting ratios cannot be Dutch Booked (i.e., presented a series of
+bets each of which is acceptable according to these betting ratios,
+but their combination guarantees a loss). From this it is inferred
+that it is (doxastically) defective to have degrees of belief that do
+not obey the probability calculus. This argument would be valid only
+if the link between degrees of belief and betting ratios were identity
+(in which case there would be no difference between pragmatic and
+doxastic defectiveness) — and we have already seen that it is
+not.
+
+Hence there is a depragmatized Dutch Book Argument (cf. Armendt 1993,
+Christensen 1996, Ramsey 1926, Skyrms 1984). From a link between
+degrees of belief and fair betting ratios and the assumption that it
+is (doxastically) defective to consider a Dutch Book as fair, it is
+inferred that it is (doxastically) defective to have degrees of belief
+that violate the probability calculus. The version of the Dutch Book
+Theorem that licenses this inference says that an agent’s fair
+betting ratios obey the probability calculus if and only if the agent
+never considers a Dutch Book as fair. The depragmatized Dutch Book
+Argument is a more promising justification for probabilism. See,
+however, Hájek (2005; 2008).
+
+Joyce (1998) attempts to vindicate probabilism by considering the
+accuracy of degrees of belief. The basic idea here is that a
+degree of belief function is (doxastically) defective if there exists
+an alternative degree of belief function that is more accurate in each
+possible world. The accuracy of a degree of belief b(A)b(A) in a
+proposition AA in a world ww is identified with the distance
+between b(A)b(A) and the truth value of AA in ww, where 1
+represents truth and 0 represents falsity. For instance, a degree of
+belief up to 1 in a true proposition is more accurate, the higher it
+is — and perfectly accurate if it equals 1. The overall accuracy
+of a degree of belief function bb in a world ww is then
+determined by the accuracy of the individual degrees of belief
+b(A)b(A). Joyce is able to prove that, given some conditions on how to
+measure distance or inaccuracy, a degree of belief function obeys the
+probability calculus if and only if there exists no alternative degree
+of belief function that is more accurate in each possible world (the
+only-if-part is not explicitly mentioned in Joyce 1998, but needed for
+the argument to work and present in Joyce 2009). Therefore, degrees of
+belief should obey the probability calculus.
+
+The objection, known as Bronfman’s objection, that has
+attracted most attention starts by noting that Joyce’s
+conditions on measures of inaccuracy do not determine a single
+measure, but rather a whole set of such measures. This would
+strengthen rather than weaken Joyce’s argument, were it not for
+the fact that these measures differ in their recommendations as to
+which alternative degree of belief function a non-probabilistic degree
+of belief function should be replaced by. All of Joyce’s
+measures of inaccuracy agree that an agent whose degree of belief
+function violates the probability axioms should adopt a probabilistic
+degree of belief function which is more accurate in each possible
+world. However, these measures may differ in their recommendation as
+to which particular probability measure the agent should adopt. In
+fact, for each possible world, following the recommendation of one
+measure will leave the agent off less accurate according to some other
+measure. Why, then, should the ideal doxastic agent move from her
+non-probabilistic degree of belief function to a probability measure
+in the first place? Other objections are articulated in Maher (2002)
+and, more recently, in Easwaran & Fitelson (2012) (see, however,
+the replies by Joyce ms (Other Internet Resources) and Pettigrew
+2013). Joyce (2009) responds to some of these objections. Leitgeb
+& Pettigrew (2010a; 2010b) present conditions that narrow down the
+set of measures of inaccuracy to the so-called quadratic scoring rules
+of the form λ(b(A)−w(A))2\lambda (b(A) - w(A))^{2}, where w(A)w(A) is 1 if
+AA is true in ww, and 0 otherwise. This enables them to escape
+Bronfman’s objection.
+2.4 Update Rules
+
+We have discussed how to measure and interpret subjective
+probabilities, and why degrees of belief should be subjective
+probabilities. It is of particular epistemological interest how to
+update subjective probabilities when new information is received.
+Whereas axioms 1–5 of the probability calculus are synchronic
+conditions on an agent’s degree of belief function, update rules
+are diachronic conditions that tell us how to revise our
+subjective probabilities when we receive new information of a certain
+format. If the new information comes in form of a certainty,
+probabilism is extended by
+
+Strict Conditionalization
+
+If evidence comes only in the form of certainties (that is,
+propositions of which you become certain), if Pr: A→ℜ\mathbf{A}
+\rightarrow \Re is your subjective probability at time tt, and if
+between tt and t′t' you become certain of A∈AA \in \mathbf{A}
+and no logically stronger proposition in the sense that your new
+subjective probability for AA, but for no logically stronger
+proposition, is 1 (and your subjective probabilities are not directly
+affected in any other way such as forgetting etc.), then your
+subjective probability at time t′t' should be Pr(⋅∣A)\Pr(\cdot \mid A).
+
+
+Strict conditionalization thus says that the agent’s new
+subjective probability for a proposition BB after becoming certain
+of AA should equal her old subjective probability for BB
+conditional on AA.
+
+Two questions arise. First, why should we update our subjective
+probabilities according to strict conditionalization? Second, how
+should we update our subjective probabilities when the new information
+is of a different format and we do not become certain of a
+proposition, but merely change our subjective probabilities for
+various propositions? Jeffrey (1983a) answers the second question by
+what is now known as Jeffrey conditionalization. The
+propositions whose (non-conditional) probabilities change as a result
+of the evidential experience are called evidential
+propositions. Roughly, Jeffrey conditionalization says that the
+ideal doxastic agent should keep fixed her “inferential
+beliefs,” that is, the probabilities of all hypotheses
+conditional on any evidential proposition.
+
+Jeffrey Conditionalization
+
+If evidence comes only in form of new degrees of belief for the
+elements of a partition, if Pr: A→ℜ\mathbf{A} \rightarrow \Re is your
+subjective probability at time tt, and if between tt and t′t'
+your subjective probabilities in the mutually exclusive and jointly
+exhaustive propositions Ai∈AA_{i} \in \mathbf{A} are directly affected
+and change to pi∈[0,1]p_{i} \in [0,1] with ∑ipi=1\sum_{i} p_{i} = 1, and the
+positive part of your subjective probability is not directly affected
+on any superset of the partition {Ai}\{ A_{i}\} (and your subjective
+probabilities are not directly affected in any other way such as
+forgetting etc.), then your subjective probability at time t′t'
+should be Pr′(⋅)=∑iPr(⋅∣Ai)pi\Pr'(\cdot) = \sum_{i} \Pr(\cdot \mid A_{i}) p_{i}. 
+
+Jeffrey conditionalization thus says that the agent’s new
+subjective probability for BB, after her subjective probabilities
+for the elements AiA_{i} of a partition have changed to pip_{i},
+should equal the weighted sum of her old subjective probabilities for
+BB conditional on the AiA_{i}, where the weights are the new
+subjective probabilities pip_{i} for the elements of the
+partition.
+
+One answer to the first question is the Lewis-Teller Dutch Book
+Argument (Lewis 1999, Teller 1973). Its extension to Jeffrey
+conditionalization is presented in Armendt (1980) and discussed in
+Skyrms (1987). For more on diachronic coherence see Skyrms (2006).
+Leitgeb & Pettigrew (2010b) present a gradational accuracy
+argument for strict conditionalization (see also Greaves & Wallace
+2006) as well as an argument for an alternative to Jeffrey
+conditionalization (for an overview see the excellent entry on
+ epistemic utility arguments for probabilism).
+ Other philosophers have provided arguments against strict (and
+Jeffrey) conditionalization: van Fraassen (1989) holds that
+rationality does not require the adoption of a particular update rule
+(but see Hájek 1998 and Kvanvig 1994). Arntzenius (2003) uses,
+among others, the “shifting” nature of self-locating
+beliefs to argue against strict conditionalization as well as against
+van Fraassen’s reflection principle (van Fraassen 1995;
+for an illuminating discussion of the reflection principle and Dutch
+Book arguments see Briggs 2009a). The second feature used by
+Arntzenius (2003), called “spreading”, is not special to
+self-locating beliefs. Weisberg (2009) argues that Jeffrey
+conditionalization cannot handle a phenomenon he terms perceptual
+undermining.
+2.5 Ignorance
+
+In subjective probability theory complete ignorance of the ideal
+doxastic agent with respect to a particular proposition AA is
+modeled by the agent’s having a subjective probability of .5 for
+AA as well as its complement W∖AW \setminus A. More generally, an
+agent with subjective probability Pr is said to be ignorant
+with respect to the partition {A1,…,An}\{A_{1},\ldots,A_{n}\} if and only
+if Pr(Ai)=1/n\Pr(A_{i}) = 1/n. The principle that requires an ideal doxastic
+agent to equally distribute her subjective probabilities in this
+fashion whenever, roughly, the agent lacks evidence of the relevant
+sort is known as the principle of indifference. (Leitgeb
+& Pettigrew 2010b also present a condition that allows them to
+give a gradational accuracy argument for the principle of
+indifference.) It leads to contradictory results if the partition in
+question is not held fixed (see, for instance, the discussion of
+Bertrand’s paradox in Kneale 1949). A more cautious
+version of this principle that is also applicable if the partition
+contains countably infinitely many elements is the principle of
+maximum entropy. It requires the agent to adopt one of those
+probability measures Pr as her degree of belief function over (the
+σ\sigma-field generated by) the countable partition {Ai}\{A_{i}\}
+that maximize the quantity −∑iPr(Ai)logPr(Ai)-\sum_{i} \Pr(A_{i}) \log \Pr(A_{i}).
+The latter is known as the entropy of Pr with respect to the
+partition {Ai}\{A_{i}\}. See Paris (1994).
+
+Suppose Sophia has hardly any enological knowledge. Her subjective
+probability for the proposition that a Schilcher, an Austrian wine
+specialty, is a white wine might reasonably be .5, as might be her
+subjective probability that a Schilcher is a red wine. Contrast this
+with the following case. Sophia knows for sure that a particular coin
+is fair. That is, Sophia knows for sure that the objective chance of
+the coin landing heads as well as its objective chance of landing
+tails each equal .5. Her subjective probability for the proposition
+that the coin will land heads on the next toss might reasonably be .5.
+Although Sophia’s subjective probabilities are alike in these
+two scenarios, there is an important epistemological difference. In
+the first case a subjective probability of .5 represents complete
+ignorance. In the second case it represents substantial knowledge
+about the objective chances. (The principle that, roughly, one’s
+prior subjective probabilities conditional on the objective chances
+should equal the objective chances is called the principal
+principle by Lewis 1980. For a recent discussion see Briggs
+2009b.)
+
+Examples like these suggest that subjective probability theory does
+not provide an adequate normative account of doxastic states, because
+it does not allow one to distinguish between ignorance and knowledge
+about chances. Interval-valued probabilities (Kyburg & Teng 2001,
+Levi 1980, van Fraassen 1990, Walley 1991) can be seen as a reply to
+this objection without giving up the probabilistic framework. If the
+ideal doxastic agent is certain of the objective chances she continues
+to assign sharp probabilities as usual. However, if the agent is
+ignorant with respect to a proposition AA she will not assign it a
+subjective probability of .5 (or any other sharp value, for that
+matter). Rather, she will assign AA an entire interval [a,b]⊆a, b]
+\subseteq [0,1] such that she considers any number in [a,ba, b] to
+be a legitimate subjective probability for AA. The size b−ab - a
+of the interval [a,ba, b] reflects her ignorance with respect to
+AA, that is, with respect to the partition {A,W∖A}\{A, W \setminus
+A\}. (As suggested by the last remark, if [a,ba, b] is the
+interval-probability for AA, then [1−b,1−a1 - b, 1 - a] is the
+interval-probability for W∖AW \setminus A.) If Sophia were the
+enological ignoramus that we have previously imagined her to be, she
+would assign the interval [0,1] to the proposition that a Schilcher is
+a white wine. If she is certain that the coin she is about to toss has
+an objective chance of .5 of landing heads and she subscribes to the
+principal principle, [.5,.5] will be the interval she assigns to the
+proposition that the coin will land heads on the next toss.
+
+Interval-valued probabilities are represented as convex sets of
+probability measures (a set of probability measures is convex
+just in case the mixture xPr1(⋅)+(1−x)Pr2(⋅)x\Pr_{1}(\cdot) + (1 - x)\Pr_{2}(\cdot)
+of any two probability measures Pr1,Pr2\Pr_{1}, \Pr_{2} in the set is
+also in the set, where xx is a real number from the unit interval
+[0,1]). Updating a set of probability measures is done by updating the
+individual probability measures in the set. Weatherson (2007) further
+generalizes this model by allowing evidence to delete some probability
+measures from the original set. The idea is that one may learn not
+only that various facts obtain (in which case one conditionalizes the
+various probability measures on the evidence received), but also that
+various evidential or inferential relationships hold, which are
+represented by the conditional probabilities of the hypotheses
+conditional on the data. Just as factual evidence is used to delete
+worlds, “inferential” evidence is used to delete
+probability measures. Among others, this allows Weatherson (2007) to
+deal with one form of the so-called problem of old evidence
+(Glymour 1980) that is related to the problem of logical omniscience
+(Garber 1983, Jeffrey 1983b, Niiniluoto 1983).
+2.6 Qualitative Belief
+
+When epistemologists say that knowledge implies belief (see the entry
+on
+ epistemology),
+ they use a qualitative notion of belief that does not admit of
+degrees (except in the trivial sense that there is belief, disbelief,
+and suspension of judgment). The same is true for philosophers of
+language when they say that a normal speaker, on reflection, sincerely
+asserts ‘AA’ only if she believes that AA (Kripke
+1979). This raises the question whether the notion of belief can be
+reduced to the notion of degree of belief. A simple thesis, known as
+the Lockean thesis, says that one should believe a
+proposition AA just in case one’s degree of belief for AA
+is sufficiently high (‘should’ takes wide scope over
+‘just in case’). Of course, the question is which
+threshold is sufficiently high. We do not want to require that one
+only believe those propositions whose truth one assigns subjective
+probability 1 — especially if we follow Carnap (1962) and
+Jeffrey (2004) and require every subjective probability to be regular
+(otherwise we would not be allowed to believe anything except the
+tautology). We want to take into account our fallibility, the fact
+that our beliefs often turn out to be false.
+
+Given that degrees of belief are represented as subjective
+probabilities, this means that the threshold for belief should be
+sufficiently large, but smaller than 1. In terms of subjective
+probabilities, the Lockean thesis says that an ideal doxastic agent
+with subjective probability Pr: A→ℜ\mathbf{A} \rightarrow \Re
+believes A∈AA \in \mathbf{A} just in case Pr(A)>1−ε\Pr(A) \gt 1 -
+\varepsilon for some ε∈\varepsilon \in (0,1]. (ε(\varepsilon is
+intended to be a number smaller than 1/2, but the argument to follow
+holds for any positive number in the unit interval.) This, however,
+leads to the lottery paradox (Kyburg 1961, and, much clearer,
+Hempel 1962; a different paradox that does not depend on degrees of
+belief is Makinson 1965’s preface paradox). For every
+threshold ε∈\varepsilon \in (0,1] there is a finite partition
+{A1,…,An}\{A_{1},\ldots, A_{n}\} of A\mathbf{A} and a reasonable
+subjective probability Pr: A→ℜ\mathbf{A} \rightarrow \Re such that
+Pr(Ai)>1−ε\Pr(A_{i}) \gt 1 - \varepsilon for all i=1,…,ni = 1, \ldots ,n, but
+Pr(A1∩…∩An)<1−ε\Pr(A_{1}\cap \ldots \cap A_{n}) \lt 1 - \varepsilon. For
+instance, let ε=\varepsilon = .02 and consider a lottery with 100
+tickets that is known for sure to be fair and such that exactly one
+ticket will win. Then it is reasonable, for every ticket i=1,…,100i =
+1,\ldots , 100, to assign a subjective probability of 1/100 to the
+proposition that ticket ii will win. We thus believe of each single
+ticket that it will lose, because Pr(W∖Ai)=.99>1−.02\Pr(W \setminus A_{i}) = .99 \gt 1
+- .02. Yet we also know for sure that exactly one ticket will win.
+So Pr(A1∪…∪An)=1>1−.02\Pr(A_{1}\cup \ldots \cup A_{n}) = 1 \gt 1 - .02. We therefore
+believe both that at least one ticket will win (A1∪…∪An)(A_{1}\cup \ldots
+\cup A_{n}) as well as of each individual ticket that it will not
+win (W∖A1,…,W∖An)(W \setminus A_{1}, \ldots ,W \setminus A_{n}). Together these
+n+1n+1 beliefs form a belief set that is inconsistent in the sense
+that its intersection is empty, ⋂{A1∪…∪An,W∖A1,…,W∖An}=∅\bigcap \{A_{1}\cup \ldots \cup
+A_{n}, W \setminus A_{1}, \ldots, W \setminus A_{n}\} = \varnothing.
+Yet consistency (and deductive closure, which is implicit in taking
+propositions rather than sentences as the objects of belief) have been
+regarded as the minimal requirements on a belief set ever since
+Hintikka (1961).
+
+The lottery paradox has led some people to reject the notion of
+qualitative belief altogether (Jeffrey 1970), whereas others have been
+led to the idea that belief sets need not be deductively closed (Foley
+1992; Foley 2009; see also Hawthorne 2004). Still others have turned
+the analysis on its head and elicit a context-dependent threshold
+parameter ε\varepsilon from the agent’s belief set (Hawthorne
+and Bovens 1999; Hawthorne 2009). Another view is to take the lottery
+paradox at face value and postulate two doxastic attitudes towards
+propositions, viz. beliefs and degrees of beliefs, that are not
+reducible to each other. Frankish (2004; 2009) defends a particular
+version of this view (in addition, he distinguishes between a mind,
+where one unconsciously entertains beliefs, and a supermind, where one
+consciously entertains beliefs). Kroedel (2012) suggests to avoid the
+lottery paradox by considering justification a form of permissibility:
+an agent’s high subjective probability for a given proposition
+is not sufficient for believing this proposition, but merely for the
+permissibility of believing this proposition. The paradox is avoided,
+because being permitted to believe AA and being permitted to
+believe BB does not imply that one is permitted to believe the
+conjunction or intersection A∩BA\cap B. For further discussion on the
+relation between qualitative belief and probabilistic degrees of
+belief see Christensen (2004), Kaplan (1996), and Maher (2006). For a
+very different approach to combining qualitative notions from
+traditional epistemology with probabilistic notions see Moss (2013),
+who defends the thesis that properties of subjective probabilities can
+constitue knowledge.
+
+Leitgeb (2013) proposes that an agent believes a proposition BB if
+and only if there is a proposition CC logically implying BB such
+that the agent’s subjective probabilities for CC conditional
+on any AA consistent with CC are above a certain threshold not
+smaller than 1/2. (Leitgeb 2014 relativizes this notion of belief to a
+question or partition. This makes it easier for an agent to have
+beliefs she is not certain of, but it has surprising consequences.
+Suppose an agent believes she has hands relative to the question of
+whether or not she has hands. This agent cannot lose her belief that
+she has hands relative to the question if she has hands or if she
+merely has the delusion of having hands or if she does not have hands
+in some other way. However, this agent can easily lose her belief that
+she has hands relative to the question if she has clean hands or if
+she has dirty hands or if she has no hands.) Leitgeb (2013)’s
+notion of belief satisfies the AGM axioms of belief revision presented
+below. However, as Lin & Kelly (2012) show, there is no
+“sensible” belief revision method that tracks
+conditionalization and satisfies these AGM axioms. This means that
+what an agent ends up believing according to Leitgeb (2013) and any
+other sensible proposal satisfying the AGM axioms if she first
+conditionalizes her subjective probabilities on evidence EE and
+then extracts her beliefs will in general not coincide with what she
+ends up believing if she first extracts her beliefs from her
+subjective probabilities and then revises those beliefs by evidence
+EE. For a different critique see Staffel (2015).
+
+Lin & Kelly (2012) consider a mutually exclusive and jointly
+exhaustive set of alternative propositions. They suggest that an agent
+considers such an alternative proposition to be more plausible than
+another alternative proposition if and only if her subjective
+probability for the former is sufficiently higher than her
+subjective probability for the latter. According to them, the agent
+believes a proposition if and only if this proposition is implied by
+the disjunction of the most plausible alternative propositions. The
+agent believes a proposition after revision by evidence EE if and
+only if this proposition is implied by the disjunction of the most
+plausible alternative propositions compatible with EE. This method
+of belief revision violates the AGM axioms, but it is sensible and
+tracks conditionalization: what an agent ends up believing if she
+first conditionalizes her subjective probabilities on evidence EE
+and then extracts her beliefs coincides with what she ends up
+believing if she first extracts her beliefs from her subjective
+probabilities and then revises those beliefs by evidence EE.
+3. Other Accounts
+3.1 Dempster-Shafer Theory
+
+The theory of Dempster-Shafer (DS) belief functions (Dempster 1968,
+Shafer 1976) rejects the claim that degrees of belief can be measured
+by the epistemic agent’s betting behavior. A particular version
+of the theory of DS belief functions is the transferable belief
+model (Smets & Kennes 1994). It distinguishes between two
+mental levels: the credal level, where one entertains and quantifies
+various beliefs, and the pignistic level, where one uses those beliefs
+for decision making. Its twofold thesis is that (fair) betting ratios
+should indeed obey the probability calculus, but that degrees of
+belief, being different from (fair) betting ratios, need not. It
+suffices that they satisfy the weaker DS principles. The idea is that
+whenever one is forced to bet on the pignistic level, the degrees of
+belief from the credal level are used to calculate (fair) betting
+ratios that satisfy the probability axioms. These in turn are then
+used to calculate the agent’s expected utility for various acts
+(Buchak 2014, Joyce 1999, Savage 1972). However, on the credal level
+degrees of belief need not obey the probability calculus.
+
+Whereas subjective probabilities are additive (axiom 3), DS belief
+functions Bel: A→ℜ\mathbf{A} \rightarrow \Re are only
+super-additive, i.e., for all propositions A,BA, B in
+A\mathbf{A}:
+Bel(A)+Bel(B)≤Bel(A∪B) if A∩B=∅.\tag{6}
+\Bel(A) + \Bel(B) \le \Bel(A\cup B)
+ \text{ if } A\cap B = \varnothing .
+
+
+In particular, the agent’s degree of belief for AA and her
+degree of belief for W∖AW \setminus A need not sum to 1.
+
+What does it mean to say that Sophia’s degree of belief that
+tomorrow it will be sunny in Vienna equals .55, if her degrees of
+belief are represented by a DS belief function Bel:A→ℜ\Bel: \mathbf{A}
+\rightarrow \Re? According to one interpretation (Haenni &
+Lehmann 2003), the number Bel(A)\Bel(A) represents the strength with
+which AA is supported by the agent’s knowledge or belief
+base. It may well be that this base neither supports AA nor its
+complement W∖AW \setminus A. Recall the supposition that Sophia has
+hardly any enological knowledge. Under this assumption her knowledge
+or belief base will neither support the proposition RedRed that a
+Schilcher is a red wine nor will it support the proposition WhiteWhite
+that a Schilcher is a white wine. However, due to a different aspect
+of her enological ignorance (namely that she does not know that there
+are wines, namely rosés, which are neither red nor white),
+Sophia may well be certain that a Schilcher is either a red wine or a
+white wine. Hence Sophia’s DS belief function Bel\Bel will be
+such that Bel(Red)=Bel(White)=0\Bel(Red) = \Bel(White) = 0 while Bel(Red∪White)=1\Bel(Red \cup White)
+= 1. On the other hand, Sophia knows for sure that the coin she is
+about to toss is fair. Hence her Bel\Bel will be such that Bel(H)=Bel(T)=.5\Bel(H)
+= \Bel(T) = .5 as well as Bel(H∪T)=1\Bel(H\cup T) = 1. Thus we see that
+the theory of DS belief functions can distinguish between uncertainty
+and one form of ignorance. Indeed,
+I({Ai})=1−Bel(A1)−…−Bel(An)−…
+\rI(\{A_{i}\}) = 1 - \Bel(A_{1}) - \ldots - \Bel(A_{n}) -\ldots
+
+
+can be seen as a measure of the agent’s ignorance with respect
+to the countable partition {Ai}\{A_{i}\} (the AiA_{i} may, for
+instance, be the values of a random variable such as the price of
+a bottle of Schilcher in Vienna on Aug 8, 2008).
+
+Figuratively, a proposition AA divides the agent’s knowledge
+or belief base into three mutually exclusive and jointly exhaustive
+parts: a part that speaks in favor of AA, a part that speaks
+against AA (i.e., in favor of W∖A)W \setminus A), and a part that
+neither speaks in favor of nor against AA. Bel(A)\Bel(A) quantifies
+the part that supports A,Bel(W∖A)A, \Bel(W \setminus A) quantifies the part
+that supports W∖AW \setminus A, and I({A,W∖A})=1−Bel(A)−Bel(W∖A)(\{A, W \setminus A\}) = 1 -
+\Bel(A) - \Bel(W \setminus A) quantifies the part that supports
+neither AA nor W∖AW \setminus A. Formally this is spelt out in
+terms of a (normalized) mass function on A\mathbf{A}, a
+function m: A→ℜ\mathbf{A} \rightarrow \Re such that for all
+propositions AA in A\mathbf{A}:
+m(A)≥0,m(∅)=0 (normalization), and ∑B∈Am(B)=1.\begin{align}
+\m(A) &amp;\ge 0, \\
+\m(\varnothing) &amp;= 0 \text{ (normalization), and } \\
+\sum\nolimits_{B \in \mathbf{A}} \m(B) &amp;= 1.
+\end{align}
+
+A (normalized) mass function m: A→ℜ\mathbf{A} \rightarrow \Re induces
+a DS belief function Bel: A→ℜ\mathbf{A} \rightarrow \Re by
+defining for each AA in A\mathbf{A},
+Bel(A)=∑B⊆A,B∈Am(B).
+\Bel(A) = \sum_{B \subseteq A, B \in \mathbf{A}} \m(B).
+
+
+The relation to subjective probabilities can now be stated as follows.
+Subjective probabilities require the ideal doxastic agent to divide
+her knowledge or belief base into two mutually exclusive and jointly
+exhaustive parts: one that speaks in favor of AA, and one that
+speaks against AA. That is, the neutral part has to be distributed
+among the positive and negative parts. Subjective probabilities can
+thus be seen as DS belief functions without ignorance. (See Pryor
+(manuscript, Other Internet Resources) for a model of doxastic states
+that comprises probability theory and Dempster-Shafer theory as
+special cases.)
+
+A DS belief function Bel:A→ℜ\Bel: \mathbf{A} \rightarrow \Re induces a
+Dempster-Shafer plausibility function P:A→ℜ\rP: \mathbf{A}
+\rightarrow \Re, where for all AA in A\mathbf{A},
+P(A)=1−Bel(W∖A).
+\rP(A) = 1 - \Bel(W \setminus A).
+
+
+Degrees of plausibility quantify that part of the agent’s
+knowledge or belief base which is compatible with AA, i.e., the
+part that supports AA and the part that supports neither AA nor
+W∖AW \setminus A. In terms of the (normalized) mass function m
+inducing Bel this means that
+P(A)=∑B∩A≠∅,B∈Am(B).
+\rP(A) = \sum_{B\cap A \ne \varnothing, B\in\mathbf{A}} \m(B).
+
+
+If, and only if, Bel(A)\Bel(A) and Bel(W∖A)\Bel(W \setminus A) sum to less
+than 1, P(A)\rP(A) and P(W∖A)\rP(W \setminus A) sum to more than 1. For
+an overview see Haenni (2009).
+
+The theory of DS belief functions is more general than the theory of
+subjective probability in the sense that the latter requires degrees
+of belief to be additive, while the former merely requires them to be
+super-additive. In another sense, though, the converse is true. The
+reason is that DS belief functions can be represented as convex sets
+of probabilities (Walley 1991). As not every convex set of
+probabilities can be represented as a DS belief function, sets of
+probabilities provide the most general framework we have come across
+so far. An even more general framework is provided by Halpern’s
+plausibility measures (Halpern 2003). These are functions Pl:
+A→ℜ\mathbf{A} \rightarrow \Re such that for all A,BA, B in
+A\mathbf{A}:
+Pl(∅)=0,Pl(W)=1,\begin{align}
+\Pl(\varnothing) &amp;= 0, \\
+\Pl(W) &amp;= 1, 
+\end{align}
+
+and 
+Pl(A)≤Pl(B) if A⊆B.\tag{7}
+\Pl(A) \le \Pl(B) \text{ if } A \subseteq B.
+
+
+In fact, these are only the special cases of real-valued plausibility
+measures. While it is fairly uncontroversial that an ideal doxastic
+agent’s degree of belief function should obey Halpern’s
+plausibility calculus, it is questionable whether his minimal
+principles are all there is to the rationality of degrees of belief.
+The resulting epistemology is, in any case, very thin. It should be
+noted, though, that Halpern does not intend plausibility measures to
+provide a complete epistemology, but rather a general framework to
+study more specific accounts.
+3.2 Possibility Theory
+
+Possibility theory (Dubois & Prade 1988) is based on fuzzy set
+theory (Zadeh 1978). According to the latter theory, an element need
+not belong to a given set either completely or not at all, but may be
+a member of the set to a certain degree. For instance, Sophia may
+belong to the set of politically active people to a degree of .88.
+This is represented by a membership function μA:W→[0,1]\mu_{A}: W \rightarrow
+[0,1], where μA(w)\mu_{A}(w) is the degree of membership to which
+person w∈Ww \in W belongs to the set of politically active people
+AA.
+
+Furthermore, the degree μW∖A\mu_{W \setminus A}(Sophia) to which
+Sophia belongs to the set W∖AW \setminus A of people who are not
+politically active equals 1−μA1 - \mu_{A}(Sophia). Moreover, if
+μM:W→[0,1]\mu_{M}: W \rightarrow [0,1] is the membership function for the
+set of philosophically minded people, then the degree of membership to
+which Sophia belongs to the set A∪MA\cup M of politically active or
+philosophically minded people is given by
+μA∪M(Sophia)=max{μA(Sophia),μM(Sophia)}. 
+\mu_{A\cup M\,}(\Sophia) = \max\{\mu_{A}(\Sophia),\mu_{M}(\Sophia)\}.  
+
+
+Similarly, the degree of membership to which Sophia belongs to the set
+A∩MA\cap M of politically active and philosophically minded people is
+given by
+μA∩M(Sophia)=min{μA(Sophia),μM(Sophia)}.
+\mu_{A\cap M\,}(\Sophia) = \min\{\mu_{A}(\Sophia), \mu_{M}(\Sophia)\}.
+
+
+mA∩M(Sophia)m_{A\cap M}(\Sophia) is interpreted as the degree to which the
+vague statement “Sophia is a politically active and
+philosophically minded person” is true (for vagueness see
+Égré & Barberousse 2014, Raffman 2014, Williamson
+1994 as well as the entry on
+ vagueness;
+ Field (forthcoming) discusses uncertainty due to vagueness in a
+probabilistic setting). Degrees of truth belong to the philosophy of
+language. They do not (yet) have anything to do with degrees of
+belief, which belong to epistemology. In particular, note that degrees
+of truth are usually considered to be truth functional (the
+truth value of a compound statement such as A∧BA\wedge B is a
+function of the truth values of its constituent statements A,BA, B;
+that is, the truth values of AA and BB determine the truth value
+of A∧B)A\wedge B). Degrees of belief, on the other hand, are hardly
+ever considered to be truth functional. For instance, probabilities
+are not truth functional, because the probability of A∩BA\cap B is
+not determined by the probability of AA and the probability of
+BB. That is, there is no function ff such that for all
+probability spaces ⟨W,A,Pr⟩\langle W, \mathbf{A}, \Pr\rangle and all
+propositions A,BA, B in A\mathbf{A}: Pr(A∩B)=f(Pr(A),Pr(B))\Pr(A\cap B) =
+f(\Pr(A),\Pr(B)).
+
+Suppose someone says that Sophia is tall. How tall is a tall person?
+Is a person with a height of 5′9″5'9'' tall? Or does a person have to
+be at least 5′10″5'10'' in order to be tall? Although you know that
+Sophia is tall, your knowledge is incomplete due to the vagueness of
+the term ‘tall’. Here possibility theory enters by
+equipping you with a (normalized) possibility distribution, a
+function π:W→[0,1]\pi : W \rightarrow [0,1] with π(w)=1\pi(w) = 1 for at
+least one w∈Ww \in W. The motivation for the latter requirement is
+that at least (in fact, exactly) one possibility is the actual
+possibility, and hence at least one possibility must be maximally
+possible. Such a possibility distribution π:W→[0,1]\pi : W \rightarrow
+[0,1] on the set of possibilities WW is extended to a possibility
+measure Π:A→ℜ\Pi : \mathbf{A} \rightarrow \Re on the field
+A\mathbf{A} over WW by defining for each AA in
+A\mathbf{A},
+Π(∅)=0,Π(A)=sup{π(w):w∈A}.
+\Pi(\varnothing) = 0, \Pi(A) = \sup\{\pi(w): w \in A\}.
+
+
+This entails that possibility measures Π:A→ℜ\Pi : \mathbf{A} \rightarrow
+\Re are maximitive (and hence sub-additive), i.e.,
+for all A,B∈AA, B \in \mathbf{A}:
+Π(A∪B)=max{Π(A),Π(B)}.\tag{8}
+\Pi(A\cup B) = \max\{\Pi(A), \Pi(B)\}.
+
+
+The idea is that, roughly, a proposition is at least as possible as
+each of the possibilities it comprises, and no more possible than the
+“most possible” possibility. Sometimes, though, there is
+no most possible possibility (i.e., the supremum is no maximum). For
+instance, this is the case when the degrees of possibility are 1⁄2,3⁄4,7⁄8,…,2n−1⁄2n,…
+\bfrac{1}{2}, \bfrac{3}{4}, \bfrac{7}{8}, \ldots,
+\bfrac{2^n-1}{2^n},\ldots In this case the degree of possibility for
+the proposition is the smallest number which is at least as great as
+all the degrees of possibilities of its elements. In our example this
+is 1. (As will be seen below, this is the main formal difference
+between possibility measures and non-conditional ranking
+functions.)
+
+We can define possibility measures without recourse to an underlying
+possibility distribution as functions Π:A→ℜ\Pi : \mathbf{A} \rightarrow
+\Re such that for all A,B∈AA, B \in \mathbf{A}:
+Π(∅)=0,Π(W)=1, and Π(A∪B)=max{Π(A),Π(B)}.\begin{align}
+\Pi(\varnothing) &amp;= 0, \\
+\Pi(W) &amp;= 1, \text{ and } \\
+\Pi(A\cup B) &amp;= \max\{\Pi(A), \Pi(B)\}.
+\end{align}
+
+It is important to note, though, that the last clause is not
+well-defined for disjunctions or unions of infinitely many
+propositions (in this case one would have to use the supremum
+operation sup instead of the maximum operation max). The dual notion
+of a necessity measure N:A→ℜ\Nu : \mathbf{A} \rightarrow \Re
+is defined for all AA in A\mathbf{A} by
+N(A)=1−Π(W∖A).
+\Nu(A) = 1 - \Pi(W \setminus A).
+
+
+This implies that
+N(A∩B)=min{N(A),N(B)}.
+\Nu(A\cap B) = \min\{\Nu(A), \Nu(B)\}.
+
+
+The latter equation can be used to start with necessity measures as
+primitive. Define them as functions N:A→ℜ\Nu : \mathbf{A} \rightarrow
+\Re such that for all A,B∈AA, B \in \mathbf{A}:
+N(∅)=0,N(W)=1,N(A∩B)=min{N(A),N(B)}.\begin{align}
+\Nu(\varnothing) &amp;= 0, \\
+\Nu(W) &amp;= 1, \\
+\Nu(A\cap B) &amp;= \min\{\Nu(A), \Nu(B)\}.
+\end{align}
+
+Then possibility measures Π:A→ℜ\Pi : \mathbf{A} \rightarrow \Re are
+obtained by the equation:
+Π(A)=1−N(W∖A).
+\Pi(A) = 1 - \Nu(W \setminus A).
+
+
+Although the agent’s doxastic state in possibility theory is
+completely specified by either Π\Pi or N\Nu, the agent’s
+epistemic attitude towards a particular proposition AA is only
+jointly specified by Π(A)\Pi(A) and N(A)\Nu(A). The reason is that, in
+contrast to probability theory, Π(W∖A)\Pi(W \setminus A) is not
+determined by Π(A)\Pi(A). Thus, degrees of possibility (as well as
+degrees of necessity) are not truth functional either. The same is
+true for DS belief and plausibility functions.
+
+In our example, let WHW_{H} be the set of values of the random
+variable H=H = Sophia’s height in inches between 0″0''
+and 199″199'', WH={0,…,199}.W_{H} = \{0, \ldots ,199\}. πH:WH→[0,1]\pi_{H}: W_{H}
+\rightarrow [0,1] is your possibility distribution. It is supposed
+to represent your doxastic state concerning Sophia’s height,
+which contains the knowledge that she is tall. For instance, your
+πH\pi_{H} might be such that πH(n)=1\pi_{H}(n) = 1 for any natural
+number n∈[60,72]⊆Wn \in [60,72] \subseteq W. In this case your degree of
+possibility for the proposition that Sophia is at least 5′10″5'10'' is
+ΠH(H≥70)=sup{πH(n):n≥70}=1\Pi_{H}(H \ge 70) = \sup\{\pi_{H}(n): n \ge 70\} = 1.
+
+The connection to fuzzy set theory is that your possibility
+distribution πH:WH→[0,1]\pi_{H}: W_{H} \rightarrow [0,1], which is based on
+the knowledge that Sophia is tall, can be interpreted as the
+membership function μT:WH→[0,1]\mu_{T}: W_{H} \rightarrow [0,1] of the set of
+tall people. So the epistemological thesis of possibility theory is
+that your degree of possibility for the proposition that Sophia is
+5′10″5'10'' given the vague and hence incomplete knowledge that Sophia
+is tall should equal the degree of membership to which a 5′10″5'10''
+tall person belongs to the set of tall people. In more suggestive
+notation,
+πH(H=n∣T)=μT(n).
+\pi_{H}(H = n \mid  T) = \mu_{T}(n).
+
+
+Let us summarize the accounts we have dealt with so far. Subjective
+probability theory requires degrees of belief to be additive. An ideal
+doxastic agent’s subjective probability Pr: A→ℜ\mathbf{A}
+\rightarrow \Re is such that for any A,BA, B in A\mathbf{A} with
+A∩B=∅A\cap B = \varnothing:
+Pr(A)+Pr(B)=Pr(A∪B)
+\Pr(A) + \Pr(B) = \Pr(A\cup B)
+
+
+The theory of DS belief functions requires degrees of belief to be
+super-additive. An ideal doxastic agent’s DS belief function
+Bel: A→ℜ\mathbf{A} \rightarrow \Re is such that for any A,BA, B in
+A\mathbf{A} with A∩B=∅A\cap B = \varnothing:
+Bel(A)+Bel(B)≤Bel(A∪B)
+\Bel(A) + \Bel(B) \le \Bel(A\cup B)
+
+
+Possibility theory requires degrees of belief to be maxitive and hence
+sub-additive. An ideal doxastic agent’s possibility measure
+Π:A→ℜ\Pi : \mathbf{A} \rightarrow \Re is such that for any A,BA, B in
+A\mathbf{A}:
+Π(A)+Π(B)≥max{Π(A),Π(B)}=Π(A∪B)
+\Pi(A) + \Pi(B) \ge \max\{\Pi(A), \Pi(B)\} = \Pi(A \cup B)
+
+
+All of these functions are special cases of real-valued plausibility
+measures Pl: A→ℜ\mathbf{A} \rightarrow \Re, which are such that for
+all A,BA, B in A\mathbf{A}:
+Pl(A)≤Pl(B) if A⊆B.
+\Pl(A) \le \Pl(B) \text{ if } A \subseteq B.
+
+
+We have seen that each of these accounts provides an adequate model
+for some doxastic situation (plausibility measures do so trivially).
+We have further noticed that subjective probabilities do not
+immediately give rise to a notion of qualitative belief that is
+consistent and deductively closed (unless qualitative belief is
+identified with a subjective probability of 1). Therefore the same is
+true for the more general DS belief functions and plausibility
+measures. Besides the accounts of Leitgeb (2013; 2014) and Lin &
+Kelly (2012) discussed above it should be noted that Roorda (1995,
+Other Internet Resources) provides a definition of belief in terms of
+sets of probabilities. (As will be mentioned in the next section,
+there is a notion of belief in possibility theory that is consistent
+and deductively closed in a finite sense.)
+
+Moreover, we have seen arguments for the thesis that degrees of belief
+should obey the probability axioms. Smets (2002) tries to justify the
+corresponding thesis for DS belief functions. To the best of my
+knowledge nobody has yet published an argument for the thesis that
+degrees of belief should be plausibility or possibility measures,
+respectively (in the sense that all and only plausibility respectively
+possibility measures are rational degree of belief functions).
+However, there exists such an argument for ranking functions, which
+are formally similar to possibility measures. Ranking functions also
+give rise to a notion of belief that is consistent and deductively
+closed (indeed, this very feature is the starting point for the
+argument that doxastic states should obey the ranking calculus). They
+are the topic of the next section.
+3.3 Ranking Theory
+
+Subjective probability theory as well as the theory of DS belief
+functions take the objects of belief to be propositions. Possibility
+theory does so only indirectly, although possibility measures on a
+field of propositions A\mathbf{A} can also be defined without
+recourse to a possibility distribution on the underlying set WW of
+possibilities.
+
+A possibility ww in WW is a complete and consistent description
+of the world relative to the expressive power of WW. WW may
+contain just two possibilities: according to w1w_{1} tomorrow it
+will be sunny in Vienna, according to w2w_{2} it will not. On the
+other end of the spectrum, WW may comprise all metaphysically
+possible, or even all logically possible worlds (for more see the
+entry on
+ possible worlds.)
+
+Usually we are not certain which of the possibilities in WW
+corresponds to the actual world. Otherwise these possibilities would
+not be genuine possibilities for us, and our degree of belief function
+would collapse into a truth value assignment. However, to say that we
+are not certain which possibility it is that corresponds to the actual
+world does not mean that all possibilities are on a par. Some of them
+will be really far-fetched, while others will seem to be more
+reasonable candidates for the actual possibility.
+
+This gives rise to the following consideration. We can
+partition the set of possibilities, that is, form sets of
+possibilities that are mutually exclusive and jointly exhaustive. Then
+we can order the cells of this partition according to their
+plausibility. The first cell in this ordering contains the
+possibilities that we take to be the most reasonable candidates for
+the actual possibility. The second cell contains the possibilities
+which we take to be the second most reasonable candidates. And so
+on.
+
+If you are still equipped with your possibility distribution from the
+preceding section you can use your degrees of possibility for the
+various possibilities to obtain such an ordered partition. Note,
+though, that an ordered partition — in contrast to your
+possibility distribution — contains no more than ordinal
+information. While your possibility distribution enables you to say
+how possible you take a particular possibility to be, an ordered
+partition only allows you to say that one possibility w1w_{1} is
+more plausible than another possibility w2w_{2}. In fact, an ordered
+partition does not even enable you to express that the difference
+between your plausibility for w1w_{1} (say, tomorrow the temperature
+in Vienna will be between 70°F and 75°F) and for w2w_{2}
+(say, tomorrow the temperature in Vienna will be between 75°F and
+80°F) is smaller than the difference between your plausibility for
+w2w_{2} and for the far-fetched w3w_{3} (say, tomorrow the
+temperature in Vienna will be between 120°F and 125°F).
+
+This takes us directly to ranking theory (Spohn 1988 and 1990 and,
+especially, 2012), which goes one step further. Rather than merely
+ordering the possibilities in WW, a pointwise ranking
+function κ:W→N∪{∞}\kappa : W \rightarrow \bN\cup \{\infty \}
+additionally assigns natural numbers from N∪{∞}\bN\cup \{\infty \} to
+the cells of possibilities. These numbers represent the grades of
+disbelief you assign to the various (cells of) possibilities in WW.
+The result is a numbered partition of WW,
+κ−1(0),κ−1(1),κ−1(2),…,κ−1(n)={w∈W:κ(w)=n},…κ−1(∞).
+\kappa^{-1}(0), \kappa^{-1}(1),
+\kappa^{-1}(2), \ldots ,\kappa^{-1}(n) = 
+\{w \in W: \kappa(w) = n\}, \ldots \kappa^{-1}(\infty).
+
+
+The first cell κ−1(0)\kappa^{-1}(0) contains the possibilities which are
+not disbelieved (which does not mean that they are believed). The
+second cell κ−1(1)\kappa^{-1}(1) is the set of possibilities which are
+disbelieved to degree 1. And so on. It is important to note that,
+except for κ−1(0)\kappa^{-1}(0), the cells κ−1(n)\kappa^{-1}(n) may be
+empty, and so would not appear at all in the corresponding ordered
+partition. κ−1(0)\kappa^{-1}(0) must not be empty, though. The reason is
+that one cannot consistently disbelieve everything.
+
+More precisely, a function κ:W→N∪{∞}\kappa : W \rightarrow \bN\cup \{\infty
+\} from a set of possibilities WW into the set of natural numbers
+extended by ∞\infty, N∪{∞}\bN\cup \{\infty \}, is a pointwise
+ranking function just in case κ(w)=0\kappa(w) = 0 for at least one
+ww in WW, i.e., just in case κ−1(0)≠∅\kappa^{-1}(0) \ne
+\varnothing. The latter requirement says that you should not
+disbelieve every possibility. It is justified, because you know for
+sure that one possibility is actual. A pointwise ranking function
+κ:W→N∪{∞}\kappa : W \rightarrow \bN\cup \{\infty \} on WW induces a
+ranking function ϱ:A→N∪{∞}\varrho : \mathbf{A} \rightarrow \bN\cup
+\{\infty \} on a field A\mathbf{A} of propositions over WW by
+defining for each AA in A\mathbf{A},
+ϱ(A)=min{κ(w):w∈A} (=∞ if A=∅).
+\varrho(A) = \min\{\kappa(w): w \in A\} 
+ \ (= \infty \text{ if } A = \varnothing).
+
+
+This entails that ranking functions ϱ:A→N∪{∞}\varrho : \mathbf{A} \rightarrow
+\bN\cup \{\infty \} are (finitely) minimitive (and hence
+super-additive), i.e., for all A,BA, B in A\mathbf{A},
+ϱ(A∪B)=min{ϱ(A),ϱ(B)}.\tag{9}
+\varrho(A\cup B) = \min\{\varrho(A), \varrho(B)\}.
+
+
+As in the case of possibility theory, (finitely minimitive and
+non-conditional) ranking functions can be directly defined on a field
+A\mathbf{A} of propositions over a set of possibilities WW as
+functions ϱ:A→N∪{∞}\varrho : \mathbf{A} \rightarrow \bN\cup \{\infty \}
+such that for all A,BA, B in A\mathbf{A}:
+ϱ(∅)=∞,ϱ(W)=0, and ϱ(A∪B)=min{ϱ(A),ϱ(B)}.\begin{align}
+\varrho(\varnothing) &amp;= \infty, \\
+\varrho(W) &amp;= 0, \text{ and } \\
+\varrho(A\cup B) &amp;= \min \{\varrho(A), \varrho(B)\}.
+\end{align}
+
+The triple ⟨W,A,ϱ⟩\langle W, \mathbf{A}, \varrho \rangle is a
+(finitely minimitive) ranking space. Suppose
+A\mathbf{A} is closed under countable/complete intersections (and
+thus a σ\sigma-/γ\gamma-field). Suppose further that ϱ\varrho
+additionally satisfies, for all countable/arbitrary B⊆A\bB \subseteq
+\mathbf{A},
+ϱ(∪B)=min{ϱ(A):A∈B}.
+\varrho(\cup \bB) = \min \{\varrho(A): A \in \bB\}.
+
+
+Then ϱ\varrho is a countably/completely
+minimitive ranking function, and ⟨W,A,ϱ⟩\langle W, \mathbf{A}, \varrho
+\rangle is a σ\sigma- or countably/γ\gamma- or completely
+minimitive ranking space. Finally, a ranking function ϱ\varrho on
+A\mathbf{A} is regular just in case ϱ(A)<∞\varrho(A) \lt
+\infty for every non-empty or consistent proposition AA in
+A\mathbf{A}. For more see Huber (2006), which discusses under which
+conditions ranking functions on fields of propositions induce
+pointwise ranking functions on the underlying set of
+possibilities.
+
+Let us pause for a moment. The previous paragraphs introduce a lot of
+terminology for something that seems to add only little to what we
+have already discussed. Let the necessity measures of possibility
+theory assign natural instead of real numbers in the unit interval to
+the various propositions so that ∞\infty instead of 1 represents
+maximal necessity/possibility. The axioms for necessity measures then
+become
+N(∅)=0,N(W)=∞ (instead of 1),N(A∩B)=min{N(A),N(B)}.\begin{align}
+\Nu(\varnothing) &amp;= 0, \\
+\Nu(W) &amp;= \infty \text{ (instead of 1),} \\
+\Nu(A\cap B) &amp;= \min \{\Nu(A), \Nu(B)\}.
+\end{align}
+
+Now think of the rank of a proposition AA as the degree of
+necessity of its negation W∖A,ϱ(A)=N(W∖A)W \setminus A, \varrho(A) = \Nu(W
+\setminus A). Seen this way, finitely minimitive ranking functions
+are a mere terminological variant of necessity measures, for
+ϱ(∅)=N(W)=∞ϱ(W)=N(∅)=0ϱ(A∪B)=N((W∖A)∩(W∖B))=min{N(W∖A),N(W∖B)}=min{ϱ(A),ϱ(B)}.\begin{align}
+\varrho(\varnothing) &amp;= \Nu(W) = \infty \\
+\varrho(W) &amp;= \Nu(\varnothing) = 0 \\
+\varrho(A\cup B) &amp;= \Nu((W \setminus A)\cap(W \setminus B)) \\
+ &amp;= \min\{\Nu(W \setminus A), \Nu(W \setminus B)\} \\
+ &amp;= \min\{\varrho(A), \varrho(B)\}.
+\end{align}
+
+(If we take necessity measures as primitive rather than letting them
+be induced by possibility measures, and if we continue to follow the
+rank-theoretic policy of adopting a well-ordered range, we can
+obviously also define countably and completely minimitive necessity
+measures.) Of course, the fact that (finitely minimitive and
+non-conditional) ranking functions and necessity measures are formally
+alike does not mean that their interpretations are the same.
+
+The latter is the case, though, when we compare ranking functions and
+Shackle’s degrees of potential surprise (Shackle 1949;
+1969). (These degrees of potential surprise have made their way into
+philosophy mainly through the work of Isaac Levi. See Levi 1967a;
+1978.) So what justifies devoting a whole section to ranking
+functions?
+
+Shackle’s theory lacks a notion of conditional
+potential surprise. (Shackle 1969, 79ff, seems to assume a notion of
+conditional potential surprise as primitive that appears in his axiom
+7. This axiom further relies on a connective that behaves like
+conjunction except that it is not commutative and is best interpreted
+as “AA followed by BB”. Axiom 7, in its stronger
+version from p. 83, seems to say that the degree of potential surprise
+of “A followed by BB” is the greater of the degree of
+potential surprise of AA and the degree of potential surprise of
+BB given AA, i.e., ς(A followed by B)=max{ς(A),ς(B∣A)}\varsigma(A \text{ followed by } B) =
+\max\{\varsigma(A), \varsigma(B\mid A)\} where ς\varsigma is the
+measure of potential surprise. Spohn 2009, sct. 4.1, discusses
+Shackle’s struggle with the notion of conditional potential
+surprise.)
+
+Possibility theory, on the other hand, offers two notions of
+conditional possibility (Dubois & Prade 1988). The first notion of
+conditional possibility is obtained by the equation
+Π(A∩B)=min{Π(A),Π(B∣A)}.
+\Pi(A\cap B) = \min\{\Pi(A), \Pi(B\mid A)\}.
+
+
+It is mainly motivated by the desire to have a notion of conditional
+possibility that also makes sense if possibility does not admit of
+degrees, but is a merely comparative notion. The second notion of
+conditional possibility is obtained by the equation
+Π(A∩B)=Π(A)⋅Π(B∣A).
+\Pi(A\cap B) = \Pi(A)\cdot \Pi(B\mid A).
+
+
+The inspiration for this notion seems to come from probability theory.
+While none of these two notions is the one we have in ranking theory,
+Spohn (2009), relying on Halpern (2003), shows that by adopting the
+second notion of conditional possibility one can render possibility
+theory isomorphic to a real-valued version of ranking theory.
+
+For standard ranking functions with a well-ordered range conditional
+ranks are defined as follows. The conditional ranking
+function ϱ(⋅∣⋅):A×A→N∪{∞}\varrho(\cdot\mid \cdot): \mathbf{A}\times \mathbf{A}
+\rightarrow \bN\cup \{\infty \} on A\mathbf{A} (based on the
+non-conditional ranking function ϱ\varrho on A)\mathbf{A}) is
+defined for all pairs of propositions A,BA, B in A\mathbf{A} with
+A≠∅A \ne \varnothing by
+ϱ(A∣B)=ϱ(A∩B)−ϱ(B),
+\varrho(A\mid B) = \varrho(A \cap B) - \varrho(B),
+
+
+where ∞−∞=0\infty - \infty = 0. Further stipulating
+ϱ(∅∣B)=∞\varrho(\varnothing \mid B) = \infty for all BB in
+A\mathbf{A} guarantees that ϱ(⋅∣B):A→N∪{∞}\varrho(\cdot\mid B): \mathbf{A}
+\rightarrow \bN\cup \{\infty \} is a ranking function, for every
+BB in A\mathbf{A}. It would, of course, also be possible to take
+conditional ranking functions ϱ(⋅,given ⋅):A×A→N∪{∞}\varrho(\cdot, \text{given } \cdot):
+\mathbf{A}\times \mathbf{A} \rightarrow \bN\cup \{\infty \} as
+primitive and define (non-conditional) ranking functions in terms of
+them as ϱ(A)=ϱ(A,given W)\varrho(A) = \varrho(A, \text{given } W) for all
+propositions AA in A\mathbf{A}.
+
+The number ϱ(A)\varrho(A) represents the agent’s degree of
+disbelief for the proposition AA. If ϱ(A)>0\varrho(A) \gt 0, the
+agent disbelieves AA to a positive degree. Therefore, on pain of
+inconsistency, she cannot also disbelieve W∖AW \setminus A to a
+positive degree. In other words, for every proposition AA in
+A\mathbf{A}, at least one of A,W∖AA, W \setminus A has to be
+assigned rank 0. If ϱ(A)=0\varrho(A) = 0, the agent does not disbelieve
+AA to a positive degree. However, this does not mean that she
+believes AA to a positive degree −- the agent may suspend
+judgment and assign rank 0 to both AA and W∖AW \setminus A. So
+belief in a proposition is characterized by disbelief in its
+negation.
+
+For each ranking function ϱ:A→N∪{∞}\varrho : \mathbf{A} \rightarrow \bN\cup
+\{\infty \} we can define a corresponding belief function
+β:A→Z∪{∞}∪{−∞}\beta : \mathbf{A} \rightarrow Z\cup \{\infty \}\cup \{-\infty \}
+that assigns positive numbers to those propositions that are believed,
+negative numbers to those propositions that are disbelieved, and 0 to
+those propositions with respect to which the agent suspends
+judgment:
+β(A)=ϱ(W∖A)−ϱ(A)
+\beta(A) = \varrho(W \setminus A) - \varrho(A)
+
+
+Each ranking function ϱ:A→N∪{∞}\varrho : \mathbf{A} \rightarrow \bN\cup
+\{\infty \} induces a belief set
+B={A∈A:ϱ(W∖A)>0}={A∈A:ϱ(W∖A)>ϱ(A)}={A∈A:β(A)>0}.\begin{align}
+\bB &amp;= \{A \in \mathbf{A}: \varrho(W \setminus A) \gt 0\} \\
+ &amp;= \{A \in \mathbf{A}: \varrho(W \setminus A) \gt \varrho(A)\} \\
+ &amp;= \{A \in \mathbf{A}: \beta(A) \gt 0\}.
+\end{align}
+
+B\bB is the set of all propositions the agent believes to some
+positive degree, or equivalently, whose complements she disbelieves to
+a positive degree. The belief set B\bB induced by a ranking
+function ϱ\varrho is consistent and deductively closed (in the
+finite sense). The same is true for the belief set induced by a
+possibility measure Π:A→ℜ\Pi : \mathbf{A} \rightarrow \Re,
+BΠ={A∈A:Π(W∖A)<1}={A∈A:N(A)>0}.\begin{align}
+\bB_{\Pi} &amp;= \{A \in \mathbf{A}: \Pi(W \setminus A) \lt 1\} \\
+ &amp;= \{A \in \mathbf{A}: \Nu(A) \gt 0\}.
+\end{align}
+
+If ϱ\varrho is a countably/completely minimitive ranking function,
+the belief set B\bB induced by ϱ\varrho is consistent and
+deductively closed in the following countable/complete sense: ∩C≠∅\cap
+\mathbf{C} \ne \varnothing for every countable/arbitrary
+C⊆B\mathbf{C} \subseteq \bB; and A∈BA \in \bB whenever ∩C⊆A\cap
+\mathbf{C} \subseteq A for some countable/arbitrary C⊆B\mathbf{C}
+\subseteq \bB and any A∈AA \in \mathbf{A}. Ranking theory thus
+offers a link between belief and degrees of belief that is preserved
+when we move from the finite to the countably or uncountably infinite
+case. As shown by the example in Section 3.2, this is not the case for
+possibility theory. (Of course, as indicated above, the possibility
+theorist can copy ranking theory by taking necessity measures as
+primitive and by adopting a well-ordered range).
+
+Much as for subjective probabilities, there are rules for updating
+one’s doxastic state represented by a ranking function. In case
+the new information comes in form of a certainty, ranking
+theory’s counterpart to probability theory’s strict
+conditionalization is
+
+Plain Conditionalization.
+
+If evidence comes only in form of certainties, if ϱ:A→N∪{∞}\varrho :
+\mathbf{A} \rightarrow \bN\cup \{\infty \} is your ranking function
+at time tt, and if between tt and t′t' you become certain of
+A∈AA \in \mathbf{A} and no logically stronger proposition in the
+sense that your new rank for W∖AW \setminus A, but no logically
+weaker proposition, is ∞\infty (and your ranks are not directly
+affected in any other way such as forgetting etc.), then your ranking
+function at time t′t' should be ϱ(⋅∣A)\varrho(\cdot\mid A). 
+
+If the new information merely changes your ranks for various
+propositions, ranking theory’s counterpart to probability
+theory’s Jeffrey conditionalization is
+
+Spohn Conditionalization.
+
+If evidence comes only in form of new grades of disbelief for the
+elements of a partition, if ϱ:A→N∪{∞}\varrho : \mathbf{A} \rightarrow \bN\cup
+\{\infty \} is your ranking function at time tt, and between
+tt and t′t' your ranks in the mutually exclusive and jointly
+exhaustive propositions Ai∈AA_{i} \in \mathbf{A} are directly affected
+and change to ni∈N∪{∞}n_{i} \in \bN\cup \{\infty \} with minini=0\min_{i} n_{i}
+= 0, and the finite part of your ranking function does not change on
+any superset of the partition {Ai}\{A_{i}\} (and your ranks are not
+directly affected in any other way such as forgetting etc.), then your
+ranking function at time t′t' should be ϱ′(⋅)=mini{ϱ(⋅∣Ai)+ni}\varrho '(\cdot) =
+\min_{i}\{\varrho(\cdot\mid A_{i}) + n_{i}\}. 
+
+As the reader will have noticed by now, whenever we substitute 0 for
+1, ∞\infty for 0, min\min for ∑\sum, ∑\sum for ∏\prod,
+and >\gt for <\lt, a true statement about probabilities almost
+always turns into a true statement about ranking functions. (There are
+but a few known exceptions to this transformation. Spohn 1994 mentions
+one.) For a comparison of probability theory and ranking theory see
+Spohn (2009, sct. 3).
+
+Three complaints about Jeffrey conditionalization carry over to Spohn
+conditionalization. First, Jeffrey conditionalization is not
+commutative (Levi 1976b). The same is true of Spohn
+conditionalization. Second, any two regular probability measures can
+be related to each other via Jeffrey conditionalization (by letting
+the evidential partition consist of the set of singletons {w}\{w\}
+containing the possibilities ww in W)W). The same is true of any
+two regular ranking functions and Spohn conditionalization. Therefore,
+so the complaint goes, these rules are empty as normative constraints.
+Third, Weisberg (2015) argues that Spohn conditionalization cannot
+handle perceptual undermining either.
+
+The first complaint misfires, because both Jeffrey and Spohn
+conditionalization are result- rather
+evidence-oriented: the parameters pip_{i} and
+nin_{i} characterize the resulting degree of (dis)belief in
+EiE_{i} rather than the amount by which the evidence received
+between tt and t′t' boosts or lowers the degree of (dis)belief in
+EiE_{i}. Therefore these parameters depend on both the prior
+doxastic states Pr and ϱ\varrho, respectively, and the evidence
+received between tt and t′t'. Evidence first shifting EE from
+pp to p′p' and then to p″p'' is not a rearrangement of evidence
+first shifting EE from pp to p″p'' and then to p′p'. Field
+(1978) presents a probabilistic update rule that is evidence-oriented
+in the sense of characterizing the evidence as such, independently of
+the prior doxastic state. Shenoy (1991) presents a rank-theoretic
+update rule that is evidence-oriented in this sense. These two update
+rules are commutative.
+
+The second complaint misfires, because it confuses input and output:
+Jeffrey conditionalization does not rule out any evidential input of
+the appropriate format, just as it does not rule out any prior
+epistemic state not already ruled out by the probability calculus. The
+same is true of Spohn conditionalization and the ranking calculus.
+That does not mean that these rules are empty as normative
+constraints, though. On the contrary, for each admissible prior
+doxastic state and each admissible evidential input there is only one
+posterior doxastic state not ruled by Jeffrey (Spohn)
+conditionalization. Huber (2014) defends Jeffrey and Spohn
+conditionalization against Weisberg’s charge.
+
+One reason why an ideal doxastic agent’s degrees of belief
+should obey the probability calculus is that otherwise she is
+vulnerable to a Dutch Book (standard version) or an inconsistent
+evaluation of the fairness of bets (depragmatized version). For
+similar reasons she should update her subjective probability according
+to strict or Jeffrey conditionalization, depending on the format of
+the new information. Why should grades of disbelief obey the ranking
+calculus? And why should an ideal doxastic agent update her ranking
+function according to plain or Spohn Conditionalization?
+
+The answers to these questions require a bit of terminology. An ideal
+doxastic agent’s degree of entrenchment for a
+proposition AA is the number of “independent and minimally
+positively reliable” information sources saying AA that it
+takes for the agent to give up her disbelief that AA. If the agent
+does not disbelieve AA to begin with, her degree of entrenchment
+for AA is 0. If no finite number of information sources is able to
+make the agent give up her disbelief that AA, her degree of
+entrenchment for AA is ∞\infty. Suppose we want to determine
+Sophia’s degree of entrenchment for the proposition that Vienna
+is the capital of Austria. This can be done by putting her on, say,
+the Stephansplatz, a popular place in the old town of Vienna, and by
+counting the number of people passing by and telling her that Vienna
+is the capital of Austria. Her degree of entrenchment for the
+proposition that Vienna is the capital of Austria equals nn
+precisely if she stops disbelieving that Vienna is the capital of
+Austria after nn people have passed by and told her it is. The
+relation between these operationally defined degrees of entrenchment
+and the theoretical grades of disbelief is similar to the relation
+between betting ratios and degrees of belief: under suitable
+conditions (when the information sources are independent and minimally
+positively reliable) the former can be used to measure the latter.
+Most of the time the conditions are not suitable, though. In section
+2.2 primitivism seemed to be the only plausible game in town. In the
+present case “going hypothetical” (Eriksson &
+Hájek 2007) is more promising: the agent’s grade of
+disbelief in AA is the number of information sources saying
+AA that it would take for her to give up her qualitative disbelief
+that AA, if those sources were independent and minimally positively
+reliable.
+
+Now we are in the position to say why degrees of disbelief should obey
+the ranking calculus. They should do so, because an agent’s
+belief set is and will always be consistent and deductively closed in
+the finite/countable/complete sense just in case her entrenchment
+function is a finitely/countably/completely minimitive ranking
+function and, depending on the format of the evidence, the agent
+updates according to plain or Spohn conditionalization (Huber 2007b).
+This theorem can be used to establish the thesis that an ideal
+doxastic agent’s beliefs should obey the synchronic and
+diachronic rules of the ranking calculus. It can be used to provide a
+means-ends justification for this thesis in the spirit of epistemic
+consequentialism (Percival 2002, Stalnaker 2002). The idea is that
+obeying the normative constraints of the ranking calculus is a
+(necessary and sufficient) means to attaining the end of being
+“eternally consistent and deductively closed.” The latter
+end in turn is a (necessary, but insufficient) means to attaining the
+end of always having only true beliefs, and as many thereof as
+possible. Brössel, Eder & Huber (2013) discuss the importance
+of this result as well as its Bayesian role-model, Joyce’s
+(1998; 2009) “non-pragmatic vindication of probabilism”
+discussed above, for means-ends epistemology in general.
+
+It follows that the above notion of conditional ranks is the only good
+notion for standard ranking functions with a well-ordered domain:
+plain and Spohn conditionalization depend on the notion of conditional
+ranks, and the theorem does not hold if we replace this notion by
+another one. Furthermore, one reason for adopting standard ranking
+functions with a well-ordered domain is that the notion of degree of
+entrenchement makes sense only for natural (or ordinal) numbers,
+because one has to count the independent and minimally
+positively reliable information sources. The seemingly small
+differences between possibility theory and ranking theory thus turn
+out to be crucial.
+
+With the possible exception of decision making (see, however, Giang
+& Shenoy 2000), it seems that we can do everything with ranking
+functions that we can do with probability measures. Ranking theory
+also has a notion of qualitative belief that is vital if we want to
+stay in tune with traditional epistemology. This allows for
+rank-theoretic theories of belief revision and of nonmonotonic
+reasoning, which are the topic of the final two sections.
+3.4 Belief Revision Theory
+
+We have moved from degrees of belief to belief, and found ranking
+theory to provide a link between these two notions. While some
+philosophers (most probabilists, e.g. Jeffrey 1970) hold the view that
+degrees of belief are more basic than beliefs, others adopt the
+opposite view. This opposite view is generally adopted in traditional
+epistemology, which is mainly concerned with the notion of knowledge
+and its tripartite definition as justified true belief. Belief in this
+sense comes in three “degrees”: the ideal doxastic agent
+either believes AA, or else she believes W∖AW \setminus A and thus
+disbelieves AA, or else she believes neither AA nor W∖AW
+\setminus A and thus suspends judgment with respect to AA.
+Ordinary doxastic agents sometimes believe both AA and W∖AW
+\setminus A, but we assume that they should not do so, and hence
+ignore this case.
+
+According to this view, an agent’s doxastic state is
+characterized by the set of propositions she believes, her belief set.
+Such a belief set is required to be consistent and deductively closed
+(Hintikka 1961 and the entry on see the entry on
+ epistemic logic).
+ Here a belief set is usually represented as a set of sentences from a
+language L\mathbf{L} rather than as a set of propositions. The
+question addressed by belief revision theory (Alchourrón &
+Gärdenfors & Makinson 1985, Gärdenfors 1988,
+Gärdenfors & Rott 1995) is how an ideal doxastic agent should
+revise her belief set B⊆L\bB \subseteq \mathbf{L} if she learns new
+information in the form of a sentence α∈L\alpha \in \mathbf{L}. If
+α\alpha is consistent with B\bB in the sense that ¬α\neg
+\alpha is not derivable from B\bB, the agent should simply add
+α\alpha to B\bB and close this set under (classical) logical
+consequence. In this case her new belief set, i.e., her old belief set
+B\bB revised by the new information α\alpha, B∗α\bB * \alpha, is
+the set of logical consequences of B∪{α}\bB\cup \{\alpha \}, B∗α=Cn(B∪{α})={β∈L:B∪{α}⊢β}\bB * \alpha
+= \Cn(\bB\cup \{\alpha \}) = \{\beta \in \mathbf{L}: \bB\cup \{\alpha
+\} \vdash \beta \}.
+
+Things get interesting when the new information α\alpha contradicts
+the old belief set B\bB. Here the basic idea is that the
+agent’s new belief set B∗α\bB * \alpha should contain the new
+information α\alpha and as many of the old beliefs in B\bB as is
+allowed by the requirement that the new belief set be consistent and
+deductively closed. To state this more precisely, let us introduce the
+notion of a contraction. To contract a statement α\alpha
+from a belief set B\bB is to give up the belief that α\alpha is
+true, but to keep as many of the remaining beliefs from B\bB while
+ensuring consistency and deductive closure. Where B÷α\bB \div \alpha
+is the agent’s new belief set after contracting her old belief
+set B\bB by α\alpha, the
+A(lchourrón)G(ärdenfors)M(akinson) postulates for
+contraction ÷\div can be stated as follows. (Note that ∗* as
+well as ÷\div are functions from ℘(L)×L\wp(\mathbf{L})\times
+\mathbf{L} into ℘(L)\wp(\mathbf{L}).)
+
+For every set of sentences B⊆L\bB \subseteq \mathbf{L} and any
+sentences α,β∈L\alpha , \beta \in \mathbf{L}:
+
+
+(÷1)(\div 1) 
+If B=Cn(B)\bB = \Cn(\bB), then B÷α=Cn(B÷α)\bB \div \alpha = \Cn(\bB \div
+\alpha)
+Deductive Closure 
+
+(÷2)(\div 2) 
+B÷α⊆B\bB \div \alpha \subseteq \bB
+Inclusion 
+
+(÷3)(\div 3) 
+If α∉\alpha \not\in Cn(B)(\bB), then B÷α=B\bB\div \alpha =
+\bB
+Vacuity 
+
+(÷4)(\div 4) 
+If α∉\alpha \not\in Cn(∅)(\varnothing), then α∉Cn(B÷α)\alpha \not\in
+\Cn(\bB\div \alpha)
+Success 
+
+(÷5)(\div 5) 
+If Cn({α})=Cn({β})\Cn(\{\alpha \}) = \Cn(\{\beta \}), then B÷α=B÷β\bB \div
+\alpha = \bB \div \beta
+Preservation 
+
+(÷6)(\div 6) 
+If B=Cn(B)\bB = \Cn(\bB), then B⊆Cn((B÷α)∪{α})\bB \subseteq \Cn((\bB \div
+\alpha)\cup \{\alpha \})
+Recovery 
+
+(÷7)(\div 7) 
+If B=Cn(B)\bB = \Cn(\bB), then (B÷α)∩(B÷β)⊆B÷(α∧β)(\bB\div \alpha)\cap(\bB \div
+\beta) \subseteq \bB \div (\alpha \wedge \beta)
+ 
+
+(÷8)(\div 8) 
+If B=Cn(B)\bB = \Cn(\bB) and α∉B÷(α∧β)\alpha \not\in \bB \div (\alpha
+\wedge \beta), then B÷(α∧β)⊆B÷α\bB \div (\alpha \wedge \beta) \subseteq \bB
+\div \alpha 
+
+
+÷1\div 1 says that the contraction of B\bB by α\alpha, B÷α\bB
+\div \alpha, should be deductively closed, if B\bB is deductively
+closed. ÷2\div 2 says that a contraction should not give rise to new
+beliefs not previously held. ÷3\div 3 says that the ideal doxastic
+agent should not change her old beliefs when she gives up a sentence
+she does not believe to begin with. ÷4\div 4 says that, unless
+α\alpha is tautological, the agent should really give up her belief
+that α\alpha is true if she contracts by α\alpha.  ÷5\div 5
+says that the particular formulation of the sentence the agent gives
+up should not matter; in other words, the objects of belief should
+really be propositions rather than sentences. ÷6\div 6 says the
+agent should recover her old beliefs if she first contracts by
+α\alpha and then adds α\alpha again, provided B\bB is
+deductively closed. According to ÷7\div 7 the agent should not give
+up more beliefs when contracting by α∧β\alpha \wedge \beta than the
+ones she gives up when she contracts by α\alpha alone as well as
+when she contracts by β\beta alone. ÷8\div 8 finally requires the
+agent not to give up more beliefs than necessary: if the agent already
+gives up α\alpha when she contracts by α∧β\alpha \wedge \beta, she
+should not give up more when contracting by α\alpha than she gives
+up when contracting by α∧β\alpha \wedge \beta. Rott (2001) discusses
+many further principles and variants of the above.
+
+Given the notion of a contraction we can now state what the
+agent’s new belief set, i.e., her old belief set B\bB revised
+by the new information α\alpha, B∗α\bB * \alpha, should look like.
+First, the agent should clear B\bB to make it consistent with
+α\alpha. That is, first the agent should contract B\bB by ¬α\neg
+\alpha. Then she should simply add α\alpha and close under
+(classical) logical consequence. This gives us the agent’s new
+belief set B∗α\bB * \alpha, her old belief set B\bB revised by
+α\alpha. The recipe just described is known as the Levi
+identity:
+B∗α=Cn((B÷¬α)∪{α})
+\bB * \alpha = \Cn((\bB \div \neg \alpha)\cup \{\alpha \})
+
+
+Revision ∗* defined in this way satisfies a corresponding list of
+properties. For every set of sentences B⊆L\bB \subseteq \mathbf{L}
+and any sentences α,β∈L\alpha , \beta \in \mathbf{L} (where the
+contradictory sentence ⊥\bot can be defined as the negation of the
+tautological sentence ⊤\top, i.e., ¬⊤)\neg \top):
+
+
+(∗1)(*1) 
+B∗α=Cn(B∗α)\bB * \alpha = \Cn(\bB *\alpha) 
+
+(∗2)(*2)
+α∈B∗α\alpha \in \bB * \alpha 
+
+(∗3)(*3)
+If ¬α∉Cn(B)\neg \alpha \not\in \Cn(\bB), then B∗α=Cn(B∪{α})\bB * \alpha =
+\Cn(\bB\cup \{\alpha \}) 
+
+(∗4)(*4)
+If ¬α∉Cn(∅)\neg \alpha \not\in \Cn(\varnothing), then ⊥∉B∗α\bot \not\in
+\bB *\alpha 
+
+(∗5)(*5)
+If Cn({α})=Cn({α})\Cn(\{\alpha \}) =\Cn(\{\alpha \}), then B∗α=B∗β\bB * \alpha =
+\bB * \beta 
+
+(∗6)(*6)
+If B=Cn(B)\bB = \Cn(\bB), then (B∗α)∩B=B÷¬α(\bB * \alpha)\cap \bB = \bB \div
+\neg \alpha 
+
+(∗7)(*7)
+If B=Cn(B)\bB = \Cn(\bB), then B∗(α∧β)⊆Cn(B∗α∪{β})\bB * (\alpha \wedge \beta)
+\subseteq \Cn(\bB * \alpha \cup \{\beta \}) 
+
+(∗8)(*8)
+If B=Cn(B)\bB = \Cn(\bB) and ¬β∉B∗α\neg \beta \not\in \bB * \alpha,
+then Cn(B∗α∪{β})⊆B∗(α∧β)\Cn(\bB * \alpha \cup \{\beta \}) \subseteq \bB *(\alpha \wedge
+\beta) 
+
+
+In standard belief revision theory the new belief set is always
+deductively closed, as required by ∗1*1. This requirement can be
+dropped by using belief bases instead of belief sets (Hansson
+1999). In standard belief revision theory the new information is
+always part of the new belief set, as required by ∗2*2.
+Non-prioritized belief revision relaxes this requirement
+(Hansson 1999). The idea is that the idealdoxastic agent might
+consider the new information to be too implausible to be added and
+decide to reject it; or she might add only a sufficiently plausible
+part of the new information; or she might add the new information and
+then check for consistency, which makes her give up part or all of the
+new information again, because her old beliefs turn out to be more
+entrenched.
+
+The notion of entrenchment provides the connection to degrees of
+belief. In order to decide which part of her belief set she wants to
+give up, belief revision theory equips the ideal doxastic agent agent
+with an entrenchment ordering. Technically, this is a relation
+≼\preccurlyeq on L\mathbf{L} (i.e., ≼⊆L)\preccurlyeq \subseteq
+\mathbf{L}) such that for all α,β,γ\alpha , \beta , \gamma in
+L\mathbf{L}:
+
+
+(≼1)({\preccurlyeq}1) 
+If α≼β\alpha \preccurlyeq \beta and β≼γ\beta \preccurlyeq
+\gamma, then α≼γ\alpha \preccurlyeq \gamma
+Transitivity 
+
+(≼2)({\preccurlyeq}2) 
+If α⊢β\alpha \vdash \beta, then α≼β\alpha \preccurlyeq
+\beta
+Dominance 
+
+(≼3)({\preccurlyeq}3) 
+α≼α∧β\alpha \preccurlyeq \alpha \wedge \beta or β≼α∧β\beta
+\preccurlyeq \alpha \wedge \beta
+Conjunctivity 
+
+(≼4)({\preccurlyeq}4) 
+If ⊥∉Cn(B)\bot \not\in \Cn(\bB), then [α∉B[\alpha \not\in \bB if
+and only if for all β\beta in L:α≼β]\mathbf{L}: \alpha \preccurlyeq
+\beta]
+Minimality 
+
+(≼5)({\preccurlyeq}5) 
+If for all α\alpha in L:α≼β\mathbf{L}: \alpha \preccurlyeq
+\beta, then β∈Cn(∅)\beta \in \Cn(\varnothing)
+Maximality 
+
+
+B\bB is a fixed set of background beliefs. Given an entrenchment
+ordering ≼\preccurlyeq on L\mathbf{L} and letting α⪱β\alpha
+\preccurlyneq \beta hold just in case α≼β\alpha \preccurlyeq \beta
+and β⋠α\beta \not\preccurlyeq \alpha, we can define a revision
+operator ∗* as follows:
+B∗α={β∈B:¬α⪱β}∪{α}
+\bB * \alpha = \{\beta \in \bB: \neg \alpha
+ \preccurlyneq \beta \}\cup \{\alpha \}
+
+
+Then one can prove the following representation theorem:
+
+
+Theorem 1:
+
+Let L\mathbf{L} be a language, let B⊆L\bB \subseteq \mathbf{L} be
+a set of sentences, and let α∈L\alpha \in \mathbf{L} be a sentence.
+Each entrenchment ordering ≼\preccurlyeq on L\mathbf{L} induces
+a revision operator ∗* on L\mathbf{L} satisfying
+∗1*1–∗8*8 by defining
+B∗α={β∈B:¬α⪱β}∪{α}.\bB * \alpha = \{\beta \in \bB: \neg \alpha \preccurlyneq \beta \}\cup \{\alpha \}.
+
+
+For each revision operator ∗* on L\mathbf{L} satisfying
+∗1*1–∗8*8 there is an entrenchment ordering ≼\preccurlyeq
+on L\mathbf{L} that induces ∗* in exactly this way. 
+
+
+Grove (1988) proves an analogous representation theorem for a systems
+of spheres semantics that generalizes Lewis’ (1973) semantics
+for counterfactuals. Segerberg (1995) formulates the AGM approach in
+the framework of dynamic doxastix logic. Lindström &
+Rabinowicz (1999) extend this to iterated belief revision.
+
+It is, however, fair to say that belief revision theorists distinguish
+between degrees of belief and entrenchment. Entrenchment, so they say,
+characterizes the agent’s unwillingness to give up a particular
+qualitative belief, which may be different from her degree of belief
+for the respective sentence or proposition. Although this distinction
+might violate Occam’s razor by introducing an additional
+doxastic level, it corresponds to Spohn’s parallelism (Spohn
+2009, sct. 3) between subjective probabilities and ranking functions
+as well as Stalnaker’s stance in his (1996, sct. 3). Weisberg
+(2011, sct. 7) offers a similar distinction.
+
+If the agent’s doxastic state is represented by a regular
+ranking function ϱ\varrho (on a field of propositions over the set
+of models ModLMod_{\mathbf{L}} for the language L\mathbf{L}, as
+explained in section 1.3) the ordering ≼ϱ\preccurlyeq_{\varrho} that
+is defined for all α,β\alpha , \beta in L\mathbf{L} by
+α≼ϱβ if and only if ϱ(Mod(¬α))≤ϱ(Mod(¬β)) 
+\alpha \preccurlyeq_{\varrho} \beta \text{ if and only if }
+\varrho(Mod(\neg \alpha)) \le \varrho(Mod(\neg \beta))
+
+
+is an entrenchment ordering for B={α∈L:ϱ(Mod(¬α))>0}\bB = \{\alpha \in \mathbf{L}:
+\varrho(Mod(\neg \alpha)) \gt 0\}. Ranking theory thus covers AGM
+belief revision theory as a special case (Rott 2009a defines, among
+others, entrenchment orderings and ranking functions for beliefs as
+well as for disbeliefs and non-beliefs). It is important to see how
+ranking theory goes beyond AGM belief revision theory. In the latter
+theory the agent’s prior doxastic state is characterized by a
+belief set B\bB together with an entrenchment ordering
+≼\preccurlyeq. If the agent receives new information in the form of
+a proposition AA, the entrenchment ordering is used to turn the old
+belief set into a new one, viz. B∗A\bB * A. The agent’s
+posterior doxastic state is thus characterized by a belief set only.
+The entrenchment ordering itself is not updated. Therefore AGM belief
+revision theory cannot handle iterated belief changes. To the
+extent that belief revision is not simply a one step process, AGM
+belief revision theory is thus no theory of belief revision at all.
+(The analogous situation in terms of subjective probabilities would be
+to characterize the agent’s prior doxastic state by a set of
+propositions together with a subjective probability measure, and to
+use that measure to update the set of propositions without ever
+updating the probability measure itself.)
+
+In ranking theory the agent’s prior doxastic state is
+characterized by a ranking function ϱ\varrho (on a field over
+ModL)Mod_{\mathbf{L}}). This function determines the agent’s
+prior belief set B\bB, and so there is no need to specify B\bB
+in addition to ϱ\varrho. If the agent receives new information in
+form of a proposition AA, as AGM belief revision theory has it,
+there are infinitely many ways to update her ranking function that all
+give rise to the same new belief set B∗A\bB * A. Let nn be an
+arbitrary positive number in N∪{∞}\bN\cup \{\infty \}. Then Spohn
+conditionalization on the partition {A,W∖A}\{A, W \setminus A\} with n>0n
+\gt 0 as new rank for W∖AW \setminus A (and consequently 0 as new
+rank for A),ϱ′n(W∖A)=nA), \varrho_{n}'(W \setminus A) = n, determines a new
+ranking function ϱ′n\varrho_{n}' that induces a belief set
+B′n\bB_{n}'. We have for any two positive numbers m,nm, n in
+N∪{∞}:B′m=B′n=B∗A\bN\cup \{\infty \}: \bB_{m}' = \bB_{n}' = \bB * A, where the
+latter is the belief set described two paragraphs ago.
+
+Plain conditionalization is the special case of Spohn
+conditionalization with ∞\infty as new rank for W∖AW \setminus A.
+The new ranking function obtained in this way is ϱ′∞=ϱ(⋅∣A)\varrho'_{\infty} =
+\varrho(\cdot \mid A), and the belief set it induces is the same
+B∗A\bB * A as before. However, once the ideal doxastic agent assigns
+rank ∞\infty to W∖AW \setminus A, she can never get rid of AA
+again (in the sense that the only information that would allow her to
+give up her belief that AA is to become certain that AA is
+false, i.e., assign rank ∞\infty to AA; that in turn would make
+her doxastic state collapse in the sense of turning it into the tabula
+rasa ranking that is agnostic with respect to all consistent
+propositions and so assigns rank 0 to all of them). Just as in
+probabilism you are stuck with AA once you assign it probability 1,
+so you are basically stuck with AA once you assign its negation
+rank ∞\infty. As we have seen, AGM belief revision theory is
+compatible with always updating in this way. That is one way to see
+why it cannot handle iterated belief revision. To rule out this
+behavior one has to impose further constraints on entrenchment
+orderings. Nayak (1994) and Boutilier (1996) and Darwiche & Pearl
+(1997) and others do so by postulating constraints compatible with,
+but not yet implying ranking theory (see Rott 2009b, who provides an
+excellent overview of qualitative and comparative approaches to
+iterated belief revision extending the AGM approach). Hild & Spohn
+(2008) argue that one really has to go all the way to ranking
+functions in order to adequately deal with iterated belief revision.
+Stalnaker (2009) critically discusses these approaches and argues that
+one needs to distinguish different kinds of information, including
+meta-information about the agent’s own beliefs and revision
+policies as well as about the sources of her information. For more on
+AGM belief revision theory, iterated belief revisions, and ranking
+functions see Huber (2013a, 2013b). For a discussion of belief
+revision theory in the setting of possibility theory see Dubois &
+Prade (2009).
+3.5 Nonmonotonic Reasoning
+
+Let us finally turn to nonmonotonic reasoning (for more
+information see the entry on
+ non-monotonic logic).
+ A premise β\beta classically entails a conclusion γ,β⊢γ\gamma , \beta
+\vdash \gamma, just in case γ\gamma is true in every model or
+truth value assignment in which β\beta is true. The classical
+consequence relation ⊢\vdash (conceived of as a relation between
+two sentences rather than as a relation between a set of sentences,
+the premises, and a sentence, the conclusion) is
+non-ampliative in the sense that the conclusion of a
+classically valid argument does not convey information that goes
+beyond the information contained in the premise.
+
+⊢\vdash has the following monotonicity property. For any
+sentences α,β,γ\alpha , \beta , \gamma in L\mathbf{L}:
+If α⊢γ, then α∧β⊢γ.
+\text{If } \alpha \vdash \gamma, \text{ then } \alpha \wedge \beta \vdash \gamma.
+
+
+That is, if γ\gamma follows from α\alpha, then γ\gamma
+follows from any sentence α∧β\alpha \wedge \beta that is at least as
+logically strong as α\alpha. However, everyday reasoning often is
+ampliative. When Sophia sees the thermometer at 85° Fahrenheit she
+infers that it is not too cold to have dinner in the garden. If Sophia
+additionally sees that the thermometer is placed above the oven where
+she is boiling her pasta, she will not infer this any more.
+Nonmonotonic reasoning is the study of reasonable consequence
+relations which violate monotonicity (Gabbay 1985, Kraus & Lehmann
+& Magidor 1990, Makinson 1989; for an overview see Makinson
+1994).
+
+For a fixed set of background beliefs B\bB, the revision operators
+∗* from the previous paragraphs give rise to nonmonotonic
+consequence relations |∼\dproves as follows (Makinson &
+Gärdenfors 1991):
+α|∼β if and only if β∈B∗α.
+\alpha \dproves \beta \text{ if and only if } \beta \in \bB * \alpha.
+
+
+Nonmonotonic consequence relations on a language L\mathbf{L} are
+supposed to satisfy the following principles from Kraus & Lehmann
+& Magidor (1990).
+
+
+(KLM1) 
+α|∼α\alpha \dproves \alpha
+Reflexivity 
+
+(KLM2)
+If ⊢α↔β\vdash \alpha \leftrightarrow \beta and α|∼γ\alpha \dproves
+\gamma, then β|∼γ\beta \dproves \gamma
+Left Logical Equivalence 
+
+(KLM3)
+If ⊢α→β\vdash \alpha \rightarrow \beta and γ|∼α\gamma \dproves
+\alpha, then γ|∼β\gamma \dproves \beta
+Right Weakening 
+
+(KLM4)
+If α∧β|∼γ\alpha \wedge \beta \dproves \gamma and α|∼β\alpha \dproves
+\beta, then α|∼γ\alpha \dproves \gamma
+Cut 
+
+(KLM5)
+If α|∼β\alpha \dproves \beta and α|∼γ\alpha \dproves \gamma,
+then α∧β|∼γ\alpha \wedge \beta \dproves \gamma
+Cautious Monotonicity 
+
+(KLM6)
+If α|∼γ\alpha \dproves \gamma and β|∼γ\beta \dproves \gamma,
+then α∨β|∼γ\alpha \vee \beta \dproves \gamma
+Or 
+
+
+The standard interpretation of a nonmonotonic consequence relation
+|∼\dproves is “If …, normally …”.
+Normality among worlds is spelt out in terms of preferential models
+⟨S,l,≼⟩\langle S, l, \preccurlyeq \rangle for L\mathbf{L}, where SS
+is a set of states, and l:S→ModLl: S \rightarrow Mod_{\mathbf{L}} is a
+function that assigns each state ss in SS its world l(s)l(s) in
+ModLMod_{\mathbf{L}}. The abnormality relation ≼\preccurlyeq is a
+strict partial order on ModLMod_{\mathbf{L}} that satisfies a certain
+smoothness condition. For our purposes it suffices to note that the
+order among the worlds that is induced by a pointwise ranking function
+is such an abnormality relation. Given a preferential model ⟨S,l,≼⟩\langle
+S, l, \preccurlyeq \rangle we can define a nonmonotonic consequence
+relation |∼\dproves as follows. Let ¯α\overline{\alpha} be the set
+of states in whose worlds α\alpha is true, i.e.,
+¯α={s∈S:l(s)⊨α}\overline{\alpha} = \{s \in S: l(s) \vDash \alpha \}, and
+define
+α|∼β if and only if for all s∈¯α:(if for all t∈¯α:t⋠s, then l(s)⊨β).
+\alpha \dproves \beta \text{ if and only if for all } 
+s \in \overline{\alpha}: 
+(\text{if for all } t \in \overline{\alpha}: 
+ t \not\preccurlyeq s, \text{ then } l(s) \vDash \beta).
+
+
+That is, α|∼β\alpha \dproves \beta holds just in case β\beta is
+true in the least abnormal among the α\alpha-worlds. Then one can
+prove the following representation theorem:
+
+Theorem 2:
+
+Let L\mathbf{L} be a language, let B⊆L\bB \subseteq \mathbf{L} be
+a set of sentences, and let α∈L\alpha \in \mathbf{L} be a sentence.
+Each preferential model ⟨S,l,⟩\langle S, l, \rangle for L\mathbf{L}
+induces a nonmonotonic consequence relation |∼\dproves on
+L\mathbf{L} satisfying KLM1–6 by defining: α|∼β\alpha \dproves
+\beta if and only if for all s∈¯αs \in \overline{\alpha}, if for all
+t∈¯α:t⋠st \in \overline{\alpha}: t \not\preccurlyeq s, then l(s)⊨βl(s) \vDash
+\beta. For each nonmonotonic consequence relation |∼\dproves on
+L\mathbf{L} satisfying KLM1–6 there is a preferential model
+⟨S,l,≼⟩\langle S, l, \preccurlyeq \rangle for L\mathbf{L} that induces
+|∼\dproves in exactly this way. 
+
+Whereas the classical consequence relation preserves truth in all
+logically possible worlds, nonmonotonic consequence relations preserve
+truth in all least abnormal worlds. For a different semantics in terms
+of inhibition nets see Leitgeb (2004). Makinson (2009) contains an
+excellent presentation of ideas underlying nonmonotonic reasoning and
+its relation to degrees of belief.

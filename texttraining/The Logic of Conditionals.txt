@@ -1,0 +1,4083 @@
+This article provides a survey of recent work in conditional
+logic. Three main traditions are considered: the one dealing with
+ontic models, the one focusing on probabilistic models and the one
+utilizing epistemic models of conditionals.
+ 
+1. Introduction
+
+
+Although conditional logic has been studied rather intensively during
+the last 50 years or so, the topic has both ancient and medieval roots
+(starting in the Stoic school, as the monograph Sanford 1989 explains
+in detail). Much of the contemporary work can nevertheless be traced
+back to a remark in a footnote appearing in Ramsey 1929. This passage
+has been interpreted and re-interpreted (sometimes from opposite
+points of view) by many scholars since Ramsey's writings become
+available.
+
+ 
+Although the work on conditionals is vast and therefore quite
+difficult to survey adequately, we can at least distinguish a first
+contemporary wave of work, such as Chisholm 1946, Goodman 1955,
+Rescher 1964, and others, which sprang from the late 1940s to the
+early 1960s. This wave of work is usually referred to as encompassing
+the so-called cotenability theories of conditionals. The
+basic idea of this view is that a conditional is assertable if its
+antecedent, together with suitable (co-tenable) premises, entails its
+consequent. In a certain way this work prefigured the discussions that
+would ensue after the end of the 1960s. In fact, one can also evaluate
+the truth conditions of conditionals under this point of view
+by saying that a conditional is true if an argument from the
+antecedent and suitable co-tenable premises to the conditional's
+conclusion exists. So, this theory is neutral with regard to the issue
+of whether conditionals carry truth-values or not. The theory can
+deliver both a theory of assertability and a theory of truth for
+conditionals.
+
+
+The type of analysis of conditionals a la Goodman, for example,
+provides truth conditions for conditionals in terms of the following
+test: a > b is true if b follows by law
+from a together with the set Γ of true sentences
+c such that it is not the case that a > ¬
+c. This proposal is problematic given that it produces truth
+conditions for conditionals in terms of the truth conditions of other
+conditionals. Any hope of breaking free of Goodman's circle requires to
+provide an independent characterization of Γ . There are some
+sophisticated attempts to do so in the 1980's like the one contained
+in Kvart (1986). So, the ideas of Goodman and some of the cotenability
+theorists have been developed more recently by scholars who appealed to
+careful analysis of the causal and temporal structure of events to
+give an independent characterization of Goodman's Γ. But, for the
+most part, these theories have not significantly advanced discussions
+about the logic of conditionals.
+
+ 
+Three alternative logical accounts were born during a period of 10
+years, from approximately 1968 to 1978. Stalnaker 1968 deploys a
+possible worlds semantics for conditionals and offers an axiom system
+as well.  Here we have clearly a truth conditional account, which was
+followed by the influential book Lewis 1973. The latter was inspired
+by the same ontic interpretation of conditionals that guided
+Stalnaker's work.
+
+ 
+Adams 1975 adopts a completely different approach based on studying
+formally the idea that the probability of (non-nested) conditionals is
+given by the corresponding conditional probability. This account was
+preceded by essays which antedated Stalnaker 1968 and it focuses
+on a (probabilistic) theory of acceptance for conditionals, rather
+than a theory of truth.
+
+ 
+Gärdenfors 1978 follows a third line of inquiry focused on
+providing acceptability conditions for conditionals in terms of
+(non-probabilistic) belief revision policies.  A forerunner of this
+tradition can be found in Mackie 1962 and 1972, and in the work of
+those who elaborated on these writings, e.g., Harper 1975, 1976, and
+Levi 1977.  Moreover, Levi 1988 is an important essay that
+complemented Gärdenfors' work.
+
+ 
+Most of the contemporary work on conditional logic can be associated
+with work done in one of these traditions or combinations of
+them. But, of course, given the prodigious amount of work done in this
+field, there are articles or even books that do not fit perfectly in
+one of these categories or even combinations of them. The
+(non-probabilistic) work centering on indicative conditionals is one
+of these areas, as well as the important work combining chance, time
+and conditionals. Some notes and pointers to further reading will be
+provided in this regard in the final section of this survey.
+
+ 
+The other source of important work in conditional logic in recent
+years is computer science. Part of this work is related to models of
+causal conditionals and part of it is related to work in the
+area of non-monotonic logic. We will not have enough space to
+survey both, but we will provide bibliographical pointers to the
+former and we will offer some background and connections with more
+mainstream work in philosophical logic for the latter.
+2. The Ramsey Test and Contemporary Theories of Conditionals
+
+ 
+Ramsey (1929) invites us to consider the following scenario. A man has
+a cake and decides not to eat it because he thinks it will upset his
+stomach. We, on the other hand, consider his conduct and decide that
+he is wrong. Ramsey analyzed this situation as follows:
+
+  … the belief on which the man acts is that if he eats the
+cake he will be ill, taken according to our above account as a
+material implication. We cannot contradict this proposition either
+before or after the event, for it is true provided the man doesn't eat
+the cake, and before the event we have no reason to think he will eat
+it, and after the event we know he hasn't. Since he thinks nothing
+false, why do we dispute with him or condemn him?1 Before
+the event we do differ from him in a quite clear way: it is not that
+he believes p, we
+ p;
+ but he has a different degree of belief in q given
+p from ours; and we can obviously try to convert him to our
+view. But after the event we both know that he did not eat the cake
+and that he was not ill; the difference between us is that he thinks
+that if he had eaten it he would have been ill, whereas we think he
+would not. But this is prima facie not a difference of
+degrees of belief in any proposition, for we both agree as to all the
+facts.
+ 
+
+ 
+Footnote 1 in the text quoted above provides further
+clarification:
+
+ If two people are arguing ‘If p, then
+q?’ and are both in doubt as to p, they are
+adding p hypothetically to their stock of knowledge and
+arguing on that basis about q; so that in a sense ‘If
+p, q’ and ‘If p,
+ q’
+ are contradictories. We can say that they are fixing their degree of
+belief in q given p. If p turns out false,
+these degrees of belief are rendered void. If either party
+believes not p for certain, the question ceases to mean
+anything to him except as a question about what follows from certain
+laws or
+ hypotheses.[1]
+
+
+ 
+This is the textual evidence that has inspired a great deal of
+theoretical work in recent years about the nature of conditionals and
+their acceptability- (or truth-) conditions. Ramsey himself did not
+think that conditionals are truth carriers. He thought nevertheless
+that there are rational conditions for accepting and rejecting
+conditionals. The footnote in Ramsey's article intends to provide a
+rational test for acceptance and rejection of this kind.  In spite of
+this, many authors used Ramsey's ideas as a source of inspiration to
+propose truth conditions for conditionals. Perhaps the most explicit
+maneuver of this kind is offered in Stalnaker 1968.
+2.1 From Acceptability Conditions to Truth Conditions
+
+ Let us consider first Stalnaker's (1968) assessment of Ramsey's
+ideas: 
+
+ According to the suggestion, your deliberation … should
+consist of a simple thought experiment: add the antecedent
+(hypothetically) to your stock of knowledge (or beliefs), and then
+consider whether or not the consequent is true. Your belief about the
+conditional should be the same as your hypothetical belief, under this
+condition, about the consequent.
+ 
+
+ 
+Of course Stalnaker is aware of the fact that this procedure was
+completely specified by Ramsey only in the case in which the agent has
+no opinion about the truth value of the antecedent of the conditional
+that is being evaluated. Therefore he asked himself how the procedure
+suggested by Ramsey can be extended to cover the remaining cases. He
+answered as follows:
+
+ First, add the antecedent (hypothetically) to your stock of beliefs;
+second, make whatever adjustments are required to maintain consistency
+(without modifying the hypothetical belief in the antecedent),
+finally, consider whether or not the consequent is then true.
+ 
+
+ After formulating his version of the Ramsey test, Stalnaker completed
+the transition from belief conditions to truth conditions using the
+concept of ‘possible world’:
+
+
+ The concept of possible world is just what we need to make
+this transition, since a possible world is the ontological analogue of
+a stock of hypothetical beliefs. The following set of truth
+conditions, using this notion, is the first approximation to the
+account I shall propose:
+
+  Consider a possible world in which a is true, and which otherwise
+differs minimally from the actual world. ‘If a, then
+b’ is true (false) just in case b is true (false) in
+that possible world.
+
+
+ An analysis in terms of possible worlds has also the advantage of
+providing a ready-made apparatus on which to build a semantical
+theory.
+
+
+ 
+Stalnaker proposes a transition from epistemology to metaphysics via
+the use of the pivotal notion of ‘possible world’. We will
+see below, nevertheless, that Stalnaker's proposed transition is
+tantamount to a change of theme. Ramsey thought that conditionals are
+not truth value bearers, but that they have exact acceptability
+ conditions.[2]
+ A more faithful rendering of Ramsey's ideas, compatible
+with the idea that conditionals do not carry truth-values, can also
+lead to an exact logical and semantical analysis. But the conditionals
+that thus arise have different structural properties from the
+ontological conditionals studied via Stalnaker's test.
+
+ 
+There is a fair amount of work focusing on the study of the logic of
+truth value bearing conditionals. The standard apparatus of model
+theory can be extended with techniques similar to the ones used in
+modal logic, in order to study these conditionals. Our first section
+of this survey will focus on reviewing work in this tradition. The
+main challenge faced in this section will be to identify a semantical
+approach capable of accommodating parametrically the main syntactic
+systems proposed in the literature (including weak non-normal ones
+that have played an interesting role in applications in computer
+science).
+2.2 Acceptability Conditions: Of Which Kind?
+
+ 
+There are two main traditions which focus on delivering acceptability
+conditions for conditionals rather than truth conditions. They are
+inspired by (diverging) interpretations of Ramsey's original test. One
+of them focuses on the expression ‘degrees of belief’ in
+the footnote. The central idea here is that the agents ‘fix
+their degrees of belief in q given p’, by
+conditioning on p, via classical Bayesian conditionalization.
+Roughly this is the research program pursued by Ernst Adams (1965,
+1966, 1975) and some of his students and many followers. The leading
+idea is to develop a probabilistic semantics for conditionals. Section
+four below will be devoted to consider this type of semantics for
+conditionals.
+
+ 
+The option pursued by Adams, McGee, et al. interprets Ramsey as
+providing an acceptability test of probabilistic kind according to
+which the probability of a conditional is given by the corresponding
+conditional probability. Lewis 1976 provides a well known proof
+against the tenability of this idea. We will review this result below
+and we will consider the important role it played for researchers
+working in this tradition.
+
+ 
+There is as well an alternative line of research initiated in
+Gärdenfors 1978, which deploys a non-probabilistic theory of
+acceptance for conditionals, while at the same time preserves
+important connections with the ontologically motivated research
+program of Stalnaker, and Lewis.  But, unlike Stalnaker,
+Gärdenfors thinks that the Ramsey test is a test of acceptance
+and not a springboard to build a possible worlds semantics for
+conditionals. We will outline the main idea behind Gärdenfors'
+proposal in the following section.
+2.2.1 The Ramsey Test
+
+ 
+Gärdenfors 1988 developed a semantical theory of a
+cognitive kind and applied it to formalize Ramsey's ideas. Contrary to
+what is claimed in many classical semantical theories, Gärdenfors
+maintains that ‘a sentence does not get its meaning from some
+correspondence with the world but that the meaning can be determined
+only in relation to a belief system’.  A belief system
+according to Gärdenfors is a system formed from: (1) a class of
+models of epistemic states, (2) a valuation function determining the
+epistemic attitudes in the state for each epistemic state, (3) a class
+of epistemic inputs, and (4) an epistemic commitment function
+* that for a given state of belief K and a given epistemic
+input a, determines a new suppositional state
+K*a.
+
+ 
+A semantical theory consists in a mapping from a linguistic
+structure to a belief system. If we focus on a Boolean language
+L0 free from modal or epistemic operators, and we
+assume that belief states are modeled by deductively closed set of
+sentences (belief sets) then three main attitudes can be
+distinguished.  For any sentence a ∈
+L0 and a belief set K ∈
+L0,
+
+a is accepted with respect to K iff a
+∈ K.
+a is rejected with respect to K iff
+¬a ∈ K.
+a is kept in suspense with respect to K iff
+a ∉ K, ¬a ∉
+K,
+
+
+Acceptance is the crucial epistemic attitude used in
+Gärdenfors' semantical theory. In fact, the meaning of
+expressions of L0 is delivered in terms of
+acceptability criteria rather than truth
+conditions. The Ramsey test can be used very naturally in the
+context of Gärdenfors' semantics to provide acceptability
+criteria for sentences of the form ‘If a, then b’
+(abbreviated ‘a > b’) expressed in a
+language L> ⊇ L0. Of
+course in this case we need to appeal to the epistemic commitment
+function *. For every a, b ∈
+L0:
+
+(Accept  >) 
+a > b is accepted with respect to K iff
+b ∈ K*a.
+ 
+
+ 
+If one pre-systematically sees conditionals as truth value-bearers it
+would be natural to articulate the notion of acceptance utilized in
+(Accept >) as belief in the truth of a corresponding
+conditional. Moreover, since the current belief set K
+contains all sentences fully believed as true by the agent, then the
+acceptance of ‘if a, then b’ has to be
+mirrored by membership in K. This idea can be expressed by
+the following Reduction Condition.
+
+(RC) 
+a > b is accepted with respect to K iff
+a > b ∈ K.
+ 
+
+ 
+So, (Accept  >) can now be rewritten as follows:
+
+(GRT) 
+a > b ∈ K iff b ∈
+K*a.
+ 
+
+ 
+(GRT) is indeed Gärdenfors' version of the Ramsey test. Of course
+Gärdenfors' semantical theory, extended with suitable epistemic
+variants of the classical notions of satisfaction, validity and
+entailment, will be capable of providing epistemic models for
+conditional operators.  (GRT) behaves in such a theory as a
+‘bridge-clause’ relating (in a one-to-one fashion)
+properties of * with properties of ‘>’.
+
+ 
+Gärdenfors (1988) was specially interested in studying the
+behavior of his epistemic models when * obeys the constraints of a
+qualitative version of conditionalization called AGM in the
+ literature.[3]
+ Nevertheless, as Gärdenfors himself points out, there are only
+trivial models that satisfy these constraints. In fact,
+Gärdenfors proved that (GRT) and three very intuitive postulates
+of belief change are, on pain of triviality, inconsistent.  This
+result plays a similar role in this research program to the role
+played by Lewis's impossibility result in the probabilistic research
+program.
+
+ 
+We will show below that (GRT) is also in conflict with weaker
+constraints on *, which are uncontroversially required by Ramsey in
+his own formulation of ‘the Ramsey test'. In doing so we will
+prove a very strong variant of the so-called Gärdenfors'
+impossibility theorem.
+
+ 
+(GRT) delivers a theory of acceptance of conditionals that can be
+pre-systematically understood as truth value bearers, and which
+therefore have little in common with Ramsey's conditionals.
+Gärdenfors himself arrived at this conclusion in (1988), although
+he did not provide an alternative to (GRT) in order to carry out
+further Ramsey's semantic
+ program.[4]
+ In the following section we will present a possible alternative.
+2.2.2 The Ramsey Test Revisited: A More Sophisticated Notion of Acceptance
+
+ 
+It should be evident by now that a genuine representation of Ramsey's
+ideas requires a more sophisticated notion of acceptance.  Of course
+there is no need to distinguish between acceptance and full belief in
+the case of truth-value bearing propositions of
+L0. But we also need a notion of acceptance
+capable of characterizing the acceptance of sentences that lack truth
+values but express important cognitive attitudes. Ramsey's
+conditionals are a perfect example of this kind of sentence. Levi
+(1988) offers a theory of acceptance of this sort.
+
+ 
+Let L0 be a Boolean language free of modal and
+epistemic operators. The full beliefs of an agent X are
+represented by the set of sentences of L0 accepted
+by X at a certain point of time t. This set
+K of sentences of L0 should be closed
+under logical consequence.
+
+ 
+Under X's point of view all items in K, at time
+t, are true. They serve as a basis for modal judgments of
+serious possibility that, in turn, lack truth values. For example, if
+a is accepted in K, we can say that ¬a
+is not a serious possibility according to the point of view of
+X, at time t. By the same token, ‘if
+a, then b’ is an appraisal concerning the
+serious possibility of b relative to the transformation of
+K (via the addition of a) and not to K
+itself. These epistemic conditionals lack truth values and are
+somewhat ‘parasitic’ on K and its
+dynamics. Acceptance of these conditionals cannot be formally mirrored
+by membership in K. Nevertheless this does not mean that we
+cannot recognize a derived corpus expressible in an extended language
+L>, of those L>
+sentences whose acceptability is grounded on the adoption of
+K and the agent's commitments for change at time
+t.
+
+ 
+The conditionals accepted by X at time t can be
+accommodated in a ‘support set’ s(K)
+⊇ K. Levi proposes, in addition, to close
+s(K) under logical consequence. Finally any sentence
+a ∈ L0 that belongs to
+s(K) also belongs to K.
+
+ 
+Now, the Ramsey test can be expressed as follows:
+
+(LRT) 
+ If a, b ∈ L0, then
+a > b ∈ s(K) iff
+b ∈ K*a, whenever K is
+consistent.
+ 
+
+ 
+The possibility of complementing the Ramsey test with a
+‘negative version’ of it capable of dealing with negated
+conditionals, has been thoroughly investigated by the
+Gärdenforsian tradition.  Gärdenfors et al. 1989 concluded
+that on the presence of very weak constraints on *, (GRT) cannot be
+complemented with the following ‘negative version’ of
+it:
+
+(NRT) 
+  ¬(a > b) ∈ K iff b
+∉ K*a.
+ 
+
+ 
+The result should not be surprising.  Notice that (GRT) and (NRT)
+imply that a > b is rejected if and only if
+a > b is not accepted.  In other words, an agent
+X cannot be in suspense about a conditional a >
+b.  This result, highly unintuitive when applied to
+truth-value bearing conditionals, is nevertheless less problematic
+(and one could argue, natural) for conditionals that lack truth
+values.  So, it is not surprising that (GRT) cannot be supplemented by
+(NRT), due to the nature of the conditionals studied by the test.  It
+should not be surprising either that once the Reduction Condition is
+removed, the addition of the following negative version of (SRT) is
+absolutely harmless:
+
+(LNRT) 
+ If a, b ∈ L0, then
+¬(a > b) ∈ s(K) iff
+b ∉ K*a, whenever K is
+consistent.
+ 
+
+ 
+We will conclude this essay by offering a survey of the logical
+systems validated via these two tests. The theory can also be extended
+to provide acceptance conditions for iterated epistemic
+conditionals. When the underlying language is rich enough to include
+iterated conditionals as well as Boolean nesting of conditionals, some
+new conditional systems arise that have not been previously studied in
+the ontic tradition. But first we will review the main logical systems
+studied in the ontic tradition as well as some of the most salient
+proposals for a unified semantics (utilizing truth conditions).
+3. The Logic of Ontic Conditionals
+
+ 
+Let's consider first a set of important rules of inference for
+conditional logics. The rules contain a symbol to encode the material
+conditional ‘→’ used in classical logic, as well as
+the symbol ‘↔’ encoding a material
+biconditional. They also contain the symbol for the standard notion of
+conjunction.
+
+
+
+
+
+RCEA 
+
+b ↔ c
+
+
+  (b >  a) ↔ (c  >  a)
+
+
+
+
+
+
+
+RCEC
+
+b ↔ c
+
+
+  (a >  b) ↔ (a  >  c)
+
+
+
+
+
+
+RCM
+
+b → c
+
+
+  (a >  b) → (a  >  c)
+
+
+
+
+
+
+RCR
+
+  (b ∧ c) → d
+
+
+  (a >  b) ∧ (a  >  c) → (a  >  d)
+
+
+
+
+
+
+RCK
+
+  (b1 ∧ … ∧ bn) → b
+
+
+  (a  >  b1) ∧ … ∧ (a > bn) → (a  > b)
+
+
+
+
+
+
+ 
+The variable n should be greater than or equal to 0 in the
+formulation of RCK. Conditional logics closed under
+RCEA and RCK are called normal. Conditional
+logics closed under RCEA and RCEC are called
+classical. A conditional logic closed under RCEA is
+respectively monotonic or regular if it is closed
+under RCM or RCR. The terminology is the one used in
+Chellas 1980.
+
+ The rules RCEC and RCEA introduce a very weak
+requirement according to which substitutions by logically equivalent
+formulas is possible respectively in antecedents and consequents of
+conditionals. Although this is only implicit in the notation the rules
+are supposed to preserve theoremhood, i.e. we suppress the occurrence
+of the syntactic turnstile both in antecedents and in consequents.
+
+ The rule RCM receives in other contexts (non-monotonic
+logic) the name ‘Right Weakening’. The idea of the rule
+is to permit the derivation of conditionals with logically weaker
+consequents from conditionals with the same antecedent and logically
+stronger antecedents. We will make some comments about regular and
+normal conditional logics after we introduce the following list of
+salient axioms.
+
+
+
+PC
+Any axiomatization of propositional calculus
+
+
+ID
+a > a
+
+
+MP
+(b > c) → (b →
+c)
+
+
+CS
+(b 
+ ∧ c) 
+  →  (b  >  c)
+
+
+MOD
+(¬a > a) → (b >
+a)
+
+
+CSO
+[(a  >  b) 
+ ∧ (b  >  a)]
+ → [(a  >  c) ↔ (b  >
+  c)]
+
+
+CC
+[(a  >  b) 
+ ∧ (a  >  c)]
+ →  (a  >  (b 
+ ∧ c))
+
+
+RT
+(a  >  b) → (((a 
+ ∧ b)  >
+  c) → (a  >  c))
+
+
+CV
+[(a  >  c) 
+ ∧ ¬(a  >
+  ¬b)] → ((a 
+ ∧ b)  >  c)
+
+
+CMon
+[(a  >  c) 
+ ∧ (a  >  b)]
+ → ((a 
+ ∧b)  >  c)
+
+
+CEM
+(a  >  b) 
+ ∨ (a  >  ¬b)
+
+
+CA
+[(a  >  c) 
+ ∧ (b  >  c)]
+ → ((b 
+ ∨ a)  >  c)
+
+
+CM
+(a  >  (b 
+ ∧ c))
+ → [(a  >  b) 
+ ∧ (a  >  c)]
+
+
+CN
+(a  >  T)
+
+
+
+
+
+ Some of these axioms are relatively controversial for some
+interpretations of the conditional, some are constitutive of the very
+notion of conditional. An example of an axioms of the latter type is
+the axiom ID, which states syntactically the idea that the
+result of supposing an item is always successful. When new information
+is received then not all changes of view need to incorporate the
+information. One possible output could be to prioritize the background
+information when the new information is very surprising. But the
+result of supposing an item presupposes that the information in
+question is indeed part of the suppositional scenario created by the
+supposition of the said item.
+
+ Regarding monotonic systems one can state that a system is monotonic
+if and only if it contains CM and is closed under
+RCEC. There are two alternative ways of characterizing the
+regular systems introduced above only in terms of inference rules by
+utilizing axioms.  A conditional system is regular if and only if it
+contains CC and is closed under RCM.  And,
+alternatively, a system is regular if and only if it contains
+CC and CM and is closed under RCEC.
+
+ The axiom CN intuitively states that the suppositional
+scenario opened by hypothesizing an item always contains all logical
+truths.  The axiom MP, for modus ponens states a
+connection between the material conditional and the more general
+notion of conditionality encoded by ‘>’. The idea is
+that every conditional entails the corresponding material
+conditional. Most of the remaining axioms will be discussed in the
+context of particular logical systems.
+
+
+The smallest classical conditional logic will be called
+CE and the smallest normal conditional logic will be
+called CK. Of course there are important classical
+and non-normal conditional systems like the system
+CEMN which will see later on can be used to encode
+high probability conditionals. CE is a very weak
+conditional system free from most assumptions about conditionality,
+even some that we called constitutive of conditionality like the axiom
+ID.  CK, even when considerably stronger
+than CE, is nevertheless a very weak system as well
+(where axioms like ID continue not to be endorsed). 
+
+ 
+A weak system studied in the literature is the system
+B proposed in Burgess 1981. This system is the
+smallest monotonic system containing ID, CC,
+CA and CSO. If we add CV to
+B we get the system V which is the
+weakest system of conditionals studied in Lewis 1973. Although Lewis
+book studies counterfactual systems the motivation behind the system
+V is the study of conditional obligation. It also
+turns out that the system V, as well as the system
+B, has interesting applications in artificial
+intelligence (these systems are the weakest conditional systems whose
+non-nested fragment coincide with well known systems of non-monotonic
+logic—we will tackle this issue below). Another system that has
+been discussed by computer scientists is the system that Halpern calls
+AXcond; see Halpern (2003). The system has axioms
+ID, CC, CA, CMon, and it is closed
+under modus ponens RCEA and RCM. We will see below
+that there are important connections of this system with the system
+P
+ of non-monotonic logic (see section 4.4 below).
+
+
+
+ 
+Many philosophers working with ontic conditionals in general and
+counterfactuals in particular, think that MP is required for
+modeling this type of conditionals and some of them also think that
+CS is required as well. Examples are Pollock (1981), who
+proposed his system SS obtained by adding MP
+and CS to B, and David Lewis whose
+‘official’ axiomatization of the logic of counterfactuals
+is the system VC obtained by adding MP and
+CS to V. Lewis, nevertheless, considers as
+well a weaker system, the system VW obtained by
+adding only MP to V. Another salient system
+is the system C2 of Stalnaker which can be obtained
+from VC by replacing CS by the stronger
+CEM (conditional excluded middle). The best way of
+articulating these choice of axioms is in terms of semantic
+considerations, which will be introduced in the following
+sections.
+
+ 
+Another salient system in recent discussions about conditionals was
+proposed in Delgrande (1987), the system NP. We will
+also return to this system while discussing (briefly) connections with
+non-monotonic logic later on and we will characterize it semantically
+below.
+3.1 Unified Semantics for the Classical Family of Conditional Logics
+
+ 
+One of the best known semantics for conditionals can be built
+(following ideas first presented in Stalnaker 1968) by utilizing
+selection functions. To evaluate a conditional a
+> b at a world w the semantics uses a function
+f:W×2W →
+W. The underlying idea behind Stalnaker's semantics was
+presented informally above:
+
+ Consider a possible world in which a is true, and which
+otherwise differs minimally from the actual world. ‘If a,
+then b’ is true (false) just in case b is true (false)
+in that possible world.
+
+
+
+So, the selection function f(w,
+|a|M) would yield the
+‘closest’ a-world to w—where
+|a|M denotes the proposition expressed by
+the sentence a in the model M. This semantics can be
+generalized in various ways. One of these ways has been offered by
+Lewis who proposes to use a function
+f:W×2W →
+2W. So, this generalization allows for the
+existence of various a-worlds that are equally close to
+w.
+
+ 
+But this generalization cannot be used to deliver a unified semantics
+for the entire class of classical conditional logics. It is still too
+strong for characterizing systems like B. J. Burgess
+(1981) offered one of the first attempts to develop a unified
+semantics covering systems like B.
+3.1.1 Ordering Semantics
+
+ 
+Burgess (1981) pointed out that a semantics in terms of selection
+functions does not work for his system B, and he
+proposed a different semantics in terms of three-place ordering
+relations:
+
+Definition 1. An ordering model is a triple
+M =
+ ⟨W,
+ R,
+ P⟩
+ where W is a non-empty set of worlds, R is a
+ternary relation on W, and P is a classical valuation
+function assigning a proposition (set of worlds) to each atomic
+sentence. We use the notation |a|M to
+refer to the truth set of a, i.e. the set of worlds in the
+model at which a is true. So, the truth sets of conditionals
+are determined as follows:
+
+ 
+ For x ∈ W, we set
+Ix = {y : ∃z
+Rxyz
+ ∨ Rxzy}.
+ Then |a > b|M is the set of
+all worlds x ∈ W such that ∀y
+∈ (Iz ∩ |A|M)
+(∀z ∈ (Ix ∩
+|A|M) ¬Rxzy) → y
+∈ |B|M.
+ 
+
+
+
+We will now list a set of restrictions over the ordering models that
+will be useful in the following discussion:
+
+
+
+(Tr)
+∀x ∈ W,
+∀y,z,w ∈
+Ix (Rxyz
+ ∧
+ Rxzw →
+Rxyw)
+
+
+(N Tr) ∀x ∈
+W, ∀y,z,w ∈
+Ix
+(¬Rxyz
+ ∧
+ ¬Rxzw →
+¬Rxyw)
+
+
+(Irr)
+∀x ∈ W, ∀y ∈
+Ix
+(¬Rxyy)
+
+
+(C)
+∀x ∈ W (x ∈
+Ix
+ ∧
+ ∀ y ∈ Ix
+(y ≠ x →
+Rxxy)
+
+
+(T)
+∀x ∈ W (x ∈
+Ix)
+
+
+(U)
+∀x,y ∈ W
+(Ix =
+Iy)
+
+
+(A)
+∀x,y ∈ W,
+∀z,w ∈ Iy,
+∀z,w ∈ Ix
+(Rxzw →
+Ryzw)
+
+
+(L)
+∀x∈W
+∀y∈M ∃z∈M
+¬∃r∈M (z
+≤x y
+ ∧
+ Rxrz)
+ where M = (Ix ∩
+P(A))
+
+
+
+
+ 
+With the help of these restrictions we can characterize the following
+important systems:
+
+Theorem 1
+
+ (a) The set of ordering models constrained by (Tr),
+(Irr) and (L) is sound and complete
+with respect to the system B.
+ 
+
+ (b) The set of ordering models constrained by (Tr),
+(Irr), (L) and (N
+Tr) is sound and complete with respect to the system
+V.
+ 
+
+ (c) The set of ordering models constrained by (Tr),
+(Irr), and (N Tr) is sound and
+complete with respect to the system NP.
+ 
+
+3.1.2 Set Selection Functions
+
+ 
+A second proposal for unification has been proposed by Brian
+F. Chellas (1980), who, in turn, follows ideas first presented for
+monadic modalities by Dana Scott (1970) and Richard Montague
+(1970).
+
+
+The idea is to have a function, which given a proposition and a world
+yields a set of propositions instead of a single proposition. The
+resulting set of propositions can be interpreted in many ways. For
+example, Chellas sees them as necessary propositions given the
+antecedent. So, this might motivate the notation
+[a]b rather than a > b. Or the
+propositions in question can be the propositions that are highly
+probable conditional on the antecedent a, etc. We will use
+here the notation F(i, X) where X
+is a proposition, i is the world of reference and
+F(i, X) is a set of sets of worlds. We will
+call these functions set selection functions or
+neighborhood selection functions.
+
+ 
+Following Chellas' notation we can introduce minimal
+conditional model
+ ⟨W,
+ F, P ⟩
+ where W is a set of primitive points, F is a
+function F: W×2W →
+22W, and P is a valuation. The
+truth conditions for the conditional are given as follows:
+
+(MC)
+M, w
+ ⊨
+ a > b if and only if
+|b|M ∈ F(w,
+|a|M)
+ 
+
+
+This is not the only possible truth definition in this setting
+although this is the one used by Chellas in his book on modal
+logic. One possible alternative would be:
+
+(MC)
+M, w
+ ⊨
+ a > b if and only if there is Z ∈
+F(w, |a|M) and
+Z ∈ |b|M
+
+
+
+The two definitions are co-extensional as long as the conditional
+neighborhoods are closed under supersets (i.e. they are
+monotonic). But they do not coincide in general. Patrick Girard (2006)
+argues for the latter
+ definition.[5]
+
+ 
+The system CE is the smallest conditional logic
+closed under the rules RCEA and RCEC.
+CE is determined by all minimal conditional
+frames. The system CM is the smallest conditional
+system closed under RCM. CM is determined by
+the class of minimal frames for which the following condition holds
+(where the letters Y, X and Z, and primed
+instances of them, denote propositions):
+
+(cm)
+ If Y ∩ Y′ ∈ F(w,
+X), then Y ∈ F(w, X)
+and Y′ ∈ F(w, X)
+ 
+
+CR is the smallest conditional logic closed under
+RCR. CR is determined by the class of frames
+in which both (cm) and the following condition
+hold:
+
+(cc) If Y ∈
+F(w, X) and Y′ ∈
+F(w, X), then Y ∩
+Y′ ∈ F(w, X)
+ 
+
+
+The logics containing classical propositional logic and having the
+rules RCEA and RCK are called normal. The
+smallest normal conditional logic is the system
+CK. The system CK is determined by
+the class of frames satisfying (cm),
+(cc) and:
+
+(cn)
+W ∈ F(w, X)
+
+
+
+Obviously we can have conditions corresponding directly to the list of
+axioms presented in previous sections. For example we have:
+
+(ca)
+ If X ∈ F(w, Y) and
+X ∈ F(w, Z), then X
+∈ F(w, Y ∪ Z).
+ 
+
+(cso)
+ If X ∈ F(w, Y) and
+Y ∈ F(w, X), then Z
+∈ F(w, X) iff Z ∈
+F(w, Y)
+ 
+
+(id)
+X ∈ F(w, X)
+ 
+
+ 
+The system B proposed by Burgess in an interesting
+paper (1981) can be characterized in terms of the conditions
+(cc), (ca), (cso),
+(id) and (cm). In fact the system in
+question contains the axioms ID, CC, CA and
+CSO, and is closed under the rule RCM. The weakest
+conditional system in Lewis' hierarchy, the system V,
+can be obtained by adding the condition on selection functions
+corresponding to the axiom CV:
+
+(cv)
+ If X ∈ F(w, Y) and
+Zc ∉ F(w,
+Y), then X ∈ F(w, Y
+∩ Z)
+ 
+
+
+And if we subtract the condition (cm) from the
+conditions characterizing V we get the system
+NP first proposed by J. Delgrande (1987).
+
+
+A class selection function F is augmented  if and
+only if we have:
+
+Augmentation X ∈
+ F(w, Y) iff
+ ∩F(w, Y) ⊆
+X
+
+
+
+For every augmented set selection function F we can define an
+ordinary selection function f by setting
+f(w, X) =
+∩F(w, X).
+3.2 Stronger Normal Systems
+
+ 
+Perhaps the main normal systems are the systems C2 of
+Stalnaker, the system VC of Lewis, the system
+SS of Pollock and some of the weaker systems in the
+Lewis hierarchy of conditional systems, like VW.
+Intuitively all these systems are minimal change theories, to
+use the terminology employed in Cross and Nute (2001). According to
+this view a conditional is true just in case its consequent is true at
+every member of some selected set of worlds where the antecedent is
+true. Some notion of minimality is deployed to determined the suitable
+set of worlds where the antecedent holds true. Since here we are
+considering ontic conditionals usually what is minimized is some
+ontological notion like the distance between the actual world and a
+set of worlds where the antecedent is true.
+
+ 
+According to Stalnaker there is always one and only one world most
+like the actual world where the antecedent holds true. This gives
+support to the strong condition called conditional excluded
+middle. Lewis, allows the existence of a set of worlds that are most
+like the actual world and therefore he abandons CEM, but
+still endorses strong axioms like CS and CV.
+
+ 
+Lewis' semantics can be better formulated in terms of systems of
+spheres models. We will present these models immediately and then
+we will compare them with models in terms of selection functions.
+3.2.1 System of Spheres Models
+
+ 
+A system of spheres model is an ordered triple M =
+ ⟨W,
+ $, P⟩
+ where W is a set of points, P is a
+valuation function and $ a function which assigns to each i
+in W a nested set $i of subsets of
+W (the spheres about i). Following the terminology
+of Cross and Nute (2001) to characterize VC, we need
+the following restrictions on system of spheres models:
+
+Centering
+ {i} ∈ $i
+
+
+SOS
+i ∈ |a > b| if and only if
+ ∪$i ∩ |a|
+is empty or there is an S ∈ $i such
+that S ∩ |a| is not empty and S ∩
+|a| ⊆ |b|
+ 
+
+ 
+Let a sphere S ∈ $i be called
+a-permitting if and only if
+ ∪$i
+ ∩ |a| ≠
+ ∅ (for the sake of brevity we omit in this section the
+relativity of each proposition to the corresponding model
+ M).[6]
+ The so called Limit Assumption (LA) establishes that if
+ ∪$i ∩ |a|
+≠ ∅ then there is a smallest A-permitting
+sphere. Lewis has argued against having the Limit Assumption as a
+constraint on system of spheres models. Notice, nevertheless, that his
+truth conditions do not require determining the smallest
+a-permitting sphere in order to evaluate a >
+b.
+
+
+What is the connection between a semantic in terms of systems of
+spheres models and in terms of selection functions? Given a system of
+spheres we can always specify a derived selection function as
+follows: let f(a, w) be the set of
+a-worlds belonging to every a-permitting sphere in
+$i, if there is any a-permitting sphere
+in $i; or the empty set otherwise. Then if we use
+the usual truth conditions for selection functions, the truth
+conditions determined via selection functions derived from a system of
+spheres satisfying the Limit Assumption coincide with the truth
+conditions in terms of system of spheres (this is the reason invoked
+in Cross and Nute 2001 for classifying Lewis' theory of conditionals
+as a minimal change theory). But if the selection function is derived
+from a system of spheres where the Limit Assumption does not hold then
+the two types of truth conditions come apart (conditionals of the form
+a > b such that f(a,
+w) is empty will be vacuously true according to the semantics
+in terms of selection functions, but this need not happen when the
+semantics is specified in terms if system of spheres).
+
+
+It should be noted here that Lewis is still committed to a weak form
+of the Limit Assumption. To see that it is useful to see first that
+the system VC can be axiomatized via the axioms
+ID, MP, MOD, CSO, CV and
+CS with RCEC and RCK as rules of
+inference. The axiom of interest here is MOD which induces
+the following constraint on selection functions:
+
+(mod)
+If f(a, w) = ∅
+then f(b, w) ∩
+|a| = ∅
+ 
+
+
+Even if a derived function f obeys (mod),
+this does not guarantee that the system of spheres from which the
+function is derived obeys the Limit Assumption. For, of course, if
+f(b, w) ∩ |a|
+≠ ∅ then a should be
+ entertainable;[7]
+ but not vice-versa. Still, notice that (mod)
+requires that f(a, w) ≠ ∅ when
+a is weakly entartainable in the sense that
+f(b, w) ∩ |a| ≠
+∅. That much is required by the syntax of
+VC. I add below a set of usual constraints that will
+be useful below:
+
+(L) Limit Assumption
+ ∀a ∈ L ∀i ∈
+W, if |a| ∩
+ ∪$i ≠ ∅,
+then there is some smallest member of
+ $i that overlaps
+|a|.
+  
+
+(T) Total Reflexivity 
+ ∀i ∈ W, i ∈
+  ∪$i
+
+
+(A) Absoluteness 
+ ∀i, j ∈ W,
+$i = $j
+
+
+(U) Uniformity 
+ ∀i, j ∈ W,
+ ∪$i =
+ ∪$j
+
+
+(UT) Universality 
+ ∀i ∈ W,
+ ∪$i = W
+
+3.3 Other Salient Normal Systems
+
+ 
+Pollock has presented arguments against CV and therefore,
+although his semantics is still an example of a minimal change theory,
+his notion of minimality is rather different from the one used by
+Lewis. One of Pollock's counterexamples to CV involves two
+light bulbs L and L′, three simple switches
+A, B and C, and a power source. The
+components are wired together in such a way that bulb L is
+lit exactly when switch A is closed or both switches
+B and C are closed, while L′ is lit
+exactly when switch A is closed or switch B is
+closed. At the initial moment both light bulbs are unlit and all
+switches are open. Then we have:
+
+ (1) ¬(L′ > ¬L)
+ 
+
+ (2) ¬[(L′
+ ∧ L) 
+ >  ¬(B 
+ ∧
+ C)]
+ 
+
+
+The justification for the first conditional is that one way to bring
+about that L′ is to bring about that A, but
+A > L is true; while the justification for the
+second is that one way of making both light bulbs lit is to close both
+B and C. Pollock goes then to claim that the
+following counterfactual is also true:
+
+ (3) L′ > ¬(B 
+ ∧
+ C)
+ 
+
+
+Pollock's argument for (3) is that L′ requires only
+A or B, and to also make C the case is a
+gratuitous change and should therefore not be allowed. This view is
+not uncontroversial. Cross and Nute (2001) argued against it as
+follows:
+
+ [B]ut this is an over-simplification. It is not true that only
+A, B and C are involved. Other changes
+which must be made if L′ is to be lit include the
+passage of current through certain lengths of wire where no current is
+now passing, etc. Which path would the current take if
+L′ were lit? We will probably be forced to choose
+between current passing through a certain piece of wire or switch
+C being closed. It is difficult to say exactly what the
+choices may be without a diagram of the kind of circuit that Pollock
+envisions, but without such a diagram it is also difficult to judge
+whether closing switch C is is gratuitous in the case of (3)
+as Pollock claims.
+ 
+
+
+Another problem is that the example appeals to the performance of
+actions that bring states of affairs about, and this language might
+not be captured properly without an operator dealing with the
+correspondent interventions in the graph encoding the circuit. A more
+global reason for abandoning CV is the reluctance to work with a
+complete ordering of worlds of the type used by both Lewis and
+Stalnaker. In fact, Pollock's analysis of the notion of similarity for
+worlds produces a partial rather than a complete ordering of
+ worlds.[8]
+ Pollock's system (called SS) is a proper extension
+of the system B of Burgess, obtained by adding to its
+axiomatic base the axioms MP and CS.
+
+
+Another important system is the system VW of
+Lewis. If truth conditions are presented via spheres semantics the
+condition of Centering has to be weakened to:
+
+Weak Centering
+ For each i ∈ W, i belongs to every
+non-empty member of $i, and there is at least one
+such non-empty member.
+ 
+
+
+If, on the contrary,  we utilize derived selection functions,
+centering is expressed by:
+
+f-Centering
+ If i ∈ |a| then f(a,
+i) = {i}
+ 
+
+ 
+and weak centering by:
+
+f-Weak Centering
+ If i ∈ |a| then i ∈
+f(a, i)
+ 
+
+ 
+Such a condition can be rationalized in two possible ways. Either we
+utilize a ‘coarsened’ minimal interpretation where there
+is a ‘halo’ of worlds around the world i of
+reference that according to the coarsened notion of similarity are
+tied in similarity to i; or we change the interpretation of
+the selection function by declaring that the selected worlds are
+worlds that are ‘sufficiently’ similar to the world of
+reference rather than the worlds that are most
+ similar.[9]
+ Under both interpretations we have a rationale for accepting the
+system VW.
+
+
+Robert Nozick (1981) presents independent arguments to reject
+CS in his celebrated essay on knowledge as ‘tracking
+truth’. Most of his examples involve stochastic situations. For
+example: a photon has been fired and went through slit B
+(there are two possible slits, A and B, it could
+have gone through). This does not seem to provide reasons to assert
+that ‘Had the photon been fired it would have gone through slit
+B’. Nozick's solution is to accept VW
+as the encoding of the logic of counterfactuals.
+
+
+Donald Nute (1980) has combined the criticism of Centering (and the
+consequent adoption of Weak Centering) with a separate criticism of
+CV. He proposes a logic that we can call here
+N which is closed under all the rules and contains
+all the theses of VW except CV. Of course,
+the logic SS of Pollock is a proper extension of
+N.
+3.4 Local Change Theories
+
+ 
+Informally, we have considered so far two ways of understanding the
+selection functions used in the analysis of conditionals. Under one
+point of view the evaluation of a > b at
+i requires checking whether the consequent b is true
+at the class of a-worlds  most similar to
+i. A second interpretation of the selection function
+f(w, |a|M) is to see
+it selecting the set of worlds that are sufficiently close to
+i.  We also saw that the system VW has a
+hybrid position in the hierarchy of conditional systems. The system is
+validated by a suitable set of constraints on selection functions, and
+these constraints can be rationalized under either interpretation of
+the selection function.
+
+ 
+There is a third way of interpreting the content of a selection
+function f(w, |a|M),
+namely as yielding a set of worlds that resemble w locally
+regarding very minimal respects but that otherwise could differ from
+w to any degree whatever. As a matter of fact, as long as the
+selected worlds resemble w locally as required they could
+differ maximally from the world of
+ reference.[10]
+
+
+ 
+One paradigmatic example of theories of this sort is the one offered
+in by Dov Gabbay (1972). A simplified Gabbay
+ model[11]
+ is a triple M =
+ ⟨W,
+ g,
+ P⟩
+ where the first and the third parameters are as in earlier models,
+and g is a ternary operator which assigns to sentences
+a, b and a world i a subset
+g(a, b, i) of W. A
+conditional a > b is true at i in such a
+model just in case g(a, b, i)
+⊆ |a → b|M, where
+‘→’ is the material conditional. So, rather than
+following a variant to the usual similarity pattern in the evaluation
+of ontic conditionals, Gabbay deploys a very different attitude
+regarding how to assess the truth conditions of such
+conditionals. Roughly, the idea is to preserve those features of the
+actual world that are relevant concerning the effect that a
+would have on the truth of b.
+
+ 
+Gabbay imposes some basic constraints on his ternary selection
+functions:
+
+ (G1) i ∈ g(a, b, i)
+ 
+
+ (G2) If |a| = |b| and |c| = |d|,
+then g(a, c, i) =
+g(b, d, i)
+ 
+
+ (G3) g(a, c, i) =
+g(a, ¬c, i) =
+g(¬a, c, i)
+ 
+
+ 
+With these restrictions Gabbay's semantics determines the smallest
+conditional logic which is closed under RCEC, RCEA
+and the rule RCE that indicates that a >
+b should be inferred from a → b (see
+Nute 1980 and Butcher 1978, 1983). We follow the terminology of Cross
+and Nute (2001) and call this logic G. This logic is
+rather weak but it is not the weakest considered in this article. The
+smallest system we have considered so far is Chellas's system
+CE, which is the smallest conditional logic
+containing classical propositional logic and closed under
+RCEA and RCEC.
+
+ 
+Of course, it is possible to provide a neighborhood selection function
+semantics for G. We just need to add the
+condition:
+
+(rce)
+ If |a| ⊆ |b|, then |b| ∈
+F(i, |a|)
+ 
+
+ 
+So, G can be characterized in terms of the class of
+minimal models constrained by condition (rce). There
+is some debate as to how to strengthen G within the
+type of local change semantics utilized by Gabbay. For example, we
+might want to add the conditions CC and CM. One way
+of ensuring these conditions is to impose:
+
+ (G4) g(a, c, i) =
+g(c, a, i)
+ 
+
+ 
+But, as Cross and Nute (2001) point out, this eliminates the most
+distinctive feature of Gabbay's semantics. Butcher (1978) has indicated
+nevertheless that CC and CM can be ensured by adding
+weaker conditions than (G4). Of course, CC and CM
+can be guaranteed parametrically and un-problematically by adding
+constraints (cc) and (cm) to the
+class of neighborhood models constrained by (rce).
+
+
+Other semantics of conditionals (especially those conditionals
+utilized in causal laws) which implement the local change view
+presented in this section can be found in D. Nute (1981) and
+J.H. Fetzer and D. Nute (1978, 1980).
+4. The Logic of Probabilistic Conditionals
+
+
+There are many types of conditionals for which there is no agreement
+as to their status as truth carriers. In some cases we have positive
+arguments, like the one advanced by Alan Gibbard in (1981), that an
+entire (grammatical or logical) class of conditionals does not carry
+truth values (indicative conditionals in the case of Gibbard). How to
+provide semantics for these kind of conditionals?
+
+
+As we saw at the beginning of this essay, one option is to develop a
+probabilistic semantics. Why? Aside from the motivations one could
+possibly find in F.P. Ramsey's test for conditionals, the following
+quotation provides an historical idea of why philosophers found
+probabilistic semantics attractive. The quotation is from one of the
+early essays on probability and conditionals by R. Stalnaker
+(1970):
+
+ [A]lthough the interpretation of probability is controversial, the
+abstract calculus is relatively well defined and well established
+mathematical theory. In contrast to this, there is little agreement
+about the logic of conditional sentences.… Probability could be
+a source of insight into the formal structure of conditional
+sentences.
+ 
+
+ 
+Ernest Adams (1975, 1965, 1966) provided the basis for this kind of
+evaluation of conditionals, and more recently there has been some work
+improving this theory (McGee 1994, Stalnaker and Jeffrey 1994). It is
+interesting to point out here at the outset that the most recent
+studies about probability and conditionals, and even some of the
+earlier work by Adams, points in a direction that to some extent is
+orthogonal to the hopes manifested by Stalnaker. The main idea in
+Stalnaker's passage and most of the work presented in Stalnaker 1970,
+as well as subsequent writings, is to utilize something less
+controversial than conditionals in order to decide some open issues in
+the semantics of conditionals. When Stalnaker refers to a ‘well
+established mathematical theory’, apparently he is referring to
+Kolmogorov's axiomatic treatment of probability linking the theory of
+probability with measure theory. Stalnaker seems to presuppose that at
+least this mathematical hard core of the theory of probability is
+fixed and that it can be used profitably in order to study the
+semantics of conditionals. Nevertheless the recent work on
+probabilistic semantics of conditionals seems to abandon this
+mathematical hard core of Kolmogorovian probability and focus instead
+on pre-Kolmogorovian notions of probability, like the one studied by
+De Finetti, where finitely additive conditional probability is
+primitive and monadic probability is defined in terms of this
+primitive. Adams himself talks in his writings about
+assertability rather than probability, leaving open not only
+the interpretation of the notion itself but also its mathematical
+core.
+
+ 
+Even when the original idea of studying conditionals by utilizing a
+more mature theory of probability along Kolmogorovian lines is well
+described in Stalnaker's passage, further developments ended up
+pointing in a completely different and more controversial
+direction. We will see that the notion of probability that seems to be
+adequate for developing a semantics of conditionals is more akin to
+the notion of probability common in decision theory and employed both
+by Leonard Savage and Bruno de Finetti (De Finetti 1990) for that
+purpose: namely finitely additive (primitive) conditional probability
+(as axiomatized by Lester Dubins (1975)).
+
+ 
+An important result by David Lewis (1976) showing that the probability
+of conditionals is not conditional probability, as well as extensions
+and improvements, is of special importance in this area. I shall first
+review the basis of Lewis's argument and then I shall present the
+semantic account developed initially by Adams and various extensions,
+improvements and possibility results. I will conclude by offering an
+analysis of conditional logics validated by probabilistic
+semantics.
+4.1 Conditional Probability and Probability of Conditionals
+
+ 
+I shall present here the main impossibility result that Lewis
+initially presented in Lewis 1976. As is often done in this area we
+start with a probability function defined over sentences. Throughout section four we will
+follow the convention of using lower-case letters to denote sentences
+and upper-case letters to denote the propositions expressed by these
+sentences. So, ‘a’ denotes a well formed formula
+and ‘A’ denotes the set of points in an
+appropriate space where the sentence ‘a’ is
+true. The space and the model used will be made clear in each
+particular case. This will simplify notation considerably. The
+following axioms characterize the notion of probability function:
+
+ (1) 1  ≥ P(a) ≥ 0
+ (2) If a and b are equivalent, then
+P(a) = P(b)
+ (3) If a and b are incompatible, then
+P(a
+ ∨
+ b) = P(a) + P(b)
+ (4) If a is a theorem of the underlying logic,
+P(a) = 1
+ 
+
+ 
+Lewis focuses next on a class of such probability functions that are
+closed under conditioning. Whenever P(b) is
+positive, there is P′ such that
+P′(a) always equals
+P(a | b), and Lewis says that
+P′ comes from P by conditioning on b. A class
+of probability functions is closed under conditioning if and only if
+any probability function that comes by conditioning from one in the
+class is itself in the class.
+
+
+Now we can introduce a couple of crucial definitions. A conditional
+> is a probability conditional for P (or a universal
+probability conditional) if and only if > is interpreted in such a
+way that for some probability function P, and for any
+sentences a and c:
+
+(CCCP)
+P(a > c) =
+P(c | a), if P(a) is
+positive
+ 
+
+ 
+‘CCCP’ stands for conditional construal of conditional
+probability. The terminology is from Hájek and Hall
+1994.
+
+ 
+Suppose now, for reductio, that ‘>’ is a universal
+probability conditional. Now notice that if ‘>’ is a
+universal probability conditional we would have:
+
+ (5) P(a > c | b) =
+P(c | a
+ ∧
+ b), if P(a 
+ ∧
+ b) is positive
+
+
+ 
+If ‘>’ is a probability conditional for a class of
+probability functions, and if the class is closed under conditioning,
+then (5) holds for any probability function in the class, and for any
+a and c.
+
+ 
+Select now any function P such that P(a
+ ∧
+ c) and P(a 
+ ∧
+ ¬c) both are positive. Then P(a),
+P(c) and P(¬c) also are
+positive. Now by (CCCP) we have that P(a >
+c) = P(c | a). And by (5) taking
+b as c or ¬c and simplifying the
+right-hand side:
+
+ (6) P(a > c | c) =
+P(c | a
+ ∧c)
+ = 1
+
+ (7) P(a > c|¬c) =
+P(c | a
+ ∧
+ ¬c) = 0
+
+
+
+Now by probability theory we can, for any sentence d, expand
+by cases:
+
+ (8) P(d) =
+P(d | c) · P(c)
++
+P(d|¬c) · P(¬c)
+ 
+
+ 
+We can take here d as a > c and by
+obvious substitutions we then have:
+
+ (9) P(c | a) =
+1 · P(c) +
+0 · P(¬c) =
+P(c)
+ 
+
+
+So, we have reached the conclusion that a and c are
+probabilistically independent under P if
+P(a
+ ∧
+ c) and P(a 
+ ∧
+ ¬c) are both positive, something that is clearly
+absurd.
+4.1.1 Extensions and Possibility Results
+
+
+Lewis himself refined his result (Lewis 1991), and then various
+extensions and refinements were published in a Festschrift
+for Ernest Adams (Eells and Skyrms 1994), for example by Hájek
+and Hall (1994).
+
+ 
+Alan Hájek (1994) considers possible restrictions of the (CCCP)
+and proves generalized forms of Lewis's triviality for them. In
+particular Hájek considers:
+
+Restricted CCCP
+P(a > c) =
+P(c | a), for all a, c in a
+class S.
+ 
+
+ 
+Hájek considers then operations on probability functions that
+he calls perturbations. These operations encompass other
+interesting operations, including conditioning and Jeffrey
+conditioning, among others. Suppose that we have some function
+P, and a and c, such that:
+
+Coincidence
+P(a > c) =
+P(c | a).
+ 
+
+ 
+Now suppose that another function P′ assigns a
+different probability to the conditional:
+
+ (1) P′(a > c) ≠
+P(a > c)
+ 
+
+ 
+Then if P′ assigns the same conditional probability as
+P does:
+
+ (2) P′(c | a) =
+P(c | a)
+ 
+
+ we have immediately that:
+
+ (3) P′(a > c) ≠
+P′(c | a)
+ 
+
+ 
+By the same token, if P and P′ agree on the
+probability of the conditional but disagree on the conditional
+probability, then they cannot possibly equate the two. Not at least
+for this choice of a and c. Hájek argues that
+it is easy to find such pairs of probability functions.
+
+ I shall show that there are important ways that P and
+P′ can be related that will yield the negative result
+for the [Restricted CCCP].
+ 
+
+
+In fact, Hájek proves a result showing that if
+P′ is a perturbation of P relative to a given
+‘>’ then at most one of P and
+P′ is a CCCP-function for ‘>’ (see
+Hájek 1994).
+
+
+Nevertheless, van Fraassen (1976) showed that Restricted CCCP can hold
+for some suitable pairs of antecedent and consequent
+propositions a and c. Ernest Adams and Vann McGee
+consider the following particular strong syntactic restriction of CCCP
+(see McGee 1994, p. 189)[12]:
+
+Original Adams Hypothesis (OAH)
+
+
+P(a > c) = P(a 
+ ∧
+ c)/P(a)
+if P(a) ≠ 0
+
+
+P(a > c) = 1
+otherwise
+
+
+
+
+where both a and c are factual or
+conditional-free sentences
+
+
+ 
+If one sees the conditional (as the Stoics did) as a notion of
+consequence in disguise and one does not think that conditionals have
+truth values, or that the interpretation of conditionals is fixed
+across a set of believers in an objective manner, the Original Adams
+Hypothesis makes a great deal of sense. This is so, at least, with the
+possible exception of the limit case P(a) = 0, as I
+shall argue below.
+
+
+David Lewis thinks differently in many regards. First he considers
+iterations of conditionals adequate and he is looking for a fixed
+interpretation of the conditional across different believers:
+
+ Even if there is a probability conditional for each probability
+function in a class it does not follow that there is one probability
+conditional for the entire class. Different members of the class might
+require different interpretations of the > to make the
+probabilities of conditionals and the conditional probabilities come
+out equal. But presumably our indicative conditional has a fixed
+interpretation, the same for speakers with different beliefs, and for
+one speaker before and after a change in his beliefs. Else how are
+disagreements about a conditional possible, or changes in mind? (Lewis
+1976)
+ 
+
+
+Lewis's conviction that the interpretation of a conditional is
+independent of the beliefs of its utterer is not very well supported
+by his argument. One can immediately see this by noticing that there
+might be some ‘hidden indexicality’ in conditionals and
+their semantics. Van Fraassen's argument has usually been interpreted
+as offering a probabilistic semantics for conditionals seen as
+indexical expressions grounded on the beliefs of the utterer. The more
+we enter into the epistemic view of conditionals the more the
+interpretation of conditionals will be grounded on current beliefs
+(not necessarily by appealing to hidden
+ indexicality).[13]
+
+ 
+For our purposes here the Original Adams Hypothesis will be a good
+point of departure. We will see in the following sections that the
+original thesis has troubles of its own quite independently of the
+problems raised by Lewis's impossibility results and its sequels.
+4.2 The Original Adams Hypothesis and Its Problems
+
+ 
+To appreciate some of the problems related to the Original Adams
+Hypothesis (OAH) we should first distinguish between two probabilistic
+criteria for validity considered by McGee (1994):
+
+Probabilistic Validity
+ An inference is probabilistically valid if and only if, for
+any positive ε, there exists a positive δ such that
+under any probability assignment under which each of the premises has
+probability greater than 1−δ, the conclusion has
+probability at least 1−ε.
+ 
+
+ 
+There is, in addition, an alternative criterion for validity, which is
+perhaps even more intuitive:
+
+Strict Validity
+ An inference is strictly valid if and only if its conclusion
+has probability 1 under any probability assignment under which its
+premises each have probability 1.
+ 
+
+ 
+Van McGee nicely analyzes how the OAH fares when used in combination
+with these criteria for validity. The basic problem is that one has a
+parsimonious theory of the English conditional when the notion of
+probabilistic validity is used: transitivity, contraposition and other
+inference rules fail, for example. But:
+
+ The strictly valid inferences are not those described by Adam's
+theory, but those described by the orthodox theory, which treats the
+English conditional as the material conditional.
+ 
+
+ This raises an ugly suspicion. The failures of the classical valid
+modes of inference appear only when we are reasoning from premises
+that are less than certain (in the sense of having probability less
+than 1) to a conclusion that is also less than certain. Once we become
+certain of our premises, we can deduce the classically sanctioned
+consequences with assurance.… In determining that the strictly
+valid inferences are the classical ones, what is important is not
+Adams's central thesis but … the default condition that assigns
+probability 1 when the conditional probability is undefined. The
+default condition does not reflect English usage, nor was intended to
+do so.… On the contrary, the default condition, as Adams notes,
+is merely ‘arbitrarily stipulated’ as a way of setting
+aside a special case that is far removed from the central focus of
+concern. Yet the default condition has caused a good deal of mischief;
+so it is time to look for an alternative. (McGee 1994)
+ 
+
+
+The alternative is, according to McGee, ready at hand. The idea is to
+focus on a primitive notion of conditional probability that has been
+around from quite some time and that has various historical
+origins. McGee focuses on one of these origins, namely the notion of
+conditional probability as axiomatized by Karl Popper (1959,
+appendix). A Popper function on a language L for the
+classical sentential calculus is a function P:
+L×L → R, where R
+denotes the real numbers, which obeys the following axioms:.
+
+For any a and b, there exist c and
+d with P(a | b) ≠
+P(c | d)
+If P(a | c)
+ = P(b | c), for every c,
+ then P(d | a)
+ = P(d | b), for every
+d
+P(a | a) =
+P(b | b)
+P(a 
+ ∧
+ b | c) ≤
+ P(a | c)
+P(a 
+ ∧
+ b | c) = P(a | b ∧
+ c)·P(b | c)
+P(a | b)
+ + P(¬a | b)
+ = P(b | b), unless
+P(b | b) = P(c | b)
+for every c
+
+
+
+Axiom (5) is crucial and older than its use in Popper's theory. It
+goes back at least to Jeffreys's work where it is in turn presented as
+W. E. Johnson's product rule (see Jeffreys 1961, p. 25). Contemporary
+the product rule has been called also the multiplication
+axiom. 
+
+
+Now, with the help of this notion of conditional probability, we can
+define a new form of Adams's hypothesis:
+
+Improved Adams Hypothesis
+P(a > c)
+= P(c | a), where both a
+and c are factual or conditional-free sentences
+ 
+
+ 
+Now in terms of this newly formulated hypothesis McGee shows (see
+McGee 1994, Theorem 3) that probabilistic validity and strict validity
+coincide, as they should. This is just one symptom that the right
+formulation of Adams's hypothesis requires embracing not the classical
+notion of conditional probability characterized by Kolmogorov's
+axioms, but a different notion of conditional probabilities
+axiomatized by W. E. Johnson's product rule (simply product
+rule from now on) and other suitable
+ axioms.[14]
+4.3 Conditional Probability: Two Traditions
+
+ 
+There are at least two dominant traditions in the theory of
+conditional probability which are able to deal with conditioning
+events of measure zero. One is represented by Dubins' principle of
+Conditional Coherence (Dubins 1975): For all pairs of events
+A and B  such that
+A ∩ B  ≠ ∅:
+
+
+ (1) Q(.) = P(. | A) is a
+finitely additive probability,
+
+ (2) Q(A) = 1, and
+
+ (3) Q(. | B) = Q[B](.) =
+P(. | A ∩ B)
+ 
+
+ 
+When P(A ∩ B) > 0, Conditional
+Coherence captures some aspects of De Finetti's idea of conditional
+probability given an event, rather than given a
+ σ-field.[15]
+
+ 
+The well-known Kolmogovorian alternative to the former view operates
+as follows. Let
+ ⟨Ω,
+ B,
+ P⟩
+ be a measure space where Ω is a set of points and
+ B
+ a σ-field of sets of subsets of Ω, with points
+w (this set  B is closed under complementation and countable union of its members). Then when P(A) > 0, A ∈
+ B,
+the conditional probability over
+ B
+ given A is defined by: P(. | A) =
+P(. ∩ A)/P(A). Of course, this
+does not provide guidance when P(A) = 0. For that
+the received view implements the following strategy. Let
+ A
+be a sub-σ-field of
+ B.
+ Then
+ P(. | A)
+ is a regular conditional distribution (rcd) of
+ B
+ given
+ A
+ provided that:
+
+  (4) For each w ∈ Ω,
+ P(. | A)(w) is a
+probability on
+ B
+
+ (5) For each B ∈
+ B,
+ P(B|A)(.)
+ is an
+ A-measurable function
+
+ (6) For each A ∈
+ A,
+ P(A ∩ B) =
+ ∫A
+ P(B|A)(w)
+ dP(w)
+ 
+
+ 
+Kolmogorov illustrates, with a version of the so-called ‘Borel
+paradox’, that
+ P(. | A)
+ is probability not given an event, but given a
+σ-field. Blackwell and Dubins discuss conditions of
+propriety for rcds (Dubins 1975).  A rcd
+P(. | A)(w)
+ on
+ B
+ given
+ A,
+ is proper at w, if
+ P(. | A)(w)
+ = 1, whenever w ∈ A ∈
+ A.
+ P(. | A)(w)
+ is improper otherwise. Recent research has shown that when
+ B
+ is countably generated, almost surely with respect to P, the
+rcds on
+ B
+ given
+ A
+ are maximally improper (Seidenfeld, Schervish, and Kadane 2006). This
+is so in two senses. On the one hand the set of points where propriety
+fails has measure 1 under P.  On the other hand we have that
+ P(a(w)|A)(w)
+ = 0, when propriety requires that
+ P(a(w)|A)(w)
+ = 1.
+
+ 
+It seems that failures of propriety conspire against any reasonable
+epistemological understanding of probability of the type commonly used
+in various branches of mathematical economics, philosophy and computer
+science. To be sure, finitely additive probability obeying Conditional
+Coherence is not free from foundational
+ problems,[16]
+ but, by clause 2 of Conditional Coherence, each coherent finitely
+additive probability is proper. In addition, Dubins (1975) shows that
+each unconditional finitely additive probability carries a full set of
+coherent conditional probabilities.
+
+ 
+In this section I shall only consider probabilities respecting
+propriety.  So, I shall start with Conditional Coherence and I shall
+add the axiom of Countable
+ Additivity[17]
+ only to restricted applications where the domain Ω, when
+infinite, is countable. Then I shall define qualitative belief from
+conditional probability by appealing to a procedure studied by van
+Fraassen (1976), Arló-Costa (2001), and Arló-Costa and
+Parikh (2005). Notice that the axiomatization offered by Popper
+and used by McGee also deals with finitely additive probability. The
+distinction between finitely additive probability and countably
+additive probability is important for languages that are expressive
+enough to register the difference. We will make this point explicit
+below by introducing languages with an infinite but countable number
+of atomic propositions.
+
+ 
+McGee (1994, p. 190) presents Popper axioms as a ‘[n]atural
+generalization of the ordinary notion of conditional probability in
+terms of which the singularities that otherwise arise at the edge of
+certainty no longer appear’. When McGee alludes to the
+‘ordinary notion of conditional probably’ he probably
+refers to the usual ratio definition of conditional probability. And
+the definition he seems to have in mind is one that takes as basic a
+notion of monadic probability that in itself is finitely additive. But
+this is not the ordinary notion of conditional probability deriving
+from the work of Kolmogorov. This notion takes as basic a notion of
+monadic probability for which countable additivity is a crucial axiom
+(countable additivity requires that the sum of the probabilities
+P(Xi) of a countable family of events
+Xi with union X equals P(X)). As long as the
+domain over which the probability is defined is infinite (and other
+parts of McGee's article—dealing with infinitesimal
+probability—seems to indicate that he is interested in infinite
+domains) the finitely additive notion of conditional probability that
+McGee offers is not an extension of the classical Kolmogorovian view,
+but an extension of finitely additive monadic probability. The
+resulting notion of finitely additive conditional probability is the
+pre-Kolmogorovian notion of conditional probability axiomatized by
+Dubins.
+
+
+Our first axiom will add a resource in order to keep track on
+inconsistency as well as an intuitive constraint on conditional
+probability (compatible with Conditional Coherence):
+
+  (I) For any fixed A, the function
+P(X | A) as a function of X is
+either a (finitely additive) probability measure or has constant value
+1.
+ 
+
+ (II) P(B ∩ C | A) =
+P(B | A)P(C | B
+∩ A) for all A, B, C in
+ F.[18]
+
+
+
+The probability (simpliciter) of A,
+pr(A), is P(A | U). The
+reader can see that axiom (II) corresponds to the product rule
+(multiplication axiom) used before. Since here we are dealing with
+events, the axioms are simpler than in
+the previous presentation following Popper's axioms (which assign
+probabilities to sentences rather than events).
+
+
+If P(X | A) is a probability measure as a
+function of X, then A is normal, and
+otherwise A is abnormal. Conditioning with abnormal
+events puts the agent in a state of incoherence represented by the
+function with constant value 1. Thus A is normal iff
+P(∅|A) = 0. Van Fraassen (1976) shows that
+supersets of normal sets are normal and that subsets of abnormal sets
+are abnormal. Assuming that the whole space is normal, abnormal sets
+have measure 0, though the converse need not hold. In the
+following we shall confine ourselves to the case where the whole space
+U is normal.
+
+
+We can now introduce the notion of probability core.  A
+core as a set K which is normal and satisfies the
+strong superiority condition (SSC)—i.e., if A
+is a nonempty subset of K and B is disjoint from
+K, then P(B | A ∪ B) =
+0 (and so P(A | A ∪ B) =
+1). Thus any non-empty subset of K is more
+‘believable’ than any set disjoint from K. It can
+then be established that all non-empty subsets of a core are normal.
+
+ 
+When the universe of points is at most countable, very nice properties
+of cores and conditional measures hold, which can be used to define
+full belief and expectation in a paradox-free manner.
+
+Lemma 1 (Descending Chains) (Arló-Costa
+1999). When the universe of points is at most countable, the
+chain of belief cores induced by a countably additive conditional
+function P cannot contain an infinitely descending chain of
+cores.
+ 
+
+
+In general it can be shown that for each function P there is
+a smallest as well as a largest core and that the smallest core has
+measure 1.  In addition, when the universe is countable we can add
+Countable Additivity without risking failures of propriety. In this
+case we have that the smallest core is constituted exactly by the
+points carrying positive probability. All cores carry probability one,
+but, of course, only the innermost core lacks subsets of zero measure.
+There is, in addition, a striking difference between the largest and
+the smallest core (and between the largest and any other core).  In
+fact, any set S containing the largest core is robust with
+respect to suppositions in the sense that
+P(S | X) = 1 for all X and the
+complement of S is abnormal. So the largest core encodes a
+strong doxastic notion of certainty or full belief, while the
+smallest encodes a weaker notion of ‘almost certainty’ or
+ expectation.[19]
+ So, when the universe is countable and countable additivity is
+imposed, we can define two main attitudes as follows: An event is
+expected if it contains the smallest core, whereas it is
+fully believed if it contains the largest.
+
+
+In the general case there is still enough structure to define both
+attitudes. In fact, in this case the existence of the innermost core
+cannot be guaranteed. But the definition of full belief needs no
+modification and the notion of expectation can be characterized as
+follows: An event is expected if it is entailed by some
+core.
+4.4 Preferential and Rational Logic: The KLM model
+
+ 
+The notion of countable core logic derived from the
+probabilistic semantics presented in the previous section has
+important connections with the preferential and rational logics
+introduced in Kraus, Lehmann and Magidor (1990). These logics
+characterize a notion of nonmonotonic consequence rather than a
+conditional, but we will see below that there are interesting and
+important connections between non-nested conditional logics and
+preferential logics. 
+
+Definition 2. If P ⊆ S and
+< is a binary relation on S, P is a
+smooth subset of S iff ∀t ∈
+P, either there exists an s minimal in P
+such that s < t or t is itself minimal
+in P.
+ 
+
+Definition 3. A preferential model
+M for a universe U is a triple
+ ⟨S,
+ l, <
+ ⟩
+ where S
+is a set, the elements of which will be called states, l:
+S → U is a labeling function which assigns a
+world from the universe of reference U to each state and <
+is a strict partial order on S (i.e., an irreflexive,
+transitive relation) satisfying the following smoothness condition:
+for all a belonging to the underlying propositional language
+L, the set of states â = {s :
+s ∈ S, s
+ ⫢
+ a} is smooth; where s
+ ⫢
+ a (read ‘s satisfies a’) iff
+l(s)
+ ⊨
+ a, where
+ ‘⊨’
+ is the classical notion of logical consequence.
+ 
+
+ 
+The definitions introduced above allow for a modification of the
+classical notions of entailment and truth that resemble some of the
+semantic ideas already explored in section 3.  The following
+definition shows how this task can be done:
+
+Definition 4. Suppose a model M =
+ ⟨S,
+ l,
+ <⟩
+ and a, b ∈ L are given. The
+entailment relation defined by M will be denoted by
+ M
+ and is defined by: a
+M
+b iff for all s minimal in â,
+s
+ ⫢
+ b.
+ 
+
+
+Preferential models were used by Kraus, Lehmann and Magidor (1990) to
+define a family of preferential logics. Lehmann and Magidor (1988)
+focused on a subfamily of preferential models—the so-called
+ranked models.
+
+Definition 5. A ranked model R is
+a preferential model
+ ⟨S,
+ l,
+ <⟩
+ where the strict partial order < is defined in the following way:
+there is a totally ordered set W (the strict order on
+W will be denoted by ∠) and a function r:
+S → W such that s < t iff
+r(s) ∠ r(t).
+ 
+
+ 
+The effect of the function r is to rank the states, i.e. a
+state of smaller rank is more normal than a state of higher rank.  The
+intuitive idea is that for r(s) =
+r(t) the sates s and t are at the
+same level in the underlying ordering. In order to increase intuition
+about ranking it is useful to notice that, if < is a partial order
+on the set T, the ranking condition presented above is
+equivalent to the following property:
+
+(Negative Transitivity)
+ For any s, t, u in T such that
+s < t, either u < t or
+s < u.
+ 
+
+
+Lehmann and Magidor also introduce ranked models where the ordering of
+the states does not need to obey the smoothness requirement.
+
+Definition 6. A rough ranked model V
+is a preferential model
+ ⟨S,
+ l,
+ <⟩
+ for which the strict partial order < is ranked and the smoothness
+requirement is dropped.
+ 
+
+ 
+From the syntactical point of view, Kraus, Lehmann and Magidor proved
+a representation theorem for the following system
+ P
+ in terms of the above preferential models.
+
+
+
+
+
+R
+
+a  a
+
+
+
+
+
+LLE
+
+ ⊨ a ↔ b, a  c
+
+
+b  c
+
+
+
+
+
+
+RW
+
+ ⊨ a → b, c  a
+
+
+c  b
+
+
+
+
+
+CM
+
+a  b, a  c
+
+
+a ∧ b  c
+
+
+
+
+
+
+AND
+
+a  b, a  c
+
+
+a  b ∧ c
+
+
+
+
+
+OR
+
+a  c, b  c
+
+
+a ∨ b  c
+
+
+
+
+
+
+LLE stands for ‘left logical equivalence’,
+RW for ‘right weakening’ and CM for
+‘cautious monotony’. Lehmann and Magidor prove that the
+system
+R,
+ complete with respect to ranked models, can be obtained by
+adding the following rule of rational monotony to the above set of
+rules.
+
+
+
+RM
+
+a  c, ¬(a  ¬b)
+
+
+a ∧ b  c
+
+
+
+
+
+Naturally, if RM is added then CM is no longer
+necessary. Lehmann and Magidor (1988) suggest that the syntactic
+system
+ RR  
+ obtained from
+ R
+ by dropping the rule CM is sound and complete with respect
+to rough ranked models. They obtain this conjecture from the work of
+James Delgrande in conditional logic.
+
+
+There is an obvious resemblance between the rules presented in this
+section and conditional axioms and rules previously presented. For
+example, R would correspond to the axiom ID,
+RM to the axiom CV and so on. This raises the
+question as to what is the logical connection between the rational and
+preferential logics and suitable non-nested fragments of conditional
+systems we have already considered. This issue is addressed in section
+4.6.
+4.5 Countable Core Logic and Probabilistic Models
+
+S = 
+ ⟨U,
+ F⟩
+ is a probabilistic space, with U countable and where
+F is a Boolean sub-algebra of the power set of
+U. The assumption about the size of U cannot be
+dispensed with; it will be maintained throughout the section, which is
+based on
+ Arló-Costa and Parikh 2005.
+
+Definition 7. M =
+ ⟨S,
+ P, V⟩
+ is a probabilistic model if S =
+ ⟨U,
+ F⟩
+ is a probabilistic space, U is a countable set, and
+F is a Boolean sub-algebra of the power set of
+U. V is a classical valuation mapping atomic
+sentences in L to measurable events on F and
+P is a two-place function on U obeying:
+
+
+ (I) for any fixed A, the function
+P(X | A) as a function of X is a
+(finitely additive) probability measure, or has constant value 1.
+ 
+
+ (II) P(B ∩ C | A) =
+P(B | A) ·
+P(C | B ∩ A) for all A,
+B, C in F.
+ 
+
+
+ 
+We use the letters A, B, etc. to refer to events in
+F.
+
+Definition 8. A probabilistic model is countably
+additive (CA) iff for any fixed A, the function
+P(X | A) as a function of X is a
+countably additive probability measure, or has constant value
+ 1.[20]
+
+
+
+Let the ordering < on U be defined for all (distinct)
+pairs of points p, q, such that {p,
+q} is normal by: p < q if and only if
+P({p}|{p, q}) = 1; i.e., if
+we know that we have picked one of p, q then
+it must be p.  Similarly, let p
+ ≅
+ q if and only if 0 <
+P({p}|{p, q}) < 1.  From
+now on we will call the ordering < induced by a probabilistic model
+M the ranking ordering for M. Notice that
+as a corollary of the Lemma of Descending Chains stated above:
+
+Lemma 2. The ranking ordering < for a CA
+probabilistic model M is well-founded.
+ 
+
+
+Now we can define: a
+< M
+b iff for every u ∈ U such that
+u is minimal in A, according to the ranking ordering
+for M, u ∈ B. It is important to
+notice that there is an alternative probabilistic definition of
+ .
+ Such a definition requires that a
+PM
+b iff P(B | A) = 1.  These two ways
+of defining a supraclassical consequence relation are intimately
+related, but we will verify below that they do not coincide in all
+cases.
+
+
+From now on it will be important to make precise distinctions about
+the nature of the underlying language L used to define
+non-monotonic relations.  If the set of primitive propositional
+variables used in the definition of L is finite, we will call
+the language logically finite.  Now, with the proviso that
+L is logically finite the following result can be stated.
+
+Theorem 2. If the underlying language is
+logically finite, then if a
+R
+b, then there is a CA probabilistic model M such
+that a
+< M
+b.
+ 
+
+ 
+When L is countable, the situation is a little more involved.
+In this case
+ R
+ is no longer complete with respect to CA probabilistic models.  The
+following lemma (based on the technique used in Lemma 1 of Lehmann and
+Magidor 1988) illustrates this point.
+
+Lemma 3. When L is countable, there is a
+rational relation that is defined by no CA probabilistic model.
+ 
+
+
+This lemma is quite important for our purposes. It shows that even if
+we restrict ourselves to infinite but countable probabilistic domains,
+if the language is expressive enough, CA cannot be added as a
+constraint on probabilistic models on pain of being unable to
+characterize the rational relation we are interested in. In view of
+the intimate connection between conditional logics and non-monotonic
+consequence relations, this means that the notion of probability that
+we are interested in is certainly not the one deriving from the work
+of Kolmogorov, but a pre-Kolmogorovian one that is finitely
+additive.
+
+ 
+A natural suggestion deriving from the last result is to investigate
+probabilistic models where CA is not necessarily required.  We will
+call such models finitely additive (FA).
+
+Lemma 4. If the underlying language contains
+countably many propositional letters, there is an FA probabilistic
+model M such that a
+PM
+b if a
+R b.
+ 
+
+ 
+It is not difficult to see that a
+PM
+b is also sound with respect to a
+R
+b. Nevertheless, a
+< M
+b fails to be sound with respect to a
+R
+b. All the following results assume that the underlying
+language is countable.
+
+Lemma 5. When M is finitely additive,
+ < M
+ is not sound with respect to
+ R.
+ 
+
+
+Nevertheless, soundness does hold with respect to the system
+ RR
+introduced in Lehmann and Magidor (1988).
+
+Lemma 6. When M is an FA probabilistic
+model,
+ < M
+ is sound with respect to
+ RR.
+ 
+
+Definition 9. A probabilistic model M =
+ ⟨S,
+ P,V ⟩
+ is smooth if and only if for every sentence α, its
+corresponding  event in the model is smooth with respect to the
+ranking ordering induced by P.
+ 
+
+
+Now, it is clear that the relation
+ PM,
+ satisfied in all FA probabilistic models, is identical to the
+relation
+ < M
+ induced by the sub-class of smooth and FA probabilistic models. In
+other words, when the language is infinite (but countable),
+ R
+ can be characterized either in terms of the relation
+ PM
+ induced by FA models or in terms of the relation
+ < M
+ induced by the class of FA models which are
+ smooth.[21]
+4.6 Non-monotonic Consequence and Conditionals
+
+ 
+In the diagram below we present a hierarchy of conditional
+systems. The diagram is intended to be interpreted as follows:
+Whenever one system is connected to another by a path of upward lines,
+the higher one is an extension of the other.  The basic systems are
+V, NP and B. The
+path from B to V symbolizes the
+addition of negative transitivity as a constraint on the ordering
+relation (see section 3..1.1 above).  The path from
+NP to V is effected by the addition
+of (L).  The system B′
+included in the diagram is no immediate interest but has been included
+for the sake of symmetry.  The (T),
+(TU) and (TA) extensions of
+V, NP and B are
+also represented (where ‘A’ stands for
+Absoluteness—see section 3.2.1—‘U’ for
+Uniformity and ‘T’ for Total Reflexivity—see section
+3.1.1).
+
+
+
+
+ 
+The picture presents a hierarchy of conditional systems of increasing
+logical strength where the weakest are at the bottom. In
+Arló-Costa and Shapiro (1992) it is shown that the theses of
+the rational system
+ R
+ can be mapped to the generalized Horn
+fragment of the system
+ V[22]
+ and that this fragment is preserved across the depicted systems of
+greater logical strength up to at least VTA. If we
+eliminate (L) we have a similar connection with the
+generalized Horn pattern corresponding to the extensions of
+NP.
+
+ 
+Therefore, via these mappings and the results presented in the
+previous section, we have probabilistic models for the generalized
+Horn fragments of the logics V of Lewis,
+NP of Delgrande and B of
+Burgess. Things are more complicated if we allow for iteration, an
+issue that we will address in the next section.
+4.7 Iterated Probabilistic Conditionals
+
+ 
+The probabilistic view presented above can be summarized as follows
+(where the expression ‘simple conditionals’ denotes
+un-nested conditionals and where we follow the
+convention of using lower-case letters to denote sentences and
+upper-case letters to denote the propositions expressed by these
+sentences.):
+
+Ramsey test for simple probability conditionals
+ A simple conditional (a > b) is accepted with
+respect to P(. | .)  if and only if the smallest core of
+P[A] = P(. | . ∩ A) entails
+ B.[23]
+
+
+
+This is a qualitative test where acceptance is an ‘all or
+nothing’ notion. This model avoids attributing probability to
+conditionals at all. It can be rephrased in terms of attributing
+probability 1 to un-nested conditionals. We saw that this type of
+model can characterize probabilistically the inference patterns of
+well known non-monotonic logics and the generalized Horn patterns of
+inference of the corresponding conditional logics.
+
+
+We also saw that the notion of conditional probability used in these
+models cannot be the one deriving from the foundational work of
+Kolmogorov. We need instead a primitive notion of finitely additive
+conditional probability.
+
+
+But these models are quite limited logically. They cannot characterize
+Boolean combinations of conditionals and they cannot characterize
+elemental forms of iteration permitted by rather weak systems like the
+system V of Lewis or the system B of
+Burgess. Can we do better? This section presents some work in this
+area.
+
+ 
+In a much cited article, Van McGee (1985) considers the problem of
+iterated conditionals. McGee gives arguments in favor of the so-called
+Export-Import axiom:
+
+(EI)
+ (a > (b > c)) ↔ (a
+ ∧
+ b) > c
+
+
+ 
+Nevertheless, the argument in defense of (EI), a condition that fails
+to be validated by any of the conditional logics we have seen so far,
+does not appeal to probabilistic models.
+
+
+Arló-Costa (2001) presents a probabilistic model that validates
+the (EI) axiom. The model uses some of the notions introduced in
+previous sections, like the notion of probabilistic cores of a
+conditional probability function. The underlying probability space has
+domain U and an associated sigma field of propositions
+F.
+
+
+Let LC be the smallest language extending the underlying
+Boolean language L such that if α ∈ L and
+β ∈ LC, then α > β ∈ LC
+and ¬β ∈ LC. We use the notation T
+> to denote the theories over LC. The model uses a
+probabilistic support function, Sup, from the set of
+conditional probability functions defined over the probability space
+to T >. So, each probability function P(. | .) is
+associated to a support set indicating the set of conditional
+sentences supported by P(. | .) or accepted with
+respect to P(. | .). Now we have enough elements to define this
+notion of probabilistic support:
+
+Ramsey test for probability conditionals
+ (α > β) ∈ Sup(P) if and only if
+(1) b = β is in L and the smallest core for
+P[A] entails B, or (2) β is in
+LC−L and β ∈
+Sup(P[A](X | Y)) =
+Sup(P(X | Y ∩ A)).
+ 
+
+Ramsey test for negated probability conditionals
+ ¬(α > β) ∈ Sup(P) if and only
+if (1) b = β is in L and the smallest core for
+P[A] does not entail B, or (2) β is in
+LC−L and β ∉
+Sup(P[A](X | Y)) =
+Sup(P(X | Y ∩ A)).
+ 
+
+
+If a proposition A cuts
+the system of cores of a function P(. | .) then the system of
+cores of P[A](. | .) can be obtained from the system
+of cores of P(. | .) by intersecting each of these cores with
+A and taking these intersections as the system of cores for
+P[A](. | .).  The resulting notion of hypothetical
+revision sanctions axioms validating (EI).
+5. The Logic of Epistemic Conditionals
+
+
+Peter Gärdenfors (1978, 1988) proposed the following form of the
+Ramsey test (conceptually introduced in the introduction to this
+article):
+
+(GRT)
+a > b ∈ K iff b ∈
+K*a.
+ 
+
+
+This formulation of the test presupposes that the underlying language
+in question is a language containing conditionals (iterated or
+not). We will call this language L>. The basic
+Boolean underlying language will be called L0. We
+will consider below intermediate conditional languages containing
+conditional fragments of L>.
+
+
+We will consider immediately two basic postulates for belief revision
+that deal with consistency constraints. The first establishes that the
+consequence of revising any theory with a consistent sentence leads to
+a consistent output. This includes of course the inconsistent theory
+that we will denote as K⊥.
+
+ 
+The second postulate is considerably less intuitive. It says that the
+result of revising the inconsistent theory is always unsuccessful,
+leaving the inconsistent theory unmodified. For the moment the
+postulate will have only a formal interest. Later on, when we consider
+the theory called UPDATE, the postulate will have an intuitive
+interpretation (although not an epistemic interpretation).
+
+(Consistency)
+ If a is consistent, then K*a ≠
+K⊥.
+ 
+
+(US)
+ If K = K⊥, then
+K*a = K⊥.
+ 
+
+
+Consistency is a usual constraint on theories of belief revision, like
+AGM (Alchourrón, Gärdenfors, and Makinson 1985). Our first
+result shows that Gärdenfors's Ramsey test conflicts with the
+success postulate:
+
+Theorem 3 (Arló-Costa 1990). (GRT) together
+with the postulate of Consistency are incompatible with the
+consistency of the underlying notion of logical consequence.
+ 
+
+Proof. We begin by deriving (US) from (GRT). Assume
+that K = K⊥. Then we have that for
+all b, a > b is in K, and by
+(GRT) we then have that for all b, b ∈
+K*a. Consider now the following instance of
+(Consistency): If
+ ⊬
+ ⊥, then K⊥*T ≠
+K⊥. Since the underlying notion of
+consequence is consistent we therefore have that
+K⊥*T ≠
+K⊥. But, by (US), we have
+K⊥*T = K⊥.
+ 
+
+
+The relevance of this theorem, which at first sight might be seen too
+dependent on limit cases, will be more evident below. We will turn
+first to another incompatibility result, originally proved by Peter
+Gärdenfors (1988).
+
+
+To appreciate the interest of the result it might be useful to remind
+the reader that the main interest of Gärdenfors in his book and
+articles on conditionals was to utilize his test of acceptance as a
+semantic bridge connecting logical properties of conditionals with
+basic properties of revision as axiomatized by the Alchourrón,
+Gärdenfors, and Makinson (1985). Some such properties are:
+
+
+
+Closure
+K*a is a logical theory 
+
+Success
+a ∈ K*a
+
+
+Consistency
+If a is consistent so is K*a
+
+
+Expansion
+K*a ⊆ K+a
+
+
+Preservation
+If ¬a ∉ K, then K ⊆
+K*a
+
+
+Equivalence
+If a and b are logically equivalent, then
+K*a = K*b
+
+
+
+
+K+a, the expansion of K with a, is
+obtained by taking the logical consequences of the set theoretic union
+of K and {a}. We can now introduce an important
+notion, that of a belief revision model (BRM). A BRM is a
+pair
+ ⟨K,
+ *⟩,
+ where K is a set of belief sets constructed over
+L> and * is a belief revision function. We
+assume that every K ∈ K satisfies
+(GRT). We also assume that K is closed under
+expansions and revisions.
+
+ 
+A BRM
+  ⟨K,
+ *⟩
+ is non-trivial if and only if there is K ∈
+K and there are three sentences that are pairwise
+inconsistent and such that none of the negations of these sentences is
+in K. With these elements we can state the result originally
+presented by Gärdenfors, namely:
+
+Theorem 4 (Gärdenfors 1988; Hansson 1999,
+pp. 364-5). There are no non-trivial BRMs where the revision operator
+satisfies Closure, Consistency, Success and Preservation.
+ 
+
+Proof. Assume by contradiction that there is a BRM
+  ⟨K,
+ *⟩
+ and K ∈ K, as well as three sentences
+a, b, d, satisfying non-triviality
+conditions. All sentences a, b, d are
+consistent.
+ 
+
+
+Consider now the belief set (K*a)*(b 
+ ∨
+ d). By closure under revisions (K*a)*(b
+ ∨ d)
+ ∈ K. The consistency of b guarantees
+the consistency of (b
+ ∨ d).
+ Therefore (K*a)*(b
+ ∨
+ d) is consistent as well (by Consistency). Success gives us
+that (b
+ ∨ d)
+ ∈ (K*a)*(b 
+ ∨ d).
+ Without loss of generality we may assume that ¬d ∉
+(K*a)*(b
+ ∨ d).
+ 
+
+
+Now, by closure under expansions, we have that both
+K+a and K+(b
+ ∨
+ a) are in K and by definition of expansion
+we have also that K+(b
+ ∨
+ a) ⊆ K+a. Given that ¬a
+∉ K, we have by Preservation that K ⊆
+K*a. Success guarantees that a ∈
+K*A so we have that K+a ⊆
+K*a. Therefore we have that K+(b
+ ∨ a)
+ ⊆ K*a.
+ 
+
+
+Notice now that the change function used in a BRM is
+monotonic in the sense that if K ⊆ H,
+then K*a ⊆ H*a. Now we can apply
+monotonicity to the last inclusion: (K+(b
+ ∨
+ a))*(b 
+ ∨
+ d)  ⊆ (K*a)*(b 
+ ∨ d).
+ Since we assumed without loss of generality that ¬d
+∉ (K*a)*(b
+ ∨
+ d), we can conclude ¬d ∉
+(K+(b
+ ∨
+ a))*(b 
+ ∨
+ d). The rest of the proof consists in showing that
+¬d ∈ (K+(b
+ ∨
+ a))*(b 
+ ∨
+ d).
+ 
+
+
+Assume first by contradiction that ¬(b 
+ ∨ d)
+ ∈ K+(b 
+ ∨
+ a). This is equivalent to assuming that ¬b
+ ∧
+ ¬(a 
+ ∧
+ d) follows logically from K. Since a
+ ∧
+ d
+ is inconsistent this is equivalent to saying that ¬b
+follows from K which violates our application
+of non-triviality. Therefore we have that ¬(b
+ ∨
+ d) ∉ K+(b 
+ ∨ a).
+ 
+
+
+Now we can apply Preservation and conclude that K +
+(b
+ ∨ a)
+ ⊆ (K + (b 
+ ∨
+ a))*(b 
+ ∨
+ d). Success yields that (b 
+ ∨
+ d) ∈ (K+(b 
+ ∨
+ a))*(b 
+ ∨
+ d).
+ So, we have, by non-triviality, that: K + b =
+(K + (b
+ ∨
+ a))+(b 
+ ∨
+ d) ⊆ (K + (b 
+ ∨
+ a))*(b 
+ ∨
+ d). So, we must have that b ∈ (K +
+(b
+ ∨
+ a))*(b 
+ ∨
+ d). Since, by non-triviality, we have that b
+entails ¬d, it follows that ¬d ∈
+(K+(b
+ ∨
+ a))*(b 
+ ∨
+ d). This contradiction concludes the proof.
+ 
+
+
+Gärdenfors (1988) presented the impossibility result just proved
+as a conflict between the Preservation postulate and his version of
+the Ramsey test. The version of the impossibility just proved requires
+nevertheless many other assumptions, from closure under expansions and
+revisions to consistency. There are stronger versions of the
+impossibility result that use weaker assumptions (see Cross and Nute
+2001 for an excellent presentation of the proofs of alternative forms
+of the impossibility theorem). There is one form of the impossibility
+result that goes to the root of the opposition between preservation
+and (GRT).
+
+
+Consider first the following constraint on revisions.
+
+Open Preservation
+ If a, ¬a ∉ K, then
+K+a ⊆ K*a.
+ 
+
+
+The basic idea is that when the agent is in suspense about a sentence
+a, revisions go by expansions. Open Preservation is a
+condition flowing from Ramsey's own views about conditionals. The idea
+is that an agent who is in suspense about a sentence a
+accepts ‘If a, then b’ with respect to
+his epistemic state K iff B belongs to the belief
+state obtained after adding a to K. If this is a
+minimal condition of adequacy for an acceptance test, then (GRT) does
+not meet this adequacy condition. First we need to state appropriate
+non-triviality conditions. The following definition provides the sense
+of non-triviality that we need for Theorem 5 below. The notion of
+non-triviality that we use in this result should not be confused with
+the different notion of non-triviality used in Theorem 4 above.
+
+Definition 10. Any BRM
+  ⟨K,
+ *⟩
+ that obeys the following constraints will be called
+non-trivial: (a) the underlying language possesses at least
+two different propositional variables a and b
+(different from the constants ⊥ and
+ ⊤),
+ and K contains at least one K such that:
+(b1) (¬a
+ ∨ b)
+ ∉ K, and (b2) (¬a 
+ ∧ b)
+ → (a > ¬b) ∉ K.
+ 
+
+
+Condition (b1) does not need much justification. Condition (b2) is
+also very mild. In fact, the formula (¬a
+ ∧
+ b) → (a > ¬b) is not a
+theorem of any of the well-known systems of conditional logic
+(epistemic or
+ not).[24]
+
+Theorem 5 (Arló-Costa and Levi 1996). There
+are no non-trivial BRMs satisfying the Open Preservation postulate.
+ 
+
+ 
+We remind the reader that the previous results utilizes BRMs and
+therefore assumes closure under expansions, i.e. if K ∈
+K for a fixed BRM with universe K,
+then any expansion of K is also an admissible belief set in
+the BRM.  Many (for example Rott 1989, Hansson 1992, Morreau 1992 and
+Makinson 1990) see the postulate of closure under expansions as
+unjustified. The intuitive reason is that a belief set including
+conditionals behaves in a very different manner from a belief set
+composed uniquely of ‘indicative’ sentences belonging to
+the purely Boolean language. So, especially when the interpretation of
+the conditional sentences is auto-epistemic and therefore tacitly
+dependent on the theory of reference, we have that the addition of an
+indicative sentence that is compatible with all previously supported
+indicative sentences typically withdraws the support of conditional
+sentences supported by the current theory (and that therefore are
+members of the current theory). Thus expansions cease to be
+unproblematic additions. They also lead to withdrawals in the
+conditional part of the current theory.
+
+ 
+Our last theorem also suggests that, as long as closure under
+expansions is preserved, (GRT) is compatible with non-Bayesian notions
+of revision where Open Preservation is violated—i.e. (GRT) is
+compatible with notions of change where the revision of an open
+epistemic state K with respect to a sentence a (and
+its negation) does not result in an expansion K + a,
+but in a different change weaker than an expansion (where some
+information contained in K + a is withdrawn). So,
+there are two basic solutions to Gärdenfors's impossibility
+result as long as one insists on using BRMs to develop a semantics of
+conditionals. One solution consists in modifying the BRMs and
+restricting closure under expansions, while keeping preservation and
+other standard revision postulates. Another solution consists in
+keeping closure under expansions while weakening the preservation
+postulate that asserts that if a belief set K ∈
+K is open with respect to a sentence a then
+the revision goes by expansion.
+
+
+A third possible solution consists in giving up (GRT) and therefore in
+ceasing to use an unmodified form of Gärdenfors's BRMs. One
+concrete option here is the adoption of Levi's version of the Ramsey
+test which permits separating beliefs sets from the conditionals they
+support. The idea in this third option is that the principles of
+belief revision apply only to beliefs sets that are
+conditional-free. We will consider this third option below. We will
+say something first about the two first
+ alternatives.[25]
+
+
+
+The original semantic program that motivated Gärdenfors consisted
+in utilizing (GRT) as a bridge that outputs formal constraints on
+conditionals when we input basic constraints on revision. But we have
+already seen that (GRT) is incompatible with Consistency and with Open
+Preservation, both very basic constraints  on revision.
+
+
+Nevertheless one can use the test in a different way. Rather than
+fixing the notion of revision and looking for constraints on
+conditionals, one can fix a conditional system, say the system
+VC of Lewis, and determine which is the notion of
+revision that is needed to validate epistemically all and only the
+axioms of these system via the use of (GRT). We know that the
+resulting notion of change will not have some of the central features
+of the standard notion of revision. It will be a different notion,
+with a different motivation. Arló-Costa and Levi (1996) show
+that the needed notion of change is the notion of update
+proposed by the computer scientists H. Katsuno and A. Mendelzon
+ (1991).[26]
+
+
+
+(U0)    
+For every sentence a ∈ L>,
+and every conditional theory K, K*a is
+a conditional theory.
+
+
+(U1)
+a ∈ K*a.
+
+
+(U2)
+If a ∈ K, then K*a =
+K.
+
+
+(U3)
+If a ∈ K*b and b ∈
+K*a, then K*a =
+K*b.
+
+
+(U4)
+K*(a
+ ∧
+ b) ⊆ (K*a)+b.
+
+
+(U5)
+If K is a maximal and consistent conditional belief set
+and ¬b ∉ K*a, then
+(K*a)+b ⊆ K*(a
+ ∧
+ b).
+
+
+(U6)
+K*a =
+ ∩{W*a
+ : K ⊆ W, and W is maximal and
+consistent}.
+
+
+(U7)
+If a and K are consistent then
+K*a is consistent.
+
+
+
+
+
+The first six postulates are enough to validate Lewis's logic
+VC. Notice that the role played by the postulate (U2)
+is rather different from the role played by the Preservation or Open
+Preservation postulates in the AGM theory and other standard versions
+of belief revision. When K = K⊥ we
+have an instance of the un-success postulate (US) considered above:
+K*a = K⊥. Monotony (if
+K ⊆ H, then K*a ⊆
+H*a) is also a theorem of this notion of
+ update.[27]
+ So, the two properties derivable from (GRT), monotony and un-success
+are properties of the notion of change needed to validate all the
+axioms of the system VC.
+
+
+Update has important connections with a notion of change offered by
+David Lewis (1976) to make sense of the thesis that the probability of
+conditionals goes by some notion of conditional probability. The
+problem considered by Lewis is very similar than the one we are
+considering here. Lewis shows that the probability of conditionals is
+not standard conditional probability. But there is a notion of
+probability change, quite different both from Kolmogorov's notion of
+conditional probability and from De Finetti's notion as well, baptized
+as imaging by Lewis. And in terms of this notion we can say
+that the probability of conditionals coincides with the corresponding
+deviant notion of conditional probability. By the same token we can
+say that belief in conditionals can be represented in terms of a
+deviant notion of conditional belief, given by Update. The connections
+between update and imaging went unnoticed for a while until the work
+of philosophers became known by computer scientists working with
+update models.
+
+
+A question does remain open nevertheless. Is there an acceptance test
+meeting the adequacy conditions we proposed above such that we can
+carry out Gärdenfors's semantic program with its help? The answer
+is yes. The test in question was presented in the introduction to this
+article: it is essentially a variant of the test first proposed by
+Levi (1988). This test circumvents the known impossibility results and
+it therefore makes possible focusing on a well motivated notion of
+supposition and its corresponding conditional axioms, as
+Gärdenfors wanted.
+5.1 Epistemic Validity
+
+
+In this section we will study two epistemic systems first proposed in
+Arló-Costa (1995).
+
+Let L> be the smallest language such that: (1)
+L0 ⊆ L>, (2) if
+a, b ∈ L>, then
+a > b ∈ L> and (3)
+L> is closed under the Boolean
+connectives. This language is too strong for our purposes. We prefer
+to deal first with non-nested versions of the conditional language,
+which we shall extend later on. Therefore we will use the language
+FL>. Let
+FL> be the smallest language such
+that: (1) L0 ⊆
+FL>, (2) if a, b
+∈ L0, then a > b ∈
+FL>, and (3)
+FL> is closed under the Boolean
+connectives. Let an f-instance (flat-instance) of a conditional
+formula of FL> be a substitution
+instance of the formula where formulas of L0 are
+substituted for the variable-schemes that occur in the formula. We
+will call, in addition, ‘flat’ every conditional formula
+that belongs to FL>.
+
+Definition 11. An epistemic model (EM) is a
+quadruple
+ ⟨K,
+ *, s,
+ +⟩,
+ where K is a set of belief sets (theories), * is a
+belief revision function *: K ×
+L0 → K, s is a
+‘support function’ s: K →
+T>, and + is an expansion function.  * and
+s are constrained by the following conditions (c1)-(c3) as
+well as (LRT) and (LNRT) specified below.  K is
+closed under revisions and expansions.
+ 
+
+
+
+(c1)
+If A ∈ L0 and A ∈
+s(K), then A ∈ K.
+
+
+(c2)
+K ⊆ s(K), whenever K is
+consistent.
+
+
+(c3)
+s(K) is a logically closed set of sentences.
+
+
+(LRT)
+If A, B ∈ L0, then
+(A > B) ∈ s(K) iff
+B ∈ K*A, whenever K is
+consistent.
+
+
+(LNRT)
+If A, B ∈ L0, then
+¬(A > B) ∈ s(K) iff
+B ∉ K*A, whenever K is
+consistent.
+
+
+
+
+Definition 12. For every A ∈
+FL> and every
+ M
+ =
+ ⟨K,
+ *,
+ s⟩,
+ a is satisfiable in
+ M
+ if there is a consistent K ∈ K such
+that a ∈ s(K). a is
+positively valid (PV) in
+ M
+ if a ∈ s(K) for every consistent
+K ∈ K.  a is PV in a set of
+models S iff for every model
+ M
+ in S, a is PV in
+ M.
+ Finally a is epistemically valid (e-valid) if it is
+PV in all epistemic models.
+ 
+
+
+We can now consider the following syntactic system:
+
+
+
+T
+All classical tautologies and their substitution instances in
+L>
+
+
+I
+a >
+ ⊤
+
+
+CC
+((a > b) 
+ ∧
+ (a > c)) → (a > (b
+ ∧
+ c))
+
+
+RCM  
+If
+ ⊢
+ b → c then
+ ⊢
+ (a > b) → (a > c)
+
+
+M
+Modus ponens
+
+
+
+
+ 
+Now, consider the following flat-version of the rule of inference
+RCM (denoted RCMf) :
+
+RCMf
+ If
+ ⊢
+ b → a and a, b, c
+∈ L0, then
+ ⊢
+ (a > b) → (a > c).
+ 
+
+CM
+ can be now defined as the smallest set of formulas in the language
+FL> which is closed under
+RCMf and M and which contains all f-instances of the
+axioms I and CC and all classical tautologies and
+their substitution instances in the language
+FL>.
+
+Theorem 6 A conditional flat formula a is
+e-valid iff a is a theorem in
+ CM.
+ 
+
+
+Stronger conditional systems can be obtained by adding appropriate
+constraints on the notion of belief revision (or supposition) used in
+the epistemic models. A salient system is
+ EF,
+ which can be obtained from
+ CM
+ by adding non-nested instances of ID, MP,
+CA, CV and CD: ¬(a >
+⊥) for all non-tautologous a, to the axiomatic base of
+ CM;
+ and the rule of inference RCEAf (as RCMf, this is an instance of RCEA where all the sentences that appear in the rule belong to L0) to the rules of inference of
+ CM.
+ 
+
+ 
+The notion of supposition that is needed to validate
+ EF
+ utilizes some of the basic postulates of AGM revision: Success,
+Expansion, Equivalence and a weakened version of consistency that
+requires the consistency of K*a when both the input
+a and the theory of reference K are consistent. It
+also utilizes the following two postulates of AGM:
+
+(K*7)
+K*(a 
+ ∧
+ b)  ⊆ (K*a)+b
+
+
+(K*8)
+ If ¬b ∉ K*a, then
+(K*a)+b ⊆ K*(a
+ ∧
+ b)
+ 
+
+ 
+Notice that the postulate of Preservation does not correspond to the
+positive validity of any non-nested conditional formula. The model is
+nevertheless compatible with Preservation and its addition to the
+model has an impact on the positive validity of nested conditionals
+formulas (see Theorem 8.1 and Observation 8.3 of Arló-Costa
+1995 as well as the discussion in section 2.7 of Cross and Nute
+2001).
+5.1.1 Negative Validity
+
+
+First let's consider the following ‘negative’ version of
+epistemic validity.
+
+Definition 13. An FL>
+sentence a is negatively valid (NV) in
+ ⟨K,
+ *,
+ s⟩
+ if ¬a ∉ s(K) for every
+consistent K ∈ K. An
+FL> sentence a is
+e–-valid if it is NV in every model.
+ 
+
+
+Arló-Costa and Levi (1996) show that negative and positive
+validity do not coincide. For consider the following constraint on
+belief revision models:
+
+(wp)
+ If a ∈ K and K is consistent, then
+K+a ⊆ K*a.
+ 
+
+
+Notice that now we can show:
+
+Lemma 7. All instances of ((a
+ ∧
+ b) → (a > b)) in FL> are
+negatively validated in an epistemic model
+ M
+ iff
+ M
+ satisfies (wp).
+ 
+
+
+Should every rational agent whose commitments for change are
+constrained at least by the basic postulates of AGM accept every
+non-iterated instance of ((a
+ ∧
+ b) → (a > b))? The answer is
+no. For consider some rational agent who is in suspense about
+a and suppose for the sake of contradiction that the agent
+accepts all non-iterated instances of ((a
+ ∧
+ b) → (a > b)).  Then if K
+represents current beliefs, we know that a ∉ K
+and ¬a ∉ K. Moreover, since we also
+assumed that commitments for change obey at least the basic postulates
+of AGM, then a ∉
+ K*⊤
+ and ¬a ∉
+ K*⊤.
+ Therefore, by (LNRT), ¬
+ (⊤
+ > a) ∈ s(K). Since all
+non-iterated instances of ((a
+ ∧
+ b) → (a > b)) belong to
+s(K), a →
+ (⊤
+ > a) ∈ s(K). Therefore
+¬a ∈ K, against our initial hypothesis. The
+conclusion is that it is not true that all non-iterated instances of
+((a
+ ∧
+ b) → (a > b)) are positively
+valid. Notice, nevertheless, that if an agent accepts the conjunction
+(a
+ ∧
+ b) (where a, b ∈
+L0), he must accept (a > b)
+too.
+
+
+Arló-Costa and Levi (1996) give an argument in favor of using
+positive rather than negative validity. The main point is that there
+are epistemic models (admitting a Ramsey test for negated
+conditionals) where the inference rule modus ponens does not
+preserve negative validity.
+
+ 
+In Gärdenfors's BRMs, which are incompatible with
+‘negative’ versions of the Ramsey test, negative and
+positive validity coincide and Lewis's system VC can
+be modeled epistemically by appealing to update.
+5.1.2 Levi's Notion of Supposition and AGM
+
+
+Under an epistemological point of view the revision function used in
+the models considered so far intends to capture a notion of
+supposition appropriate for epistemic conditionals. So, one can ask
+here a normative question: which are the basic axiomatic constraints
+corresponding to this notion of supposition?
+
+
+We already saw that the notion of supposition used in
+Gärdenfors's epistemic models of Lewis's system
+VC do not coincide with AGM. There is, as we argued
+above, a tension between the axiom of Preservation and
+Gärdenfors's version of the Ramsey test.  The appropriate axioms
+coincide with Katsuno and Mendelzon's notion of update, which
+is axiomatically and conceptually a notion of change very different
+from AGM. One could say that these axioms represent the notion of
+supposition involved in evaluating conditionals which
+pre-systematically are considered truth-bearers.
+
+
+The epistemic models deploying support functions that we just
+presented above are compatible with the basic axioms of AGM. It is not
+clear, nevertheless, that these axioms are the ones one would want as
+basic constraints on supposing. Isaac Levi (1996) has offered positive
+arguments in favor of having a notion of epistemic supposition that
+does not coincide with AGM. We will review these arguments in this
+section.
+
+
+Levi's arguments start with the proposal of a mechanism for supposing
+that intends to extend central insights already present in Ramsey's
+footnote. Notice that Ramsey considered supposition in the two cases
+in which it seems to have epistemological significance, namely when
+the agent who evaluates a conditional is in suspense with respect to
+the antecedent of the conditional, and when the agent is in a
+counter-doxastic position, i.e. when he believes the negation of the
+antecedent.
+
+ 
+In the first case it seems that Ramsey adopts the condition we called
+Open Preservation:
+
+Open Preservation
+ If a, ¬a ∉ K, then
+K+a ⊆ K*a.
+ 
+
+
+The second case is more complex: it involves engaging in a genuine
+revision rather than an expansion. There is nevertheless a limit case
+that is not considered by Ramsey: how should we understand the act of
+supposing a when the agent already believes a?
+
+
+One option here is to treat this as a degenerate limit case and say
+that in this case the agent does not need to modify the current
+epistemic state. Katsuno and Mendelzon's operation of update
+implements this policy, while it abandons Open Preservation.
+
+
+There is nevertheless a second form of understanding how to suppose
+that a is the case when a is already believed. The
+idea here is to feign doubt as to the truth of a by removing
+both a and its negation from the current belief state and
+then implement Ramsey's recommendation of expanding with respect to
+the modified state. This view embraces Open Preservation and abandons
+both Weak Preservation (wp) and the axiom (U2) of
+update.
+
+
+So, Levi's position retains a weaker version of Preservation but not
+the one retained by update. Levi's view stands in complete opposition
+to the line of research opened by update and imaging,
+retaining a thorough epistemic point of view about the act of
+supposition involved in evaluating conditionals.
+
+
+Notice that AGM is accepted neither by Levi (to represent a notion of
+epistemic supposition) nor by Gärdenfors (to encode the ontic
+notion of supposing involved in evaluating Lewis's conditionals). The
+notion of supposition seems to be governed by its own axioms, which
+need not coincide with axioms capturing a diachronic notion of belief
+change.
+
+
+A crucial component of Levi's model is the notion of
+contraction needed to feign doubt as to the truth of a
+believed item. One salient feature of Levi's models is that they are
+grounded on decision-theoretic techniques and this applies not only to
+contraction but also to expansion, which in Levi's hands is treated as
+a form of induction (see Levi 1996).
+
+ 
+One of the main payoffs of the inductive models studied in Levi (1996)
+is the development of inductive models for non-monotonic
+inference. The notion of inference that thus arises has many formal
+features in common with Reiter's default logic, obeying
+little else aside from the axiom called Cut:
+
+
+
+(Cut)
+
+a  c, (a ∧ c  b)
+
+
+a  b
+
+
+
+5.2 Iteration
+
+
+The epistemic systems considered above are all conditional systems
+constructed over non-nested languages. In this section we shall focus
+on the weakest system of iterated conditionals induced by epistemic
+models.  The proposal in question is the one contained in
+Arló-Costa (1999a).
+
+
+An epistemic model (EM) is quadruple
+ ⟨E,
+ ρ, s,
+ *⟩,
+ where E is a set (heuristically: a set of epistemic
+states); ρ is a function ρ: E →
+TL0; s is a function
+s: E →
+TL>, where
+TL> are the theories
+constructible over L>; and * is a function *:
+E × L> →
+E. E is closed under revisions and
+B = Rng(ρ) is closed under expansions. The
+functions ρ, s, and * obey the following two constraints
+as well as IRT and INRT:
+
+
+
+(c1)
+If a ∈ L0 and a ∈
+s(E), then a ∈ ρ(E).
+
+
+(c2)
+ρ(E) ⊆ s(E).
+
+
+(IRT)
+(a > b) ∈ s(E) iff
+b ∈ s(E*a), where E
+is consistent.
+
+
+(INRT)  
+¬(a > b) ∈ s(E)
+iff b ∉ s(E*a), where
+E is consistent.
+
+
+
+
+
+In this model the only epistemic primitives are the states in
+E. They could be theories or ranking
+systems, or even probability functions. The ρ function yields
+a set of held full beliefs ρ(E) held at epistemic state
+E. The function s yields the conditionals supported
+at state E. Finally, the belief revision function maps pairs
+of epistemic states and sentences of L> to
+epistemic states.
+
+
+For every a ∈ L> and every
+ M
+ =
+ ⟨E,
+ ρ, s,
+ *⟩,
+ a is satisfiable in
+ M
+ if there is a consistent E ∈ E such
+that a ∈ s(E). a is valid in
+ M
+ if a ∈ s(E) for every
+consistent E ∈ E.  a is valid
+in a set of models S iff for every model
+ M
+ in S, a is valid in
+ M.
+ a is valid if it is valid in all models.  Finally,
+b is epistemically entailed by a in
+ M
+ =
+ ⟨E,
+ ρ, s,
+ *⟩
+ iff for every E in E such that a
+∈ s(E), b ∈
+s(E).
+
+
+First we need to define a conditional language smaller than
+L>. Let
+ BC
+ be the smallest language such that if a, b ∈
+L0, c, d ∈
+ BC,
+ then a > b, c > d,
+¬c, c
+ ∧
+ d ∈
+ BC.
+ Consider now the conditional system
+ ECM.
+ ECM
+ is the smallest set of formulae in the language
+L> which is closed under (RCM) and (M), and
+which contains all instances of the axioms (I), (CC), (F) and all
+classical tautologies and their substitution instances in the language
+L>.
+
+
+
+I
+a >
+ ⊤
+
+
+CC
+((a > b) 
+ ∧
+ (a > c)) → (a > (b
+ ∧
+ c))
+
+
+F
+¬(a > c) ↔ (a >
+¬c), where c ∈
+ BC
+
+
+M
+Modus ponens
+
+
+RCM  
+If
+ ⊢
+ b → c then
+ ⊢
+ (a > b) → (a > c)
+
+
+
+
+
+The following completeness result shows the coincidence of the
+theorems of the system
+ ECM
+ and the conditionals validated by the EMs.
+
+Theorem 7  An L> formula a is valid iff a is a theorem in ECM.
+ 
+
+
+The results just presented indicate the basic logical structure of
+iterated conditionals validated by iterated versions of Levi's Ramsey
+test. The axiom F is derivable in very strong systems like
+Stalnaker's C2, but aside from this limit case is not
+derivable in most of the ontic conditional systems reviewed
+above. This seems to indicate that the logical structure of iterated
+epistemic conditionals is different from the logical structure of most
+of the ontic systems considered in the literature.
+6. Other Topics
+
+
+One topic mentioned only in passing above is concerned with models of
+indicative conditionals. Perhaps one of the most robust areas of
+research in this topic focuses on probabilistic models of the type we
+reviewed above. In fact, one of the most direct applications of the
+probabilistic semantics developed by Adams, McGee and others has been
+related to providing a semantics for indicative conditionals. This is
+so even when some grammarians, like V. H. Dudman (1991), have
+questioned the purity of the distinction between the indicative and
+the subjunctive mood in English (so clearly stated otherwise in many
+of the other Indo-European languages).
+
+
+A second line of research regarding the semantics of indicative
+conditionals asserts that indicative and material conditionals have
+the same truth conditions. This position has been defended by
+Lewis (1973) and by Jackson (1987). There are nevertheless apparent
+counterexamples to this thesis presented, for example, in section 1.10
+of Cross and Nute (2001). The examples show that contraposition is
+violated in the case of some indicative conditionals.
+
+ (1) If it is after 3 o'clock, it is not much after 3 o'clock.
+ (2) If it is much after 3 o'clock, then it is not after 3 o'clock.
+ 
+
+
+This example, proposed by Cross and Nute (2001), is supposed to show
+that even when there might be circumstances where it is appropriate to
+assert (1), this does not transfer unproblematically to (2). A line of
+defense against examples of this type, adopted by Grice (1991) and by
+Lewis (1973), is to distinguish carefully between assertion conditions
+and truth conditions. The assertion rules can then be used to counter
+that even when (2) is literally true, it is not felicitous to assert
+it.
+
+
+A third line of research concerning indicative conditionals was
+initiated by Stalnaker (1991) and by Davis (1979). The main idea is to
+use a semantics in terms of selection functions both for indicatives
+and subjunctives, and to suggest that differences in mood are mirrored
+by differences in the properties of the world selection function used
+in the semantics of each type of conditional.
+
+ 
+Stalnaker starts with a context set of possible worlds not
+ruled out by the presupposed and commonly known background
+information. Then the main idea of the semantics for indicative
+conditionals is that in evaluating them at worlds in the context set
+the world selected, must, if possible, be within the context set as
+well. In other words, all worlds within the context set are closer to
+each other than any worlds outside it. In contrast the subjunctive
+mood in English and other languages can be seen as a conventional
+device for indicating that presuppositions are being suspended. This,
+of course, means in the case of indicative conditionals that the
+selection function used to evaluate them may reach outside the context
+set.
+
+
+A fourth proposal has been advanced by Levi (1996, section 2.5). Levi
+defends in general an epistemic theory in terms of acceptance
+conditions rather than a truth theory in terms of selection
+functions. In spite of this big difference, there is much in his
+theory that agrees with some of the previous proposals, mainly that
+there are forms of supposition where a proposition is supposed to be
+true for the sake of the argument relative not to the current belief
+set, but to a background of shared agreements (or commonly presupposed
+information). Although Levi models this type of supposition in his
+book, he follows Dudman on grammatical matters and therefore does not
+believe that this type of consensus supposition correlates
+perfectly with the use of the indicative mood in English.
+
+
+Arló-Costa offers a fifth account that proposes
+that the type of ‘matter of fact’ supposition involved in
+analyzing conditionals is modeled by the notion of hypothetical
+revision presented in Arló-Costa 2001. The main idea here
+is that the agent faces the process of supposition armed with a core
+system. The worlds in the outermost core encode the information that
+the agent thinks is publicly shared. The system of cores permits
+revising the expectations encoded in the innermost core, when the
+supposed item is compatible with the presuppositions encoded via the
+set of worlds composing the outermost core. Nevertheless, there is no
+matter-of-fact supposition with propositions incompatible with the
+outermost core; such suppositions lead to incoherence. This model is
+intended to capture as well the idea that indicative supposition is
+supposition under a special set of constraints given by the agent's
+view of the shared agreements among agents in a relevant
+population.
+
+
+Further information about indicative conditionals, especially
+arguments pro and con the truth functionality of indicative
+conditionals, can be found in section two of Edgington (2006). Lycan
+(2001) contains an interesting discussion (chapter 7) of the
+indicative/subjunctive distinction which supports and extends Dudman's
+skepticism about the distinction for the Enlish conditional. Finally
+Bennett (2003) offers a general overview of philosophical theories of
+conditionals. The book presents and evaluate various contemporary
+theories of indicatives and subjunctives as well as Bennett's own view
+about the indicative/subjunctive distinction. 
+6.1 Structural and Similarity-based Counterfactuals
+
+
+F.P. Ramsey sketched in his celebrated footnote a mechanism to
+evaluate counterfactuals. The idea is that in evaluating ‘If
+p then q’, ‘…[i]f either party
+believes not p for certain, the question ceases to mean
+anything to him except as a question about what follows from certain
+laws or hypothesis.’ This fragment of the footnote has been
+interpreted in many different ways. One of them suggests that in order
+to have a procedure to evaluate counterfactuals we need first a good
+model of the mechanisms and causal laws that operate in our
+world. Counterfactuals are then analyzed in terms ‘of what
+follows from’ these causal laws.
+
+
+This, nevertheless, has not been the line of research emerging from
+Lewis's book Counterfactuals. In a certain way the
+ontological program in which this book was embedded reverses the
+ordering of explanation just suggested. Lewis proposes to interpret
+‘A has caused B’ in terms of the
+following counterfactual dependence: ‘B would not have
+occurred it is were not for A’; and to analyze the
+counterfactual dependency in terms of a notion of similarity of worlds
+that is taken at face value as a basic primitive. This type of
+analysis leaves the notion of similarity unconstrained and
+mysterious. Moreover Fine (1975) suggests that similarity of
+appearance is inadequate. He considers a counterfactual that most of
+us consider true today: ‘Had Nixon pressed the button, a nuclear
+war would have started’. Clearly a world where the button is
+disconnected is many times more similar to our world than the one
+yielding a nuclear explosion. This suggests that similarity measures
+cannot be arbitrary and that they should respect our intuitive notion
+of causal laws. Lewis (1979) offered an intricate system of
+constraints of different weights and priorities (the size of
+violations of laws, or ‘miracles’, matching of facts,
+temporal precedence, and so forth) trying to bring similarity closer
+to causal intuition. But as many have pointed out (see Woodward 2005,
+section 3.6), problems remain.
+
+
+An interesting alternative to this kind of approach is to reverse the
+order of explanation according to the initial ideas that Ramsey voiced
+in this footnote. Pearl (2000, p. 239) presents the idea in a clear
+way:
+
+ In contrast with Lewis's theory, counterfactuals are not based [in
+the structural account] on an abstract notion of similarity among
+hypothetical worlds; instead, they rest directly on the mechanisms (or
+‘laws’ to be fancy) that produce those worlds and on the
+invariant properties of these mechanisms. Lewis's elusive
+‘miracles’ are replaced by principled mini-surgeries,
+do(X = x), which represent the minimal
+change (to a causal model) necessary for establishing the antecedent
+X = x. Thus similarities and priorities—if
+they are ever needed—can be read into the do operator
+as an afterthought but they are not basic to the analysis.
+ 
+
+
+Crucial to this type of approach is the notion of
+‘mini-surgery’ or, it as is usually known now,
+intervention. Representing interventions presupposes, in
+turn, the use of a graphical representation of causal connection
+through a DAG (Directed Acyclic Graph). Much of the contemporary
+theory of causation depends of the use of DAGs.
+
+
+There are three main books that elaborate on the notion of
+counterfactual arising from the analysis sketched above by Pearl. One
+is by Spirtes, Glymour, and Scheines (2001). A second is Pearl's own
+book (2000). The third is a more recent book by Woodward (2005) that
+treats the notion of intervention in detail.
+
+
+From the perspective of formal logic, Pearl's book offers the most
+comprehensive analysis, via an axiomatic comparison with Lewis's
+hierarchy of conditionals. But as Golszmidt and Pearl (1996) show,
+there are many open problems in this area. Golszmidt and Pearl
+conjecture a complete characterization of ranking systems constrained
+by associated DAGs, and offer a specific Markov axiom mentioning
+explicitly interventions in DAGs. This goes beyond the usual division
+of labor in terms of syntax and semantics, by adding a third level of
+representation given in terms of DAGs.
+
+
+Two important additional topics merit at least a passing mention
+here. On the one hand there is interesting work linking conditionals
+and time, especially branching time structures. The idea is to enlarge
+the representational framework by adding time explicitly and utilize
+this extra degree of expressive power to extract insights about the
+relations of closeness of worlds utilized in evaluating ontic
+conditionals. There is an excellent review of philosophical work in
+this area in the relevant sections of Cross and Nute (2001).
+
+
+The second area of research containing crucial work on conditional
+logic is related to representing the interactive knowledge of agents
+engaged in playing non-coorperative games of both perfect and
+imperfect information. As the Nobel price winner Robert Aumann makes
+clear in various articles, the material conditional is not likely to
+provide enough structure to analyze games. The following passage
+(Aumann 1995, section 5) shows the interest of conditionals that
+Aumann calls substantive:
+
+ Consider, for example, the statement ‘If White pushes his pawn,
+Black's queen is trapped.’ For this to hold in the material
+sense, it is sufficient that White does not, in fact, push his
+pawn. For the substantive sense, we ignore White's actual move, and
+imagine that he pushes his pawn. If Black's queen is then trapped, the
+substantive conditional is true; if not, then not.
+ 
+ 
+ White did not push his pawn, we may still say ‘If he had pushed
+his pawn, Black's Queen would have been trapped.’ This is a
+counterfactual.  To determine whether it holds, we proceed as above:
+imagine that the pawn was pushed, and see whether the Queen was
+trapped.
+ 
+
+
+The analysis should be by now familiar, although it is not clear what
+exactly Aumann means by ‘ignoring White's actual
+move’. This could be interpreted as Levi does in terms of
+contracting all information about the current move and then
+unproblematically adding the information that he pushes his pawn.
+
+
+Dov Samet (1996) has offered a concrete model of the notion of
+hypothetical knowledge, which he utilizes to offer epistemic
+models of backwards induction in games of perfect information. Finally
+a Bayesian theory of conditionals which generalizes the one sketched
+in Selten and Leopold (1988) and the Stalnakerian view in terms of
+selection functions, is presented by Brian Skyrms in Skyrms (1998).
+The theory is compared with Adams conditionals in Skyrms
+(1994). According to Skyrms the theory has interesting applications in
+analyzing games of imperfect information (the analysis of games of
+perfect information only requires the use of arguments by 
+reductio ad absurdum according to Skyrms).

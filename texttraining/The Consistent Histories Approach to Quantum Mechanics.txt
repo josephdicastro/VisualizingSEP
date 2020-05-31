@@ -1,0 +1,1698 @@
+The consistent histories, also known as decoherent histories,
+approach to quantum interpretation is broadly compatible with standard
+quantum mechanics as found in textbooks. However, the concept
+of measurement by which probabilities are introduced in
+standard quantum theory no longer plays a fundamental
+role. Instead, all quantum time dependence is probabilistic
+(stochastic), with probabilities given by the Born rule or its
+extensions. By requiring that the description of a quantum system be
+carried out using a well-defined probabilistic sample space (called a
+“framework”) this approach resolves all the well-known
+quantum paradoxes of quantum foundations. In particular, quantum
+mechanics is local and consistent with special relativity. Classical
+mechanics emerges as a useful approximation to the more fundamental
+quantum mechanics under suitable conditions. The price to be paid for
+this is a set of rules for reasoning resembling, but also
+significantly different from, those which comprise quantum logic. An
+important philosophical implication is the lack of a single
+universally-true state of affairs at each instant of time. However,
+there is a correspondence limit in which the new quantum logic becomes
+standard logic in the macroscopic world of everyday experience.
+In the article that follows the term ‘consistent
+histories’ will generally be abbreviated to
+‘histories’, since the ‘decoherent’ and
+‘consistent’ interpretations are very similar; when in
+doubt insert ‘consistent’ before
+‘histories’. The reader is assumed familiar with, and
+probably a bit confused by and frustrated with, the fundamentals of
+quantum mechanics found in introductory textbooks.
+ 
+1. Introduction
+The consistent histories interpretation of quantum mechanics was
+introduced by Griffiths (1984), and
+discussed by Omnès in a series of papers beginning
+with (Omnès 1988). The decoherent
+histories approach that first appeared
+in Gell-Mann & Hartle (1990)
+contains similar ideas. The single term “histories” will
+be employed below, with the understanding that at points where the
+“consistent” and “decoherent” approaches might
+be slightly different, the former is intended.
+The histories approach extends the calculational methods found in
+standard textbooks and gives them a microscopic physical
+interpretation which the textbooks lack. It is not intended as an
+alternative, but as a fully consistent and clear statement of basic
+quantum mechanics, “Copenhagen done right”. In particular,
+measurements are treated in the same way as all other physical
+processes and play no special role in the interpretation. Thus there
+is no measurement problem, and under appropriate conditions one can
+discuss the microscopic properties revealed by measurements.
+All the standard quantum paradoxes (double slit, Schrödinger cat,
+Hardy, three box, etc.) are resolved using the histories approach, or
+one might better say “tamed”: they are no longer unsolved
+difficulties casting doubt upon the reliability and completeness of
+the quantum formalism, but instead they illustrate striking
+differences between quantum and classical physics. In particular,
+there is no conflict between quantum theory and relativity:
+superluminal influences cannot carry information or anything else for
+the simple reason that they do not exist. In appropriate regimes
+(large systems, strong decoherence) the laws of classical physics
+provide a very good approximation, valid for all practical purposes,
+to the more fundamental and more exact laws of quantum mechanics.
+But at what price? The histories approach introduces a variety of
+concepts that go beyond textbook quantum theory, and these can be
+summarized under two headings. First, quantum dynamics is treated as
+stochastic or probabilistic. Not just when measurements are carried
+out, but always. Born’s rule, together with its extensions,
+is a fundamental axiom of quantum theory. The task of Schrödinger’s
+time-dependent equation is to assist in assigning
+probabilities. Second, following Sec. III.5
+of J. von Neumann (1932), quantum
+properties, which are what the probabilities refer to, are associated
+with subspaces of the quantum Hilbert space. But then new logical
+principles are required to consistently deal with the difference
+between the quantum Hilbert space and a classical phase space. These
+principles are related to, but not identical with, those of the
+quantum logic initiated by Birkhoff &
+Neumann (1936).
+Since textbook quantum mechanics already contains certain rules for
+calculating probabilities, the first innovation of the histories
+approach, stochastic dynamics, is not very startling and by itself
+causes few conceptual difficulties. It is the second innovation, in
+the domain of logic and ontology, that represents the most radical
+departure from classical thinking. However, the new quantum logic
+reduces to the old familiar classical propositional logic in the same
+domain where classical mechanics is a good approximation to quantum
+mechanics. That is to say, the old logic is perfectly good for all
+practical purposes in the same domain where classical mechanics is
+perfectly good for all practical purposes, and a consistent, fully
+quantum analysis explains why this is so.
+2. Quantum Properties
+2.1 Indicators, projectors, negation
+A classical mechanical system can be described using a phase
+space ΓΓ\Gamma with points denoted by γγ\gamma. A
+classical property PPP is a collection of points PP\PC from
+the phase space, and can be conveniently described by an indicator
+function P(γ)P(γ)P(\gamma) which is equal to 1 if γ∈Pγ∈P\gamma \in \PC and
+0 otherwise. It will cause no confusion to use PPP for both the
+property and its indicator function. The negation ¬P¬P\lnot P
+of a property PPP corresponds to the complement PcPc\PC^c of the set
+PP\PC, consisting of points in ΓΓ\Gamma that are not in PP\PC. Its
+indicator is I−PI−PI-P, where the identity indicator I(γ)=1I(γ)=1I(\gamma)
+=1 for all γγ\gamma. For example, the phase space of a
+one-dimensional harmonic oscillator is the real plane with a point
+γ=(x,p)γ=(x,p)\gamma = (x,p) indicating that the particle is at xxx and has
+momentum ppp. The property that its energy
+E=p2/2m+(1/2)mω2x2E=p2/2m+(1/2)mω2x2(1)
+E=p^2/2m + (1/2) m\omega^2 x^2
+\label{eqn1}
+
+is less than some fixed value ErErE_r corresponds to the set of
+points contained in the ellipse E=ErE=ErE=E_r centered at the origin of the
+x,px,px,p plane, and the indicator is the function that is 1 on the points
+inside (and on the boundary) of the ellipse and 0 outside. Its
+negation, the property that the energy is greater than ErErE_r,
+corresponds to all the points lying outside this ellipse.
+The quantum counterpart of a phase space is a Hilbert space HH\HC:
+a complex vector space with an inner product. If infinite dimensional
+it must be complete—Cauchy sequences have limits. But for our
+purposes finite-dimensional spaces will suffice for discussing the
+major conceptual difficulties of quantum theory and how the histories
+approach resolves them. (Some examples use a harmonic oscillator with
+an infinite dimensional Hilbert space simply because it is relatively
+simple and familiar.) We use Dirac notation in which an element of
+HH\HC, a “ket”, is denoted by |ψ⟩|ψ⟩\ket{\psi}, where ψψ\psi
+is a label, and ⟨ϕ∣ψ⟩⟨ϕ∣ψ⟩\inpd{\phi}{\psi} denotes the inner product of
+|ϕ⟩|ϕ⟩\ket{\phi} with |ψ⟩|ψ⟩\ket{\psi}. The simplest quantum physical
+property, the counterpart of a point γγ\gamma in the classical phase
+space, is a one-dimensional subspace of the Hilbert space,
+or ray, consisting of all multiples c|ψ⟩c|ψ⟩c\ket{\psi} of some
+nonzero |ψ⟩|ψ⟩\ket{\psi}, with ccc an arbitrary complex number. The ray
+uniquely determines and is uniquely determined by the
+corresponding projector
+P=[ψ]=|ψ⟩⟨ψ|,P=[ψ]=|ψ⟩⟨ψ|,(2)P = [\psi] = \dya{\psi}, \label{eqn2}
+assuming |ψ⟩|ψ⟩\ket{\psi} is normalized, ⟨ψ∣ψ⟩=1⟨ψ∣ψ⟩=1\inp{\psi}=1. In Dirac
+notation |a⟩⟨b||a⟩⟨b|\dyad{a}{b} is an operator which when applied to an
+arbitrary ket |ϕ⟩|ϕ⟩\ket{\phi} yields the ket
+|a⟩⟨b∣ϕ⟩=(⟨b∣ϕ⟩)|a⟩|a⟩⟨b∣ϕ⟩=(⟨b∣ϕ⟩)|a⟩\ket{a}\inpd{b}{\phi}=(\inpd{b}{\phi}) \ket{a}. The square bracket
+in (2)(2)\eqref{eqn2} is not standard Dirac notation, but is very convenient
+and will be used later.
+In addition to rays, a Hilbert space of dimension ddd also contains
+subspaces of dimension 2, 3, etc., up to ddd (the entire space). These
+larger subspaces also represent quantum properties and are the
+analogues of sets of more than one point in a classical phase
+space. Each subspace PP\PC corresponds to a unique projector PPP, a
+Hermitian operator P=P†=P2P=P†=P2P=P^\dagger =P^2 such that
+P|ϕ⟩=|ϕ⟩P|ϕ⟩=|ϕ⟩P\ket{\phi}=\ket{\phi} if and only if |ϕ⟩|ϕ⟩\ket{\phi} belongs to
+PP\PC. A quantum projector behaves in many ways like a classical
+indicator function, e.g., its eigenvalues can only be 0 or 1. Using
+the same symbol PPP for the property and the projector should cause no
+confusion. Following Sec. III.5 of J. von
+Neumann (1932), we identify the negation ¬P¬P\lnot P of
+a quantum property PPP, subspace PP\PC, with the orthogonal
+complement P⊥P⊥\PC^\perp consisting of the kets in HH\HC which are
+orthogonal to all the kets in PP\PC. The projector on P⊥P⊥\PC^\perp is
+I−PI−PI-P, again analogous to the classical case.
+Consider the example of a one-dimensional quantum harmonic
+oscillator. As is well known, its energy EEE can take on only discrete
+values (n+1/2)ℏω(n+1/2)ℏω(n+1/2)\hbar\omega, where n=0,1,…n=0,1,…n=0, 1,\ldots is any nonnegative
+integer and ωω\omega is its angular frequency, as in (1)(1)\eqref{eqn1}. We
+denote the corresponding normalized ket by |n⟩|n⟩\ket{n}. The projector
+[n]=|n⟩⟨n|[n]=|n⟩⟨n|[n]=\dya{n} then represents the property that the energy is equal to
+(n+1/2)ℏω(n+1/2)ℏω(n+1/2)\hbar\omega. The property that the energy is less than or
+equal to (N+1/2)ℏω(N+1/2)ℏω(N+1/2)\hbar\omega for some integer NNN is given by the
+projector
+P=N∑n=0[n]=N∑n=0|n⟩⟨n|,P=∑n=0N[n]=∑n=0N|n⟩⟨n|,(3)P = \sum_{n=0}^N [n] = \sum_{n=0}^N\dya{n}, \label{eqn3}
+while the corresponding sum from n=N+1n=N+1n=N+1 to ∞∞\infty represents its
+negation, I−PI−PI-P, the property that EEE is greater than
+(N+1/2)ℏω(N+1/2)ℏω(N+1/2)\hbar\omega.
+Despite the close analogy between classical and quantum properties
+there is actually a profound difference. For a particular classical
+property PPP, every point γγ\gamma in the phase space lies either
+inside the set PP\PC, so that the property is true for this γγ\gamma,
+or else it lies in the complementary set PcPc\PC^c, and the property PPP
+is false. However, given a nontrivial (neither 0 nor the entire space)
+subspace PP\PC of the quantum Hilbert space HH\HC, there are always
+kets |ϕ⟩|ϕ⟩\ket{\phi} with corresponding rays {c|ϕ⟩}{c|ϕ⟩}\{c\ket{\phi}\} which lie
+neither in PP\PC nor in P⊥P⊥\PC^\perp. For example, |ϕ⟩=|N⟩+|N+1⟩|ϕ⟩=|N⟩+|N+1⟩\ket{\phi} =
+\ket{N} + \ket{N+1} for PPP given by (3)(3)\eqref{eqn3}. How is one to
+think about these? That is a key question in quantum foundations.
+2.2 Conjunction and Disjunction
+The conjunction P∧QP∧QP\land Q, or PPP AND QQQ, of two classical
+properties corresponds to the intersection P∩QP∩Q\PC\cap\QC of the sets
+that represent them on the phase space, and the indicator for this set
+is the product P(γ)Q(γ)P(γ)Q(γ)P(\gamma)Q(\gamma) of the two indicator
+functions. What about the quantum case? In quantum logic P∧QP∧QP\land Q is
+identified with the intersection P∩QP∩Q\PC\cap\QC of the two Hilbert
+subspaces, which is itself a subspace and thus a quantum property. The
+histories interpretation identifies P∧QP∧QP\land Q with the product PQPQPQ
+of the projectors PPP and QQQ provided the two
+projectors commute, that is, provided PQ=QPPQ=QPPQ=QP. When and only
+when this condition is fulfilled is the product PQPQPQ itself a
+projector, and it projects onto the subspace P∩QP∩Q\PC\cap\QC, in
+agreement with quantum logic. However, if PQ≠QPPQ≠QPPQ\neq QP the conjunction
+P∧QP∧QP\land Q is undefined or meaningless in the sense
+that the histories interpretation assigns it no meaning. In the same
+way the disjunction P∨QP∨QP\lor Q, the nonexclusive PPP OR QQQ, is
+represented by the projector P+Q−PQP+Q−PQP+Q-PQ when PQ=QPPQ=QPPQ=QP, but is otherwise
+undefined.
+The refusal to define the conjunction or disjunction when PQ≠QPPQ≠QPPQ\neq
+QP should be thought of as a syntactical rule, analogous to that in
+ordinary logic that says an expression like P∧∨QP∧∨QP\land\lor\, Q is
+meaningless because it has not been formed according to the rules used
+to construct meaningful sentences. In this connection it is important
+to distinguish “meaningless” from “false”. A
+proposition which is false is meaningful and its negation is true,
+whereas the negation of a meaningless statement is equally
+meaningless. Once the commutativity restriction for meaningful
+combinations of quantum propositions or properties is in place the
+usual logical rules apply together with the intuition that goes along
+with them. This will be further codified using the single framework
+rule defined in subsection 3.4
+below.
+2.3 Example of spin half
+Let us apply these ideas to a specific example, that of the spin
+degree of freedom of a spin-half particle, such as an electron or a
+proton, or a silver atom in its electronic ground state. The operator
+SzSzS_z for the zzz component of spin angular momentum acts on a
+2-dimensional Hilbert space and has eigenvalues +1/2+1/2+1/2 and −1/2−1/2-1/2 in
+units of ℏℏ\hbar. If |z+⟩|z+⟩\ket{z^+} and |z−⟩|z−⟩\ket{z^-} are the corresponding
+eigenkets, the projectors corresponding to Sz=±1/2Sz=±1/2S_z=\pm 1/2 are [z+]=|z+⟩⟨z+|[z+]=|z+⟩⟨z+|[z^+]
+=\dya{z^+} and [z−]=|z−⟩⟨z−|[z−]=|z−⟩⟨z−|[z^-] =\dya{z^-}. The product of these projectors in
+either order is the zero operator 000, which is the property that is
+always false, the quantum counterpart of the empty subset of a
+classical phase space. Their sum [z+]+[z−]=I[z+]+[z−]=I[z^+] + [z^-] =I is the identity
+operator, the property that is always true. In physical terms, SzSzS_z
+is either positive or negative: it cannot be both ([z+]⋅[z−]=0[z+]⋅[z−]=0[z^+]\cdot [z^-]
+=0), and it must be one or the other ([z+]+[z−]=I[z+]+[z−]=I[z^+] + [z^-] =I). This
+explains the outcome of the Stern-Gerlach experiment.
+In the same way the xxx component SxSxS_x of angular momentum can
+take only two values +1/2+1/2+1/2 or −1/2−1/2-1/2, corresponding to the projectors
+[x+]=|x+⟩⟨x+|[x+]=|x+⟩⟨x+|[x^+] = \dya{x^+} and [x−]=|x−⟩⟨x−|[x−]=|x−⟩⟨x−|[x^-] = \dya{x^-} formed from its eigenkets
+|x+⟩|x+⟩\ket{x^+} and |x−⟩|x−⟩\ket{x^-}. Consequently, what was stated in the
+previous paragraph about SzSzS_z can also be said about
+SxSxS_x. However—here we arrive at a central feature of the
+histories interpretation—it is not meaningful
+to combine discussions of SzSzS_z with discussions of SxSxS_x,
+because neither [x+][x+][x^+] nor [x−][x−][x^-] commutes with [z+][z+][z^+] or
+[z−][z−][z^-]. There is no way of associating the property “Sz=+1/2Sz=+1/2S_z=+1/2
+AND Sx=+1/2Sx=+1/2S_x=+1/2” with a subspace of the two-dimensional quantum
+Hilbert space. One way to see this is that every one-dimensional
+subspace of this Hilbert space has a physical interpretation:
+Sw=+1/2Sw=+1/2S_w=+1/2 for some direction www in space, so there are no
+possibilities left over which could correspond to “Sz=+1/2Sz=+1/2S_z=+1/2
+AND Sx=+1/2Sx=+1/2S_x=+1/2”. But might one assign the zero-dimensional
+subspace, the proposition that is always false, to “Sz=+1/2Sz=+1/2S_z=+1/2
+AND Sx=+1/2Sx=+1/2S_x=+1/2”? This is the approach of quantum logic. However,
+taking the negation of this proposition that is always false has the
+consequence that the proposition “Sz=−1/2Sz=−1/2S_z=-1/2 OR
+Sx=−1/2Sx=−1/2S_x=-1/2” is always true, which to a physicist seems
+extremely odd. See the
+ Further Reading supplement
+for more details.
+For a more detailed discussion of the logic associated with the
+histories approach, see (Griffiths
+2014).
+3. Quantum Probabilities
+Probabilities in the histories interpretation of quantum mechanics
+are standard Kolmogorov probabilities, not some new
+invention that, for example, allows negative probabilities. But these
+standard probabilities must be associated with a well-defined sample
+space. While this is also true in classical applications of
+probability theory, in quantum mechanics the penalty for carelessness
+can be severe: confusion and unresolved paradoxes. The following
+discussion indicates what steps need to be taken to construct
+consistent probabilities and stay out of trouble. For more details see
+Ch. 5 of Griffiths (2002a).
+3.1 Probabilistic models
+A probabilistic model as used in classical physics and
+other sciences can be thought of as a triple (S,E,M)(S,E,M)(\SC,\EC,\MC),
+a sample space SS\SC, an event algebra EE\EC and
+a probability measure MM\MC. When a die is rolled the sample
+space SS\SC consists of six mutually exclusive possibilities, one and
+only one of which actually occurs. The event algebra can be set equal
+to the collection of all 26262^6 subsets of SS\SC, including the empty
+set and SS\SC itself; it forms a Boolean algebra under complements and
+intersections. Finally, MM\MC assigns probabilities, real numbers
+between 0 and 1, to the different sets in EE\EC according to certain
+rules. Again we need only consider the simplest situation in which
+SS\SC is finite or countable, and a nonnegative number pjpjp_j is
+assigned to each j∈Sj∈Sj\in\SC in such a manner that ∑jpj=1∑jpj=1\sum_j p_j = 1. The
+probability for some E∈EE∈EE\in \EC is then given by the formula
+Pr(E)=∑j∈Epj.Pr(E)=∑j∈Epj.(4)\Pr(E) = \sum_{j\in E} p_j.  \label{eqn4}
+Note that the mathematical rules of probability theory do not
+constrain the choice of the pjpjp_j, aside from the requirement that
+they be nonnegative and sum to 1. It is up to the scientist
+constructing the model to come up with appropriate values, which may
+be done using a variety of considerations; among them pure guesswork,
+as well as carefully fitting parameters using results of previous
+experiments.
+3.2 Probabilities in quantum mechanics
+The histories interpretation of quantum mechanics employs
+probability theory in exactly the same way as in the other
+sciences once a sample space SS\SC has been specified. A
+quantum sample space SS\SC is always a projective decomposition of
+the identity operator III, hereafter referred to as a
+“projective decomposition” (or
+“decomposition”), on the quantum Hilbert space HH\HC used
+to model the situation of interest. That is to say, a collection
+{Pj}{Pj}\{P_j\} of projectors (Pj=P†j=P2j)Pj=P†j=P2j)P^{}_j = P_j^\dagger =P_j^2) which are
+mutually orthogonal (PjPk=0PjPk=0P_jP_k = 0 for j≠kj≠kj\neq k) and sum to the
+identity
+I=∑jPj.I=∑jPj.(5)I = \sum_j P_j.  \label{eqn5}
+These projectors represent mutually exclusive properties
+(implied by orthogonality), one of which is true (implied by the sum
+equal to III) in any given experiment or situation to which the model
+is being applied.
+The event algebra EE\EC consists of all projectors formed by taking
+sums of some of the PjPjP_j in the collection; i.e., ∑jπjPj∑jπjPj\sum_j\pi_j P_j,
+where each πjπj\pi_j is either 0 or 1. This includes the identity
+operator III and the zero operator 0 along with such things as P2P2P_2
+or P1+P3P1+P3P_1+P_3. The event algebra is a Boolean algebra in the sense that
+the complement I−PI−PI-P of any projector and the product PQPQPQ of any two
+projectors belonging to EE\EC is an element of EE\EC. The
+term framework can refer to either the sample space or the
+event algebra constructed from it in this way, since there is a
+one-to-one correspondence between the two. Quantum theory does not in
+general specify the probability pjpjp_j to be assigned to the projector
+PjPjP_j in SS\SC, apart from the requirement that it be nonnegative, and
+that the pjpjp_j sum to 1 (but see subsection 4.2
+concerning time dependence). Thus, for example, to the element
+P1+P3P1+P3P_1+P_3 of EE\EC one assigns the probability
+p1+p3p1+p3p_1+p_3. The intuitive interpretation of probabilities
+introduced in this way is the same as in the other sciences which
+employ probability theory as long as a single framework is in
+view. What is distinctly different in the quantum case is the
+existence of multiple incompatible frameworks; given these consistency
+requires that one adopt the single framework
+rule, subsection 3.4.
+3.3 Quantum observables
+Quantum observables, represented by Hermitian operators, are the
+counterpart of real-valued functions on a classical phase space. The
+spectral decomposition
+A=∑ajPjA=∑ajPj(6)A = \sum a_j P_j \label{eqn6}
+of an observable AAA, where each eigenvalue ajaja_j of AAA occurs but
+once in the sum, j≠kj≠kj\neq k implies aj≠akaj≠aka_j\neq a_k, associates with AAA
+a unique decomposition of the identity of the form (5)(5)\eqref{eqn5}. Thus
+AAA takes on or has the value ajaja_j if and only if PjPjP_j is true, and
+the probability that AAA has the value ajaja_j is given by the
+probability pjpjp_j assigned to PjPjP_j. Hence measuring AAA is
+equivalent to measuring the corresponding decomposition in the sense
+of determining which of the mutually-exclusive properties PjPjP_j is
+true. (The subject of quantum measurements is taken up below
+in section 7.) The property that the value of
+AAA lies between aaa and a′a′a' corresponds to the sum of the projectors
+PjPjP_j for which the corresponding ajaja_j falls in this interval, which
+is a projector belong to the corresponding event algebra, and its
+probability is the sum of the corresponding pjpjp_j values.
+3.4 Refinement, coarsening, and the single framework rule
+A refinement of a sample space is obtained by replacing
+one or more of its projectors with other projectors which add up to
+it; conversely a coarsening or coarse graining is obtain by
+adding together two or more projectors in the projective decomposition
+and using the sum as one of the elements in a new decomposition. Given
+the connection between sample spaces and event algebras as defined
+above, one sees that the event algebra of a refined sample space is
+larger than the original event algebra: i.e., it contains all the
+original projectors and others in addition; conversely, a coarsening
+leads to a new event algebra which is a subset of the old event
+algebra.
+Two quantum sample spaces (projective decompositions) {Pj}{Pj}\{P_j\} and
+{Qk}{Qk}\{Q_k\} associated with the same Hilbert space are said to
+be compatible provided all the projectors in one
+decomposition commute with all the projectors in the other
+decomposition: PjQk=QkPjPjQk=QkPjP_jQ_k = Q_k P_j for all jjj and kkk. Otherwise they
+are incompatible. Note that all projectors in the two event
+algebras commute if and only if this is true for the sample spaces, so
+it makes sense to talk about compatible and incompatible
+frameworks. When the frameworks are compatible one can combine
+them. In particular, the coarsest common refinement is given
+by the sample space or decomposition formed by all nonzero products of
+the form PjQkPjQkP_jQ_k, and the corresponding event algebra contains all
+the projectors in the original algebras along with the additional ones
+constructed from their products.
+The single framework rule says that a specific quantum
+probabilistic model employs just one sample space and its associated
+event algebra, and in particular two incompatible
+frameworks cannot be combined. This rule, together with its
+extension to quantum dynamics, see subsection 4.2,
+is a central principle of histories quantum mechanics. It provides a
+guide for quantum reasoning that prevents one from falling into
+paradoxes; conversely, most quantum paradoxes are constructed by
+violating the single framework rule in some way.
+As an illustration, consider the one-dimensional harmonic
+oscillator of subsection 2.1 and a sample
+space
+Sa={P,I−P};P=[0]+[1],Sa={P,I−P};P=[0]+[1],(7)\SC_a = \{P,I-P\};\quad P = [0] + [1], \label{eqn7}
+containing two projectors, where PPP corresponds to the case N=1N=1N=1
+in (3)(3)\eqref{eqn3}. The physical interpretation of PPP is that the energy
+of the oscillator is no greater than (3/2)ℏω(3/2)ℏω(3/2)\hbar\omega, whereas I−PI−PI-P
+means the energy is at least (5/2)ℏω(5/2)ℏω(5/2)\hbar\omega. If PPP is true it
+might seem reasonable to conclude that either n=0n=0n=0 and the energy is
+(1/2)ℏω(1/2)ℏω(1/2)\hbar\omega, or else n=1n=1n=1 and the energy is
+(3/2)ℏω(3/2)ℏω(3/2)\hbar\omega. After all, the energy can only take values
+(n+1/2)ℏω(n+1/2)ℏω(n+1/2)\hbar\omega, so does it not follow from the truth of PPP that
+n=0n=0n=0 or n=1n=1n=1? No it does not, and understanding why it does
+not will expose an important principle of quantum reasoning. The point
+is that probabilistic reasoning, in quantum mechanics or in other
+disciplines, does not allow one to make inferences about matters which
+are outside the scope of discussion, i.e., which are not contained in
+the event algebra. The event algebra EaEa\EC_a corresponding to the
+sample space SaSa\SC_a in (7)(7)\eqref{eqn7} contains PPP and I−PI−PI-P, but does
+not contain either [0][0][0] or [1][1][1], the projectors that correspond to
+the two lowest energy eigenstates. Consequently, this framework
+does not allow for the statement of a result which might seem
+intuitively obvious.
+A solution is readily at hand. In place of SaSa\SC_a use a
+refinement
+Sb={[0],[1],I−P};P=[0]+[1].Sb={[0],[1],I−P};P=[0]+[1].(8)\SC_b = \{[0],[1],I-P\};\quad P = [0] + [1].  \label{eqn8}
+Now because [0][0][0] and [1][1][1] belong to the event algebra EbEb\EC_b
+they can be discussed, and the truth of PPP indeed implies that either
+[0][0][0] or [1][1][1] is true: if the energy is not greater than
+(3/2)ℏω(3/2)ℏω(3/2)\hbar\omega then it is either 1/21/21/2 or 3/23/23/2 ℏωℏω\hbar\omega. But
+is not this insistence that SbSb\SC_b be used in place of SaSa\SC_a a
+piece of sophistry irrelevant to the needs of the working scientist?
+No, not if the scientist’s work involves quantum mechanics. To see
+why, consider an alternative refinement
+Sc={[+],[−],I−P};P=[+]+[−]=[0]+[1]Sc={[+],[−],I−P};P=[+]+[−]=[0]+[1](9)\SC_c = \{[+],[-],I-P\};\quad P = [+] + [-] = [0]+[1]
+\label{eqn9}
+of SaSa\SC_a, where
+|+⟩=(|0⟩+|1⟩)/√2,|−⟩=(|0⟩−|1⟩)/√2.|+⟩=(|0⟩+|1⟩)/2–√,|−⟩=(|0⟩−|1⟩)/2–√.(10)\ket{+} = (\ket{0} + \ket{1})/\sqrt{2},\quad \ket{-} = (\ket{0} -
+\ket{1})/\sqrt{2}.  \label{eqn10}
+Since the event algebra EcEc\EC_c contains PPP along with [+][+][+] and
+[−][−][-], in this framework the truth of PPP implies that the oscillator
+is either in the state [+][+][+] or the state [−][−][-]. But neither of these
+are energy eigenstates, and these projectors do not commute with [0][0][0]
+and [1][1][1]; the relationship is formally the same as that between
+eigenstates of SxSxS_x and those of SzSzS_z for a spin-half
+particle, subsection 2.3. Consequently, if
+results using frameworks EbEb\EC_b and EcEc\EC_c are carelessly combined,
+it is possible to infer for the oscillator something quite analogous
+to the meaningless assertions combining properties of SxSxS_x and
+SzSzS_z. Hence the importance of the single framework rule which
+prohibits combining EbEb\EC_b and EcEc\EC_c (equivalently, SbSb\SC_b and
+ScSc\SC_c).
+If EbEb\EC_b and EcEc\EC_c cannot be combined, which is
+the correct framework to use in describing a harmonic
+oscillator? The answer, again a key point in the histories
+interpretation, which will be discussed in more detail
+in section 5, and also section
+11, is that in the quantum world there is never a single correct
+framework, there are always many possibilities, something rather
+strange from the perspective of classical physics. The single
+framework rule prohibits combining incompatible frameworks;
+it does not assert that there is just one correct framework
+to use in modeling a particular physical situation.
+One may add that in the early days of quantum theory there was a
+tendency among the practitioners to think that quantum systems must
+always be in states of well-defined energy, and this led to various
+conundrums. Nowadays states which are superpositions of the ground
+state and an excited state of an atom are produced routinely in
+quantum optics experiments, and thus analogs of EcEc\EC_c can be quite
+relevant for a quantum description of what goes on in the
+laboratory.
+3.5 Quantum states as pre-probabilities
+Once a quantum sample space has been chosen the question arises of
+how probabilities are to be assigned to the different projectors of
+which it is composed. As in other applications of probability theory
+such assignments may represent pure guesswork, or contain parameters
+which are to be adjusted according to experimental data, or be based
+upon some other information about the system, such as prior
+preparation or a later measurement. Information about the preparation
+of a quantum system is often expressed using a density
+operator ρρ\rho, a positive semidefinite operator (Hermitian with
+nonnegative eigenvalues) with trace (sum of the eigenvalues) equal to
+1, used as a pre-probability in the terminology of Sec. 9.4
+of Griffiths (2002a), a mathematical
+object that can be used to generate a probability distribution. In
+particular if {Pj}{Pj}\{P_j\} is a projective decomposition of the identity,
+a quantum sample space, one assigns a probability
+pj=Tr(ρPj)pj=Tr(ρPj)(11)p_j = \text{Tr}(\rho P_j) \label{eqn11}
+to the property PjPjP_j. Very often ρρ\rho is referred to as the
+“quantum state”, since it is somewhat analogous to a
+probability distribution, e.g., a “Gibbs state”, in
+classical statistical mechanics. The name
+“pre-probability” refers to the fact that ρρ\rho can be
+used to generate many different probability distributions for
+different choices of the sample space.
+Whereas the distinction between quantum properties and quantum
+states in the sense of pre-probabilities is often evident from the
+context and the use of different symbols, the case of a “pure
+state” in which the density operator can be written as a rank
+one projector or dyad, ρ=|ψ⟩⟨ψ|ρ=|ψ⟩⟨ψ|\rho =\dya{\psi}, can lead to confusion in
+that the same mathematical object can represent either a
+pre-probability or a property. Indeed, there is a close connection in
+that if for such a ρρ\rho one introduces a sample space
+{[ψ],I−]ψ]}{[ψ],I−]ψ]}\{[\psi],I-]\psi]\}, the probability of the property [ψ][ψ][\psi] is 1,
+which is to say that if one uses this particular sample space
+the quantum system certainly has the property [ψ][ψ][\psi]. But if this
+same ρρ\rho is used as a pre-probability for some other sample space,
+and if one ignores the single framework rule, it is easy to fall into
+the trap of thinking that [ψ][ψ][\psi] and some other incompatible
+property corresponding to a projector that does not commute with
+[ψ][ψ][\psi] can both be true, which makes no sense. The best known
+example of the confusion that results is Schrödinger’s infamous
+dead-and-alive cat, subsection 10.1.
+4. Quantum Time Development
+4.1 Kinematics
+Suppose a coin is tossed three times in succession, with results
+heads (HHH) or tails (TTT). In the theory of stochastic processes one
+constructs a sample space SS\SC containing 8 events, let us call
+them histories: HHHHHHHHH, HHTHHTHHT, HTHHTHHTH, …. Notice that
+formally the same sample space is obtained if instead of a coin tossed
+three times in a row, three different coins are tossed
+simultaneously. Since in quantum mechanics the Hilbert space of
+several separate systems is constructed as a tensor product of the
+individual Hilbert spaces, this suggests that the Hilbert space for a
+system at a sequence of times, the histories Hilbert space,
+can be constructed as the tensor product of copies of the Hilbert
+space for a single time. We write it as
+˘H=H1⊙H2⋯⊙HfH˘=H1⊙H2⋯⊙Hf(12)\breve \HC = \HC_1\odot\HC_2\cdots\odot\HC_f \label{eqn12}
+for times t1<t2<⋯<tft1<t2<⋯<tft_1 &lt;t_2 &lt;\cdots &lt; t_f, where ⊙⊙\odot is
+employed in place of the usual ⊗⊗\otimes simply to emphasize that a
+sequence of times is involved.
+A single quantum history will typically correspond to a
+projector
+Yα=Pα11⊙Pα22⊙⋯Pαff,Yα=Pα11⊙Pα22⊙⋯Pαff,(13)Y^\alpha = P_1^{\alpha_1}\odot P_2^{\alpha_2}\odot\cdots
+P_f^{\alpha_f}, \label{eqn13}
+where the superscript αmαm\alpha_m labels different possible
+projectors at time tmtmt_m, and α=(α1,α2,…αf)α=(α1,α2,…αf)\alpha =
+(\alpha_1,\alpha_2,\ldots\alpha_f) is a composite label for the
+entire history. (Since the square of a projector is the same as the
+projector, the superscript position is not needed for exponents, and
+it is convenient to reserve the subscript to indicate the time.) If
+for each time tmtmt_m it is the case that ∑αmPαmm=Im∑αmPαmm=Im\sum_{\alpha_m}
+P_m^{\alpha_m} = I_m it follows that ∑αYα=˘I∑αYα=I˘\sum_\alpha Y^\alpha = \breve
+I, the identity operator on ˘HH˘\breve\HC; thus the {Yα}{Yα}\{Y^\alpha\} form
+a projective decomposition of the identity ˘II˘\breve I, a quantum
+sample space or family of histories, one and only one of
+which will actually occur in any given experimental run. The physical
+interpretation of (13)(13)\eqref{eqn13} is that the property Pα11Pα11P_1^{\alpha_1}
+occurs or is true at time t1t1t_1, Pα22Pα22P_2^{\alpha_2} at time t2t2t_2, and
+so forth. Indeed, since we live in a quantum world, the
+“classical” coin-tossing history THTTHTTHT can be written in
+the form (13)(13)\eqref{eqn13} using appropriate projectors to represent TTT
+and HHH. As will be discussed later in section
+6, the histories approach employs the same mathematical procedures
+for both microscopic and macroscopic physics, consistent with the
+belief of most physicists that quantum theory applies to phenomena of
+any size.
+Several comments are in order. First, the projective decompositions
+of the identity at different times need not be the same. Thus for a
+spin half particle one could have the Sz=±1/2Sz=±1/2S_z=\pm 1/2 decomposition at
+one time and the Sx=±1/2S_x=\pm 1/2 decomposition at some later
+time. And more complicated history-dependent decompositions of
+˘I\breve I are possible; see the
+ Further Reading supplement.
+
+Second, there is
+no reference to measurements. Events occur or do not occur; whether a
+measuring apparatus is involved is entirely irrelevant, although
+histories can be used to discuss what goes on in a measuring process;
+see section 7. Third, the projectors in a
+history can be coarse-grained and specify only a small amount of
+information, e.g., the spin degree of freedom of an atom without
+reference to its position; they do not and generally will not project
+onto pure states. Fourth, there is no direct connection between the
+choice of projectors entering a history and Schrödinger’s
+time-dependent equation, although in appropriate circumstances the
+latter can be used to assign probabilities to the different histories
+in a family, as discussed next.
+4.2 Dynamics
+Classical mechanics yields a deterministic dynamics only in the
+case of a closed or isolated system, since an exact
+prediction of the future or past for a system interacting with an
+unknown environment is not possible. But even if one is interested in
+the approximate dynamics of an open classical system it helps to start
+off with the idealization that the environment and the system of
+interest are parts of a total system which is isolated, and therefore
+has a dynamics given by Hamilton’s equations. Similarly, when
+constructing the intrinsically stochastic dynamics appropriate to
+quantum theory it is helpful to begin with a closed or isolated system
+with well-defined boundary conditions in which Schrödinger’s equation
+has well defined solutions and induces a unitary time development
+given by a collection of time-evolution operators T(t′,t)T(t',t): if
+|ψ(t)⟩\ket{\psi(t)} is any solution to Schrödinger’s (time-dependent)
+equation, then |ψ(t′)⟩=T(t′,t)|ψ(t)⟩\ket{\psi(t')} = T(t',t)\ket{\psi(t)}. In the case of
+a time-independent Hamiltonian HH one has T(t′,t)=exp[−i(t′−t)H/ℏ]T(t',t) =
+\exp[-i(t'-t)H/\hbar].
+Consider a family F={Yα}\FC=\{Y^\alpha\} of histories of a closed
+quantum system, for a finite (possibly very large) collection of times
+t1,t2,…tft_1, t_2, \ldots t_f. Under appropriate conditions one can use
+T(t′,t)T(t',t) to assign probabilities in a consistent way to the histories
+in F\FC, using a multi-time generalization of the Born rule. To
+simplify the exposition we restrict attention to situations in which
+all histories begin with the same normalized initial pure state
+|Ψ0⟩\ket{\Psi_0} at a time t0<t1t_0 &lt;t_1, and modify the definition in
+(13)\eqref{eqn13} so that it reads
+Yα=[Ψ0]⊙Pα11⊙Pα22⊙⋯Pαff.Y^\alpha = [\Psi_0]\odot P_1^{\alpha_1}\odot
+P_2^{\alpha_2}\odot\cdots P_f^{\alpha_f}.  \label{eqn14}
+In addition, add an extra history Y0=(I−[Ψ0])⊙I1⊙I2⋯Y^0=(I-[\Psi_0])\odot I_1\odot
+I_2\cdots so that the sum of all the history projectors together is
+the identity ˘I\breve I on the Hilbert space
+H0⊙H1⊙⋯\HC_0\odot\HC_1\odot\cdots. (Here, consistent with the notation used
+elsewhere in this article, [Ψ0][\Psi_0] denotes the projector
+|Ψ0⟩⟨Ψ0|\dya{\Psi_0}.) Then define a collection of “chain kets”
+|Φα⟩\ket{\Phi^\alpha},
+|Φα⟩=PαffT(tf,tf−1)Pαf−1f−1T(tf−1,tf−2)⋯Pα11T(t1,t0)|Ψ0⟩,\ket{\Phi^\alpha} = P^{\alpha_f}_f T(t_f,t_{f-1})
+  P^{\alpha_{f-1}}_{f-1} T(t_{f-1},t_{f-2})\cdots P^{\alpha_1}_1
+  T(t_1,t_0) \ket{\Psi_0}, \label{eqn15}
+one for each history α\alpha. Provided the consistency
+conditions
+⟨Φα∣Φα′⟩=0 for α≠α′,\inpd{\Phi^\alpha}{\Phi^{\alpha'}} = 0 \text{ for }
+\alpha\neq\alpha', \label{eqn16}
+are satisfied, where α\alpha and α′\alpha' are considered unequal
+if αm≠α′m\alpha_m\neq \alpha'_m for at least one value of mm between 1
+and ff, the history YαY^\alpha is assigned the probability
+Pr(Yα)=⟨Φα∣Φα⟩.\Pr(Y^\alpha) = \inp{\Phi^\alpha}.  \label{eqn17}
+In the case f=1f=1 the consistency condition (16)\eqref{eqn16} is
+automatically satisfied because the projectors at t1t_1 are orthogonal
+to each other, and the probabilities ⟨Φα∣Φα⟩\inp{\Phi^\alpha} are those
+given by the usual Born rule. For f=2f=2 or more the consistency
+conditions are not trivial, and when they are satisfied (17)\eqref{eqn17}
+provides a generalization of the Born
+rule.[1] Insight
+into the meaning of the consistency conditions is best obtained by
+working through examples;  see the 
+ Further Reading supplement.
+
+Families
+for which the consistency conditions are satisfied are
+called consistent families, and it is only for this
+restricted class that the laws of quantum dynamics for a closed system
+can be used to assign a meaningful set of probabilities.
+Some additional comments. First, two consistent families Fa\FC_a
+and Fb\FC_b may be such that the (history) projectors in one commute
+with those in the other, but still the common coarsest refinement does
+not satisfy the dynamical consistency conditions, in which case they
+are said to be incommensurate and cannot be combined, at
+least if one wishes to use the dynamical laws of quantum mechanics to
+assign them probabilities. Second, measurements play no role
+in terms of the fundamental mathematical formulation or its physical
+interpretation. In classical physics there is never any difficulty in
+imagining events actually occurring inside a closed system, even with
+no observers or measuring apparatus present. The same is true for
+quantum physics once one removes “measurement” from its
+spurious role as an interpretive principle, and instead treats it like
+any other quantum process, see section 7. Third,
+the histories approach is time symmetrical in the sense that
+the rules for assigning probabilities do not single out a particular
+“direction” or sense of time. (This symmetry is evident in
+the more complete discussion in Ch. 10
+of Griffiths (2002a), which allows more
+general types of family. That generality has been sacrificed here in
+the interests of a simpler and more intuitive exposition based on the
+assumption of a single pure state at the initial time.)
+5. Quantum Reasoning
+5.1 General principles
+The histories interpretation of quantum mechanics, as noted
+earlier, is probabilistic, and hence the processes of reasoning are
+those that scientists generally use for probabilistic models. This
+requires a method of assigning probabilities along with procedures for
+drawing inferences, usually in the form of conditional
+probabilities. In both these respects quantum theory resembles other
+applications of probabilistic reasoning. The main difference is the
+necessity in the quantum case of paying close attention to the problem
+of choosing a sample space (which then determines the event algebra)
+or framework, and then confining the logical reasoning process, from
+assumptions to conclusions, to a single framework. We have
+already encountered some applications of this single framework rule,
+and additional ones are discussed later, but at this point it is
+useful to summarize some of the basic principles involved, which can
+be conveniently placed under four headings:
+
+(R1)
+
+Liberty. The physicist is free to employ as many frameworks as desired
+when constructing descriptions of a particular quantum system,
+provided the principle R3 below is strictly observed.
+
+(R2)
+
+Equality. No framework is more fundamental than any other; in
+particular, there is no “true” framework, no framework
+that is “singled out by nature”.
+(R3)
+
+Incompatibility. The single framework rule: incompatible frameworks
+are never to be combined into a single quantum
+description. The (probabilistic) reasoning process starting from
+assumptions (or data) and leading to conclusions must be carried out
+using a single framework.
+(R4)
+
+Utility. Some frameworks are more useful than others for answering
+particular questions about a quantum system.
+
+The reasoning process begins with some initial data, which
+may reflect some knowledge of the system under discussion or may be
+purely hypothetical. Here “initial” refers to the
+beginning of a logical argument, not necessarily to the initial state
+of a quantum system, though the latter is often included in the
+initial data. These data must then be expressed in appropriate quantum
+terms as some sort of property or properties, subspaces of an
+appropriate Hilbert space, which could be a space of histories, all
+belonging to a single framework or event algebra, principle
+R3. Generally there will be more than one framework that can contain
+the initial data, and the physicist is at liberty to choose among
+these possibilities, R1. However, the types of conclusions which can
+be drawn using a particular framework (and thus event algebra) will
+depend upon the framework, and for this reason the physicist’s
+interests can, and in general will, influence the choice of
+framework. It is utility, R4, which determines this choice; from a
+fundamental point of view all frameworks are equally good, R2.
+The link between initial data and the conclusions one can draw from
+them will be probabilistic (sometimes with probabilities 0 or 1, hence
+deterministic). One might be concerned that the flexibility in
+framework choice provided by R1 and R2 could lead to different results
+when using different frameworks. However, it is straightforward to
+show, see Ch. 16 of Griffiths (2002a),
+that as long as both frameworks contain all the events needed to
+express the initial data and also those needed for drawing
+conclusions, the probabilities linking data and conclusions will be
+identical even if the two frameworks in question are mutually
+incompatible. This ensures an overall consistency. The discussion of
+quantum preparation and measurement found in
+ section 7 below will show how principles
+of quantum reasoning apply to
+measurements, a topic that has given rise to a lot of confusion.
+5.2 Counterfactual reasoning
+A counterfactual argument begins by imagining another world which
+resembles the actual world in certain respects and differs from it in
+others, and asking the question: “What would be the
+case if instead of …it were true that
+…”. For example, “What would the weather be like in
+Pittsburgh in January if the city were 1000 kilometers closer to the
+equator?” In general, counterfactual reasoning is not easy to
+analyze, and this gives rise to difficulties when trying to understand
+quantum paradoxes stated in counterfactual form. The basic principle
+governing counterfactual reasoning in the histories approach is the
+single framework rule, with the requirement that a comparison between
+the real and the counterfactual world be carried out using
+the same framework for both. For details, see the
+Further Reading supplement
+and the applications in Sec. 10.4 below.
+
+
+6. Classical Physics
+The histories approach assumes that the same fundamental quantum
+mechanical laws apply to systems of any size, from quarks to jaguars
+to quasars. Classical mechanics is a very good approximation to the
+more exact quantum laws in appropriate circumstances. The following
+remarks 
+provide only a broad outline of how the classical world
+emerges from quantum theory; see the 
+ Further Reading supplement for additional
+material.
+
+
+The first task is to identify suitable quasiclassical
+frameworks, appropriate choices of projective decompositions of the
+identity at a single time corresponding to macroscopic properties,
+together with suitable quantum histories that involve such properties,
+with results which correspond closely to the time development of
+classical physics. The desired decompositions will be coarse grained,
+with individual projectors corresponding to subspaces of enormous
+dimension (e.g., 10 raised to the power 101610^{16}). In such a
+situation it is plausible that there are families containing quantum
+histories having a probability very close to 1, and which exhibit a
+time development that closely approximates that of classical
+mechanics.
+To be sure, the task of showing that classical laws emerge to a
+good approximation in this manner is a nontrivial one, and it cannot
+be claimed that it has been completed. However, the effort expended
+thus far has not revealed any fundamental difficulty which would
+undermine this approach. One also expects to find cases in which the
+relevant quantum probabilities are not close to 0 or 1; in particular
+in a regime where classical analysis predicts chaos (positive Lyapunov
+exponents) quantum “fluctuations” are likely to be
+amplified. But this is also a situation in which the deterministic
+aspect of classical time development is not to be taken too seriously,
+due to the sensitive dependence upon initial conditions, so there is
+no reason to suppose that an appropriate quantum description cannot be
+constructed, at least in principle.
+Understanding the emergence of classical physics from the quantum
+world does not require a unique quasiclassical framework; there are
+undoubtedly a large number of different possibilities, any one of
+which could for the circumstances of interest provide
+“classical” results within a suitable approximation
+(further comments on nonuniqueness will be found
+in subsection 11.3 below). In constructing a
+quasiclassical description decoherence plays a useful role in
+the sense that it removes the effects of quantum interference which
+might otherwise render a quasiclassical family inconsistent,
+preventing the application of the Born rule and its
+generalizations. Once again, this statement can be supported by model
+calculations of an appropriate sort which make it plausible, but work
+still remains to be done in coming to a full understanding of
+decoherence in quantum terms. Invoking decoherence by itself outside
+the framework provided by the histories approach does not solve the
+conceptual difficulties of quantum theory; see,
+e.g., Adler (2003).
+7. Measurement and Preparation
+The principles discussed above provide a resolution of
+the measurement problem of quantum foundations: that is, how
+to discuss the measurement process itself in fully quantum mechanical
+terms. It is convenient to think of this as made up of two
+problems:
+
+(M1)
+
+How can the macroscopic outcome of the measurement,
+traditionally thought of as a pointer position, be described in
+quantum terms?
+(M2)
+
+How is this outcome related to the earlier microscopic property the
+apparatus was designed to measure?
+
+The reliable preparation of a microscopic system in a
+particular quantum state raises similar conceptual issues; indeed,
+what in textbooks are often called “measurements” would be
+better thought of as “preparations”. Both are discussed
+below.
+7.1 Schematic model
+The issues are most simply addressed by using a simple schematic
+quantum model of measurement and preparation that goes back
+to J. von Neumann (1932: sec. VI.3). Let
+Hs\HC_s be the Hilbert space of the system to be measured, henceforth
+referred to as a particle, and Hm\HC_m that of the measuring
+device or apparatus. For example, Hs\HC_s could be the
+2-dimensional Hilbert space of the spin of a spin-half particle,
+whereas the quantum description of its position might be included in
+Hm\HC_m, along with all the many degrees of freedom needed to describe
+the apparatus itself. Let {|sj⟩}\{\ket{s^j}\} be an orthonormal basis for
+Hs\HC_s, with states labeled by a superscript so subscripts can label
+time. Let
+|s0⟩=∑jcj|sj⟩,|m0⟩,|Ψ0⟩=|s0⟩⊗|m0⟩\ket{s_0} = \sum_j c_j \ket{s^j},\quad \ket{m_0},\quad
+\ket{\Psi_0}=\ket{s_0}\otimes\ket{m_0} \label{eqn18}
+be the normalized initial states of the particle, the measuring
+device, and the total system at time t0t_0. Here cjc_j are complex
+numbers satisfying ∑j|cj|2=1\sum_j|c_j|^2=1.
+Let T(t′,t)T(t',t), subsection 4.2, be the unitary
+time development operator for the total system, and assume it is
+trivial—equal to the identity operator I=Is⊗ImI=I_s\otimes
+I_m—for tt and t′t' both less than some t1t_1 or both greater
+than t2t_2, whereas for the interval from t1t_1 to t2t_2 during which
+the particle and the apparatus interact,
+T(t2,t1)(|sj⟩⊗|m0⟩)=|wj⟩⊗|mj⟩.T(t_2,t_1) \bigl( \ket{s^j}\otimes\ket{m_0}\bigr) =
+\ket{w^j}\otimes \ket{m^j}.  \label{eqn19}
+Here the |mj⟩\ket{m^j} are orthonormal states of the apparatus,
+⟨mj∣mk⟩=δjk\inpd{m^j}{m^k}=\delta_{jk}, corresponding to different pointer
+positions, and the |wj⟩\ket{w^j} are normalized, ⟨wj∣wj⟩=1\inp{w^j}=1,
+but not necessarily orthogonal; it may be that
+⟨wj∣wk⟩≠0\inpd{w^j}{w^k}\neq 0 when j≠kj\neq k. (In von Neumann’s original
+model the |wj⟩\ket{w^j} were the same as the |sj⟩\ket{s^j}, and this is
+also possible, but is not being assumed, for the situation we are
+considering.) The transformation (19)\eqref{eqn19} can be extended to a
+unitary transformation on Hs⊗Hm\HC_s\otimes\HC_m, because the
+orthogonality of the |mj⟩\ket{m^j} ensures that the states on the right
+side of (19)\eqref{eqn19} are normalized and mutually orthogonal. Unitary
+time development leads to states
+|Ψ1⟩=T(t1,t0)|Ψ0⟩=|Ψ0⟩,|Ψ2⟩=T(t2,t1)|Ψ1⟩=∑jcj|wj⟩⊗|mj⟩
+
+\begin{align}
+\label{eqn20}
+\ket{\Psi_1} &amp;= T(t_1,t_0) \ket{\Psi_0} =\ket{\Psi_0}, \\
+\ket{\Psi_2} &amp;= T(t_2,t_1) \ket{\Psi_1} = \sum_j c_j\ket{w^j}\otimes\ket{m^j} \nonumber
+\end{align}
+
+
+for the total system at times t1t_1 and t2t_2.
+7.2 Measurement
+To study the physical implications of this model we need to
+introduce a family of histories. From a mathematical perspective the
+simplest such family is based solely on unitary time development and
+takes the form
+Fu:[Ψ0]⊙{[Ψ1],I−[Ψ1]}⊙{[Ψ2],I−[Ψ2]},\FC_u:\;\;[\Psi_0]\;\odot\; \{[\Psi_1],I-[\Psi_1]\}\;\odot\;
+\{[\Psi_2], I-[\Psi_2]\}, \label{eqn21}
+where [Ψ1][\Psi_1] and [Ψ2][\Psi_2] are projectors onto the states
+|Ψ1⟩\ket{\Psi_1} and |Ψ2⟩\ket{\Psi_2} defined in (20)\eqref{eqn20}, and the
+family (21)\eqref{eqn21} should be interpreted as a set of four mutually
+exclusive histories obtained by choosing at t1t_1 one of the
+projectors inside the first pair of curly brackets, and at t2t_2 one
+inside the second pair. The corresponding chain
+kets, subsection 4.2, are zero except for the
+single history [Ψ0]⊙[Ψ1]⊙[Ψ2][\Psi_0]\odot [\Psi_1] \odot [\Psi_2], which is
+assigned probability 1 by (17)\eqref{eqn17}.
+The family Fu\FC_u is of no use for resolving the first measurement
+problem M1, because the family of histories does not include the
+projectors {[mj]}\{[m^j]\} for the pointer positions at time t2t_2 needed
+to discuss the measurement outcome, nor can it be refined to include
+them, because [Ψ2][\Psi_2] will not commute with some of the [mj][m^j],
+assuming at least two of the cjc_j in (18)\eqref{eqn18} are nonzero. This
+is the basic reason why the first measurement problem M1 is an
+enormous difficulty for quantum interpretations in which the only
+possible time dependence for a closed quantum system is that given by
+Schrödinger’s equation. By contrast, the histories approach gives the
+physicist Liberty to use a different family
+F1:[Ψ0]⊙[Ψ1]⊙{[mj]}\FC_1:\;\;[\Psi_0]\;\odot\;[\Psi_1] \;\odot\; \{[m^j]\}
+\label{eqn22}
+in place of Fu\FC_u. Note that [mj][m^j] is understood as
+Is⊗[mj]I_s\otimes[m^j], using a common physicist’s convention. In addition
+a projector R=Im−∑j[mj]R=I_m-\sum_j[m^j] should be included among the
+possibilities at the final time t2t_2, but as it occurs with zero
+probability it can be ignored. The consistency of the family F1\FC_1
+is easily demonstrated, and the probability |cj|2|c_j|^2 for the final
+position [mj][m^j] is an immediate consequence of (17)\eqref{eqn17}.
+However, the second measurement problem M2, relating the outcome of
+the measurement to the property of the particle before the
+measurement, cannot be solved using the family F1\FC_1, because the
+properties of interest, the [sj][s^j], are not included among the
+possibilities at time t1t_1. To discuss these requires another
+family
+F2:[Ψ0]⊙{[sj]}⊙{[mk]}.\FC_2:\;\;[\Psi_0]\;\odot\; \{ [s^j]\}\;\odot\; \{[m^k]\}.
+\label{eqn23}
+Again, [sj][s^j] can be understood as [sj]⊗Im[s^j]\otimes I_m, a property
+of the particle without reference to the apparatus. Showing that
+F2\FC_2 is consistent is straightforward, as is calculating the joint
+probability distribution
+Pr([sj]1,[mk]2)=|cj|2δjk\Pr(\,[s^j]_1,[m^k]_2) = |c_j|^2 \delta_{jk} \label{eqn24}
+using (17)\eqref{eqn17}. Here the subscripts refer to the time: the
+particle property at time t1t_1 before the measurement takes place,
+and the outcome at t2t_2 when the measurement is over. The marginal
+probabilities are
+Pr([sj]1)=Pr([mj]2)=|cj|2.\Pr([s^j]_1) = \Pr([m^j]_2) = |c_j|^2.  \label{eqn25}
+Thus for every case in which ckc_k is not zero (so [mk][m^k] occurs
+with finite probability) one has the conditional probability
+Pr([sj]1∣[mk]2)=δjk.\Pr([s^j]_1 \boldsymbol{\mid} [m^k]_2) = \delta_{jk}.
+\label{eqn26}
+In other words, given a measurement outcome [mk][m^k] at t2t_2 one
+can be certain that the prior state of the particle at t1t_1 was
+[sk][s^k]; i.e., the apparatus did what it was designed to do.
+7.3 Preparation and wave function collapse
+The reader may have noticed that the particle states |wj⟩\ket{w^j} in
+(19)\eqref{eqn19} played no role in our discussion of measurement
+in subsection 7.2. Von Neumann’s
+original (1932: sec. VI.3) presentation
+used |wj⟩=|sj⟩\ket{w^j}=\ket{s^j}, as he thought it important that a second
+measurement could confirm the first. This practice was followed in
+later textbooks, and has resulted in some confusion. The |wj⟩\ket{w^j}
+are in fact irrelevant when considering measurements, but they are
+useful when considering a preparation procedure in which
+macroscopic apparatus is used to produce a quantum system—again
+we shall speak of it as a particle—in some well-defined
+state. To see how this works let us again employ the model
+of subsection 7.1 with unitary development given
+by (19)\eqref{eqn19}, but now introduce a family
+Fp:[Ψ0]⊙[Ψ1]⊙{[vl]⊗[mj]}\FC_p:\;\;[\Psi_0]\;\odot\;[\Psi_1] \;\odot\;
+\{[v^l]\otimes[m^j]\} \label{eqn27}
+that is a refinement of F1\FC_1 in (22)\eqref{eqn22}, with IsI_s
+replaced by a projective decomposition onto some orthonormal basis
+{|vj⟩}\{\ket{v^j}\} of the particle Hilbert space Hs\HC_s. The joint
+probability distribution at time t2t_2 of the particle and pointer
+states is then
+Pr([mj],[vl])=⟨Ψ2∣[vl]⊗[mj]∣Ψ2⟩=|cj|2⟨wj∣[vl]∣wj⟩=|cj|2|⟨vl∣wj⟩|2.
+
+\begin{align}
+\label{eqn28}
+\Pr([m^j],[v^l]) &amp;= \mte{\Psi_2}{[v^l]\otimes[m^j]} \\
+   &amp;= |c_j|^2 \mte{w^j}{[v^l]}  \nonumber \\
+   &amp;= |c_j|^2 |\inpd{v^l}{w^j}|^2. \nonumber
+\end{align}
+
+
+Since Pr([mj])=|cj|2\Pr([m^j]) = |c_j|^2, (25)\eqref{eqn25}, one obtains the
+conditional probability
+Pr([vl]∣[mj])=|⟨vl∣wj⟩|2\Pr([v^l]\boldsymbol{\mid} [m^j]) = |\inpd{v^l}{w^j}|^2
+\label{eqn29}
+(assuming |cj|2|c_j|^2 is not 0). That is to say, if the measurement
+outcome is known to be [mj][m^j], then the probability of any property
+of the particle is precisely that given by assuming the particle is in
+the state |wj⟩\ket{w^j}, with “state” having its usual
+meaning: a pre-probability from which the probability distribution for
+the properties represented by any projective decomposition of its
+identity can be calculated; see subsection
+3.5.
+Note that this discussion remains valid when {|wj⟩}\{\ket{w^j}\} is not
+a collection of orthogonal states, even though this means that the
+corresponding projectors {[wj]}\{[w^j]\} cannot all belong to the same
+projective decomposition of IsI_s. The point is that |wj⟩\ket{w^j} is
+assigned to the particle only in association with the projector
+[mj][m^j], and the collection {|wj⟩⊗|mj⟩}\{\ket{w^j}\otimes\ket{m^j}\} is
+orthogonal. In such circumstances the [wj][w^j] are what in Ch. 14
+of Griffiths (2002a) are referred to
+as dependent or contextual
+(“conditional” would be equally good) properties:
+they must be understood in conjunction with other properties, which in
+this case are the pointer positions [mj][m^j], when forming part of a
+quantum description or history.
+What has here been deduced from fundamental quantum principles,
+including the Born rule, is in textbooks stated as a mysterious and
+separate principle of “wave function collapse”: if the
+measurement outcome is [mj][m^j] then the particle state
+“collapses” onto a particular state associated with this
+outcome. To make closer contact with textbook discussions of this
+topic, let
+S=∑jσj[sj]S = \sum_j \sigma_j [s^j] \label{eqn30}
+be a Hermitian operator with nondegenerate eigenvalues σj\sigma_j,
+and let |wj⟩=|sj⟩\ket{w^j}=\ket{s^j}. Then the measurement outcome [mj][m^j]
+corresponds to measuring the eigenvalue σj\sigma_j—see the
+remarks in subsection 3.3—and
+(29)\eqref{eqn29} and the remarks following it justify assigning to the
+particle at time t2t_2 the ket |wj⟩=|sj⟩\ket{w^j}=\ket{s^j}. One may add that
+the more general form of wave function collapse embodied in the
+Lüder’s rule (Busch & Lahti 2009) is
+likewise a consequence of the general quantum principles governing
+stochastic time development set forth in section
+4, so need not be added as an additional hypothesis.
+
+In any case there is no need to set |wj⟩\ket{w^j} equal to
+|sj⟩\ket{s^j} in order to discuss quantum measurements, and a better
+way of viewing the family Fp\FC_p in (27)\eqref{eqn27} is as a model of
+a quantum preparation process in which the macroscopic pointer
+position tells one the future rather than the past state of the
+particle. The conditional probability in (29)\eqref{eqn29} refers
+specifically to properties at the time t2t_2, but given the
+assumption that T(t′,t)T(t',t) is trivial for times after t2t_2, the
+argument leading to (29)\eqref{eqn29} is easily extended to [vl][v^l] and
+[mj][m^j] at any times (not necessarily the same) later than t2t_2.
+In general the outcome [mj][m^j] is random, and if the wrong jj
+occurs |wj⟩\ket{w^j} may not be the desired state.  But then the
+preparer can throw the particle away (run it into a baffle) and repeat
+the experiment until the desired outcome occurs. There are more
+sophisticated ways to do preparations, but our model illustrates the
+general idea, and in fact discarding unwanted outcomes is a procedure
+often used in quantum optics.  The essential point is that an
+apparatus can be constructed using quantum principles to prepare a
+particle whose future state is known on the basis of macroscopic
+(pointer) information.
+7.4 Generalized and Weak Measurements
+Von Neumann’s measurement model in 
+ section 7.1
+is often referred to as a “projective measurement”, since its outcome
+kk, see , indicates an earlier quantum property corresponding to
+the projector [sk][s^k]. It is also called a “strong measurement” in
+contrast to a weak measurement as defined below. In practice one often
+uses a more general measurement model, referred to as
+a generalized measurement or POVM (positive operator value
+measure) where the measurement outcome corresponds not to a specific
+property but instead to a positive (semi-definite) operator for the
+measured system at an earlier time. 
+
+
+Generalized measurements are often thought of in the following
+way. Instead of interacting directly with the measurement apparatus,
+the system to be measured first interacts with another (microscopic)
+system, a probe, prepared in a known quantum state. Then the
+probe is subjected to a projective measurement, and from its outcome
+one learns something about the original system. If the interaction
+between the probe and the system of interest is very weak this is
+called a weak measurement. Sometimes a hybrid measurement is
+employed, in which, following its interaction with a probe, the
+original system is subjected to another (typically projective)
+measurement. Both the weak measurement and the hybrid are examples of
+generalized measurements, and can be discussed in the manner indicated
+below. A weak measurement must be carefully distinguished from
+a weak value; see the comment at the end of this section.
+
+The generalized measurement model starts, as in Sec. [sbct7.1], with a
+Hilbert space H=Hs⊗Hm{{\mathcal H}}={{\mathcal H}}_s\otimes{{\mathcal
+H}}_m, where Hs{{\mathcal H}}_s represents the measured system
+(hereafter referred to as a particle), and Hm{{\mathcal H}}_m the
+measuring apparatus, including the probe if that is part of the
+arrangement. And as in and assume an initial state
+
+|Ψ0⟩=|s0⟩⊗|m0⟩,
+{|\Psi_0\rangle }={|s_0\rangle }\otimes{|m_0\rangle }, \label{eqn31}
+
+
+ and a unitary time development from t0t_0 to later times t1<t2t_1 &lt; t_2 given by 
+
+|Ψ1⟩=T(t1,t0)|Ψ0⟩=|Ψ0⟩,|Ψ2⟩=T(t2,t1)|Ψ1⟩,
+{|\Psi_1\rangle } = T(t_1,t_0) {|\Psi_0\rangle } ={|\Psi_0\rangle },\quad  
+{|\Psi_2\rangle } = T(t_2,t_1) {|\Psi_1\rangle }, \label{eqn32}
+
+
+where, as previously, we are assuming that the time interval from
+t0t_0 to t1t_1 is so short that T(t1,t0)T(t_1,t_0) is the identity
+operator.
+
+But instead of introducing pure states |mj⟩{|m^j\rangle } for the
+different positions of the measurement pointer, we assume a projective
+decomposition of the identity of H{{\mathcal H}},
+I=∑kMk,I =\sum_k M^k,
+\label{eqn33}
+
+where MkM^k projects onto the entire (macroscopic) subspace in which
+the apparatus pointer is in position kk. Since any two situations
+which are macroscopically distinct correspond to mutually orthogonal
+subspaces of the quantum Hilbert space, the MkM^k for different
+kk will be orthogonal to each other. In addition one can include a
+special projector, say ˆM\hat M, in the sum to represent any
+additional possibilities (e.g., the pointer has fallen off the
+apparatus), to make the sum add up to II. The |mj⟩{|m^j\rangle } of
+Sec. [sbct7.1] are related to the MkM^k through
+Mk|mj⟩=δjk|mj⟩,M^k {|m^j\rangle } = {\delta }_{jk} {|m^j\rangle },  
+\label{eqn34}
+
+i.e., |mj⟩{|m^j\rangle } belongs to the subspace associated with
+MjM^j.
+
+Since we are interested in what the measurement tells us about the
+particle, we can regard the initial apparatus state |m0⟩{|m_0\rangle }
+in as fixed, and indicate the dependence of |Ψ2⟩{|\Psi_2\rangle } on
+|s0⟩{|s_0\rangle } using the formula
+|Ψ2⟩=J|s0⟩,{|\Psi_2\rangle } = J {|s_0\rangle },
+\label{eqn35}
+
+where JJ is an isometry (it preserves inner products) that maps
+Hs{{\mathcal H}}_s onto a subspace of H{{\mathcal H}}. This
+provides a convenient way to define operators
+Qk=J†MkJ.Q^k = J{^\dagger }M^k J.
+\label{eqn36}
+
+acting on Hs{{\mathcal H}}_s. Because the MkM^k are positive
+(semi-definite) operators, the same is true of the QkQ^k, and
+because J†J=IsJ{^\dagger }J= I_s (J†J{^\dagger } is the left inverse
+of JJ), it follows from that
+∑kQk=Is.\sum_k Q^k = I_s. \label{eqn37}
+
+(We assume that ˆQ=J†ˆMJ=0\hat Q=J{^\dagger }\hat M J=0 for the special
+projector ˆM\hat M introduced following .) Thus {Qk}\{Q^k\} is a
+collection of positive operators which sum to the identity, which is
+the definition of a POVM.
+
+If every QkQ^k is a projector, then implies that they are mutually
+orthogonal, and form a projective decomposition of the identity of
+Hs{{\mathcal H}}_s. This means we are dealing with a projective
+measurement, though more general than the von Neumann model of
+Sec. [sbct7.1], as the QkQ^k may project on subspaces of dimension
+greater than 1. However, in general QkQ^k is not a projector or
+proportional to a projector, but since it is Hermitian it can be
+written in the form
+Qk=∑jqjkξjk,∑jξjk=Is,Q^k = \sum_j q_{jk} \xi^{jk}, \quad \sum_j \xi^{jk} = I_s,
+\label{eqn38}
+
+where for a fixed kk the {ξjk}\{\xi^{jk}\} form a projective
+decomposition of IsI_s, and the {qjk}\{q_{jk}\} are the nonnegative
+eigenvalues of QkQ^k. It is then not hard to show that the family of
+histories
+Yjk=[s0]⊗[m0]⊙ξjk⊗Im⊙Mk,Y^{jk} = [s_0]\otimes[m_0] \odot \xi^{jk}\otimes I_m \odot M^k,
+\label{eqn39}
+
+labeled by both jj and kk, is consistent. It gives rise to
+conditional probabilities
+Pr(ξjk1∣Mk2)=pjk=qjk⟨s0∣ξjk∣s0⟩/⟨s0∣Qk∣s0⟩,\Pr(\xi^{jk}_1 {\boldsymbol{\mid}}M^k_2) = p_{jk} = q_{jk} \mte{s_0}{\xi^{jk}}/\mte{s_0}{Q^k},
+\label{eqn40}
+
+where the subscripts 0, 1, and 2 indicate the time. In words, what
+tells us is that if at the end of a run the pointer is in position
+kk, then at the earlier time before the measurement took place the
+particle had a property represented by a projector ξjk\xi^{jk} for
+some value of jj. If in addition the initial state |s0⟩{|s_0\rangle
+} is known, that can be used to assign a probability pjkp_{jk},
+note that ∑jpjk=1\sum_j p_{jk}=1, to the property ξjk\xi^{jk} at time
+t1t_1. While not as “clean” as in the case of a projective
+measurement, this can still be informative.
+
+Let us close this section with two additional remarks about weak
+measurements, including the hybrid case. First, there is an abundant
+literature in which weak measurements are discussed in terms of
+so-called weak values of certain quantum observables. The
+physical significance (if any) of weak values has been the subject of
+an ongoing controversy. Without entering that discussion it is worth
+pointing out that apart from exceptional cases a weak value has
+nothing to do with a quantum property in the sense used in the
+histories interpretation, related to some subspace of the quantum
+Hilbert space; e.g., one of the ξjk\xi^{jk} in .
+
+Second, a single weak measurement corresponding to a weak interaction
+between particle and probe will not yield much information about the
+particle, and hence it is usually assumed that such a measurement will
+be repeated a large number of times, with the particle prepared in the
+same initial state for each run, so that useful information can be
+extracted from the random outcomes. It is sometimes assumed that
+because the interaction is weak, in none of the runs will the state of
+the particle change significantly. However, that is not necessarily
+the case. Weakness of the interaction is also consistent with the
+particle’s state being drastically altered in a number of runs,
+provided these are but a small fraction of the total. A useful example
+is provided by Feynman (Feynman, Leighton,
+& Sands: Chapter 1) in his discussion of a weak light
+source used to determine which of two holes an electron passes through
+on its way to a distant screen where successive arrivals display a
+two-hole (double slit) interference pattern. If the light source is
+very weak, only for a small fraction of the runs does a scattered
+photon reveals which hole the electron went through. But if one
+collects data for these rare instances one finds a very large effect:
+in these runs the interference pattern is completely washed out.
+See the 
+ Further Reading supplement for additional
+details of the histories approach to generalized and weak
+measurements.
+7.5 Concluding remarks
+
+In summary, the histories approach resolves both quantum measurement problems
+M1 and M2 by introducing appropriate stochastic families of histories.
+In order to describe the measurement outcome as a pointer position one needs an
+appropriate projective decomposition of the identity—{[mj]}\{[m^j]\} in the
+simplest model or the more general {Mk}\{M^k\} of 
+ section 7.4—associated
+with the pointer positions. Similarly, in order to discuss how properties of
+the microscopic particle before the measurement are related to measurement
+outcomes, one needs a decomposition at t1t_1 that includes these properties,
+the [sj][s^j] in (23)\eqref{eqn23} for the simple model or the ξjk\xi^{jk} in
+(38)\eqref{eqn38} for a generalized measurement. There is no fundamental quantum
+principle that forces one to use these decompositions. The choice is based on
+utility, and illustrates the importance of principle R4 in 
+ section 5. If
+one wants to discuss measurements as measurements, one needs
+to adopt a framework in which the associated concepts make sense. And,
+since it is often misunderstood, it is worth emphasizing that neither
+the validity nor the utility of a particular framework is in any way
+reduced by the existence of other frameworks which are incompatible
+(or incommensurate) with it.
+
+The models employed here are a bit simplistic compared to the experimental
+situation in a laboratory. However, extending them to something more realistic
+poses difficulties no worse than those encountered when introducing
+quasiclassical descriptions. Thus, rather than a pure initial
+state |m0⟩\ket{m_0} for the apparatus it is more realistic to use a macroscopic
+projector of the type mentioned in 
+ section 6, or else an initial density
+operator. These changes present no difficulty in principle, and some
+of them are discussed in Ch. 17 of Griffiths (2002a). The role of
+decoherence is to allow a consistent quasiclassical description, as
+noted in
+ section 6. By itself decoherence does not
+resolve either of the measurement problems; see, e.g., Adler
+(2003).
+Finally, while wave function collapse is a legitimate calculational
+procedure when describing a preparation in quantum mechanical terms,
+it amounts to nothing more than a convenient way of calculating
+conditional probabilities useful in the quantum description of a
+preparation. Trying to view it as some sort of mysterious physical
+process leads to confusion and the incorrect notion that quantum
+mechanics is somehow inconsistent with special relativity, which is
+our next topic.
+8. Locality and Special Relativity
+According to some interpretations of quantum
+mechanics, e.g., 
+ d’Espagnat (2006),
+Maudlin (2011),
+the quantum world is infested with nonlocal influences:
+systems which are far apart, even spacelike separated in the sense of
+special relativity, can influence each other. This has given rise to
+the notion that quantum theory is incompatible with special
+relativity. No such nonlocal influences are present in the histories
+interpretation, which is perfectly compatible with special
+relativity. See the 
+Further Reading supplement for the detailed discussions
+underlying the following remarks.
+
+
+8.1 Singlet state of spin-half particles
+The Bohm version (Bohm 1951: Chapter
+22) of the Einstein-Podolsky-Rosen
+paradox (Einstein, Podolsky, & Rosen
+1935) is based on the spin singlet state
+|ψ0⟩=(|z+a,z+b⟩−|z−a,z−b⟩)\ket{\psi_0} = \bigl( \ket{z^+_a,z^+_b} - \ket{z^-_a,z^-_b}
+\bigr) \label{eqn41}
+of two spin-half particles aa and bb, using the same notation as
+in subsection 2.3. This is said to be
+an entangled state because it is not a product state of the
+form |a,b⟩=|a⟩⊗|b⟩\ket{a,b} = \ket{a}\otimes\ket{b}. It is easy to show that the
+corresponding projector [ψ0][\psi_0] does not commute with any projector
+on a nontrivial property of particle aa, such as [z+a][z^+_a], or on a
+nontrivial property of bb. (The trivial properties are the identity
+and the zero projector.) Thus a quantum description that contains
+[ψ0][\psi_0] as a property cannot at the same time ascribe any
+nontrivial properties to either of the particles.
+This is a mathematical fact which makes no reference to where the
+particles are located in space. It is true for the ground state of a
+hydrogen atom, in which the electron and proton are on top of each
+other, as well as for the situation we consider next in which particle
+aa is in Alice’s laboratory and bb in Bob’s laboratory some distance
+away. Suppose that Alice measures SazS_{az} for her particle and Bob
+measures SbzS_{bz} for his. Then using [ψ0][\psi_0] as a
+pre-probability, subsection 3.5, one
+can show that the outcomes, although they are random, will always be
+opposite: if Alice obtains +1/2+1/2 (in units of ℏ\hbar), Bob will find
+−1/2-1/2; if Alice obtains −1/2-1/2, Bob will find +1/2+1/2.
+Correlated outcomes are by themselves not surprising once one
+accepts the idea that quantum mechanics is stochastic, not
+deterministic. Here is a classical analogy: Charlie in Chicago places
+a red slip of paper in an opaque envelope and a green slip in a second
+identical envelope, and after shuffling them chooses one at random and
+mails it to Alice in Atlanta and the other to Bob in Boston. Upon
+opening her envelope and finding a red slip, Alice can at once
+conclude from her knowledge of the protocol that Bob’s envelope
+contains a green slip of paper. There is no need to invoke some
+superluminal influence to explain this.
+Her reasoning is exactly the same in the case where Charlie
+prepares a spin singlet state at the center of the laboratory and
+sends the two particles in opposite directions towards apparatuses
+constructed by Alice and Bob, both competent experimentalists, and
+Alice measures SazS_{az}. From her measurement outcome and because she
+is a competent experimentalist she is entitled to conclude that before
+the measurement took place particle aa possessed the value indicated
+later by the pointer position; see the discussion
+in subsection 7.2. Assume for the sake of
+discussion that this was Saz=+1/2S_{az} = +1/2. Then from her knowledge of
+the protocol (initial singlet state) she can assign a state
+Sbz=−1/2S_{bz}=-1/2 to Bob’s particle and use this (as a pre-probability) to
+assign a probability to the outcome of a measurement of SbzS_{bz}. She
+employs a scheme of probabilistic inference appropriate to the quantum
+world; there is no need to invoke wave function collapse except,
+perhaps, as a handy calculational tool.
+But suppose Bob rather than measuring SbzS_{bz} measures some other
+component SbwS_{bw} of the spin of particle bb, where ww could be xx
+or yy or some arbitrary direction in space? Again, Alice on the basis
+of her measurement outcome can still assign an SbzS_{bz} value to Bob’s
+particle before measurement, and use it as a pre-probability to
+calculate a probability for Bob’s measurement outcome. Conversely,
+given the outcome of his SbwS_{bw} measurement (and knowledge of the
+protocol) Bob can assign a state SawS_{aw} to Alice’s particle before
+it is measured, and use that to predict the outcome of a measurement
+of SazS_{az}. Both reasoning processes follow the rules indicated above
+in subsection 5.1, but when ww is neither zz
+nor −z-z the single framework rule means they cannot be combined. It
+is at this point that quantum principles must be used, unlike the
+analysis applicable to colored slips of paper, where one can employ
+the single quasiclassical framework (section 6)
+appropriate for macroscopic physics.
+If Alice measured SazS_{az}, then surely she could have
+instead measured SaxS_{ax} perhaps making the choice between this and
+SazS_{az} at the very last instant, even after Bob has completed his
+measurement; what would have occurred in that situation? This
+is a counterfactual question of the form discussed
+in subsection 5.2, 
+and we refer the reader to the references given there.
+8.2 Bell inequalities and Einstein locality
+Quantum theory predicts correlations in the spin-singlet state that
+do not satisfy Bell inequalities (Shimony
+2009), and by now there is ample evidence from experiments on
+the analogous property of pairs of correlated photons that quantum
+theory is correct, and therefore one or more of the assumptions that
+go into the derivation of a Bell inequality must be faulty. While the
+claim has been made that the key assumption is locality, and therefore
+a violation of Bell inequalities implies that the real (quantum) world
+is nonlocal, a histories analysis identifies the problem as a
+different assumption made by Bell: the existence of classical hidden
+variables that are inconsistent with Hilbert space quantum
+mechanics. For more details see the 
+ Further Reading supplement.
+
+
+In addition, the histories approach makes it possible to establish
+on the basis of quantum mechanics itself a principle of Einstein
+locality (Griffiths 2011b):
+
+Objectively real internal properties of an isolated individual
+system do not change when something is done to another non-interacting
+system.
+
+This statement is to be understood in the following way. Let
+HS\HC_S be the Hilbert spaces of an isolated individual system SS,
+HR\HC_R that of the rest of the world, so H=HS⊗HR\HC=\HC_S\otimes\HC_R is
+the Hilbert space of the total system. The properties of SS must be
+represented by a projective decomposition of HS\HC_S, or by a
+consistent family of such properties. That SS is isolated means there
+is no interaction between SS and RR, which is to say that for any
+two times tt and t′t' during the period of interest the time
+development operator of the total system factors:
+T(t′,t)=TS(t′,t)⊗TR(t′,t).T(t',t)=T_S(t',t)\otimes T_R(t',t).  \label{eqn42}
+Something done to another system might be, for example, the choice
+between measuring SbxS_{bx} and SbzS_{bz} for a particle bb which is
+part of RR, with the measuring apparatus and whatever makes the
+measurement choice, e.g., a quantum
+coin (Sec. 19.2 of Griffiths 2002a) that
+is also part of RR.
+9. Quantum Information
+Quantum information is at present a very active field of research,
+one in which quantum foundational issues continually arise. One reason
+for current interest is the hope of building quantum computers that
+are capable, assuming they can be made to work properly, of carrying
+out certain information-processing tasks faster and more efficiently
+than is possible using ordinary classical computers. To be sure, if
+the entire world is quantum mechanical then our current
+“classical” computers must in some real sense be quantum
+computers. So what is the difference? At least to a first
+approximation, classical computation is that kind where a single
+quasiclassical framework, section 6, suffices
+for describing the carriers of information (e.g., on-off states of
+transistors) and the way information is processed, whereas quantum
+computation is what cannot be so described. Further clarifying this
+distinction is one of the tasks of quantum information theory.
+Classical information theory as developed by Shannon and his
+successors employs standard (Kolmogorov) probability theory. The
+histories approach to quantum mechanics also uses standard probability
+theory, and thus it is plausible that as long as one sticks to a
+single quantum framework, both the mathematical structure and the
+intuition associated with classical information theory can be directly
+translated into the quantum domain. This is indeed the case, and such
+a quantum framework is not limited to quasiclassical states; it can
+also include microscopic quantum states.
+This makes it possible for the histories approach to answer two
+questions raised by J. S. Bell (1990) as
+objections to using information theory to address foundational issues
+in quantum mechanics: “Whose information? Information
+about what?” The answers in reverse order: information
+is always about quantum properties or, more generally,
+properties at different times, thus histories. And it is
+possessed by someone who, like Alice
+in subsection 8.1, can build a reliable
+piece of apparatus and interpret the (macroscopic) outcome by applying
+consistent quantum principles.
+Not all problems in quantum information can be simply and
+immediately mapped in a useful way onto a single framework, and those
+that cannot are what make quantum information an interesting, as well
+as a rather difficult, field of research. Note that the single
+framework rule forbids combining incompatible frameworks, but
+allows one to compare them or work out relationships that hold between
+results in different frameworks. Therefore one can say that, at least
+in some general sense, problems at the frontiers of quantum
+information theory have to do with comparisons of incompatible
+frameworks. See the 
+ Further Reading supplement for additional discussions of these
+issues.
+
+
+In summary, the histories approach provides a consistent conceptual
+framework for the full scope of quantum information theory, including
+classical (Shannon) information as a special case.
+10. Paradoxes Resolved
+The histories approach resolves, or one might say
+“tames”, all the usual quantum paradoxes in the sense of
+providing a clear explanation of why certain results which seem
+peculiar from the perspective of classical physics are perfectly
+consistent with quantum theory, and can thus serve as useful
+illustrations of its basic principles. As the explanations have for
+the most part already been published, what is found below is mostly
+just a few comments along with references.
+10.1 Schrödinger’s cat
+The paradox of Schrödinger (1935)’s
+cat is a particularly striking way of stating the unresolved
+difficulties associated with the first measurement problem in standard
+(i.e., textbook) quantum mechanics. It corresponds to using the
+framework Fu\FC_u, (21)\eqref{eqn21} in subsection 7.2,
+with |Ψ2⟩\ket{\Psi_2} the superposition of dead and live cat states. The
+histories approach addresses this paradox by first noting that there
+is nothing wrong from the point of view of fundamental quantum theory
+(principle R2 of subsection 5.1) with using
+Fu\FC_u, but it is a serious misunderstanding to suppose that
+|Ψ2⟩\ket{\Psi_2} or the corresponding property [Ψ2][\Psi_2] represents a
+cat which is both dead and alive. First, the projectors, let us call
+them PdP_d and PaP_a, that correspond to the cat being dead and alive
+do not commute with [Ψ2][\Psi_2], so they cannot, by the single
+framework rule, be brought into the discussion (and, indeed, it is
+doubtful that any projector associated with what one might call
+“catness” will commute with [Ψ2][\Psi_2]). Second, since
+PdPa=0P_d P_a=0 (distinct macroscopic states) 
+both properties cannot be true simultaneously, so it is false to say that the cat is
+both dead and alive. In addition the historian may
+remark that the existence of other frameworks in no way invalidates a
+discussion based on the quasiclassical one that lies behind the
+ordinary language discussion of cats, which is distinguished by its
+utility and not by some framework selection rule,
+see subsection 11.3. In this case a useful
+framework is the counterpart of F1\FC_1, (22)\eqref{eqn22}
+in subsection 7.2, with quasiclassical projectors
+PdP_d and PaP_a at time t2t_2, and |Ψ2⟩\ket{\Psi_2} understood not as a
+property but as a pre-probability useful for assigning probabilities
+that the cat is dead or alive. At this point the paradox has
+disappeared.
+A similar but somewhat more complex analysis can be applied
+to Wigner (1961)’s friend; the solution
+is to use an appropriate framework.
+10.2 Interference paradoxes
+The best known of the interference paradoxes is the double
+slit. How can successive quantum particles passing through the slit
+system and later detected at specific points in the interference zone
+build up a pattern showing interference of a sort that depends on the
+separation of the slits, even though measurements carried out directly
+behind the slits will show that the particle passed through one or the
+other, but not both? Feynman’s
+discussion (Feynman, Leighton, & Sands
+1965: Chapter 1, where two holes replace the two slits) is
+superb. What is essentially the same paradox, but in a form somewhat
+easier to analyze, is the one in which a particle passes through the
+two arms of Mach-Zehnder interferometer. Chapter 13
+of Griffiths (2002a) provides an
+extensive discussion of how the histories approach deals with
+different possibilities in a consistent way that avoids paradoxes
+while producing analogs of all the interesting effects discussed by
+Feynman.
+10.3 Incompatibility paradoxes
+The Bell-Kochen-Specker family of
+paradoxes (Bell 1966; Kochen & Specker
+1967) are based on a relatively simple idea, although its
+execution is sometimes complicated: if one chains together a
+sufficient number of incompatible frameworks it is possible to arrive
+at a logical contradiction. The chaining consists in finding a
+projector which belongs to two (or more) incompatible decompositions
+of the identity, and then assuming it has the same truth value in both
+frameworks, whereas in any single decomposition one and only one
+projector is true. The histories approach blocks paradoxes of this
+sort because they (obviously) violate the single framework rule. See
+the Further Reading supplement for details.
+
+
+The three-box paradox of Aharonov &
+Vaidman (1991) is similar to Bell-Kochen-Specker, except that
+in this case quantum dynamics is involved, and the issue has to do
+with incommensurate families of histories (combining them violates the
+consistency conditions) rather than incompatible sample spaces. Again,
+the histories resolution of the paradox, Sec. 22.5
+of Griffiths (2002a), consists in
+applying the single framework rule: a contradiction can only be
+reached by violating quantum rules of reasoning.
+10.4 Counterfactual paradoxes
+In the histories approach the rule governing counterfactual
+reasoning, as indicated in subsection 5.2, is
+that a single framework must be used for comparing the actual and
+counterfactual world. Counterfactual paradoxes are constructed by
+ignoring this rule. One of the best known is
+Wheeler’s (1978) delayed choice paradox
+in which in a Mach-Zehnder interferometer the second beam splitter is
+or is not removed at a time when the quantum particle (or wave) has
+already passed the first beam splitter, so the particle is already
+physically present inside the interferometer. With the second beam
+splitter absent one can determine the arm through which the particle
+passed, whereas the interference exhibited when the beam splitter is
+present shows that the particle cannot have been in a particular
+arm. 
+
+There are several other paradoxes which hinge upon the
+(incorrect) use of counterfactuals, or at least include a
+counterfactual element in the way they are stated. Among these
+are Hardy (1992)’s paradox
+
+and the somewhat similar Greenberger-Horne-Zeilinger
+paradox (Greenberger, Horne, Shimony, &
+Zeilinger 1990; Greenberger, Horne, & Zeilinger 1989). 
+For comments on how the histories approach deals with these and 
+similar paradoxes, see the 
+ Further Reading supplement.
+
+
+10.5 Nonlocality paradoxes
+As discussed in section 8, the Bohm (spin
+singlet) version of the Einstein-Podolsky-Rosen paradox has been
+interpreted, by Bell and others, as indicating that quantum theory is
+nonlocal. Similar conclusions have been drawn from the Hardy and the
+Greenberger-Horne-Zeilinger paradoxes stated in a form which involves
+measurements at distinct physical locations. One can add to this list
+the Elitzur-Vaidman indirect measurement
+paradox (Elitzur & Vaidman 1993),
+which again suggests some form of nonlocal influence. When critically
+examined using the tools provided by the histories interpretation all
+evidence for nonlocality vanishes, for reasons discussed in
+subsection 8.2.
+
+
+11. Difficulties and Objections
+Any physical theory can give rise to various kinds of conceptual
+difficulty. Problems may arise because of lack of familiarity with, or
+misunderstanding of, new ideas. Most students upon their first
+encounter with calculus or with special relativity have difficulties
+of this sort, which can be cleared up by additional study, working
+through examples, and the like. In addition theories may be internally
+inconsistent. This is often the case when they are relatively new and
+under development, but can also be true of more mature
+theories. Indeed certain theories turn out to be of great usefulness
+despite the fact that they contain serious flaws or
+inconsistencies. (Standard, which is to say textbook, quantum
+mechanics is a prime example!) And even theories which are properly
+understood and are internally consistent can be rejected, either by
+individual scientists or the community as a whole, because they are
+not “good physics”, a term whose importance should not be
+underestimated even if it cannot be given a precise definition. The
+histories interpretation of quantum theory has given rise to
+conceptual difficulties that fall in all of these areas, and while it
+is impossible in a few words to discuss each of them in detail, the
+following remarks are intended to indicate the general nature of some
+of the more serious issues raised by critics, along with responses
+made by advocates of the histories approach. 
+
+
+11.1 Internal consistency
+The issue of internal consistency has been raised
+by Kent (1997) and
+by Bassi & Ghirardi (1999, 2000) on
+the grounds that the rules for reasoning using histories, summarized
+in section 5, lead to contradictions: certain
+assumptions allow one to derive both a proposition and its
+contradiction. Equivalently, a quantum property can be assigned, on
+the basis of the same initial data, probabilities of both 0 and
+1. These criticisms have been answered
+in Griffiths & Hartle (1998) and in 
+Griffiths (2000a, 2000b).
+In addition there is a general argument for the
+consistency of the histories approach in Ch. 16
+of Griffiths (2002a). The key point,
+easily overlooked as it has no close analogy in classical physics, is
+the single framework rule R3 of section 5. In
+situations that involve quantum properties at a single time the use of
+a single framework means the use of a particular projective
+decomposition of the identity and the associated Boolean event
+algebra. When reasoning is restricted to this algebra the usual rules
+of propositional logic apply, so an inconsistency at this level would
+imply the inconsistency of standard logic. If the framework in
+question consists of a family of histories of a closed system, it
+cannot be assigned probabilities using the extended Born
+rule, subsection 4.2, unless the consistency
+conditions are satisfied. But in those cases where probabilities can
+be assigned they satisfy the usual rules of probabilistic reasoning,
+thus ruling out contradictions.
+11.2 Single framework rule
+The single framework rule itself lies at the center of a large
+number of objections to the histories approach, which is hardly
+surprising since in an important sense it marks the boundary between
+classical and quantum physics. As it is absent from classical physics
+and from most quantum textbooks, the concept is unfamiliar, and one
+has to work through various examples in order to gain an intuitive as
+well as a formal understanding of how it deals with the various
+paradoxes and other conceptual difficulties of quantum theory. The
+four principles R1 to R4 found in subsection 5.1
+should help in understanding how frameworks should be thought of and
+how they should be used. It is of particular importance that the
+single framework rule does not imply that there is only one
+way available to the physicist to think about or discuss a particular
+situation. What it forbids is not the construction of many, perhaps
+mutually incompatible, frameworks, but combining them in the
+fashion characteristic of the incompatibility paradoxes discussed
+above in subsection 10.3. Indeed, the single
+framework rule rather than being a restriction actually extends the
+Liberty of the theoretical physicist to describe the quantum world in
+a consistent way without the danger of running into insoluble
+paradoxes. But Liberty is coupled to a denial of the unicity of the
+world, subsection 11.4, which is perhaps the most
+important philosophical implication of quantum mechanics from the
+histories perspective, as well as the principal stumbling block in the
+way of a wider acceptance of that approach as a satisfactory
+interpretation of quantum theory.
+11.3 Nonuniqueness of quasiclassical frameworks
+An objection first raised by Dowker &
+Kent (1996), and subsequently repeated by 
+Kent (1998),
+Schlosshauer (2004),
+and Wallace (2008), among others, is that
+quasiclassical frameworks are by no means the only possible consistent families
+of histories in a closed quantum system.  In particular, one can have
+consistent families in which there is quasiclassical behavior up to some time
+followed by something which is not at all quasiclassical at a later time.  This
+would be a serious objection if historians were claiming that there must be a
+unique family of histories which can be used to describe the world, but such is
+not the case.  The physicist is at Liberty to choose a family whose histories
+closely resemble those of classical mechanics, and the existence of alternative
+frameworks in no way diminishes the validity of such a quasiclassical
+description, for reasons indicated in section 4.2 of Griffiths (2013).
+One senses that underlying such criticisms is the expectation that any good
+physical theory must satisfy the principle of unicity, to which
+we now turn.
+11.4 Unicity
+In a probabilistic theory the limiting cases of a probability equal
+to 1 or 0 are equivalent to asserting that the corresponding
+proposition (e.g., “the system has property PP”) is,
+respectively, true or false. In the histories approach probabilities
+are linked to frameworks, and for this reason the notions of
+“true” and “false” are also framework
+dependent. This cannot lead to inconsistencies, a proposition being
+both true and false, because of the single framework rule. But it is
+contrary to a deeply rooted faith or intuition, shared by
+philosophers, physicists, and the proverbial man in the street, that
+at any point in time there is one and only one state of the universe
+which is “true”, and with which every true statement about
+the world must be consistent. In Sec. 27.3
+of Griffiths (2002a) this belief is
+referred to as unicity, and it is what must be abandoned if
+the histories interpretation of quantum theory is on the right
+track.
+As an example, consider the measurement model
+in subsection 7.2, where in the family Fu\FC_u at
+time t2t_2 the measurement apparatus is in a superposition state
+corresponding to a projector which is incompatible with the projectors
+representing different pointer positions, which are employed in the
+family F1\FC_1. The histories approach says the physicist is at
+Liberty to employ either family, both of which are valid ways of
+describing the quantum world, but Incompatibility forbids combining
+them into a single description. The prohibition on combining families
+is based on the fact that certain quantum projectors do not commute,
+something quite specific to quantum mechanics with no classical
+counterpart. In classical mechanics the true state of affairs for a
+physical system is always represented by a single point in the phase
+space. It is this feature that has to be abandoned in quantum
+mechanics interpreted using histories. See the 
+Further Reading supplement for additional
+details.
+
+
+Abandoning unicity is certainly a radical proposal, comparable in
+the history of science to the radical step our intellectual ancestors
+took when they replaced the centuries old notion of an immovable earth
+with the modern concept of a spinning planet in motion around the
+sun. In making that transition it was important to develop an
+understanding of why the earlier ideas worked so well; e.g., why one
+did not feel the earth was moving. By analogy it is helpful to note,
+as discussed in section 6, that from a quantum
+perspective the macroscopic world of everyday experience can be
+understood for all, or almost all, practical purposes using a single
+quasiclassical framework. Within that framework the principle of
+unicity holds, and one can thus understand why it was quite
+satisfactory before the quantum revolution, and remains so in sciences
+where specific quantum effects do not need to be taken into
+account. See the 
+ Further Reading supplement for a more
+extended discussion.

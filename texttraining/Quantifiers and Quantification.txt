@@ -1,0 +1,2283 @@
+Quantifier expressions are marks of generality. They come in a variety
+of syntactic categories in English, but determiners like
+“all”, “each”, “some”,
+“many”, “most”, and “few” provide
+some of the most common examples of
+ quantification.[1]
+ In English, they combine with singular or plural nouns, sometimes
+qualified by adjectives or relative clauses, to form explicitly
+restricted quantifier phrases such as “some apples”,
+“every material object”, or “most planets”.
+These quantifier phrases may in turn combine with predicates in order
+to form sentences such as “some apples are delicious”,
+“every material object is extended”, or “most
+planets are visible to the naked eye”. We may conceive of
+determiners like “every” and “some” as binary
+quantifiers of the form Q(A,B)Q(A,B)Q(A,B), which may operate on two
+predicates, AAA and BBB, in order to form a sentence.
+
+Binary quantifiers of this sort played an important role in what is
+perhaps the first formal study of quantification developed by
+Aristotle in the Prior Analytics. The details of
+Aristotle’s syllogistic logic are given in the entry on
+ Aristotle’s Logic.
+ Aristotle investigated a restricted class of inferential patterns,
+which he called syllogisms, in which two categorical
+propositions served as premises and a third served as a
+conclusion. A categorical proposition is a sentence obtained from one
+of the four binary quantifiers “all(A,B)all(A,B)all(A, B)”,
+“some(A,B)some(A,B)some(A, B)”, “no(A,B)no(A,B)no(A, B)” and
+“not all(A,B)not all(A,B)not \ all(A, B)”, when suitable predicates are
+substituted for AAA and BBB. In a syllogism, each categorical
+proposition contains two of three shared predicates. The logical
+relations, which, according to Aristotelian logic, obtain between them
+are codified by
+ the square of opposition.
+ Although Aristotle’s syllogistic logic dominated logic for
+centuries, it eventually revealed itself inadequate for the
+representation of mathematical argumentation, and it finally became
+displaced by the advent of modern quantificational logic, which
+originated with George Boole’s algebraic approach to logic and
+Gottlob Frege’s approach to logic and quantification (1879).
+
+Modern quantificational logic has chosen to focus instead on formal
+counterparts of the unary quantifiers “everything” and
+“something”, which may be written ∀x∀x\forall x and
+∃x∃x\exists x, respectively. They are unary quantifiers because they
+require a single argument in order to form a sentence of the form
+∀x A∀x A\forall x \ A or ∃x A∃x A\exists x \ A. Frege (and Russell) devised an
+ingenious procedure for regimenting binary quantifiers like
+“every” and “some” in terms of unary
+quantifiers like “everything” and “something”:
+they formalized sentences of the form ⌜┌\ulcornerSome AAA is
+BBB⌝┐\urcorner and ⌜┌\ulcornerEvery AAA is BBB⌝┐\urcorner
+as ∃x(Ax∧Bx)∃x(Ax∧Bx)\exists x (Ax \wedge Bx) and ∀x(Ax→Bx)∀x(Ax→Bx)\forall x (Ax \rightarrow Bx),
+respectively. They analyzed a sentence like “some apples are
+delicious” in terms of the sentence “something is an apple
+and delicious”, whereas they parsed the sentence “every
+material object is extended” as “everything is extended,
+if it is a material object”. Unfortunately, this procedure
+cannot be generalized to cover quantifier phrases like
+“many”, “most”, or “few”. It would
+be a mistake to regiment the sentence “most planets are visible
+to the naked eye” by means of “most things are planets and
+visible to the naked eye” or “most things are such that
+they are visible to the naked eye, if they are planets”.
+Instead, they are better analyzed as irreducibly binary quantifiers,
+and their study has given rise to the theory of generalized
+quantifiers, which has become a fruitful subject of study partly
+because of its applications in the semantics of natural language.
+ 
+1. Classical Quantificational Logic
+
+What is now a commonplace treatment of quantification began with Frege
+(1879), where the German philosopher and mathematician, Gottlob Frege,
+devised a formal language equipped with quantifier symbols, which
+bound different styles of variables. He formulated axioms and rules of
+inference, which allowed him to represent a remarkable range of
+mathematical argumentation. Classical quantificational logic is
+sometimes known as “first-order” or
+“predicate” logic, which is generally taken to include
+functional and constant symbols. The vocabulary of classical
+quantificational logic is often supplemented with an identity
+predicate to yield the classical theory of quantification with
+identity.
+1.1 Pure Quantificational Logic
+
+At the core of classical quantificational logic lies what we may call
+pure quantificational logic, which makes no provision for any singular
+terms other than variables. In pure quantificational logic, one may
+still make use of Russell’s theory of definite description to
+simulate singular terms for which we have a method of contextual
+elimination.
+1.1.1 The Language of Pure Quantificational Logic
+
+The vocabulary of pure quantificational logic contains the usual
+propositional connectives: ¬¬\lnot, ∧∧\wedge, ∨∨\vee,
+→→\rightarrow, and ↔↔\leftrightarrow. It contains predicate
+letters of various sorts: one-place predicate letters with or without
+subscripts, P1,Q1,R1,P11P1,Q1,R1,P11P^{1}, Q^{1}, R^{1}, P^{1}_{1}, …, two-place
+predicate letters, P2,Q2,R2,P21P2,Q2,R2,P21P^{2}, Q^{2}, R^{2}, P^{2}_{1}, …, and
+more generally, nnn-place predicate letters. Sentence letters are
+0-place predicates. There is, in addition to this, an infinite stock
+of variables with or without subscripts: x,y,z,x1,y1,z1x,y,z,x1,y1,z1x, y, z, x_1, y_1, z_1,
+… , and two quantifiers ∀∀\forall and ∃∃\exists. In a
+classical framework, we need not treat all these symbols as primitive;
+we may, for example, treat ¬¬\lnot, →→\rightarrow, and ∀∀\forall
+as primitive and provide standard definitions for the other
+propositional connectives and quantifiers in terms of them. For
+example, the existential quantifier, ∃x A∃x A\exists x \ A, may be
+defined: ¬∀x ¬A¬∀x ¬A\lnot \forall x \ \lnot A.
+
+The definition of a formula of the language of pure quantificational
+logic proceeds recursively as follows. First, one defines an
+atomic formula to consist of an nnn-place predicate
+followed by nnn variables: Pnix1Pnix1P^{n}_{i} x_{1}, …, xnxnx_{n}.
+One then defines AAA to be a formula of the language of pure
+quantificational logic if, and only if, (i) AAA is an atomic
+formula, or (ii) AAA is of the form ¬B¬B\lnot B, where BBB is a
+formula, or (iii) AAA is of the form (B→C)(B→C)(B \rightarrow C), where
+BBB and CCC are each a formula, or (iv) AAA is of the form
+∀x B∀x B\forall x \ B, where xixix_i is a variable and BBB is a
+ formula.[2]
+
+All occurrences of variables in an atomic formula are free.
+The free occurrences of variables in the negation of a formula ¬B¬B\lnot
+B are the free occurrences of variables in BBB. The free
+occurrences of variables in a formula of the form (B→C)(B→C)(B \rightarrow
+C) are the free occurrences of variables in BBB and CCC.
+Finally, the free occurrences of variables in a quantified formula
+∀x B∀x B\forall x \ B are the variables other than xxx that are free in
+BBB. We call BBB the scope of the initial occurrence of the
+quantifier ∀x∀x\forall x in ∀x B∀x B\forall x \ B. If an occurrence of a
+variable is not free in a formula AAA, then it is bound; all
+occurrences of xxx in BBB are bound in the quantified formula
+∀x B∀x B\forall x \ B. In fact, we will often write that they lie within
+the scope of the initial quantifier.
+
+A formula AAA is closed if, and only if, all of its
+variables are bound. Otherwise, AAA is open. A variable
+yyy is free for xxx if, and only if, no free occurrences
+of xxx lies within the scope of a quantification on yyy, ∀y∀y\forall
+y. We write A(y/x)A(y/x)A(y/x) for the formula that results from AAA when
+every free occurrence of xxx in AAA is replaced by an occurrence
+of the variable yyy. A sentence is a closed formula of the
+language.
+1.1.2 Axioms for Pure Quantificational Logic
+
+Frege’s Begriffsschrift develops a formal system, which
+includes axioms for quantification over individual objects and
+concepts. For Frege, objects are the appropriate values for singular
+variables, and a concept is what is referred to by a predicate. Notice
+that despite Frege’s use of the term, concepts, for him, are
+nothing like mental constructs, but rather objective constituents of
+the world. In particular, concepts are functions, which map objects
+into truth values. Since a predicate like “is extended” is
+true of some objects and false of others, Frege takes the concept
+being extended to assign truth to an object if, and only if,
+it is extended.
+
+Frege’s system is an axiomatization of what has come to be known
+as second-order logic, which is an important extension of classical
+quantificational logic. Hilbert & Ackermann (1928) contains the
+first axiomatic treatment of quantificational logic as a subject of
+its own, which they called “the narrower functional
+calculus”. In what follows, we look at what is now a common
+axiomatization of pure quantificational logic. This axiom system
+adopts all tautologies of propositional logic as axioms and modus
+ponens as a rule of inference, and it supplements them with two
+more axiom schemata and a rule of universal generalization. The first
+two axiom schemata are:
+
+(∀1∀1\forall 1) ∀x A→A(y/x)∀x A→A(y/x)\forall
+x \ A \rightarrow A(y/x),
+
+provided yyy is free for xxx in AAA.
+(∀2∀2\forall 2) ∀x(A→B)→(A→∀x B)∀x(A→B)→(A→∀x B)\forall
+x (A \rightarrow B) \rightarrow (A \rightarrow
+\forall x \ B),
+
+provided xxx does not occur free in AAA.
+
+
+The first axiom, (∀1∀1\forall 1), is commonly known as the axiom of
+universal instantiation. To complete the axiomatization, we
+need to add a rule of universal generalization:
+
+(∀3∀3\forall 3) from
+AAA, infer ∀x A∀x A\forall x \ A.
+
+
+Since ∃x A∃x A\exists x \ A abbreviates ¬∀x¬ A¬∀x¬ A\lnot \forall x \lnot \ A, we
+have a principle of existential generalization:
+
+ A(y/x)→∃x AA(y/x)→∃x AA(y/x) \rightarrow
+\exists x \ A,
+
+provided yyy is free for xxx in AAA.
+
+
+This principle is not without consequence. Since, for example, Px→PxPx→PxPx
+\rightarrow Px is a tautology, which is available as an axiom, the
+combination with modus ponens and existential generalization
+yields ∃x(Px→Px)∃x(Px→Px)\exists x (Px \rightarrow Px) as a theorem. For another
+controversial example, consider the theorem ∀x Px→∃x Px∀x Px→∃x Px\forall x \ Px
+\rightarrow \exists x \ Px, which is similarly derivable from the
+axioms by combining universal instantiation and existential
+generalization. Some have found these consequences objectionable on
+the grounds that the existence of an object should not be derivable
+from logic alone.
+1.1.3 Interpretations for Pure Quantificational Logic
+
+The interpretation of the language of pure quantificational logic
+requires one to specify both a domain for the variables to range over
+and an extension for each non-logical predicate of the language.
+Alfred Tarski developed what is now known as a model theory for a wide
+range of formal languages. We recall some definitions from the entry
+on
+ model theory.
+ A model for the language of pure quantificational logic is an ordered
+pair, ⟨D,I⟩⟨D,I⟩\langle D, I\rangle, where DDD is a non-empty set, and
+III is an interpretation function, which maps each nnn-place
+predicate of the language into a set of ordered nnn-tuples of
+objects in the set DDD. DDD provides the domain of discourse for
+the quantifier, and III provides each predicate of the language with
+an extension: one-place predicates are mapped into subsets of DDD,
+two-place predicates are mapped into sets of ordered pairs of members
+of DDD, and more generally, nnn-place predicates are mapped into
+sets of nnn-tuples of members of DDD.
+
+Truth in a model is then defined in terms of satisfaction. A variable
+assignment sss for the model ⟨D,I⟩⟨D,I⟩\langle D, I\rangle is a function
+from the set of variables of the language into the domain DDD. A
+formula AAA is satisfied in a model ⟨D,I⟩⟨D,I⟩\langle D, I\rangle by an
+assignment sss of objects to variables. If sss is a variable
+assignment for ⟨D,I⟩⟨D,I⟩\langle D, I\rangle, we write s[x/d]s[x/d]s[x/d] to specify
+a variable assignment, which is just like sss except perhaps for the
+fact that it assigns object ddd in DDD to the variable xxx.
+
+We define a formula to be satisfied in a model ⟨D,I⟩⟨D,I⟩\langle D, I
+\rangle by an assignment sss recursively as follows. An atomic
+formula Pnix1,…,xnPnix1,…,xnP^{n}_{i} x_{1}, \ldots , x_{n} is satisfied in ⟨D,I⟩⟨D,I⟩\langle
+D, I\rangle by sss if, and only if, ⟨s(x1),…,s(xn)⟩∈I(Pni)⟨s(x1),…,s(xn)⟩∈I(Pni)\langle s(x_{1}), \ldots,
+s(x_{n})\rangle \in I(P^{n}_{i}), which means that the nnn-tuple
+of objects sss assigns to the variables that occur in the formula is
+in the interpretation of the predicate PniPniP^{n}_{i} under III. A
+negation ¬B¬B\lnot B is satisfied in ⟨D,I⟩⟨D,I⟩\langle D, I\rangle by sss
+if, and only if, BBB is not satisfied in ⟨D,I⟩⟨D,I⟩\langle D, I\rangle by
+sss. A conditional (B→C)(B→C)(B \rightarrow C) is satisfied in ⟨D,I⟩⟨D,I⟩\langle
+D, I\rangle by sss if, and only if, BBB is not satisfied or
+CCC is satisfied in ⟨D,I⟩⟨D,I⟩\langle D, I\rangle by sss. Finally,
+∀x B∀x B\forall x \ B is satisfied in ⟨D,I⟩⟨D,I⟩\langle D, I\rangle by sss if,
+and only if, BBB is satisfied in ⟨D,I⟩⟨D,I⟩\langle D, I\rangle by all
+assignments of the form s[x/d]s[x/d]s[x/d], where ddd is a member of the
+domain DDD.
+
+A formula AAA is true in a model ⟨D,I⟩⟨D,I⟩\langle D, I\rangle
+if, and only if, AAA is satisfied in ⟨D,I⟩⟨D,I⟩\langle D, I\rangle under
+all assignments for the model. A formula AAA is valid if,
+and only if, AAA is true in all models.
+1.1.4 Metatheory for Pure Quantificational Logic
+
+The Tarskian model theory for pure quantificational logic gives us
+exactly what we want. Since the axioms of pure quantificational logic
+are valid and the rules of inference preserve validity, all theorems
+of pure quantificational logic are valid.
+ (Soundness).[3]
+ One may in addition, prove that all valid formulas are, in fact,
+derivable from the axioms of pure quantificational logic.
+(Completeness). The entry on
+ classical logic
+ outlines a proof.
+
+Call a set of formulas ΓΓ\Gamma satisfiable if, and only
+if, there is a model ⟨D,I⟩⟨D,I⟩\langle D, I\rangle and a variable assignment
+sss, which satisfies each formula AAA in ΓΓ\Gamma in the model.
+A set ΓΓ\Gamma of formulas is satisfiable if, and only if, every
+finite subset of ΓΓ\Gamma is satisfiable. (Compactness).
+This is a simple corollary of Completeness.
+
+A simple version of the Löwenheim-Skolem theorem states that if a
+set of formulas ΓΓ\Gamma has an infinite model, then it has a
+denumerable model, where a denumerable model is one whose
+domain is no larger than the set of natural numbers. There is a
+generalized form as well. If we let the cardinality κκ\kappa of the
+non-logical vocabulary be greater than ℵ0ℵ0\aleph_0, which is the
+cardinality of the set of natural numbers, then if ΓΓ\Gamma has an
+infinite model, then it has a model of cardinality κκ\kappa.
+
+Model-theoretic interpretations are sets: a model is an ordered pair
+of a non-empty set and an interpretation function. But since modern
+ set theory
+ proves that there is no universal set, no model can ever interpret
+the quantifiers by means of a universal domain of discourse. It may
+seem, then, that there are interpretations of the language of pure
+quantificational logic to which no model corresponds. And this raises
+the question of whether truth in all models may fall short of truth
+under all interpretations of the language.
+
+Fortunately, there is an elegant argument due to Georg Kreisel (1967),
+which tells us that we can safely restrict attention to set-based
+models for the specification of the set of validities of pure
+quantificational logic: a formula AAA of the language of
+quantificational logic is true under every interpretation of the
+language if, and only if, it is true in every model. The argument is a
+simple application of Completeness. If AAA is true under every
+interpretation, whether it is a model or not, then AAA will be true
+in every model. The challenge, however, is to argue for the converse.
+But if AAA is true in every model, then, by Completeness, AAA is a
+theorem of pure quantificational logic. And since every theorem is
+presumably true under every interpretation, not just model-theoretic
+ones, it follows that AAA is true under every interpretation. Thus
+Kreisel’s argument suggests we can make do with models for the
+purpose of characterizing validity in pure quantificational
+ logic.[4]
+1.2 Classical Quantificational Logic with Identity
+
+Classical quantificational logic allows for singular terms other than
+variables. There are, first, individual constants, and, second,
+singular terms, which result from the combination of a function symbol
+with an appropriate number of singular terms. In addition to this,
+classical quantificational logic with identity makes provision for a
+special identity predicate.
+
+The vocabulary of the classical theory of quantification and identity
+extends the vocabulary of pure quantificational logic with a set of
+individual constants with or without subscripts, a,b,c,a1a,b,c,a1a, b, c, a_1,
+…, and a set of function symbols of various kinds: one-place
+function symbols, f1,g1,f11f1,g1,f11f^{1}, g^{1}, f^{1}_{1}, …, two-place
+function symbols, f2,g2,g21f2,g2,g21f^{2}, g^{2}, g^{2}_{1},
+ etc.[5]
+ In addition to this, we may add a special two-place predicate, ===,
+for identity.
+
+Before we modify the definition of formula for the expanded
+language, we may give a recursive definition of a term of the
+language of the classical theory of quantification and identity. An
+expression ttt is a term if, and only if, (i) ttt is an individual
+variable, or (ii) ttt is an individual constant, or (iii) ttt is
+an expression of the form fnit1,…,tnfnit1,…,tnf^{n}_{i}t_{1}, \ldots, t_{n}, where
+fnifnif^{n}_{i} an nnn-place function symbol and t1t1t_1, …,
+tntnt_n are themselves terms. Given the definition of term, we can
+reformulate the definition of atomic formula for the expanded
+language to consist of all and only expressions AAA of the form
+Pnit1,…,tnPnit1,…,tnP^n_i t_1, \ldots, t_n, where PniPniP^n_i is an nnn-place
+predicate and t1t1t_1, …, tntnt_n are each terms or ti=tjti=tjt_i =
+t_j in which titit_i and tjtjt_j are terms. At this point, we may
+adapt the usual recursive definition of formula for the
+expanded language.
+
+The axioms of classical quantificational logic with identity include
+axioms for quantification and axioms for identity. The axioms for
+quantification include a suitably modified variant of (∀1)(∀1)(\forall 1)
+in addition to (∀2)(∀2)(\forall 2) and (∀3)(∀3)(\forall 3). The minimal
+adjustment in (∀1)(∀1)(\forall 1) is meant to accommodate the presence of
+function symbols and individual constants. We call a term ttt
+free for a variable xxx if, and only if, no free occurrence
+of xxx lies within the scope of a quantifier ∀y∀y\forall y or
+∃y∃y\exists y, where yyy is a variable which occurs in ttt. The
+axiom of universal instantiation, (∀1)(∀1)(\forall 1), now reads:
+
+ ∀x A→A(t/x)∀x A→A(t/x)\forall x \ A
+\rightarrow A(t/x),
+
+provided ttt is free for xxx in AAA.
+
+
+The other set of axioms concerns identity. In particular, we will
+supplement the axioms for quantification with an axiom, (I1), and an
+axiom schema, (I2), designed to govern the identity predicate:
+
+(I1) t=tt=tt = t
+ 
+(I2) t1=t2→(A(t1/x)→A(t2/x))t1=t2→(A(t1/x)→A(t2/x))t_1 = t_2
+\rightarrow (A(t_1/x) \rightarrow A(t_2/x))
+
+provided t1t1t_1 and t2t2t_2 are free for xxx in
+AAA
+
+
+The first axiom is sometimes known as Reflexivity, and the second is
+known as the Indiscernibility of Identicals. When combined, they
+enable one to derive the symmetry and transitivity of identity as
+immediate
+ consequences.[6]
+
+We need only make minimal adjustments in the model theory in order to
+accommodate the expanded vocabulary of the classical theory of
+quantification and identity. A model ⟨D,I⟩⟨D,I⟩\langle D, I \rangle will
+still consist of a non-empty domain, DDD, and an interpretation
+function, III. One difference, however, is that we now take III,
+in addition, to assign a member of the domain DDD to each individual
+constant and to assign an nnn-place function from the set of ordered
+nnn-tuples of members of DDD, DnDnD^{n}, into DDD to each
+function symbol fnifnif^{n}_{i}.
+
+We now define satisfaction in terms of denotation. Given a
+model ⟨D,I⟩⟨D,I⟩\langle D, I\rangle and an assignment sss for the model,
+we say that a term ttt denotes a member ddd of the domain
+under assignment sss, in symbols Dens(t)=dDens(t)=dDen_{s}(t) = d, if, and only
+if, (i) ttt is a variable xixix_i and s(xi)=ds(xi)=ds(x_i) = d, or (ii) ttt
+is an individual constant ccc and I(c)=dI(c)=dI(c) = d, or (iii) ttt is of
+the form fnit1,…,tnfnit1,…,tnf^{n}_{i}t_1 , \ldots, t_n and d=I(fni)(Dens(t1),…,Dens(tn))d=I(fni)(Dens(t1),…,Dens(tn))d =
+I(f^{n}_{i})(Den_{s}(t_1), \ldots, Den_{s}(t_n)).
+
+The definition of satisfaction in a model ⟨D,I⟩⟨D,I⟩\langle D, I\rangle by
+an assignment sss proceeds much like before, except for the obvious
+clauses for atomic formulas of the form Pnit1,…,tnPnit1,…,tnP^n_i t_1, \ldots, t_n and
+ti=tjti=tjt_i = t_j: Pnit1,…,tnPnit1,…,tnP^n_i t_1, \ldots, t_n is satisfied by sss in
+⟨D,I⟩⟨D,I⟩\langle D, I\rangle if and only if ⟨Dens(t1),…,Dens(tn)⟩∈I(Pni)⟨Dens(t1),…,Dens(tn)⟩∈I(Pni)\langle Den_{s}(t_1), \ldots,
+Den_{s}(t_n) \rangle \in I(P^n_i). And ti=tjti=tjt_i = t_j is satisfied by
+sss in ⟨D,I⟩⟨D,I⟩\langle D, I\rangle if and only if the denotation of
+titit_i under sss is identical to the denotation of tjtjt_j under
+sss.
+
+The definitions of truth in a model and validity
+carry over from pure quantificational logic.
+
+We have Soundness and Completeness theorems for classical
+quantificational logic with identity as well as Compactness and
+Löwenheim-Skolem theorems. The entry on
+ first-order model theory
+ offers an in-depth examination of these and other meta-theoretic
+results for classical quantificational logic with identity.
+2. Departures from Classical Quantificational Logic
+
+In what follows, we look at three rival accounts of quantification in
+modern logic. They are departures from classical quantification logic
+because they reject some of classical axioms of quantification or
+because they question some aspect of the Tarskian model theory we have
+used to interpret the language of classical quantification logic.
+2.1 Inclusive Quantificational Logic
+
+In pure quantificational logic, one may, for example, derive the
+conditional ∀x Px→∃x Px∀x Px→∃x Px\forall x \ Px \rightarrow \exists x \ Px as an
+immediate consequence of the axioms. But the derivability of this
+sentence—and others like ∃x(Px→Px)∃x(Px→Px)\exists x (Px \rightarrow
+Px)—may give one pause. To the extent to which logic should
+remain neutral in ontological matters, the axioms of pure
+quantificational logic should not by themselves be able to prove that
+there is something rather than nothing. From a model-theoretic
+perspective, the exclusion of the empty domain as an eligible domain
+for a model may likewise seem artificial. Since the validity of
+formulas like ∀x Px→∃xPx∀x Px→∃xPx\forall x \ Px \rightarrow \exists x Px or ∃x(Px→Px)∃x(Px→Px)\exists
+x (Px \rightarrow Px) is largely a byproduct of what may seem an
+ad hoc stipulation, one may be motivated to expand the range
+of model-theoretic interpretations in order to allow for a model with
+an empty domain of discourse. Quine (1954) used the label
+“inclusive” to refer to alternatives to quantificational
+logic that make allowance for such a model.
+
+According to Quine (1954), an inclusive quantificational logic should
+evaluate every universally quantified formula of the form ∀x A∀x A\forall x
+\ A to be vacuously true in a model ⟨D,I⟩⟨D,I⟩\langle D, I\rangle in which
+DDD is empty, and it should evaluate every existentially quantified
+formula of the form ∃x A∃x A\exists x \ A to be false in such a model.
+∀x Px→∃x Px∀x Px→∃x Px\forall x \ Px \rightarrow \exists x \ Px and ∃x(Px→Px)∃x(Px→Px)\exists x (Px
+\rightarrow Px) are therefore not valid on the expanded model
+theory. However, it is quite a delicate matter to provide a
+compositional amendment of the Tarskian definition of truth in a model
+⟨D,I⟩⟨D,I⟩\langle D, I \rangle under an assignment sss that delivers
+Quine’s
+ verdicts.[7]
+
+An axiomatization of inclusive quantificational logic should weaken
+the axiom of universal instantiation in order to prevent the
+derivation of theorems such as (∀x Px→∃x Px)(∀x Px→∃x Px)(\forall x \ Px \rightarrow \exists x
+\ Px) or ∃x(Px→Px)∃x(Px→Px)\exists x (Px \rightarrow Px). One option independently
+explored by Kripke (1963) and Lambert (1963) is to replace (∀1∀1\forall
+1) with a closed axiom schema:
+
+(∀1−∀1−\forall 1^{-}) ∀y(∀x A→A(y/x))∀y(∀x A→A(y/x))\forall
+y (\forall x \ A \rightarrow A(y/x)),
+
+provided yyy is free for xxx in AAA.
+
+
+In the absence of identity, by itself, this change results in an
+inadequate axiomatization of pure quantificational logic, one which
+cannot yield every instance of a permutation principle discussed by
+Fine (1983):
+
+ ∀x∀y A→∀y∀x A∀x∀y A→∀y∀x A\forall x \forall y
+\ A \rightarrow \forall y \forall x \ A.
+
+
+The permutation principle, however, becomes redundant in the presence
+of axioms for identity.
+
+The axiomatization of classical quantification logic with identity
+that emerges from the substitution is discussed by Lambert (1963) with
+a different motivation in mind: Lambert wanted to allow for
+alternatives to the classical theory of quantification and identity
+that remain “free” from any assumptions concerning the
+existence of denotations for its singular terms and predicates. This
+motivation has given rise to a variety of alternatives to the
+classical theory of quantification and identity that are generally
+subsumed under the label free logic. Some free logics qualify
+as inclusive quantificational logics, but not all do. To the extent to
+which the motivations are different, such differences are only to be
+expected. The entry on
+ free logic
+ discusses a variety of options for free logic.
+2.2 Intuitionistic Quantificational Logic
+
+Intuitionistic propositional logic is weaker than classical
+propositional logic. All intuitionistically valid formulas are
+classically valid, but classically valid formulas like (A∨¬A)(A \vee \lnot
+A) and (¬¬A→A)(\lnot \lnot A \rightarrow A) are not intuitionistically
+ valid.[8]
+ The exclusion of these formulas from the range of intuitionistic
+theorems can be motivated by the usual Brouwer-Heyting-Kolmogorov
+interpretation of the connectives:
+
+A proof of ¬A\lnot A consists of a proof that there cannot be a
+proof of AA.
+A proof of (A∧B)(A \wedge B) consists of a proof of AA and a
+proof of BB.
+A proof of (A∨B)(A \vee B) consists of a proof of AA or a proof
+of BB.
+A proof of (A→B)(A \rightarrow B) consists of a construction, which
+turns a proof of AA into a proof of BB.
+
+
+Despite the differences in interpretation, there is an important
+connection between intuitionistic and classical propositional logic.
+For we know that a formula AA is a theorem of classical
+propositional logic if, and only if, ¬¬A\neg \neg A is a theorem of
+intuitionistic propositional logic. Thus while (A∨¬A)(A \vee \neg A) is
+obviously not a theorem of intuitionistic propositional logic, ¬¬(A∨¬A)\neg
+\neg (A \vee \neg A) is in fact intuitionistically provable. This
+fact is at the core of a familiar translation from classical into
+intuitionistic propositional logic due to Kurt Gödel and Gerhard
+Gentzen. For a summary of this and related facts, the reader may
+consult the entry on
+ intuitionistic logic.
+
+Now, intuitionistic quantificational logic may be motivated by the
+Brouwer-Heyting-Kolmogorov interpretation of the quantifiers:
+
+A proof of ∃x A\exists x \ A is given by a specification of some
+dd and a proof that AA obtains for dd.
+A proof of ∀x A\forall x \ A is given by a construction, which
+given an object dd, produces a proof that AA obtains for
+dd.
+
+
+The intuitionistic interpretation does not sanction the classical
+equivalence between ∃x A\exists x \ A and ¬∀x¬ A\neg \forall x \neg \ A.
+Indeed, the two quantifiers must remain part of the primitive
+vocabulary of intuitionistic quantificational logic.
+2.2.1 Axioms for Intuitionistic Quantificational Logic
+
+The intuitionistic axioms of quantification include counterparts of
+the classical axioms of universal instantiation and existential
+generalization:
+
+(∀I1\forall^{I}1) ∀x A→A(y/x)\forall
+x \ A \rightarrow A(y/x)
+
+provided yy is free for xx in AA.
+(∃I1\exists^{I}1) A(y/x)→∃x AA(y/x)
+\rightarrow \exists x \ A
+
+provided yy is free for xx in AA.
+
+
+In addition to this, we require counterparts of the classical
+(∀I2\forall^{I}2) for each quantifier:
+
+(∀I2\forall^{I}2) ∀x(A→B)→(A→∀x B)\forall
+x (A \rightarrow B) \rightarrow (A \rightarrow
+\forall x \ B),
+
+provided xx does not occur freely in AA.
+(∃I2\exists^{I}2) ∃x(A→B)→(∃x A→B)\exists
+x (A \rightarrow B) \rightarrow (\exists x \ A
+\rightarrow B),
+
+provided xx does not occur freely in BB.
+
+
+We have a rule of universal generalization:
+
+(∀I3\forall^{I}3)  from
+AA, infer ∀x A\forall x \ A.
+
+
+It is not generally true that a formula AA is a theorem of pure
+quantificational logic if, and only if, ¬¬A\neg \neg A is a theorem
+of intuitionistic quantificational logic, but there is a more
+sophisticated double-negation interpretation of theorems of pure
+quantificational logic. In particular, we have that a formula AA is
+a theorem of quantificational logic if, and only if, it is a theorem
+of intuitionistic quantificational logic supplemented with a double
+negation schema:
+
+(DNS) ∀x ¬¬A→¬¬∀x A\forall x \
+\neg \neg A \rightarrow \neg \neg \forall x \ A
+
+
+Much like in the propositional case, this fact may be exploited to
+give a more sophisticated translation from pure quantificational logic
+into intuitionistic quantificational logic. Details are given in
+Moschovakis (2010).
+
+In intuitionistic quantificational logic, we cannot move from ¬∀x¬A\neg
+\forall x \neg A to ∃x A\exists x \ A, but we still have this:
+
+ ∃x A→¬∀x¬ A\exists x \ A
+\rightarrow \neg \forall x \neg \ A
+
+
+Moreover, since AA intuitionistically entails ¬¬A\lnot \lnot A, we
+can infer:
+
+ ∀xA→¬¬∀xA\forall x A
+\rightarrow \lnot \lnot \forall x A
+
+
+In intuitionistic quantificational logic, ∀x¬¬A\forall x \lnot \lnot A
+is strictly weaker than ¬¬∀xA\lnot \lnot \forall x A, since we
+have:
+
+ ¬¬∀xA→∀x¬¬A\lnot \lnot \forall
+x A \rightarrow \forall x \lnot \lnot A.
+
+2.2.2 Kripke Models for Intuitionistic Quantificational Logic
+
+A variety of interpretations have been advanced for intuitionistic
+quantificational logic, but the model theory developed by Kripke
+(1965) is perhaps the most similar to the model theory of classical
+quantificational logic. A Kripke model K\mathcal{K} is based on a
+frame ⟨S,⪯⟩\langle S, \preceq \rangle, which consists of a set of
+stages partially ordered by an accessibility relation
+⪯\preceq. A Kripke model assigns an inhabited domain, DsD_{s}, to
+each stage s∈Ss \in S, subject to the constraint that Ds⊆Ds′D_s \subseteq
+D_{s'} when s⪯s′s \preceq s'. We may assume that suitable names for
+the members of each DsD_s have been adjoined to the language.
+Finally, for n>0n&gt;0, a Kripke model assigns a set of nn-tuples
+of members of DsD_s for each nn-place predicate PnP^{n} at each
+stage ss in SS, subject to the constraint that if s⪯s′s \preceq
+s' and PnP^n is true of ⟨d1,…,dn⟩\langle d_1, \ldots, d_n \rangle at
+ss, then PnP^{n} is still true of ⟨d1,…,dn⟩\langle d_1, \ldots, d_n
+\rangle at s′s'.
+
+The entry on
+ intuitionistic logic
+ provides a more formal and complete statement of Kripke’s model
+theory for intuitionistic quantificational logic and states Soundness
+and Completeness Theorems for it. Very roughly, a negation ¬A\neg A
+is true at a stage ss if, and only if, AA is not true at any
+stage s′s' such that s⪯s′s \preceq s'; an existentially quantified
+formula ∃x A\exists x \ A is true at a stage ss if, and only if,
+AA is true of some dd in DsD_s at ss; and a formula
+∀x A\forall x \ A is true at a stage ss if, and only if, AA is
+true of every dd in Ds′D_{s'} for every s′s' such that s⪯s′s
+\preceq s'.
+
+For a taste of what Kripke models can do, consider:
+
+
+
+¬∀x¬ A→∃x A\neg \forall x \neg \ A \rightarrow \exists x \ A
+
+
+¬¬∀x A→∀x A\lnot \lnot \forall x \ A \rightarrow \forall x \ A
+
+
+∀x¬¬A→¬¬∀x A\forall x \lnot \lnot A \rightarrow \lnot \lnot \forall x \
+A
+
+
+Let K\mathcal{K} be a Kripke model based on a frame in which we
+have two stages s0⪯s1s_0 \preceq s_1. Assume {d}\{d \} is the domain
+associated to each stage by the model, and let a monadic predicate
+PP be true of dd at s1s_1 but not at s0s_0. We may verify
+that ¬∀x¬Px\neg \forall x \neg Px is true at s0s_0, even though
+∃x Px\exists x \ Px is not true at s0s_0. So, (i) is not
+intuitionistically valid. One may likewise verify that ¬¬∀xPx\lnot \lnot
+\forall x Px is true at s0s_0, even though ∀xPx\forall x Px is not
+true at s0s_0. It follows that (ii) is not intuitionistically valid
+either.
+
+For (iii), consider, for example, a Kripke model based on a frame in
+which we have an infinite number of stages s0⪯s1⪯…⪯sn⪯…s_0 \preceq s_1 \preceq
+\ldots \preceq s_n \preceq \ldots. We may assume that Dsn={d0,…,dn}D_{s_{n}} =
+\{ d_0 , \ldots, d_n \} and that a monadic predicate PP is true
+at sns_n of every dmd_m in the domain except for dnd_n. It turns
+out that ∀x¬¬Px\forall x \lnot \lnot Px is true at s0s_0 even though
+¬¬∀xPx\lnot \lnot \forall x Px is not true at s0s_0. Therefore,
+∀x¬¬A→¬¬∀xA\forall x \lnot \lnot A \rightarrow \lnot \lnot \forall x A is not
+intuitionistically valid either. These and similar examples are
+discussed in Burgess 2009.
+2.3 Substitutional Quantification
+
+The model-theoretic interpretation of the language of quantificational
+logic relied on the Tarskian definition of satisfaction in a model by
+an assignment of values to the variables. But the assignment of an
+object to a variable is never dependent on the availability of a term,
+tt, for the object in the language for which one defines truth in a
+model. Indeed, an existentially quantified formula ∃x A\exists x \ A
+may well be true in a model even if no atomic formula of the form
+A(t/y)A(t/y) is true in the model.
+
+Substitutional quantifiers Πα A\Pi \alpha \ A and Σα A\Sigma \alpha \
+A are interpreted differently. An interpretation associates with
+them not a domain of quantification, but rather a substitution class,
+CC, of linguistic expressions of an appropriate syntactic category
+in the initial language. The truth conditions for substitutionally
+quantified sentences of the form Σα A\Sigma \alpha \ A and Πα A\Pi
+\alpha \ A may be given in terms of the truth conditions of suitable
+substitution instances of A(ϵ/α)A(\epsilon / \alpha) in which each
+occurrence of the substitutional variable α\alpha has been replaced
+with a linguistic expression, ϵ\epsilon, of the appropriate
+syntactic category in the substitution class for the quantifier:
+
+A sentence of the form Σα A\Sigma \alpha \ A is true relative to a
+substitution class CC if, and only if, some substitution of the
+variable α\alpha for an expression ϵ\epsilon in the substitution
+class CC for the quantifier, A(ϵ/α)A(\epsilon / \alpha), is
+true.
+A sentence of the form Πα A\Pi \alpha \ A is true relative to a
+substitution class CC if, and only if, every substitution of the
+variable α\alpha for an expression ϵ\epsilon in the substitution
+class CC for the quantifier, A(ϵ/α)A(\epsilon / \alpha), is
+true.
+
+
+This characterization of substitutional quantification allows for
+substitutional variables of different syntactic categories, whether
+singular terms, predicates or sentences. Indeed, substitutional
+quantification is often used to mimic quantification into predicate
+and sentence position of the kinds discussed later in this entry.
+
+Early work on substitutional quantification was developed in Marcus
+(1961) but it soon became the subject of debate in the next two
+decades as philosophers made use of substitutional quantification in
+ontology and the philosophy of language and mathematics. Belnap and
+Dunn (1968), Parsons (1971), and Kripke (1976) are some of the
+relevant papers in the debate. For a sense of some of the purported
+applications of substitutional quantification, the reader may consult
+the essays collected in Gottlieb 1981. For additional discussion, see
+Hand (2007).
+2.3.1 A simple example
+
+Let us momentarily focus on singular terms. To keep matters simple,
+consider an impoverished fragment of the language of arithmetic with
+one constant, 00, read: “zero” and one functional
+symbol, SS, read: “the successor of”. The domain of the
+intended interpretation consists of a set of natural numbers, which
+are named by singular terms of the form 00, SS0SS0, SSS0SSS0,
+…, etc. If we now associate the class of all such terms to the
+substitutional quantifiers Σα\Sigma \alpha and Πα\Pi \alpha, then
+a sentence like Σα α=α\Sigma \alpha \ \alpha = \alpha is evaluated as
+true in virtue of the truth of formulas like 0=00 = 0, whereas Πα α<α\Pi
+\alpha \ \alpha &lt; \alpha is evaluated as false in virtue of
+falsity of formulas like 0<00 &lt; 0. In general, a sentence of the
+form Σα A\Sigma \alpha \ A exhibits the same truth conditions as an
+infinitary disjunction of the 
+
+form: A(0/α)∨A(S0/α)∨…∨A(SSn⏞…S0/α)∨…A(0/\alpha) \vee A(S0/\alpha) \vee \ldots\vee A(SS
+\overbrace{\ldots}^n S0/\alpha) \vee \ldots whereas a sentence of
+
+ the form Πα A\Pi \alpha \ A
+exhibits the same truth conditions as an 
+
+infinitary conjunction: A(0/α)∧A(S0/α)∧…∧A(SSn⏞…S0/α)∧…A(0/\alpha) \wedge A(S0/\alpha) \wedge
+\ldots\wedge A(SS \overbrace{\ldots}^n S0/\alpha) \wedge \ldots The
+
+ case of
+arithmetic is optimal because we have a name for each member of the
+intended domain. This means that in general, a quantified sentence of
+the form ∃x A\exists x \ A will be true if, and only if its
+substitutional counterpart Σα A\Sigma \alpha \ A is likewise true. But
+in this respect, however, the language of arithmetic is the exception
+and not the rule. In real analysis, for example, there are too many
+objects in the domain to have a name in a countable language. In such
+a situation, we must confront the risk that a sentence of the form
+∃x A\exists x \ A may be true even if Σα A\Sigma \alpha \ A remains
+false in virtue of the lack of a true substitution instance of the
+form A(t/α)A(t/ \alpha). This may happen, for example, if the objects
+that satisfy the open formula AA are not denoted by any singular
+term in the language.
+
+
+Call the initial language “the object language”. And call
+the language in which we explain the truth conditions of sentences of
+the initial language “the metalanguage”. In the
+metalanguage, we have explained the truth condition for Σα A\Sigma
+\alpha \ A in terms of what looks like objectual quantification over
+linguistic expressions. To acknowledge this is of course not to claim
+that the intended interpretation of substitutional quantification is
+one on which it is merely objectual quantification over linguistic
+expressions. But just what the intended interpretation of the
+substitutional quantifier might be has been the subject of intense
+controversy. Indeed, van Inwagen (1981) and Fine (1989), for example,
+have each argued that there is no separate intended interpretation we
+can understand independently from our grasp of objectual
+quantification over linguistic expressions of the relevant sort.
+2.3.2 Kripke on Substitutional Quantification
+
+Whatever the philosophical import of substitutional quantification,
+Kripke (1976) makes plain that there is no technical obstacle to
+introducing substitutional quantifiers into a given language. In what
+is perhaps the canonical treatment of substitutional quantification,
+he explained how to extend an interpreted language L\mathcal{L}
+into a substitutional language LΣ\mathcal{L}^{\Sigma} equipped with
+substitutional quantification over a class of expressions in
+L\mathcal{L}. One first expands the vocabulary of L\mathcal{L}
+with an infinite stock of variables α1\alpha_1, α2\alpha_2,
+… and a substitutional quantifier Σ\Sigma. (Kripke defines
+Π\Pi as the dual of Σ\Sigma, where Πα A\Pi \alpha \ A
+abbreviates: ¬Σα¬ A\lnot \Sigma \alpha \lnot \ A.)
+
+An atomic preformula is an expression that results from a
+sentence of L\mathcal{L} when zero or more terms are replaced by a
+substitutional variable. A form is an atomic preformula,
+where the replacement of its substitutional variables with terms
+yields back a sentence. We can now define a formula of
+LΣ\mathcal{L}^{\Sigma} recursively. AA is a formula of
+LΣ\mathcal{L}^{\Sigma} if and only if either (i) AA is a
+form of LΣ\mathcal{L}^{\Sigma} or (ii) AA is ¬B\lnot
+B, where BB is a formula of LΣ\mathcal{L}^{\Sigma} or (iii)
+AA is (B→C)(B \rightarrow C), where BB and CC are each
+formulas of LΣ\mathcal{L}^{\Sigma} or (iv) AA is Σα B\Sigma \alpha
+\ B, where BB is a formula of LΣ\mathcal{L}^{\Sigma}. A
+sentence of LΣ\mathcal{L}^{\Sigma} is a formula without free
+substitutional variables.
+
+Kripke defines truth for sentences of LΣ\mathcal{L}^{\Sigma}
+recursively in terms of truth in L\mathcal{L}. If AA is an
+atomic sentence of LΣ\mathcal{L}^{\Sigma}—which may well be a
+complex sentence of L\mathcal{L}, then AA is true in
+LΣ\mathcal{L}^{\Sigma} if, and only if, AA is true in
+L\mathcal{L}. If AA is a sentence of the form ¬B\lnot B, then
+AA is true in LΣ\mathcal{L}^{\Sigma} if, and only if, BB is
+not true in LΣ\mathcal{L}^{\Sigma}. If AA is of the form (B→C)(B
+\rightarrow C), then AA is true in LΣ\mathcal{L}^{\Sigma} if,
+and only if, BB is not true or CC is true in
+LΣ\mathcal{L}^{\Sigma}. Finally, and more crucially, if AA is of
+the form Σα B\Sigma \alpha \ B, then AA is true in
+LΣ\mathcal{L}^{\Sigma} if and only if B(ϵ/α)B(\epsilon/\alpha) is true
+in LΣ\mathcal{L}^{\Sigma} for some ϵ\epsilon in the substitution
+class CC associated with Σ\Sigma.
+
+Kripke then defines a sentence AA of the language of pure
+substitutional quantificational logic to be valid if, and only if
+AA comes out true no matter what base language L\mathcal{L} and
+non-empty class of terms C\mathcal{C} we take as input for the
+substitutional expansion and what predicates of L\mathcal{L} we
+substitute for the predicates of AA. In particular, Kripke notes
+that when the quantifiers of a valid sentence of pure quantificational
+logic are suitably rewritten as substitutional quantifiers, we obtain
+a valid sentence in the language of pure substitutional
+quantificational logic.
+3. Extensions of Classical Quantificational Logic
+
+Each departure from classical quantificational logic we have
+considered originated from an objection to either axioms of pure
+quantificational logic or the Tarskian definition of satisfaction in a
+model by an assignment of objects to the variables of the language. We
+now take both for granted and look at proposed extensions of classical
+quantificational logic with new styles of quantification. Each
+extension will generally require us to add new axioms for the new
+styles of quantification and to expand the Tarskian definition of
+truth in a model in terms of satisfaction.
+3.1 Generalized Quantifiers
+
+Frege originally conceived of the quantifier ∀\forall as a monadic
+predicate that is true of a first-level concept FF under which only
+objects fall if, and only if, all objects fall under FF; likewise,
+Frege assimilated ∃\exists to a monadic predicate that is true of a
+first-level concept if, and only if, at least one object falls under
+FF. In modern terms, we may say that the truth conditions of
+∀x A\forall x \ A are given in terms of a certain condition on the
+extension of the formula AA. Given a model ⟨D,I⟩\langle D, I\rangle
+and a formula A(x)A(x) with a single free variable xx, it will be
+convenient to use A(x)[d]A(x)[d] to abbreviate: AA is satisfied in
+⟨D,I⟩\langle D, I\rangle by variable assignments on which dd is the
+value assigned to the variable xx. The extension of a formula
+A(x)A(x) with a single free variable xx in a model ⟨D,I⟩\langle D,
+I\rangle is just {d∈D:A(x)[d]}\{ d \in D: A(x)[d] \}, which we may abbreviate
+I(A)I(A).
+
+ ∀xA\forall x A is
+true in ⟨D,I⟩\langle D, I\rangle if, and only if, D⊆I(A)D \subseteq
+I(A).
+
+
+The contemporary study of generalized quantifiers begins with
+Mostowski (1957) and Lindström (1966) (the entry on
+ generalized quantifiers
+ provides a survey of recent developments and applications in logic
+and natural language). Lindström and Mowstoski began with a
+generalization of Frege’s conception of a quantifier in at least
+two dimensions. First, they considered additional unary quantifiers
+Q(A)Q(A), which behave syntactically like ∀\forall and ∃\exists
+but set a different condition on the extension of AA. Second, they
+considered binary quantifiers Q(A,B)Q(A, B), which set a given condition
+based on a relation between the extensions of AA and BB.
+3.1.1 Cardinality Quantifiers
+
+Cardinality quantifiers provide a simple example of the first sort of
+generalization. If we write card(S)card(S) to denote the cardinality of a
+given set SS, we may introduce unary quantifiers of the form
+Q(A)Q(A), which set a cardinality condition on the extension of a
+formula AA:
+
+ ∃≥nxA\exists_{\geq n} x
+A is true in ⟨D,I⟩\langle D, I\rangle if, and only if, card(I(A))≥ncard(I(A))
+\geq n
+ ∃!nxA\exists !_{n} x A
+is true in ⟨D,I⟩\langle D, I\rangle if, and only if, card(I(A))=ncard(I(A)) =
+n
+
+
+∃≥n\exists_{\geq n} is read: “at least nn objects” and
+∃!n\exists !_{n} is read: “exactly nn objects.” Both
+quantifiers are definable in terms of a standard quantifier against
+the background of classical quantificational logic.
+
+Other cardinality quantifiers, however, do increase the expressive
+power of classical quantifical logic. We may, for example, introduce
+cardinality quantifiers of the form Q(A)Q(A), which require the
+extension of AA to have an infinite cardinality:
+
+ Q0x AQ_0 x \ A is true
+in ⟨D,I⟩\langle D, I\rangle if, and only if, card(I(A))≥ℵ0card(I(A)) \geq
+\aleph_0
+ Q1x AQ_1 x \ A is true
+in ⟨D,I⟩\langle D, I\rangle if, and only if, card(I(A))≥ℵ1card(I(A)) \geq
+\aleph_1
+
+
+ℵ0\aleph_0 is the cardinality of the set of natural numbers, and
+ℵ1\aleph_1 is the next transfinite
+ cardinal.[9]
+ When we supplement classical quantificational logic with Q0Q_0,
+read: “at least ℵ0\aleph_0 objects”, we must relinquish
+Compactness even if we can still retain the Löwenheim-Skolem
+theorem. The opposite is the case, however, when we supplement
+classical quantificational logic with Q1Q_1, read: “at least
+ℵ1\aleph_1 objects” instead.
+
+Two more cardinality quantifiers that have been studied in the
+literature are the Chang quantifier and the Rescher quantifier:
+
+ Cx ACx \ A is true in
+⟨D,I⟩\langle D, I\rangle if, and only if, card(I(A))=card(D)card(I(A)) =
+card(D)
+ Rx AR x \ A is true in
+⟨D,I⟩\langle D, I\rangle if, and only if, card(I(A))>card(D−I(A))card(I(A)) &gt; card(D -
+I(A))
+
+
+The Chang quantifier collapses into ∀\forall only in the finite
+case; if DD is infinite, then the extension of a formula AA,
+I(A)I(A), may match the cardinality of the domain, DD, even if the
+two sets are different, i.e., I(A)≠DI(A) \neq D.
+3.1.2 Generalized Binary Quantifiers
+
+The second dimension of generalization concerns the number of
+arguments we let quantifiers take. We can, for example, introduce
+binary quantifiers, Q(A,B)Q(A, B), whose truth condition is given in
+terms of a binary relation between the extension of the formula AA
+and the extension of the formula BB in a model.
+
+All(A,B)All(A, B) is true in ⟨D,I⟩\langle D, I\rangle if, and only if,
+I(A)⊆I(B)I(A) \subseteq I(B)
+More(A,B)More(A, B) is true in ⟨D,I⟩\langle D, I\rangle if, and only if,
+card(I(A))>card(I(B))card(I(A)) &gt; card(I(B))
+Most(A,B)Most(A, B) is true in ⟨D,I⟩\langle D, I\rangle if, and only if,
+card(I(A)∩I(B))>card(I(A)−I(B))card(I(A) \cap I(B)) &gt; card(I(A)-I(B))
+
+
+As defined above, Most(A,B)Most(A, B), for example, is true if and only if
+more objects are both AA and BB than there are objects that are
+AA and not BB.
+
+Of special interest in the philosophy of language is the case of
+Russellian definite descriptions, which can be subsumed under the
+category of a binary quantifier:
+
+ The(A,B)The(A, B) is true
+in ⟨D,I⟩\langle D, I\rangle if, and only if, card(I(A))=1card(I(A)) = 1 and
+I(A)⊆I(B)I(A) \subseteq I(B)
+
+
+For a systematic discussion of these issues, the reader may consult
+Peters & Westerståhl (2006).
+3.2 Many-Sorted Quantification
+
+We generally let quantifiers bind a single type of variable, but we
+may find it helpful, on occasion, to let them bind additional types of
+variables in order to quantify over different sorts of values. In
+arithmetic, for example, we may want to be able to quantify over
+natural numbers and sets thereof and we may find it convenient to
+classify the individual variables of the language into at least two
+categories. We may reserve lowercase variables x,y,z,x1x, y, z, x_1,
+… to range over natural numbers, and we may use uppercase
+variables X,Y,Z,X1X, Y, Z, X_1, … to range over sets of natural
+numbers. In a many-sorted language with functional symbols and
+individual constants, each singular term would be assigned a single
+sort. If we want identity, we need to include an identity predicate
+for each sort of a variable and insist on each such predicate to be
+flanked only by singular terms of the appropriate sort. Other
+predicates may nevertheless take arguments of different sorts; for
+example, in a two-sorted language in which lowercase variables range
+over numbers and uppercase variables range over sets of numbers, xϵXx
+\epsilon X, for example, can take as arguments variables of
+different sorts and may be read “xx is in XX”.
+
+To accommodate the new styles of variables in the model theory for
+many-sorted logic, we may add a domain for each style of variable. A
+model for a two-sorted language, for example, may consist of an
+ordered triple ⟨D1,D2,I⟩\langle D_1, D_2, I\rangle in which D1D_1 and
+D2D_2 specify the domain of quantification associated to each style
+of variable, and II is an interpretation function, which assigns
+appropriate values and extensions to each expression in the
+non-logical vocabulary. (Since each singular term is assigned a sort,
+II must be constrained to make sure singular terms of each sort
+denote objects in the appropriate domain.) The metatheory for
+many-sorted logic is closely related to the metatheory for classical
+quantificational logic. One may, for example, prove many-sorted
+versions of Compactness and the Löwenheim-Skolem Theorem. Details
+may be found in Enderton 2001.
+
+However, the move to a many-sorted language is largely a matter of
+convenience. Many-sorted quantification may be analyzed in terms of
+restricted one-sorted quantification. For each many-sorted language
+with nn styles of variable, we may introduce a one-sorted language,
+which comes with a one-place predicate, SiS_i, for each sort in the
+many-sorted language. We may set out to translate each formula of the
+many-sorted language into a formula of the one-sorted language: we
+translate each identity in terms of a single identity predicate; a
+quantification on a variable of sort ii, ∀xi A\forall x^i \ A, is
+replaced with a formula of the form ∀x(Six→A)\forall x (S_i x \rightarrow
+A). We may, in addition, turn each model for the many-sorted
+language ⟨D1,…,Dn,I⟩\langle D_1, \ldots, D_n, I \rangle into a model for the
+resulting one-sorted language ⟨⋃nDn,I∗⟩\langle \bigcup_{n} D_n, I^\ast
+\rangle in which we take the domain to consist in the union of the
+domains associated to each original sort. The interpretation function,
+I∗I^\ast will coincide with II when it comes to predicates and
+individual constants. However, I∗I^\ast will generally have to
+extend the interpretation of a functional symbol, fnif^n_i, by II,
+in one way or another. Finally, I∗I^\ast will interpret the identity
+predicate as usual.
+
+Still, even if there is no real gain in expressive power, one reason
+to flag the availability of many-sorted quantification is because some
+of the extensions of classical quantificational logic to be examined
+below are closely related to certain theories couched in the language
+of two-sorted logic. In particular, second-order logic and the theory
+of plural quantification will be each closely related to two
+first-order two-sorted theories, which lack the expressive resources
+often attributed to each extension of classical quantificational
+logic.
+3.3 Second-Order Quantifiers
+
+Second-order logic is an extension of classical quantificational logic
+in which we allow for quantification into predicate position.
+Second-order logic originated with Frege (1879), which developed a
+formal language equipped with predicate variables of the form
+XniX^{n}_{i}. Predicate variables behave syntactically like
+nn-place predicates of the form PniP^{n}_{i}. In second-order
+logic, we allow a predicate variable XniX^{n}_{i} followed by nn
+variables Xnx1,…,xnX^{n}x_{1}, \ldots, x_{n} to count as an atomic formula.
+Likewise, we allow the quantifiers ∀\forall and ∃\exists to bind
+predicate and individual variables as in ∀Xn A\forall X^{n} \ A and
+∃Xn A\exists X^{n} \ A.
+3.3.1 Axioms for second-order quantification
+
+The axioms for second-order logic supplement the axioms of classical
+quantificational logic with distinctive axioms for the second-order
+quantifiers. Call a predicate variable YnY^n free for
+XnX^n in AA if, and only if, no free occurrences of XnX^n lie
+within the scope of a quantification on YnY^n, ∀Yn\forall Y^n or
+∃Yn\exists Y^n:
+
+(∀21\forall^{2}1) ∀Xn A→A(Unj/Xn)\forall
+X^{n} \ A \rightarrow A(U^{n}_{j}/X^{n}),
+
+provided UnjU^{n}_{j} is free for XnX^{n} in
+AA.
+(∀22\forall^{2}2) ∀Xn(A→B)→(A→∀Xn B)\forall
+X^{n} (A \rightarrow B) \rightarrow (A
+\rightarrow \forall X^{n} \ B),
+
+provided XnX^{n} does not occur freely in
+AA.
+
+
+(∀21\forall^2 1) is a second-order version of universal
+instantiation. The second-order version of universal
+generalization becomes:
+
+(∀23\forall^{2}3) from
+AA, infer ∀Xn A\forall X^{n} \ A.
+
+
+Observe that while ∀X Xx→Px\forall X \ Xx \rightarrow P x is an instance
+of (∀21\forall^2 1), the formula ∀X Xx→(Px∧Qx)\forall X \ Xx \rightarrow (P x
+\wedge Q x) is not an instance of the axiom. But whatever one takes
+the value of a second-order variable to be, you may think that there
+should be one under which an object falls if and only if it satisfies
+the condition stated by the formula (Px∧Qx)(P x \wedge Q x). To make
+sure, we may rely on an axiom of second-order
+comprehension:
+
+ ∃Xn∀x1,…xn(Xnx1,…,xn↔A(x1,…,xn))\exists X^{n}
+\forall x_1, \ldots x_n(X^{n}x_1, \ldots, x_n \leftrightarrow A(x_1,
+\ldots, x_n))
+
+provided XnX^{n} does not occur freely in A(x1,…,xn)A(x_1, \ldots ,
+x_n).
+
+
+A formula like ∀X Xx→(Px∧Qx)\forall X \ Xx \rightarrow (P x \wedge Q x) now
+follows from the combination of second-order universal instantiation
+and an instance of second-order comprehension: ∃X∀x(Xx↔(Px∧Qx))\exists X \forall
+x(Xx \leftrightarrow (P x \wedge Q
+ x)).[10]
+3.3.2 Standard Models for Second-Order Logic
+
+To develop a model theory for a second-order language, we may still
+take a model ⟨D,I⟩\langle D, I\rangle to consist of a non-empty domain
+and an interpretation function. We now let an assignment ss for
+⟨D,I⟩\langle D, I\rangle to be a function that assigns a member of
+DD to each individual variable and a set of nn-tuples of members
+of DD to each predicate variable XnX^n. We then modify the
+definition of satisfaction to let a formula of the form ∀Xn B\forall X^n
+\ B be satisfied in ⟨D,I⟩\langle D, I \rangle by an assignment ss
+if, and only if, BB is satisfied by all assignments of the form
+s[Xn/Rn]s[X^n/R^n], where RnR^n is a set of nn-tuples of members of
+D1D_1. The definitions of truth in a model and validity proceed
+exactly as in the first-order case.
+
+The entry on
+ second-order and higher-order logic
+ provides more detail and gives some indication of the complexity of
+the set of valid second-order formulas in the standard model theory
+for second-order logic. No Completeness, Compactness, or
+Löwenheim-Skolem theorem is available for second-order logic with
+standard models. The entry on
+ second-order and higher-order logic
+ provides concrete illustrations of these facts.
+3.3.3 Henkin Models for Second-Order Logic
+
+A Henkin model lets a second-order variable XnX^n range over some
+subset of the set of nn-tuples of members of the domain DD. Thus
+a Henkin model consists of a domain DD of individuals, a domain
+Dn2D^n_2 of sets of nn-tuples of objects in DD for each n≤1n
+\leq 1, and an interpretation function II. To make sure that
+every instance of second-order comprehension is validated in the
+model, we require each Dn2D^n_2 to contain every set of nn-tuples
+of members of DD that is definable by a formula AA of the
+language.
+
+This is what the entry on
+ second-order and higher-order logic
+ calls general semantics. The metatheory of second-order logic with
+Henkin models is very much like the metatheory of classical
+quantificational logic in that it is complete, compact, and subject to
+a Löwenheim-Skolem theorem. One reason for this is that
+second-order logic under the Henkin model theory is only a notational
+variant of a two-sorted first-order theory in which the axioms of
+quantificational logic are supplemented by suitable axioms of
+comprehension.
+
+Which model theory is more appropriate for second-order logic? There
+is a trade-off between the attractive features of the metatheory of
+second-order logic with Henkin models, on the one hand, and the
+expressive power of second-order logic with standard models, on the
+other. Frege’s own interest in second-order quantification had
+much to do with its ability to express the concept of the
+ancestral of a dyadic relation RR, which allowed him in
+turn to define the concept natural number in terms of 00
+and successor. For details, the reader may consult the entry
+on
+ Frege’s Theorem and Foundations of Arithmetic.
+ There are, in addition, categorical axiomatizations of
+arithmetic, where a set of sentences is categorical if, and
+only if, all of its models are isomorphic, which means that there is
+only one model up to isomorphism. Dedekind (1893) famously proved, for
+example, that the second-order formulation of the Peano Axioms
+characterized the structure of the natural number system. There is a
+similar result for real analysis. For second-order set theory, Zermelo
+(1930) observed that given two models of second-order Zermelo-Fraenkel
+set theory, one is isomorphic to a strongly inaccessible initial
+segment of the other. The entry on
+ set theory
+ describes the axioms of set theory. Other examples of the expressive
+resources afforded by second-order quantification with standard models
+are discussed in Shapiro (1991). The adoption of a model theory based
+on Henkin models requires one to surrender all these applications.
+3.3.4 Models and Interpretations
+
+Much like in the case of pure quantificational logic, no
+model—standard or otherwise—for the language of
+second-order logic interprets the quantifiers to range over a
+universal domain of discourse. But if there are interpretations of the
+language of second-order logic to which no model corresponds, the
+question arises again of whether truth in all models is tantamount to
+truth under all interpretations of the language. Unfortunately, in the
+absence of a Completeness theorem, Kreisel’s argument is not
+available for second-order logic with standard models.
+
+One may nevertheless argue that a formula is true in all models only
+if it is true under all interpretations of the language by appeal to a
+second-order principle of reflection. This reflection principle makes
+sure that a formula AA of the language of second-order set theory
+is true when the quantifiers are taken to range unrestrictedly over
+the universal domain if, and only if, AA is true when the
+quantifiers are restricted to some set-sized initial segment of the
+universe of a certain
+ sort.[11]
+ Shapiro (1987) discusses both the set-theoretic principle and its
+role in the justification of the claim that if a sentence is true in
+every standard model, then it is true under every interpretation of
+the language. Unfortunately, second-order reflection takes us beyond
+the scope of second-order Zermelo-Fraenkel set theory and the axiom of
+choice (ZFC).
+
+To make sense of interpretations over a universal domain, one may
+conceive of an interpretation as a value of a second-order predicate
+variable, II, which applies to ordered pairs of a certain sort. An
+interpretation, II, applies to ordered pairs of the form ⟨∀,o⟩\langle
+\forall, o \rangle, when oo is in the domain of the
+interpretation, and II applies to ordered pairs of the form
+⟨Pni,⟨a1,…,an⟩⟩\langle P^{n}_{i}, \langle a_1, \ldots, a_n\rangle \rangle, when
+PniP^{n}_{i} is taken to apply to the objects in ⟨a1,…,an⟩\langle a_1,
+\ldots, a_n\rangle. The usual definition of an assignment is then
+replaced by one on which an assignment is given by the value of a
+second-order variable SS, which applies to an ordered pair of the
+form ⟨x,o⟩\langle x, o\rangle, where oo is an object, for each
+first-order variable in the language, and to ordered pairs of the form
+⟨X,o⟩\langle X, o\rangle, where oo is an object, for each
+second-order variable in the language. An assignment SS is required
+to pair each first-order variable with exactly one object, but it is
+allowed to pair a second-order variable with any objects whatever. In
+the presence of these definitions, we can generalize Tarski’s
+definition satisfaction in an interpretation by an assignment, truth,
+and
+ validity.[12]
+3.3.5 Irreducibly Second-Order Quantification?
+
+The status of second-order quantification remains a highly
+controversial issue. In the standard model theory for second-order
+quantification, we explain the truth conditions of a formula of the
+form ∀X A\forall X \ A in terms of ordinary quantification over sets.
+And this may incline one to follow Quine (1986) in claiming that
+second-order quantification is only intelligible as first-order
+quantification over sets of the domain of individuals. Second-order
+logic would, on this view, be best conceived as a species of
+two-sorted first-order set theory. But the mere fact that in the
+standard semantics for second-order logic, we state the truth
+conditions for second-order quantification in terms of first-order
+quantification over sets is not to admit that this is the
+only, much less the intended interpretation of
+second-order quantification. Frege certainly had a very different
+interpretation in mind. For a defense of the claim that second-order
+quantification should be taken at face value, the reader may consult
+Williamson (2003).
+3.4 Plural Quantifiers
+
+Similar remarks apply to the logic of a plural quantifier like
+“some objects”. Indeed, much of the recent interest in
+plural quantification in logic and philosophy began with Boolos
+(1984), who provided a plural interpretation of monadic second-order
+quantification. Boolos wanted to defend second-order axiomatizations
+of set theory against the charge that second-order quantification
+cannot be coherently deployed over the domain of all sets. Boolos
+(1984) explained how to interpret the second-order quantifier,
+∀X\forall X, over the domain of all sets in terms of the plural
+quantifier “some sets”, and how to interpret atomic
+formulas of the form XxXx in terms of the plural locution “is
+one of”. The fact that plural locutions are systematically used
+and perfectly understood in natural language, Boolos thought, helped
+address the charge of incoherence. The Boolos translation is described
+in detail in the entry on
+ plural quantification.
+
+Whatever the merits of the Boolos translation, plural quantification
+is nowadays generally distinguished from second-order quantification
+on the grounds that they bind expressions of different syntactic and
+semantic categories—while predicates are unsaturated in
+Frege’s terminology and contain argument places to be completed
+by expressions of an appropriate syntactic category, plural terms are
+often thought to be akin to saturated singular terms.
+Different variations on this theme may be found, for example, in
+Higginbotham 1998; Oliver & Smiley 2001; Rayo & Yablo 2001;
+Williamson 2003, 2013. This is a book, which includes an extensive
+discussion of important differences in the behavior of plural and
+second-order quantification in modal contexts. Plural quantification
+has consequently become the subject of its own study.
+
+The language of plural quantification is carefully described in the
+entry on
+ plural quantification.
+ Syntactically, it is closely related to a two-sorted first-order
+language in which we have an infinite number of variables xxxx,
+yyyy, zzzz, xx1xx_{1}, …. , and a two-place predicate
+≺\prec, read “one of,” which will be flanked by
+singular and plural terms, respectively. Identity predicate can only
+flanked by singular terms.
+
+The axioms for plural quantification extend the axioms of
+quantificational logic with plural counterparts of (∀1\forall 1),
+(∀2\forall 2), and (∀3\forall 3). Like in the second-order case,
+the axioms of quantification are supplemented with an axiom schema of
+plural comprehension:
+
+ ∃x A→∃xx∀y(y≺xx↔A)\exists x \ A
+\rightarrow \exists xx \forall y (y \prec xx \leftrightarrow A)
+
+provided xxxx does not occur freely in AA.
+
+
+One important difference with respect to monadic second-order logic is
+that instances of plural comprehension are conditionals that state
+that if something satisfies a certain condition, then some objects are
+all and only objects satisfying the condition. The antecedent of each
+conditional is motivated by an interpretation of the plural quantifier
+∃xx\exists xx to mean “one or more objects”. Indeed,
+Linnebo (2013) explicitly supplements the theory of plural
+quantification with an axiom that states that no matter what some
+objects may be, there is at least one of them:
+
+ ∀xx ∃y y≺xx\forall xx \ \exists
+y \ y \prec xx
+
+
+Like in the case of second-order logic, we may provide at least two
+sorts of models for the theory of plural quantification. In both
+cases, we interpret plural quantification in terms of quantification
+over non-empty sets of individuals in the domain DD. The difference
+is that in standard models we let plural variables range over the full
+power set of DD, whereas plural variables range over a set SS of
+non-empty subsets of DD, provided only that SS contains all sets
+definable by some formula.
+
+Both approaches take place in a singular metalanguage. Since the
+models are based on set theory, they require the domain of individuals
+to form a set. Furthermore, the definition of satisfaction explains
+what is for a formula ∀xx A\forall xx \ A to be satisfied in a model by
+an assignment in terms of singular quantification over
+non-empty subsets of the domain of individuals. This may perhaps
+encourage the impression that plural quantification is only
+intelligible as singular quantification over non-empty sets of
+individuals. Note, however, that neither the use of set-based models
+nor the use of singular quantification in the definition of
+satisfaction for a formula of the form ∀xx\forall xx is compulsory.
+In a plural metatheory in which we have a theory of ordered pairs, one
+may adapt the generalized conception of an interpretation developed in
+Rayo & Uzquiano (1999) to provide a plural model theory in which
+one uses neither. This model theory is developed, for example, in
+Burgess 2004.
+
+The status of plural quantification remains the subject of intense
+controversy. All parties agree that plural locutions are
+systematically used in natural languages, but there is no consensus as
+to whether or not the truth conditions for plurally quantified
+sentences should ultimately involve covert reference to complex
+objects of some kind or another. The entry on
+ plural quantification
+ discusses some reasons generally offered in favor of the
+irreducibility of plural quantification to singular quantification
+over sets. But an influential argument against the identification of
+plural quantification and singular quantification over sets traces
+back to Boolos 1984, which claims that the following two sentences
+differ in truth value when we let the domain of quantification include
+all sets there are:
+
+
+
+There is a set of all, and only, non-self-membered sets.
+
+
+Some sets are all, and only, non-self-membered sets. 
+
+
+We know from Russell’s paradox that there is no set of all, and
+only, non-self-membered sets, which makes the first sentence
+ false.[13]
+ But this is not to deny of course that some sets are all and only
+non-self-membered sets, even if they fail to compose a set.
+Unfortunately, the argument depends on a certain interpretation of
+Russell’s paradox that is itself controversial and will fail to
+convince philosophers who think that the moral of Russell’s
+paradox is that no singular quantifier can range unrestrictedly over
+all the sets there are. We will revisit this issue later.
+3.5 Propositional Quantifiers
+
+It is not uncommon to let the vocabulary of classical quantificational
+logic include 0-place predicates, which are treated as propositional
+letters. This approach makes propositional logic a proper fragment of
+classical quantificational logic allowing one to subsume propositional
+quantification as a species of second-order quantification, i.e.,
+quantification into the position of a 0-place predicate.
+
+Or we may supplement the language of propositional logic with a
+propositional quantifier, ∀\forall, which is allowed to bind
+propositional letters such as pp, qq, rr, …. This is,
+for example, the course of action taken by Prior (1971), who outlines
+a system of propositional quantification. Prior insisted that
+propositional quantification should not be confused with either
+objectual quantification over propositions or substitutional
+quantification over sentences. Rather, propositional quantification is
+a species of non-nominal quantification, since it is quantification
+into sentence position.
+3.5.1 Quantified Propositional Logic
+
+The vocabulary of quantified propositional logic contains
+propositional letters pp, qq, rr, p1p_1, … and
+propositional connectives ¬,→,∧,∨,↔\neg, \rightarrow, \wedge, \vee,
+\leftrightarrow. We may as usual treat ¬\neg and →\rightarrow
+as primitive and take the others as defined. The usual recursive
+definition of a formula for propositional logic is appropriately
+supplemented with a clause that states that ∀p A\forall p \ A is a
+formula whenever AA is a formula.
+3.5.2 Axioms for Propositional Quantification
+
+The axioms for propositional quantification are direct counterparts of
+(∀1)−(∀3)(\forall 1)-(\forall 3). Call a sentence BB free for a
+propositional variable pp in AA if, and only if, no free
+occurrences of pp lies within the scope of a quantification on
+qq, ∀q\forall q or ∃q\exists q, where qq is a propositional
+variable which occurs in BB. Now:
+
+(∀P1\forall^{P}1) ∀p A→A(B/p)\forall
+p \ A \rightarrow A(B/p)
+
+provided BB is free for pp in AA.
+(∀P2\forall^{P}2) ∀p(A→B)→(A→∀p B)\forall
+p (A \rightarrow B) \rightarrow (A \rightarrow
+\forall p \ B)
+
+provided pp is not free in AA.
+(∀P3\forall^{P}3) from
+AA, to infer ∀p A\forall p \ A
+
+
+For a taste of what they can do, notice that they yield a succinct
+justification of a rule of Uniform Substitution, whereby a formula of
+the form A(B/p)A(B/p) is a theorem whenever AA is a theorem, provided
+that BB is free for pp in AA. So, for example, if
+p→(q→p)p\rightarrow (q \rightarrow p) is a theorem, then ¬r→(q→¬r)\neg r
+\rightarrow (q \rightarrow \neg r) is likewise a theorem, since this
+last formula is just p→(q→p)(¬r/p)p\rightarrow (q \rightarrow p)(\neg
+ r/p).[14]
+
+The axioms are now able to deliver every instance of the following
+comprehension schema:
+
+ ∃p(p↔A)\exists p (p
+\leftrightarrow A), provided pp is not free in AA.
+
+
+This is one important difference with respect to second-order
+quantification generally, since we could not automatically derive
+every instance of second-order comprehension from the other
+quantificational axioms.
+3.5.3 Propositional Quantification and Truth
+
+Propositional quantification has been used in order to present a
+deflationary theory of truth. Grover, Camp, & Belnap (1975) and
+Grover (1992) have, for example, proposed to make use of propositional
+quantification in order to provide a variation on Ramsey’s
+redundancy theory of truth. The main claim they make is that we can
+conceive of phrases like “that is true” or “it is
+true” as protosentences, which are supposed to stand to
+sentences as pronouns stand to nouns; unlike pronouns like
+“it”, protosentences occupy sentence position, but just
+like pronouns may be used for purposes of cross-reference to earlier
+nouns, protosentences may be used for purposes of cross-reference to
+sentences uttered earlier in a conversation. Thus phrases like
+“that is true” or “it is true” are akin to
+propositional variables, which may be bound by propositional
+quantifiers.
+3.5.4 Intensional Paradoxes
+
+Prior (1961) makes use of propositional quantification in order to
+provide an intensional version of the Liar Paradox. In particular, if
+TT is a sentential operator of the appropriate sort, then the
+following is a consequence of the axioms for propositional
+quantification:
+
+ T∀p(Tp→¬p)→(∃p(Tp∧p)∧∃p(Tp∧¬p))T \forall p(Tp
+\rightarrow \neg p) \rightarrow (\exists p (Tp \wedge p) \wedge
+\exists p (Tp \wedge \neg p))
+
+
+If we take TT as Prior did, to stand for the sentential operator
+“It is said by a Cretan that”, then we may read the
+theorem as the claim that if it is said by a Cretan that whatever is
+said by a Cretan is not the case, then there are at least two things
+said by a Cretan. So, quite surprisingly, it is inconsistent to assume
+that the only thing said by a Cretan is that whatever is said by a
+Cretan is not the case.
+
+Kaplan (1995) makes use of a different observation to raise a problem
+for the standard model theory for quantified propositional modal
+logic. He observed, in particular, that if QQ is a sentential
+operator of the appropriate sort, then the following sentence is not
+satisfiable in any possible worlds model ⟨W,I⟩\langle W, \mathcal{I}
+\rangle consisting of a set of possible worlds WW and an
+interpretation function, I\mathcal{I} assigning a set of sets of
+possible worlds to the sentential operator:
+
+ ∀p◊∀q(Qq↔p=q)\forall p \Diamond
+\forall q (Qq \leftrightarrow p=q) 
+
+
+When we let the propositional quantifier range over sets of worlds in
+WW, we find that Kaplan’s sentence can only be satisfied in
+such a model if there is a map from the set of sets of worlds in WW
+into WW, which is not possible on account of Cantor’s
+theorem. Kaplan thought this is a problem because the model theory for
+quantified propositional model should not unduly constrain the space
+of intuitive possibilities.
+
+If we interpret QpQp to mean that pp is Queried, i.e., it is
+asked whether it is the case that pp, then (A) merely states that
+for every proposition, pp, it is possible that pp and only pp
+is Queried.
+
+The two results are not unrelated. Prior’s theorem provides a
+witness to the claim that some propositions cannot be Queried
+uniquely. If the proposition expressed by the condition ∀p(Qp→¬p)\forall
+p(Qp\rightarrow \neg p) is the only proposition that is Queried,
+then it is true if and only if it is false. So, it can only be Queried
+if it is false. But it is false only if something true is
+ Queried.[15]
+3.5.5 Quantified Propositional Modal Logic
+
+Propositional quantification made an early appearance in Lewis,
+Langford, & Lamprecht 1932, which is commonly acknowledged to have
+pioneered the study of modal logic. They outlined a formal system of
+modal logic with propositional quantification, which they used to
+formulate an Existence Postulate designed to guarantee the
+existence of at least two propositions that are consistent and
+independent from each other. (This is postulate B9 in the entry on the
+ modern origins of modal logic.)
+ They used the postulate to make sure strict implication did not
+collapse into material
+ implication.[16]
+
+Kripke (1959), Fine (1970), and Kaplan (1970) went on to consider
+systems of propositional modal logic supplemented with propositional
+quantifiers governed by appropriate axioms and rules of inference.
+Moreover, they explained how to generalize the Kripkean model theory
+for propositional modal logic in order to accommodate the presence of
+propositional quantification. A Kripke model for the language of
+propositional modal logic is an ordered triple, ⟨W,R,I⟩\langle W, R,
+\mathcal{I} \rangle, in which WW is a non-empty set of worlds,
+RR is a binary relation on WW, and I\mathcal{I} is an
+interpretation function, which can be taken to assign a set of
+possible worlds to each sentence letter in the language. This suggests
+we interpret propositional quantification in terms of quantification
+over sets of worlds in WW. An assignment of values to the
+propositional variables ss will map each propositional variable
+into a set of worlds, and we define satisfaction at a world by an
+assignment ss as usual, except for an appropriate clause for the
+quantifier: ∀p A\forall p \ A is satisfied at a world ww in WW
+in ⟨W,R,I⟩\langle W, R, \mathcal{I} \rangle by assignment ss if, and
+only if, AA is satisfied at ww by every assignment s[p/S]s[p/S] in
+which SS is a subset of WW. The definitions of truth at a world
+and truth in a Kripke model then proceed as usual.
+
+The axioms for propositional quantification are sound with respect to
+the class of extended Kripke models for quantified propositional modal
+logic. Unfortunately, they are not complete with respect to the same
+class, since they do not allow us to derive the following as a
+theorem:
+
+ ∃p(p∧∀q(q→◻(p→q)))\exists p (p \wedge
+\forall q(q \rightarrow \Box (p \rightarrow q)))
+
+
+However, this formula is valid in every extended Kripke model for the
+simple reason that its truth at a world in a model only requires the
+existence of a maximally specific proposition, one which is true at
+exactly one world.
+3.5.6 Irreducibly Propositional Quantification?
+
+The question fits what should by now be a familiar pattern. Should
+propositional quantification be taken at face value? Or should it be
+assimilated to objectual quantification over propositions or maybe
+substitutional quantification over sentences? One may be tempted by
+the first option by reflecting on what we did above. We expanded the
+language of propositional modal logic with a new style of
+quantification, but the model theory explained the truth conditions
+associated with the propositional quantifier, ∀p A\forall p \ A, in
+terms of objectual quantification over sets of worlds in the model.
+But this is not to commit to the claim that propositional
+quantification is to be reduced to objectual quantification over sets
+of propositions or sets of possible worlds or what have you. The
+question of how to develop an appropriate model theory for the
+language of quantified propositional logic is no substitute for the
+more substantive question of whether there is an intelligible
+interpretation of propositional quantification on which it is not
+construed as objectual quantification over propositions or
+substitutional quantification over sentences.
+
+While Prior (1971) and Grover (1972), for example, take propositional
+quantification to be importantly different from objectual and
+substitutional quantification, Richard (1996) suggests that
+propositional quantification should at the end of the day be treated
+as a species of objectual quantification, e.g., objectual
+quantification over propositions.
+4. Quantification and Ontology
+
+Much of contemporary ontology builds on the assumption that existence
+is to be understood in terms of quantification: in a slogan, to exist
+is to be something. Ontology is largely concerned with the domain of
+the existential quantifier. This assumption can be traced
+back to the work of Frege and Russell, both of whom analyzed
+quantification in terms of predication, and plays a crucial role in
+Quine’s admonition to transform ontology into the study of the
+ontological commitments of our global theory of the world regimented
+in the language of quantificational logic and identity.
+4.1 Quantification, Predication, and Existence: Frege and Russell
+
+By the link between quantification and existence, we mean the claim
+that to exist is to be identical to something. This view can be traced
+back to Frege and Russell, who offered roughly the same broad analysis
+of quantification in terms of predication. The entry on
+ existence
+ provides a helpful overview and discussion of their account of
+existence against the background of the historical context in which
+they produced it. In what follows, we highlight a distinction between
+the Frege-Russell analysis of quantification in terms of predication,
+on the one hand, and the link between quantification and existence, on
+the other.
+4.1.1 Quantification and Predication
+
+Frege (1980a, 1980b) explicitly analyzed quantification in terms of
+predication. For Frege, first-level predicates express concepts under
+which objects fall. A quantifier expresses a second-level concept
+under which first-level concepts fall. In particular, he proposed to
+take a sentence like (3) below to predicate of a first-level concept
+that it has instances:
+
+(3) There is at least
+one square root of 4.
+(4) The concept
+square root of 4 is instantiated.
+
+
+The existential quantifier, ∃\exists, is, for Frege, a second-level
+predicate, which expresses a second-level concept under which a
+first-level concept such as square root of 4 falls if and
+only if it has some instances. Likewise, the universal quantifier,
+∀\forall, is a second-level predicate, which expresses a
+second-level concept under which a first-level concept such as
+self-identical falls if and only if it has all objects as
+instances.
+
+Russell (1905) offered a similar account of quantification. On
+Russell’s analysis, the proposition expressed by (5) predicates
+of a certain propositional function that it maps every object whatever
+into a true proposition. (The entry on
+ propositional functions
+ provides more detail on the role of propositional functions in the
+early development of modern logic.)
+
+(5)Everything is
+self-identical.
+(6)The propositional
+function xx is self-identical is always true.
+
+
+The propositional function xx is self-identical maps the
+Moon to the true proposition that the Moon is self-identical, it maps
+the Sun to the true proposition that the Sun is self-identical, etc.
+The thrust of (5) is the proposition that no matter what object we
+supply as argument, the propositional function xx is
+self-identical will map it into a true proposition. The only
+salient difference between Frege and Russell’s account of
+quantification lies in the choice of concepts and propositional
+functions, respectively, as the objects of predication; while Frege
+takes each quantifier to correspond broadly to a second-level concept,
+Russell analyzes them in terms of certain properties of propositional
+functions.
+4.1.2 Quantification and Existence
+
+Both Frege and Russell combine their account of quantification in
+terms of predication with the substantive thesis that existence is to
+be understood in terms of quantification. For Frege, existence is to
+be identified with the second-level concept expressed by the
+second-level predicate expressed by ∃\exists. For Russell,
+existence is identified with a certain property of propositional
+functions, e.g., being sometimes true. This may seem overkill; if
+true, it might seem that only first-level concepts exist, not the
+objects they instantiate. For only first-level concepts are instances
+of the second-level concept expressed by
+ ∃\exists.[17]
+ Instead, they are mostly concerned with the thesis that statements of
+existence such as (7) are not cases in which a primitive
+property of existence is predicated of an object, but rather should be
+understood as an implicitly quantified statement such as (8), which is
+to be analyzed in terms of predication in (9) and (10) for Frege and
+Russell, respectively:
+
+(7) 2
+exists.
+(8) Something is
+identical to 2.
+(9) The concept
+identical to 2 is instantiated.
+(10) The propositional
+function xx is identical to 2 is sometimes
+true.
+
+
+This point is perfectly compatible with the existence of a first-level
+concept under which all and only those objects that exist fall. Take,
+for example, the concept being self-identical. Likewise for
+Russell. The propositional function xx is self-identical
+will map all objects that exist into a true proposition.
+
+Note, however, that one could in principle retain their analysis and
+deny, for example, that first-level concepts and propositional
+functions, respectively, can only be saturated by objects that exist.
+One could take the view that some great philosophers who once existed,
+no longer exist. Socrates, for example, was a great philosopher who no
+longer exists. He can nevertheless instantiate the first-level concept
+admired by many philosophers. Or consider the bookcase I
+would have built, had I finally assembled all the materials I
+purchased according to the assembly instructions that came with them.
+I have had concrete plans to build the bookcase for ages now; never
+mind the fact that I may never find the skill, time or energy to
+assemble it. My planned bookcase does not exist yet, and knowing
+myself, it might well never exist. But one might take the view that we
+can refer to it and that it instantiates many first-level concepts
+such as being a planned bookcase. On a view like this, the
+assertion that there are planned bookcases that do not exist would
+remain true even if none of its instances exist.
+
+A view like this would be classified as a form of Meinongianism by
+Nelson (2012), and it would be subject to some of the difficulties
+other forms of Meinongianism face. Suffice it to say, for present
+purposes, that it would, however, require a radical departure from a
+very influential approach to ontology advocated by Quine and endorsed
+by philosophers like Peter van Inwagen and David Lewis and their
+followers.
+4.2 Quine’s Criterion of Ontological Commitment
+
+Quine (1948) explicitly characterizes ontology as an attempt to answer
+the question “what is there?” As he observed, the question
+may seem deceptively simple, since it may be answered in a word:
+“everything”. The problem with this answer is that it is
+largely uninformative. All parties agree that everything is something,
+but there is still plenty of room of disagreement as to what kinds of
+objects are there. Are there mereologically composite objects? Are
+there concrete possible worlds? Are there mathematical objects? If
+there are such objects, then they will of course lie in the domain of
+the quantifier “everything”. However, philosophers are
+still intensely divided as to whether they do.
+
+Quine’s strategy for the regimentation and resolution of
+ontological disputes has informed much of contemporary ontology. He
+advised philosophers to look at the ontological commitments incurred
+by our best global theory of the word—best by ordinary
+scientific standards or principled extensions thereof—when
+appropriately regimented in the language of pure quantificational
+logic with
+ identity.[18]
+ One may perhaps think of the ontological commitments of our best
+global theory of the world as the demands that the truth of our total
+theory imposes on the world. For example, we are committed to the
+existence of objects of kind KK if a proper regimentation of our
+best global theory includes—or entails—a sentence of the
+form ∃x Fx\exists x \ Fx, where FF is a predicate under which only
+objects of kind KK fall. Quine’s advice comes accompanied
+with a criterion of ontological commitment whereby an appropriately
+regimented body of doctrine is ontologically committed to objects of
+kind KK just in case objects of kind KK must lie in the
+range of our bound variables for the sentences of our theory to be
+true. More details are given in section 5 of the entry on
+ Quine.
+
+As Cartwright (1954) observed, it is far from clear how one is
+supposed to interpret the modality in Quine’s official
+formulation of the criterion. A purely extensional version of the
+criterion is plainly inadequate: TT is ontologically committed to
+objects of kind KK if, and only if, TT is true only if
+the variables range over objects of kind KK. But the material
+conditional is much too weak for Quine’s purposes as it makes
+any false theory to be ontologically committed to all kinds of
+ objects.[19]
+ Quine’s general hostility to non-extensional notions makes the
+problem all the more delicate for him.
+
+Under Quine’s approach to ontology, an argument for the
+existence of objects of kind KK—whether mereologically
+complex objects, or concrete possible worlds, or mathematical
+objects—takes the form of an argument for the thesis that
+quantification over such objects is indispensable to our best global
+theory of the world. One of the most familiar instances of such
+arguments is the Quine-Putnam argument for the existence of
+mathematical objects. Since mathematical objects are indispensable for
+scientific purposes, we should expect the quantifiers of our best
+global theory of the world to range over them. But once we settle the
+question of whether the quantifiers of our best global theory of the
+world range over mathematical objects, we have settled the ontological
+question of whether such objects exist. The entry on
+ indispensability arguments in mathematics
+ includes extensive discussion of this and related indispensability
+arguments in mathematics. Similar arguments have been deployed outside
+mathematics to argue for the existence of possible worlds,
+mereologically complex objects, and the like.
+
+This brings us to a family of applications for different styles of
+quantification explored above. It is not uncommon to respond to
+indispensability arguments for the existence of objects of a certain
+kind by means of a paraphrase strategy, which if successful, would
+show how to make do without the ontological commitment to objects of
+the offending kind. Oftentimes, the paraphrase will involve a
+different style of quantification, whether an alternative to classical
+quantification or an extension thereof. For example, Gottlieb (1980)
+attempted to respond to the Quine-Putnam indispensability argument for
+the existence of numbers by dispensing with objectual quantification
+in favor of substitutional quantification in arithmetic. Burgess &
+Rosen (1997) provides an extensive catalogue of different expressive
+resources philosophers have used in order to bypass apparent
+commitment to mathematical objects. Or take the question, for example,
+whether there are composite objects of various kinds. Dorr & Rosen
+(2002), Hossack (2000); and van Inwagen (1995) have each argued that
+plural quantification can be used to paraphrase away apparent
+ontological commitment to composite objects—other than organisms
+in van Inwagen’s case: we need only replace apparent singular
+quantification over composite objects with plural quantification over
+its alleged parts, and replace apparent singular predications of a
+composite object with plural predications of their
+ parts.[20]
+4.3 Unrestricted Quantification
+
+When Quine answers “everything” to the fundamental
+ontological question of what there is, he presumably intends the
+quantifier to range unrestrictedly over all objects at once. This
+observation applies to ontological inquiry more generally. When a
+nominalist asserts that there are no mathematical objects, she does
+not intend the thesis to be qualified by a restriction to a domain of
+concrete objects; otherwise, the thesis would be devoid of interest.
+But unrestricted quantification is not a very common phenomenon
+outside highly theoretical contexts such as logic and ontology. Take a
+typical use of a quantifier expression in English as exemplified in a
+typical utterance of the sentence:
+
+(11) Everything is on
+sale.
+
+
+In a typical context, the use of the quantifier
+“everything” is tacitly restricted to a domain of
+contextually salient objects. In particular, it would be inappropriate
+for another participant in the conversation to point out that the Moon
+is not on sale. The Moon is not an exception to the statement made by
+my utterance of (11) because the Moon does not lie in the domain of
+quantification associated to my use of the quantifier.
+
+But the fact that unrestricted quantification is relatively uncommon
+is no reason to doubt it is attainable in certain contexts.
+Unfortunately, many philosophers have recently doubted that genuinely
+unrestricted quantification is even coherent, much less
+ attainable.[21]
+ Note that these philosophers face at least two preliminary
+challenges, both of which are forcefully pressed by Williamson (2003).
+First, they face the question of what to make of the prospects of
+ontological inquiry without unrestricted generality. How should we
+formulate substantive ontological positions such as nominalism, if we
+cannot hope to quantify over all objects at once? The second challenge
+for the skeptics is to state their own position. To the extent to
+which the thesis that we cannot quantify over everything appears to
+entail that there is something over which cannot quantify, skeptics
+seem to find themselves in a bind by inadvertently quantifying over
+what, by their own lights, lies beyond a legitimate domain of
+ quantification.[22]
+ Typical responses to each problem involve a surrogate for
+unrestricted generality in the form of either schematic generality or
+the use of certain modal operators to simulate quantification over a
+series of ever more comprehensive domains of
+ quantification.[23]
+
+At the core of the problem lies the assumption that the set-theoretic
+paradoxes cast doubt upon the existence of a comprehensive domain of
+all objects. What they reveal, according to Dummett (1991, 1993), is
+the existence of indefinitely extensible concepts like set,
+ordinal, and object. For Dummett, the indefinite
+extensibility of set is incompatible with the existence of a
+comprehensive domain of all sets, since no matter what putative domain
+of all sets we isolate, we find that we can employ Russell’s
+reasoning to characterize further sets that lie beyond the putative
+domain of all sets with which we began. The set of all
+non-self-membered sets in the initial domain cannot, on pain of
+contradiction, be in that domain, which means that it must lie in a
+more comprehensive domain of all sets. If there is no domain of all
+sets, there is, the thought continues, no hope for a domain of all
+objects. One may respond to this line of argument by contesting
+Dummett’s diagnosis of the set-theoretic antinomies. Boolos
+(1993) suggests that we take Russell’s paradox, for example, to
+establish that not every condition determines a set. The moral of
+Russell’s paradox is that there is no set of all
+non-self-membered sets, not that it lies beyond the initial domain of
+quantification.
+
+For another line of attack against the coherence of unrestricted
+quantification, one may ask what exactly is a domain of quantification
+supposed to be. Skeptics often take a page from modern model theory
+and think of a domain of quantification as a set—or at least as
+a set-like object, which contains as members all objects over which
+the putatively unrestricted quantifier is supposed to range. They take
+for granted that for a speaker to be able to quantify over some
+objects, they must all be members of some set-like object, which
+constitutes a domain of quantification. Cartwright (1994) called this
+thesis the All-in-One Principle. Now, if there is unrestricted
+quantification, then the domain of quantification associated to it
+cannot be a set-like object. For we could then deploy a suitable
+variation on Russell’s paradox in order to obtain a
+ contradiction.[24]
+ Many have concluded from this that there is no genuinely unrestricted
+quantification over all objects at once.
+
+The All-in-One principle is not beyond doubt. One application of
+plural quantification, which is explored by Cartwright (1994), is to
+abandon the All-in-One principle and to understand talk of a domain of
+quantification not as singular talk of collections but rather as
+plural talk of its members. To speak of a domain of certain objects is
+just to speak of the objects themselves—or to speak of a
+first-level concept under which they all fall; and to claim of a given
+object that it lies in the domain is to claim of the object that it is
+one of them. Alternatively, one may opt for the expressive resources
+of second-order quantification with the second-order quantifiers taken
+to range over Fregean concepts. Williamson (2003) outlines a
+conception of a domain of quantification as a Fregean concept under
+which certain objects may fall. To speak of a domain of all objects on
+this view is to speak of a Fregean concept under which all
+objects—without restriction—fall, and to claim of a given
+object that it lies in the domain is merely to claim that the object
+falls under the relevant Fregean concept.
+4.4 Quantification, Tense and Modality
+
+The combination of quantification and modality traces back to Barcan
+(1946, 1947) and Carnap (1946). Historically, however, this
+combination came under sustained attack by Quine, who, like Carnap,
+assumed that ◻\Box could only interpreted in terms of logical
+necessity or analyticity. As Carnap himself recognized, the linguistic
+conception of necessity raises the question of how to assign
+intelligible truth conditions to de re modal generalizations
+of the form ∃x ◻Px\exists x \ \Box
+ Px.[25]
+ For the truth conditions for such a sentence appear to require one to
+make sense of the truth of an open formula of the form ◻Px\Box Px
+with respect to an assignment of a value to the variable xx. If we
+read ◻\Box to mean: “it is analytic that”, then one may
+wonder what sense could be made of the claim that an open formula
+PxPx is analytic with respect to an assignment of an object to
+xx. Quine had anticipated the issue in Quine (1943), and he pressed
+the criticism again in Quine (1953, 1960). Quine’s objections
+are commonly taken not to apply to other interpretations of ◻\Box
+in terms of metaphysical necessity as discussed, for example, in
+Kripke (1980). When we move past Quine’s criticisms and combine
+pure quantificational logic with propositional modal logic, we obtain
+quantified modal logic.
+
+The interaction of quantification and modality turns out to raise
+difficult philosophical problems. As we will see, some of these
+difficulties have, in fact, inclined some philosophers to rethink the
+scope of pure quantificational logic. The problem is that certain
+theorems of quantified modal logic suggest that everything is
+necessarily something. The subject matter of ontology is necessary:
+nothing could have failed to be something.
+4.4.1 Quantification and Modality
+
+Quantified modal logic is the system that combines pure
+quantificational logic with propositional modal logic. Propositional
+modal logic investigates the logic of the modal operators ◻\Box and
+◊\Diamond and is discussed in the entry on
+ modal logic.
+ The language of propositional modal logic supplements the language of
+propositional logic with the sentential operator ◻\Box, and
+◊\Diamond may then be explicitly defined as ¬◻¬\neg \Box \neg. A
+weak propositional modal logic called K logic includes as axioms all
+tautologies and all instances of schema K:
+
+(K)◻(A→B)→(◻A→◻B)\Box(A \rightarrow
+B) \rightarrow (\Box A \rightarrow \Box B)
+
+
+The rules of inference of the system include modus ponens and
+what is often known as a rule of necessitation:
+
+(RN)from AA, infer
+◻A\Box A
+
+
+The combination of propositional modal logic and pure quantificational
+logic is often called quantified modal logic and is discussed in
+section 13 of the entry on
+ modal logic
+ and the entry on
+ actualism.
+ This combination immediately delivers what we may call the
+necessity of being:
+
+(NB)∀x ◻∃y x=y\forall x \ \Box
+\exists y \ x=y
+
+
+The key to this observation is that the open formula ∃y x=y\exists y \ x =
+y is a theorem of pure quantificational logic. Successive
+applications of the rule of necessitation and universal generalization
+are all it takes to complete the proof.
+
+On the alethic interpretation of ◻\Box in terms of metaphysical
+necessity, this theorem reads as the claim that everything is
+necessarily something. Take the Griffith Observatory, for example. It
+is a consequence of the theorem that it is necessarily something. The
+Griffith Observatory would have been something even if no funds had
+been available for construction and nothing had ever been built in the
+site it occupies. And what is true of the Griffith Observatory is true
+of us: each of us is necessarily something. When we combine this
+result with the link between quantification and existence, we conclude
+that everything exists necessarily, which flies in the face of the
+assumption that we exist only contingently.
+
+With the help of schema K, one may prove the Converse Barcan
+Formula:
+
+(CBF)◻∀x A→∀x◻ A\Box \forall x \
+A \rightarrow \forall x \Box \ A
+
+
+On the alethic interpretation of the modality, this states that if
+necessarily, everything is AA, everything is necessarily AA. The
+proof is given, for example, in one of the supplements to the entry on
+ actualism.
+ But this provides another route to the necessity of being: since
+necessarily, everything is something, everything is necessarily
+something. In the presence of a further plausible modal principle, B,
+we may even prove the Barcan Formula. The Brouwerian principle, B,
+states that whatever is the case is necessarily, possibly the
+case:
+
+(B)A→◻◊AA \rightarrow \Box
+\Diamond A
+
+
+The Barcan Formula states that if everything is necessarily AA,
+then necessarily, everything is AA:
+
+(BF)∀x ◻ A→◻∀x A\forall x \ \Box
+\ A \rightarrow \Box \forall x \ A
+
+
+Or, equivalently:
+
+◊∃x A→∃x ◊ A\Diamond \exists x \
+A \rightarrow \exists x \ \Diamond \ A
+
+
+The entry on
+ actualism
+ includes a proof of BF. But this formula is deemed unacceptable by
+many philosophers. Consider my plans to build a bookcase. Even if I
+never manage to build one, it is certainly possible for me to build
+one. So, it is possible for there to be some bookcase I have built. By
+the Barcan Formula, it seems to follow that something is possibly a
+bookcase I build. The Barcan Formula does not settle whether or not
+this object is in fact a concrete object, much less a bookcase one may
+in fact use to store one’s books. In fact, to deny this is one
+way to come to terms with the Barcan Formula.
+4.4.2 Quantification and Tense
+
+What is true of the combination of pure quantificational logic with
+propositional modal logic is mutatis mutandis true of the
+combination of pure quantificational logic and propositional tense
+logic. Certain theorems of quantified tense logic suggest that
+everything has always been, is, and will always be something. The
+domain of ontology is immutable: nothing ever fails to be
+something.
+
+Propositional tense logic investigates the logic of tense operators
+like HH, read: “it has always been the case that”,
+PP, read: “it was the case that”, GG, read:
+“it will always be the case that”, and FF, read:
+“it will be the case that”. In place of K, we have
+distribution axioms:
+
+H(A→B)→(HA→HB)H(A \rightarrow B)
+\rightarrow (HA \rightarrow HB)
+G(A→B)→(GA→GB)G(A \rightarrow B)
+\rightarrow (GA \rightarrow GB)
+
+
+And in place of the rule of necessitation, we have rules of temporal
+generalization:
+
+from AA, infer
+HAHA
+from AA, infer
+GAGA
+
+
+More details are provided in the entry on
+ temporal logic.
+
+The combination of propositional tense logic and pure quantificational
+logic immediately delivers the eternality of being:
+
+(EB)∀x(G ∃y x=y∧∃y x=y ∧F ∃y x=y)\forall x (G \
+\exists y \ x = y \wedge \exists y \ x = y \ \wedge F \ \exists y \ x
+= y),
+
+
+which states that everything has has always been, is, and will always
+be, something. The Griffith Observatory was something even before it
+was built in 1935—and will always be something—even
+billions of years from now. And what is true of the Griffith
+Observatory is true of us: each of us has always been, is, and will be
+something—even before our birth and long after our death.
+
+Quantified tense logic proves temporal versions of CBF:
+
+H∀x A→∀x HAH \forall x \ A
+\rightarrow \forall x \ H A
+G∀x A→∀x GAG \forall x \ A
+\rightarrow \forall x \ G A
+
+
+And, finally, we have two temporal versions of BF:
+
+∀x HA→H∀x A\forall x \ H A
+\rightarrow H \forall x \ A
+∀x GA→G∀x A\forall x \ G A
+\rightarrow G \forall x \ A
+
+
+In order to appreciate the difficulty, we may take the contrapositive
+of the temporal version of BF for HH, where PP is defined as
+usual, as: ¬H¬\neg H \neg:
+
+P ∃x A→∃x P AP \ \exists x \ A
+\rightarrow \exists x \ P \ A
+
+
+We infer, for example, that there were dinosaurs only if there are
+past dinosaurs. If to exist is to be something, then past dinosaurs
+exist. But whether this commits us to flesh-and-blood dinosaurs is of
+course a different matter, since being a past dinosaur need not
+require being a dinosaur.
+4.4.3 From Logic to Ontology
+
+The interaction between pure quantificational logic and tense and
+modality suggests the domain of ontology is immutable and necessary.
+But we can only draw these conclusions by making use of some auxiliary
+assumptions, some of which are far from obvious. The highly
+counterintuitive character of the conclusions has consequently led
+many philosophers to place some of the auxiliary assumptions under
+close scrutiny. Other philosophers have followed argument where it
+leads, and they have sought to reconcile the eternal and necessary
+character of the domain of ontology with the apparent temporary and
+contingent character of existence. In fact, Williamson 2013 set out to
+provide a separate battery of arguments for the necessity and
+immutability of ontology.
+
+One auxiliary assumption one may question is the traditional link
+between quantification and existence. Even if there is no change in
+the domain of quantification, you may nevertheless think that
+existence is only temporary. Socrates did not exist either before 490
+BCE or after 399 BCE, and the mere fact that he is, has and will
+always be something is not reason to attribute existence to him. One
+variant of this move is a direct descendant of Meinong’s view on
+existence as a mere species of being. But to the extent to which
+Meinongianism may be accompanied with the implausible thesis that no
+matter what condition we substitute for FF in “the FF is
+FF” gives rise to a true sentence, it would seem to entail
+that “the round square is a round square” is true, which
+seems hopeless. But the Meinongian thesis is not compulsory for more
+plausible developments of the view that not everything exists, even
+though everything is
+ something.[26]
+ What is not negotiable, though, is the thesis that existence should
+not be taken to be expressed by a quantificational expression, but
+rather by a predicate which may or not apply to objects in the domain.
+The moral of the temporal versions of BF and CBF is only that
+unrestricted quantification ranges over an immutable and necessary
+domain of objects, whether or not they enjoy temporary and contingent
+existence. The difficult question remains of how to answer
+Quine’s question “what is there?” once one abandons
+the thesis that no matter what condition FF may be, there are
+objects that satisfy the condition. For more on different variants of
+Meinongianism, the reader may consult the entry on
+ existence.
+
+There is, in the second place, the assumption that the axioms of pure
+quantificational logic remain true when we expand the language to
+include other sentential operators, whether temporal, modal or
+ otherwise.[27]
+ What is perhaps the most common response to our predicament is to
+recoil from pure quantificational logic into a suitably weakened
+variant of it. This is, for example, the path taken in Kripke (1963),
+where Kripke proposes to weaken the axiom of universal instantiation
+in line with the first version of inclusive quantificational logic
+discussed earlier. Since ∃y x=y\exists y \ x = y is not a theorem of
+inclusive quantificational logic, we are not in a position to
+necessitate, which blocks the derivation of the necessity of
+ being.[28]
+ Kripke’s quantified modal logic is discussed in the entry on
+ actualism.
+ Others have fallen back into alternative forms of free logic, but
+there appears to be no consensus as to which one is the best
+alternative to pure quantificational logic. It may be helpful to note,
+however, that some of the relevant free logics merely restrict the
+axiom of universal instantiation by means of an existence predicate
+and do nothing to block the derivation of other allegedly problematic
+principles such as the necessity of identity, which is the thesis that
+everything is necessarily self-identical. Since, presumably, an object
+can only be necessarily self-identical if it exists necessarily,
+opponents of CBF will also want to have some resources to block the
+necessity of identity.
+
+The derivability of the necessity of identity from the axioms of
+identity and the rule of necessitation may perhaps invite one to
+consider another option. Maybe the culprit is not pure
+quantificational logic, but rather the indiscriminate use of the rule
+of necessitation. The rationale for necessitation is that every
+provable sentence should be necessarily true, but it is not clear how
+this thought is supposed to generalize to open formulas, which,
+strictly speaking, are not true or false. Open formulas are merely
+true or false under an assignment of values to their free variables.
+But the fact that x=xx = x, for example, is true under an assignment
+ss on which xx is assigned a table is no reason to think that
+x=xx = x is necessarily true under such an assignment if you think
+that the table could have not been
+ there.[29]
+ One problem for this strategy is that it is of little help when we
+allow closed terms such as constant symbols into the language of
+quantified modal logic. In the presence of constant symbols, classical
+quantificational logic allows us to derive the sentence ∃x a=x\exists x \
+a = x as a theorem, whence, by necessitation for complete sentences,
+we infer ◻∃x a=x\Box \exists x \ a= x, which seems objectionable if aa
+is suppose to regiment a name for an object that exists only
+contingently. One could avoid the problems by barring closed terms
+from the language, but such a radical exclusion seems ad hoc
+and artificial. So, if one chooses to restrict necessitation, one must
+provide a different rationale for it. Deutsch (1990) provides an
+example of this strategy.
+
+The fourth and final option to consider is to take the derivability of
+CBF in tense and modal logic at face value, and embrace the conclusion
+that existence is indeed immutable and necessary. These are the theses
+that Williamson (2013) calls “permanentism” and
+“necessitism”. The task for each approach is to explain
+our initial reluctance to embrace them in the first place. Take the
+apparent resistance to accept the claim that Socrates will always be
+something despite the fact that he died in 399 BCE. The permanentist
+may respond that if we are initially disinclined to accept this claim,
+it is only because we mistakenly think that because a person, for
+example, is a concrete object, a past or a future person must be
+concrete as well. Socrates, which is a past person, was not a person
+either before 490 BCE or after 399 BCE; indeed, Socrates is now not a
+person, nor will he be one in the future. Likewise, a merely possible
+person need not be a person either and neither the Barcan nor the
+Converse Barcan Formula threaten the temporary and contingent
+character of concreteness. Since I could have found the time, skill
+and energy to build a bookcase, some object is possibly a bookcase
+built by me. But the necessitist will be at pains to add that to be a
+possible bookcase built by me is not to be a bookcase built by me,
+much less a bookcase. This outlook is defended by Linsky & Zalta
+(1994) and Williamson (2013). But there are other points of contact.
+For example, all versions of necessitism must reject unqualified
+“essentialist” theses such as the view that a person is
+necessarily a person; at most, one can perhaps maintain the weaker
+thesis that a person is necessarily if concrete, a person. Likewise,
+all versions of necessitism seem committed to the actual existence of
+many more nonsets than can form a set. Sider (2009), for example,
+argues that necessitism is committed to the actual existence of at
+least κ\kappa nonsets for each set-theoretic cardinal κ\kappa.
+And Hawthorne & Uzquiano (2011) raises other cardinality problems
+for a combination of necessitism with certain common mereological
+assumptions.

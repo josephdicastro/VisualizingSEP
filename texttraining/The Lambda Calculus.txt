@@ -1,0 +1,1923 @@
+The λλ\lambda-calculus is, at heart, a simple notation for functions
+and application. The main ideas are applying a function to an
+argument and forming functions by abstraction. The syntax of
+basic λλ\lambda-calculus is quite sparse, making it an elegant, focused
+notation for representing functions. Functions and arguments are on a
+par with one another. The result is a non-extensional theory of
+functions as rules of computation, contrasting with an extensional
+theory of functions as sets of ordered pairs. Despite its sparse
+syntax, the expressiveness and flexibility of the λλ\lambda-calculus
+make it a cornucopia of logic and mathematics. This entry develops
+some of the central highlights of the field and prepares the reader
+for further study of the subject and its applications in philosophy,
+linguistics, computer science, and logic.
+ 
+1. Introduction
+
+The λλ\lambda-calculus is an elegant notation for working with
+applications of functions to arguments. To
+take a mathematical example, suppose we are given a simple polynomial
+such as
+x2−2⋅x+5x2−2⋅x+5x^2 -2\cdot x+5.
+What is the value of this expression when x=2x=2x = 2? We compute
+this by ‘plugging in’ 2 for xxx in the expression: we
+get 22−2⋅2+522−2⋅2+52^2 -2\cdot 2+5,
+which we can further reduce to get the answer 5. To use the
+λλ\lambda-calculus to represent the situation, we start with the
+λλ\lambda-term
+λx[x2−2⋅x+5].λx[x2−2⋅x+5].
+\lambda x[x^2 -2\cdot x+5].
+
+
+The λλ\lambda operators allows us to abstract over xxx.
+One can intuitively read
+‘λx[x2−2⋅x+5]λx[x2−2⋅x+5]\lambda x[x^2 -2\cdot x+5]’
+as an expression that is waiting for a value aaa for the variable
+xxx. When given such a value aaa (such as the number 2), the
+value of the expression is
+a2−2⋅a+5a2−2⋅a+5a^2 -2\cdot a+5.
+The ‘λλ\lambda’ on its own has no significance; it merely
+binds the variable xxx, guarding it, as it were, from
+outside interference. The terminology in λλ\lambda-calculus is that we
+want to apply this expression to an argument, and
+get a value. We write ‘MaMaMa’ to denote the
+application of the function MMM to the argument aaa.
+Continuing with the example, we get:
+(λx[x2−2⋅x+5])2⊳22−2⋅2+5⟨Substitute 2 for x⟩=4−4+5⟨Arithmetic⟩=5⟨Arithmetic⟩(λx[x2−2⋅x+5])2⊳22−2⋅2+5⟨Substitute 2 for x⟩=4−4+5⟨Arithmetic⟩=5⟨Arithmetic⟩\begin{align}
+(\lambda x[x^2 -2\cdot x+5])2 \rhd 2^2&amp; -2\cdot 2+5
+   &amp;\langle \text{Substitute 2 for } x\rangle \\
+&amp;= 4-4+5
+   &amp;\langle\text{Arithmetic}\rangle \\
+&amp;= 5 
+   &amp;\langle\text{Arithmetic}\rangle
+\end{align}
+
+The first step of this calculation, plugging in ‘2’ for
+occurrences of xxx in the expression ‘x2−2⋅x+5x2−2⋅x+5x^2 - 2\cdot x +
+5’, is the passage from an abstraction term
+to another term by the operation of substitution. The remaining
+equalities are justified by computing with natural numbers.
+
+This example suggests the central principle of the
+λλ\lambda-calculus,
+called ββ\beta-reduction, which is also
+sometimes called ββ\beta-conversion:
+(β)(λx[M])N⊳M[x:=N](β)(λx[M])N⊳M[x:=N]
+\tag{\(\beta\)}
+(\lambda x[M])N \rhd M[x := N]
+
+
+The understanding is that we can reduce or contract
+(⊳)(⊳)(\rhd) an application (λxM)N(λxM)N(\lambda xM)N of an abstraction term
+(the left-hand side, λxM)λxM)\lambda xM) to something (the right-hand
+side, N)N)N) by simply plugging in NNN for the occurrences of xxx
+inside MMM (that’s what the notation ‘M[x:=N]M[x:=N]M[x :=
+N]’
+expresses).  ββ\beta-reduction,
+or ββ\beta-conversion, is the heart of the
+λλ\lambda-calculus.  When one actually applies ββ\beta-reduction
+to reduce a term, there is an important proviso that has to be
+observed. But this will be described in Section 2.1, when we discuss
+bound and free variables.
+1.1 Multi-argument operations
+
+What about functions of multiple arguments? Can the λλ\lambda-calculus
+represent operations such as computing the length of the hypotenuse of
+a right triangle:
+
+Hypotenuse of a right triangle with legs of length xxx and
+y⇒√x2+y2y⇒x2+y2y \Rightarrow \sqrt{x^2 + y^2}.
+
+The length-of-hypotenuse operation maps two positive real numbers
+xxx and yyy and to another positive real number. One can
+represent such multiple-arity operations using the apparatus of the
+λλ\lambda-calculus by viewing the operation as taking one input at a
+time. Thus, the operation can be seen as taking one input, xxx, a
+positive real number, and producing as its value not a
+number, but an operation: namely, the operation that
+takes a positive real number yyy as input and produces as output
+the positive real number √x2+y2x2+y2\sqrt{x^2 + y^2}. One
+could summarize the discussion by saying that the operation, 
+hypotenuse-length,
+that computes the length
+of the hypotenuse of a right triangle given the lengths aaa and
+bbb of its legs, is:
+
+hypotenuse-length :=λa[λb[√a2+b2]]:=λa[λb[a2+b2]]:= \lambda a[\lambda b[\sqrt{a^2 + b^2}]]
+
+By the principle of ββ\beta-reduction, we have, for example, that 
+hypotenuse-length
+3, the application of hypotenuse-length
+to 3, is
+λb[√32+b2]λb[32+b2]\lambda b[\sqrt{3^2 + b^2}], which is a
+function of that is ‘waiting’ for another argument. The
+λλ\lambda-term hypotenuse-length 3 can
+be viewed as a function that computes the length of the hypotenuse of
+a right triangle one of whose legs has length 3. We find,
+finally, that (hypotenuse-length
+3)4—the application of hypotenuse-length
+to 3 and then to 4—is
+5, as expected.
+
+Another way to understand the reduction of many-place functions to
+one-place functions is to imagine a machine MMM that initially
+starts out by loading the first aaa of multiple arguments
+a,b,…a,b,…a, b,\ldots into memory. If one then suspends the
+machine after it has loaded the first argument into memory, one can
+view the result as another machine Maa_a that is
+awaiting one fewer input; the first argument is now fixed.
+1.2 Non-Extensionality
+An important philosophical issue concerning the λλ\lambda-calculus
+is the question of its underlying concept of functions. In set theory,
+a function is standardly understood as a set of argument-value
+pairs. More specifically, a function is understood as a
+set fff of ordered pairs satisfying the property that
+(x,y)∈f(x,y)∈f(x,y) \in f and (x,z)∈f(x,z)∈f(x,z) \in f
+implies y=zy=zy = z. If fff is a function and
+(x,y)∈f(x,y)∈f(x,y) \in f, this means that the function f assigns
+the value yyy to the argument xxx. This is the concept of
+functions-as-sets. Consequently, the notion of
+equality of functions-as-sets is equality qua sets, which,
+under the standard principle of extensionality, entails that two
+functions are equal precisely when they contain the same ordered
+pairs. In other words, two functions are identical if and only if they
+assign the same values to the same arguments. In this sense,
+functions-as-sets are
+extensional objects.
+In contrast, the notion of a function at work in λλ\lambda-calculus
+is one where functions are understood as rules: a function is
+given by a rule for how to determine its values from its
+arguments. More specifically, we can view a λλ\lambda-term
+λx[M]λx[M]\lambda x[M] as a description of an operation that,
+given xxx, produces MMM; the body MMM of the
+abstraction term is, essentially, a rule for what to do with
+xxx. This is the conception
+of functions-as-rules. Intuitively, given
+rules MMM and NNN, we cannot in general decide whether
+λx[M]λx[M]\lambda x[M] is equal to λx[N]λx[N]\lambda x[N]. The
+two terms might ‘behave’ the same (have the same value
+given the same arguments), but it may not be clear what resources are
+needed for showing the equality of the terms. In this sense,
+functions-as-rules are non-extensional objects.
+To distinguish the extensional concept of functions-as-sets from
+the non-extensional concept of functions-as-rules, the latter is often
+referred to as an ‘intensional’ function concept,
+in part because of the ostensibly intensional concept of a rule
+involved. This terminology is particularly predominant in the
+community of mathematical logicians and philosophers of mathematics
+working on the foundations of mathematics. But from the perspective of
+the philosophy of language, the terminology can be somewhat
+misleading, since in this context, the extensional-intensional
+distinction has a slightly different meaning.
+In the standard possible-worlds framework of philosophical
+semantics, we would distinguish between an extensional and an
+intensional function concept as follows. Let us say that that two
+functions are extensionally equivalent at a world if and only if they
+assign the same values to the same arguments at that world. And
+let us say that two functions are intensionally equivalent if
+and only if they assign the same values to the same arguments at
+every possible-world. To illustrate, consider the functions
+highest-mountain-on-earth and highest-mountain-in-the-Himalayas, where
+ highest-mountain-on-earth
+ assigns the highest mountain on
+earth as the value to every argument and
+ highest-mountain-in-the-Himalayas
+ assigns
+the highest mountain in the Himalayas as the value to every
+argument. The two functions are extensionally equivalent (at the
+actual world), but not intensionally so. At the actual world, the two
+functions assign the same value to every argument, namely
+Mt. Everest. Now consider a world where Mt. Everest is not the highest
+mountain on earth, but say, Mt. Rushmore is. Suppose further that this
+is so, just because Mt. Rushmore is 30.000 feet/9.100 m higher than it
+is at the actual world, while Mt. Everest, with its roughly 29.000
+feet/8.800 m, is still the highest mountain in the Himalayas. At that
+world,
+ highest-mountain-on-earth
+ now assigns Mt. Rushmore as the value to
+every argument, while
+ highest-mountain-in-the-Himalayas 
+ still assigns Mt. Everest to
+every object. In other words, 
+highest-mountain-on-earth and
+ highest-mountain-in-the-Himalayas are
+extensionally equivalent (at the actual world) but not intensionally equivalent.
+A function concept may now be called extensional if and
+only if it requires functions that are extensionally equivalent at the
+actual world to be identical. And a function concept may be classified
+as intensional if and only if it requires intensionally
+equivalent functions to be identical. Note that these classifications
+are conceptually different from the distinctions commonly used in the
+foundations of mathematics. On the terminology used in the foundations
+of mathematics, functions-as-sets are classified as extensional since
+they use the axiom of extensionality as their criterion of identity,
+and functions-as-rules are classified as intensional because they rely
+on the ostensibly intensional concept of a rule. In the present
+possible-worlds terminology, function concepts are classified as
+extensional or intensional based of their behavior at
+possible-worlds.
+
+An issue from which conceptual confusion might arise is that the two
+terminologies potentially pass different verdicts on the function concept at work
+in the λλ\lambda-calculus. To see this, consider the following two functions:
+ADD-ONE:=λx[x+1]ADD-TWO-SUBTRACT-ONE:=λx[[x+2]−1]ADD-ONE:=λx[x+1]ADD-TWO-SUBTRACT-ONE:=λx[[x+2]−1]\begin{align}
+\addone &amp;:= \lambda x[x+1] \\
+\addtwosubtractone &amp;:= \lambda x[[x+2]-1] 
+\end{align}
+
+These two functions are clearly extensionally equivalent: they assign
+the same value to the same input at the actual world. Moreover, given
+standard assumptions in possible worlds semantics, the two functions
+are also intensionally equivalent. If we assume that
+mathematical facts, like facts about addition and subtraction, are
+necessary in the sense that they are the same at every possible world,
+then we get that the two functions give the same value to the
+arguments at every possible world. So, an intensional function
+concept would require the two functions to be identical. In
+the λλ\lambda-calculus, however, it’s not clear at all that we should
+identify the two functions. Formally speaking, without the help of
+other principle, we cannot show that the two λλ\lambda-terms denote the
+same function. Moreover, informally speaking, on the conception of
+functions-as-rules, it’s not even clear that we should
+identify them: the two terms involve genuinely different rules, and so
+we might be tempted to say that they denote different functions.
+A function concept that allows for intensionally equivalent
+functions to be distinct is called hyperintensional. The point
+is that in possible-worlds terminology, the function concept at work
+in the λλ\lambda-calculus may be regarded not as intentional but
+hyperintensional—in contrast to what the terminology
+common in the foundations of mathematics says. Note that it’s unclear
+how an intensional semantic framework, like the possible-worlds
+framework, could even in principle account for a non-intensional
+function concept. On the semantics of the λλ\lambda-calculus, see
+section 7. The point here was simply to clarify
+any conceptual confusions that might arise from different
+terminologies at play in philosophical discourse.
+
+The hyperintensionality of the λλ\lambda-calculus is particularly
+important when it comes to its applications as a theory of not only
+functions, but more generally nnn-ary relations. On
+this, see section
+ 9.3.
+ It is effectively the hyperintensionality of the λλ\lambda-calculus
+that makes it an attractive tool in this context. It should be noted,
+however, that the λλ\lambda-calculus can be made extensional (as well
+as intensional) by postulating additional laws concerning the equality
+of λλ\lambda-terms. On this, see section
+ 5.
+2. Syntax
+
+The official syntax of the λλ\lambda-calculus is quite simple; it is
+contained in the next definition.
+
+
+Definition For the alphabet of the language of the
+λλ\lambda-calculus we take the left and right parentheses, left and
+right square brackets, the symbol ‘λλ\lambda’, and an
+infinite set of variables. The class of λλ\lambda-terms
+is defined inductively as follows:
+
+Every variable is a λλ\lambda-term.
+If MMM and NNN are λλ\lambda-terms, then so is
+(MN)(MN)(MN).
+If MMM is a λλ\lambda-term and xxx is a variable, then
+(λx[M])(λx[M])(\lambda x[M]) is a λλ\lambda-term.
+
+
+By ‘term’ we always mean ‘λλ\lambda-term’.
+Terms formed according to rule (2) are called application
+terms. Terms formed according to rule (3) are called
+abstraction terms.
+
+
+As is common when dealing with formal languages that have grouping
+symbols (the left and right parenthesis, in our case), some
+parentheses will be omitted when it is safe to do so (that is, when
+they can be reintroduced in only one sensible way). Juxtaposing more
+than two λλ\lambda-terms is, strictly speaking, illegal. To avoid the
+tedium of always writing all needed parentheses, we adopt the
+following convention:
+
+Convention (association to the left): When more than
+two terms M1M2M3…MnM1M2M3…MnM_1 M_2 M_3 \ldots M_n are juxtaposed we can recover the
+missing parentheses by associating to the
+left: reading from left to right, group M1M1M_1 and
+M2M2M_2 together, yielding (M1M2)M3…Mn(M1M2)M3…Mn(M_1 M_2)M_3 \ldots M_n; then group
+(M1M2)(M1M2)(M_1 M_2) with M3M3M_3: ((M1M2)M3)…Mn((M1M2)M3)…Mn((M_1 M_2)M_3)\ldots M_n, and so
+forth.
+
+The convention thus gives a unique reading to any sequence of
+λλ\lambda-terms whose length is greater than 2.
+2.1 Variables, bound and free
+
+The function of λλ\lambda in an abstraction term
+(λx[M](λx[M](\lambda x[M]) is that it binds the
+variable appearing immediately after it in the term MMM. Thus
+λλ\lambda is analogous to the universal and existential quantifiers
+∀∀\forall and ∃∃\exists of first-order logic. One can define,
+analogously, the notions of free and bound variable in the expected
+way, as follows.
+
+
+Definition The syntactic functions FVFV\mathbf{FV} and
+BVBV\mathbf{BV} (for ‘free variable’ and ‘bound
+variable’, respectively) are defined on the set of λλ\lambda-terms by
+structural induction thus:
+For every variable xxx, term MMM, and term NNN:
+FreeBound(1)FV(x)={x}BV(x)={∅}(2)FV(MN)=FV(M)∪FV(N)BV(MN)=BV(M)∪BV(N)(3)FV(λx[M])=FV(M)−{x}BV(λx[M])=BV(M)∪{x}FreeBound(1)FV(x)={x}BV(x)={∅}(2)FV(MN)=FV(M)∪FV(N)BV(MN)=BV(M)∪BV(N)(3)FV(λx[M])=FV(M)−{x}BV(λx[M])=BV(M)∪{x}\begin{array}{lll}
+  &amp;\text{Free}
+  &amp;\text{Bound} \\
+(1)
+  &amp;\mathbf{FV}(x) = \{ x \} \quad 
+  &amp;\mathbf{BV}(x) = \{ \varnothing \} \\
+(2)
+  &amp;\mathbf{FV}(MN) = \mathbf{FV}(M) \cup \mathbf{FV}(N)
+  &amp;\mathbf{BV}(MN) = \mathbf{BV}(M) \cup \mathbf{BV}(N) \\
+(3)
+  &amp;\mathbf{FV}(\lambda x[M]) = \mathbf{FV}(M) - \{ x \}
+  &amp;\mathbf{BV}(\lambda x[M]) = \mathbf{BV}(M) \cup \{ x \}
+\end{array}
+
+If FV(M)=∅FV(M)=∅\mathbf{FV}(M) = \varnothing then MMM is called a
+combinator.
+
+
+Clause (3) in the two definitions supports the intention that λλ\lambda
+binds variables (ensures that they are not free). Note the difference
+between BVBV\mathbf{BV} and FVFV\mathbf{FV} for variables.
+
+As is typical in other subjects where the concepts appear, such as
+first-order logic, one needs to be careful about the issue; a casual
+attitude about substitution can lead to syntactic
+ difficulties.[1]
+ We can defend a casual attitude by adopting the convention that we
+are interested not in terms themselves, but in a certain equivalence
+class of terms. We now define substitution, and then lay down a
+convention that allows us to avoid such difficulties.
+
+
+Definition (substitution) We write
+‘M[x:=N]M[x:=N]M[x := N]’ to denote the
+substitution of NNN for the free occurrences of xxx in
+MMM. A precise
+ definition[2]
+ by recursion on the set of λλ\lambda-terms is as follows: for all
+terms AAA, BBB, and MMM, and for all variables xxx
+and yyy, we define
+
+x[x:=M]≡Mx[x:=M]≡Mx[x := M] \equiv M 
+y[x:=M]≡yy[x:=M]≡yy[x := M] \equiv y (yyy distinct from x)x)x)
+(AB)[x:=M]≡A[x:=M]B[x:=M](AB)[x:=M]≡A[x:=M]B[x:=M](AB)[x := M] \equiv A[x := M]B[x := M]
+(λx[A])[x:=M]≡λx[A](λx[A])[x:=M]≡λx[A](\lambda x[A])[x := M] \equiv \lambda x[A]
+(λy[A])[x:=M]≡λy[A[x:=M]](λy[A])[x:=M]≡λy[A[x:=M]](\lambda y[A])[x := M] \equiv \lambda y[A[x := M]] 
+ (yyy distinct from x)x)x)
+
+
+
+Clause (1) of the definition simply says that if we are to substitute
+MMM for xxx and we are dealing simply with xxx, then
+the result is just MMM. Clause (2) says that nothing happens when
+we are dealing (only) with a variable different from xxx but we
+are to substitute something for xxx. Clause (3) tells us that
+substitution unconditionally distributes over applications. Clauses
+(4) and (5) concern abstraction terms and parallel clauses (1) and (2)
+(or rather, clauses (2) and (1), in opposite order): If the bound
+variable zzz of the abstraction term λz[A]λz[A]\lambda z[A]
+is identical to the variable xxx for which we are to do a
+substitution, then we do not perform any substitution (that is,
+substitution “stops”). This coheres with the intention
+that M[x:=N]M[x:=N]M[x := N] is supposed to denote the
+substitution of NNN for the free occurrences of xxx
+in MMM. If MMM is an abstraction term
+λx[A]λx[A]\lambda x[A] whose bound variable is xxx, then
+xxx does not occurr freely in MMM, so there is nothing to
+do. This explains clause 4. Clause (5), finally, says that if the
+bound variable of an abstraction term differs from xxx, then at
+least xxx has the “chance ” to occur freely in the
+abstraction term, and substitution continues into the body of the
+abstraction term.
+
+
+Definition (change of bound variables,
+αα\alpha-convertibility).
+The term NNN is obtained from the term MMM by a change
+of bound variables if, roughly, any abstraction term
+λx[A]λx[A]\lambda x[A] inside MMM has been replaced by
+λy[A[x:=y]]λy[A[x:=y]]\lambda y[A[x := y]].
+
+Let us say that terms MMM and NNN are
+αα\alpha-convertible if there is a
+sequence of changes of bound variables starting from MMM and ending
+at NNN.
+
+Axiom. ββ\beta-conversion
+(stated with a a no-capture proviso):
+
+(λx[M])N⊳M[x:=N](λx[M])N⊳M[x:=N] (\lambda x[M])N \rhd M[x := N], provided no variable that
+occurrs free in NNN becomes bound after its substitution into
+MMM.
+
+
+Roughly, we need to adhere to the principle that free variables ought
+to remain free; when an occurrence of a variable is threatened to
+become bound by a substitution, simply perform enough
+αα\alpha-conversions to sidestep the problem. If we keep this in
+mind, we can work with λλ\lambda-calculus without worrying about
+these nettlesome syntactic difficulties.  So, for example, we can't
+apply the function λx[λy[x(y−5)]]λx[λy[x(y−5)]]\lambda x[\lambda y[x(y-5)]] to the argument
+2y2y2y because upon substitution of “2y2y2y” for
+“xxx”, the “yyy” in “2y2y2y”
+would be captured by the variable-binding operator “λyλy\lambda
+y”.  Such a substitution would yield a function different from
+the one intended. However, we can first transform λx[λy[x(y−5)]]λx[λy[x(y−5)]]\lambda x[\lambda
+y[x(y-5)]] to λx[λz[x(z−5)]]λx[λz[x(z−5)]]\lambda x[\lambda z[x(z-5)]] by
+αα\alpha-conversion, and then apply this latter function to the
+argument 2y2y2y.  So whereas the following is not a valid use of
+ββ\beta-conversion:
+
+   (λx[λy[x(y−5)]])2y⊳λy[2y(y−5)](λx[λy[x(y−5)]])2y⊳λy[2y(y−5)] (\lambda x[\lambda y[x(y-5)]])2y  \rhd \lambda y[2y(y-5)]
+
+we can validly use ββ\beta-conversion to conclude:
+
+   (λx[λz[x(z−5)]])2y⊳λz[2y(z−5)](λx[λz[x(z−5)]])2y⊳λz[2y(z−5)] (\lambda x[\lambda z[x(z-5)]])2y \rhd \lambda z[2y(z-5)]
+
+This example helps one to see why the proviso to ββ\beta-conversion
+is so important.  The proviso is really no different from the one used
+in the statement of an axiom of the predicate calculus, namely:
+∀xϕ→ϕτx∀xϕ→ϕxτ\forall x\phi \to \phi^{\tau}_x, provided no variable that is free
+in the term ττ\tau before the substitution becomes bound after the
+substitution.
+
+The syntax of λλ\lambda-calculus is quite flexible. One can form all
+sorts of terms, even self-applications such as xxxxxx. Such
+terms appear at first blush to be suspicious; one might suspect that
+using such terms could lead to inconsistency, and in any case one
+might find oneself reaching for a tool with which to forbid such
+terms. If one were to view functions and sets of ordered pairs of a
+certain kind, then the xxx in xxxxxx would be a
+function (set of ordered pairs) that contains as an element a pair
+(x,y)(x,y)(x,y) whose first element would be xxx itself. But
+no set can contain itself in this way, lest the axiom of foundation
+(or regularity) be violated. Thus, from a set theoretical perspective
+such terms are clearly dubious. Below one can find a brief sketch of
+one such tool, type theory. But in fact such terms do not lead to
+inconsistency and serve a useful purpose in the context of
+λλ\lambda-calculus. Moreover, forbidding such terms, as in type theory,
+does not come for free (e.g., some of the expressiveness of untyped
+λλ\lambda-calculus is lost).
+2.2 Combinators
+
+As defined earlier, a combinator is a λλ\lambda-term with
+no free variables. One can intuitively understand combinators as
+‘completely specified’ operations, since they have no free
+variables. There are a handful of combinators that have proven useful
+in the history of λλ\lambda-calculus; the next table highlights some of
+these special combinators. Many more could be given (and obviously
+there are infinitely many combinators), but the following have concise
+definitions and have proved their utility. Below is a table of some standard
+λλ\lambda-terms and combinators.
+
+
+Name
+Definition & Comments 
+
+SS\bS
+λx[λy[λz[xz(yz)]]]λx[λy[λz[xz(yz)]]]\lambda x[\lambda y[\lambda z[xz(yz)]]]
+
+Keep in mind that ‘xz(yz)xz(yz)xz(yz)’ is
+to be understood as the application
+(xz)(yz)(xz)(yz)(xz)(yz) of xzxzxz to
+yz.Syz.Syz. \bS can thus be understood as a
+substitute-and-apply operator: zzz ‘intervenes’
+between xxx and yyy: instead of applying xxx to
+yyy, we apply xzxzxz to yzyzyz. 
+
+KK\mathbf{K}
+λx[λy[x]]λx[λy[x]]\lambda x[\lambda y[x]]
+
+The value of KMKM\mathbf{K}M is the constant function whose value for any
+argument is simply M.M.M. 
+
+II\mathbf{I}
+λx[x]λx[x]\lambda x[x]
+
+The identity function. 
+
+BB\mathbf{B}
+λx[λy[λz[x(yz)]]]λx[λy[λz[x(yz)]]]\lambda x[\lambda y[\lambda z[x(yz)]]]
+
+Recall that ‘xyzxyzxyz’ is to be understood
+as (xy)z(xy)z(xy)z, so this combinator is not a trivial identity
+function. 
+
+CC\mathbf{C}
+λx[λy[λz[xzy]]]λx[λy[λz[xzy]]]\lambda x[\lambda y[\lambda z[xzy]]]
+
+Swaps an argument. 
+
+TT\mathbf{T}
+λx[λy[x]]λx[λy[x]]\lambda x[\lambda y[x]]
+
+Truth value true. Identical to KK\mathbf{K}. We shall see later how these
+representations of truth values plays a role in the blending of logic
+and λλ\lambda-calculus. 
+
+FF\mathbf{F}
+λx[λy[y]]λx[λy[y]]\lambda x[\lambda y[y]]
+
+Truth value false. 
+
+ωω\boldsymbol{\omega}
+λx[xx]λx[xx]\lambda x[xx]
+
+Self-application combinator 
+
+ΩΩ\boldsymbol{\Omega}
+ωωωω\boldsymbol{\omega \omega}
+
+Self-application of the self-application combinator. Reduces to
+itself. 
+
+YY\mathbf{Y}
+λf[(λx[f(xx)])(λx[f(xx)]λf[(λx[f(xx)])(λx[f(xx)]\lambda f[(\lambda x[f(xx)])(\lambda x[f(xx)])]
+
+Curry’s paradoxical combinator. For every λλ\lambda-term XXX, we
+have:
+
+YX⊳(λx[X(xx)])(λx[X(xx)])⊳X((λx[X(xx)])(λx[X(xx)]))YX⊳(λx[X(xx)])(λx[X(xx)])⊳X((λx[X(xx)])(λx[X(xx)]))\begin{align}
+\mathbf{Y}X &amp;\rhd (\lambda x[X(xx)])(\lambda x[X(xx)]) \\
+   &amp;\rhd X((\lambda x[X(xx)])(\lambda x[X(xx)]))
+\end{align}
+
+The first step in the reduction shows that YY\mathbf{Y}X reduces
+to the application term (λx[X(xx)])(λx[X(xx)](λx[X(xx)])(λx[X(xx)](\lambda x[X(xx)])(\lambda x[X(xx)]),
+which is recurring in the third step. Thus, YY\mathbf{Y} has the curious
+property that YY\mathbf{Y}X and X(Y(Y(\mathbf{Y}X) reduce to a common term.
+
+
+ΘΘ\boldsymbol{\Theta}
+(λx[λf[f(xxf)]])(λx[λf[f(xxf)]](λx[λf[f(xxf)]])(λx[λf[f(xxf)]](\lambda x[\lambda f[f(xxf)]])(\lambda x[\lambda f[f(xxf)]])
+
+Turing’s fixed-point combinator. For every λλ\lambda-term XXX,
+ΘXΘX\boldsymbol{\Theta}X reduces to X(ΘX)X(ΘX)X(\boldsymbol{\Theta}X),
+which one can confirm by hand. (Curry’s paradoxical combinator
+YY\mathbf{Y} does not have this property.) 
+
+Below is a table of notational conventions employed in this entry.
+
+
+Notation
+Reading & Comments 
+
+MNMNMN
+The application of the function MMM to the argument NNN.
+
+Usually, parentheses are used to separate the function from the
+argument, like so: ‘M(N)M(N)M(N)’. However, in
+λλ\lambda-calculus and kindred subjects the parentheses are used as
+grouping symbols. Thus, it is safe to write the function and the
+argument adjacent to one other. 
+
+PQRPQRPQR
+The application of the function PQPQPQ—which is
+itself the application of the function PPP to the argument
+QQQ—to RRR.
+
+
+If we do not use parentheses to separate function and argument, how
+are we to disambiguate expressions that involve three or more terms,
+such as ‘PQRPQRPQR’? Recall our convention that we are to
+understand such officially illegal expressions by working from left to
+right, always putting parentheses around adjacent terms. Thus,
+‘PQRPQRPQR’ is to be understood as (PQ)R(PQ)R(PQ)R.
+‘PQRSPQRSPQRS’ is ((PQ)R)S((PQ)R)S((PQ)R)S. The expression
+‘(PQ)R(PQ)R(PQ)R’ is disambiguated; by our convention, it is
+identical to PQRPQRPQR. The expression ‘P(QR)P(QR)P(QR)’ is also
+explicitly disambiguated; it is distinct from PQRPQRPQR because it is
+the application of PPP to the argument QRQRQR (which is itself the
+application of the function QQQ to the argument
+R)R)R). 
+
+(λx[M])(λx[M])(\lambda x[M])
+The λλ\lambda term that binds the variable xxx
+in the bodybody\boldsymbol{body} term MMM.
+
+
+The official vocabulary of the λλ\lambda-calculus consists of the
+symbol ‘λλ\lambda’, left ‘(’and right
+‘)’ parentheses, and a set of variables (assumed to be
+distinct from the three symbols ‘λλ\lambda’,
+‘(’, and ‘)’ lest we have syntactic
+chaos).
+
+Alternative notation. It is not necessary to include
+two kinds of grouping symbols (parentheses and square brackets) in the
+syntax. Parentheses or square brackets alone would obviously suffice.
+The two kinds of brackets are employed in this entry for the sake of
+readability. Given the two kinds of grouping symbols, we could
+economize further and omit the parentheses from abstraction terms, so
+that ‘(λx[M](λx[M](\lambda x[M])’ would be written as
+‘λx[M]λx[M]\lambda x[M]’.
+
+Some authors write ‘λx.Mλx.M\lambda x.M’ or
+‘λx⋅Mλx⋅M\lambda x\cdot M’, with a full stop or a
+centered dot separating the bound variable from the body of the
+abstraction term. As with the square brackets, these devices are
+intended to assist reading λλ\lambda-terms; they are usually not part
+of the official syntax. (One sees this device used in earlier works of
+logic, such as Principia Mathematica, where the function of
+the symbol . in expressions such as
+‘∀x∀x\forall x.ϕϕ\phi’ is to get us to
+read the whole of the formula ϕϕ\phi as under the scope of the
+∀x∀x\forall x.)
+
+Some authors write abstraction terms without any device separating the
+bound variable from the body: such terms are crisply written as, e.g.,
+‘λxxλxx\lambda xx’,
+‘λyxλyx\lambda yx’. The practice is not without
+its merits: it is about as concise as one can ask for, and permits an
+even simpler official syntax of the λλ\lambda-calculus. But this
+practice is not flawless. In
+‘λxyzλxyz\lambda xyz’, is the bound variable
+xxx or is it xyxyxy? Usually the names of variables are
+single letters, and theoretically this is clearly sufficient. But it
+seems unduly restrictive to forbid the practice of giving longer names
+to variables; indeed, such constructions arise naturally in computer
+programming languages.
+
+For the sake of uniformity, we will adopt the square bracket notation
+in this entry. (Incidentally, this notation is used in (Turing,
+1937).)  
+
+M[x:=A]M[x:=A]M[x := A]
+The λλ\lambda-term that is obtained by substituting the
+λλ\lambda-term A for all free occurrences of xxx inside MMM.
+
+
+A bewildering array of notations to represent substitution can be
+found in the literature on λλ\lambda-calculus and kindred subjects:
+M[x/A],M[A/x],MAx,MxA,[x/A]M,…M[x/A],M[A/x],MxA,MAx,[x/A]M,…
+M[x/A], M[A/x], M_{x}^A, M_{A}^x, [x/A]M,\ldots
+
+
+Which notation to use for substitution seems to be a personal matter.
+In this entry we use a linear notation, eschewing superscripts and
+subscripts. The practice of representing substitution with
+‘:=’ comes from computer science, where ‘:=’
+is read in some programming languages as assigning a value to a
+variable.
+
+As with the square brackets employed to write abstraction terms, the
+square brackets employed to write substitution are not officially part
+of the syntax of the λλ\lambda-calculus. MMM and A are terms,
+xxx is a variable; M[x:=A]M[x:=A]M[x := A] is another
+term.  
+
+M≡NM≡NM \equiv N
+The λλ\lambda-terms MMM and NNN are identical:
+understood as sequences of symbols, MMM and NNN have the
+same length and corresponding symbols of the sequences are identical.
+
+
+The syntactic identity relation ≡≡\equiv is not part of the official
+syntax of λλ\lambda-calculus; this relation between λλ\lambda-terms
+belongs to the metatheory of λλ\lambda-calculus. It is clearly a rather
+strict notion of equality between λλ\lambda-terms. Thus, it is not the
+case (if xxx and yyy are distinct variables) that λx[x]≡λy[y]λx[x]≡λy[y]\lambda x[x]
+\equiv \lambda y[y], even though these two terms clearly
+‘behave’ in the same way in the sense that both are
+expressions of the identity operation x⇒xx⇒xx \Rightarrow x. Later
+we will develop formal theories of equality of λλ\lambda-terms with the
+aim of capturing this intuitive equality of λx[x]λx[x]\lambda x[x]
+and λy[y]λy[y]\lambda y[y]. 
+
+3. Brief history of λλ\lambda-calculus
+
+λλ\lambda-calculus arose from the study of functions as rules. Already
+the essential ingredients of the subject can be found in Frege’s
+pioneering work (Frege, 1893). Frege observed, as we did above, that
+in the study of functions it is sufficient to focus on unary functions
+(i.e., functions that take exactly one argument). (The procedure of
+viewing a multiple-arity operation as a sequence of abstractions that
+yield an equivalent unary operation is called currying
+the operation. Perhaps it would be more historically accurate to call
+the operation fregeing, but there are often miscarriages
+of justice in the appellation of mathematical ideas.) In the 1920s,
+the mathematician Moses Schönfinkel took the subject further with
+his study of so-called combinators. As was common in the
+early days of the subject, Schönfinkel was interested in the
+kinds of transformations that one sees in formal logic, and his
+combinators were intended to be a contribution to the foundations of
+formal logic. By analogy with the reduction that one sees in classical
+propositional logic with the Sheffer stroke, Schöfinkel
+established the astonishing result that the all functions (in the
+sense of all transformations) could be given in terms of the
+combinators KK\mathbf{K} and SS\bS; later we will see the definition of
+these combinators.
+
+Theorem For every term MMM made up of KK\mathbf{K}
+and SS\bS and the variable xxx, there exists a term FFF
+(built only from KK\mathbf{K} and S)S)\bS) such that we can derive
+Fx=MFx=MFx = M.
+
+(The proof that these two suffice to represent all functions is beyond
+the scope of this entry. For further discussion, see the entry on
+ combinatory logic.)
+ One can prove the theorem constructively: there is an algorithm that,
+given MMM, produces the required FFF. Church called this
+FFF ‘λx[M]λx[M]\lambda x[M]’ (Church,
+ 1932).[3]
+ From this perspective, the ββ\beta-rule can be justified: if
+‘λx[M]λx[M]\lambda x[M]’ is to be a function FFF
+satisfying Fx=MFx=MFx = M, then
+λx[M]λx[M]\lambda x[M]x should transform to MMM. This is just
+a special case of the more general principle that for all N,(λx[M])NN,(λx[M])NN,
+(\lambda x[M])N should transform to
+M[x:=N]M[x:=N]M[x := N].
+
+Although today we have more clearly delimited systems of abstraction
+and rewriting, in its early days λλ\lambda-calculus and combinatory
+logic (à la Schönfinkel) were bound up with investigations
+of foundations of mathematics. In the hands of Curry, Church, Kleene,
+and Rosser (some of the pioneers in the subject) the focus was on
+defining mathematical objects and carrying out logical reasoning
+inside the these new systems. It turned out that these early attempts
+at so-called illative λλ\lambda-calculus and combinatory logic were
+inconsistent. Curry isolated and polished the inconsistency; the
+result is now known as Curry’s paradox. See the entry on
+ Curry’s paradox
+ and appendix B of (Barendregt, 1985).
+
+The λλ\lambda-calculus earns a special place in the history of logic
+because it was the source of the first undecidable problem. The
+problem is: given λλ\lambda-terms MMM and NNN, determine
+whether M=NM=NM = N. (A theory of
+equational reasoning about λλ\lambda-terms has not yet been defined;
+the definition will come later.) This problem was shown to be
+undecidable.
+
+Another early problem in the λλ\lambda-calculus was whether it is
+consistent at all. In this context, inconsistency means that all terms
+are equal: one can reduce any λλ\lambda-term MMM to any other
+λλ\lambda-term NNN. That this is not the case is an early result
+of λλ\lambda-calculus. Initially one had results showing that certain
+terms were not interconvertible (e.g., KK\mathbf{K} and S)S)\bS); later,
+a much more powerful result, the so-called Church-Rosser theorem,
+helped shed more light on ββ\beta-conversion and could be used to give
+quick proofs of the non-inter-convertibility of whole classes of
+λλ\lambda-terms. See below for more detailed discussion of
+consistency.
+
+The λλ\lambda-calculus was a somewhat obscure formalism until the
+1960s, when, at last, a ‘mathematical’ semantics was
+found. Its relation to programming languages was also clarified. Till
+then the only models of λλ\lambda-calculus were
+‘syntactic’, that is, were generated in the style of
+Henkin and consisted of equivalence classes of λλ\lambda-terms (for
+suitable notions of equivalence). Applications in the semantics of
+natural language, thanks to developments by Montague and other
+linguists, helped to ‘spread the word’ about the subject.
+Since then the λλ\lambda-calculus enjoys a respectable place in
+mathematical logic, computer science, linguistics (see, e.g., Heim and
+Kratzer 1998), and kindred fields.
+4. Reduction
+
+Various notions of reduction for λλ\lambda-terms are available, but the
+principal one is ββ\beta-reduction, which we have already seen earlier.
+Earlier we used the notation ‘⊳⊳\rhd’; we can be more
+precise. In this section we discuss ββ\beta-reduction and some
+extensions.
+
+
+Definition (one-step ββ\beta-reduction
+⊳β,1)⊳β,1)\rhd_{\beta ,1}) For λλ\lambda-terms AAA and BBB,
+we say that AAA ββ\beta-reduces in one step to BBB, written
+A⊳β,1BA⊳β,1BA \rhd_{\beta ,1} B, just in case there
+exists an (occurrence of a) subterm CCC of AAA, a variable
+xxx, and λλ\lambda-terms MMM and NNN such that C≡(λx[M])NC≡(λx[M])NC \equiv(\lambda x[M])N and BBB is AAA
+except that the occurrence of CCC in AAA is replaced by
+M[x:=N]M[x:=N]M[x := N].
+
+
+Here are some examples of ββ\beta-reduction:
+
+
+
+The variable xxx does not ββ\beta-reduce to anything. (It does not
+have the right shape: it is simply a variable, not an application term
+whose left-hand side is an abstraction term.)
+
+
+(λx[x])a⊳β,1a(λx[x])a⊳β,1a(\lambda x[x])a \rhd_{\beta ,1} a.
+
+
+If xxx and yyy are distinct variables, then
+(λx[y])a⊳β,1y(λx[y])a⊳β,1y(\lambda x[y])a \rhd_{\beta ,1} y.
+
+
+The λλ\lambda-term
+(λx[(λy[xy])a])b](λx[(λy[xy])a])b](\lambda x[(\lambda y[xy])a])b] ββ\beta-reduces in one step to two different λλ\lambda-terms:
+(λx[(λy[xy])a])b⊳β,1(λy[by])a(λx[(λy[xy])a])b⊳β,1(λy[by])a
+(\lambda x[(\lambda y[xy])a])b \rhd_{\beta ,1} (\lambda y[by])a
+
+
+and
+(λx[(λy[xy])a])b⊳β,1(λx[xa])b(λx[(λy[xy])a])b⊳β,1(λx[xa])b
+(\lambda x[(\lambda y[xy])a])b \rhd_{\beta ,1} (\lambda x[xa])b
+
+
+Moreover, one can check that these two terms ββ\beta-reduce in one step
+to a common term: bababa. We thus have:
+
+
+
+
+(λy[by])a(λy[by])a(\lambda y[by])a
+
+ 
+
+
+↗↗\nearrow
+
+↘↘\searrow
+ 
+
+(λx[(λy[xy])a])b(λx[(λy[xy])a])b(\lambda x[(\lambda y[xy])a])b
+
+
+
+bababa 
+
+
+↘↘\searrow
+
+↗↗\nearrow
+ 
+
+
+
+(λx[xa])b(λx[xa])b(\lambda x[xa])b
+
+ 
+ 
+
+
+As with any binary relation, one can ask many questions about the
+relation ⊳β,1⊳β,1\rhd_{\beta ,1} holding between λλ\lambda-terms,
+and one can define various derived notions in terms of
+⊳β,1⊳β,1\rhd_{\beta ,1}.
+
+
+Definition A ββ\beta-reduction sequence
+from a λλ\lambda-term AAA to a λλ\lambda-term BBB is a finite
+sequence s1,…sns1,…sns_1 , \ldots s_n of
+λλ\lambda-terms starting with AAA, ending with BBB, and whose
+adjacent terms
+(sk,sk+1)(sk,sk+1)(s_k,s_{k+1}) satisfy
+the property that sk⊳β,1sk+1sk⊳β,1sk+1s_k \rhd_{\beta ,1} s_{k+1}.
+
+More generally, any sequence sss—finite or
+infinite—starting with a λλ\lambda-term AAA is said to be a
+ββ\beta-reduction sequence commencing with AAA provided that the
+adjacent terms (sk,sk+1)(sk,sk+1)(s_k,s_{k+1}) of sss satisfy the property that
+sk⊳β,1sk+1sk⊳β,1sk+1s_k \rhd_{\beta ,1} s_{k+1}.
+
+
+
+
+Continuing with ββ\beta-reduction Example 1, there are no
+ββ\beta-reduction sequences at all commencing with the variable
+xxx.
+
+
+Continuing with ββ\beta-reduction Example 2, the two-term sequence
+(λx[x])a,a(λx[x])a,a
+(\lambda x[x])a, a
+
+
+is a ββ\beta-reduction sequence from
+(λx[x])a(λx[x])a(\lambda x[x])a to aaa. If aaa is a
+variable, then this ββ\beta-reduction sequence cannot be prolonged, and
+there are no other ββ\beta-reduction sequences commencing with
+(λx[x])a(λx[x])a(\lambda x[x])a; thus, the set of
+ββ\beta-reduction sequences commencing with
+(λx[x])a(λx[x])a(\lambda x[x])a is finite and contains no
+infinite sequences.
+The combinator
+ΩΩ\boldsymbol{\Omega} has the curious property that Ω⊳β,1ΩΩ⊳β,1Ω\Omega \rhd_{\beta ,1} \Omega. Every term of every
+ββ\beta-reduction sequence commencing with ΩΩ\boldsymbol{\Omega} (finite or
+infinite) is equal to ΩΩ\boldsymbol{\Omega}.
+
+
+Consider the term KaΩKaΩ\mathbf{K}a\boldsymbol{\Omega}. There are infinitely many
+reduction sequences commencing with this term:
+
+KaΩ⊳β,1aKaΩ⊳β,1a\bK a\boldsymbol{\Omega} \rhd_{\beta ,1} a
+KaΩ⊳β,1KaΩ⊳β,1aKaΩ⊳β,1KaΩ⊳β,1a\bK a\boldsymbol{\Omega} \rhd_{\beta ,1} \bK a\boldsymbol{\Omega} \rhd_{\beta ,1} a
+KaΩ⊳β,1KaΩ⊳β,1KaΩ⊳β,1aKaΩ⊳β,1KaΩ⊳β,1KaΩ⊳β,1a\bK a\boldsymbol{\Omega} \rhd_{\beta ,1} \bK a\boldsymbol{\Omega} \rhd_{\beta ,1} \bK a\boldsymbol{\Omega} \rhd_{\beta ,1} a
+KaΩ⊳β,1KaΩ⊳β,1KaΩ…KaΩ⊳β,1KaΩ⊳β,1KaΩ…\bK a\boldsymbol{\Omega} \rhd_{\beta ,1} \bK a\boldsymbol{\Omega} \rhd_{\beta ,1} \bK a\boldsymbol{\Omega} \ldots
+
+
+If aaa is a variable, one can see that all finite reduction
+sequences commencing with KaΩKaΩ\bK a\boldsymbol{\Omega} end at aaa, and there
+is exactly one infinite reduction sequence. 
+
+
+Definition A ββ\beta-redex of a
+λλ\lambda-term MMM is (an occurrence of) a subterm of MMM of
+the form (λx[P])Q(λx[P])Q(\lambda x[P])Q. (‘redex’
+comes from ‘reducible expression.) A ββ\beta-redex is simply a
+candidate for an application of ββ\beta-reduction. Doing so, one
+contracts the ββ\beta-redex. A term is said to be in
+ββ\beta-normal form if it has no ββ\beta-redexes.
+
+(Can a term have multiple ββ\beta-normal forms? The answer is literally
+‘yes’, but substantially the answer is ‘no’:
+If a MMM and M′M′M' are ββ\beta-normal forms of some
+term, then MMM is αα\alpha-convertible to M′M′M' Thus,
+ββ\beta-normal forms are unique up to changes of bound variables.)
+
+So far we have focused only on one step of ββ\beta-reduction. One can
+combine multiple ββ\beta-reduction steps into one by taking the
+transitive closure of the relation ⊳β,1⊳β,1\rhd_{\beta ,1}.
+
+
+Definition For λλ\lambda-terms AAA and BBB,
+one says that AAA ββ\beta-reduces to BBB,
+written A⊳βBA⊳βBA \rhd_{\beta} B, if either A≡BA≡BA \equiv B or there exists a finite ββ\beta-reduction sequence
+from AAA to BBB.
+
+Definition A term MMM has a ββ\beta-normal
+form if there exists a term NNN such that NNN is in
+ββ\beta-normal form an M⊳βNM⊳βNM \rhd_{\beta} N.
+
+
+Reducibility as defined is a one-way relation: it is generally not
+true that if A⊳βBA⊳βBA \rhd_{\beta} B, then B⊳βAB⊳βAB \rhd_{\beta} A. However, depending on one’s
+purposes, one may wish to treat AAA and BBB as equivalent if
+either AAA reduces to BBB or BBB reduces to AAA.
+Doing so amounts to considering the reflexive, symmetric, and
+transitive closure of the relation ⊳β,1,⊳β,1,\rhd_{\beta ,1,}.
+
+Definition For λλ\lambda-terms AAA and BBB,
+we say that A=βBA=βBA =_{\beta} B if either A≡BA≡BA \equiv B or there exists a sequence s1,…sns1,…sns_1 ,
+\ldots s_n starting with AAA, ending
+with BBB, and whose adjacent terms
+(sk,sk+1)(sk,sk+1)(s_k,s_{k+1}) are such
+that either sk⊳β,1sk+1sk⊳β,1sk+1s_k \rhd_{\beta ,1} s_{k+1} or sk+1⊳β,1sksk+1⊳β,1sks_{k+1} \rhd_{\beta ,1} s_k.
+4.1 Other notions of reduction
+
+We have thus far developed the theory of ββ\beta-reduction. This is by
+no means the only notion of reduction available in the
+λλ\lambda-calculus. In addition to ββ\beta-reduction, a standard
+relation between λλ\lambda-terms is that of
+ηη\eta-reduction:
+
+
+Definition (one-step ηη\eta-reduction) For
+λλ\lambda-terms AAA and BBB, we say that AβηAβηA \beta \eta-reduces in one step to BBB, written A⊳βη,1BA⊳βη,1BA \rhd_{\beta \eta ,1} B, just in case there exists an
+(occurrence of a) subterm CCC of AAA, a variable xxx,
+and λλ\lambda-terms MMM and NNN such that either
+
+C≡(λx[M])NC≡(λx[M])NC \equiv(\lambda x[M])N and BBB is
+AAA except that the occurrence of CCC in AAA is
+replaced by M[x:=N]M[x:=N]M[x := N]
+
+or
+
+C≡(λx[Mx]C≡(λx[Mx]C \equiv(\lambda x[Mx]) and BBB is
+AAA except that the occurrence of CCC in AAA is
+replaced by MMM.
+
+
+The first clause in the definition of ⊳βη,1⊳βη,1\rhd_{\beta \eta ,1}
+ensures that the relation extends the relation of one-step
+ββ\beta-reduction. As we did for the relation of one-step
+ββ\beta-reduction, we can replay the development for ηη\eta-reduction.
+Thus, one has the notion of an ηη\eta-redex, and from
+⊳η,1⊳η,1\rhd_{\eta ,1} one can define the relation
+⊳η⊳η\rhd_{\eta} between λλ\lambda-terms as the symmetric and
+transitive closure of ⊳η,1⊳η,1\rhd_{\eta ,1}, which captures
+zero-or-more-steps of ηη\eta-reduction. Then one defines
+=η=η=_{\eta} as the symmetric and transitive closure of
+⊳η⊳η\rhd_{\eta}.
+
+If A⊳η,1BA⊳η,1BA \rhd_{\eta ,1} B, then the length of
+BBB is strictly smaller than that of AAA. Thus, there can be
+no infinite ηη\eta-reductions. This is not the case of
+ββ\beta-reduction, as we saw above in
+ ββ\beta-reduction sequence examples 3
+ and
+ 4.
+
+One can combine notions of reduction. One useful combination is to
+blend ββ\beta- and ηη\eta-reduction.
+
+Definition (one-step βηβη\beta \eta-reduction)
+λx[Mx]⊳βη,1Mλx[Mx]⊳βη,1M\lambda x[Mx] \rhd_{\beta \eta ,1} M and (λx[M]N))⊳βη,1M[x:=N](λx[M]N))⊳βη,1M[x:=N](\lambda x[M]N))
+\rhd_{\beta \eta ,1} M[x := N]. A
+λλ\lambda-term AAA βηβη\beta \eta-reduces in one step to a
+λλ\lambda-term BBB just in case either AAA ββ\beta-reduces to
+BBB in one step or AAA ηη\eta-reduces to BBB in one
+step.
+
+Again, one can replay the basic concepts of reduction, as we did for
+ββ\beta-reduction, for this new notion of reduction βηβη\beta \eta.
+4.2 Reduction strategies
+
+Recall that a term is said to be in ββ\beta-normal form if it has no
+ββ\beta-redexes, that is, subterms of the shape
+(λx[M](λx[M](\lambda x[M])N. A term has a ββ\beta-normal form if it
+can be reduced to a term in ββ\beta-normal form. It should be
+intuitively clear that if a term has a ββ\beta-normal form, then we can
+find one by exhaustively contracting all all ββ\beta-redexes of the
+term, then exhaustively contracting all ββ\beta-redexes of all
+resulting terms, and so forth. To say that a term has a ββ\beta-normal
+form amounts to saying that this blind search for one will eventually
+terminate.
+
+Blind search for ββ\beta-normal forms is not satisfactory. In addition
+to be aesthetically unpleasant, it can be quite inefficient: there may
+not be any need to exhaustively contract all ββ\beta-redexes. What is
+wanted is a strategy—preferably, a computable
+one—for finding a ββ\beta-normal form. The problem is to
+effectively decide, if there are multiple ββ\beta-redexes of a term,
+which ought to be reduced.
+
+Definition A ββ\beta-reduction strategy
+is a function whose domain is the set of all λλ\lambda-terms and whose
+value on a term MMM not in ββ\beta-normal form is a redex subterm
+of MMM, and whose value on all terms M in ββ\beta-normal form is
+simply MMM.
+
+In other words, a ββ\beta-reduction strategy selects, whenever a term
+has multiple ββ\beta-redexes, which one should be contracted. (If a
+term is in ββ\beta-normal form, then nothing is to be done, which is
+why we require in the definition of ββ\beta-reduction strategy that it
+does not change any term in ββ\beta-normal form.) One can represent a
+strategy SSS as a relation ⊳S⊳S\rhd_S on λλ\lambda-terms,
+with the understanding that M⊳SNM⊳SNM \rhd_S N
+provided that MMM is obtained from MMM in one step by
+adhering to the strategy S. When viewed as relations, strategies
+constitute a subrelation of ⊳β,1⊳β,1\rhd_{\beta ,1}.
+
+A ββ\beta-reduction strategy may or may not have the property that
+adhering to the strategy will ensure that we (eventually) reach a
+ββ\beta-normal form, if one exists.
+
+Definition A ββ\beta-reduction strategy SSS is
+normalizing if for all λλ\lambda-terms MMM, if
+MMM has a ββ\beta-normal form NNN, then the sequence
+M,S(M),S(S(M)),…M,S(M),S(S(M)),…M, S(M), S(S(M)),\ldots
+terminates at NNN.
+
+Some ββ\beta-reduction strategies are normalizing, but others are
+not.
+
+The rightmost strategy, whereby we always choose to
+reduce the rightmost ββ\beta-redex (if there are any ββ\beta-redexes) is
+not normalizing. Consider, for example, the term KIωω\omega.
+This term has two ββ\beta-redexes: itself, and ωω\omega (which,
+recall, is the term
+(λ(λ(\lambdax[xx])(λxx])(λxx])(\lambdax[xx]xx]xx])). By
+working with left-hand ββ\beta-redexes, we can ββ\beta-reduce
+KIωω\omega to II\mathbf{I} in two steps. If we insist on working
+with the rightmost ββ\beta-redex ωω\omega we reduce
+KIωω\omega to KIKI\mathbf{KI}(ωωωω\omega \omega), then
+KIKI\mathbf{KI}(ωωωωωω\omega \omega \omega), ….
+The leftmost strategy, whereby we always choose to
+reduce the leftmost ββ\beta-redex (if there are any ββ\beta-redexes) is
+normalizing. The proof of this fact is beyond the scope of this entry;
+see (Barendregt, 1985, section 13.2) for details.
+
+
+Once we have defined a reduction strategy, it is natural to ask
+whether one can improve it. If a term has a ββ\beta-normal form, then a
+strategy will discover a normal form; but might there be a shorter
+ββ\beta-reduction sequence that reaches the same normal form (or a term
+that is αα\alpha-convertible to that normal form)? This is the question
+of optimality. Defining optimal strategies and showing that
+they are optimal is generally considerably more difficult than simply
+defining a strategy. For more discussion, see (Barendregt, 1984
+chapter 10).
+
+For the sake of concreteness, we have discussed only ββ\beta-reduction
+strategies. But in the definitions above the notion of reduction
+ββ\beta is but one possibility. For any notion RRR of reduction we
+have the associated theory of RRR-reduction strategies, and one
+can replay the problems of normalizability, optimality, etc., for
+RRR.
+5. λλ\lambda-theories
+
+We discussed earlier how the λλ\lambda-calculus is a non-extensional
+theory of functions. If, in the non-extensional spirit, we understand
+λλ\lambda-terms as descriptions, how should we treat equality of
+λλ\lambda-terms? Various approaches are available. In this section, let
+us treat the equality relation = as a primitive, undefined relation
+holding between two λλ\lambda-terms, and try to axiomatize the
+properties that equality should have. The task is to identity axioms
+and formulate suitable rules of inference concerning the
+equality of λλ\lambda-terms.
+
+Some obvious properties of equality, having nothing to do with
+λλ\lambda-calculus, are as follows:
+(Reflexivity)X=X(Reflexivity)X=X\tag{Reflexivity}
+\frac{}{X=X}
+
+(Symmetry)X=YY=X(Symmetry)X=YY=X\tag{Symmetry}
+\frac{X=Y}{Y=X}
+
+(Transitivity)X=YY=ZX=Z(Transitivity)X=YY=ZX=Z\tag{Transitivity}
+\frac{X=Y \quad Y=Z}{X=Z}
+
+
+As is standard in proof theory, the way to read these rules of
+inference is that above the horizontal rule X=XX=X\frac{}{\phantom{X=X}}
+are the 
+premises of the rule (which are equations) and the
+equation below the horizontal rule is the conclusion of
+the rule of inference. In the case of the reflexivity rule, nothing is
+written above the horizontal rule. We understand such a case as saying
+that, for all terms XXX, we may infer the equation X=XX=XX = X from no premises.
+5.1 The basic theory λλ\lambda
+
+The three rules of inference listed in the previous section governing
+equality have nothing to do with the λλ\lambda-calculus. The following
+lists rules of inference that relate the undefined notion of equality
+and the two term-building operations of the λλ\lambda-calculus,
+application and abstraction.
+M=NAM=ANM=NMA=NAM=Nλx[M]=λx[N]M=NAM=ANM=NMA=NAM=Nλx[M]=λx[N]
+\frac{M=N}{AM=AN} \quad \frac{M=N}{MA=NA} \quad \frac{M=N}{\lambda x[M] = \lambda x[N]}
+
+
+These rules of inference say that = is a congruence
+relation on the set of λλ\lambda-terms: it
+‘preserves’ both the application and abstraction
+term-building operations
+
+The final rule of inference, ββ\beta-conversion, is the most
+important:
+(β)(λx[M])A=M[x:=A](β)(λx[M])A=M[x:=A]\tag{\(\boldsymbol{\beta}\)}
+\frac{}{(\lambda x[M])A = M[x := A]}
+
+
+As before with the reflexivity rule, the rule ββ\boldsymbol{\beta} has no
+premises: for any variable xxx and any terms MMM and
+AAA, one can infer the equation
+(λx[M])A=M[x:=A](λx[M])A=M[x:=A](\lambda x[M])A = M[x := A]
+at any point in a formal derivation in the theory λλ\boldsymbol{\lambda}.
+5.2 Extending the basic theory λλ\lambda
+
+A number of extensions to λλ\boldsymbol{\lambda} are available. Consider, for
+example, the rule (ηη\boldsymbol{\eta}), which expresses the principle of
+ηη\eta-reduction as a rule of inference:
+(η)λx[Mx]=M provided x∉FV(M)(η)λx[Mx]=M provided x∉FV(M)\tag{\(\boldsymbol{\eta}\)}
+\frac{}{\lambda x[Mx] = M} \text{ provided } x \not\in \mathbf{FV}(M)
+
+
+Rule ηη\boldsymbol{\eta} tells us that a certain kind of abstraction is
+otiose: it is safe to identify MMM with the function that, given
+an argument xxx, applies MMM to xxx. Through this rule
+we can also see that all terms are effectively functions. One can
+intuitively justify this rule using the principle of
+ββ\beta-reduction.
+(Ext)Mx=NxM=N provided x∉FV(M)∪FV(N)(Ext)Mx=NxM=N provided x∉FV(M)∪FV(N)\tag{\(\mathbf{Ext}\)}
+\frac{Mx=Nx}{M=N}\text{ provided } x \not\in \mathbf{FV}(M) \cup \mathbf{FV}(N)
+
+
+One can view rule ExtExt\mathbf{Ext} as a kind of generalization principle. If
+we have derived that Mx=NxMx=NxMx = Nx, but xxx
+figures in neither MMM nor NNN, then we have effectively
+shown that MMM and NNN are alike. Compare this principle to
+the principle of universal generalization in first-order logic: if we
+have derived ϕ(x)ϕ(x)\phi(x) from a set ΓΓ\Gamma of hypotheses in which
+xxx is not free, then we can conclude that ΓΓ\Gamma derives
+∀xϕ∀xϕ\forall x\phi.
+
+Another productive principle in the λλ\lambda-calculus permits us to
+identify terms that ‘act’ the same:
+(ω)For all term x,Mx=NxM=N(ω)For all term x,Mx=NxM=N\tag{\(\boldsymbol{\omega}\)}
+\frac{\text{For all term }x, Mx=Nx}{M=N}
+
+
+The rule ωω\boldsymbol{\omega} has infinitely many hypotheses: on
+the assumption that Mx=NxMx=NxMx = Nx, no matter what xxx may be, then we
+can conclude that M=NM=NM = N. The ωω\boldsymbol{\omega} rule is an
+analogue in the λλ\lambda-calculus of the rule of inference under
+the same name in formal number theory, according to which one can
+conclude the universal formula ∀xϕ∀xϕ\forall x\phi provided one has
+proofs for ϕ(x:=0),ϕ(x:=1),…ϕ(x:=0),ϕ(x:=1),…\phi(x := \mathbf{0}), \phi(x := \mathbf{1}),\ldots
+. Note that unlike the rule ExtExt\mathbf{Ext}, the condition that xxx
+not occur freely in MMM or NNN does not arise.
+6. Consistency of the λλ\lambda-calculus
+
+Is the λλ\lambda-calculus consistent? The question might not be
+well-posed. The λλ\lambda-calculus is not a logic for reasoning about
+propositions; there is no apparent notion of contradiction (⊥)(⊥)(\bot) or
+a method of forming absurd propositions (e.g.,
+p∧¬p)p∧¬p)p \wedge \neg p). Thus
+‘inconsistency’ of the λλ\lambda-calculus cannot mean that
+⊥⊥\bot, or some formula tantamount to ⊥⊥\bot, is derivable. A suitable
+notion of ‘consistent’ is, however, available.
+Intuitively, a logic is inconsistent if it permits us to derive too
+much. The theory λλ\lambda is a theory of equations. We can thus
+take inconsistency of λλ\lambda to mean: all equations are
+derivable. Such a property, if it were true of λλ\lambda,
+would clearly show that λλ\lambda is of little use as a formal
+theory.
+
+Early formulations of the idea of λλ\lambda-calculus by A. Church were
+indeed inconsistent; see (Barendregt, 1985, appendix 2) or (Rosser,
+1985) for a discussion. To take a concrete problem: how do we know
+that the equation K=IK=I\bK = \mathbf{I} is not a theorem of
+λλ\lambda? The two terms are obviously intuitively distinct.
+KK\bK is a function of two arguments, whereas II\mathbf{I} is a
+function of one argument. If we could show that
+K=IK=I\bK = \mathbf{I}, then we could show that KK=IKKK=IK\mathbf{KK} = \mathbf{IK}, whence KK=KKK=K\mathbf{KK} = \bK would be a theorem of
+λλ\lambda, along with many other equations that strike us as
+intuitively unacceptable. But when we’re investigating a formal theory
+such as λλ\lambda, intuitive unacceptability by no means implies
+underivability. What is missing is a deeper understanding of
+ββ\beta-reduction.
+
+An early result that gave such an understanding is known as the
+Church-Rosser theorem:
+
+Theorem (Church-Rosser) If P⊳βQP⊳βQP \rhd_{\beta} Q and P⊳βP⊳βP \rhd_{\beta} R, then there exists a term SSS such
+that both Q⊳βSQ⊳βSQ \rhd_{\beta} S and R⊳βSR⊳βSR \rhd_{\beta} S.
+
+(The proof of this theorem is quite non-trivial and is well-beyond the
+scope of this entry.) The result is a deep fact about
+ββ\beta-reduction. It says that no matter how we diverge from PPP
+by ββ\beta-reductions, we can always converge again to a common
+term.
+
+The Church-Rosser theorem gives us, among other things, that the plain
+λλ\lambda-calculus—that is, the theory λλ\lambda of
+equations between λλ\lambda-terms—is consistent, in the sense
+that not all equations are derivable.
+
+As an illustration, we can use the Church-Rosser theorem to solve the
+earlier problem of showing that the two terms KK\bK and II\mathbf{I}
+are not identified by λλ\lambda. The two terms are in
+ββ\beta-normal form, so from them there are no ββ\beta-reduction
+sequences at all. If K=IK=I\bK = \mathbf{I} were a theorem of
+λλ\lambda, then there would be a term MMM from which there
+is a ββ\beta-reduction path to both II\mathbf{I} and KK\bK. The
+Church-Rosser theorem then implies the two paths diverging from
+MMM can be merged. But this is impossible, since KK\bK and
+II\mathbf{I} are distinct ββ\beta-normal forms.
+
+The Church-Rosser theorem implies the existence of ββ\beta-reduction
+sequences commencing from KK\bK and from II\mathbf{I} that end at a
+common term. But there are no ββ\beta-reduction sequences at all
+commencing from II\mathbf{I}, because it is in ββ\beta-normal form, and
+likewise for KK\bK.
+
+Theorem λλ\lambda is consistent, in the sense
+that not every equation is a theorem.
+
+To prove the theorem, it is sufficient to produce one underivable
+equation. We have already worked through an example: we used the
+Church-Rosser theorem to show that the equation
+K=IK=I\bK = \mathbf{I} is not a theorem of λλ\lambda. Of
+course, there’s nothing special about these two terms. A significant
+generalization of this result is available: if MMM and
+NNN in ββ\beta-normal form but MMM is distinct from NNN,
+then the equation M=NM=NM = N is not a theorem of
+λλ\lambda. (This simple condition for underivability does
+not generally hold if we add additional rules of inference to
+λλ\lambda.) 
+
+The theories ληλη\lambda \eta and λωλω\lambda \omega are
+likewise consistent. One can prove these consistency results along the
+lines of the consistency proof for λλ\lambda by extending the
+Church-Rosser theorem to the wider senses of derivability of these
+theories.
+7. Semantics of λλ\lambda-calculus
+
+Although the λλ\lambda-calculus is ‘about’ calculating with
+functions by substituting values for arguments, this simple point of
+view cannot support a semantics for the (untyped) λλ\lambda-calculus if
+by ‘function’ we understand, as is standard in set theory,
+a relation RRR such that for every pair (x,y)(x,y)(x,y) and
+(x,z)(x,z)(x,z) in RRR with the same first component xxx
+we have y=zy=zy = z. For sets XXX and YYY, let
+XYXYX^Y denote the set of functions whose domain
+is YYY and with values in XXX. Intuitively, if XXX is
+the domain of an interpretation of λλ\lambda-calculus, then XXX
+should be, in some sense, isomorphic to XXXXX^X
+because the domain should be closed under abstraction (as well as
+application). Taken literally, though, this isomorphism is impossible,
+because the cardinality of XXX always is of strictly smaller than
+the cardinality of XXXXX^X.
+
+If one is interested in simply the existence of some kind of
+model of the λλ\lambda-calculus—one whose domain not necessarily
+consist of functions—one can find them by various well-known
+‘syntactic’ constructions involving the theory
+λλ\lambda, not unlike the well-known Henkin constructions .
+These so-called term models, though, are an unsatisfactory solution to
+the question of whether there are ‘mathematical’ models of
+the λλ\lambda-calculus.
+
+The cardinality argument shows that if we are to have a semantics for
+λλ\lambda-calculus, the interpretation of λλ\lambda-terms cannot simply
+be functions in the set-theoretic sense of the term. There are,
+however, interpretations of λλ\lambda-calculus. The first model,
+D∞D∞D_{\infty}, was found by D. Scott; other models
+were found later. These models solve the cardinality problem by
+restricting the domain XXX of interpretation, so that, in them,
+XXX is in a suitable sense isomorphic to the ‘function
+space’ XXXXX^X.
+
+One of the advantages of having different interpretations is that one
+sees different aspects of equality: each of these models takes a
+different view on what λλ\lambda-terms get identified. The definitions
+of D∞D∞D_{\infty} and other interpretations, the
+verifications that they are indeed models of λλ\lambda-calculus, and
+the characterizations of the λλ\lambda-theories of these models, are
+beyond the scope of this entry; see (Barendregt, 1985, chapter 18) or
+(Meyer 1982) for details. In recent years, there is a renewed interest
+in the models of λλ\lambda-calculus from the perspective of category
+theory and categorical logic, focusing mainly on typed
+λλ\lambda-calculus (see sections
+ 8.2
+ and
+ 9.1.2
+ below) but also dealing with category theoretic models of the untyped
+λλ\lambda-calculus discussed in this article. See, for example,
+(Hyland, 2017) for details.
+8. Extensions and Variations
+8.1 Combinatory logic
+
+A sister formalism of the λλ\lambda-calculus, developed slightly
+earlier, deals with variable-free combinations. Combinatory
+logic is indeed even simpler than the λλ\lambda-calculus, since
+it lacks a notion of variable binding.
+
+The language of combinatory logic is built up from
+combinators and variables. There is some flexibility in
+precisely which combinators are chosen as basic, but some standard
+ones are I,K,S,BI,K,S,B\mathbf{I}, \bK , \bS, \mathbf{B} and CC\mathbf{C}. (The
+names are not arbitrary.)
+
+As with the λλ\lambda-calculus, with combinatory logic one is
+interested in reducibility and provability. The
+principal reduction relations are:
+
+
+Combinator
+Reduction Axiom
+
+II\bI
+Ix=xIx=x\bI x = x 
+
+KK\bK
+Kxy=xKxy=x\bK xy = x 
+
+SS\bS
+Sxyz=xz(yz)Sxyz=xz(yz)\bS xyz = xz(yz) 
+
+BB\bB
+Bxyz=x(yz)Bxyz=x(yz)\bB xyz = x(yz) 
+
+CC\bC
+Cxyz=xzyCxyz=xzy\bC xyz = xzy
+
+
+
+There is a passage from λλ\lambda-calculus to combinatory logic via
+translation. It turns out that although combinatory logic lacks a
+notion of abstraction, one can define such a notion and thereby
+simulate the λλ\lambda-calculus in combinatory logic. Here is one
+translation; it is defined recursively.
+
+
+Rule
+Expression
+Translation
+Condition 
+
+1
+xxx
+xxx
+(unconditional) 
+
+2
+MNMNMN
+M∗∗^*N∗∗^*
+(unconditional) 
+
+3
+λx[M]λx[M]\lambda x[M]
+KK\bKM
+xxx does not occur freely in M 
+
+4
+λx[x]λx[x]\lambda x[x]
+II\bI
+(unconditional) 
+
+5
+λx[Mx]λx[Mx]\lambda x[Mx]
+M
+xxx does not occur freely in M 
+
+6
+λx[MN]λx[MN]\lambda x[MN]
+BM(λx[N)]∗BM(λx[N)]∗\bB M(\lambda x[N)]^*
+xxx does not occur freely in M 
+
+7
+λx[MN]λx[MN]\lambda x[MN]
+C(λx[M])∗C(λx[M])∗\bC (\lambda x[M])^*N
+xxx does not occur freely in NNN 
+
+8
+λx[MN]λx[MN]\lambda x[MN]
+SM∗N∗SM∗N∗\bS M^*N^*
+xxx occurs freely in both MMM and NNN 
+
+
+This translation works inside-out, rather than outside-in. To
+illustrate:
+
+
+
+The translation of the term λy[y]λy[y]\lambda y[y], a
+representative of the identity function, is mapped by this translation
+to the identity combinator II\bI (because of Rule 4), as
+expected.
+
+
+The λλ\lambda-term λx[λy[x]]λx[λy[x]]\lambda x[\lambda y[x]] that we
+have been calling ‘KK\bK’is mapped by this translation
+to:
+λx[λy[x]]≡λx[Kx]⟨Rule 1⟩≡K⟨Rule 3⟩λx[λy[x]]≡λx[Kx]⟨Rule 1⟩≡K⟨Rule 3⟩\begin{align}
+\lambda x[\lambda y[x]] 
+  &amp;\equiv \lambda x[\bK x]  &amp;\langle \text{Rule 1}\rangle \\
+  &amp;\equiv \bK   &amp;\langle \text{Rule 3} \rangle
+\end{align}
+
+
+
+The λλ\lambda-term λx[λy[yx]]λx[λy[yx]]\lambda x[\lambda y[yx]]
+that switches its two arguments is mapped by this translation to:
+λx[λy[yx]]≡λx[C(λy[y])∗x]⟨Rule 8⟩≡λx[CIx]⟨λy[y]≡I, by Rule 4⟩≡BCI)(λx[x])∗⟨Rule 7⟩≡B(CI)I⟨(λx[x])∗≡I, by Rule 4⟩λx[λy[yx]]≡λx[C(λy[y])∗x]⟨Rule 8⟩≡λx[CIx]⟨λy[y]≡I, by Rule 4⟩≡BCI)(λx[x])∗⟨Rule 7⟩≡B(CI)I⟨(λx[x])∗≡I, by Rule 4⟩\begin{align}
+\lambda x[\lambda y[yx]] 
+ &amp;\equiv \lambda x[\bC(\lambda y[y])^* x]  &amp;\langle\text{Rule 8}\rangle \\
+ &amp;\equiv \lambda x[\bC\bI x]  &amp;\langle\lambda y[y] \equiv \bI,\text{ by Rule 4}\rangle \\
+ &amp;\equiv \bB\bC\bI)(\lambda x[x])^*  &amp;\langle\text{Rule 7}\rangle \\
+ &amp;\equiv \bB(\bC\bI)\bI  &amp;\langle(\lambda x[x])^* \equiv \bI,\text{ by Rule 4}\rangle
+\end{align}
+
+We can confirm that the λλ\lambda-term λx[λy[yx]]λx[λy[yx]]\lambda x[\lambda y[yx]]
+and the translated combinatory logic term B(CI)IB(CI)I\bB(\bC\bI)\bI have
+analogous applicative behavior: for all λλ\lambda-terms PPP and
+QQQ we have
+(λx[λy[yx]])PQ⊳(λy[yP])⊳QP;(λx[λy[yx]])PQ⊳(λy[yP])⊳QP;
+(\lambda x[\lambda y[yx]])PQ \rhd (\lambda y[yP]) \rhd QP;
+
+
+likewise, for all combinatory logic terms PPP and QQQ we
+have
+B(CI)IPQ⊳(CI)(IP)Q⊳IQ(IP)⊳Q(IP)⊳QPB(CI)IPQ⊳(CI)(IP)Q⊳IQ(IP)⊳Q(IP)⊳QP
+\bB(\bC\bI)\bI PQ \rhd (\bC\bI)(\bI P)Q \rhd \bI Q(\bI P) \rhd Q(\bI P) \rhd QP
+
+
+
+
+We can give but a glimpse of combinatory logic; for more on the
+subject, consult the entry on
+ combinatory logic.
+ Many of the issues discussed here for λλ\lambda-calculus have
+analogues in combinatory logic, and vice versa.
+8.2 Adding types
+
+In many contexts of reasoning and computing it is natural to
+distinguish between different kinds of objects. The way this
+distinction is introduced is by requiring that certain formulas,
+functions, or relations accept arguments or permit substitution only
+of some kinds of objects rather than others. We might require, for
+example, that addition + take numbers as arguments. The effect of this
+restriction is to forbid, say, the addition of 5 and the identity
+function
+ λx.xλx.x\lambda x.x.(4).
+ Regimenting objects into types is also the idea behind the passage
+from (unsorted, or one-sorted) first-order logic to
+many-sorted first-order logic. (See (Enderton, 2001) and
+(Manzano, 2005) for more about many-sorted first-order logic.) As it
+stands, the λλ\lambda-calculus does not support this kind of
+discrimination; any term can be applied to any other term.
+
+It is straightforward to extend the untyped λλ\lambda-calculus so that
+it discriminates between different kinds of objects. This entry limits
+itself to the type-free λλ\lambda-calculus. See the entries on
+ type theory
+ and
+ Church’s type theory
+ for a detailed discussion of the extensions of λλ\lambda-calculus that
+we get when we add types, and see (Barendregt, Dekkers, Statman, 2013)
+for a book length treatment of the subject.
+9. Applications
+9.1 Logic à la λλ\lambda
+
+Here are two senses in which λλ\lambda-calculus is connected with
+logic.
+9.1.1 Terms as logical constants
+
+In the
+ table of combinators
+ above, we defined combinators TT\bT and FF\bF and said that
+they serve as representations in the λλ\lambda-calculus of the truth
+values true and false, respectively. How do these terms function as
+truth values?
+
+It turns out that when one is treating λλ\lambda-calculus as a kind of
+programming language, one can write conditional statements “If
+PPP then AAA else BBB” simply as
+PABPABPAB, where of course P,AP,AP, A, and
+BBB are understood as λλ\lambda-terms. If P⊳TP⊳TP \rhd \bT, that is, P is ‘true’, then we have
+if-P-then-A-else-B:=PAB⊳TAB⊳A,if-P-then-A-else-B:=PAB⊳TAB⊳A,
+\text{if-}P\text{-then-}A\text{-else-}B := PAB \rhd \bT AB \rhd A,
+
+
+(recall that, by definition, T≡KT≡K\bT \equiv \bK) and if 
+P⊳FP⊳FP \rhd \bF, that is, PPP is ‘false’, then
+if-P-then-A-else-B:=PAB⊳FAB⊳B,if-P-then-A-else-B:=PAB⊳FAB⊳B,
+\text{if-}P\text{-then-}A\text{-else-}B := PAB \rhd \bF AB \rhd B,
+
+
+(recall that, by definition, F≡KI)F≡KI)\mathbf{F} \equiv \mathbf{KI}) which
+is just what we expect from a notion of if-then-else. If PPP reduces
+neither to TT\mathbf{T} nor FF\mathbf{F}, then we cannot in
+general say what if-P-then-A-else-Bif-P-then-A-else-B\text{if-}P\text{-then-}A\text{-else-}B is.
+
+
+The encoding we’ve just sketched of some of the familiar truth values
+and logical connectives of classical truth-table logic does not show
+that λλ\lambda-calculus and classical logic are intimately related. The
+encoding shows little more than embeddibility of the rules of
+computation of classical truth-table logic in λλ\lambda-calculus.
+Logics other than classical truth-table logic can likewise be
+represented in the λλ\lambda-calculus, if one has sufficient computable
+ingredients for the logic in question (e.g., if the logical
+consequence relation is computable, or if a derivability relation is
+computable, etc.). For more on computing with λλ\lambda-calculus, see
+section
+ 9.2
+ below. A more intrinsic relationship between logic and
+λλ\lambda-calculus is discussed in the next section.
+9.1.2 Typed λλ\lambda-calculus and the Curry-Howard-de Bruijn correspondence
+
+The correspondence to be descried here between logic and the
+λλ\lambda-calculus is seen with the help of an apparatus known as
+types. This section sketches the beginnings of the
+development of the subject known as type theory. We are
+interested in developing type theory only so far as to make the
+so-called Curry-Howard-de Bruijn correspondence visible. A more
+detailed treatment can be found in the entry on
+ type theory;
+ see also (Hindley, 1997) and (Barendregt, Dekkers, Statman,
+2013).
+
+Type theory enriches the untyped λλ\lambda-calculus by requiring that
+terms be given types. In the untyped λλ\lambda-calculus,
+the application MNMNMN is a legal term regardless of what
+MMM and NNN are. Such freedom permits one to form such
+suspicious terms as xxxxxx, and thence terms such as the
+paradoxical combinator YY\mathbf{Y}. One might wish to exclude terms like
+xxxxxx on the grounds that xxx is serving both as a
+function (on the left-hand side of the application) and as an argument
+(on the right-hand side of the application). Type theory gives us the
+resources for making this intuitive argument more precise.
+
+
+Assigning types to terms The language of type theory
+begins with an (infinite) set of type
+variables (which is assumed to be disjoint from the set
+of variables of the λλ\lambda-calculus and from the symbol
+‘λλ\lambda’ itself).  The set of types is made up of
+type variables and the operation σ→τσ→τ\sigma \rightarrow
+\tau. Variables in type theory now come with a
+type annotation (unlike the unadorned term
+variables of untyped λλ\lambda-calculus). Typed variables are
+rendered ‘x:σx:σx : \sigma’; the intuitive reading is
+‘the variable xxx has the type σσ\sigma’. The
+intuitive reading of the judgment ‘t:σ→τt:σ→τt : \sigma \rightarrow
+\tau’ is that the term ttt is a function that transforms
+arguments of type σσ\sigma into arguments of type ττ\tau. Given an
+assignment of types to term variables, one has the typing rules:
+(M:σ→τ)(N:σ):τ(M:σ→τ)(N:σ):τ
+(M : \sigma \rightarrow \tau)(N : \sigma) : \tau
+
+
+and
+(λx:σ[M:τ]):σ→τ(λx:σ[M:τ]):σ→τ
+(\lambda x : \sigma[M : \tau]) : \sigma \rightarrow \tau
+
+
+The above two rules define the assignment of types to applications and
+to abstraction terms. The set of terms of type theory is the set of
+terms built up according to these formation rules.
+
+
+The above definition of the set of terms of type theory is sufficient
+to rule out terms such as xxxxxx. Of course,
+‘xxxxxx’ is not a typed term at all for the
+simple reason that no types have been assigned to it. What is meant is
+that there is no type σσ\sigma that could be assigned to xxx such
+that ‘xxxxxx’ could be annotated in a legal way
+to make a typed term. We cannot assign to xxx a type variable,
+because then the type of the left-hand xxx would fail to be a
+function type (i.e., a type of the shape ‘σ→τσ→τ\sigma \rightarrow \tau’). Moreover, we cannot assign to xxx a function type
+σ→τσ→τ\sigma \rightarrow \tau, because then then σσ\sigma would be equal to
+σ→τσ→τ\sigma \rightarrow \tau, which is impossible.
+
+As a leading example, consider the types that are assigned to the
+combinators II\bI, KK\bK, and SS\bS:
+
+
+Combinator  
+Type[5]
+
+
+II\bI
+a→aa→aa \rightarrow a 
+
+KK\bK
+a→(b→a)a→(b→a)a \rightarrow(b \rightarrow a) 
+
+SS\bS
+a→(b→c)→((a→b)→(a→c))a→(b→c)→((a→b)→(a→c))a \rightarrow(b \rightarrow c) \rightarrow((a \rightarrow b) \rightarrow(a \rightarrow c)) 
+
+
+(See Hindley (1997) Table of principal types for a more
+extensive listing.) If we read ‘→→\rightarrow’ as implication and
+type variables as propositional variables, then we recognize three
+familiar tautologies in the right-hand column of the table. The
+language used is meager: there are only propositional variables and
+implication; there are no other connectives.
+
+The table suggests an interesting correspondence between
+λλ\lambda-calculus. Could it really be that the types assigned to
+formulas, when understood as logical formulas, are valid? Yes, though
+‘validity’ needs to understood not as classical
+validity:
+
+Theorem If ττ\tau is the type of some λλ\lambda-term,
+then ττ\tau is intuitionistically valid.
+
+The converse of this theorem holds as well:
+
+Theorem If ϕϕ\phi is an intuitionistically valid
+logical formula whose only connective is implication (→)(→)(\rightarrow), then
+ϕϕ\phi is the type of some λλ\lambda-term.
+
+The correspondence can be seen when one identifies intuitionistic
+validity with derivability in a certain natural deduction formalism.
+For a proof of these two theorems, see (Hindley, 1997, chapter 6).
+
+The correspondence expressed by the previous two theorems between
+intuitionistic validity and typability is known as the
+Curry-Howard-de Bruijn correspondence, after three logicians
+who noticed it independently. The correspondence, as stated, is
+between only propositional intuitionistic logic, restricted to the
+fragment containing only the implication connective →→\rightarrow. One can
+extend the correspondence to other connectives and to quantifiers,
+too, but the most crisp correspondence is at the level of the
+implication-only fragment. For details, see (Howard, 1980).
+9.2 Computing
+
+One can represent natural numbers in a simple way, as follows:
+
+Definition (ordered tuples, natural numbers) The
+ordered tuple ⟨a0,…an⟩⟨a0,…an⟩\langle a_0,\ldots a_n\rangle of λλ\lambda-terms
+is defined as λx[xa0…an]λx[xa0…an]\lambda x[x a_0\ldots a_n].  One then defines the
+λλ\lambda-term ┌n┐⌜n⌝\ulcorner n\urcorner corresponding to the natural
+number nnn as: ┌0┐=I⌜0⌝=I\ulcorner 0\urcorner = \mathbf{I} and, for every
+kkk, ┌k+1┐=⟨F,┌k┐⟩⌜k+1⌝=⟨F,⌜k⌝⟩\ulcorner k + 1\urcorner = \langle \mathbf{F}, \ulcorner
+k\urcorner\rangle.
+
+
+
+The λλ\lambda-term corresponding to the number 1, on this
+representation, is:
+┌1┐≡⟨F,┌0┐⟩≡⟨F,I⟩≡λx[xFI]⌜1⌝≡⟨F,⌜0⌝⟩≡⟨F,I⟩≡λx[xFI]\begin{align}
+\ulcorner 1 \urcorner &amp;\equiv \langle\bF,\ulcorner 0\urcorner\rangle \\
+  &amp;\equiv \langle\bF,\bI\rangle \\
+  &amp;\equiv \lambda x[x\mathbf{FI}]
+\end{align}
+
+
+
+The λλ\lambda-term corresponding to the number 2, on this
+representation, is:
+┌2┐≡⟨F,┌1┐⟩≡λx[xFλx[xFI]]⌜2⌝≡⟨F,⌜1⌝⟩≡λx[xFλx[xFI]]\begin{align}
+\ulcorner 2 \urcorner &amp;\equiv \langle\bF,\ulcorner 1\urcorner\rangle \\
+  &amp;\equiv \lambda x[x\mathbf{F}\lambda x[x\mathbf{FI}]]
+\end{align}
+
+
+
+Similarly, ┌3┐⌜3⌝\ulcorner 3\urcorner is
+λx[xFλx[xFλx[xFI]]]λx[xFλx[xFλx[xFI]]]\lambda x[x\mathbf{F}\lambda x[x\mathbf{F}\lambda x[x\mathbf{FI}]]].
+
+
+Various representations of natural numbers are available; this
+representation is but
+ one.[6]
+
+Using the ingredients provided by the λλ\lambda-calculus, one can
+represent all recursive functions. This shows that the model is
+exactly as expressive as other models of computing, such as Turing
+machines and register machines. Priority goes to Turing’s definition
+of his machine, but Church’s proposal of the λλ\lambda-calculus was
+developed at almost exactly the same time.
+
+
+Theorem For every recursive function fff of
+arity nnn, there exists a λλ\lambda-term f∗f∗f^* such
+that
+
+for all natural numbers a1,…ana1,…ana_1,\ldots a_n:
+ f(a1,…an)=yf(a1,…an)=yf(a_1,\ldots a_n) = y iff
+ λ⊢f∗⟨¯a1,…,¯an⟩=¯yλ⊢f∗⟨a¯1,…,a¯n⟩=y¯\boldsymbol{\lambda} \vdash f^*\langle \bar{a}_1,\ldots,\bar{a}_n\rangle = \bar{y}
+
+
+
+For a proof, see
+ the appendix.
+
+Since the class of recursive functions is an adequate representation
+of the class of all computable (number-theoretic) functions, thanks to
+the work above we find that all computable (number-theoretic)
+functions can be faithfully represented in the λλ\lambda-calculus.
+9.3 Relations
+
+The motivation for the λλ\lambda-calculus given at the beginning of the
+entry was based on reading λλ\lambda-expressions as descriptions of
+functions. Thus, we have understood
+‘λx[M]λx[M]\lambda x[M]’ to be a (or the) function
+that, given xxx, gives MMM (which generally, though not
+necessarily, involves x). But it is not necessary to read
+λλ\lambda-terms as functions. One could understand λλ\lambda-terms as
+denoting relations, and read an abstraction term
+‘λx[M]λx[M]\lambda x[M]’ as the unary relation (or
+property) RRR that holds of an argument xxx just in case
+MMM does (see Carnap 1947, p. 3). On the relational reading, we
+can understand an application term MNMNMN as a form of
+predication. One can make sense of these terms using the principle of
+ββ\beta-conversion:
+(λx[M])a=M[x:=A],(λx[M])a=M[x:=A],
+(\lambda x[M])a = M[x := A],
+
+
+which says that the abstraction relation λx[M]λx[M]\lambda x[M],
+predicated of A, is the relation obtained by plugging in A for all
+free occurrences of xxx inside MMM.
+
+As a concrete example of this kind of approach to λλ\lambda-calculus,
+consider an extension of first-order logic where one can form new
+atomic formulas using λλ\lambda-terms, in the following way:
+
+
+Syntax: For any formula ϕϕ\phi and any finite sequence
+x1,…,xnx1,…,xnx_1 , \ldots ,x_n of
+variables, the expression
+‘λx1…xn[ϕ]λx1…xn[ϕ]\lambda x_1 \ldots x_n [\phi]’
+is a predicate symbol of arity n. Extend the notion of free and bound
+variables (using the functions FVFV\mathbf{FV} and BV)BV)\mathbf{BV}) in such a way
+that
+FV(λx1…xn[ϕ])=FV(ϕ)−{x1,…xn}FV(λx1…xn[ϕ])=FV(ϕ)−{x1,…xn}
+\mathbf{FV}(\lambda x_1 \ldots x_n [\phi]) = \mathbf{FV}(\phi) - \{ x_1 , \ldots x_n \}
+
+
+and
+BV(λx1…xn[ϕ])=BV(ϕ)∪{x1,…xn}BV(λx1…xn[ϕ])=BV(ϕ)∪{x1,…xn}
+\mathbf{BV}(\lambda x_1 \ldots x_n [\phi]) = \mathbf{BV}(\phi) \cup \{ x_1 , \ldots x_n \}
+
+
+Deduction Assume as axioms the universal closures of
+all equivalences
+λx1…xn[ϕ](t1,…tn)↔ϕ[x1,…xn:=t1,…tn]λx1…xn[ϕ](t1,…tn)↔ϕ[x1,…xn:=t1,…tn]
+\lambda x_1 \ldots x_n [\phi](t_1 ,\ldots t_n) \leftrightarrow \phi[x_1 ,\ldots x_n := t_1,\ldots t_n]
+
+
+where ϕ[x1,…xn:=t1,…tn]ϕ[x1,…xn:=t1,…tn]\phi[x_1 ,\ldots x_n := t_1,\ldots t_n] denotes the
+simultaneous substitution of the terms tktkt_k for
+the variables xkxkx_k (1≤k≤n)(1≤k≤n)(1 \le k \le n).
+
+Semantics For a first-order structure AAA and an
+assignment sss of elements of AAA to variables, define
+A⊨λx1…xn[ϕ](t1,…tn)[s] iff A⊨ϕ[x1,…xn:=t1,…tn][s]A⊨λx1…xn[ϕ](t1,…tn)[s] iff A⊨ϕ[x1,…xn:=t1,…tn][s]\begin{align}
+A \vDash &amp;\lambda x_1 \ldots x_n [\phi](t_1 ,\ldots t_n) [s] \text{ iff } \\
+         &amp;A \vDash \phi[x_1 ,\ldots x_n := t_1,\ldots t_n] [s]
+\end{align}
+
+
+According to this approach, one can use a λλ\lambda to treat
+essentially any formula, even complex ones, as if they were atomic. We
+see the principle of ββ\beta-reduction in the deductive and semantic
+parts. That this approach adheres to the relational reading of
+λλ\lambda terms can be seen clearly in the semantics: according to the
+standard Tarski-style semantics for first-order logic, the
+interpretation of a formula (possibly with free variables) denotes a
+set of tuples of elements of the structure, as we vary the variable
+assignment that assigns elements of the structure to the
+variables.
+
+One can ‘internalize’ this functional approach. This is
+done in the case of various property theories, formal
+theories for reasoning about properties as metaphysical objects
+(Bealer 1982, Zalta 1983, Menzel 1986, 1993, and Turner 1987). This
+kind of theory is employed in certain metaphysical investigations
+where properties are metaphysical entities to be investigated. In
+these theories, metaphysical relations are (or are among) the objects
+of interest; just as we add term-building symbols + and ××\times in
+formal theories of arithmetic to build numbers, λλ\lambda is used in
+property theory to build relations. This approach contrasts with the
+approach above. There, λλ\lambda was added to the grammar of
+first-order logic by making it a recipe for building atomic formulas;
+it was a new formula-building operator, like ∨∨\vee or →→\rightarrow or the
+other connectives. In the case of property theories, the λλ\lambda
+plays a role more like + and ××\times in formal theories of arithmetic:
+it is used to construct relations (which, in this setting, are to be
+understood as a kind of metaphysical object). Unlike + and ××\times,
+though, the λλ\lambda binds variables.
+
+To give an illustration of how λλ\lambda is used in this setting,
+let us inspect the grammar of a typical application (McMichael and
+Zalta, 1980). One typically has a predication operator (or,
+more precisely, a family of predication operators) pk(k≥0)pk(k≥0)p_k (k \ge
+0). In a language where we have terms MARYMARY\mary and JOHNJOHN\john and a
+binary relation loves, we can formally express:
+
+John loves Mary: loves(JOHN,MARY)loves(JOHN,MARY)\loves(\john ,\mary)
+The property that John loves Mary: λ[loves(JOHN,MARY)]λ[loves(JOHN,MARY)]\lambda[\loves(\john ,\mary)]
+(note that the λλ\lambda is binding no variables; we might call this
+‘vacuous binding’. Such properties can be understood as
+propositions.)
+The property of an object xxx that John loves it:
+λx[loves(JOHN,x)]λx[loves(JOHN,x)]\lambda x [\loves(\john,x)].
+The property that Mary is loved by something:
+λ[∃x(loves(x,MARY))]λ[∃x(loves(x,MARY))]\lambda[\exists x(\loves(x,\mary))]
+(another instance of vacuous binding,
+viz., proposition)
+The predication of the property of xxx that John loves
+xxx to Mary: p1(λx[loves(JOHN,x)],MARY)p1(λx[loves(JOHN,x)],MARY)p_1 (\lambda x[\loves(\john,x)],\mary).
+The (0-ary) predication of the property that John loves Mary:
+p0(λx[loves(JOHN,MARY)])p0(λx[loves(JOHN,MARY)])p_0 (\lambda x[\loves(\john,\mary)]).
+The property of objects xxx and yyy that xxx loves
+yyy: λxy[loves(x,y)]λxy[loves(x,y)]\lambda xy[\loves(x,y)].
+The property of an objects xxx that xxx loves itself:
+λx[loves(x,x)]λx[loves(x,x)]\lambda x[\loves(x,x)].
+The predication of the property of objects xxx and yyy
+that xxx loves yyy to John and Mary (in that order):
+p2(λxy[loves(x,y)],JOHN,MARY)p2(λxy[loves(x,y)],JOHN,MARY)p_2 (\lambda xy[\loves(x,y)],\john,\mary).
+
+
+We reason with these λλ\lambda-terms using a ββ\beta-conversion
+principle such as:
+pn(λx1,…xn[A],t1,…,tn)↔A[x1,…xn:=t1,…,tn]pn(λx1,…xn[A],t1,…,tn)↔A[x1,…xn:=t1,…,tn]\begin{align}
+p_n (\lambda x_1,&amp;\ldots x_n [A], t_1 , \ldots ,t_n) \leftrightarrow \\
+                 &amp;A[x_1 ,\ldots x_n := t_1,\ldots, t_n]
+\end{align}
+
+Formally, the predication operator pkk_k is a
+(k+1)(k+1)(k+1)-ary predicate symbol. The first argument is intended to
+be a λλ\lambda-term of kkk arguments, and the rest of the
+arguments are intended to be the arguments of the body of the
+λλ\lambda-term. The ββ\beta-principle above says that the predication of
+an nnn-ary λλ\lambda-term LLL to nnn terms holds
+precisely when the body of LLL holds of those terms.
+
+It turns out that in these theories, we may or may not be able to be
+fully committed to the principle of ββ\beta-conversion. Indeed, in some
+property theories, the full principle of ββ\beta-conversion leads to
+paradox, because one can replay a Russell-style argument when the full
+principle of ββ\beta-conversion is in place. In such settings, one
+restricts the formation of λλ\lambda-formulas by requiring that the
+body of a λλ\lambda-term not contain further λλ\lambda-terms or
+quantifiers. For further discussion, see (Orilia, 2000).
+
+One of the reasons why property theories formulated in the
+λλ\lambda-calculus are of a particular philosophical importance is the
+hyperintensional nature of the calculus (see section
+ 1.2).
+ A property concept may be called
+‘hyperintensional’ if and only if it does not
+identify necessarily coextensional properties, i.e. properties that
+are instanciated by exactly the same objects at every possible world.
+The properties and relations described by the theories of Bealer,
+Zalta, Menzel, and Turner have exactly this characteristic. In other
+words, the theories are hyperintensional property theories. Recent
+years have seen a significant rise of interest in hyperintensional
+concepts of properties in metaphysics (Nolan 2014), and
+correspondingly property theories formulated in the λλ\lambda-calculus
+will likely experience a rise of interest as well.
+
+In the context of the foundations of mathematics, Zalta and
+Oppenheimer (2011) argue for the conceptual priority of the relational
+interpretation of λλ\lambda-terms over the functional one.

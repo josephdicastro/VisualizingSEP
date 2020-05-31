@@ -1,0 +1,2288 @@
+Statistics investigates and develops specific methods for
+evaluating hypotheses in the light of empirical facts. A method is
+called statistical, and thus the subject of study in statistics, if it
+relates facts and hypotheses of a particular kind: the empirical facts
+must be codified and structured into data sets, and the hypotheses
+must be formulated in terms of probability distributions over possible
+data sets. The philosophy of statistics concerns the foundations and
+the proper interpretation of statistical methods, their input, and
+their results.  Since statistics is relied upon in almost all
+empirical scientific research, serving to support and communicate
+scientific findings, the philosophy of statistics is of key importance
+to the philosophy of science. It has an impact on the philosophical
+appraisal of scientific method, and on the debate over the epistemic
+and ontological status of scientific theory.
+The philosophy of statistics harbors a large variety of topics and
+debates. Central to these is the 
+ problem of induction,
+which concerns the justification of inferences or procedures that
+extrapolate from data to predictions and general facts. Further
+debates concern the
+ interpretation of the probabilities
+that are used in statistics, and the wider theoretical framework
+that may ground and justify the correctness of statistical methods. A
+general introduction to these themes is given in
+ Section 1 and
+ Section 2. 
+ Section 3 and 
+ Section 4 provide an account of how
+these themes play out in the two major theories of statistical method,
+classical and Bayesian statistics respectively.
+ Section 5
+directs attention to the notion of a statistical model, covering model
+selection and simplicity, but also discussing statistical techniques
+that do not rely on statistical models. 
+ Section 6 briefly
+mentions relations between the philosophy of statistics and several
+other themes from the philosophy of science, including 
+ confirmation theory,
+ evidence, 
+ causality, measurement, and scientific
+methodology in general.
+ 
+1. Statistics and induction
+
+Statistics is a mathematical and conceptual discipline that focuses on the relation
+between data and hypotheses. The data are recordings of
+observations or events in a scientific study, e.g., a set of
+measurements of individuals from a population. The data actually
+obtained are variously called the sample, the sample
+data, or simply the data, and all possible samples from
+a study are collected in what is called a sample
+space. The hypotheses, in turn, are general
+statements about the target system of the scientific study, e.g.,
+expressing some general fact about all individuals in the population.
+A statistical hypothesis is a general statement that can
+be expressed by a probability distribution over sample space, i.e., it
+determines a probability for each of the possible samples. 
+Statistical methods provide the mathematical and conceptual means
+to evaluate statistical hypotheses in the light of a sample. To this
+aim they employ probability theory, and incidentally generalizations
+thereof. The evaluations may determine how believable a hypothesis is,
+whether we may rely on the hypothesis in our decisions, how strong the
+support is that the sample gives to the hypothesis, and so on. Good
+introductions to statistics abound (e.g., Barnett 1999, Mood and
+Graybill 1974, Press 2002).
+To set the stage an example, taken from Fisher (1935), will be
+helpful.
+
+The tea tasting lady.  Consider a lady who
+claims that she can, by taste, determine the order in which milk and
+tea were poured into the cup. Now imagine that we prepare five cups of
+tea for her, tossing a fair coin to determine the order of milk and
+tea in each cup. We ask her to pronounce the order, and we find that
+she is correct in all cases! Now if she is guessing the order blindly
+then, owing to the random way we prepare the cups, she will answer
+correctly 50% of the time. This is our statistical hypothesis,
+referred to as the null hypothesis. It gives a probability of 1/21/21/2
+to a correct guess and hence a probability of 1/21/21/2 to an incorrect
+one. The sample space consists of all strings of answers the lady
+might give, i.e., all series of correct and incorrect guesses, but our
+actual data sits in a rather special corner in this space. On the
+assumption of our statistical hypothesis, the probability of the
+recorded events is a mere 3%, or 1/251/251/2^{5} more precisely. On this
+ground, we may decide to reject the hypothesis that the lady is
+guessing.
+According to the so-called null hypothesis test, such a
+decision is warranted if the data actually obtained are included in a
+particular region within sample space, whose total probability does
+not exceed some specified limit, standardly set at 5%. Now consider
+what is achieved by the statistical test just outlined. We started
+with a hypothesis on the actual tea tasting abilities of the lady,
+namely, that she did not have any. On the assumption of this
+hypothesis, the sample data we obtained turned out to be surprising
+or, more precisely, highly improbable. We therefore decided that the
+hypothesis that the lady has no tea tasting abilities whatsoever can
+be rejected. The sample points us to a negative but general conclusion
+about what the lady can, or cannot, do.
+The basic pattern of a statistical analysis is thus familiar from
+inductive inference: we input the data obtained thus far, and the
+statistical procedure outputs a verdict or evaluation that transcends
+the data, i.e, a statement that is not entailed by the data alone. If
+the data are indeed considered to be the only input, and if the
+statistical procedure is understood as an inference, then statistics
+is concerned with ampliative inference: roughly speaking, we
+get out more than we have put in. And since the ampliative inferences
+of statistics pertain to future or general states of affairs, they are
+inductive.  However, the association of statistics with ampliative and
+inductive inference is contested, both because statistics is
+considered to be non-inferential by some (see 
+ Section 3) and
+non-ampliative by others (see 
+ Section 4).
+Despite such disagreements, it is insightful to view statistics as
+a response to the problem of induction (cf. Howson 2000 and the
+ entry on the
+ problem of induction). 
+This problem, first discussed by Hume in his Treatise of Human
+Nature (Book I, part 3, section 6) but prefigured already by
+ancient sceptics like Sextus Empiricus (see the entry on
+ ancient skepticism), 
+is that there is no proper justification for
+inferences that run from given experience to expectations about the
+future. Transposed to the context of statistics, it reads that there
+is no proper justification for procedures that take data as input and
+that return a verdict, an evaluation, or some other piece of advice
+that pertains to the future, or to general states of affairs. Arguably,
+much of the philosophy of statistics is about coping with this
+challenge, by providing a foundation of the procedures that statistics
+offers, or else by reinterpreting what statistics delivers so as to
+evade the challenge.
+It is debatable that philosophers of statistics are ultimately
+concerned with the delicate, even ethereal issue of the justification
+of induction. In fact, many philosophers and scientists accept the
+fallibility of statistics, and find it more important that statistical
+methods are understood and applied correctly. As is so often the case,
+the fundamental philosophical problem serves as a catalyst: the
+problem of induction guides our investigations into the workings, the
+correctness, and the conditions of applicability of statistical
+methods. The philosophy of statistics, understood as the general
+header under which these investigations are carried out, is thus not
+concerned with ephemeral issues, but presents a vital and concrete
+contribution to the philosophy of science, and to science itself.
+2. Foundations and interpretations
+ While there is large variation in how statistical procedures and
+inferences are organized, they all agree on the use of modern
+measure-theoretic probability theory (Kolmogorov ), or a near
+kin, as the means to express hypotheses and relate them to data. By
+itself, a probability function is simply a particular kind of
+mathematical function, used to express the measure of a set
+(cf. Billingsley 1995). 
+Let WWW be a set with elements sss, and consider an initial
+collection of subsets of WWW, e.g., the singleton sets {s}{s}\{ s
+\}. Now consider the operation of taking the complement ˉRR¯\bar{R}
+of a given set RRR: the complement ˉRR¯\bar{R} contains exactly and
+all those sss that are not included in RRR. Next consider the join
+R∪QR∪QR \cup Q given sets RRR and QQQ: an element sss is a member
+of R∪QR∪QR \cup Q precisely when it is a member of RRR, QQQ, or
+both. The collection of sets generated by the operations of complement
+and join is called an
+algebra, denoted SSS. In statistics we interpret SSS as
+the set of samples, and we can associate sets RRR with specific
+events or observations. A specific sample sss includes a record of
+the event denoted with RRR exactly when s∈Rs∈Rs \in R. We take the
+algebra of sets like RRR as a language for making claims about the
+samples.
+A probability function is defined as an additive
+normalized measure over the algebra: a function
+
+    P:S→[0,1]P:S→[0,1] P: {\cal S} \rightarrow [0, 1]   
+
+such that P(R∪Q)=P(R)+P(Q)P(R∪Q)=P(R)+P(Q)P(R \cup Q) = P(R) + P(Q) if R∩Q=∅R∩Q=∅R \cap Q = \emptyset
+and P(W)=1P(W)=1P(W) = 1. The conditional probability P(Q∣R)P(Q∣R)P(Q \mid R)
+is defined as
+
+P(Q∣R)=P(Q∩R)P(R),P(Q∣R)=P(Q∩R)P(R), P(Q \mid R) \; = \; \frac{P(Q \cap R)}{P(R)} , 
+
+whenever P(R)>0P(R)>0P(R) &gt; 0. It determines the relative size of the set
+QQQ within the set RRR. It is often read as the probability of the
+event QQQ given that the event RRR occurs. Recall that
+the set RRR consists of all samples sss that include a record of
+the event associated with RRR. By looking at P(Q∣R)P(Q∣R)P(Q \mid R) we zoom
+in on the probability function within this set RRR, i.e., we
+consider the condition that the associated event occurs.
+
+Now what does the probability function mean? The mathematical
+notion of probability does not provide an answer.  The function PPP
+may be interpreted as
+
+physical, namely the frequency or propensity of the
+occurrence of a state of affairs, often referred to as the chance, or
+else as 
+epistemic, namely the degree of belief in the
+occurrence of the state of affairs, the willingness to act on its
+assumption, a degree of support or confirmation, or
+similar.
+
+ This distinction should not be confused with that between
+objective and subjective probability. Both physical and epistemic
+probability can be given an objective and subjective character, in the
+sense that both can be taken as dependent or independent of a
+knowing subject and her conceptual apparatus. For more details on the
+interpretation of probability, the reader is invited to consult
+Galavotti (2005), Gillies (2000), Mellor (2005), von Plato (1994), the
+anthology by Eagle (2010), the handbook of Hajek and Hitchcock
+(forthcoming), or indeed the entry on 
+ interpretations of probability.
+In this context the key point is that the interpretations can all be
+connected to foundational programmes for statistical
+procedures. Although the match is not exact, the two major types
+specified above can be associated with the two major theories of
+statistics, classical and Bayesian statistics, respectively.
+2.1 Physical probability and classical statistics
+
+In the sciences, the idea that probabilities express physical states
+of affairs, often called chances or stochastic processes, is most
+prominent. They are relative frequencies in series of events
+or, alternatively, they are tendencies or propensities in the
+systems that realize those events. More precisely, the probability
+attached to the property of an event type can be understood as the
+frequency or tendency with which that property manifests in a series
+of events of that type. For instance, the probability of a coin
+landing heads is a half exactly when in a series of similar coin
+tosses, the coin lands heads half the time. Or alternatively, the
+probability is half if there is an even tendency towards both possible
+outcomes in the setup of the coin tossing. The mathematician Venn
+(1888) and scientists like Quetelet and Maxwell (cf. von Plato 1994)
+are early proponents of this way of viewing probability. Philosophical
+theories of propensities were first coined by Peirce (1910), and
+developed by Popper (1959), Mellor (1971), Bigelow (1977), and Giere
+(1976); see Handfield (2012) for a recent overview. A rigourous theory
+of probability as frequency was first devised by von Mises (1981),
+also defended by Reichenbach  (1938) and beautifully expounded in
+van Lambalgen (1987).
+The notion of physical probability is connected to one of the major
+theories of statistical method, which has come to be called
+classical statistics.  It was developed roughly in the first
+half of the 20th century, mostly by mathematicians and working
+scientists like Fisher (1925, 1935, 1956), Wald (1939, 1950), Neyman
+and Pearson (1928, 1933, 1967), and refined by very many classical
+statisticians of the last few decades.  The key characteristic of this
+theory of statistics aligns naturally with viewing probabilities as
+physical chances, hence pertaining to observable and repeatable
+events. Physical probability cannot meaningfully be attributed to
+statistical hypotheses, since hypotheses do not have tendencies or
+frequencies with which they come about: they are categorically true or
+false, once and for all. Attributing probability to a hypothesis seems to entail that
+the probability is read epistemically.
+Classical statistics is often called frequentist, owing to
+the centrality of frequencies of events in classical procedures and
+the prominence of the frequentist interpretation of probability
+developed by von Mises. In this interpretation, chances are
+frequencies, or proportions in a class of similar events or
+items. They are best thought of as analogous to other physical
+quantities, like mass and energy. It deserves emphasis that
+frequencies are thus conceptually prior to chances . In propensity
+theory the probability of an individual event or item is viewed as a
+tendency in nature, so that the frequencies, or the proportions in a
+class of similar events or items, manifest as a consequence of the law
+of large numbers. In the frequentist theory, by contrast, the
+proportions lay down, indeed define what the chances are. This
+leads to a central problem for frequentist probability, the
+so-called reference class problem: it is not clear what
+class to associate with an individual event or item (cf.  Reichenbach
+1949, Hajek 2007). One may argue that the class needs to be as narrow
+as it can be, but in the extreme case of a singleton class of events,
+the chances of course trivialize to zero or one. Since classical
+statistics employs non-trivial probabilities that attach to the single
+case in its procedures, a fully frequentists understanding of
+statistics is arguably in need of a response to the reference class
+problem. 
+To illustrate physical probability, we briefly consider physical probability in the
+example of the tea tasting lady.
+
+Physical probability We denote the null
+hypothesis that the lady is merely guessing by hhh. Say that we
+follow the rule indicated in the example above: we reject this null
+hypothesis, i.e., denying that the lady is merely guessing, whenever
+the sampled data sss is included in a particular set RRR of
+possible samples, so s∈Rs∈Rs \in R, and that RRR has a summed
+probability of 5% according to the null hypothesis. Now imagine that
+we are supposed to judge a whole population of tea tasting ladies,
+scattered in tea rooms throughout the country. Then, by running the
+experiment and adopting the rule just cited, we know that we will
+falsely attribute special tea tasting talents to 5% of those ladies
+for whom the null hypothesis is true, i.e., who are in fact merely
+guessing. In other words, this percentage pertains to the physical
+probability of a particular set of events, which by the rule is
+connected to a particular error in our judgment.
+Now say that we have found a lady for whom we reject the null
+hypothesis, i.e., a lady who passes the test. Does she have the tea
+tasting ability or not? Unfortunately this is not the sort of question
+that can be answered by the test at hand. A good answer would
+presumably involve the proportion of ladies who indeed have the
+special tea tasting ability among those whose scores exceeded a
+certain threshold, i.e., those who answered correctly on all five
+cups. But this latter proportion, namely of ladies for whom the null
+hypothesis is false among all those ladies who passed the test,
+differs from the proportion of ladies who passed the test among
+those ladies for whom it is false. It will depend also on the
+proportion of ladies who have the ability in the population under
+scrutiny. The test, by contrast, only involves proportions within a
+group of ladies for whom the null hypothesis is true: we can only
+consider probabilities for particular events on the assumption that
+the events are distributed in a given way.
+2.2 Epistemic probability and statistical theory
+
+There is an alternative way of viewing the probabilities that appear
+in statistical methods: they can be seen as expressions of epistemic
+attitudes. We are again facing several interrelated options. Very
+roughly speaking, epistemic probabilities can be doxastic,
+decision-theoretic, or logical.
+2.2.1 Types of epistemic probability
+Probabilities may be taken to represent doxastic attitudes
+in the sense that they specify opinions about data and hypotheses of
+an idealized rational agent. The probability then expresses the strength
+or degree of belief, for instance regarding the correctness of the
+next guess of the tea tasting lady. They may also be taken as
+decision-theoretic, i.e., as part of a more elaborate
+representation of the agent, which determines her dispositions towards
+decisions and actions about the data and the hypotheses. Oftentimes a
+decision-theoretic representation involves doxastic attitudes
+alongside preferential and perhaps other ones. In that case, the
+probability may for instance express a willingness to bet on the lady
+being correct. Finally, the probabilities may be taken as
+logical.  More precisely, a probabilistic model may be
+taken as a logic, i.e., a formal representation that fixes a normative
+ideal for uncertain reasoning. According to this latter option,
+probability values over data and hypotheses have a role that is
+comparable to the role of truth values in deductive logic: they serve
+to secure a notion of valid inference, without carrying the suggestion
+that the numerical values refer to anything psychologically
+salient.
+The epistemic view on probability came into development in the 19th
+and the first half of the 20th century, first by the hand of De Morgan
+(1847) and Boole (1854), later by Keynes (1921), Ramsey (1926) and de
+Finetti (1937), and by decision theorists, philosophers and
+inductive logicians such as Carnap (1950), Savage (1962), Levi (1980),
+and Jeffrey (1992). Important proponents of these views in statistics
+were Jeffreys (1961), Edwards (1972), Lindley (1965), Good (1983),
+Jaynes (2003) as well as very many Bayesian philosophers and
+statisticians of the last few decades (e.g., Goldstein 2006, Kadane
+2011, Berger 2006, Dawid 2004). All of these have a view that places
+probabilities somewhere in the realm of the epistemic rather than the
+physical, i.e., not as part of a model of the world but rather as a
+means to model a representing system like the human mind. 
+The above division is certainly not complete and it is blurry at
+the edges. For one, the doxastic notion of probability has mostly been
+spelled out in a behaviorist manner, with the help of decision theory.
+Many have adopted so-called Dutch book arguments to make the
+degree of belief precise, and to show that it is indeed captured by
+the mathematical theory of probability (cf. Jeffrey 1992). According
+to such arguments, the degree of belief in the occurrence of an event
+is given by the price of a betting contract that pays out one monetary
+unit if the event manifests. However, there are alternatives to this
+behaviorist take on probability as doxastic attitude, using accuracy
+or proximity to the truth. Most of these are versions or extensions of
+the arguments proposed by de Finetti (1974). Others have
+developed an axiomatic approach based on natural desiderata for
+degrees of belief (e.g., Cox 1961).
+Furthermore, and as alluded to above, within the doxastic
+conception of probability we can make a further subdivision
+into subjective and objective doxastic attitudes. The defining
+characteristic of an objective doxastic probability is that it is
+constrained by the demand that the beliefs are calibrated to some
+objective fact or state of affairs, or else by further rationality
+criteria. A subjective doxastic attitude, by contrast, is not
+constrained in such a way: from a normative perspective, agents are
+free to believe as they see fit, as long as they comply to the
+probability axioms.
+2.2.2 Statistical theories
+
+For present concerns the important point is that each of these
+epistemic interpretations of the probability calculus comes with its
+own set of foundational programs for statistics. On the whole,
+epistemic probability is most naturally associated with Bayesian
+statistics, the second major theory of statistical methods (Press
+2002, Berger 2006, Gelman et al 2013). The key
+characteristic of Bayesian statistics flows directly from the
+epistemic interpretation: under this interpretation it becomes
+possible to assign probability to a statistical hypothesis and to
+relate this probability, understood as an expression of how strongly
+we believe the hypothesis, to the probabilities of events. Bayesian
+statistics allows us to express how our epistemic attitudes towards a
+statistical hypothesis, be it logical, decision-theoretic, or
+doxastic, changes under the impact of data.
+To illustrate the epistemic conception of probability in Bayesian
+statistics, we briefly return to the example of the tea tasting
+lady. 
+Epistemic probability As before we
+denote the null hypothesis that the lady is guessing randomly with
+hhh, so that the distribution PhPhP_{h} gives a probability of 1/2
+to any guess made by the lady. The alternative h′h′h' is that the lady
+performs better than a fair coin. More precisely, we might stipulate
+that the distribution Ph′Ph′P_{h'} gives a probability of 3/4 to a
+correct guess. At the outset we might find it rather improbable that
+the tea tasting lady has special tea tasting abilities. To express
+this we give the hypothesis of her having these abilities only half
+the probability of her not having the abilities: P(h′)=1/3P(h′)=1/3P(h') = 1/3 and
+P(h)=2/3P(h)=2/3P(h) = 2/3. Now, leaving the mathematical details to
+ Section 4.1, after receiving the data that
+she guessed all five cups correctly, our new belief in the lady's
+special abilities has more than reversed. We now think it roughly four
+times more probable that the lady has the special abilities than that
+she is merely a random guesser: P(h′)=243/307≈4/5P(h′)=243/307≈4/5P(h') = 243/307 \approx 4/5 and
+P(h′)≈1/5P(h′)≈1/5P(h') \approx 1/5. 
+The take-home message is that the Bayesian method allows us to
+express our epistemic attitudes to statistical hypotheses in terms of
+a probability assignment, and that the data impact on this epistemic
+attitude in a regulated fashion.
+It should be emphasized that Bayesian statistics is not the sole
+user of an epistemic notion of probability. Indeed, a frequentists
+understanding of probabilities assigned to statistical hypotheses
+seems nonsensical. But it is perfectly possible to read the
+probabilities of events, or elements in sample space, as epistemic,
+quite independently of the statistical method that is being used. As
+further explained in the next section, several philosophical
+developments of classical statistics employ epistemic probability,
+most notably fiducial probability (Fisher 1955 and 1956; see also
+Seidenfeld 1992 and Zabell 1992), likelihoodism (Hacking 1965, Edwards
+1972, Royall 1997), and evidential probability (Kyburg 1961), or
+connect the procedures of classical statistics to inference and
+support in some other way. In all these developments, probabilities
+and functions over sample space are read epistemically, i.e., as
+expressions of the strength of evidence, the degree of support, or
+similar.
+3. Classical statistics
+
+The collection of procedures that may be grouped under classical
+statistics is vast and multi-faceted. By and large, classical
+statistical procedures share the feature that they only rely on
+probability assignments over sample spaces. As indicated, an important
+motivation for this is that those probabilities can be interpreted as
+frequencies, from which the term of frequentist
+statistics originates.  Classical statistical procedures are
+typically defined by some function over sample space, where this
+function depends, often exclusively, on the distributions that the
+hypotheses under consideration assign to the sample space. For the
+range of samples that may be obtained, the function then points to one
+of the hypotheses, or perhaps to a set of them, as being in some sense
+the best fit with that sample. Or, conversely, it discards candidate
+hypotheses that render the sample too improbable. 
+In sum, classical procedures employ the data to narrow down a set
+of hypotheses. Put in such general terms, it becomes apparent that
+classical procedures provide a response to the problem of
+induction. The data are used to get from a weak general statement
+about the target system to a stronger one, namely from a set of
+candidate hypotheses to a subset of them. The central concern in the
+philosophy of statistics is how we are to understand these procedures,
+and how we might justify them. Notice that the pattern of classical
+statistics resembles that of eliminative induction: in view
+of the data we discard some of the candidate hypotheses. Indeed
+classical statistics is often seen in loose association with Popper's
+falsificationism, but this association is somewhat misleading. In
+classical procedures statistical hypotheses are discarded when they
+render the observed sample too improbable, which of course differs
+from discarding hypotheses that deem the observed sample
+impossible.
+3.1 Basics of classical statistics
+The foregoing already provided a short example and a rough sketch
+of classical statistical procedures. These are now specified in more
+detail, on the basis of Barnett (1999) as primary source. The
+following focuses on two very central procedures, hypothesis testing
+and estimation. The first has to do with the comparison of two
+statistical hypotheses, and invokes theory developed by Neyman and
+Pearson. The second concerns the choice of a hypothesis from a set,
+and employs procedures devised by Fisher. While these figures are
+rightly associated with classical statistics, their philosophical
+views diverge. We return to this below.
+3.1.1 Hypothesis testing
+The procedure of Fisher's null hypothesis test was already
+discussed briefly in the foregoing. Let hhh be the hypothesis of
+interest and, for the sake of simplicity, let SSS be a finite sample
+space. The hypothesis hhh imposes a distribution over the sample
+space, denoted PhPhP_{h}. Every point sss in the space represents a
+possible sample of data. We now define a function FFF on the sample
+space that identifies when we will reject the null hypothesis by
+marking the samples sss that lead to rejection with F(s)=1F(s)=1F(s) = 1, as
+follows:
+
+ F(s)={1if Ph(s)<r,0otherwise.   F(s) =   \begin{cases}  1 \quad \text{if } P_{h}(s) &lt; r,\\ 0 \quad
+\text{otherwise.} \end{cases} 
+
+Notice that the definition of the region of rejection, Rr={s:F(s)=1}R_{r} = \{
+s:\: F(s) = 1 \}, hinges on the probability of the data under the
+assumption of the hypothesis, Ph(s)P_{h}(s). This expression is often
+called the
+likelihood of the hypothesis on the sample ss. We can set
+the threshold rr for the likelihood to a suitable value, such that
+the total probability of the region of rejection RrR_{r} is below a
+given level of error, for example, Ph(R)<0.05P_{h}(R) &lt; 0.05.
+
+It soon appeared that comparisons between two rival hypotheses were
+far more informative, in particular because little can be said about
+error rates if the null hypothesis is in fact false. Neyman and
+Pearson (1928, 1933, and 1967) devised the so-called likelihood
+ratio test, a test that compares the likelihoods of two rivaling
+hypotheses. Let hh and h′h' be the null and the alternative
+hypothesis respectively. We can compare these hypotheses by the
+following test function FF over the sample space:
+
+F(s)={1if Ph′(s)Ph(s)>r,0otherwise, F(s) = \begin{cases} 1 \quad \text{if } \frac{P_{h'}(s)}{P_{h}(s)}
+&gt; r,\\ 0 \quad \text{otherwise,} \end{cases} 
+
+where PhP_{h} and Ph′P_{h'} are the probability distributions over
+the sample space determined by the statistical hypotheses hh and
+h′h' respectively. If F(s)=1F(s) = 1 we decide to reject the null
+hypothesis hh, else we accept hh for the time being and so
+disregard h′h'.
+
+The decision to accept or reject a hypothesis is associated with
+the so-called significance and power of the test. The
+significance is the probability, according to the null
+hypothesis hh, of obtaining data that leads us to falsely reject
+this hypothesis hh:
+
+SignificanceF=α=Ph(Rr)=∑s∈SF(s)Ph(s)ds, \text{Significance}_{F} = \alpha = P_{h}(R_{r}) = \sum_{s \in S}
+F(s) P_{h}(s) d s , 
+
+The probability α\alpha is alternatively called the type-I
+error, and it is often denoted as the
+significance or the p-value. The power is
+the probability, according to the alternative hypothesis h′h', of
+obtaining data that leads us to correctly reject the null hypothesis
+hh:
+
+PowerF=1−β=Ph′(F1)=∑s∈SF(s)Ph′(s)ds. \text{Power}_{F} = 1 - \beta = P_{h'}(F_{1}) = \sum_{s \in S} F(s)
+P_{h'}(s) d s.  
+
+The probability β\beta is called the type-II error of
+falsely accepting the null hypothesis. An optimal test is one that
+minimizes both the errors α\alpha and β\beta. In their
+fundamental lemma, Neyman and Pearson proved that the decision has
+optimal significance and power for, and only for, likelihood-ratio
+test functions FF. That is, an optimal test depends only on a
+threshold for the ratio Ph′(s)/Ph(s)P_{h'}(s) / P_{h}(s).
+
+The example of the tea tasting lady allows for an easy illustration
+of the likelihood ratio test.
+Neyman-Pearson test Next to the
+null hypothesis hh that the lady is randomly guessing, we now
+consider the alternative hypothesis h′h' that she has a chance of
+3/43/4 to guess the order of tea and milk correctly. The samples
+ss are binary 5-tuples that record guesses as correct and
+incorrect. To determine the likelihoods of the two hypotheses, and
+thereby the value of the test function for each sample, we only need
+to know the so-called sufficient statistic, in this case the
+number of correct guesses nn independently of the order. Denoting a
+particular sequence of guesses in which the lady has nn correct
+guesses out of tt with sn/ts_{n/t}, we have Ph(sn/5)=1/25P_{h}(s_{n/5}) =
+1/2^{5} and Ph′(sn/5)=3n/45P_{h'}(s_{n/5}) = 3^{n} / 4^{5}, so that the
+likelihood ratio becomes 3n/253^{n} / 2^{5}. If we require that the
+significance is lower than 5%, then it can be calculated that only the
+samples with n=5n = 5 may be included in the region of
+rejection. Accordingly we may set the cut-off point rr such that
+r≥34/25r \geq 3^{4} / 2^{5} and r<35/25r \lt 3^{5} / 2^{5}, e.g., r=34/25r =
+3^{4} / 2^{5}.
+The threshold of 5% significance is part of statistical convention
+and very often fixed before even considering the power. Notice that
+the statistical procedure associates expected error rates with a
+decision to reject or accept. Especially Neyman has become known for
+interpreting this in a strictly behaviourist fashion. For further
+discussion on this point, please see 
+ Section 3.2.2.
+3.1.2 Estimation
+In this section we briefly consider parameter estimation by maximum
+likelihood, as first devised by Fisher (1956). While in the foregoing
+we used a finite sample space, we now employ a space with infinitely
+many possible samples. Accordingly, a probability distribution over
+sample space is written down in terms of a so-called density
+function, denoted P(s)dsP(s) ds, which technically speaking
+expresses the infinitely small probability assigned to an infinitely
+small patch dsds around the point ss. This probability density
+works much like an ordinary probability function.
+Maximum likelihood estimation, or MLE for short, is a tool for
+determining the best among a set of hypotheses, often called a
+statistical model.  Let M={hθ:θ∈Θ}M = \{h_{\theta} :\: \theta \in
+\Theta \} be the model, labeled by the parameter θ\theta, let
+SS be the sample space, and PθP_{\theta} the distribution
+associated with hθh_{\theta}.  Then define the maximum
+likelihood estimator ˆθ\hat{\theta} as a function over the
+sample space:
+
+ˆθ(s)={θ:∀hθ′(Pθ′(s)ds≤Pθ(s)ds)}. \hat{\theta}(s) = \left\{ \theta :\: \forall h_{\theta'}
+\bigl(P_{\theta'}(s)ds \leq P_{\theta}(s)ds \bigr) \right\}. 
+
+So the estimator is a set, typically a singleton, of values of
+θ\theta for which the likelihood of hθh_{\theta} on the data
+ss is maximal. The associated best hypothesis we denote with
+hˆθh_{\hat{\theta}}. This can again be illustrated for the tea
+tasting lady.
+
+
+Maximum likelihood estimation A natural
+statistical model for the case of the tea tasting lady consists of
+hypotheses hθh_{\theta} for all possible levels of accuracy that the
+lady may have, θ∈[0,1]\theta \in [0, 1]. Now the number of correct
+guesses nn and the total number of guesses tt are the sufficient
+statistics: the probability of a sample only depends on those
+numbers. For any particular sequence sn/ts_{n/t} of tt guesses with
+nn successes, the associated likelihoods of hθh_{\theta} are
+
+Pθ(sn/t)=θn(1−θ)t−n.  P_{\theta}(s_{n/t}) = \theta^{n} (1 - \theta)^{t - n} . 
+
+For any number of trials tt the maximum likelihood estimator then
+becomes ˆθ=n/t\hat{\theta} = n / t.
+We suppose that the number of cups served to the lady is fixed at
+tt so that sample space is finite again. Notice, finally, that
+ˆθ\hat{\theta} is the hypothesis that makes the data most probable
+and not the hypothesis that is most probable in the light of the
+data. 
+There are several requirements that we might impose on an estimator
+function. One is that the estimator must be consistent.  This means
+that for larger samples the estimator function ˆθ\hat{\theta}
+converges to the parameter values associated with the distribution
+θ⋆\theta^{\star} of the data generating system, or the true
+parameter values for short. Another requirement is that the estimator
+must be unbiased, meaning that there is no discrepancy between the
+expected value of the estimator and the true parameter values. The MLE
+procedure is certainly not the only one used for estimating the value
+of a parameter of interest on the basis of statistical data. A simpler
+technique is the minimization of a particular target function, e.g.,
+the minimizing the sum of the squares of the distances between the
+prediction of the statistical hypothesis and the data points, also
+known as the method of least squares.  A more general
+perspective, first developed by Wald (1950), is provided by measuring
+the discrepancy between the predictions of the hypothesis and the
+actual data in terms of a loss function. The summed squares and the
+likelihoods may be taken as expressions of this loss.
+Often the estimation is coupled to a so-called confidence
+interval (cf. Cumming 2012).  For ease of exposition, assume that
+Θ\Theta consists of the real numbers and that every sample ss is
+labelled with a unique ˆθ(s)\hat{\theta}(s). We define the set
+Rτ={s:ˆθ(s)=τ}R_{\tau} = \{ s:\: \hat{\theta}(s) = \tau \}, the set of samples
+for which the estimator function has the value τ\tau. We can now
+collate a region in sample space within which the estimator function
+ˆθ\hat{\theta} is not too far off the mark, i.e., not too far from
+the true value θ⋆\theta^{\star} of the parameter. For example,
+
+C⋆Δ={Rτ:τ∈[θ⋆−Δ,θ⋆+Δ]}. C^{\star}_{\Delta} = \{ R_{\tau} :\: \tau \in [ \theta^{\star} -
+\Delta , \theta^{\star} + \Delta ] \} . 
+
+So this set is the union of all RτR_{\tau} for which τ∈[θ⋆−Δ,θ⋆+Δ]\tau \in [
+\theta^{\star} - \Delta , \theta^{\star} + \Delta ]. Now we might
+set this region in such a way that it covers a large portion of the
+sample space, say 1−α1 - \alpha, as measured by the true distribution
+Pθ⋆P_{\theta^{\star}}. We choose Δ\Delta such that
+
+Pθ⋆(C⋆Δ)=∫θ⋆+Δθ⋆−ΔPθ⋆(Rτ)dτ=1−α. P_{\theta^{\star}}(C^{\star}_{\Delta}) = \int_{\theta^{\star} -
+\Delta}^{\theta^{\star} + \Delta} P_{\theta^{\star}}(R_{\tau}) d\tau =
+1 - \alpha .
+
+Statistical folk lore typically sets α\alpha at a value
+5%. Relative to this number, the size of Δ\Delta says something
+about the quality of the estimate. If we were to repeat the collection
+of the sample over and over, we would find the estimator
+ˆθ\hat{\theta} within a range Δ\Delta of the true value
+θ⋆\theta^{\star} in 95% of all samples. This leads us to define the
+symmetric 95% confidence interval:
+
+CI95=[ˆθ−Δ,ˆθ+Δ] CI_{95} = [ \hat{\theta} - \Delta , \hat{\theta} + \Delta ] 
+
+The interpretation is the same as in the foregoing: with repeated
+sampling we find the true value within Δ\Delta of the estimate in
+95% of all samples. 
+
+It is crucial that we can provide an unproblematic frequentist
+interpretation of the event that ˆθ∈[θ⋆−Δ,θ⋆+Δ]\hat{\theta} \in [\theta^{\star} -
+\Delta, \theta^{\star} + \Delta], under the assumption of the true
+distribution. In a series of estimations, the fraction of times in
+which the estimator ˆθ\hat{\theta} is further away from
+θ⋆\theta^{\star} than Δ\Delta, and hence outside this interval,
+will tend to 5%. The smaller this region, the more reliable the
+estimate.  Note that this interval is defined in terms of the unknown
+true value θ⋆\theta^{\star}. However, especially if the size of the
+interval 2Δ2 \Delta is independent of the true parameter
+θ⋆\theta^{\star}, it is tempting to associate the 95% confidence
+interval with the frequency with which the true value lies within a
+range of Δ\Delta around the estimate ˆθ\hat{\theta}.  Below we
+come back to this interpretation.
+There are of course many more procedures for estimating a variety
+of statistical targets, and there are many more expressions for the
+quality of the estimation (e.g., bootstrapping, see Efron and
+Tibshirani 1993). Theories of estimation often come equipped with a
+rich catalogue of situation-specific criteria for estimators,
+reflecting the epistemic and pragmatic goals that the estimator helps
+achieving. However, in itself the estimator functions do
+not present guidelines for belief and, importantly,
+confidence intervals do not either. 
+3.2 Problems for classical statistics
+Classical statistics is widely discussed in the philosophy of
+statistics. In what follows two problems with the classical approach
+are outlined, to wit, its problematic interface with belief and the
+fact that it violates the so-called likelihood principle. Many more
+specific problems can be seen to derive from these general
+ones.
+3.2.1 Interface with belief
+Consider the likelihood ratio test of Neyman and Pearson. As
+indicated, the significance or p-value of a test is an error rate that
+will manifest if data collection and testing is repeated, assuming
+that the null hypothesis is in fact true.  Notably, the p-value does
+not tell us anything about how probable the truth of the null
+hypothesis is. However, many scientists do use hypothesis testing in
+this manner, and there is much debate over what can and cannot be
+derived from a p-value (cf. Berger and Sellke 1987, Casella and
+Berger 1987, Cohen 1994, Harlow et al 1997, Wagenmakers 2007,
+Ziliak and McCloskey 2008, Spanos 2007, Greco 2011, Sprenger
+forthcoming-a). After all, the test leads to the advice to either
+reject the hypothesis or accept it, and this seems conceptually very
+close to giving a verdict of truth or falsity.
+While the evidential value of p-values is much debated,
+many admit that the probability of data according to a hypothesis
+cannot be used straightforwardly as an indication of how believable
+the hypothesis is (cf. Gillies 1971, Spielman 1974 and 1978).  Such
+usage runs into the so-called base-rate fallacy. The example
+of the tea tasting lady is again instructive. 
+
+Base-rate fallacy Imagine that we travel the
+country to perform the tea tasting test with a large number of ladies,
+and that we find a particular lady who guesses all five cups
+correctly.  Should we conclude that the lady has a special talent for
+tasting tea?  The problem is that this depends on how many ladies
+among those tested actually have the special talent. If the ability is
+very rare, it is more attractive to put the five correct guesses down
+to a chance occurrence.  By comparison, imagine that all the ladies
+enter the lottery. In analogy to a lady guessing all cups correctly,
+consider a lady who wins one of the lottery's prizes. Of course
+winning a prize is very improbable, unless one is in cahoots with the
+bookmaker, i.e., the analogon of having a special tea tasting
+ability. But surely if a lady wins the lottery, this is not a good
+reason to conclude that she must have committed fraud and call for her
+arrest. Similarly, if a lady has guessed all cups correctly, we cannot
+simply conclude that she has special abilities.
+Essentially the same problem occurs if we consider the estimations
+of a parameter as direct advice on what to believe, as made clear by
+an example of Good (1983, p. 57) that is presented here in the tea
+tasting context. After observing five correct guesses, we have
+ˆθ=1\hat{\theta} = 1 as maximum likelihood estimator. But it is hardly
+believable that the lady will in the long run be 100% accurate. The
+point that estimation and belief maintain complicated relations is
+also put forward in discussions of Lindley's paradox (Lindley
+1957, Spanos 2013, Sprenger forthcoming-b). In short, it seems
+wrongheaded to turn the results of classical statistical procedures
+into beliefs.
+It is a matter of debate whether any of this can be blamed on
+classical statistics.  Initially, Neyman was emphatic that their
+procedures could not be taken as inferences, or as in some other way
+pertaining to the epistemic status of the hypotheses. Their own
+statistical philosophy was strictly behaviorist (cf. Neyman 1957), and
+it may be argued that the problems disappear if only scientists
+abandon their faulty epistemic use of classical statistics. As
+explained in the foregoing, we can uncontroversially associate error
+rates with classical procedures, and so with the decisions that flow
+from these procedures. Hence, a behavioural and error-based
+understanding of classical statistics seems just fine. However, both
+statisticians and philosophers have argued that an epistemic reading
+of classical statistics is possible, and in fact preferable (e.g.,
+Fisher 1955, Royall 1997). Accordingly, many have attempted to
+reinterpret or develop the theory, in order to align it with the
+epistemically oriented statistical practice of scientists (see Mayo
+1996, Mayo and Spanos 2011, Spanos 2013b).
+3.2.2 The nature of evidence
+Hypothesis tests and estimations are sometimes criticised because
+their results generally depend on the probability functions over the
+entire sample space, and not exclusively on the probabilities of the
+observed sample. That is, the decision to accept or reject the null
+hypothesis depends not just on the probability of what has actually
+been observed according to the various hypotheses, but also on the
+probability assignments over events that could have been observed but
+were not. A well-known illustration of this problem concerns so-called
+optional stopping (Robbins 1952, Roberts 1967, Kadane et al
+1996, Mayo 1996, Howson and Urbach 2006).
+Optional stopping is here illustrated for the likelihood ratio test
+of Neyman and Pearson but a similar story can be run for Fisher's null
+hypothesis test and for the determination of estimators and confidence
+intervals. 
+
+Optional stopping Imagine two
+researchers who are both testing the same lady on her ability to
+determine the order in which milk and tea were poured in her cup. They
+both entertain the null hypothesis that she is guessing at random,
+with a probability of 1/21/2, against the alternative of her guessing
+correctly with a probability of 3/43/4. The more diligent researcher
+of the two decides to record six trials. The more impatient, on the
+other hand researcher records at most six trials, but decides to stop
+recording the first trial that the lady guesses incorrectly. Now
+imagine that, in actual fact, the lady guesses all but the last of the
+cups correctly. Both researchers then have the exact same data of five
+successes and one failure, and the likelihoods for these data are the
+same for the two researchers too.  However, while the diligent
+researcher cannot reject the null hypothesis, the impatient researcher
+can.
+This might strike us as peculiar: statistics should tell us the
+objective impact that the data have on a hypothesis, but here the
+impact seems to depend on the sampling plan of the researcher
+and not just on the data themselves. As further explained in 
+ Section 3.2.3, 
+the results of the two researchers differ because of
+differences in how samples that were not observed are factored into
+the procedure. 
+Some will find this dependence unacceptable: the intentions and
+plans of the researcher are irrelevant to the evidential value of the
+data. But others argue that it is just right. They maintain that the
+impact of data on the hypotheses should depend on the stopping
+rule or protocol that is followed in obtaining it, and not only
+on the likelihoods that the hypotheses have for those data
+(e.g. Mayo 1996). The motivating intuition is that upholding the
+irrelevance of the stopping rule makes it impossible to ban
+opportunistic choices in data collection. In fact, defenders of
+classical statistics turn the table on those who maintain that
+optional stopping is irrelevant.  They submit that it opens up the
+possibility of reasoning to a foregone conclusion by, for example,
+persistent experimentation: we might decide to cease
+experimentation only if the preferred result is reached. However, as
+shown in Kadane et al. (1996) and further discussed in Steele
+(2012), persistent experimentation is not guaranteed to be
+effective, as long as we make sure to use the correct, in this case
+Bayesian, procedures.
+The debate over optional stopping is eventually concerned with the
+appropriate evidential impact of data. A central concern in this wider
+debate is the so-called likelihood principle (see Hacking
+1965 and Edwards 1972). This principle has it that the likelihoods of
+hypotheses for the observed data completely fix the evidential impact
+of those data on the hypotheses. In the formulation of Berger and
+Wolpert (1984), the likelihood principle states that two samples ss
+and s′s' are evidentially equivalent exactly when Pi(s)=kPi(s′)P_{i}(s) =
+kP_{i}(s') for all hypotheses hih_{i} under consideration, given
+some constant kk. Famously, Birnbaum (1962) offers a proof of the
+principle from more basic assumptions. This proof relies on the
+assumption of conditionality.  Say that we first toss a coin,
+find that it lands heads, then do the experiment associated with this
+outcome, to record the sample ss. Compare this to the case where we
+do the experiment and find ss directly, without randomly picking
+it. The conditionality principle states that this second sample has
+the same evidential impact as the first one: what we could have found,
+but did not find, has no impact on the evidential value of the
+sample. Recently, Mayo (2010) has taken issue with Birnbaum's
+derivation of the likelihood principle.
+The classical view sketched above entails a violation of this: the
+impact of the observed data may be different depending on the
+probability of other samples than the observed one, because those
+other samples come into play when determining regions of acceptance
+and rejection. The Bayesian procedures discussed in 
+ Section 4,
+on the other hand, uphold the likelihood principle: in determining the
+posterior distribution over hypotheses only the prior and the
+likelihood of the observed data matter. In the debate over optional
+stopping and in many of the other debates between classical and
+Bayesian statistics, the likelihood principle is the focal point.
+3.2.3 Excursion: optional stopping
+The view that the data reveal more, or something else,
+than what is expressed by the likelihoods of the hypotheses at
+issue merits detailed attention. Here we investigate this issue
+further with reference to the controversy over optional stopping.
+Let us consider the analyses of the two above researchers in some
+numerical detail by constructing the regions of rejection for both of
+them.
+
+Determining regions of rejection
+The diligent researcher considers all 6-tuples of success and
+failure as the sample space, and takes their numbers as sufficient
+statistic. The event of six successes, or six correct guesses, has a
+probability of 1/26=1/641 / 2^{6} = 1/64 under the null hypothesis that the
+lady is merely guessing, against a probability of 36/463^{6} / 4^{6}
+under the alternative hypothesis. If we set r<36/26r &lt; 3^{6} / 2^{6},
+then this sample is included in the region of rejection of the null
+hypothesis. Samples with five successes have a probability of 1/641/64
+under the null hypothesis too, against a probability of 35/463^5 /
+4^{6} under the alternative. By lowering the likelihood ratio by a
+factor 3, we include all these samples in the region of rejection. But
+this will lead to a total probability of false rejection of 7/647/64,
+which is larger than 5%. So these samples cannot be included in the
+region of rejection, and hence the diligent researcher does not reject
+the null hypothesis upon finding five successes and one failure.
+
+For the impatient researcher, on the other hand, the sample
+space is much smaller. Apart from the sample consisting of six
+successes, all samples consist of a series of successes ending with a
+failure, differing only in the length of the series. Yet the
+probabilities over the two samples of length six are the same as for
+the diligent researcher. As before, the sample of six successes is
+again included in the region of rejection. Similarly, the sequence of
+five successes followed by one failure also has a probability of
+1/641/64 under the null hypothesis, against a probability of 35/463^5 /
+4^{6} according to the alternative. The difference is that lowering
+the likelihood ratio to include this sample in the region of rejection
+leads to the inclusion of this sample only. And if we include it in
+the region of rejection, the probability of false rejection becomes
+1/321/32 and hence does not exceed 5%. Consequently, on the basis of
+these data the laid-back researcher can reject the null hypothesis
+that the lady is merely guessing.
+
+It is instructive to consider why exactly the impatient researcher
+can reject the null hypothesis. In virtue of his sampling plan, the
+other samples with five successes, namely the ones which kept the
+diligent researcher from including the observed sample in the region
+of rejection on pain of exceeding the error probability, could not
+have been observed. This exemplifies that the results of a classical
+statistical procedure do not only depend on the likelihoods for the
+actual data, which are indeed the same for both researchers. They also
+depend on the likelihoods for data that we did not obtain. 
+In the above example, it may be considered confusing that the
+protocol used for optional stopping depends on the data that is being
+recorded. But the controversy over optional stopping also emerges if
+this dependence is absent. For example, imagine a third researcher who
+samples until the diligent researcher is done, or before that if she
+starts to feel peckish.  Furthermore we may suppose that with each new
+cup offered to the lady, the probability of feeling peckish is
+12\frac{1}{2}. This peckish researcher will also be able to reject
+the null hypothesis if she completes the series of six cups. And it
+certainly seems at variance with the objectivity of the statistical
+procedure that this rejection depends on the physiology and the state
+of mind of the researcher: if she had not kept open the possibility of
+a snack break, she would not have rejected the null hypothesis, even
+though she did not actually take that break. As Jeffrey famously
+quipped, this is indeed a “remarkable procedure”.
+Yet the case is not as clear-cut as it may seem. For one, the
+peckish researcher is arguably testing two hypotheses in tandem, one
+about the ability of the tea tasting lady and another about her own
+peckishness. Together the combined hypotheses have a different
+likelihood for the actual sample than the simple hypothesis considered
+by the diligent researcher. The likelihood principle given above
+dictates that this difference does not affect the evidential impact of
+the actual sample, but some retain the intuition that it
+should. Moreover, in some cases this intuition is shared by those who
+uphold the likelihood principle, namely when the stopping rule depends
+on the process being recorded in a way not already expressed by the
+hypotheses at issue (cf. Robbins 1952, Howson and Urbach 2006,
+p. 365). In terms of our example, if the lady is merely guessing, then
+it may be more probable that the researcher gets peckish out of sheer
+boredom, than if the lady performs far below or above chance level. In
+such a case the act of stopping itself reveals something about the
+hypotheses at issue, and this should be reflected in the likelihoods
+of the hypotheses. This would make the evidential impact that the data
+have on the hypothesis dependent on the stopping rule after all.
+3.3 Responses to criticism
+There have been numerous responses to the above criticisms. Some of
+those responses effectively reinterpret the classical statistical
+procedures as pertaining only to the evidential impact of data. Other
+responses develop the classical statistical theory to accommodate
+the problems. Their common core is that they establish or at least
+clarify the connection between two conceptual realms: the
+statistical procedures refer to physical probabilities, while their
+results pertain to evidence and support, and even to the rejection or
+acceptance of hypotheses.
+3.3.1 The strength of evidence
+Classical statistics is often presented as providing us with
+advice for actions. The error probabilities do not tell us what
+epistemic attitude to take on the basis of statistical procedures,
+rather they indicate the long-run frequency of error if we live by
+them. Specifically Neyman advocated this interpretation of classical
+procedures. Against this, Fisher (1935a, 1955), Pearson, and
+other classical statisticians have argued for more epistemic
+interpretations, and many more recent authors have followed suit.
+Central to the above discussion on classical statistics is the
+concept of likelihood, which reflects how the data bears on the
+hypotheses at issue. In the works of Hacking (1965), Edwards (1972),
+and more recently Royall (1997), the likelihoods are taken as a
+cornerstone for statistical procedures and given an epistemic
+interpretation. They are said to express the strength of the evidence
+presented by the data, or the comparative degree of support that the
+data give to a hypothesis. Hacking formulates this idea in the
+so-called law of likelihood (1965, p. 59): if the sample
+ss is more probable on the condition of h0h_{0} than on
+h1h_{1}, then ss supports h0h_{0} more than it supports
+h1h_{1}.
+The position of likelihoodism is based on a specific combination of
+views on probability. On the one hand, it only employs probabilities
+over sample space, and avoids putting probabilities over statistical
+hypotheses. It thereby avoids the use of probability that cannot be
+given a physical interpretation. On the other hand, it does interpret
+the probabilities over sample space as components of a support
+relation, and thereby as pertaining to the epistemic rather than the
+physical realm. Notably, the likelihoodist approach fits well with a
+long history in formal approaches to epistemology, in particular with
+confirmation theory (see Fitelson 2007), in which the probability
+theory is used to spell out confirmation relations between data
+and hypotheses. Measures of confirmation invariably take the
+likelihoods of hypotheses as input components. They provide a
+quantitative expression of the support relations described by the law
+of likelihood.
+Another epistemic approach to classical statistics is presented by
+Mayo (1996) and Mayo and Spanos (2011). Over the past decade or so,
+they have done much to push the agenda of classical statistics in the
+philosophy of science, which had become dominated by Bayesian
+statistics. Countering the original behaviourist tendencies of Neyman,
+the error statistical approach advances an epistemic reading
+of classical test and estimation procedures. Mayo and Spanos argue
+that classical procedures are best understood as inferential: they
+license inductive inferences. But they readily admit that the
+inferences are defeasible, i.e., they could lead us
+astray. Classical procedures are always associated with particular
+error probabilities, e.g., the probability of a false rejection or
+acceptance, or the probability of an estimator falling within a
+certain range. In the theory of Mayo and Spanos, these error
+probabilities obtain an epistemic role, because they are taken to
+indicate the reliability of the inferences licensed by the
+procedures.
+The error statistical approach of Mayo and others comprises a
+general philosophy of science as well as a particular viewpoint on the
+philosophy statistics. We briefly focus on the latter, through a
+discussion of the notion of a severe test (cf. Mayo and Spanos 2006).
+The claim is that we gain knowledge of experimental effects on the
+basis of severely testing hypotheses, which can be
+characterized by the significance and power. In Mayo's definition, a
+hypothesis passes a severe test on two conditions: the data must agree
+with the hypothesis, and the probability must be very low that
+the data agree with the alternative hypothesis.  Ignoring potential
+controversy over the precise interpretation of “agree” and “low
+probability”, we can recognize the criteria of Neyman and Pearson in
+these requirements. The test is severe if the significance is low,
+since the data must agree with the hypothesis, and the power is high,
+since those data must not agree, or else have a low probability of
+agreeing, with the alternative. 
+3.3.2 Theoretical developments 
+Apart from re-interpretations of the classical statistical
+procedures, numerous statisticians and philosophers have developed the
+theory of classical statistics further in order to make good on the
+epistemic role of its results. We focus on two developments in
+particular, to wit, fiducial and evidential probability. 
+The theory of evidential probability originates in Kyburg
+(1961), who developed a logical system to deal consistently with the
+results of classical statistical analyses.  Evidential probability
+thus falls within the attempts to establish the epistemic use of
+classical statistics. Haenni et al (2010) and Kyburg and Teng (2001)
+present an insightful introduction to evidential probability.  The
+system is based on a version default reasoning: statistical hypotheses
+come attached with a confidence level, and the logical system
+organizes how such confidence levels are propagated in inference, and
+thus advises which hypothesis to use for predictions and
+decisions. Particular attention is devoted to the propagation of
+confidence levels in inferences that involve multiple instances of the
+same hypothesis tagged with different confidences, where those
+confidences result from diverse data sets that are each associated
+with a particular population. Evidential probability assists in
+selecting the optimal confidence level, and thus in choosing
+the appropriate population for the case under consideration. In
+other words, evidential probability helps to resolve the reference
+class problem alluded in the foregoing.
+Fiducial probability presents another way in which classical
+statistics can be given an epistemic status. Fisher (1930, 1933,
+1935c, 1956/1973) developed the notion of fiducial
+probability as a way of deriving a probability assignment over
+hypotheses without assuming a prior probability over statistical
+hypotheses at the outset. The fiducial argument is controversial, and
+it is generally agreed that its applicability is limited to particular
+statistical problems. Dempster (1964), Hacking (1965), Edwards (1972),
+Seidenfeld (1996) and Zabell (1996) provide insightful
+discussions. Seidenfeld (1979) presents a particularly detailed study
+and a further discussion of the restricted applicability of the
+argument in cases with multiple parameters. Dawid and Stone (1982)
+argue that in order to run the fiducial argument, one has to assume
+that the statistical problem can be captured in a functional model
+that is smoothly invertible. Dempster (1966) provides generalizations
+of this idea for cases in which the distribution over θ\theta is
+not fixed uniquely but only constrained within upper and lower bounds
+(cf. Haenni et al 2011). Crucially, such constraints on the
+probability distribution over values of θ\theta are obtained
+without assuming any distribution over θ\theta at the outset.
+3.3.3 Excursion: the fiducial argument
+To explain the fiducial argument we first set up a simple
+example.  Say that we estimate the mean θ\theta of a normal
+distribution with unit variance over a variable XX. We collect a
+sample ss consisting of measurements X1,X2,…XnX_{1}, X_{2}, \ldots
+X_{n}. The maximum likelihood estimator for θ\theta is the
+average value of the XiX_{i}, that is, ˆθ(s)=∑iXi/n\hat{\theta}(s) = \sum_{i}
+X_{i} / n.  Under an assumed true value θ\theta we then have a
+normal distribution for the estimator ˆθ(s)\hat{\theta}(s), centred on
+the true value and with a variance 1/√n1 / \sqrt{n}. Notably, this
+distribution has the same shape for all values of θ\theta. Because
+of this, argued Fisher, we can use the distribution over the estimator
+ˆθ(s)\hat{\theta}(s) as a stand-in for the distribution over the true
+value θ\theta. We thus derive a probability distribution
+P(θ)P(\theta) on the basis of a sample ss, seemingly without
+assuming a prior probability.
+There are several ways to clarify this so-called fiducial argument.
+One way employs a so-called functional model, i.e., the
+specification of a statistical model by means of a particular
+function. For the above model, the function is
+
+f(θ,ϵ)=θ+ϵ=ˆθ(s). f(\theta, \epsilon) = \theta + \epsilon = \hat{\theta}(s) . 
+
+It relates possible parameter values θ\theta to a quantity based on
+the sample, in this case the estimator of the observations
+ˆθ\hat{\theta}. The two are related through a stochastic component
+ϵ\epsilon whose distribution is known, and the same for all the
+samples under consideration. In our case ϵ\epsilon is distributed
+normally with variance 1/√n1 / \sqrt{n}. Importantly, the distribution
+of ϵ\epsilon is the same for every value of θ\theta. The
+interpretation of the function ff may now be apparent. Relative to
+the choice of a value of θ\theta, which then obtains the role of
+the true value θ⋆\theta^{\star}, the distribution over ϵ\epsilon
+dictates the distribution over the estimator function
+ˆθ(s)\hat{\theta}(s).
+
+The idea of the fiducial argument can now be expressed succinctly.
+It is to project the distribution over the stochastic component back
+onto the possible parameter values. The key observation is that the
+functional relation f(θ,ϵ)f(\theta, \epsilon) is smoothly invertible,
+i.e., the function
+
+f−1(ˆθ(s),ϵ)=ˆθ(s)−ϵ=θ f^{-1}(\hat{\theta}(s), \epsilon) = \hat{\theta}(s) - \epsilon =
+\theta 
+
+points each combination of ˆθ(s)\hat{\theta}(s) and ϵ\epsilon to a
+unique parameter value θ\theta. Hence, we can invert the claim of
+the previous paragraph: relative to fixing a value for
+ˆθ\hat{\theta}, the distribution over ϵ\epsilon fully determines
+the distribution over θ\theta. Hence, in virtue of the inverted
+functional model, we can transfer the normal distribution over
+ϵ\epsilon to the values θ\theta around ˆθ(s)\hat{\theta}(s). This
+yields a so-called fiducial probability distribution over the
+parameter θ\theta. The distribution is obtained because,
+conditional on the value of the estimator, the parameters and the
+stochastic terms become perfectly correlated. A distribution over the
+latter is then automatically applicable to the former (cf. Haenni et
+al, 52-55 and 119–122). 
+
+Another way of explaining the same idea invokes the notion of a
+pivotal quantity.  Because of how the above statistical model
+is set up, we can construct the pivotal quantity ˆθ(s)−θ\hat{\theta}(s) -
+\theta. We know the distribution of this quantity, namely normal and
+with the aforementioned variance. Moreover, this distribution is
+independent of the sample, and it is such that fixing the sample to
+ss, and so fixing the value of ˆθ\hat{\theta}, uniquely
+determines a distribution over the parameter values θ\theta. The
+fiducial argument thus allows us to construct a probability
+distribution over the parameter values on the basis of the observed
+sample. The argument can be run whenever we can construct a pivotal
+quantity like that or, equivalently, whenever we can express the
+statistical model as a functional model.
+A warning is in order here. As revealed in many of the above
+references, the fiducial argument is highly controversial. The
+mathematical results are there, but the proper interpretation of the
+results is still up for discussion . In order to properly appreciate
+the precise inferential move and its wobbly conceptual basis, it will
+be instructive to consider the use of fiducial probability in
+interpreting confidence intervals. A proper understanding of this
+requires first reading the 
+ Section 3.1.2.
+Recall that confidence intervals, which are standardly taken to
+indicate the quality of an estimation, are often interpreted
+epistemically. The 95% confidence interval is often misunderstood as
+the range of parameter values that includes the true value with 95%
+probability, a so-called credal interval:
+
+P(θ∈[ˆθ−Δ,ˆθ+Δ])=0.95. P(\theta \in [\hat{\theta} - \Delta, \hat{\theta} + \Delta]) = 0.95
+. 
+
+This interpretation is at odds with classical statistics but, as will
+become apparent, it can be motivated by an application of the fiducial
+argument. Say that we replace the integral determining the size
+Δ\Delta of the confidence interval by the following:
+
+∫ˆθ(s)+Δˆθ(s)−ΔPθ(Rˆθ(s))dθ=0.95. \int_{\hat{\theta}(s) - \Delta}^{\hat{\theta}(s) + \Delta}
+P_{\theta}(R_{\hat{\theta}(s)}) d\theta = 0.95 .
+
+In words, we fix the estimator ˆθ(s)\hat{\theta}(s) and then integrate
+over the parameters θ\theta in Pθ(Rˆθ(s))P_{\theta}(R_{\hat{\theta}(s)}),
+rather than assuming θ⋆\theta^{\star} and then integrating over the
+parameters τ\tau in RτR_{\tau}. Sure enough we can calculate this
+integral. But what ensures that we can treat the integral as a
+probability? Notice that it runs over a continuum of probability
+distributions and that, as it stands, there is no reason to think that
+the terms Pθ(Rˆθ(s))P_{\theta}(R_{\hat{\theta}(s)}) add up to a proper
+distribution in θ\theta.
+
+The assumptions of the fiducial argument, here explained in terms
+of the invertibility of the functional model, ensure that the terms
+indeed add up, and that a well-behaved distribution will surface. We
+can choose the statistical model in such a way that the sample
+statistic ˆθ(s)\hat{\theta}(s) and the parameter θ\theta are related
+in the right way: relative to the parameter θ\theta, we have a
+distribution over the statistic ˆθ\hat{\theta}, but by the same
+token we have a distribution over parameters relative to this
+statistic. As a result, the probability function
+Pθ(Rˆθ(s)+ϵ)P_{\theta}(R_{\hat{\theta}(s) + \epsilon}) over ϵ\epsilon,
+where θ\theta is fixed, can be transferred to a fiducial
+probability function Pθ+ϵ(Rˆθ(s))P_{\theta + \epsilon}(R_{\hat{\theta}(s)})
+over ϵ\epsilon, where ˆθ(s)\hat{\theta}(s) is fixed. The function
+Pθ(Rˆθ)P_{\theta}(R_{\hat{\theta}}) of the parameter θ\theta is thus a
+proper probability function, from which a credal interval can be
+constructed.
+Even then, it is not clear why we should take this distribution as
+an appropriate expression of our belief, so that we may support the
+epistemic interpretation of confidence intervals with it. And so the
+debate continues. In the end fiducial probability is perhaps best
+understood as a half-way house between the classical and the Bayesian
+view on statistics. Classical statistics grew out of a frequentist
+interpretation of probability, and accordingly the probabilities
+appearing in the classical statistical methods are all interpreted as
+frequencies of events. Clearly, the probability distribution over
+hypotheses that is generated by a fiducial argument cannot be
+interpreted in this way, so that an epistemic interpretation of this
+distribution seems the only option.  Several authors (e.g., Dempster
+1964) have noted that fiducial probability indeed makes most sense in
+a Bayesian perspective. It is to this perspective that we now turn.
+
+4. Bayesian statistics
+Bayesian statistical methods are often presented in the form of an
+inference. The inference runs from a so-called prior
+probability distribution over statistical hypotheses, which expresses
+the degree of belief in the hypotheses before data has been collected,
+to a posterior probability distribution over the
+hypotheses, which expresses the beliefs after the data have been
+incorporated. The posterior distribution follows, via the axioms of
+probability theory, from the prior distribution and the
+likelihoods of the hypotheses for the data obtained, i.e.,
+the probability that the hypotheses assign to the data. Bayesian
+methods thus employ data to modulate our attitude towards
+a designated set of statistical hypotheses, and in this respect
+they achieve the same as classical statistical procedures. Both types
+of statistics present a response to the problem of induction. But
+whereas classical procedures select or eliminate elements from the set
+of hypotheses, Bayesian methods express the impact of data in a
+posterior probability assignment over the set. This posterior is fully
+determined by the prior and the likelihoods of the hypotheses, via the
+formalism of probability theory.
+The defining characteristic of Bayesian statistics is that it
+considers probability distributions over statistical hypotheses as
+well as over data. It embraces the epistemic interpretation of
+probability whole-heartedly: probabilities over hypotheses are
+interpreted as degrees of belief, i.e., as expressions of epistemic
+uncertainty. The philosophy of Bayesian statistics is concerned
+with determining the appropriate interpretation of these input
+components, and of the mathematical formalism of probability itself,
+ultimately with the aim to justify the output. Notice that the general
+pattern of a Bayesian statistical method is that of
+inductivism in the cumulative sense: under the impact of
+data we move to more and more informed probabilistic opinions about
+the hypotheses. However, in the following it will appear that Bayesian
+methods may also be understood as deductivist in nature.
+4.1 Basic pattern of inference
+Bayesian inference always starts from a statistical
+model, i.e., a set of statistical hypotheses. While the general
+pattern of inference is the same, we treat models with a finite number
+and a continuum of hypotheses separately and draw parallels with
+hypothesis testing and estimation, respectively. The exposition is
+mostly based on Press 2002, Howson and Urbach 2006, Gelman et al
+2013, and Earman 1992.
+4.1.1 Finite model
+Central to Bayesian methods is a theorem from probability theory
+known as Bayes' theorem.  Relative to a prior probability
+distribution over hypotheses, and the probability distributions over
+sample space for each hypothesis, it tells us what the adequate
+posterior probability over hypotheses is. More precisely, let ss be
+the sample and SS be the sample space as before, and let M={hθ:θ∈Θ}M = \{
+h_{\theta} :\: \theta \in \Theta \} be the space of statistical
+hypotheses, with Θ\Theta the space of parameter values. The
+function PP is a probability distribution over the entire space M×SM
+\times S, meaning that every element hθh_{\theta} is associated
+with its own sample space SS, and its own probability distribution
+over that space. For the latter, which is fully determined by the
+likelihoods of the hypotheses, we write the probability of the sample
+conditional on the hypothesis, P(s∣hθ)P(s \mid h_{\theta}). This differs
+from the expression Phθ(s)P_{h_{\theta}}(s), written in the context of
+classical statistics, because in contrast to classical statisticians,
+Bayesians accept hθh_{\theta} as an argument for the probability
+distribution. 
+Bayesian statistics is first introduced in the context of a finite
+set of hypotheses, after which a generalization to the infinite case
+is provided. Assume the prior probability P(hθ)P(h_{\theta}) over the
+hypotheses hθ∈Mh_{\theta} \in M. Further assume the likelihoods P(s∣hθ)P(s
+\mid h_{\theta}), i.e., the probability assigned to the data ss
+conditional on the hypotheses hθh_{\theta}. Then Bayes' theorem
+determines that
+
+P(hθ∣s)=P(s∣hθ)P(s)P(hθ). P(h_{\theta} \mid s) \; = \; \frac{P(s \mid h_{\theta})}{P(s)}
+P(h_{\theta}) . 
+
+Bayesian statistics outputs the posterior probability assignment,
+P(hθ∣s)P(h_{\theta} \mid s). This expression gets the interpretation of
+an opinion concerning hθh_{\theta} after the sample ss has been
+recorded accommodated, i.e., it is a revised opinion. Further results
+from a Bayesian inference can all be derived from the posterior
+distribution over the statistical hypotheses. For instance, we can use
+the posterior to determine the most probable value for the parameter,
+i.e., picking the hypothesis hθh_{\theta} for which P(hθ∣s)P(h_{\theta}
+\mid s) is maximal.
+
+In this characterization of Bayesian statistical inference the
+probability of the data P(s)P(s) is not presupposed, because it can be
+computed from the prior and the likelihoods by the law of total
+probability,
+
+P(s)=∑θ∈ΘP(hθ)P(s∣hθ). P(s) \; = \; \sum_{\theta \in \Theta} P(h_{\theta}) P(s \mid
+h_{\theta}) . 
+
+The result of a Bayesian statistical inference is not always reported
+as a posterior probability. Often the interest is only in comparing
+the ratio of the posteriors of two hypotheses. By Bayes' theorem we
+have
+
+P(hθ∣s)P(hθ′∣s)=P(hθ)P(s∣hθ)P(hθ′)P(s∣hθ′), \frac{P(h_{\theta} \mid s)}{P(h_{\theta'} \mid s)} \; = \;
+\frac{P(h_{\theta}) P(s \mid h_{\theta})}{P(h_{\theta'}) P(s \mid
+h_{\theta'})} , 
+
+and if we assume equal priors P(hθ)=P(hθ′)P(h_{\theta}) = P(h_{\theta'}), we
+can use the ratio of the likelihoods of the hypotheses, the so-called
+Bayes factor, to compare the hypotheses.
+
+Here is a Bayesian procedure for the example of the tea tasting
+lady. 
+
+Bayesian statistical analysis Consider the
+hypotheses h1/2h_{1/2} and h3/4h_{3/4}, which in the foregoing were
+used as null and alternative, hh and h′h', respectively. Instead
+of choosing among them on the basis of the data, we assign a prior
+distribution over them so that the null is twice as probable as the
+alternative: P(h1/2)=2/3P(h_{1/2}) = 2/3 and P(h3/4)=1/3P(h_{3/4}) = 1/3. Denoting
+the a particular sequence of guessing nn out of 5 cups correctly
+with sn/5s_{n/5}, we have that P(sn/5∣h1/2)=1/25P(s_{n/5} \mid h_{1/2}) = 1 / 2^{5}
+while P(sn/5∣h3/4)=3n/45P(s_{n/5} \mid h_{3/4}) = 3^{n} / 4^{5}.  As before, the
+likelihood ratio of five guesses thus becomes
+
+P(sn/5∣h3/4)P(sn/5∣h1/2)=3n25. \frac{P(s_{n/5} \mid h_{3/4})}{P(s_{n/5} \mid h_{1/2})} \; = \;
+\frac{3^{n}}{2^{5}} . 
+
+The posterior ratio after 5 correct guesses is thus
+
+P(h3/4∣sn/5)P(h1/2∣sn/5)=352512≈4. \frac{P(h_{3/4} \mid s_{n/5})}{P(h_{1/2} \mid s_{n/5})} \; = \;
+\frac{3^{5}}{2^{5}}\, \frac{1}{2} \approx 4 . 
+
+This posterior is derived by the axioms of probability theory alone,
+in particular by Bayes' theorem. It tells us how believable each of
+the hypotheses is after incorporating the sample data into our
+beliefs.
+Notice that in the above exposition, the posterior probability is
+written as P(hθ∣sn/5)P(h_{\theta} \mid s_{n/5}). Some expositions of
+Bayesian inference prefer to express the revised opinion as a new
+probability function P′(⋅)P'( \cdot ), which is then equated to the old
+P(⋅∣s)P( \cdot \mid s).  For the basic formal workings of Bayesian
+inference, tis distinction is inessential. But we will return to it in
+ Section 4.3.3.
+
+4.1.2 Continuous model
+In many applications the model is not a finite set of hypotheses,
+but rather a continuum labelled by a real-valued parameter. This leads
+to some subtle changes in the definition of the distribution over
+hypotheses and the likelihoods. The prior and posterior must be
+written down as a so-called probability density function,
+P(hθ)dθP(h_{\theta}) d\theta. The likelihoods need to be defined by a
+limit process: the probability P(hθ)P(h_{\theta}) is infinitely small
+so that we cannot define P(s∣hθ)P(s \mid h_{\theta}) in the normal
+manner. But other than that the Bayesian machinery works exactly the
+same:
+
+P(hθ∣s)dθ=P(s∣hθ)P(s)P(hθ)dθ. P(h_{\theta} \mid s) d\theta \;\; = \;\; \frac{P(s \mid
+h_{\theta})}{P(s)} P(h_{\theta}) d\theta. 
+
+Finally, summations need to be replaced by integrations:
+
+P(s)=∫θ∈ΘP(hθ)P(s∣hθ)dθ. P(s) \; = \; \int_{\theta \in \Theta} P(h_{\theta}) P(s \mid
+h_{\theta}) d\theta . 
+
+This expression is often called the marginal likelihood of
+the model: it expresses how probable the data is in the light of the
+model as a whole.
+
+The posterior probability density provides a basis for conclusions
+that one might draw from the sample ss, and which are similar to
+estimations and measures for the accuracy of the estimations. For one,
+we can derive an expectation for the parameter θ\theta, where we
+assume that θ\theta varies continuously:
+
+ˉθ=∫ΘθP(hθ∣s)dθ. \bar{\theta} \;\; = \;\; \int_{\Theta}\, \theta P(h_{\theta} \mid s)
+d\theta. 
+
+If the model is parameterized by a convex set, which it typically is,
+then there will be a hypothesis hˉθh_{\bar{\theta}} in the
+model. This hypothesis can serve as a Bayesian estimation. In analogy
+to the confidence interval, we can also define a so-called
+credal interval or credibility interval
+from the posterior probability distribution: an interval of size
+2d2d around the expectation value ˉθ\bar{\theta}, written
+[ˉθ−d,ˉθ+d][\bar{\theta} - d, \bar{\theta} + d], such that
+
+∫ˉθ+dˉθ−dP(hθ∣s)dθ=1−ϵ. \int_{\bar{\theta} - d}^{\bar{\theta} + d} P(h_{\theta} \mid s)
+d\theta = 1-\epsilon .  
+
+This range of values for θ\theta is such that the posterior
+probability of the corresponding hθh_{\theta} adds up to
+1−ϵ1-\epsilon of the total posterior probability.
+
+There are many other ways of defining Bayesian estimations and
+credal intervals for θ\theta on the basis of the posterior
+density. The specific type of estimation that the Bayesian analysis
+offers can be determined by the demands of the scientist. Any Bayesian
+estimation will to some extent resemble the maximum likelihood
+estimator due to the central role of the likelihoods in the Bayesian
+formalism. However, the output will also depend on the prior
+probability over the hypotheses, and generally speaking it will only
+tend to the maximum likelihood estimator when the sample size tends to
+infinity. See
+ Section 4.2.2 
+for more on this so-called “washing out” of the
+priors. 
+4.2 Problems with the Bayesian approach
+Most of the controversy over the Bayesian method concerns the
+probability assignment over hypotheses. One important set of problems
+surrounds the interpretation of those probabilities as beliefs, as to
+do with a willingness to act, or the like. Another set of
+problems pertains to the determination of the prior probability
+assignment, and the criteria that might govern it.
+4.2.1 Interpretations of the probability over hypotheses
+The overall question here is how we should understand the
+probability assigned to a statistical hypothesis. Naturally the
+interpretation will be epistemic: the probability expresses the
+strength of belief in the hypothesis. It makes little sense to attempt
+a physical interpretation since the hypothesis cannot be seen as a
+repeatable event, or as an event that might have some tendency of
+occurring.
+This leaves open several interpretations of the probability
+assignment as a strength of belief.  One very influential
+interpretation of probability as degree of belief relates probability
+to a willingness to bet against certain odds (cf.  Ramsey 1926, De
+Finetti 1937/1964, Earman 1992, Jeffrey 1992, Howson 2000).  According
+to this interpretation, assigning a probability of 3/43/4 to a
+proposition, for example, means that we are prepared to pay at most
+$0.75 for a betting contract that pays out $1 if the
+proposition is true, and that turns worthless if the proposition is
+false. The claim that degrees of belief are correctly expressed in a
+probability assignment is then supported by a so-called Dutch book
+argument: if an agent does not comply to the axioms of
+probability theory, a malign bookmaker can propose a set of bets that
+seems fair to the agent but that lead to a certain monetary loss, and
+that is therefore called Dutch, presumably owing to the Dutch's
+mercantile reputation. This interpretation associates beliefs directly
+with their behavioral consequences: believing something is the same as
+having the willingness to engage in a particular activity, e.g., in a
+bet. 
+There are several problems with this interpretation of the
+probability assignment over hypotheses. For one, it seems to make
+little sense to bet on the truth of a statistical hypothesis, because
+such hypotheses cannot be falsified or verified.  Consequently, a
+betting contract on them will never be cashed. More generally, it is
+not clear that beliefs about statistical hypotheses are properly
+framed by connecting them to behavior in this way. It has been argued
+(e.g., Armendt 1993) that this way of framing probability assignments
+introduces pragmatic considerations on beliefs, to do with navigating
+the world successfully, into a setting that is by itself more
+concerned with belief as a truthful representation of the world.
+A somewhat different problem is that the Bayesian formalism, in
+particular its use of probability assignments over statistical
+hypotheses, suggests a remarkable closed-mindedness on the part of the
+Bayesian statistician. Recall the example of the foregoing, with the
+model M={h1/2,h3/4}M = \{ h_{1/2}, h_{3/4} \}.  The Bayesian formalism requires
+that we assign a probability distribution over these two hypotheses,
+and further that the probability of the model is P(M)=1P(M) = 1. It is
+quite a strong assumption, even of an ideally rational agent, that she
+is indeed equipped with a real-valued function that expresses her
+opinion over the hypotheses. Moreover, the probability assignment over
+hypotheses seems to entail that the Bayesian statistician is certain
+that the true hypothesis is included in the model. This is an unduly
+strong claim to which a Bayesian statistician will have to commit at
+the start of her analysis. It sits badly with broadly shared
+methodological insights (e.g., Popper 1934/1956), according to which
+scientific theory must be open to revision at all times (cf. Mayo
+1996). In this regard Bayesian statistics does not do justice to the
+nature of scientific inquiry, or so it seems.
+The problem just outlined obtains a mathematically more
+sophisticated form in the problem that Bayesians expect to be
+well-calibrated.  This problem, as formulated in Dawid
+(1982), concerns a Bayesian forecaster, e.g., a weatherman who
+determines a daily probability for precipitation in the next day.  It
+is then shown that such a weatherman believes of himself that in
+the long run he will converge onto the correct probability with
+probability 1. Yet it seems reasonable to suppose that the weatherman
+realizes something could potentially be wrong with his meteorological
+model, and so sets his probability for correct prediction below 1. The
+weatherman is thus led to incoherent beliefs. It seems that Bayesian
+statistical analysis places unrealistic demands, even on an ideal
+agent.
+4.2.2 Determination of the prior
+For the moment, assume that we can interpret the probability over
+hypotheses as an expression of epistemic uncertainty. Then how do we
+determine a prior probability? Perhaps we already have an intuitive
+judgment on the hypotheses in the model, so that we can pin down the
+prior probability on that basis. Or else we might have additional
+criteria for choosing our prior. However, several serious problems
+attach to procedures for determining the prior.
+First consider the idea that the scientist who runs the Bayesian
+analysis provides the prior probability herself. One obvious problem
+with this idea is that the opinion of the scientist might not be
+precise enough for a determination of a full prior distribution. It
+does not seem realistic to suppose that the scientist can transform
+her opinion into a single real-valued function over the model,
+especially not if the model itself consists of a continuum of
+hypotheses. But the more pressing problem is that different scientists
+will provide different prior distributions, and that these different
+priors will lead to different statistical results. In other words,
+Bayesian statistical inference introduces an inevitable subjective
+component into scientific method.
+It is one thing that the statistical results depend on the initial
+opinion of the scientist. But it may so happen that the scientist has
+no opinion whatsoever about the hypotheses. How is she supposed to
+assign a prior probability to the hypotheses then? The prior will have
+to express her ignorance concerning the hypotheses. The leading idea
+in expressing such ignorance is usually the principle of
+indifference: ignorance means that we are indifferent between any
+pair of hypotheses.  For a finite number of hypotheses, indifference
+means that every hypothesis gets equal probability. For a continuum of
+hypotheses, indifference means that the probability density
+function must be uniform. 
+Nevertheless, there are different ways of applying the
+principle of indifference and so there are different probability
+distributions over the hypotheses that can count as expression of
+ignorance. This insight is nicely illustrated in Bertrand's paradox
+.
+
+Bertrand's paradox Consider a circle drawn
+around an equilateral triangle, and now imagine that a knitting needle
+whose length exceeds the circle's diameter is thrown onto the
+circle. What is the probability that the section of the needle lying
+within the circle is longer than the side of the equilateral triangle?
+To determine the answer, we need to parameterize the ways in which the
+needle may be thrown, determine the subset of parameter values for
+which the included section is indeed longer than the triangle's side,
+and express our ignorance over the exact throw of the needle in a
+probability distribution over the parameter, so that the probability
+of the said event can be derived. The problem is that we may provide
+any number of ways to parameterize how the needle lands in the
+circle. If we use the angle that the needle makes with the tangent of
+the circle at the intersection, then the included section of the
+needle is only going to be longer if the angle is between
+60∘60^{\circ} and 120∘120^{\circ}. If we assume that our ignorance is
+expressed by a uniform distribution over these angles, which ranges
+from 0∘0^{\circ} to 180∘180^{\circ}, then the probability of the
+event is going to be 1/31/3. However, we can also parameterize the
+ways in which the needle lands differently, namely by the shortest
+distance of the needle to the centre of the circle. A uniform
+probability over the distances will lead to a probability of
+1/21/2.
+Jaynes (1973 and 2003) provides a very insightful discussion of
+this riddle and also argues that it may be resolved by relying on
+invariances of the problem under certain transformations. But the
+general message for now is that the principle of indifference does not
+lead to a unique choice of priors.  The point is not that ignorance
+concerning a parameter is hard to express in a probability
+distribution over those values. It is rather that in some cases, we do
+not even know what parameters to use to express our ignorance
+over.
+In part the problem of the subjectivity of Bayesian analysis may be
+resolved by taking a different attitude to scientific theory, and by
+giving up the ideal of absolute objectivity. Indeed, some will argue
+that it is just right that the statistical methods accommodate
+differences of opinion among scientists. However, this response misses
+the mark if the prior distribution expresses ignorance rather than
+opinion: it seems harder to defend the rationality of differences of
+opinion that stem from different ways of spelling out ignorance. Now
+there is also a more positive answer to worries over objectivity,
+based on so-called convergence results (e.g., Blackwell and
+Dubins 1962 and Gaifman and Snir 1982). It turns out that the impact
+of prior choice diminishes with the accumulation of data, and that in
+the limit the posterior distribution will converge to a set, possibly
+a singleton, of best hypotheses, determined by the sampled data and
+hence completely independent of the prior distribution.  However, in
+the short and medium run the influence of subjective prior choice
+remains.
+Summing up, it remains problematic that Bayesian statistics is
+sensitive to subjective input. The undeniable advantage of the
+classical statistical procedures is that they do not need any such
+input, although arguably the classical procedures are in turn
+sensitive to choices concerning the sample space (Lindley 2000).
+Against this, Bayesian statisticians point to the advantage of being
+able to incorporate initial opinions into the statistical
+analysis.
+4.3 Responses to criticism
+The philosophy of Bayesian statistics offers a wide range of
+responses to the problems outlined above. Some Bayesians bite the
+bullet and defend the essentially subjective character of Bayesian
+methods. Others attempt to remedy or compensate for the subjectivity,
+by providing objectively motivated means of determining the prior
+probability or by emphasizing the objective character of the Bayesian
+formalism itself.
+4.3.1 Strict but empirically informed subjectivism 
+One very influential view on Bayesian statistics buys into the
+subjectivity of the analysis (e.g., Goldstein 2006, Kadane 2011).
+So-called personalists or strict subjectivists argue
+that it is just right that the statistical methods do not provide any
+objective guidelines, pointing to radically subjective sources of any
+form of knowledge. The problems on the interpretation and choice of
+the prior distribution are thus dissolved, at least in part: the
+Bayesian statistician may choose her prior at will, and they are an
+expression of her beliefs. However, it deserves emphasis that a
+subjectivist view on Bayesian statistics does not mean that all
+constraints deriving from empirical fact can be disregarded. Nobody
+denies that if you have further knowledge that imposes constraints on
+the model or the prior, then those constraints must be
+accommodated. For example, today's posterior probability may be used
+as tomorrow's prior, in the next statistical inference. The point is
+that such constraints concern the rationality of belief and not the
+consistency of the statistical inference per se.
+Subjectivist views are most prominent among those who interpret
+probability assignments in a pragmatic fashion, and motivate the
+representation of belief with probability assignments by the
+afore-mentioned Dutch book arguments. Central to this approach is the
+work of Savage and De Finetti. Savage (1962) proposed to axiomatize
+statistics in tandem with decision theory, a mathematical
+theory about practical rationality. He argued that by themselves the
+probability assignments do not mean anything at all, and that they can
+only be interpreted in the context where an agent faces a choice
+between actions, i.e., a choice among a set of bets. In similar vein,
+De Finetti (e.g., 1974) advocated a view on statistics in which only
+the empirical consequences of the probabilistic beliefs, expressed in
+a willingness to bet, mattered but he did not make statistical
+inference fully dependent on decision theory. Remarkably, it thus
+appears that the subjectivist view on Bayesian statistics is based on
+the same behaviorism and empiricism that motivated Neyman and Pearson
+to develop classical statistics.
+Notice that all this makes one aspect of the interpretation problem
+of 
+ Section 4.2.1
+reappear: how will the prior distribution over hypotheses make itself
+apparent in behavior, so that it can rightfully be interpreted in
+terms of belief, here understood as a willingness to act? One response
+to this question is to turn to different motivations for representing
+degrees of beliefs by means of probability assignments.  Following
+work by De Finetti, several authors have proposed vindications of
+probabilistic expressions of belief that are not based on behavioral
+goals, but rather on the epistemic goal of holding beliefs that
+accurately represent the world, e.g., Rosenkrantz (1981), Joyce
+(2001), Leitgeb and Pettigrew (2010), Easwaran (2013). A strong
+generalization of this idea is achieved in Schervish, Seidenfeld and
+Kadane (2009), which builds on a longer tradition of using scoring
+rules for achieving statistical aims. An alternative approach is that
+any formal representation of belief must respect certain logical
+constraints, e.g., Cox provides an argument for the expression of
+belief in terms of probability assignments on the basis of the nature
+of partial belief per se. 
+However, the original subjectivist response to the issue that a
+prior over hypotheses is hard to interpret came from De Finetti's
+so-called representation theorem, which shows that every
+prior distribution can be associated with its own set of predictions,
+and hence with its own behavioral consequences.  In other words, De
+Finetti showed how priors are indeed associated with beliefs that can
+carry a betting interpretation.
+
+4.3.2 Excursion: the representation theorem
+De Finetti's representation theorem relates rules for
+prediction, as functions of the given sample data, to Bayesian
+statistical analyses of those data, against the background of a
+statistical model. See Festa (1996) and Suppes (2001) for useful
+introductions. De Finetti considers a process that generates a series
+of time-indexed observations, and he then studies prediction rules
+that take these finite segments as input and return a probability over
+future events, using a statistical model that can analyze such samples
+and provide the predictions. The key result of De Finetti is that a
+particular statistical model, namely the set of all distributions in
+which the observations are independently and identically
+distributed, can be equated with the class of exchangeable
+prediction rules, namely the rules whose predictions do not
+depend on the order in which the observations come in.
+Let us consider the representation theorem in some more formal
+detail. For simplicity, say that the process generates time-indexed
+binary observations, i.e., 0's and 1's. The prediction rules take such
+bit strings of length tt, denoted StS_{t}, as input, and return a
+probability for the event that the next bit in the string is a 1,
+denoted Q1t+1Q^{1}_{t+1}. So we write the prediction rules as partial
+probability assignments P(Q1t+1∣St)P(Q^{1}_{t+1} \mid S_{t}). Exchangeable
+prediction rules are rules that deliver the same prediction
+independently of the order of the bits in the string StS_{t}. If we
+write the event that the string StS_{t} has a total of nn
+observations of 1's as Sn/tS_{n/t}, then exchangeable prediction rules
+are written as P(Q1t+1∣Sn/t)P(Q^{1}_{t+1} \mid S_{n/t}). The crucial property
+is that the value of the prediction is not affected by the order in
+which the 0's and 1's show up in the string StS_{t}.
+De Finetti relates this particular set of exchangeable prediction
+rules to a Bayesian inference over a specific type of statistical
+model. The model that De Finetti considers comprises the so-called
+Bernoulli hypotheses hθh_{\theta}, i.e., hypotheses for
+which
+
+P(Q1t+1∣hθ∩St)=θ. P(Q^{1}_{t+1} \mid h_{\theta} \cap S_{t}) = \theta . 
+
+This likelihood does not depend on the string StS_{t} that has gone
+before. The hypotheses are best thought of as determining a fixed bias
+θ\theta for the binary process, where θ∈Θ=[0,1]\theta \in \Theta = [0,
+1].  The representation theoremstates that there is a
+one-to-one mapping of priors over Bernoulli hypotheses and
+exchangeable prediction rules. That is, every prior distribution
+P(hθ)P(h_{\theta}) can be associated with exactly one exchangeable
+prediction rule P(Q1t+1∣Sn/t)P(Q^{1}_{t+1} \mid S_{n/t}), and conversely. Next
+to the original representation theorem derived by De Finetti, several
+other and more general representation theorems were proved, e.g., for
+partially exchangeable sequences and hypotheses on Markov processes
+(Diaconis and Freedman 1980, Skyrms 1991), for clustering predictions
+and partitioning processes (Kingman 1975 and 1978), and even for
+sequences of graphs and their generating process (Aldous 1981).
+
+Representation theorems equate a prior distribution over
+statistical hypotheses to a prediction rule, and thus to a probability
+assignment that can be given a subjective and behavioral
+interpretation. This removes the worry expressed above, that the prior
+distribution over hypotheses cannot be interpreted subjectively
+because it cannot be related to belief as a willingness to act: priors
+relate uniquely to particular predictions. However, for De Finetti the
+representation theorem provided a reason for doing away with
+statistical hypotheses altogether, and hence for the removal of a
+notion of probability as anything other than subjective opinion (cf.
+Hintikka 1970): hypotheses whose probabilistic claims could be taken
+to refer to intangible chancy processes are superfluous metaphysical
+baggage.
+Not all subjectivists are equally dismissive of the use of
+statistical hypotheses. Jeffrey (1992) has proposed so-called
+mixed Bayesianism in which subjectively interpreted
+distributions over the hypotheses are combined with a physical
+interpretation of the distributions that hypotheses define over sample
+space. Romeijn (2003, 2005, 2006) argues that priors over hypotheses
+are an efficient and more intuitive way of determining inductive
+predictions than specifying properties of predictive systems directly. This advantage of using hypotheses seems in agreement with the practice of science,
+in which hypotheses are routinely used, and often motivated by mechanistic knowledge on the data generating process. The fact that statistical hypotheses can
+strictly speaking be eliminated does not take away from their utility in making predictions.
+4.3.3 Bayesian statistics as logic
+Despite its—seemingly inevitable—subjective character,
+there is a sense in which Bayesian statistics might lay claim to
+objectivity. It can be shown that the Bayesian formalism meets certain
+objective criteria of rationality, coherence, and
+calibration. Bayesian statistics thus answers to the requirement of
+objectivity at a meta-level: while the opinions that it deals with
+retain a subjective aspect, the way in which it deals with these
+opinions, in particular the way in which data impacts on them, is
+objectively correct, or so it is argued. Arguments supporting the
+Bayesian way of accommodating data, namely by
+conditionalization, have been provided in a pragmatic context
+by dynamic Dutch book arguments, whereby probability is
+interpreted as a willingness to bet (cf. Maher 1993, van Fraassen
+1989). Similar arguments have been advanced on the grounds that our
+beliefs must accurately represent the world along the lines of De
+Finetti (1974), e.g., Greaves and Wallace (2006) and Leitgeb and
+Pettigrew (2010).
+An important distinction must be made in arguments that support the
+Bayesian way of accommodating evidence: the distinction between Bayes'
+theorem, as a mathematical given, and Bayes' rule, as a
+principle of coherence over time. The theorem is simply a mathematical
+relation among probability assignments,
+
+P(h∣s)=P(h)P(s∣h)P(s), P(h \mid s) \; = \; P(h) \frac{P(s \mid h)}{P(s)} , 
+
+and as such not subject to debate. Arguments that support the
+representation of the epistemic state of an agent by means of
+probability assignments also provide support for Bayes' theorem as a
+constraint on degrees of belief. The conditional probability P(h∣s)P(h
+\mid s) can be interpreted as the degree of belief attached to the
+hypothesis hh on the condition that the sample ss is obtained,
+as integral part of the epistemic state captured by the probability
+assignment. Bayes' rule, by contrast, presents a constraint on
+probability assignments that represent epistemic states of an agent at
+different points in time. It is written as
+
+Ps(h)=P(h∣s), P_{s}(h) \; = P(h \mid s) , 
+
+and it determines that the new probability assignment, expressing the
+epistemic state of the agent after the sample has been obtained, is
+systematically related to the old assignment, representing the
+epistemic state before the sample came in. In the philosophy of
+statistics many Bayesians adopt Bayes' rule implicitly, but in what
+follows I will only assume that Bayesian statistical inferences rely
+on Bayes' theorem.
+
+Whether the focus lies on Bayes' rule or on Bayes' theorem, the
+common theme in the above-mentioned arguments is that they approach
+Bayesian statistical inference from a logical angle, and focus on its
+internal coherence or consistency (cf. Howson 2003). While its use in
+statistics is undeniably inductive, Bayesian inference thereby obtains
+a deductive, or at least non-ampliative character: everything that is
+concluded in the inference is somehow already present in the
+premises. In Bayesian statistical inference, those premises are given
+by the prior over the hypotheses, P(hθ)P(h_{\theta}) for θ∈Θ\theta \in
+\Theta, and the likelihood functions, P(s∣hθ)P(s \mid h_{\theta}), as
+determined for each hypothesis hθh_{\theta} separately.  These
+premises fix a single probability assignment over the space M×SM \times
+S at the outset of the inference. The conclusions, in turn, are
+straightforward consequences of this probability assignment. They can
+be derived by applying theorems of probability theory, most notably
+Bayes' theorem. Bayesian statistical inference thus becomes an
+instance of probabilistic logic (cf. Hailperin 1986, Halpern
+2003, Haenni et al 2011).
+Summing up, there are several arguments showing that statistical
+inference by Bayes' theorem, or by Bayes' rule, is objectively
+correct. These arguments invite us to consider Bayesian statistics as
+an instance of probabilistic logic.  Such appeals to the logicality of
+Bayesian statistical inference may provide a partial remedy for its
+subjective character. Moreover, a logical approach to the statistical
+inferences avoids the problem that the formalism places
+unrealistic demands on the agents, and that it presumes the agent to
+have certain knowledge. Much like in deductive logic, we need not
+assume that the inferences are psychologically realistic, nor that the
+agents actually believe the premises of the arguments. Rather the
+arguments present the agents with a normative ideal and take the
+conditional form of consistency constraints: if you accept the
+premises, then these are the conclusions.
+4.3.4 Excursion: inductive logic and statistics
+An important instance of probabilistic logic is presented in
+inductive logic, as devised by Carnap, Hintikka and others
+(Carnap 1950 and 1952, Hintikka and Suppes 1966, Carnap and Jeffrey
+1970, Hintikka and Niiniluoto 1980, Kuipers 1978, and Paris 1994, Nix
+and Paris 2006, Paris and Waterhouse 2009). Historically, Carnapian
+inductive logic developed prior to the probabilistic logics referenced
+above, and more or less separately from the debates in the philosophy
+of statistics. But the logical systems of Carnap can quite easily be
+placed in the context of a logical approach to Bayesian inference, and
+doing this is in fact quite insightful.
+For simplicity, we choose a setting that is similar to the one used
+in the exposition of the representation theorem, namely a binary data
+generating process, i.e., strings of 0's and 1's. A prediction rule
+determines a probability for the event, denoted Q1t+1Q^{1}_{t+1}, that
+the next bit in the string is a 1, on the basis of a given string of
+bits with length tt, denoted by StS_{t}. Carnap and followers
+designed specific exchangeable prediction rules, mostly variants of
+the straight rule (Reichenbach 1938),
+
+P(Q1t+1∣Sn/t)=n+1t+2, P(Q^{1}_{t+1} \mid S_{n/t}) = \frac{n + 1}{t + 2} , 
+
+where Sn/tS_{n/t} denotes a string of length tt of which nn
+entries are 1's. Carnap derived such rules from constraints on the
+probability assignments over the samples. Some of these constraints
+boil down to the axioms of probability. Other constraints,
+exchangeability among them, are independently motivated, by an appeal
+to so-called logical interpretation of probability.  Under
+this logical interpretation, the probability assignment must respect
+certain invariances under transformations of the sample space, in
+analogy to logical principles that constrain truth valuations over a
+language in a particular way.
+
+Carnapian inductive logic is an instance of probabilistic logic,
+because its sequential predictions are all based on a single
+probability assignment at the outset, and because it relies on Bayes'
+theorem to adapt the predictions to sample data (cf. Romeijn 2011).
+One important difference with Bayesian statistical inference is that,
+for Carnap, the probability assignment specified at the outset only
+ranges over samples and not over hypotheses. However, by De Finetti's
+representation theorem Carnap's exchangeable rules can be equated to
+particular Bayesian statistical inferences. A further difference is
+that Carnapian inductive logic gives preferred status to particular
+exchangeable rules. In view of De Finetti's representation theorem,
+this comes down to the choice for a particular set of preferred
+priors. As further developed below, Carnapian inductive logic is thus
+related to objective Bayesian statistics. It is a moot point whether
+further constraints on the probability assignments can be considered
+as logical, as Carnap and followers have it, or whether the title of
+logic is best reserved for the probability formalism in isolation, as
+De Finetti and followers argue. 
+4.3.5 Objective priors
+A further set of responses to the subjectivity of Bayesian
+statistical inference targets the prior distribution directly: we
+might provide further rationality principles, with which the choice of
+priors can be chosen objectively. The literature proposes several
+objective criteria for filling in the prior over the model. Each of
+these lays claim to being the correct expression of complete ignorance
+concerning the value of the model parameters, or of minimal
+information regarding the parameters. Three such criteria are
+discussed here.
+In the context of Bertrand's paradox we already discussed
+the principle of indifference, according to which probability
+should be distributed evenly over the available possibilities. A
+further development of this idea is presented by the requirement that
+a distribution should have maximum entropy. Notably, the use of
+entropy maximization for determining degrees of beliefs finds much
+broader application than only in statistics: similar ideas are taken
+up in diverse fields like epistemology (e.g., Shore and Johnson 1980,
+Williams 1980, Uffink 1996, and also Williamson 2010), inductive logic
+(Paris and Vencovska 1989), statistical mechanics (Jaynes 2003)
+and decision theory (Seidenfeld 1986, Grunwald and Halpern 2004). In
+objective Bayesian statistics, the idea is applied to the
+prior distribution over the model (cf. Berger 2006).  For a finite
+number of hypotheses the entropy of the distribution P(hθ)P(h_{\theta})
+is defined as
+
+E[P]=∑θ∈ΘP(hθ)logP(hθ). E[P] \; = \; \sum_{\theta \in \Theta} P(h_{\theta}) \log
+P(h_{\theta}) . 
+
+This requirement unequivocally leads to equiprobable
+hypotheses. However, for continuous models the maximum entropy
+distribution depends crucially on the metric over the parameters in
+the model. The burden of subjectivity is thereby moved to the
+parameterization, but of course it may well be that we have strong
+reasons for preferring a particular parameterization over others (cf.
+Jaynes 1973).
+
+There are other approaches to the objective determination of
+priors. In view of the above problems, a particularly attractive
+method for choosing a prior over a continuous model is proposed by
+Jeffreys (1961). The general idea of so-called Jeffreys
+priors is that the prior probability assigned to a small patch in
+the parameter space is proportional to, what may be called, the
+density of the distributions within that patch. Intuitively, if a lot
+of distributions, i.e., distributions that differ quite a lot among
+themselves, are packed together on a small patch in the parameter
+space, this patch should be given a larger prior probability than a
+similar patch within which there is little variation among the
+distributions (cf. Balasubramanian 2005). More technically, such a
+density is expressed by a prior distribution that is proportional to
+the Fisher information.  A key advantage of these priors is
+that they are invariant under reparameterizations of the parameter
+space: a new parameterization naturally leads to an adjusted density
+of distributions.
+A final method of defining priors goes under the name of
+reference priors (Berger et al 2009). The proposal
+starts from the observation that we should minimize the subjectivity
+of the results of our statistical analysis, and hence that we should
+minimize the impact of the prior probability on the posterior. The
+idea of reference priors is exactly that it will allow the sample data
+a maximal say in the posterior distribution. But since at the outset
+we do not know what sample we will obtain, the prior is chosen so as
+to maximize the expected impact of the data. The expectation must
+itself be taken with respect to some distribution over sample space,
+but again, it may well be that we have strong reasons for this latter
+distribution.
+4.3.6 Circumventing priors
+A different response to the subjectivity of priors is to
+extend the Bayesian formalism, in order to leave the choice of prior
+to some extent open. The subjective choice of a prior is in that case
+circumvented. Two such responses will be considered in some
+detail.
+Recall that a prior probability distribution over statistical
+hypotheses expresses our uncertain opinion on which of the hypotheses
+is right. The central idea behind hierarchical Bayesian
+models (Gelman et al 2013) is that the same pattern of putting a
+prior over statistical hypotheses can be repeated on the level of
+priors itself. More precisely, we may be uncertain over which prior
+probability distribution over the hypotheses is right. If we
+characterize possible priors by means of a set of parameters, we can
+express this uncertainty about prior choice in a probability
+distribution over the parameters that characterize the shape of the
+prior. In other words, we move our uncertainty one level up in a
+hierarchy: we consider multiple priors over the statistical
+hypotheses, and compare the performance of these priors on the sample
+data as if the priors were themselves hypotheses.
+The idea of hierarchical Bayesian modeling (Gelman et al 2013)
+relates naturally to the Bayesian comparison of Carnapian prediction
+rules (e.g., Skyrms 1993 and 1996, Festa 1996), and also to the
+estimation of optimum inductive methods (Kuipers 1986, Festa 1993).
+Hierarchical Bayesian modeling can also be related to another
+tool for choosing a particular prior distribution over hypotheses,
+namely the method of empirical Bayes, which estimates the
+prior that leads to the maximal marginal likelihood of the model. In
+the philosophy of science, hierarchical Bayesian modeling has made a
+first appearance due to Henderson et al (2010).
+There is also a response that avoids the choice of a prior
+altogether. This response starts with the same idea as hierarchical
+models: rather than considering a single prior over the hypotheses in
+the model, we consider a parameterized set of them. But instead of
+defining a distribution over this set, proponents of
+interval-valued or imprecise probability claim that
+our epistemic state regarding the priors is better expressed by this
+set of distributions, and that sharp probability assignments must
+therefore be replaced by lower and upper bounds to the
+assignments. Now the idea that uncertain opinion is best captured by a
+set of probability assignments, or a credal set for short,
+has a long history and is backed by an extensive literature (e.g., De
+Finetti 1974, Levi 1980, Dempster 1967 and 1968, Shafer 1976, Walley
+1991). In light of the main debate in the philosophy of statistics,
+the use of interval-valued priors indeed forms an attractive extension
+of Bayesian statistics: it allows us to refrain from choosing a
+specific prior, and thereby presents a rapprochement to the classical
+view on statistics.
+These theoretical developments may look attractive, but the fact is
+that they mostly enjoy a cult status among philosophers of statistics
+and that they have not moved the statistician in the street. On the
+other hand, standard Bayesian statistics has seen a steep rise in
+popularity over the past decade or so, owing to the availability of
+good software and numerical approximation methods. And most of the
+practical use of Bayesian statistics is more or less insensitive to
+the potentially subjective aspects of the statistical results,
+employing uniform priors as a neutral starting point for the analysis
+and relying on the afore-mentioned convergence results to wash out the
+remaining subjectivity (cf. Gelman and Shalizi 2013). However, this
+practical attitude of scientists towards modelling should not be
+mistaken for a principled answer to the questions raised in the
+philosophy of statistics (see Morey et al 2013).
+5. Statistical models
+In the foregoing we have seen how classical and Bayesian statistics
+differ. But the two major approaches to statistics also have a lot in
+common. Most importantly, all statistical procedures rely on the
+assumption of a statistical model, here referring to any
+restricted set of statistical hypotheses.  Moreover, they are both
+aimed at delivering a verdict over these hypotheses.  For example, a
+classical likelihood ratio test considers two hypotheses, hh and
+h′h', and then offers a verdict of rejection and acceptance, while a
+Bayesian comparison delivers a posterior probability over these two
+hypotheses. Whereas in Bayesian statistics the model presents a very
+strong assumption, classical statistics does not endow the model with
+a special epistemic status: they are simply the hypotheses currently
+entertained by the scientist. But across the board, the adoption of a
+model is absolutely central to any statistical procedure.
+A natural question is whether anything can be said about the
+quality of the statistical model, and whether any verdict on this
+starting point for statistical procedures can be given. Surely some
+models will lead to better predictions, or be a better guide to the
+truth, than others. The evaluation of models touches on deep issues in
+the philosophy of science, because the statistical model often
+determines how the data-generating system under investigation is
+conceptualized and approached (Kieseppa 2001). Model choice thus
+resembles the choice of a theory, a conceptual scheme, or even of a
+whole paradigm, and thereby might seem to transcend the formal
+frameworks for studying theoretical rationality (cf. Carnap 1950,
+Jeffrey 1980). Despite the fact that some considerations on model
+choice will seem extra-statistical, in the sense that they fall
+outside the scope of statistical treatment, statistics offers several
+methods for approaching the choice of statistical models.
+5.1 Model comparisons
+There are in fact very many methods for evaluating statistical
+models (Claeskens and Hjort 2008, Wagenmakers and Waldorp 2006). In
+first instance, the methods occasion the comparison of statistical
+models, but very often they are used for selecting one model over the
+others. In what follows we only review prominent techniques that have
+led to philosophical debate: Akaike's information criterion, the
+Bayesian information criterion, and furthermore the computation of
+marginal likelihoods and posterior model probabilities, both
+associated with Bayesian model selection. We leave aside methods that
+use cross-validation as they have, unduly, not received as much
+attention in the philosophical literature.
+5.1.1 Akaike's information criterion
+Akaike's information criterion, modestly termed An
+Information Criterion or AIC for short, is based on the classical
+statistical procedure of estimation (see Burnham and Anderson 2002,
+Kieseppa 1997). It starts from the idea that a model MM can be
+judged by the estimate ˆθ\hat{\theta} that it delivers, and more
+specifically by the proximity of this estimate to the distribution
+with which the data are actually generated, i.e., the true
+distribution. This proximity is often equated with the expected
+predictive accuracy of the estimate, because if the estimate and the
+true distribution are closer to each other, their predictions will be
+better aligned to one another as well. In the derivation of the AIC,
+the so-called relative entropy or Kullback-Leibler divergence
+of the two distributions is used as a measure of their proximity, and
+hence as a measure of the expected predictive accuracy of the
+estimate.
+Naturally, the true distribution is not known to the statistician
+who is evaluating the model. If it were, then the whole statistical
+analysis would be useless. However, it turns out that we can give an
+unbiased estimation of the divergence between the true distribution
+and the distribution estimated from a particular model,
+
+ AIC[M]=−2logP(s∣hˆθ(s))+2d, \text{AIC}[M] = - 2 \log P( s \mid h_{\hat{\theta}(s)} ) + 2 d , 
+
+in which ss is the sample data, ˆθ(s)\hat{\theta}(s) is the maximum
+likelihood estimate (MLE) of the model MM, and d=dim(Θ)d = dim(\Theta)
+is the number of dimensions of the parameter space of the model. The
+MLE of the model thereby features in an expression of the model
+quality, i.e., in a role that is conceptually distinct from the
+estimator function.
+
+As can be seen from the expression above, a model with a smaller
+AIC is preferable: we want the fit to be optimal at little cost in
+complexity. Notice that the number of dimensions, or independent
+parameters, in the model increases the AIC and thereby lowers the
+eligibility of the model: if two models achieve the same maximum
+likelihood for the sample, then the model with fewer parameters will
+be preferred. For this reason, statistical model selection by the AIC
+can be seen as an independent motivation for preferring simple models
+over more complex ones (Sober and Forster 1994). But this result also
+invites some critical remarks. For one, we might impose other criteria
+than merely the unbiasedness on the estimation of the proximity to the
+truth, and this will lead to different expressions for the
+approximation. Moreover, it is not always clearcut what the
+dimensions of the model under scrutiny really are. For curve fitting
+this may seem simple, but for more complicated models or different
+conceptualizations of the space of models, things do not look so easy
+(cf. Myung et al 2001, Kieseppa 2001). 
+A prime example of model selection is presented in curve
+fitting.  Given a sample ss consisting of a set of points in
+the plane (x,y)(x, y), we are asked to choose the curve that fits these
+data best. We assume that the models under consideration are of the
+form y=f(x)+ϵy = f(x) + \epsilon, where ϵ\epsilon is a normal
+distribution with mean 0 and a fixed standard deviation, and where
+ff is a polynomial function. Different models are characterized by
+polynomials of different degrees that have different numbers of
+parameters. Estimations fix the parameters of these polynomials. For
+example, for the 0-degree polynomial f(x)=c0f(x) = c_{0} we estimate the
+constant ^c0\hat{c_{0}} for which the probability of the data is
+maximal, and for the 1-degree polynomial f(x)=c0+c1xf(x) = c_{0} + c_{1}\, x
+we estimate the slope ^c1\hat{c_{1}} and the offset
+^c0\hat{c_{0}}. Now notice that for a total of nn points, we can
+always find a polynomial of degree nn that intersects with all
+points exactly, resulting in a comparatively high maximum likelihood
+P(s∣{^c0,…^cn})P(s \mid \{\hat{c_{0}}, \ldots \hat{c_{n}} \}). Applying the AIC,
+however, we will typically find that some model with a polynomial of
+degree k<nk &lt; n is preferable. Although P(s∣{^c0,…^ck})P(s \mid \{\hat{c_{0}},
+\ldots \hat{c_{k}} \}) will be somewhat lower, this is compensated
+for in the AIC by the smaller number of parameters.
+5.1.2 Bayesian evaluation of models
+Various other prominent model selection tools are based on methods
+from Bayesian statistics. They all start from the idea that the
+quality of a model is expressed in the performance of the model on the
+sample data: the model that, on the whole, makes the sampled data most
+probable is to be preferred.  Because of this, there is a close
+connection with the hierarchical Bayesian modelling referred to
+earlier (Gelman 2013). The central notion in the Bayesian model
+selection tools is thus the marginal likelihood of the model, i.e.,
+the weighted average of the likelihoods over the model, using the
+prior distribution as a weighing function:
+
+P(s∣Mi)=∫θ∈ΘiP(hθ)P(s∣hθ)dθ. P(s \mid M_{i}) \; = \; \int_{\theta \in \Theta_{i}} P(h_{\theta}) P(s
+\mid h_{\theta}) d\theta . 
+
+Here Θi\Theta_{i} is the parameter space belonging to model
+MiM_{i}.  The marginal likelihoods can be combined with a prior
+probability over models, P(Mi)P(M_{i}), to derive the
+so-called posterior model probability, using Bayes'
+theorem. One way of evaluating models, known as Bayesian model
+selection, is by comparing the models on their marginal
+likelihood, or else on their posteriors (cf. Kass and Raftery
+1995).
+
+Usually the marginal likelihood cannot be computed analytically.
+Numerical approximations can often be obtained, but for practical
+purposes it has proved very useful, and quite sufficient, to employ an
+approximation of the marginal likelihood. This approximation has
+become known as the Bayesian information criterion, or BIC
+for short (Schwarz 1978, Raftery 1995). It turns out that this
+approximation shows remarkable similarities to the AIC:
+
+BIC[M]=−2logP(s∣hˆθ(s))+dlogn. \text{BIC}[M] \; = \; - 2 \log P(s \mid h_{\hat{\theta}(s)}) + d \log
+n . 
+
+Here ˆθ(s)\hat{\theta}(s) is again the maximum likelihood estimate of
+the model, d=dim(M)d = dim(M) the number of independent parameters, and
+nn is the number of data points in the sample. The latter
+dependence is the only difference with the AIC, but a major difference
+in how the model evaluation may turn out.
+
+The concurrence of the AIC and the BIC seems to give a further
+motivation for our intuitive preference for simple models over more
+complex ones. Indeed, other model selection tools, like the
+deviance information criterion (Spiegelhalter et al 2002) and
+the approach based on minimum description length (Grunwald
+2007), also result in expressions that feature a term that penalizes
+complex models. However, this is not to say that the dimension term
+that we know from the information criteria exhausts the notion of
+model complexity. There is ongoing debate in the philosophy of science
+concerning the merits of model selection in explications of the notion
+of simplicity, informativeness, and the like (see, for example, Sober
+2004, Romeijn and van de Schoot 2008, Romeijn et al 2012, Sprenger
+2013).
+5.2 Statistics without models
+There are also statistical methods that refrain from the use of a
+particular model, by focusing exclusively on the data or by
+generalizing over all possible models.  Some of these techniques are
+properly localized in descriptive statistics: they do not concern an
+inference from data but merely serve to describe the data in a
+particular way. Statistical methods that do not rely on an explicit
+model choice have unfortunately not attracted much attention in the
+philosophy of statistics, but for completeness sake they will be
+briefly discussed here.
+5.2.1 Data reduction techniques
+One set of methods, and a quite important one for many practicing
+statisticians, is aimed at data reduction. Often the sample
+data are very rich, e.g., consisting of a set of points in a space of
+very many dimensions. The first step in a statistical analysis may
+then be to pick out the salient variability in the data, in order to
+scale down the computational burden of the analysis itself.
+The technique of principal component analysis (PCA) is
+designed for this purpose (Jolliffe 2002). Given a set of points in a
+space, it seeks out the set of vectors along which the variation in
+the points is large. As an example, consider two points in a plane
+parameterized as (x,y)(x, y): the points (0,0)(0, 0) and (1,1)(1, 1). In
+the xx-direction and in the yy-direction the variation is 11,
+but over the diagonal the variation is maximal, namely
+√2\sqrt{2}. The vector on the diagonal is called the principal
+component of the data. In richer data structures, and using a more
+general measure of variation among points, we can find the first
+component in a similar way. Moreover, we can repeat the procedure
+after subtracting the variation along the last found component, by
+projecting the data onto the plane perpendicular to that
+component. This allows us to build up a set of principal components of
+diminishing importance.
+PCA is only one item from a large collection of techniques that are
+aimed at keeping the data manageable and finding patterns in it, a
+collection that also includes kernel methods and support
+vector machines (e.g., Vapnik and Kotz 2006). For present
+purposes, it is important to stress that such tools should not be
+confused with statistical analysis: they do not involve the testing or
+evaluation of distributions over sample space, even though they build
+up and evaluate models of the data. This sets them apart from, e.g.,
+confirmatory and exploratory factor analysis (Bartholomew 2008), which
+is sometimes taken to be a close relative of PCA because both
+sets of techniques allows us to identify salient dimensions within
+sample space, along which the data show large variation. 
+Practicing statisticians often employ data reduction tools to
+arrive at conclusions on the distributions from which the data were
+sampled. There is already a wide use for machine learning and data
+mining techniques in the sciences, and we may expect even mode usage
+of these techniques in the future, because so much data is now coming
+available for scientific analysis. However, in the philosophy of
+statistics there is as yet little debate over the epistemic status of
+conclusions reached by means of these techniques. Philosophers of
+statistics would do well to direct some attention here.
+5.2.2 Formal learning theory
+An entirely different approach to statistics is presented by
+ formal learning theory.
+This is again a vast area of research, primarily located in
+computer science and artificial intelligence. The discipline is here
+mentioned briefly, as another example of an approach to statistics
+that avoids the choice of a statistical model altogether and merely
+identifies patterns in the data. We leave aside the theory of
+neural networks, which also concerns predictive systems that
+do not rely on a statistical model, and focus on the theory of
+learning algorithms because of all these approaches they have seen
+most philosophical attention.
+Pioneering work on formal learning was done by Solomonoff
+(1964). As before, the setting is one in which the data consist of
+strings of 0's and 1's, and in which an agent is attempting to
+identify the pattern in these data. So, for example, the data may be a
+string of the form 0101010101…0101010101\ldots, and the challenge is to
+identify this strings as an alternating sequence. The central idea of
+Solomonoff is that all possible computable patterns must be considered
+by the agent, and therefore that no restrictive choice on statistical
+hypotheses is warranted. Solomonoff then defined a formal system in
+which indeed all patterns can be taken into consideration, effectively
+using a Bayesian analysis with a cleverly constructed prior over all
+computable hypotheses.
+This general idea can also be identified in a rather new field on
+the intersection of Bayesian statistics and machine learning,
+Bayesian nonparametrics (e.g., Orbanz and Teh
+2010, Hjort et al 2010). Rather than specifying, at the outset, a
+confined set of distributions from which a statistical analysis is
+supposed to choose on the basis of the data, the idea is that the data
+are confronted with a potentially infinite-dimensional space of
+possible distributions. The set of distributions taken into
+consideration is then made relative to the data obtained: the
+complexity of the model grows with the sample. The result is a
+predictive system that performs an online model selection alongside a
+Bayesian accommodation of the posterior over the model.
+Current formal learning theory is a lively field, to which
+philosophers of statistics also contribute (e.g., Kelly 1996, Kelly et
+al 1997). Particularly salient for the present concerns is that the
+systems of formal learning are set up to achieve some notion of
+adequate universal prediction, without confining themselves
+to a specific set of hypotheses, and hence by imposing minimal
+constraints on the set of possible patterns in the data. It is a
+matter of debate whether this is at all possible, and to what extent
+the predictions of formal learning theory thereby rely on, e.g.,
+implicit assumptions on structure of the sample space. Philosophical
+reflection on this is only in its infancy.
+6. Related topics
+
+There are numerous topics in the philosophy of science that bear
+direct relevance to the themes covered in this lemma. A few central
+topics are mentioned here to direct the reader to related lemmas in
+the encyclopedia. 
+One very important topic that is immediately adjacent to the
+philosophy of statistics is 
+ confirmation theory, 
+the philosophical theory that describes and justifies
+relations between scientific theory and empirical
+evidence. Arguably, the theory of statistics is a proper part of
+confirmation theory, as it describes and justifies the relation that
+obtains between statistical theory and evidence in the form of
+samples. It can be insightful to place statistical procedures in this
+wider framework of relations between evidence and theory. Zooming out
+even further, the philosophy of statistics is part of the
+philosophical topic of methodology, i.e., the general theory on
+whether and how science acquires knowledge. Thus conceived, statistics
+is one component in a large collection of scientific methods
+comprising concept formation, experimental design, manipulation and
+observation, confirmation, revision, and theorizing.
+There are also a fair number of specific topics from the philosophy
+of science that are spelled out in terms of statistics or that are
+located in close proximity to it. One of these topics is the process
+of measurement, in particular the measurement of latent variables on
+the basis of statistical facts about manifest variables.  The
+so-called representational theory of measurement (Kranz et al
+1971) relies on statistics, in particular on factor analysis, to
+provide a conceptual clarification of how mathematical structures
+represent empirical phenomena. Another important topic form the
+philosophy of science is causation (see the entries on
+ probabilistic causation
+and
+ Reichenbach's common cause principle). 
+Philosophers have employed probability theory to capture causal
+relations ever since Reichenbach (1956), but more recent work in
+causality and statistics (e.g., Spirtes et al 2001) has given the
+theory of probabilistic causality an enormous impulse. Here
+again, statistics provides a basis for the conceptual analysis of
+causal relations.
+And there is so much more.  Several specific statistical
+techniques, like factor analysis and the theory of Bayesian networks,
+invite conceptual discussion of their own accord. Numerous topics
+within the philosophy of science lend themselves to statistical
+elucidation, e.g., the coherence, informativeness, and surprise of
+evidence. And in turn there is a wide range of discussions in the
+philosophy of science that inform a proper understanding of
+statistics. Among them are debates over experimentation and
+intervention, concepts of chance, the nature of scientific models, and
+theoretical terms. The reader is invited to consult the entries on
+these topics to find further indications of how they relate to the
+philosophy of statistics.

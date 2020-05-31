@@ -26,6 +26,7 @@ function showArticleData(data) {
         console.log(articleTitle)
         showArticleGraphAreas() 
         updateArticleGraph(data, articleTitle, articleSimConfig)
+
         
     })
 }
@@ -58,19 +59,18 @@ function initializeParentSVG(svg) {
         left:20
     };
 
-    let areaWidth = 850;
-    let areaHeight = 600;
+    let areaWidth = 900;
+    let areaHeight = 750;
 
     let width = areaWidth - margin.left - margin.right;
     let height = areaHeight - margin.top - margin.bottom;
 
-    svg.attr("viewBox", "0 0 " + width + " " + height )
-       .attr("preserveAspectRatio", "xMidYMid meet")
-    //    .style('border', '1px solid white');
+    // svg.attr("viewBox", "0 0 " + width + " " + height )
+    //    .attr("preserveAspectRatio", "xMidYMid meet")
+    // //    .style('border', '1px solid white');
 
-    // svg.attr("width", width)
-    //     .attr('height',height )
-    //     .style('border', '1px solid white');
+    svg.attr("width", width)
+        .attr('height',height )
 
     return {margin, areaWidth, areaHeight, width, height, svg}
 }
@@ -102,7 +102,7 @@ function initializeArticleSimulation(svgConfig) {
 
     let simulation = d3.forceSimulation(nodes)
         .force("charge", d3.forceManyBody().strength())
-        .force("link", d3.forceLink(links).id(function (d) {return d.id}).distance(175))
+        .force("link", d3.forceLink(links).id(function (d) {return d.id}).distance(200))
         .force("center", d3.forceCenter())
         .alphaTarget(1);
 
@@ -116,13 +116,17 @@ function drawArticleSimulation(data, articleSimConfig){
     let centralNode = nodes[0]
     let numTicks = 0;
     let transitionTime = 2000;
-
-
+    let ticksCompleted = false;
+    let inElements = []
+    let outElements = []
+    let biElements = []
 
     //links
     link = articleSimConfig.links.selectAll('.link')
                          .data(links, function(d) {return `${d.source}-${d.target}`})
-    
+                         .attr('dir', function(d) {return d.dir})
+                         .attr('target', function(d) { return d.target })
+
     link.exit().remove();
 
     link = link.enter()
@@ -130,6 +134,8 @@ function drawArticleSimulation(data, articleSimConfig){
                .attr("stroke", "#999")
                .attr("stroke-width", 1)
                .attr("opacity", 0.3)
+               .attr('dir', function(d) {return d.dir})
+               .attr('nodeID', function(d) { return d.target })
                .classed('link',true).merge(link)
 
     //labels
@@ -143,27 +149,42 @@ function drawArticleSimulation(data, articleSimConfig){
                  .append("text")
                  .text(function(d) {return d.title})
                  .attr("display", "block")
-                 .attr("font-size", '9px')
+                 .attr("font-size", '10px')
                  .attr("fill", function(d) {return color(d.entry_type)})
+                 .attr('nodeID', function(d) {return d.id})
                  .classed('label',true)
                  .classed('mainLabel', function(d,i) {return i===0?true:false})
                  .merge(label)
 
-    label.on('mouseover', function() { 
-            focus(); 
-            d3.select(this).style("cursor", "pointer"); 
-            setPreviewArea(d3.select(d3.event.target).datum())
+    label.on('mouseover', function(d,i) { 
+            if (i!==0) {
+                if (ticksCompleted) {
+                    focus(); 
+                    d3.select(this).style("cursor", "pointer"); 
+                    setPreviewArea(d3.select(d3.event.target).datum())
+                }
+            }
         })
-        .on('mouseout', function()  { 
-            unfocus(); 
-            d3.select(this).style("cursor", "default"); 
-            setPreviewArea(centralNode);
+        .on('mouseout', function(d,i)  { 
+            if (i!==0) {
+                if(ticksCompleted) {
+                    unfocus(); 
+                    d3.select(this).style("cursor", "default"); 
+                    setPreviewArea(centralNode);
+                }
+            }
         })
-        .on('dblclick', function(d) {
-            unfocus();
-            let articleTitle = d.title
-            articleMenu.property('value',articleTitle)
-            updateArticleGraph(data, articleTitle, articleSimConfig)
+        .on('dblclick', function(d,i) {
+            if (i!==0) {
+                if (ticksCompleted) {
+                    unfocus();
+                    let articleTitle = d.title
+                    articleMenu.property('value',articleTitle)
+                    updateArticleGraph(data, articleTitle, articleSimConfig)
+                    d3.select('.articleGraphGroup').transition().style('opacity',0.5)
+                }
+            }
+
         })
 
     //nodes
@@ -178,26 +199,42 @@ function drawArticleSimulation(data, articleSimConfig){
                 .attr("fill", function(d) {return color(d.entry_type)})
                 .attr("stroke", "#fff")
                 .attr("stroke-width", .5)
+                .attr('nodeID', function(d) {return d.id})
                 .style('opacity',1)
                 .classed('node',true)
                 .merge(node)
 
-    node.on('mouseover', function() { 
-            focus(); 
-            d3.select(this).style("cursor", "pointer"); 
-            setPreviewArea(d3.select(d3.event.target).datum())
+    node.on('mouseover', function(d,i) { 
+            if (i!==0) {
+                if(ticksCompleted) {
+                    focus(); 
+                    d3.select(this).style("cursor", "pointer"); 
+                    setPreviewArea(d3.select(d3.event.target).datum())
+                }
+            }
         })
-        .on('mouseout', function()  { 
-            unfocus(); 
-            d3.select(this).style("cursor", "default"); 
-            setPreviewArea(centralNode);
+        .on('mouseout', function(d,i)  { 
+            if (i!==0) {
+                if(ticksCompleted) {
+                    unfocus(); 
+                    d3.select(this).style("cursor", "default"); 
+                    setPreviewArea(centralNode);
+                }
+            }
         })
-        .on('dblclick', function(d) {
-            unfocus();
-            let articleTitle = d.title
-            articleMenu.property('value',articleTitle)
-            updateArticleGraph(data, articleTitle, articleSimConfig)
+        .on('dblclick', function(d,i) {
+            if (i!==0) {
+                if (ticksCompleted) {
+                    unfocus();
+                    let articleTitle = d.title
+                    articleMenu.property('value',articleTitle)
+                    updateArticleGraph(data, articleTitle, articleSimConfig)
+                }
+            }
         })
+
+    //deselect any selected nodes
+    window.getSelection().removeAllRanges();
 
     //update simulation
     articleSimConfig.simulation.on('tick', function (){
@@ -222,23 +259,41 @@ function drawArticleSimulation(data, articleSimConfig){
                 .attr('x', function(d) {return d.index === 0 ? 0: setXpos(d.x,this.getBBox().width) })
                 .attr('y', function(d) {return d.index === 0 ? -10: d.y+4})
                 .attr("transform", function(d,i){ return i===0 ?`rotate(0)`:rotateLabel(i,d.x, d.y)})
+                d3.select('.articleGraphGroup').transition().style('opacity',1)
+
+                numTicks++
+            }   else {   
+            ticksCompleted = true
         }
-        numTicks++
 
     })
 
 
+    //load direction arrays
+    let links_in  = d3.selectAll("[dir=in]");
+        links_in.nodes().forEach(d => inElements.push(d.__data__.target))
+
+    let links_out = d3.selectAll("[dir=out]");
+        links_out.nodes().forEach(d => outElements.push(d.__data__.target))
+
+    let links_both = d3.selectAll("[dir=both]");
+        links_both.nodes().forEach(d => biElements.push(d.__data__.target))
+    
+    console.log(inElements, outElements, biElements)
 
 
+    //restart simulation
     articleSimConfig.simulation.nodes(nodes);
     articleSimConfig.simulation.force("charge", d3.forceManyBody().strength(function() { return forceStrength(nodes.length)}))
     articleSimConfig.simulation.force("link").links(links)
     articleSimConfig.simulation.alpha(1).restart();
 
+    //updatePreview
     setPreviewArea(centralNode);
 
+    ticksCompleted = true
+    d3.select('.articleGraphGroup').transition().style('opacity',1)
 
-    window.getSelection().removeAllRanges();
 
     //******************** Simulation Adjustment functions************************/
 
@@ -268,7 +323,7 @@ function drawArticleSimulation(data, articleSimConfig){
         if (numberOfNodes < 70) { tickLimit = 250 } else 
         if (numberOfNodes < 80) { tickLimit = 200 } else 
         if (numberOfNodes < 90) { tickLimit = 250 } else 
-        if (numberOfNodes > 90) { tickLimit = 300 }
+        if (numberOfNodes > 90) { tickLimit = 100 }
 
         return tickLimit
     }
@@ -291,7 +346,7 @@ function drawArticleSimulation(data, articleSimConfig){
         }
 
         // Highlight the current node and the main node, and dim the rest.
-        function focus(d) {
+        function focus() {
             //get index of current node being mousedOver
             let index = d3.select(d3.event.target).datum().index;
 
@@ -309,12 +364,9 @@ function drawArticleSimulation(data, articleSimConfig){
 
         // Reset graph to default visuals
         function unfocus() {
-            
             d3.selectAll('.link').attr("opacity", 0.3);
             d3.selectAll('.label').attr("display", "block");
             d3.selectAll('.node').style("opacity", 1);
-            
-  
         } 
 
 }

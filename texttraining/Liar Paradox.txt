@@ -1,0 +1,1744 @@
+The first sentence in this essay is a lie. There is something odd
+about saying so, as has been known since ancient times. To see why,
+remember that all lies are untrue. Is the first sentence true? If it
+is, then it is a lie, and so it is not true. Conversely, suppose that
+it is not true. We (viz., the authors) have said it, and normally
+things are said with the intention of being believed. Saying something
+that way when it is untrue is a lie. But then, given what the sentence
+says, it is true after all!
+
+That there is some sort of puzzle to be found with sentences like the
+first one of this essay has been noted frequently throughout the
+history of philosophy. It was discussed in classical times, notably by
+the Megarians, but it was also mentioned by Aristotle and by Cicero.
+As one of the insolubilia, it was the subject of extensive
+investigation by medieval logicians such as Buridan. More recently,
+work on this problem has been an integral part of the development of
+modern mathematical logic, and it has become a subject of extensive
+research in its own right. The paradox is sometimes called the
+‘Epimenides paradox’ as the tradition attributes a
+sentence like the first one in this essay to Epimenides of Crete, who
+is reputed to have said that all Cretans are always liars. That some
+Cretan has said so winds up in no less a source than New
+ Testament![1]
+
+Lying is a complicated matter, but what’s puzzling about
+sentences like the first one of this essay isn’t essentially
+tied to intentions, social norms, or anything like that. Rather, it
+seems to have something to do with truth, or at least, some semantic
+notion related to truth. The puzzle is usually named ‘the Liar
+paradox’, though this really names a family of paradoxes that
+are associated with our type of puzzling sentence. The family is aptly
+named one of paradoxes, as they seem to lead to incoherent
+conclusions, such as: “everything is true”. Indeed, the
+Liar seems to allow us to reach such conclusions on the basis of
+logic, plus some very obvious principles that have sometimes been
+counted as principles of logic. Thus, we have the rather surprising
+situation of something near or like logic alone leading us to
+incoherence. This is perhaps the most virulent strain of paradox, and
+dealing with it has been an important task in logic for about as long
+as there has been logic.
+
+In this essay, we will review the important members of the family of
+Liar paradoxes, and some of the important ideas about how these
+paradoxes might be resolved. The past few thousand years have yielded
+a great number of proposals, and we will not be able to examine all of
+them; instead, we will focus on a few that have, in recent
+discussions, proved to be important.
+ 
+1. The Paradox and the Broader Phenomenon
+1.1 Simple-falsity Liar
+
+Consider a sentence named ‘FLiar’, which says of itself
+(i.e., says of FLiar) that it is false.
+
+FLiar: FLiar
+is false.
+
+
+This seems to lead to contradiction as follows. If the sentence
+‘FLiar is false’ is true, then given what it says, FLiar
+is false. But FLiar just is the sentence ‘FLiar is false’,
+so we can conclude that if FLiar is true, then FLiar is false.
+Conversely, if FLiar is false, then the sentence ‘FLiar is
+false’ is true. Again, FLiar just is the sentence ‘FLiar
+is false’, so we can conclude that if FLiar is false, then FLiar
+is true. We have thus shown that FLiar is false if and only if FLiar
+is true. But, now, if every sentence is true or false, FLiar itself is
+either true or false, in which case—given our reasoning
+above—it is both true and false. This is a contradiction.
+Contradictions, according to many logical theories (e.g., classical
+logic, intuitionistic logic, and much more) imply
+absurdity—triviality, that is, that every sentence is true.
+
+An obvious response is to deny that every sentence is true or false,
+i.e., to deny the principle of bivalence. As we will discuss in
+ §4,
+ some descendants of this idea remain important in current work on the
+Liar. Even so, a simple variant Liar sentence shows that this
+immediate answer is not all there is to the story.
+1.2 Simple-untruth Liar
+
+Rather than work with falsehood, we can construct a Liar sentence with
+the complex predicate ‘not
+ true’.[2]
+ Consider a sentence named ‘ULiar’ (for
+‘un-true’), which says of itself that it is not true.
+
+ULiar: ULiar
+is not true.
+
+
+The argument towards contradiction is similar to the FLiar case. In
+short: if ULiar is true, then it is not true; and if it is not true,
+then it is true. But, now, if every sentence is true or not true,
+ULiar itself is true or not true, in which case it is both true and
+not true. This is a contradiction. According to many logical theories,
+a contradiction implies absurdity—triviality.
+
+The two forms of the Liar paradox we have so far reviewed rely on some
+explicit self-reference—sentences talking directly about
+themselves. Such explicit self-reference can be avoided, as is shown
+by our next family of Liar paradoxes.
+1.3 Liar cycles
+
+Consider a very concise (viz., one-sentence-each) dialog between
+siblings Max and Agnes.
+
+
+Max: 
+Agnes’ claim is true. 
+Agnes: 
+Max’s claim is not true. 
+
+
+
+What Max said is true if and only if what Agnes said is true. But what
+Agnes said (viz., ‘Max’s claim is not true’) is true
+if and only if what Max said is not true. Hence, what Max said is true
+if and only if what Max said is not true. But, now, if what Max said
+is true or not true, then it is both true and not true. And this, as
+in the FLiar and ULiar cases, is a contradiction, implying, according
+to many logical theories, absurdity.
+
+Liar paradoxes can also be formed using more complex sentence
+structure, rather than complex modes of reference. One that has been
+important involves Boolean compounds.
+1.4 Boolean compounds
+
+Boolean compounds can enter into Liar sentences in many ways. One
+relatively simple one is as follows. Consider the following sentence
+named ‘DLiar’ (for ‘Disjunctive’).
+
+DLiar: Either
+DLiar is not true or 1=01=01 = 0.
+
+
+First, observe that if DLiar is not true, then it must be true. If
+DLiar is not true, then by similar reasoning to what we saw above, we
+have that the left disjunct of DLiar is true. But a disjunction is
+true if one of its disjuncts is, so DLiar is true. Thus, if DLiar is
+not true, it is true and not true, and we have a contradiction. By
+reductio, then, it must be true; so one of its disjuncts must be true.
+If it’s the first one, we have a contradiction, so it must be
+the second one; we can conclude that 1=01=01 = 0. We have thus proved
+that 1=01=01 = 0. Moreover, the sentence ‘1=01=01 = 0’ played
+no real role in the above reasoning. We could replace it with any
+other sentence to get a proof of that sentence. 
+
+We pause to mention DLiar as it is connected with another important
+paradox: Curry’s paradox, which involves conditionals that say
+of themselves only that if they (the conditional itself) are true, so
+too is some absurdity (e.g., ‘if this sentence is true, then 1=01=01
+= 0’ or ‘if this sentence is true, everything is
+true’ or so on). At least in languages where the conditional is
+the material conditional, and so A⊃BA⊃BA \supset B is equivalent to
+¬A∨B¬A∨B\neg A \vee B, DLiar is equivalent to the Curry sentence
+‘DLiar is true ⊃1=0⊃1=0\supset 1 = 0’. Though this may set up
+some relations between the Liar and Curry’s paradox, we pause to
+note an important difference. For the Curry paradox is most important
+where the conditional is more than the material conditional (or some
+modalized variant of it). In such settings, the Curry paradox does not
+wear negation on its sleeve, as DLiar does. For more information,
+consult the entry on
+ Curry’s paradox.
+1.5 Infinite sequences
+
+The question of whether the Liar paradox really requires some sort of
+circularity has been the subject of extensive debate. Liar cycles
+(e.g., the Max–Agnes dialog) show that explicit self-reference
+is not necessary, but it is clear that such cycles themselves involve
+circular reference. Yablo (1993b) has argued that a more complicated
+kind of multi-sentence paradox produces a Liar without
+circularity.
+
+Yablo’s paradox relies on an infinite sequence of claims
+A0A0A_0, A1A1A_1, A2A2A_2, …, where each AiAiA_i says that all
+of the ‘greater’ AkAkA_k (i.e., the AkAkA_k such that k>i)k>i)k
+\gt i) are untrue. (In other words, each claim says of the rest that
+they’re all untrue.) Since we have an infinite sequence, this
+version of the Liar paradox appears to avoid the sort of circularity
+apparent in the previous examples; however, contradiction still seems
+to emerge. If A0A0A_0 is true, then all of the ‘greater’
+AkAkA_k are untrue, and a fortiori A1A1A_1 is untrue. But,
+then, there is at least one true AkAkA_k greater than A1A1A_1 (i.e.,
+some AkAkA_k such that k>1)k>1)k \gt 1), which contradicts A0A0A_0.
+Conversely, if A0A0A_0 is untrue, then there’s at least one true
+AkAkA_k greater than A0A0A_0. Letting AmAmA_m be such a one (i.e., a
+truth greater than A0)A0)A_0), we have it that Am+1Am+1A_{m+1} is untrue, in
+which case there’s some truth greater than Am+1Am+1A_{m+1}. But this
+contradicts AmAmA_m. What we have, then, is that if A0A0A_0 (the first
+claim in the infinite sequence) is true or untrue, then it is both.
+And this, as in the other cases, is a contradiction.
+
+Whether Yablo’s paradox really avoids self-reference is
+much-debated. See, for instance, Barrio (2012), Beall (2001), Cook
+(2006, 2014), Ojea (2012), Picollo (2012), Priest (1997), Sorensen
+(1998), and Teijeiro (2012).
+2. Basic Ingredients
+
+We have already seen a kind of characteristic reasoning that goes with
+the Liar. We have also seen some common structure across all our
+example Liar paradoxes, such as the presence of truth predicates, and
+something like negation. We pause here to discuss these ingredients of
+the paradox, focusing on the basic Liars. Just what creates
+the Liar paradox, and just which of the puzzles we just surveyed is
+‘basic’, is a contentious matter; different approaches to
+solving the Liar view these matters differently. Hence, our goal is
+merely to illuminate some common themes across different Liars, not to
+offer a full diagnosis of the source of the paradox.
+
+We highlight three aspects of the Liar: the role of truth predicates,
+the kinds of principles for reasoning about truth that are needed, and
+the way that a paradox can be derived given these resources.
+2.1 Truth predicate
+
+The first ingredient in building a Liar is a truth predicate, which we
+write here as TrTr\Tr. We follow the usual custom in logic of treating
+this as a predicate of sentences. However, especially as we come to
+consider some ways of resolving the Liar, it should be remembered that
+this treatment can be seen as more for convenience in exposition than
+a serious commitment to what truth bearers are.
+
+We assume that we have, along with the truth predicate, appropriate
+names of sentences. For a given sentence AAA, suppose that
+┌A┐⌜A⌝\left\ulcorner A\right\urcorner is a name for it. A predication of
+truth to AAA then looks like Tr(┌A┐)Tr⁡(⌜A⌝)\Tr(\left\ulcorner
+A\right\urcorner).
+
+We shall say that a predicate Tr(x)Tr⁡(x)\Tr(x) is a truth predicate for
+language LL\mathcal{L} only if Tr(┌A┐)Tr⁡(⌜A⌝)\Tr(\left\ulcorner
+A\right\urcorner) is well-formed for every sentence AAA of
+LL\mathcal{L}. We typically expect TrTr\Tr to obey some principles
+governing its behavior on sentences of a given language. It is to
+those we now
+ turn.[3]
+2.2 Principles of truth
+
+The tradition, going back to Tarski (1935), is that the behavior of
+the truth predicate TrTr\Tr is described by the following
+biconditional.
+Tr(┌A┐)↔A.Tr⁡(⌜A⌝)↔A.\Tr(\left\ulcorner A\right\urcorner) \leftrightarrow A.
+
+Indeed, Tarski took the biconditional here to be the material
+biconditional of classical logic. This is usually called the
+T-schema. For more on the T-schema, and Tarski’s views
+of truth, see the entries on
+ Alfred Tarski
+ and
+ Tarski’s truth definitions.
+
+The Liar paradox has been a locus of thinking about non-classical
+logics (as we already saw a taste of, for instance, in the idea that
+bivalence might be rejected as part of a solution to the Liar). Thus,
+we should stop to consider what principles should govern the truth
+predicate TrTr\Tr if classical logic is not to hold.
+
+The leading idea for what might replace the T-schema points to two
+sorts of ‘rules’ (e.g., two sorts of ‘inference
+rules’ in some sense) or principles that are characteristic of
+the truth predicate. If you have a sentence AAA, you can infer
+Tr(┌A┐)Tr⁡(⌜A⌝)\Tr(\left\ulcorner A\right\urcorner), that is, you can
+‘capture’ AAA with the truth predicate. Conversely, if
+you have Tr(┌A┐)Tr⁡(⌜A⌝)\Tr(\left\ulcorner A\right\urcorner), you can infer
+AAA, that is, you can ‘release’ AAA from the truth
+predicate. In some logics, capture and release wind up being
+equivalent to the T-schema, but it is often helpful to break these
+up:
+
+Capture AAA
+implies Tr(┌A┐)Tr⁡(⌜A⌝)\Tr(\left\ulcorner A\right\urcorner).
+(We also write this as A⊢Tr(┌A┐)A⊢Tr⁡(⌜A⌝)A \vdash \Tr(\left\ulcorner
+A\right\urcorner).)
+Release Tr(┌A┐)Tr⁡(⌜A⌝)\Tr(\left\ulcorner
+A\right\urcorner) implies AAA.
+(We also write this as Tr(┌A┐)⊢ATr⁡(⌜A⌝)⊢A\Tr(\left\ulcorner A\right\urcorner) \vdash
+A.)
+
+
+Implies here is a logical notion, though just which one, and
+what the options are, depends on what background logic is assumed. For
+our discussion, we think of it in so-called rule form: that the
+argument from AAA to BBB is valid, which we record (as above) via
+the turnstile. In some logical settings (e.g., classical logic, in
+which a certain so-called deduction theorem holds), this is equivalent
+to the provability of a conditional, but in some settings, it is not.
+Either way, capture and release jointly make AAA and
+Tr(┌A┐)Tr⁡(⌜A⌝)\Tr(\left\ulcorner A\right\urcorner) logically equivalent in the
+sense of being inter-derivable. In strong forms, capture and release
+can lead to the full intersubstitutability of AAA and
+Tr(┌A┐)Tr⁡(⌜A⌝)\Tr(\left\ulcorner A\right\urcorner) in extensional contexts. As
+we discuss more in
+ section 4.1,
+ this is important to some views of the nature of truth. Thus,
+⊢⊢\vdash is being used here as a schematic placeholder for a range
+of different logical notions, each of which will provide some notion
+of valid inference in some logical theory.
+
+(There are a number of logical subtleties here that we will not
+pursue, especially about how to formulate rules, and which rules are
+consistent. Different formulations of rules vary significantly in
+logical strength as
+ well.[4]
+ See the entry on
+ axiomatic theories of truth
+ for more on how consistent forms of capture and release can be
+formulated in classical logic. In the terminology of Friedman and
+Sheard (1987), the rule forms of capture and release are called
+‘T-Intro’ and ‘T-Elim’, and the conditional
+forms ‘T-In’ and ‘T-Out’. We prefer the
+broader terminology, since it highlights a general form of behavior
+common to a great variety of predicates and operators, e.g.,
+knowledge releases but doesn’t capture;
+possibility captures but doesn’t release; and so on;
+and truth is special in doing both.)
+2.3 The Liar in short
+
+The Liar paradox begins with a language containing a truth predicate,
+which obeys some form of capture and release. We now explore more
+carefully how a paradox results from these assumptions.
+2.3.1 Existence of Liar-like sentences
+
+Putting aside Yablo-type paradoxes, the Liar relies on some form of
+self-reference, either direct, as in in the simple Liars above, or
+indirect, as in Liar cycles. Most natural languages have little
+trouble generating self-reference. The first sentence of this essay is
+one example. Self-reference can be accidental, as in the case where
+someone writes ‘The only sentence on the blackboard in room 101
+is not true’, by chance writing this in room 101 itself (as C.
+Parsons (1974) noted).
+
+In formal languages, self-reference is also very easy to come by. Any
+language capable of expressing some basic syntax can generate
+self-referential sentences via so-called diagonalization (or more
+properly, any language together with an appropriate theory of syntax
+or
+ arithmetic).[5]
+ A language containing a truth predicate and this basic syntax will
+thus have a sentence LLL such that LLL implies ¬Tr(┌L┐)¬Tr⁡(⌜L⌝)\neg
+\Tr(\left\ulcorner L\right\urcorner) and vice versa:
+L⊣⊢¬Tr(┌L┐).L⊣⊢¬Tr⁡(⌜L⌝).L \dashv \vdash \neg \Tr(\left\ulcorner L\right\urcorner).
+
+This is a ‘fixed point’ of (the compound predicate)
+¬Tr¬Tr\neg\Tr, and is, in effect, our simple-untruth Liar.
+
+(Technically, it is simplest to put the fixed point property in terms
+of implications, as we have done here. But intuitively, the idea is
+that somehow LLL ‘just is’ ¬Tr(┌L┐)¬Tr⁡(⌜L⌝)\neg \Tr(\left\ulcorner
+L\right\urcorner). This can be made more precise, if we think of
+the Liar sentence LLL arising from a name ccc that
+denotes the sentence ¬Tr(c)¬Tr⁡(c)\neg \Tr(c). In this way, we can think of the
+existence of the Liar as being reflected in the identity c=┌¬Tr(c)┐c=⌜¬Tr⁡(c)⌝c =
+\left\ulcorner \neg \Tr(c)\right\urcorner. For more on the details
+of this approach, see Heck 2012.)
+2.3.2 Other logical ‘laws’
+
+Other conspicuous ingredients in common Liar paradoxes concern logical
+behavior of basic connectives or features of implication. A few of the
+relevant principles are:
+
+Excluded middle (LEM): ⊢A∨¬A⊢A∨¬A\vdash A \vee \neg A.
+Explosion
+ (EFQ):[6]
+A,¬A⊢BA,¬A⊢BA,\neg A \vdash B.
+Disjunction principle
+ (DP):[7]
+ If A⊢CA⊢CA \vdash C and B⊢CB⊢CB \vdash C then A∨B⊢CA∨B⊢CA \vee B \vdash C.
+Adjunction: If A⊢BA⊢BA \vdash B and A⊢CA⊢CA \vdash C then A⊢B∧CA⊢B∧CA \vdash B
+\wedge C.
+
+
+(This is not to suggest that these are the only logical
+features involved in common Liar paradoxes, but they’re arguably
+the most important of the salient ones.)
+2.3.3 The Liar in abstract
+
+Given the foregoing ingredients, we can now give a slightly more
+abstract form of the paradox. (Our hope is to use this abstract form
+to highlight different responses to the paradox.) We suppose that we
+have a language LL\mathcal{L} with a truth predicate TrTr\Tr, and
+that LL\mathcal{L} allows enough syntax to construct a sentence
+LLL such that L⊣⊢¬Tr(┌L┐)L⊣⊢¬Tr⁡(⌜L⌝)L \dashv \vdash \neg \Tr(\left\ulcorner
+L\right\urcorner). We also suppose that the logic of LL\mathcal{L}
+enjoys LEM and EFQ and satisfies DP and adjunction.
+
+An argument that our Liar sentence LLL implies a contradiction runs
+as follows.
+
+Tr(┌L┐)∨¬Tr(┌L┐)Tr⁡(⌜L⌝)∨¬Tr⁡(⌜L⌝)\Tr(\left\ulcorner L\right\urcorner) \vee \neg
+\Tr(\left\ulcorner L\right\urcorner) [LEM]
+Case One:
+
+
+Tr(┌L┐)Tr⁡(⌜L⌝)\Tr(\left\ulcorner L\right\urcorner)
+LLL [2a: release]
+¬Tr(┌L┐)¬Tr⁡(⌜L⌝)\neg \Tr(\left\ulcorner L\right\urcorner) [2b: definition of
+LLL]
+¬Tr(┌L┐)∧Tr(┌L┐)¬Tr⁡(⌜L⌝)∧Tr⁡(⌜L⌝)\neg \Tr(\left\ulcorner L\right\urcorner) \wedge
+\Tr(\left\ulcorner L\right\urcorner) [2a, 2c: adjunction]
+ 
+Case Two:
+
+
+¬Tr(┌L┐)¬Tr⁡(⌜L⌝)\neg \Tr(\left\ulcorner L\right\urcorner)
+LLL [3a: definition of LLL]
+Tr(┌L)┐)Tr⁡(⌜L)⌝)\Tr(\left\ulcorner L)\right\urcorner) [3b: capture]
+¬Tr(┌L┐)∧Tr(┌L┐)¬Tr⁡(⌜L⌝)∧Tr⁡(⌜L⌝)\neg \Tr(\left\ulcorner L\right\urcorner) \wedge
+\Tr(\left\ulcorner L\right\urcorner) [3a, 3c: adjunction]
+ 
+¬Tr(┌L┐)∧Tr(┌L┐)¬Tr⁡(⌜L⌝)∧Tr⁡(⌜L⌝)\neg \Tr(\left\ulcorner L\right\urcorner) \wedge
+\Tr(\left\ulcorner L\right\urcorner) [1–3: DP]
+
+
+This version of the Liar is one of many. With a little more
+complexity, for instance, either capture or release can be avoided in
+favor of some other background assumptions. Intuitionistic variants of
+the Liar are also available, though we shall not explore
+intuitionistic logic
+ here.[8]
+
+We have so far shown that with the given ingredients our Liar sentence
+LLL implies a contradiction (thus formalizing the reasoning in
+ULiar). From here, it is one short step to all-out absurdity—if
+the lone contradiction weren’t already absurd enough. We invoke
+EFQ to finish the proof. (Well, we also assume that A∧BA∧BA \wedge B
+implies AAA and BBB, i.e., that simplification is valid in
+LL\mathcal{L}; but in fact this assumption is not really
+necessary.)
+
+BBB [4: EFQ]
+
+
+BBB, here, may be any—every—sentence that you like (or
+don’t like, as the case may be)! EFQ is the principle that every
+sentence follows from a contradiction; it sanctions the step from a
+single contradiction to outright triviality of logic.
+
+In the face of such absurdity (triviality), we conclude that something
+is wrong in the foregoing Liar reasoning. The question is: what? This,
+in the end, is the question that the Liar paradox raises. 
+3. Significance
+
+We have now seen that with some elementary assumptions about truth and
+logic, a logical disaster ensues. What is the wider significance of
+such a result?
+
+From time to time, the Liar has been argued to show us something
+far-reaching about philosophy. For instance, Grim (1991) has argued
+that it shows the world to be essentially ‘incomplete’ in
+some sense, and that there can be no omniscient being. McGee (1991)
+and others suggest that the Liar shows the notion of truth to be a
+vague notion. Glanzberg (2001) holds that the Liar shows us something
+important about the nature of context dependence in language, while
+Eklund (2002) holds that it shows us something important about the
+nature of semantic competence and the languages we speak. Gupta and
+Belnap (1993) claim that it reveals important properties of the
+general notion of definition. And there are other lessons, and
+variations on such lessons, that have been drawn.
+
+Of more immediate concern, at least for our purposes here, is what the
+Liar shows us about the basic principles governing truth, and about
+logic. In a skeptical vein, Tarski himself (1935, 1944) seems to have
+thought the Liar shows the ordinary notion of truth to be incoherent,
+and in need of replacement with a more scientifically respectable one.
+(For more on Tarski, see the entries on
+ Tarski
+ and
+ Tarski’s truth definitions.
+ For more on Tarski’s aims and purposes, see Heck 1997.) More
+common, and perhaps the dominant thread in the solutions to the Liar,
+is the idea that the basic principles governing truth are more subtle
+than the T-schema reflects.
+
+The Liar has also formed the core of arguments against classical
+logic, as it is some key features of classical logic that allow
+capture and release to result in absurdity. Notable among these are
+the arguments for logics that are paracomplete (e.g., Kripke 1975;
+Field 2008) and paraconsistent (e.g., Asenjo 1966; Priest 1984, 2006).
+However, Ripley (2013b) argues that classical logic can be maintained
+while shedding the features in question.
+
+In many cases inspired by wider views of the significance of the
+paradox, there have been a number of attempts to one way or another
+resolve the paradox. It is to these proposed solutions that we now
+turn.
+4. Some Families of Solutions
+
+In this section, we briefly survey some approaches to resolving the
+Liar paradox. We group proposed solutions into families, and try to
+explain the basic ideas behind them. In many cases, a full exposition
+would involve a great deal of technical material, that we will not go
+into here. Interested readers are encouraged to follow the references
+we provide for each basic idea.
+4.1 Paracomplete and paraconsistent logics
+
+One of the leading ideas for how to resolve the Liar paradox is that
+it shows us something about logic, in fact, something far-reaching
+about logic. The main idea is that the principles of capture and
+release are the fundamental conceptual principles governing truth, and
+cannot be modified. Instead, basic logic must be non-classical, to
+avoid a logical disaster of the kind we reviewed in
+ §2.
+
+One important way to motivate non-classical solutions is to appeal to
+a form of deflationism about truth. Such views take something
+akin to the T-schema to be the defining characteristic of truth, and
+as such, not open to modification (see, e.g., Horwich 1990). Most
+strictly, so-called transparency or ‘see-through’ or
+‘pure disquotational’ conceptions of truth (e.g., Field
+1994, 2008; Beall 2005) take the defining property of truth to
+be intersubstitutability of AAA and Tr(┌A┐)Tr⁡(⌜A⌝)\Tr(\left\ulcorner
+A\right\urcorner) in all non-opaque contexts. This makes capture and
+release, in unrestricted form applying to all sentences of a language,
+a requirement for truth (at least where we have A⊢AA⊢AA \vdash A or,
+more strongly, ⊢A→A)⊢A→A)\vdash A \rightarrow
+ A).[9]
+ See the entry on
+ truth
+ for further discussion.
+
+Holding capture and release fixed, and applying it to all sentences
+without restriction, yields triviality unless the logic is
+non-classical. There are two main sub-families of non-classical
+(transparency) truth theories: paracomplete and
+paraconsistent. We sketch the main ideas of each.
+4.1.1 Paracomplete
+
+According to paracomplete approaches to the Liar, the main lesson of
+the Liar is that LEM ‘fails’ in some sense. In other
+words: the Liar teaches us that some sentences (notably, Liars!)
+‘neither hold nor do not hold’ (in some sense), and so are
+neither true nor false. As a result, the logic of truth is
+non-classical.
+
+This idea is perhaps most natural in response to the simple-falsity
+Liar. There, it is tempting to say that there is some status other
+than truth and falsity, and the Liar sentence LLL has it. But this
+will not suffice, for instance, for the simple-untruth Liar. This says
+nothing about falsity. Rather, in some way the basic reasoning
+reviewed in
+ §2.3
+ must fail, and the culprit, in the paracomplete view, is LEM.
+Liar-instances of LEM ‘fail’ (in some sense) according to
+the paracomplete approach; such sentences fall into the
+‘gap’ between truth and falsity (to use a common
+metaphor).
+
+There have been many proposals for using such non-classical logics to
+address the Liar. An early example is van Fraassen (1968, 1970). But
+Kripke’s work has been the most influential in recent times, not
+only to approaches to the Liar based on non-classical logic, but a
+range of other approaches we will survey in
+ §4.2
+ as well. Thus, we pause to describe at least a little of
+Kripke’s framework.
+Kripke’s theory
+
+Logics where LEM fails are not themselves hard to come by. Among many
+such logics are a number of three-valued logics that allow sentences
+to take a third value over and above true and false. Sentences like
+Liar sentences take the third value. One of the most commonly applied
+logics is the Strong Kleene logic K3K3K_3. We do not go into the
+details of K3K3K_3 here, but only note the properties of K3K3K_3 we
+need. (For more details, see the entry on
+ many-valued logic,
+ or Priest 2008.) First and foremost,
+we have: 
+
+⊬K3A∨¬A.⊬K3A∨¬A.\not\vdash_{K3} A \vee \neg A.
+
+ LEM fails. In fact, there are no logical truths
+(or valid sentences) according to K3K3K_3. (We return to this on the
+topic of a ‘suitable conditional’ below.)
+
+
+The challenge to using K3K3K_3 to flesh out a paracomplete theory is
+to explain how anything like (even rule-form) capture and release
+hold, and if you follow the deflationist line, how full unrestricted
+capture and release hold. One way of understanding the important work
+of Kripke (1975) (and related work of Martin and Woodruff 1975) is as
+a way of achieving just that.
+
+Kripke begins with a fully classical language L0L0\mathcal{L}_0
+containing no truth predicate (or more generally, no semantic terms).
+(Recall, we are assuming a language comes equipped with a valuation
+scheme. For L0L0\mathcal{L}_0 it is classical.) He then considers
+extending it to a language L+0L0+\mathcal{L}^{+}_0 which contains a
+truth predicate TrTr\Tr. The predicate TrTr\Tr is taken to apply to
+every sentence of the expanded language L+0L0+\mathcal{L}^{+}_0,
+including those of the original L0L0\mathcal{L}_0. Thus, it is a
+self-applicative truth predicate (as the deflationist-inspired picture
+we mentioned must require), even though we begin with a language
+without a truth predicate.
+
+We can think of L0L0\mathcal{L}_0 as interpreted by a classical model
+M0M0\mathcal{M}_0. Kripke shows us how to build an interpretation
+M+0M0+\mathcal{M}^{+}_0 for the expanded language. The main innovation
+is to see the truth predicate as partial. Rather than simply
+having an extension, it has an extension (set of things of which it is
+true), and an anti-extension (set of things of which it is false). The
+extension and anti-extension are mutually exclusive, but they need not
+jointly exhaust the domain of M0M0\mathcal{M}_0. Pathological
+sentences like LLL fall in neither in the extension or the
+anti-extension of TrTr\Tr. (Actually, we could have interpreted the
+base language L0L0\mathcal{L}_0 by a partial model as well, but the
+intended application sees partiality as only arising with semantic
+predicates like TrTr\Tr.)
+
+Falling into neither the extension or the anti-extension of TrTr\Tr
+acts like having a third value, and we can interpret
+L+0L0+\mathcal{L}^{+}_0 as acting like a language with a K3K3K_3
+valuation scheme. Treating the language this way, Kripke shows how to
+build up a very plausible extension and anti-extension for TrTr\Tr,
+typically written EE\mathcal{E} and AA\mathcal{A}. The important
+property of the new extended model ⟨M0,⟨E,A⟩⟩⟨M0,⟨E,A⟩⟩\langle \mathcal{M}_0,\langle
+\mathcal{E},\mathcal{A}\rangle \rangle is that the truth value of
+any sentence AAA and Tr(┌A┐)Tr⁡(⌜A⌝)\Tr(\left\ulcorner A\right\urcorner) are
+exactly the same. AAA is true, false, or neither, just in case
+Tr(┌A┐)Tr⁡(⌜A⌝)\Tr(\left\ulcorner A\right\urcorner) is. Furthermore, interpreting
+the expanded language L+0L0+\mathcal{L}^{+}_0 as a K3K3K_3 language, we
+have for K3K3K_3 consequence A⊣⊢Tr(┌A┐)A⊣⊢Tr⁡(⌜A⌝)A \dashv \vdash \Tr(\left\ulcorner
+A\right\urcorner), just as we desired.
+
+Kripke shows how to build up EE\mathcal{E} and AA\mathcal{A} by an
+inductive process. One starts with an ‘approximation’ of
+the extension and anti-extension of TrTr\Tr, and successively improves
+it until the improvement process ceases to be productive (it reaches a
+‘fixed point’). In fact, for the K3K3K_3-based solution,
+the natural thing to do is start with an empty extension and
+anti-extension, and throw in sentences that are true at successive
+stages of the process.
+
+Kripke’s construction can be applied to a number of different
+logics, including other many-valued logics such as the ‘Weak
+Kleene’ logic, and supervaluation logics. See, for instance,
+Burgess 1986 and McGee 1991 for discussion. Kripke-style constructions
+engage a fair bit of mathematical subtlety. For an accessible overview
+of more of the details, see Soames 1999. For a more mathematically
+rich exposition, see McGee 1991.
+Suitable conditionals
+
+Logics like K3K3K_3 suffer from the lack of a natural or
+‘suitable’ conditional (in particular, one that satisfies
+A,A→B⊢BA,A→B⊢BA,A \rightarrow B \vdash B and ⊢A→A)⊢A→A)\vdash A \rightarrow A). This
+reveals a limitation of the Kripkean approach to the Liar. The
+language L+0L0+\mathcal{L}^{+}_0 cannot report the capture and release
+properties of truth itself in conditional form (i.e.,
+T-biconditionals): TrTr\Tr is transparent on this picture, and so
+Tr(┌A┐)Tr⁡(⌜A⌝)\Tr(\left\ulcorner A\right\urcorner) and AAA are fully
+intersubstitutable. We don’t have ¬A∨A¬A∨A\neg A \vee A true for all
+sentences AAA in this theory, and hence don’t have ¬Tr(┌A┐)∨¬Tr⁡(⌜A⌝)∨\neg
+\Tr(\left\ulcorner A\right\urcorner) \vee A for all AAA. But
+¬Tr(┌A┐)∨A¬Tr⁡(⌜A⌝)∨A\neg \Tr(\left\ulcorner A\right\urcorner) \vee A is equivalent to
+Tr(┌A┐)→ATr⁡(⌜A⌝)→A\Tr(\left\ulcorner A\right\urcorner) \rightarrow A in the theory,
+since (in the theory) →→\rightarrow is just the material
+conditional. The Kripke construction at hand, then, thus fails to
+enjoy all T-biconditionals—the natural candidates for expressing
+in the theory the basic capture and release features of truth.
+
+A recent, major step towards supplementing Kripke’s framework
+with a suitable conditional is that of Field (2008). Field’s
+theory is a major advance, but complex enough to be beyond the scope
+of this (very basic) introduction. Readers should consult
+Field’s own discussion for a taste of how such a modification
+might proceed. See Field (2008), and further discussion in Beall
+(2009).
+
+One important use for conditionals in logic is in formalizing
+restricted universal quantification, expressing the
+connection between AAA and BBB in ‘All AAAs are
+BBBs’. This has recently played a key role in a number of
+discussions of conditionals and paradoxes; see for example Beall et
+al. (2006); Beall (2011); Field (2014); and Ripley (2015).
+4.1.2 Paraconsistent
+
+As we mentioned, two important approaches to the Liar paradox that
+focus on non-classical logics are paracomplete and paraconsistent
+approaches. We sketched a paracomplete option above. We now turn to a
+paraconsistent option. Here, the basic idea is to allow the
+contradiction (e.g., up to and including step 4 of the derivation in
+ §2.3.3),
+ but alter the logic by rejecting EFQ—and, hence, avoid the
+absurdity involved in step 5.
+
+Like the paracomplete approach we just surveyed, paraconsistent
+approaches to the Liar find easy, natural motivation in transparency
+or otherwise suitably ‘minimalist’ views of truth that
+require full intersubstitutability of AAA and Tr(┌A┐)Tr⁡(⌜A⌝)\Tr(\left\ulcorner
+A\right\urcorner), and thus cannot restrict capture and release. But
+paraconsistent approaches have also found motivation in a
+Dummett-inspired anti-deflationist view, which takes the role of truth
+as the aim of assertion seriously (cf. Dummett 1959). Indeed, Priest
+(2006) argues that this (non-transparency) view of truth motivates
+both the T-schema and LEM, and that this implies that the Liar
+sentence LLL is both true and not true. Hence, according to any such
+dialetheic line (according to which at least one sentence is both true
+and not true), the only option is to reject EFQ.
+Dialetheism
+
+Priest (1984, 2006) has been one of the leading voices in advocating a
+paraconsistent approach to solving the Liar paradox. He has proposed a
+paraconsistent (and non-paracomplete) logic now known as LP
+(for Logic of Paradox), which retains LEM, but not
+ EFQ.[10]
+ It has the distinctive feature of allowing true contradictions. This
+is what Priest calls the dialetheic approach to truth. (See the entry
+on
+ dialetheism
+ for a more extensive discussion.)
+
+Formally, LP can be seen as a three-valued logic; but where
+K3K3K_3 has truth-value gaps, LP has truth-value
+gluts. Thus, sentences in LP can be both true and
+false. However, as we discuss further in
+ section 4.1.3,
+ just how to describe both gaps and gluts is a delicate matter. For
+now, we only make the rough observation that in the same sense that
+K3K3K_3, in virtue of having a third truth value, can be said to have
+gaps, LP correspondingly has gluts.
+
+Likewise, Kripke-style techniques can be applied to produce an
+interpretation for a truth predicate, starting with a classical
+language L0L0\mathcal{L}_0 not containing a truth predicate. Again, an
+extension and anti-extension are assigned to TrTr\Tr. Whereas
+Kripke’s original construction had the extension and
+anti-extension disjoint but not exhausting the domain, in this case we
+allow the extension and anti-extension to overlap, but suppose that
+the two together exhaust the domain of the model. This implements the
+idea of gluts, as the earlier version implemented the idea of gaps.
+Related techniques to Kripke’s can then be used to build an
+extension and anti-extension for TrTr\Tr. The result is again an
+interpretation where AAA and Tr(┌A┐)Tr⁡(⌜A⌝)\Tr(\left\ulcorner
+A\right\urcorner) get the same truth value in the model.
+
+This construction was not given by Kripke himself, but variants have
+been pursued by a number of authors, including Dowden (1984), Leitgeb
+(1999), Priest (1984, 2006), Visser (1984), and Woodruff (1984).
+Combining paracompleteness and paraconsistency
+
+Though we have identified paracomplete and paraconsistent approaches
+to the Liar as two distinct options, they are not incompatible.
+Indeed, seen as theories of negation (if one wants), one might think
+that negation is neither exhaustive nor ‘explosive’
+– i.e., satisfies neither LEM nor EFQ. An approach like this is
+the FDE-based (transparent) truth theory discussed in Dunn
+1969 (see
+ Other Internet Resources);
+ Gupta and Belnap 1993; Leitgeb 1999; Visser 1984; Woodruff 1984;
+Yablo 1993a; and—in effect—Brady 1989.
+
+(The LP-based theories and K3K3K_3-based theories
+are—at least on one (standard-first-order) level—simply
+strengthened logics of the broader FDE logic. For general
+discussion of such frameworks, see, e.g. Priest 2008.)
+4.1.3 Expressive power and ‘revenge’
+
+Working in classical logic, Tarski (1935) famously concluded from the
+Liar paradox that a language cannot define its own truth predicate.
+More generally, he took the lesson of the Liar to be that languages
+cannot express the full range of semantic concepts that describe their
+own workings. One of the main goals of the non-classical approaches to
+the Liar we have surveyed here is to avoid this conclusion, which many
+have seen as far too drastic. However, how successful these approaches
+have been in this regard remains a highly contentious issue.
+
+In one sense, both the paracomplete and paraconsistent approaches
+achieve the desired result: they present languages which contain truth
+predicates which apply to sentences of that very language, and have
+the feature that AAA and Tr(┌A┐)Tr⁡(⌜A⌝)\Tr(\left\ulcorner A\right\urcorner)
+have the same truth value. In this respect, they both present
+languages which contain their own truth predicate.
+
+In the paracomplete case, the issue of whether this suffices has been
+much debated. The paracomplete view holds that the Liar sentence LLL
+is neither true nor false, and this is key to retaining consistency.
+But note, the paracomplete approach we discussed above cannot state
+this fact, as it cannot come out true that ¬Tr(┌L┐)¬Tr⁡(⌜L⌝)\neg \Tr(\left\ulcorner
+L\right\urcorner). If this were true, then LLL would be true, and
+then Tr(┌L┐)Tr⁡(⌜L⌝)\Tr(\left\ulcorner L\right\urcorner) would be true, bringing
+us back to contradiction.
+
+One further point follows from this. As we alluded to above, this
+shows that K3K3K_3 with a truth predicate will not state the gappy
+status of gaps, while LP will state both gap and glut
+properties. Hence, as we mentioned, the status of gaps and gluts can
+be complicated. 
+
+For the issue of revenge, the key problem is simply that the
+paracomplete approach cannot accurately state its own solution to the
+Liar. Just what to make of this has been debated. It is certainly the
+case that the set of true sentences in the kind of model Kripke
+constructs does not include ¬Tr(┌L┐)¬Tr⁡(⌜L⌝)\neg \Tr(\left\ulcorner
+L\right\urcorner). Because of this, some authors, such as McGee
+(1991), T. Parsons (1984), and Soames (1999) have in effect maintained
+that the Liar sentence failing to be true is a further fact that is
+goes beyond what the truth predicate needs to express, and so is
+immaterial to the success of the solution to the Liar. (Actually,
+McGee’s view has another aspect, which we discuss in
+ §4.2.3.)
+
+But nonetheless, it does appear that there is an important semantic
+fact about truth in the paracomplete language, closely related to if
+not identical to a fact about truth per se, which the
+language cannot express. It thus has been argued to fail to achieve a
+fully adequate theory of truth. Kripke himself notes that there are
+some semantic concepts that cannot be expressed, and the argument has
+been pressed by C. Parsons (1974).
+
+One way of spelling out what is missing in the paracomplete language
+is to introduce a new notion of determinateness, so that the
+status of the Liar is that of not being determinately true. If so,
+then the Kripke paracomplete language cannot express this concept of
+determinateness. Some approaches taking paracomplete ideas on board
+have sought to supplement the Kripke approach by adding notions of
+determinate truth. McGee (1991) does so in a basically classical
+setting. In a non-classical, paracomplete setting, Field (2008)
+supplements the basic paracomplete approach with infinitely many
+different ‘determinately’ operators, each defined in terms
+of Field’s ‘suitable conditional’, and each giving a
+different (stronger) notion of ‘truth’. (See also some of
+the papers in Beall (ed.) 2008.)
+
+It is often argued in favor of paraconsistent approaches that they
+have no trouble ‘characterizing’ the status of Liars:
+they’re true and false (i.e., true and have true negation).
+LP theories can state this. On the other hand, some such as
+Littmann and Simmons (2004) and S. Shapiro (2004), have thought that
+there is a dual problem: namely, characterizing ‘normal’
+sentences that are not both true and false. (Some put this alleged
+problem as the problem of characterizing being just true.)
+Whether this is a problem is something we leave open. (For some
+discussion, see Field 2008 and Priest 2006.)
+
+One other issue that arises here is that of so-called ‘revenge
+paradoxes’. We can illustrate this with the simple-falsity Liar.
+Suppose one starts with this as the bench-mark Liar paradox, and
+proposes a simple solution that rejects bivalence. In response one is
+shown the simple-untruth Liar, which undercuts the simple solution.
+This is the pattern of ‘revenge’, where a solution to the
+paradox is rejected on the basis of what might be taken to be a
+slightly modified form of the paradox. Revenge paradoxes for
+paracomplete solutions are often proposed: many points where the
+paracomplete language fails to express some semantic concept offer
+ways to construct a revenge problems. Failing to correctly state the
+status of the simple-untruth Liar is one example. Another example
+involves the notion of determinateness. If we take the determinateness
+route, and assign the Liar sentence the status of not being
+determinately true, then one can construct a revenge problem via a
+sentence which says of itself that it is not determinately true.
+
+In a similar vein, it is sometimes argued that paraconsistent
+approaches face a kind of revenge problem, as they have to treat the
+Curry paradox we discussed in
+ section 1.4
+ separately from the Liar. This is a somewhat difficult technical
+issue, as it depends on the nature of the conditional used to
+formulate the Curry sentence. If that conditional obeys the detachment
+property, then it cannot be a glut, as the Liar is in paraconsistent
+settings. But, whether that is the correct approach to the conditional
+has been controversial. For more discussion, see Beall (2014, 2015).
+
+
+We have seen at least some approaches (e.g., McGee 1991; in some
+respects, T. Parsons 1984 and Soames 1999) reject the revenge problem,
+while some seek to solve it by additional apparatus (e.g., Field
+2008). As we discuss further in
+ §4.3,
+ contextualist views such as those of Burge (1979), Glanzberg (2004a), and C. Parsons (1974) tend to see revenge not as a separate
+problem, but as the core Liar phenomenon. For more discussion about
+revenge and its nature, see the papers in Beall (ed.) (2008) and L.
+Shapiro (2006).
+4.2 Substructural logics
+
+There is another way to see the paradox as arising from mistaken
+assumptions built into standard logics. This way doesn’t see the
+trouble as attaching to any particular connective or piece of
+vocabulary, but instead as attaching to some of the structural
+rules that govern the consequence relation in question. These
+approaches, based on so-called substructural logics, fall
+into three main camps: the noncontractive, the nontransitive, and the
+nonreflexive. (There is a great deal more diversity among
+substructural logics than this suggests; in particular, many do not
+fall into any of these camps, or fall into more than one. But these
+are the three that seem to be best-suited for addressing the paradoxes
+we are concerned with here.)
+4.2.1 Noncontractive logics
+
+The best-developed substructural approach to paradoxes works by
+attacking the structural rule of contraction. Contraction is
+the principle that tells us that whenever Γ,A,A⊢BΓ,A,A⊢B\Gamma , A, A \vdash B,
+then Γ,A⊢BΓ,A⊢B\Gamma , A \vdash B; that is, it is the principle that tells
+us that we can use premises repeatedly while only counting them once.
+Returning to the argument given in
+ section 2,
+ we can see that in two cases, an assumption is used twice in reaching
+a conclusion: assumption 2a is used twice on the way to 2d, and
+assumption 3a is used twice on the way to 3d. As we presented the
+argument, we did not call attention to this feature, but it is one
+place a noncontractive approach will focus.
+
+The details of the response will depend on how the connectives we have
+written as ‘∨∨\vee’ and ‘∧∧\wedge’ are
+interpreted; in the absence of contraction, each of conjunction and
+disjunction comes in ‘additive’ and
+‘multiplicative’ flavours, and different proponents of
+noncontractive views differ in which of these they acknowledge. The
+difference between additive and multiplicative conjunction is this: an
+additive conjunction can do the work that either of its
+conjuncts can do, while a multiplicative conjunction can do the work
+that both of its conjuncts can do together. In the presence
+of contraction, the additive conjunction suffices for the
+multiplicative: it can be used once to fill the role of the first
+conjunct and again to fill the role of the second conjunct.
+Contraction allows these two uses to count as one. Without
+contraction, though, the additive conjunction need not suffice for the
+multiplicative. (The multiplicative conjunction suffices for the
+additive in the presence of a structural rule called weakening, not
+otherwise discussed in this article.) The situation for disjunction is
+dual: in the presence of contraction, the additive disjunction
+suffices for the multiplicative, but it need not otherwise. 
+
+The double use pointed to above will loom largest if these connectives
+are read multiplicatively: if 2d really is to do the work of ¬Tr(┌L┐)¬Tr⁡(⌜L⌝)\neg
+\Tr(\left\ulcorner L\right\urcorner) and Tr(┌L┐)Tr⁡(⌜L⌝)\Tr(\left\ulcorner
+L\right\urcorner) together, then it really does use two
+copies of 2a, one for each conjunct. On an additive reading of 2d and
+3d, this seeming double use need not be troubling, since 2d itself
+only needs to do the work of one of its conjuncts. Although this can
+be either one, whichever conjunct it is, a single use of 2a will
+suffice. On this additive reading, it is the principles LEM and EFQ
+that come into question; for example, with ∧∧\wedge read additively
+it takes two occurrences of the same contradiction to entail
+an arbitrary sentence (since both conjuncts must be used), while the
+derivation above only yields one. (The situation for 3d and 3a is
+similar, in either case.) We do not here consider further details; for
+more on these choices and noncontractive approaches in general, see
+Beall and Murzi (2013), Grishin (1982), Petersen (2000), Restall
+(1994), Ripley (2015), L. Shapiro (2011a, 2015), and Zardini (2011,
+2013). (Some of these focus on set-theoretic paradoxes rather than
+truth-theoretic paradoxes, but many of the issues are parallel. See
+also the entry on
+ Russell’s paradox.)
+4.2.2 Nontransitive logics
+
+Another kind of substructural approach works by attacking various
+structural rules associated with transitivity of consequence.
+The best-known of these rules is the rule of cut, which
+allows us to move from Γ⊢BΓ⊢B\Gamma \vdash B and Δ,B⊢CΔ,B⊢C\Delta , B \vdash C
+to Δ,Γ⊢CΔ,Γ⊢C\Delta , \Gamma \vdash C. But it can also be worth considering
+other transitivity-related properties, such as the one called
+simple transitivity in Weir 2015, proceeding from A⊢BA⊢BA \vdash
+B and B⊢CB⊢CB \vdash C to A⊢CA⊢CA \vdash C. (That is, simple
+transitivity is the special case of cut where ΔΔ\Delta is empty and
+ΓΓ\Gamma is a singleton.)
+
+Some nontransitive approaches can be understood through the same
+three-valued models as are used for K33_3 and LP (again, we refer
+you to the entry on
+ many-valued logic
+ for details). The difference is in how consequence is defined on
+these models. In all cases, consequence amounts to the absence of a
+countermodel, but there are different understandings available of what
+a model has to be like to be a countermodel to an argument. Depending
+on what understanding of countermodel is adopted, the very same
+three-valued models can give rise to the paracomplete logic K33_3,
+the paraconsistent logic LP, a paracomplete and paraconsistent logic
+sometimes called S33_3 or FDRM, or—our present topic—two
+different logics that include counterexamples to the rule of cut, and
+have come to be known as nontransitive. 
+
+One kind of approach without cut is developed and defended in Weir
+2005, 2015 (and for naive set theory in Weir 1998, 1999), and is there
+dubbed ‘neoclassical’. On this approach, the third value
+in the models is taken to be neither true nor false, and a
+countermodel to an argument from ΓΓ\Gamma to BBB must either: make
+every sentence in ΓΓ\Gamma true and BBB untrue, or else make BBB
+false and every sentence but one in ΓΓ\Gamma true, while
+making that remaining sentence in ΓΓ\Gamma unfalse. The motivating
+idea is that valid arguments must preserve truth, and must also
+preserve falsity backwards in a certain sense: if a valid argument has
+all its premises but one true and its conclusion false, then the
+remaining premise must be false. This allows for counterexamples to
+cut, but not to simple transitivity, and allows for consistency to be
+maintained. The resulting logic is weaker than classical logic. In our
+version of the liar paradox, the trouble is at LEM: Weir’s
+approach allows for counterexamples to excluded middle.
+
+A different kind of approach without cut is developed and explored in
+Barrio et al. 2015; Cobreros et al. 2013, 2015; Fjellstad 2016; and
+Ripley 2013a, 2015. On this approach, a countermodel to an argument
+cannot assign the third value to any sentence that occurs in the
+argument. That is, a countermodel to an argument from ΓΓ\Gamma to
+BBB must do just what a classical countermodel does with regards to
+the argument. If it assigns the third value to any sentence at all,
+that sentence cannot be in ΓΓ\Gamma and it cannot be BBB. This
+allows for counterexamples to cut, and unlike Weir’s approach,
+it also allows for counterexamples to simple transitivity. It also has
+the curious feature that every argument valid in classical logic
+remains valid. That is, all the counterexamples to cut and simple
+transitivity involve appeal to capture, release, or some other special
+behaviour of the truth predicate. Despite this classical flavour,
+these approaches are also dialetheist; the claim that the liar
+sentence is both true and not true turns out to be a theorem. Such a
+claim is forced to take the third value, and so there can be no
+countermodel to any argument involving it.
+
+Perhaps because of the importance of the rule of cut in proof theory,
+nontransitive approaches are often studied via proof systems rather
+than via models. The essential use of transitivity properties in
+paradoxical derivations was noted in Tennant 1982; an approach to
+paradoxes that rejects both cut and simple transitivity in a general
+setting can be found in Hallnäs 1991; Hallnäs and
+Schroeder-Heister 1991; and Schroeder-Heister 2004. There are helpful
+philosophical remarks on cut in Schroeder-Heister 1992, which also
+notes some relations between noncontractive and nontransitive
+approaches.
+4.2.3 Nonreflexive logics
+A third possibility for a substructural approach to
+paradoxes comes from attacking reflexivity, the principle
+that every sentence entails itself. There is a close analogy between
+reflexivity and transitivity, as explained in Frankowski 2004; Girard
+et al. 1989 (p.28); and Ripley 2012, so this kind of approach ends up
+having commonalities with the nontransitive family. Nonreflexive
+approaches to paradoxes have so far been less-explored, but seem to be
+a promising direction for further work; see French (2016) and Meadows
+(2014) for more. See also Malinowski (1990) for general work on
+nonreflexive logics.
+4.3 Classical logic
+
+We have now seen a range of options for responding to the Liar paradox
+by reconsidering basic logic. There are also a number of approaches
+that leave classical logic fixed, and try to find other ways of
+defusing the paradox.
+
+One hallmark of most of these approaches is a willingness to somehow
+restrict the range of application of capture and release, to
+block the paradoxical reasoning. This is antithetical to the kind of
+deflationist view of truth we discussed in
+ §4.1,
+ but it is consistent with another view of truth. This other view
+takes the main feature of truth to be that it reports a non-trivial
+semantic property of sentences (e.g., corresponding with a fact in the
+world, or having a value in a model). Many approaches within classical
+logic embody the idea that a proper understanding of this feature
+allows for restricted forms of capture and release, and this in turn
+allows the paradox to be blocked, without any departure from classical
+logic.
+
+We will consider a number of important approaches to the paradox
+within classical logic, most of which embody this idea in some form or
+another.
+4.3.1 Tarski’s hierarchy of languages
+
+Traditionally, the main avenue for resolving the paradox within
+classical logic is Tarski’s hierarchy of languages and
+metalanguages. Tarski concluded from the paradox that no language
+could contain its own truth predicate (in his terminology, no language
+can be ‘semantically closed’).
+
+Instead, Tarski proposed that the truth predicate for a language is to
+be found only in an expanded metalanguage. For instance, one starts
+with an interpreted language L0L0\mathcal{L}_0 that contains no truth
+predicate. One then ‘steps up’ to an expanded language
+L1L1\mathcal{L}_1, which contains a truth predicate, but one that only
+applies to sentences of L0L0\mathcal{L}_0. With this restriction, it
+is easy enough to define a truth predicate which completely accurately
+states the truth values of every sentence in L0L0\mathcal{L}_0, obeys
+capture and release, and yields no paradox. Of course, this process
+does not stop. If we want to describe truth in L1L1\mathcal{L}_1, we
+need to step up to L2L2\mathcal{L}_2 to get a truth predicate for
+L1L1\mathcal{L}_1. And so on. The process goes on indefinitely. At
+each stage, a new classical interpreted language is produced, which
+expresses truth for languages below it. (For more on the mathematics
+of this sort of hierarchy of languages, see Halbach (1997).)
+
+Why is there no Liar paradox in this sort of hierarchy of languages?
+Because the restriction that no truth predicate can apply to sentences
+of its own language is enforced as a syntactic one. Any sentence LLL
+equivalent to ¬Tr(┌L┐)¬Tr⁡(⌜L⌝)\neg \Tr(\left\ulcorner L\right\urcorner) is not
+syntactically well-formed. There is no Liar paradox because there is
+no Liar sentence. See the entries on
+ Tarski
+ and
+ Tarski’s truth definitions
+ for more on Tarski’s views of truth.
+
+Tarski’s hierarchical approach has been subject to a number of
+criticisms. One is that in light of naturally occurring cases of
+self-reference, his ruling Liar sentences syntactically not
+well-formed seems overly drastic. Though Tarski himself was more
+concerned to resolve the Liar for formal languages, his solution seems
+implausible as applied to many naturally occurring uses of
+‘true’. Another important problem was highlighted by
+Kripke (1975). As Kripke notes, any syntactically fixed set of levels
+will make it extremely hard, if not impossible, to place various
+non-paradoxical claims within the hierarchy. For instance, if Jc says
+that everything Michael says is true, the claim has to be
+made from a level of the hierarchy higher than everything Michael
+says. But if among the things Michael says is that everything Jc
+says is true, Michael’s claims must be at a higher level
+than all of Jc’s claims. Thus, some of Michael’s claims
+must be higher than some of Jc’s, and vice versa. This
+is impossible. It is also difficult to explain what level of the
+hierarchy an utterance winds up at when it can be coherently assigned
+a level. What makes it such that it involves truth at one level rather
+than another?
+
+Another challenge Tarski’s hierarchy faces is explaining why we
+cannot just define truth for the whole hierarchy, by quantifying over
+levels. We would thus have a predicate like ‘true at some
+level’. If such predicates are allowed, we are back in paradox,
+so defenders of the Tarskian hierarchy must say they are not possible.
+Explaining why is a problem for all hierarchical views. (See Glanzberg
+(2015) for further discussion.)
+
+In light of these sorts of problems, many have concluded that
+Tarski’s hierarchy of languages and metalanguages buys a
+solution to the Liar paradox at the cost of implausible
+restrictiveness.
+4.3.2 The closed-off Kripke construction
+
+In light of these sorts of criticisms of Tarski’s theory, a
+number of approaches to the Liar have sought to retain classical
+logic, but have some degree of self-applicability for the truth
+predicate. We know from the reasoning in
+ §2.3
+ that some restrictions on capture and release will then be required.
+One goal has been to work out which ones are well-motivated, and how
+to implement them.
+
+One way to do this was suggested by Kripke himself. Rather than see
+the Kripke apparatus we reviewed briefly in
+ §4.1.1
+ as part of a non-classical logical approach, one can see it as an
+intermediate step towards building a classical interpretation of a
+self-applicative TrTr\Tr.
+
+Recall that the Kripke construction starts with a classical language
+L0L0\mathcal{L}_0 with no truth predicate. It passes to an expanded
+language L+0L0+\mathcal{L}^{+}_0, but unlike a Tarskian metalanguage,
+this language contains a truth predicate TrTr\Tr that applies to all
+of L+0L0+\mathcal{L}^{+}_0. Kripke shows how to build a partial
+interpretation of TrTr\Tr, providing an extension EE\mathcal{E} and
+an anti-extension AA\mathcal{A}. But one can then simply consider
+the classical model ⟨M0,E⟩⟨M0,E⟩\langle
+\mathcal{M}_0,\mathcal{E}\rangle, using only the extension. This is
+the ‘closed-off’ construction, as the gap between
+extension and anti-extension is closed off by throwing everything in
+the gap into the false category of a classical model.
+
+We know this interpretation cannot make true all of capture and
+release (nor the full intersubstitutability of AAA and
+Tr(┌A┐))Tr⁡(⌜A⌝))\Tr(\left\ulcorner A\right\urcorner)). But it does make a
+restricted form true. The following holds in the closed-off model:
+
+[Tr(┌A┐)∨Tr(┌¬A┐)]→[Tr(┌A┐)↔A].[Tr⁡(⌜A⌝)∨Tr⁡(⌜¬A⌝)]→[Tr⁡(⌜A⌝)↔A]. [\Tr(\left\ulcorner A\right\urcorner) \vee \Tr(\left\ulcorner \neg
+A\right\urcorner)] \rightarrow[\Tr(\left\ulcorner A\right\urcorner)
+\leftrightarrow A].
+
+ This tells us that capture and release (in the form of the
+T-schema) holds for sentences that are well-behaved, in the sense of
+satisfying Tr(┌A┐)∨Tr(┌¬A┐)Tr⁡(⌜A⌝)∨Tr⁡(⌜¬A⌝)\Tr(\left\ulcorner A\right\urcorner) \vee
+\Tr(\left\ulcorner \neg A\right\urcorner).
+
+
+What happens to the Liar sentence on this approach? As in the
+three-valued case, the Liar is interpreted as falling within the gap.
+LLL is neither in EE\mathcal{E} nor A.LA.L\mathcal{A}. L thus falls
+outside of the domain where TrTr\Tr is interpreted as well-behaved.
+Because the situation is classical, and ┌L┐∉E⌜L⌝∉E\left\ulcorner
+L\right\urcorner\not\in \mathcal{E}, we know that ¬Tr(┌L┐)¬Tr⁡(⌜L⌝)\neg
+\Tr(\left\ulcorner L\right\urcorner) is true in the closed-off
+model; likewise, so is ¬Tr(┌¬L┐)¬Tr⁡(⌜¬L⌝)\neg \Tr(\left\ulcorner \neg
+L\right\urcorner).
+
+On well-behaved sentences, we have the fixed point property that AAA
+and Tr(┌A┐)Tr⁡(⌜A⌝)\Tr(\left\ulcorner A\right\urcorner) have the same truth
+value, and so the semantics of L+0L0+\mathcal{L}^{+}_0 and the semantics
+it assigns to TrTr\Tr correspond exactly. On pathological sentences
+like LLL, they do not, and indeed, cannot, on pain of
+triviality.
+
+In a point related to the closed-off construction, it was observed by
+Feferman (1984) that if we are careful about negation, we can dispense
+with AA\mathcal{A} altogether in the Kripke construction. Thus, the
+construction can be done without any implicit appeal to many-valued
+logic. Related ways of thinking about Kripke’s construction are
+discussed by McGee (1991).
+4.3.3 Determinateness revisited
+
+In
+ §4.1.3
+ we noted that paracomplete approaches to the paradox can be
+vulnerable to ‘revenge paradoxes’ based on some idea of
+indeterminate truth or lacking a truth value. Related issue bear in
+the classical case. We will discuss a few in turn.
+Grounding
+
+The closed-off Kripke construction can help fill in the idea of a
+determinately operator discussed in
+ §4.1.3.
+ Instead of an operator, it allows us to define a predicate
+D(┌A┐)D(⌜A⌝)D(\left\ulcorner A\right\urcorner) by Tr(┌A┐)∨Tr(┌¬A┐).DTr⁡(⌜A⌝)∨Tr⁡(⌜¬A⌝).D\Tr(\left\ulcorner
+A\right\urcorner) \vee \Tr(\left\ulcorner \neg A\right\urcorner). D
+represents ‘determinately’ in the sense of applying to
+sentences that have a truth value according to TrTr\Tr, as it were,
+‘determined’ by the model produced by the Kripke
+construction. It also, as we observed, applies to all the sentences
+which are well-behaved in the sense of obeying the T-schema (or
+capture and release).
+
+Formally, the sentences to which DDD applies in the model generated
+by the Kripke construction are those which fall in EE\mathcal{E} or
+have their negations fall in EE\mathcal{E} (equivalently fall in
+A)A)\mathcal{A}). Kripke labeled this being
+ grounded.[11]
+
+It has often been noted that there is also a more informal notion of
+determinateness or grounding, to which the formal notion expressed by
+DDD at least roughly corresponds (cf. Herzberger 1970). The idea is
+that the determinate sentences are the ones with well-defined semantic
+properties. Where we have no such well-defined semantic properties, we
+should not expect the truth predicate to report anything well-behaved,
+nor should we expect properties like capture and release to hold.
+Kripke’s construction builds up EE\mathcal{E} in stages,
+starting with sentence with no semantic terms, and adding semantic
+complexity at each stage. One reaches EE\mathcal{E} at the limit of
+this process, which allows us to think of EE\mathcal{E} as
+indicating the limit of where semantic values are assigned by a
+well-defined process. Thus, the formal notion of grounding provided by
+DDD is sometimes suggested to reflect the extent to which sentences
+have well-defined semantic properties.
+
+The notion of grounding has spawned its own literature, with Leitgeb
+(2005) a key impetus. See also Bonnay and van Vugt (2015), Meadows
+(2013), and Schindler (2014).
+McGee on truth and definite truth
+
+Another view which makes use of a form of determinateness is advocated
+by McGee (1991). McGee’s theory, like many we have surveyed
+here, is rich in complexity to which we cannot do justice. The theory
+has many components, including a mathematically sophisticated
+approaches to truth related to the Kripkean ideas we have been
+discussing, in a setting which holds to classical logic.
+
+McGee relies on two notions: truth and definite truth. Definite truth
+is a form of the idea we glossed as determinateness. But, McGee
+describes this idea using some very sophisticated logical techniques.
+We will mention them briefly, for those familiar with the technical
+background. Formally, for McGee, definite truth is identified with
+provability in a partially interpreted language, using an extension of
+classical logic which takes in facts about the partial interpretation
+known as AA\mathcal{A}-logic. It is thus different from the
+grounding notion we just discussed. McGee treats definitely as a
+predicate, on par with the truth predicate, and not as an
+operator on sentences as some developments do. With the right notion
+of definite truth, McGee shows that a partially interpreted language
+containing its own truth predicate can meet restricted forms of
+capture and release put in terms of definite truth. Where DefDef\Def is
+the definiteness predicate, McGee show how to link truth and definite
+truth, by showing how to validate:
+Def(┌A┐)Def(┌¬A┐) iff Def(┌Tr(┌A┐)┐) iff Def(┌¬Tr(┌A┐)┐)Def⁡(⌜A⌝) iff Def⁡(⌜Tr⁡(⌜A⌝)⌝)Def⁡(⌜¬A⌝) iff Def⁡(⌜¬Tr⁡(⌜A⌝)⌝)
+\begin{align}
+\Def  (\left\ulcorner A\right\urcorner)
+&amp; \textrm{ iff }
+\Def   (\left\ulcorner \Tr(\left\ulcorner A\right\urcorner)\right\urcorner)\\
+\Def   (\left\ulcorner \neg A\right\urcorner)
+&amp; \textrm{ iff }
+\Def  (\left\ulcorner \neg \Tr(\left\ulcorner A\right\urcorner)\right\urcorner)
+\end{align}
+
+
+Indeed, McGee shows that these conditions can be met within a theory
+of both truth and definite truth, where truth meets appropriate forms
+of capture and release, and also where a formal statement of bivalence
+for truth comes out definitely true. McGee thus provides a theory
+which has strongly self-applicative truth and definite truth, within a
+classical setting.
+
+Though truth may satisfy the formal property of bivalence, it is
+crucial to McGee’s approach that definite truth is an open-ended
+notion, which may be strengthened (formally, by strengthening a
+partially interpreted language). Thus, definite truth meets weaker
+forms of capture and release than truth itself. (Some instances of
+Def(┌A┐)→ADef⁡(⌜A⌝)→A\Def(\left\ulcorner A\right\urcorner) \rightarrow A fail to be
+definitely true, according to McGee.) Furthermore, McGee suggests that
+this behavior of truth and definite truth makes truth a vague
+predicate. It remains disputed whether McGee’s theory avoids the
+kind of revenge problems that plague other Kripkean approaches.
+4.3.4 Other classical approaches
+
+We have now surveyed some important representatives of approaches to
+resolving the Liar within classical logic. There are a number of
+others, many of them involving some complex mathematics. We will pause
+to mention a few of the more important of these, though given the
+mathematical complexity, we will only gesture towards them.
+Axiomatic theories of truth
+
+There is an important strand of work in proof theory, which has sought
+to develop axiomatic theories of self-applicative truth in classical
+logic, including work of Cantini (1996), Feferman (1984, 1991),
+Friedman and Sheard (1987), Halbach (2011), and Horsten (2011). The
+idea is to find ways of expressing rules like capture and release that
+retain consistency. Options include more care about how
+proof-theoretic rules of inference are formulated, and more care about
+formulating restricted rules. The main ideas are discussed in the
+entry on
+ axiomatic theories of truth,
+ to which we will leave the details.
+Truth and inductive definitions
+
+Kripke’s work on truth was developed in conjunction with some
+important ideas about inductive definitions (as we see, for instance,
+in the later parts of Kripke 1975). These connections are explored
+further in work of Burgess (1986) and McGee (1991). We also pause to
+mention work of Aczel (1980) combining ideas about inductive
+definitions and the lambda calculus.
+4.4 Contextualist approaches
+
+Another family of proposed solutions to the Liar are contextualist
+solutions. These also make use of classical logic, but base their
+solutions primarily on some ideas from the philosophy of language.
+They take the basic lesson of the Liar to be that truth predicates
+show some form of context dependence, even in otherwise
+non-context-dependent fragments of a language. They seek to explain
+how this can be so, and rely on it to resolve the problems faced by
+the Liar.
+
+Contextualist theories share with a number of approaches we have
+already seen the idea that there is something indeterminate or
+semantically not well-formed about our Liar sentence LLL. But,
+contextualist views give a special role to issues of
+‘revenge’ and lack of expressive power.
+4.4.1 Instability and revenge
+
+One way of thinking about why the truth predicate is not well-behaved
+on the Liar sentence is that there is not really a well-defined truth
+bearer provided by the Liar sentence. To make this vivid (as discussed
+by C. Parsons (1974)), suppose that
+truth bearers are propositions expressed by sentences in contexts, and
+that the Liar sentence fails to express a proposition. This is the
+beginnings of an account of how the Liar winds up ungrounded or in
+some sense indeterminate. At least, we should not expect TrTr\Tr to be
+well-behaved where sentences fail to express propositions.
+
+But, it is an unstable proposal. We can reason that if the Liar
+sentence fails to express a proposition, it fails to express a true
+proposition. In the manner of a revenge paradox, if our Liar sentence
+had originally said ‘this sentence does not express a true
+proposition’, then we would have our Liar sentence back. And, we
+have shown that this sentence says something true, and so expresses a
+true proposition. Thus, from the assumption that the Liar sentence is
+indeterminate or lacks semantic status, we reason that it must have
+proper semantic status, and indeed say something true. We are hence
+back in paradox.
+
+Contextualists do not see this as a new ‘revenge’ paradox,
+but the basic problem posed by the Liar. First of all, in a setting
+where sentences are context dependent, the natural formulation of a
+truth claim is always in terms of expressing a true proposition, or
+some related semantically careful application of the truth predicate.
+But more importantly, to the contextualist, the main issue behind the
+Liar is embodied in the reasoning on display here. It involves two key
+steps. First, assigning the Liar semantically defective
+status—failing to express a proposition or being somehow
+indeterminate. Second, concluding from the first step that the Liar
+must be true—and so not indeterminate or failing to express a
+proposition—after all. Both steps appear to be the result of
+sound reasoning, and so the conclusions reached at both must be true.
+The main problem of the Liar, according to a contextualist, is to
+explain how this can be, and how the second step can be
+non-paradoxical. (Such reasoning is explored by Glanzberg (2004c) and C. Parsons (1974). For a critical discussion, see Gauker
+(2006).)
+
+Thus, contextualists seek to explain how the Liar sentence can have
+unstable semantic status, switching from defective to non-defective in
+the course of this sort of inference. They do so by appealing to the
+role of context in fixing the semantic status of sentences.
+Sentences can have different semantic status in different contexts.
+Thus, to contextualists, there must be some non-trivial effect of
+context involved in the Liar sentence, and more generally, in
+predication of truth.
+4.4.2 Contextual parameters on truth predicates
+
+One prominent contextualist approach, advocated by Burge (1979) and
+developed by Koons (1992) and Simmons (1993), starts with the idea
+that the Tarskian hierarchy itself offers a way to see the truth
+predicate as context dependent. Tarski’s hierarchy postulates a
+hierarchy of truth predicates TriTri\Tr_i. What if iii is not merely a
+marker of level in a hierarchy, but a genuine contextual parameter? If
+so, then the Liar sentence is in fact context-dependent: it has the
+form ¬Tri(┌L┐)¬Tri⁡(⌜L⌝)\neg \Tr_i (\left\ulcorner L\right\urcorner), where iii is
+set by context. Context then sets the level of the truth
+predicate.
+
+This idea can be seen as an improvement on the original Tarskian
+approach in several respects. First, once we have a contextual
+parameter, the need to insist that Liar sentences are never
+well-formed disappears. Hence, we can think of each TriTri\Tr_i as
+including some limited range of applicability to sentences of its own
+language. Using the Kripkean techniques likes the closed-off
+construction we reviewed above, predicates like TriTri\Tr_i can be
+constructed which have as much self-applicability as Kripke’s
+own. (Burge 1979 and the postscript to C. Parsons 1974 consider
+briefly how Kripkean techniques could be applied in this setting.
+Though he works in a very different setting, ideas of Gaifman (1988,
+1992) can be construed as showing how even more subtle ways of
+interpreting a context-dependent truth predicate can be
+developed.)
+
+With suitable care, other problems for the Tarskian hierarchy can be
+avoided as well. Burge proposes that the parameter iii in TriTri\Tr_i
+is set by a Gricean pragmatic process. In effect, speakers implicate
+that iii is to be set to a level for which the discourse they are in
+can be coherently interpreted (with a maximal coherent extension for
+Tri)Tri)\Tr_i). Thus, truth does indeed find its own level, and so
+Kripke’s objection about how to fix levels for non-paradoxical
+sentences may be countered.
+
+This approach gives substance to the idea that the Liar sentence is
+context dependent. Any sentence containing TriTri\Tr_i will be context
+dependent, inheriting a contextual parameter along the way. This
+offers a way to make sense of the arguments for the instability of the
+semantic status of LLL that motivated contextualism. In an initial
+context, we fix some level iii. This is the level at which LLL is
+interpreted. Call this interpretation Li.LiLi.LiL_i . L_i says ¬Tri(┌Li┐)¬Tri⁡(⌜Li⌝)\neg \Tr_i
+(\left\ulcorner L_{i}\right\urcorner). By the usual Liar reasoning,
+we show that LiLiL_i must lack determinate semantic status—or
+fail to express a proposition. As we discussed, we then reason that
+LLL must come out true. According to the contextualist view at hand,
+this is the claim that LiLiL_i is true according to some other
+context, where a wider truth predicate is in play. This amounts to
+being true at some higher level of the hierarchy. We can conclude, for
+instance, that the Liar sentence as it was used at level iii is true
+according to a wider level k>ik>ik \gt i. Hence, Trk(┌Li┐)Trk⁡(⌜Li⌝)\Tr_k (\left\ulcorner
+L_{i}\right\urcorner), where k>ik>ik \gt i.
+
+This form of contextualism thus maintains that once we see the
+context-dependent behavior of TriTri\Tr_i, we can make good sense of the
+instability of LLL. This can be seen as an improvement on both the
+Tarskian view, and embodying some of the techniques of classical logic
+we reviewed in
+ §4.2.
+ Depending how the Burge view is spelled out technically, it will
+either have full capture and release at each level, or capture and
+release with the same restrictions as the closed-off Kripke
+construction.
+
+The view that posits contextual parameters on the truth predicate does
+face a number of questions. For instance, it is fair to ask why we
+think the truth predicate really has a contextual parameter,
+especially if we mean a truth predicate like the one we use in natural
+language. Merely noting that such a parameter would avoid paradox does
+not show that it is present in natural language. Furthermore, whether
+it is acceptable to see truth as coming in levels at all,
+context-based or not, remains disputed. (Not all those who advocate
+contextual parameters on the truth predicate agree about the role of
+hierarchy. In particular, Simmons (1993) advocates a view he labels
+the ‘singularity theory’ which he proposes avoids outright
+hierarchical structures.) Finally, the Burgean appeal to Gricean
+mechanisms to set levels of truth has been challenged. (For instance,
+Gaifman (1992) asks if the Gricean process does any substantial work
+in Burge’s account.)
+
+Contextualist approaches come in many varieties, each of which makes
+use of slightly different apparatus. With contextualist theories the
+choice often turns on issues in philosophy of language as well as
+logic. We already noted a different way of developing contextualist
+ideas from Gaifman (1988, 1992). We will now briefly review a few more
+alternatives.
+4.4.3 Contextual effects on quantifier domains
+
+Another contextualist approach, stemming from work of C. Parsons
+(1974), seeks to build up the
+context dependence of the Liar sentence, and ultimately the context
+dependence of the truth predicate, from more basic components. The key
+is to see the context dependence of the Liar sentence as derived from
+the context dependence of quantifier domains.
+
+Quantification enters the picture when we think about how to account
+for predication of truth when sentences display context dependence. In
+such an environment, it does not make good sense to predicate truth of
+sentences directly. Not all sentences will have the right kind of
+determinate semantic properties to be truth bearers; or, as we have
+been putting it, not all sentences will express propositions. But
+then, to say that a sentence SSS is true in context ccc is to say
+that there is a proposition ppp expressed by SSS in
+ccc, and that proposition ppp is true.
+
+The current contextualist proposal starts with the observation that
+quantifiers in natural language typically have context-dependent
+domains of quantification. When we say ‘Everyone is here’,
+we do not mean everyone in the world, but everyone in some
+contextually provided subdomain. Context dependence enters the Liar,
+according to this contextualist view, in the contextual effects on the
+domain of the propositional quantifier ∃p∃p\exists p.
+
+In particular, this domain must expand in the course of the
+reasoning about the semantic status of the Liar. In the initial
+context, ∃p∃p\exists p must range over a small enough domain that
+there is no proposition for LLL to express. In the subsequent
+context, the domain expands to allow LLL to express some true
+proposition. Proposals for how this expansion happens, and how to
+model the truth predicate and the relation of expressing a proposition
+in the presence of the Liar, have been explored by Glanzberg (2001,
+2004a), building on work of C. Parsons (1974). Defenders of this
+approach argue that it does better in locating the locus of context
+dependence than the parameters on truth predicates view.
+4.4.4 Situation theory
+
+Another variant on the contextualist strategy for resolving the Liar,
+developed by Barwise and Etchemendy (1987) and Groeneveld (1994),
+relies on situation theory rather than quantifier domains to
+provide the locus of context dependence. Situation theory is a highly
+developed part of philosophy of language, so we shall again give only
+the roughest sketch of how their view works.
+
+A situation is a partial state the world might be in: something like
+aaa being FFF. Situations are classified by what are called
+situation types. A proposition involves classifying a situation as
+being of a situation type. Thus, a proposition {s{s\{s; [σ]}σ]}\sigma]\}
+tell us that situation sss is of type σσ\sigma. The situation
+sss here plays a number of roles, including that of providing a
+context.
+
+When it comes to the Liar, Barwise and Etchemendy construe Liar
+propositions as having the form fs={sfs={sf_s = \{s; [Tr,fsTr,fs\Tr,f_s; 0]}}\},
+relative to an initial situation sss. This is a proposition fsfsf_s
+which says of itself that its falsity is a fact that holds in sss.
+(In Barwise and Etchemendy’s notation, the 0 indicates falsity,
+so the situation type is that the state of affairs of the proposition
+being false holds. The proposition says this is a fact that holds in
+sss.) There is a sense in which this proposition cannot be
+expressed. In particular, the state of affairs ⟨Tr,fs⟨Tr,fs\langle \Tr,f_s;
+0⟩0⟩0\rangle cannot be in sss. (Actually, Barwise and Etchemendy say
+that the proposition is expressible, but give up on what they call the
+FFF-closure of sss. But there is a core observation in common
+between these two points, and the details do not matter for our
+purposes here.) There is then a distinct situation s′=s∪{⟨Tr,fss′=s∪{⟨Tr,fss' = s \cup
+\{\langle \Tr,f_s; 0⟩}0⟩}0\rangle \}, and the proposition {s′{s′\{s';
+[Tr,fsTr,fs\Tr,f_s; 0]}}\} relative to this new situation—this new
+‘context’—is true.
+
+This idea clearly has a lot in common with the restriction on
+quantifier domains view. In particular, both approaches seek to show
+how the domain of contents expressible in contexts can expand, to
+account for the instability of the Liar sentence. For discussion of
+relations between the situation-theoretic and quantifier domain
+approaches, see Glanzberg (2004a). Barwise and Etchemendy discuss
+relations between their situation-based and a more traditional
+approach in 1987 (Ch. 11). For a detailed match-up between the Barwise
+and Etchemendy framework and a Burgean framework of indexed truth
+predicates, see Koons (1992).
+4.4.5 Issues for contextualism
+
+It is a key challenge to contextualists to provide a full and
+well-motivated account of the source and nature of the shift in
+context involved in the Liar, though of course, many contextualists
+believe they have met this challenge. In favor of the contextualist
+approach is that it takes the revenge phenomenon to be the basic
+problem, and so is largely immune to the kinds of revenge issues that
+affect other approaches we have considered. But, it may be that there
+is another form of revenge which might be applied. To retain
+consistency, contextualists must apply restrictions on quantifiers to
+such quantifiers as ‘all contexts’. To achieve this, it
+must presumably be denied that there are any absolutely unrestricted
+quantifiers. Glanzberg (2004b, 2006) argues this is the correct
+conclusion, but it is highly controversial. For a survey of thinking
+about this, see the papers in Rayo and Uzquiano 2006.
+4.5 The revision theory
+
+Another approach to the Liar, advocated by Gupta (1982), Herzberger
+(1982), Gupta and Belnap (1993), and a number of others, is the
+revision theory of truth. This approach shares some features
+with the views we surveyed in
+ §4.3,
+ in that it takes classical logic for granted. We also believe it has
+an affinity with the views discussed in
+ §4.4,
+ as it rethinks some basic aspects of semantics. But it is a
+distinctive approach. We will sketch some of the fundamentals of this
+view. For a discussion of the foundations of the revision theory, and
+its relations to contextualism, see L. Shapiro (2006). More details,
+and more references, may be found in the entry on
+ the revision theory of truth.
+
+The revision theory of truth starts with the idea that we may take the
+T-schema at face value. Indeed, Gupta and Belnap (1993) take up a
+suggestion from Tarski (1944), that the instances of the T-schema can
+be seen as partial definitions of truth; presumably with all the
+instances together, for the right language or family of languages
+constituting a complete definition. At the same time, the revision
+theory holds fast to classical logic. Thus, we already know, we have
+the Liar paradox for any language with enough expressive resources to
+produce Liar sentences.
+
+In response, the revision theory proposes a different way of
+approaching the semantic properties of the truth predicate. In keeping
+with our practices here, we may begin with a classical model
+M0M0\mathcal{M}_0 for a language L0L0\mathcal{L}_0 without a truth
+predicate, and consider what happens when we add a truth predicate
+TrTr\Tr to form the extended language L+0L0+\mathcal{L}^{+}_0. This
+language has a full self-applicative truth predicate, and so can
+generate the Liar sentence LLL.
+
+To build a classical model for L+0L0+\mathcal{L}^{+}_0, we need an
+extension for TrTr\Tr. Let us pick a set: call it HHH for a
+hypothesis about what the extension of TrTr\Tr might be.
+HHH may be ∅∅\varnothing, it may be the entire domain of
+M0M0\mathcal{M}_0, or it may be anything else. It need not be a
+particularly good approximation of the semantic properties of
+TrTr\Tr.
+
+Even if it is not, ⟨M0,H⟩⟨M0,H⟩\langle \mathcal{M}_0,H\rangle still provides a
+classical model, in which we can interpret L+0L0+\mathcal{L}^{+}_0. With
+that, we can in effect apply the T-schema, relative to our hypothesis
+HHH, and see what we get. More precisely, we can let τ(H)={┌A┐|Aτ(H)={⌜A⌝|A\tau(H) =
+\{\left\ulcorner A\right\urcorner | A is true in ⟨M0,H⟩}.τ(H)⟨M0,H⟩}.τ(H)\langle
+\mathcal{M}_0,H\rangle \}. \tau(H) is generally a better hypothesis
+about what is true in our language than HHH might have been. At
+least, clearly, if HHH made foolish guesses about the truth of
+sentence of the truth-free fragment L0L0\mathcal{L}_0, they are
+corrected in τ(H)τ(H)\tau(H), which contains everything from
+L0L0\mathcal{L}_0 true in M0M0\mathcal{M}_0. Thus, ⟨M0,τ(H)⟩⟨M0,τ(H)⟩\langle
+\mathcal{M}_0,\tau(H)\rangle is generally a better model of
+L+0L0+\mathcal{L}^{+}_0 then ⟨M0,H⟩⟨M0,H⟩\langle \mathcal{M}_0,H\rangle.
+
+Better in many respects. But when it comes to paradoxical sentences
+like LLL, we see something different. As a starting hypothesis, let
+us consider H=∅H=∅H = \varnothing. Consider what happens to the truth of
+LLL as we apply ττ\tau:
+
+
+nnn
+truth value of LLL in ⟨M0,τn(∅)⟩⟨M0,τn(∅)⟩\langle \mathcal{M}_0,\tau^n
+(\varnothing)\rangle 
+
+0
+true 
+
+1
+false 
+
+2
+true 
+
+3
+false 
+
+4
+true 
+
+⋮⋮\vdots 
+⋮⋮\vdots  
+
+
+The Liar sentence never stabilizes under this process. We reach an
+alternation of truth values which will go on for ever. This shows,
+according the revision theory, that truth is a circular concept. As
+such, it does not have an extension in the ordinary sense. Rather, it
+has a rule for revising extensions, which never stabilizes.
+
+In the terminology of the revision theory, ττ\tau is a revision
+rule. It takes us from one hypothesis about the interpretation of
+TrTr\Tr to another. Sequences of values we generate by such revision
+rules, starting with a given initial hypothesis, are revision
+sequences. We leave to a more full presentation the important
+issue of the right way to define transfinite revision
+sequences. (See the entry on
+ revision theories of truth.)
+
+The characteristic property of paradoxical sentences like the Liar
+sentence is that they are unstable in revision sequences: there is no
+point in the sequence at which they reach a stable truth value. This
+classifies sentences as stably true, stably false, and unstable. The
+revision theory develops notions of consequence based on these, and
+related notions. See the entry on
+ revision theories of truth
+ for further exposition of this rich theory.
+4.6 Inconsistency views
+
+In
+ §2.3.3
+ we saw that the Liar paradox, in the presence of unrestricted capture
+and release and classical logic, leads to contradiction. So long as we
+have EFQ (as classical logic does), this results in triviality. Most
+of the proposed solutions we have considered (with the exception of
+the revision theory) try to avoid this result somehow, either by
+restricting capture and release or departing from classical logic. But
+there is another idea that has occasionally been argued, that the Liar
+paradox simply shows that the kinds of languages we speak, which
+contain their own truth predicates, are inconsistent.
+
+This is not an easy view to formulate. Though Tarski himself seemed to
+suggest something along these lines (for natural languages,
+specifically), it was argued by Herzberger (1967) that it is
+impossible to have an inconsistent language.
+
+In contrast, Eklund (2002) takes seriously the idea that our semantic
+intuitions, expressed, for instance, by unrestricted capture and
+release, really are inconsistent. Eklund grants that this does not
+make sense if these intuitions have their source simply in our grasp
+of the truth conditions of sentences. But he suggests an alternative
+picture of semantic competence which does make sense of it (closely
+related to conceptual role views of meaning). He suggests that we
+think of semantic competence in terms of a range of principles
+speakers are disposed to accept in virtue of knowing a language. Those
+principles may be inconsistent. But even so, they determine semantic
+values. Semantic values will be whatever comes closest to satisfying
+the principles—whatever makes them maximally correct—even
+if nothing can satisfy all of them due to an underlying
+inconsistency.
+
+Eklund thus supports an idea suggested by Chihara (1979).
+Chihara’s main aim is to provide what he calls a
+diagnosis of the paradox, which should explain why the
+paradox arises and why it appears compelling. But along the way, he
+suggests that the source of the paradox is our acceptance of the
+T-schema (by convention, he suggests), in spite of its
+inconsistency.
+
+A related, though distinct, view is defended by Patterson (2007,
+2009). Patterson argues that competence with a language puts one in a
+cognitive state relating to an inconsistent theory—one including
+the unrestricted T-schema and governed by classical logic. He goes on
+to explore how such a cognitive state could allow us to successfully
+communicate, in spite of relating us to a false theory.
+
+A different sort of inconsistency theory is advocated by Scharp
+(2013). Scharp argues that truth is an inconsistent concept, like the
+pre-relativistic concept of mass. As such, it is unsuitable for
+careful theorizing. What we need to do, according to Scharp, is
+replace the inconsistent concept of truth with a family of consistent
+concepts that work better. Scharp develops just such a family of
+concepts, and offers a theory of them.
+5. Concluding Remarks
+
+There is much more to say about the Liar paradox than we have covered
+here: there are more approaches to the Liar variants we have
+mentioned, and more related paradoxes like those of denotation,
+properties, etc. There are also more important technical results, and
+more important philosophical implications and applications. Our goal
+here has been to be more suggestive than exhaustive, and we hope to
+have given the reader an indication of what the Liar paradox is, and
+what its consequences might be.

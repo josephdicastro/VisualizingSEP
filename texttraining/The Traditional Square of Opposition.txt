@@ -1,0 +1,877 @@
+This entry traces the historical development of the Square of
+Opposition, a collection of logical relationships traditionally
+embodied in a square diagram. This body of doctrine provided a
+foundation for work in logic for over two millenia. For most of this
+history, logicians assumed that negative particular propositions
+(“Some S is not P”) are vacuously true
+if their subjects are empty. This validates the logical laws embodied
+in the diagram, and preserves the doctrine against modern
+criticisms. Certain additional principles
+(“contraposition” and “obversion”) were
+sometimes adopted along with the Square, and they genuinely yielded
+inconsistency. By the nineteenth century an inconsistent set of
+doctrines was widely adopted. Strawson’s 1952 attempt to rehabilitate
+the Square does not apply to the traditional doctrine; it does salvage
+the nineteenth century version but at the cost of yielding inferences
+that lead from truth to falsity when strung together.
+
+ 
+1. Introduction
+
+
+The doctrine of the square of opposition originated with Aristotle in
+the fourth century BC and has occurred in logic texts ever since.
+Although severely criticized in recent decades, it is still regularly
+referred to. The point of this entry is to trace its history from the
+vantage point of the early twenty-first century, along with closely
+related doctrines bearing on empty terms. 
+
+
+The square of opposition is a group of theses embodied in a diagram.
+The diagram is not essential to the theses; it is just a useful way to
+keep them straight. The theses concern logical relations among four
+logical forms:
+
+
+
+NAME
+FORM
+TITLE
+
+
+A
+Every S is P
+Universal Affirmative
+
+
+E
+No S is P
+Universal Negative
+
+
+I
+Some S is P
+Particular Affirmative
+
+
+O
+Some S is not P
+Particular Negative
+
+
+
+
+
+The diagram for the traditional square of opposition is: 
+
+
+
+The theses embodied in this diagram I call ‘SQUARE’.
+They are:
+
+SQUARE
+
+‘Every S is P’ and ‘Some
+S is not P’ are contradictories.
+
+
+‘No S is P’ and ‘Some
+S is P’ are contradictories.
+
+
+‘Every S is P’ and ‘No
+S is P’ are contraries.
+
+
+‘Some S is P’ and ‘Some
+S is not P’ are subcontraries.
+
+
+‘Some S is P’ is a subaltern of
+‘Every S is P’.
+
+
+‘Some S is not P’ is a
+subaltern of ‘No S is P’.
+
+
+
+These theses were supplemented with the following explanations: 
+
+Two propositions are contradictory iff they cannot both be true and
+they cannot both be false.
+
+
+Two propositions are contraries iff they cannot both be true but
+can both be false.
+
+
+Two propositions are subcontraries iff they cannot both be false
+but can both be true.
+
+
+A proposition is a subaltern of another iff it must be true if its
+superaltern is true, and the superaltern must be false if the subaltern
+is false.
+
+
+
+Probably nobody before the twentieth century ever held exactly these
+views without holding certain closely linked ones as well. The most
+common closely linked view that is associated with the traditional
+diagram is that the E and I
+propositions convert simply; that is, ‘No S is
+P’ is equivalent in truth value to ‘No P
+is S’, and ‘Some S is P’
+is equivalent in truth value to ‘Some P is
+S’. The traditional doctrine supplemented with simple
+conversion is a very natural view to discuss. It is Aristotle’s view,
+and it was widely endorsed (or at least not challenged) before the late 19th century. I call this
+total body of doctrine ‘[SQUARE]’:
+[SQUARE] =df SQUARE + “the E and I forms convert
+simply”
+
+
+where 
+A proposition converts simply iff it is
+necessarily equivalent in truth value to the proposition you get by
+interchanging its terms.
+
+
+So [SQUARE] includes the relations illustrated in the diagram plus the
+view that ‘No S is P’ is equivalent to
+‘No P is S’, and the view that
+‘Some S is P’ is equivalent to
+‘Some P is S’.
+1.1 The Modern Revision of the Square
+
+
+Most contemporary logic texts symbolize the traditional forms as
+follows:
+
+
+
+Every S is P
+∀x(Sx →
+Px)
+
+
+No S is P
+∀x(Sx →
+¬Px)
+
+
+Some S is P
+∃x(Sx &
+Px)
+
+
+Some S is not P
+∃x(Sx &
+¬Px)
+
+
+
+
+
+If this symbolization is adopted along with standard views about the
+logic of connectives and quantifiers, the relations embodied in the
+traditional square mostly disappear. The modern diagram looks like
+this:
+THE MODERN REVISED SQUARE: 
+
+
+
+
+
+
+This has too little structure to be particularly useful, and so it
+is not commonly used. According to Alonzo Church, this modern view
+probably originated sometime in the late nineteenth
+ century.[1]
+ This representation of the four forms is now generally accepted,
+except for qualms about the loss of subalternation in the left-hand
+column. Most English speakers tend to understand ‘Every
+S is P’ as requiring for its truth that there
+be some Ss, and if that requirement is imposed, then
+subalternation holds for affirmative propositions.  Every modern logic
+text must address the apparent implausibility of letting ‘Every
+S is P’ be true when there are no
+Ss. The common defense of this is usually that this is a
+logical notation devised for purposes of logic, and it does not claim
+to capture every nuance of the natural language forms that the symbols
+resemble. So perhaps
+ ‘∀x(Sx →
+Px)’ does fail to do complete justice to
+ordinary usage of ‘Every S is P’, but
+this is not a problem with the logic.  If you think that ‘Every
+S is P’ requires for its truth that there be
+Ss, then you can have that result simply and easily: just
+represent the recalcitrant uses of ‘Every S is
+P’ in symbolic notation by adding an extra conjunct to
+the symbolization, like this:
+ ∀x(Sx
+ → Px)
+ &
+ ∃xSx.
+
+
+This defense leaves logic intact and also meets the objection, which
+is not a logical objection, but merely a reservation about the
+representation of natural language.
+
+
+Authors typically go on to explain that we often wish to make
+generalizations in science when we are unsure of whether or not they
+have instances, and sometimes even when we know they do not, and they
+sometimes use this as a defense of symbolizing the A
+form so as to allow it to be vacuously true. This is an
+argument from convenience of notation, and does not bear on logical
+coherence.
+1.2 The Argument Against the Traditional Square
+
+
+Why does the traditional square need revising at all? The argument
+is a simple
+ one:[2]
+Suppose that ‘S’ is an empty term; it
+is true of nothing. Then the I form: ‘Some
+S is P’ is false. But then its contradictory
+E form: ‘No S is P’
+must be true. But then the subaltern O form:
+‘Some S is not P’ must be true. But that
+is wrong, since there aren’t any Ss.
+
+
+The puzzle about this argument is why the doctrine of the
+traditional square was maintained for well over 20 centuries in the
+face of this consideration. Were 20 centuries of logicians so obtuse as
+not to have noticed this apparently fatal flaw? Or is there some other
+explanation?
+
+
+One possibility is that logicians previous to the 20th century must
+have thought that no terms are empty. You see this view referred to
+frequently as one that others
+ held.[3]
+ But with a few very
+special exceptions (discussed below) I have been unable to find anyone
+who held such a view before the nineteenth century. Many authors do not
+discuss empty terms, but those who do typically take their presence for
+granted. Explicitly rejecting empty terms was never a mainstream
+option, even in the nineteenth century.
+
+
+Another possibility is that the particular I form
+might be true when its subject is empty.  This was a common view
+concerning indefinite propositions when they are read
+generically, such as ‘A dodo is a bird’, which (arguably)
+can be true now without there being any dodos now, because being a
+bird is part of the essence of being a dodo.  But the truth of such
+indefinite propositions with empty subjects does not bear on the forms
+of propositions that occur in the square.  For although the indefinite
+‘A dodo ate my lunch’ might be held to be equivalent to
+the particular proposition ‘Some dodo ate my lunch’,
+generic indefinites like ‘A dodo is a bird’, are quite
+different, and their semantics does not bear on the quantified
+sentences in the square of opposition. 
+
+In fact, the traditional doctrine of [SQUARE] is completely coherent
+in the presence of empty terms. This is because on the traditional
+interpretation, the O form lacks existential
+import. The O form is (vacuously) true if its subject
+term is empty, not false, and thus the logical interrelations of
+[SQUARE] are unobjectionable. In what follows, I trace the development
+of this view.
+2. Origin of the Square of Opposition
+
+ The doctrine that I call [SQUARE], occurs in Aristotle. It
+begins in De Interpretatione 6–7, which contains three
+claims: that A and O are
+contradictories, that E and I are
+contradictories, and that A and E
+are contraries (17b.17–26):
+I call an affirmation and a negation contradictory
+opposites when what one signifies universally the other signifies not
+universally, e.g. every man is white—not every man is white, no man
+is white—some man is white. But I call the universal affirmation and
+the universal negation contrary opposites, e.g. every man is just—no
+man is just. So these cannot be true together, but their opposites may
+both be true with respect to the same thing, e.g. not every man is
+white—some man is white.
+
+ This gives us the following fragment of the square: 
+
+
+
+But the rest is there by implication. For example, there is enough to
+show that I and O are subcontraries:
+they cannot both be false. For suppose that I is
+false. Then its contradictory, E, is true. So
+E’s contrary, A, is false. So
+A’s contradictory, O, is true. This
+refutes the possibility that I and O
+are both false, and thus fills in the bottom relation of
+subcontraries. Subalternation also follows. Suppose that the
+A form is true. Then its contrary E
+form must be false. But then the E form’s
+contradictory, I, must be true. Thus if the
+A form is true, so must be the I
+form. A parallel argument establishes subalternation from
+E to O as well. The result is
+SQUARE.
+
+
+In Prior Analytics I.2, 25a.1–25 we get the additional
+claims that the E and I propositions
+convert simply. Putting this together with the doctrine of De
+Interpretatione we have the full
+ [SQUARE].[4]
+2.1 The Diagram
+
+
+The diagram accompanying and illustrating the doctrine shows up
+already in the second century CE; Boethius incorporated it into his
+writing, and it passed down through the dark ages to the high medieval
+period, and from thence to today. Diagrams of this sort were popular
+among late classical and medieval authors, who used them for a variety
+of purposes. (Similar diagrams for modal propositions were especially
+popular.)
+2.2 Aristotle’s Formulation of the O Form
+
+
+Ackrill’s translation contains something a bit unexpected: Aristotle’s
+articulation of the O form is not the
+familiar ‘Some S is not P’ or one of its
+variants; it is rather ‘Not every S is
+P’. With this wording, Aristotle’s doctrine
+automatically escapes the modern criticism. (This holds for his views
+throughout De
+ Interpretatione.[5])
+ For assume again that ‘S’ is an empty term, and
+suppose that this makes the I form ‘Some
+S is P’ false. Its contradictory, the
+E form: ‘No S is P’, is
+thus true, and this entails the O form in Aristotle’s
+formulation: ‘Not every S is P’, which
+must therefore be true. When the O form was worded
+‘Some S is not P’ this bothered us, but
+with it worded ‘Not every S is P’ it
+seems plainly right. Recall that we are granting that ‘Every
+S is P’ has existential import, and so if
+‘S’ is empty the A form must be
+false. But then ‘Not every S is P’
+should be true, as Aristotle’s square requires.
+
+
+On this view affirmatives have existential import, and
+negatives do not—a point that became elevated to a general
+principle in late medieval
+ times.[6]
+ The ancients thus did
+not see the incoherence of the square as formulated by Aristotle
+because there was no incoherence to see.
+2.3 The Rewording of the O Form
+
+
+Aristotle’s work was made available to the Latin west principally via
+Boethius’s translations and commentaries, written a bit after 500
+CE. In his translation of De interpretatione, Boethius
+preserves Aristotle’s wording of the O form as “Not
+every man is white.” But when Boethius comments on this text he
+illustrates Aristotle’s doctrine with the now-famous diagram, and he
+uses the wording ‘Some man is not
+ just’.[7]
+ So this must have seemed
+to him to be a natural equivalent in Latin. It looks odd to us in
+English, but he wasn’t bothered by it.
+
+
+Early in the twelfth century Abelard objected to Boethius’s
+wording of the O
+ form,[8]
+ but Abelard’s writing was not widely influential, and except for him
+and some of his followers people regularly used ‘Some S
+is not P’ for the O form in the
+diagram that represents the square. Did they allow the
+O form to be vacuously true? Perhaps we can get some
+clues to how medieval writers interpreted these forms by looking at
+other doctrines they endorsed.  These are the theory of the syllogism
+and the doctrines of contraposition and obversion.
+3. The (Ir)relevance of Syllogistic
+
+
+One central concern of the Aristotelian tradition in logic is the
+theory of the categorical syllogism. This is the theory of
+two-premised arguments in which the premises and conclusion share
+three terms among them, with each proposition containing two of
+them. It is distinctive of this enterprise that everybody agrees on
+which syllogisms are valid.  The theory of the syllogism partly
+constrains the interpretation of the forms. For example, it determines
+that the A form has existential import, at least if
+the I form does. For one of the valid patterns (Darapti) is:
+
+Every C is B 
+Every C is A 
+So, some A is B
+
+
+
+This is invalid if the A form lacks existential
+import, and valid if it has existential import. It is held to be
+valid, and so we know how the A form is to be
+interpreted. One then naturally asks about the O
+form; what do the syllogisms tell us about it? The answer is that they
+tell us nothing.  This is because Aristotle did not discuss weakened
+forms of syllogisms, in which one concludes a particular proposition
+when one could already conclude the coresponding universal.  For
+example, he does not mention the form:
+
+No C is B 
+Every A is C 
+So, some A is not B
+
+
+
+If people had thoughtfully taken sides for or against the validity of
+this form, that would clearly be relevant to the understanding of
+the O form.  But the weakened forms were typically
+ignored.
+4. The Principles of Contraposition and Obversion
+
+
+One other piece of subject-matter bears on the interpretation of the O
+form. People were interested in Aristotle’s discussion of “infinite”
+ negation,[9]
+ which is the use of negation to form a term from a term instead of a
+proposition from a proposition. In modern English we use “non” for
+this; we make “non-horse,” which is true of exactly those things that
+are not horses. In medieval Latin “non” and “not” are the same word,
+and so the distinction required special discussion.  It became common
+to use infinite negation, and logicians pondered its logic. Some
+writers in the twelfth and thirteenth centuries adopted a principle
+called “conversion by contraposition.” It states that
+
+‘Every S is P’ is equivalent to
+‘Every non-P is non-S’
+
+
+‘Some S is not P’ is equivalent to
+‘Some non-P is not non-S’
+
+
+
+Unfortunately, this principle (which is not endorsed by
+ Aristotle[10])
+ conflicts with the idea that there may be empty or universal
+terms. For in the universal case it leads directly from the truth:
+Every man is a being
+
+
+to the falsehood: 
+Every non-being is a non-man
+
+
+(which is false because the universal affirmative has existential
+import, and there are no non-beings). And in the particular case it
+leads from the truth (remember that the O form has no
+existential import):
+A chimera is not a man
+
+
+to the falsehood: 
+A non-man is not a non-chimera
+
+
+These are Buridan’s examples, used in the fourteenth century to show
+the invalidity of contraposition. Unfortunately, by Buridan’s time the
+principle of contraposition had been advocated by a number of authors.
+The doctrine is already present in several twelfth century
+ tracts,[11]
+ and it is endorsed in the thirteenth
+century by Peter of
+ Spain,[12]
+ whose work was republished for centuries,
+by William
+ Sherwood,[13]
+and by Roger Bacon.[14]
+ By the fourteenth century, problems
+associated with contraposition seem to be well-known, and authors
+generally cite the principle and note that it is not valid, but that it
+becomes valid with an additional assumption of existence of things
+falling under the subject term. For example, Paul of Venice in his
+eclectic and widely published Logica Parva from the end of the
+fourteenth century gives the traditional square with simple
+ conversion[15]
+ but rejects conversion by contraposition,
+essentially for Buridan’s reason. 
+
+
+A similar thing happened with the principle of obversion. This is
+the principle that states that you can change a proposition from
+affirmative to negative, or vice versa, if you change the predicate
+term from finite to infinite (or infinite to finite). Some examples
+are:
+
+
+
+Every S is P
+=
+No S is non-P
+
+
+No S is P
+=
+Every S is non-P
+
+
+Some S is P
+=
+Some S is not non-P
+
+
+Some S is not P
+=
+Some S is non-P
+
+
+
+
+
+Aristotle discussed some instances of obversion in De
+Interpretatione. It is apparent, given the truth conditions for
+the forms, that these inferences are valid when moving from affirmative
+to negative, but not in the reverse direction when the terms may be
+empty, as Buridan makes
+ clear.[16]
+ Some medieval writers
+before Buridan accepted the fallacious versions, and some did
+ not.[17]
+5. Later Developments
+5.1 Negative Propositions with Empty Terms
+
+
+In Paul of Venice’s other major work, the Logica Magna
+(circa 1400), he gives some pertinent examples of particular
+negative propositions that follow from true universal negatives. His
+examples of true particular negatives with patently empty subject terms
+are
+ these:[18]
+Some man who is a donkey is not a donkey. 
+
+
+
+What is different from being is not.
+
+
+Some thing willed against by a chimera is not willed against by
+a chimera.
+
+
+A chimera does not exist.
+
+
+Some man whom a donkey has begotten is not his son.
+
+
+
+So by the end of the 14th century the issue of empty terms was
+clearly recognized. They were permitted in the theory, the
+O form definitely did not have existential import,
+and the logical theory, stripped of the incorrect special cases of
+contraposition and obversion, was coherent and immune to 20th century
+criticism.
+5.2 Affirmative Propositions with Empty Terms
+
+
+The fact that universal affirmatives with empty subject terms are
+false runs into a problem with Aristotelian scientific theory.
+Aristotle held that ‘Every human is an animal’ is a
+necessary truth.  If so, it is true at every time.  So at every time
+its subject is non-empty.  And so there are humans at every time.  But
+the dominant theology held that before the last day of creation there
+were no humans.  So there is a contradiction.
+
+Ockham avoids this problem by abandoning parts of Aristotle’s theory:
+Although it conflicts with the texts of Aristotle, yet
+according to the truth no proposition among those which concern
+precisely corruptible things [which is] entirely affirmative and
+entirely about the present is able to be a principle or a conclusion
+of a demonstration because any such is contingent. For if some such
+were necessary this would seem to be so especially for this one
+“A human is a rational animal”. But this is contingent
+because it follows “A human is a rational animal, therefore a
+human is an animal” and further “therefore a human is
+composed of a body and a sensitive soul”. But this is contingent
+because if there was no human that would be false because of the false
+[thing] implied because it would imply that something is composed from
+a body and soul which would then be false. [Ockham SL
+III.2.5]
+
+The contradiction might also vanish if propositions in scientific
+theory have unusual meanings.  One option is that universal
+affirmatives are understood in scientific theory as universalized
+conditionals, as they are understood today.  This would not interfere
+with the fact that they are not conditionals in uses outside of
+scientific theory.  Although De Rijk (1973, 52) states that Ockham
+holds such a view, he seems to explicitly reject it, stating that
+‘A human is a rational animal’ is not equivalent to
+‘If a human is then a human is a rational animal “because
+this is a conditional and not a categorical”. [Ockham SL
+II.11]
+
+Buridan’s view is neater.  He holds that when engaged in
+scientific theory, the subject matter is not limited to presently
+existing things.  Instead, the propositions have their usual meanings,
+but an expanded subject matter.  When the word ‘human’ is
+used, one is discussing every human, past and future, and even
+possible humans. [Buridan SdD 4.3.4] With such an understanding, the
+subject of ‘Every human is an animal’ is not empty at
+all.
+
+Work on logic continued for the next couple of centuries, though
+most of it was lost and had little influence. But the topic of empty
+terms was squarely faced, and solutions that were given within the
+Medieval tradition were consistent with [SQUARE]. I rely here on
+Ashworth 1974, 201–02, who reports the most common themes in the
+context of post-medieval discussions of contraposition. One theme is
+that contraposition is invalid when applied to universal or empty
+terms, for the sorts of reasons given by Buridan. The O form is
+explicitly held to lack existential import. A second theme, which
+Ashworth says was the most usual thing to say, is also found in
+Buridan: additional inferences, such as contraposition, become valid
+when supplemented by an additional premise asserting that the terms in
+question are non-empty.
+5.3 An Oddity
+
+
+There is one odd view that occurs at least twice, which may have as a
+consequence that there are no empty terms. In the thirteenth century,
+Lambert of Lagny (sometimes identified as Lambert of Auxerre) proposed
+that a term such as ‘chimera’ which stands for no existing
+thing must “revert to nonexistent things.” So if we
+suppose that no roses exist, then the term ‘rose’ stands
+for nonexistent
+ things.[19] 
+ A related view also occurs much later;
+Ashworth reports that Menghus Blanchellus Faventinus held that
+negative terms such as ‘nonman’ are true of non-beings,
+and he concluded from this that ‘A nonman is a chimera’ is
+true (apparently assuming that ‘chimera’ is also true of
+nonbeings).[20]
+However, neither of these views seems to have been clearly developed,
+and neither was widely
+ adopted.[21]
+ Nor is it clear that either of them is
+supposed to have the consequence that there are no empty terms.
+5.4 Modern, Renaissance, and Nineteenth Centuries
+
+
+According to
+ Ashworth,[22]
+ serious and sophisticated investigation of logic ended at about the
+third decade of the sixteenth century. The Port Royal Logic
+of the following (seventeenth) century seems typical in its approach:
+its authors frequently suggest that logic is trivial and
+unimportant. Its doctrine includes that of the square of opposition,
+but the discussion of the O form is so vague that
+nobody could pin down its exact truth conditions, and there is
+certainly no awareness indicated of problems of existential
+import, in spite of the fact that the authors state that
+the E form entails the O form (4th
+corollary of chapter 3 of part 3). This seems to typify popular texts
+for the next while. In the nineteenth century, the apparently most
+widely used textbook in Britain and America was Whately’s Elements
+of Logic. Whately gives the traditional doctrine of the square,
+without any discussion of issues of existential import or of empty
+terms. He includes the problematic principles of contraposition (which
+he calls “conversion by negation”):
+
+
+
+Every S is P
+=
+Every not-P is not-S
+
+
+
+
+
+He also endorses
+ obversion:[23]
+
+Some A is not B is equivalent to Some A is
+not-B, and thus it converts to Some not-B is A.
+
+
+
+He says that this principle is “not found in Aldrich,” but that it is
+“in frequent
+ use.”[24]
+ This “frequent use” continued; later
+nineteenth and early twentieth century text books in England and
+America continued to endorse obversion (also called “infinitation” or
+“permutation”), and contraposition (also called “illative
+ conversion”).[25]
+ This full nineteenth century tradition is consistent only on the
+assumption that empty (and universal) terms are prohibited, but
+authors seem unaware of this; Keynes 1928, 126, says generously “This
+assumption appears to have been made implicitly in the traditional
+treatment of logic.” De Morgan is atypical in making the assumption
+explicit: in his 1847 text (p. 64) he forbids universal terms (empty
+terms disappear by implication because if A is empty,
+non-A will be universal), but later in the same text (p. 111) he
+justifies ignoring empty terms by treating this as an idealization, adopted
+because not all of his readers are
+ mathmeticians.[26]
+
+In the twentieth century Łukasiewicz also developed a version
+of syllogistic that depends explicitly on the absence of empty terms;
+he attributed the system to Aristotle, thus helping to foster the
+tradition according to which the ancients were unaware of empty
+terms.
+
+
+Today, logic texts divide between those based on contemporary logic
+and those from the Aristotelian tradition or the nineteenth century
+tradition, but even many texts that teach syllogistic teach it with the
+forms interpreted in the modern way, so that e.g. subalternation is
+lost. So the traditional square, as traditionally interpreted, is now
+mostly abandoned.
+6. Strawson’s Defense
+
+
+In the twentieth century there were many creative uses of logical
+tools and techniques in reassessing past doctrines. One might
+naturally wonder if there is some ingenious interpretation of the
+square that attributes existential import to the O
+form and makes sense of it all without forbidding empty or
+universal terms, thus reconciling traditional doctrine with modern
+views. Peter Geach, 1970, 62–64, shows that this can be done
+using an unnatural interpretation. Peter Strawson, 1952, 176–78,
+had a more ambitious goal. Strawson’s idea was to justify the square
+by adopting a nonclassical view of truth of statements, and by
+redefining the logical relation of validity. First, he suggested, we
+need to suppose that a proposition whose subject term is empty is
+neither true nor false, but lacks truth value altogether.  Then we say
+that Q entails R just in case there are no instances
+of Q and R such that the instance of Q is
+true and the instance of R is false. For example, the
+A form ‘Every S is P’
+entails the I form ‘Some S is
+P’ because there is no instance of the
+A form that is true when the corresponding instance
+of the I form is false. The troublesome cases
+involving empty terms turn out to be instances in which one or both
+forms lack truth value, and these are irrelevant so far as entailment
+is concerned. With this revised account of entailment, all of the
+“traditional” logical relations result, if they are worded as follows:
+
+
+
+Contradictories:
+The A and O forms
+entail each other’s negations, as do the E and
+I forms. The negation of the A form
+entails the (unnegated) O form, and vice versa;
+likewise for the E and I forms.
+
+
+Contraries:
+The A and E forms
+entail each other’s negations
+
+
+Subcontraries:
+The negation of the I form entails the
+(unnegated) O form, and vice versa.
+
+
+Subalternation:
+The A form entails the I
+form, and the E form entails the O form.
+
+
+Converses:
+The E and I forms each
+entail their own converses.
+
+
+Contraposition:
+The A and O forms each
+entail their own contrapositives.
+
+
+Obverses:
+Each form entails its own obverse.
+
+
+
+
+
+These doctrines are not, however, the doctrines of [SQUARE]. The
+doctrines of [SQUARE] are worded entirely in terms of the possibilities
+of truth values, not in terms of entailment. So “entailment” is
+irrelevant to [SQUARE]. It turns out that Strawson’s revision of truth
+conditions does preserve the principles of SQUARE (these can
+easily be checked by
+ cases),[27]
+ but not the additional conversion principles of [SQUARE], and also
+not the traditional principles of contraposition or obversion. For
+example, Strawson’s reinterpreted version of conversion holds for the
+I form because any I form
+proposition entails its own converse: if ‘Some A is
+B’ and ‘Some B is A’ both
+have truth value, then neither has an empty subject term, and so if
+neither lack truth value and if either is true the other will be true
+as well. But the original doctrine of conversion says that an
+I form and its converse always have the same truth value, and
+that is false on Strawson’s account; if there are As but no
+Bs, then ‘Some A is B’ is false
+and ‘Some B is A’ has no truth value at
+all. Similar results follow for contraposition and obversion.
+
+
+The “traditional logic” that Strawson discusses is much closer to
+that of nineteenth century logic texts than it is to the version that
+held sway for two millennia before
+ that.[28]
+ But even though he
+literally salvages a version of nineteenth century logic, the view he
+saves is unable to serve the purposes for which logical principles are
+formulated, as was pointed out by Timothy Smiley in a short note in
+Mind in
+ 1967.[29]
+ People have always taken the square to
+embody principles by which one can reason, and by which one can
+construct extended chains of reasoning. But if you string together
+Strawson’s entailments you can infer falsehoods from truths, something
+that nobody in any tradition would consider legitimate. For example,
+begin with this truth (the subject term is non-empty):
+No man is a chimera.
+
+
+By conversion, we get: 
+No chimera is a man.
+
+
+By obversion: 
+Every chimera is a non-man.
+
+
+By subalternation: 
+Some chimera is a non-man.
+
+
+By conversion: 
+Some non-man is a chimera.
+
+
+Since there are non-men, the conclusion is not truth-valueless, and
+since there are no chimeras it is false. Thus we have passed from a
+true claim to a false one. (The example does not even involve the
+problematic O form.) All steps are validated by
+Strawson’s doctrine. So Strawson reaches his goal of preserving
+certain patterns commonly identified as constituting traditional
+logic, but at the cost of sacrificing the application of logic to
+extended reasoning.

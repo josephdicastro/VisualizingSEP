@@ -1,0 +1,1994 @@
+Independence friendly logic (IF logic, IF first-order logic) is an
+extension of first-order logic. In it, more quantifier dependencies
+and independencies can be expressed than in first-order logic. Its
+quantifiers range over individuals only; semantically IF first-order
+logic, however, has the same expressive power as existential
+second-order logic. IF logic lacks certain metaproperties that
+first-order logic has (axiomatizability, Tarski-type semantics). On
+the other hand, IF logic admits a self-applied truth-predicate –
+a property that first-order logic notoriously does not enjoy.
+Philosophical issues discussed in connection with IF logic include
+reformulating the logicist program, the question of truth in axiomatic
+set theory, and the nature of negation. Work in IF logic has also
+inspired alternative generalizations of first-order logic: slash logic
+and
+ dependence logic.
+ 
+1. Introduction: Quantifier Dependence
+
+In mathematical prose, one can say things such as ‘for all real
+numbers aaa and for all positive real numbers εε\varepsilon, there
+exists a positive real number δδ\delta depending on εε\varepsilon
+but not on aaa, such that…’ What is important here is
+quantifier dependence. The existential quantifier ‘there exists
+δδ\delta’ is said to depend on the universal quantifier
+‘for all εε\varepsilon’ but not on the universal
+quantifier ‘for all aaa.’ It was an essential part of
+Karl Weierstrass’s (1815–1897) work in the foundations of
+analysis that he defined the notions of limit, continuity, and
+derivative in terms of quantifier
+ dependence.[1] For
+ a concrete example, a function f:D→Rf:D→Rf : D \rightarrow \mathbf{R}
+is continuous, if for all aaa in the set DDD and for all
+ε>0ε>0\varepsilon \gt 0 there exists δ>0δ>0\delta \gt 0 such that for all
+xxx in DDD, if |x−a|<δ|x−a|<δ|x - a| \lt \delta, then |f(x)−f(a)|<ε|f(x)−f(a)|<ε|f(x) - f(a)| \lt \varepsilon. The definition of uniform
+continuity is obtained from that of continuity by specifying that
+the quantifer ‘there exists δδ\delta’ depends only on
+the quantifier ‘for all εε\varepsilon,’ not on the
+quantifier ‘for all aaa.’[2]
+
+Independence friendly first-order logic (a.k.a. IF
+first-order logic, IF logic) was introduced by Jaakko
+Hintikka and Gabriel Sandu in their article ‘Informational
+Independence as a Semantical Phenomenon’ (1989); other early
+sources are Hintikka’s booklet Defining Truth, the Whole
+Truth, and Nothing but the Truth (1991) and Sandu’s Ph.D.
+thesis
+ (1991).[3]
+ IF first-order logic is an extension of first-order logic, involving
+a specific syntactic device ‘/’ (slash, independence
+indicator), which has at the object language level the same effect as
+the meta-level modifier ‘but does not depend on’ has in
+the example just considered. In the notation of IF logic, the logical
+form of the statement that a function fff is uniformly
+continuous would be
+(∀a)(∀ε)(∃δ/∀a)(∀x)R(∀a)(∀ε)(∃δ/∀a)(∀x)R(\forall a)(\forall \varepsilon)(\exists \delta /\forall a)(\forall x)
+R, to be contrasted with the form of the statement that
+fff merely is continuous,
+(∀a)(∀ε)(∃δ)(∀x)R(∀a)(∀ε)(∃δ)(∀x)R(\forall a)(\forall \varepsilon)(\exists \delta)(\forall x)
+R.
+ If in a first-order sentence an existential quantifier ∃y∃y\exists
+y lies in the syntactic scope of a universal quantifier ∀x∀x\forall
+x, then by the semantics ∃y∃y\exists y automatically depends on
+∀x∀x\forall x. This is so e.g. with the sentence (∀x)(∃y)R(x,y)(∀x)(∃y)R(x,y)(\forall
+x)(\exists y) R(x, y). The dependence of ∃y∃y\exists y on ∀x∀x\forall
+x means that the witness of ∃y∃y\exists y may vary with the
+value interpreting ∀x∀x\forall x. It suffices that there be a function
+fff such that R(a,f(a))R(a,f(a))R(a, f(a)) holds in MMM, for any aaa
+interpreting ∀x∀x\forall x. Such functions, spelling out the
+dependencies of witnesses for existential quantifiers on
+interpretations of universal quantifiers, are known in logical
+literature as Skolem
+ functions.[4]
+ For comparison, in the sentence (∃y)(∀x)R(x,y)(∃y)(∀x)R(x,y)(\exists y)(\forall x) R(x, y)
+the quantifier ∃y∃y\exists y does not depend on the quantifier
+∀x.∀x.\forall x. One and the same witness ccc for ∃y∃y\exists y must
+be good against any interpretation aaa of ∀x∀x\forall x, so that
+R(a,c)R(a,c)R(a, c) holds in MMM. The corresponding Skolem function is a
+ constant.[5]
+
+In IF first-order logic, syntactic scopes no longer determine the
+semantic relation of dependence. In the formula (∀x)(∀y)(∃z/∀y)R(x,y,z)(∀x)(∀y)(∃z/∀y)R(x,y,z)(\forall x)(\forall
+y)(\exists z/\forall y) R(x, y, z), for instance, ∃z∃z\exists z is
+syntactically subordinate to both ∀x∀x\forall x and ∀y∀y\forall y, but
+is marked as independent of ∀y∀y\forall y, and is hence dependent only
+on ∀x∀x\forall x. Semantically this means that the witness of
+∃z∃z\exists z must be given by a function taking as an argument the
+interpretation of ∀x∀x\forall x, but not that of ∀y∀y\forall y. In
+order for (∀x)(∀y)(∃z/∀y)R(x,y,z)(∀x)(∀y)(∃z/∀y)R(x,y,z)(\forall x)(\forall y)(\exists z/\forall y) R(x, y, z)
+to be true in MMM, there must be a function fff of one argument
+such that R(a,b,f(a))R(a,b,f(a))R(a, b, f(a)) holds in MMM, for any aaa interpreting
+∀x∀x\forall x and any bbb interpreting ∀y∀y\forall y.
+
+What is gained with the slash notation? After all, clearly e.g.
+(∀x)(∀y)(∃z/∀y)R(x,y,z)(∀x)(∀y)(∃z/∀y)R(x,y,z)(\forall x)(\forall y)(\exists z/\forall y)
+R(x, y, z) is true in a model
+MMM
+ iff[6]
+ the first-order sentence
+(∀x)(∃z)(∀y)R(x,y,z)(∀x)(∃z)(∀y)R(x,y,z)(\forall x)(\exists z)(\forall y)
+R(x, y, z) is true therein. As a
+matter of fact, the expressive power of IF logic exceeds that of
+first-order logic. Consider the sentence
+(∀x)(∃y)(∀z)(∃w/∀x)R(x,y,z,w)(∀x)(∃y)(∀z)(∃w/∀x)R(x,y,z,w)(\forall x)(\exists y)(\forall z)(\exists w/\forall x)
+R(x, y, z, w). Its
+truth-condition is of the following form: there are one-argument
+functions fff and ggg such that R(a,f(a),b,g(b))R(a,f(a),b,g(b))R(a,
+f(a), b, g(b)) holds in
+MMM, for any aaa interpreting ∀x∀x\forall x and
+bbb interpreting
+ ∀z∀z\forall z.[7]
+ So the sentence is true iff the following sentence (*) containing a
+finite partially ordered quantifier is true:
+∀x∃y∀z∃wR(x,y,z,w)∀x∃y∀z∃wR(x,y,z,w)(*)\tag{*}
+\begin{matrix}
+\forall x \exists y \\
+\forall z \exists w
+\end{matrix}
+R(x,y,z,w)
+
+
+For, by definition (*) is true in a model MMM iff the second-order
+sentence (∃f)(∃g)(∀x)(∀z)R(x,f(x),z,g(z))(∃f)(∃g)(∀x)(∀z)R(x,f(x),z,g(z))(\exists f)(\exists g)(\forall x)(\forall z) R(x, f(x), z,
+g(z)) is true therein. The latter may be termed the
+Skolem normal form of (*). It says that Skolem functions
+providing witnesses for the quantifiers ∃y∃y\exists y and
+∃w∃w\exists w in (*) exist. Finite partially ordered quantifiers
+– a.k.a. Henkin quantifiers or branching
+quantifiers – were proposed by Leon Henkin (1961) and have
+been subsequently studied
+ extensively.[8]
+ They are two-dimensional syntactic objects
+Q11…Q1n⋮Qm1…QmnQ11…Q1n⋮Qm1…Qmn\begin{matrix}
+Q_{11} \ldots Q_{1n} \\
+\vdots \\
+Q_{m1} \ldots Q_{mn}
+\end{matrix}
+
+where each QijQijQ_{ij} is either ∃xij∃xij\exists x_{ij} or ∀xij∀xij\forall
+x_{ij}. They are naturally interpreted by making systematic use of
+Skolem functions.
+
+Let us denote by FPOFPO\mathbf{FPO} the logic of finite partially
+ordered quantifiers obtained from first-order logic as follows: if
+ϕϕ\phi is a first-order formula and QQ\mathbf{Q} is a finite
+partially ordered quantifier, then QϕQϕ\mathbf{Q}\phi is a
+formula of
+ FPOFPO\mathbf{FPO}.[9]
+ With FPOFPO\mathbf{FPO} it is possible to express properties that
+are not definable in first-order logic. The first example was provided
+by Andrzej Ehrenfeucht (cf. Henkin 1961): a sentence that is true in a
+model iff the size of its domain is infinite. It turns out that
+FPOFPO\mathbf{FPO} can be translated into IF logic (see
+Subsect. 4.1). Therefore IF logic is more expressive than
+first-order logic.
+
+The deepest reason for IF logic, as Hintikka sees it, is that the
+relations of dependence and independece between quantifiers
+are the only way of expressing relations of dependence and independece
+between variables on the first-order level (Hintikka 1996:
+34–35, 73–74; 2002a: 404–405; 2006a: 71, 515). To
+understand this remark properly, recall that relations of quantifier
+(in)dependence are semantic relations, but syntactically
+expressed. More precisely, in IF logic the (in)dependence
+relations are syntactically expressed by the interplay of two factors:
+syntactic scope and the independence indicator ‘/’. In a
+given sentence, an existential quantifier ∃x∃x\exists x, say,
+depends on precisely those universal quantifiers within whose scope
+∃x∃x\exists x lies, but of which ∃x∃x\exists x is not marked
+as independent using the slash sign. What Hintikka means when he
+speaks of (in)dependence relations between variables, are
+functional dependencies between quantities in a model. The
+kinetic energy of a material body depends on its mass and its speed,
+but does not depend on the particular material body being considered.
+This fact can be expressed in IF logic by the sentence
+
+(∀b)(∀m)(∀v)(∃e/∀b)(∀b)(∀m)(∀v)(∃e/∀b)(\forall b)(\forall m)(\forall v)(\exists e/\forall b)(if
+bbb is a material body which moves at the velocity vvv
+and has the mass mmm, then the kinetic energy eee of
+bbb equals 12mv2)12mv2)\frac{1}{2} mv^2 ).
+
+
+That this sentence states the existence of a functional dependence of
+kinetic energy on mass and speed is particularly clearly seen from the
+fact that if the sentence is true, the unique Skolem function for the
+quantifier ∃e∃e\exists e actually is the physical law
+connecting masses, speeds and kinetic energies (cf. Hintikka 1996:
+34–35).
+
+While first-order logic can only express some relations between
+variables, IF first-order logic with its greater expressive power can
+express more. Actually, IF logic is calculated to capture all such
+relations (Hintikka 1996: 75–77; 2002a: 404–405; 2002b:
+197; 2006a: 72). This idea must, in its full generality, be seen as
+programmatic. For a more general framework, cf. Hintikka (2006a: 515,
+536, 752; 2008), Sandu & Sevenster (2010), Sandu (2013).
+
+Among philosophical issues that have been addressed in connection with
+IF logic are the reconstruction of mathematical reasoning on the
+first-order level (Hintikka 1996, 1997), definability of a
+self-applied truth predicate (Hintikka 1991, 1996, 2001; Sandu 1998),
+truth and axiomatic set theory (Hintikka 1996, 2004a), and insights
+into the nature of negation (Hintikka 1991, 1996, 2002; Hintikka &
+Sandu 1989; Sandu 1994). These issues will be discussed in
+Sections 4 and 5.
+2. The Background of IF Logic: Game-theoretical Semantics
+2.1. Semantic games
+
+Inspired by Ludwig Wittgenstein’s idea of a language-game,
+Hintikka (1968) introduced the basic framework of what came to be
+known as game-theoretical semantics (a.k.a. GTS). The basic
+lesson Hintikka adopts from Wittgenstein is that words – in
+particular quantifiers – are associated with activities that
+render them meaningful: words often have meaning only in the context
+of certain types of action (Hintikka 1968: 55–56). Wittgenstein
+said that by ‘language-game’ he means ‘the whole,
+consisting of language and the actions into which it is woven’
+(Wittgenstein 1953: I, Sect. 7).
+
+It becomes natural to ask which are the activities that go together
+with quantifiers. As Hintikka explains (see Hintikka 2006a: 41, 67),
+Wittgenstein had taken it as a criterion for something to be an object
+that it can be looked for and found. Applying this idea to quantifiers
+with such objects as values, Hintikka was led to formulate
+semantic games for quantifiers. Crucially, these semantic
+games can be formulated as games in the strict sense of game theory;
+but at the same time they are exact codifications of language-games in
+Wittgenstein’s sense, at least if one accepts that the
+activities associated with quantifiers are ‘looking for’
+and
+ ‘finding.’[10]
+
+Semantic games G(ϕ,M)G(ϕ,M)G(\phi , M) for first-order sentences ϕϕ\phi are
+two-player zero-sum games of perfect information, played on a given
+model MMM. Let us call the two players simply player 1 and player
+ 2.[11] 
+ The games
+are most easily explained for sentences in prenex normal form: a
+string of quantifiers followed by a quantifier-free first-order
+formula. Universal quantifiers mark a move of player 1, while
+existential quantifiers prompt a move by player 2. In both cases, the
+relevant player must choose an individual from the domain MM\rM of
+ MMM.[12] If
+ϕ=(∀x)(∃y)(∀z)(∃w)R(x,y,z,w),ϕ=(∀x)(∃y)(∀z)(∃w)R(x,y,z,w),
+\phi = (\forall x)(\exists y)(\forall z)(\exists w) R(x, y, z, w),
+
+
+the game is played as follows. First, player 1 picks out an individual
+aaa, whereafter player 2 chooses an individual bbb. Then player 1
+proceeds to choose a further individual ccc, to which player 2
+responds by picking out an individual ddd. Thereby a play of the
+game has come to an end. The tuple (a,b,c,d)(a,b,c,d)(a, b, c, d) of individuals
+chosen determines the winner of the play. If the quantifier-free
+formula R(a,b,c,d)R(a,b,c,d)R(a, b, c, d) holds in MMM, player 2 wins, if not,
+player 1 wins.
+
+The fact that one of the players wins a single play of game G(ϕ,M)G(ϕ,M)G(\phi ,
+M) does not yet tell us anything about the truth-value of the
+sentence ϕϕ\phi. Truth and falsity are characterized in terms of the
+notion of winning strategy. The sentence (∀x)(∃y)(∀z)(∃w)R(x,y,z,w)(∀x)(∃y)(∀z)(∃w)R(x,y,z,w)(\forall
+x)(\exists y)(\forall z)(\exists w) R(x, y, z, w) is
+true in MMM if there is a winning strategy for player
+2 in the game just described: a recipe telling player 2 what to do,
+when (a specified amount of) information about the opponent’s
+earlier moves is given. Technically, the requirement is that there be
+strategy functions fff and ggg, such that for
+any choices aaa and ccc by player 1,R(a,f(a),c,g(a,c))1,R(a,f(a),c,g(a,c))1,
+R(a, f(a), c, g(a, c)) holds in MMM. Observe that
+strategy function fff is a Skolem function for the quantifier
+∃y∃y\exists y in ϕϕ\phi, and similarly ggg is a Skolem
+function for the quantifier ∃w∃w\exists w. The sentence ϕϕ\phi is
+false in MMM if there is a winning strategy (set of
+strategy functions) for player 1 in the corresponding game: a constant
+ccc and a function hhh such that for any choices bbb and ddd
+by player 2,R(c,b,h(b),d)2,R(c,b,h(b),d)2, R(c, b, h(b), d) fails to hold in MMM.
+
+Game-theoretical interpretaton of quantifiers was already suggested by
+Henkin (1961; cf. Hintikka 1968: 64). Henkin also pointed out, in
+effect, the connection between a full set of Skolem functions and a
+winning strategy for player 2. Hintikka (1968) noted that conjunctions
+are naturally interpreted by a choice between the two conjuncts, made
+by player 1; similarly, disjunctions can be interpreted by a choice by
+player 2 between the two
+ disjuncts.[13]
+ Further, Hintikka proposed to interpret negation as a transposition
+of the roles of ‘verifier’ and ‘falsifier’
+(for more details, see Subsect. 3.2). 
+
+The game-theoretical description of semantic games does not mention
+the activities of searching and finding; for such an abstract
+description it suffices to speak of the players making a move. Also,
+the characterization of truth and falsity as the existence of a
+winning strategy for player 2 and player 1, respectively, does not
+refer to efforts on the part of the players – say efforts to
+establish truth or to find witnesses. The truth or falsity of a
+sentence is a matter of ‘combinatorics’: it is an issue of
+the existence of a set of functions with certain properties (cf.
+Hintikka 1968, 1996; Hodges 2013). So what happened to the original
+philosophical conception according to which the meanings of
+quantifiers are tied to the activities of searching and finding?
+Hintikka’s idea is that asserting a sentence involving
+quantifiers is to make a claim about what can and what cannot happen
+when a certain language-game is played; using language involving
+quantifiers requires mastering the rules of the corresponding semantic
+games (Hintikka 1968: Sect. 8, 1996: 128, 2006a: 538). What
+is the content of such a claim in connection with the sentence
+∀x∃yR(x,y)∀x∃yR(x,y)\forall x\exists y R(x, y)? That whichever individual player 1
+chooses from the domain for ∀x∀x\forall x, player 2 can find a witness
+individual for ∃y∃y\exists y. In other words, given a value for
+∀x∀x\forall x (which itself can be seen as the result of the search by
+player 1), if player 2 is allowed to search free from any practical
+constraints, she will find a value for ∃y∃y\exists y so that player 2
+wins the resulting play. Even though semantic games themselves can be
+defined without recourse to activities such as looking for or finding,
+these activities play an important conceptual role when the language
+user reasons about these games.
+
+Hintikka (1973a) initiated the application of GTS to the study of
+natural language. This work was continued notably by Hintikka &
+Kulas (1983, 1985), where game-theoretical rules for such items as
+negation, anaphoric pronouns, genitives, tenses, intensional verbs,
+certain prepositional constructions, and proper names were given, and
+the distinction between abstract meaning and strategic meaning
+ drawn.[14]
+
+2.2. Imperfect information
+
+The framework of GTS enables asking questions of a game-theoretical
+nature about semantic evaluation. Hintikka (1973a) observed that
+semantic games with imperfect information are devised without any
+difficulty. As logical examples he used FPOFPO\mathbf{FPO}
+sentences. (For examples related to natural languages, see
+Subsect. 5.4.)
+
+From the vantage point of GTS, independence friendly first-order logic
+differs from first-order logic in that semantic games correlated with
+formulas of the former are, in general, games of imperfect
+information, while any game associated with a first-order formula is a
+game of perfect information. Consider the game for ∀x∃y∀z(∃w/∀x)R(x,y,z,w)∀x∃y∀z(∃w/∀x)R(x,y,z,w)\forall x\exists
+y\forall z(\exists w/\forall x) R(x, y, z, w), played on a model
+MMM. A play of this game proceeds exactly as plays of the game
+corresponding to ∀x∃y∀z∃wR(x,y,z,w)∀x∃y∀z∃wR(x,y,z,w)\forall x\exists y\forall z\exists w R(x, y, z,
+w). First, player 1 chooses an individual aaa, whereafter player 2
+chooses an individual bbb. Then player 1 proceeds to pick out a
+further individual ccc, to which player 2 responds by choosing an
+individual ddd. So a play of the game has come to an end. The play
+is won by player 2, if indeed R(a,b,c,d)R(a,b,c,d)R(a, b,c, d) holds in MMM;
+otherwise it is won by player 1. But ∃w∃w\exists w was marked as
+independent of ∀x∀x\forall x – why does not this fact show in
+any way in the course of a play?
+
+One might be tempted to add to the description of a play:
+‘player 2 chooses a value for ∃w∃w\exists w in ignorance of the
+value for ∀x∀x\forall x.’ However, such a paraphrase would not
+clarify the conceptual situation. It makes no sense to speak of the
+independence of a move from other given moves by reference to a single
+play; this can only be done by reference to a multitude of
+plays. Quantifier independence can be conceptualized in
+game-theoretical terms making use of the notion of strategy.
+In the example, a strategy of player 2 is a set {f,g}{f,g}\{f, g\} of
+strategy functions, function fff providing a value for ∃y∃y\exists y
+depending on the value of ∀x∀x\forall x, and function ggg providing
+a value for ∃w∃w\exists w depending on the value chosen for ∀z∀z\forall
+z but not on the value chosen for ∀x∀x\forall x. The strategy {f,g}{f,g}\{f,
+g\} is, then, a winning strategy for player 2, iff R(a,f(a),c,g(c))R(a,f(a),c,g(c))R(a, f(a), c,
+g(c)) holds in MMM, for all values aaa chosen for ∀x∀x\forall x
+and ccc chosen for ∀z∀z\forall z. One precise way of implementing
+the idea that player 2 is ‘ignorant’ of the move player 1
+made for ∀x∀x\forall x is to say that (a) strategy
+functions always only take as arguments the opponent’s moves,
+and (b) the strategy function corresponding to
+∃w∃w\exists w may not take as its argument the move player 1 made for
+∀x∀x\forall x.
+
+A sentence of IF first-order logic is by definition true in a model
+MMM iff there is a winning strategy for player 2 in the
+correlated game, and false iff there is a winning strategy for player
+1 in the correlated game. There are sentences which under these
+criteria are neither true nor false; they are called
+non-determined (see Subsect. 3.3).
+
+In Hintikka’s judgement, the game-theoretical semantics of
+quantifiers can be taken to have the same rationale that was mentioned
+as the deepest reason for IF first-order logic at the end of
+Section 1: GTS is a method of representing, on the
+first-order level, the (in)dependence relations between variables by
+means of informational (in)dependence in the sense of game theory
+(Hintikka 1991: 12–13, 2006a: 535).
+3. The Syntax and Semantics of IF First-order Logic
+
+In the literature one can find essentially different formulations of
+‘IF first-order logic.’ The differences are not restricted
+to syntax – examples of applying different semantic ideas can be
+found as well. 
+
+As already noted, there is a systematic connection between the Skolem
+functions and strategy functions of player 2. A Skolem function for an
+existential quantifier is a function of the values assigned to the
+preceding universal quantifiers, but not a function
+of the values assigned to the preceding existential
+ quantifiers.[15]
+ Skolem functions are strategy functions taking as arguments
+exclusively moves made by player 1. Generally a strategy for a player
+in a two-player game can perfectly well make use of the
+previous choices of either player. Hodges (2007) stresses that it
+makes a difference on which notion – Skolem function or strategy
+function – the semantics of imperfect information is based.
+Hodges (1997a) adopted the notational convention of writing, say,
+(∃y/x)(∃y/x)(\exists y/x) where Hintikka writes
+(∃y/∀x)(∃y/∀x)(\exists y/\forall x), hence marking the difference
+between semantic games formulated in terms of arbitrary strategy
+functions and those whose strategy functions are in effect Skolem
+functions; the variable xxx in (∃y/x)(∃y/x)(\exists y/x)
+can be ‘bound’ by any syntactically preceding quantifier
+carrying the variable xxx. Hodges proposed to employ the former
+formulation, while in Hintikka (1991, 1995, 1996, 2002) and Sandu
+(1993, 1994) the latter formulation is employed. Hodges (2007: 119)
+writes:
+
+[W]e refer to the logic with my notation and the general game
+semantics as slash logic. During recent years many writers in
+this area (but never Hintikka himself) have transferred the name
+‘IF logic’ to slash logic, often without realising the
+difference. Until the terminology settles down, we have to beware of
+examples and proofs that don’t make clear which semantics they
+intend.
+
+
+The distinction that Hodges makes between slash logic and IF logic
+serves to bring order to the mishmash of different formulations of IF
+first-order logic to be found in the
+ literature.[16]
+3.1. Syntax
+
+IF first-order logic is an extension of first-order logic. Now, any
+first-order formula is equivalent to a first-order formula in which no
+variable occurs both free and bound, and in which no two nested
+quantifiers carry the same variable. Formulas meeting these two
+syntactic conditions will be termed regular. Henceforth we
+systematically restrict attention to regular first-order
+ formulas.[17]
+ A vocabulary (signature, non-logical terminology) is any
+countable set ττ\tau of relation symbols (each of which carries a fixed
+arity), function symbols (again each with a fixed arity), and constant
+symbols. The first-order logic of vocabulary ττ\tau will be referred to
+as FO[τ]FO[τ]\mathbf{FO}[\tau]. A formula of FO[τ]FO[τ]\mathbf{FO}[\tau]
+is in negation normal form, if all occurrences of the
+negation symbol ∼∼{\sim} immediately precede an atomic formula. The set of
+formulas of IF first-order logic of vocabulary ττ\tau (or
+IFL[τ])IFL[τ])\mathbf{IFL}[\tau]) can be defined as the smallest set such
+that:
+
+If ϕϕ\phi is a formula of FO[τ]FO[τ]\mathbf{FO}[\tau] in negation
+normal form, ϕϕ\phi is a formula.
+If ϕϕ\phi is a formula and in ϕϕ\phi a token of (∃x)(∃x)(\exists
+x) occurs in the syntactic scope of a number of universal
+quantifiers which include (∀y1),…,(∀yn)(∀y1),…,(∀yn)(\forall y_1),\ldots ,(\forall y_n), the
+result of replacing in ϕϕ\phi that token of (∃x)(∃x)(\exists x) by
+(∃x/∀y1,…,∀yn)(∃x/∀y1,…,∀yn)(\exists x/\forall y_1 ,\ldots ,\forall y_n) is a formula.
+If ϕϕ\phi is a formula and in ϕϕ\phi a token of ∨∨\vee
+occurs in the syntactic scope of a number of universal quantifiers
+which include (∀y1),…,(∀yn)(∀y1),…,(∀yn)(\forall y_1),\ldots ,(\forall y_n), the result of
+replacing in ϕϕ\phi that token of ∨∨\vee by (∨/∀y1,…,∀yn)(∨/∀y1,…,∀yn)(\vee /\forall y_1
+,\ldots ,\forall y_n) is a formula.
+If ϕϕ\phi is a formula and in ϕϕ\phi a token of (∀x)(∀x)(\forall
+x) occurs in the syntactic scope of a number of existential
+quantifiers which include (∃y1),…,(∃yn)(∃y1),…,(∃yn)(\exists y_1),\ldots ,(\exists y_n), the
+result of replacing in ϕϕ\phi that token of (∀x)(∀x)(\forall x) by
+(∀x/∃y1,…,∃yn)(∀x/∃y1,…,∃yn)(\forall x/\exists y_1 ,\ldots ,\exists y_n) is a formula.
+If ϕ\phi is a formula and in ϕ\phi a token of ∧\wedge
+occurs in the syntactic scope of a number of existential quantifiers
+which include (∃y1),…,(∃yn)(\exists y_1),\ldots ,(\exists y_n), the result of
+replacing in ϕ\phi that token of ∧\wedge by (∧/∃y1,…,∃yn)(\wedge /\exists
+y_1 ,\ldots ,\exists y_n) is a formula.
+
+
+Clauses (2) and (3) allow the degenerate case that the list of
+universal quantifiers is empty (n=0)(n = 0). The resulting expressions
+(∃x(\exists x/) and (∨(\vee/) are identified with the usual
+existential quantifier (∃x)(\exists x) and the usual disjunction
+∨\vee, respectively. Similar stipulations are made about clauses
+(4) and (5).
+
+In a suitable vocabulary, each of the following is a formula:
+
+
+(∀x)(∀y)(∃z/∀x)R(x,y,z,v)(\forall x)(\forall y)(\exists z/\forall x) R(x, y, z, v), 
+ (∀x)(∀y)(P(x,y)(∨/∀x)Q(x,y))(\forall x)(\forall y)(P(x, y) \; (\vee /\forall x) \; Q(x,
+y)),
+ (∃x)(S(x)(∧/∃x)T(x))(\exists x)(S(x) \; (\wedge /\exists x) \; T(x)), 
+
+(∀x)(∃y)(∀z/∃y)(∃v/∀x)R(x,y,z,v)(\forall x)(\exists y)(\forall z/\exists y)(\exists v/\forall x)
+R(x, y, z, v).
+
+
+By contrast, none of the following sequences of symbols is a
+formula:
+
+ (∃y/∀x)P(x,y)(\exists y/\forall x) P(x, y), 
+ (∃x)(∃y/∃x)P(x,y)(\exists x)(\exists y/\exists x) P(x, y), 
+ (∀x)(∀y/∀x)P(x,y)(\forall x)(\forall y/\forall x) P(x, y), 
+ (∀x)(S(x)(∨/∃y)T(x))(\forall x)(S(x) \; (\vee /\exists y) \; T(x)). 
+
+
+If ϕ\phi is an IFL\mathbf{IFL} formula, generated by the above
+clauses from some FO\mathbf{FO} formula ϕ∗\phi^*, the free
+variables of ϕ\phi are simply the free variables of
+ϕ∗\phi^*.  IFL\mathbf{IFL} formulas without free variables are
+IFL\mathbf{IFL}
+sentences.[18]
+3.2. Semantics
+
+Defining the semantics of a logic using GTS is a two-step process. The
+first step is to define the relevant semantic games. The
+second step is to define the notions of ‘true’ and
+‘false’ in terms of the semantic games; this happens by
+reference to the notion of winning strategy. Semantic games
+may be defined by specifying recursively the alternative ways in which
+a game associated with a given formula ϕ\phi can be
+ begun.[19]
+
+For every vocabulary τ\tau, IFL[τ]\mathbf{IFL}[\tau] formula ϕ\phi,
+model (τ(\tau structure) MM, and variable assignment gg, a
+two-player zero-sum game G(ϕ,M,g)G(\phi , M, g) between player 1 and
+player 2 is 
+ associated.[20] 
+ If gg is a variable assignment, g[x/a]g[x/a] is the variable
+assignment which is otherwise like gg but maps the variable xx
+to the object aa.
+
+If ϕ=R(t1,…,tn)\phi = R(t_1 ,\ldots ,t_n) and M,g⊨R(t1,…,tn)M, g \vDash R(t_1 ,\ldots
+,t_n), player 2 wins (and player 1 loses); otherwise player 1 wins
+(and player 2 loses).
+If ϕ=∼R(t1,…,tn)\phi = {\sim}R(t_1 ,\ldots ,t_n) and M,g⊭R(t1,…,tn)M, g \not\vDash
+R(t_1 ,\ldots ,t_n), player 2 wins (and player 1 loses); otherwise
+player 1 wins (and player 2 loses).
+If ϕ=(ψ(∧/∃y1,…,∃yn)χ)\phi = (\psi \; (\wedge /\exists y_1 ,\ldots ,\exists y_n) \;
+\chi), player 1 chooses θ∈{ψ,χ}\theta \in \{\psi ,\chi \} and the rest
+of the game is as in G(θ,M,g)G(\theta , M, g).
+If ϕ=(ψ(∨/∀y1,…,∀yn)χ)\phi = (\psi \; (\vee /\forall y_1 ,\ldots ,\forall y_n) \;
+\chi), player 2 chooses θ∈{ψ,χ}\theta \in \{\psi ,\chi \} and the rest
+of the game is as in G(θ,M,g)G(\theta , M, g).
+If ϕ=(∀x/∃y1,…,∃yn)ψ\phi = (\forall x/\exists y_1 ,\ldots ,\exists y_n)\psi,
+player 1 chooses an element aa from M\rM, and the rest of the game is
+as in G(ψ,M,g[x/a]G(\psi , M, g[x/a]).
+If ϕ=(∃x/∀y1,…,∀yn)ψ\phi = (\exists x/\forall y_1 ,\ldots ,\forall y_n)\psi,
+player 2 chooses an element aa from M\rM, and the rest of the game is
+as in G(ψ,M,g[x/a]G(\psi , M, g[x/a]).
+
+
+Observe that the independence indications play no role in the game
+rules. Indeed, quantifier independence will be implemented on the
+level of strategies. 
+
+If a token of (∨/∀y1,…,∀yn)(\vee /\forall y_1 ,\ldots ,\forall y_n) or
+(∃x/∀y1,…,∀yn)(\exists x/\forall y_1 ,\ldots ,\forall y_n) appears in the
+formula ϕ\phi in the scope of the universal quantifiers ∀y1,…,∀yn,∀z1,…,∀zm\forall
+y_1 ,\ldots ,\forall y_n,\forall z_1 ,\ldots ,\forall z_m (and only
+these universal quantifiers), a strategy function of player 2
+for this token in game G(ϕ,M,g)G(\phi , M, g) is any function ff
+satisfying the following:
+
+The arguments of ff are the elements
+a1,…,ama_1 ,\ldots ,a_m that
+player 1 has chosen so as to interpret the quantifiers
+∀z1,…,∀zm\forall z_1 ,\ldots ,\forall z_m.
+The value f(a1,…,am)f(a_1 ,\ldots ,a_m) is the left or the right disjunct
+when the token is a disjunction; and an element of the domain when the
+token is an existential quantifier.
+
+
+The notion of the strategy function of player 1 for tokens of
+(∧/∃y1,…,∃yn)(\wedge /\exists y_1 ,\ldots ,\exists y_n) and (∀x/∃y1,…,∃yn)(\forall
+x/\exists y_1 ,\ldots ,\exists y_n) can be defined dually. Strategy
+functions are construed as Skolem functions – the more general
+notion of strategy function operative in slash logic is not considered
+here (cf. the beginning of
+Sect. 3 and Subsect. 6.1). Quantifier indepenence
+will be implemented directly in terms of the arguments of the
+strategy functions.
+
+A strategy of player 2 in game G(ϕ,M,g)G(\phi , M, g) is a set
+FF of her strategy functions, one function for each token of
+(∨/∀y1,…,∀yn)(\vee /\forall y_1 ,\ldots ,\forall y_n) and (∃x/∀y1,…,∀yn)(\exists x/\forall
+y_1 ,\ldots ,\forall y_n) appearing in ϕ\phi. Player 2 is said
+to follow the strategy FF, if for each token of (∨/∀y1,…,∀yn)(\vee
+/\forall y_1 ,\ldots ,\forall y_n) and (∃x/∀y1,…,∀yn)(\exists x/\forall y_1
+,\ldots ,\forall y_n) for which she must make a move when game
+G(ϕ,M,g)G(\phi , M, g) is played, she makes the move determined by the
+corresponding strategy function. A winning strategy for
+player 2 in G(ϕ,M,g)G(\phi , M, g) is a strategy FF such that against
+any sequence of moves by player 1, following strategy FF yields a
+win for player 2. The notions of strategy and winning strategy can be
+similarly defined for 
+ player 1.[21]
+
+The satisfaction and dissatisfaction of the
+IFL\mathbf{IFL} formula ϕ\phi in the model MM under the
+assignment gg are then defined as
+ follows:[22]
+
+ (Satisfaction) ϕ\phi is satisfied in MM
+under gg iff there is a winning strategy for player 2 in game
+G(ϕ,M,g)G(\phi , M, g). 
+ (Dissatisfaction) ϕ\phi is dissatisfied in
+MM under gg iff there is a winning strategy for player
+1 in game G(ϕ,M,g)G(\phi , M, g). 
+
+
+As with FO\mathbf{FO}, variable assignments do not affect the
+(dis)satisfaction of sentences, i.e., formulas containing no
+free variables. Indeed, we may
+ define:[23]
+
+(Truth) ϕ\phi is true in MM iff there is a
+winning strategy for player 2 in game G(ϕ,M)G(\phi , M).
+(Falsity) ϕ\phi is false in MM iff there is
+a winning strategy for player 1 in game G(ϕ,M)G(\phi , M).
+
+
+The fact that ϕ\phi is true in MM will be denoted by ‘M⊨ϕM
+\vDash \phi.’ Writing M⊭ϕM \not\vDash \phi indicates, then,
+that ϕ\phi is not true in MM. This does
+not mean that ϕ\phi would in the above-defined sense be false
+in MM. As mentioned in the end of Section 2, there
+are semantic games in which neither player has a winning strategy.
+
+The syntax of IFL\mathbf{IFL} can be generalized by removing the
+restriction according to which the negation sign may only appear as
+prefixed to an atomic
+ formula.[24].
+ In order to interpret negation in GTS, two roles are added
+as a new ingredient in the specification of the games: those of
+‘verifier’ and ‘falsifier.’ Initially player 1
+has the role of ‘falsifier’ and player 2 that of
+‘verifier.’ The roles may get switched, but only for one
+reason: when negation is encountered. All clauses defining semantic
+games must be rephrased in terms of roles instead of players. It is
+the player whose role is ‘verifier’ who makes a move for
+disjunctions and existential quantifiers, and similarly the player
+whose role is ‘falsifier’ who moves for conjunctions and
+universal quantifiers. When a formula ∼ψ{\sim}\psi is encountered, the
+players change roles and the game continues with ψ\psi. Finally, if
+the encountered atomic formula is true, ‘verifier’ wins
+and ‘falsifier’ loses, otherwise the payoffs are reversed.
+The negation ∼{\sim} is variably referred to as strong negation,
+dual negation, or game-theoretical
+ negation.[25]
+ It works as one would expect: ϕ\phi is false in MM iff its
+negation ∼ϕ{\sim}\phi is true therein (cf. Sandu 1993). 
+3.3. Basic properties and notions
+
+Failure of bivalence. There are sentences ϕ\phi of
+IFL\mathbf{IFL} and models MM such that ϕ\phi is neither true
+nor false in MM. Consider evaluating the sentence (∀x)(∃y/∀x)x=y(\forall
+x)(\exists y/\forall x) x = y on a model whose domain has exactly
+two elements, aa and bb. Player 1 has no winning strategy. If he
+chooses aa to interpret ∀x\forall x, he loses the play in which
+player 2 chooses aa to interpret (∃y/∀x)(\exists y/\forall
+x). Similarly, if player 1 chooses bb, he loses the play in which
+player 2 likewise chooses bb. Neither does player 2 have a winning
+strategy. Her strategy functions for (∃y/∀x)(\exists y/\forall x) are
+constants (zero-place functions). There are two such constants
+available: aa and bb. Whichever one of these strategy functions
+player 2 assumes, there is a move by player 1 defeating it.  If player
+2 opts for aa, player 1 wins the play in which he chooses bb;
+and if player 2 applies bb, player 1 wins the play in which he
+chooses aa. Game G(ϕ,M)G(\phi , M) is non-determined:
+neither player has a winning 
+ strategy.[26] 
+ The notion of non-determinacy may be extended to formulas as well:
+
+(Non-determinacy) ϕ\phi is non-determined in
+MM under gg iff there is no winning strategy for player 1, nor
+for player 2, in game G(ϕ,M,g)G(\phi , M, g).
+
+
+In IFL\mathbf{IFL}, falsity does not ensue from non-truth. That
+is, bivalence fails in IFL\mathbf{IFL}. However, it should be
+noted that it does not fail due to the postulation of a third
+truth-value or a truth-value gap (cf. Hintikka 1991: 20,
+ 55).[27]
+ Rather, the failure is a consequence of the basic assumptions of the
+entire semantic theory (GTS). Non-determinacy corresponds to a
+structural property: the fact that certain kinds of functions do not
+exist on the model considered.
+
+Due to the failure of bivalence, the logical law of excluded middle
+fails for the dual negation ∼{\sim}. Actually, ϕ\phi is
+non-determined in MM iff M⊭(ϕ∨∼ϕ)M \not\vDash(\phi
+\vee{\sim}\phi). 
+
+Logical equivalence. Sentences ψ\psi and χ\chi of
+IFL\mathbf{IFL} are truth equivalent if they are true in
+precisely the same models, and falsity equivalent if they are
+false in precisely the same models. Sentences ψ\psi and χ\chi are
+logically equivalent if they are both truth equivalent and
+falsity
+ equivalent.[28]
+ Due to the failure of bivalence, in IFL\mathbf{IFL} truth
+equivalence does not guarantee logical equivalence. 
+
+Truth, falsity, and independence indications. The
+syntax of IFL\mathbf{IFL} allows formulas in which both universal
+and existential quantifiers appear slashed, e.g.,
+ϕ:(∀x)(∃y/∀x)(∀z/∃y)R(x,y,z).
+\phi : (\forall x)(\exists y/\forall x)(\forall z/\exists y) R(x, y, z).
+
+
+On the other hand, quantifier independence is implemented at the level
+of strategies. Consequently independence indications following a
+universal quantifier are vacuous, when the satisfaction of a formula
+(truth of a sentence) is considered. Similarly, independence
+indications following an existential quantifier are vacuous when the
+dissatisfaction of a formula (falsity of a sentence) is at stake. The
+sentence ϕ\phi is true in the model MM iff player 2 has a
+winning strategy F={c}F=\{c\} in game G(ϕ,M)G(\phi , M). This, again,
+means that whichever elements aa and bb player 1 chooses to
+interpret (∀x)(\forall x) and (∀z/∃y)(\forall z/\exists y), respectively,
+the constant interpretation cc of (∃y/∀x)(\exists y/\forall x) given
+by the (zero-place) strategy function cc satisfies R(a,c,b)R(a, c, b)
+in MM. But this amounts to the same as requiring that whichever
+elements aa and bb player 1 chooses to interpret (∀x)(\forall x)
+and (∀z)(\forall z), respectively, the constant interpretation cc
+of (∃y/∀x)(\exists y/\forall x) satisfies R(a,c,b)R(a, c, b) in
+MM. Indeed, ϕ\phi is truth equivalent to a sentence containing
+no slashed universal quantifiers: 
+
+ϕ\phi is true in a model MM iff the sentence (∀x)(∃y/∀x)(∀z)R(x,y,z)(\forall
+x)(\exists y/\forall x)(\forall z) R(x, y, z) is true in MM.
+
+
+Similarly, ϕ\phi is falsity equivalent to a sentence containing no
+slashed existential quantifiers: ϕ\phi is false in a model MM
+iff the sentence (∀x)(∃y)(∀z/∃y)R(x,y,z)(\forall x)(\exists y)(\forall z/\exists y) R(x, y,
+z) is false therein.
+3.4. Extended IF first-order logic
+
+If ϕ\phi is a sentence of FO\mathbf{FO}, ϕ\phi is false in a
+model MM iff ∼ϕ{\sim}\phi is true in MM iff ϕ\phi is not
+true in MM. By contrast, in IFL\mathbf{IFL} falsity and
+non-truth do not coincide. An extension of IFL\mathbf{IFL} can be
+introduced, where it is possible to speak of the non-truth of
+sentences. To this end, let us introduce a new negation symbol, ¬\neg,
+referred to as weak negation, contradictory negation
+or classical
+ negation.[29]
+ The set of formulas of extended IF first-order logic (to be
+denoted EIFL)\mathbf{EIFL}) is obtained from the set of formulas of
+IFL\mathbf{IFL} by closing it under the operations ¬\neg, ∧\wedge,
+and
+ ∨\vee:[30]
+
+All formulas of IFL\mathbf{IFL} are formulas of
+EIFL\mathbf{EIFL}.
+If ϕ\phi and ψ\psi are formulas of EIFL\mathbf{EIFL}, then
+so are ¬ϕ,(ϕ∧ψ)\neg \phi , (\phi \wedge \psi) and (ϕ∨ψ)(\phi \vee
+\psi).
+
+
+So if ϕ\phi and ψ\psi are IFL\mathbf{IFL} formulas, e.g.
+¬ϕ\neg \phi and (¬ϕ∨ψ)(\neg \phi \vee \psi) are EIFL\mathbf{EIFL}
+formulas; by contrast (∀x)¬ϕ(\forall x)\neg \phi is not. For the
+crucial restriction that ¬\neg may not occur in the scope of a
+quantifier, see Hintikka (1991: 49; 1996: 148). For counterexamples to
+this restriction see, however, Hintikka (1996: 148; 2002c) and
+especially Hintikka (2006b) in which the so-called fully extended
+IF first-order logic (FEIFL) is considered. In
+FEIFL, any occurrences of ¬\neg are allowed which are
+subject to the following syntactic condition: if
+(Qx/W)x/W) is a quantifier in the syntactic scope of an
+occurrence of ¬\neg, then all quantifiers listed in WW are
+likewise in the syntactic scope of that occurrence of ¬\neg.
+
+The semantics of an EIFL\mathbf{EIFL} formula formed by
+contradictory negation is simply this:
+M,g⊨¬ϕ iff M,g⊭ϕ.
+M, g \vDash \neg \phi \text{ iff } M, g \not\vDash \phi.
+
+
+From the viewpoint of GTS, the connective ¬\neg behaves in an unusual
+way. For all connectives of IFL\mathbf{IFL}, there is a game rule
+(which can be seen as specifying the meaning of the connective). For
+contradictory negation there is no game rule, and its semantics is not
+explained in terms of plays of semantic games. A formula ¬ϕ\neg \phi
+serves to say, globally, something about an entire game
+G(ϕ,M,g)G(\phi , M, g). If ϕ\phi is a sentence, to
+say that ¬ϕ\neg \phi is true in MM is to say that player 2 does
+not have a winning strategy in game G(ϕ,M)G(\phi ,
+M). If, again, there is indeed a winning strategy for player
+2 in G(ϕ,M)G(\phi , M), by stipulation ¬ϕ\neg \phi is false
+in
+ MM.[31]
+
+Not only is ¬ϕ\neg \phi not itself a formula of IFL\mathbf{IFL},
+but it cannot in general even be expressed in IFL\mathbf{IFL}
+(see Subsect. 4.2). The law of excluded middle holds for the
+contradictory negation: for all sentences ϕ\phi and all models
+MM, indeed M⊨(ϕ∨¬ϕ)M \vDash(\phi \vee \neg \phi). In
+Section 5 it will be seen how Hintikka has proposed to make
+use of EIFL\mathbf{EIFL} when discussing issues in the philosophy
+of mathematics. 
+4. Metalogical Properties of IF First-order Logic
+
+The metalogical properties of IFL\mathbf{IFL} have been discussed
+in several publications, by Hintikka as well as
+ Sandu.[32]
+ When presenting them, reference will be made to existential
+second-order logic
+(ESO)(\mathbf{ESO});[33]
+ further important notions are those of the skolemization and
+Skolem normal form of an IFL\mathbf{IFL} formula. For
+precise definitions of these notions,
+ the supplementary document
+ can be consulted. In brief, ESO\mathbf{ESO} is obtained from
+FO\mathbf{FO} by allowing existential quantification over
+relation and function symbols in a first-order formula. The
+skolemization sk[ϕ]\mathrm{sk}[\phi] of an IFL\mathbf{IFL} formula ϕ\phi is
+a first-order formula of a larger vocabulary. It explicates
+in terms of function symbols how existential quantifiers and
+disjunction symbols of ϕ\phi depend on preceding universal
+quantifiers. For example, a skolemization of the IFL\mathbf{IFL}
+sentence ϕ=(∀x)(∃y)(∀z)(∃v/∀x)R(x,y,z,v)\phi = (\forall x)(\exists y)(\forall z)(\exists v/\forall
+x)R(x, y, z, v) of vocabulary {R}\{R\} is the FO\mathbf{FO}
+sentence sk[ϕ]=(∀x)(∀z)R(x,f(x),z,h(z))\mathrm{sk}[\phi] = (\forall x)(\forall z)R(x, f(x), z, h(z)) of
+vocabulary {R,f,h}\{R, f, h\}. Its Skolem normal form, again, is the
+ESO\mathbf{ESO} sentence SK[ϕ]=(∃f)(∃h)(∀x)(∀z)R(x,f(x),z,h(z))\mathrm{SK}[\phi] = (\exists f)(\exists h)(\forall
+x)(\forall z)R(x, f(x), z, h(z)). The first-order sentence
+sk[ϕ]\mathrm{sk}[\phi] must not be confused with the second-order sentence
+SK[ϕ]\mathrm{SK}[\phi]. 
+4.1. First-order logic and existential second-order logic
+
+Game-theoretical vs. Tarskian semantics of FO. The
+set of formulas of FO\mathbf{FO} is a proper subset of the set
+of IFL\mathbf{IFL} formulas. The standard semantics of
+FO\mathbf{FO} is not the one provided by GTS, but the Tarskian
+semantics specifying recursively the satisfaction relation M,g⊨ϕM,
+g \vDash \phi. If the Axiom of Choice is
+ assumed,[34]
+ the two semantics of FO\mathbf{FO} coincide:
+
+Theorem (assuming AC). (Hodges 1983: 94, Hintikka
+& Kulas 1985: 6–7) Let τ\tau be any vocabulary, MM
+any τ\tau structure, gg any variable assignment and ϕ\phi any
+FO[τ]\mathbf{FO}[\tau] formula. Then M,g⊨ϕM, g \vDash \phi holds in the standard sense iff there is a winning
+strategy for player 2 in game G(ϕ,M,g)G(\phi , M,
+ g).[35]
+
+
+Relation to ESO.
+IFL\mathbf{IFL} and ESO\mathbf{ESO} are
+ intertranslatable:[36]
+
+
+Theorem (assuming AC)
+ESO\mathbf{ESO} and IFL\mathbf{IFL} have the same expressive
+power.
+
+
+That is, (1) for every IFL[τ]\mathbf{IFL}[\tau] formula ϕ\phi there
+is an ESO[τ]\mathbf{ESO}[\tau] formula ϕ′\phi' such that for all
+τ\tau structures MM and variable assignments gg, we have:
+M,g⊨ϕM, g \vDash \phi iff M,g⊨ϕ′M, g \vDash \phi'. Actually,
+SK[ϕ]\mathrm{SK}[\phi] is a suitable ESO\mathbf{ESO} formula. And (2)
+for every ESO[τ]\mathbf{ESO}[\tau] formula ψ\psi there is an
+IFL[τ]\mathbf{IFL}[\tau] formula ψ′\psi' such that M,g⊨ψM, g \vDash
+\psi iff M,g⊨ψ′M, g \vDash \psi', for all τ\tau structures MM
+and variable assignments gg. This follows from the fact that
+ESO\mathbf{ESO} can be translated into FPO\mathbf{FPO} (Enderton
+1970, Walkoe 1970), which again can be translated into
+IFL\mathbf{IFL}.
+
+Hintikka suggests that IFL\mathbf{IFL} is, substantially
+speaking, a first-order logic: the entities its quantified
+variables range over are individuals, and so are all entities
+with which the players of the semantic games operate. (See
+Subsect. 5.1 for a discussion of this idea.) A part of the
+interest of the intertranslatability theorem lies in the fact that if
+Hintikka’s controversial claim is accepted, this would mean that
+the expressive power of ESO\mathbf{ESO} can actually be achieved
+on the first-order level.
+
+IFL is more expressive than FO. The following are
+examples of properties expressible in ESO\mathbf{ESO} but not in
+FO\mathbf{FO}: infinity of the domain, non-completeness of a
+linear order, ill-foundedness of a binary relation, disconnectedness
+of a graph, equicardinality of the extensions of two first-order
+formulas ϕ(x)\phi(x) and ψ(x)\psi(x), infinity of the
+extension of a first-order formula ϕ(x)\phi(x), and the
+topological notion of open set (see, e.g., Hintikka 1996,
+Väänänen 2007). When attention is restricted to
+finite models, Ronald Fagin’s famous theorem (1974)
+connects ESO\mathbf{ESO} and the complexity class
+NP\mathbf{NP}: a computational problem is solvable by an
+algorithm running in non-deterministic polynomial time iff it is
+definable in ESO\mathbf{ESO} relative to the class of all finite
+structures. The following are NP\mathbf{NP}-complete properties
+and hence expressible in IFL\mathbf{IFL}, over the class of all
+finite models: evenness of the domain, oddness of the domain,
+3-colorability of a graph, and the existence of a Hamiltonian path on
+a
+ graph.[37]
+
+As an example the Dedekind-infinity of the domain may be considered. A
+set SS is Dedekind-infinite precisely when there exists an
+injective function from SS to its proper subset. Let
+ϕinf\phi_{inf} be the following sentence of
+ IFL\mathbf{IFL}:[38]
+(∃t)(∀x)(∃z)(∀y)(∃v/∀x)((x=y↔z=v)∧z≠t).
+(\exists t)(\forall x)(\exists z)(\forall y)(\exists v/\forall x)((x = y \leftrightarrow z = v) \wedge z \ne t).
+
+
+The Skolem normal form of ϕinf\phi_{inf} is 
+
+(∃f)(∃g)(∃t)(∀x)(∀y)((x=y↔f(x)=g(y))∧f(x)≠t).
+(\exists f)(\exists g)(\exists t)(\forall x)(\forall y)((x = y
+\leftrightarrow f(x) = g(y)) \wedge f(x) \ne t).
+
+
+Relative to a model MM this
+ESO\mathbf{ESO} sentence asserts the existence of functions ff and
+gg and an element tt such that f=gf = g (implication from left
+to right), this function is injective (implication from right to
+left), and its domain is the whole domain of MM but the element
+tt does not appear in its range. Consequently the range is a proper
+subset of the domain of MM. In other words, the sentence
+ϕinf\phi_{inf} is true in a model MM iff the domain of MM is
+infinite.
+
+Properties in common with FO. IF first-order logic
+shares many metalogical properties with first-order
+ logic.[39]
+
+Compactness. A set of IFL\mathbf{IFL} sentences
+has a model iff all its finite subsets have a model.
+
+
+Löwenheim-Skolem property. Suppose ϕ\phi is an
+IFL\mathbf{IFL} sentence that has an infinite model, or
+arbitrarily large finite models. Then ϕ\phi has models of all infinite
+cardinalities.
+
+
+The separation theorem holds in IFL\mathbf{IFL} in a strengthened
+form; the ‘separation sentence’ θ\theta is in particular a
+sentence of FO\mathbf{FO}. 
+
+Separation theorem. Suppose ϕ\phi is an
+IFL\mathbf{IFL} sentence of vocabulary τ\tau, and ψ\psi an
+IFL\mathbf{IFL} sentence of vocabulary τ′\tau'. Suppose further
+that ϕ\phi and ψ\psi have no models in common. Then there is a
+first-order sentence θ\theta of vocabulary τ∩τ′\tau \cap \tau' such that every model of ϕ\phi is a model of θ\theta, but
+θ\theta and ψ\psi have no models in common.
+
+
+It is well known that for FO\mathbf{FO} there is a sound and
+complete proof procedure. Because a first-order sentence ϕ\phi is
+inconsistent (non-satisfiable) iff its negation ∼ϕ{\sim}\phi is valid (true
+in all models), trivially FO\mathbf{FO} also has a sound and
+complete disproof
+ procedure.[40]
+ The latter property extends to IFL\mathbf{IFL} (while the former
+does not, see Subsect. 4.3):
+
+Existence of a complete disproof procedure. The set
+of inconsistent IFL\mathbf{IFL} sentences is recursively
+enumerable.
+
+4.2. Intricacies of negation
+
+In Subsection 3.4, the contradictory negation ¬\neg was
+distinguished from the strong negation ∼{\sim}. In FO\mathbf{FO}
+the two coincide: for any first-order sentence ϕ\phi, we have M⊨∼ϕM
+\vDash{\sim}\phi iff M⊨¬ϕM \vDash \neg \phi. 
+
+Strong negation fails as a semantic operation. Let us
+write [ϕ][\phi] for the set of models of sentence ϕ\phi. In the special
+case of FO\mathbf{FO}, the strong negation ∼{\sim} clearly defines a
+semantic operation: whenever χ\chi and θ\theta are sentences such that
+[χ]=[θ][\chi] = [\theta], we have [∼χ]=[∼θ][{\sim}\chi] = [{\sim}\theta]. Burgess (2003)
+observed that in the context of IF logic this property is lost in a
+very strong sense. In fact there are IF sentences χ\chi and θ\theta
+such that while [χ]=[θ][\chi] = [\theta], the sets [∼χ][{\sim}\chi] and [∼θ][{\sim}\theta]
+are not only distinct but even disjoint. 
+
+Inexpressibility of contradictory negation. In
+IFL\mathbf{IFL} the strong negation ∼{\sim} and the contradictory
+negation ¬\neg do not coincide: we may have M⊨¬ϕM \vDash
+\neg \phi without having M⊨∼ϕM \vDash{\sim}\phi. This fact by itself
+still leaves open the possibility that the contradictory negation of
+every sentence ϕ\phi of IFL\mathbf{IFL} could be defined in
+IFL\mathbf{IFL}, i.e., that there was a sentence
+neg(ϕ)neg(\phi) of IFL\mathbf{IFL} such that M⊨M \vDash neg(ϕ)neg(\phi)
+iff M⊭ϕM \not\vDash \phi, for all models MM. All we know by the
+failure of the law of excluded middle is that not in all cases can
+neg(ϕ)neg(\phi) be chosen to be ∼ϕ{\sim}\phi. However, as a matter of
+fact contradictory negation is inexpressible in
+IFL\mathbf{IFL}. There are sentences ϕ\phi of IFL\mathbf{IFL}
+such that ¬ϕ\neg \phi (which is a sentence of EIFL)\mathbf{EIFL}) is
+not truth equivalent to any sentence of IFL\mathbf{IFL}. This follows
+from the well-known fact that ESO\mathbf{ESO} is not closed under
+negation and IFL\mathbf{IFL} has the same expressive power as
+ ESO\mathbf{ESO}.[41]
+
+Strong inexpressibility of contradictory negation. As
+a corollary to the separation theorem, the result holds in a much
+stronger form. If ϕ\phi and ψ\psi are sentences of
+IFL\mathbf{IFL} such that M⊨ϕM \vDash \phi iff M⊭ψM \not\vDash
+\psi, then each of ϕ\phi and ψ\psi is truth equivalent to a
+sentence of FO\mathbf{FO}. Hence the contradictory negation ¬ϕ\neg
+\phi is only expressible in IFL\mathbf{IFL} for those
+IFL\mathbf{IFL} sentences ϕ\phi that are truth equivalent to an
+FO\mathbf{FO} 
+ sentence.[42]
+
+Determined fragment. Let us say that an
+IFL\mathbf{IFL} sentence ϕ\phi is determined if it
+satisfies: M⊨(ϕ∨∼ϕ)M \vDash(\phi \vee{\sim}\phi), for all models
+MM. The determined fragment of IFL\mathbf{IFL}
+is the set of determined IFL\mathbf{IFL} sentences. In the
+determined fragment contradictory negation is syntactically
+expressible by the strong negation. By the strong inexpressibility of
+contradictory negation, the determined fragment of
+IFL\mathbf{IFL} has the same expressive power as
+FO\mathbf{FO}. Membership in the determined fragment is a
+sufficient but not necessary condition for an IFL\mathbf{IFL}
+sentence to have its contradictory negation expressible in
+IFL\mathbf{IFL}. The sentence
+(∀y)(∃x/∀y)x=y(\forall y)(\exists x/\forall y) x = y is not
+ determined;[43]
+ yet its contradictory negation (∀x)(∃y)x≠y(\forall x)(\exists y) x \ne y is
+expressible in IFL\mathbf{IFL}.
+
+Contradictory negation and GTS. The truth-conditions
+that GTS yields are of the form ‘there are strategy functions
+f1,…,fnf_1 ,\ldots ,f_n such
+that —,’ i.e., it gives rise to truth-conditions
+expressible in ESO\mathbf{ESO}. By the strong inexpressibility of
+contradictory negation, there is no single IFL\mathbf{IFL}
+sentence, not translatable into FO\mathbf{FO}, whose
+contradictory negation has a truth-condition of that form. This fact
+makes it understandable why contradictory negation should not be
+expected to admit of a game-theoretical interpretation along the same
+lines in which the other logical operators are interpreted. Different
+ways of assigning a game-theoretical interpretation to contradictory
+negation can, however, be developed. To this end, in the context of
+fully extended IF first-order logic (FEIFL,
+cf. Subsect. 3.4), Hintikka has proposed to use semantic games with
+subgames. (See Hintikka 2002c, 2006b; for subgames, see
+Carlson & Hintikka 1979, Hintikka & Kulas 1983.) This approach
+leads to mixing the play level with the strategy level: choices of
+individuals made in a subgame may depend on strategy functions chosen
+in earlier subgames. In Tulenheimo (2014), a game-theoretical
+semantics is formulated for the fragment of FEIFL
+that consists of formulas in prenex form. Plays of the correlated
+games do not involve choosing any second-order objects, such as
+strategy functions. Contradictory negation (¬)(\neg) is interpreted by
+introducing an additional component in game positions: a
+mode. At the play level, the negation ¬\neg triggers not only a
+role switch (like the dual negation ∼){\sim}), but it also involves changing
+the mode from positive to negative or vice versa. The semantic effect
+of modes becomes visible at the strategy level: modes regulate the way
+in which the truth condition of a sentence involves existentially or
+universally quantifying over strategy functions. Like independence
+indications, also occurrences of ¬\neg are, then, interpreted in terms of
+conditions that act on the strategy level. For related research, see
+Figueira et al. (2011).
+
+Contradictory negation and finite models. Certain
+major open questions in logic and theoretical computer science can be
+formulated in terms of IFL\mathbf{IFL}. It is an open question in
+complexity theory whether NP=coNP\mathbf{NP} = \mathbf{coNP},
+that is, whether the class of NP\mathbf{NP}-solvable problems is
+the same as the class of problems whose complement is solvable in
+NP\mathbf{NP}. By Fagin’s theorem (1974), this open
+problem can be equivalently formulated as follows: Is
+IFL\mathbf{IFL} closed under negation over finite
+models? That is, is there for every IF sentence ϕ\phi another IF
+sentence neg(ϕ)neg(\phi) such that for any finite model
+MM, neg(ϕ)neg(\phi) is true in MM iff ϕ\phi is not
+true in MM? Proving that the answer is negative would settle
+the notorious P=NP\mathbf{P} = \mathbf{NP} problem, i.e.,
+establish that there are computational problems for which one can
+efficiently verify whether a proposed solution is correct
+although one cannot efficiently find a
+ solution.[44]
+4.3 Failure of axiomatizability
+
+As is well known, FO\mathbf{FO} admits of a sound and complete
+proof procedure: there is a mechanical way of generating precisely
+those first-order sentences that are valid (true in all models). This
+fact can also be expressed by saying that FO\mathbf{FO} is
+axiomatizable, or that the set of valid sentences of
+FO\mathbf{FO} is recursively
+ enumerable.[45]
+ Due to its greater expressive power, axiomatizability fails
+for IFL\mathbf{IFL}. In other words, IFL\mathbf{IFL} is
+semantically
+ incomplete.[46]
+
+One way to show this is as follows. Suppose for the sake of
+contradiction that the set of valid IFL\mathbf{IFL} sentences is
+recursively enumerable. Recall that the sentence
+ϕinf\phi_{inf} discussed in Subsection 4.1 is
+true in all and only infinite models. Note, then, that an
+FO\mathbf{FO} sentence χ\chi is true in all finite
+models iff the IFL\mathbf{IFL} sentence
+(ϕinf∨χ)(\phi_{inf} \vee \chi) is valid. Given a valid
+IFL\mathbf{IFL} sentence, it can be effectively checked whether
+the sentence is syntactically of the form
+(ϕinf∨χ)(\phi_{inf} \vee \chi), where χ\chi is a
+first-order sentence. Hence the recursive enumeration of all valid
+IFL\mathbf{IFL} sentences yields a recursive enumeration of
+first-order sentences χ\chi true in all finite models. But this
+contradicts Trakhtenbrot’s theorem, according to which the set
+of FO\mathbf{FO} sentences true in all finite models is
+not recursively
+ enumerable.[47]
+
+What is the relevance of the failure of axiomatizability of
+IFL\mathbf{IFL}? Discussing finite partially ordered quantifiers,
+Quine (1970: 89–91) suggests that we should refuse to give the
+status of logic to any generalization of FO\mathbf{FO} which
+does not have a sound and complete proof procedure both for
+validity and for inconsistency. For Quine, any such
+generalization belongs to mathematics rather than logic. Since
+FPO\mathbf{FPO} is not axiomatizable, it falls outside the realm
+of logic, thus
+ delineated.[48]
+
+Hintikka finds this type of allegation unfounded. First,
+IFL\mathbf{IFL} shares many of the important metalogical results
+with FO\mathbf{FO} (cf. Subsect. 4.1). Second, just
+like IFL\mathbf{IFL}, also FO\mathbf{FO} can be translated
+into second-order logic. The only difference is that in the former
+case a larger variety of quantifier (in)dependencies must be encoded
+by Skolem functions than in the latter. Why would the former
+translation render IFL\mathbf{IFL} a part of mathematics while
+the latter would allow FO\mathbf{FO} to remain a logic (Hintikka
+1991: 26–27)? Third, one must make a distinction between what is
+needed to understand an IFL\mathbf{IFL} sentence, and what is
+needed to mechanically deal with the validities (logical truths) of
+IFL\mathbf{IFL}. Due to its non-axiomatizability, there are no
+mechanical rules for generating the set of all validities of
+IFL\mathbf{IFL}. However, to understand a sentence is to know
+what things are like when it is true, not to know what things
+are like when it is logically true (Hintikka 1995:
+13–14). Fourth, because of non-axiomatizability, the valid
+inference patterns in IFL\mathbf{IFL} cannot be exhausted by any
+recursive enumeration. Insofar as important mathematical problems can
+be reduced to questions about the validity of IFL\mathbf{IFL}
+formulas (Subsect. 5.3), progress in mathematics can be seen
+to consist (not of the discovery of stronger set-theoretical axioms
+but) of ever more powerful rules for establishing validity in
+IFL\mathbf{IFL} (Hintikka 1996: 100; 2000: 135–136).
+4.4 Compositionality and the failure of Tarski-type semantics
+
+The principle of compositionality (a.k.a. Frege principle) states that
+semantic attributes of a complex expression EE are determined
+by the semantic attributes of its constituent expressions and the
+structure of EE. In particular, the semantic attribute of
+interest (e.g., truth) may be determined in terms of one or
+more auxiliary semantic attributes (e.g.,
+ satisfaction).[49]
+ Hintikka has argued that compositionality amounts to semantic
+context-independence: semantic attributes of a complex expression
+depend only on the semantic attributes of its constituent
+expressions, plus its structure – they do not depend on
+the sentential context in which the expression is embedded. Semantic
+context-independence makes it possible to carry out semantic analysis
+from inside out – from simpler expressions to more
+complex
+ ones.[50]
+ This is what is needed for recursive definitions of semantic
+attributes – such as Tarski-type definitions of truth and
+satisfiability – to be
+ possible.[51]
+ By contrast, the GTS analysis of sentences is an outside in
+process: a semantic game starts with an entire sentence, and stepwise
+analyzes the sentence into simpler and simpler components, eventually
+reaching an atomic formula (together with an appropriate variable
+assignment). Therefore GTS allows accounting for semantic
+context-dependencies that violate the principle of
+ compositionality.[52]
+
+In IFL\mathbf{IFL} an existential quantifier may depend only on
+some of the universal quantifiers in whose scope it lies.
+Accordingly, its interpretation depends on its relation to quantifiers
+outside its own scope. Such an existential quantifier is
+ context-dependent.[53]
+ On the face of it, then, IFL\mathbf{IFL} cannot but violate the
+principle of compositionality and does not admit of a Tarski-type
+truth-definition. 
+
+Hodges (1997a,b) showed, however, that IFL\mathbf{IFL} can be
+given a compositional
+ semantics.[54]
+ The semantics is given by recursively defining the satisfaction
+relation ‘M⊨XϕM \vDash_X \phi’
+(read: ϕ\phi is satisfied in MM by X)X), where
+XX is a set of variable assignments. While the
+Tarskian semantics for FO\mathbf{FO} is in terms of single
+variable assignments, Hodges’s semantics employs sets of
+variable assignments. The game-theoretical semantics of
+IFL\mathbf{IFL} is captured by this compositional semantics: for
+every formula ϕ\phi of IFL\mathbf{IFL}, player 2 has a winning
+strategy in G(ϕ,M,g)G(\phi , M, g) iff the
+condition M⊨{g}ϕM \vDash_{\{g\}} \phi holds.
+Hintikka remarks (2006a: 65) that if one is sufficiently ruthless, one
+can always save compositionality by building the laws of semantic
+interaction of different expressions into the respective meanings of
+those
+ expressions.[55]
+
+It is methodologically worth pointing out that compositionality is not
+needed for defining IFL\mathbf{IFL}. The very existence
+of IFL\mathbf{IFL} proves that rejecting compositionality is no
+obstacle for the formulation of a powerful logic (Hintikka 1995). It
+should also be noted that what makes Hodges’s result work is its
+type-theoretical ascent. Let us say that a Tarski-type
+compositional semantics is a compositional semantics which interprets
+each formula ϕ(x1,…,xn)\phi(x_1 ,\ldots ,x_n) of nn free variables in terms of an
+nn-tuple of elements of the domain. Hence the standard
+semantics of FO\mathbf{FO} is Tarski-type, but Hodges’s
+semantics employing the satisfaction relation ‘M⊨XϕM \vDash_X \phi’ is not, because the latter
+evaluates a formula ϕ(x1,…,xn)\phi(x_1 ,\ldots ,x_n) of nn free variables relative to an
+entire set of nn-tuples of elements. Cameron &
+Hodges (2001) proved that actually there is nono Tarski-type
+compositional semantics for IFL\mathbf{IFL}. 
+
+The notion of compositionality can be refined by imposing constraints
+on the auxiliary semantic attributes. Sandu and Hintikka (2001: 60)
+suggested, by analogy with FO\mathbf{FO}, that
+‘satisfaction by a single variable assignment’ would be a
+natural auxiliary attribute in connection with IFL\mathbf{IFL}.
+By the result of Cameron and Hodges, no semantics for
+IFL\mathbf{IFL} exists that would be compositional in this
+restricted sense.
+4.5 Defining truth
+
+The definability of truth can only be discussed in connection with
+languages capable of speaking of themselves. Let us consider an
+arithmetical vocabulary τ\tau and restrict attention to the standard
+model NN of Peano’s axioms. Each sentence ϕ\phi of
+vocabulary τ\tau can then be represented by a natural number
+⌜ϕ⌝\ulcorner \phi \urcorner, its Gödel number. It
+is assumed that τ\tau contains a numeral
+⌜ϕ⌝\boldsymbol{{}^\ulcorner \phi {}^\urcorner} for each
+number ⌜ϕ⌝\ulcorner \phi \urcorner. If LL and
+L′L' are abstract logics of vocabulary τ\tau, such as
+FO\mathbf{FO} or IFL\mathbf{IFL}, and
+TRUE(x)\TRUE(x) is a formula of L′L' such that
+every sentence ϕ\phi of LL satisfies: 
+N⊨ϕ iff N⊨TRUE(⌜ϕ⌝),
+N \vDash \phi \text{ iff } N \vDash \TRUE(\boldsymbol{{}^\ulcorner \phi {}^\urcorner}),
+
+
+then TRUE(x)\TRUE(x) is said to be a
+truth-predicate (explicit
+truth-definition) of logic LL in logic
+L′L' for the model NN. By Alfred Tarski’s
+famous theorem of the undefinability of truth (Tarski 1933),
+there is no truth-predicate for FO\mathbf{FO} in
+FO\mathbf{FO} itself for the model NN. More generally,
+Tarski showed that under certain assumptions, a truth-definition for a
+logic LL can only be given in a metalanguage which is
+essentially stronger than LL. One of the assumptions is that
+the negation used behaves like contradictory negation. On the other
+hand, Tarski also pointed out that an implicit truth-definition for
+FO\mathbf{FO} in FO\mathbf{FO} itself is
+possible. Let τ\tau be an arithmetical vocabulary, and let us stay
+with the standard model NN of Peano’s axioms. Let
+‘TRUE\TRUE’ be a unary predicate not appearing in
+τ\tau. An FO\mathbf{FO} formula ψ(x)\psi(x) of vocabulary
+τ∪{TRUE}\tau \cup \{\TRUE\} is an implicit truth-definition
+for FO[τ]\mathbf{FO}[\tau] in FO[τ∪{TRUE}]\mathbf{FO}[\tau \cup \{\TRUE\}] for NN, if for every
+FO[τ]\mathbf{FO}[\tau] sentence ϕ\phi, the following holds: 
+
+N⊨ϕN \vDash \phi iff there is an interpretation
+TRUEN\TRUE^N of the unary predicate TRUE\TRUE such that 
+ (N,TRUEN)⊨ψ(⌜ϕ⌝)(N, \TRUE^N ) \vDash \psi(\boldsymbol{{}^\ulcorner \phi {}^\urcorner}).[56]
+
+
+Intuitively, TRUEN\TRUE^N is the set of those
+natural numbers that are Gödel numbers of true arithmetic
+sentences of vocabulary τ\tau; and ψ(x)\psi(x) says that
+xx is a Gödel number in the extension of the predicate
+TRUE\TRUE. The formula ψ(x)\psi(x) is a conjunction
+including clauses that mimic, on the object-language level, the
+metalogical recursive clauses of the Tarski-type truth-definition for
+FO\mathbf{FO}. E.g., one of the conjuncts is
+(∀y)(∀z)(y=⌜χ⌝∧z=⌜θ⌝∧x=⌜(χ∧θ)⌝→[TRUE(x)↔(TRUE(y)∧TRUE(z))]).\begin{align*} 
+(\forall y)(\forall z)(y = \boldsymbol{{}^\ulcorner \chi {}^\urcorner}
+ &amp;\wedge z = \boldsymbol{{}^\ulcorner \theta {}^\urcorner} \wedge 
+  x = \boldsymbol{{}^\ulcorner (\chi \wedge \theta) {}^\urcorner} \rightarrow \\
+ &amp;[\TRUE(x) \leftrightarrow (\TRUE(y) \wedge \TRUE(z))]).
+\end{align*}
+
+The implicit nature of the truth-definition is seen from the fact that
+the predicate TRUE\TRUE appears on both sides of the equivalence
+sign in these
+ clauses.[57]
+ The above implicit truth-definition of FO\mathbf{FO} for NN is
+of the form ‘there is a set SS interpreting the
+predicate TRUE\TRUE such that ψ(x)\psi(x).’ Thus the
+implicit truth-definition of FO\mathbf{FO} in FO\mathbf{FO} gives
+rise to the explicit truth-definition ∃TRUEψ(x)\exists \TRUE\, \psi(x) of
+FO[τ]\mathbf{FO}[\tau] in ESO[τ]\mathbf{ESO}[\tau] for NN. Since
+ESO\mathbf{ESO} and IFL\mathbf{IFL} have the same expressive power,
+a truth-predicate of FO\mathbf{FO} for NN can be formulated in
+IFL\mathbf{IFL}. 
+
+The same reasoning can be applied to ESO\mathbf{ESO} itself, and
+thereby to IFL\mathbf{IFL} (Hintikka 1991, 1996; Hyttinen & Sandu
+2000; Sandu 1996, 1998). Namely, an ESO\mathbf{ESO} formula
+χ(x)\chi(x) of vocabulary τ∪{TRUE}\tau \cup \{\TRUE\} can be formulated
+which is an implicit truth-definition of
+ESO[τ]\mathbf{ESO}[\tau] for NN. Therefore the ESO[τ]\mathbf{ESO}[\tau]
+formula ∃TRUEχ(x)\exists \TRUE\, \chi(x) is an explicit
+truth-definition of ESO[τ]\mathbf{ESO}[\tau] for NN. Here the
+truth-predicate is formulated in the very same language whose notion
+of truth is being defined: ESO\mathbf{ESO}. Hence ESO\mathbf{ESO},
+and thereby IFL\mathbf{IFL}, is capable of explicitly defining its
+own truth-predicate relative to NN.[58] 
+ This result does not contradict
+Tarski’s undefinability result, because here non-determined
+sentences are possible; the negation used is not contradictory
+negation.[59]
+
+Tarski (1983) adopted a view accoding to which truth cannot be defined
+for natural languages. It has been argued in Hintikka & Sandu
+(1999) that this was due to Tarski’s belief that
+compositionality fails in natural
+ languages.[60]
+IFL\mathbf{IFL} does not have a Tarski-type compositional
+semantics, but it admits of formulating a self-applied
+truth-predicate. The proposed reason why Tarski believed it not to be
+possible to discuss the notion of truth in natural languages
+themselves, cannot be entertained from the viewpoint of
+ IFL\mathbf{IFL}.[61]
+
+4.6 Properties of extended IF first-order logic
+
+Expressive power. Since IFL\mathbf{IFL} is not
+closed under contradictory negation, EIFL\mathbf{EIFL} is strictly
+more expressive than IFL\mathbf{IFL} (cf. Subsect.
+ 4.2).[62]
+ The following properties are expressible in EIFL\mathbf{EIFL} but
+not in IFL\mathbf{IFL} (Hintikka 1996: 188–190): finiteness
+of the domain, well-foundedness of a binary relation, connectedness of
+a graph, principle of mathematical induction, Bolzano-Weierstrass
+theorem, and the topological notion of continuity.
+
+Metalogical properties. The nice metatheorems that
+IFL\mathbf{IFL} shares with FO\mathbf{FO} are lost:
+Compactness, Löwenheim-Skolem property, separation theorem, and
+the existence of a complete disproof procedure all fail for
+EIFL\mathbf{EIFL} (Hintikka 1991: 49, 1996: 189). No self-applied
+truth-predictate is possible for EIFL\mathbf{EIFL}. The definition
+of such a truth-predicate would have to contain the clause
+(∀y)(y=⌜θ⌝∧x=⌜¬θ⌝→[TRUE(x)↔¬TRUE(y)]).\begin{align*}
+(\forall y)(y = \boldsymbol{{}^\ulcorner \theta {}^\urcorner} &amp;\wedge 
+ x = \boldsymbol{{}^\ulcorner \neg \theta {}^\urcorner} \rightarrow \\
+ &amp;[\TRUE(x) \leftrightarrow \neg \TRUE(y)]).
+\end{align*}
+
+But this clause is not a well-formed formula of EIFL\mathbf{EIFL},
+since ¬\neg appears in the scope of the universal quantifier
+(∀y)(\forall y) (cf. Hintikka 1996: 151).
+
+The validity problem of the full second-order can be effectively
+reduced to the validity problem of EIFL\mathbf{EIFL}. Namely, why
+cannot a second-order sentence simply be thought of as a two-sorted
+first-order sentence? Because in order to capture the standard
+interpretation of second-order
+ logic,[63]
+ it must be said that for every extensionally possible set of
+nn-tuples of elements of sort 1 there exists a member of sort
+2 having those and only those elements as members, for all arities
+nn such that the second-order sentence contains a quantifier
+(∃R)(\exists R) where RR is
+ nn-ary.[64]
+ Such additional conditions can be expressed by a finite conjunction
+XX of contradictory negations of ESO\mathbf{ESO}
+sentences. So there is an ESO\mathbf{ESO} sentence YY
+such that XX itself is logically equivalent to
+¬Y\neg Y. Therefore, if ϕ\phi is a second-order sentence and
+ϕ∗\phi^* its reconstruction in two-sorted first-order logic, we have:
+ϕ\phi is valid iff (¬X∨ϕ∗)(\neg X \vee \phi^*) is valid iff
+(Y∨ϕ∗)(Y \vee \phi^*) is valid. The validity of (¬X∨ϕ∗)(\neg X \vee \phi^*) means that ϕ∗\phi^* is a logical consequence of XX.
+Because YY is an ESO\mathbf{ESO} sentence, it can be
+expressed in IFL\mathbf{IFL}. It follows that the validity of any
+second-order sentence can be expressed as the validity of a sentence
+of
+ IFL\mathbf{IFL}.[65]
+
+Algebraic structure. The two negations available in
+EIFL,¬\mathbf{EIFL}, \neg and ∼{\sim}, agree on true sentences, as well
+as on false ones: if ϕ\phi is true (false) in MM, then both
+∼ϕ{\sim}\phi and ¬ϕ\neg \phi are false (true) in MM. By contrast, if
+ϕ\phi is non-determined in MM, then ∼ϕ{\sim}\phi is non-determined
+as well, but ¬ϕ\neg \phi is true. The combination ¬∼\neg{\sim} of the two
+negations applied to a sentence ϕ\phi asserts that ϕ\phi is not
+ false.[66]
+
+The propositional part of EIFL\mathbf{EIFL} involves the four
+operators ¬,∼,∧\neg , {\sim}, \wedge, and ∨\vee. Hintikka (2004b) raises the
+question of the algebraic structure induced by these operators, when
+any two truth equivalent sentences are identified. The operators
+¬,∧\neg , \wedge, and ∨\vee give rise to a Boolean algebra – but what
+does the strong negation ∼{\sim} add to this structure? 
+
+Restricting attention to truth equivalence, ∼{\sim} is definable from the
+operators ¬\neg and ¬∼\neg{\sim}. For, ∼ϕ{\sim}\phi is true in MM iff
+¬(¬∼ϕ)\neg(\neg{\sim}\phi) is true in MM. Instead of ∼{\sim}, the operator
+¬∼\neg{\sim} may then be considered. Hintikka points out that the
+propositional part of EIFL\mathbf{EIFL} (formulated in terms of
+the operators ∨,∧,¬\vee , \wedge , \neg and ¬∼)\neg{\sim}) is a Boolean algebra with
+an operator in the sense of Jónsson & Tarski (1951). The
+additional operator ¬∼\neg{\sim} is a closure operator. 
+
+Jónsson and Tarski (1951, Thm. 3.14) showed that any closure
+algebra is isomorphic to an algebraic system formed by a set equipped
+with a reflexive and transitive
+ relation.[67]
+ As a matter of fact, the relevant algebraic structure is precisely
+that of the propositional modal logic S4\mathbf{S4}. Hence the
+propositional part of EIFL\mathbf{EIFL} has the same algebraic
+structure as S4\mathbf{S4}. By a well-known result due to
+Gödel (1933) and McKinsey & Tarski (1948), intuitionistic
+propositional logic can be interpreted in S4\mathbf{S4}, via a
+translation tt such that ϕ\phi is intuitionistically provable
+iff t(ϕ)t(\phi) is a valid S4\mathbf{S4} formula. Thus,
+intuitionistic propositional logic is interpretable in
+ EIFL\mathbf{EIFL}.[68]
+5. Philosophical Consequences
+
+Hintikka (2006a: 73–77) takes the following to be among
+consequences of the novel insights made possible by (extended) IF
+first-order logic: reconstruction of normal mathematical reasoning on
+the first-order level, a novel perspective on the notion of truth in
+axiomatic set theory, insights into the nature of negation, and the
+formulation of a self-applied truth-predicate. A related topic of
+general interest is the phenomenon of informational independence in
+natural languages. The ideas related to negation and definability of
+truth have been discussed in Subsections 4.2 and 4.5,
+respectively. Let us consider here the remaining issues.
+5.1 Place in type hierarchy
+
+Hintikka maintains that the only reasonable way of making a
+distinction between first-order logic and higher-order logic is by
+reference to the entities that one’s quantified variables range
+over. A first-order logic is, then, a logic in which all quantifiers
+range over individuals, in contrast to higher-order entities
+(e.g., subsets of the domain). On this basis Hintikka holds
+that substantially speaking, IFL\mathbf{IFL} and even
+EIFL\mathbf{EIFL} are first-order
+ logics.[69]
+ Solomon Feferman (2006: 457–461) criticizes the criterion that
+Hintikka employs for judging the first-order status of a logic.
+Feferman makes use of generalized quantifiers in his
+ argument.[70]
+ The formulas 
+Q[z1]…[zk](ϕ1,…,ϕk)
+Q[z_1] \ldots [z_k] (\phi_1 ,\ldots ,\phi_k)
+
+
+involving generalized quantifiers are syntactically
+first-order, insofar as the quantified variables zi1,…,zini=[zi]z_{i1},\ldots
+,z_{in_i} = [z_i] are first-order (1≤i≤k)(1 \le i \le k). The semantics
+of a generalized quantifier QQ is formulated by associating with
+each domain M a kk-ary relation QMQ_M on M, with QM⊆Q_M
+\subseteq Mn1×…×^{n_1} \times \ldots \times
+Mnk^{n_k}. E.g., for any infinite cardinal κ\kappa,
+there is a generalized quantifier Q≥κQ_{\ge \kappa} such that
+Q≥κzP(z)Q_{\ge \kappa}z P(z) is true in a model MM iff there are at
+least κ\kappa elements that satisfy the predicate PP. Hence
+generalized quantifiers can be semantically higher-order. The
+fact that the variables in a formula range over individuals only, does
+not offer a reliable criterion for the logic’s first-order
+status. 
+
+Hintikka’s criterion could be reformulated by saying that a
+logic is of first order, if any play of a semantic game
+associated with a formula of this logic only involves (in addition to
+choices interpreting conjunctions and disjunctions) choices of
+individuals, as opposed to choices of higher-order entities. By this
+criterion IFL\mathbf{IFL} (and even EIFL)\mathbf{EIFL}) are
+first-order logics, but the logic of generalized quantifiers such as
+Q≥κQ_{\ge \kappa} is
+ not.[71]
+ Feferman (2006: 461) anticipates the possibility of such a reply, but
+finds it unconvincing.
+
+By a result of Hintikka (1955), the problem of deciding whether a
+sentence of second-order logic is valid can be effectively reduced to
+the validity problem of
+ IFL\mathbf{IFL}.[72]
+ Väänänen (2001) has shown that the set of valid
+sentences of IFL\mathbf{IFL} has the same very high complexity as
+the set of validities of the full second-order
+ logic.[73]
+ Väänänen (2001) and Feferman (2006) conclude that
+speaking of validity in IFL\mathbf{IFL} leads to a strong
+commitment to full second-order logic. Hintikka (2006a: 476–477)
+looks at these results from the opposite direction: for him they mean
+that indeed one can speak of validity in full second-order logic in
+terms of validity in IFL\mathbf{IFL}. What is more, Hintikka
+(1997) affirms that even EIFL\mathbf{EIFL} is a first-order logic.
+If so, any mathematical theory that can be expressed by the truth of
+an EIFL\mathbf{EIFL} sentence is likewise free from problems of
+set existence. 
+
+Hintikka’s position leads to a puzzle. If ϕ\phi is a sentence of
+IFL\mathbf{IFL} not truth equivalent to any FO\mathbf{FO}
+sentence, the truth-condition of the sentence ¬ϕ\neg \phi of
+EIFL\mathbf{EIFL} cannot be formulated without recourse to the set
+of all strategies of player 2: ¬ϕ\neg \phi is true in model MM
+iff for all strategies of player 2 in game G(ϕ,M)G(\phi ,
+M), there is a sequence of moves by player 1 such that player
+1 wins the resulting play. The set of all strategies of player 2 is
+undeniably a higher-order entity. How can commitment to entities other
+than individuals be said to have been avoided here? Can the meaning of
+the sentence ¬ϕ\neg \phi be well understood without presupposing the
+genuinely second-order idea of all strategies of a given
+ player?[74]
+ Rather than being nominalistic, Hintikka’s position appears to
+be a variant of universalia in rebus. While rules of semantic
+games pertain to actions performed on first-order objects,
+combinatorial properties of sets of plays can only be formulated in
+second-order terms. As soon as game rules are defined for a language
+fragment, also the corresponding combinatorial properties are fully
+determined, among them the properties labeled as truth and
+falsity.
+5.2 Philosophy of set theory
+
+According to Hintikka, our pretheoretical idea of the truth of a
+quantified sentence ϕ\phi (in negation normal form) is that there
+exist ‘witness individuals’ for the existential
+quantifiers, usually depending on values corresponding to the
+preceding universal
+ quantifiers.[75]
+ It is the existence of such witnesses that constitutes the truth of
+ϕ\phi. Providing witnesses is precisely what Skolem functions for
+ϕ\phi
+ do.[76]
+ The truth of a quantified sentence ϕ\phi amounts to the existence of
+a full set of Skolem functions for ϕ\phi. In Hintikka’s view,
+then, our ordinary notion of first-order truth is conceptualized in
+terms of (existential) second-order logic. What happens when this idea
+is applied to axiomatic set theory, say Zermelo-Fraenkel set theory
+with the Axiom of Choice (ZFC)(\mathbf{ZFC})? It should be born in
+mind that the very idea of axiomatic set theory is to dispense with
+higher-order logic; its underlying logic is taken to be
+FO\mathbf{FO}. Hintikka argues as
+ follows.[77]
+
+For each sentence ϕ\phi of ZFC\mathbf{ZFC}, there is another
+sentence ϕ∗=(∃f1)…(∃fn)ψ∗\phi^* = (\exists f_1)\ldots(\exists f_n)\psi^*
+of ZFC\mathbf{ZFC} which says, intuitively, that ‘Skolem
+functions’ for ϕ\phi exist. These ‘Skolem functions’
+are certain individuals of the domain of a model of
+ZFC\mathbf{ZFC}. Here both ϕ∗\phi^* and ϕ\phi are first-order
+sentences. But if for every sentence ϕ\phi of ZFC\mathbf{ZFC} we
+have ϕ\phi and ϕ∗\phi^* being logically equivalent, why could the
+sentences ϕ∗\phi^* not be used for formulating a truth-predicate for
+ZFC\mathbf{ZFC} in ZFC\mathbf{ZFC} itself? However, by
+Tarski’s undefinability result, no such truth-predicate
+ exists.[78]
+ So there must be a model of ZFC\mathbf{ZFC} and a sentence ϕ\phi
+true in that model such that ϕ∗\phi^* is false: not all ‘Skolem
+functions’ asserted to exist by ϕ∗\phi^* actually exist in the
+model. 
+
+This reasoning shows that ZFC\mathbf{ZFC} does not fully capture the
+idea of truth according to which the truth of a sentence ϕ\phi
+means that the Skolem functions for ϕ\phi exist. Furthermore, it
+also shows that the standard interpretation of higher-order logic is
+not fully captured by ZFC\mathbf{ZFC}. To see this, observe that for
+every sentence ϕ\phi there is a logically equivalent
+second-order sentence ϕ∗∗=(∃F1)…(∃Fn)ψ∗∗\phi^{**} = (\exists
+F_1)\ldots(\exists F_n)\psi^{**} actually asserting the existence of
+Skolem functions for ϕ\phi. The first-order sentence
+ϕ∗=(∃f1)…(∃fn)ψ∗\phi^* = (\exists f_1)\ldots(\exists f_n)\psi^* must not be
+confused with the second-order sentence ϕ∗∗=(∃F1)…(∃Fn)ψ∗∗\phi^{**} = (\exists
+F_1)\ldots(\exists F_n)\psi^{**}.  The Skolem functions FiF_i of
+which the sentence ϕ∗∗\phi^{**} speaks are sets built out of
+individuals of the set-theoretical universe, while the ‘Skolem
+functions’ fif_i spoken of by ϕ∗\phi^* are
+ individuals.[79]
+
+The conclusion of Hintikka’s argument is that our ordinary
+notion of truth is misrepresented by ZFC\mathbf{ZFC}.
+Furthermore, by Tarski’s undefinability result the situation
+cannot be improved by adding further axioms to ZFC\mathbf{ZFC}.
+In Hintikka’s judgment, axiomatic set theory is a systematic but
+futile attempt to capture on the first-order level truths of
+standardly interpreted second-order logic. Like Gödel (1947),
+also Hintikka holds that the concepts needed to state, say, the
+continuum hypothesis are sufficiently well-defined to determine the
+truth-value of this conjecture. The continuum hypothesis does not
+receive its meaning from phrasing it in ZFC\mathbf{ZFC}.
+Gödel and Hintikka agree that the independence results due to
+Gödel himself and Paul Cohen do not by themselves show anything
+about the truth or falsity of the continuum hypothesis. But unlike
+Gödel, Hintikka finds the derivability of any conjecture whatever
+in ZFC\mathbf{ZFC} (or in any of its extensions) simply
+irrelevant for the truth of the conjecture. For Hintikka, it is a
+‘combinatorial’ question whether every infinite subset of
+the reals is either countable or else has the cardinality of the set
+of all reals – a question properly conceptualized within
+second-order logic. This is what Hintikka takes to be the
+pretheoretical sense of the truth of the continuum hypothesis, and
+that is not captured by
+ ZFC\mathbf{ZFC}.[80]
+
+5.3 Extended IF first-order logic and mathematical theorizing
+
+Hintikka sees EIFL\mathbf{EIFL} as allowing to reconstruct all
+normal mathematical reasoning on the first-order level. This result is
+essentially dependent on the acceptability of Hintikka’s claim
+that EIFL\mathbf{EIFL} is ontologically committed to individuals
+only (Subsect. 5.1). But how would EIFL\mathbf{EIFL}
+serve to reconstruct an important part of all mathematical
+reasoning?
+
+Hintikka (1996: 194–210) discusses mathematical
+theories (or mathematical axiomatizations) and mathematical
+problems (or questions of logical consequence)
+separately.
+
+Any higher-order mathematical theory TT gives rise to
+a many-sorted first-order theory T∗T^*. If the theory is finite,
+there is a finite conjunction JJ formulated in
+EIFL\mathbf{EIFL} (equivalent to the contradictory negation of an
+ESO\mathbf{ESO} sentence) expressing the requirement that the
+standard interpretation of higher-order logic is respected. The
+question of the truth of the higher-order theory TT is thus
+reduced to the truth of the sentence (T∗∧J)(T^* \wedge J) of
+EIFL\mathbf{EIFL} (cf. Subsect. 4.6). 
+
+The mathematical problem of whether a given sentence
+CC is a logical consequence of a finite higher-order theory
+TT coincides with the problem of whether the second-order
+sentence (¬(T∗∧J)∨C∗)(\neg(T^* \wedge J) \vee C^*) is
+valid. Recalling that there is a sentence χ\chi of
+IFL\mathbf{IFL} such that JJ is equivalent to ¬χ\neg \chi,
+it follows that ¬(T∗∧J)\neg(T^* \wedge J) is equivalent to a
+sentence of IFL\mathbf{IFL}. Consequently there is a sentence of
+IFL\mathbf{IFL} which is valid iff the sentence
+(¬(T∗∧J)∨C∗)(\neg(T^* \wedge J) \vee C^*) is valid (cf.
+Subsect. 4.6). Mathematical problems can be understood as
+questions of the validity of an IFL\mathbf{IFL}
+sentence. Among mathematical problems thus reconstructible using
+IFL\mathbf{IFL} are the continuum hypothesis, Goldbach’s
+conjecture, Souslin’s conjecture, the existence of an
+inaccessible cardinal, and the existence of a measurable
+ cardinal.[81]
+
+As conceptualizations apparently transcending the proposed framework
+– not expressible in a higher-order logic – Hintikka
+considers the maximality assumption expressed by David Hilbert’s
+so-called axiom of completeness. The axiom says that no mathematical
+objects can be added to the intended models without violating the
+other
+ axioms.[82]
+
+If indeed problems related to the idea of all subsets are
+avoided in EIFL\mathbf{EIFL} (Hintikka 1997), it offers a way of
+defending a certain form logicism. Unlike in historical logicism, the
+idea is not to consider logic as an axiom system on the same level as
+mathematical axiom systems (Hintikka 1996:
+ 183),[83]
+ and to attempt to reduce mathematics to logic. Rather, Hintikka
+(1996: 184) proposes to ask: (a) Can the crucial
+mathematical concepts be defined in logical terms?
+(b) Can the modes of semantically valid logical
+inferences used in mathematics be expressed in logical terms? The idea
+is not to concentrate on deductive rules of logic: no complete set of
+deductive rules exist anyway for IFL\mathbf{IFL}. Because the
+status of higher-order logic is potentially dubious – due to the
+problems associated with the notion of powerset – a positive
+solution to questions (a) and (b) calls for a first-order logic more
+powerful than FO\mathbf{FO}. 
+
+The suggested reduction of all mathematics expressible in higher-order
+logic to the first-order level would be philosophically significant in
+showing that mathematics is not a study of general concepts, but of
+structures consisting of particulars (Hintikka 1996: 207). This is not
+to say that actual mathematics would be best carried out in terms of
+IFL\mathbf{IFL}, only that it could in principle be so carried
+out (Hintikka 1996: 205, 2006a: 477). For a critique of
+Hintikka’s conclusions, see Väänänen (2001),
+Feferman (2006).
+5.4 Informational independence in natural languages
+
+When Hintikka began to apply GTS to the study of natural language
+(Hintikka 1973a), he took up the question of whether branching
+quantifiers occur in natural languages. He was led to ask whether
+there are semantic games with imperfect information. He detected
+various types of grammatical constructions in English that involve
+informational
+ independence.[84]
+ An often cited example is the sentence 
+
+Some relative of each villager and some relative of each townsman
+hate each other,
+
+
+true under its relevant reading when the choice of a relative of each
+townsman can be made independently of the individual chosen for
+‘each
+ villager.’[85]
+ Hintikka (1973a) sketched an argument to the effect that actually
+every FPO\mathbf{FPO} sentence can be reproduced as a
+representation of an English sentence. From this it would follow that
+the logic of idiomatic English quantifiers is much stronger than
+FO\mathbf{FO}, and that no effective procedure exists for
+classifying sentences as analytical or nonanalytical, synonymous or
+ nonsynonymous.[86]
+ This would be methodologically a very important result, showing that
+syntactic methods are even in principle insufficient in linguistic
+theorizing. Jon Barwise (1979) suggested that particularly convincing
+examples supporting Hintikka’s thesis can be given in terms of
+generalized quantifiers. 
+
+Lauri Carlson and Alice ter Meulen (1979) were the first to observe
+cases of informational independence between quantifiers and
+intensional operators. Consider the
+ question[87]
+
+Who does everybody admire?
+
+
+Under one of its readings, the presupposition of this question is
+(∀x)(∃y)(\forall x)(\exists y) admires(x,y)(x,
+y). The desideratum of this question is 
+
+I know who everybody admires.
+
+
+Writing ‘KIK_I’ for ‘I
+ know,’[88]
+ the desideratum has a reading whose logical form is 
+
+KI(∀x)(∃y/KI)K_I (\forall x)(\exists y/K_I) admires(x,y)(x, y).
+
+
+This desireratum is satisfied by an answer pointing out a function
+ff which yields for each person a suitable admired person.
+Such a function can be his or her father. Importantly, the
+value f(b)f(b) of this function only depends on the
+person bb interpreting ‘everybody,’ but does not
+depend on the scenario ww, compatible with the
+questioner’s knowledge, that interprets the construction
+‘I know.’ Interestingly, the desideratum
+KI(∀x)(∃y/KI)K_I 
+(\forall x)(\exists y/K_I)
+admires(x,y)(x, y) is not expressible without an explicit
+independence indicator. It is also worth noting that this case cannot
+be represented in the notation of FPO\mathbf{FPO}. This is
+because several types of semantic interactions are possible among
+quantifiers and intensional operators, and blocking interactions of
+one type does not automatically block interactions of other types. In
+the example, the witness of ∃y\exists y must not vary with the
+scenario ww interpreting the operator
+KIK_I, but still the values of both
+variables xx and yy must belong to the domain of the
+particular scenario ww chosen to interpret
+ KIK_I.[89]
+
+Hintikka’s ideas on desiderata of wh-questions were influenced
+by his exchange with the linguist Elisabet
+ Engdahl.[90]
+ These wh-questions, again, functioned as important test cases for the
+appearance of informational independence in natural languages. 
+
+Hintikka and Sandu (1989) took up the task of formulating an explicit
+unified formal treatment for the different varieties of informational
+independence in natural language semantics. They posed the question of
+which are the mechanisms that allow English to exceed the expressive
+power of FO\mathbf{FO}. For, natural languages typically do not
+resort to higher-order quantifiers. Hintikka and Sandu suggested that
+informational independence plays a key role in increasing the
+expressive power of natural
+ languages.[91]
+
+In GTS as developed for English in Hintikka & Kulas (1983, 1985),
+game rules are associated with a great variety of linguistic
+expressions (cf. Subsect. 2.1). As Hintikka (1990) has
+stressed, informational independence is a cross-categorical
+phenomenon: it can occur in connection with expressions of widely
+different grammatical categories. Hintikka and Sandu (1989) propose
+several examples from English calculated to show that there is an
+abundance of instances of informational independence in natural
+languages. Among examples are wh-questions of the kind discussed
+above, and the distinction between the de dicto and de
+re readings of certain English sentences. Hintikka and Sandu
+suggest that representing such readings in terms of IF logic is more
+truthful to the syntax of English than the alternative, non-IF
+representations are. 
+In connection with knowledge, a de
+dicto attribution such as
+
+KRalph(∃x)(xK_{\textit{Ralph}} (\exists x) (x is a spy)
+
+
+can be turned into a de re attribution by marking the
+existential quantifier as independent of the knowledge-operator (cf.
+Hintikka and Sandu 1989):
+
+KRalph(∃x/KRalph)(xK_{\textit{Ralph}} (\exists x/K_{\textit{Ralph}}) (x is a spy).
+
+
+Because knowledge is a factive attitude (the actual world is among
+Ralph’s epistemic alternatives), this amounts indeed to the same
+as the condition
+
+(∃x)KRalph(x(\exists x) K_{\textit{Ralph}} (x is a spy).
+
+
+Rebuschi & Tulenheimo (2011) observed that independent quantifiers
+are of special interest in connection with non-factive attitudes such
+as belief. The logical form of a statement ascribing to Ralph a belief
+pertaining to a specific but non-existent object is 
+
+BRalph(∃x/BRalph)(xB_{\textit{Ralph}} (\exists x/B_{\textit{Ralph}}) (x is a spy),
+
+
+where ‘BRalphB_{\textit{Ralph}}’ stands for
+‘Ralph believes
+ that.’[92]
+
+Attitudes of this form were dubbed de objecto attitudes.
+Since the (intentional) object of such an attitude need not exist
+actually, the de objecto attitude is weaker than the de
+re attitude
+
+(∃x)BRalph(x(\exists x) B_{\textit{Ralph}} (x is a spy).
+
+
+On the other hand, the pattern of operators BRalph(∃x/BRalph)B_{\textit{Ralph}}
+(\exists x/B_{\textit{Ralph}}) requires that the witness of the
+existential quantifier ∃x\exists x be the same relative to all
+doxastic alternatives of Ralph, so the de objecto attitude is
+stronger than the de dicto attitude
+
+BRalph(∃x)(xB_{\textit{Ralph}} (\exists x) (x is a spy).
+
+
+Janssen (2013) discusses the possibility of providing in terms of
+IFL\mathbf{IFL} a compositional analysis of the de re /
+de dicto ambiguity in natural languages. Brasoveanu and
+Farkas (2011) argue that scopal properties of natural language
+indefinites are best elucidated in terms of a semantics inspired by
+IFL\mathbf{IFL}, more precisely by formulating the semantics
+relative to sets of variable assignments as done in Hodges’s
+compositional semantics for slash logic. 
+
+As a rule, informational independence is not indicated syntactically
+in
+ English.[93]
+ Methodological consequences of this fact are discussed in Hintikka
+(1990), where he tentatively puts forward the Syntactic Silence
+Thesis, according to which sufficiently radical cross-categorical
+phenomena are not likely to be marked syntactically in natural
+languages. Evidence for this thesis would, for its part, be evidence
+against the sufficiency of syntax-oriented approaches to
+semantics.
+6. Related logics
+6.1 Slash logic
+
+Syntatically slash logic uses quantifiers like
+(∃x/y)(\exists x/y) instead of quantifiers such as
+(∃x/∀y)(\exists x/\forall y). Semantically slash logic is
+otherwise like IFL\mathbf{IFL} except that its game-theoretical
+semantics is based on the idea that a player’s strategy
+functions may utilize as their arguments any preceding moves
+made in the current play, save for those whose use is, by the slash
+notation, explicitly indicated as forbidden (cf. Sect. 3).
+That is, also a player’s own earlier moves may appear as
+arguments of a strategy function. This can make a difference in the
+presence of imperfect information. For example, consider evaluating
+the slash-logic sentence
+(∀x)(∃y)(∃z/x)x=z(\forall x)(\exists y)(\exists z/x)
+x = z containing the vacuous quantifier
+∃y\exists y. This sentence is true on a two-element domain,
+since player 2 can copy as the value of yy the value that
+player 1 has chosen for xx, and then select the value of
+zz using a strategy function whose only argument is the value
+of yy. (For this phenomenon of ‘signaling,’ see
+Hodges 1997a, Sandu 2001, Janssen & Dechesne 2006, Barbero 2013.)
+By contrast, the IF sentence
+(∀x)(∃y)(∃z/∀x)x=z(\forall x)(\exists y)(\exists z/\forall x)
+x = z fails to be true on such a domain, since there
+a strategy function for (∃z/∀x)(\exists z/\forall x) must be
+a constant, and no such strategy function can guarantee a win for
+player 2 against both possible values that player 1 can choose for
+xx. As mentioned in Subsection 4.4, Hodges (1997a,b)
+showed that slash logic admits of an alternative, compositional
+semantics. This requires evaluating formulas relative to sets of
+variable assignments, instead of single assignments as in connection
+with FO\mathbf{FO}. Hodges (1997a,b) and Figueira et
+al. (2009, 2011) discuss an extension of slash logic in which the
+contradictory negation of slash logic sentences can be expressed.
+6.2 Dependence logic
+
+Jouko Väänänen (2007) formulated a new approach to IF
+logic that he dubbed dependence logic (DL)(\mathbf{DL});
+for further work on DL\mathbf{DL}, see e.g. Kontinen
+et al. (2013). The syntax of DL\mathbf{DL} is obtained
+from that of FO\mathbf{FO} by allowing atomic formulas of the
+following special form: 
+=(x1,…,xn;xn+1).
+=(x_1 ,\ldots ,x_n; x_{n+1}).
+
+
+Intuitively such a formula means that the value of xn+1x_{n+1} depends
+only on the values of x1,…,xnx_1 ,\ldots ,x_n. The semantics of
+DL\mathbf{DL} cannot be formulated relative to single variable
+assignments like that of FO\mathbf{FO}: we cannot explicate what it
+means for the value of xn+1x_{n+1} to depend on those of x1,…,xnx_1 ,\ldots
+,x_n with reference to a single assignment on the variables x1,…,xn+1x_1
+,\ldots ,x_{n+1}.  For example, consider the assignment described
+below: 
+
+
+x1x_1
+x2x_2
+x3x_3 
+
+7
+5
+8 
+
+
+Relative to this assignment, all of the following claims hold:
+whenever the value of x1x_1 equals 7, the value of x3x_3 equals 8;
+whenever the value of x2x_2 equals 5, the value of x3x_3 equals 8;
+whenever the value of x1x_1 equals 7 and the value of x2x_2 equals
+5, the value of x3x_3 equals 8; irrespective of the values of
+x1x_1 and x2x_2, the value of x3x_3 equals 8. The question of
+dependence only becomes interesting and non-vacuous relative to a set
+of assignments:
+
+
+x1x_1
+x2x_2
+x3x_3 
+
+7
+5
+8 
+
+9
+5
+6 
+
+7
+11
+8 
+
+7
+3
+8 
+
+9
+19
+6 
+
+
+The set XX consisting of the above five assignments satisfies
+the formula =(x1=(x_1; x3)x_3): the
+value of x3x_3 depends only on the value of
+x1x_1. As is readily observed, any two assignments in
+XX which assign the same value to x1x_1
+assign also the same value to x3x_3. The interesting
+novelty of DL\mathbf{DL} is that claims about variable
+dependencies are made at the atomic level. Quantifiers of
+IFL\mathbf{IFL} and those of slash logic with their independence
+indications easily lead to somewhat messy formulas, whereas
+DL\mathbf{DL} looks exactly like FO\mathbf{FO}, apart from
+its greater flexibility in forms of atomic formulas.
+7. Conclusion
+
+In this entry IF first-order logic and extended IF first-order logic
+have been surveyed. Their metalogical properties have been explained
+and the philosophical relevance of these properties has been
+discussed. The suggested consequences of these logics for
+philosophical issues such as the existence of a self-applied
+truth-predicate, the logicist program, the philosophical relevance of
+axiomatic set theory, and informational independence in natural
+languages have been covered as well. Slash logic and dependence logic
+– both closely related to IFL\mathbf{IFL} and inspired by
+it – were also briefly considered.

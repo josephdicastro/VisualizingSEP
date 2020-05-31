@@ -1,0 +1,1747 @@
+In logic, disjunction is a binary connective (∨∨\vee) classically
+interpreted as a truth function the output of which is true if at
+least one of the input sentences (disjuncts) is true, and false
+otherwise. Its supposed connection with disjunctive words of natural
+language like or has long intrigued philosophers, logicians
+and linguists. In this entry we give an overview of logical and
+linguistic analyses of disjunction with focus on developments at the
+interface between logic and language. Sections 1 and 2 present
+disjunction as a binary connective in classical logic and in a number
+of non-classical interpretations. Section 3 discusses some basic facts
+concerning disjunctive words in natural language, and introduces a
+generalized, cross-categorial notion of disjunction as the
+join operator in a (Boolean) algebra. Section 4 and 5 present
+Grice’s account of the use of or in conversation and
+recent developments in the discussion on inclusive and exclusive uses
+of linguistic disjunctive words. Finally, sections 6 and 7 introduce
+two recent non-classical accounts of linguistic disjunction and
+discuss applications to phenomena of free choice, disjunctive
+questions and counterfactuals with disjunctive antecedents.
+ 
+1. Disjunction in classical logic
+
+In classical logic, disjunction (∨∨\vee) is a binary sentential
+operator whose interpretation is given by the following truth
+table:
+
+
+(1) Disjunction in
+classical logic 
+
+
+
+ϕϕ\phi
+ψψ\psi
+(ϕ∨ψ)(ϕ∨ψ)(\phi \vee \psi) 
+
+1
+1
+1 
+
+1
+0
+1 
+
+0
+1
+1 
+
+0
+0
+0 
+
+
+
+A disjunction (ϕ∨ψ)(ϕ∨ψ)(\phi \vee \psi) is true iff at least one of the
+disjuncts is true.
+
+Adopting a natural deduction system, the proof-theoretical
+contribution of disjunctive formulas can be defined by the following
+two rules, which regulate (i) how disjunctions can be drawn as
+conclusions (disjunction introduction rule, I∨I∨I_{\vee}, also known
+as addition) and (ii) how conclusions can be drawn from
+disjunctions (disjunction elimination rule, E∨E∨E_{\vee}, also known
+as reasoning by cases):
+
+(2)
+Disjunction introduction (I∨I∨I_{\vee}) 
+ϕ(ϕ∨ψ)IR∨ψ(ϕ∨ψ)IL∨ϕ(ϕ∨ψ)I∨Rψ(ϕ∨ψ)I∨L
+\infer[I_{\vee}^R]{(\phi \vee \psi)}{\phi}  \qquad \qquad 
+     \infer[I_{\vee}^L]{(\phi \vee \psi)}{\psi}
+    
+
+(3)
+Disjunction elimination (E∨E∨E_{\vee}) 
+⋮(ϕ∨ψ)[ϕ]⋮θ[ψ]⋮θθE∨⋮(ϕ∨ψ)[ϕ]⋮θ[ψ]⋮θθE∨
+\infer[E_{\vee}]{\theta}{\infersn{(\phi \vee \psi)} &amp; \infers{\theta}{[\phi]} &amp; \infers{\theta}{[\psi]}}
+
+
+Intuitively, the former tells us that we can conclude (ϕ∨ψ)(ϕ∨ψ)(\phi \vee
+\psi) on the basis of ϕϕ\phi (or of ψψ\psi), while the latter
+states that θθ\theta will follow from a disjunction (ϕ∨ψ)(ϕ∨ψ)(\phi \vee
+\psi) if it can be derived from ϕϕ\phi and also from ψψ\psi.
+
+One of the goals of a logical system is to arrive at a rigorous
+characterization of the notion of validity. In a logical system, which
+normally consists of a language, a proof-theory and a semantics,
+validity can be defined proof-theoretically or semantically.
+Proof-theoretically, validity is defined in terms of formal proofs. An
+argument is proof-theoretically valid (⊢⊢\vdash) if there is a proof
+from some or all of its premises to its conclusion. Semantically or
+model-theoretically, validity is normally defined in terms of
+truth-preservation. An argument is model-theoretically valid
+(⊨⊨\models) if there is no interpretation (in the semantics) in
+which its premises are all true and its conclusion false. In classical
+logic, the proof-theoretical and the model-theoretical perspectives
+have been proven to characterize exactly the same notion of validity
+(soundness and completeness theorems): an argument is
+proof-theoretically valid iff it is model-theoretically valid.
+
+Below are some of the principles involving disjunction that classical
+logic validates. In the list we adopt the model-theoretic notation
+(⊨⊨\models) because such perspective will be more prominent in the
+following section. ⊨ϕ⊨ϕ\models \phi means ϕϕ\phi is true in all
+interpretations. The last two principles in the list are
+model-theoretic analogues of disjunction introduction and elimination,
+respectively.
+⊨(ϕ∨¬ϕ)⊨¬(ϕ∧ψ)↔(¬ϕ∨¬ψ)⊨¬(ϕ∨ψ)↔(¬ϕ∧¬ψ)⊨ϕ∧(ψ1∨ψ2)↔(ϕ∧ψ1)∨(ϕ∧ψ2)⊨ϕ∨(ψ1∧ψ2)↔(ϕ∨ψ1)∧(ϕ∨ψ2)¬ϕ,(ϕ∨ψ)⊨ψϕ⊨(ϕ∨ψ),ψ⊨(ϕ∨ψ)ϕ→θ,ψ→θ⊨(ϕ∨ψ)→θ(law of excluded middle)(De Morgan laws)(distributive laws)(disjunctive syllogism)(addition)(reasoning by cases)⊨(ϕ∨¬ϕ)(law of excluded middle)⊨¬(ϕ∧ψ)↔(¬ϕ∨¬ψ)(De Morgan laws)⊨¬(ϕ∨ψ)↔(¬ϕ∧¬ψ)⊨ϕ∧(ψ1∨ψ2)↔(ϕ∧ψ1)∨(ϕ∧ψ2)(distributive laws)⊨ϕ∨(ψ1∧ψ2)↔(ϕ∨ψ1)∧(ϕ∨ψ2)¬ϕ,(ϕ∨ψ)⊨ψ(disjunctive syllogism)ϕ⊨(ϕ∨ψ),ψ⊨(ϕ∨ψ)(addition)ϕ→θ,ψ→θ⊨(ϕ∨ψ)→θ(reasoning by cases)\begin{align}
+&amp; \models (\phi \vee \neg \phi) &amp; \text{(law of excluded middle)} \\
+&amp; \models \neg (\phi \wedge \psi) \leftrightarrow (\neg \phi \vee \neg \psi) &amp; \text{(De Morgan laws)} \\
+&amp; \models \neg (\phi \vee \psi) \leftrightarrow (\neg \phi \wedge \neg \psi) &amp; \\
+&amp; \models \phi \wedge (\psi_1 \vee \psi_2) \leftrightarrow (\phi \wedge \psi_1) \vee (\phi \wedge \psi_2) &amp; \text{(distributive laws)} \\
+&amp; \models \phi \vee (\psi_1 \wedge \psi_2) \leftrightarrow (\phi \vee \psi_1) \wedge (\phi \vee \psi_2) &amp; \\
+&amp; \neg \phi, (\phi \vee \psi) \models \psi &amp; \text{(disjunctive syllogism)} \\
+&amp; \phi \models (\phi \vee \psi), \quad \psi \models (\phi \vee \psi) &amp; \text{(addition)} \\
+&amp; \phi \to \theta, \psi \to \theta \models (\phi \vee \psi) \to \theta &amp; \text{(reasoning by cases)} 
+\end{align}
+
+These principles have been widely discussed and, at times, rejected in
+the logical-philosophical literature. The following section briefly
+summarizes parts of these discussions focusing on which alternative
+interpretation of ∨∨\vee these discussions have led to.
+2. Non-classical variations
+2.1 Law of excluded middle and the principle of bivalence
+
+The law of excluded middle (LEM) states that any proposition of the
+form (ϕ∨¬ϕ)(ϕ∨¬ϕ)(\phi \vee \neg \phi) is logically valid. The semantic
+principle of bivalence states that every proposition is either true or
+false (and not both). Bivalence and LEM collapse in classical logic,
+but are distinguished for example in supervaluationism (van Fraassen
+1966), which rejects the former, while retaining the latter. Since
+Aristotle, who was the first to state these principles, bivalence and
+LEM have been criticized on various grounds. This section first
+discusses intuitionistic logic, which invalidates LEM (and part of the
+De Morgan laws); and then presents some canonical arguments against
+bivalence and discuss how ∨∨\vee is interpreted in a number of
+non-bivalent systems including many-valued logic, dynamic semantics,
+supervaluationism, as well as quantum logic, which besides bivalence
+also invalidates the classical distributive laws.
+2.1.1 Disjunction in intuitionistic logic
+
+LEM has been rejected in constructivism, in particular in
+intuitionistic logic (see the entry on
+ intuitionistic logic).
+ The standard informal interpretation of logical operators in
+intuitionistic logic is the so-called proof-interpretation or
+Brouwer-Heyting-Kolmogorov (BHK). On such interpretation the meaning
+of a statement ϕϕ\phi is given by explaining what constitutes a
+proof of ϕϕ\phi rather than in terms of its truth. The BHK
+interpretation of disjunction reads as follows:
+
+(4) A proof of
+(ϕ∨ψ)(ϕ∨ψ)(\phi\vee \psi) consists of a proof of ϕϕ\phi or a proof of
+ψψ\psi.
+
+
+On such interpretation, the question concerning the validity of LEM is
+then equivalent to the question of the possibility of unsolvable
+(mathematical) problems (Brouwer 1908, translated in Heyting (ed)
+1975): LEM
+should then fail because it is doubtful that for any mathematical
+statement ϕϕ\phi, either there is a proof of ϕϕ\phi or a proof of
+¬ϕ¬ϕ\neg
+ \phi.[1]
+
+
+Intuitionistic logic can be described as classical logic without LEM
+(or the principle of double negation (¬¬ϕ→ϕ)(¬¬ϕ→ϕ)(\neg \neg \phi \to \phi)),
+but with the classical law of contradiction ((ϕ→ψ)→((ϕ→¬ψ)→¬ϕ))((ϕ→ψ)→((ϕ→¬ψ)→¬ϕ))((\phi \to \psi) \to
+((\phi \to \neg \psi) \to \neg \phi)) and ex falso
+quodlibet (¬ϕ→(ϕ→ψ))(¬ϕ→(ϕ→ψ))(\neg \phi \to (\phi \to \psi)). Related to its
+rejection of LEM, intuitionistic logic satisfies the disjunction
+property (Gödel 1932). A logic is said to have the
+disjunction property if whenever (ϕ∨ψ)(ϕ∨ψ)(\phi \vee \psi) is provable in
+the logic, so is at least one of ϕϕ\phi and ψψ\psi. Classical
+logic does not have such property (⊢CL(p∨¬p)⊢CL(p∨¬p)\vdash_{CL} (p \vee \neg p),
+without ⊢CLp⊢CLp\vdash_{CL} p  or ⊢CL¬p⊢CL¬p\vdash_{CL} \neg p) but has a weaker
+property called Halldén-completeness: every provable
+disjunction whose disjuncts don’t share any propositional
+variables has at least one of those disjuncts provable.
+
+The rejection of LEM in intuitionistic logic also implies the
+rejection of classical reductio ad absurdum as a legitimate
+method of (mathematical) proof. Intuitionistically, ad
+absurdum one can only prove negative statements (via negation
+introduction (ϕ→⊥)→¬ϕ(ϕ→⊥)→¬ϕ(\phi \to \bot) \to \neg \phi). This is because the
+principle of double negation (¬¬ϕ→ϕ¬¬ϕ→ϕ\neg \neg \phi \to \phi) does not
+hold in intuitionistic logic. If it did, LEM would follow by modus
+ponens from the intuitionistically provable ¬¬(ϕ∨¬ϕ)¬¬(ϕ∨¬ϕ)\neg \neg (\phi
+\vee \neg \phi) (in general it holds that if ϕϕ\phi is classically
+provable, then ¬¬ϕ¬¬ϕ\neg\neg \phi is intuitionistically provable).
+
+Finally note that only one of the De Morgan laws is intuitionistically
+valid, of the other only one half still holds:
+
+⊨IT(¬ϕ∧¬ψ)↔¬(ϕ∨ψ)⊨IT(¬ϕ∧¬ψ)↔¬(ϕ∨ψ)\models_{IT} (\neg \phi \wedge \neg \psi) \leftrightarrow \neg
+(\phi \vee \psi) (De Morgan laws)
+⊨IT(¬ϕ∨¬ψ)→¬(ϕ∧ψ)⊨IT(¬ϕ∨¬ψ)→¬(ϕ∧ψ)\models_{IT} (\neg \phi \vee \neg \psi) \to \neg (\phi \wedge
+\psi) , but ⊭IT¬(ϕ∧ψ)→(¬ϕ∨¬ψ)⊭IT¬(ϕ∧ψ)→(¬ϕ∨¬ψ)\not\models_{IT} \neg (\phi \wedge \psi) \to (\neg
+\phi \vee \neg \psi)
+
+
+Intuitively, ¬(ϕ∧ψ)¬(ϕ∧ψ) \neg (\phi \wedge \psi)  intuitionistically asserts
+that an effective method has been given, which would convert any proof
+of (ϕ∧ψ)(ϕ∧ψ)(\phi \wedge \psi) into a proof of a contradiction. But this
+does not imply that either a proof of ¬ϕ¬ϕ\neg \phi (i.e., an
+algorithm which would convert any proof of ϕϕ\phi into a proof of a
+contradiction) or a proof of ¬ψ¬ψ\neg \psi has been given, which is
+what (¬ϕ∨¬ψ)(¬ϕ∨¬ψ)(\neg \phi \vee \neg \psi) intuitionistically asserts.
+2.1.2 Disjunction in multi-valued logics
+
+The semantic principle of bivalence states that every proposition is
+either true or false (and not both). Early arguments against bivalence
+were linked to the problem of determinism. In De
+Interpretatione (part 9), Aristotle discusses the status of
+statements about contingent future events, and seems to conclude that
+for these statements the principle of bivalence should be rejected,
+otherwise determinism would follow. His argument can be reconstructed
+as follows. Consider the statement A sea battle will be fought
+tomorrow. If the statement is true, then the sea battle will
+necessarily take place. If the sentence is false, then it will be
+impossible for the sea battle to take place. Assuming that statements
+are either true or false, one concludes that the sea battle is either
+necessary or impossible. To escape this fatalistic conclusion
+Aristotle rejects the principle of bivalence (while possibly retaining
+the law of excluded middle, see van Fraassen 1966: 493–495, and
+the entry on
+ fatalism).
+ Aristotle’s sea battle argument, although criticized by many,
+constituted one of Łukasiewicz’ original motivations for the
+development of his trivalent logic (Łukasiewicz 1920,
+translated in McCall 1967). Since then various multi-valued logics have been
+developed where formal disjunction ∨∨\vee receives a non-classical
+interpretation. In Łukasiewicz’ original system, but also
+in strong Kleene three-valued logic (Kleene 1952), disjunction is
+interpreted according to the following truth table, where # stands
+for indefinite or possible in Łukasiewicz, and
+for undefined in Kleene (Łukasiewicz’s and
+Kleene’s system differ in their interpretation of implication,
+we will disregard this issue here).  Priest’s (1979) Logic of
+Paradox (LP) also adopts the following table for disjunction. There #
+should be read as both true and false:
+
+
+(5)Disjunction in
+strong Kleene logic
+
+
+
+∨s∨s\vee_s 
+1
+#
+0 
+
+1
+1
+1
+1 
+
+#
+1
+#
+# 
+
+0
+1
+#
+0 
+
+
+
+On this interpretation, a disjunction is true if at least one of the
+disjuncts is true, false if both disjuncts are false, undefined
+otherwise.
+
+In Bochvar’s internal three-valued logic, also known as
+Kleene’s weak three-valued logic, disjunction receives a
+different interpretation. The symbol # should be read here as
+meaningless:
+
+
+(6) Disjunction in weak
+Kleene logic
+
+
+
+∨w∨w\vee_w
+1
+#
+0 
+
+1
+1
+#
+1 
+
+#
+#
+#
+# 
+
+0
+1
+#
+0 
+
+
+
+While on a strong Kleene interpretation, a disjunction can be true
+even if one of the disjuncts is undefined, on a weak Kleene
+interpretation, if one of the disjuncts is meaningless, the whole
+disjunction is meaningless as well.
+
+Negation receives the following interpretation in these systems:
+
+
+(7) Negation in strong
+and weak Kleene logic
+
+
+
+¬¬\neg 
+ 
+
+1
+0 
+
+#
+# 
+
+0
+1 
+
+
+
+In both strong and weak Kleene logics then, (ϕ∨¬ϕ)(ϕ∨¬ϕ)(\phi \vee \neg \phi)
+never has value 000, but it doesn’t always have value 111
+either: if ϕϕ\phi is assigned value #, so is its negation, but then
+(ϕ∨¬ϕ)(ϕ∨¬ϕ)(\phi \vee \neg \phi) will also have value # on both the strong
+and weak interpretations of ∨∨\vee. Thus (ϕ∨¬ϕ)(ϕ∨¬ϕ)(\phi \vee \neg \phi)
+fails to be logically valid in these systems (unless both 111 and #
+are taken to be designated values, as in Priest’s LP, which
+validates LEM. Priest’s notion of validity is defined later in
+this section). Other many-valued logics, such as the Łukasiewicz
+continuum-valued logic, also fail to validate LEM, for similar
+reasons. In continuum-valued logic, the set of truth values is the set
+of real numbers between 000 and 111, where 111 stands for
+completely true, 000 for completely false, 0,50,50,5 for half true,
+etc. Disjunction and negation are analyzed as F∨(x,y)=max(x,y)F∨(x,y)=max(x,y)F_{\vee}(x,
+y)=max(x,y)  and F¬(x)=1−xF¬(x)=1−xF_{\neg} (x)= 1-x respectively, where maxmaxmax
+means “the maximum of”. But then since max(x,1−x)max(x,1−x)max(x, 1-x)
+need not be equal to 111, (ϕ∨¬ϕ)(ϕ∨¬ϕ)(\phi \vee \neg \phi) can fail to be
+completely true in this system.
+
+The difference between the strong and weak Kleene’s treatment of
+disjunction can be better appreciated by looking at the phenomenon of
+presupposition, which constitutes one of the most well-known
+linguistic motivations for the rejection of bivalence (other common
+motivating phenomena include the semantic paradoxes and vagueness, see
+the entries on
+ liar paradox
+ and
+ sorites paradox,
+ and
+ section 2.1.4
+ below). Consider Russell’s (1905) example: 
+
+(8) The king
+of France is bald.
+
+
+According to bivalence,
+ (8)
+ must be either true or false. Which is it? Russell’s answer is
+well known. According to his theory of descriptions
+ (8)
+ expresses the conjunction “there is a unique king of France and
+he is bald” of which the first conjunct is false, and therefore
+the whole sentence is false. Strawson (1950) however criticized
+Russell’s analysis and argued that the existence and uniqueness
+of the king of France is not part of what is asserted by an utterance
+of
+ (8)
+ rather it is part of what is taken for granted or
+presupposed. If there is no king of France, the sentence is
+not false, rather it is neither true nor false. Adopting a
+three-valued logic we can assign to
+ (8)
+ value #. Consider now the following three examples where
+ (8)
+ occurs in a disjunction.
+
+(9)  Either
+the king of France is bald or the king of France is not
+bald.
+(10)  Either
+there is no king of France or the king of France is bald.
+(11)  Either
+Barack Obama is tall or the king of France is
+bald.
+
+
+Both strong and weak Kleene systems predict
+ (9)
+ to be undefined/meaningless, since both disjuncts are
+undefined/meaningless. However, the predictions of the two systems
+with respect to
+ (10)
+ and
+ (11)
+ diverge: the strong Kleene system predicts both
+ (10)
+ and
+ (11)
+ to be true since at least one of the disjuncts is true (assuming
+Barack Obama is in fact tall), while the weak system predicts both
+ (10)
+ and
+ (11)
+ to be meaningless since at least one of the disjuncts is meaningless.
+Intuitively, however,
+ (10)
+ is true while
+ (11)
+ is more readily judged as undefined/meaningless. Thus the predictions
+of neither systems are in agreement with common sense judgments.
+Linguists have observed that the intuitive difference between
+ (10)
+ and
+ (11)
+ is that in the former, but not in the latter the existence of a
+unique king of France (the presupposition of one of the disjuncts) is
+entailed by the negation of the other disjunct. Karttunen (1973), who
+systematically studied the projection behavior of presuppositions
+(i.e., how the presupposition of a constituent projects at the level
+of the complex sentence), described disjunction as a filter.
+In his taxonomy of embedding operators, plugs block all
+presuppositions in their scope (an example is told that),
+holes allow presupposition to project freely (e.g.,
+negation), while filters allow only some presuppositions to
+project. Various analyses have been proposed attempting to capture how
+presuppositions project when embedded in disjunctions or other complex
+sentences. A prominent example is Peters (1979), who showed how
+Karttunen’s observations can be accounted for within a
+multi-valued logic with special non-symmetric connectives (see the
+entry on
+ presupposition
+ for an overview).
+2.1.3 Disjunction in dynamic semantics
+
+Another influential attempt to formalize Karttunen’s
+generalization with respect to presupposition projection, is the
+dynamic account of Heim (1983), further developed in Beaver (2001). In
+a dynamic semantics, the interpretation of sentences is given in terms
+of their context change potentials rather than their truth conditions
+(see the entry on
+ dynamic semantics).
+ A context (or information state) ccc is defined as a set of
+possible worlds, the worlds compatible with the information available
+to the conversationalists, along the lines of Stalnaker’s (1978)
+notion of a context set. The meaning of an atomic sentence ppp is
+identified with its potential to update the input context ccc, i.e.,
+its potential to eliminate all non-ppp worlds from ccc: c[p]={w∈c∣w(p)=1}c[p]={w∈c∣w(p)=1}c[p]=\{w
+\in c \mid w(p) =1\}. Here is the dynamic clause for
+disjunction.
+
+(12)
+Disjunction in dynamic semantics 
+c[(ϕ∨ψ)]=c[ϕ]∪(c∖c[ϕ])[ψ]c[(ϕ∨ψ)]=c[ϕ]∪(c∖c[ϕ])[ψ]
+c[(\phi \vee \psi)] = c [\phi] \cup (c \setminus c [\phi])[\psi]
+
+
+The result of updating a context ccc with a disjunction (ϕ∨ψ)(ϕ∨ψ)(\phi \vee
+\psi) consists in the union of (i) the result of updating ccc with
+ϕϕ\phi and (ii) the result of updating with ψψ\psi the context c∖c[ϕ]c∖c[ϕ]c
+\setminus c [\phi] obtained by subtracting from ccc all worlds
+which verify ϕϕ\phi. By defining the presupposition of a sentence as
+what has to be true (or supported) in a context ccc in order for an
+update with the sentence to be defined in ccc, the dynamic account
+of disjunction captures the pattern in
+ (9)–(11).
+ Simplifying, suppose ccc does not support the information that
+there is a king of France, then
+ (9)
+ and
+ (11)
+ will be undefined in ccc, because c[ϕ]c[ϕ]c [\phi] and/or (c∖c[ϕ])[ψ](c∖c[ϕ])[ψ](c
+\setminus c [\phi])[\psi] will be undefined. But
+ (10)
+ will be defined. This is because the second disjunct in
+ (10),
+ which presupposes that there is a king of France, is interpreted here
+with respect to the local context (c∖c[ϕ])(c∖c[ϕ])(c \setminus c [\phi]) which is
+the context obtained by subtracting from ccc all worlds which verify
+the first disjunct, i.e., all worlds in which there is no king of
+France. Such local context will support the information that there is
+a king of France. So the whole disjunction does not presuppose
+anything. The ordering between disjuncts however matters in a dynamic
+account and so the analysis predicts a difference in presupposition
+between
+ (10)
+ and the following variant where the presupposition trigger occurs in
+the first disjunct rather than the second:
+
+(13) Either
+the king of France is bald or there is no king of France. 
+
+
+This prediction however does not seem to be borne out.
+
+A related discussion concerns the behavior of anaphora in the context
+of disjunction and in particular the challenge presented by the
+so-called “bathroom” example
+ (14)
+ from Barbara Partee, where the anaphoric pronoun it in the
+second disjunct refers back to the negative indefinite no
+bathroom in the first disjunct, while negative indefinites are
+normally inaccessible to subsequent pronouns as illustrated in
+ (15):
+
+(14) Either
+there is no bathroom in the house, or it is in a funny
+place.
+(15) There is
+no bathroom in the house. # It is in a funny place.
+
+
+The contrast between
+ (14)
+ and
+ (15)
+ seems to provide evidence for the analysis of disjunction presented
+in
+ (12)
+ according to which the second disjunct must be interpreted with
+respect to a context supporting the negation of the first disjunct (so
+a context supporting the information that there is a bathroom in the
+house). Note however that the principle of double negation (¬¬ϕ→ϕ)(¬¬ϕ→ϕ)(\neg
+\neg \phi \to \phi) is invalidated in standard dynamic semantics for
+anaphora (Groenendijk and Stokhof 1991) and so a full account of these
+examples requires some adjustment. Various solutions have been
+proposed (e.g., Simons 1996), but the discussion about anaphora (and
+presupposition projection) in disjunctions has not been settled
+yet.
+
+It is easy to see that a dynamic semantics with presuppositions does
+not validate LEM, because, if ϕϕ\phi contains a presupposition
+trigger, (ϕ∨¬ϕ)(ϕ∨¬ϕ)(\phi \vee \neg \phi) will be undefined in any context in
+which the presuppositions of ϕϕ\phi are not satisfied. For the
+fragment without presuppositions, however, LEM is validated, but there
+is a non-trivial sense in which bivalence is still rejected: truth and
+falsity in dynamic semantics are defined relative to a context, for
+example, ϕϕ\phi is true (or supported) in ccc iff c[ϕ]=cc[ϕ]=cc[\phi]=c;
+and ϕϕ\phi is false in ccc iff c[ϕ]=∅c[ϕ]=∅c[\phi]=\emptyset. But then
+ppp might be neither true nor false in a context ccc (e.g., if
+ccc contains both ppp worlds and non-ppp worlds), while, for all
+cc c, it holds that (p∨¬p)(p∨¬p)(p \vee \neg p) is true in ccc.
+2.1.4 Disjunction in supervaluationism
+
+Another system which rejects bivalence while validating LEM is
+supervaluationism (van Fraassen 1966). Let VVV be a set of classical
+valuations vvv, where a classical valuation is a function assigning
+T(rue) or F(alse) to any statement in the relevant language. A
+supervaluation sVsVs_V is then a function assigning T (F) to exactly
+those statements assigned T (F) by all valuations in VVV. Since
+VVV can contain classical valuations that assign different values to
+one and the same statement (e.g., if v1(p)v1(p)v_1(p)=T and v2(p)=v2(p)=v_2(p)=F for
+v1,v2∈Vv1,v2∈Vv_1,v_2 \in V), supervaluations have truth-value gaps (sV(p)sV(p)s_V(p)
+is undefined), so the law of bivalence fails. LEM, by contrast, is
+validated, since v(ϕ∨¬ϕ)v(ϕ∨¬ϕ)v(\phi \vee \neg \phi)=T for all ϕϕ\phi and
+classical vvv, and thus sV(ϕ∨¬ϕ)sV(ϕ∨¬ϕ)s_V(\phi \vee \neg \phi) = T, for any
+sVsVs_V. Thus, in supervaluationism, a disjunction can be supertrue
+(i.e., can be assigned T in some sVsVs_V) without any of its disjuncts
+being supertrue.
+
+Supervaluational semantics has been largely applied to explain
+phenomena of vagueness (Lewis 1970; Fine 1975b; Kamp 1975; see also the entry on
+ vagueness). A predicate PPP is vague if it exhibits borderline
+cases for which it is not clear whether PPP truly applies or not.
+Prominent examples of vague predicates are relative adjectives like
+tall or clever, while adjectives like prime
+as in 3 is a prime number are normally taken not to be vague.
+The basic insight of any supervaluational account of vagueness is that
+a vague language admits of several precisifications (formalized as a
+set VVV of classical valuations) and the semantic value of a
+statement is fixed only insofar as all those precisifications agree: a
+statement ϕϕ\phi is true if it is supertrue (sV(ϕ)=TsV(ϕ)=Ts_V(\phi)=T), that
+is, true on every admissible precisification (v(ϕ)=Tv(ϕ)=Tv(\phi)=T, for all
+v∈Vv∈Vv\in V), and it is false if it is superfalse (sV(ϕ)=FsV(ϕ)=Fs_V(\phi)=F),
+that is, false on every admissible precisification (v(ϕ)=Fv(ϕ)=Fv(\phi)=F, for
+all v∈Vv∈Vv\in V); otherwise it has no semantic value. A common argument
+in favor of supervaluationism relies on the observation that while a
+predicate like tall may be vague, the compound predicates
+tall or not tall and tall and not tall are not
+vague, the former being true and the latter being false of all
+entities in the predicate application domain. Thus, while aaa is
+tall may fail to be true or false (and the same goes for its
+negation), aaa is either tall or not tall and aaa is
+tall and not tall are always true and false respectively, as
+predicted by a supervaluational semantics. More recent experimental
+work, however, has cast some doubts on these observations (e.g.,
+Ripley 2011). Supervaluationism has further been criticized for giving
+rise to counterexamples to familiar inference-patterns (Williamson
+1994: 151–152 and 162–163), (see also Keefe 2000; Williams
+2008 for further discussion). For example, it is easy to see that in
+this framework, one loses the disjunction elimination rule, at least
+in languages with a determinately/supertrue operator DDD. Given a
+class VVV of classical valuations, we can introduce the operator
+DDD with the stipulation that v(Dϕ)=1v(Dϕ)=1v(D \phi)=1 iff v1(ϕ)=1v1(ϕ)=1v_1(\phi)=1 ,
+for all v1v1v_1 in VVV. Defining supervalidity, ⊨sv⊨sv\models_{sv}, in
+terms of preservation of supertruth, we have that p⊨svDpp⊨svDpp \models_{sv} D
+p, ¬p⊨svD¬p¬p⊨svD¬p\neg p \models_{sv} D \neg p and ⊨svp∨¬p⊨svp∨¬p\models_{sv} p \vee \neg
+p, but ⊭svDp∨D¬p⊭svDp∨D¬p\not\models_{sv} Dp \vee D \neg p. So the disjunction
+elimination rule does not preserve supervalidity in this language (see
+also Humberstone, chapter 6, pages 830–833). Whether
+supervalidity is the right notion of validity from a supervaluational
+perspective is however controversial (e.g., Varzi 2007).
+2.1.5 Disjunction in quantum logic
+
+Another logic which lacks bivalence is quantum logic, which also
+typically rejects the distributive laws of classical logic (Birkhoff
+and von Neumann 1936; Putnam 1968). Quantum logic was started by
+Birkoff and von Neumann for studying the relation among physical
+observables in quantum physics. Quantum logic rejects bivalence
+because a state in a quantum system typically assigns probability
+values to experimental propositions rather than plain true or false.
+To see why quantum physics can be taken to provide evidence against
+the distributive laws of classical logic consider a particle moving on
+a line. Suppose ppp asserts that the particle’s momentum is
+within a certain interval, while qqq and rrr assert that the
+particle’s position is in the intervals αα\alpha and ββ\beta
+respectively. Suppose the statement p∧(q∨r)p∧(q∨r)p \wedge (q \vee r) is
+confirmed by our observation, so is true (or has value 1). By the
+distributive laws we can classically conclude (p∧q)∨(p∧r)(p∧q)∨(p∧r)(p \wedge q) \vee (p
+\wedge r). But in quantum theory the latter might still be false
+(have value 0), since both conjunctions (p∧q)(p∧q)(p \wedge q) and (p∧r)(p∧r)(p
+\wedge r) might assert tighter restrictions on simultaneous values
+of position and momentum than is allowed by Heisenberg’s
+uncertainty principle (see the entry on
+ the uncertainty principle).
+ So in the “logic of quantum physics” a disjunction (q∨r)(q∨r)(q
+\vee r) can have value 1 in a state without any of the disjuncts
+having value 1: if qqq has value 1 or rrr has value 1, then (q∨r)(q∨r)(q
+\vee r) has value 1, but the other direction fails.
+
+Various ways have been proposed to develop a quantum logic which
+rejects the distributive laws while saving as much as possible of
+classical logic. One way discussed by Dummett (1978) (who was not a
+proponent of quantum logic) involves restricting the elimination rule
+for disjunction so that the distributive laws are no longer derivable
+(see Humberstone 2011: 298–302 and 918–922 for more
+details). Arguably more natural characterizations of quantum logic use
+algebraic semantics and probability theory (see the entry
+ quantum logic and probability theory).
+2.2 Disjunctive syllogism and addition
+
+Disjunctive Syllogism (DS) states that we can infer ψψ\psi from (ϕ∨ψ)(ϕ∨ψ)
+(\phi \vee \psi)  and ¬ϕ¬ϕ\neg \phi. DS, which is valid in classical
+logic, but also in intuitionistic logic and in the multi-valued logics
+discussed in the previous section (with the exception of PL), has
+however been rejected in relevance logics (Anderson and Belnap 1962,
+1975). Relevance logics are non-classical logical systems developed to
+avoid the paradoxes of material and strict implication (see the entry
+on
+ relevance logic).
+ These are classically valid principles, like p→(q∨¬q)p→(q∨¬q)p \to (q \vee \neg
+q), which however strike us as counterintuitive. This is so because,
+according to the relevantist, they involve a fallacy of relevance: in
+these cases the antecedent is typically irrelevant to the consequent.
+Belnap’s formal criteria of relevance (also known as variable
+sharing principle) is that in any provable implication, the antecedent
+and the consequent should share at least one propositional variable, and that no
+inference can be shown valid if the premises and conclusion do not
+share at least one propositional variable.
+
+Historically, relevance logic rejected DS because of the role it plays
+in C.I. Lewis “independent” proof of the fact that an
+impossible proposition (A∧¬A)(A∧¬A)(A \wedge \neg A) can lead to any
+proposition whatsoever, which is one of the paradoxes of strict
+implication:
+
+
+1.
+ (A∧¬A)(A∧¬A)(A \wedge \neg A) 
+ [assumption]
+
+2.
+AA A 
+ [from 1, by E∧E∧E_{\wedge}]
+
+3.
+ ¬A¬A\neg A 
+ [from 1, by E∧E∧E_{\wedge}]
+
+4.
+ (A∨B)(A∨B)(A \vee B) 
+[from 2, by I∨I∨I_{\vee}, or addition]
+
+5.
+ BBB 
+ [from 3,4 by disjunctive syllogism]
+
+
+According to Anderson and Belnap “the inference from ¬A¬A\neg A
+and A∨BA∨BA\vee B to BBB is an error: […] a fallacy of
+relevance” (Anderson and Belnap 1962: 19). Formally, the
+inference is rejected because according to Anderson and Belnap’s
+notion of tautological entailment (see their system E) ¬A∧(A∨B)¬A∧(A∨B)\neg A \wedge
+(A\vee B) entails BBB if and only if (¬A∧A)∨(¬A∧B)(¬A∧A)∨(¬A∧B)(\neg A \wedge A) \vee
+(\neg A \wedge B) entails BBB, only if (¬A∧A)(¬A∧A)(\neg A \wedge A)
+entails BBB, which fails since the premise (¬A∧A)(¬A∧A)(\neg A \wedge A) is
+not relevant to the conclusion BBB (no shared propositional
+variables). Anderson and Belnap further argued that we can still have
+a version of disjunctive syllogism involving an intensional notion of
+disjunction ∨i∨i\vee_i, for which addition wouldn’t hold.
+Intensional disjunction is defined as follows: (A∨iB):=(¬A→iB)(A∨iB):=(¬A→iB)(A\vee_i B):= (\neg A
+\to_i B) , where →i→i\to_i is an intensional implicational
+connective, i.e., one satisfying the formal criterion of relevance
+introduced above. The English or would then be ambiguous
+between intensional and extensional (truth-functional) disjunction,
+and only for the latter would addition hold. Intuitively, the
+intensional variety of or would be one requiring
+“relevance” between the disjuncts. On the intensional
+reading, “AAA or BBB” would entail that AAA
+and BBB are so related that we are entitled to say “If
+AAA had not been true, BBB would have been true” or
+“If BBB had not been true, AAA would have been
+true” or the like. A disjunction like Either Napoleon was
+born in Corsica or else the number of the beast is perfect
+clearly fails to have this property and therefore is of the
+truth-functional kind. Whereas That is either Drosophilia
+Melanogaster or D. virilis, I’m not sure which appears to
+entail that if it is not the one then it is the other, and thus is of
+the intensional kind. The distinction between intensional and
+extensional disjunction has been criticized by various scholars,
+including Burgess (1981, 1983), but has been defended by Read (1981,
+1983) who proposed the following example as a clear case of
+truth-functional disjunction, for which addition is valid: You
+qualify for a grant if either you are over 65 or you can earn less
+than 2000 pounds a year (Read 1981: 68). Now if English
+or had an intensional and an extensional sense, it should be
+possible to find both in a large variety of linguistic contexts. On a
+closer inspection however it appears that it is quite hard to find
+clear cases of intensional disjunction in embedded positions like in
+the antecedent of a conditional (as in Read’s example), or under
+negation. For example, That is not Drosophilia Melanogaster or D.
+virilisit, on its most natural reading, simply means that that is
+not either, but then or must be extensional here because to
+derive “not AAA and not BBB” from “not
+(AAA or BBB)” addition is needed. This seems to
+suggest that phenomena of relevance should be captured on a pragmatic
+level rather than on the level of logic (Grice 1989). An explicit
+Gricean account of relevance of disjunctive sentences has been indeed
+proposed by Simons (2001), who observes that felicitous utterances of
+“AAA or BBB” require the disjuncts to be
+relevant alternatives, and argues that such condition, which she calls
+the relatedness condition, can be derived from general principles of
+conversation interacting with truth functional interpretation of
+or. In “Further Notes on Logic and Conversation”
+Grice had suggested that to felicitously use a disjunctive sentence
+“AAA or BBB”, a speaker must be in possession of
+a reasonable argument with “AAA or BBB” as
+conclusion [by Quality] which does not contain one of the disjuncts as
+a step [by Quantity] (Grice 1989: 44). According to Simons to arrive
+at such a kind of evidence is almost certainly impossible in case the
+disjuncts are not (contextually) related to each other (as they were
+for example in Belnap and Anderson’s Napoleon example, which
+indeed requires a special context to be acceptable). Simons (2001)
+also discusses a second requirement that a disjunction needs to
+satisfy in order to constitute a felicitous contribution to an
+ordinary conversation, namely what she calls the distinctness
+condition (aka known as Hurford’s constraint, from Hurford
+1974), which states that the disjuncts in a clausal disjunction must
+be distinct alternatives. The following, which does not satisfy such a
+constraint since one of the disjunct entails the other, is indeed
+highly anomalous (Simons 2001: example (2)):
+
+(16) Either
+there is dirt in the fuel line or there is something in the fuel
+line.
+
+
+Hurford’s constraint has more recently received some attention
+in the semantic/pragmatic literature because of its role in the debate
+between localist and globalist analysis of scalar implicatures (e.g.,
+Chierchia, Fox, and Spector 2012).
+
+
+Disjunctive syllogism is also invalid (or better quasi-valid) in
+Priest’s Logic of Paradox (LP). In PL both 111 and ##\# are
+designated values (i.e., preserved in valid inferences), where #
+stands for both true and false. More formally, validity is defined as
+follows: Σ⊨ϕΣ⊨ϕ\Sigma \models \phi iff there is no valuation vvv such
+that for all ψ∈Σ:v(ψ)=1ψ∈Σ:v(ψ)=1\psi \in \Sigma: v(\psi) = 1 or # and v(ϕ)=0v(ϕ)=0v(\phi) =0.
+Adopting the strong Kleene tables for disjunction and negation
+presented above, we obtain that ϕ,(¬ϕ∨ψ)⊭ψϕ,(¬ϕ∨ψ)⊭ψ\phi, (\neg \phi \vee \psi)
+\not\models \psi, because ϕϕ\phi and thus also (¬ϕ∨ψ)(¬ϕ∨ψ)(\neg \phi \vee
+\psi) might be both true and false, while ψψ\psi is false. The
+schema ϕ,(¬ϕ∨ψ)⊨ψϕ,(¬ϕ∨ψ)⊨ψ\phi , (\neg \phi \vee \psi) \models \psi however only
+fails in case ϕϕ\phi is a dialetheia (both true and false),
+in this sense is the scheme quasi-valid. Priest (2006: ch. 8) then argues that applications
+of disjunctive syllogism can be justified/are reasonable in case
+(ϕ∧¬ϕ)(ϕ∧¬ϕ)(\phi \wedge \neg \phi) is rationally rejectable.
+
+
+We conclude this section with a final remark on addition, which
+according to Anderson and Belnap does not hold for intensional
+disjunction. The validity of addition has also been disputed in
+relation to imperative logic. We don’t seem to be able to
+conclude
+ (18)
+ from
+ (17)
+ (Ross’ (1941) paradox):
+
+(17) Post
+this letter!
+(18) Post
+this letter or burn it!
+
+
+One way to tackle this would be to treat or in
+ (18)
+ as a case of intensional disjunction. This solution however would
+fail to account for a characteristic aspect of the interpretation of
+disjunctive imperatives which arguably explains the failure of
+addition in these cases, namely their choice offering potential. The
+most natural interpretation of disjunctive imperatives is as one
+presenting a choice between different actions:
+ (18)
+ implies that you may post the letter and you may burn it (a free
+choice inference). Imperative
+ (17)
+ then cannot imply
+ (18)
+ otherwise when told the former one would be justified in burning the
+letter rather than posting it (e.g., Mastop 2005; Aloni 2007; Aloni
+and Ciardelli 2013). More on free choice in
+ section 6.
+3. Disjunction in language
+
+From a linguistic point of view disjunction is a kind of coordination,
+where coordination refers to syntactic constructions in which two or
+more units of the same type are combined into a larger unit and still
+have the same semantic relations with other surrounding elements
+(Haspelmath 2007). An open question is whether disjunctive
+coordination is a universal that can be found in all languages. All
+languages appear to possess coordination constructions of some kind,
+but not all languages seem to have explicit coordinators like
+and and or. For example, Maricopa (a Yuman language
+of Arizona described by Gill 1991) and Dyribal (an Australian
+Aboriginal language described by Dixon 1972) seem to lack explicit
+coordination structures, so in these languages there is no word
+corresponding to or (see also Winter 1995). This does not
+necessarily mean however that these languages lack a way to express
+disjunctive meanings. Maricopa and Dyribal appear to be able to convey
+“AAA or BBB”, without explicit disjunctive
+coordinator, by adding a suffix/particle expressing uncertainty to the
+main verb.
+ (19)
+ illustrates this strategy for Maricopa (from Gil 1991: 102):
+
+(19) 
+Johnš John-nom
+Billš Bill-nom
+v?aawuumšaa. 3-come-pl-fut-infer
+‘John or Bill will come’
+
+
+That it is the “uncertainty” suffix šaa
+which is responsible for the disjunctive interpretation is evidenced
+by the fact that if omitted the interpretation of the sentence becomes
+conjunctive (Gil 1991). The close connection between linguistic
+disjunction and uncertainty (or ignorance) will be further scrutinized
+in the following sections. Let us now turn to languages which do have
+specialized disjunctive words like or. A first difference
+between logical disjunction (∨∨\vee) and disjunctive words in human
+languages is that while the former is a binary operator, there is no
+theoretical finite limit to the number of units that the latter can
+join. Another striking difference is that while logical disjunction is
+a sentential operator, linguistic disjunction is typically
+cross-categorial. For example, English or can coordinate
+expressions of different syntactic category as illustrated below,
+where the units are noun phrases in
+ (20a)
+ and verb phrases in
+ (20b):
+
+(20) John or
+Mary sang. (⇔⇔\Leftrightarrow John sang or Mary sang)
+(21) Every
+man sang or danced. (⇎⇎\not\Leftrightarrow every man sang or every
+man danced)
+
+
+Adopting an algebraic perspective Keenan and Faltz (1985) showed that
+we can capture all these uses identifying disjunction with the join
+operator in a Boolean algebra (or, simplifying a bit, set union). In
+the special case of disjunction at the sentence level, the Boolean
+operator boils down to the classical propositional operator on truth
+values (see
+ section 7.1
+ for a recent account which identifies disjunction with the join
+operator in a Heyting algebra, which at the sentence level yields a
+non-classical (inquisitive) propositional operator). As an
+illustration consider the following interpretation of generalized,
+cross-categorial or in terms of generalized union, adapted
+from Gazdar (1980) (see also Winter 2001). The crucial assumption
+behind this definition is that noun phrases like John or
+every man denote sets or functions rather than individuals
+(as in Montague 1973).
+
+(22)
+Generalized, cross-categorial disjunction
+[[or]]=⊔⟨τ,ττ⟩={∨⟨t,tt⟩λXτλYτλZσ1.X(Z)⊔⟨σ2,σ2σ2⟩Y(Z)if τ=tif τ=σ1σ2[[or]]=⊔⟨τ,ττ⟩={∨⟨t,tt⟩if τ=tλXτλYτλZσ1.X(Z)⊔⟨σ2,σ2σ2⟩Y(Z)if τ=σ1σ2\lbrack\!\lbrack or\rbrack\!\rbrack = \sqcup_{\langle\tau,\tau \tau\rangle} =\left\{ 
+  \begin{array}{l l}
+    \vee_{\langle t,tt\rangle} &amp; \quad \mathrm{if } \  \tau=t \\
+    \lambda X_{\tau}\lambda Y_{\tau} \lambda Z_{\sigma_1}. X(Z) \sqcup_{\langle\sigma_2,\sigma_2 \sigma_2\rangle}  Y(Z)  &amp; \quad \mathrm{if } \ \tau=\sigma_1  \sigma_2 
+  \end{array} \right.
+
+Assume that (i) verb phrases (VPs) denote functions from individuals
+into truth values (type ⟨e,t⟩⟨e,t⟩\langle e,t\rangle), (ii) noun phrases
+denote functions from VP denotations into truth values (type
+⟨⟨e,t⟩,t⟩⟨⟨e,t⟩,t⟩\langle\langle e,t\rangle, t\rangle), and (iii) sentences denote
+truth values (type ttt). Then, talking about characteristic
+functions as if they were sets, we have that John denotes the
+set of all John’s properties, Mary denotes the set of
+all Mary’s properties, and sang denotes the set of all
+individuals that sang. Given
+ (22),
+ John or Mary denotes the union of John’s properties
+with Mary’s properties, i.e., the set consisting of exactly
+those properties that pertain to either John or Mary. So John or
+Mary sang will come out true just in case this union has as a
+member the property of singing. This is the case only if either John
+sang or Mary sang (see
+ 23a).
+ On the other hand, given
+ (22),
+ sang or danced denotes the union of the set of individuals
+that sang with the set of individuals that danced. So every man sang
+or danced will come out true just in case this union is a member of
+the property-set denoted by every man. From this we cannot infer that
+either every man sang or every man danced (see 23b).
+
+(23)  a.
+ John or Mary sang.
+
+sing′′' ∈{P∣j∈P}∪{P∣m∈P}∈{P∣j∈P}∪{P∣m∈P}\in \{ P \mid j\in P \} \cup \{ P \mid
+m\in P\}
+
+⇔⇔\Leftrightarrow sing′′' ∈{P∣j∈P∈{P∣j∈P\in \{ P \mid j\in P
+ or m∈P}m∈P} m\in P\}
+
+⇔⇔\Leftrightarrow j∈j∈ j\in  sing′′' ∨∨\vee m∈m∈
+m\in sing′′' 
+  b.
+ Every man sang or
+danced.
+
+sing′∪′∪' \cup dance′′' ∈{P∣∈{P∣\in \{ P
+\mid  man′⊆P}′⊆P}' \subseteq P\}
+
+⇔⇔\Leftrightarrow man′⊆′⊆' \subseteq 
+sing′∪′∪' \cup dance′′'
+
+⇎⇎\not\Leftrightarrow man′⊆′⊆' \subseteq 
+sing′′' ∨∨\vee man′⊆′⊆' \subseteq
+ dance′′' 
+
+
+One of the assumptions behind this cross-categorial analysis is that
+the input to the semantic component of grammar involves the units as
+coordinated at “surface structure” (i.e., no syntactic
+conjunction reduction, mapping non-sentential coordination to
+sentential coordination at “deep structure”). This is
+crucial for example to capture example (23b) where non-sentential
+disjunction could not be syntactically reduced to sentential
+disjunction without change of meaning. Rooth and Partee (1982) however
+discussed a number of counterexamples to such an analysis involving
+cases of wide-scope or in opaque contexts. Their famous
+example is repeated below (Rooth and Partee 1982: example (13)):
+
+(24)  Mary is
+looking for a maid or a cook.
+
+
+As Rooth and Partee observed the sentence has three readings: (i) the
+normal de dicto reading, according to which Mary would be
+satisfied if she found any maid and she would also be satisfied if she
+found any cook (this reading can be generated by combining the verb
+directly with the disjunctive noun phrase a maid or a cook);
+(ii) the normal de re reading according to which Mary is
+looking for a specific person and this person is either a maid or a
+cook (this reading can be generated by quantifying in the disjunctive
+noun phrase into the translation of the sentence Mary is looking
+for him11_1); but also (iii) a wide scope or de
+dicto reading in which either Mary is looking for a maid, any
+maid, or she is looking for a cook, any cook, we don’t know
+which of the two. The latter reading cannot be generated by the
+standard Montagovian techniques. To capture these readings Rooth and
+Partee (1982) proposed a dynamic analysis of disjunction, while Winter
+(2000), building on Larson (1985), proposed a syntactic account where
+or can move to various positions correlated to the positions
+where overt either can occur.
+4. Disjunction in conversation
+
+There are various conclusions one normally draws from the assertion of
+a disjunctive sentence like
+ (25):
+
+(25) Mary is
+patriotic or quixotic. 
+  a.
+at least one of the two
+is true 
+  b.
+at most one of the two
+is true [exclusive inference] 
+  c.
+speaker doesn’t
+know which is true [ignorance inference] 
+
+
+Since only (25a) follows from the classical truth-functional account
+of disjunction, there seem to be a divergence in meaning between
+∨∨\vee from classical logic and its natural language counterpart.
+Grice influentially argued that the assumption that such divergence
+does in fact exist is a mistake originating “from inadequate
+attention to the nature and importance of the conditions governing
+conversation” (Grice 1989: 24).
+
+Expanding on parts of Grice’s celebrated argument (Grice 1989:
+44–46), suppose one would propose to analyze or in such
+a way that not only (25a) would logically follow from
+ (25)
+ but also (25b) and/or (25c). A major problem for such a strong
+analysis of or is that it would fail to account for the fact
+that both the exclusive and the ignorance inferences are easily
+cancellable. One can say Mary invited John or Bill or both
+(cancellation of exclusive inference), or The prize is either in
+the attic or in the garden. I know that because I know where I put it,
+but I am not going to tell you (cancellation of ignorance-modal
+inference, from Grice 1989: 45). A strong theorist could then respond
+that there are two senses of or, a strong one and a weak
+(truth-functional) one, with the latter employed in the previous cases
+of cancelation. But as Grice replied, 
+
+
+if or is supposed to possess a strong sense, then it should
+be possible for it (or) to bear this sense in a reasonably
+wide range of linguistic settings, for example it should be possible
+to say It is not the case that A or B where we are denying
+that AAA or BBB (in the strong sense of or). (Grice
+1989: 45)
+
+
+That this is not possible is illustrated by the oddity of the
+following two cases: It is not the case that Mary invited John or
+Bill, because she invited both or It is not the case that the
+prize is either in the attic or in the garden, because I know that it
+is in the garden. Since strong senses of or seem to be
+restricted to “unenclosed” uses for which an alternative
+explanation is available, Grice’s conclusion is that only
+ (25a)
+ should be taken as part of the semantic contribution of the sentence
+(what is said). The exclusive and ignorance inferences in
+ (25b)
+ and
+ (25c)
+ are merely pragmatic effects (conversational implicatures) which
+derive from interactions between a weak (truth-functional)
+interpretation of or with general principles of
+conversation.
+
+On Grice’s account, conversation is a purposeful and cooperative
+enterprise governed by what he calls the Cooperative Principle:
+
+(CP)  Make your
+conversational contribution such as is required, at the stage at which
+it occurs, by the accepted purpose or direction of the talk exchange
+in which you are engaged.
+
+
+Subsumed under this general principle, Grice distinguishes four
+categories of more specific maxims, including the maxim of Quantity
+(here simplified).
+
+ Quantity
+  (i)
+ Make your contribution
+as informative as is required (for the current purposes of the
+exchange); 
+  (ii)
+ Do not make your
+contribution more informative than is required. 
+
+
+Conversational implicatures are pragmatic inferences arising from the
+interplay between basic (weak) semantic content and these principles
+of social interaction. A speaker conversationally implicates what she
+must be assumed to believe in order to preserve the assumption that
+she is adhering to the CP and maxims.
+
+Gricean reasonings leading from the assertion of a disjunction to the
+ignorance and exclusive inference can be summarized as follows:
+
+(26) Mary is
+patriotic or quixotic ⇒⇒\Rightarrow speaker doesn’t know
+which 
+  If the speaker had
+known that Mary is patriotic, she should have said so (by Quantity).
+Assuming that the speaker made the most
+informative relevant statement she could, the hearer can infer that
+the speaker doesn’t know that Mary is patriotic. Similar
+reasoning for the second disjunct. 
+(27) Mary is
+patriotic or quixotic ⇒⇒\Rightarrow not both 
+  If the speaker had
+known that Mary is patriotic and quixotic, she should not have used
+or, but and (by Quantity).
+Assuming that the speaker made the most informative relevant statement
+she could, the hearer can infer that the speaker doesn’t know
+that Mary is patriotic and quixotic. Assuming that the
+speaker is opinionated (either believes (A and B) or believes not (A
+and B)) one can conclude that Mary is not patriotic and
+quixotic. 
+
+
+The assumption in
+ (27)
+ that the speaker must be opinionated about the conjunctive statement
+is however problematic. Given that the use of or implicates
+that the speaker doesn’t know which, why should there be any
+pressure to think that the speaker would know both if it were true? A
+number of authors have indeed argued that Gricean implicatures are
+always epistemically modalized: so in
+ (27)
+ only the proposition that the speaker doesn’t know
+that Mary is patriotic and quixotic is derivable by Gricean means
+contra the predictions of the classical formalisation of
+Gricean implicatures of Gazdar (1979) (see Soames 1982: 521 and Horn
+1989: 543). Many other attempts to formalization of (variations) of
+Gricean reasonings have been proposed in the literature, including
+Horn (1984) but also the more recent Sauerland (2004), van Rooij and
+Schulz (2004) and Franke (2011). All these formalizations assume a
+truth-functional analysis of disjunction and other connectives, as the
+baseline for the pragmatic reasoning. In what follows we will discuss
+recent developments in linguistic analysis of disjunction, including
+also challenges to a Gricean pragmatic view.
+5. Inclusive and exclusive uses of or
+
+While the Gricean argument in the previous section quite conclusively
+excludes that English or is ambiguous between an inclusive
+and an exclusive interpretation (contra, for example, Tarski
+1939:
+ 21),[2]
+ recently some linguists have observed that some disjunctive
+constructions in languages other than English seem to force exclusive
+uses. Szabolcsi (2002, 2015) discusses the case of Hungarian
+vagy–vagy and Spector (2014) the case of
+French soit–soit. Russian ili–ili,
+Italian o–o, French ou –ou and German
+entweder–oder seem to behave in a similar
+fashion. These are all cases of fully-iterated disjunctions, with a
+disjunctive particle preceding each disjunct. Note however that not
+all fully-iterated disjunctive constructions are of these kinds, for
+example English either–or constructions are not always
+exclusive (Nobody ate either rice or beans simply means
+nobody ate either), and iterated disjunctive constructions in Sinhala
+and Malayalam are not exclusive at all (see Szabolcsi 2015). Finally
+also Latin aut, which is often taken as a paradigmatic
+example of exclusive disjunction (e.g., Copi
+ 1971),[3]
+ has been shown to have inclusive uses (at least in its not iterated
+variant), for example Nemo timebat tribunos aut plebes (No one
+feared the magistrates or the mob) just means no one feared
+either. See Dik (1968: 274–276) and Jennings (1994:
+239–251) for discussion and more examples.
+
+To show that French soit-soit constructions tend to
+force exclusivity inferences, while French plain disjunction
+ou doesn’t, Spector discusses the following examples.
+The reply in both
+ (28)
+ and
+ (29)
+ contradicts the exclusive inference, but at the same time asserts that
+the first sentence is true. According to Spector, the fact that such a
+reply is infelicitous in
+ (29)
+ shows that the exclusive inference is obligatory in this case.
+
+(28)  a.
+Marie ira au
+cinéma lundi ou mardi.
+
+‘Marie will go to the movies on Monday or Tuesday.’
+
+  b.
+Absolument! Et elle ira
+même à la fois lundi ET mardi.
+
+‘Absolutely! She will even go both days.’
+
+(29)  a.
+Marie ira au
+cinéma soit lundi soit mardi.
+
+‘Marie will go to the movies SOIT on Monday SOIT on
+Tuesday.’ 
+(23)  b.
+ # Absolument! Et elle
+ira même à la fois lundi ET mardi.
+
+‘Absolutely! She will even go both days.’
+
+
+
+It is important to notice at this point that logic textbook exclusive
+disjunction, represented as ∞∞\infty in the following truth table,
+would not deliver the correct results for these constructions.
+
+
+ϕϕ\phi
+ψψ\psi
+ϕ∨ψϕ∨ψ\phi \vee \psi
+ϕ∞ψϕ∞ψ\phi \infty \psi 
+
+1
+1
+1
+0 
+
+1
+0
+1
+1 
+
+0
+1
+1
+1 
+
+0
+0
+0
+0 
+
+
+First of all, it is well known that using ∞∞\infty would give wrong
+predictions for the cases with more than two disjuncts. For example,
+α∞(β∞γ)α∞(β∞γ)\alpha \infty (\beta \infty \gamma) is true, if all disjuncts are
+true, but Marie ira au cinéma soit lundi soit mardi soit
+mercredi is not (see Reichenbach 1947; Simons 2000). Secondly,
+the use of exclusive disjunction would also fail to explain certain
+embedded uses of soit-soit constructions. While
+these constructions are ungrammatical under negation, making therefore
+hard to apply the Gricean argument of the previous section to these
+cases, they are licensed in the scope of a universal quantifier, but
+the inferences corresponding with the exclusive reading are no longer
+present in such cases:
+
+(30)  a.
+ Tous mes
+étudiants étudient soit l’allemand soit
+l’anglais.
+
+‘Every student of mine studies SOIT German SOIT
+English.’ 
+  b.
+ Absolument! Et certains
+étudient même les deux.
+
+‘Absolutely! And some even study both.’
+
+
+
+On the other hand, Spector notices that the following would be deviant
+as a reply to (30a):
+
+(31) 
+#Absolument! Et ils étudient même les deux.
+
+‘Absolutely! And they even study both.’ 
+
+
+Notice that
+ (31)
+ negates the exclusive (scalar) implicature derived from
+ (30a)
+ by Gricean reasoning using
+ (32)
+ as a relevant alternative:
+
+(32)  Tous
+mes étudiants étudient l’allemand et
+l’anglais.
+
+‘Every student of mine studies German and
+English.’
+
+
+The generalization suggested by Spector is then that
+soit-soit and other iterated disjunctions
+obligatorily trigger the Gricean exclusive inferences which
+are normally optionally triggered by plain disjunction.
+
+As mentioned above, besides conveying obligatory exclusive effects,
+these iterated disjunctions are ungrammatical under negation. Let me
+conclude this section with a note on the interaction between
+disjunction and negation. Interactions between disjunction,
+conjunction and negation in classical logic are regulated by the de
+Morgan laws. English or seems to validate the second de
+Morgan law ¬(ϕ∨ϕ)¬(ϕ∨ϕ)\neg (\phi \vee \phi) ↔↔\leftrightarrow (¬ϕ∧¬ψ)(¬ϕ∧¬ψ)(\neg \phi
+\wedge \neg \psi). On its preferred reading,
+ (33)
+ means that we didn’t close the door and we didn’t close
+the window.
+
+(33)  We
+didn’t close the door or the window.
+
+
+Sentence
+ (33)
+ however has also a second reading, on which it means we did not close
+the door or did not close the window, but I am not sure which. As
+Szabolcsi (2002) observed, speakers in many languages including
+Hungarian, Russian, Italian and French find that their counterpart of
+ (33)
+ only has this second reading. On this reading disjunction scopes over
+negation, and so Szabolcsi proposes to treat disjunction words in
+these languages as positive polarity items, i.e., roughly, expressions
+that cannot be interpreted (anti-licensed) in the immediate scope of a
+negation, unless the negation is itself in a negative or more
+generally downward entailing (DE) context. Spector introduces a
+distinction between local and global positive polarity items and
+argues that single disjunction in French and other languages are local
+positive polarity items (anti-licensed in the immediate scope of
+negation, unless certain constraints are met) as Szabolcsi had
+proposed, but the iterated disjunctive constructions discussed above
+are global polarity items (anti-licensed under the scope of negation,
+however distant the negation is, unless certain constraints
+are met).
+6. Modal accounts of disjunction and free choice
+
+We can think of disjunction as a means of entertaining different
+alternatives. If I say either it is raining or it is snowing,
+I normally convey that both alternatives are open options for me.
+Grice, as we just saw, argued against a semantic account of such
+effects, which he labeled as the non truth-functional ground of
+disjunction (Grice 1989). Zimmermann (2000), by contrast, proposes a
+modal analysis of linguistic disjunction which identifies the semantic
+contribution of or with precisely these epistemic effects
+(see also Geurts 2005 for a further development of this idea). On
+Zimmermann’s account linguistic disjunctions should be analyzed
+as conjunctive lists of epistemic possibilities:
+
+(34)  S1S1S_1
+or…or SnSnS_n ↦↦\mapsto ◊S1∧⋯∧◊Sn◊S1∧⋯∧◊Sn\Diamond S_1 \wedge \dots \wedge
+\Diamond S_n,
+
+where ◊◊\Diamond is an epistemic possibility operator
+
+
+Someone uttering a sentence of the form “S1S1S_1 or…or
+SnSnS_n” generally conveys that (i) any of the S1,…,SnS1,…,SnS_1,\dots,
+S_n may be true (genuineness) and (ii) that between them, the
+S1,…,SnS1,…,SnS_1,\dots, S_n covers all the relevant possibilities
+(exhaustivity). While on a standard truth-functional analysis only
+(ii) is part of the meaning of or, Zimmermann identifies (i)
+as the essential contribution of linguistic disjunction with
+exhaustivity being conveyed by intonation or other devices, for
+example either … or. Evidence for this division of labor
+comes from the cases of so-called “open” disjunctions,
+i.e., disjunction with a terminal rise. In the following examples
+↑↑\uparrow and ↓↓\downarrow indicate rising and falling pitch
+contours respectively.
+
+(35) Where
+shall we go?
+  a.
+ London↑↑\uparrow or
+Berlin↑↑\uparrow or Paris↓↓\downarrow 
+  b.
+ London↑↑\uparrow or
+Berlin↑↑\uparrow or Paris↑↑\uparrow 
+
+
+While the terminal fall in the closed disjunction
+ (35a)
+ indicates that the speaker consider her list of options to be
+exhaustive, the terminal rise in
+ (35b)
+ conveys the opposite effect. On Zimmermann’s analysis is then
+the terminal fall which contributes exhaustivity and not
+or.
+
+The main motivation behind Zimmermann’s modal analysis however
+comes from phenomena of free choice. Sentences of the form “You
+may AAA or BBB” are normally understood as implying
+“You may A and you may B”. The following, however, is not
+a valid principle in standard deontic logic, e.g., von Wright
+(1968).
+
+(36) P(α∨β)→PαP(α∨β)→PαP(\alpha
+\vee \beta) \to P \alpha    [Free Choice
+Principle] 
+
+
+As Kamp (1973) pointed out, plainly making the Free Choice principle
+valid, for example by adding it as an axiom, would not do because it
+would allow us to derive PqPqP q from PpPpP p as shown in
+ (37),
+ which is clearly unacceptable:
+
+(37)  1.
+PpPpP p  
+[assumption] 
+  2.
+P(p∨q)P(p∨q)P (p \vee q)  
+[from 1, by principle (38)] 
+  3.
+PqPqP q    [from 2,
+by free choice principle] 
+
+
+The step leading to 2 in
+ (37)
+ uses the following principle which holds in standard deontic
+logic:
+
+(38)  Pα→P(α∨β)Pα→P(α∨β)P
+\alpha \to P(\alpha \vee \beta)
+
+
+Intuitively, however,
+ (38)
+ seems invalid (You may go to the beach doesn’t seem to
+imply You may go to the beach or the cinema), while
+ (36)
+ seems to hold, in direct opposition to the principles of deontic
+logic. Von Wright (1968) labeled this the paradox of free choice
+permissions. Similar paradoxes arise also for imperatives (see
+Ross’ paradox, introduced in
+ section 2),
+ epistemic modals (Zimmermann 2000), and other modal
+constructions.
+
+Various solutions have been proposed to the paradox of free choice.
+Many have argued that what we called the Free Choice Principle is
+merely a pragmatic inference and therefore the step leading to 3 in
+ (37)
+ is unjustified. One argument in favor of such a pragmatic account
+comes from the observation that free choice effects disappear in
+negative contexts. For example, No one is allowed to eat the cake
+or the ice-cream cannot merely mean that no one is allowed to eat
+the cake and the ice-cream, as would be expected if free choice
+effects were semantic entailments rather than pragmatic implicatures
+(Alonso-Ovalle 2006). Various ways of deriving free choice inferences
+as implicatures have been proposed (e.g., Gazdar 1979; Kratzer and Shimoyama 2002; Schulz
+2005; Fox 2007 and Franke 2011; see however Fusco 2014 for a critical
+discussion of pragmatic accounts to free choice).
+
+Others have proposed modal systems where the step leading to 3 in
+ (37)
+ is justified while the step leading to 2 is no longer valid, e.g.,
+Aloni 2007, which proposes a uniform account of free choice effects of
+disjunctions and indefinites under both modals and imperatives. Simons
+(2005) and Barker
+(2010) also proposed
+semantic accounts of free choice inferences, the latter crucially
+employing an analysis of or in terms of linear logic additive
+disjunction combined with a representation of strong permission using
+the deontic reduction strategy (as in Lokhorst 2006).
+
+Finally Zimmermann (2000) distinguishes between
+ (36),
+ which, according to him, is an unjustified logical principle, from
+the following intuitively valid principle:
+
+(39) 
+XXX may AAA or may BBB ⊨⊨\models XXX may
+AAA and XXX may BBB 
+
+
+By analyzing disjunctions as conjunctions of epistemic possibilities,
+the correct logical rendering of
+ (39)
+ seems to be the following:
+
+(40)  ◊Pα∧◊Pβ⊨Pα∧Pβ◊Pα∧◊Pβ⊨Pα∧Pβ
+\Diamond P \alpha \wedge \Diamond P \beta \models P \alpha \wedge P
+\beta  
+
+
+Zimmermann, however, actually derives only the weaker principle in
+ (41)
+ (under certain assumptions including his Authority principle). □α◻α\Box
+\alpha should be read here as “it is certain that
+αα\alpha”:
+
+(41)  ◊Pα∧◊Pβ⊨□Pα∧□Pβ◊Pα∧◊Pβ⊨◻Pα∧◻Pβ
+\Diamond P \alpha \wedge \Diamond P \beta \models \Box P \alpha \wedge
+\Box P \beta  
+
+
+Although Kratzer and Shimoyama, Alonso-Ovalle, Aloni, Simons and
+Zimmermann differ in their solution of the free choice paradox, they
+all agree in endorsing an “alternative-based” analysis of
+or according to which a disjunctive sentence “AAA
+or BBB” contributes the set of propositional alternatives
+{A,B}{A,B}\{A, B\}. Alonso-Ovalle (2006), for example, uses this alternative
+set in his pragmatic derivation of the free choice implicatures. Aloni
+(2007) instead assumes that modals and imperatives explicitly operate
+on the alternative sets introduced in their scope. For example, on her
+analysis, may(ϕ)(ϕ)(\phi) is true only if the ordinary meaning
+of may is true of all alternative propositions generated by
+ϕϕ\phi. Thus, You may go to the beach or to the cinema is
+true only if You may go to the beach and You may go to
+the cinema are both true. In the following section we have a
+closer look at this alternative-based view.
+7. Alternative-based accounts of disjunction
+
+In the previous section, we saw that recent semantic work has argued
+that disjunctions like “AAA or BBB” should be
+treated as generating a set of propositions {A,B}{A,B}\{A, B\} rather than
+yielding the classical join of the two disjuncts. The intuition behind
+these accounts is that the main function of a disjunctive sentence is
+to present a set of alternatives. A disjunction offers
+characterizations of (at least) two different possible states of
+affairs, and (under certain circumstances) asserts that at least one
+of these holds in the actual world. Besides phenomena of free choice
+discussed in the previous section, other linguistic facts have been
+argued to justify an alternative-based analysis of disjunction. In
+this final section, we first introduce the recent inquisitive
+semantics as an example of an “alternative-based” system
+with a fully developed logic, and then briefly discuss these further
+linguistic motivations.
+
+
+
+
+(a) classical
+
+
+
+
+(b) inquisitive
+
+
+Figure 1. (p∨q)(p∨q)(p \vee q) in classical
+logic and in inquisitive logic.
+
+7.1 Inquisitive semantics
+
+In standard logic-based analyses of linguistic meanings, the
+semantic content of a sentence ϕϕ\phi is defined as the set
+of evaluation points which verify ϕϕ\phi. Normally, evaluation
+points are identified with possible worlds and so the semantic content
+of a sentence is identified with a set of possible worlds (a
+proposition), those worlds in which the sentence is true. In
+inquisitive semantics, instead, evaluation points are not worlds, but
+information states, which are defined as sets of possible worlds
+(those worlds compatible with the information encoded in the state).
+The semantic content of ϕϕ\phi is then inquisitively identified with
+the set of states which support ϕϕ\phi, thus a set of sets
+of possible worlds, rather than a set of possible worlds. The original
+motivation for this move was to arrive at a uniform notion of semantic
+content which would work for both declarative and interrogative
+meaning (see Ciardelli, Groenendijk and Roelofsen 2015), since the
+latter are standardly characterized as sets of propositions, rather
+than as sets of possible worlds (see the entry on
+ questions).
+ The inquisitive move of taking states as evaluation points rather
+than worlds has important consequences for disjunction. The
+inquisitive clause of disjunction reads as follows:
+
+(42)  s⊨(ϕ∨ψ)s⊨(ϕ∨ψ)s
+\models (\phi\vee \psi) iff s⊨ϕs⊨ϕs \models \phi or s⊨ψs⊨ψs \models
+\psi.
+
+
+The interpretation of the connective is given in terms of support in
+an information state (rather than truth in a world). For a disjunction
+to be supported in a state, at least one of the disjuncts should be
+supported, where an atomic sentence is supported in a state sss iff
+it is true in all worlds in sss. Fig. 1a and b from (Ciardelli and
+Roelofsen 2011) illustrates how the resulting characterization of the
+semantic content of disjunctive sentences crucially differs from the
+classical characterization. These figures assume a propositional
+language with only two atoms ppp and qqq; world 111111 makes both
+ppp and qqq true, world 101010 makes ppp  true and qqq false,
+et cetera.
+ Figure 1a
+ depicts the classical meaning of (p∨q)(p∨q)(p \vee q): the set of all
+worlds that make either ppp or qqq, or both, true.
+ Figure 1b
+ depicts the semantic content associated with (p∨q)(p∨q)(p \vee q) in
+inquisitive semantics. Only the maximal states supporting the
+disjunction, the so-called alternatives, are depicted. A
+state sss supports the disjunction if and only if it is included in
+either of these alternatives. The semantic content of (p∨q)(p∨q)(p \vee q)
+contains then two alternatives. One alternative is made up of all
+worlds that make ppp true, and the other of all worlds that make
+qqq true.
+
+From a logical point of view, inquisitive logic can be axiomatised by
+expanding intuitionistic logic with the Kreisel-Putnam axiom scheme
+(¬ϕ→(ψ1∨ψ2))→(¬ϕ→ψ1)∨(¬ϕ→ψ2)(¬ϕ→(ψ1∨ψ2))→(¬ϕ→ψ1)∨(¬ϕ→ψ2)(\neg \phi \to (\psi_1\vee \psi_2)) \to (\neg \phi \to \psi_1) \vee
+(\neg \phi \to \psi_2) and the double negation axioms restricted to
+atoms (Ciardelli and Roelofsen 2011), and so is one of the
+intermediate logics between intuitionistic and classical logic (see
+the entry on
+ intuitionistic logic, section 6.1).
+ As in intuitionistic logic, in inquisitive logic LEM is not provable
+and the disjunction property holds ((ϕ∨ψ)(ϕ∨ψ)(\phi \vee \psi) is
+inquisitively provable iff ϕϕ\phi is inquisitively provable or
+ψψ\psi is). From a model-theoretic point of view, LEM is not
+inquisitively valid because both ϕϕ\phi and ¬ϕ¬ϕ\neg \phi may fail
+to be supported in a state that represents ignorance with respect to
+ϕϕ\phi. Recall that the main motivation behind inquisitive logic is
+to capture both informational and inquisitive content of sentences.
+Intuitively, (ϕ∨¬ϕ)(ϕ∨¬ϕ)(\phi \vee\neg \phi) is not valid because while
+informationally vacuous, it can still raise an issue, namely the issue
+whether ϕϕ\phi is the case or not and, therefore, it is not trivial
+from an inquisitive point of view.
+
+From an algebraic perspective, as we saw in
+ section 3,
+ there is a long tradition in natural language semantics that analyzes
+disjunction words as expressing a join operator in a Boolean algebra,
+which, at the sentential level, delivers the least upper bound of the
+two disjuncts with respect to classic entailment. Recent work showed
+that alternative-based systems don’t need to abandon the elegant
+uniform algebraic perspective of the classical analysis: while
+classical entailment gives rise to a Boolean algebra, inquisitive
+entailment gives rise to a complete Heyting algebra, with meet, join,
+and relative pseudo-complement operators (Roelofsen 2013). Thus if we
+identify disjunction with the join operator in such a Heyting algebra,
+this automatically generates the desired cross-categorial,
+alternative-based notion (Ciardelli and Roelofsen 2015).
+7.2 Examples of linguistic applications
+
+A number of linguistic phenomena have been argued to justify an
+alternative-based analysis of disjunction. In the previous section we
+discussed the case of free choice. The remaining part of this section
+briefly reviews two additional cases: conditionals and questions.
+7.2.1 Disjunction in the antecedent of a conditional
+
+The first phenomenon concerns the interpretation of disjunction in the
+antecedent of a counterfactual conditional. According to the classical
+treatment due to Stalnaker (1968) and Lewis (1973), a counterfactual
+ϕ⇝ψϕ⇝ψ\phi\leadsto\psi is true in a world www just in case, among all
+worlds that make ϕϕ\phi true, those that differ minimally
+from www also make ψψ\psi true. It is well known however that a
+Lewis/Stalnaker analysis invalidates the following inference pattern
+(Fine 1975a; Nute 1975):
+
+(43) 
+(ϕ1∨ϕ2)⇝ψ(ϕ1∨ϕ2)⇝ψ(\phi_1 \vee \phi_2)\leadsto\psi ⊨⊨\models ϕ1⇝ψϕ1⇝ψ\phi_1
+\leadsto\psi
+
+
+
+for indefinitely close ϕ1ϕ1\phi_1-worlds may be ¬ψ¬ψ\neg \psi-worlds
+while all of the much closer ϕ2ϕ2\phi_2-worlds are ψψ\psi-worlds.
+However, the counterfactual if Thorpe or Wilson were to win the
+next General Election, Britain would prosper does seem to imply
+if Thorpe were to win the next General Election, Britain would
+prosper. (Fine 1975a:
+453)
+
+
+One possible reaction would be to abandon a Lewis/Stalnaker treatment
+of counterfactuals. But another solution is to adopt an alternative
+treatment of disjunction (Alonso-Ovalle 2006, 2009; van Rooij 2006).
+Indeed, if the disjunctive antecedent is taken to generate two
+alternatives and if verifying the counterfactual involves separately
+checking every alternative generated by the antecedent, the problem is
+avoided.
+7.2.2 Disjunction in questions
+
+An alternative analysis of disjunction further allows a perspicuous
+representation of the ambiguity of disjunctive questions like
+ (44),
+ between a polar reading (expected answers: yes/no) and an
+alternative reading (expected answers: coffee/tea) (e.g., von
+Stechow 1991 and Aloni, Égré, & Jager 2013, for the
+embedded case).
+
+(44)  Do you
+want coffee or tea?
+
+
+The alternative reading, which was problematic for standard analyses
+of questions (Groenendijk and Stokhof 1984), can be easily represented
+by adopting alternative/inquisitive disjunction (see
+ figure 1).
+ The polar interpretation naturally follows because the classical
+notion of disjunction can be easily recovered from the
+alternative-based interpretation by adding a closure operator.
+
+In English, alternative and polar readings of questions can be
+distinguished by intonation or by using the contrastive marker
+either…or, the question Do you want either coffee
+or tea? only has a polar interpretation. Many languages including
+Mandarin Chinese, Finnish and Basque can use different disjunctive
+coordinators to disambiguate in these cases (Haspelmath 2007). These
+languages have two words for interrogative disjunction and standard
+disjunction. Interrogative disjunction (e.g., Basque ala) can
+only occur in interrogative clauses, where it forces an alternative
+reading, standard disjunction (e.g., Basque edo) can occur in
+both declarative and interrogative clauses, in the latter case it
+forces a polar interpretation. The following Basque example from
+Saltarelli (1988: 84) illustrates:
+
+(45)  Te-atea-ART
+ala
+or-INT
+kafe-a
+coffee-ART
+nahi
+want
+duzu?you.it
+‘Do
+you want coffee or tea?’ (expected answers:
+coffee/tea)
+(46)  Te-a
+tea-ART
+edo
+or-STA
+kafe-a
+coffee-ART
+nahi
+want
+duzu?you.it
+‘Do
+you want either coffee or tea?’ (expected answers:
+yes/no)
+
+
+The interaction between disjunctive words, questions and intonation is
+much more complex than has been exposed here, see Pruitt and Roelofsen
+(2013) for a description of the data and an illustration on how
+alternative-based systems can be employed to clarify these
+phenomena.

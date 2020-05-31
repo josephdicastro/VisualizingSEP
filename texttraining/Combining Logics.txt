@@ -1,0 +1,1649 @@
+The subject of combinations of logics is still a young topic in
+contemporary logic. Besides the pure philosophical interest offered by
+the possibility of defining mixed logic systems in which distinct
+operators obey logics of different nature, as for instance erotetic
+logics (the logical analysis of questions) which require combining
+epistemic and deontic logics, there also exist many pragmatical and
+methodological reasons for considering combined logics. In fact, the
+use of formal logic as a tool for knowledge representation in Computer
+Science frequently requires the integration of several logic systems
+into a homogeneous environment.
+
+Important questions in the philosophy of logic such as: “why are
+there so many logics instead of just one?” (or even, instead of
+none), as for instance, raised in Epstein 1995, can be naturally
+counterposed by several other questions: if there are indeed many
+logics, are they excluding alternatives, or are they compatible? Is it
+possible to combine different logics into coherent systems with the
+purpose of using them in applications and to shed some light on the
+properties of complex logics? Moreover, if we can compose
+logics, why not decompose them? And, if a logic is
+decomposed into elementary sublogics, is it possible to recover it by
+combining such fragments? What kind of properties of logics can be
+transferred to their combinations? Questions of this kind have been
+only partially tackled in the literature, and reflect challenges to be
+confronted in the evolution of this topic.
+ 
+1. Philosophical and methodological motivations for combining logics
+
+David Hume generated a popular controversy with his famous passages of
+“A Treatise of Human Nature” (see Hume 2000: Book 3, Part
+1, Section 1, paragraph 27) where he noted that sometimes people draw
+conclusions involving prescriptive statements of the form ‘ought
+to be’ on the basis of descriptive statements of the form
+‘what is’. Hume thinks that logic used in this way
+involves a dangerous change of subject matter. So, whether or not
+‘ought’ can be derived from ‘is’ has become
+one of the central questions of ethical theory, and the majority of
+interpreters hold that, for Hume, such a derivation is impossible.
+
+With our point of view concerning combinations of logics, it is
+necessary to investigate the properties of combining deontic and
+alethic logics: in order to perform such a jump from ‘is’
+to ‘ought’ some authors propose (see e.g., Schurz 1997)
+that what is necessary is an explicit “bridge principle”
+which specifically connects ‘is’ and ‘ought’.
+An axiom schema XXX, following Schurz (1991), is a bridge principle
+iff XXX contains at least one schematic letter which has at least
+one occurrence within the scope of an ◯◯\obcirc (the deontic
+“obligation” operator) and at least one occurrence outside
+the scope of any ◯◯\obcirc. Thus, for instance, 
+
+p→◯pp→◯pp \rightarrow \obcirc p
+
+ is a
+bridge principle representing ‘is-ought’ that which would
+appease Hume’s criticism. On the other hand, the much discussed
+moral principle ‘ought-implies-can’ (controversially
+attributed to I. Kant, see Baumgardt 1946) can be formalized through
+another bridge principle: 
+
+◯p→◊p,◯p→◊p,\obcirc p \rightarrow \lozenge p,
+
+ where ◊◊\lozenge denotes the
+alethic “possibility” operator.
+
+
+Clearly, bridge principles do not solve any philosophical questions
+such as the ‘is-ought problem’; nonetheless, they
+contribute to clarify the problem and to uncover hidden assumptions.
+The idea of combining logics lend clarification to questions of this
+kind by making clear that, for instance, ‘is’ and
+‘ought’ are indeed independent notions. This is elucidated
+through a formal analysis of the composition of the logics involved
+(in this case, alethic and deontic) or by decomposition of the complex
+logic (in this case, bimodal) into simpler ones. In such
+circumstances, combining logics can be perceived as a tool for
+simplifying problems involving heterogeneous reasoning.
+
+The fact that ‘ought’ is not conveyed as a predicate, but
+as a modal operator ranging over actions or states of affairs, was
+responsible for the delay of formal treatments of this centuries-old
+question.
+
+Such a treatment was only possible after the development of general
+modal logic. Indeed, what we are dealing with here is a bimodal logic,
+which is properly treated only after a deeper understanding of the
+semantical subtleties of mixing alethic and deontic logics. Moreover,
+according to some philosophers who have argued that it is not possible
+to link ‘is’ and ‘ought’ (that is, who defend
+Hume’s thesis that no non-trivial ‘is-ought’
+deductions are possible), it is mandatory to use combinations of
+first-order, alethic and deontic logics (see e.g., Stuhlmann-Laeisz
+1983 and Schurz 1997).
+
+A. Prior (1960), using the apparatus of contemporary modal logic,
+tried to characterize the distinction between normative and
+non-normative sentences in formal terms, which enabled him to
+define senses of ‘descriptive content’ versus
+‘normative content’. A problem, however, occurs with mixed
+sentences, which have both descriptive and normative components, and
+Prior comes up with a paradox: wherever we draw the distinction
+between non-normative and normative sentences, unexpected inferences
+from non-normative premises to normative conclusions may appear by a
+mere use of laws of classical propositional logic. Consider, for
+instance, the following two inferences:
+
+ (1) “Tea-drinking
+is common in England. Therefore:
+Either tea-drinking is common in England or all New Zealanders ought
+to be shot”, 
+
+
+formalized as:
+
+ (1′) d⊢d∨◯sd⊢d∨◯s\texttt{d}
+\,\vdash\, \texttt{d} \vee \obcirc
+\texttt{s} ,, 
+
+
+and
+
+ (2) “Tea-drinking
+is common in England, or all New
+Zealanders ought to be shot. Tea-drinking is not common in England.
+Therefore, all New Zealanders ought to be shot”, 
+
+
+formalized as:
+
+ (2′) 
+d∨◯s,¬d⊢◯sd∨◯s,¬d⊢◯s\texttt{d} \vee \obcirc \texttt{s},\, \neg \texttt{d} \,\vdash\,
+\obcirc \texttt{s}. 
+
+
+If the mixed sentence d∨◯sd∨◯s\texttt{d} \vee \obcirc \texttt{s} is
+considered to be normative, then (1) is an example of an
+‘is-ought’ inference, and if it is considered to be
+non-normative, then (2) is an example of an ‘is-ought’
+inference. So, one of them dichotomically represents a violation of
+Hume’s thesis in Prior’s terms. Prior concluded from this
+paradox that Hume’s ‘is-ought thesis’ is simply
+false (see Prior 1960: 206): one can simply derive
+conclusions which are ethical starting from premises which have no
+ethical character.
+
+Prior recognized however that the inferences involved in the paradox
+are ethically irrelevant or trivial, but neither he nor later authors
+could find a suitable definition of what it would mean by
+“ethical irrelevance” or “ethical triviality”
+attached to an inference.
+
+Using the semantics of modal logics, objections against this
+conclusion can be raised, as for example in Karmo 1988, in the sense
+of separating statements between evaluative in some possible worlds
+and descriptive in others (while keeping their meaning).
+
+By using concepts of combinations of languages and combinations of
+logics, G. Schurz (see Schurz 1991; see also Schurz 1997) was able to
+state a generalized Hume’s thesis (GH); as
+observed in
+ subsection 4.1,
+ this treatment is in fact a fusion of two modal logics. In
+(GH) a mixed sentence φφ\varphi is derived from a set of
+purely descriptive sentences (i.e., sentences free of ◯◯\obcirc)
+only if φφ\varphi is completely ◯◯\obcirc-irrelevant (that is,
+predicates in φφ\varphi within the scope of ◯◯\obcirc can be
+replaced by other predicates salva valididate). Moreover, it
+is proven that (GH) holds in an alethic-deontic first-order
+logic LL\mathcal{L} if, and only if, LL\mathcal{L} can be
+axiomatized without bridge principles.
+
+The notion of bridge principle lies in the scope of combination of
+languages. In general, many bridge principles can be made explicit
+within modal logic, and will be relevant for analyzing relationships
+among diverse modalities. For example, if we take necessity
+◻□\square and possibility ◊◊\lozenge as primitive operators, then
+
+◊p→¬◻¬p◊p→¬□¬p\lozenge p \to \neg\square\neg p
+
+ is an intuitionistically acceptable bridge principle,
+while the converse is not.
+
+
+Besides Hume’s problem, another example of bimodal logic with
+intrinsic philosophical interest where bridge principles intervene is
+the logic of physical and alethic modalities. In this logic, the
+language permits the expression of two different notions of necessity:
+the logical necessity, symbolized by ◻□\square, and the physical
+necessity, symbolized by ⊡⊡\boxdot.
+
+The simplest connection between physical necessity and logical
+necessity that comprises an acceptable philosophical meaning is given
+by the following bridge axiom: 
+
+◻p→⊡p□p→⊡p\quad\square p\to\boxdot p
+
+ meaning that logical
+necessity is stronger than physical necessity: anything that is
+logically necessary is physically necessary.
+
+
+The resulting logic KT⊡⊡^{\boxdot} is axiomatized
+by the well-known axioms and rules of KT for both
+modalities in addition to the bridge axiom above, and is semantically
+characterized by Kripke frames with two accessibility relations,
+requiring that the accessibility relation for physical necessity is
+included in the other.
+
+Not only bimodal, but multimodal (also called polymodal) logics, are
+standard in the literature: a typical case is the logic of knowledge
+(or epistemic logic), usually endowed with modal operators
+K1,K2,…,KmK1,K2,…,KmK_{1},K_{2},\ldots,K_{m} representing the knowledge of mmm
+agents (or “knowers”). The formula KiαKiαK_{i}\alpha means
+“agent iii knows αα\alpha”, and the language is able
+to express, for instance, “iii knows that jjj does not know
+that iii knows ppp” by means of Ki¬KjKipKi¬KjKipK_{i}\neg K_{j}K_{i}p.
+No additional mixing principles are mandatory for the combined logic
+of many agents, but bridge axioms may, of course, be added.
+
+The interest of studying combinations of logics may thus be seen as a
+reflex of the pluralist view of contemporary logical research. Indeed,
+this kind of bridge axioms can, in principle, connect completely
+distinct logics. Van Benthem (2006) suggests that combining logics may
+lead to the emergence of new phenomena, depending on the mode of
+combination, and moreover, it may work as an inspiration (and perhaps
+as a model) for the study of combining epistemic notions. He even
+suggests that the compartmentalization of logic into subfields as
+‘modal’, ‘temporal’, ‘epistemic’,
+‘doxastic’, ‘erotetic’ or
+‘deontic’ logic has been harmful to Philosophical
+Logic.
+
+Combinations of logics go in the opposite direction of such a
+compartmentalization: considering that almost any conceptual task to
+be analyzed involves immediate reasoning concerning necessity,
+obligation, action, time, verbal tense, knowledge, belief, etc.; from
+a philosophical point of view, logical combinations may be the right
+way to look at philosophical issues within the theory of causation, of
+action, and so on.
+
+The idea of looking at logic as an entirety avoiding fragmentation is
+not new, and philosophers and logicians from Ramón Lull to
+Gottfried W. Leibniz have thought of building schemes where different
+logics or logic-like mechanisms could interact and cooperate instead
+of competing. In contemporary terms, the first methods for combining
+logics were products of logics (introduced by K. Segerberg
+(1973) and independently by V. Šehtman (1978)), fusion
+(introduced by R. Thomason (1984)) and fibring (introduced by
+D. Gabbay (1996a)), all of them dedicated to combining only modal
+logics. It is worth noting that M. Fitting (1969) gave early examples
+of fusion of modal logics, anticipating the notion of fusion.
+
+Other combination mechanisms followed, such as parameterization and
+temporalization, which were more on the side of software
+specification.
+
+Most of these methods have been encompassed in the algebraic
+fibring introduced by A. Sernadas, C. Sernadas and C. Caleiro
+(1999), which notoriously improved the versatility of these techniques
+by means of (universal) categorial constructions, in this way making
+it possible to combine wider classes of logics besides modal
+logics.
+
+On the other hand, making heavy use of the language of category
+theory, J. Goguen and R. Burstall introduced the notion of
+institutions as a kind of abstract model theory devoted to
+applications in Computer Science (see Goguen and Burstall 1984, 1992).
+Institutions are also used as a mechanism for combining logics.
+
+However, combining logics does not only mean synthesizing or composing
+logics, but can also yield interesting examples that go in the
+opposite direction of decomposing logics (see
+ section 2).
+ A paradigmatic methodology for decomposition is the
+possible-translations semantics, a notion proposed in
+Carnielli 1990 designed to help solve the problem of assigning
+semantic interpretations to non-classical logics. Examples of
+possible-translations semantics illustrate how a complex logic can be
+analyzed into less complex factors. Another closely related technique
+is the nondeterministic semantics (see Avron and Lev 2001,
+2005), whereas direct union of matrices and plain
+fibring (see Coniglio and Fernández 2005) can be
+considered to be methods for both composing and decomposing.
+
+All of these methods open the way for a new subject in the realm of
+combinations of logics: is it possible to decompose a given logic into
+elementary ones? In other words, are there prime logics
+which, combined in an appropriate way, may produce all (or part of)
+the familiar logic systems?
+
+Results on combinations of logics may quickly become too technical
+when we turn to the combination of higher-order, modal, relevance
+logics or non-truth-functional logics, and thus refinements of the
+notion of algebraic fibring such as modulated fibring (see C.
+Sernadas et al. 2002b) or cryptofibring (see Caleiro and
+Ramos 2007) may be necessary to solve, for example, some collapsing
+problems within combinations of logics (see
+ section 5).
+ This naturally leads to the use of category theory as a universal
+language and as a tool to deal with such problems. But the fact is
+that combinations of logics do not necessarily depend upon any highly
+technical methodology, and even some relatively simple examples can be
+really expressive. There is a recognized intersection and interaction
+between Philosophy and theoretical Computer Science, and techniques
+for combining logics are also revealed to be very apt tools for
+handling and thus better understanding Kripke models. Having been
+introduced in the domain of Philosophical Logic, Kripke models are
+essential in Computer Science and Artificial Intelligence as semantic
+structures for logics of belief, knowledge, temporal logics, logics
+for actions, etc. Knowledge representation and reasoning may require
+combining several reasoning formalisms, including combinations of
+temporal reasoning, reasoning in description logic, reasoning about
+space and distance, and so on. Logics, combining temporal and modal
+dimensions, are also becoming a relevant tool in agent-oriented
+programming languages. Other applications of combinations of logics
+include software specification, knowledge representation,
+architectures for intelligent computing and quantum computing,
+security protocols and authentication, secure computation and
+zero-knowledge proof systems, besides their connections to formal
+ethics and game semantics.
+
+The Belief-Desire-Intention model of agents (BDI) is concerned with
+the formal representation of practical reasoning involving action,
+intention, belief, will, deliberation, goal-driven modeling, etc. This
+kind of reasoning is essential for planning (especially for artificial
+agents). It is then just natural to think about combining simple modal
+logics for knowledge, belief, obligation, capability, opportunity,
+etc., so as to define more robust BDI logics. Governatori et al. 2002
+investigates the relationships between BDI logics and a particular
+case of Gabbay’s fibring semantics (see
+ subsection 4.2)
+ called dovetailing, showing that a (general) logical account
+of BDI can be handled by means of dovetailing multimodal logics.
+
+But combinations of logics also work from another perspective: instead
+of directly combining logic systems and looking for the interpretation
+of the resulting system, one can start from a purely mathematical
+perspective. In van Benthem et al. 2006, for instance, the authors
+introduce the notion of horizontal and vertical topologies on the
+product of topological spaces, and show that the modal logic of
+products of topological spaces with horizontal and vertical topologies
+coincides with the fusion of S4 with itself. The resulting
+completeness proof has deep connections with some topological
+properties of the real and of the rational numbers.
+2. Splitting logics versus splicing logics
+
+It is reasonable to expect that a method for combining logics would
+work in two opposite directions: on the one hand, a logic that one
+wants to investigate could be decomposed into factors of lesser
+complexity; for instance, a bimodal alethic-deontic logic could be
+decomposed into its alethic and deontic fragments. In this case, it
+would be relevant to see if the logic under investigation is the least
+extension of its factors, or if additional bridge principles would
+have to be added. This approach, in which a given logic is decomposed
+into (possibly) simpler factors, is said to be a process of
+splitting logics.
+
+On the other hand, one might be interested in creating new logic
+systems where different aspects are integrated, starting from given
+logics. This demand typically occurs in software engineering and
+security: knowledge representation, formal specification and
+verification of algorithms and protocols have a marked need for
+working with several logics. In a less pragmatical scenery, this would
+be the case if one is interested, for instance, in adding a modal
+dimension to an intuitionistic or a paraconsistent logic. Moreover, it
+is interesting to characterize which properties of the factors can be
+transferred to the combined logic. This direction is said to be a
+process of splicing logics.
+
+The essential distinctions between splicing (in the direction of
+synthesis) and splitting (in the direction of analysis) take into
+account the intentions one may have in mind, and consequently each
+direction encompasses specifically designed techniques.
+
+The paradigm of splicing logics assumes a bottom-up perspective: it
+combines given logics, synthesizing them, and producing a new one. The
+combined logic should be minimal in some sense: that is, if LL{{\cal
+L}} is obtained from L1L1{{\cal L}}_1 and L2L2{{\cal L}}_2 by some
+combination process, it should be expected that: 1) LL{{\cal L}}
+extends both L1L1{{\cal L}}_1 and L2L2{{\cal L}}_2; and 2)
+LL{{\cal L}} is a minimal extension of both L1L1{{\cal
+L}}_1 and L2L2{{\cal L}}_2. For instance, some methods may require
+LL{{\cal L}} to be the least conservative extension of both L1L1{{\cal
+L}}_1 and L2L2{{\cal L}}_2. This point will be discussed in
+ section 5.
+
+On the other hand, splitting a logic LL{{\cal L}} assumes a top-down
+perspective: logics are decomposed into (presumably simpler)
+factors.
+
+It should be stressed that most of the methods for combining logics
+found in the literature are better understood from the splicing
+perspective, placing prominence on the creation of a logic system from
+familiar logics. However, some splicing methods such as fusion (see
+ subsection 4.1)
+ are more usefully regarded as a method of decomposition of logics
+into simpler fragments, and in this way also work in the splitting
+direction. Possible-translations semantics (see
+ subsection 4.4),
+ on the other hand, constitute a typical method within the splitting
+perspective.
+3. The importance of language and the presentation of logics
+
+Suppose that two given logics L1L1{{\cal L}}_1 and L2L2{{\cal L}}_2
+are to be combined using some technique. It should be obvious that any
+method applied to combine L1L1{{\cal L}}_1 and L2L2{{\cal L}}_2 will
+create a new logic LL{{\cal L}} which contains the
+signature (logic symbols such as connectives, quantifiers,
+propositional variables etc.) of both logics: LL{{\cal L}}
+will be defined in a mixed language, which allows combinations of
+symbols of the underlying languages. That is, a combination of logic
+systems presupposes the previous combination of the respective
+signatures. This is why the choice of the signature of the combined
+system is as important as the logic itself. For instance, the
+definition of the language of parameterization is fundamental in order
+to obtain the intended combined logic (see
+ subsection 4.5).
+ Another example is found in Schurz 1991, where the formal treatment
+of Hume’s ‘is-ought problem’ (recall
+ section 1)
+ presupposes careful handling of subtle combinations of languages.
+
+Besides the definition of the appropriate language for the combined
+logic, another important question that immediately arises is: should
+the logics L1L1{{\cal L}}_1 and L2L2{{\cal L}}_2 (to be combined) be
+presented in the same way? In other words: is it possible to combine
+logics defined by different paradigms? For instance, how could one
+combine a logic L1L1{{\cal L}}_1, defined by a sequent calculus, with
+a logic L2L2{{\cal L}}_2, represented by a (Hilbert-style) axiomatic
+system? How should the resulting logic LL{{\cal L}} be represented:
+as a sequent calculus, as an axiomatic system or as a mixed proof
+system? Consider now another (even worse) situation: the logic
+L1L1{{\cal L}}_1 is described by semantical means (that is, through
+semantic structures such as valuations or Kripke models) whereas the
+logic L2L2{{\cal L}}_2 is presented through a syntactical proof
+system, such as a natural deduction system, sequent calculus or a
+Hilbert-style axiomatization. Could the resulting (combined) logic be
+better presented semantically or syntactically?
+
+This annoyance does not occur in the majority of cases, where the
+logics being combined are complete with respect to some kind of
+semantics and are syntactically presented in a homogeneous way.
+However, it may happen that the logics are found in peculiar ways; for
+instance, linear logic and other substructural logics have no usual
+consequence relations because derivations are exclusively displayed by
+using multisets or sequences of formulas. Combinations of such logics
+with usual modal logics, for instance, are not so obvious, although
+both are complete.
+
+Still, there are logics which are only reasonably presented by
+syntactical means, or exclusively by semantical means. Such is the
+case, e.g., of the first-order theory of torsion groups, known to be
+non-axiomatizable, and of incomplete modal logics which are only
+presented in syntactical (proof-theoretical) terms.
+
+A possible solution to the problem of combining heterogeneous logics,
+which naturally leads us to the deeper question of “what is a
+logic?”, is to consider a common component of the majority of
+logics (but still excluding certain substructural logics): their
+respective consequence relations. Thus, given L1L1{{\cal L}}_1 and
+L2L2{{\cal L}}_2 presented in different ways, it is always possible to
+extract the respective consequence relations and then combine them
+(taking, for instance, their supremum in an appropriate lattice of
+consequence relations). But in this way, the resulting logic LL{{\cal
+L}} is presented in a very abstract way: the only information
+available from LL{{\cal L}} is its consequence relation, and so the
+characteristics and particularities of each logic component are
+definitively lost.
+
+Returning to the first example (combining a sequent calculus with an
+axiomatic system), a better solution was proposed in Cruz-Filipe et
+al. 2008: the idea is to define an abstract formalism for proof
+systems, general enough as to encode the main proof mechanisms found
+in the literature. Thus, after reformulating L1L1{{\cal L}}_1 and
+L2L2{{\cal L}}_2 as abstract proof systems of this kind, the resulting
+combined logic LL{{\cal L}} is an abstract proof system in which it
+is possible to recognize the ‘genetic traces’ of the
+original inference rules of each component within derivations in
+LL{{\cal L}}. The latter question, namely, how to characterize
+derivations in a fibred logic in terms of the derivations of the
+components, was carefully analyzed by S. Marcelino et al. in
+a series of papers Marcelino and Caleiro 2014 (Other Internet
+Resources); Marcelino et al. 2015; and Marcelino and Caleiro 2015
+(Other Internet Resources).  See subsection 4.3.
+
+Despite the above mentioned results on combining heterogeneous logics,
+it seems more reasonable to combine logics defined in a homogeneous
+way, and, in fact, this is the case with most of the proposals in the
+literature. For instance, the usual combinations of modal logics (as
+fusion, product and fibring) are performed between systems presented
+axiomatically, or between classes of Kripke models. It is frequent,
+therefore, to define different categories of logic systems
+(consequence relations, Hilbert calculi, algebraizable logics etc.)
+with appropriate morphisms between them, in which the combination (or
+decomposition) of logics appear as universal constructions. Algebraic
+fibring, to be described in
+ subsection 4.3,
+ is a good example of this approach.
+4. Methods for combining and decomposing logics
+4.1 Fusion and Products
+
+The method of fusion of normal modal logics was introduced by
+R. Thomason (1984), and constitutes one of the first general methods
+for combining logics. In the original formulation, it combines normal
+modal logics presented syntactically and semantically (through
+Hilbert-style axioms and Kripke semantics, respectively). The main
+characteristics of the method are described in the following
+paragraphs.
+
+Consider Kripke models of the form 
+
+⟨W,R,V⟩⟨W,R,V⟩\langle W,R,V\rangle
+
+ such that WWW is a
+non-empty set (the set of worlds), R⊆W×WR⊆W×WR\subseteq W\times W is a
+binary relation (the accessibility relation) and V:P→℘WV:P→℘WV: \mathbb{P} \to
+\wp W from the set of propositional variables into the power set of
+WWW is a valuation map. Let L1L1{{\cal L}}_1 and L2L2{{\cal L}}_2 be
+two propositional normal modal logics defined over the same classical
+signature which contains the connectives ¬¬\neg (negation) and
+→→\to (implication). Denote by ◻1□1\square_1 and ◻2□2\square_2 the
+necessity operators of L1L1{{\cal L}}_1 and L2L2{{\cal L}}_2,
+respectively. Let M1M1{{\cal M}}_1 and M2M2{{\cal M}}_2 be the classes
+of Kripke models for L1L1{{\cal L}}_1 and L2L2{{\cal L}}_2,
+respectively. Since both logics are normal, it is granted that both
+modalities ◻1□1\square_1 and ◻2□2\square_2 satisfy the normality axiom
+KKK and the necessitation rule. The fusion of L1L1{{\cal
+L}}_1 and L2L2{{\cal L}}_2 is then defined to be the normal bimodal
+logic LL{{\cal L}} with two independent boxes ◻1□1\square_1 and
+◻2□2\square_2 together with the connectives ¬¬\neg (negation) and
+→→\to (implication). The semantics of LL{{\cal L}} is given by the
+class MM{{\cal M}} of Kripke structures of the form 
+
+⟨W,R1,R2,V⟩⟨W,R1,R2,V⟩\langle W,R_1,R_2,V\rangle
+
+ such
+that ⟨W,R1,V⟩⟨W,R1,V⟩\langle W,R_1,V\rangle and ⟨W,R2,V⟩⟨W,R2,V⟩\langle W,R_2,V\rangle belong
+to M1M1{{\cal M}}_1 and M2M2{{\cal M}}_2, respectively. In other
+words, each structure of the fusion corresponds to a pair of models: a
+model ⟨W,R1,V⟩⟨W,R1,V⟩\langle W,R_1,V\rangle for L1L1{{\cal L}}_1 and a model
+⟨W,R2,V⟩⟨W,R2,V⟩\langle W,R_2,V\rangle for L2L2{{\cal L}}_2 sharing the same set
+of worlds WWW. Technically speaking, each structure of the fusion
+have, as a reduct, a model of L1L1{{\cal L}}_1 and a model of L2L2{{\cal
+L}}_2.
+
+
+Given a structure M=⟨W,R1,R2,V⟩M=⟨W,R1,R2,V⟩M=\langle W,R_1,R_2,V\rangle, the accessibility
+relation R1R1R_1 is used to evaluate the box ◻1□1\square_1, whereas
+R2R2R_2 is used to evaluate ◻2□2\square_2. Since the language of
+LL{{\cal L}} is freely generated by the union of the signatures of
+L1L1{{\cal L}}_1 and L2L2{{\cal L}}_2, it contains mixed formulas such
+as φ=◻1(◻2p→p)φ=□1(□2p→p)\varphi = \square_1(\square_2 p \to p). Now, the structure
+MMM satisfies φφ\varphi above at a world w∈Ww∈Ww \in W if and only
+if, for every w1∈Ww1∈Ww_1 \in W such that wR1w1wR1w1w R_1 w_1, MMM satisfies
+(◻2p→p)(□2p→p)(\square_2 p \to p) at w1w1w_1. But this means that, either there
+exists w2w2w_2 such that w1R2w2w1R2w2w_1 R_2 w_2 and w2∉V(p)w2∉V(p)w_2 \not\in V(p), or
+w1∈V(p)w1∈V(p)w_1 \in V(p).
+
+As concerns axiomatics, a Hilbert calculus for LL{{\cal L}} is
+obtained by joining up the (schema) axioms of both systems. Thus,
+LL{{\cal L}} has, among others, two KKK axioms, two necessitation
+rules and just one Modus Ponens (because implication →→\to
+is shared). Considering that the language of LL{{\cal L}} has mixed
+formulas (as φφ\varphi above), schema variables occurring in the
+schema rules of the given logics can now be replaced in LL{{\cal L}}
+by mixed formulas. For instance, φφ\varphi can be derived in
+LL{{\cal L}} from the formula (◻2p→p)(□2p→p)(\square_2 p \to p) by an
+application of the necessitation rule for the box ◻1□1\square_1.
+
+An interesting example of fusion appears in Schurz 1991, when an
+alethic-deontic logic is defined by fusing a pure alethic logic with a
+pure deontic logic. This combination is used to analyze Hume’s
+‘is-ought thesis’ (see
+ section 1
+ above) in formal terms. Other intuitively appealing examples of
+fusion are given in the pioneering paper Fitting 1969 by M. Fitting,
+where alethic and deontic modalities are fused (before the concept of
+fusion had ever been introduced).
+
+Since then fusion has been a much worked theme. Important results are
+the applications of fusion to simulations and to the question of
+transfer of properties among modal logics. Simulations make the
+strength of normal monomodal logics explicit, as they can, in a sense,
+simulate all modal logics (see Kracht and Wolter 1999). With respect
+to transfers, the preservation of properties such as completeness,
+finite modal property, decidability and interpolation by fusion of
+modal logics was extensively studied in Fine and Schurz 1996. More
+general and deeper results in the same spirit were obtained in Kracht
+and Wolter 1991, and a survey of most of those results can be found in
+Kracht and Wolter 1997. These results show the robustness of fusion as
+a combination method within the scope of modal logics, for fulfilling
+the requirement of preserving the properties of the logics being
+combined.
+
+The question of how completeness results (and other model-theoretical
+properties) can be transferred from a propositional modal logic to its
+quantificational counterpart, and from a monomodal quantified modal
+logic to their multimodal combinations by means of fusion, is
+investigated in Schurz 2011. The paper also deals with the question on
+how completeness can be transferred from quantified modal logic with
+rigid designators to the ones with non-rigid designators.
+
+Rasga et al. 2010 defines a categorical approach of fusion for modal
+logic systems labelled with truth values, and it is shown that the
+preservation of completeness requires some careful assumptions, while
+soundness is preserved without further provisos. A wide variety of
+logics (besides modal logics) including several non-classical logics
+can be treated in this way.
+
+An interesting note is that there is a notable difference between
+combining logics from the syntactical and from the semantical
+perspective. For instance, the joining of two Hilbert calculi should
+be intuitively obtained by simply putting together the axioms and
+rules of both logics, while the semantical counterpart is not so
+obviously determined. Regarding this, an alternative to fusion is the
+fibred semantics (see
+ subsection 4.2).
+
+Fusion, even if it is a very natural method for combining modal
+logics, however, is not obviously extendable to combinations of
+non-normal modal logics with normal modal logics. Moreover, fusion is
+specifically designed for combining modal logics, and cannot be
+extended in an obvious way to logics of a different nature. Algebraic
+fibring, described in
+ subsection 4.3
+ below, constitutes a generalization of fusion (at the propositional
+level), and generally solves the question of combining logics.
+
+Another early method for combining (modal) logics is the so-called
+product of modal logics. This mechanism, independently
+introduced in Segerberg 1973 and in Šehtman 1978, is
+appropriate to represent time-space information. Given two modal
+logics L1L1{{\cal L}}_1 and L2L2{{\cal L}}_2 as above, the product
+L1×L2L1×L2{{\cal L}}_1 \times {{\cal L}}_2 is the bimodal logic over the
+mixed signature (endowed with two boxes) characterized by the class of
+Kripke structures of the form 
+
+⟨W1×W2,S1,S2,V1×V2⟩⟨W1×W2,S1,S2,V1×V2⟩\langle W_1\times W_2,S_1,S_2,V_1 \times V_2 \rangle
+
+ defined from Kripke models
+⟨W1,R1,V1⟩⟨W1,R1,V1⟩\langle W_1,R_1,V_1\rangle and ⟨W2,R2,V2⟩⟨W2,R2,V2⟩\langle W_2,R_2,V_2\rangle for
+L1L1{{\cal L}}_1 and L2L2{{\cal L}}_2, respectively. The accessibility
+relations S1,S2⊆(W1×W2)×(W1×W2)S1,S2⊆(W1×W2)×(W1×W2)S_1,S_2\subseteq ( W_1 \times W_2) \times (W_1 \times
+W_2) are defined as follows:
+
+
+
+
+⟨u1,u2⟩S1⟨w1,w2⟩⟨u1,u2⟩S1⟨w1,w2⟩\langle u_1,u_2\rangle S_1 \langle w_1,w_2 \rangle iff u1R1w1u1R1w1u_1 R_1
+w_1 and u2=w2u2=w2u_2=w_2; 
+
+
+⟨u1,u2⟩S2⟨w1,w2⟩⟨u1,u2⟩S2⟨w1,w2⟩\langle u_1,u_2\rangle S_2 \langle w_1,w_2 \rangle iff u2R2w2u2R2w2u_2 R_2
+w_2 and u1=w1u1=w1u_1=w_1; 
+
+
+(V1×V2)(p)=V1(p)×V2(p)(V1×V2)(p)=V1(p)×V2(p)(V_1 \times V_2)(p)=V_1(p) \times V_2(p). 
+
+
+A somewhat surprising feature of the product of modal logics is that
+some new interactions between modalities arise. These new valid
+formulas are a sort of bridge principles (recall
+ section 1).
+ Using the standard notation ◊1φ◊1φ\lozenge_1 \varphi for ¬◻1¬φ¬□1¬φ\neg
+\square_1 \neg \varphi (and analogously for ◊2◊2\lozenge_2) for the
+possibility operator, the following bridge principles are always valid
+in the product logic:
+
+
+
+(◊1◊2p→◊2◊1p)(◊1◊2p→◊2◊1p)(\lozenge_1\lozenge_2 p \to \lozenge_2\lozenge_1 p ) Commutativity
+1; 
+
+
+(◊2◊1p→◊1◊2p)(\lozenge_2\lozenge_1 p \to \lozenge_1\lozenge_2 p ) Commutativity
+2; 
+
+
+(◊1◻2p→◻2◊1p)(\lozenge_1\square_2 p \to \square_2\lozenge_1 p ) Church-Rosser
+property 1; 
+
+
+(◊2◻1p→◻1◊2p)(\lozenge_2\square_1 p \to \square_1\lozenge_2 p ) Church-Rosser
+property 2. 
+
+
+Due to such interactions it is not possible to directly obtain the
+Hilbert calculus for the product of two modal logics, as in the case
+of fusion. The bridge principles must be explicitly added to the union
+of the original axiomatics in order to ensure completeness.
+
+As in the case of fusion, this technique does not allow a direct
+generalization to logics other than modal ones.
+4.2 Fibring (or fibring by functions)
+
+The fibred semantics of modal logics was originally proposed
+by D. Gabbay in Gabbay 1996a and Gabbay 1996b (see also Gabbay 1999).
+As in the case of fusion and products, the mechanism of fibring also
+applies to modal logics only. Assume the same notation as in
+ subsection 4.1.
+ Thus, given L1{{\cal L}}_1 and L2{{\cal L}}_2, we start by
+defining the fibred language (or the fibring of the languages), which
+is the language generated by ◻1\square_1, ◻2\square_2, ¬\neg
+and →\to from the propositional variables. The basic idea is to
+consider Kripke models with distinguished (actual) worlds together
+with two transfer mappings: h1h_1 from the set of worlds of the
+class of models M1{{\cal M}}_1 of L1{{\cal L}}_1 into the class of
+models M2{{\cal M}}_2 of L2{{\cal L}}_2, and h2h_2 from the set
+of worlds of the class of models M2{{\cal M}}_2 of L2{{\cal L}}_2
+into the class of models M1{{\cal M}}_1 of L1{{\cal L}}_1. When a
+Kripke model of L1{{\cal L}}_1 has to evaluate a formula of the form
+◻2φ\square_2 \varphi at the actual world w1w_1, the validity
+checking is then transferred to the validity checking of ◻2φ\square_2
+\varphi within the Kripke model h1(w1)h_1(w_1) at its actual world.
+The evaluation of a formula of the form ◻1φ\square_1 \varphi within a
+Kripke model of L2{{\cal L}}_2 at the actual world w2w_2 is
+performed analogously, but now using the map h2h_2.
+
+Thus, the fibring (or fibring by functions, as it is called
+in Carnielli et al. 2008) of L1{{\cal L}}_1 and L2{{\cal L}}_2 is
+a normal bimodal logic characterized semantically as follows: let
+
+h1:⨄m∈M1Wm→⨄m∈M2{⟨m,w⟩ : w∈Wm}h_1:\biguplus_{m \in {{\cal M}}_1} W_m \to \biguplus_{m \in {{\cal M}}_2} \{\langle m, w\rangle \ : \ w \in W_m\}
+
+ and 
+
+h2:⨄m∈M2Wm→⨄m∈M1{⟨m,w⟩ : w∈Wm}h_2:\biguplus_{m \in {{\cal M}}_2} W_m \to \biguplus_{m \in {{\cal M}}_1} \{\langle m, w\rangle \ : \ w \in W_m\}
+
+ be a pair of transfer mappings. For
+simplicity, we assume that the sets of worlds WmW_m of m∈M1m\in {{\cal
+M}}_1 are pairwise disjoints, and the same holds for M2{{\cal
+M}}_2. Given m∈M1∪M2m\in {{\cal M}}_1 \cup {{\cal M}}_2, w∈Wmw\in W_m
+and a formula φ\varphi in the fibred language, the satisfaction of
+φ\varphi in ⟨h1,h2,m,w⟩\langle h_1,h_2,m,w\rangle, denoted by ⟨h1,h2,m,w⟩⊩φ\langle
+h_1,h_2,m,w\rangle\Vdash \varphi, is defined recursively as usual
+whenever the main connective of φ\varphi is Boolean (¬\neg or
+→\to), or when φ\varphi is atomic. For the modalities,
+satisfaction is defined as follows: suppose (without loss of
+generality) that m∈M1m \in {{\cal M}}_1, and let h1(w)=⟨m2,w2⟩h_1(w)=\langle
+m_2,w_2\rangle, with m=⟨Wm,Rm,Vm⟩m=\langle W_m,R_m,V_m\rangle and
+m2=⟨Wm2,Rm2,Vm2⟩m_2=\langle W_{m_2},R_{m_2},V_{m_2}\rangle. Then:
+
+
+
+
+⟨h1,h2,m,w⟩⊩◻1φ\langle h_1,h_2,m,w\rangle\Vdash \square_1\varphi
+
+iff ⟨h1,h2,m,w1⟩⊩φ\langle h_1,h_2,m,w_1\rangle\Vdash \varphi, for every w1w_1
+such that wRmw1w R_m w_1; 
+
+
+⟨h1,h2,m,w⟩⊩◻2φ\langle h_1,h_2,m,w\rangle\Vdash \square_2\varphi
+
+iff ⟨h1,h2,m2,w2⟩⊩◻2φ\langle h_1,h_2,m_2,w_2\rangle\Vdash \square_2\varphi
+
+iff ⟨h1,h2,m2,w3⟩⊩φ\langle h_1,h_2,m_2,w_3\rangle\Vdash \varphi, for every
+w3w_3 such that w2Rm2w3w_2 R_{m_2} w_3. 
+
+
+The definition of ⟨h1,h2,m,w⟩⊩◻iφ\langle h_1,h_2,m,w\rangle\Vdash
+\square_i\varphi for i=1,2i=1,2 and m∈M2m \in {{\cal M}}_2 is
+analogous.
+
+Then, ⟨h1,h2⟩\langle h_1,h_2\rangle satisfies φ\varphi, denoted by
+⟨h1,h2⟩⊩φ\langle h_1,h_2\rangle \Vdash \varphi, if ⟨h1,h2,m,w⟩⊩φ\langle
+h_1,h_2,m,w\rangle\Vdash \varphi for every m∈M1∪M2m\in {{\cal M}}_1 \cup
+{{\cal M}}_2 and w∈Wmw\in W_m. Finally, φ\varphi is valid in the
+fibred semantics whenever ⟨h1,h2⟩⊩φ\langle h_1,h_2\rangle \Vdash \varphi
+for every pair ⟨h1,h2⟩\langle h_1,h_2\rangle as above.
+
+For instance, given h1,h2h_1, h_2 as above, let ⟨W2,R2,V2⟩∈M2\langle
+W_2,R_2,V_2\rangle \in {{\cal M}}_2 and w2∈W2w_2\in W_2 such that
+h2(w2)=⟨⟨W1,R1,V1⟩,w1⟩h_2(w_2)= \langle \langle W_1,R_1,V_1\rangle,w_1\rangle. Then:
+
+
+
+⟨h1,h2,⟨W2,R2,V2⟩,w2⟩⊩◻1◻2¬p\langle h_1,h_2,\langle W_2,R_2,V_2\rangle,w_2\rangle \Vdash
+\square_1 \square_2 \neg p 
+
+
+iff ⟨h1,h2,⟨W1,R1,V1⟩,w1⟩⊩◻1◻2¬p\langle h_1,h_2,\langle W_1,R_1,V_1\rangle,w_1\rangle \Vdash
+\square_1 \square_2 \neg p 
+
+
+iff ⟨h1,h2,⟨W1,R1,V1⟩,w′1⟩⊩◻2¬p\langle h_1,h_2,\langle W_1,R_1,V_1\rangle,w'_1\rangle \Vdash
+\square_2 \neg p, for every w′1w'_1 such that w1R1w′1w_1 R_1 w'_1.
+
+
+
+Suppose that h1(w′1)=⟨⟨W′2,R′2,V′2⟩,w′2⟩h_1(w'_1)= \langle \langle
+W'_2,R'_2,V'_2\rangle,w'_2\rangle. Then, the latter is valid iff
+
+
+
+⟨h1,h2,⟨W′2,R′2,V′2⟩,w′2⟩⊩◻2¬p\langle h_1,h_2,\langle W'_2,R'_2,V'_2\rangle,w'_2\rangle \Vdash
+\square_2 \neg p, 
+
+
+for every w′1w'_1 such that w1R1w′1w_1 R_1 w'_1; i.e., for every
+w′1w'_1 such that w1R1w′1w_1 R_1 w'_1 and for every w″2w''_2 such that
+w′2R′2w″2w'_2 R'_2 w''_2, ⟨h1,h2,⟨W′2,R′2,V′2⟩,w″2⟩⊩¬p\langle h_1,h_2,\langle
+W'_2,R'_2,V'_2\rangle,w''_2\rangle \Vdash \neg p. This is equivalent
+to saying that, for every w′1w'_1 such that w1R1w′1w_1 R_1 w'_1 and for
+every w″2w''_2 such that w′2R′2w″2w'_2 R'_2 w''_2, w″2∉V′2(p)w''_2 \not\in
+V'_2(p).
+
+With respect to axiomatics, the logics obtained by fibring by
+functions can, in some cases, be axiomatized by the union of the
+(schema) axioms of the given logics. But some logics may require the
+addition of some new bridge principles (mixing rules and axioms) in
+order to ensure the preservation of completeness. This may explain
+some discrepancy between the approaches of fusion and fibring; the
+completeness of fibring as exposed in Gabbay 1999 does not work
+exactly as a substitute for more technically intricate completeness
+proofs as in Kracht and Wolter 1991 and in Fine and Schurz 1996. For
+more on this discussion, see Kracht 2004.
+
+The technique of fibring by functions is an interesting alternative to
+fusion and products, but, as much as its competitors, it cannot be
+extended to non-modal logics in any obvious way (see Coniglio and
+Fernández 2005 for an adaptation of the method of fibring by
+functions to matrix logics). One reason for the failure of fibring by
+functions to what concerns generalizations is that it is not a
+universal construction (in categorial terms). Moreover, the lack of a
+systematic definition of the axiomatization for the logics obtained by
+fibring is another negative aspect of this technique. The next
+subsection describes a categorial generalization of fibring which
+solves all the mentioned problems.
+4.3 Categorial (or Algebraic) Fibring
+
+In order to overcome the limitations of the original method of fibring
+as exposed in the last subsection, A. Sernadas and collaborators
+propose, in Sernadas et al. 1999, a general definition of fibring
+using the conceptual tools of category theory. The central idea of the
+generalization is simple: suppose that L1{{\cal L}}_1 and L2{{\cal
+L}}_2 are two propositional logics which are to be combined.
+Suppose, for simplicity, that no connectives are to be shared, that
+is, the language of the logic L{{\cal L}} to be obtained is the
+free combination of the connectives of both logics. In categorial
+terms, the signature CC of L{{\cal L}} is the coproduct
+(disjoint union) of the signatures C1C_1 of L1{{\cal L}}_1 and
+C2C_2 of L2{{\cal L}}_2, in the underlying category of signatures.
+Then L{{\cal L}}, which is the least logic defined over
+CC which extends simultaneously L1{{\cal L}}_1 and L2{{\cal
+L}}_2, is defined as the coproduct of L1{{\cal L}}_1 and L2{{\cal
+L}}_2 in the underlying category of logics. The minimality of
+L{{\cal L}} attends a criterion expressed in Gabbay 1999 (see also
+ section 5)
+ and also conforms to the ideal of fusing logics, see Kracht and
+Wolter 1991. This combination process, called unconstrained
+fibring, can be generalized, by allowing C1C_1 and C2C_2 to
+share some connectives. Thus, the logic obtained by this second kind
+of fibring is defined in a language such that some connectives of
+L1{{\cal L}}_1 and L2{{\cal L}}_2 are identified. The logic
+produced by this operation, called constrained fibring,
+starts by considering two logics L1{{\cal L}}_1 and L2{{\cal L}}_2
+over signatures C1C_1 and C2C_2, respectively, and a signature
+C0C_0 contained in both C1C_1 and C2C_2. This signature contains
+exactly the connectives of L1{{\cal L}}_1 and L2{{\cal L}}_2 which
+are to be identified (or shared) throughout the combination process.
+After computing the unconstrained fibring (that is, the coproduct)
+L1⊕L2{{\cal L}}_1 \oplus {{\cal L}}_2 of L1{{\cal L}}_1 and L2{{\cal
+L}}_2, which is defined over the signature C1⊕C2C_1 \oplus C_2 (the
+coproduct of C1C_1 and C2C_2), a new logic L{{\cal L}} is
+obtained. This logic, the fibring of L1{{\cal L}}_1 and L2{{\cal
+L}}_2 by sharing (or constrained to) C0C_0, is
+obtained from L1⊕L2{{\cal L}}_1 \oplus {{\cal L}}_2 by identifying two
+connectives (of the same arity) iff both come from the same connective
+in C0C_0. In terms of category theory, it is required that the
+forgetful functor NN from the category of logics to the category of
+signatures be a cofibration. Then, if ij:C0→Cji_j:{{\cal C}}_0\to C_j is
+the inclusion morphism (for j=1,2j=1,2), hj:Cj→C1⊕C2h_j:C_j \to C_1 \oplus C_2
+is the canonical injection of the coproduct (for j=1,2j=1,2) and
+q:C1⊕C2→Cq:C_1 \oplus C_2 \to C is the coequalizer of h1∘i1h_1 \circ i_1 and
+h2∘i2h_2 \circ i_2, then the constrained fibring L{{\cal L}} is the
+codomain of the cocartesian lifting of qq by NN.
+
+In order to exemplify the technique of categorial fibring (without
+entering into technical details), suppose that L1{{\cal L}}_1 and
+L2{{\cal L}}_2 are two modal logics defined through Hilbert calculi
+over the same signatures C1C_1 and C2C_2 of subsections
+ 4.1
+ and
+ 4.2,
+ respectively, such that both logics contain the rules of Modus
+Ponens and necessitation. Then C1⊕C2C_1 \oplus C_2 consists of two
+negations ¬1\neg_1 and ¬2\neg_2, two implications →1\to_1 and
+→2\to_2 and two boxes ◻1\square_1 and ◻2\square_2. The
+unconstrained fibring L1⊕L2{{\cal L}}_1 \oplus {{\cal L}}_2 of L1{{\cal
+L}}_1 and L2{{\cal L}}_2 is, therefore, the Hilbert calculus over
+C1⊕C2C_1 \oplus C_2 defined by joining up the axiom schemas and
+inference rules of both calculi. This logic has, among other axioms
+and inference rules, two versions of Modus Ponens (one for
+each implication) as well as two versions of the necessitation rule
+(one for each box). It should be noted that, by using a fixed set of
+schema variables for writing the axioms and rules of every calculus,
+the calculi obtained by fibring are also formed by schematic axioms
+and inference rules. Thus, for instance, in the rule of Modus
+Ponens in L{{\cal L}}: 
+
+ξ1(ξ1→1ξ2)ξ2\frac{\xi_1 \hspace{1cm} (\xi_1 \to_1 \xi_2)}{\xi_2}
+
+ the schema variables
+ξ1\xi_1 and ξ2\xi_2 can be replaced by mixed formulas. Instances
+such as 
+
+¬2p(¬2p→1◻2(q→2◻1r))◻2(q→2◻1r)\frac{\neg_2 p \hspace{1cm} (\neg_2 p \to_1 \square_2(q \to_2 \square_1 r))}{\square_2(q \to_2 \square_1 r)}
+
+ are new, because the formulas ¬2p\neg_2 p and
+◻2(q→2◻1r)\square_2(q \to_2 \square_1 r) do not belong to the language of
+L1{{\cal L}}_1. Analogous replacements apply, of course, to other
+inference rules and axioms of L1⊕L2{{\cal L}}_1 \oplus {{\cal
+L}}_2.
+
+
+Continuing with this example, suppose now that we want to share (or
+identify) both negations, as well as both implications: this is a
+reasonable move when, for instance, these connectives are classic. In
+such case (φ→1¬2ψ)(\varphi \to_1 \neg_2 \psi) would represent the same
+proposition as (φ→2¬1ψ)(\varphi \to_2 \neg_1 \psi).
+
+In order to do this, the signature C0C_0 just containing ¬\neg
+and →\to is taken into consideration, and so ¬1\neg_1 is
+identified with ¬2\neg_2 in C1⊕C2C_1 \oplus C_2, as well as →1\to_1
+is identified with →2\to_2. The resulting signature is CC, which
+just contains the connectives ¬\neg, →\to, ◻1\square_1 and
+◻2\square_2. In the resulting logic L{{\cal L}}, defined over
+CC, there is now just one rule of Modus Ponens:
+
+ξ1(ξ1→ξ2)ξ2\frac{\xi_1 \hspace{1cm} (\xi_1 \to \xi_2)}{\xi_2}
+
+ However, there remain two necessitation rules, since
+there are still two boxes in CC. The resulting L{{\cal L}} is
+thus the fibring of L1{{\cal L}}_1 and L2{{\cal L}}_2 constrained
+by C0C_0. This procedure precisely coincides with fusion of modal
+logics. The novelty here is that this technique applies to a broad
+class of logics, which are not necessarily restricted to (normal)
+modal logics, as in the case of fusion.
+
+
+Constrained and unconstrained fibring, being categorial, are universal
+constructions, and so enjoy well-defined and theoretically predictable
+formal properties. Profiting from universal constructions, in order to
+handle algebraic fibring, it is enough to define appropriate
+categories of signatures and logic systems. Indeed, the same
+fibring construction (coproduct or cocartesian lifting) can be
+performed in different categories of logic systems. This is a
+remarkable advantage of the categorial perspective for fibring. There
+are several proposals in the literature devoted to combining logics
+presented in different ways by means of algebraic fibring:
+propositional Hilbert calculi, sequent and hypersequent calculi,
+first-order modal logics, higher-order modal logics,
+non-truth-functional logics, logics semantically presented through
+ordered algebras (encompassing generalized Kripke models) etc.
+
+An important question connected to combination of logics (and, in
+particular, to algebraic fibring) is the preservation of
+metaproperties such as completeness, interpolation etc. For instance,
+when L1{{\cal L}}_1 and L2{{\cal L}}_2 are complete logic systems
+presented both semantically and syntactically, under which condition
+is their fibring also complete? In this regard, Zanardo et al. 2001
+and Sernadas et al. 2002a give a partial solution to this question.
+The preservation of soundness and completeness with respect to the
+technique of importing logics (see
+ subsection 4.6) was proved in Rasga et
+ al. 2013. Besides, in a series of papers (Marcelino and Caleiro 2014 (Other
+Internet Resources),
+ Marcelino et al. 2015 and Marcelino and Caleiro 2015 (Other Internet
+Resources)),
+ S. Marcelino et al. study the preservation of decidability by
+ unconstrained fibring (that is, by algebraic fibring without sharing
+ connectives). The key result is a general characterization of the
+ derivations in the system obtained by fibring in terms of the
+ derivations in each component. The complexity of the decision
+ procedures was also analyzed in these papers. Thus, it was shown that
+ the decision problem for the fibred logic can be reduced polynomially
+ to the worst decision problem of the given logics. This means that,
+ in particular, if the decision problems for two given logics L1{{\cal
+ L}}_1 and L2{{\cal L}}_2 are both in a complexity class
+ C\mathcal{C} then the decision problem for the unconstrained
+ fibring L1⊕L2{{\cal L}}_1 \oplus {{\cal L}}_2 is also in
+ C\mathcal{C}, provided that C\mathcal{C} contains the basic
+ complexity class P (also known as PTIME) and is closed for
+ composition with polynomials. Other examples of preservation of
+ metaproperties are provided by the mechanism for combining logics
+ known as meet combination of logics, introduced by Sernadas
+ et al. 2012 (see
+ subsection 4.6).
+ Specifically, the preservation of soundness and completeness (see
+Sernadas et al. 2012), Craig interpolation (see C. Sernadas et al.
+2013 ) and admissibility of rules (see Rasga et al. 2015, in Other
+Internet Resources) have been
+obtained for this method. On the other hand, transfer results have
+been extensively studied in the case of fusion of modal logics, as
+already mentioned in
+ subsection 4.1.
+
+The relationship between fusion and algebraic fibring deserves some
+comments. When restricted to modal propositional logics, fusion is a
+particular case of algebraic fibring in the category of interpretation
+systems, where logics are presented through ordered algebras: it is
+enough to consider interpretation systems defined over power set
+algebras induced by Kripke models. At the syntactical level, fusion is
+also a particular case of algebraic fibring in the category of Hilbert
+calculi, in the realm of propositional signatures. As much as
+first-order modal logics are concerned, the approaches diverge, mainly
+because there are different semantical accounts for treating
+first-order modalities. For instance, the semantical approach to modal
+first-order logics by Sernadas et al. 2002a in the context of
+algebraic fibring differs from that of Kracht and Kutz (2002) in the
+context of fusion.
+
+The fact that algebraic fibring generalizes (at least at the
+propositional level) the fusion of modal logics makes the former
+method become very natural and useful. Moreover, the universality of
+the construction allows one to define algebraic fibring in very
+different logical contexts (categories of logics), such as
+non-truth-functional logics, higher-order logics, sequent calculi etc.
+As it will be shown in
+ section 5,
+ the different notions of morphisms between logics affect the strength
+of the logics obtained by algebraic fibring in the different
+categories of logic systems. For general accounts of algebraic fibring
+see, for instance, Caleiro et al. 2005 and Carnielli et al. 2008.
+4.4 Possible-Translations Semantics
+
+The methods for combining logics described above adhere to the
+splicing methodology: they are used to combine logics creating new
+systems which extend the given logics.
+
+As mentioned in
+ section 2,
+ there is a converse direction: the splitting methodology in which a
+given logic system is decomposed into other systems. The
+possible-translations semantics (in short, PTS),
+introduced in Carnielli 1990 (see also Carnielli 2000), is one of the
+few supporters of this viewpoint.
+
+The notion of PTS was originally defined as an attempt to
+endow certain logics with recursive and palatable semantic
+interpretations. Actually, several paraconsistent logics which are not
+characterizable by finite matrices can be characterized by suitable
+combinations of many-valued logics. The idea of the decomposition is
+quite natural: given a logic L{{\cal L}}, presented as a pair
+L=⟨C,⊢L⟩{{\cal L}}=\langle C,\vdash_{{\cal L}}\rangle in which CC is a
+signature and ⊢L\vdash_{{\cal L}} is a consequence relation, a
+family of translations fi:L(C)→L(Ci)f_i:L(C) \to L(C_i) (for i∈Ii\in I) is
+taken into consideration. Here, L(C)L(C) and L(Ci)L(C_i) denote the
+algebra of formulas defined by the signature CC and CiC_i,
+respectively. Recall that a translation from a logic L{{\cal L}}
+into a logic L′{{\cal L}}' is a mapping ff between the respective
+sets of formulas which preserve derivability, that is: Γ⊢Lφ\Gamma
+\vdash_{{\cal L}}\varphi (in the source logic L{{\cal L}})
+implies that f(Γ)⊢L′f(φ)f(\Gamma) \vdash_{{{\cal L}}'} f(\varphi) (in the
+target logic L′{{\cal L}}').
+
+A pair P=⟨{Li}i∈I,{fi}i∈I⟩P=\langle \{{{\cal L}}_i\}_{i\in I}, \{f_i\}_{i\in
+I}\rangle as above is called a possible-translations frame
+for L{{\cal L}}. We say that PP is a
+possible-translations semantics for L{{\cal L}} if, for
+every Γ∪{φ}⊆L(C)\Gamma\cup\{\varphi\}\subseteq L(C), 
+
+Γ⊢Lφ  iff  fi(Γ)⊢Lifi(φ),  for every i∈I.\Gamma \vdash_{{\cal L}}\varphi \
+\textrm{ iff } \ f_i(\Gamma) \vdash_{{{\cal L}}_i} f_i(\varphi), \
+\textrm{ for every  } i \in I.
+
+ This means
+that checking derivability in L{{\cal L}} is equivalent to checking
+derivability in every factor logic Li{{\cal L}}_i through the
+translations. In many cases, the factor logics Li{{\cal L}}_i are
+presented by finite matrices. Since the length of a formula is finite,
+it is enough to test a finite number of translations in order to
+determine if a formula of L{{\cal L}} is valid in L{{\cal L}}.
+Thus, checking the validity of a formula of L{{\cal L}} is
+equivalent to performing a finite number of finitary tests. This
+decidability property is of real advantage when the original logic
+L{{\cal L}} is not characterizable by finite matrices. For
+instance, in Carnielli 2000 (see also Marcos 1999) the well-know
+hierarchy {Cn}n∈N\{{{\cal C}}_n\}_{n\in{\mathbb{N}}} of paraconsistent
+logics of N. da Costa, formed by logics which cannot be characterized
+by finite matrices, is represented by means of a PTS whose
+factors are presented through finite matrices; this grants a decision
+procedure for each logic Cn{{\cal C}}_n.
+
+
+In order to exemplify the concept of PTS as a splitting
+methodology, consider the paraconsistent logic bC,
+introduced in Carnielli and Marcos 2002. This logic is, in particular,
+a logic of formal inconsistency, in the sense that there
+exists a unary connective ∘\circ expressing the consistency of a
+formula. Thus, from φ\varphi and ¬φ\neg\varphi does not follow,
+in general, an arbitrary formula ψ\psi. However, {φ,¬φ,∘φ}\{\varphi,
+\neg\varphi, \circ\varphi\} entails any formula ψ\psi. The
+signature CC of bC consists of a paraconsistent
+negation ¬\neg, a consistency operator ∘\circ, and classical
+connectives ∧,∨,→\wedge,\vee,\to. It was proved in Carnielli et al.
+2007 that bC, and many other logics of formal
+inconsistency extending it, cannot be characterized by finite
+matrices. Nonetheless, bC is decomposed into several
+copies of a three-valued logic by means of possible-translations as
+follows: consider the signature
+C1={¬1,¬2,∘1,∘2,∘3,∧,∨,→}C_1=\{\neg_1,\neg_2,{\circ}_1,{\circ}_2, {\circ}_3,
+\wedge,\vee,\to\} consisting of two negations, three consistency
+operators, a conjunction, a disjunction and an implication. Let MM
+be the matrix over C1C_1 with domain {T,t,F}\{T,t,F\} displayed below,
+where {T,t}\{T,t\} is the set of designated values.
+
+∧TtFTttFtttFFFFF∨TtFTtttttttFttF→TtFTttFtttFFttt\begin{array}{|c|c|c|c|}
+  \hline
+  \wedge &amp; T &amp; t &amp; F \\ \hline
+  T &amp; t &amp; t &amp; F \\ \hline
+  t &amp; t &amp; t &amp; F \\ \hline
+  F &amp; F &amp; F &amp; F \\ \hline
+\end{array}
+\hspace{1.5 cm} 
+\begin{array}{|c|c|c|c|}
+  \hline
+  \vee &amp; T &amp; t &amp; F \\ \hline
+  T &amp; t &amp; t &amp; t \\ \hline
+  t &amp; t &amp; t &amp; t \\ \hline
+  F &amp; t &amp; t &amp; F \\ \hline
+\end{array}
+\hspace{1.5 cm}
+\begin{array}{|c|c|c|c|}
+  \hline
+  \to &amp; T &amp; t &amp; F \\ \hline
+  T &amp; t &amp; t &amp; F \\ \hline
+  t &amp; t &amp; t &amp; F \\ \hline
+  F &amp; t &amp; t &amp; t \\ \hline
+\end{array}
+¬1¬2TFFtFtFTT∘1∘2∘3TTtFtFtFFTtF\begin{array}{|c|c|c|}
+   \hline
+   &amp; \neg_1 &amp; \neg_2  \\ \hline
+  T &amp; F &amp; F \\ \hline
+  t &amp; F &amp; t  \\ \hline
+  F &amp; T &amp; T \\ \hline
+\end{array}
+\hspace{2.5 cm}
+\begin{array}{|c|c|c|c|}
+   \hline
+   &amp; {\circ}_1 &amp; {\circ}_2 &amp; {\circ}_3  \\ \hline
+  T &amp; T &amp; t &amp; F  \\ \hline
+  t &amp; F &amp; t &amp; F  \\ \hline
+  F &amp; T &amp; t &amp; F  \\ \hline
+\end{array}
+
+
+Let {fi}i∈I\{f_i\}_{i\in I} be the family of all the mappings f:L(C)→L(C1)f:L(C)\to
+L(C_1) satisfying clauses (tr0)(tr0), (tr1)(tr1), (tr2)(tr2), (tr3)(tr3)
+and (tr4)(tr4) below.
+
+(tr0) f(p)=p  for p a propositional variable;f(p)= p \
+\textrm{ for } p \textrm{ a propositional variable;} 
+(tr1) f(¬φ)∈{¬1f(φ),¬2f(φ)}f(\neg\varphi)
+\in \{\neg_1 f(\varphi), \neg_2 f(\varphi)\}; 
+(tr2) f(φ#ψ)=(f(φ)#f(ψ)), for #∈{∧,∨,→}f(\varphi\#\psi)
+= (f(\varphi)\#f(\psi)), \textrm{ for }
+\# \in \{\land,\lor,\rightarrow\}; 
+(tr3) f(∘φ)∈{∘1f(φ),∘2f(φ),∘3f(φ)}f({\circ}\varphi)
+\in \{{\circ}_1 f(\varphi), {\circ}_2
+f(\varphi), {\circ}_3 f(\varphi)\}; 
+(tr4) if
+f(¬φ)=¬2f(φ)f(\neg\varphi)=\neg_2 f(\varphi) then
+f(∘φ)=∘1f(φ)f({\circ}\varphi)={\circ}_1 f(\varphi). 
+
+
+The family of mappings {fi}i∈I\{f_i\}_{i\in I} can be shown to define a
+PTS which characterizes bC in a decidable
+way (see Carnielli et al. 2008). As an example, it can be easily
+checked that φ∧¬φ→¬∘φ\varphi\wedge\neg\varphi\to\neg{\circ}\varphi is a
+theorem of bC: just consider all its finitely many
+translations and test that all of them are three-valued tautologies.
+On the other hand, ¬(φ∧¬φ)→∘φ\neg(\varphi\wedge\neg\varphi)\to{\circ}\varphi
+is not a theorem of bC, which can be promptly
+verified by showing that at least one of its translations is not a
+tautology using the three-valued tables above. For an alternative
+PTS characterization of bC and related
+logics see Marcos 2008.
+
+This example shows that a non-truth functional connective, such as the
+paraconsistent negation ¬\neg or the consistency operator ∘\circ
+of bC, can be mimicked by interpreting it (via
+translations) into different truth-functional connectives. This is the
+idea behind A. Avron and I. Lev’s non-deterministic
+matrices introduced in Avron and Lev 2001 (see also Avron and Lev
+2005). This semantics generalizes logical matrices by considering
+multivalued functions (rather than functions) interpreting the
+connectives.
+
+As a matter of fact, non-deterministic matrices can be simulated by
+appropriate possible-translations semantics (see Carnielli and
+Coniglio 2005). In particular, the familiar matrix semantics are a
+particular case of possible-translations semantics, as well as the
+historical examples of translations between logics found in the
+literature. These facts evidence that possible-translations semantics
+is a widely applicable conceptual tool for decomposing logics.
+4.5 Temporalization, Parameterization and Institutions
+
+Apart from the logical and philosophical import of combining logics,
+there is a genuine interest in developing applications based on these
+techniques. One of the main areas interested in the methods for
+combining logics is software specification. Certain techniques for
+combining logics were developed almost exclusively with the aim of
+applying them to this area. In this section some of these methods will
+be briefly mentioned: temporalization,
+parameterization and institutions.
+
+Temporalization was introduced in Finger and Gabbay 1992 (see also
+Finger and Gabbay 1996), and generalized in Caleiro et al. 1999
+towards the method called parameterization.
+
+Parameterization, in rough terms, consists of replacing the atomic
+part of a given logic L{{\cal L}} by another logic L′{{\cal L}}'.
+Thus, the logic L{{\cal L}} is the parameterized logic;
+the atomic part is the formal parameter and the logic
+L′{{\cal L}}' is the parameter logic. Formally, a mixed
+signature based on the signature of L{{\cal L}} is considered, to
+which the formulas of L′{{\cal L}}' are added as constants. In the
+particular case of temporalization, the parameter logic is a temporal
+logic. In turn, it can be proven that parameterization is a particular
+case of constrained fibring (recall
+ subsection 4.3).
+
+The method can be explained by means of a simple example taken from
+Carnielli et al. 2008: consider a propositional modal logic L{{\cal
+L}}, to be parameterized with first-order logic Lfol{{\cal L}}_{fol}
+in order to describe the dynamics of data bases. The resulting logic
+is defined in a language whose formulas are obtained by replacing
+propositional constants in formulas of L{{\cal L}} by first-order
+formulas. That is, modalities can be freely used, but quantifiers
+cannot be applied to modal formulas (other propositional connectives
+such as negation and implication are shared).
+
+The semantic structures for the new logic are Kripke structures where
+the valuation for propositional constants is replaced by a kind of
+“zooming in” mapping (in the sense of Blackburn and de
+Rijke 1997) associating a first-order semantic structure together with
+a fixed assignment for individual variables to each state.
+
+The deductive system for the new logic is formed by the rules of both
+logics. The rules of L{{\cal L}} can be instantiated with formulas
+of the parameterized language, but the rules of first-order logic can
+only be applied to pure first-order formulas.
+
+One important difference between parameterization (in particular,
+temporalization) and constrained fibring is the degree of symmetry:
+the parameterized language and inference rules are intrinsically
+asymmetric, while this is not the case of constrained fibring.
+
+Institutions were introduced by J. Goguen and R. Burstall (see Goguen
+and Burstall 1984, 1992) as a kind of “abstract model
+theory” for Computer Science, and are adequate for developing
+concepts of specification languages such as structuring of
+specifications and implementation.
+
+The theory of institutions is mainly applicable to software
+specification defined by multiple logical systems (see, for instance,
+Diaconescu and Futatsugi 2002). Thus, under an abstract view of
+software development, different components of the same program can be
+specified using different formalism in an heterogeneous setting. This
+is formalized by the use of institutions and morphisms between them
+(see, for instance, Tarlecki 2000). A problem concerning institution
+morphisms is that formulas involving connectives from different logics
+being combined are not allowed. A solution to this problem was
+proposed in Goguen and Burstall 1986 and Mossakowski 1996, by using
+the so-called parchments and parchment
+morphisms.
+4.6 New perspectives on combining logics
+
+Despite the fact that algebraic fibring is suitable for combining an
+ample class of logic systems, some kinds of logics, namely
+substructural logics such as linear logic, and logics equipped with a
+nondeterministic semantics, lie outside the scope of this combination
+method. Moreover, at the semantical level, algebraic fibring, by its
+own nature, does not make possible to keep representatives of all the
+models of the original logics (which leads to the collapsing
+problem of fibring, see
+ section 5).
+
+With the aim of still enlarging the range of application of algebraic
+fibring, so as to make it able to deal with substructural logics and
+with logics endowed with nondeterministic semantics, as well as to
+combine pointwise models of each logic, a formalism for representing
+logics and their combinations based on the general notion of
+multi-graphs (or, for short, m-graphs) was proposed by A. Sernadas and
+his collaborators (see Sernadas et al. 2009a, 2009b). Multi-graphs are
+graphs where the source of each edge is a finite sequence of nodes
+(instead of a unique node). Concerning signatures, the nodes of the
+m-graph are seen as sorts and the m-edges are seen as language
+constructors. From the semantical viewpoint, nodes are truth-values
+and m-edges are relations between truth-values. Finally, concerning
+deductive systems, nodes are language expressions, and m-edges are
+inference rules. The fibring of logics described by m-graphs (a.k.a.
+graph-theoretic fibring) is defined by pointwise combining
+models of each combined logic, in contrast to the usual notion of
+semantic fibring in which entire classes of models are combined. This
+allows one to avoid the collapsing problem (see the next section) in a
+very natural way.
+
+As an immediate application of this graph-theoretic setting, the
+preservation of the finite-model property by graph-theoretic fibring
+was proved in Coniglio et al. 2011. Since (under reasonable
+conditions) the finite model property entails decidability, this
+result is particularly useful.
+
+Another application to the graph-theoretic account of logic is the
+definition of an asymmetric combination technique called importing
+logics (see Rasga et al. 2012). Temporalization, as well as its
+generalization, modalization (see Fajardo and Finger 2003 and
+Finger and Weiss 2002), are particular cases of importing logics.
+Under this approach, the combined language is endowed with an explicit
+constructor called importing connective which transforms
+formulas of the imported logic into formulas of the importing logic.
+This is the main difference between the technique of importing logics
+and the related technique of parameterization (which also generalizes
+temporalization, see
+ subsection 4.5).
+ Semantically, each model of the resulting logic obtained by the
+method of importing logics is a pair composed of a model of the
+importing logic and a model of the imported logic, plus the
+interpretation of the importing connective. In Rasga et al. 2014 a new
+formulation of algebraic fibring, called biporting, was
+introduced, which turns out to be equivalent to the original one. From
+this, it is possible to prove that some particular cases of importing,
+like temporalization, modalization and globalization, are subsumed by
+fibring.
+
+A new mechanism for combining logics called meet combination of
+logics was firstly presented in C. Sernadas et al. 2013 and
+additionaly developed in Rasga et al. 2015 (Other Internet
+Resources). This technique is based on the idea of melding or pairing
+connectives (of the same arity) of two given logics being
+combined. The melded connectives of the resulting logic inherit the
+common properties enjoyed in both logics, instead of the union of
+their properties, as it occurs in the case of the shared connectives
+of constrained fibring. The idea of pairing connectives within a
+single logic was already explored in Sernadas et al. 2011a and 2011b,
+towards identifying common properties of any given pair of connectives
+of the same arity.
+5. Lack or excess of interaction: perplexities when combining logics
+
+Up to this point, several techniques for composing logics have been
+described and exemplified. Are these processes appropriate for
+composing, without surprises, any pair of logics? In other words,
+given a pair of logics (presented in a homogeneous way), are they
+composable in a meaningful way? Does the composition make
+philosophical sense? As pointed by Schurz 1991, it is conceivable that
+some multimodal logics obtained as combination of modal logics by
+adding arbitrarily chosen bridge principles could be meaningless.
+
+From the technical point of view there is an important problem
+concerning composition of logics known as collapsing problem,
+firstly identified in Gabbay 1996b, and later formalized in del Cerro
+and Herzig 1996. In the latter paper, it is shown that, by freely
+combining classical propositional logic and intuitionistic
+propositional logic at the semantical level (technically: by
+constructing their unconstrained fibring in the category of
+interpretation systems, recall
+ subsection 4.3)
+ the resulting logic collapses to classical logic. More precisely, the
+resulting logic will consist of two twin copies of classical
+propositional logic, having two negations, two implications and so on.
+Clearly, the respective copies of each connectives will be proved to
+be inter-derivable in the resulting logic: ¬1φ\neg_1 \varphi will be
+equivalent to ¬2φ\neg_2\varphi, (φ→1ψ)(\varphi\to_1 \psi) will be
+equivalent to (φ→2ψ)(\varphi\to_2 \psi) and so on. The collapse only
+happens when considering the algebraic fibring at the semantical
+level: in Caleiro and Ramos 2007 was shown that the collapse does not
+occur when computing the algebraic fibring of the respective Hilbert
+calculi.
+
+Basically, the phenomenon arises because both implications collapse,
+and then intuitionistic implication becomes classic. From the
+semantical point of view, it happens that the models of the fibred
+logic are Heyting algebras which are simultaneously Boolean algebras:
+evidently the algebras collapse to the Boolean ones. From the point of
+view of proof theory, the problem appears as a consequence of the
+metaproperty called Deduction Metatheorem (DMT): let
+→1\to_1 and →2\to_2 be the intuitionistic and the classical
+implications, respectively. Then 
+
+Γ,φ⊢ψ iff Γ⊢(φ→1ψ)Γ,φ⊢ψ iff Γ⊢(φ→2ψ)
+\begin{array}{lll}
+\Gamma,\varphi\vdash\psi  &amp; \textrm{ iff }&amp;  \Gamma\vdash(\varphi\to_1\psi)\\
+\Gamma,\varphi\vdash\psi  &amp; \textrm{ iff }&amp;  \Gamma\vdash(\varphi\to_2\psi)\\
+\end{array}
+
+
+ Thus, the following
+argument applies (see Gabbay 1996b): 
+
+(φ→1ψ)⊢(φ→1ψ)(Axiom)(φ→1ψ),φ⊢ψ(DMT for →1)(φ→1ψ)⊢(φ→2ψ)(DMT for →2)\begin{array}{ll}
+(\varphi\to_1\psi)\vdash(\varphi\to_1\psi) &amp;  \textrm{(Axiom)}\\
+(\varphi\to_1\psi),\,\varphi\vdash\psi  &amp;  \textrm{(DMT for } \rightarrow_1) \\
+(\varphi\to_1\psi)\vdash(\varphi\to_2\psi) &amp;  \textrm{(DMT for } \rightarrow_2) \\
+\end{array}
+
+
+ A similar argument
+shows that (φ→2ψ)⊢(φ→1ψ)(\varphi\to_2\psi)\vdash(\varphi\to_1\psi). That is,
+classical and intuitionistic implications collapse in the combined
+logic.
+
+
+It is worth noting that the previous arguments depart from a very
+strong assumption: that the metaproperty DMT is preserved in the
+combined logic. As we shall see below, this is not the case for
+algebraic fibring, unless a stronger notion of morphism between logics
+is adopted.
+
+In C. Sernadas et al. 2002b other examples of collapse were presented,
+and a solution to the problem was proposed by means of a controlled
+notion of algebraic fibring called modulated fibring. An
+apparently simpler solution to the collapsing problem appeared in
+Caleiro and Ramos 2007, using a variant of the algebraic fibring
+technique called cryptofibring. As mentioned in
+ subsection 4.6,
+ the graph-theoretic fibring leads to an additional solution to this
+problem. Another solution to the collapsing problem was obtained by
+means of the meet combination of logics (see
+ subsection 4.6).
+ Given that the combined connectives inherit the common properties
+enjoyed in both logics, the interaction between the component logics
+within the resulting logic is minimized, which allows to overcome the
+collapsing problem.
+
+Independently, in Beziau 2004 it was observed that by putting together
+the sequent rules for classical conjunction and the rules for
+classical disjunction, the resulting sequent calculus will
+(unexpectedly) prove the distributivity between conjunction and
+disjunction. The same phenomenon occurs if we join the (two-valued)
+valuation clauses for classical conjunction with the valuation clauses
+for classical disjunction. However, this is avoided by considering
+algebraic fibring in the usual categories (Hilbert calculi or
+consequence relations) with translations between logics as morphisms:
+the logic obtained is the logic of lattices, which does not satisfy
+distributivity (see Beziau and Coniglio 2005, 2011).
+
+This situation, in which new interaction rules between the connectives
+arise, is arguably undesirable. In fact, it contradicts a basic
+criterion of fibring (and also of fusion), as expressed in Gabbay
+1999: given logic systems L1{{\cal L}}_1 and L2{{\cal L}}_2, the
+combination of L1{{\cal L}}_1 and L2{{\cal L}}_2 should be the
+smallest logic system in the combined language which is a conservative
+extension of both L1{{\cal L}}_1 and L2{{\cal L}}_2.
+
+Indeed, the distributivity problem and the collapsing problem are two
+instances of the same phenomenon of emergence of unexpected
+interactions (such as bridge principles) between connectives caused by
+combination processes. In the case of combination of conjunction with
+disjunction, the distributive law emerges: this interaction is due to
+the combination process and appears without any apparent reason. In
+turn, the collapsing problem is a limit case of interactions: the
+interderivability between classical and intuitionistic implication
+(nothing else than two interaction laws between different connectives)
+is also spontaneously created by the combination process.
+
+It can be argued that the combined logics are excessively strong in
+such cases, because they derive too many propositions in the new
+combined language.
+
+On the other hand, the opposite (or dual) situation may also be
+problematic: suppose, to help intuition, that the logic of classical
+negation is combined with the logic of classical disjunction. These
+logics can be presented, for instance, axiomatically (through Hilbert
+calculi) or semantically, say, through valuations over {0,1}\{0,1\}
+(that is, by means of classical truth-tables). The semantical
+presentation of the logic of classical negation consists of the set of
+all valuations over {0,1}\{0,1\} satisfying the following clause:
+
+v(¬φ)=0 iff v(φ)=1.v(\neg\varphi)=0 \textrm{ iff } v(\varphi)=1.
+
+ On the other hand, the logic of classical disjunction can
+be characterized by the set of all valuations over {0,1}\{0,1\} such
+that: 
+
+v(φ∨ψ)=0 iff v(φ)=0 and v(ψ)=0.v(\varphi \vee \psi)=0  \textrm{ iff } v(\varphi)=0 \textrm{ and  } v(\psi)=0.
+
+As a consequence, the combined logic of negation and disjunction
+(which can be defined as the logic over ¬\neg and ∨\vee
+characterized by the valuations over {0,1}\{0,1\} satisfying both
+clauses above) validates (φ∨¬φ)(\varphi \vee \neg \varphi), and so
+classical logic is recovered. This is the result obtained by the
+combination method called direct union of matrices,
+introduced in Coniglio and Fernández 2005. However, if
+algebraic fibring is considered in categories such as those of Hilbert
+calculi or consequence relations, the combination between the logic of
+negation and the logic of disjunction results in a logic defined over
+¬\neg and ∨\vee which is weaker than classical logic: the
+interaction law (φ∨¬φ)(\varphi \vee \neg \varphi) is no longer valid.
+That is, an arguably desirable interaction between the connectives is
+lost in the combination process, and classical logic expressed over
+¬\neg and ∨\vee cannot be recovered from its fragments, as long
+as algebraic fibring in these categories of logics is used.
+
+Another example of the same kind is the following: the algebraic
+fibring between the logic of classical negation ¬\neg and the logic
+of classical implication →\to regarded in the categories above does
+not recover classical logic expressed over ¬\neg and →\to.
+Indeed, the resulting logic system, defined over ¬\neg and →\to,
+cannot validate Ex Contradictione Sequitur Quodlibet when
+presented as an axiom: 
+
+⊬(φ→(¬φ→ψ)).\not\vdash(\varphi \to(\neg\varphi \to \psi)).
+
+Interestingly enough, Ex Contradictione Sequitur Quodlibet,
+presented as a derivation, holds in the fibred logic: 
+
+φ,¬φ⊢ψ.\varphi, \neg\varphi \vdash \psi.
+
+Observe that (φ→(¬φ→ψ))(\varphi \to(\neg\varphi \to \psi)) is an interaction
+rule between the connectives of the logics being combined which cannot
+be obtained by algebraic fibring in the categories under consideration
+(however, this principle can be recovered, e.g., by direct union of
+matrices). If one is interested in recovering a logic from its
+fragments, this result is disappointing.
+
+These examples, as well as other along the same lines, suggest a
+problem dual to that of collapsing and distributivity between
+conjunction and disjunction: some expected interaction laws fail to be
+created by some combination processes.
+
+In such cases, it could be said that the combined logics are too weak
+because they are unable to derive certain intended propositions in the
+new combined language.
+
+What could be expected when combining logics? Strong logics
+(guaranteeing, for instance, that a logic can be recovered from its
+fragments) or weaker ones (in which undesirable interactions between
+connectives are blocked)?
+
+The examples above are evidence against and in favor of both
+situations: in order to avoid the collapsing problem, a careful
+splicing process should be expected (and so the interaction between
+both implications would disappear). On the other hand, if one wants to
+recover, say, classical logics from its fragments, a more liberal
+splicing process would be more appropriate as some intended
+interactions between connectives of both logics would be
+recovered.
+
+With respect to the distributivity problem when combining conjunction
+and disjunction, the choice of method is also not determined:
+distributivity could be a desired feature if we adopted the viewpoint
+of recovering a logic from its fragments. In this case, a combination
+method defining a stronger logic (such as the direct union of
+matrices) would be more appropriate than, for instance, algebraic
+fibring of Hilbert calculi. But if, as argued in Beziau 2004,
+distributivity is regarded as an intruder, then a more cautious
+process would be recommended: algebraic fibring of Hilbert calculi
+would be more appropriate in this case. To sum up: the choice of the
+most adequate combining process depends upon what one wants to
+obtain.
+
+At this point, it is convenient to notice that the question about
+whether or not interactive principles are generated when combining
+modal logics, is intrinsically related to Hume’s ‘is-ought
+problem’ discussed in
+ section 1.
+ Indeed, as proven in Schurz 1991, it is possible to obtain nontrivial
+‘is-ought’ deductions in the combination of alethic and
+deontic logics provided that some bridge principles are allowed. The
+validity of bridge principles as ◯φ→◊φ\obcirc \varphi \rightarrow
+\lozenge \varphi is nothing else than interaction rules between
+connectives of the logics being combined. Such principles enjoy a
+similar conceptual status as the distributivity laws between
+conjunction and disjunction, or as the collapsing example mentioned
+above. Thus, in order to satisfy Hume’s thesis, a combination
+process generating logics without interactions should be preferred. On
+the other hand, a combination process allowing the creation of
+interactions between the connectives could grant bridge principles
+violating Hume’s thesis.
+
+Finally, it is noteworthy to observe that algebraic fibring does not
+intrinsically forbid the emergence of interactions between connectives
+of the logics being combined. In fact, the notion of morphism in the
+category of logic systems being employed is the key to creating or
+blocking interactions. In order to exemplify this assertion, consider
+the case of the failure to recover classical logic from its
+{¬}\{\neg\}-fragment and {∨}\{\vee\}-fragment by algebraic fibring.
+The key reason for this failure is that the rule 
+
+Γ,φ⊢ψΔ,¬φ⊢ψΓ,Δ⊢ψ
+\tag{* }
+\frac{\Gamma, \varphi\vdash \psi \;\quad\; \Delta, \neg\varphi\vdash \psi}
+{\Gamma, \Delta\vdash \psi}
+
+
+ of the
+logic of classical negation is not preserved by algebraic fibring in
+categories of logic systems having translations between logics as
+morphisms (recall
+ subsection 4.4),
+ such as the category of Hilbert calculi or consequence relations.
+
+
+When considering algebraic fibring of classical implication with
+classical negation in those categories, the missing rule is the
+Deduction Metatheorem: 
+
+Γ,φ⊢ψΓ⊢(φ→ψ).\tag{**} \frac{\Gamma,\varphi\vdash\psi}
+{\Gamma\vdash(\varphi\to\psi)}.
+
+Categories of logic systems having logic translations as morphisms are
+such that the canonical injections of the coproduct are just inclusion
+mappings. Then, given two logics L1{{\cal L}}_1 and L2{{\cal
+L}}_2, the only rules of these logics which are preserved by
+algebraic fibring are those of the form: 
+
+Γ⊢φ.\Gamma \vdash \varphi.
+
+On the other hand, suppose that we are dealing with a category of
+logic systems in which the preservation of rules such as (∗)(*) or
+(∗∗)(**) above is required by the very notion of morphism. Thus, if a
+logic L{{\cal L}} is obtained as a combination of two other systems
+L1{{\cal L}}_1 and L2{{\cal L}}_2 then the rules of L1{{\cal
+L}}_1 and L2{{\cal L}}_2 would be faithfully transferred to
+L{{\cal L}}. This is the proposal of Coniglio 2007, in which
+algebraic fibring in categories of sequent calculi is investigated,
+taking into account a notion of morphism which preserves logical rules
+of the form 
+
+If Γ1⊢φ1 and  …  and Γn⊢φn then Γ⊢φ.
+\textit{If  }\;\; \Gamma_1\vdash\varphi_1 \;\;\textit{ and  …  and  }\;\; \Gamma_n\vdash\varphi_n \;\;\textit{  then }\;\;
+\Gamma\vdash\varphi.
+
+
+In such categories, when a logic system is embedded into a larger one
+by algebraic fibring, any rule as above, which can be considered as a
+meta-theorem of the logic, is preserved by the canonical injections.
+This is why this process is called meta-fibring. From the
+categorial point of view, the process is the same as for algebraic
+fibring, the only difference being that the notion of morphism is
+stronger.
+
+In Coniglio and Figallo 2015, Coniglio and Figallo extended the idea
+of meta-fibring (that is, algebraic fibring of formal sequent calculi)
+to hypersequents, which allows preserving even stronger
+meta-properties of the logics being combined. Hypersequents, which are
+finite multisets of ordinary sequents, constitute a natural
+generalization of the proof-method of sequents and turn out to be a
+suitable tool for presenting cut-free Gentzen-type formulations for
+several non-classical logics.
+
+These examples illustrate the advantages of using category theory and
+their tools for defining combination procedures as universal
+constructions: the same construction (in this case, algebraic fibring)
+can be performed in categories of logic systems with different
+features obtaining, as a consequence of this, stronger or weaker logic
+systems.

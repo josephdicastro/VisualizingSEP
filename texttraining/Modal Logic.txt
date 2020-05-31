@@ -1,0 +1,1628 @@
+A modal is an expression (like ‘necessarily’ or
+‘possibly’) that is used to qualify the truth of a
+judgement. Modal logic is, strictly speaking, the study of the
+deductive behavior of the expressions ‘it is necessary
+that’ and ‘it is possible that’. However, the term
+‘modal logic’ may be used more broadly for a family of
+related systems. These include logics for belief, for tense and other
+temporal expressions, for the deontic (moral) expressions such as
+‘it is obligatory that’ and ‘it is permitted
+that’, and many others. An understanding of modal logic is
+particularly valuable in the formal analysis of philosophical argument,
+where expressions from the modal family are both common and confusing.
+Modal logic also has important applications in computer science. 
+
+ 
+1. What is Modal Logic?
+
+
+Narrowly construed, modal logic studies reasoning that involves the
+use of the expressions ‘necessarily’ and
+‘possibly’. However, the term ‘modal logic’ is
+used more broadly to cover a family of logics with similar rules and a
+variety of different symbols.
+
+
+A list describing the best known of these logics follows.
+
+
+Logic
+Symbols 
+Expressions Symbolized 
+
+
+Modal Logic
+◻□\Box
+It is necessary that …
+
+
+
+◊◊\Diamond
+It is possible that …
+
+
+Deontic Logic
+OOO
+It is obligatory that …
+
+
+
+PPP
+It is permitted that …
+
+
+
+FFF
+It is forbidden that …
+
+
+Temporal Logic
+GGG
+It will always be the case that …
+
+
+
+FFF
+It will be the case that …
+
+
+
+HHH
+It has always been the case that …
+
+
+
+PPP
+It was the case that …
+
+
+Doxastic Logic 
+BxBxBx
+xxx believes that …
+
+
+2. Modal Logics
+
+
+The most familiar logics in the modal family are constructed from a
+weak logic called KK\bK (after Saul Kripke). Under the narrow
+reading, modal logic concerns necessity and possibility. A variety of
+different systems may be developed for such logics using
+K\bK as a foundation. The symbols of K\bK include
+‘∼{\sim}’ for ‘not’,
+‘→\rightarrow’ for ‘if…then’, and
+‘◻\Box’ for the modal operator ‘it is necessary
+that’. (The connectives ‘&\amp’,
+‘∨\vee’, and ‘↔\leftrightarrow’ may be
+defined from ‘∼{\sim}’ and
+‘→\rightarrow’ as is done in propositional logic.)
+K\bK results from adding the following to the principles of
+propositional logic. 
+
+Necessitation Rule:   If AA is a theorem
+of K\bK, then so is ◻A\Box A.
+
+
+Distribution Axiom: ◻(A→B)→(◻A→◻B)\Box(A\rightarrow B) \rightarrow 
+(\Box A\rightarrow \Box B).
+
+
+(In these principles we use ‘AA’ and
+‘BB’ as metavariables ranging over formulas of the
+language.) According to the Necessitation Rule, any theorem of logic
+is necessary. The Distribution Axiom says that if it is necessary that
+if AA then BB, then if necessarily AA, then
+necessarily BB.
+
+
+The operator ◊\Diamond (for ‘possibly’) can be defined
+from ◻\Box by letting ◊A=∼◻∼A\Diamond A = {\sim}\Box{\sim}A. In
+K\bK, the operators ◻\Box and ◊\Diamond behave very much like
+the quantifiers ∀\forall (all) and ∃\exists (some). For example,
+the definition of ◊\Diamond from ◻\Box mirrors the equivalence
+of ∀xA\forall xA with ∼∃x∼A{\sim}\exists x{\sim}A in predicate
+logic. Furthermore, ◻(A&B)\Box(A \amp B) entails ◻A&◻B\Box A \amp \Box B
+and vice versa; while ◻A∨◻B\Box A\vee \Box B entails ◻(A∨B)\Box (A\vee
+B), but not vice versa. This reflects the patterns
+exhibited by the universal quantifier: ∀x(A&B)\forall x(A \amp B) entails
+∀xA&∀xB\forall xA \amp \forall xB and vice versa, while ∀xA∨∀xB\forall xA \vee
+\forall xB entails ∀x(A∨B)\forall x(A \vee B) but not vice
+versa. Similar parallels between ◊\Diamond and ∃\exists can be
+drawn. The basis for this correspondence between the modal operators
+and the quantifiers will emerge more clearly in the section on
+ Possible Worlds Semantics.
+
+
+The system K\bK is too weak to provide an adequate
+account of necessity. The following axiom is not provable
+in K\bK, but it is clearly desirable.
+◻A→A\tag{\(M\)}
+\Box A\rightarrow A
+
+
+(M)(M) claims that whatever is necessary is the case. Notice
+that (M)(M) would be incorrect were ◻\Box to be read ‘it
+ought to be that’, or ‘it was the case that’. So the
+presence of axiom (M)(M) distinguishes logics for necessity from other logics
+in the modal family. A basic modal logic MM results from
+adding (M)(M) to K\bK. (Some authors call this
+system T\mathbf{T}.)
+
+
+Many logicians believe that MM is still too weak to correctly
+formalize the logic of necessity and possibility. They recommend
+further axioms to govern the iteration, or repetition of modal
+operators. Here are two of the most famous iteration axioms:
+◻A→◻◻A\tag{4}
+\Box A\rightarrow \Box \Box A
+
+◊A→◻◊A\tag{5}
+\Diamond A\rightarrow \Box \Diamond A
+
+
+S4\mathbf{S4} is the system that results from adding (4) to
+MM. Similarly S5\mathbf{S5} is MM plus (5). In
+S4\mathbf{S4}, the sentence ◻◻A\Box \Box A is
+equivalent to ◻A\Box A. As a result, any string of boxes may
+be replaced by a single box, and the same goes for strings of
+diamonds. This amounts to the idea that iteration of the modal
+operators is superfluous. Saying that AA is necessarily
+necessary is considered a uselessly long-winded way of saying that
+AA is necessary. The system S5\mathbf{S5} has even
+stronger principles for simplifying strings of modal operators. In
+S4\mathbf{S4}, a string of operators of the same kind
+can be replaced for that operator; in S5\mathbf{S5}, strings
+containing both boxes and diamonds are equivalent to the last operator
+in the string. So, for example, saying that it is possible that
+AA is necessary is the same as saying that AA is
+necessary. A summary of these features of S4\mathbf{S4} and
+S5\mathbf{S5} follows.
+◻◻…◻=◻ and ◊◊…◊=◊\tag{\(\mathbf{S4}\)}
+\Box \Box \ldots \Box = \Box \text{ and }
+\Diamond \Diamond \ldots \Diamond = \Diamond
+
+00…◻=◻ and 00…◊=◊, where each 0 is either ◻ or ◊\begin{align*}
+\tag{\(\mathbf{S5}\)}
+00\ldots \Box &amp;= \Box \text{ and } 00\ldots \Diamond = \Diamond, \\
+ &amp;\text{ where each } 0 \text{ is either } \Box \text{ or } \Diamond
+\end{align*}
+
+
+One could engage in endless argument over the correctness or
+incorrectness of these and other iteration principles for ◻\Box and
+◊\Diamond. The controversy can be partly resolved by recognizing that the
+words ‘necessarily’ and ‘possibly’, have many
+different uses. So the acceptability of axioms for modal logic depends
+on which of these uses we have in mind. For this reason, there is no
+one modal logic, but rather a whole family of systems built around
+MM. The relationship between these systems is diagrammed in
+ Section 8,
+ and their application to different uses of
+‘necessarily’ and ‘possibly’ can be more deeply
+understood by studying their possible world semantics in
+ Section 6.
+
+
+The system B\mathbf{B} (for the logician Brouwer) is formed by adding axiom
+(B)(B) to MM.
+A→◻◊A\tag{\(B\)}
+A\rightarrow \Box \Diamond A
+
+
+
+It is interesting to note that S5\mathbf{S5} can be formulated
+equivalently by adding (B)(B) to S4\mathbf{S4}. The axiom (B)(B)
+raises an important point about the interpretation of modal
+formulas. (B)(B) says that if AA is the case, then AA is
+necessarily possible. One might argue that (B)(B) should always be
+adopted in any modal logic, for surely if AA is the case, then it
+is necessary that AA is possible. However, there is a problem with
+this claim that can be exposed by noting that ◊◻A→A\Diamond \Box
+A\rightarrow A is provable from (B)(B). So ◊◻A→A\Diamond \Box
+A\rightarrow A should be acceptable if (B)(B) is. However,
+◊◻A→A\Diamond \Box A\rightarrow A says that if AA is possibly
+necessary, then AA is the case, and this is far from obvious. Why
+does (B)(B) seem obvious, while one of the things it entails seems
+not obvious at all? The answer is that there is a dangerous ambiguity
+in the English interpretation of A→◻◊AA\rightarrow \Box \Diamond A. We
+often use the expression ‘If AA then necessarily BB’
+to express that the conditional ‘if AA then BB’ is
+necessary. This interpretation corresponds to ◻(A→B)\Box(A\rightarrow
+B). On other occasions, we mean that if AA, then BB is
+necessary: A→◻BA\rightarrow \Box B. In English,
+‘necessarily’ is an adverb, and since adverbs are usually
+placed near verbs, we have no natural way to indicate whether the
+modal operator applies to the whole conditional, or to its
+consequent. For these reasons, there is a tendency to confuse (B):A→◻◊A(B):
+A\rightarrow \Box \Diamond A with ◻(A→◊A)\Box(A\rightarrow \Diamond
+A). But ◻(A→◊A)\Box(A\rightarrow \Diamond A) is not the same as
+(B)(B), for ◻(A→◊A)\Box(A\rightarrow \Diamond A) is already a theorem of
+MM, and (B)(B) is not. One must take special care that our
+positive reaction to ◻(A→◊A)\Box(A\rightarrow \Diamond A) does not infect
+our evaluation of (B)(B). One simple way to protect ourselves is to
+formulate BB in an equivalent way using the axiom: ◊◻A→A\Diamond \Box
+A\rightarrow A, where these ambiguities of scope do not arise.
+3. Deontic Logics
+
+
+Deontic logics introduce the primitive symbol OO for ‘it is
+obligatory that’, from which symbols PP for ‘it is
+permitted that’ and FF for ‘it is forbidden that’
+are defined: PA=∼O∼APA = {\sim}O{\sim}A and FA=O∼AFA = O{\sim}A. The
+deontic analog of the modal axiom (M):OA→A(M): OA\rightarrow A is clearly
+not appropriate for deontic logic. (Unfortunately, what ought to be is
+not always the case.) However, a basic system D\mathbf{D} of
+deontic logic can be constructed by adding the weaker axiom (D)(D) to
+K\bK.
+OA→PA\tag{\(D\)}
+ OA\rightarrow PA
+
+
+
+Axiom (D)(D) guarantees the consistency of the system of
+obligations by insisting that when AA is obligatory,
+AA is permissible. A system which obligates us to bring about
+AA, but doesn’t permit us to do so, puts us in an inescapable
+bind. Although some will argue that such conflicts of obligation are
+at least possible, most deontic logicians accept (D)(D).
+
+O(OA→A)O(OA\rightarrow A) is another deontic
+axiom that seems desirable. Although it is wrong to say that if
+AA is obligatory then AA is the case
+(OA→A)(OA\rightarrow A), still, this conditional
+ought to be the case. So some deontic logicians believe that
+DD needs to be supplemented with
+O(OA→A)O(OA\rightarrow A) as well.
+
+
+Controversy about iteration (repetition) of operators arises again in
+deontic logic. In some conceptions of obligation, OOAOOA just amounts
+to OAOA. ‘It ought to be that it ought to be’ is treated
+as a sort of stuttering; the extra ‘ought’s do not add
+anything new. So axioms are added to guarantee the equivalence of
+OOAOOA and OAOA. The more general iteration policy embodied in
+S5\mathbf{S5} may also be adopted. However, there are conceptions of
+obligation where distinction between OAOA and OOAOOA is
+preserved. The idea is that there are genuine differences between the
+obligations we actually have and the obligations
+we should adopt. So, for example, ‘it ought to be that
+it ought to be that AA’ commands adoption of some obligation
+which may not actually be in place, with the result that OOAOOA can
+be true even when OAOA is false.
+4. Temporal Logics
+
+
+In temporal logic (also known as tense logic), there are two basic
+operators, GG for the future, and HH for the past. GG is read
+‘it always will be that’ and the defined operator FF
+(read ‘it will be the case that’) can be introduced by
+FA=∼G∼AFA = {\sim}G{\sim}A. Similarly HH is read: ‘it always was
+that’ and PP (for ‘it was the case that’) is
+defined by PA=∼H∼APA={\sim}H{\sim}A. A basic system of temporal logic
+called Kt\mathbf{Kt} results from adopting the principles of K\bK
+for both GG and HH, along with two axioms to govern the
+interaction between the past and future operators:
+Necessitation Rules: 
+ If AA is a theorem then so are
+GAGA and HAHA. 
+
+
+Distribution Axioms: 
+G(A→B)→(GA→GB)G(A\rightarrow B) \rightarrow(GA\rightarrow GB) and
+H(A→B)→(HA→HB)H(A\rightarrow B) \rightarrow (HA\rightarrow HB)
+
+Interaction Axioms:
+A→GPAA\rightarrow GPA and A→HFAA\rightarrow HFA
+
+
+The interaction axioms raise questions concerning asymmetries between
+the past and the future. A standard intuition is that the past is
+fixed, while the future is still open. The first interaction axiom
+(A→GPA)(A\rightarrow GPA) conforms to this
+intuition in reporting that what is the case (A)(A), will at all
+future times, be in the past (GPA)(GPA). However
+A→HFAA\rightarrow HFA may appear to have
+unacceptably deterministic overtones, for it claims, apparently, that
+what is true now (A)(A) has always been such that it will occur
+in the future (HFA)(HFA). However, possible
+world semantics for temporal logic reveals that this worry results
+from a simple confusion, and that the two interaction axioms are
+equally acceptable.
+
+
+Note that the characteristic axiom of modal logic, (M):◻A→A(M):
+\Box A\rightarrow A, is not acceptable for either
+HH or GG, since AA does not follow from
+‘it always was the case that AA’, nor from
+‘it always will be the case that AA’. However, it
+is acceptable in a closely related temporal logic where GG is
+read ‘it is and always will be’, and HH is read
+‘it is and always was’.
+
+
+Depending on which assumptions one makes about the structure of
+time, further axioms must be added to temporal logics. A list of axioms
+commonly adopted in temporal logics follows. An account of how they
+depend on the structure of time will be found in the section
+ Possible Worlds Semantics.
+GA→GGA and HA→HHAGGA→GA and HHA→HAGA→FA and HA→PA\begin{align*}
+GA\rightarrow GGA &amp;\text{ and } HA\rightarrow HHA \\
+GGA\rightarrow GA &amp;\text{ and } HHA\rightarrow HA \\
+GA\rightarrow FA &amp;\text{ and } HA\rightarrow PA
+\end{align*}
+
+
+It is interesting to note that certain combinations of past tense and
+future tense operators may be used to express complex tenses in
+English. For example, FPAFPA, corresponds to sentence AA in the
+future perfect tense, (as in ‘20 seconds from now the light will
+have changed’). Similarly, PPAPPA expresses the past perfect
+tense.
+
+
+For a more detailed discussion, see the entry
+ on
+ temporal logic.
+5. Conditional and Relevance Logics
+
+
+The founder of modal logic, C. I. Lewis, defined a series of modal
+logics which did not have ◻\Box as a primitive symbol. Lewis was
+concerned to develop a logic of conditionals that was free of the so
+called Paradoxes of Material Implication, namely the classical
+theorems A→(∼A→B)A\rightarrow({\sim}A\rightarrow B) and
+B→(A→B)B\rightarrow(A\rightarrow B). He introduced the symbol
+⥽\fishhook for “strict implication” and developed
+logics where neither A⥽(∼A⥽B)A\fishhook ({\sim}A\fishhook B) nor
+B⥽(A⥽B)B\fishhook (A\fishhook B) is provable. The modern practice has
+been to define A⥽BA\fishhook B by ◻(A→B)\Box(A\rightarrow B), and use
+modal logics governing ◻\Box to obtain similar results. However,
+the provability of such formulas as (A&∼A)⥽B(A \amp{\sim}A)\fishhook B in
+such logics seems at odds with concern for the paradoxes. Anderson and
+Belnap (1975) have developed systems R\mathbf{R} (for Relevance
+Logic) and E\mathbf{E} (for Entailment) which are designed to
+overcome such difficulties. These systems require revision of the
+standard systems of propositional logic. (See Mares (2004) and the
+entry on
+ relevance logic.)
+
+
+David Lewis (1973) and others have developed 
+ conditional logics 
+ to handle counterfactual expressions, that is, expressions of the
+form ‘if AA were to happen then BB would
+happen’. (Kvart (1980) is another good source on the topic.)
+Counterfactual logics differ from those based on strict implication
+because the former reject while the latter accept contraposition.
+6. Possible Worlds Semantics
+
+
+The purpose of logic is to characterize the difference between valid
+and invalid arguments. A logical system for a language is a set of
+axioms and rules designed to prove exactly the valid
+arguments statable in the language. Creating such a logic may be a
+difficult task. The logician must make sure that the system is
+sound, i.e. that every argument proven using the rules and
+axioms is in fact valid. Furthermore, the system should be
+complete, meaning that every valid argument has a proof in
+the system. Demonstrating soundness and completeness of formal systems
+is a logician’s central concern. 
+
+
+Such a demonstration cannot get underway until the concept of validity
+is defined rigorously. Formal semantics for a logic provides a
+definition of validity by characterizing the truth behavior of the
+sentences of the system. In propositional logic, validity can be
+defined using truth tables. A valid argument is simply one where every
+truth table row that makes its premises true also makes its conclusion
+true. However truth tables cannot be used to provide an account of
+validity in modal logics because there are no truth tables for
+expressions such as ‘it is necessary that’, ‘it is
+obligatory that’, and the like. (The problem is that the truth
+value of AA does not determine the truth value for ◻A\Box A. For
+example, when AA is ‘Dogs are dogs’, ◻A\Box A is
+true, but when AA is ‘Dogs are pets’, ◻A\Box A is
+false.) Nevertheless, semantics for modal logics can be defined by
+introducing possible worlds. We will illustrate possible worlds
+semantics for a logic of necessity containing the symbols ∼,→{\sim},
+\rightarrow, and ◻\Box. Then we will explain how the same
+strategy may be adapted to other logics in the modal family.
+
+
+In propositional logic, a valuation of the atomic sentences (or row of
+a truth table) assigns a truth value (T(T or F)F) to
+each propositional variable pp. Then the truth values of the
+complex sentences are calculated with truth tables. In modal semantics,
+a set WW of possible worlds is introduced. A valuation then
+gives a truth value to each propositional variable for each of the
+possible worlds in WW. This means that value assigned to
+pp for world ww may differ from the value assigned to
+pp for another world w′w'.
+
+
+The truth value of the atomic sentence pp at world ww given by
+the valuation vv may be written v(p,w)v(p, w). Given this notation,
+the truth values (T(T for true, FF for false) of complex
+sentences of modal logic for a given valuation vv (and member ww
+of the set of worlds W)W) may be defined by the following truth
+clauses. (‘iff’ abbreviates ‘if and only
+if’.)
+v(∼A,w)=T iff v(A,w)=F.\tag{\({\sim}\)}
+v({\sim}A, w)=T \text{ iff } v(A, w)=F.
+
+v(A→B,w)=T iff v(A,w)=F or v(B,w)=T.\tag{\(\rightarrow\)}
+v(A\rightarrow B, w)=T \text{ iff } v(A, w)=F \text{ or } v(B, w)=T.
+
+v(◻A,w)=T iff for every world w′ in W,v(A,w′)=T.\tag{5}
+v(\Box A, w)=T \text{ iff for every world } w' \text{ in } W, v(A, w')=T.
+
+
+
+Clauses (∼)({\sim}) and (→)(\rightarrow) simply describe the
+standard truth table behavior for negation and material implication
+respectively. According to (5), ◻A\Box A is true (at a world w)w)
+exactly when AA is true in all possible worlds. Given the
+definition of ◊\Diamond, (namely, ◊A=∼◻∼A)\Diamond A =
+{\sim}\Box{\sim}A) the truth condition (5) insures that ◊A\Diamond
+A is true just in case AA is true in some possible
+world. Since the truth clauses for ◻\Box and ◊\Diamond involve
+the quantifiers ‘all’ and ‘some’
+(respectively), the parallels in logical behavior between ◻\Box and
+∀x\forall x, and between ◊\Diamond and ∃x\exists x noted in
+section 2 will be expected.
+
+
+Clauses (∼),(→)({\sim}), (\rightarrow), and (5) allow us to calculate the truth value
+of any sentence at any world on a given valuation. A definition of
+validity is now just around the corner. An argument is 5-valid for
+a given set W (of possible worlds) if and only if every valuation
+of the atomic sentences that assigns the premises TT at a
+world in WW also assigns the conclusion TT at the same
+world. An argument is said to be 5-valid iff it is valid for
+every non empty set WW of possible worlds.
+
+
+It has been shown that S5\mathbf{S5} is sound and complete for
+5-validity (hence our use of the symbol ‘5’). The 5-valid
+arguments are exactly the arguments provable in
+S5\mathbf{S5}. This result suggests that S5\mathbf{S5} is
+the correct way to formulate a logic of necessity.
+
+
+However, S5\mathbf{S5} is not a reasonable logic for all members
+of the modal family. In deontic logic, temporal logic, and others, the
+analog of the truth condition (5) is clearly not appropriate;
+furthermore there are even conceptions of necessity where (5) should
+be rejected as well. The point is easiest to see in the case of
+temporal logic. Here, the members of WW are moments of time,
+or worlds “frozen”, as it were, at an instant. For simplicity let us
+consider a future temporal logic, a logic where
+◻A\Box A reads: ‘it will always be the case
+that’. (We formulate the system using ◻\Box rather than the
+traditional GG so that the connections with other modal logics
+will be easier to appreciate.) The correct clause for ◻\Box should
+say that ◻A\Box A is true at time ww iff AA
+is true at all times in the future of ww. To restrict
+attention to the future, the relation RR (for ‘earlier
+than’) needs to be introduced. Then the correct clause can be
+formulated as follows.
+v(◻A,w)=T iff for every w′, if wRw′, then v(A,w′)=T.\tag{\(K\)}
+ v(\Box A, w)=T \text{ iff for every } w',
+ \text{ if } wRw', \text{ then } v(A, w')=T.
+
+
+
+This says that ◻A\Box A is true at ww just in case
+AA is true at all times after ww.
+
+
+Validity for this brand of temporal logic can now be defined. A
+frame ⟨W,R⟩\langle W, R\rangle is a pair consisting of a non-empty set
+WW (of worlds) and a binary relation RR on
+WW. A model ⟨F,v⟩\langle F, v\rangle consists of a frame FF, and
+a valuation vv that assigns truth values to each atomic sentence at
+each world in WW. Given a model, the values of all complex
+sentences can be determined using (∼),(→)({\sim}), (\rightarrow), and
+(K)(K). An argument is K\bK-valid just in case any model whose
+valuation assigns the premises TT at a world also assigns the
+conclusion TT at the same world. As the reader may have guessed
+from our use of ‘K\bK’, it has been shown that the
+simplest modal logic K\bK is both sound and complete for
+K\bK-validity.
+7. Modal Axioms and Conditions on Frames
+
+
+One might assume from this discussion that K\bK is the correct
+logic when ◻\Box is read ‘it will always be the case
+that’. However, there are reasons for thinking that K\bK is
+too weak. One obvious logical feature of the relation RR (earlier
+than) is transitivity. If wRv(wwRv (w is earlier than v)v) and vRu(vvRu
+(v is earlier than u)u), then it follows that wRu(wwRu (w is
+earlier than u)u). So let us define a new kind of validity that
+corresponds to this condition on RR. Let a 4-model be any model
+whose frame ⟨W,R⟩\langle W, R\rangle is such that RR is a transitive
+relation on WW. Then an argument is 4-valid iff any 4-model whose
+valuation assigns TT to the premises at a world also assigns TT
+to the conclusion at the same world. We use ‘4’ to
+describe such a transitive model because the logic which is adequate
+(both sound and complete) for 4-validity is K4\mathbf{K4}, the logic
+which results from adding the axiom (4): ◻A→◻◻A\Box A\rightarrow \Box \Box
+A to K\bK.
+
+
+Transitivity is not the only property which we might want to require
+of the frame ⟨W,R⟩\langle W, R\rangle if RR is to be read ‘earlier
+than’ and WW is a set of moments. One condition (which is
+only mildly controversial) is that there is no last moment of time,
+i.e. that for every world ww there is some world vv such that
+wRvwRv. This condition on frames is called
+seriality. Seriality corresponds to the axiom (D):◻A→◊A(D): \Box
+A\rightarrow \Diamond A, in the same way that transitivity
+corresponds to (4). A D\mathbf{D}-model is a K\bK-model with a
+serial frame. From the concept of a D\mathbf{D}-model the
+corresponding notion of D\mathbf{D}-validity can be defined just as
+we did in the case of 4-validity. As you probably guessed, the system
+that is adequate with respect to D\mathbf{D}-validity is
+KD\mathbf{KD}, or K\bK plus (D)(D). Not only that, but the
+system KD4\mathbf{KD4} (that is K\bK plus (4) and (D))(D)) is
+adequate with respect to D4\mathbf{D4}-validity, where a
+D4\mathbf{D4}-model is one where ⟨W,R⟩\langle W, R\rangle is both
+serial and transitive.
+
+
+Another property which we might want for the relation ‘earlier
+than’ is density, the condition which says that between any two
+times we can always find another. Density would be false if time were
+atomic, i.e. if there were intervals of time which could not be broken
+down into any smaller parts. Density corresponds to the axiom
+(C4):◻◻A→◻A(C4): \Box \Box A\rightarrow \Box A, the
+converse of (4), so for example, the system KC4\mathbf{KC4},
+which is K\bK plus (C4)(C4) is adequate with
+respect to models where the frame ⟨W,R⟩\langle W, R\rangle is
+dense, and KDC4\mathbf{KDC4}, adequate with respect to models
+whose frames are serial and dense, and so on.
+
+
+Each of the modal logic axioms we have discussed corresponds to a
+condition on frames in the same way. The relationship between
+conditions on frames and corresponding axioms is one of the central
+topics in the study of modal logics. Once an interpretation of the
+intensional operator ◻\Box has been decided on, the appropriate
+conditions on RR can be determined to fix the corresponding
+notion of validity. This, in turn, allows us to select the right set
+of axioms for that logic.
+
+
+For example, consider a deontic logic, where ◻\Box is read
+‘it is obligatory that’. Here the truth of ◻A\Box A does
+not demand the truth of AA in every possible world, but
+only in a subset of those worlds where people do what they ought. So
+we will want to introduce a relation RR for this kind of logic as
+well, and use the truth clause (K)(K) to evaluate ◻A\Box A at a
+world. However, in this case, RR is not earlier than. Instead
+wRw′wRw' holds just in case world w′w' is a morally acceptable
+variant of ww, i.e. a world that our actions can bring about which
+satisfies what is morally correct, or right, or just. Under such a
+reading, it should be clear that the relevant frames should obey
+seriality, the condition that requires that each possible world have a
+morally acceptable variant. The analysis of the properties desired for
+RR makes it clear that a basic deontic logic can be formulated by
+adding the axiom (D)(D) and to K\bK.
+
+
+Even in modal logic, one may wish to restrict the range of possible
+worlds which are relevant in determining whether ◻A\Box A is true at
+a given world. For example, I might say that it is necessary for me to
+pay my bills, even though I know full well that there is a possible
+world where I fail to pay them. In ordinary speech, the claim that
+AA is necessary does not require the truth of AA in all
+possible worlds, but rather only in a certain class of worlds which I
+have in mind (for example, worlds where I avoid penalties for failure
+to pay). In order to provide a generic treatment of necessity, we must
+say that ◻A\Box A is true in ww iff AA is true in all
+worlds that are related to ww in the right way. So for an
+operator ◻\Box interpreted as necessity, we introduce a
+corresponding relation RR on the set of possible worlds WW,
+traditionally called the accessibility relation. The accessibility
+relation RR holds between worlds ww and w′w' iff w′w' is
+possible given the facts of ww. Under this reading for RR, it
+should be clear that frames for modal logic should be reflexive. It
+follows that modal logics should be founded on MM, the system that
+results from adding (M)(M) to K\bK. Depending on exactly how the
+accessibility relation is understood, symmetry and transitivity may
+also be desired.
+
+
+A list of some of the more commonly discussed conditions on frames
+and their corresponding axioms along with a map showing the
+relationship between the various modal logics can be found in the next
+section.
+8. Map of the Relationships Between Modal Logics
+
+
+The following diagram shows the relationships between the best known
+modal logics, namely logics that can be formed by adding a selection
+of the axioms (D),(M)(D), (M), (4), (B)(B) and (5) to
+K\bK. A list of these (and other) axioms along with
+their corresponding frame conditions can be found below the diagram.
+
+
+Diagram of Modal Logics
+
+
+
+In this chart, systems are given by the list of their axioms. So, for
+example M4B\mathbf{M4B} is the result of adding (M)(M), (4) and
+(B)(B) to K\bK. In boldface, we have indicated traditional names
+of some systems. When system S\mathbf{S} appears below and/or to
+the left of S′\mathbf{S}' connected by a line, then S′\mathbf{S}'
+is an extension of S\mathbf{S}. This means that every argument
+provable in S\mathbf{S} is provable in S′\mathbf{S}', but
+S\mathbf{S} is weaker than S′\mathbf{S}', i.e. not all arguments
+provable in S′\mathbf{S}' are provable in S\mathbf{S}.
+
+
+The following list indicates axioms, their names, and the
+corresponding conditions on the accessibility relation RR, for
+axioms so far discussed in this encyclopedia entry.
+
+
+Name 
+Axiom 
+Condition on Frames
+R is…
+
+
+
+(D)(D)
+◻A→◊A\Box A\rightarrow \Diamond A
+∃uwRu\exists u wRu
+Serial
+
+
+(M)(M)
+◻A→A\Box A\rightarrow A
+wRwwRw
+Reflexive
+
+
+(4)
+◻A→◻◻A\Box A\rightarrow \Box \Box A
+(wRv&vRu)⇒wRu(wRv \amp vRu)
+\Rightarrow wRu
+Transitive
+
+
+(B)(B)
+A→◻◊AA\rightarrow \Box \Diamond A
+wRv⇒vRwwRv \Rightarrow vRw
+Symmetric
+
+
+(5)
+◊A→◻◊A\Diamond A\rightarrow \Box \Diamond A
+(wRv&wRu)⇒vRu(wRv \amp wRu)
+\Rightarrow vRu
+Euclidean
+
+
+
+
+(CD)(CD)
+◊A→◻A\Diamond A\rightarrow \Box A
+(wRv&wRu)⇒v=u(wRv \amp wRu) \Rightarrow v=u
+Functional
+
+
+(◻M)(\Box M)
+◻(◻A→A)\Box(\Box A\rightarrow A)
+wRv⇒vRvwRv \Rightarrow vRv
+ShiftReflexive
+
+
+(C4)(C4)
+◻◻A→◻A\Box \Box A\rightarrow \Box A
+wRv⇒∃u(wRu&uRv)wRv \Rightarrow \exists u(wRu \amp uRv)
+Dense
+
+
+(C)(C)
+◊◻A→◻◊A\Diamond \Box A \rightarrow \Box \Diamond A
+wRv&wRx⇒∃u(vRu&xRu)wRv \amp wRx \Rightarrow \exists u(vRu \amp xRu)
+Convergent
+
+
+
+
+In the list of conditions on frames, and in the rest of this article,
+the variables ‘ww’, ‘vv’,
+‘uu’, ‘xx’ and the quantifier
+‘∃u\exists u’ are understood to range over
+WW. ‘&’ abbreviates ‘and’ and
+‘⇒\Rightarrow’ abbreviates
+‘if…then’.
+
+
+The notion of correspondence between axioms and frame conditions that
+is at issue here was explained in the previous section. When S is a
+list of axioms and F(S) is the corresponding set of frame conditions,
+then S corresponds to F(S) exactly when the system K+S is adequate
+(sound and complete) for F(S)-validity, that is, an argument is
+provable in K+S iff it is F(S)-valid. Several stronger notions of
+correspondence between axioms and frame conditions have emerged in
+research on modal logic. 
+9. The General Axiom
+
+
+The correspondence between axioms and conditions on frames may seem
+something of a mystery. A beautiful result of Lemmon and Scott (1977)
+goes a long way towards explaining those relationships. Their theorem
+concerned axioms which have the following form: 
+◊h◻iA→◻j◊kA\tag{\(G\)}
+\Diamond^h \Box^i A \rightarrow \Box^j\Diamond^k A
+
+
+
+We use the notation ‘◊n\Diamond^n’ to represent nn
+diamonds in a row, so, for example, ‘◊3\Diamond^3’
+abbreviates a string of three diamonds: ‘◊◊◊\Diamond \Diamond
+\Diamond’. Similarly ‘◻n\Box^n’ represents a
+string of nn boxes. When the values of h,i,jh, i, j, and kk are
+all 1, we have axiom (C)(C):
+◊◻A→◻◊A=◊1◻1A→◻1◊1A\tag{\(C\)}
+\Diamond \Box A \rightarrow \Box \Diamond A = \Diamond^1\Box^1 A \rightarrow \Box^1\Diamond^1 A
+
+
+
+The axiom (B)(B) results from setting hh and ii
+to 0, and letting jj and kk be 1:
+A→◻◊A=◊0◻0A→◻1◊1A\tag{\(B\)}
+A \rightarrow \Box \Diamond A = \Diamond^0\Box^0 A \rightarrow \Box^1\Diamond^1 A
+
+
+
+To obtain (4), we may set hh and kk to 0, set
+ii to 1 and jj to 2:
+◻A→◻◻A=◊0◻1A→◻2◊0A\tag{4}
+\Box A \rightarrow \Box \Box A = \Diamond^0\Box^1 A \rightarrow \Box^2\Diamond^0 A
+
+
+
+Many (but not all) axioms of modal logic can be obtained by setting the
+right values for the parameters in (G)(G) 
+
+
+Our next task will be to give the condition on frames which
+corresponds to (G)(G) for a given selection of values for h,i,jh, i,
+j, and kk. In order to do so, we will need a definition. The
+composition of two relations RR and R′R' is a new relation R∘R′R
+\circ R' which is defined as follows:
+wR∘R′v iff for some u,wRu and uR′v.
+wR \circ R'v \text{ iff for some } u, wRu \text{ and } uR'v.
+
+
+
+For example, if RR is the relation of being a brother, and R′R'
+is the relation of being a parent then R∘R′R \circ R' is the relation
+of being an uncle, (because ww is the uncle of vv iff for some
+person uu, both ww is the brother of uu and uu is the
+parent of v)v). A relation may be composed with itself. For example,
+when RR is the relation of being a parent, then R∘RR \circ R is
+the relation of being a grandparent, and R∘R∘RR \circ R \circ R is the
+relation of being a great-grandparent. It will be useful to write
+‘RnR^n’, for the result of composing RR with itself
+nn times. So R2R^2 is R∘RR \circ R, and R4R^4 is R∘R∘R∘RR \circ R
+\circ R \circ R. We will let R1R^1 be RR, and R0R^0 will be
+the identity relation, i.e. wR0vwR^0 v iff w=vw=v.
+
+
+We may now state the Scott-Lemmon result. It is that the condition
+on frames which corresponds exactly to any axiom of the shape (G)(G) is
+the following.
+wRhv&wRju⇒∃x(vRix&uRkx)\tag{\(hijk\)-Convergence}
+wR^h v \amp wR^j u \Rightarrow \exists x (vR^i x \amp uR^k x)
+
+
+
+It is interesting to see how the familiar conditions on RR result
+from setting the values for hh, ii, jj, and kk according to the
+values in the corresponding axiom. For example, consider (5). In this
+case i=0i=0, and h=j=k=1h=j=k=1. So the corresponding condition is
+wRv&wRu⇒∃x(vR0x&uRx).
+wRv \amp wRu \Rightarrow \exists x (vR^0 x \amp uRx).
+
+
+
+We have explained that R0R^0 is the identity relation. So if vR0xvR^0
+x then v=xv=x. But ∃x(v=x&uRx)\exists x (v=x \amp uRx), is equivalent to
+uRvuRv, and so the Euclidean condition is obtained:
+(wRv&wRu)⇒uRv.
+(wRv \amp wRu) \Rightarrow uRv.
+
+
+
+In the case of axiom (4), h=0,i=1,j=2h=0, i=1, j=2 and k=0k=0. So the
+corresponding condition on frames is
+(w=v&wR2u)⇒∃x(vRx&u=x).
+(w=v \amp wR^2 u) \Rightarrow \exists x (vRx \amp u=x).
+
+
+
+Resolving the identities this amounts to: 
+vR2u⇒vRu.
+vR^2 u \Rightarrow vRu.
+
+
+
+By the definition of R2,vR2uR^2, vR^2 u iff ∃x(vRx&xRu)\exists x(vRx \amp xRu),
+so this comes to:
+∃x(vRx&xRu)⇒vRu,
+\exists x(vRx \amp xRu) \Rightarrow vRu,
+
+
+
+which by predicate logic, is equivalent to transitivity. 
+vRx&xRu⇒vRu.
+vRx \amp xRu \Rightarrow vRu.
+
+
+
+The reader may find it a pleasant exercise to see how the
+corresponding conditions fall out of hijk-Convergence when the values
+of the parameters hh, ii, jj, and kk
+are set by other axioms.
+
+
+The Scott-Lemmon results provides a quick method for establishing
+results about the relationship between axioms and their corresponding
+frame conditions. Since they showed the adequacy of any logic that
+extends K\bK with a selection of axioms of the form (G)(G) with
+respect to models that satisfy the corresponding set of frame
+conditions, they provided “wholesale” adequacy proofs for
+the majority of systems in the modal family. Sahlqvist (1975) has
+discovered important generalizations of the Scott-Lemmon result
+covering a much wider range of axiom types.
+
+The reader should be warned, however, that the neat correspondence
+between axioms and conditions on frames is atypical. There are
+condtions on frames that correspond to no axioms, and there are even
+conditions on frames for which no system is adequate. (For an example
+see Boolos, 1993, pp. 148ff.)
+10. Two Dimensional Semantics
+
+Two dimensional semantics
+is a variant of possible world semantics that uses two (or more) kinds
+of parameters in truth evaluation, rather than possible worlds alone.
+For example, a logic of indexical expressions, such as
+‘I’, ‘here’, ‘now’, and the like,
+needs to bring in the linguistic context (or context for short).
+Given a context c=⟨s,p,t⟩c = \langle s, p, t\rangle where
+ss is the speaker, pp the place, and tt the time of
+utterance, then ‘I’ refers to ss, ‘here’
+to pp, and ‘now’ to tt. So in the context
+c=⟨c = \langleJim Garson, Houston, 3:00 P.M. CST on 4/3/2014⟩2014\rangle
+‘I am here now’ is T iff Jim Garson is in Houston, at 3:00
+P.M. CST on 4/3/2014.
+ 
+In possible worlds semantics, a sentence’s truth-value depended on the
+world at which it is evaluated. However, indexicals bring in a second
+dimension – so we need to generalize again. Kaplan (1989) defines the
+character of a sentence B to be a function from the set of
+(linguistic) contexts to the content (or intension) of B, where the
+content, in turn, is simply the intension of B, that is a function
+from possible worlds to truth-values. Here, truth evaluation is
+doubly dependent – on both linguistic contexts and possible worlds.
+
+One of Kaplan’s most interesting observations is that some indexical
+sentences are contingent, but at the same time analytically true. An
+example is (1).
+
+(1)
+
+I am here now.
+
+
+
+Just from the meaning of the words, you can see that (1) must be true
+in any context c=⟨s,p,t⟩c = \langle s, p, t\rangle. After
+all, cc counts as a linguistic context just in case ss is
+a speaker who is at place pp at time tt. Therefore (1) is
+true at cc, and that means that the pattern of truth-values (1)
+has along the context dimension must be all Ts (given the possible
+world is held fixed). This suggests that the context dimension is apt
+for tracking analytic knowledge obtained from the mastery of our
+language. On the other hand, the possible-worlds dimension keeps
+track of what is necessary. Holding the context fixed, there there
+are possible worlds where (1) is false. For example, when c=⟨c = \langleJim Garson, Houston, 3:00 P.M. CST on 4/3/2014⟩2014\rangle, (1) fails at
+cc in a possible world where Jim Garson is in Boston at 3:00
+P.M. CST on 4/3/2014. It follows that ‘I am here now’ is
+a contingent analytic truth. Therefore, two-dimensional semantics can
+handle situations where necessity and analyticity come apart.
+
+Another example where bringing in two dimension is useful is in the
+logic for an open future (Thomason, 1984; Belnap, et al., 2001).
+Here one employs a temporal structure where many possible future
+histories extend from a given time. Consider (2).
+
+(2)
+
+Joe will order a sea battle tomorrow.
+
+
+ If (2) is contingent, then there is a possible history where the
+battle occurs the day after the time of evaluation, and another one
+where it does not occur then. So to evaluate (2) you need to know two
+things: what is the time t of evaluation, and which of the histories h
+that run through t is the one to be considered. So a sentence in such
+a logic is evaluated at a pair ⟨t,h⟩\langle t, h\rangle.
+
+Another problem resolved by two-dimensional semantics is the
+interaction between ‘now’ and other temporal expressions
+like the future tense ‘it will be the case that’. Then it
+is plausible to think that ‘now’ refers to the time of
+evaluation. So we would have the following truth condition:
+v(NowB,t)=T iff v(B,t)=T.\tag{Now}
+v(\text{Now} B, t)=\mathrm{T} \text{ iff } v(B, t)=\mathrm{T}.
+
+
+However this will not work for sentences like (3).
+
+(3)
+
+At some point in the future, everyone now living will be unknown.
+
+
+
+With F\mathrm{F} as the future tense operator, (3) might be
+translated:
+F∀x(NowLx→Ux).\tag{\(3'\)}
+\mathrm{F}\forall x(\text{Now} Lx \rightarrow Ux).
+
+
+(The correct translation cannot be ∀x(NowLx→FUx)\forall x(\text{Now} Lx
+\rightarrow \mathrm{F}Ux), with F\mathrm{F} taking narrow scope,
+because (3) says there is a future time when all things now living are
+unknown together, not that each living thing will be unknown in some
+future time of its own). When the truth conditions for (3)′'
+calculated, using (Now) and the truth condition (F\mathrm{F}) for
+F\mathrm{F}, it turns out that (3)′' is true at time uu iff
+there is a time tt after uu such that everything that is living
+at tt (not uu!)  is unknown at tt.
+v(FB,t)=T iff for some time u later than t,v(B,u)=T.\tag{F}
+v(\mathrm{F}B, t)=\mathrm{T} \text{ iff for some time } u
+ \text{ later than } t, v(B, u)=\mathrm{T}.
+
+
+To evaluate (3)′' correctly so that it matches what we mean by
+(3), we must make sure that ‘now’ always refers back to
+the original time of utterance when ‘now’ lies in the
+scope of other temporal operators such as F. Therefore we need to
+keep track of which time is the time of utterance (u)(u) as well
+as which time is the time of evaluation (t)(t). So our indices
+take the form of a pair ⟨u,e⟩\langle u,
+e\rangle, where uu is the time of utterance, and ee is the time of
+evaluation. Then the truth condition (Now) is revised to (2DNow).
+v(NowB,⟨u,e⟩)=T iff v(B,⟨u,u⟩)=T.\tag{2DNow}
+v(\text{Now} B, \langle u, e\rangle)=\mathrm{T}
+ \text{ iff } v(B, \langle u, u\rangle)=\mathrm{T}.
+
+
+This has it that the NowBB is true at a time u of utterance and
+time e of evaluation provided that B is true when u is taken to be the
+time of evaluation. When the truth conditions for F, ∀\forall, and
+→\rightarrow are revised in the obvious way (just ignore the u in
+the pair), (3)′' is true at ⟨u,e⟩\langle u, e\rangle provided that
+there is a time e′e' later than e such that everything that is
+living at uu is unknown at e′e'. By carrying along a record of
+what uu is during the truth calculation, we can always fix the
+value for ‘now’ to the original time of utterance, even
+when ‘now’ is deeply embedded in other temporal
+operators.
+
+A similar phenomenon arises in modal logics with an actuality operator
+A (read ‘it is actually the case that’). To properly evaluate
+(4) we need to keep track of which world is taken to be the actual (or
+real) world as well as which one is taken to the world of evaluation.
+
+(4)
+
+It is possible that everyone actually living be unknown.
+
+
+
+The idea of distinguishing different possible world dimensions in
+semantics has had useful applications in philosophy. For example,
+Chalmers (1996) has presented arguments from the conceivability of
+(say) zombies to dualist conclusions in the philosophy of mind.
+Chalmers (2006) has deployed two-dimensional semantics to help
+identify an a priori aspect of meaning that would support such
+conclusions.
+ 
+The idea has also been deployed in the philosophy of language. Kripke
+(1980) famously argued that ‘Water is H2O’ is a posteriori
+but nevertheless a necessary truth, for given that water just is H20,
+the there is no possible world where THAT stuff is (say) a basic
+element as the Greeks thought. On the other hand, there is a strong
+intuition that had the real world been somewhat different from what it
+is, the odorless liquid that falls from the sky as rain, fills our
+lakes and rivers, etc. might perfectly well have been an element. So
+in some sense it is conceivable that water is not H20. Two
+dimensional semantics makes room for these intuitions by providing a
+separate dimension that tracks a conception of water that lays aside
+the chemical nature of what water actually is. Such a ‘narrow
+content’ account of the meaning of ‘water’ can
+explain how one may display semantical competence in the use of that
+term and still be ignorant about the chemistry of water (Chalmers,
+2002).
+11. Provability Logics
+
+
+Modal logic has been useful in clarifying our understanding of central
+results concerning provability in the foundations of mathematics
+(Boolos, 1993). Provability logics are systems where the propositional
+variables p,q,rp, q, r, etc. range over formulas
+of some mathematical system, for example Peano’s system
+PA\mathbf{PA} for arithmetic. (The system chosen for mathematics
+might vary, but assume it is PA\mathbf{PA} for this discussion.)
+Gödel showed that arithmetic has strong expressive powers. Using
+code numbers for arithmetic sentences, he was able to demonstrate a
+correspondence between sentences of mathematics and facts about which
+sentences are and are not provable in PA\mathbf{PA}. For
+example, he showed there there is a sentence CC that is true
+just in case no contradiction is provable in PA\mathbf{PA} and
+there is a sentence GG (the famous Gödel sentence) that
+is true just in case it is not provable in PA\mathbf{PA}.
+
+
+In provability logics, ◻p\Box p is interpreted as a formula (of
+arithmetic) that expresses that what pp denotes is provable in
+PA\mathbf{PA}. Using this notation, sentences of provability logic
+express facts about provability. Suppose that ⊥\bot is a constant
+of provability logic denoting a contradiction. Then ∼◻⊥{\sim}\Box
+\bot says that PA\mathbf{PA} is consistent and ◻A→A\Box A\rightarrow
+A says that PA\mathbf{PA} is sound in the sense that when it
+proves A,AA, A is indeed true. Furthermore, the box may be
+iterated. So, for example, ◻∼◻⊥\Box{\sim}\Box \bot makes the dubious
+claim that PA\mathbf{PA} is able to prove its own consistency, and
+∼◻⊥→∼◻∼◻⊥{\sim}\Box \bot \rightarrow{\sim}\Box{\sim}\Box \bot asserts
+(correctly as Gödel proved) that if PA\mathbf{PA} is consistent
+then PA\mathbf{PA} is unable to prove its own consistency.
+
+
+Although provability logics form a family of related systems, the
+system GL\mathbf{GL} is by far the best known. It results from
+adding the following axiom to K\bK:
+◻(◻A→A)→◻A\tag{\(GL\)} 
+ \Box(\Box A\rightarrow A)\rightarrow \Box A
+
+
+
+The axiom (4): ◻A→◻◻A\Box A\rightarrow \Box \Box A is provable in
+GL\mathbf{GL}, so GL\mathbf{GL} is actually a strengthening of
+K4\mathbf{K4}. However, axioms such as (M):◻A→A(M): \Box A\rightarrow A,
+and even the weaker (D):◻A→◊A(D): \Box A\rightarrow \Diamond A are not
+available (nor desirable) in GL\mathbf{GL}. In provability logic,
+provability is not to be treated as a brand of necessity. The reason
+is that when pp is provable in an arbitrary system S\mathbf{S}
+for mathematics, it does not follow that pp is true, since
+S\mathbf{S} may be unsound. Furthermore, if pp is provable in
+S(◻p)\mathbf{S} (\Box p) it need not even follow that ∼p{\sim}p lacks
+a proof (∼◻∼p=◊p).S({\sim}\Box{\sim}p = \Diamond p). \mathbf{S} might be
+inconsistent and so prove both pp and ∼p{\sim}p.
+
+
+Axiom (GL)(GL) captures the content of Loeb’s Theorem, an
+important result in the foundations of arithmetic. ◻A→A\Box A\rightarrow
+A says that PA\mathbf{PA} is sound for AA, i.e. that if AA
+were proven, A would be true. (Such a claim might not be secure for an
+arbitrarily selected system S\mathbf{S}, since A might be provable
+in S\mathbf{S} and false.) (GL)(GL) claims that if PA\mathbf{PA}
+manages to prove the sentence that claims soundness for a given
+sentence AA, then AA is already provable in
+PA\mathbf{PA}. Loeb’s Theorem reports a kind of modesty on
+PA\mathbf{PA}’s part (Boolos, 1993, p. 55). PA\mathbf{PA}
+never insists (proves) that a proof of AA entails AA’s
+truth, unless it already has a proof of AA to back up that
+claim.
+
+
+It has been shown that GL\mathbf{GL} is adequate for provability
+in the following sense. Let a sentence of GL\mathbf{GL} be
+always provable exactly when the sentence of arithmetic it
+denotes is provable no matter how its variables are assigned values to
+sentences of PA\mathbf{PA}. Then the provable sentences of
+GL\mathbf{GL} are exactly the sentences that are always
+provable. This adequacy result has been extremely useful, since
+general questions concerning provability in PA\mathbf{PA} can be
+transformed into easier questions about what can be demonstrated in
+GL\mathbf{GL}.
+
+GL\mathbf{GL} can also be outfitted with a possible world
+semantics for which it is sound and complete. A corresponding
+condition on frames for GL\mathbf{GL}-validity is that the frame
+be transitive, finite and irreflexive.
+12. Advanced Modal Logic
+
+
+ The applications of modal logic to mathematics and computer science
+have become increasingly important. Provability logic is only one
+example of this trend. The term “advanced modal logic”
+refers to a tradition in modal logic research that is particularly
+well represented in departments of mathematics and computer
+science. This tradition has been woven into the history of modal logic
+right from its beginnings (Goldblatt, 2006). Research into
+relationships with topology and algebras represents some of the very
+first technical work on modal logic. However the term ‘advanced
+modal logic’ generally refers to a second wave of work done
+since the mid 1970s. Some examples of the many interesting topics
+dealt with include results on decidability (whether it is possible to
+compute whether a formula of a given modal logic is a theorem) and
+complexity (the costs in time and memory needed to compute such facts
+about modal logics).
+13. Bisimulation
+
+
+Bisimulation provides a good example of the fruitful interactions that
+have been developed between modal logic and computer science. In
+computer science, labeled transition systems (LTSs) are commonly used
+to represent possible computation pathways during execution of a
+program. LTSs are generalizations of Kripke frames, consisting of a
+set WW of states, and a collection of ii-accessibility relations
+RiR_i, one for each computer process ii. Intuitively, wRiw′wR_i w'
+holds exactly when w′w' is a state that results from applying the
+process ii to state ww.
+
+
+The language of poly-modal or dynamic logic introduces a collection of
+modal operators ◻i\Box_i, one for each program ii (Harel,
+1984). Then ◻i\Box_iA states that sentence AA holds in every
+result of applying ii. So ideas like the correctness and successful
+termination of programs can be expressed in this language. Models for
+such a language are like Kripke models save that LTSs are used in
+place of frames. A bisimulation is a counterpart relation
+between states of two such models such that exactly the same
+propositional variables are true in counterpart states, and whenever
+world vv is ii-accessible from one of two counterpart states,
+then the other counterpart bears the ii-accessibility relation to
+some counterpart of vv. In short, the ii-accessibility structure
+one can “see” from a given state mimics what one sees from
+a counterpart. Bisimulation is a weaker notion than isomorphism (a
+bisimulation relation need not be 1-1), but it is sufficient to
+guarantee equivalence in processing.
+
+
+In the 1970s, a version of bisimulation had already been developed by
+modal logicians to help better understand the relationship between
+modal logic axioms and their corresponding conditions on Kripke
+frames. Kripke’s semantics provides a basis for translating
+modal axioms into sentences of a second-order language where
+quantification is allowed over one-place predicate letters
+PP. Replace metavariables AA with open sentences PxPx,
+translate ◻Px\Box Px to ∀y(Rxy→Py)\forall y(Rxy \rightarrow Py), and close
+free variables xx and predicate letters PP with universal
+quantifiers. For example, the predicate logic translation of the axiom
+schema ◻A→A\Box A\rightarrow A comes to ∀P∀x[∀y(Rxy→Py)→Px\forall P \forall x[\forall
+y(Rxy\rightarrow Py) \rightarrow Px]. Given this translation, one
+may instantiate the variable PP to an arbitrary one-place
+predicate, for example to the predicate RxRx whose extension is the
+set of all worlds w such that RxwRxw for a given value of
+xx. Then one obtains ∀x[∀y(Rxy→Rxy)→Rxx\forall x[\forall y(Rxy\rightarrow Rxy)
+\rightarrow Rxx], which reduces to ∀xRxx\forall xRxx, since ∀y(Rxy→Rxy)\forall
+y(Rxy\rightarrow Rxy) is a tautology. This illuminates the
+correspondence between ◻A→A\Box A\rightarrow A and reflexivity of
+frames (∀xRxx)(\forall xRxx). Similar results hold for many other axioms
+and frame conditions. The “collapse” of second-order axiom
+conditions to first order frame conditions is very helpful in
+obtaining completeness results for modal logics. For example, this is
+the core idea behind the elegant results of Sahlqvist (1975).
+
+
+But when does the second-order translation of an axiom reduce to a
+first-order condition on RR in this way? In the 1970s, van
+Benthem showed that this happens iff the translation’s holding in a
+model entails its holding in any bisimular model, where two models are
+bisimular iff there is a bisimulation between them in the special case
+where there is a single accessibility relation. That result
+generalizes easily to the poly-modal case (Blackburn et. al., 2001, p. 103). 
+This suggests that poly-modal logic lies at exactly the right
+level of abstraction to describe, and reason about, computation and
+other processes. (After all, what really matters there is the
+preservation of truth values of formulas in models rather than the
+finer details of the frame structures.) Furthermore the implicit
+translation of those logics into well-understood fragments of
+predicate logic provides a wealth of information of interest to
+computer scientists. As a result, a fruitful area of research in
+computer science has developed with bisimulation as its core idea
+(Ponse et al. 1995).
+14. Modal Logic and Games
+
+The interaction between the theory of games and modal logic is a flourishing new area of research (van der Hoek and Pauly, 2007; van Benthem, 2011, Ch. 10, and 2014). This work has interesting applications to understanding cooperation and competition among agents as information available to them evolves. 
+
+The Prisoner’s Dilemma illustrates some of the concepts in game theory that can be analyzed using modal logics. Imagine two players that choose to either cooperate or cheat. If both cooperate, they both achieve a reward of 3 points, if they both cheat, they both get nothing, and if one cooperates and the other cheats, the cheater makes off with 5 points and the cooperator gets nothing. If both players are altruistic and motivated to maximize the sum of their rewards, they will both cooperate, as this is the best they can do together. However, they are both tempted to cheat to increase their own reward from 3 to 5. On the other hand, if they are rational, they may recognize that if they cheat their opponent threatens to cheat and leave them with nothing. So cooperation is the best one can do given this threat. And if each thinks the other realizes this, they may be motivated to cooperate. An extended (or iterated) version of this game gives the players multiple moves, that is, repeated opportunities to play and collect rewards. If players have information about the history of the moves and their outcomes, new concerns come into play, as success in the game depends on knowing their opponent’s strategy, and determining (for example) when he/she can be trusted not to cheat. In multi-player versions of the game, where players are drawn in pairs from a larger pool at each move, one’s own best strategy may well depend on whether one can recognize one’s opponents and the strategies they have adopted. (See Grim et. al., 1998 for fascinating research on Interated Prisoner’s Dilemmas.) 
+
+In games like Chess, players take turns making their moves and their
+opponents can see the moves made. If we adopt the convention that the
+players in a game take turns making their moves, then the Iterated
+Prisoner’s Dilemma is a game with missing information about the
+state of play – the player with the second turn lacks
+information about what the other player’s last move was. This
+illustrates the interest of games with imperfect information. 
+
+
+The application of games to logic has a long history. One influential
+application with important implications for linguistics is Game
+Theoretic Semantics (GTS) (Hintikka et. al. 1983), where validity is
+defined by the outcome of a game between two players one trying to
+verify and the other trying to falsify a given formula. GTS has
+significantly stronger resources that standard Tarski-style semantics,
+as it can be used (for example) to explain how meaning evolves in a
+discourse (a sequence of sentences).
+ However, the work on games and modal logic to be described here is
+somewhat different. Instead of using games to analyze the semantics of
+a logic, the modal logics at issue are used to analyze games. The
+structure of games and their play is very rich, as it involves the
+nature of the game itself (the allowed moves, and the rewards for the
+outcomes), the strategies (which are sequences of moves through time),
+and the flow of information available to the players as the game
+progresses. Therefore, the development of modal logic for games draws
+on features found in logics involving concepts like time, agency,
+preference, goals, knowledge, belief, and cooperation. 
+
+To provide some hint at this variety, here is a limited description of
+some of the modal operators that turn up in the analysis of games and
+some of the things that can be expressed with them. The basic idea in
+the semantics is that a game consists of a set of players 1, 2, 3,
+…, and a set of W of game states. For each player i, there is
+an accessibility relation RiR_i understood so that sRitsR_i t holds
+for states ss and tt iff when the game has come to state ss
+player ii has the option of making a move that results in
+tt. This collection of relations defines a tree whose branches
+define every possible sequence of moves in the game. The semantics
+also assigns truth-values to atoms that keep track of the payoffs. So,
+for example in a game like Chess, there could be an atom wini\win_i
+such that v(wini,s)=Tv(\win_i, s)=T iff state s is a win for player
+ii. Model operators ◻i\Box_i and ◊i\Diamond_i for each player i
+may then be defined as follows.
+v(◻iA,s)=T iff for all t in W, if sRit, then v(A,t)=T.v(◊iA,s)=T iff for some t in W,sRit and v(A,t)=T.\begin{align*}
+v(\Box_i A, s) &amp;=T \text{ iff for all } t \text{ in } W, \text{ if } sR_i t, \text{ then } v(A, t)=T. \\
+v(\Diamond_i A, s) &amp;=T \text{ iff for some } t \text{ in } W, sR_i t \text{ and }v(A, t)=T.
+\end{align*}
+
+So ◻iA\Box_i A (◊iA)(\Diamond_i A) is true in s provided that sentence
+AA holds true in every (some) state that ii can chose from state
+ss. Given that ⊥\bot is a contradiction (so ∼⊥{\sim}\bot is a
+tautology), ◊i∼⊥\Diamond_i {\sim}\bot is true at a state when it is
+ii’s turn to move. For a two-player game ◻1⊥\Box_1\bot &
+◻2⊥\Box_2\bot is true of a state that ends the game, because neither
+1 nor 2 can move. ◻1◊2\Box_1\Diamond_2win2_2 asserts that player 1
+has a loss because whatever 1 does from the present state, 2 can win
+in the following move. 
+
+For a more general account of the player’s payoffs, ordering
+relations ≤i\leq_i can be defined over the states so that s≤its\leq_i
+t means that ii’s payoff for tt is at least as good as
+that for ss. Another generalization is to express facts about
+sequences qq of moves, by introducing operators interpreted by
+relations sRqtsR_q t indicating that the sequence qq starting from
+s eventually arrives at tt. With these and related resources, it is
+possible express (for example) that q is ii’s best strategy
+given the present state.
+
+It is crucial to the analysis of games to have a way to express the
+information available to the players. One way to accomplish this is to
+borrow ideas from epistemic logic. Here we may introduce an
+accessibility relation ∼i{\sim}_i for each player such that
+s∼its{\sim}_i t holds iff ii cannot distinguish between states
+ss and tt. Then knowledge operators Ki\rK_i for the players
+can be defined so that KiA\rK_i A says at ss that AA holds in
+all worlds that ii can distinguish from ss; that is, despite
+ii’s ignorance about the state of play, he/she can still be
+confident that AA. K\rK operators may be used to say that player
+1 is in a position to resign, for he knows that 2 sees she has a win:
+K1K2◻1◊2win2\rK_1 \rK_2\Box_1\Diamond_2\win_2.
+
+Since player’s information varies as the game progresses, it is
+useful to think of moves of the game as indexed by times, and to
+introduce operators OO and UU from tense logic for
+‘next’ and ‘until’. Then KiOA→OKiAK_i OA
+\rightarrow OK_i A expresses that player ii has “perfect
+recall”, that is, that when ii knows that AA happens next, then
+at the next moment ii has not forgotten that AA has
+happened. This illustrates how modal logics for games can reflect
+cognitive idealizations, and a player’s success (or failure) at
+living up to them.
+
+The technical side of the modal logics for games is challenging. The
+project of identifying systems of rules that are sound and complete
+for a language containing a large collection of operators may be
+guided by past research, but the interactions between the variety of
+accessibility relations leads to new concerns. Furthermore, the
+computational complexity of various systems and their fragments is a
+large landscape largely unexplored.
+
+Game theoretic concepts can be applied in a surprising variety of ways
+– from checking an argument for validity to succeeding in the
+political arena. So there are strong motivations for formulating
+logics that can handle games. What is striking about this research is
+the power one obtains by weaving together logics of time, agency,
+knowledge, belief, and preference in a unified setting. The lessons
+learned from that integration have value well beyond what they
+contribute to understanding games.
+15. Quantifiers in Modal Logic
+
+
+It would seem to be a simple matter to outfit a modal logic with the
+quantifiers ∀\forall (all) and ∃\exists (some). One would simply
+add the standard (or classical) rules for quantifiers to the
+principles of whichever propositional modal logic one
+chooses. However, adding quantifiers to modal logic involves a number
+of difficulties. Some of these are philosophical. For example, Quine
+(1953) has famously argued that quantifying into modal contexts is
+simply incoherent, a view that has spawned a gigantic
+literature. Quine’s complaints do not carry the weight they once
+did. See Barcan (1990) for a good summary, and note Kripke’s
+(2017) (written in the 60’s for a class with Quine) which
+provides a strong formal argument that there can be nothing wrong with
+“quantifying in”.
+ 
+A second kind of complication is technical. There is a wide variety in
+the choices one can make in the semantics for quantified modal logic,
+and the proof that a system of rules is correct for a given choice can
+be difficult. The work of Corsi (2002) and Garson (2005) goes some way
+towards bringing unity to this terrain, and Johannesson (2018)
+introduces constraints that help reduce the number of options;
+nevertheless the situation still remains challenging.
+
+
+Another complication is that some logicians believe that modality
+requires abandoning classical quantifier rules in favor of the weaker
+rules of free logic (Garson 2001). The main points of disagreement
+concerning the quantifier rules can be traced back to decisions about
+how to handle the domain of quantification. The simplest alternative,
+the fixed-domain (sometimes called the possibilist) approach, assumes
+a single domain of quantification that contains all the possible
+objects. On the other hand, the world-relative (or actualist)
+interpretation, assumes that the domain of quantification changes from
+world to world, and contains only the objects that actually exist in a
+given world.
+
+
+The fixed-domain approach requires no major adjustments to the
+classical machinery for the quantifiers. Modal logics that are
+adequate for fixed domain semantics can usually be axiomatized by
+adding principles of a propositional modal logic to classical
+quantifier rules together with the Barcan Formula
+(BF)(BF) (Barcan 1946). (For an account of some
+interesting exceptions see Cresswell (1995)).
+∀x◻A→◻∀xA.\tag{\(BF\)}
+ \forall x\Box A\rightarrow \Box \forall  xA.
+
+
+
+The fixed-domain interpretation has advantages of simplicity and
+familiarity, but it does not provide a direct account of the semantics
+of certain quantifier expressions of natural language. We do not think
+that ‘Some man exists who signed the Declaration of
+Independence’ is true, at least not if we read
+‘exists’ in the present tense. Nevertheless, this sentence
+was true in 1777, which shows that the domain for the natural language
+expression ‘some man exists who’ changes to reflect which
+men exist at different times. A related problem is that on the
+fixed-domain interpretation, the sentence ∀y◻∃x(x=y)\forall y\Box \exists
+x(x=y) is valid. Assuming that ∃x(x=y)\exists x(x=y) is read: yy
+exists, ∀y◻∃x(x=y)\forall y\Box \exists x(x=y) says that everything exists
+necessarily. However, it seems a fundamental feature of common ideas
+about modality that the existence of many things is contingent, and
+that different objects exist in different possible worlds. 
+
+
+The defender of the fixed-domain interpretation may respond to these
+objections by insisting that on his (her) reading of the quantifiers,
+the domain of quantification contains all possible objects,
+not just the objects that happen to exist at a given world. So the
+theorem ∀y◻∃x(x=y)\forall y\Box \exists x(x=y) makes the innocuous claim
+that every possible object is necessarily found in the domain
+of all possible objects. Furthermore, those quantifier expressions of
+natural language whose domain is world (or time) dependent can be
+expressed using the fixed-domain quantifier ∃x\exists x and a
+predicate letter EE with the reading ‘actually
+exists’. For example, instead of translating ‘Some MMan
+exists who SSigned the Declaration of Independence’ by
+∃x(Mx&Sx),
+ \exists x(Mx \amp Sx),
+
+
+
+the defender of fixed domains may write: 
+∃x(Ex&Mx&Sx),
+ \exists x(Ex \amp Mx \amp Sx),
+
+
+
+thus ensuring the translation is counted false at the present time.
+Cresswell (1991) makes the interesting observation that world-relative
+quantification has limited expressive power relative to fixed-domain
+quantification. World-relative quantification can be defined with
+fixed domain quantifiers and EE, but there is no way to fully
+express fixed-domain quantifiers with world-relative ones. Although
+this argues in favor of the classical approach to quantified modal
+logic, the translation tactic also amounts to something of a
+concession in favor of free logic, for the world-relative quantifiers
+so defined obey exactly the free logic rules. 
+
+
+A problem with the translation strategy used by defenders of fixed
+domain quantification is that rendering the English into logic is less
+direct, since EE must be added to all translations of all
+sentences whose quantifier expressions have domains that are context
+dependent. A more serious objection to fixed-domain quantification is
+that it strips the quantifier of a role which Quine recommended for
+it, namely to record robust ontological commitment. On this view, the
+domain of ∃x\exists x must contain only entities that are
+ontologically respectable, and possible objects are too abstract to
+qualify. Actualists of this stripe will want to develop the logic of a
+quantifier ∃x\exists x which reflects commitment to what is
+actual in a given world rather than to what is merely possible.
+
+
+However, some work on
+ actualism (Menzel, 1990) 
+tends to undermine this objection. For example, Linsky and Zalta
+(1994) and Williamson, (2013) argue that the fixed-domain quantifier
+can be given an interpretation that is perfectly acceptable to
+actualists. Pavone (2018) even contends that on the haecceitist
+interpretation, which quantifies over individual essences, fixed
+domains are required. Actualists who employ possible worlds
+semantics routinely quantify over possible worlds in their semantical
+theory of language. So it would seem that possible worlds are actual
+by these actualist’s lights. By populating the domain with
+abstract entities no more objectionable than possible worlds,
+actualists may vindicate the Barcan Formula and classical
+principles. 
+
+Note however, that some actualists may respond that they need not be
+committed to the actuality of possible worlds so long as it is
+understood that quantifiers used in their theory of language lack
+strong ontological import. Furthermore, Hayaki (2006) argues that
+quantifying over abstract entities is actually incompatible with any
+serious form of actualism. In any case, it is open to actualists (and
+non actualists as well) to investigate the logic of quantifiers with
+more robust domains, for example domains excluding possible worlds and
+other such abstract entities, and containing only the spatio-temporal
+particulars found in a given world. For quantifiers of this kind, a
+world-relative domains are appropriate.
+
+
+Such considerations motivate interest in systems that acknowledge the
+context dependence of quantification by introducing world-relative
+domains. Here each possible world has its own domain of quantification
+(the set of objects that actually exist in that world), and the
+domains vary from one world to the next. When this decision is made, a
+difficulty arises for classical quantification theory. Notice that the
+sentence ∃x(x=t)\exists x(x=t) is a theorem of classical logic, and so
+◻∃x(x=t)\Box \exists x(x=t) is a theorem of K\bK by the Necessitation
+Rule. Let the term tt stand for Saul Kripke. Then this theorem says
+that it is necessary that Saul Kripke exists, so that he is in the
+domain of every possible world. The whole motivation for the
+world-relative approach was to reflect the idea that objects in one
+world may fail to exist in another. If standard quantifier rulers are
+used, however, every term tt must refer to something that exists in
+all the possible worlds. This seems incompatible with our ordinary
+practice of using terms to refer to things that only exist
+contingently.
+
+
+One response to this difficulty is simply to eliminate terms. Kripke
+(1963) gives an example of a system that uses the world-relative
+interpretation and preserves the classical rules. However, the costs
+are severe. First, his language is artificially impoverished, and
+second, the rules for the propositional modal logic must be
+weakened.
+
+
+Presuming that we would like a language that includes terms, and that
+classical rules are to be added to standard systems of propositional
+modal logic, a new problem arises. In such a system, it is possible to
+prove (CBF)(CBF), the converse of the Barcan
+Formula.
+◻∀xA→∀x◻A.\tag{\(CBF\)}
+ \Box \forall xA\rightarrow \forall x\Box A.
+
+
+
+This fact has serious consequences for the system’s
+semantics. It is not difficult to show that every world-relative model
+of (CBF)(CBF) must meet condition (ND)(ND) (for ‘nested
+domains’). 
+
+(ND)(ND)
+
+
+If wRvwRv then the domain of ww is a subset of the domain of vv.
+
+
+
+
+However (ND)(ND) conflicts with the point of introducing
+world-relative domains. The whole idea was that existence of objects
+is contingent so that there are accessible possible worlds where one
+of the things in our world fails to exist. 
+
+
+A straightforward solution to these problems is to abandon classical
+rules for the quantifiers and to adopt rules for free logic
+(FL)(\mathbf{FL}) instead. The rules of FL\mathbf{FL} are the same
+as the classical rules, except that inferences from ∀xRx\forall xRx
+(everything is real) to RpRp (Pegasus is real) are blocked. This is
+done by introducing a predicate ‘EE’ (for
+‘actually exists’) and modifying the rule of universal
+instantiation. From ∀xRx\forall xRx one is allowed to obtain RpRp
+only if one also has obtained EpEp. Assuming that the universal
+quantifier ∀x\forall x is primitive, and the existential quantifier
+∃x\exists x is defined by ∃xA=df∼∀x∼A\exists xA =_{df} {\sim}\forall
+x{\sim}A, then FL\mathbf{FL} may be constructed by adding the
+following two principles to the rules of propositional logic
+
+Universal Generalization.
+If B→(Ey→A(y))B\rightarrow(Ey\rightarrow A(y)) is a theorem, so is
+B→∀xA(x)B\rightarrow \forall xA(x).
+
+Universal Instantiation.
+∀xA(x)→(En→A(n))\forall xA(x)\rightarrow(En\rightarrow A(n))
+
+
+
+(Here it is assumed that A(x)A(x) is any well-formed formula of
+predicate logic, and that A(y)A(y) and A(n)A(n) result from replacing
+yy and nn properly for each occurrence of xx in A(x)A(x).)
+Note that the instantiation axiom is restricted by mention of EnEn
+in the antecedent. The rule of Universial Generalization is modified
+in the same way. In FL\mathbf{FL}, proofs of formulas like ∃x◻(x=t)\exists
+x\Box(x=t), ∀y◻∃x(x=y)\forall y\Box \exists x(x=y), (CBF)(CBF), and
+(BF)(BF), which seem incompatible with the world-relative
+interpretation, are blocked. 
+
+
+One philosophical objection to FL\mathbf{FL} is that EE
+appears to be an existence predicate, and many would argue that
+existence is not a legitimate property like being green or weighing
+more than four pounds. So philosophers who reject the idea that
+existence is a predicate may object to FL\mathbf{FL}. However in
+most (but not all) quantified modal logics that include identity (=)(=)
+these worries may be skirted by defining EE as follows.
+Et=df∃x(x=t).
+ Et =_{df} \exists x(x=t).
+
+
+
+The most general way to formulate quantified modal logic is to create
+FS\mathbf{FS} by adding the rules of FL\mathbf{FL} to a
+given propositional modal logic S\mathbf{S}. In situations
+where classical quantification is desired, one may simply add
+EtEt as an axiom to FS\mathbf{FS}, so that the
+classical principles become derivable rules. Adequacy results for such
+systems can be obtained for most choices of the modal logic
+S\mathbf{S}, but there are exceptions. 
+
+
+A final complication in the semantics for quantified modal logic is
+worth mentioning. It arises when non-rigid expressions such as
+‘the inventor of bifocals’ are introduced to the language.
+A term is non-rigid when it picks out different objects in different
+possible worlds. The semantical value of such a term can be given by
+what Carnap (1947) called an individual concept, a function that picks
+out the denotation of the term for each possible world. One approach
+to dealing with non-rigid terms is to employ Russell’s theory of
+descriptions. However, in a language that treats non rigid expressions
+as genuine terms, it turns out that neither the classical nor the free
+logic rules for the quantifiers are acceptable. (The problem can not
+be resolved by weakening the rule of substitution for identity.) A
+solution to this problem is to employ a more general treatment of the
+quantifiers, where the domain of quantification contains individual
+concepts rather than objects. This more general interpretation
+provides a better match between the treatment of terms and the
+treatment of quantifiers and results in systems that are adequate for
+classical or free logic rules (depending on whether the fixed domains
+or world-relative domains are chosen). It also provides a language
+with strong and much needed expressive powers (Bressan, 1973, Belnap
+and Müller, 2013a, 2013b).

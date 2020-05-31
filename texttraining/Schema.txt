@@ -1,0 +1,401 @@
+A schema (plural: schemata, or schemas),
+also known as a scheme (plural: schemes), is a
+linguistic “template”, “frame”, or
+“pattern” together with a rule for using it to specify a
+potentially infinite multitude of phrases, sentences, or arguments,
+which are called instances of the schema. Schemas are used in
+logic to specify rules of inference, in mathematics to describe
+theories with infinitely many axioms, and in semantics to give
+adequacy conditions for definitions of truth.
+ 
+1. What is a Schema?
+
+A schema is a complex system consisting of
+
+a template-text or schema-template: a syntactic
+string composed of significant words and/or symbols and also of
+placeholders (letters, blanks, circled numbers, ellipses, ordinal
+number expressions like ‘the first’ and ‘the
+second’, etc.), and
+a side condition specifying how the placeholders are to
+be filled to obtain instances, and also, sometimes, how the
+significant words or symbols are to be understood (Tarski 1933/1983:
+155; Church 1956: 172). In particular, the side condition specifies
+the language, whether natural or formal, to which the instances of the
+schema are to belong.
+
+
+Among the best-known schemas is Tarski’s schema T, whose
+template-text is the eight-word two-ellipsis string:
+
+…is a true sentence if and only if….
+
+
+The side condition requires that the second blank is to be filled in
+with a (declarative) sentence of English and the first blank is to be
+filled in by a name of that sentence (Tarski 1933/1983: 155). The
+following string is an instance: 
+
+‘zero is one’ is a true sentence if and only if zero is
+one.
+
+
+More revealing instances are obtained by using a sentence not known to
+be true and not known to be false: 
+
+‘every perfect number is even’ is a true sentence if and
+only if every perfect number is even.
+
+
+The fourteen-word sentence
+
+Either zero is even or it is not the case that zero is even.
+
+
+is an instance of the excluded-middle sentence schema for
+English, which involves the template 
+
+Either AAA or it is not the case that AAA.
+
+
+The side condition is that the two occurrences of ‘AAA’
+are to be filled by occurrences of the same well-formed English
+declarative sentence, that the discontinuous expression ‘Either
+… or … ’; expresses classical non-exclusive
+disjunction, and that the six-word sentence-prefix ‘it is not
+the case that’; expresses classical negation. Notice that this
+schema-template is not an English sentence. It would be strictly
+speaking incoherent to use it as a sentence in an attempted
+assertion. It would also be wrong to call it true or false, though it
+can be characterized as valid or invalid, in appropriate senses of
+these ambiguous words. 
+
+Some logicians seem to identify the schema with the template alone.
+(Tarski’s wording at 1933/1983: 155–6 suggests this
+identification, while Church’s at 1956: 149 seems calculated to
+avoid it.) But one and the same schema-template may be a component of
+any number of different schemata depending on the side condition or
+the underlying language. Furthermore, since different characters or
+strings can be used as placeholders (see above) and since even one
+notational change produces a different syntactic string in the strict
+sense (Corcoran et al. 1974), one and the same set of instances may be
+determined by different schema-template/side-condition pairings even
+given a fixed language. It may be this fact that leads some authors to
+write as though the schema is to be identified with the set of
+instances. For many purposes it is the set of specified instances that
+is of primary importance and the question of exactly what is involved
+in specifying it is considered a mere technicality.
+
+Sometimes (as in the excluded-middle schema, above) the placeholders
+in a schema-template are marked by letters. It is important to keep in
+mind the distinction between, on one hand, an open sentence, such as
+‘(x+y)=(y+x)(x+y)=(y+x)(x + y) = (y + x)’; whose object-language numerical
+variables ‘xxx’ and ‘yyy’ range over the
+numbers and, on the other, a schema such as the number-theoretic
+commutativity schema whose template-text is ‘(X+Y)=(Y+X)(X+Y)=(Y+X)(X + Y) = (Y
++ X)’; and whose side condition is that the two occurrences of
+‘XXX’ are to be replaced by two occurrences of one and
+the same numeral, and likewise for the two occurrences of
+‘YYY’. The numerals belong to the object language, while
+the place-holders belong to the metalanguage. The variables in the
+object-language range over a domain of objects, while the ‘dummy
+letters’ in the template-text are just placeholders for syntactic
+substituends. (For a careful exposition of the distinction, see Quine
+1945: sec. 1.)
+
+Schemas may be classed by the syntactic type of their instances as
+sentence schemas, subsentential schemas, or argument-text schemas. We
+have already seen two examples of sentence schemas. The string
+
+the successor of AAA
+
+
+is the template-text for a subsentential schema, where the
+side condition specifies that the letter ‘AAA’ be
+replaced by an arabic numeral. The definite description 
+
+the successor of 9
+
+
+would be an instance. Note that this schema is very different from the
+open term 
+
+the successor of xxx,
+
+
+where the ‘xxx’ is an object-language variable. The
+schema is essentially a recipe for generating syntactic instances. The
+‘dummy letter’ ‘AAA’ in its template-text is
+just a placeholder for substituends (here, numerals). The
+‘xxx’ in the open term, by contrast, is a variable
+ranging over objects (here, numbers).
+
+
+An argument-text schema is a schema whose instances are
+argument-texts. An argument-text is a two part system
+composed of a set of sentences called the premises and a single
+sentence called the conclusion. (An argument is that which is
+expressed by an argument-text, as a proposition is that which is
+expressed by a sentence.) Of the various ways of presenting an
+argument-text perhaps the one least open to misinterpretation is the
+premises-line-conclusion format which consists in listing the premises
+followed by a line followed by the conclusion. For example:
+Every circle is a polygon.Every triangle is a circle.Every square is a triangle.Every square is a polygon.Every circle is a polygon.Every triangle is a circle.Every square is a triangle.Every square is a polygon.
+\begin{align}
+&amp;  \textrm{Every circle is a polygon.}\\
+&amp;  \textrm{Every triangle is a circle.}\\
+&amp; \textrm{Every square is a triangle.}\\\hline
+&amp; \textrm{Every square is a polygon.}
+\end{align}
+
+
+An example of an argument-text schema is the inference rule modus
+ponens:
+Aif A then BBAif A then BB
+\begin{align}
+&amp;  A\\
+&amp; \textrm{if } A \textrm{ then }B\\\hline
+&amp;  B
+\end{align}
+
+
+The side condition specifies that ‘AAA’ and
+‘BBB’ be replaced with declarative sentences of English,
+and that both occurrences of ‘AAA’ (and likewise of
+‘BBB’) be replaced by the same sentence or formula.
+
+
+Axiom schemas can be thought of as zero-premise argument-text
+schemas.
+2. Uses of Schemas
+
+Schemas are used in the formalization of logic, mathematics, and
+semantics. In logic, they are used to specify the axioms and inference
+rules of a system. For example, one formalization of first-order logic
+(in Shapiro 1991: 65) states that
+
+
+Any formula obtained by substituting formulas for the Greek letters is
+an axiom:
+Φ(Φ→(Ψ→Ξ))(¬Φ→¬Ψ)∀xΦ(x)→(Ψ→Φ)→((Φ→Ψ)→(Φ→Ξ))→(Ψ→Φ)→Φ(t)Φ→(Ψ→Φ)(Φ→(Ψ→Ξ))→((Φ→Ψ)→(Φ→Ξ))(¬Φ→¬Ψ)→(Ψ→Φ)∀xΦ(x)→Φ(t) \begin{align} \Phi &amp; \rightarrow(\Psi \rightarrow \Phi)\\ (\Phi
+\rightarrow(\Psi \rightarrow \Xi)) &amp; \rightarrow((\Phi \rightarrow
+\Psi) \rightarrow(\Phi \rightarrow \Xi))\\ (\neg \Phi \rightarrow \neg
+\Psi) &amp; \rightarrow(\Psi \rightarrow \Phi)\\ \forall x\Phi(x)
+&amp; \rightarrow \Phi(t) \end{align} 
+
+where ttt is a term free for xxx in ΦΦ\Phi,
+
+
+and that any inference of the form 
+ΦΦ→ΨΨΦΦ→ΨΨ
+\begin{align}
+&amp; \Phi\\
+&amp; \Phi \rightarrow \Psi\\\hline
+&amp; \Psi\\
+\end{align}
+
+
+or (where xxx does not occur free in Φ)Φ)\Phi) 
+ΦΦ→Ψ(x)→∀xΨ(x),Φ→Ψ(x)Φ→∀xΨ(x),
+\begin{align}
+ \Phi &amp; \rightarrow \Psi(x)\\\hline
+ \Phi &amp; \rightarrow \forall x\Psi(x),
+\end{align}
+
+
+is valid. 
+
+Some mathematical theories can be finitely axiomatized in a
+first-order language, but certain historically important number
+theories and set theories cannot. The axioms of these theories can
+sometimes be specified using schemata. For example, in first-order
+number theory the induction principle is specified using the
+schema
+[F(0)&∀x((Num(x)&F(x))→F(sx)]→∀x(Num(x)→F(x))[F(0)&∀x((Num(x)&F(x))→F(sx)]→∀x(Num(x)→F(x)) [F(0) \mathbin{\&amp;} \forall x((\textit{Num}(x) \mathbin{\&amp;}
+F(x)) \rightarrow F(sx)] \rightarrow \forall x(\textit{Num}(x)
+\rightarrow F(x)) 
+
+where the two blanks marked ‘F(x)F(x)F(x)’ are to be filled
+with a first-order formula having one or more free occurrences of the
+variable ‘xxx’, the blank marked ‘F(0)F(0)F(0)’
+is to be filled with the same formula after each free occurrence of
+‘xxx’ has been replaced by an occurrence of
+‘0’, and the blank labeled ‘F(sx)F(sx)F(sx)’ is to
+be filled with the same formula after each free occurrence of
+‘xxx’ has been replaced by an occurrence of
+‘sxsxsx’. 
+
+For example, if we fill the two blanks marked ‘F(x)F(x)F(x)’
+with ‘x≠sxx≠sxx\ne s x’, we have: 
+[0≠s0&∀x((Num(x)&x≠sx)→sx≠ssx)]→∀x(Num(x)→x≠sx)[0≠s0&∀x((Num(x)&x≠sx)→sx≠ssx)]→∀x(Num(x)→x≠sx) [ 0\ne s0 \mathbin{\&amp;} \forall x ((\textit{Num} (x)
+\mathbin{\&amp;} x\ne s x) \rightarrow s x\ne ss x)] \rightarrow
+\forall x (\textit{Num} (x) \rightarrow x\ne s x) 
+
+Using English as the underlying object language, the following
+template-text could be used.
+
+If zero is FFF and the successor of every number that is FFF is
+also FFF, then every number is FFF, 
+
+where the four occurrences of ‘FFF’ are to be filled in
+with one and the same arithmetic predicate (e.g., ‘smaller than
+some prime’). 
+
+In a second-order formalization of number theory, by contrast, a
+single induction axiom can be given: 
+
+∀F{[F(0)&∀x((Num(x)&F(x))→F(sx)]→∀x(Num(x)→F(x))}∀F{[F(0)&∀x((Num(x)&F(x))→F(sx)]→∀x(Num(x)→F(x))} \forall F \{[F (0) \mathbin{\&amp;} \forall x ((\textit{Num} (x)
+ \mathbin{\&amp;} F (x)) \rightarrow F(sx)] \rightarrow \forall x
+ (\textit{Num} (x) \rightarrow F(x))\} 
+
+For every FFF, if zero is FFF and the successor of every number
+that is FFF is also FFF, then every number is FFF.
+
+
+Here ‘FFF’ is not a placeholder in a schema, but a
+genuine variable ranging over properties or classes (or, on some
+interpretations, ranging plurally over individuals). For comparisons
+between first-order and second-order logic, see Corcoran 1998.
+
+The orthographic similarities between the first-order induction schema
+and the second-order induction axiom have an unfortunate tendency to
+obscure the important differences between them. The latter is a
+sentence in the language, whereas the former is just a recipe for
+generating sentences. Nor are they inferentially equivalent: the set
+of instances of the first-order induction schema is logically weaker
+than the second-order induction axiom. That is, there are sentences of
+first-order arithmetic that can be deduced from the second-order
+induction axiom (together with the other axioms of arithmetic, which
+are common to first-order and second-order arithmetic) but not from
+the instances of the first-order induction schema (see Shapiro 1991:
+110).
+
+Schemas have also played a prominent role in semantics. Tarski held
+that an instance of his ‘T-schema’ (which he calls a
+‘scheme’) could be regarded as a “partial definition
+of truth”, or rather of “true sentence”:
+
+
+The general scheme of this kind of sentence can be depicted in the
+following way:
+
+(2) xxx is a true
+sentence if and only if ppp.
+
+
+In order to obtain concrete definitions we substitute in the place of
+the symbol ‘ppp’ in this scheme any sentence, and in the
+place of ‘xxx’ any individual name of this sentence.
+(Tarski 1933/1983: 155–6)
+
+
+He took it to be a criterion of adequacy for a definition of
+‘true sentence’ for a language that it have all such
+‘partial definitions’ as consequences (Tarski 1933/1983:
+187–8). 
+3. Ontological Status of Schemas
+
+It is important to be clear about the mixed ontological status of
+schemas. The template-text of the schema is a syntactic object, a
+string of characters, and has the same ontological presuppositions as
+numerals, words, formulas, and the like. For example, the
+template-text for the English naming schema—‘The
+expression … names the entity …’— is a
+forty-character expression involving twenty-seven letter-occurrences,
+six occurrences of the space, and seven occurrences of the period. On
+the other hand, the side condition is an intensional entity comparable
+to a proposition.
+
+A schema-template is a string type having indefinitely many tokens in
+Peirce’s sense (Peirce 1906; Corcoran et al. 1974: 638 n. 5).
+But none of the tokens of a schema-template are instances of the
+schema. In fact, every instance of a schema is a string type having
+its own tokens. The word ‘instance’ is a relation noun for
+a relation certain string types bear to certain schemas. The word
+‘token’ is a relation noun for a relation certain
+macroscopic physical objects bear to certain abstract objects. Neither
+a schema nor a schema-template is a common noun denoting the
+instances, and neither is a proper name of a set of instances.
+
+Some philosophers emphasize the ontological economies possible by
+using schemas rather than second-order axioms (e.g., Quine 1970/1986).
+But rarely if ever do these philosophers present a full and objective
+discussion of the “ontological commitments” entailed by
+the use of schemas. For example, number theory per se
+presupposes the existence of numbers, and perhaps numerical functions
+and numerical properties, but it does not presuppose the existence of
+mathematical notation and it a fortiori does not presuppose
+the existence of the vast, intricate notational system that we call
+the language of number theory. Sometimes the use of schemas may
+decrease the ontological commitments of the object language while
+increasing those of the metalanguage, or at least not achieving any
+net savings.
+4. Schemas in the History of Logic
+
+The Greek word ‘schema’; was used in Plato’s Academy
+for “[geometric] figure” and in Aristotle’s Lyceum
+for “[syllogistic] figure”. Although Aristotle’s
+syllogistic figures or “schemata” were not schemas in the
+modern sense, Aristotle’s moods were. For example, the
+template-text of the mood BARBARA is
+P belongs-to-every M.M belongs-to-every S.P belongs-to-every S.P belongs-to-every M.M belongs-to-every S.P belongs-to-every S.
+\begin{align}
+&amp; P \textrm{ belongs-to-every }M.\\
+&amp; M \textrm{ belongs-to-every }S.\\\hline
+&amp; P \textrm{ belongs-to-every }S.
+\end{align}
+
+
+The associated side condition is that (1) both occurrences of
+‘PPP’ are to be filled with occurrences of one and the
+same common noun, (2) both occurrences of ‘MMM’ are to
+be filled with occurrences of one and the same common noun other than
+the one used for ‘PPP’, (3) both occurrences of
+‘SSS’ are to be filled with occurrences of one and the
+same common noun other than the ones used for ‘PPP’ and
+‘MMM’, and that (4) the expression
+‘belongs-to-every’ is taken to express universal
+affirmative predication as in the Prior analytics.  The rules
+of the Stoic propositional logic have been taken to be schemas.
+
+It is hard to date self-conscious use of the word
+‘schema’; in the modern sense. Russell’s
+Introduction to Mathematical Philosophy (1919) uses it
+casually to describe propositional functions: 
+
+
+A propositional function … may be taken to be a mere schema, a
+mere shell, an empty receptacle for meaning, not something already
+significant. (1919: 157) 
+
+
+But propositional functions are not syntactic schemas in the modern
+sense. Tarski’s 1933 truth-definition paper (Tarski 1933/1983:
+157, 160, 172) was one of the first prominent publications to use the
+word ‘scheme’ in a sense close to that of this article
+(Tarski 1933/1983: 155, 156). Tarski also uses the word
+‘schema’, and its plural ‘schemata’, in the
+pre-World-War II period (1983: 63–64, 114, 310, 386, 423).
+
+Early twentieth-century formalizations of logic used what were called
+“substitution rules” with finite set of axioms instead of
+schemata that specified infinitely many axioms. These
+“substitution rules” were not the familiar rules for
+“substituting equals for equals”; rather they were closer
+to what are called instantiation rules today. The intuitive motivation
+for “substitution rules” was very simple but the syntactic
+details for implementing them were “intolerably
+complex”—to use the words of Paul Rosenbloom (1950: 109).
+In fact several first-rate logicians were led to make embarrassing
+errors, as Rosenbloom documents in the place just cited. Church (1956:
+158) credits von Neumann with “the device of using axiom
+schemata”, which rendered the (notoriously difficult to state)
+substitution rule unnecessary.
+
+As Church has emphasized (e.g., 1956: 59), metamathematical treatment
+of schemas requires use of formalized or logically perfect languages
+and an axiomatized theory of strings as found for the first time in
+Tarski’s 1933 truth-definition paper (1933/1983: 152–256).
+For more on the history, philosophy, and mathematics of this important
+but somewhat neglected field, see Corcoran et al. 1974;
+Corcoran 2006).

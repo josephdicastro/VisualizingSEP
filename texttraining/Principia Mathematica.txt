@@ -1,0 +1,3049 @@
+This entry briefly describes the history and significance of Alfred
+North Whitehead and Bertrand Russell’s monumental but little
+read classic of symbolic logic, Principia Mathematica (PM),
+first published in 1910–1913. The content of PM is described in
+a section by section synopsis, stated in modernized logical notation
+and described following the introductory notes from each of the three
+volumes. The original notion is presented in a companion article of
+this Encyclopedia,
+ The Notation of Principia Mathematica.
+ The content of PM is described so as to facilitate a comparison with
+Gottlob Frege’s Fundamental Laws of Arithmetic which
+was subject to Russell’s Paradox. To avoid the paradox Whitehead
+and Russell introduced a complex system now called “the ramified
+theory of types”. After the introduction of a theory of sets, or
+“classes” early in the first volume, however, the system
+of PM can be compared with both Frege and the early development of set
+theory and found to contain rival accounts, free of contradiction, but
+differing from the now standard theories in as yet understudied
+ways.
+ 
+1. Overview
+
+Principia Mathematica, the landmark work in formal logic
+written by
+ Alfred North Whitehead
+ and
+ Bertrand Russell,
+ was first published in three volumes in 1910, 1912 and 1913. A second
+edition appeared in 1925 (Volume I) and 1927 (Volumes II and III). In
+1962 an abbreviated issue (containing only the first 56 chapters)
+appeared in paperback.
+
+Written as a defense of logicism (the thesis that mathematics
+is in some significant sense reducible to logic), the book was
+instrumental in developing and popularizing modern mathematical logic.
+It also served as a major impetus for research in the foundations of
+mathematics throughout the twentieth century. Along with
+Aristotle’s Organon and Gottlob Frege’s
+Grundgesetze der Arithmetik, it remains one of the most
+influential books on logic ever written.
+
+This entry includes a presentation of the main definitions and
+theorems used in the development of the logicist project in PM. The
+entry indicates a path through the whole work presenting the basic
+results proved in Principia Mathematica (PM) in a somewhat
+more contemporary notation, so as to make it easy to compare the
+system of Whitehead and Russell with that of Frege, the other most
+prominent advocate of logicism in the foundations of mathematics. The
+aim of that program, as described by Russell in the opening lines of
+the preface to his 1903 book The Principles of Mathematics,
+namely to define mathematical notions in terms of logical notions, and
+to derive mathematical principles, so defined, from logical principles
+alone:
+
+
+The present work has two main objects. One of these, the proof that
+all pure mathematics deals exclusively with concepts definable in
+terms of a very small number of fundamental concepts, and that all its
+propositions are deducible from a very small number of fundamental
+logical principles, is undertaken in Parts II–VII of this work,
+and will be established by strict symbolic reasoning in Volume
+II.…The other object of this work, which occupies Part I., is
+the explanation of the fundamental concepts which mathematics accepts
+as indefinable. This is a purely philosophical task…. (1903:
+xv)
+
+
+Though Frege’s system was subject to Russell’s Paradox,
+subsequent examination of his system shows how much of the development
+of arithmetic is possible independently of the paradoxical elements of
+the system. In particular, recent interest in Frege’s system has
+led to the isolation of what is called “Frege’s
+Theorem” as possible in a consistent fragment of Frege’s
+original system, and from it the goal of deriving arithmetic, as
+formalized in Peano’s Postulates. See the entry
+ Frege’s theorem and foundations for arithmetic,
+ which presents this aspect of Frege’s system in contemporary
+notation.
+
+Russell had written The Principles of Mathematics (PoM),
+which presents the basic elements of his logicist program, before
+discovering Frege’s similar work in Foundations of
+Arithmetic and The Fundamental Laws of Arithmetic, in
+June of 1902. As he describes in the Preface, Russell intended a
+formal presentation of his account in a “Volume II” of
+PoM. In 1903 he enlisted Alfred North Whitehead to join him in the
+writing of this second volume, but soon the project turned into a new
+work, Principia Mathematica, a massive three volume work,
+that was not to be published until 1910 (Volume I), 1912 (Volume II)
+and 1913 (Volume III).
+
+The system of PM differed significantly from Frege’s system, in
+a large part because of the introduction of the theory of
+types whose purpose was to avoid the paradox that had affected
+Frege in a principled fashion. A second important difference from
+Frege’s system is that PM is based on a logic of relations of
+various numbers of arguments, whereas Frege’s system was based
+on the notions of function and object, with even his distinctively
+logical concepts being seen as functions (from a number of
+objects to the truth values T and F, which are also objects in
+Frege’s system.) So, it might be said that PM is based on a
+theory of ramified types of relations, in contrast to Frege’s
+second order predicate calculus with concepts. The most important step
+is to define set expressions in terms of higher-order functions. Thus
+the paradoxical “Russell set”, the set of all sets which
+are not members of themselves, {x∣x∉x}{x∣x∉x}\{ x \mid x \notin x\}, is defined by
+an expression involving functions that will violate the theory of
+types. The expression for the offending class is ruled out on the
+basis of the theory of types, as is its seeming innocuous complement,
+the set of all sets that are members of themselves, {x∣x∈x}{x∣x∈x}\{ x
+\mid x \in x\}. In contemporary set theory {x∣x∉x}{x∣x∉x}\{ x \mid x \notin
+x\} is the universe of sets, which is not itself a set, and because
+no set is an element of itself, {x∣x∈x}{x∣x∈x}\{ x \mid x \in x\} is just the
+empty set. And additional cost of this method is that while for Frege
+sets are objects of the lowest types, there will be sets in the PM
+theory in a simple theory of types, which distinguishes
+individuals and sets of individuals and sets of sets of individuals,
+etc. Even to derive a hierarchy of sets in the simple theory the
+axiom of reducibility is needed to guarantee that more
+complext “impredicative” definitions pick out sets of the
+same simple type. Thus the “least upper bound” of a closed
+interval of real numbers will identify a member of that set of a
+higher order in the ramified theory. That will be of the same simple
+type requires the axiom of reducibily. The cost of adopting the theory
+of types to avoid the paradox extends to difficulties in constructing
+the natural numbers. While Russell follows Frege in many important
+details, in particular in using Frege’s notion of the ancestral
+of the successor relation to define the natural numbers, other parts
+of the construction are importantly different. Frege was able to
+define the successor of a number by using the set of its predecessors.
+The number 2 is the set containing 0 and 1, and thus it has two
+members. They will, however, be of different types in the hierarchy of
+simple types, and so the whole set of natural numbers cannot be
+defined within the theory of simple types. Since each step from 0 to
+1, to 2, etc, raises the simple types from 0 to 1 to 2, there will be
+no simple type of all the natural numbers, so defined. Instead PM
+adopts the axiom of infinity which assures the existence of
+an infinite number of individuals, allowing for the construction of
+the natural numbers for each type above a lower bound of 3 or so (as
+numbers will be sets of equinumerous sets of individuals…).
+
+With this turn to the ramified theory of types, along with the extra
+axioms of reducibility, and infinity, it is possible for PM to define
+a version of Frege’s construction of the Natural Numbers so that
+the “Peano axioms” can be proved from logic alone. This
+takes up to section ∗120, well into Volume II. At
+this point the alternative to “Frege’s Theorem” is
+completed, in the sense that we are presented with a consistent
+development of the natural numbers, based on a theory of higher-order
+logic with a number of additional axioms. Philosophers soon followed
+Ludwig Wittgenstein (1922) and disputed the idea that these additional
+axioms, the axioms of reducibility and infinity, are really logical
+truths, and so denied that the logicist program of reducing arithmetic
+to logic was any more successful that Frege’s attempt had
+been.
+
+The survey of PM will proceed through the remainder of Volume II and
+through Volume III, where the theories of rational and real numbers
+are developed. The contrast intended here is not with Frege’s
+theories of rational and real numbers, which are present in
+Grundgesetze but are not seen as a natural extension of the
+theory of natural numbers. Instead the contemporary account of natural
+numbers and real numbers is seen as an elementary extension of the
+axiomatic Zermelo-Frankel set theory. A contemporary textbook in
+axiomatic set theory, such as Enderton (1977) or Suppes (1960), shows
+how to construct rational numbers (and negative integers) as pairs of
+natural numbers, thus 3/4 is constructed as the pair with the
+operations of addition and multiplication defined as operations on
+pairs; thus 1/2+1/3=10/12=5/61/2+1/3=10/12=5/61/2 + 1/3 = 10/12 = 5/6. These positive rational
+numbers are extended to the whole set by adding negative integers, and
+then real numbers are defined as Dedekind cuts in the rational
+numbers, i.e., the set of partitions of sets of rational numbers. The
+arithmetic of real numbers is then defined for these constructions,
+and so with sets of real numbers the whole of analysis can be reduced
+to arithmetic. PM, however, avoids this “arithmetization”
+of analysis, but instead defines rational, real and in fact a huge
+class of “relation numbers” as sets of isomorphic sets of
+relations. Russell says later that he regrets that the theory of
+relation numbers was not picked up by later set theorists, even though
+this was some of his most original work in PM. The brief summary of
+these later topics that we include below, can therefore be seen as a
+summary of the interesting consequences of taking a different route to
+the definition of natural numbers based on a logic of relations and
+properties, rather than the set theory of contemporary foundations of
+mathematics. This entry is thus aimed at an explication of the unusual
+order of presentation of these results, in comparison with both Frege
+and contemporary set theory, and to illustrate these aspects of the
+theory of relations that are not investigated by contemporary
+researchers.
+2. History of and Significance of Principia Mathematica
+2.1 History of Principia Mathematica
+
+Logicism is the view that (some or all of) mathematics can be reduced
+to (formal) logic. It is often explained as a two-part thesis. First,
+it consists of the claim that all mathematical truths can be
+translated into logical truths or, in other words, that the vocabulary
+of mathematics constitutes a proper subset of the vocabulary of logic.
+Second, it consists of the claim that all mathematical proofs can be
+recast as logical proofs or, in other words, that the theorems of
+mathematics constitute a proper subset of the theorems of logic. As
+Russell writes, it is the logicist’s goal “to show that
+all pure mathematics follows from purely logical premises and uses
+only concepts definable in logical terms” (1959: 74).
+
+The logicist thesis appears to have been first advocated in the late
+seventeenth century by Gottfried Leibniz. Later, the idea was defended
+in much greater detail by Gottlob Frege. During the critical movement
+of the 1820s, mathematicians such as Bernard Bolzano, Niels Abel,
+Louis Cauchy, and Karl Weierstrass succeeded in eliminating much of
+the vagueness and many of the contradictions present in the
+mathematics of their day. By the mid- to late-1800s, William Hamilton
+had gone on to introduce ordered couples of reals as the first step in
+supplying a logical basis for the complex numbers and Karl
+Weierstrass, Richard Dedekind, and Georg Cantor had all developed
+methods for founding the irrationals in terms of the rationals. Using
+work done by H.G. Grassmann and Richard Dedekind, Guiseppe Peano had
+then gone on to develop a theory of the rationals based on his now
+famous axioms for the natural numbers. By Frege’s day, it was
+thus generally recognized that large parts of mathematics could be
+derived from a relatively small set of primitive notions.
+
+Even so, it was not until 1879, when Frege developed the necessary
+logical apparatus, that logicism could finally be said to have become
+technically plausible. After another five years’ work, Frege
+arrived at the definitions necessary for logicising arithmetic and
+during the 1890s he worked on many of the essential derivations.
+However, with the discovery of paradoxes such as
+ Russell’s paradox
+ at the turn of the century, it appeared that additional resources
+would need to be developed if logicism were to succeed.
+
+By 1902, both Whitehead and Russell had reached this same conclusion.
+Both men were in the initial stages of preparing second volumes to
+their earlier books on related topics: Whitehead’s 1898 A
+Treatise on Universal Algebra and Russell’s 1903 The
+Principles of Mathematics. Since their research overlapped
+considerably, they began collaborating on what would eventually become
+Principia Mathematica. By agreement, Russell worked primarily
+on the philosophical parts of the project, including the book’s
+philosophically rich Introduction, the theory of
+ descriptions,
+ and the no-class theory (in which set or class terms become
+meaningful only when placed in well-defined contexts), all of which
+can still be read fruitfully even by non-specialists. The two men then
+collaborated on the technical derivations. As Russell writes,
+
+
+As for the mathematical problems, Whitehead invented most of the
+notation, except in so far as it was taken over from Peano; I did most
+of the work concerned with series and Whitehead did most of the rest.
+But this only applies to first drafts. Every part was done three times
+over. When one of us had produced a first draft, he would send it to
+the other, who would usually modify it considerably. After which, the
+one who had made the first draft would put it into final form. There
+is hardly a line in all the three volumes which is not a joint
+product. (1959: 74)
+
+
+Initially, it was thought that the project might take a year to
+complete. Unfortunately, after almost a decade of difficult work on
+the part of the two men, Cambridge University Press concluded that
+publishing Principia would result in an estimated loss of 600
+pounds. Although the press agreed to assume half this amount and the
+Royal Society agreed to donate another 200 pounds, this still left a
+100-pound deficit. Only by each contributing 50 pounds were the
+authors able to see their work through to publication. (Whitehead,
+Russell, & James 1910)
+
+Publication involved the enormous job of type-setting all three
+volumes by hand. In 1911, the printing of the second volume was
+interrupted when Whitehead discovered a difficulty with the symbolism.
+The result was the insertion (on roman numeral pages) of a long
+“Prefatory Statement of Symbolic Conventions” at the
+beginning of Volume II.
+
+The initial print run of 750 copies of Volume I and 500 copies of each
+of Volumes II and II from Cambridge University Press had been sold by
+1922 when Rudolf Carnap wrote to Russell asking for a copy. Russell
+responded by sending Carnap a 35 page handwritten summary of the
+definitions and some important theorems in the work (Linsky 2011:
+14–15). As no plates were available for a second printing,
+Russell began the work of preparing a second edition that appeared in
+1925–27. The first was reset along with a new introduction and
+three appendices, and Volume II was reset as well. Volume III was
+reproduced by a photographic process, and so the page numbers from the
+first edition are the same in this volume. Principia
+Mathematica is still in print with Cambridge University Press. As
+with many works in mathematics, the later progress of the field in
+symbolic logic led to numerous developments in the field. Work in the
+school of logic started by David Hilbert at Göttingen and in the
+Polish school of logicians led by S. Leśniewski and J.
+Łukasiewicz were occupied in their early days by responding to
+what they saw as defects and gaps in PM. This criticism was immediate,
+begun by Chwistek (1912) after only the first volume had been
+published. A series of important new presentations of mathematical
+logic, in particular Hilbert and Ackermann (1928), Hilbert and Bernays
+(1934), and Kleene (1952), were adopted as text books by successive
+generations of logicians. As pointed out in Urquhart (2013) this lead
+to a slow decline in the number of references to PM in technical work
+in logic, as well as its gradual replacement by other texts for the
+Introduction to Symbolic Logic courses that soon became a staple
+offering of university departments of philosophy. By the 1950s PM was
+no longer used as a textbook, even in graduate courses. It’s
+influence, then, was enormous from 1910 to 1950, with it now having
+the status of a recognized classic that is unfamiliar to students of
+logic, and even unreadable because of its superseded notation. This
+entry, together with the entry on 
+ the notation in Principia Mathematica,
+ are intended to make the contributions of this monumental work
+available, and to enable further research on some of the ideas hidden
+in those three long volumes.
+2.2 Significance of Principia Mathematica
+
+Achieving Principia’s main goal proved to be a
+challenge. An initial response among mathematicians and logicians in
+Germany and Poland was to decry the decline in standards of formal
+rigor set by Frege. This complaint was voiced by Frege himself, in a
+letter to Philip Jourdain in 1912:
+
+
+…I do not understand the English language well enough to be
+able to say definitely that Russell’s theory (Principia
+Mathematica I, 54ff) agrees with my theory of functions of the
+first, second, etc. levels. It does seem so. But I do not understand
+all of it. It is not quite clear to me what Russell intends with his
+designation ϕ!ˆxϕ!x^\phi \bang \hat{x}. I never know for sure whether he
+is speaking of a sign or of its content. (Frege 1980: 78)
+
+
+This claim that the notion of “propositional function” is
+subject to use-mention confusions has persisted to this day. This
+entry will present a modernized version of the syntax of PM, combined
+with an account of the notation for types in the works of Alonzo
+Church (1974, 1976). Modern theories of types allow for a coherent
+syntax for higher-order languages which many find adequate to meet
+these objections. The complaint about the formulation of the syntax of
+PM were repeated and a further difficulty was expressed by Gödel
+(1944) in his influential survey of PM:
+
+
+It is to be regretted that this first comprehensive and thorough-going
+presentation of a mathematical logic and the derivation of mathematics
+from it [is] so greatly lacking in formal precision in the foundations
+(contained in ∗1–∗21 of
+Principia) that it presents in this respect a considerable step
+backwards as compared with Frege. What is missing, above all, is a
+precise statement of the syntax of the formalism. Syntactical
+considerations are omitted even in cases where they are necessary for
+the cogency of the proofs, in particular in connection with the
+“incomplete symbols”. These are introduced not by explicit
+definition, but by rules describing how sentences containing them are
+to be translated into sentences not containing them. To be sure,
+however, that (or for what expressions) this translation is possible
+and uniquely determined and that (or to what extent) the rules of
+inference apply to the new kind of expressions, it is necessary to
+have a survey of all possible expressions, and this can be furnished
+only by syntactical considerations. (Gödel 1944 [1951: 126])
+
+
+The issue with respect to defined expressions, including the
+“incomplete symbols” for classes and definite descriptions
+which are explained below, is still problematic for interpreting PM.
+The difficulty is that certain defined expressions such as the
+notation for definite descriptions, class abstracts and even the
+identity symbol ‘===’, are not specified in the initial
+description of the syntax of the theory, nor are they shown to be
+validly used as instances of the axioms with their apparent syntax.
+The method of “contextual definition” used in PM is
+difficult to formulate rigorously and is not used in contemporary
+logical theories. The modern presentation of PM is this entry includes
+the symbols for descriptions and classes, thus differing from the
+completely rigorous presentations of Church (1976), for example, who
+avoids both definite descriptions and class expressions, and takes
+identity as an undefined primitive.
+
+Despite these reactions to the rigor of the presentation, PM
+nevertheless was studied carefully by those interested in the new
+symbolic logic including David Hilbert and those in his school in
+Göttingen (see Ewald & Sieg 2013: 3 and Chwistek 1912).
+Primarily at issue were the kinds of assumptions Whitehead and Russell
+needed to complete their project. Although Principia
+succeeded in providing detailed derivations of many major theorems in
+finite and transfinite arithmetic, set theory, and elementary measure
+theory, three axioms in particular were arguably non-logical in
+character: the axioms of infinity, reducibility and the
+“multiplicative axiom” or Axiom of Choice. The axiom of
+infinity in effect states that there exists an infinite number of
+objects. Arguably it makes the kind of assumption generally thought to
+be empirical rather than logical in nature. The multiplicative axiom,
+later added to Zermelo’s axioms as the Axiom of Choice, asserts
+the existence of a certain set containing one element from each member
+of a given set. Russell objected that without a rule guiding the
+choice, such an axiom was not a logical principle. The axiom of
+reducibility was introduced as a means of overcoming the not
+completely satisfactory effects of the
+ theory of types,
+ the mechanism Russell and Whitehead used to restrict the notion of a
+well-formed expression, thereby avoiding Russell’s paradox.
+Although technically feasible, many critics concluded that the axiom
+was simply too ad hoc to be justified philosophically.
+Initially at least, Leon Chwistek (1912) believed that it led to a
+contradiction. Kanamori sums up the sentiment of many readers: 
+
+
+In traumatic reaction to his paradox Russell had built a complex
+system of orders and types only to collapse it with his Axiom of
+Reducibility, a fearful symmetry imposed by an artful dodger. (2009:
+411) 
+
+
+In the minds of many, the issue of whether mathematics could be
+reduced to logic, or whether it could be reduced only to set theory,
+thus remained open.
+
+In response, Whitehead and Russell argued that both axioms were
+defensible on inductive grounds. As they tell us in the Introduction
+to the first volume of Principia,
+
+
+self-evidence is never more than a part of the reason for accepting an
+axiom, and is never indispensable. The reason for accepting an axiom,
+as for accepting any other proposition, is always largely inductive,
+namely that many propositions which are nearly indubitable can be
+deduced from it, and that no equally plausible way is known by which
+these propositions could be true if the axiom were false, and nothing
+which is probably false can be deduced from it. If the axiom is
+apparently self-evident, that only means, practically, that it is
+nearly indubitable; for things have been thought to be self-evident
+and have yet turned out to be false. And if the axiom itself is nearly
+indubitable, that merely adds to the inductive evidence derived from
+the fact that its consequences are nearly indubitable: it does not
+provide new evidence of a radically different kind. Infallibility is
+never attainable, and therefore some element of doubt should always
+attach to every axiom and to all its consequences. In formal logic,
+the element of doubt is less than in most sciences, but it is not
+absent, as appears from the fact that the paradoxes followed from
+premisses which were not previously known to require limitations.
+(1910: 62 [1925: 59])
+
+
+Whitehead and Russell were also disappointed by the book’s
+largely indifferent reception on the part of many working
+mathematicians. As Russell writes,
+
+
+Both Whitehead and I were disappointed that Principia
+Mathematica was only viewed from a philosophical standpoint.
+People were interested in what was said about the contradictions and
+in the question whether ordinary mathematics had been validly deduced
+from purely logical premisses, but they were not interested in the
+mathematical techniques developed in the course of the
+work.…Even those who were working on exactly the same subjects
+did not think it worth while to find out what Principia
+Mathematica had to say on them. I will give two illustrations:
+Mathematische Annalen published about ten years after the
+publication of Principia a long article giving some of the
+results which (unknown to the author) we had worked out in Part IV of
+our book. This article fell into certain inaccuracies which we had
+avoided, but contained nothing valid which we had not already
+published. The author was obviously totally unaware that he had been
+anticipated. The second example occurred when I was a colleague of
+Reichenbach at the University of California. He told me that he had
+invented an extension of mathematical induction which he called
+‘transfinite induction’. I told him that this subject was
+fully treated in the third volume of the Principia. When I
+saw him a week later, he told me that he had verified this. (1959:
+86)
+
+
+Despite such concerns, PM proved to be remarkably influential in at
+least three ways. First, it popularized modern mathematical logic to
+an extent undreamt of by its authors. By using a notation more
+accessible than that used by Frege, Whitehead, and Russell managed to
+convey the remarkable expressive power of modern predicate logic in a
+way that previous writers had been unable to achieve. Second, by
+exhibiting so clearly the deductive power of the new logic, Whitehead
+and Russell were able to show how powerful the idea of a modern formal
+system could be, thus opening up new work in what soon was to be
+called metalogic. Third, Principia Mathematica re-affirmed
+clear and interesting connections between logicism and two of the main
+branches of traditional philosophy, namely
+ metaphysics 
+ and epistemology,
+thereby initiating new and interesting work in both of these
+areas.
+
+As a result, not only did Principia introduce a wide range of
+philosophically rich notions (including
+ propositional function,
+ logical construction, and
+ type theory),
+ it also set the stage for the discovery of crucial metatheoretic
+results (including those of Kurt Gödel, Alonzo Church, Alan
+Turing and others). Just as importantly, it initiated a tradition of
+common technical work in fields as diverse as philosophy, mathematics,
+linguistics, economics and computer science.
+
+Today a lack of agreement remains over the ultimate philosophical
+contribution of Principia, with some authors holding that,
+with the appropriate modifications, logicism remains a feasible
+project. Others hold that the philosophical and technical
+underpinnings of the project remain too weak or too confused to be of
+great use to the logicist. (For more detailed discussion, readers
+should consult Quine 1963, 1966a, 1966b; Landini 1998, 2011; Linsky
+1999, 2011; Hale and Wright 2001; Burgess 2005; Hintikka 2009; and
+Gandon 2012.)
+
+There is also lack of agreement over the importance of the second
+edition of the book, which appeared in 1925 (Volume I) and (Volumes II
+and III were directly reprinted from the first edition in 1927). The
+revisions were done by Russell, although Whitehead was given the
+opportunity to advise. In addition to the correction of minor errors
+throughout the original text, changes to the new edition included a
+new Introduction and three new appendices. (The appendices discuss the
+theory of quantification, mathematical induction and the axiom of
+reducibility, and the principle of extensionality respectively.) The
+book itself was reset more compactly, making page references to the
+first edition obsolete. Russell continued to make corrections as late
+as 1949 for the 1950 printing, the year he and Whitehead's widow
+finally began to receive royalties.
+
+Today there is still debate over the ultimate value, or even the
+correct interpretation, of some of the revisions, revisions that were
+motivated in large part by the work of some of Russell’s
+brightest students, including Ludwig Wittgenstein and Frank
+Ramsey. Appendix B has been notoriously problematic. The appendix
+purports to show how mathematical induction can be justified without
+use of the axiom of reducibility; but as Alasdair Urquhart
+reports,
+
+
+The first indication that something was seriously wrong appeared in
+Gödel’s well known essay of 1944, “Russell’s
+Mathematical Logic”. There, Gödel points out that line (3)
+of the demonstration of Russell’s proposition
+∗89·16 is an elementary logical blunder, while the
+crucial ∗89·12 also appears to be highly questionable.
+It still remained to be seen whether anything of Russell’s proof
+could be salvaged, in spite of the errors, but John Myhill provided
+strong evidence of a negative verdict by providing a model-theoretic
+proof in 1974 that no such proof as Russell’s can be given in
+the ramified theory of types without the axiom of reducibility.
+(Urquhart 2012)
+
+
+Linsky (2011) provides a discussion, both of the Appendix itself and
+of the suggestion that by 1925 Russell may have been out of touch with
+recent developments in the quickly changing field of mathematical
+logic. He also addresses the suggestion, made by some commentators,
+that Whitehead may have been opposed to the revisions, or at least
+indifferent to them, concluding that both charges are likely without
+foundation. (Whitehead’s own comments, published in 1926 in
+Mind, shed little light on the issue.)
+3. Contents of Principia Mathematica
+
+Principia Mathematica originally appeared in three volumes.
+
+
+
+
+
+
+
+
+Title page of the first edition of Principia Mathematica, Volume I (1910)
+
+
+
+
+
+Cover of the first paperback issue of Principia Mathematica to ∗56 (1962)
+
+
+
+
+
+
+
+Together, the three volumes are divided into six parts. The commentary
+that follows will go through the sections that follow, indicating in
+the early parts where a reader can skip ahead to study the unique
+features of the development of mathematics in the PM system as
+contrasted with that of Frege and contemporary set theory.
+3.1 Volume I
+
+Volume I is divided into the a lengthy Introduction containing three
+sections, followed by two major Parts I (divided into Sections
+A–E) and II (also divided into Sections A–E):
+
+Preliminary Explanations of Ideas and Notations
+The Theory of Logical Types
+Incomplete Symbols
+Part I: Mathematical Logic
+
+
+A. The Theory of Deduction
+∗1–∗5
+B. Theory of Apparent Variables
+∗9–∗14
+C. Classes and Relations
+∗20–∗25
+D. Logic of Relations
+∗30–∗38
+E. Products and Sums of Classes
+∗40–∗43
+
+Part II: Prolegomena to Cardinal Arithmetic
+
+
+A. Unit Classes and Couples
+∗50–∗56
+B. Sub-Classes, Sub-Relations, and Relative Types
+∗60–∗65
+C. One-Many, Many-One and One-One Relations
+∗70–∗74
+D. Selections ∗80–∗88
+E. Inductive Relations
+∗90–∗97
+
+
+3.2 Volume II
+
+Volume II begins with a preliminary section on notational conventions
+followed by Parts III (divided into Sections A–C), IV (divided
+into Sections A–D), and the first half of Part V (Sections
+A–C):
+
+Prefatory Statement of Symbolic Conventions
+Part III: Cardinal Arithmetic
+
+
+A. Definition and Logical Properties of Cardinal Numbers
+∗100–∗106
+B. Addition, Multiplication and Exponentiation
+∗110–∗117
+C. Finite and Infinite
+∗118–∗126
+
+Part IV: Relation-Arithmetic
+
+
+A. Ordinal Similarity and Relation-Numbers
+∗150–∗155
+B. Addition of Relations, and the Product of Two Relations
+∗160–∗166
+C. The Principle of First Differences, and the Multiplication and
+Exponentiation of Relations
+∗170–∗177
+D. Arithmetic of
+Relation-Numbers∗180–∗186
+
+Part V: Series
+
+
+A. General Theory of Series
+∗200–∗208
+B. On Sections, Segments, Stretches, and Derivatives
+∗210–∗217
+C. On Convergence, and the Limits of Functions
+∗230–∗234
+
+
+3.3 Volume III
+
+Volume III contains the remainder of Part V (Sections D–F) and
+concludes with Part VI (divided into Sections A–D):
+
+Part V: Series (continued)
+
+
+D. Well-Ordered Series
+∗250–∗259
+E. Finite and Infinite Series and Ordinals
+∗260–∗265
+F. Compact Series, Rational Series, and Continuous Series
+∗270–∗276
+
+Part VI: Quantity
+
+
+A. Generalization of Number
+∗300–∗314
+B. Vector-Families ∗330–∗337
+C. Measurement ∗350–∗359
+D. Cyclic Families ∗370–∗375
+
+
+
+A fourth volume on geometry was begun but never completed (Russell
+1959: 99).
+
+Overall, the three volumes not only represent a major leap forward
+with regard to modern logic, they are also rich in early
+twentieth-century mathematical developments. To give one example,
+Whitehead and Russell were the first to define a series as a set of
+terms having the properties of being asymmetrical, transitive and
+connected (1912 [1927: 497]). To give another, it is in
+Principia that we find the first detailed development of a
+generalized version of Cantor’s transfinite ordinals, which the
+authors call “relation-numbers”. The resulting
+“relation-arithmetic” in turn led to significant
+improvements in our understanding of the general notion of structure
+(1912: Part IV).
+
+As T.S. Eliot points out, the book also did a great deal to promote
+clarity in the use of ordinary language in the early part of the
+twentieth century:
+
+
+how much the work of logicians has done to make of English a language
+in which it is possible to think clearly and exactly on any subject.
+The Principia Mathematica are perhaps a greater contribution
+to our language than they are to mathematics. (1927: 291)
+
+
+The book is also not without some self-deprecating humour. As
+Blackwell points out (2011: 158, 160), the authors twice poke fun at
+the length and tedium of the project’s many logical derivations.
+In Volume I, the authors explain that one cannot list all the
+non-intensional functions of ϕ!ˆzϕ!z^\phi \bang \hat{z} “because
+life is too short” (1910 [1925: 73]); and in Volume 3, after
+over 1,800 pages of dense symbolism, the authors end Part IV, Section
+D, on Cyclic Families, with the comment,
+
+
+We have given proofs rather shortly in this Section, particularly in
+the case of purely arithmetical lemmas, of which the proofs are
+perfectly straightforward, but tedious if written out at length. (1913
+[1927: 461])
+
+
+Evidence that the humour originates more with Russell than with
+Whitehead is perhaps found in not dissimilar remarks that appear in
+Russell’s other writings. Russell’s comment when
+discussing the axiom of choice, to the effect that given a collection
+of sets, it is possible to “pick out a representative
+arbitrarily from each of them, as is done in a General Election”
+(1959: 92), is perhaps a case in point.
+
+Readers today (i.e., those who have learned logic in the last few
+decades of the twentieth century or later) will find the book’s
+notation somewhat antiquated. Readers wanting assistance are advised
+to consult the entry on the
+ notation in Principia Mathematica.
+ Even so, the book remains one of the great scientific documents of
+the twentieth century.
+4. Volume I
+4.1 Part I: Mathematical Logic
+4.1.1 Propositional Logic in PM
+
+The system of propositional logic of PM, can be seen as a
+system of sentential logic consisting of a language, and
+rules of inference. PM contains the first presentation of symbolic
+logic that deals with propositional logic as a separate theory. Frege
+had involved quantification from the beginning, while Peano’s
+system was interpretable as about propositions and classes with some
+different principles holding for each interpretation. The
+propositional logic of PM is unusual for modern readers, for various
+reasons having to do with its origins in Russell’s earlier work
+on logic. One is that the axioms of propositional logic are not stated
+using only the primitive connectives of the logic, which are ∼∼\lnot
+and ∨∨\lor, but instead only use ∨∨\lor, and ⊃⊃\supset which is
+a defined connective.
+
+In this section we will use A, B, etc as meta-linguistic
+variables for formulas. The formulas constructed from atomic
+propositions with the connectives are said to express elementary
+propositions to distinguish them from propositions involving
+quantifiers and propositional functions. The system is organized
+axiomatically, the axioms, called “primitive propositions”
+or “Pp”, and are presented with the characteristic
+‘⊃⊃\supset’ of material implication, which is defined
+with ∼∼\lnot and ∨∨\lor. The connectives &&\lamp and ≡≡\equiv
+are also defined, but not needed in the statements of the axioms. This
+peculiarity has its origins in Russell’s view from 1903 that
+
+
+
+The propositional calculus is characterized by the fact that all its
+propositions have as hypothesis and as consequent the assertion of a
+material implication. (1903: 13) 
+
+
+All of the “primitive propositions” of PoM are stated with
+only material implication as a primitive connective. The connectives
+&&\lamp,∨∨\lor and ≡≡\equiv, and are defined might be expected.
+The notion of negation, expressed by ∼∼\lnot, is defined using a
+notion of quantification over propositions ( ∼A∼A\lnot A means that
+A implies all propositions). By 1906 Russell had decided to use
+∼∼\lnot as a primitive connective, and no longer used propositional
+quantifiers, allowing ⊃⊃\supset to be defined, while the primitive
+propositions were still stated with ⊃⊃\supset and ∨∨\lor. That the
+system of propositional logic in PM was the result of an evolution of
+changes in choices of primitives is mirrored in the choice of theorems
+that are proved in the first chapters. While most are proved because
+they will be used later in PM, some remain simply as remants of the
+earlier systems. In particular PM contains several theorems that were
+primitive propositions in earlier systems, though not used in what
+follows. In fact one primitive proposition of PoM, known as
+“Peirce’s Law ([(p⊃q)⊃p]⊃p[(p⊃q)⊃p]⊃p[(p \supset q )\supset p ] \supset p)
+appears to have been proved in an early version of PM as
+∗2·7 but simply deleted (and its number not
+reassigned to another theorem) simply to save space (see Linsky
+2016).
+
+The notion of truth-functional semantics for propositional
+logic, using the familiar truth tables, and the notion of
+completeness of an axiom system, was not developed until soon
+after the publication of PM by Bernays (1926). As a result there is no
+attempt to find a short list of axioms that will be complete, and so
+at later stages of the work there is no simple appeal to
+“tautological consequences” which might be easily
+justified by semantic considerations.
+
+The language of propositional logic in PM consists of a vocabulary
+consisting of:
+
+Atomic proposition variables: p, q, r,
+p1p1p_1, … (There are no proposition constants.)
+Sentential connectives. Primitive: ∼∼\lnot and ∨∨\lor.
+Defined: ⊃⊃\supset, &&\amp, ≡≡\equiv.
+Punctuation: (((, ))), [[[, ]]], {{\{, }}\}, etc.
+
+
+The well formed formulas (wffs) are defined as follows:
+
+Atomic proposition variables are wffs.
+If A and B are wffs then so are: ∼A∼A\lnot
+A and A∨BA∨BA \lor B
+
+
+The other familiar connectives are defined:
+
+Definitions 
+
+A⊃B=df∼A∨BA&B=df∼(∼A∨∼B)(A≡B=df(A⊃B)&(B⊃A)A⊃BA&B(A≡B=df∼A∨B=df∼(∼A∨∼B)=df(A⊃B)&(B⊃A)∗1⋅01∗3⋅01∗4⋅01\begin{align}
+\tag*{∗1·01} {A \supset B} &amp; \eqdf \lnot {A  \lor B}\\
+\tag*{∗3·01} {A \lamp B}   &amp; \eqdf {\lnot(\lnot  A  \lor \lnot B})\\
+\tag*{∗4·01}({A \equiv B}  &amp; \eqdf  {(A \supset B)  \lamp (B \supset A)}\\
+  \end{align}
+  
+
+
+Axioms 
+
+(p∨p)⊃pq⊃(p∨q)(p∨q)⊃(q∨p)[p∨(q∨r)]⊃[q∨(p∨r)](q⊃r)⊃[(p∨q)⊃(p∨r)](p∨p)q(p∨q)[p∨(q∨r)](q⊃r)⊃p⊃(p∨q)⊃(q∨p)⊃[q∨(p∨r)]⊃[(p∨q)⊃(p∨r)]Pp ∗1⋅2Pp ∗1⋅3Pp ∗1⋅4Pp ∗1⋅5Pp ∗1⋅6\begin{align}
+\tag*{Pp ∗1·2} (p \lor p )  &amp; \supset  p\\
+\tag*{Pp ∗1·3} q  &amp; \supset  (p  \lor q )\\
+\tag*{Pp ∗1·4} (p   \lor  q )   &amp; \supset   (q   \lor  p)\\
+\tag*{Pp ∗1·5} [p  \lor ( q  \lor r )]  &amp; \supset  [q  \lor ( p  \lor r )]\\
+\tag*{Pp ∗1·6} ( q \supset r )   &amp; \supset   [   (p   \lor  q )  \supset   (p   \lor r ) ]\\
+\end{align}
+
+
+
+In 1926 Paul Bernays showed that this could be reduced by one, as
+axiom 4 (∗1·5) can be proved from the
+others.
+
+Rules of inference:
+
+
+Modus ponens (∗1·1): From
+⊢A⊃B⊢A⊃B\vdash A \supset B and ⊢A⊢A\vdash A, derive ⊢B⊢B\vdash B
+Substitution: From ⊢A⊢A\vdash A derive ⊢A′⊢A′\vdash A'
+where A′A′A' is the result of substituting some formula B
+uniformly for any atomic proposition variable that occurs in
+A.
+
+
+
+There is no explicit statement of a rule of substitution in PM. The
+free variables in the propositional logic of PM may be interpreted as
+schematic letters, and so the system will require a rule of
+substitution of formulas. In this article they are be interpreted as
+real variables ranging over propositions, in which case instances
+would be derived by instantiation from generalizations over all
+propositions. The announcement in the Introduction that propositions
+are not necessary in what follows and so will be avoided suggests the
+schematic interpretation of the variables. We follow the variable
+interpretation in this article, however, in part to allow our notation
+to follow PM, with p’s and q’s rather than a
+new vocabulary of schematic letters A, B, etc. This
+interpretation of the letters as variables will also assist in the
+presentation of quantificational logic in PM below.
+
+As is standard for an axiomatic formulation of logic, a
+derivation of a formula of sentential logic in PM will
+consist of an instance of one of the six axioms, the result of a
+substitution in a preceding line, or the application of modus ponens
+to two preceding lines. Theorems of PM will be proved in order,
+allowing the use of (instances of) preceding theorems as lines in
+later derivations.
+
+The resulting system is complete, in the sense that all and only
+truth-functionally valid sentences are derivable in the system. This
+despite the seeming defects of the system by modern standards,
+including the redundancy of one of the axioms, the use of defined
+symbols in expressions to which the rules of inference apply, and the
+use of defined symbols in the axioms. The derivations in
+∗2 to ∗5 are abbreviated, but
+with an indication on the side of each line of what justifies it, and
+how any abbreviation can be undone. Theorems are proved primarily as
+needed in later numbers, but some were axioms, or important theorems
+of earlier versions of propositional logic, going back to The
+Principles of Mathematics. Aside from historical interest in
+their actual choices, however, the system of PM can be viewed as based
+on any standard system of propositional logic.
+4.1.2 The “Ramified” Theory of Types
+
+The theory of types in the initial chapters of PM is
+ramified, so that within a given type, of propositions, or of
+functions of individuals, and functions of functions of individuals,
+there will be finer subdivisions. This ramification is necessary for
+the application of the logic of PM to what what are called
+“epistemological” paradoxes in the Introduction to PM. The
+most prominent of these is the (propositional) Liar paradox created by
+the proposition that all propositions of a certain sort, say asserted
+by Epimenides, are false, when that very proposition is of that sort,
+that is the only proposition that Epimenides asserted. The solution in
+the ramified theory of types requires that a proposition about a sort
+of first level propositions, say that they are all false, will itself
+be of the next order.
+
+The paradoxes of the theory of sets are resolved by reducing
+assertions about sets to assertions about propositional functions. The
+restriction that a function of one type cannot apply to a function of
+the same type is enough to block the paradoxes. Thus the distinction
+between individuals, functions of individuals, and functions of such
+functions, categorized by what came to be called “simple theory
+of types” is enough for the purposes of reducing mathematics to
+classes, and so to logic. The idea that the full theory of types was
+not needed to resolve the mathematical or set theoretical paradoxes
+was proposed by Chwistek (1921) and Ramsey (1931), and led to the
+later introduction of the terms “ramified theory of types”
+and “simple theory of types” that will be used in this
+entry.
+
+In the Introduction to PM terminology is introduced for the two ways
+that variables may appear in formulas. The “apparent
+variables” are bound variables, whereas “real
+variables” are free variables. The proper
+interpretation of higher-order variables in PM is the subject of
+contemporary dispute among scholars of PM. Landini (1998) and Linsky
+(1999) offer two rival accounts. Landini holds that higher-order free
+variables should be interpreted as schematic letters, replaceable by
+formulas, and that the bound variables are to be interpreted
+“substitutionally”. The logic of the theory of types in PM
+can be seen as an extension of a theory of a standard first order
+logic developed in ∗10. Then the more distinctive
+notions of PM that depend on the theory of types can be explained.
+These include the Axiom of Reducibility, in ∗12
+which underlies the so called ramification of the theory of
+types, the division into orders of predicates true of a
+single type of argument. The Axiom of Reducibility asserts that for an
+arbitrary function of any order there is an equivalent
+predicative function, that is, one true of exactly the same
+range of arguments. Identity is defined, in ∗13,
+with a version of Leibniz’ notion of the identity of
+indiscernibles that is consistent with the theory of types. Replacing
+Leibniz’ notion that x and y are identical just in
+case they share the same properties, in PM, x and y are
+identical if and only if they share the same predicative functions.
+Then using the notion of identity so defined, PM presents
+Russell’s theory of definite descriptions, precisely as it was
+defined in in “On Denoting” (1905). This article will use
+the notation for “r-types” due to Alonzo Church
+1976, which is explained in the accompanying article “The
+Notation of Principia Mathematica” in this
+Encyclopedia.
+
+Although PM does not single out first order logic from the whole
+ramified theory of types, the actual deductive apparatus on the page
+looks exactly like a system of first order logic, and the
+complications of the logic of higher types can be expressed with an
+additional apparatus of type indices. In what follows we will use the
+system of r-types in Church (1976) for type indices, and the
+use of lambda operators for propositional functions.
+
+
+
+Church’s (1976) formulation of the logic of PM with
+r-types The language of the higher-order
+quantificational logic of PM is called ramified type theory,
+and the system of types, following Church (1976) will be called
+r-types. Note that there are two kinds of variables, but they
+are all all assigned to an r-type. Individual variables behave as a
+special case of propositional function variables.
+
+(argument) variables: xτxτx_{\mathbf{\tau}},
+yτyτy_{\mathbf{\tau}}, zτzτz_{\mathbf{\tau}}, …for each type
+ττ\tau
+n-place propositional function variables:
+ϕnτ,ψnτϕnτ,ψnτ\phi_{\tau}^{n}, \psi_{\tau}^{n}, …(n≥1n≥1n \geq 1), where
+ττ\tau is a type symbol. (Rn,Sn,…Rn,Sn,…R^n,S^n, \ldots (n≥1n≥1n \geq 1) for
+relations in extension.) χχ\chi is used for a higher-order
+function of functions, as in χ(ϕ)χ(ϕ)\chi (\phi), and ΦΦ\Phi for the
+next order, as in Φ(χ)Φ(χ)\Phi (\chi)
+connectives: ∼∼\lnot, ∨∨\lor
+punctuation: (((, ))), [[[, ]]], {{\{, }}\}, etc.
+the quantifier symbols: ∀∀\forall and ∃∃\exists.
+the lambda symbol: λλ\lambda
+
+
+The system of symbols for r-types and the assignment of
+r-types to variables for different entities (individuals and
+functions) is as follows:
+
+ιι\iota is the r-type for an individual.
+Where τ1…,τmτ1…,τm\tau_1 \ldots, \tau_m are any r-types, then
+(τ1…,τm)/n(τ1…,τm)/n(\tau_1 \ldots, \tau_m) / n is the r-type of a
+propositional function of level n; this is the r-type
+of any m-ary propositional function of level n,
+which has arguments of r-types τ1…,τmτ1…,τm\tau_1 \ldots, \tau_m,
+respectively.
+
+
+The order of an entity is defined as follows:
+
+the order of an individual (of r-type ιι\iota)
+is 0
+the order of a function of r-type τ1…,τm/nτ1…,τm/n\tau_1 \ldots,
+\tau_m / n is n+Nn+Nn+N where N is the greatest of the order of
+the arguments τ1…,τmτ1…,τm\tau_1 \ldots, \tau_m
+
+
+There are no predicate or individual names in this language. There
+are, however complex terms for propositional functions, defined
+together with formulas (with the usual notion of bound and free
+variables):
+
+Let ϕτϕτ\phi_{\tau} be a variables ranging over propositional
+functions of type ττ\tau. We read xτxτx_{\tau} as a metalinguistic
+variable ranging over variables of r-type ττ\tau. The
+subscript ττ\tau will be indicated only with the initial quantifier
+which governs the variable.
+
+We then can define the well formed formulas (wffs) and
+terms of quantificational logic as follows:
+
+Variables (for individuals and propositional functions) are
+terms.
+
+
+If ϕnτϕnτ\phi_{\tau}^{n} is an n-place propositional function
+variable of r-type (τ1…,τn)/k(τ1…,τn)/k(\tau_1 \ldots, \tau_n) /k and
+xnrxnrx_{r}^{n} are terms of of r-types τ1…,τnτ1…,τn\tau_1 \ldots,
+\tau_n, respectively, then ϕ(x1,…xn)ϕ(x1,…xn)\phi (x_1, \ldots x_n) is a
+wff.
+
+(The variables xnxnx_n are called “argument” variables.
+They will include individual variables of r-type
+ιι\iota, but also variables of higher types. The variable ϕϕ\phi
+can occur as a predicate in ϕ(x)ϕ(x)\phi(x) and as an argument in Ψ(ϕ)Ψ(ϕ)\Psi
+(\phi), and cannot be of type ιι\iota to occur in a
+wff.)
+
+
+If x is a variable and A is a wff then
+λxAλxA\lambda x A is a term of r-type (τ)/n(τ)/n(\tau)/n
+(where n is one more than the highest order of any bound
+variable in A and at least as high as the order of any free
+variable in A).
+
+
+If x is an individual variable of type ττ\tau and A is
+a wff in which x occurs freefreefree then ∀xA∀xA\forall x A and
+∃xA∃xA\exists x A are wffs.
+
+
+If A and B are wffs, then so are ∼A∼A\lnot A, A&BA&BA \lamp
+B, A∨BA∨BA \lor B, A⊃BA⊃BA \supset B, and A≡BA≡BA \equiv B.
+
+The conventional precedence ordering of connectives will allow for
+fewer punctuation signs to indicate scope of connectives, thus A∨B⊃CA∨B⊃CA
+\lor B \supset C is read as (A∨B)⊃C(A∨B)⊃C( A \lor B) \supset C
+
+
+The comprehension principle for a system of higher-order logic, or set
+theory, states which formulas express a property or set. Within a type
+theory this allows for what looks like an “unrestricted”
+comprehension principle, in that for every well formed expression
+A with a free variable, x, there is a property which is
+satisfied by precisely the entities satisfying the formula. It is the
+restrictions of types that block the paradoxes, as the problematic
+formulas “is not a member of itself” and “does not
+apply to itself” are ruled out by the system of types. The
+comprehension principle then is characterized by an infinite set of
+sentences of the form of:
+
+
+Comprehension: 
+∃ϕ∀xτ[ϕ(x)≡A],(ϕ not free in A)∃ϕ∀xτ[ϕ(x)≡A],(ϕ not free in A)\exists \phi \forall x_{\tau} [ \phi (x) \equiv A], \quad (\phi \textrm{  not free in } A)
+
+where ϕϕ\phi is a functional variable of r-type (τ)/n(τ)/n(\tau)/n
+and x is a variable of r-type ττ\tau, and the bound
+variables of A are all of order less than the order of ϕϕ\phi
+and the free variables of A are all of order not greater than
+the order of ϕϕ\phi.
+
+
+
+
+As presented here Church’s seemingly straightforward
+comprehension principle, with its restrictions on the types of
+variables, is for Quine a glaring manifestation of the confusion of
+use and mention of language that he sees infecting PM:
+
+
+…there is a characteristic give and take between sign and
+object: the propositional function gets its order from the abstractive
+expression, and the order of the variable is the order of the values.
+Exposition is eased by allowing the word ‘order’ a double
+sense, attributing orders at once to the notations and, in parallel,
+to their objects. (Quine 1963: 245)
+
+
+The offense comes from attributing orders (r-types) to
+propositional functions on the basis of the variables with which they
+are defined, but also to the functions themselves, as simply values of
+bound higher-order variables. In response, the defender of type theory
+must say that any semantic intrepretation of the notion of
+propositional function will have to attribute to functions these
+distinctions that are marked in linguistic expressions of some of
+them, and in particular, the variables involve in their
+definition.
+
+What follows in PM up to ∗12 is a presentation of
+quantificational logic in the ramified theory of types. The
+complications are due to the decision of the authors (surely on
+Russell’s insistence) to add a new section
+∗9 which allows the earlier theory of
+propositional logic to be incorporated directly into a
+quantificational logic as is done in contemporary logic. This shows
+the extent to which the earlier theory is indeed a theory of
+propositions, not an account of a fragment of
+quantificational logic allowing open sentences containing free
+variables.
+Quantificational Logic in PM
+
+Section ∗10 formulates quantificational logic as
+it is currently formulated, namely the axioms and theorems of
+propositional logic are assumed to hold for all formulas, and not just
+the elementary propositions of ∗1–5. It
+appears that Russell became concerned about this assumption, and so a
+new section ∗9 was introduced to derive the
+principles of quantification theory from elementary propositions
+alone. While of interest to scholars of PM, the upshot is the same for
+later uses of quantificational logic in PM.
+
+Again, the reader interested in what distinguishes the logicist
+project in PM can skip this section, although passing attention may be
+paid to the system of higher-order logic that is used, as based here
+on the ramified theory of types
+
+The extension to functions of more than one variable is obvious, and
+below, some applications will employ this extension.
+
+The existential quantifier and the other familiar connectives
+⊃⊃\supset, &&\lamp and ≡≡\equiv are defined as for propositional
+logic. (In what follows A is now an arbitrary (possibly
+quantificational) formula):
+∃xA=df∼∀x∼A∃xA=df∼∀x∼A∗10⋅01
+\tag*{∗10·01} \exists x A  \eqdf  \lnot \forall x \lnot  A
+
+
+Axioms of ∗10: All instances of propositional
+theorems where wffs are uniformly substituted for propositional
+variables.
+
+
+The system of PM uses a rule of Universal Generalization and an Axiom
+which amounts to a rule of Instantiation.
+⊢∀xτA⊃A′⊢∀xτA⊃A′∗10⋅1
+\tag*{∗10·1} 
+\vdash \forall x_{\tau} A  \supset  A'
+
+
+where A′A′A' is like A except for having a term y of
+type ττ\tau substituted for xτxτx_{\tau} in A.
+
+(Note: The notion of suitable “substitution” is much more
+complicated for logic of higher types than it is for first order
+logic. In part this is because of the application to an argument of
+lambda expressions for a propositional function, e.g., [λxϕ(x)](ν)[λxϕ(x)](ν)[\lambda x
+\phi (x)] (\nu) where νν\nu may be a complex term involving
+variables and quantifiers in other lambda expressions.)
+If ⊢A then ⊢∀xτA′If ⊢A then ⊢∀xτA′∗10⋅11
+\tag*{∗10·11}
+ \textrm{If } \vdash A \textrm{ then } \vdash \forall x_{\tau} A'
+
+
+where A′A′A' is like A except for having a term y of
+type ττ\tau substituted for x in A
+
+Other quantifier principles, which govern the move of a quantifier
+from the inside of a formula to governing the entire formula, so
+called “quantifier containment principles” are also
+derived as theorems in ∗10. Some that are often used in later
+numbers are:
+∀xτ(A∨ϕ(x))⊃(A∨∀xτϕ(x))∀xτ[A⊃ϕ(x)]≡[A⊃∀xτϕ(x)]∀xτ(A∨ϕ(x))∀xτ[A⊃ϕ(x)]⊃(A∨∀xτϕ(x))≡[A⊃∀xτϕ(x)]∗10⋅12∗10⋅21
+\begin{align}
+\tag*{∗10·12} \forall x_{\tau} ( A  \lor \phi (x ) ) &amp; \supset (A  \lor \forall x_{\tau} \phi (x ))\\
+\tag*{∗10·21} \forall x_{\tau} [ A  \supset \phi (x ) ] &amp; \equiv [A  \supset  \forall x_{\tau} \phi (x)]\\
+\end{align}
+
+The introduction to ∗10 in PM begins with:
+
+
+The chief purpose of the propositions of this number
+[∗10] is to extend to formal implications
+(i.e. to propositions of the form ∀x(ϕx⊃ψx)∀x(ϕx⊃ψx)\forall x (\phi x \supset
+\psi x) as many as possible of the propositions proved previously
+for material implications, i.e. for propositions of the form
+p⊃qp⊃qp \supset q. (notation updated)
+
+
+In other words, this section introduces the logic of quantification,
+in a way that is familiar to contemporary logic. The propositional
+logic of the preceding sections is interpreted as true only of
+elementary, first order propositions, and so extended to higher-order
+logic by showing how sentences can be presented in “prenex
+form”, that is with quantifers in intial position preceding a
+quantifier free matrix. These theorems are familiar now as
+“quantifier confinement” theorems, of the form of:
+∀xτ[ϕ(x)⊃A]≡∃xτ[ϕ(x)⊃A]∀xτ[ϕ(x)⊃A]≡∃xτ[ϕ(x)⊃A]∗10⋅23
+\tag*{∗10·23} \forall x_{\tau} [ \phi (x ) \supset A ] \equiv \exists x_{\tau} [ \phi ( x ) \supset A ]
+
+The Axiom of Reducibility
+
+Given that the system of PM contains a ramified theory of types,
+however, the move to discussion of classes for the remainder of the
+work after ∗20 requires a further axiom, the axiom
+of reducibility, in order to allow a simple theory of types of
+classes. Consider the fundamental notion from the theory of real
+numbers of the least upper bound (l.u.b.) of a
+bounded class of real numbers. Consider the class of all real numbers
+whose square is less than or equal to 2, i.e., {x∣x2≤2}{x∣x2≤2}\{ x \mid x^2 \leq
+2\}. A class of reals S has an upper bound if and
+only if ∃r∀s(s∈S⊃s≤r)∃r∀s(s∈S⊃s≤r)\exists r \forall s ( s \in S \supset s \leq r). If a
+bounded class S of real numbers has members of some
+r-type ττ\tau, then the least upper bound must belong to an
+r-type τ/1τ/1\tau / 1 because of the quantifier in the definition
+ranging over the elements s of S. We say that the
+definition of S is “impredicative” because it
+involves quantification over a totality to which it is intended to
+belong. The theory of real numbers, however, requires that sometimes
+the least upper bound of a class is a member of that class, in this
+case, the least upper bound of S, namely √22–√\sqrt{2}, is an
+element of S.
+
+The resolution of this in the system of PM is to adopt an axiom which
+guarantees that any class defined in terms of another class will be of
+the same type. Thus impredicative definitions of classes are allowed,
+and do not introduce a class of a higher type. This is accomplished by
+adopting the Axiom of Reducibility, in ∗12, which
+guarantees that for any function ϕϕ\phi, there will be a
+co-extensive predicative function. More precisely, the Axiom
+of Reducibility asserts that for any function of any number of
+arguments of an arbitrary level, there is an equivalent function of
+level 1, ie. one true of the same entities:
+
+
+Axiom of Reducibility, 
+∀ψ∃ϕ∀xτ[ψ(x)≡ϕ!(x)]∀ψ∃ϕ∀xτ[ψ(x)≡ϕ!(x)]Pp ∗12⋅1
+  \tag*{Pp ∗12·1}
+  \forall \psi \exists \phi \forall x_{\tau} [\psi (x) \equiv \phi \bang(x) ]
+  
+
+where ϕ!ϕ!\phi \bang is a predicative function.
+
+
+The exclamation mark “!!\bang” is used in PM to indicate
+predicative functions. In Church’s system of
+r-types this is expressed by saying that the variable x
+is of r-type ττ\tau and ϕϕ\phi is of r-type (τ)/1(τ)/1(\tau
+)/1 and ψψ\psi is of r-type (τ)/n(τ)/n(\tau) /n. In other words,
+ϕϕ\phi is of the lowest order compatible with its arguments. This
+notion of predicative functions is taken from the Introduction. In
+∗12 Whitehead and Russell propose a narrower
+conception of predicative function, by which ϕϕ\phi must be a
+matrix, or function in the definition of which no quantifiers
+at all appear. See the accompanying entry on 
+ the notation in Principia Mathematica.
+
+
+It has seemed to some, beginning with Chwistek (1912) and continuing
+through Copi (1950) that the Axiom of Reducibility is technically
+faulty, leading to an inconsistency, or at least redundancy in the
+system of PM. Ramsey (1931) early on argued that the supposed
+contradiction in fact demonstrated that certain predicative functions
+are indefinable. Church (1976), confirms this assessment, and uses the
+presentation of r-types we describe here to show rigorously the
+limitations on what functions are definable in the system of PM.
+
+The interaction of this Axiom with the theory of classes in PM will be
+explained below in connection with ∗20 on
+classes.
+Identity in PM
+
+Contemporary logic follows Frege in treating identity,
+represented by ===, as a logical notion. In PM the notion of
+identity is defined following Leibniz as indiscernibility, namely
+indiscernible objects are identical. That is, ∀ϕ(ϕx≡ϕy)⊃x=y∀ϕ(ϕx≡ϕy)⊃x=y\forall \phi ( \phi x
+\equiv \phi y) \supset x = y. But since the axiom of reducibility
+guarantees that if there is any type of function on which x and
+y differ, they will differ on some predicative function, PM
+uses the following definition of identity:
+xτ=yτ=df∀ϕ[ϕ!(x)⊃ϕ!(y)],xτ=yτ=df∀ϕ[ϕ!(x)⊃ϕ!(y)],∗13⋅01
+\tag*{∗13·01}
+x_{\tau} = y_{\tau} \eqdf  \forall \phi [ \phi \bang (x) \supset \phi \bang(y) ],
+
+
+for ϕ!ϕ!\phi \bang a predicative function.
+
+In contemporary systems of logic an axiom or rule of inference allows
+that if x=yx=yx = y, then for any predicate ϕϕ\phi, ϕx≡ϕyϕx≡ϕy\phi x \equiv
+\phi y. In other words, identicals are indiscernible. The given
+definition of identity only suffices if it is not possible that
+entities x and y which share all predicative properties,
+cannot be distinguished by some property of a higher order. The axiom
+of reducibility guarantees that x and y sharing
+properties of any given higher order will entail sharing predicative
+properties, and so by the definition of identity, as in ‘x=yx=yx =
+y’.
+
+In the appendix B to the second edition of PM, which was written by
+Russell, there is a technical discussion of the consequences of
+abandoning the axiom of reducibility. A faulty proof is proposed to
+show that the principle of Induction can be derived without using the
+axiom of reducibilty in a modified theory of types (see Linsky 2011).
+As Russell points out, however, it is not possible to show that the
+theory of real numbers as based on “Dedekindian” classes
+of rational numbers, without assuming the axiom of reducibility. (The
+thesis that every class of reals with an upper bound has a real number
+as its least upper bound, discussed above, would not be provable.) As
+a result, Russell says “analysis would collapse”. In all
+of this discussion, however, Russell does not indicate what would
+replace the definition of Identity in ∗13, which
+so crucially depends on the axiom of reducibility.
+Definite Descriptions
+
+Russell presented his theory of definite descriptions in “On
+Denoting” (1905) and it has probably been the most widely
+discussed application of the logic of PM. The role of the theory of
+definite desciptions in PM, however, is exhausted by its use in
+∗30 to define what are called “Descriptive
+functions”. In contemporary logic it is routine to show how the
+notion of a “functional relation” can be used to justify
+the introduction of function symbols into a language with only
+n-place predicates. The theory of definite descriptions is
+essential for this argument. After ∗30 there are
+only a handful of occurrences of description operators in PM. What is
+perhaps Russell’s most valuable contribution to philosophical
+logic and the philosophy of language, is, here, only a device used for
+a technical, though programatically important, purpose. The technical
+purpose, however, does indicate an important distinction between the
+logicism of Frege and Russell. Frege’s logic is based on the
+notion of concept, which is a case of a function from objects to truth
+values. Russell’s logic can be seen as further reducing the
+mathematical notion of function to his logical notion of
+propositional function. Some logicians firmly in the
+tradition of mathematical logic do not find this to be an advance, but
+it does indicate a significant difference between the approaches of
+Frege and Russell (see Linsky 2009).
+
+Definite descriptions are expressions of the form “the
+ϕϕ\phi” which occur in the position of terms apparently as the
+arguments of functions. Russell’s example from “On
+Denoting” (1905) is the expression “The present King of
+France” which apparently occurs as an argument to the function
+“is bald” in the sentence “The present King of
+France is bald”. In general the expression “the ϕϕ\phi
+is ψψ\psi” is defined as equivalent to the expression
+“There is exactly one ϕϕ\phi and it is ψψ\psi”:
+
+
+Contextual definition of Definite Descriptions
+ψxτϕ(x)=df∃xτ∀yτ[ϕ(y)≡y=x&ψ(x)]ψxτϕ(x)=df∃xτ∀yτ[ϕ(y)≡y=x&ψ(x)]∗14⋅01
+    \tag*{∗14·01}
+ \psi x_{\tau} \phi (x)  \eqdf  \exists x_{\tau} \forall y_{\tau}[ \phi ( y)  \equiv y = x \lamp  \psi (x)]
+
+
+
+The use of the expression =df=df\eqdf which makes it appear that both
+flanking expressions are terms, disguises the fact that in this case
+of a “contextual definition” what occurs on each side is
+are formulas, the right hand side replacing the left hand side, thus
+“eliminating” the definite description.
+
+To distinguish the two readings of the expression “The present
+King of France is not bald”, according to the
+“scope” of the description (with respect to negation), PM
+uses a “scope indicator” [xτϕ(x)][xτϕ(x)][x_{\tau} \phi ( x )] before
+the formula from which the description is to be eliminated by the
+definition above. Symbolize “The present King of France”
+as xK(x)xK(x)x K(x) and “x is bald” as B(x)B(x)B(x), the two
+readings will be symbolized as:
+[xK(x)]∼B(xK(x)),[xK(x)]∼B(xK(x)),[x K(x)] \lnot B(x K(x)),
+
+which, eliminating the description by definition, becomes: 
+∃x∀y{[K(x)≡y=x]&∼B(x)}∃x∀y{[K(x)≡y=x]&∼B(x)} \exists x \forall y  \{ [K(x)  \equiv y = x ] \amp \lnot   B(x) \} 
+
+which is the reading on which there is exactly one present King of
+France and he is not bald, and:
+∼[xK(x)]B(xK(x)),∼[xK(x)]B(xK(x)),\lnot [x K(x)]B(x K(x)),
+
+which, eliminating the description by definition, becomes:
+∼(∃x∀y{[K(x)≡y=x]&B(x)})∼(∃x∀y{[K(x)≡y=x]&B(x)}) \lnot ( \exists x \forall y  \{ [K(x)  \equiv y = x ] \amp B(x) \} )
+
+The latter is the reading on which it is not the case that there is
+one and only one present King of France and he is bald. That may be
+true if there is not exactly one present King of France, as is
+actually the case, as France has no King. In such a case the
+description is not “proper”, which is expressed with a
+special symbol in PM, E!E!E\bang, defined as:
+
+
+proper description
+E!(xτϕ(x))=df∃xτ∀yτ[ϕ(y)≡y=x]E!(xτϕ(x))=df∃xτ∀yτ[ϕ(y)≡y=x]∗14⋅02
+\tag*{∗14·02}
+E\bang (x_{\tau} \phi (x))  \eqdf  \exists x_{\tau} \forall y_{\tau}[ \phi (y)  \equiv y = x ]
+
+
+
+In theorem ∗14·3 we find one of the rare
+occurrences of bound variables ranging over propositions p and
+q of functions that are not predicative. (Suppose that p
+and q are of some r-type ()/n()/n()/n and f is a
+function of those propositions, f might have r-type
+(()/n)/m(()/n)/m(()/n)/m for m,n>1m,n>1m, n &gt; 1). Here we also see an occurrence of a
+formula xϕ(x)xϕ(x)x \phi (x) in subject position expressing a proposition as
+an argument of such a function. These expressions do not figure in
+theorems later in PM and only occasionally in the introductory
+material of some sections. Theorem ∗14·3
+asserts that in truth-functional contexts the scope of a (proper)
+description does not effect the truth value of a proposition in which
+it occurs:
+{[∀p∀q(p≡q)⊃(Φ(p)≡Φ(q))]&E![xϕ(x)]}⊃{Φ[xϕ(x)]χ(xϕ(x))≡[xϕ(x)]Φ(χ(xϕ(x)))}{[∀p∀q(p≡q)⊃(Φ(p)≡Φ(q))]&E![xϕ(x)]}⊃{Φ[xϕ(x)]χ(xϕ(x))≡[xϕ(x)]Φ(χ(xϕ(x)))}∗14⋅3
+\tag*{∗14·3}
+\begin{align}
+\{ [ \forall p \forall q ( p \equiv q ) \supset (\Phi(p) \equiv \Phi(q) )] \lamp E\bang[x \phi(x)] \} 
+\supset  \\
+\{  \Phi [x \phi (x) ]\chi(x \phi (x) )\equiv [x \phi (x)]  \Phi(\chi(x \phi (x ))) \}
+\end{align}
+
+
+This theorem is another indication of the way in which the
+philosophical basis of PM, with its propositional functions that are
+intensional is left behind as the mathematical content of PM is
+introduced with the definition of classes in the next sections.
+The “No-Classes” Theory of Classes
+
+The theory of sets (classes) in PM is based on a number of
+contextual definitions, similar in some ways to the theory of
+descriptions. In what follows we will occasionally use the expression
+“class” for the PM notion, to remind the reader of the
+differences between this and an axiomatic theory of sets, such as ZF,
+not to indicate that these are “proper classes” in the
+sense used in ZF or VGB class theory, to indicate an expression that
+does not define a set, such as {x∣x=x}{x∣x=x}\{ x \mid x = x \}, which is true
+of the universe VV\rV and so too “large” to be
+a set.
+
+The basic definition eliminates terms for classes from contexts in
+which they occur, just as the theory of definite descriptions
+eliminates descriptions occuring in the positions of terms:
+
+
+Contextual definition of classes
+ϕ{x∣ψ(x)}=df∃χ[∀x[χ!(x)≡ψ(x)]&ϕ(χ!)]
+ \phi \{x \mid  \psi (x) \}  \eqdf   \exists \chi 
+\left [ 
+\begin{split}
+\forall x [ \chi \bang (x) \equiv \psi (x) ] \\
+{} \lamp  \phi (\chi \bang)
+\end{split}
+\right] 
+\tag*{∗20·01}
+
+
+for χ!\chi \bang a predicative function
+
+
+In other words, an expression seeming to attribute the property
+ϕ\phi to a class {x∣ψ(x)}\{x \mid \psi (x) \} is true if and only if
+there is some predicative property χ\chi, which is co-extensive
+with ψ\psi, which really has the property ϕ\phi.
+
+The notion of membership (∈\in) which is the one non-logical
+relation symbol of ZF, is defined in the PM system:
+
+
+Definition of ∈\in 
+x∈ϕ=dfϕ!(x)
+\tag*{∗20·02}
+x  \in  \phi \eqdf  \phi \bang (x)
+
+
+for ϕ\phi a predicative function.
+
+
+The principal role of this “no-classes” theory of classes,
+as it is called, is to show how the theory of types resolves the
+paradoxes that had afflicted the naive theory of classes in The
+Principles of Mathematics and was seen by Russell to afflict
+Frege’s theory. After these foundational sections, all the
+individual variables that appear in PM should be seen as ranging over
+classes, (and, as will be explained below, the relation symbols are to
+be interpreted as ranging over relations in extension). The paradoxes
+appear in different forms, as seen in the Introduction to PM, but the
+resolution of the paradox of “the class of all classes which do
+not belong to themselves”, which appears in Russell’s
+intial letter to Frege, will be used as our example. This class, which
+leads directly to a contradiction, would appear in contemporary
+notation as {x∣x∉x}\{ x \mid x \notin x \}. The paradox arises when one
+asks whether that class is a member of iteself or not. The expression
+that it is a member of itself {x∣x∉x}∈{x∣x∉x}\{ x \mid x \notin x \} \in \{ x \mid
+x \notin x \} will have two class expressions to be eliminated by
+the first definition, and then several uses of the relation symbol
+∈\in which will also be eliminated. In the end there will be an
+expression ∼(ϕτ∈ψτ)\lnot (\phi_{\tau} \in \psi_{\tau}), which is not
+legitimate, since this is not well-formed for any τ{\tau}. A
+function must be of a higher order than its arguments.
+
+The effect of these two definitions is to demonstrate that classes
+fall into a simple theory of types, and while subject to these type
+restrictions, all of the inferences involving class expressions
+observe classical quantification theory as stated in
+∗10 above. The definitions of existential and
+universal quantification are simple. Note that Russell uses Greek
+letters (α\alpha, β\beta,…) to range over classes:
+
+
+Definition of quantification over “all classes”
+∀αχ(α)=df∀ϕχ({x∣ϕ!(x)})
+\tag*{∗20·07}
+\forall \alpha  \chi (\alpha) \eqdf  \forall \phi  \chi ( \{ x \mid   \phi \bang(x) \})
+
+for ϕ!\phi \bang a predicative function.
+
+Definition of quantification over “some classes” 
+∃αχ(α)=df∃ϕχ{x∣ϕ!(x)}
+\tag*{∗20·071}
+\exists \alpha  \chi ( \alpha ) \eqdf \exists \phi  \chi \{ x \mid  \phi \bang(x) \}
+
+for ϕ!\phi \bang a predicative function.
+
+
+The definition of ∈\in is extended to classes without change:
+
+
+Definition of membership of a class in a function
+α∈ψ=dfψ!(α) 
+\tag*{∗20·07}
+\alpha  \in  \psi \eqdf  \psi \bang ( \alpha)
+
+
+for ψ!\psi \bang a predicative function.
+
+
+The remainder of ∗20 consists of theorems proving
+that the theorems of quantificational logic developed in
+∗10 apply as well to expressions about classes,
+with the “Greek” variables α,β,…\alpha, \beta, \ldots in
+the place of individual variables x,y,…x, y, \ldots. Because formulas
+with Greek variables look and behave the same as individual variables
+with respect to quantificational logic, it is possible to overlook the
+interaction of the theory of classes with the theory of types. As
+Gödel points out in the passage quoted above (Gödel 1944
+[1951: 126]), the “contextual definitions” of class
+variables α\alpha, β\beta, etc., does not specify the
+elimination of class abstracts from all possible contexts, and in
+particular those that talk about classes. Linsky (2004) argues that PM
+has no notation for classes of propositional functions to distinguish
+them from classes of classes, although one could be added. This is
+another indication of the turn in PM after the intial sections (up to
+∗21) to an extensional system of classes and
+relations.
+
+In effect the class variables can be seen as propositional function
+variables, restricted to r-types in which only predicative
+functions appear, in arguments as well, leading to what might be seen
+as “hereditarily predicative functions”. In other words,
+the class variables can be replaced with propositional function
+variables in which the r-type of the function, and of all the
+arguments are of the form (β1,β2,…,βm)/1(\beta_1, \beta_2, \ldots, \beta_m )/1
+and the same applies to β1,β2,…,βm\beta_1, \beta_2, \ldots, \beta_m as well.
+This means that variables and terms for classes will obey the
+simple theory of types. These can be contrasted with
+r-types by presenting an alternative system of simple types or
+“s-types”.
+
+
+Church’s (1974) “Simple” Theory of
+Types
+
+ι\iota is the s-type for an individual.
+Where τ1…,τm\tau_1 \ldots, \tau_m are any s-types, then
+(τ1…,τm)(\tau_1 \ldots, \tau_m) is the s-type of a propositional
+function of a m-ary propositional function which has arguments
+of r types τ1…,τm\tau_1 \ldots, \tau_m, respectively.
+
+
+The order of an entity in the system of s-types is
+defined as follows:
+
+the order of an individual (of r-type ι\iota)
+is 0
+the order of a function of r-type τ1…,τm\tau_1 \ldots,
+\tau_m is n+1n+1 where n is the greatest of the order of the
+arguments τ1…,τm\tau_1 \ldots, \tau_m
+
+
+Church’s notion of “order” is not quite one that is
+familiar from talk of “first order logic” and
+“second order logic”. First order logic will have bound
+variables of s-type 0, and a logic which quantifies over
+variables of s-type 1, thus the familiar notion of
+“order” is one more than the highest order of any of the
+bindable variables in the s-type system.
+
+
+It should be noted that the every s-type is also an
+r-type, namely one that is hereditarily predicative. Thus it
+might seem that the expressions of the theory of classes are all
+simply a special case of formulas of the full system of the ramified
+theory of types. This will be true of the assignment of types to
+variables, but it must be remembered that the entire formula ϕ{x∣ψ(x)}\phi
+\{x \mid \psi (x) \} about a class is by definition
+∃χ[∀x[χ(x)≡ψ(x)]&ϕ(χ)].\exists \chi [ \forall x [ \chi (x) \equiv \psi (x)] \lamp  \phi (\chi)].
+
+All we have discussed so far is the relative types of ϕ\phi and
+χ\chi. The Axiom of Reducibility guarantees that there is a
+predicative χ\chi co-extensive with any ψ\psi in the defining
+condition of a class. To justify use of the class term {x∣ψ(x)}\{x \mid \psi
+(x) \} one must then just show that there is some function
+that has the higher-order property ϕ\phi. This is the step
+comparable to the proof that a definite description is proper, i.e.,
+true of exactly one thing, that justifies using that description as a
+singular term.
+Comparison of the Classes of PM with Axiomatic Set Theory
+
+It is widely thought that the system of PM offers a very different
+approach to the solution of the paradoxes than that of axiomatic set
+theory as formulated in the Zermelo-Fraenkel system ZF. While the
+theory of types is thought of as a desperate attempt to save the
+logicist program by artifically introducing types in order to resolve
+the paradoxes, axiomatic set theory seems to simply postulate sets as
+entities and adopts axioms in a first order language with
+“∈\in” for membership as its one non-logical symbol.
+This view has been forcefully expressed by Quine:
+
+
+Whatever the inconveniences of type theory, contradictions such as
+[the Russell paradox] show clearly enough that the previous naive
+logic needs reforming.…There have been other proposals to the
+same end—one of them coeval with the theory of types. [Quine
+cites Zermelo 1908.] But a striking circumstance is that none of these
+proposals, type theory included, has any intuitive foundation. None
+has the backing of common sense. Common sense is bankrupt, for it
+wound up in contradiction. (Quine 1951: 153)
+
+
+However, both the view that type theory lacks intuitive support, and
+that type theory and axiomatic set theory are based on the same
+intuitions dates back to Gödel in 1933, referring to set theory
+as the “theory of aggregates”:
+
+
+At least hitherto only one solution which meets these two requirements
+[of avoiding the paradoxes while retaining mathematics and the theory
+of aggregates] has been found.…This solution consists in the
+theory of [simple] types.…It may seem as if another solution
+were afforded by the system of axioms for the theory of aggregates, as
+presented by Zermelo, Fraenkel and von Neumann; but it turns out that
+this system of axioms is nothing else but a natural generalization of
+the theory of types, or rather, it is what it becomes of the theory of
+types if certain superfluous restrictions are removed. (Gödel
+1933 [1995: 45–46])
+
+
+The two “restrictions” that Gödel intends are the
+restriction that types are not cumulative and that the levels
+of types are limited to the natural numbers 0, 1,…
+n,…. Gödel suggests that one adopt a cumulative
+system of types in which a given type includes functions of all lower
+types (or orders), and the types extend beyond ω\omega,
+ω\omega + 1, …ωω\omega^{\omega}, …, through all the
+ordinals. Such a “natural generalization” of the theory of
+types, he asserts, amounts to the same as Zermelo-Fraenkel set theory
+(ZF). Gödel’s claim is spelled out by George Boolos (1971)
+as the “iterative conception” of sets, which can be
+expressed fromally. If one thinks of sets as built up in stages, with
+each stage adding all sets of members of the last stage, and the
+process extending endlessly, then one can prove that the axioms of ZF
+set theory are indeed provable from the axioms of the theory of the
+“iterative conception” of sets. In turn the
+“iterative conception” relies on a strong intuition,
+contrary to what Quine says. It is the same intuition that underlies
+the hierarchy of types.
+
+Following Boolos’ presentation of the “iterative
+conception of set” it seems that axiomatic set theory and PM do
+not differ widely, and express the similar intuitive notions of set
+that provide the same solution to the paradoxes.
+
+Strictly as presented in PM, however, the no-classes theory differs
+significantly from ZF. The sentences of the PM theory are expressed in
+the theory of types, as opposed to the first order theory of ZF. ZF
+and PM cannot simply be compared in terms of their theorems. Not only
+are there different axioms in the two theories, but the very languages
+in which they are expressed differ in logical power. If we follow
+Gödel and Boolos, however, the two are seen to be based on the
+same intuitive basis, and the differences are seen as the same,
+barring certain “superfluous restrictions” on the theory
+of PM.
+Relations in PM
+
+∗21 extends the notion of class which is the
+extension of a one place propositional function to the comparable
+notion of a “Relation” for functions of two arguments with
+the analagous contextual definition.
+
+
+Contextual definition of a relation in extension 
+ϕ{x;y∣ψ(x,y)}=df∃χ[∀x∀y(ϕ(x,y)≡ψ(x,y))&χ(λxλyψ(x,y))]
+\phi \{x ; y   \mid    \psi (x,y) \}  \eqdf  \exists \chi 
+\left[
+\begin{split}
+ \forall x \forall y 
+( \phi (x,y) \equiv \psi (x,y) ) \\
+{} \lamp  
+\chi ( \lambda x \lambda y   \psi (x,y))
+\end{split}
+\right ]
+\tag*{∗20·01}
+
+
+
+(Note: The use of this unusual notation ϕ{x;y∣ψ(x,y)}\phi \{x; y \mid \psi (x,y)
+\} in this one definition is meant to avoid the implication that a
+relation is interpreted as a set of ordered pairs, that would be
+represented by the contemporary notation ϕ{⟨x,y⟩∣ψ(x,y)}\phi \{\langle x,y \rangle
+\mid \psi (x,y) \}. The PM notation for propositional functions, as
+in ϕˆx\phi \hat{x} uses a caret over the variable where we would
+write λxψ(x)\lambda x \psi(x). The PM notation for a class is ˆxψ(x)\hat{x}
+\psi (x). A two-place propositional function is identified with
+variables also with carets: ϕ(ˆxˆy)\phi (\hat{x} \hat{y}) and the
+corresponding relation ˆxˆyϕ(x,y)\hat{x} \hat{y} \phi (x,y). This notation
+does not identify relations as classes of ordered pairs, and that is
+how our blend of PM and contemporary notation in ϕ{x;y∣ψ(x,y)}\phi \{x ; y \mid
+\psi (x,y) \} is to be taken.)
+
+The introduction of Greek letters for classes in
+∗20 and the use of “Roman letters” R,
+S, …in ∗21 for relations, marks a change in
+the notation used in PM. After ∗21 the letters
+ϕ,ψ,…\phi, \psi, \ldots rarely appear. As Quine remarks in his study of
+the logic of Whitehead and Russell, it would seem that after a certain
+point the body of PM makes use of extensional higher-order logic in a
+simple theory of types:
+
+
+In any case there are no specific attributes [propositional functions]
+that can be proved in Principia to be true of just the same
+things and yet to differ from one another. The theory of attributes
+receives no application, therefore, for which the theory of classes
+would not have served. Once classes have been introduced, attributes
+are scarcely mentioned again in the course of the three volumes.
+(Quine 1951: 148)
+
+
+Quine here hints at the view of PM that is widely shared among
+mathematical logicians, who see the ramified theory of types, with its
+accompanying Axiom or Reducibility, as a digression taking logic into
+a realm of obscure intensional notions, when instead logic, even if
+expressed in a theory of types, is extensional and is comparable to
+axiomatic set theory presented with a simple hierarchy of sets of
+individuals, sets of sets individuals, and so on.
+
+It is certainly true that the the remainder of PM is devoted to the
+theory of individuals, classes, and relations (in extension) between
+those entities. Thus the ontology of these later portions is a
+hierarchy of predicative functions arranged in a simple theory of
+types. This has led one interpreter, Gregory Landini (1998), to argue
+that only predicative functions are values of bound variables in PM.
+What we have interpreted as variables ranging over possibly
+non-predicative propositional functions, ϕ\phi, ψ\psi,…
+are for Landini only schematic letters, and are not bindable
+variables. The only bound variables in PM, he asserts, range over
+predicative functions. This is a strong version of a view that others
+such as Kanamori (2009) have expressed, going back to Ramsey (1931),
+namely that the introduction of the Axiom of Reducibility has the
+effect of undoing the ramification of the theory of types, at least
+for a theory of classes, and so a higher-order logic used for the
+foundations of mathematics ought to have only a simple type
+structure.
+
+Our interpretation of this change in attention to classes and
+relations indicated by the shift in notation is that it indicates the
+extent to which the solution to the paradoxes, which required a
+ramified theory of (possibly intensional) propositional functions may
+have superceded a logic based on an unproblematic notion of class and
+mathematical functions and relations between them, that appeared in
+the body of The Principles of Mathematics before
+Russell’s attention was drawn to the paradoxes. In the summary
+of the later sections of PM that follows below, it will appear that in
+fact the symbolic development follows very closely that of PoM from
+ten years earlier. While we do not know much about the order in which
+sections of PM were composed, but it will appear from this change of
+attention from propositional functions to classes and relations, that
+the later parts are in fact an earlier stratum in the conceptual
+development of the project that started out as a symbolic
+“Volume II” to follow PoM.
+
+To remind the reader of the change from talking of propositional
+functions to relations in extension, two further notational
+alterations are introduced. Greek letters such as α\alpha,
+β\beta, etc., but now y and x will be used
+as variables for ranging over classes as well. The individual
+variables which are ambiguous with respect to type, “typically
+ambiguous”, will now also range over classes. A function
+ϕ\phi of two variables x and y is indicated with the
+arguments in parentheses after the function variable: ϕ(x,y)\phi(x, y).
+A two place relation R holding between x and y is
+written xRyx \relR y, with the R in “infix”
+position. The obvious limitation of this notation is that it is not
+readily extended to three place relations, adding a third variable,
+say z. We will follow the practice in PM and write xRyx \relR
+y for binary relations. PM only requires binary relations for most
+of the three volumes, although the projected volume IV on geometry
+would need a notation for “x is between y and
+z”, as can be seen from Henry Sheffer’s unpublished notes from Russell’s lectures on
+geometry from 1910 at Cambridge. There he uses the notation
+yB(x,y)y\rels{B}(x,y) which blends the two styles.
+The Algebra of Classes
+
+The notions of the subset relation and the intersection and union of
+sets are defined in PM exactly as they are now (albeit with different
+terminology). The complement of a set and the universal class V\rV
+are not allowed in set theory, and rejected as “proper
+classes”. In PM, as they only are a set of entities of a given
+type τ\tau, they form a set of the next higher type, (τ)/1(\tau)/1.
+The complement of a set of a given type is the set of all entities (of
+that type) that are not in the set. Each empty set will be the
+complement of the universal set (of a given type τ\tau ) and so
+there will be the empty set of type τ\tau.
+α⊆β=df∀x(x∈α⊃x∈β)α∩β=df{x∣(x∈α&x∈β)α∪β=df{x∣(x∈α∨x∈β)
+\begin{align}
+\alpha \subseteq \beta &amp; \eqdf   \forall x (x  \in \alpha  \supset  x \in  \beta) \tag*{∗22·01}\\
+\alpha  \cap   \beta  &amp; \eqdf  \{x \mid  ( x \in  \alpha \lamp  x \in  \beta ) \tag*{∗22·02}\\
+\alpha  \cup   \beta  &amp; \eqdf  \{ x \mid  (x \in  \alpha  \lor x \in  \beta ) \tag*{∗22·03}\\
+\end{align}
+
+
+The type subscript τ\tau is added below as a reminder that the
+notions of universal set V\rV and complement are each with regard to a given type (and
+so an empty set ∅\emptyset will recur in each type.)
+−α=df{xτ∣∼(x∈α)}α−β=dfα∩−β
+\begin{align}
+- \alpha &amp;\eqdf  \{ x_{\tau} \mid  \lnot (x \in  \alpha )\}\tag*{∗22·04}\\
+{\alpha - \beta} &amp; \eqdf  {\alpha  \cap   {- \beta}}\tag*{∗22·05}\\
+\end{align}
+
+The Universal Class and the Empty Class
+Vτ+1=df{xτ∣(x=x)}\tag*{∗24·01}
+\rV_{\tau + 1} \eqdf  \{ x_{\tau} \mid  (x = x) \}
+
+
+The subscript on ‘V\rV’ indicates that the universe of
+classes of a given (simple) type τ\tau will be a member of the next
+type. There is no class of all classes of whatever type. This is in
+common with axiomatic set theory which holds that there is no set of
+all sets.
+∅τ=df−Vτ\tag*{∗24·02}
+\emptyset_{\tau} \eqdf  - \rV_{\tau}
+
+Mathematical functions in PM
+
+The logic of PM is based on propositions, propositional
+functions and relations in extension, unlike
+Frege’s which deals with objects, in particular, truth values,
+and functions, with the special case of concepts, which are functions
+from objects to truth values. PM reduces mathematical functions to
+“functional relations” in a way that is familiar from
+elementary courses. If there is binary relation which has a unique
+second argument for each first argument, i.e., 
+∀x∃y[xRy&∀z(xRz⊃z=y)]\forall x \exists y [x \relR y \lamp  \forall z (x \relR z \supset z = y)]
+
+then one can introduce a new function symbol fRf_R, such that
+∀x∀y(xRy≡fR(x)=y).\forall x \forall y (x\relR y \equiv f_R(x) = y).
+
+Similarly for an n+1n+1 place relation for each x1x_1, …,
+xnx_n there is a unique y such that R(x1,…,xn,y)R(x_1, \ldots, x_n,
+y), then one can introduce an n-place function g
+mapping x1,…,xnx_1, \ldots, x_n onto y. In PM the expressions for
+mathematical functions are definite descriptions, referring to the
+last argument of a relation as the “value” of the function
+described by that relation. We will use the expression fRf_R to
+refer to the functional term referring to the function derived from a
+relation R. PM uses the explicit definite description“the
+R of y” where we would use the functional
+expression fRf_R. The definition of a monadic functional
+term then is:
+fRy=df(x)(xRy)
+\tag*{∗30·01} f_Ry \eqdf  (x)(x \relR y)
+
+
+with the general form for an n-place functional term g
+derived from an n+1n+1 place relation S (following
+Russell’s notation in lectures):
+gS(x1,…,xn)=df(y)(x1Sx2,…,xn,y)g_S(x_1, \ldots, x_n) \eqdf   (y )(x_1 S x_2, \ldots, x_n, y)
+
+(The diligent reader will find that this presentation does not follow
+PM exactly. The example “the father of” based on a
+relation R expressing “x is the father of
+y” would make “the R’ of
+x” actually refer to the unique x which is the
+father of y, and so what has been explained above is
+appropriate to the converse of that relation, ˘R\relbR. The
+practice of reading the argument of a relational function as the
+x and the value as the y is so well established that we
+have taken a liberty with the actual definitions in PM.)
+
+Recall that from this point on in PM, the relations are to be
+considered as “relations in extension” and so it is easy
+to see how one can treat the relations as ordered n+1n+1-tuples of
+which the last member is unique given the first n arguments. In
+particular, a monadic function f can be seen in the familiar
+way as a set of ordered pairs (of ⟨x,fR(x)⟩\langle x, f_R(x) \rangle) for
+each argument x in the domain of the function.
+
+Given the treatment of “relations” as “relations in
+extension” it is no accident that the development of the logic
+of relations in ∗30–∗38
+looks familiar to contemporary logicians, with even some of the
+notation from PM surviving into contemporary usage. A series of
+notions are defined in a way quite familiar to the modern treatment of
+relations as sets of n-tuples:
+The Converse of a Relation
+˘R={λxλy(yRx)}
+\tag*{∗31·02} {\relbR} = \{\lambda x \lambda y (y \relR x)\}
+
+
+or, in terms of pairs: 
+˘R={⟨x,y⟩∣(yRx)}{\relbR} = \{ \langle x, y \rangle \mid  (y \relR x) \}
+Domains, Ranges and Fields of Relations
+
+The notions of the domain and range of a relation
+are also given a contemporary definition (and so also the notions of
+the domain and range of a function).
+Domain(R)=df{x∣∃y(xRy)}Range(R)=df{y∣∃x(xRy)}
+\begin{align}
+\tag*{∗33·11} \Domain (R) &amp;\eqdf  \{x \mid   \exists y  ( x \relR y ) \}\\
+\tag*{∗33·111} \Range (R) &amp;\eqdf  \{y \mid    \exists x (x \relR y) \}\\
+\end{align}
+
+
+Note that it is possible that a relation can its domain in one type
+and range in another. This adds complications in the theory of
+cardinal numbers when a relation of similarity (equinumerousity) holds
+between classes of different types. (See the discussion of ∗100
+below.)
+The Product of Two Relations
+
+The composition of relations R and S is called
+their relative product and uses a different symbol R∣SR\mid
+S where we write R∘SR \circ S:
+R∘S=dfλxλz{∃y(xRy&ySz)}
+\tag*{∗34·01} R \circ S \eqdf  \lambda x \lambda z   \{ \exists y ( x \relR y \lamp  y \relS z ) \}
+
+Restricted Relations
+
+In the case of the restriction of a relation R to a
+particular class β\beta, the terminology from PM is now retained
+with the same definition:
+R↾β=dfλxλy(xRy&y∈β)
+\tag*{∗35·02} R \upharpoonright  \beta \eqdf  \lambda x \lambda y   (x \relR y \lamp  y \in \beta)
+
+
+In his survey of PM, Quine (1951: 155) complains that this last 100
+pages of Part I is occupied with proving theorems relating redundant
+definitions of the same notions. Thus PM defines the notion of domain
+and range and then introduces notions that again define the same
+classes, which are proved to be equivalent. PM defines the notation 
+of ‘R‘‘βR\pmdq\beta’
+to be read as “the terms
+which have the relation R to members of β\beta” and
+uses the example:
+
+
+If β\beta is the class of great men, and R is the relation
+of wife to husband, R‘‘βR\pmdq\beta will mean “wives of great
+men”. (PM, 278)
+
+
+In contemporary logic with the notation of set theory used above,
+there is no need for a special symbol for this notion, as it is
+written as:
+R‘‘β=df{x∣∃y(y∈β)&xRy}
+\tag*{∗37·01} R\pmsq \pmsq \beta \eqdf  \{ x \mid    \exists y   (y   \in   \beta) \lamp  x \relR y \}
+
+Products and Sums of Classes of Classes
+∩α=df{x∣∀β(β∈α⊃x∈β)}
+\tag*{∗40·01} {} \cap   \alpha \eqdf  \{ x   \mid    \forall \beta   (\beta   \in   \alpha   \supset   x   \in   \beta) \}
+
+
+This is the intersection of α\alpha.
+∪α=df{x∣∃β(β∈α&x∈β)}
+\tag*{∗40·02} {} \cup   \alpha \eqdf  \{ x   \mid    \exists \beta   (\beta   \in   \alpha \lamp  x   \in   \beta) \}
+
+
+is the union of α\alpha.
+4.2 Part II: Prolegomena to Cardinal Arithmetic
+The Cardinal Number 1
+1=df{α∣∃x(α={x})}
+\tag*{∗52·01} 1 \eqdf  \{ \alpha \mid  \exists x  ( \alpha = \{x \} ) \}
+
+
+So the cardinal number 1 is the class of all singletons. There will be
+a different number 1 for each type of x. Frege, by contrast,
+defines the natural number 1 as the extension of a certain concept,
+namely being identical with the number 0, which itself is the
+extension of the (empty) concept of not being self identical. In
+axiomatic set theory the natural numbers are particular finite
+ordinals, in particular the series with 0 as ∅\emptyset, 1 is {0,{0}}\{0
+, \{ 0 \} \}, 2 is {1,{1}}\{1, \{1 \} \}, and so on. This construction
+is named the von Neumann ordinals.
+Pairs
+2=df{α∣∃x∃y(x≠y&α={y}∪{x})}
+\tag*{∗54·02} 2 \eqdf  \{ \alpha \mid   \exists x \exists y   (x \neq y \lamp  \alpha = \{y \}   \cup    \{ x \} ) \}
+
+
+Similarly, the number 2 is the class of all pairs, rather than a
+particular pair. In the type theory of PM there will be distinct
+couples for the types of y and x. When they are of the
+same type the couple is called “homogenous”. Even with
+homogenous pairs there will be distinct classes of pairs for each
+type, and thus a different number 2 for each type. The same notion
+applies to relations.
+Ordered Pairs
+
+The notion of an ordered pair, called an “ordinal
+couple” is defined as:
+⟨x,y⟩=df the extension of λxλy(x∈{x}&y∈{y})
+\tag*{∗55·01} \langle x, y \rangle \eqdf \textrm{ the extension of } \lambda x \lambda y (x   \in \{x \} \lamp  y  \in \{y\})
+
+
+The idea is that the order of the relation λxλy(x∈{x}&y∈{y})\lambda x \lambda y (x
+\in \{x\} \lamp y \in \{y\}) determines the first and second element
+of the ordered pair. It is a relation in extension, which is the
+analogue of a property in extension or class. A relation in extension
+has a distinction between the first and second elements due to the
+order of the defining relation. The closest in contemporary language
+would be:
+ϕ⟨x,y⟩=df∃ψ∀u∀v(ψ(u,v)≡λxλy[x∈{x}&y∈{y}](u,v)&ϕ(ψ))\phi \langle x, y \rangle  \eqdf   \exists \psi \forall u \forall v   ( \psi (u, v) \equiv \lambda x \lambda y [ x \in \{x\} \lamp  y \in \{y\} ] (u, v) \lamp  \phi (\psi) ) 
+
+Given the definition of extensions of relations this is the version of
+the no-classes theory for relations. After attending classes of
+Russell the year before, and having several discussions, Norbert
+Wiener (1914) proposed the following definition (in modern
+notation):
+⟨x,y⟩=df{{{x},∅},{{y}}} where ∅ is the empty set.\langle x, y \rangle \eqdf  \{\{\{ x\}, \emptyset \}, \{\{ y\}\}\} \textrm{ where } \emptyset \textrm{ is the empty set.}
+
+Wiener’s accomplishment was to capture the ordering of the pair
+which in PM is captured by the ordering of the arguments of relations
+with the unordered notion of set membership.
+The end of PM to ∗56
+
+The paperback abridged edition of PM to
+∗56 only goes this far, so the remaining
+definitions have only been available to those with access to the full
+three volumes of PM.
+Relative Types
+
+This section presents a discussion of relations between individuals of
+distinct types, introducing a notation for types, t‘xt\pmsq x for the
+type to which x belongs. This section is little used in Volume
+I. The special consequences for this notion when dealing with relative
+types of cardinal numbers is the topic of the Preface to Volume II,
+which was added after the first volume was already in print. The delay
+due to working out these details partially explains the three year gap
+between the publication of Volume I in 1910, and the remaining volumes
+II and III in 1913. Section ∗65 (On the Typical
+Definition of Ambiguous Symbols), is a discussion of typical
+ambiguity, the ambiguity of variables with respect to type.
+f:α→β=df
+\tag*{∗70·01} f: \alpha \rightarrow \beta \eqdf
+
+
+The functions f from α\alpha onto β\beta, that is, the
+Domain(f)=α\Domain (f) = \alpha and Range(f)=β\Range (f) = \beta
+Similarity of Classes
+α≈β=df(∃f)f:α1−1⟶β.
+\tag*{∗73·01} \alpha \approx \beta \eqdf  (\exists f) f : \alpha \stackrel{1-1}{\longrightarrow} \beta.
+
+
+There is a one-one function mapping α\alpha onto β\beta
+(similarity of α\alpha and β\beta). Contemporary
+discussions say that α\alpha and β\beta are
+equinumerous. Difficulties arise with respect to the
+definition of cardinal numbers when the relation of similarity they
+involve is one that has a domain and range in different types. See
+∗100 below.
+
+The main theorem in this chapter is a proof of the Cantor-Bernstein
+theorem, that if a set α\alpha is similar to a subset z of
+another set β\beta and β\beta is similar to a subset δ\delta
+of α\alpha then α\alpha and β\beta are themselves
+similar:
+∀α∀β∀γ∀δ[(α≈γ&β≈δ&γ⊆β&δ⊆α)⊃α≈β]
+ \forall \alpha \forall \beta \forall \gamma \forall \delta   
+\left[\left (
+\begin{split}
+\alpha \approx \gamma &amp; {}\lamp  \beta \approx \delta \\
+&amp;{} \lamp  \gamma \subseteq \beta \\
+&amp;{} \lamp  \delta \subseteq \alpha \\
+\end{split}
+\right) \supset \alpha \approx \beta \right] 
+\tag*{∗73·88}
+
+
+The proof here explicitly follows the proof by Ernst Zermelo from
+1908. Whitehead and Russell call this the
+“Schröder-Bernstein” theorem.
+The Axiom of Choice (Multiplicative Axiom)
+
+The Multiplicative Axiom, or “Axiom” of Choice, is not an
+axiom of PM, what is termed a “primitive proposition”, but
+is instead a defined expression that is added as an hypothesis to
+theorems for which it is used. This reflects the emerging awareness at
+the time of the role of the Axiom of Choice in various proofs, in
+particular, Zermelo’s proof of that every class can be
+well-ordered.
+ MultiplicativeAxiom=df∀α{∀β∀z[(β∈α&z∈α&β≠z)⊃(β∩z=∅)]⊃∃β∀z[α∈z⊃α∩β∈{σ∣∃ρ(σ={ρ})}]}{}\
+\begin{aligned}&amp;\textrm{Multiplicative}\\&amp;\textrm{Axiom}\end{aligned} \eqdf 
+\forall \alpha \left\{ 
+\begin{split}
+&amp;\forall \beta \forall z \left [
+\left(
+\begin{split}
+\beta   &amp; \in   \alpha \lamp {}\\
+ z   &amp; \in   \alpha \lamp {}\\
+\beta &amp; \neq z
+\end{split}
+\right) 
+\supset 
+(\beta \cap z = \emptyset) 
+\right] 
+\supset \\
+&amp; \exists \beta \forall z
+\left[
+\begin{split}
+&amp; \alpha  \in  z  \supset  \alpha \cap {} \\
+&amp;\beta   \in   \{ \sigma \mid   \exists \rho  (\sigma = \{\rho \} )\} 
+\end{split}
+\right]
+\end{split}
+\right\}
+\tag*{∗88·03}
+
+
+If α\alpha is a class of mutually exclusive classes, then there is
+a (“choice”) set β\beta such that the intersection of
+β\beta with each member of α\alpha is a unique member of
+β\beta.
+R∗\Rast The Ancestral Relation
+R∗=df{⟨x,y⟩∣(∃uxRu∨∃uuRx)&∀α[[x∈α&∀z∀w(z∈α&zRw⊃w∈α)]⊃y∈α]}
+\quad\Rast  \eqdf
+\left \{
+\begin{split}
+&amp;  \langle x, y \rangle \mid   (\exists u  x\relR u  \lor \exists u  uRx ) \lamp {} \\
+&amp; \forall \alpha   
+\left [ 
+\left[
+\begin{split}
+&amp; x  \in  \alpha \lamp  {}\\
+&amp;\forall z \forall w (z   \in   \alpha \lamp  zRw \supset w   \in   \alpha ) 
+\end{split}
+\right] \supset y  \in   \alpha 
+\right] 
+\end{split}\right \}
+\tag*{∗90·01}
+
+
+This follows Frege’s definition, namely, that y is in all
+the R-hereditary classes that contain x or (x is
+in the field of R ).
+The Powers of a Relation
+
+The “powers” of a relation R(Pot‘R)R (\textrm{Pot}\pmsq R) are
+the relations R, R2R^2, R3R^3, …where
+R2=dfR∘R,Rn+1=dfR∘Rn,…{R^2 \eqdf  R \circ R},\quad {R^{n+1} \eqdf  R \circ R^n},\quad \ldots
+
+These definitions begin with ∗91·03, using the notion of
+the ancestral of a higher-order relation between relations defined
+beginning with R. Lecons sur la theorie des fonctions
+
+
+The main result of this section is another proof of the
+Cantor-Bernstein theorem: “This proof is essentially the same as
+Bernstein’s published originally by Borel [1898: Note 1, pp.
+102–7]” (PM I, 589). In this proof the one-one relation
+between the sets α\alpha and β\beta is constructed from the
+powers of two relations R that maps α\alpha into β\beta,
+and S that maps β\beta into α\alpha. The one-one mapping
+is constructed in stages. First all of α\alpha is mapped onto
+β\beta by R. Those elements in β\beta not in the range of
+R are mapped onto α\alpha by S. But some elements in
+the range of S will have already been mapped by R. They
+need to be shifted to a new image in β\beta, again by R.
+This process is iterated through all of the powers of R, and
+then it is shown that the resulting relation is one to one from
+α\alpha onto β\beta. See Hinkis (2013) for a history of the many
+different proofs of this theorem.
+5. Volume II
+5.1 Prefatory Statement of Symbolic Conventions
+
+The writing of this preface delayed the publication of the second
+volume of PM, as Whitehead and Russell struggled over the
+complications it raised. The difficulties arise from the typical
+ambiguity of terms and formulas of the theory of types. Every
+constant, such as those for the numbers 0,1,…,ℵ00,1, \ldots, \aleph_0 will
+have a definition relative to each type. Without assuming the Axiom of
+Infinity for individuals, there is no guarantee that a given constant
+designates a non-empty class in a given type. The preface introduces
+the notion of “formal numbers”, which are to be
+interpreted as belonging to a type that makes them not identical with
+the ∅\emptyset for that type. Volume II begins with Part III,
+“Cardinal Arithmetic”. The notions of cardinal numbers are
+developed in full generality, extending to infinite cardinals.
+Consequently the theory of natural numbers, which are called
+“Inductive Cardinals” in PM, is introduced with a series
+of definitions of special cases of notions that are first introduced
+in a general form applying to any numbers or classes. For example,
+addition of natural numbers, as in the famous proof that 1+1=21 + 1 = 2
+in ∗110·04 is proved with for the special
+case of the addition of classes that applies to cardinal numbers,
+‘+c+_c’. The Summary to section A introduces the notion
+of homogenous cardinals, which are classes of similar classes
+whose members are all of the same type. It is possible to define
+similarity between two classes α\alpha and β\beta of distinct
+types say τ\tau and τ′\tau ', and cardinals are classified as
+descending and ascending as the domain of the
+relevant similarity relation is of a higher type than the range, and
+when of a lower type, respectively. The theory of cardinal numbers is
+straightforward with homogenous cardinals, however the exceptions must
+be kept in mind, as is evidenced in ∗100.
+5.2 Part III: Cardinal Arithmetic
+Definition of cardinal numbers
+Nc=df{x∣∀y(y∈x↔∀z∀w(z,w∈y↔z≈w)}
+\tag*{∗100·01} 
+\rN_c \eqdf  \{ x \mid  \forall y (y \in x \leftrightarrow \forall z \forall w (z,w \in y \leftrightarrow z \approx w) \}
+
+
+Cardinal Numbers are classes of equinumerous (similar)
+classes. We can add a notion of the number of a class to
+allow for a direct comparison with Frege: 
+#{x∣ϕ(x)}=df{y∣y≈{x∣ϕ(x)}}.\# \{x \mid \phi ( x) \} \eqdf  \{ y \mid  y \approx \{x \mid  \phi (x) \} \}.
+
+(In set theory of course this is too large to be a set, and so is just
+a “proper class”.)
+Hume’s Principle in PM
+
+Hume’s Principle which is described in Frege (1884:
+§63) as asserting that the content of the proposition that
+“the number which belongs to the concept F is the same as the
+number which belongs to the concept G” is equivalent to
+“the concept F is similar to the concept G”. In terms of
+classes this becomes α≈β≡#α=#β\alpha \approx \beta \equiv \# \alpha = \#
+\beta. Hume’s principle is the focus of much of the discussion
+of “Neo-Logicism”, the doctrine that Frege’s
+construction of the numbers can be built on a consistent foundation
+(see the entry on 
+ Frege’s theorem).
+
+Only one direction of this equivalence is provable in PM:
+α≈β⊃#α=#β
+\tag*{∗100·321}
+\alpha \approx \beta   \supset   \# \alpha = \# \beta
+
+
+The failure of the other direction, the implication from right to
+left, is due to the possibility that α\alpha and β\beta are of
+different types, so that any similarity relation between them will
+have its domain and range in different types. Suppose there are
+ℵ0\aleph_0 individuals, and consider two higher types with the
+cardinals in them of even larger, but distinct, cardinalities, say
+α\alpha in some high type has cardinality ℵ1\aleph_1 and that
+β\beta in an even higher type and has cardinality ℵ2\aleph_2.
+There are no sets of individuals similar to α\alpha or β\beta,
+so no similarity relation with a domain in α\alpha or β\beta
+will hold with respect to any set in the type of individuals. Suppose
+that #\# is defined in terms of such descending relation.
+Therefore #α={Λ}=0\# \alpha = \{ \Lambda \} = 0 and #β={Λ}=0\# \beta = \{
+\Lambda \} = 0 so #α=#β\# \alpha = \# \beta, yet α≉β\alpha \not\approx
+\beta on any similarity relation of whatever domain and range,
+because their cardinalities differ. Whitehead and Russell assert that
+the case of α\alpha and β\beta being in different types is the
+only way to construct an exception to this direction of Hume’s
+principle, and offer as a restricted version:
+∃γ[γ∈(α∩β)]⊃(α≈β≡#α=#β)
+\tag*{∗100·34}
+\exists \gamma   [\gamma \in (\alpha \cap \beta) ]  \supset   ( \alpha \approx \beta   \equiv   \# \alpha = \# \beta )
+
+
+The antecedent guarantees that α\alpha and β\beta are of the
+same type, and so the cardinal numbers involved are homogenous
+cardinals. (Landini (2016) argues that this section of PM is
+confused.)
+0 Defined
+0=df#∅
+\tag*{∗101·1} 0 \eqdf  \# \emptyset
+
+
+The class of all classes equinumerous with the empty set is just the
+singleton containing the empty set, so 0={∅}0 = \{ \emptyset \}.
+The Arithmetical Sum of Classes and Cardinals
+α+β=df[(β∩∅)×{α}]∪[(α∩∅)×{β}]
+\tag*{∗110·01}  
+\alpha + \beta \eqdf  [(\beta \cap \emptyset) \times \{ \alpha\}]   \cup    [ (\alpha \cap \emptyset )\times \{ \beta \} ]
+
+
+The arithmetic sum of α\alpha and β\beta is the union
+of α\alpha and β\beta after they are made disjoint by pairing
+each element of β\beta with {α}\{ \alpha \} and each element of
+α\alpha with {β}\{ \beta \}. The classes α\alpha and β\beta
+are intersected with the empty class, ∅\emptyset, to adjust the
+type of the elements of the sum. It is more recognizable to
+contemporary set theory by the equivalent defintion: 
+α+β=df(β×{α})∪(α×{β})\alpha + \beta \eqdf  (\beta \times \{ \alpha\})   \cup    ( \alpha \times \{ \beta \} ) 
+
+The cardinal sum of y and x
+y+cx={z∣∃α∃β[(y=#α&x=#β)&z≈α+β]}
+\tag*{∗110·02}
+{}\quad y +_c x = \{ z   \mid    \exists \alpha   \exists \beta [( y = \# \alpha \lamp  x = \# \beta) \lamp   z \approx \alpha + \beta ] \} 
+
+
+y+cxy +_c x expresses the cardinal addition of cardinals
+y and x. It is the arithmetical sum of
+“homogeneous cardinals”, cardinals of a uniform type, to
+which α\alpha and β\beta are related by N0c\rN_0 c (itself
+defined at [∗103·01]). The notation indicating that
+α\alpha is a homogenous cardinal α\alpha is N0c‘α\rN_0
+c\pmsq\alpha, which we might write as #0\#_0 in an extension of
+our contemporary notation replacing #\# above.
+
+The reader can now appreciate the notorious fact that 1+1=21 +1=2, the
+most elementary truth of arithmetic, is not proved until page 83 of
+Volume II of Principia Mathematica, and even then, almost as
+an afterthought:
+1+c1=2
+\tag*{∗110·643} 1 +_c 1 = 2
+
+
+Whitehead and Russell remark that “The above proposition is
+occasionally useful. It is used at least three times,
+in…”. This witticism reminds us that the theory of
+natural numbers, so central to Frege’s works, appears in PM as
+only a special case of a general theory of cardinal and ordinal
+numbers and even more general classes of isomorphic structures.
+Exponentiation
+
+Exponentiation for cardinals is defined in such a way that it
+coincides with Cantor’s notion that the cardinality of the
+powerset of a class α\alpha is 2 raised to the power of the
+cardinality of α\alpha:
+||℘α||=2||α||
+\tag*{∗116·72}
+\lvert\lvert \wp \alpha \rvert\rvert  = 2^{\lvert\lvert  \alpha \rvert\rvert }
+
+Greater and Less
+
+Cantor’s Theorem:
+2y>y
+\tag*{∗117·661} 2^{y} &gt; y
+
+
+This is Cantor’s theorem that the if a set α\alpha has a
+cardinal number y then the cardinal number 2y2^{y} of the
+powerset of α\alpha is greater than y.
+The Natural Numbers
+
+The most direct comparison with Frege’s development of the
+natural numbers comes with the notion of Inductive Cardinal
+by which PM means the natural numbers 0, 1, 2,…, and the theory
+of these numbers including the principle of induction. Although the
+numbers 0 and 1, as well as addition of natural numbers +c+_c is has
+been defined earlier, they are defined as cardinal numbers and
+addition will apply to all cardinal numbers, finite and transfinite.
+For the finite natural numbers, special notions need to be defined
+first. For the proof of the Peano Postulates it is necessary not only
+to define 0, but also the notion of successor. For Frege the
+notion of (weak) predecessor of a number is defined, thus 0 and 1 are
+the predecessors of 1, while 0, 1 and 2 are 1 the predecessors of 2,
+etc. The successor of n is then defined by counting the
+predecessors of a number, in terms of the definition of number, it is
+the number of the class of predecessors. This definition would not
+work for PM, where each number would be of a higher type, as it is
+defined as a set containing that number. There will in fact be natural
+numbers for each type, thus a set of all pairs of individuals of type
+0, a set of pairs of sets of type 1, etc., for each type. There is no
+one type, however, at which there are all of the natural numbers (sets
+of equinumerous sets of that type) without an assumption that there
+are infinitely many members of some one type.
+
+The solution in PM is to guarantee that for each finite set of
+n individuals of type 0, there will be some object not in that
+set, which can be included the set defining the successor. That such a
+new individual can be found is guaranteed by the Axiom of Infinity,
+which in effect asserts the existence of distinct individuals of any
+finite number. It is interesting to note the the “Axiom”
+of Infinity is not a primitive proposition of the logic of
+PM. Instead it is an additional hypothesis, to be used as an
+antecedent to mathematical assertions upon which it depends. The issue
+of whether the system of PM succeeds as logicism is thus not
+settled by noting that an Axiom of Infinity has to be assumed, but by
+determining whether that “Axiom” is derivable from logical
+principles alone.
+
+In axiomatic set theory the “Axiom of Infinity” guarantees
+the existence of a particular set, the ordinal ω\omega:
+∃x[∅∈x&∀y(y∈x⊃y∪{y}∈x)]
+\exists x [ \emptyset   \in   x \lamp  \forall y ( y   \in   x \supset y \cup \{ y\}   \in   x ) ]
+
+
+The inductive cardinals (natural numbers) are defined as the
+numbers bearing the ancestral of the +1+_1 relation to 0. Given that
+the +1+_1 relation is the PM account of successor this is
+the same definition as for Frege.
+
+Inductive Cardinals N
+N=df{x∣0S∗x}
+\tag*{∗120·01}
+\rN  \eqdf  \{x\mid  0 \relSast x \}
+
+
+The inductive cardinals N are the familiar natural
+numbers, namely 0 and all those cardinal numbers that are related
+to 0 by the ancestral of the “successor relation”
+S, where xSyx\relS y just in case y=x+1y = x +1. 
+Axiom of Infinity=df∀y({x∣0S∗x}⊃y≠∅)
+\tag*{∗120·03}
+\textrm{Axiom of Infinity} \eqdf    \forall y ( \{x\mid  0\relSast x \} \supset y \neq \emptyset )
+
+
+This Axiom of Infinity asserts that all inductive cardinals are
+non-empty. (Recall that 0={∅}0 = \{\emptyset \}, and so 0 is not
+empty.) The axiom is not a “primitive proposition” but
+instead to be listed as an “hypothesis” where used, that
+is as the antecedent of a conditional, where the consequent will be
+said to depend on the axiom. Technically is not an axiom of
+PM as ∗120·03 is a definition, so this is just
+further defined notation in PM!
+
+Whitehead and Russell do carry out the step of the logicist program of
+deriving Peano’s Postulates based on the prior definitions of
+the notions of Natural number, 0, and successor, as Russell describes
+the project later, in (1919). This is in fact what is done in
+∗120 “Inductive Cardinals” of PM, but
+is not described as such, either there or in introductory material.
+The results are not proved separately, but as they appear in a
+development of various results about natural numbers. Indeed some, such as ∗120·31, can only be seen to be versions of a Peano axiom with a bit of work.
+
+0 is a natural number. 
+
+  0∈N
+  \tag*{∗120·12} 0   \in  \rN
+  
+
+The successor of any number is a number. 
+
+  n∈N⊃n+c1∈N
+  \tag*{∗120·121} n   \in \rN \supset n +_c 1   \in  \rN
+  
+
+No two numbers have the same successor (assuming the axiom of
+Infinity). 
+
+   Axiom of Infinity⊃(n+c1=m+c1⊃n=m)
+  \tag*{∗120·31}
+
+\  \textrm{Axiom of Infinity} \supset (n +_{c} 1 = m +_{c} 1 \supset n = m)
+  
+ Given the way that the successor
+operation is defined, it is not a matter of logic that there is an
+extra individual to add to a set of size n to give one of size
+n+c1n +_{c} 1. This is guaranteed by adding the Axiom of Infinity as
+an hypothesis to the theorem.
+0 is not the successor of any number. 
+
+  n+c1≠0
+  \tag*{∗120·124} n +_{c} 1 \neq 0
+  
+Any property ϕ\phi which belongs to 0, and belongs to the
+successor of m provided that it belongs to m, belongs to
+all natural numbers n. 
+
+  ∀n{[n∈N⊃∀m(ϕm⊃ϕ(m+c1))]⊃ϕn}
+  \tag*{∗120·124}
+  \forall n \{ [ n   \in  \rN \supset \forall m( \phi m \supset \phi (m +_c 1))] \supset \phi n \}
+  
+
+
+
+In contemporary set theory the notion of the successor of a number is
+defined directly for the ordinals as s(x)={x∪{x}}s(x) = \{ x \cup \{x \} \}
+rather than by adding 1, and addition is defined using the familiar
+recursive definition:
+x+0=xx+s(y)=s(x+y)
+\begin{align}
+x + 0 &amp; = x\\
+x + s(y) &amp; = s (x + y)
+\end{align}
+
+
+The use of recursive definitions is justified by a theorem proving
+that they describe a unique function. The induction axiom is justified
+by showing that any class that contains 0, and for any number n
+contains s(n)s(n) will contain all of the numbers in ω\omega. The
+existence of ω\omega is guaranteed by the ZF axiom of infinity.
+
+At this point, after 225 pages in Volume II, the reader will see how
+to compare the logicist reduction of arithmetic in PM with rival
+accounts of Frege and of contemporary set theory.
+
+Frege completes his development of the natural numbers at page 68 of the Volume II of his
+Basic Laws of Arithmetic published in 1903, which follows the
+250 pages of Volume I that had been published in 1893. So both Frege
+and the authors of PM took great pains to prove more advanced theorems
+only after a chain of closely argued lemmas based on their own
+formalized symbolic logic.
+
+Frege ends his deductions of the laws of arithemtic with results about
+the notions of 0, Successor, and the principle of Induction which
+include the Peano Axioms. He does not consider arithmetical functions,
+such as addition or multiplication, and thus does not define the
+successor of a number n as the result of adding 1 to
+n.
+
+Frege’s account is streamlined in other ways as well. He had
+always considered the analysis of simple identity sentences to be
+important to his logicism, dating back to the Begriffsschrift
+(1879), on through his Foundations of Arithmetic (1884) and
+his “On Sense and Reference” (1892), and even in the
+appearance of the example “22=2+22^2 = 2 + 2” in the forward
+to the Basic Laws of Arithmetic. Indeed the analysis of
+identity sentences is the starting point of his introduction of the
+theory of sense and reference in 1879,
+yet Frege does not diverge from
+his project enough to show how such an identity would be proved. So
+Whitehead and Russell might well have wanted to include their proof of
+1+1=21+1 = 2 at ∗110·643 as a reminder of
+the analysis of mathematical equations in PM using the
+“descriptive functions” of ∗30 and
+then the account of definite descriptions in
+∗14.
+
+Frege also does not construct the general theory of the arithmetic of
+cardinal and ordinal numbers that occupies PM for much of Part III.
+Indeed, after the theorems on Arithmetic in §54 which concludes
+Part II of Basic Laws of Arithmetic, Frege jumps directly to
+the topic of Real Numbers for the remainder of Volume II. Judging
+simply on the amount of theorems that had to be proved in leading to
+the account of Peano Arithmetic, PM does not differ wildly from
+Frege’s earlier attempt.
+
+Admittedly the system of PM is an indirect and cumbersome system to
+develop if the theory of Arithmetic were the only goal in mind.
+Firstly, however, the system of the ramified theory of types is
+independently interesting for the foundations of logic that it
+provides. After ∗20 the theory of classes, and
+development of general notions of arithmetic for relations which
+follows, does present the arithmetic of the natural numbers as a
+special case which can be generalized to the arithmetic of ordinal and
+cardinal numbers all in a logic with a simple hierarcy of types. The
+survey below of what follows in Volume II and Volume III shows the
+particular way of developing the theory of rational and then real
+numbers that PM follows. The results in set theory will seem
+primitive, as the results are dated to around 1908, at just the point
+when axiomatic set theory began its extraordinary development.
+Whitehead and Russell were not active contributors to set theory and
+so PM should not be studied for later technical results that may have
+been anticipated here. Russell summarized results in PM from the
+current state of the study of infinite cardinals and ordinals in a
+paper he give in Paris in a paper called “On the Axioms of the
+Infinite and Transfinite” (Russell 1911). There is, however, one
+result concerning two notions of infinity that appears to originate
+with PM.
+Dedekind Infinity
+
+In PM a class is a finite “inductive” class if
+and only if it can be put into a one to one correspondence with the
+Natural Numbers less than or equal to some natural number 1. It will
+be infinite if and only if it is
+
+A class is Dedekind Infinite (Reflexive) if and only
+if it can be put in a one to one correspondence with a proper subset
+of itself.
+
+The key theorem in this section is:
+If y is reflexive then 22y is reflexive.
+\tag*{∗124·57}
+\textrm{If } y \textrm{ is reflexive then } 2^{2^y} \textrm{ is reflexive.}
+
+
+The Inductive and Reflexive notions of infinity coincide if one
+assumes that axiom of Choice. This result does not assume the axiom of
+Choice.
+
+George Boolos (1994: 27) describes the details of this argument and
+quotes J.R. Littlewood as saying:
+
+
+He [Russell] has a secret craving to have proved some
+straight mathematical theorem. As a matter of fact there is
+one: “22α>ℵ02^{2^{\alpha}} &gt; \aleph_0 if α\alpha is
+infinite”. Perfectly good mathematics.
+
+
+As use of the Axiom of Choice is explicitly indicated, and many
+results do not use it, the unique contribution to set theory of PM may
+be in its indication of what can be proved without assuming
+Choice.
+5.3 Part IV: Relation-Arithmetic
+
+Relation Arithmetic is the study of the generalization of
+cardinal and ordinal numbers to classes of similar classes where
+similarity is based on an arbitrary relation. A relation P is
+similar to a relation Q, if there is a one to one relation
+S (a correlator) relating the domain of P to
+the domain of Q so that if xPyx\relP y for some x and
+y then if xPyx\relP y and yQzy\relQ z then z˘Syz \relbS y.
+The mapping S is an isomorphism between the relations P
+and Q. A relation number will then be a class of
+relations that are similar to each other. Relation Arithmetic then
+generalizes the notions of cardinal arithmetic such as sum and
+product, to arbitrary relation numbers. The later portions of PM
+should thus be studied for a hint of how the real numbers and the use
+of mathematics in measurement can be developed with this rival
+foundation on the theory of relations. Gandon (2008, 2012) argues that
+the issue of the application of mathematics is better explained by the
+logicism of PM. Russell himself expressed regret that the material in
+Part IV was not more carefully studied by his contemporaries (Russell
+1959: 86). Scholars of the history of logic will certainly continue to
+look through these later portions of PM which follow
+∗120.
+Ordinal Similarity
+
+∗151·01P
+and Q are ordinally similar 
+=df∃S[S:Domain(R)1−1⟶Domain(Q)&P=S∘Q∘˘S]
+\eqdf \exists S [S: \Domain(R) \stackrel{1-1}{\longrightarrow} \Domain(Q) \lamp  P = S \circ Q \circ {\relbS} ]
+
+
+
+
+P and Q are similar ordinally (PsmorQP \smor Q)
+just in case there is a one to one mapping of the domain of P
+into the domain of Q such if xRyx\relR y and yQzy\relQ z then
+z˘Syz \relbS y.
+
+The sum of relations P and Q, P⊕QP \oplus Q,
+is defined as:
+P⊕Q=df∃x∃y{(xPy∨xQy)&[∃z(yPx∨zPx)∨∃z(yQz∨zQy)]}{}\quad
+P \oplus Q \eqdf  
+\exists x \exists y   
+\left\{ 
+\left(
+\begin{split}
+&amp; x\relP y   \lor {} \\
+&amp; x\relQ y
+\end{split}
+\right) \lamp  
+\left[ 
+\begin{split}
+&amp;\exists z (y\relP x   \lor  z\relP x)  \lor {}\\  
+&amp; \exists z   (y\relQ z \lor  z\relQ y)
+\end{split}
+\right] 
+\right\}
+\tag*{∗160·01}
+
+
+As it is put in the headnote to ∗160: 
+
+
+…we may regard the sum of P and Q as a relation
+which holds between x and y when either x
+precedes y in the P series, or x precedes
+y in the Q series, or x belongs to the
+P-series and y belongs to the Q-series.
+
+
+The product of relations P and Q, P⊗QP \otimes
+Q, is defined as:
+ P⊗Q=df{⟨x,y⟩∣∃u(xPu∨uPx)&∃v(yQv∨vQy)}{}\quad
+\tag*{∗166·01}{}\ 
+P \otimes Q \eqdf  \left\{ 
+\langle x, y \rangle \mid   \exists u (x\relP u  \lor u\relP x)\lamp  \exists v (y\relQ v  \lor v\relQ y) 
+\right\}
+
+
+lt follows from the definition that the relation P⊗QP \otimes Q will
+relate pairs ⟨x,z⟩\langle x, z \rangle and ⟨y,w⟩\langle y,w \rangle as
+follows:
+⟨x,z⟩P⊗Q⟨y,w⟩≡{[∃z(yPx∨zPx)∨∃z(yQz∨zQy)]&zQw}∨(z=w&xPy){}\quad
+\langle x,z \rangle P \otimes Q \langle y,w \rangle   \equiv  
+  \left \{ 
+\left[
+\begin{split} &amp; \exists z (y\relP x \lor  z\relP x)   \lor {} \\
+ &amp; \exists z (y\relQ z \lor  z\relQ y)
+\end{split}
+\right] 
+\lamp  z\relQ w \right \} \\
+ \lor   ( z = w \lamp  x\relP y )
+\tag*{∗166·112}
+
+
+It is possible to prove results about the sums and products of
+relations that show the differences between products and sums of
+relations and of numbers. The relation of product is associative:
+
+∗166·42(P⊗Q)⊗R(P
+\otimes Q) \otimes R is ordinally similar to
+(smor)P⊗(Q⊗R)(\smor) P \otimes (Q \otimes R)
+
+
+The relations distribute in one way:
+(Q⊕R)⊗P=(Q⊗P)⊕(R⊗P)
+\tag*{∗166·45} 
+(Q \oplus R) \otimes P = (Q \otimes P) \oplus (R \otimes P)
+
+
+However, it does not hold in general that:
+P⊗(Q⊕R)=(P⊗Q)⊕(P⊗R).P \otimes (Q \oplus R) = (P \otimes Q) \oplus (P \otimes R).
+
+For the purposes of defining rational and real numbers as relations
+between relations, it is necessary to define the ordering relation
+between individuals related by the relation, that is, in the domain or
+range (the field) of the relations. This is described in the
+summary of ∗170 as follows:
+
+
+…α\alpha is said to precede β\beta…if we consider
+the two classes α−β\alpha - \beta and β−α\beta - \alpha, there are
+members of α−β\alpha - \beta which are not preceded by any members of
+β−α\beta - \alpha. (Vol. II, 1912: 411 and 1927: 399)
+
+
+∗170·1α\alpha
+precedes β\beta in the
+relation
+P=df∃x{x∈(α−β)&∼[∃y(y∈β−α&yPx)]} P\eqdf \exists x \{ x \in ( \alpha - \beta) \lamp \lnot [ \exists y
+(y \in \beta - \alpha \lamp y\relP x)] \} 
+
+
+
+The notions of the sum and product of relation numbers is defined as
+the relation number of the sum and product of the relations, with
+adjustments made so that the types of the relations are uniform, and
+the numbers contain disjoint relations, as was seen in the definition
+of sum for cardinal numbers in ∗110 above. If
+x and y are relation numbers, their sum is x˙+yx \dot{+}
+y and the product is x˙×yx \dot{\times} y.
+
+It is proved that operation of sum for relation numbers is associative
+and other properties that directly follow from the corresponding
+properties of the sums and products of relations. Among the many
+theorems is the fact that sum for relation numbers is associative:
+(y˙+x)˙+ρ=y˙+(x˙+ρ)
+\tag*{∗180·56}
+( y \dot{+} x ) \dot{+} \rho = y \dot{+} ( x \dot{+} \rho)
+
+
+The distribution of product of relation numbers over sum for relation
+numbers holds in one form:
+(x˙+ρ)˙×y=(x˙×y)˙+(ρ˙×y)
+\tag*{∗184·42} 
+( x \dot{+} \rho) \dot{\times} y = (x \dot{\times} y) \dot{+} ( \rho \dot{\times} y )
+
+5.4 Part V: Series
+
+A series (linear ordering) is defined as a relation
+that is antisymmetric ∀x(∼xRx)\forall x (\lnot x\relR x),
+transitive ∀x∀y∀z(xRy&yRz⊃xRz)\forall x \forall y \forall z (x\relR y \lamp
+y\relR z \supset x\relR z), and connected ∀x∀y(xRy∨yRx)\forall x
+\forall y (x\relR y \lor y\relR x).
+(∗204·01) (These properties are restricted
+to a specific domain for each relation. Thus a connected relation will
+hold between any two members of a given domain.) This is now called a
+linear ordering of a given set.
+Sequents
+
+
+Thus sequents of α\alpha are its immediate successors. If
+α\alpha has a maximum, the sequents are the immediate successors of
+the maximum; but if α\alpha has no maximum, there will be no one
+term of α\alpha which is immediately succeeded by a sequent of
+α\alpha; in this case, if α\alpha has a single sequent, the
+sequent is the “upper limit” of α\alpha. (PM Vol. II,
+“Summary of ∗205”, 1912: 577 or 1927: 559)
+
+Dedekindian Relations
+
+
+We call a relation “Dedekindian” when it is such that
+every class has either a maximum or a sequent with respect to it. (PM
+Vol. II, “Summary of ∗214”, 1912: 684 or 1927: 659)
+
+
+
+This is the standard definition that every segment with an upper bound
+has a least upper bound. That least upper bound will either be the
+maximum of the set or the least individual greater than all members of
+the set.
+6. Volume III
+6.1 Part V: Series (continued)
+Elementary properties of well ordered series.
+
+At ∗250·51 proves that the Axiom of Choice
+follows from the Well-Ordering Principle, that is, that every set can
+be well-ordered.
+The series of Ordinals
+
+The “Burali-Forti” paradox is described in the
+Introduction to PM as one of the contradictions that can be resolved
+by the theory of types:
+
+
+It can be shown that every well-ordered series has an ordinal
+number…and that the series of all ordinals (in order of
+magnitude) is well-ordered. It follows that the series of all ordinals
+has an ordinal number, Ω\Omega say. But in that case the series of
+all ordinals including Ω\Omega has the ordinal number Ω+1\Omega +
+1, which must be greater than Ω\Omega, Hence Ω\Omega is not
+the ordinal number of all ordinals. (PM Vol. I, 1925: 61 and 1910:
+63)
+
+
+In ∗256 we find the resolution of the Burali-Forti
+contradiction in observing the relative types of classes of ordinals.
+Ordinal numbers, as classes of isomorphic series, will be of a higher
+type than their members. The purported “ordinal number of all
+ordinal numbers” Ω\Omega will be restricted to a type above
+the type of the ordinals that are its members. Just as there is no
+class of all classes (of some type or other) there is also no ordinal
+of all ordinal numbers.
+
+Theorem ∗256·56 demonstrates that “in
+higher types there are greater ordinals than any to be found in lower
+types”. (PM Vol.III, 75)
+Zermelo’s Theorem
+
+∗258·326
+Assuming the Axiom of Choice, every set can be
+well-ordered.
+
+
+This proof of Zermelo’s theorem follows Zermelo’s
+“new proof” of Zermelo (1908). Together with
+∗250·51 this shows that the Axiom of Choice
+is equivalent to the Well Ordering principle.
+The Transfinite Ancestral Relation
+
+The discussion of “transfinitely hereditary” properties in
+∗257 constitutes the discussion of
+“transfinite induction” that Russell pointed out to
+Reichenbach in the discussion reported above from Russell (1959:
+86),
+Finite Ordinals
+
+It is shown in ∗262 that every infinite well
+ordered series consists of a series (well ordered set) of
+progressions. (ω\omega orderings).
+The series of Alephs
+
+A result of Hausdorff in (1906),
+that ω1\omega_1, the first
+uncountable ordinal) is not the limit of a progression of smaller
+ordinals is shown to follow if one assumes the Axiom of Choice
+(∗265·49). It is then conjectured that this
+cannot be shown without relying on the Axiom of Choice. See
+Grattan-Guinness (2000: 403) for a discussion of Hausdorff’s
+influence on the content of PM.
+
+Dorothy Wrinch, who had been a member of Russell’s circle of
+unofficial students during the war, published in 1919 an article on
+Dedekindian series of ordinal numbers. She describes the result as
+investigating “necessary and sufficient conditions that PQP^Q
+should be Dedekindian or semi-Dedekindian when P and Q
+are well ordered series” (Wrinch 1919: 219). This study follows
+up the result in ∗124 that is described in Boolos
+(1994), as an investigation of the arithmetic of ordinals without
+assuming the Axiom of Choice. Wrinch’s paper is follows not only
+the theorems of PM in its notation, but also makes use of theorems up
+to the end of section V on Series, with numbers following the dot, and
+so could easily be added as ∗277. Russell intended
+to found a school of “mathematical philosophy”, and of
+course succeeded in attracting Ludwig Wittgenstein to the foundational
+issues in PM, but there is no other indication of logicians attempting
+to set their results in the framework of PM.
+6.2 Part VI: Quantity
+
+In ∗300–∗314, positive
+and negative integers, ratios and real numbers all defined. The goal
+of the section is to begin the study of how these numbers are used in
+the measurement of quantities in geometry and physics.
+Ratios
+Rn/mS=df∀x∀y(xRny⊃xSmy) R n/m S \eqdf \forall x \forall y ( x\rels{R^n} y \supset
+x\rels{S^m}y) 
+
+for n, m relatively prime.
+
+Relations R and S stand in the ratio of
+n to m when xRnyx\rels{R^n} y then xSmyx\rels{S^m} y,
+where RnR^n is the n-th power of R and SmS^m is the
+m-th power of S (see ∗91). The ratio
+of two relations is represented by numbers n and m that
+are relatively prime, namely, if
+∀j∀k∀l[(n=j×l&m=k×l)⊃l=1].\forall j \forall k \forall l [(n = j \times l \lamp m = k \times l
+ )\supset l = 1].
+
+Ratios thus are relations between relations. Rational
+Numbers, in keeping with the generalized notions of all numbers
+in PM will be classes of similar ratios, and thus the work of
+developing the theory of rational, and then real numbers, is carried
+out in terms of ratios and relations between ratios.
+Real Numbers
+
+The real numbers Θ\Theta are defined as “the series of
+segments of the series of ratios”, or the set of Dedekind cuts
+of the sequence of rational numbers, in their standard ordering.
+Technically Θ\Theta is a relation in extension. The individuals
+that are related in the ratios, and thus at the basis of the series of
+rational numbers must be infinite in number for the PM version of the
+real numbers to have the structure we expect. In the introductory
+material to the section they point out that while the construction of
+the reals thus requires the Axiom of Infinity, they add it explicitly
+to the theorems where needed and try as much as possible to derive the
+results upon which it does not rely without making that
+assumption.
+
+The theory of real numbers in PM is closer to that of Frege than the
+“arithmetizing” accounts of Dedekind or Cantor. Dedekind
+postulated that irrational numbers are to be “created” to
+fill out the gaps in the series of rational numbers that are marked by
+Dedekind cuts (Dedekind 1872 [1901: 15], while Cantor (1883: §9, para. 8
+[1996: 899]) identified real numbers with Cauchy sequences of rational
+numbers. He says that one may define a real number with a sequence of
+rational numbers aνa_\nu such that 
+limn→∞(aν+μ−aν)=0(for arbitrary μ).\lim_{n \rightarrow \infty} (a_{\nu + \mu} - a_{\nu}) = 0
+\qquad\textrm{(for arbitrary \(\mu\)).}  
+
+Frege, and PM, however, see real numbers as abstracted from the
+similiarity of relations with a certain structure. See Gandon (2012)
+for a fine grained comparison of the Frege and Russell
+constructions.
+
+It is interesting to note that the overall structure and contents of
+sections in PM and Basic Laws are similar. They both share a
+first section on the symbolic logic that they will use, then a series
+of definitions and theorems about the notions of number and concepts
+used in arithmetic, with a concluding section on real numbers. While
+the range of the mathematics that is to be reduced to logic in the two
+works is the same, Frege restricts his work more directly to natural
+and real numbers, while PM includes the theory of classes and
+arithmetic of relations and relations and infinite sets. While all of
+these topics are handled in the initial chapters of a contemporary
+textbook in axiomatic set theory, as Urquhart (2013) suggests, this
+may be the inevitable fate of even the most groundbreaking
+mathematical works.
+
+The addition and multiplication of real numbers is defined in the next
+sections as they are for other numbers, but taking disjoint instances
+of each number similarity class, and performing the corresponding
+operation on them. Many results assume the Axiom of Infinity as an
+hypothesis. The operations are symbolized as +s+_s and
+×s\times_s.
+
+
+Measurement—i.e. the application of ratios and real
+numbers to magnitudes—will be dealt with in Section C; for the
+present, we shall confine ourselves to those properties of magnitude
+which are presupposed by measurement.…
+
+We conceive of a magnitude as a vector, i.e. as an operation,
+i.e. as a descriptive function in the sense of
+∗30. Thus for example, we shall so define our
+terms that 1 gramme would not be a magnitude, but the difference
+between 2 grammes and 1 gramme would be a magnitude, i.e. the
+relation “+1 gramme” would be a magnitude. On the other
+had a centimetre and a second would both be magnitudes according to
+our definition, because distances in space and time are
+vectors.…
+
+We demand of a vector (1) that it shall be a one-one relation, (2)
+that it be capable of indefinite repetition, i.e. that if the
+vector takes us from a to b, there shall always be a
+point c such that the vector takes us from b to
+c. (PM, Vol. III, “Summary of Section B”, 1913: 339
+and 1927: 339)
+
+
+The kinds of quantity addressed in this section and the next are
+all
+
+
+vector families that is, classes of one-one relations all
+having the same converse domain, and all having the domain contained
+in the converse domain. (PM Vol. III, 350)
+
+6.2.1 Measurement
+
+Measurement in PM is based on the relations between objects that are
+the basis for the operation of measurement, that one object is heavier
+than another, or longer than another. Quantities are then equivalence
+classes of objects which have the same relations to others. Operations
+are defined on quantities, so that:
+
+
+…that is to say, two-thirds of a pound of cheese out to be
+(2/3×x1/2)(2/3 \times_x 1/2) of a pound of cheese, and similarly in every
+other case. (PM, Volume III, 407)
+
+
+PM concludes with a seemingly dangling excursion into the special case
+of the measurement of “Cyclic Families”. For “such
+cases as the angles at a point, or the elliptic straight line, we
+require a theory of measurement applicable to families which are not
+open” (PM, Volume III, 457). The angles at a point will be
+measured from 0 to 360 degrees, and then start over again at 0 to
+measure and object rotating around a point. The many ratios that
+represent the rotations are represented by a “principal
+ratio”, which is used to assign the measurement of degrees.
+6.2.2 There is no “Conclusion” at the end of PM
+
+PM ends abruptly with the proof of a theorem
+(∗375·32) concerning cyclic families,
+without any concluding remarks or hint of what is to come later. The
+thought is that further mathematics, including the Volume IV that
+Whitehead was to write on geometry, would have to be developed
+piecemeal. First the notions of a given branch of mathematics would
+have to be defined in terms of earlier notions, such as classes of
+relations with a given structure, and then the important basic results
+in that field would be proved one by one, in the style of the work so
+far. Establishing logicism would be an ongoing project, as open-ended
+as mathematics itself.

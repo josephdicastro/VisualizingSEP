@@ -1,0 +1,718 @@
+Hybrid logics are logics that result by adding further expressive
+power to ordinary modal logic. The most basic hybrid logic is obtained
+by adding so-called nominals which are propositional symbols of a new
+sort, each being true at exactly one possible world. The history of
+hybrid logic goes back to
+   Arthur N. Prior’s work in the 1960s.
+
+ 
+1. Motivations for hybrid logic
+
+In the standard Kripke semantics for modal logic, truth is relative to
+points in a set. Thus, a propositional symbol might have different
+truth-values relative to different points. Usually, these points are
+taken to represent possible worlds, times, epistemic states, states in
+a computer, or something else. This allows us to formalize natural
+language statements whose truth-values are relative to for example
+times, like the statement
+
+it is raining
+
+
+which clearly has different truth-values at different times. Now,
+certain natural language statements are true at exactly one time,
+possible world, or something else. An example is the statement
+
+it is five o’clock 15 March 2006
+
+
+which is true at the time five o’clock 15 March 2006, but false
+at all other times. The first kind of natural language statements can
+be formalized in ordinary modal logic, but the second kind cannot.
+
+A major motivation for hybrid logic is to add further expressive power
+to ordinary modal logic with the aim of being able to formalize the
+second kind of statements. This is obtained by adding to ordinary
+modal logic a second sort of propositional symbols called
+nominals such that in the Kripke semantics each nominal is
+true relative to exactly one point. A natural language statement of
+the second kind (like the example statement with the time five
+o’clock 15 March 2006) is then formalized using a nominal, not
+an ordinary propositional symbol (which would be used to formalize the
+example statement with rainy weather). The fact that a nominal is true
+relative to exactly one point implies that a nominal can be considered
+a term referring to a point, for example, if aa\mathtt{a} is a
+nominal that stands for “it is five o’clock 15 March
+2006”, then this nominal can be considered a term referring to
+the time five o’clock 15 March 2006. Thus, in hybrid logic a
+term is a specific sort of propositional symbol whereas in first-order
+logic it is an argument to a predicate.
+
+Most hybrid logics involve further additional machinery than nominals.
+There is a number of options for adding further machinery; here we
+shall consider what are called satisfaction operators. The
+motivation for adding satisfaction operators is to be able to
+formalize a statement being true at a particular time, possible world,
+or something else. For example, we want to be able to formalize that
+the statement “it is raining” is true at the time five
+o’clock 15 March 2006, that is, that
+
+at five o’clock 15 March 2006, it is raining.
+
+
+This is formalized by the formula @ap@ap\mathtt{@_a p} where the nominal
+aa\mathtt{a} stands for “it is five o’clock 15 March
+2006” as above and where pp\mathtt{p} is an ordinary
+propositional symbol that stands for “it is raining”. It
+is the part @a@a\mathtt{@_a} of the formula @ap@ap\mathtt{@_a p} that is
+called a satisfaction operator. In general, if aa\mathtt{a} is a
+nominal and ϕϕ\mathtt{\phi} is an arbitrary formula, then a new
+formula @aϕ@aϕ\mathtt{@_a\phi} called a satisfaction statement
+can be built. The satisfaction statement @aϕ@aϕ\mathtt{@_a\phi}
+expresses that the formula ϕϕ\mathtt{\phi} is true relative to one
+particular point, namely the point to which the nominal aa\mathtt{a}
+refers.
+
+To sum up, we have now added further expressive power to ordinary
+modal logic in the form of nominals and satisfaction operators.
+Informally, the nominal aa\mathtt{a} has the truth-condition
+
+aa\mathtt{a} is true relative to a point www
+
+    if and only if
+
+the reference of aa\mathtt{a} is identical to www
+
+
+and the satisfaction statement @aϕ@aϕ\mathtt{@_a\phi} has the
+truth-condition
+
+@aϕ@aϕ\mathtt{@_a\phi} is true relative to a point www
+
+    if and only if
+
+ϕϕ\mathtt{\phi} is true relative to the reference of aa\mathtt{a}
+
+
+Note that actually the point www does not matter in the
+truth-condition for @aϕ@aϕ\mathtt{@_a\phi} since the satisfaction
+operator @a@a\mathtt{@_a} moves the point of evaluation to the
+reference of aa\mathtt{a} whatever the identity of www.
+
+It is remarkable that nominals together with satisfaction operators
+allow us to express that two points are identical: If the nominals
+aa\mathtt{a} and bb\mathtt{b} refer to the points www and vvv,
+then the formula @ab@ab\mathtt{@_a b} expresses that www and vvv are
+identical. The following line of reasoning shows why.
+
+@ab@ab\mathtt{@_a b} is true relative to a point www
+
+    if and only if
+
+bb\mathtt{b} is true relative to the reference of aa\mathtt{a}
+
+    if and only if
+
+bb\mathtt{b} is true relative to www
+
+    if and only if
+
+the reference of bb\mathtt{b} is identical to www
+
+    if and only if
+
+vvv is identical to www
+
+
+The identity relation on a set has the well-known properties
+reflexivity, symmetry, and transitivity, which is reflected in the
+fact that the formulas
+@aa@ab→@ba(@ab&@bc)→@ac@aa@ab→@ba(@ab&@bc)→@ac\begin{align*}
+&amp; \mathtt{@_a a} \\
+&amp; \mathtt{@_a b \rightarrow @_b a} \\
+&amp;(\mathtt{@_a b \amp @_b c) \rightarrow @_a c}
+\end{align*}
+
+are valid formulas of hybrid logic. Also the formula
+(@ab&@aϕ)→@bϕ(@ab&@aϕ)→@bϕ
+(\mathtt{@_ab \amp @_a\phi) \rightarrow @_b\phi}
+
+
+is valid. This is the rule of replacement.
+
+Beside nominals and satisfaction operators, in what follows we shall
+consider the so-called binders ∀∀\mathtt{\forall} and
+↓↓\mathtt{\downarrow} allowing us to build formulas
+∀aϕ∀aϕ\mathtt{\forall a \phi} and ↓aϕ↓aϕ\mathtt{{\downarrow} a \phi}. The
+binders bind nominals to points in two different ways: The
+∀∀\mathtt{\forall} binder quantifies over points analogous to the
+standard first-order universal quantifier, that is, ∀aϕ∀aϕ\mathtt{\forall
+a \phi} is true relative to www if and only if whatever point the
+nominal aa\mathtt{a} refers to, it is the case that
+ϕϕ\mathtt{\phi} is true relative to www. The
+↓↓\mathtt{\downarrow} binder binds a nominal to the point of
+evaluation, that is, ↓aϕ↓aϕ\mathtt{{\downarrow} a \phi} is true relative
+to www if and only if ϕϕ\mathtt{\phi} is true relative to www
+when aa\mathtt{a} refers to www. It turns out that the
+↓↓\mathtt{\downarrow} binder is definable in terms of
+∀∀\mathtt{\forall} (as shown below).
+2. Formal semantics
+
+The language we consider is the language of ordinary modal logic built
+over ordinary propositional symbols p,q,r,…p,q,r,…\mathtt{p}, \mathtt{q},
+\mathtt{r}, … as well as nominals a,b,c,…a,b,c,…\mathtt{a}, \mathtt{b},
+\mathtt{c}, … and extended with satisfaction operators and
+binders. We take the propositional connectives ∧∧\mathtt{\wedge} and
+¬¬\mathtt{\neg} to be primitive; other propositional connectives are
+defined as usual. Similarly, we take the modal operator
+□◻\mathtt{\Box} to be primitive and define the modal operator
+◊◊\mathtt{\Diamond} as ¬□¬¬◻¬\mathtt{\neg \Box \neg}. As the name
+suggests, binders bind nominals and the notions of free and bound
+occurrences of nominals are defined analogously to first-order logic.
+Satisfaction operators do not bind nominals, that is, the free nominal
+occurrences in a formula @aϕ@aϕ\mathtt{@_a \phi} are the free nominal
+occurrences in ϕϕ\mathtt{\phi} together with the occurrence of
+aa\mathtt{a}. We let ϕ[c/a]ϕ[c/a]\mathtt{\phi[c/a]} be the formula
+ϕϕ\mathtt{\phi} where the nominal cc\mathtt{c} has been
+substituted for all free occurrences of the nominal aa\mathtt{a}. If
+the nominal aa\mathtt{a} occurs free in ϕϕ\mathtt{\phi} within the
+scope of ∀c∀c\mathtt{\forall c} or ↓c↓c\mathtt{{\downarrow} c}, then
+the bound nominal cc\mathtt{c} in ϕϕ\mathtt{\phi} is renamed as
+appropriate.
+
+We now define models and frames. A model for hybrid logic is
+a triple (W,R,V)(W,R,V)(W, R, V) where WWW is a non-empty set, RRR is a
+binary relation on WWW, and VVV is a function that to each pair
+consisting of an element of WWW and an ordinary propositional symbol
+assigns an element of the set {0,1}{0,1}\{0,1\}. The pair (W,R)(W,R)(W, R) is
+called a frame. Thus, models and frames are the same as in
+ordinary modal logic. The elements of WWW are called worlds
+and the relation RRR is called the accessibility relation.
+The model (W,R,V)(W,R,V)(W, R, V) is said to be based on the frame
+(W,R)(W,R)(W, R).
+
+An assignment for a model M=(W,R,V)M=(W,R,V)M = (W, R, V) is a function
+ggg that to each nominal assigns an element of WWW. An assignment
+g′g′g' is an aa\mathtt{a}-variant of ggg if g′g′g' agrees
+with ggg on all nominals save possibly aa\mathtt{a}. The relation
+M,g,w⊨ϕM,g,w⊨ϕM, g, w \vDash \phi is defined by induction, where ggg is an
+assignment, www is an element of WWW, and ϕϕ\mathtt{\phi} is a
+formula.
+
+M,g,w⊨pM,g,w⊨pM, g, w \vDash \mathtt{p} iff V(w,p)=1V(w,p)=1V(w, \mathtt{p})=1
+
+M,g,w⊨aM,g,w⊨aM, g, w \vDash \mathtt{a} iff w=g(a)w=g(a)w = g(\mathtt{a})
+
+M,g,w⊨ϕ∧ψM,g,w⊨ϕ∧ψM, g, w \vDash \mathtt{\phi \wedge \psi} iff M,g,w⊨ϕM,g,w⊨ϕM, g, w \vDash
+\mathtt{\phi} and M,g,w⊨ψM,g,w⊨ψM, g, w \vDash \mathtt{\psi}
+
+M,g,w⊨¬ϕM,g,w⊨¬ϕM, g, w \vDash \mathtt{\neg \phi} iff not M,g,w⊨ϕM,g,w⊨ϕM, g, w \vDash
+\mathtt{\phi}
+
+M,g,w⊨□ϕM,g,w⊨◻ϕM, g, w \vDash \mathtt{\Box} \phi iff for any element vvv of
+WWW such that wRvwRvwRv, it is the case that M,g,v⊨ϕM,g,v⊨ϕM, g, v \vDash
+\mathtt{\phi}
+
+M,g,w⊨@aϕM,g,w⊨@aϕM, g, w \vDash \mathtt{@_a \phi} iff M,g,g(a)⊨ϕM,g,g(a)⊨ϕM, g, g(\mathtt{a}) \vDash
+\mathtt{\phi}
+
+M,g,w⊨∀aϕM,g,w⊨∀aϕM, g, w \vDash \mathtt{\forall a\phi} iff for any
+aa\mathtt{a}-variant g′g′g' of ggg, it is the case that M,g′,w⊨ϕM,g′,w⊨ϕM, g', w
+\vDash \mathtt{\phi}
+
+M,g,w⊨↓aϕM,g,w⊨↓aϕM, g, w \vDash \mathtt{{\downarrow} a\phi} iff M,g′,w⊨ϕM,g′,w⊨ϕM, g', w \vDash
+\mathtt{\phi} where g′g′g' is the aa\mathtt{a}-variant of ggg
+such that g′(a)=wg′(a)=wg'(\mathtt{a}) = w.
+
+
+A formula ϕϕ\mathtt{\phi} is said to be true at www if
+M,g,w⊨ϕM,g,w⊨ϕM, g, w \vDash \mathtt{\phi}; otherwise it is said to be
+false at www. By convention M,g⊨ϕM,g⊨ϕM, g \vDash \mathtt{\phi}
+means M,g,w⊨ϕM,g,w⊨ϕM, g, w \vDash \mathtt{\phi} for every element www of
+WWW and M⊨ϕM⊨ϕM \vDash \mathtt{\phi} means M,g⊨ϕM,g⊨ϕM, g \vDash
+\mathtt{\phi} for every assignment ggg. A formula
+ϕϕ\mathtt{\phi} is valid in a frame if and only if M⊨ϕM⊨ϕM
+\vDash \mathtt{\phi} for any model MMM that is based on the frame
+in question. A formula ϕϕ\mathtt{\phi} is valid in a class
+of frames FFF if and only if ϕϕ \mathtt{\phi} is valid in any
+frame in FFF. A formula ϕϕ\mathtt{\phi} is valid if and
+only if ϕϕ\mathtt{\phi} is valid in the class of all frames. The
+definition of satisfiability is left to the reader.
+
+Note that the binder ↓↓\mathtt{\downarrow} is definable in terms of
+∀∀\mathtt{\forall} as the formula ↓aϕ↔∀a(a→ϕ)↓aϕ↔∀a(a→ϕ)\mathtt{{\downarrow} a\phi
+\leftrightarrow \forall a(a \rightarrow \phi)} is valid in any
+frame.
+
+The fact that hybridizing ordinary modal logic actually does give more
+expressive power can for example be seen by considering the formula
+↓c□¬c↓c◻¬c\mathtt{{\downarrow} c\Box \neg c}. It is straightforward to check
+that this formula is valid in a frame if and only if the frame is
+irreflexive. Thus, irreflexivity can be expressed by a hybrid-logical
+formula, but it is well known that it cannot be expressed by any
+formula of ordinary modal logic. Irreflexivity can actually be
+expressed just by adding nominals to ordinary modal logic, namely by
+the formula c→□¬cc→◻¬c\mathtt{c\rightarrow \Box \neg c}. Other examples of
+properties expressible in hybrid logic, but not in ordinary modal
+logic, are asymmetry (expressed by c→□¬◊cc→◻¬◊c\mathtt{c \rightarrow \Box \neg
+\Diamond c }), antisymmetry (expressed by c→□(◊c→c)c→◻(◊c→c)\mathtt{c\rightarrow
+\Box(\Diamond c \rightarrow c)}), and universality (expressed by
+◊c◊c\mathtt{\Diamond c}).
+
+See the handbook chapter Areces and ten Cate (2006) for a detailed
+account of the syntax and semantics of hybrid logic, as well as many
+other basic definitions. The syntax and semantics above can be
+extended in a number of ways, in particular, first-order machinery can
+be added (of course, an equivalent way to obtain first-order hybrid
+logic is by adding hybrid-logical machinery to first-order modal
+logic). See Braüner (2014) for an overview of first-order hybrid
+logic, see Chapter 6 of Braüner (2011a) for a more detailed account,
+and see Chapter 7 of Braüner (2011a) for an account of intensional
+first-order hybrid logic.
+3. Translations
+
+Hybrid logic can be translated into first-order logic with equality,
+and (a fragment of) first-order logic with equality can be translated
+back into (a fragment of) hybrid logic. The first-order language under
+consideration has a 1-place predicate symbol p∗p∗\mathtt{p^*}
+corresponding to each ordinary propositional symbol pp\mathtt{p} of
+modal logic, a 2-place predicate symbol RR\mathtt{R}, and a 2-place
+predicate symbol ==\mathtt{=}. Of course, the predicate symbol
+p∗p∗\mathtt{p^*} will be interpreted such that it relativises the
+interpretation of the corresponding modal propositional symbol
+pp\mathtt{p} to worlds, the predicate symbol RR\mathtt{R} will be
+interpreted using the accessibility relation, and the predicate symbol
+==\mathtt{=} will be interpreted using the identity relation on
+worlds. We let a,b,c,…a,b,c,…\mathtt{a}, \mathtt{b}, \mathtt{c},\ldots range
+over first-order variables. The language does not have constant or
+function symbols. We shall identify first-order variables with
+nominals of hybrid logic.
+
+We first translate hybrid logic into first-order logic with equality.
+Given two new first-order variables aa\mathtt{a} and bb\mathtt{b},
+the translations STaSTa\mathrm{ST}_\mathtt{a} and
+STbSTb\mathrm{ST}_\mathtt{b} are defined by mutual recursion. We just
+give the translation STaSTa\mathrm{ST}_\mathtt{a}.
+STa(p)STa(c)STa(ϕ∧ψ)STa(¬ϕ)STa(□ϕ)STa(@cϕ)STa(↓cϕ)STa(∀cϕ)=p∗(a)=a=c=STa(ϕ)∧STa(ψ)=¬STa(ϕ)=∀b(R(a,b)→STb(ϕ))=STa(ϕ)[c/a]=STa(ϕ)[a/c]=∀cSTa(ϕ)STa(p)=p∗(a)STa(c)=a=cSTa(ϕ∧ψ)=STa(ϕ)∧STa(ψ)STa(¬ϕ)=¬STa(ϕ)STa(◻ϕ)=∀b(R(a,b)→STb(ϕ))STa(@cϕ)=STa(ϕ)[c/a]STa(↓cϕ)=STa(ϕ)[a/c]STa(∀cϕ)=∀cSTa(ϕ)\begin{align*}
+\mathrm{ST}_\mathtt{a} (\mathtt{p}) &amp;= \mathtt{p^*(a)} \\
+\mathrm{ST}_\mathtt{a} (\mathtt{c}) &amp;= \mathtt{a=c} \\
+\mathrm{ST}_\mathtt{a} (\mathtt{\phi \wedge \psi}) &amp;= \mathrm{ST}_\mathtt{a} (\mathtt{\phi}) \mathtt{\wedge} \mathrm{ST}_\mathtt{a} (\mathtt{\psi}) \\
+\mathrm{ST}_\mathtt{a} (\mathtt{\neg \phi}) &amp;= \mathtt{\neg} \mathrm{ST}_a (\phi) \\
+\mathrm{ST}_\mathtt{a} (\mathtt{\Box \phi}) &amp;= \mathtt{\forall b(R(a, b) \rightarrow} \mathrm{ST}_\mathtt{b} (\mathtt{\phi})\mathtt{)} \\
+\mathrm{ST}_\mathtt{a} (\mathtt{@_c \phi}) &amp;= \mathrm{ST}_\mathtt{a} (\mathtt{\phi})[\mathtt{c}/\mathtt{a}]  \\
+\mathrm{ST}_\mathtt{a} (\mathtt{{\downarrow} c\phi}) &amp;= \mathrm{ST}_\mathtt{a} (\mathtt{\phi})[\mathtt{a}/\mathtt{c}] \\
+\mathrm{ST}_\mathtt{a} (\mathtt{\forall c\phi}) &amp;= \mathtt{\forall c }\mathrm{ST}_\mathtt{a} (\mathtt{\phi})
+\end{align*}
+
+The definition of STbSTb\mathrm{ST}_\mathtt{b} is obtained by exchanging
+aa\mathtt{a} and bb\mathtt{b}. The translation is an extension of
+the well-known standard translation from modal logic into
+first-order logic. As an example, we demonstrate step by step how the
+hybrid-logical formula ↓c□¬c↓c◻¬c\mathtt{{\downarrow} c\Box \neg c} is
+translated into a first-order formula:
+STa(↓c□¬c)=STa(□¬c)[a/c]=∀b(R(a,b)→STb(¬c))[a/c]=∀b(R(a,b)→¬STb(c))[a/c]=∀b(R(a,b)→¬b=c)[a/c]=∀b(R(a,b)→¬b=a).STa(↓c◻¬c)=STa(◻¬c)[a/c]=∀b(R(a,b)→STb(¬c))[a/c]=∀b(R(a,b)→¬STb(c))[a/c]=∀b(R(a,b)→¬b=c)[a/c]=∀b(R(a,b)→¬b=a).\begin{align*}
+\mathrm{ST}_\mathtt{a} (\mathtt{{\downarrow} c\Box \neg c}) 
+  &amp;= \mathrm{ST}_\mathtt{a} (\mathtt{\Box \neg c})[\mathtt{a}/\mathtt{c}] \\
+  &amp;= \mathtt{\forall b(R(a, b) \rightarrow } \mathrm{ST}_\mathtt{b} (\mathtt{\neg c})\mathtt{)}[\mathtt{a}/\mathtt{c}] \\
+  &amp;= \mathtt{\forall b(R(a, b) \rightarrow \neg } \mathrm{ST}_\mathtt{b} (\mathtt{c})\mathtt{)}[\mathtt{a}/\mathtt{c}] \\
+  &amp;= \mathtt{\forall b(R(a, b) \rightarrow \neg b=c)}[\mathtt{a}/\mathtt{c}] \\
+  &amp;= \mathtt{\forall b(R(a, b) \rightarrow \neg b=a)}.
+\end{align*}
+
+The resulting first-order formula is equivalent to ¬R(a,a)¬R(a,a)\mathtt{\neg R(a,
+a)} which shows that ↓c□¬c↓c◻¬c\mathtt{{\downarrow} c\Box \neg c} indeed
+does correspond to the accessibility relation being irreflexive, cf.
+above.
+
+First-order logic with equality can be translated back into hybrid
+logic by the translation HT given below.
+HT(p∗(a))HT(R(a,c))HT(a=c)HT(ϕ∧ψ)HT(¬ϕ)HT(∀aϕ)=@ap=@a◊c=@ac=HT(ϕ)∧HT(ψ)=¬HT(ϕ)=∀aHT(ϕ)HT(p∗(a))=@apHT(R(a,c))=@a◊cHT(a=c)=@acHT(ϕ∧ψ)=HT(ϕ)∧HT(ψ)HT(¬ϕ)=¬HT(ϕ)HT(∀aϕ)=∀aHT(ϕ)\begin{align*}
+\mathrm{HT}(\mathtt{p^*(a)}) &amp;= \mathtt{@_a p} \\
+\mathrm{HT}(\mathtt{R(a, c)}) &amp;= \mathtt{@_a \Diamond c} \\
+\mathrm{HT}(\mathtt{a=c}) &amp;= \mathtt{@_a c} \\
+\mathrm{HT}(\mathtt{\phi \wedge \psi}) &amp;= \mathrm{HT}(\mathtt{\phi}) \mathtt{\wedge} \mathrm{HT}(\mathtt{\psi}) \\
+\mathrm{HT}(\mathtt{\neg \phi}) &amp;= \mathtt{\neg} \mathrm{HT}(\mathtt{\phi}) \\
+\mathrm{HT}(\mathtt{\forall a\phi}) &amp;= \mathtt{\forall a} \mathrm{HT}(\mathtt{\phi})
+\end{align*}
+
+Note that the hybrid-logical binder ∀∀\mathtt{\forall} is needed.
+The history of the above mentioned observations goes back to the work
+of Arthur N. Prior, we shall return to that later.
+
+Similarly, what is called the bounded fragment of first-order
+logic can be translated into the hybrid logic but here only the binder
+↓↓\mathtt{\downarrow} is needed, as pointed out in the paper Areces,
+Blackburn, and Marx (2001). The bounded fragment is the fragment of
+first-order logic with the property that quantifiers only occur as in
+the formula ∀c(R(a,c)→ϕ)∀c(R(a,c)→ϕ)\mathtt{\forall c(R(a, c) \rightarrow \phi)}, where it
+is required that the variables aa\mathtt{a} and cc\mathtt{c} are
+different. A translation from the bounded fragment to the hybrid logic
+without the ∀∀\mathtt{\forall} binder can be obtained by replacing
+the last clause in the translation HT above by
+HT(∀c(R(a,c)→ϕ))=@a□↓cHT(ϕ).HT(∀c(R(a,c)→ϕ))=@a◻↓cHT(ϕ).
+\mathrm{HT}(\mathtt{\forall c(R(a, c) \rightarrow \phi)}) = \mathtt{@_a \Box {\downarrow} c}\mathrm{HT}(\mathtt{\phi}).
+
+
+In Areces, Blackburn, and Marx (2001) a number of independent semantic
+characterisations of the bounded fragment are given.
+
+The translations given above are truth-preserving. To state this
+formally, one makes use of the well-known observation that models and
+assignments for hybrid logic can be considered as models and
+assignments for first-order logic and vice versa. These
+truth-preservation results are straightforward to formulate and we
+leave the details to the reader. Thus, the hybrid logic with the
+binder ∀∀\mathtt{\forall} has the same expressive power as
+first-order logic with equality and the hybrid logic without the
+binder ∀∀\mathtt{\forall} (but with the binder
+↓↓\mathtt{\downarrow}) has the same expressive power as the bounded
+fragment of first-order logic (note that the translation
+STa(ϕ)STa(ϕ)\mathrm{ST}_\mathtt{a} (\mathtt{\phi}) of any formula
+ϕϕ\mathtt{\phi} without the binder ∀∀\mathtt{\forall} is in the
+bounded fragment).
+
+The translations above can be extended to first-order hybrid logic, in
+which case the relevant target logic is two-sorted first-order logic
+with equality, one sort for worlds and one sort for individuals, see
+Chapter 6 of Braüner (2011a). In the case of intensional first-order
+hybrid logic, three sorts are employed, the third sort being for
+intensions, see Chapter 7 of Braüner (2011a).
+4. Arthur N. Prior and hybrid logic
+
+The history of hybrid logic goes back to Arthur N. Prior’s
+hybrid tense logic, which is a hybridized version of ordinary tense
+logic. With the aim of investigating this further, we shall give a
+formal definition of hybrid tense logic: The language of hybrid tense
+logic is simply the language of hybrid logic defined above except that
+there are two modal operators, namely GG\mathtt{G} and
+HH\mathtt{H}, instead of the single modal operator
+□◻\mathtt{\Box}. The two new modal operators are called tense
+operators. The semantics of hybrid tense logic is the semantics
+of hybrid logic, cf. earlier, with the clause for □◻\mathtt{\Box}
+replaced by clauses for the tense operators GG\mathtt{G} and
+HH\mathtt{H}.
+
+M,g,w⊨GϕM,g,w⊨GϕM, g, w \vDash \mathtt{G \phi} iff for any element vvv of WWW
+such that wRvwRvwRv, it is the case that M,g,v⊨ϕM,g,v⊨ϕM, g, v \vDash
+\mathtt{\phi}
+
+M,g,w⊨HϕM,g,w⊨HϕM, g, w \vDash \mathtt{H \phi} iff for any element vvv of WWW
+such that vRwvRwvRw, it is the case that M,g,v⊨ϕM,g,v⊨ϕM, g, v \vDash
+\mathtt{\phi}
+
+
+Thus, there are now two modal operators, namely one that “looks
+forwards” along the accessibility relation and one that
+“looks backwards”. In tense logic the elements of the set
+WWW are called moments or instants and the
+relation RRR is called the earlier-later relation.
+
+Of course, it is straightforward to modify the translations
+STaSTa\mathrm{ST}_a and HTHT\mathrm{HT} above such that translations are
+obtained between hybrid tense logic (including the
+∀∀\mathtt{\forall} binder) and first-order logic with equality. The
+first-order logic under consideration is what Prior called
+first-order earlier-later logic. Given the translations, it
+follows that Prior’s first-order earlier-later logic has the
+same expressive power as hybrid tense logic.
+
+Now, Prior introduced hybrid tense logic in connection with what he
+called four grades of tense-logical involvement. The motivation for
+his four grades of tense-logical involvement was philosophical. The
+four grades were presented in the book Prior (1968), Chapter XI (also
+Chapter XI in the new edition Prior (2003)). Moreover, see Prior
+(1967), Chapter V.6 and Appendix B.3-4. For a more general discussion,
+see the posthumously published book Prior and Fine (1977). The stages
+progress from what can be regarded as pure first-order earlier-later
+logic to what can be regarded as pure tense logic; the goal being to
+be able to consider the tense logic of the fourth stage as
+encompassing the earlier-later logic of the first stage. In other
+words, the goal was to be able to translate the first-order logic of
+the earlier-later relation into tense logic. It was with this goal in
+mind Prior introduced so-called instant-propositions:
+
+What I shall call the third grade of tense-logical involvement
+consists in treating the instant-variables a,b,ca,b,ca, b, c, etc. as also
+representing propositions. (Prior 2003, p. 124)
+
+
+In the context of modal logic, Prior called such propositions
+possible-world-propositions. Of course, this is what we here call
+nominals. Prior also introduced the binder ∀∀\mathtt{\forall} and
+what we here call satisfaction operators (he used the notation
+T(a,ϕ)T(a,ϕ)\mathtt{T(a, \phi)} instead of @aϕ@aϕ\mathtt{@_a \phi} for
+satisfaction operators). In fact, Prior’s third grade tense
+logic is identical to the hybrid tense logic as defined above. The
+↓↓\mathtt{\downarrow} binder was introduced much later. Thus, Prior
+obtained the expressive power of his first-order earlier-later logic
+by adding to ordinary tense logic further expressive power in the form
+of nominals, satisfaction operators, and the binder
+∀∀\mathtt{\forall}. So from a technical point of view he clearly
+reached his goal.
+
+However, from a philosophical point of view it has been debated
+whether or not the ontological import of his third grade tense logic
+is the same as the ontological import of the first-order earlier-later
+logic. For example, the ∀∀\mathtt{\forall} binder is by some authors
+considered a direct analogy to the first-order ∀∀\mathtt{\forall}
+quantifier, and therefore suspect; see for example the paper Sylvan
+(1996) in the collection Copeland (1996). Also a number of other
+papers in this collection are relevant. See Braüner (2002) for a
+discussion of Prior’s fourth grade tense logic. See also
+Øhrstrøm and Hasle (1993), Øhrstrøm and
+Hasle (2006), Müller (2007), and Blackburn (2007). Finally, see
+the discussion of Prior’s four grades in Chapter 1 of
+Braüner (2011a).
+
+The above mentioned paper Øhrstrøm and Hasle (2006)
+gives a detailed account of Prior's logical work. For a comprehensive
+account of Prior's life and work, see the book Øhrstrøm and Hasle
+(1995). The paper Hasle and Øhrstrøm (2016) describes
+Prior's methodological approach, in particular, his view on
+formalisation and the role of symbolic logic in conceptual
+studies.
+5. The development of hybrid logic since Prior
+
+The first completely rigorous definition of hybrid logic was given in
+Bull (1970), which appeared in a special issue of the journal
+Theoria in memory of Prior. Bull introduces a third sort of
+propositional symbols where a propositional symbol is assumed to be
+true exactly at one branch (“course of events”) in a
+branching time model. This idea of sorting propositional symbols
+according to restrictions on their interpretations has later been
+developed further by a number of authors, see Section 5 of the paper
+Blackburn and Tzakova  (1999) for a discussion.
+
+The hybrid logical machinery originally invented by Prior in the late
+1960s was reinvented in the 1980s by Solomon Passy and Tinko Tinchev
+from Bulgaria, see Passy and Tinchev (1985) as well as Passy and
+Tinchev (1991). Rather than ordinary modal logic, this work took place
+in connection with the much more expressive Propositional Dynamic
+Logic.
+
+A major contribution in the 1990s was the introduction of the
+↓↓\mathtt{\downarrow} binder. An early version of the downarrow
+binder was introduced by Valentin Goranko in the papers Goranko (1994)
+and Goranko (1996). The version of the present paper was introduced in
+Blackburn and Seligman (1995). Since then, hybrid logic with the
+↓↓\mathtt{\downarrow} binder has been extensively studied, see for
+example the paper Areces, Blackburn, and Marx (2001) on
+model-theoretic aspects of this logic. A comprehensive study of the
+model-theory of hybrid logic is the PhD thesis of ten Cate (2004).
+
+Also the weaker hybrid logic obtained by omitting both of the binders
+↓↓\mathtt{\downarrow} and ∀∀\mathtt{\forall} has been the subject
+of extensive exploration. It turns out that this binder-free logic and
+a number of variants of it are decidable. In the paper Areces,
+Blackburn, and Marx (1999), a number of complexity results are given
+for hybrid modal and tense logics over various classes of frames, for
+example arbitrary, transitive, linear, and branching. It is remarkable
+that the satisfiability problem of the binder-free hybrid logic over
+arbitrary frames is decidable in PSPACE, which is the same as the
+complexity of deciding satisfiability in ordinary modal logic. Thus,
+hybridizing ordinary modal logic gives more expressive power, but the
+complexity stays the same. Some work has been carried out on
+simulating nominals inside modal logic, see Kracht and Wolter
+(1997).
+
+Any ordinary modal formula expresses a monadic second-order property on
+frames, and it is well-known that for some modal formulas, including
+what are called Sahlqvist formulas, the second-order property is
+equivalent to a first-order property. In the paper Goranko and
+Vakarelov (2006) this is shown to hold also for a class of
+hybrid-logical formulas, including nominals. Several algorithms exists
+for calculating first-order equivalents of ordinary modal formula. One
+such algorithm, SQEMA, is in the paper Conradie, Goranko, and
+Vakarelov (2006) extended to encompass the hybrid-logical formulas
+considered in Goranko and Vakarelov (2006).
+
+It is remarkable that first-order hybrid logic offers precisely the
+features needed to prove interpolation theorems: While interpolation
+fails in a number of well-known first-order modal logics, their
+hybridized counterparts have this property, see Areces, Blackburn, and
+Marx (2003) as well as Blackburn and Marx (2003). The first paper
+gives a model-theoretic proof of interpolation whereas the second
+paper gives an algorithm for calculating interpolants based on a
+tableau system.
+
+It should also be mentioned that logics similar to hybrid logics play
+a central role within the area of description logic, which is a family
+of logics used for knowledge representation in Artificial
+Intelligence, see the paper Blackburn and Tzakova (1998) and Carlos
+Areces’ PhD thesis (2000).
+
+As described in the previous section, Prior introduced hybrid tense
+logic to deal with a particular issue in the philosophy of time, but
+in Prior (1968), Chapter XIV (also Chapter XIV in the new edition
+Prior (2003)), he also showed that hybrid tense logic can replace a
+two-dimensional temporal logic introduced by Hans Kamp in Kamp (1971).
+The dimension is simply the number of instants a formula is evaluated
+relative to, so adding hybrid-logical machinery enables two dimensions
+to be replaced by one. This work has recently been followed up in a
+number of papers by Blackburn and Jørgensen, see Blackburn and
+Jørgensen (2016a) for an overview. We now give a brief sketch of this
+line of work, adapted to the terminology of the present paper. The
+version of hybrid logic in question has a designated nominal
+nownow\mathtt{now} and each model comes together with a designated time
+t0t0 t_0  such that i) any stand-alone formula is evaluated relative
+to t0t0 t_0  and ii) the nominal nownow\mathtt{now} refers to t0t0 t_0 .
+More formally, we adopt the convention that (M,t0),g⊨ϕ(M,t0),g⊨ϕ(M,t_0), g \vDash
+\mathtt{\phi} means M,g,t0⊨ϕM,g,t0⊨ϕM, g, t_0 \vDash \mathtt{\phi} and we only
+consider assignments ggg where g(now)=t0g(now)=t0g(\mathtt{now})=t_0. Note that
+the nominal nownow\mathtt{now}, considered as a stand-alone formula, is
+valid in this semantics, but this is not the case for any other
+nominal. This new notion of validity is by Blackburn and Jørgensen
+called contextual validity. The paper Blackburn and
+Jørgensen (2013) gives an axiom system which is complete wrt. this
+notion of contextual validity. The paper Blackburn and Jørgensen
+(2012) gives a complete tableau system, but the semantics of this
+paper is in line with Kamp's original two-dimensional semantics. Both
+papers also consider further indexicals like yesterdayyesterday\mathtt{yesterday},
+todaytoday\mathtt{today} and tomorrowtomorrow\mathtt{tomorrow}. 
+
+The paper Blackburn and Jørgensen (2016b) uses hybrid tense logic to
+combine ideas of Prior with those of Hans Reichenbach on how to
+represent natural language tenses. Prior preferred the well-known
+tense operators described above, whereas Reichenbach preferred
+temporal references, that is, references to specific times,
+Reichenbach (1947). It turns out that the two approaches can be
+combined, which was not the route taken by Prior
+himself––see the account given in Blackburn and Jørgensen
+(2016b), 
+6. Axioms for hybrid logic
+
+A number of papers have dealt with axioms for hybrid logic, for
+example Gargov and Goranko (1993), Blackburn (1993), and Blackburn and
+Tzakova (1999). In the paper Gargov and Goranko (1993) an axiom system
+for hybrid logic is given, and it is shown that if the system is
+extended with a set of additional axioms which are pure
+formulas (that is, formulas where all propositional symbols are
+nominals), then the extended axiom system is complete with respect to
+the class of frames validating the axioms in question. Pure formulas
+correspond to first-order conditions on the accessibility relation
+(cf. the translation STaSTa\mathrm{ST}_\mathtt{a} above), so axiom
+systems for new hybrid logics with first-order conditions on the
+accessibility relation can be obtained in a uniform way simply by
+adding axioms as appropriate. So, if for example the formula
+c→□¬cc→◻¬c\mathtt{c\rightarrow \Box \neg c} is added as an axiom, then the
+resulting system is complete with respect to irreflexive frames, cf.
+earlier. See the discussion of such rules in Section 4 of the paper
+Blackburn (2000).
+
+The proof­ system in Gargov and Goranko (1993) makes use of a complex
+rule (called COV) where the formula schema containing the active part
+of the rule can be arbitrarily large; in fact, the active part is
+embedded under arbitrarily deep nestings of modal operators. Blackburn
+and Tzakova (1999) shows that satisfaction operators can be used to
+formulate an axiom system in a more standard format, using a simpler
+rule called PASTE, such that the system is still complete when
+extended with pure axions. 
+
+The paper Blackburn and ten Cate (2006) investigates orthodox
+proof-rules (which are proof-rules without side-conditions) in axiom
+systems, and it is shown that if one requires extended completeness
+using pure formulas, then unorthodox proof-rules are indispensable in
+axiom systems for binder-free hybrid logic, but an axiom system can be
+given only involving orthodox proof-rules for the stronger hybrid
+logic including the ↓↓\mathtt{\downarrow} binder. See also the book
+Braüner (2011a) for another axiom system for hybrid logic as well
+as axiom systems for intuitionistic hybrid logic and a hybridization
+of Nelson's paraconsistent logic N4 (compare to Costa and Martins
+(2016) where another paraconsistent hybrid logic is considered). A
+survey of intuitionistic hybrid logic can be found in Braüner
+(2011b).
+
+The paper Areces, Blackburn, Huertas, and Manzano (2014) deals with a
+hybrid-logical version of higher-order modal logic (that is, modal
+logic built over Church's simple theory of types). Axiom systems are
+given and completeness is proved wrt. Henkin-type semantics. The paper
+Blackburn, Huertas, Manzano, and Jørgensen (2014) extends these
+results to encompass the downarrow binder and gives translations to
+and from the bounded fragment of first-order logic (see above). 
+7. Analytic proof methods for hybrid logic
+
+Tableau, Gentzen, and natural deduction style proof-theory for hybrid
+logic work very well compared to ordinary modal logic. Usually, when a
+modal tableau, Gentzen, or natural deduction system is given, it is
+for one particular modal logic and it has turned out to be problematic
+to formulate such systems for modal logics in a uniform way without
+introducing metalinguistic machinery. This can be remedied by
+hybridization, that is, hybridization of modal logics enables the
+formulation of uniform tableau, Gentzen, and natural deduction systems
+for wide classes of logics. The paper Blackburn (2000) introduces a
+tableau system for hybrid logic that has this desirable feature:
+Analogous to the axiom system of Blackburn and Tzakova (1999),
+completeness is preserved if the tableau system is extended with a set
+of pure axioms, that is, a set of pure formulas that are allowed to be
+added to a tableau during the tableau construction. The tableau system
+of Blackburn (2000) is the basis for a decision procedure for the
+binder-free fragment of hybrid logic given in Bolander and
+Braüner (2006). This line of work has been continued in the
+papers Bolander and Blackburn (2007) and Bolander and Blackburn
+(2009). The paper Cerrito and Cialdea (2010) presents another
+tableau-based decision procedure for hybrid logic. Other decision
+procedures for hybrid logics, which also are based on proof-theory,
+are given in the paper Kaminski and Smolka (2009). The procedures of
+the latter paper are based on a higher-order formulation of hybrid
+logic involving the simply typed lambda calculus.
+
+The article Hansen, Bolander, and Braüner (2017) gives a
+tableau-based decision procedure for many-valued hybrid logic, that
+is, hybrid logic where the two-valued classical logic basis has been
+generalized to a many-valued logic basis involving a truth-value space
+having the structure of a finite Heyting algebra. Hansen (2010) gives
+a tableau-based decision procedure for a hybridized version of a
+dynamic epistemic logic called public annoucement logic. This is also
+a major issue of the PhD thesis Hansen (2011).
+
+Natural deduction style proof-theory of hybrid logic has been explored
+in the book Braüner (2011a). This book also gives a Gentzen
+system for hybrid logic. These natural deduction and Gentzen systems
+can be extended with additional proof-rules corresponding to
+first-order conditions on the accessibility relations expressed by
+so-called geometric theories (this is of course analogous to
+extending tableau and axiom systems with pure axioms). See also
+Braüner and de Paiva (2006) where a natural deduction system is
+given for intuitionistic hybrid logic (Chapter 8 of Braüner
+(2011a)).
+
+Tableau systems for first-order hybrid logic can be found in the paper
+Blackburn and Marx (2002). Natural deduction and axiom systems for
+first-order hybrid logic can be found in Chapter 6 of the book
+Braüner (2011a) and Chapter 7 of the book deals with natural
+deduction for intensional first-order hybrid logic. The paper Barbosa,
+Martins, and Carreteiro (2014) gives an axiomatization of a fragment
+of first-order hybrid logic called equational first-order hybrid
+logic.
+
+Gentzen and natural deduction systems for logics similar to hybrid
+logics were explored already in the 1990s by Jerry Seligman, see the
+overview in Seligman (2001). In particular, Seligman developed
+proof-systems that work with arbitrary formulas, not just satisfaction
+statements, the latter being the case for most proof-systems for
+hybrid logic, where satisfaction operators are used to access
+information hidden behind modalities. A natural deduction system in
+this style was introduced in Seligman (1997) and this system has been
+further developed in Chapter 4 of the book Braüner (2011a). A
+tableau systems in Seligman's proof-style has been considered in
+Blackburn, Bolander, Braüner, and Jørgensen (2017) where a syntactic
+completeness proof is given. A semantic completenes proof of the
+tableau system is given in Jørgensen, Blackburn, Bolander, Braüner
+(2016). Reasoning in these systems does not directly rely on the
+global encodings that satisfaction operators make possible, hence,
+these systems can be considered more in line with the local character
+of the standard Kripke semantics for modal logic. In fact, this more
+local reasoning style makes these systems suitable for formalizing the
+perspectival reasoning taking place in certain psychological reasoning
+tasks, see Braüner (2014b) as well as Braüner, Blackburn, and
+Polyanskaya (2016).
+
+Some work in resolution calculi and model checking has been carried
+out, see Areces, de Rijke, and de Nivelle (2001) as well as Areces and
+Gorin (2011) for resolution calculi and see as Franceschet and de
+Rijke (2006) as well as Lange (2009) for results on model
+checking.
+
+Since the mid 1990s, the work on hybrid logic has flourished. We refer
+the reader to the publications in the bibliography for further
+references. Moreover, see the internet resources below.

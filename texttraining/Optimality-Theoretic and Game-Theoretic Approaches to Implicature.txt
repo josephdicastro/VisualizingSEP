@@ -1,0 +1,656 @@
+Linguistic pragmatics studies the context-dependent use and interpretation of
+expressions.  Perhaps the most important notion in pragmatics is Grice's
+(1967) conversational implicature. It is based on the
+insight that by means of general principles of rational cooperative behavior
+we can communicate more with the use of a sentence than the
+conventional semantic meaning associated with it. Grice has argued,
+for instance, that the exclusive interpretation of
+‘or’—according to which we infer from ‘John or Mary
+came’ that John and Mary didn't come both—is not due to the
+semantic meaning of ‘or’ but should be accounted for by a theory
+of conversational implicature. In this particular example,—a typical
+example of a so-called Quantity implicature—the hearer's implication is
+taken to follow from the fact that the speaker could have used a contrasting,
+and informatively stronger expression, but chose not to. Other implicatures
+may follow from what the  hearer thinks that the speaker takes to be normal
+states of affairs, i.e., stereotypical interpretations. For both types of
+implicatures, the hearer's (pragmatic) interpretation of an expression
+involves what he takes to be the speaker's reason for using this expression.
+But obviously, this speaker's reason must involve assumptions about the
+hearer's reasoning as well.
+
+
+In this entry we will discuss formal accounts of conversational implicatures
+that explicitly take into account the interactive reasoning of speaker and
+hearer (e.g., what speaker and hearer believe about each other, the relevant
+aspects of the context of utterance etc.) and that aim to reductively explain
+conversational implicature as the result of goal-oriented, economically
+optimized language use.
+ 
+1. Bidirectional Optimality Theory
+1.1 Bidirectional OT and Quantity implicatures
+
+
+Optimality Theory (OT) is a linguistic theory which assumes that linguistic
+choices are governed by competition between a set of candidates, or
+alternatives. In standard OT (Prince & Smolensky, 1993) the optimal
+candidate is the one that satisfies best a set of violable constraints. After
+its success in phonology, OT has also been used in syntax, semantics and
+pragmatics. The original idea of optimality-theoretic semantics was to model
+interpretation by taking the candidates to be the alternative interpretations
+that the hearer could assign to a given expression, with constraints
+describing general preferences over expression-interpretation pairs. Blutner
+(1998, 2000) extended this original version by taking also alternative
+expressions, or forms, into account that the speaker could have used,
+but did not. The reference to alternative expressions/forms is standard in
+pragmatics to account for Quantity implicatures. Optimization should thus be
+thought of from two directions: that of the hearer, and that of the speaker.
+What is optimal, according to Blutner's Bidirectional-OT (Bi-OT), is not just
+interpretations with respect to forms, but rather form-interpretation pairs.
+In terms of a ‘better than’ relation ‘>’ between
+form-interpretation pairs, the pair ⟨f,i⟩  is
+said to be (strongly) optimal iff it satisfies the following two
+conditions: 
+
+¬∃i′ :
+  ⟨f,i′⟩ >
+  ⟨f,i⟩
+¬∃f′ :
+  ⟨f′,i⟩ >
+  ⟨f,i⟩
+
+
+
+The first condition requires that i is an optimal interpretation of
+form f. In Bi-OT this condition is thought of as optimization from
+the hearer's point of view. Blutner proposed that
+⟨f,i′⟩ >
+⟨f,i⟩  iff i′ is a more likely, or
+stereotypical, interpretation of f than i is:  P(i′ | ⟦ f ⟧)
+>  P(i | ⟦ f 
+⟧)  (where ⟦ f ⟧  denotes the
+semantic meaning of f, and
+P(B | A) the conditional probability
+of B given A, defined as
+P(A∩B)/P(A)). The second
+condition is taken to involve speaker's optimization: 
+for
+ ⟨f,i⟩
+ to be optimal for the speaker, it has to be the case that she cannot
+use a more optimal form f ′ to express
+i.
+ ⟨f ′,i⟩
+ >
+ ⟨f,i⟩
+ iff either (i)
+ P(i | ⟦f ′⟧)
+ >
+ P(i | ⟦ f ⟧),
+ or (ii)
+ P(i | ⟦f ′⟧)
+ =
+ P(i | ⟦ f ⟧)
+ and f ′ is a less complex form to express
+i than f is.
+
+
+
+
+Bi-OT accounts for classical Quantity implicatures. A convenient (though
+controversial) example is the ‘exactly’-interpretation of number
+terms. Let us assume, for the sake of example, that number terms semantically
+have an ‘at least’-meaning.[1] Still, we want to account for the intuition that
+the sentence “Three children came to the party” is normally
+interpreted as saying that exactly three children came to the party.
+One way to do this is to assume that the alternative expressions that the
+speaker could use are of the form “(At least) n
+children came to the party”, while the alternative interpretations for
+the hearer are of type in meaning that
+“Exactly n children came to the 
+party”.[2]
+If we assume, again for the sake of example, that all relevant
+interpretations are considered equally likely and that it is already
+commonly assumed that some children came, but not more than four, the
+strongly optimal form-interpretation pairs can be read off the
+following table:
+
+
+
+P(i | ⟦ f ⟧)
+i1
+i2
+i3
+i4
+
+
+‘one’
+⇒¼
+¼
+¼
+¼
+
+
+‘two’
+0
+⇒1⁄3
+1⁄3
+1⁄3
+
+
+‘three’
+0
+0
+⇒½
+½
+
+
+‘four’
+0
+0
+0
+⇒1
+
+
+
+
+
+In this table the entry
+ P(i3 | ⟦‘two’⟧) =
+ 1⁄3 because
+ P(i3 | {i2,i3,i4})
+ = 1⁄3. Notice that according to this
+reasoning ‘two’ is interpreted as ‘exactly 2’
+(as indicated by an arrow) because (i)
+ P(i2 | ⟦‘two’⟧)
+ = 1⁄3 is higher than
+ P(i2 | ⟦‘n’⟧)
+ for any alternative expression ‘n’, and (ii) all
+other interpretations compatible with the semantic meaning of the
+numeral expression are blocked: there is, for instance,
+another expression for which i4 is a better
+interpretation, i.e., an interpretation with a higher conditional
+probability.
+
+
+With numeral terms, the semantic meanings of the alternative expressions
+give rise to a linear order. This turns out to be crucial for the Bi-OT
+analysis, if we continue to take the interpretations as specific as we have
+done so far. Consider the following alternative answers to the question
+“Who came to the party?”:
+
+John came to the party.
+John or Bill came to the party.
+
+
+
+Suppose that John and Bill are the only relevant persons and that it is
+presupposed that somebody came to the party. In that case the table that
+illustrates bidirectional optimality reasoning looks as follows (where
+ix is the interpretation that only x
+came):
+
+
+
+P(i | ⟦ f ⟧)
+ij
+ib
+ijb
+
+
+‘John’
+⇒½
+0
+½
+
+
+‘Bill’
+0
+⇒½
+½
+
+
+‘John and Bill’
+0
+0
+⇒ 1
+
+
+‘John or Bill’
+1⁄3
+1⁄3
+1⁄3
+
+
+
+
+
+This table correctly predicts that (1) is interpreted as saying that
+only John came. But now consider the disjunction (2). Intuitively,
+this answer should be interpreted as saying that either only John, or only
+Bill came. It is easy to see, however, that this is predicted only if
+‘John came’ and ‘Bill came’ are not taken to be
+alternative forms. Bi-OT predicts that in case also ‘John came’
+and ‘Bill came’ are taken to be alternatives, the disjunction is
+uninterpretable, because the specific interpretations
+ij, ib, and
+ijb all can be expressed better by other forms.
+In general, one can see that in case the semantic meanings of the alternative
+expressions are not linearly, but only partially ordered, the derivation of
+Quantity implicatures sketched above gives rise to partially wrong
+predictions.
+
+
+As it turns out, this problem for Bi-OT seems larger than it really is.
+Intuitively, an answer like (2) suggests that the speaker has incomplete
+information (she doesn't know who of John or Bill came). But the
+interpretations that we considered so far are world states that do not encode
+different amounts of speaker knowledge. So, to take this into account in Bi-OT
+(or in any other analysis of Quantity implicatures) we should allow for
+alternative interpretations that represent different knowledge states of the
+speaker. Aloni (2007) gives a Bi-OT account of ignorance implicatures
+(inferences, like the above, that the speaker lacks certain bits of possibly
+relevant information), alongside indifference implicatures (that the
+speaker does not consider bits of information relevant enough to convey).
+Moreover, it can be shown that, as far as ignorance implicatures are
+concerned, the predictions of Bi-OT line up with the pragmatic interpretation
+function called ‘Grice’ in various (joint) papers of
+Schulz and Van Rooij (e.g. Schulz & Van Rooij, 2006). In these papers it
+is claimed that Grice implements the Gricean maxim of Quality and the
+first maxim of Quantity, and it is shown that in terms of it (together with an
+additional assumption of competence) we can account for many conversational
+implicatures, including the ones of (1) and (2).
+1.2 A Bi-OT analysis of Horn's division
+
+
+Bi-OT can also account for Horn's division of pragmatic labor
+or M-implicatures, as they are alternatively sometimes called
+after Levinson (2000)—according to which an (un)marked
+expression (morphologically complex and less lexicalized) typically
+gets an (un)marked interpretation—which Horn (1984) claimed to
+follow from the interaction between both Gricean submaxims of
+Quantity, and the maxims of Relation and Manner.  To illustrate,
+consider the following well-known example:
+
+John killed the sheriff.
+John caused the sheriff to die.
+
+
+
+We typically interpret the unmarked (3) as meaning stereotypical
+killing (on purpose), while the marked (4) suggests that John killed
+the sheriff in a more indirect way, maybe unintentionally. Blutner
+(1998, 2000) shows that this can be accounted for in Bi-OT.  Take
+ist to be the more plausible
+interpretation where John killed the sheriff in the stereotypical way,
+while i¬st is the interpretation
+where John caused the sheriff's death in an unusual way. Because (3)
+is less complex than (4), and ist is the
+more stereotypical interpretation compatible with the semantic meaning
+of (3), it is predicted that (3) is interpreted as
+ist.  Thus, in terms of his notion of
+strong optimality, i.e., optimality for both speaker and
+hearer, Blutner can account for the intuition that sentences typically
+get the most plausible, or stereotypical, interpretation. In terms of
+this notion of optimality, however, Blutner is not able yet to explain
+how the more complex form (4) can have an interpretation at all, in
+particular, why it will be interpreted as non-stereotypical killing.
+The reason is that on the assumption that (4) has the same semantic
+meaning as (3), the stereotypical interpretation would be
+hearer-optimal not only for (3), but also for (4).
+
+
+To account for the intuition that (4) is interpreted in a
+non-stereotypical way, Blutner (2000) introduces a weaker notion of
+optimality that also takes into account a notion of blocking:
+one form's pragmatically assigned meaning can take away, so to speak,
+that meaning from another, less favorable form.  In the present case,
+the stereotypical interpretation is intuitively blocked for the
+cumbersome form (4) by the cheaper alternative expression
+(3). Formally, a form-interpretation pair
+⟨f,i⟩ is weakly
+ optimal[3]
+ iff there is neither a strongly optimal
+⟨f,i′⟩ such that
+⟨f,i′⟩ >
+⟨f,i⟩ nor a strongly optimal
+⟨f ′,i⟩ such that
+⟨f ′,i⟩ >
+⟨f,i⟩.  All form-interpretation pairs that
+are strongly optimal are also weakly optimal.  However, a pair that is
+not strongly optimal like
+⟨(4),i¬st⟩ can still be
+weakly optimal: since neither
+⟨(4),ist⟩ nor
+⟨(3),i¬st⟩ is strongly
+optimal, there is no objection for
+⟨(4),i¬st⟩ to be a (weakly)
+optimal pair. As a result, the marked (4) will get the
+on-stereotypical interpretation. In general, application of the above
+definition of weak optimality can be difficult, but Jäger (2002)
+gives a concise algorithm for computing weakly optimal
+form-interpretation pairs.
+2. Implicatures and Game Theory
+2.1 Signaling games
+
+
+David Lewis (1969) introduced signaling games to explain how messages can
+be used to communicate something, although these messages do not have a
+pre-existing meaning. In pragmatics we want to do something similar:
+explain what is actually communicated by an expression whose actual
+interpretation is underspecified by its conventional semantic meaning. It
+is therefore a natural idea to base pragmatics on Lewisian signaling games.
+
+
+A signaling game is a game of asymmetric information between a sender
+s and a receiver r. The sender observes the state
+t that s and r are in, while the receiver
+has to perform an action. Sender s can try to influence the
+action taken by r by sending a message.  T is the
+set of states, F the set of forms, or messages. We assume
+that the messages already have a semantic meaning, given by the
+semantic interpretation function ⟦·⟧ which
+assigns to each form a subset of T.  The sender will send a
+message/form in each state, a sender strategy S is
+thus a function from T to F. The receiver will
+perform an action after hearing a message with a particular semantic
+meaning, but for present purposes we can think of actions simply as
+interpretations. A receiver strategy R is then a
+function that maps a message to an interpretation, i.e., a subset of
+T. A utility function for speaker and hearer
+represents what interlocutors care about, and so the utility function
+models what speaker and hearer consider to be relevant information
+(implementing Grice's Maxim of Relevance). For simplicity, we assume
+that the utility functions of s and r
+(Us and Ur) are the same
+(implementing Grice's cooperative principle), and that they depend on
+(i) the actual state t, (ii) the receiver's interpretation,
+i, of the message f sent by s in t
+according to their respective strategies R and S,
+i.e., i = R(S(t)), and (iii) (in
+section 2.3) the form f = S(t) used by the
+sender.  We assume that Nature picks the state according to some
+(commonly known) probability distribution P over T.
+With respect to this probability function, we can determine the
+expected, or average, utility of each sender-receiver strategy
+combination ⟨S,R⟩ for player e
+∈ {s,r} as follows:
+
+
+EUe(S,R)
+ = ∑t∈T
+P(t) ×
+Ue(t,S(t),R(S(t))).
+
+
+
+
+A signaling game is then a (simplified, abstract) model of a single
+utterance and its interpretation, which includes some of the arguably
+most relevant features of a context for pragmatic reasoning: an
+asymmetry of information (speaker knows the world state, hearer does
+not), a notion of utterance alternatives (in the set of
+messages/forms) with associated semantic meaning, and a flexible
+representation of what counts of relevant information (via utility
+functions). If this is not enough, e.g., if we want the listener to
+have partial information not shared by the speaker as well (such as
+when the speaker is uncertain about what is really relevant for the
+listener), that can easily be accommodated into a more complex game
+model, but we refrain from going more complex here. The strategies of
+sender and receiver encode particular ways of using and interpreting
+language. The notion of expected utility evaluates how good ways of
+using and interpreting language are (in the given
+context). Game-theoretic explanations of pragmatic phenomena aim to
+single out those sender-receiver strategy pairs that correspond to
+empirically attested behavior as optimal and/or rational solution of
+the game problem.
+
+
+The standard solution concept of game theory is Nash
+equilibrium. A Nash equilibrium of a signaling game is a pair of
+strategies ⟨S*,R*⟩
+which has the property that neither the sender nor the receiver could
+increase his or her expected utility by unilateral deviation. Thus,
+S* is a best response to R*
+and R* is a best response to
+S*. There are plenty of refinements of Nash
+equilibrium in the game-theoretic literature. Moreover, there are
+alternatives to equilibrium analyses, the two most prominent of which
+are: (i) explicit formalizations of agents' reasoning processes, such
+as is done in epistemic game theory (e.g., Perea 2012), and (ii)
+variants of evolutionary game theory (e.g., Sandholm 2010) that study
+the dynamic changes in agents' behavioral disposition under gradual
+optimization procedures, such as by imitation or learning from
+parents. These issues are relevant for applications to linguistic
+pragmatics as well, as we will demonstrate presently with the example
+of M-implicatures/Horn's division of pragmatic labor.
+2.2 A game-theoretic explanation of Horn's division
+
+
+We would like to account for the meaning difference between (3) and
+(4), as before in the context of Bi-OT. Suppose we have 2 states,
+tst and t¬st, and
+2 messages, fu and
+fm. As before, the semantic meaning of
+both messages is
+{tst,t¬st}, but
+tst is more stereotypical, or probable,
+than t¬st:
+P(tst) >
+P(t¬st). We decompose the sender's
+utility function into a benefit and a cost function,
+Us(t,f,i) =
+Bs(t,i) −
+C(f), where i is an interpretation. We
+adopt the following benefit function:
+Bs(t,i) = 1 if
+i = t, and
+Bs(t,i) = 0
+otherwise. The cost of the unmarked message
+fu is lower than the cost of the marked
+message fm. We can assume without loss of
+generality that C(fu) = 0 <
+C(fm). We also assume that it is
+always better to have successful communication with a costly message
+than unsuccessful communication with a cheap message, which means that
+C(fm), though greater than
+C(fu), must remain reasonably
+small.  The sender and receiver strategies are as before. The
+combination of sender and receiver strategies that gives rise to the
+bijective mapping
+{⟨tst,fu⟩,
+⟨t¬st,fm⟩}
+is a Nash equilibrium of this game. And this equilibrium encodes
+Horn's division of pragmatic labor: the unmarked (and lighter) message
+fu expresses the stereotypical
+interpretation tst, while the
+non-stereotypical state t¬st is expressed by
+the marked and costlier message
+fm. Unfortunately, also the mapping
+{⟨tst,fm⟩,
+⟨t¬st,fu⟩}
+—where the lighter message denotes the non-stereotypical
+situation—is a Nash equilibrium of the game, which means that on
+the present implementation the standard solution concept of game
+theory cannot yet single out the desired outcome.
+
+
+This is were considerations of equilibrium refinements and/or alternative
+solution concepts come in. For example, Parikh (1991, 2001) argues that we
+should use an equilibrium refinement. He observes that, of the two equilibria
+mentioned above, the first one Pareto-dominates the second, and that for this
+reason the former should be preferred. Van Rooij (2004) suggests that because
+Horn's division of pragmatic labor involves not only language use but also
+language organization, one should look at signaling games from an evolutionary
+point of view, and make use of those variants of evolutionary game theory that
+explain the emergence of Pareto-optimal solutions. As a third alternative,
+following some ideas of De Jaegher (2008), van Rooij (2008) proposes that one
+could also make use of forward induction (a particular game-theoretic way of
+reasoning about surprising moves of the opponent) to single out the desired
+equilibrium. As an example of an approach that draws on detailed modelling of
+the epistemic states of interlocutors, Franke (2014a) suggests that we should
+distinguish cases of M-implicature that involve rather clear ad hoc
+reasoning, such as (5) and (6), from cases with a possibly more
+grammaticalized contrast, such as between (3) and (4).
+
+
+Mrs T sang ‘Home Sweet Home’.
+Mrs T produces a series of sounds roughly corresponding to the score of ‘Home Sweet Home’.
+
+Franke suggests that the game model for reasoning about (5) and (6)
+should contain an element of asymmetry of alternatives: whereas it is
+reasonable (for a speaker to expect that) a listener would consider
+(5) to be an alternative utterance when hearing (6), it is quite
+implausible that (a speaker believes that) a listener will consider
+(6) a potential alternative utterance when hearing (5). This asymmetry
+of alternatives translates into different beliefs that the listener
+will have about the context after different messages. The speaker can
+anticipate this, and a listener who has actually observed (6) can
+reason about his own counterfactual context representation that he
+would have had if the speaker had said (5) instead. Franke shows that,
+when paired with this asymmetry in context representation, a simple
+model of iterated best response reasoning, to which we turn next,
+gives the desired result as well.
+2.3 Quantity implicatures and iterated reasoning
+
+
+Unlike the case of M-implicatures, many Quantity implicatures hinge on the
+fact that alternative expressions differ with respect to logical strength: the
+inference from ‘three’ to the pragmatically strengthed
+‘exactly three’-reading, that we sketched in Section 1.1, draws on
+the fact that the alternative expression ‘four’ is semantically
+stronger, i.e., ‘four’ semantically entails
+‘three’, but not the other way around, under the assumed ‘at
+least’-semantics. In order to bring considerations of semantic strength
+to bear on game-theoretic pragmatics, we must assign conventional meaning some
+role in either the game model or the solution concept. In the following, we
+look at two similar, but distinct possibilities of treating semantic meaning
+in approaches that spell out pragmatic reasoning as chains of (higher-order)
+reasoning about interlocutors' rationality.
+ 
+
+A straightforward and efficient way of bringing semantic meaning into
+game-theoretic pragmatics is to simply restrict the set of viable
+strategies of sender and receiver in a signaling game to those
+strategies that conform to conventional meaning: a sender can only
+select forms that are true of the actual state, and the receiver can
+only select interpretations which are in the denotation of an observed
+message. This may seem crude and excludes cases of non-literal
+language use, lying, cheating and error from the start, but it may
+serve to rationalize common patterns of pragmatic reasoning among
+cooperative, information-seeking interlocutors. Based on such a
+restriction to truth-obedient strategies, it has been shown
+independently by Pavan (2013) and Rothschild (2013) that there is an
+established non-equilibrium solution concept that nicely rationalizes
+Quantity implicatures, namely iterated admissibility, also
+known as iterated elimination of weakly dominated
+strategies. Without going into detail, the general idea of this
+solution concept is to start with the whole set of viable strategies
+(all conforming to semantic meaning) and then to iteratively eliminate
+all strategies X for which there is no cautious
+belief about which of the opponent's remaining strategies the
+opponent will likely play that would make X a rational thing
+to do. (A cautious belief is one that does not exclude any opponent
+strategy that has not been eliminated so far.) The set of strategies
+that survive repeated iterations of elimination are then compatible
+with (a particular kind of) common belief in rationality. In sum,
+iterated admissibility is an eliminative approach: starting from the
+set of all (truth-abiding) strategies, some strategies are weeded out
+at every step until we remain with a stable set of strategies from
+which nothing can be eliminated anymore.
+
+
+An alternative to restricting attention to only truthful strategies is
+to use semantic meaning to constrain the starting point of pragmatic
+reasoning.  Approaches that do so are the optimal assertions
+approach (Benz 2006, Benz & van Rooij 2007), iterated
+best response models (e.g., Franke 2009, 2011, Jäger 2014),
+and related probabilistic models (e.g., Frank & Goodman
+2012, Goodman & Stuhlmüller 2013, Franke & Jäger
+2014). The general idea that unifies these approaches can be traced
+directly to Grice, in particular the notion that speaker's should
+maximize the amount of relevant information contained in their
+utterances. Since information contained in an utterance is standardly
+taken to be semantic information (as opposed to pragmatically
+restricted or modulated meaning), a simple way of implementing Gricean
+speakers is to assume that they choose utterances by considering how a
+literal interpreter would react to each alternative. Pragmatic
+listeners then react optimally based on the belief that the speaker is
+Gricean in the above sense. In other words, these approaches define a
+reasoning scheme of higher-order rational reasoning: starting with a
+(non-rational, dummy) literal interpreter, a Gricean speaker acts
+(approximately) rationally based on literal interpretation, while a
+Gricean listener interpret (approximately) rationally based on the
+behavior of a Gricean speaker. Some contributions allow for
+higher-order iterations of best responses, others do not; some
+contributions also look at reasoning sequences that start with literal
+senders; some contributions assume that agents are strictly rational,
+others allow for probabilistic approximations to classical rational
+choice (see Franke & Jäger 2014 for overview and comparison).
+
+
+A crucial difference between iterated best response approaches and the
+previously mentioned approach based on iterated admissibility is that
+the former does not shrink a set of strategies but allows for a
+different set of best responses at each step. This also makes it so
+that (some) iterated best response approaches can deal with pragmatic
+reasoning in cases where interlocutors' preferences are not aligned,
+i.e., where the Gricean assumption of cooperativity does not hold, or
+where there are additional incentives to deviate from semantic meaning
+(for more about game models for reasoning in non-cooperative contexts,
+see, e.g., Franke, de Jager & van Rooij 2012, de Jaegher & van
+Rooij 2014). Another difference between iterated best response models
+and iterated admissibility is that the latter do not by itself account
+for Horn's division of pragmatic labor (see Franke 2014b and Pavan
+2014 for discussion).
+ To illustrate how iterated best response reasoning works in a simple
+(cooperative) case, let us look briefly at numerical expressions again. Take a
+signaling game with 4 states, or worlds, W = {w1,
+w2, w3, w4} where
+the indices give the exact/maximal number of children that came to our party,
+and four messages F =
+{‘one’,‘two’,‘three’, ‘four’},
+as shorthand for ‘n children came to our party’. On a
+neo-Gricean ‘at least’-interpretation of numerals, the meanings of
+the numeral expressions form an implication chain:
+⟦‘four’⟧ ⊂ ⟦‘three’⟧
+⊂ ⟦‘two’⟧ ⊂
+⟦‘one’⟧, because, for instance,
+⟦‘three’⟧ = {w3,
+w4}. A literal interpreter, who is otherwise oblivious to
+contextual factors, would respond to every message by choosing any true
+interpretation with equal probability. So, for instance, if the literal
+interpreter hears ‘three’, he would choose w3
+or w4, each with probability ½. But that means that
+an optimal choice of expression for a speaker who wants to communicate that
+the actual world is w3 would be ‘three’,
+because this maximizes the chance that the literal interpreter selects
+w3. Concretely, if the speaker chooses ‘one’,
+the chance that the literal listener chooses w3 is
+¼; for ‘two’ it's ⅓; for ‘three’ it's
+½, and for ‘four’ it's zero, because w3
+is not an element of ⟦‘three’⟧. So, a rational
+Gricean speaker selects ⟦‘three’⟧ in
+w3 and nowhere else, as is easy to see by a parallel
+argument for all other states. But that means that a Gricean interpreter who
+hears ‘three’ will infer that the actual world must be
+w3.
+
+
+A particularly promising recent expansion of this pragmatic reasoning
+scheme is to include probabilistic choice functions to model agents'
+approximately rational choices, so as to allow for a much more direct
+link with experimental data (c.f., Franke & Jäger (to appear)
+for overview). Such probabilistic pragmatic models have been applied
+to a number of phenomena of interest, including reasoning about
+referential expressions in context (Frank & Goodman 2012),
+ignorance implicatures (Goodman & Stuhlmüller 2013),
+non-literal interpretation of number terms (Kao et al. 2014), or
+Quantity implicatures in complex sentences (Potts et al. to appear).
+3. Conclusion
+
+
+Bidirectional Optimality Theory and Game Theory are quite natural, and
+similar, frameworks to formalize Gricean ideas about interactive,
+goal-oriented pragmatic reasoning in context. Recent developments turn
+towards epistemic or evolutionary game theory or to probabilistic
+models for empirical data.
