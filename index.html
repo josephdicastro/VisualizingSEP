@@ -15,7 +15,7 @@
     <title>Visualizing SEP</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <header>
             <nav class="navbar 
                         navbar-expand-md 
@@ -44,16 +44,11 @@
         <main>
             <div class="row">
                 <div class="col-lg-2">
-                    <div id="domainData">
-                        <h3></h3>
-                        <p id="domainIntro"></p>
-                        <p id="link"></p>
-                    </div>
+                    <div id="sidebarLeft" class="sidebar"></div>
                 </div>
                 <div class="col-lg-8">  
-                <!-- <div class="col-lg-12">   -->
                     <article>
-                        <div id="intro" style="color:lightgray">
+                        <!-- <div id="intro" style="color:lightgray;display: none;" >
                             <p>This website provides a visual search interface to the corpus of articles 
                                 in the Stanford Encylopedia of Philosophy. Using network mapping, this 
                             site shows how each article in the SEP is linked to every other article.</p>
@@ -68,7 +63,7 @@
                                     </li>
                                 </ul></li>
                                 <li>The search menu defaults to showing articles about philosophers, 
-                                    but it can be filtered dynamically to show either philosophers or ideas.
+                                    but it can be filtered dynamically to show either philosopherspu or ideas.
                                 <ul>
                                     <li>The graph generated will always show articles about both philosophers and ideas<br>
                                     (assuming the respective article links to both kinds).</li>
@@ -78,8 +73,8 @@
                                 </ul></li>
 
                                 <li>Each node is an active link, so you can explore the related articles by double-clicking on the node.</li>
-                            </ul>
-                        </div>
+                            </ul> 
+                        </div>-->
                         <!-- Create a div where the graph will take place -->
                         <div id="articleGraph" style="display: none;">
                             <svg></svg>
@@ -87,17 +82,13 @@
                     </article>
                 </div>
                 <div class="col-lg-2">
-                    <div id="sideBar">
-                        <h3></h3>
-                        <p id="intro"></p>
-                        <p id="link"></p>
-                    </div>
+                    <div id="sidebarRight" class="sidebar"></div>
                 </div>
             </div>
         </main>
-        <footer class="bg-dark text-center">
+        <!-- <footer class="bg-dark text-center">
             <p style="color: rgb(212, 209, 209);">&copy; Copyright: Joseph DiCastro 2020</p>
-        </footer>
+        </footer> -->
     </div>
 </body>
 

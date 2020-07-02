@@ -1,91 +1,81 @@
+// ****** Global Variables ******
+
+// Select Page Elements
 let svg = d3.select('svg')
 let articleMenu = d3.select('#articleSearchMenu')
 let domainMenu = d3.select('#domainSearchMenu')
-let introDiv = d3.select('#intro')
+let introDiv = d3.select('#intro') 
 let articleGraphDiv = d3.select('#articleGraph')
+let sidebarLeft = d3.select("#sidebarLeft") 
+let sidebarRight = d3.select("#sidebarRight")
 
-let svgConfig = initializeParentSVG(svg);
+//Initialize nodes and links arrays for simulation
 let nodes = [];
 let links = [];
+let biLinks = [];
+let inLinks = [];
+let outLinks = [];
+
+// Initialize SVG and Simulation
+let svgConfig = initializeParentSVG(svg);
+
+//Initialze article and domain caches for SEP data 
 let articleSearchCache = [];
+let domainSearchCache = [];
+
+//
+let neighborNodes = [];
 
 let linkAngles = [];
 
+//set BaseURL for SEP Edition
+//current SEP edition: Spring 2020
 let baseURL = 'https://plato.stanford.edu/archives/spr2020';
 
-d3.json('static/sep_network_test.json').then(function(data) { showData(data)} );
+d3.json('static/sep_network_test.json').then(function(data) { startVisualization(data)} );
 
-function showData(data) {
+function startVisualization(data) {
     let articleSimulationConfig = initializeSimulation(svgConfig);  
-    loadArticleMenu(data.articles)
-    loadDomainMenu(data.domains)
+    loadArticleMenu(data)
+    loadDomainMenu(data)
     showArticleGraphAreas() 
     showHomeMenu(data, articleSimulationConfig)
 
     //UI Response features
     articleMenu.on('change', function(){
-        let articleTitle = d3.event.target.value; 
-        showArticleGraphAreas() 
-        updateGraph(data, 'article', articleTitle, articleSimulationConfig)
+        let articleTitle = d3.event.target.value;
+        showArticleGraph(data, articleTitle, articleSimulationConfig)
     })
 
     domainMenu.on('change', function(){
-        let domainTitle = d3.event.target.value;
-        // let domainSimulationConfig = initializeDomainSimulation(svgConfig);  
-        updateGraph(data, 'domain', domainTitle, articleSimulationConfig)
+        let domainTitle = d3.event.target.value; 
+        showDomainGraph(data, domainTitle, articleSimulationConfig)
         
     })
-
 }
 
+// ****** SET GLOBALS  ********
+
 function setGlobalNodesLinks(sepNetworkObject) {
+
     nodes.length = 0
     links.length = 0
 
     sepNetworkObject.nodes.forEach(node => nodes.push(node))
     sepNetworkObject.links.forEach(link => links.push(link))
-}
-
-function showHomeMenu(data, simulationConfig) {
-    sep_node = data.domains.nodes
-    sep_node.forEach(node => nodes.push(node))
-    sep_node[0].links.forEach(link => links.push(link))
-    drawArticleSimulation(data, simulationConfig)
 
 }
+function setGlobalLinkDir(sepNetworkObject) {
+    biLinks.length = 0
+    outLinks.length = 0 
+    inLinks.length = 0 
 
-function loadArticleMenu(data) {
-
-    let articles = ["[Search articles...]"]
-    data.nodes.forEach(node => articles.push(node.title))
-
-    //load into article search menu
-    articleMenu.selectAll("option")
-                .data(articles)
-                .enter().append("option")
-                        .attr("value", (d) => d)
-                        .html((d) => d)
-
+    sepNetworkObject.biLinks.forEach(biLink => biLinks.push(biLink))
+    sepNetworkObject.inLinks.forEach(inLink => inLinks.push(inLink))
+    sepNetworkObject.outLinks.forEach(outLink => outLinks.push(outLink))
 }
 
-function loadDomainMenu(data) {
-
-    let domains = ["[Search domains...]"]
-    data.nodes.forEach(node => domains.push(node.title))
-    //load into searchMenu
-    domainMenu.selectAll("option")
-                .data(domains)
-                .enter().append("option")
-                        .attr("value", (d) => d)
-                        .html((d) => d)
-
-}
-
-
-function showArticleGraphAreas() {
-    introDiv.style('display', 'none')
-    articleGraphDiv.style('display', 'block')
-}
+// ****** INITIALIZATION FUNCTIONS ********
 
 function initializeParentSVG(svg) {
     // set basic SVG Config data 
@@ -97,18 +87,14 @@ function initializeParentSVG(svg) {
     };
 
     // let areaWidth = 900;
-    let areaWidth = 1200
-    let areaHeight = 1000;
+    let areaWidth = 1000
+    let areaHeight = 750;
 
     let width = areaWidth - margin.left - margin.right;
     let height = areaHeight - margin.top - margin.bottom;
 
     svg.attr("viewBox", "0 0 " + width + " " + height )
        .attr("preserveAspectRatio", "xMidYMid meet")
-       .style('border', '1px solid white');
-
-    // svg.attr("width", width)
-    //     .attr('height',height )
 
     return {margin, areaWidth, areaHeight, width, height, svg}
 }
@@ -118,13 +104,14 @@ function initializeSimulation(svgConfig) {
     svgConfig.svg.html("")
 
     //create SVG group centered in the middle of the svg space
-    svg = svgConfig.svg.append('g')
-                       .attr("transform", `translate(${(svgConfig.width/2)-25},${svgConfig.height/2})`)
+    g1 = svgConfig.svg.append('g')
+                       .attr("transform", `translate(${svgConfig.width/2},${svgConfig.height/2})`)
                        .classed('articleGraphGroup', true)
 
     //create secondary svg group so that we can add our graph elements to this group
-    let graph_elements = svg.append('g')
+    let graph_elements = g1.append('g')
                             .classed('articleElements', true)
+                            .attr('width',1000)
 
     // create main graph elements
     let links = graph_elements.append("g")
@@ -147,6 +134,130 @@ function initializeSimulation(svgConfig) {
     return {links, nodes, labels, simulation}
 }
 
+// ****** MENU FUNCTIONS ********
+
+function loadArticleMenu(data) {
+
+    let articles = ["[Search articles...]"]
+    data.articles.nodes.forEach(node => articles.push(node.title))
+
+    //load into article search menu
+    articleMenu.selectAll("option")
+                .data(articles)
+                .enter().append("option")
+                        .attr("value", (d) => d)
+                        .html((d) => d)
+
+}
+
+function loadDomainMenu(data) {
+
+    let domains = ["[Search domains...]"]
+    data.domains.nodes.forEach(node => domains.push(node.title))
+    //load into searchMenu
+    domainMenu.selectAll("option")
+                .data(domains)
+                .enter().append("option")
+                        .attr("value", (d) => d)
+                        .html((d) => d)
+
+}
+
+function showHomeMenu(data, simulationConfig) {
+    sep_node = data.domains.nodes
+    sep_node.forEach(node => nodes.push(node))
+    sep_node[0].links.forEach(link => links.push(link))
+    drawArticleSimulation(data, simulationConfig)
+
+}
+
+function showArticleGraphAreas() {
+    introDiv.style('display', 'none')
+    articleGraphDiv.style('display', 'block')
+}
+
+// ****** ARTICLE GRAPH FUNCTIONS ****** 
+
+function showArticleGraph(data, articleTitle, articleSimulationConfig) {
+
+    let articleData = getArticleData(data,articleTitle)
+    setGlobalNodesLinks(articleData)
+    setGlobalLinkDir(articleData)
+    let articleNode = nodes[0]
+    drawArticleSimulation(data, articleSimulationConfig)
+    updateSidebarsArticle(data, articleNode, articleSimulationConfig);
+    window.getSelection().removeAllRanges();
+    domainMenu.value = "[Search domains...]"
+
+}
+function getArticleData(data, articleTitle) {
+    let articleData = {};
+    let inArticleCache = articleSearchCache.find( ({search}) => search === articleTitle);
+    if (!inArticleCache) {
+        articleData = getArticleDataFromJSON(data, articleTitle); 
+    }   else    {
+        articleData = inArticleCache
+    }
+
+    return articleData
+}
+function getArticleDataFromJSON(data, articleTitle) {      
+
+    let articleNodes = [];
+    let articleLinks = [];  
+    let articleData = {};
+    let linkDomains = new Set();
+
+    //get the base node to build our graph around    
+    let searchNode = data.articles.nodes.filter(node => {
+        return node.title === articleTitle
+    })
+    //get the url for the base node
+    let searchID = searchNode[0].id 
+
+    let sourceLinks = new Set()
+    let targetLinks = new Set()
+
+    data.articles.links.forEach(link => { 
+        if (searchID === link.source && searchID !== link.target)  {
+            sourceLinks.add(link.target)
+        }   else if (searchID === link.target && searchID !== link.source)  {
+            targetLinks.add(link.source)
+        }
+    })
+
+    let _biLinks = intersection(sourceLinks,targetLinks)
+    let _outLinks = symmetricDifference(_biLinks, sourceLinks)
+    let _inLinks = symmetricDifference(_biLinks, targetLinks)
+
+    articleLinks = combineLinks(searchID, _biLinks, _outLinks, _inLinks)
+
+    articleNodes.push(searchNode[0])
+
+    articleLinks.forEach(link => {
+        data.articles.nodes.filter(node => {
+            if (node.id === link.target) {
+                articleNodes.push(node)
+            }
+        })
+    }) 
+
+    articleNodes.forEach(node => linkDomains.add(node.primary_domain))
+    //store the articleData term as an object
+    articleData = { "search": articleTitle,
+                    "nodes": articleNodes,
+                    "links": articleLinks,
+                    "biLinks": _biLinks,
+                    "inLinks": _inLinks,
+                    "outLinks": _outLinks, 
+                    "linkDomains": linkDomains }
+    
+    articleSearchCache.push(articleData)
+
+    return articleData
+
+    
+}
 function drawArticleSimulation(data, simulationConfig) {
 
     let centralNode = nodes[0]
@@ -179,7 +290,7 @@ function drawArticleSimulation(data, simulationConfig) {
                            .data(nodes, function(d) {return d.title})
                            .attr("display", "block")
                            .classed('mainLabel', function(d,i) {return i===0?true:false})
-
+                           .attr("fill", function(d) {return color(d.primary_domain)})
     label.exit().remove();
 
     label = label.enter()
@@ -187,99 +298,43 @@ function drawArticleSimulation(data, simulationConfig) {
                  .text(function(d) {return d.title})
                  .attr("display", "block")
                  .attr("font-size", '10px')
-                 .attr("fill", function(d) {return color(d.entry_type)})
+                 .attr("fill", function(d) {return color(d.primary_domain)})
                  .attr('nodeID', function(d) {return d.id})
                  .classed('label',true)
                  .classed('mainLabel', function(d,i) {return i===0?true:false})
                  .merge(label)
 
-    label.on('mouseover', function(d,i) { 
-            if (i!==0) {
-                if (ticksCompleted) {
-                    focus(); 
-                    d3.select(this).style("cursor", "pointer"); 
-                    setPreviewArea(d3.select(d3.event.target).datum())
-                }
-            }
-        })
-        .on('mouseout', function(d,i)  { 
-            if (i!==0) {
-                if(ticksCompleted) {
-                    unfocus(); 
-                    d3.select(this).style("cursor", "default"); 
-                    setPreviewArea(centralNode);
-                }
-            }
-        })
-        .on('dblclick', function(d,i) {
-            if (i!==0) {
-                if (ticksCompleted) {
-                    unfocus();
-                    let articleTitle = d.title
-                    articleMenu.property('value',articleTitle)
-                    if (d.entry_type === 'Menu') {
-                        updateGraph(data, 'domain', articleTitle, simulationConfig)
-                    }   else    { 
-                        updateGraph(data, 'article', articleTitle, simulationConfig)
-                    }
-                }
-            }
+    label
+        .on('mouseover', function() {mouseOverArticleGraph(this, data, simulationConfig)})
+        .on('mouseout', function() {mouseOutArticleGraph(this, centralNode, data, simulationConfig)})
+        .on('dblclick', function() {dblClickArticleGraph(this, data, simulationConfig)})
 
-        })
 
     //nodes
     node = simulationConfig.nodes.selectAll('.node')
                          .data(nodes, function (d) {return d.id})
                          .attr("r", 5)
+                         .attr("fill", function(d) {return color(d.primary_domain)})
     
     node.exit().remove()
 
     node = node.enter()
                 .append('circle')
                 .attr("r", 5)
-                .attr("fill", function(d) {return color(d.entry_type)})
+                .attr("fill", function(d) {return color(d.primary_domain)})
                 .attr("stroke", "#fff")
                 .attr("stroke-width", .5)
                 .attr('nodeID', function(d) {return d.id})
                 .style('opacity',1)
                 .classed('node',true)
                 .merge(node)
-
-    node.on('mouseover', function(d,i) { 
-            if (i!==0) {
-                if(ticksCompleted) {
-                    focus(); 
-                    d3.select(this).style("cursor", "pointer"); 
-                    setPreviewArea(d3.select(d3.event.target).datum())
-                }
-            }
-        })
-        .on('mouseout', function(d,i)  { 
-            if (i!==0) {
-                if(ticksCompleted) {
-                    unfocus(); 
-                    d3.select(this).style("cursor", "default"); 
-                    setPreviewArea(centralNode);
-                }
-            }
-        })
-        .on('dblclick', function(d,i) {
-            if (i!==0) {
-                if (ticksCompleted) {
-                    unfocus();
-                    let articleTitle = d.title
-                    articleMenu.property('value',articleTitle)
-                    if (d.entry_type === 'Menu') {
-                        updateGraph(data, 'domain', articleTitle, simulationConfig)
-                    }   else    { 
-                        updateGraph(data, 'article', articleTitle, simulationConfig)
-                    }
-                }
-            }
-        })
+    node
+        .on('mouseover', function() {mouseOverArticleGraph(this, data, simulationConfig)})
+        .on('mouseout', function() {mouseOutArticleGraph(this, centralNode, data, simulationConfig)})
+        .on('dblclick', function() {dblClickArticleGraph(this, data, simulationConfig)})
 
     //deselect any selected nodes
-    window.getSelection().removeAllRanges();
+    // window.getSelection().removeAllRanges();
 
     //update simulation
     simulationConfig.simulation.on('tick', function (){
@@ -304,7 +359,6 @@ function drawArticleSimulation(data, simulationConfig) {
                 .attr('x', function(d) {return d.index === 0 ? 0: setXpos(d.x,this.getBBox().width) })
                 .attr('y', function(d) {return d.index === 0 ? -10: d.y+4})
                 .attr("transform", function(d,i){ return i===0 ?`rotate(0)`:rotateLabel(i,d.x, d.y)})
-                d3.select('.articleGraphGroup').transition().style('opacity',1)
 
                 numTicks++
             }   else {   
@@ -312,20 +366,6 @@ function drawArticleSimulation(data, simulationConfig) {
         }
 
     })
-
-
-    //load direction arrays
-    // let links_in  = d3.selectAll("[dir=in]");
-    //     links_in.nodes().forEach(d => inElements.push(d.__data__.target))
-
-    // let links_out = d3.selectAll("[dir=out]");
-    //     links_out.nodes().forEach(d => outElements.push(d.__data__.target))
-
-    // let links_both = d3.selectAll("[dir=both]");
-    //     links_both.nodes().forEach(d => biElements.push(d.__data__.target))
-    
-    // console.log(inElements, outElements, biElements)
-
 
     //restart simulation
     simulationConfig.simulation.nodes(nodes);
@@ -337,90 +377,508 @@ function drawArticleSimulation(data, simulationConfig) {
     simulationConfig.simulation.force("forceY").strength(0)
     simulationConfig.simulation.alpha(1).restart();
 
-    //updatePreview
-    setPreviewArea(centralNode);
-
-    ticksCompleted = true
-    d3.select('.articleGraphGroup').transition().style('opacity',1)
+    //updateSideBars
 
 
-    //******************** Simulation Adjustment functions************************/
 
-    function forceStrength(numberOfNodes) {
-        let strength;
-        if (numberOfNodes < 20) { strength = -1000 } else
-        if (numberOfNodes < 30) { strength = -800 } else
-        if (numberOfNodes < 40) { strength = -600 } else
-        if (numberOfNodes < 50) { strength = -400 } else
-        if (numberOfNodes < 60) { strength = -200 } else
-        if (numberOfNodes < 70) { strength = -100 } else 
-        if (numberOfNodes < 80) { strength = -50 } else 
-        if (numberOfNodes < 90) { strength = -40 } else 
-        if (numberOfNodes > 90) { strength = -30 } else 
-        console.log(numberOfNodes)
-        return strength
-    
-    }
-
-    function ticksByNodeCount(numberOfNodes) {
-        let tickLimit;
-        if (numberOfNodes < 10) { tickLimit = 50 } else
-        if (numberOfNodes < 20) { tickLimit = 80 } else
-        if (numberOfNodes < 30) { tickLimit = 100 } else
-        if (numberOfNodes < 40) { tickLimit = 150 } else
-        if (numberOfNodes < 60) { tickLimit = 200 } else
-        if (numberOfNodes < 70) { tickLimit = 250 } else 
-        if (numberOfNodes < 80) { tickLimit = 200 } else 
-        if (numberOfNodes < 90) { tickLimit = 250 } else 
-        if (numberOfNodes > 90) { tickLimit = 300 }
-
-        return tickLimit
-    }
-    //******************** MOUSE OVER FUNCTIONS FOR INTERACTIVITY ************************/
-           // **** The following functions/declarations create the mouseover effects showing node adjacency.
-        // **** I found the base code online, but don't remember where. Sorry!
-        // **** I updated some of the code for this project.
-
-        let adjacentNodes = [];
-
-        // add source and target adjacentNodes, which is used to activate highlighting
-        links.forEach(function (d) {
-            adjacentNodes[d.source.index + "-" + d.target.index] = true;
-            adjacentNodes[d.target.index + "-" + d.source.index] = true;
-        });
-
-        // this function compares two nodes to see if they are neighbors.
-        function isNeighbor(a, b) {
-            return a == b || adjacentNodes[a + "-" + b];
-        }
-
-        // Highlight the current node and the main node, and dim the rest.
-        function focus() {
-            //get index of current node being mousedOver
-            let index = d3.select(d3.event.target).datum().index;
-
-            d3.selectAll('.link').attr("opacity", function (o) {
-                return o.source.index == index || o.target.index == index ? 1 : 0.1;
-            });
-            d3.selectAll('.label').attr("display", function (d) {
-                return isNeighbor(index, d.index) ? "block" : "none";
-            });
-            d3.selectAll('.node').style("opacity", function (o) {
-                return isNeighbor(index, o.index) ? 1 : 0.1;
-            });
-
-        }
-
-        // Reset graph to default visuals
-        function unfocus() {
-            d3.selectAll('.link').attr("opacity", 0.3);
-            d3.selectAll('.label').attr("display", "block");
-            d3.selectAll('.node').style("opacity", 1);
-        } 
 
 }
+function updateSidebarsArticle_old(data, currentNode, simulationConfig) {
 
-function drawDomainSimulation(data, simulationConfig){
+    if(currentNode) {
+        
+        //clear areas
+        sidebarLeft.html("")
+        sidebarRight.html("")
+
+        sidebarLeft.style("display", "block")
+        sidebarRight.style("display", "block")
+
+        //**populate sidebarLeft**
+        
+        let articleText = sidebarLeft.append("div")
+
+        // Title
+        if (typeof(currentNode.title)!=='undefined') {
+            articleText.append("h3")
+            .text(currentNode.title)
+            .classed('articleDetailH3',true)
+        }
+
+        // Intro Paragraph
+        if (typeof(currentNode.first_paragraph)!=='undefined') {
+            let paragraphData = getParagraphDataHTML(currentNode.first_paragraph);
+            articleText.append("div")
+                .html(paragraphData)
+                .classed('firstParagraph', true)
+        }
+
+        //**populate sidebarRight**
+
+        //create div to hold all sidebar details
+        let articleDetails = sidebarRight.append("div")
+
+        articleDetails.append("h3")
+        .text("Article Details")
+        .classed('articleDetailH3', true)
+
+        //create div to list domains 
+        let domainListDiv = articleDetails.append("div")
+        domainListDiv.append("h4")
+            .text("This article appears in these taxonomies")
+            .classed('articleDetailH4', true)
+
+        domainListDiv.append("ul")
+            .selectAll(".domainListItem")
+            .data(currentNode.domain_tags.split(','))
+                .enter()
+                .append('li')
+                .html(function(d) {return d})
+                .classed('domainListItem', true)
+            .exit().remove()
+    
+        // create div to list analyses
+        let linkAnalysisDiv = articleDetails.append("div")
+        linkAnalysisDiv.append("h4")
+        .text("Link Analysis")
+        .classed('articleDetailH4', true)
+
+        linkAnalysisDiv.append("p")
+        .text(`${links.length} articles are linked to this one.`)
+        .classed('firstParagraph', true)
+        
+        
+        // build direction links data 
+        let directionLinks = linkAnalysisDiv.append("div")
+
+        directionLinks.append("h5")
+        .text("Link Direction Summary")
+        .classed('articleDetailH5', true)
+
+        linkItems = [`Bi-Directional Links: ${biLinks.length}`,
+                     `In-coming Links: ${inLinks.length}`,
+                     `Out-going Links: ${outLinks.length}`]
+
+        directionLinks.append("ul")
+            .selectAll(".linkDirListItem")
+            .data(linkItems)
+            .enter()
+            .append('li')
+            .html(function(d) {return d})
+            .classed('linkDirListItem', true)
+        .exit().remove()
+
+        // build domain links data 
+        let linkDomainLinks = linkAnalysisDiv.append("div")
+
+        linkDomainLinks.append("h5")
+        .text("Link Domain Summary")
+        .classed('articleDetailH5', true)  
+
+        let linkDomainList = new Set() 
+        nodes.forEach(node => linkDomainList.add(node.primary_domain))
+        console.log(linkDomainList)
+
+        //create div to hold SEP link
+        let sepLinkDiv = articleDetails.append("div")
+        let sepURL = baseURL + currentNode.id
+    
+        sepLinkDiv.append('h4')
+            .text('Read the full article at SEP')
+            .classed('articleDetailH4', true)
+
+        sepLinkDiv.append("p")
+        .html(`<a href="${sepURL}" target="_blank">${currentNode.title}</a>`)
+        .classed('sepLink', true)
+        .style('color', 'white')
+        
+
+
+
+
+        ////// ux/ui interactions
+
+        let domainList = d3.selectAll('.domainListItem')
+
+        domainList
+            .on('mouseover', function() { d3.select(this).style("cursor", "pointer"); })
+            .on('mouseout', function() {d3.select(this).style("cursor", "default"); })
+            .on('dblclick', function () {
+                let domainTitle = d3.select(this).datum()
+                showDomainGraph(data, domainTitle, simulationConfig)
+        })
+
+        let linkList = d3.selectAll('.linkDirListItem')
+        linkList
+            .on('mouseover', function() {
+                d3.select(this).style("cursor", "pointer"); 
+                d3.select(this).style("font-weight", "bold")
+                let linkDirection = d3.select(this).datum().substring(0,2)
+                console.log(linkDirection)
+                switch(linkDirection) {
+                    case 'Bi':
+                        focusOnLinkDirection(biLinks)
+                        break;
+                    case 'In':
+                        focusOnLinkDirection(inLinks)
+                        break;
+                    case 'Ou':
+                        focusOnLinkDirection(outLinks)
+                        break;
+                }
+            })
+            .on('mouseout', function() {
+                d3.select(this).style("cursor", "default"); 
+                d3.select(this).style("font-weight", "normal");
+                resetDisplayDefaultsArticleGraph();
+            })
+            .on('dblclick', function() {})
+
+
+
+    }
+}
+
+function updateSidebarsArticle(data, selectedArticle, simulationConfig) {
+    updateSideBarsAritcleLeft(data, selectedArticle, simulationConfig)
+    updateSideBarsArticleRight(data, selectedArticle, simulationConfig)
+}
+function updateSideBarsAritcleLeft(data, selectedArticle, simulationConfig){
+    if(selectedArticle) {
+        //clear areas
+        sidebarLeft.html("")
+        sidebarLeft.style("display", "block")
+
+        //**populate sidebarLeft**
+        
+        let articleText = sidebarLeft.append("div")
+
+        // Title
+        articleText.append("h3")
+        .text(selectedArticle.title)
+        .classed('articleDetailH3',true)
+
+        // Intro Paragraph
+        if (typeof(selectedArticle.first_paragraph)!=='undefined') {
+            let paragraphData = getParagraphDataHTML(selectedArticle.first_paragraph);
+            articleText.append("div")
+                .html(paragraphData)
+                .classed('firstParagraph', true)
+        }
+
+    }
+}
+
+function updateSideBarsArticleRight(data, selectedArticle, simulationConfig){
+    if(selectedArticle) {
+        //clear areas
+        sidebarRight.html("")
+        sidebarRight.style("display", "block")
+
+        let articleData = getArticleData(data,selectedArticle.title)
+        console.log(articleData)
+
+        //create div to hold all sidebar details
+        let articleDetails = sidebarRight.append("div")
+
+        articleDetails.append("h3")
+        .text("Article Details")
+        .classed('articleDetailH3', true)
+
+        //create div to list domains 
+        let domainListDiv = articleDetails.append("div")
+        domainListDiv.append("h4")
+            .text("This article appears in these domains")
+            .classed('articleDetailH4', true)
+
+        domainListDiv.append("ul")
+            .selectAll(".domainListItem")
+            .data(selectedArticle.domain_tags.split(','))
+                .enter()
+                .append('li')
+                .html(function(d) {return d})
+                .classed('domainListItem', true)
+            .exit().remove()
+    
+        // create div to list analyses
+        let linkAnalysisDiv = articleDetails.append("div")
+        linkAnalysisDiv.append("h4")
+        .text("Link Analysis")
+        .classed('articleDetailH4', true)
+
+        linkAnalysisDiv.append("p")
+        .text(`${articleData.links.length} articles are linked to this one.`)
+        .classed('firstParagraph', true)
+        
+        
+        // build direction links data 
+        let directionLinks = linkAnalysisDiv.append("div")
+
+        directionLinks.append("h5")
+        .text("Link Direction Summary")
+        .classed('articleDetailH5', true)
+
+        linkItems = [`Bi-Directional Links: ${articleData.biLinks.size}`,
+                     `In-coming Links: ${articleData.inLinks.size}`,
+                     `Out-going Links: ${articleData.outLinks.size}`]
+
+        directionLinks.append("ul")
+            .selectAll(".linkDirListItem")
+            .data(linkItems)
+            .enter()
+            .append('li')
+            .html(function(d) {return d})
+            .classed('linkDirListItem', true)
+        .exit().remove()
+
+        // build domain links data 
+        let linkDomainLinks = linkAnalysisDiv.append("div")
+
+        linkDomainLinks.append("h5")
+        .text("Link Domain Summary")
+        .classed('articleDetailH5', true)  
+
+        linkDomainLinks.append("ul")
+            .selectAll(".linkDomainListItem")
+            .data(Array.from(articleData.linkDomains))
+            .enter()
+            .append('li')
+            .html(function(d) {return d})
+            // .attr("stroke", function(d) {return color(d)})
+            .style("color", function(d) {return color(d)})
+            .classed('linkDomainListItem', true)
+        .exit().remove()
+
+        //create div to hold SEP link
+        let sepLinkDiv = articleDetails.append("div")
+        let sepURL = baseURL + selectedArticle.id
+    
+        sepLinkDiv.append('h4')
+            .text('Read the full article at SEP')
+            .classed('articleDetailH4', true)
+
+        sepLinkDiv.append("p")
+        .html(`<a href="${sepURL}" target="_blank">${selectedArticle.title}</a>`)
+        .classed('sepLink', true)
+        .style('color', 'white')
+        
+
+
+
+
+        ////// ux/ui interactions
+
+        let domainList = d3.selectAll('.domainListItem')
+
+        domainList
+            .on('mouseover', function() { d3.select(this).style("cursor", "pointer"); })
+            .on('mouseout', function() {d3.select(this).style("cursor", "default"); })
+            .on('dblclick', function () {
+                let domainTitle = d3.select(this).datum()
+                showDomainGraph(data, domainTitle, simulationConfig)
+        })
+
+        let linkList = d3.selectAll('.linkDirListItem')
+        linkList
+            .on('mouseover', function() {
+                d3.select(this).style("cursor", "pointer"); 
+                d3.select(this).style("font-weight", "bold")
+                let linkDirection = d3.select(this).datum().substring(0,2)
+                console.log(linkDirection)
+                switch(linkDirection) {
+                    case 'Bi':
+                        focusOnLinkDirection(biLinks)
+                        break;
+                    case 'In':
+                        focusOnLinkDirection(inLinks)
+                        break;
+                    case 'Ou':
+                        focusOnLinkDirection(outLinks)
+                        break;
+                }
+            })
+            .on('mouseout', function() {
+                d3.select(this).style("cursor", "default"); 
+                d3.select(this).style("font-weight", "normal");
+                resetDisplayDefaultsArticleGraph();
+            })
+            .on('dblclick', function() {})
+
+    }
+}
+function getParagraphDataHTML(ParagraphDataFromNode) {
+    let htmlReturn = '';
+
+    //only display the first 500 characters of the node's intro paragraph
+    if(typeof(ParagraphDataFromNode)!=='undefined') {
+        if(ParagraphDataFromNode !== '') {
+            if (ParagraphDataFromNode.length > 500 ) {
+                let firstParaText = ParagraphDataFromNode.substring(0,500);
+                let lastPeriod = firstParaText.lastIndexOf('.')
+                let finalParaText = firstParaText.substring(0,lastPeriod+1)
+                let displayCut = `(Only the first ${finalParaText.length} characters of intro text are displayed.)`;
+                htmlReturn = "<p>" + finalParaText + "</p>" + 
+                             "<p class='displayCut'>" + displayCut + "</p>"
+            }  else {
+                htmlReturn = "<p>" + ParagraphDataFromNode + "</p>"
+            }
+        }
+    }   else    {
+        htmlReturn = ""
+    }
+    
+    return htmlReturn
+
+}
+function dblClickArticleGraph(dblClickReference, data, simulationConfig) {
+    
+    // get node or label activated
+    let activeElement = d3.select(dblClickReference)
+
+    if (activeElement.datum().index !== 0) {
+    // do the following if the activated node or label was not the central node
+
+        activeElement.style("cursor", "pointer"); 
+        resetDisplayDefaultsArticleGraph();
+        let articleTitle = activeElement.datum().title
+        // updateGraph(data, 'article', articleTitle, simulationConfig)
+        showArticleGraph(data, articleTitle,simulationConfig)
+    }
+}
+function mouseOverArticleGraph(mouseOverReference, data, simulationConfig) {
+    
+    // get node or label activated
+    let activeElement = d3.select(mouseOverReference)
+
+    if (activeElement.datum().index !== 0) {
+    
+        // do the following if the activated node or label was not the central node
+        activeElement.style("cursor", "pointer"); 
+        focusOnSelectedArticle(activeElement.datum())
+        updateSidebarsArticle(data, activeElement.datum(), simulationConfig)
+    }
+}
+function mouseOutArticleGraph(mouseOverReference, centralNode, data, simulationConfig) {
+    let activeElement = d3.select(mouseOverReference)
+    
+    activeElement.style("cursor", "default"); 
+    resetDisplayDefaultsArticleGraph();
+    updateSidebarsArticle(data, centralNode, simulationConfig)
+
+}
+function focusOnSelectedArticle(activeElement) {
+
+        // reduce link opacity for all non-activated links
+        d3.selectAll('.link').attr("opacity", function (link) {
+            return link.target.id === activeElement.id ? 1 : 0.1
+        });
+
+        // reduce label opactiy for non-activated labels
+        d3.selectAll('.label').attr("display", function (label) {
+            return label.index === 0 || label.id === activeElement.id ? 'block' : 'none';
+        });
+
+        // reduce node opacity for non-activated nodes
+        d3.selectAll('.node').style("opacity", function (node) {
+            return node.index === 0 || node.id === activeElement.id ? 1 : 0.1;
+        });
+}
+function resetDisplayDefaultsArticleGraph() {
+    d3.selectAll('.link').attr("opacity", 0.3);
+    d3.selectAll('.label').attr("display", "block");
+    d3.selectAll('.node').style("opacity", 1);
+} 
+function focusOnLinkDirection(linksReference) {
+      
+    d3.selectAll(".link")
+        .each(function (d,i) {
+            let match = linksReference.includes(d.target.id)
+            d3.select(this).attr("opacity", match ? 1 : 0.1)
+        })
+
+    d3.selectAll(".label")
+        .each(function (d,i) {
+            let match = linksReference.includes(d.id) || d.index === 0
+            d3.select(this).attr("display", match ? "block" : "none")
+        })
+
+    d3.selectAll(".node")
+        .each(function (d,i) {
+            let match = linksReference.includes(d.id) || d.index === 0
+            d3.select(this).style("opacity", match ? 1: 0.1)
+        })
+}
+
+// ****** DOMAIN GRAPH FUNCTIONS ****** 
+
+function showDomainGraph(data, domainTitle, articleSimulationConfig) {
+    let domainData = getDomainData(data,domainTitle)
+    console.log(domainData)
+    setGlobalNodesLinks(domainData)
+    drawDomainSimulation(data, domainTitle, articleSimulationConfig)
+    updateSidebarsDomain(data, domainTitle, articleSimulationConfig);
+    updateNeighborNodes();
+    window.getSelection().removeAllRanges();
+}
+function getDomainData(data, domainTitle) {
+    let domainData = {};
+    let inDomainCache = domainSearchCache.find( ({search}) => search === domainTitle);
+    if (!inDomainCache) {
+        domainData = getDomainDataFromJSON(data, domainTitle); 
+    }   else    {
+        domainData = inDomainCache
+    }
+
+    return domainData
+}
+function getDomainDataFromJSON(data, domainTitle) {      
+
+    let domainNodes = [];
+    let domainLinks = [];  
+    let domainData = {};
+
+    // //get the base node to build our graph around    
+    // let searchNode = data.domains.nodes.filter(node => {
+    //     return node.title === domainTitle
+    // })
+
+    let sourceLinks = new Set();
+
+    // console.log(searchNode[0])
+    // searchNode[0].data.nodes.forEach(node => domainNodes.push(node))
+
+    domainNodes = data.articles.nodes.filter(node => {
+        return node.primary_domain === domainTitle
+    })
+
+    domainNodes.forEach(node => {
+        data.articles.links.forEach(link => {
+            if (node.id === link.source) {
+                sourceLinks.add(link)
+            }
+        })
+    })
+
+    domainNodes.forEach(node => {
+        sourceLinks.forEach(link => {
+            if (node.id === link.target) {
+                domainLinks.push(link)
+            }
+        })
+    })
+
+    //store the articleData term as an object
+    domainData = { "search": domainTitle,
+                    "nodes": domainNodes,
+                    "links": domainLinks }
+    
+    domainSearchCache.push(domainData)
+
+    return domainData
+
+    
+}
+function drawDomainSimulation(data, entryTitle, simulationConfig){
 
     let centralNode = nodes[0]
     let numTicks = 0;
@@ -447,6 +905,7 @@ function drawDomainSimulation(data, simulationConfig){
     label = simulationConfig.labels.selectAll('.label')
                            .data(nodes, function(d) {return d.title})
                            .attr("display","none")
+                           .attr("fill", function(d) {return color(d.primary_domain)})
     label.exit().remove();
 
     label = label.enter()
@@ -454,58 +913,30 @@ function drawDomainSimulation(data, simulationConfig){
                  .text(function(d) {return d.title})
                  .attr("display", "none")
                  .attr("font-size", '10px')
-                 .attr("fill", function(d) {return color(d.entry_type)})
+                 .attr("fill", function(d) {return color(d.primary_domain)})
                  .attr('nodeID', function(d) {return d.id})
                  .classed('label',true)
                  .classed('mainLabel', function(d,i) {return i===0?true:false})
                  .merge(label)
 
-    label.on('mouseover', function(d,i) { 
-            if (i!==0) {
-                if (ticksCompleted) {
-                    focus(); 
-                    d3.select(this).style("cursor", "pointer"); 
-                    setPreviewArea(d3.select(d3.event.target).datum())
-                }
-            }
-        })
-        .on('mouseout', function(d,i)  { 
-            if (i!==0) {
-                if(ticksCompleted) {
-                    unfocus(); 
-                    d3.select(this).style("cursor", "default"); 
-                    setPreviewArea(centralNode);
-                }
-            }
-        })
-        .on('dblclick', function(d,i) {
-            if (i!==0) {
-                if (ticksCompleted) {
-                    unfocus();
-                    let articleTitle = d.title
-                    articleMenu.property('value',articleTitle)
-                    if (d.entry_type === 'Menu') {
-                        updateGraph(data, 'domain', articleTitle, simulationConfig)
-                    }   else    { 
-                        updateGraph(data, 'article', articleTitle, simulationConfig)
-                    }
-                    // d3.select('.articleGraphGroup').transition().style('opacity',0.5)
-                }
-            }
-
-        })
+    label.on('mouseover', function() {mouseOverDomainGraph(this, data, simulationConfig)})
+    label.on('mouseout', function() {mouseOutDomainGraph(this, data, simulationConfig)})
+    label.on('dblclick', function() {dblClickDomainGraph(this, data, simulationConfig)})
+             
+    
 
     //nodes
     node = simulationConfig.nodes.selectAll('.node')
                          .data(nodes, function (d) {return d.id})
                          .attr("r", 5)
+                         .attr("fill", function(d) {return color(d.primary_domain)})
     
     node.exit().remove()
 
     node = node.enter()
                 .append('circle')
                 .attr("r", 5)
-                .attr("fill", function(d) {return color(d.entry_type)})
+                .attr("fill", function(d) {return color(d.primary_domain)})
                 .attr("stroke", "#fff")
                 .attr("stroke-width", .5)
                 .attr('nodeID', function(d) {return d.id})
@@ -513,32 +944,9 @@ function drawDomainSimulation(data, simulationConfig){
                 .classed('node',true)
                 .merge(node)
 
-    node.on('mouseover', function(d,i) { 
-                if(ticksCompleted) {
-                    focus(); 
-                    d3.select(this).style("cursor", "pointer"); 
-                    setPreviewArea(d3.select(d3.event.target).datum())
-                }
-        })
-        .on('mouseout', function(d,i)  { 
-                if(ticksCompleted) {
-                    unfocus(); 
-                    d3.select(this).style("cursor", "default"); 
-                    setPreviewArea(centralNode);
-                }
-        })
-        .on('dblclick', function(d,i) {
-                if (ticksCompleted) {
-                    unfocus();
-                    let articleTitle = d.title
-                    articleMenu.property('value',articleTitle)
-                    if (d.entry_type === 'Menu') {
-                        updateGraph(data, 'domain', articleTitle, simulationConfig)
-                    }   else    { 
-                        updateGraph(data, 'article', articleTitle, simulationConfig)
-                    }
-                }
-        })
+    node.on('mouseover', function() {mouseOverDomainGraph(this, data, simulationConfig)})
+    node.on('mouseout', function() {mouseOutDomainGraph(this, data, simulationConfig)})
+    node.on('dblclick', function() {dblClickDomainGraph(this, data, simulationConfig)})
 
     //deselect any selected nodes
     window.getSelection().removeAllRanges();
@@ -571,9 +979,6 @@ function drawDomainSimulation(data, simulationConfig){
 
     })
     
-    // console.log(inElements, outElements, biElements)
-
-
     //restart simulation
     simulationConfig.simulation.nodes(nodes);
     simulationConfig.simulation.force("charge").strength(function() { return forceStrength(nodes.length)})
@@ -583,248 +988,226 @@ function drawDomainSimulation(data, simulationConfig){
     simulationConfig.simulation.force("forceY").strength(.5)
     simulationConfig.simulation.alpha(.1).restart();
 
-    //updatePreview
-    setPreviewArea(centralNode);
+}
+function updateSidebarsDomain(data, domainTitle, simulationConfig) {
+       
+        //clear areas
+        sidebarLeft.html("")
+        sidebarRight.html("")
 
-    ticksCompleted = true
-    d3.select('.articleGraphGroup').transition().style('opacity',1)
+        sidebarLeft.style("display", "block")
+        sidebarRight.style("display", "block")
 
+        //**populate sidebarLeft**
+        
+        let domainText = sidebarLeft.append("div")
 
-    //******************** Simulation Adjustment functions************************/
-
-    function forceStrength(numberOfNodes) {
-        let strength;
-        if (numberOfNodes < 20) { strength = -1000 } else
-        if (numberOfNodes < 30) { strength = -800 } else
-        if (numberOfNodes < 40) { strength = -600 } else
-        if (numberOfNodes < 50) { strength = -400 } else
-        if (numberOfNodes < 60) { strength = -200 } else
-        if (numberOfNodes < 70) { strength = -100 } else 
-        if (numberOfNodes < 80) { strength = -50 } else 
-        if (numberOfNodes < 90) { strength = -40 } else 
-        if (numberOfNodes > 90) { strength = -30 } else 
-        console.log(numberOfNodes)
-        return strength
-    
-    }
-
-    function ticksByNodeCount(numberOfNodes) {
-        let tickLimit;
-        if (numberOfNodes < 10) { tickLimit = 50 } else
-        if (numberOfNodes < 20) { tickLimit = 80 } else
-        if (numberOfNodes < 30) { tickLimit = 100 } else
-        if (numberOfNodes < 40) { tickLimit = 150 } else
-        if (numberOfNodes < 60) { tickLimit = 200 } else
-        if (numberOfNodes < 70) { tickLimit = 250 } else 
-        if (numberOfNodes < 80) { tickLimit = 200 } else 
-        if (numberOfNodes < 90) { tickLimit = 250 } else 
-        if (numberOfNodes > 90) { tickLimit = 100 }
-
-        return tickLimit
-    }
-    //******************** MOUSE OVER FUNCTIONS FOR INTERACTIVITY ************************/
-           // **** The following functions/declarations create the mouseover effects showing node adjacency.
-        // **** I found the base code online, but don't remember where. Sorry!
-        // **** I updated some of the code for this project.
-
-        let adjacentNodes = [];
-
-        // add source and target adjacentNodes, which is used to activate highlighting
-        links.forEach(function (d) {
-            adjacentNodes[d.source.index + "-" + d.target.index] = true;
-            adjacentNodes[d.target.index + "-" + d.source.index] = true;
-        });
-
-        // this function compares two nodes to see if they are neighbors.
-        function isNeighbor(a, b) {
-            return a == b || adjacentNodes[a + "-" + b];
+        // Title
+        if (typeof(domainTitle)!=='undefined') {
+            domainText.append("h3")
+            .text(domainTitle)
+            .classed('articleDetailH3',true)
         }
 
-        // Highlight the current node and the main node, and dim the rest.
-        function focus() {
-            //get index of current node being mousedOver
-            let index = d3.select(d3.event.target).datum().index;
+        let domainNodesCount = nodes.length
+        let domainLinksCount = links.length
+        let domainIntroHTML = `<p>SEP contains the following data for articles about ${domainTitle}.<br>` +
+                                `Articles: ${domainNodesCount}<br>` +
+                                 `Links: ${domainLinksCount}</p>`
 
-            d3.selectAll('.link').attr("opacity", function (o) {
-                return o.source.index == index || o.target.index == index ? 1 : 0.1;
-            });
-            d3.selectAll('.label').attr("display", function (d) {
-                return isNeighbor(index, d.index) ? "block" : "none";
-            });
-            d3.selectAll('.node').style("opacity", function (o) {
-                return isNeighbor(index, o.index) ? 1 : 0.1;
-            });
+        domainText.append("div")
+            .html(domainIntroHTML)
+            .classed('firstParagraph', true)
 
-        }
-
-        // Reset graph to default visuals
-        function unfocus() {
-            d3.selectAll('.link').attr("opacity", 0.3);
-            d3.selectAll('.label').attr("display", "none");
-            d3.selectAll('.node').style("opacity", 1);
-        } 
-
-}
-
-function updateGraph(data, entryType, entryTitle, simulationConfig) {
-    let sepData;
-    let inSearchCache = articleSearchCache.find( ({search}) => search === entryTitle);
-    if (!inSearchCache) {
-        sepData = getSEPData(data, entryType, entryTitle);
-    }   else    {
-        sepData = inSearchCache
-    }
-    
-    setGlobalNodesLinks(sepData)
+        //  Add nodes and links data
 
 
-    if (entryType==='article') {
-        drawArticleSimulation(data, simulationConfig)
-        domainMenu.property('value','[Search Domains...]')
-    }   else{
-        drawDomainSimulation(data, simulationConfig)
-        articleMenu.property('value', '[Search Articles...]')
-    }
-}
+        //**populate sidebarRight**
 
+        sidebarRight.append('H3')
+            .text("List of Articles")
+            .classed('articleDetailH3', true)
 
-function getSEPData(data, entryType, entryTitle) {    
+        let articleListArea = sidebarRight.append('div')
+            .style('overflow', 'auto')
+            .style('height', '600px')
 
-    let articleNodes = [];
-    let articleLinks = [];
-    let articleData = {};
+        //sort nodes in alphabetical order
+        nodes.sort((a,b) => d3.ascending(a.title, b.title))
 
-    if (entryType === 'article') {
-        data = data.articles
-        console.log(data)
-        console.log(entryTitle)
-        //get the base node to build our graph around    
-        let searchNode = data.nodes.filter(node => {
-            return node.title === entryTitle
-        })
-        //get the url for the base node
-        let searchID = searchNode[0].id 
+            articleListArea.append("ul")
+            .classed('domainListDetail', true)
+            .selectAll(".domainArticle")
+            .data(nodes)
+            .enter()       
+            .append("li")             
+                .html(function(d) {return d.title})
+                .classed('domainArticle', true)
+            .exit().remove()
 
-        //populate localLinks
-        searchNode[0].links.forEach(link => articleLinks.push(link))
+        ////// ux/ui interactions
 
-        //push the base node into the first position of localNodes
-        articleNodes.push(searchNode[0])
-
-        //add all target nodes that are linked from the main node to LocalNodes
-        articleLinks.forEach(link => {
-            let target = link.target
-            data.nodes.filter(node => {
-                if (node.id === target) {
-                    articleNodes.push(node)
-                }
-            })
-        }) 
-        // steps
-        // 1. Get SearchNode
-        // 2. Add SearchNode to localNodes[0]
-        // 2. loops through links array and get all nodes that SearchNode links to
-        // 3. 
-
-        let localNodes = []
-        let outLinks = []
-        let inLinks = []
-
-        let selectedNode = searchNode[0]
-        localNodes.push(selectedNode)
-
-        data.links.forEach(link => { 
-            if (selectedNode.id === link.source)  {
-                let outLink = {'source':selectedNode.id, 'target':link.target}
-                outLinks.push(outLink)
-            }   else if (selectedNode.id === link.target)  {
-                let inLink = {'source':selectedNode.id, 'target':link.source}
-                inLinks.push(inLink)
-            }
-        })
-
-
-        let bothLink = intersection(outLinks,inLinks)
-
-
-
-        let localFinalLinks = Array.from(new Set(outLinks.concat(inLinks)))
+        let domainArticleList = d3.selectAll('.domainArticle')
         
-        localFinalLinks.forEach(link => {
-            data.nodes.filter(node => {
-                if (node.id===link.target) {
-                    localNodes.push(node)
-                }
-            })
-
-        })
-        
-
-    }   else {
-        // domain nodes 
-
-        article_nodes = data.articles
-        data = data.domains
-
-         //get the base node to build our graph around    
-        let searchNode = data.nodes.filter(node => {
-            return node.title === entryTitle
-        })
-        let domainNodes = []
-        let sourceLinks = []
-        let finalLinks = []
-
-        searchNode[0].data.nodes.forEach(node => domainNodes.push(node))
-
-        domainNodes.forEach(node => {
-            article_nodes.links.forEach(link => {
-                if (node.id === link.source) {
-                    sourceLinks.push(link)
-                }
-            })
-        })
-
-        domainNodes.forEach(node => {
-            sourceLinks.forEach(link => {
-                if (node.id === link.target) {
-                    finalLinks.push(link)
-                }
-            })
-        })
-
-        articleNodes = domainNodes
-        articleLinks = finalLinks
-
-    }
-    
-   
-    
-    //store the articleData term as an object
-    articleData = { "search": entryTitle,
-                    "nodes": articleNodes,
-                    "links": articleLinks }
-    
-    articleSearchCache.push(articleData)
-
-    return articleData
+        domainArticleList.on('mouseover', function() {mouseOverDomainGraph(this, data, simulationConfig)})
+        domainArticleList.on('mouseout', function() {mouseOutDomainGraph(this, data, simulationConfig)})
+        domainArticleList.on('dblclick', function() {dblClickDomainGraph(this, data, simulationConfig)})
 
     
 }
+function dblClickDomainGraph(dblClickReference, data, simulationConfig) {
+    // get node or label activated
+    let activeElement = d3.select(dblClickReference)
 
-function intersection(a, b) {
-    let setA = new Set(a)
-    let setB = new Set(b)
+    activeElement.style("cursor", "pointer"); 
+    activeElement.style("font-weight", "bold")
+    resetDisplayDefaultsArticleGraph();
+    resetDisplayDefaultsDomainGraph();
+    let articleTitle = activeElement.datum().title
+    showArticleGraph(data, articleTitle, simulationConfig)
+}
+function mouseOverDomainGraph(mouseOverReference, data, simulationConfig) {
+    // get node or label activated
+    let activeElement = d3.select(mouseOverReference)
+
+    activeElement.style("cursor", "pointer"); 
+    activeElement.style("font-weight", "bold")
+    focusOnDomainArticle(activeElement.datum())
+    // updateSidebarsDomain(data, activeElement.datum().title, simulationConfig)
+}
+function mouseOutDomainGraph(mouseOutReference,data, simulationConfig) {
+    // get node or label activated
+    let activeElement = d3.select(mouseOutReference)
+
+    activeElement.style("cursor", "default");
+    activeElement.style("font-weight", "normal")
+    resetDisplayDefaultsDomainGraph()
+    // displayDetailsArticle(data, activeElement.datum(), simulationConfig)
+}
+function updateNeighborNodes() {
+    neighborNodes.length = 0
+    links.forEach(function (d) {
+        neighborNodes[d.source.id + "-" + d.target.id] = true;
+        neighborNodes[d.target.id + "-" + d.source.id] = true;
+    });
+}
+function isNeighborNode(a, b) {
+    return a == b || neighborNodes[a + "-" + b];
+}
+function focusOnDomainArticle(activeElement) {
+
+    d3.selectAll('.link').attr("opacity", function (link) {
+        // return link.source.index == activeElement.index || link.target.index == activeElement.index ? 1 : 0.1;
+        return link.source.id === activeElement.id  || link.target.id === activeElement.id ? 1 : 0.1;
+ 
+    });
+    d3.selectAll('.label').attr("display", function (label) {
+        return isNeighborNode(activeElement.id, label.id) ? "block" : "none";
+
+    });
+    d3.selectAll('.node').style("opacity", function (node) {
+        return isNeighborNode(activeElement.id, node.id) ?  1 : 0.1;
+    });
+}
+function resetDisplayDefaultsDomainGraph() {
+    d3.selectAll('.link').attr("opacity", 0.3);
+    d3.selectAll('.label').attr("display", "none");
+    d3.selectAll('.node').style("opacity", 1);
+} 
+
+//******************** Array & Set Operations ************************/
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
+
+function combineLinks(searchID, biLinks, outLinks, inLinks) {
+    let _combinedLinks = []
+
+    biLinks.forEach(biLink => {
+        let link = { 'source': searchID, 'target': biLink, 'direction': 'bi'}
+        _combinedLinks.push(link)
+    })
+
+    outLinks.forEach(outlink => {
+        let link = { 'source': searchID, 'target': outlink, 'direction': 'out'}
+        _combinedLinks.push(link)
+    })
+
+    inLinks.forEach(inLink => {
+        let link = { 'source': searchID, 'target': inLink, 'direction': 'in'}
+        _combinedLinks.push(link)
+    })
+
+    return _combinedLinks
+
+
+}
+function intersection(setA, setB) {
     let _intersection = new Set()
-
     for (let elem of setB) {
         if (setA.has(elem)) {
-            console.log('found')
             _intersection.add(elem)
         }
     }
     return _intersection
 }
+function symmetricDifference(setA, setB) {
+    let _difference = new Set(setA)
+    for (let elem of setB) {
+        if (_difference.has(elem)) {
+            _difference.delete(elem)
+        } else {
+            _difference.add(elem)
+        }
+    }
+    return _difference
+}
 
+//******************** UX Activation FUNCTIONS FOR INTERACTIVITY ************************/
+
+
+// ********* Domain Graph Ingteraction functions ***********
+
+// runs when a node or label on the Domain Graph is dbl-clicked
+
+
+// ********* Article Graph Interaction functions ***********
+
+// runs when a node or label on the Article Graph is dbl-clicked
+
+
+
+
+
+//******************** Simulation Helpers ************************/
+
+function forceStrength(numberOfNodes) {
+    let strength;
+    if (numberOfNodes < 20) { strength = -1000 } else
+    if (numberOfNodes < 30) { strength = -800 } else
+    if (numberOfNodes < 40) { strength = -600 } else
+    if (numberOfNodes < 50) { strength = -400 } else
+    if (numberOfNodes < 60) { strength = -200 } else
+    if (numberOfNodes < 70) { strength = -100 } else 
+    if (numberOfNodes < 80) { strength = -50 } else 
+    if (numberOfNodes < 90) { strength = -40 } else 
+    if (numberOfNodes > 90) { strength = -30 } else 
+    console.log(numberOfNodes)
+    return strength
+
+}
+function ticksByNodeCount(numberOfNodes) {
+    let tickLimit;
+    if (numberOfNodes < 10) { tickLimit = 50 } else
+    if (numberOfNodes < 20) { tickLimit = 80 } else
+    if (numberOfNodes < 30) { tickLimit = 100 } else
+    if (numberOfNodes < 40) { tickLimit = 150 } else
+    if (numberOfNodes < 60) { tickLimit = 200 } else
+    if (numberOfNodes < 70) { tickLimit = 250 } else 
+    if (numberOfNodes < 80) { tickLimit = 200 } else 
+    if (numberOfNodes < 90) { tickLimit = 250 } else 
+    if (numberOfNodes > 90) { tickLimit = 100 }
+
+    return tickLimit
+}
 function angle(x1, y1, x2, y2) {
     var dy = y2 - y1;
     var dx = x2 - x1;
@@ -832,8 +1215,7 @@ function angle(x1, y1, x2, y2) {
     theta *= 180 / Math.PI; // rads to degs, range (-180, 180]
     // if (theta < 0) theta = 360 + theta; // range [0, 360)
     return theta;
-  }
-
+}
 function rotateLabel(labelI, xPos, yPos){
     rotateVal = linkAngles[labelI]
     if (xPos > 0 ){
@@ -845,7 +1227,6 @@ function rotateLabel(labelI, xPos, yPos){
     }
     return rotateReturn
 }
-
 function setXpos(distX,textwidth) {
     if ( distX > 0) {
         returnX = distX + 12
@@ -856,64 +1237,142 @@ function setXpos(distX,textwidth) {
     }
     return returnX
 }
-
-function setPreviewArea(currentNode) {
-    
-    if(currentNode) {
-                
-        let title = currentNode.title;
-        let sepUrl = baseURL + currentNode.id;
-        let entryType = currentNode.entry_type;
-        let firstParaText= currentNode.first_paragraph;
-        let displayCut = "";
-        
-        //only display the first 500 characters of the node's intro paragraph
-
-        if(typeof(firstParaText)!=='undefined') {
-            if (firstParaText.length > 500 ) {
-                firstParaText = firstParaText.substring(0,500);
-                lastPeriod = firstParaText.lastIndexOf('.')
-                firstParaText = firstParaText.substring(0,lastPeriod+1)
-                displayCut = `(Only the first ${firstParaText.length} characters of intro text are displayed.)`;
-            }  
-        }
-
- 
-        
-        //select sidebar div from HTML 
-        let sidebar = d3.select("#sideBar")    
-
-        //set text of h3 heading
-        sidebar.select("h3")
-               .text(title)
-               .classed('sidebarh3',true)
-        
-        //select first paragraph from HTML, and set the text to firstParaText
-        let firstParagraph = sidebar.select("#intro")
-                                    .text(firstParaText)
-                                    .classed('firstParagraph',true)
-            
-        //if displayCut isn't empty, then append a new paragraph to firstParagraph indicating paragraph has been truncated.
-        if (displayCut !== "") {
-            firstParagraph.append("p")
-                            .text(displayCut)
-                            .classed('displayCut',true)
-        }
-
-        //add link to SEP article
-        sidebar.select("#link")
-        .html(`Read the full article at SEP:<br><a href="${sepUrl}" target="_blank">${title}</a>`)
-        .style('color', 'white')
-    }
-}
-
 function color(entryType){
     let rgbValue = '';
-    if (entryType==='thinker') {
-        rgbValue = 'rgb(31, 119, 180)'
-    }   else    {
-        rgbValue = 'rgb(255, 127, 14)'
-        // rgbValue = 'rgb(255,255,0)'
+    switch(entryType) {
+        // traditional categories
+        // purples
+        case 'Aesthetics':
+            rgbValue = 'rgb(202, 5, 237)'
+            break;
+
+        case 'Epistemology':
+            rgbValue = 'rgb(159, 6, 186)'
+            break;
+
+        case 'Ethics and Morality':
+            rgbValue = 'rgb(118, 7, 138)'
+            break;
+
+        case 'Metaphysics':
+            rgbValue = 'rgb(191, 74, 212)'
+            break;
+
+        case 'Mind':
+            rgbValue = 'rgb(217, 89, 240)'
+            break;
+
+        case 'Religion':
+            rgbValue = 'rgb(226, 120, 245)'
+            break;
+
+        case 'Thinker':
+            rgbValue = 'rgb(240, 240, 240)'
+            break;
+
+        // social and political philosophies
+        // reds
+
+        case 'Existentialism and Phenomenology':
+        // browns
+            rgbValue = 'rgb(138, 85, 44)'
+            break;
+
+        case 'Feminism':
+            rgbValue = 'rgb(161, 101, 29)'
+            break;
+
+        case 'Law':
+            rgbValue = 'rgb(207, 127, 31)'
+            break;
+
+        case 'Political and Social Theory':
+            rgbValue = 'rgb(230, 139, 30)'
+            break;
+
+        // cultural philosophies
+        // orange tones 
+        case 'African and African-American Philosophy':
+            rgbValue = 'rgb(247, 130, 5)'
+            break;
+
+        case 'Arabic and Islamic Philosophy':
+            rgbValue = 'rgb(247, 150, 5)'
+            break;
+
+        case 'Chinese Philosophy':
+            rgbValue = 'rgb(222, 168, 7'
+            break;   
+
+        case 'Indian Philosophy':
+            rgbValue = 'rgb(222, 147, 7)'
+            break;
+
+        case 'Japanese Philosophy':
+            rgbValue = 'rgb(222, 129, 7)'
+            break;
+
+        case 'Latin American Philosophy':
+            rgbValue = 'rgb(247, 86, 5)'
+            break;
+
+        // scientific philosophies
+        // blues
+        case 'Biology':
+            rgbValue = 'rgb(2, 6, 247)'
+            break;
+
+        case 'Computer Science':
+            rgbValue = 'rgb(2, 247, 157)'
+            break;
+
+        case 'Economics':
+            rgbValue = 'rgb(2, 247, 157)'
+            break;
+
+        case 'Evolution':
+            rgbValue = 'rgb(2, 51, 247)'
+            break;
+
+        case 'Genetics':
+            rgbValue = 'rgb(2, 100, 247)'
+            break;
+
+        case 'Physics':
+            rgbValue = 'rgb(2, 157, 247)'
+            break;    
+
+        case 'Quantum Mechanics':
+            rgbValue = 'rgb(2, 109, 247)'
+            break;
+
+        case 'Scientific Methods':
+            rgbValue = 'rgb(2, 47, 247)'
+            break;
+
+
+        // langauge, logic, math
+        // greens
+        case 'Language':
+            rgbValue = 'rgb(2, 247, 84)'
+            break;
+
+        case 'Logic':
+            rgbValue = 'rgb(5, 168, 21)'
+            break;
+
+        case 'Mathematics':
+            rgbValue = 'rgb(5, 168, 70)'
+            break;
+
     }
+
+    // if (entryType==='Thinker') {
+    //     rgbValue = 'rgb(255, 255, 255)'
+    // }   else    {
+    //     rgbValue = 'rgb(255, 127, 14)'
+    //     // rgbValue = 'rgb(255,255,0)'
+    // }
+
     return rgbValue
 }
