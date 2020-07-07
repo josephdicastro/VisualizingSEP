@@ -61,6 +61,8 @@ function startVisualization(data) {
 
 function setGlobalNodesLinks(sepNetworkObject) {
 
+    console.log(sepNetworkObject)
+
     nodes.length = 0
     links.length = 0
 
@@ -195,7 +197,6 @@ function loadArticleMenu(data) {
 function loadDomainMenu(data) {
 
     let domains = ["[Search domains...]"]
-    console.log(data.domains.nodes)
     data.domains.nodes.forEach(node => domains.push(node.title))
     //load into searchMenu
     domainMenu.selectAll("option")
@@ -256,11 +257,20 @@ function getArticleDataFromJSON(data, articleTitle) {
     let articleLinks = [];  
     let articleData = {};
     let domains = {}
+    let searchNode = []
+
+    // //get the base node to build our graph around    
+    // let searchNode = data.articles.nodes.filter(node => {
+    //     return node.title === articleTitle
+    // })
 
     //get the base node to build our graph around    
-    let searchNode = data.articles.nodes.filter(node => {
-        return node.title === articleTitle
+    data.articles.nodes.forEach(node => {
+        if(node.title === articleTitle) {
+            searchNode.push(node)
+        }
     })
+
     //get the url for the base node
     let searchID = searchNode[0].id 
 
@@ -268,11 +278,8 @@ function getArticleDataFromJSON(data, articleTitle) {
     let targetLinks = new Set()
 
     data.articles.links.forEach(link => { 
-        if (searchID === link.source && searchID !== link.target)  {
-            sourceLinks.add(link.target)
-        }   else if (searchID === link.target && searchID !== link.source)  {
-            targetLinks.add(link.source)
-        }
+        if (searchID === link.source && searchID !== link.target)  { sourceLinks.add(link.target)}
+        if (searchID === link.target && searchID !== link.source)  { targetLinks.add(link.source)}
     })
 
     let _biLinks = intersection(sourceLinks,targetLinks)
@@ -283,7 +290,7 @@ function getArticleDataFromJSON(data, articleTitle) {
 
     articleNodes.push(searchNode[0])
     articleLinks.forEach(link => {
-        data.articles.nodes.filter(node => {
+        data.articles.nodes.forEach(node => {
             if (node.id === link.target) {
                 articleNodes.push(node)
                 if (domains[node.primary_domain] > 0 ) {
@@ -319,7 +326,6 @@ function drawArticleSimulation(data, simulationConfig) {
     let numTicks = 0;
     let transitionTime = 2000;
     let ticksCompleted = false;
-    console.log(nodes)
 
     //links
     link = simulationConfig.links.selectAll('.link')
@@ -838,9 +844,17 @@ function getDomainDataFromJSON(data, domainTitle) {
 
     let sourceLinks = new Set();
 
-    domainNodes = data.articles.nodes.filter(node => {
-        return node.primary_domain === domainTitle
+    // domainNodes = data.articles.nodes.filter(node => {
+    //     return node.primary_domain === domainTitle
+    // })
+
+    data.articles.nodes.forEach(node => {
+        if(node.primary_domain === domainTitle) {
+            domainNodes.push(node)
+        }
     })
+
+    console.log(domainNodes)
 
     domainNodes.forEach(node => {
         data.articles.links.forEach(link => {
@@ -1128,11 +1142,15 @@ function combineLinks(searchID, biLinks, outLinks, inLinks, data) {
         _combinedLinks.push(link)
     })
 
+
     _combinedLinks.forEach(link => {
-        let matchedNode = data.articles.nodes.filter(node => {
-            return node.id === link.target
+        data.articles.nodes.forEach(node => {
+            if(node.id === link.target) { 
+                link['targetTitle'] = node.title 
+            }
+
         })
-        link['targetTitle'] = matchedNode[0].title 
+        
     })
 
     _combinedLinks.sort((a,b) => d3.ascending(a.targetTitle, b.targetTitle))
