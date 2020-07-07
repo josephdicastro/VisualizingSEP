@@ -17,7 +17,21 @@
 <body>
     <div class="container-fluid">
         <header>
-            <nav class="navbar 
+            <div class="row navbar 
+            navbar-expand-md 
+            navbar-dark 
+            bg-dark">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-2">
+                        <a href="/" class="navbar-brand">Visualizing SEP</a>
+                    </div>
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-3"><div><select id="articleSearchMenu"></select></div></div>
+                    <div class="col-lg-3"><div><select id="domainSearchMenu"></select></div></div>
+                    <div class="col-lg-1"></div>
+            </div>
+
+            <!-- <nav class="navbar 
                         navbar-expand-md 
                         navbar-dark 
                         bg-dark">
@@ -27,68 +41,35 @@
                             navbar-collapse 
                             justify-content-end">
 
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                            <div>
-                                <select id="articleSearchMenu"></select>
-                            </div>
-                            <div>
-                                <select id="domainSearchMenu"></select>
-                            </div>
-
-
-                </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                                <div>
+                                    <select id="articleSearchMenu"></select>
+                                </div>
+                                <div>
+                                    <select id="domainSearchMenu"></select>
+                                </div>
+                    </ul>
                 </div>
-            </nav>
+            </nav> -->
         </header>
         <main>
             <div class="row">
+                <div class="col-lg-1"></div>
                 <div class="col-lg-2">
                     <div id="sidebarLeft" class="sidebar"></div>
                 </div>
-                <div class="col-lg-8">  
-                    <article>
-                        <!-- <div id="intro" style="color:lightgray;display: none;" >
-                            <p>This website provides a visual search interface to the corpus of articles 
-                                in the Stanford Encylopedia of Philosophy. Using network mapping, this 
-                            site shows how each article in the SEP is linked to every other article.</p>
-                            <ul>
-                                <li>Each entry in the search menu is the title of an article from the SEP.</li>
-                                <li>When you select an article from the search menu, an interactive graph will 
-                                    be generated showing how that article is linked
-                                    to other related articles on the site.
-                                <ul>
-                                    <li>A preview of the article<option>s first paragraph is also provided, <br>as well as a 
-                                        link to view the entire article at the SEP.
-                                    </li>
-                                </ul></li>
-                                <li>The search menu defaults to showing articles about philosophers, 
-                                    but it can be filtered dynamically to show either philosopherspu or ideas.
-                                <ul>
-                                    <li>The graph generated will always show articles about both philosophers and ideas<br>
-                                    (assuming the respective article links to both kinds).</li>
-                                    <li>Nodes colored in blue are articles about philosophers, while nodes colored in orange are 
-                                        articles about ideas.</li>
-
-                                </ul></li>
-
-                                <li>Each node is an active link, so you can explore the related articles by double-clicking on the node.</li>
-                            </ul> 
-                        </div>-->
-                        <!-- Create a div where the graph will take place -->
-                        <div id="articleGraph" style="display: none;">
-                            <svg></svg>
-                        </div>
-                    </article>
+                <div class="col-lg-6">
+                    <div id="articleGraph" style="display: none;">
+                        <svg></svg>
+                    </div>
                 </div>
                 <div class="col-lg-2">
                     <div id="sidebarRight" class="sidebar"></div>
                 </div>
+                <div class="col-lg-1"></div>
             </div>
         </main>
-        <!-- <footer class="bg-dark text-center">
-            <p style="color: rgb(212, 209, 209);">&copy; Copyright: Joseph DiCastro 2020</p>
-        </footer> -->
     </div>
 </body>
 

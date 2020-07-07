@@ -8,6 +8,7 @@ let introDiv = d3.select('#intro')
 let articleGraphDiv = d3.select('#articleGraph')
 let sidebarLeft = d3.select("#sidebarLeft") 
 let sidebarRight = d3.select("#sidebarRight")
+let pageTitle = d3.select("#pageTitle").append("h1")
 
 //Initialize nodes and links arrays for simulation
 let nodes = [];
@@ -18,6 +19,8 @@ let outLinks = [];
 
 // Initialize SVG and Simulation
 let svgConfig = initializeParentSVG(svg);
+let articleSimulationConfig = initializeSimulation(svgConfig);  
+let stylesConfig = initializeStyles();
 
 //Initialze article and domain caches for SEP data 
 let articleSearchCache = [];
@@ -29,17 +32,17 @@ let neighborNodes = [];
 let linkAngles = [];
 
 //set BaseURL for SEP Edition
-//current SEP edition: Spring 2020
+let sepEdition = "Spring 2020"
 let baseURL = 'https://plato.stanford.edu/archives/spr2020';
 
 d3.json('static/sep_network_test.json').then(function(data) { startVisualization(data)} );
 
 function startVisualization(data) {
-    let articleSimulationConfig = initializeSimulation(svgConfig);  
+    // let articleSimulationConfig = initializeSimulation(svgConfig);  
     loadArticleMenu(data)
     loadDomainMenu(data)
     showArticleGraphAreas() 
-    showHomeMenu(data, articleSimulationConfig)
+    // showHomeMenu(data, articleSimulationConfig)
 
     //UI Response features
     articleMenu.on('change', function(){
@@ -80,48 +83,58 @@ function setGlobalLinkDir(sepNetworkObject) {
 function initializeParentSVG(svg) {
     // set basic SVG Config data 
     let margin = {
-        top: 100,
-        right: 50,
-        bottom:50,
-        left:100
+        top: 0,
+        right: 0,
+        bottom:0,
+        left:0
     };
 
     // let areaWidth = 900;
-    let areaWidth = 1000
-    let areaHeight = 750;
+    let areaWidth = 700
+    let areaHeight = 700;
 
     let width = areaWidth - margin.left - margin.right;
     let height = areaHeight - margin.top - margin.bottom;
 
     svg.attr("viewBox", "0 0 " + width + " " + height )
-       .attr("preserveAspectRatio", "xMidYMid meet")
+       .attr("preserveAspectRatio", "none")
 
-    return {margin, areaWidth, areaHeight, width, height, svg}
-}
-
-function initializeSimulation(svgConfig) {
     //clear out child SVG elements
-    svgConfig.svg.html("")
+    svg.html("")
 
     //create SVG group centered in the middle of the svg space
-    g1 = svgConfig.svg.append('g')
-                       .attr("transform", `translate(${svgConfig.width/2},${svgConfig.height/2})`)
-                       .classed('articleGraphGroup', true)
-
+    let g1 = svg.append('g')
+                        .attr("transform", `translate(${width/2},${height/2})`)
+                        .classed('articleGraphGroup', true)
+    
     //create secondary svg group so that we can add our graph elements to this group
     let graph_elements = g1.append('g')
                             .classed('articleElements', true)
-                            .attr('width',1000)
+                            // .attr('width',1000)
+
+    return {margin, areaWidth, areaHeight, width, height, graph_elements}
+}
+
+function initializeSimulation(svgConfig) {
 
     // create main graph elements
-    let links = graph_elements.append("g")
-                             .classed('links',true)
+    let links = svgConfig.graph_elements
+        .append("g")
+        .classed('links',true)
 
-    let labels = graph_elements.append("g")
-                              .classed('labels',true)
+    let labels = svgConfig.graph_elements
+        .append("g")
+        .classed('labels',true)
 
-    let nodes = graph_elements.append("g")
-                             .classed('nodes',true)
+    let relatedLinks = svgConfig.graph_elements
+        .append("g")
+        .classed('relatedLinks', true)
+
+    let nodes = svgConfig.graph_elements
+        .append("g")
+        .classed('nodes',true)
+
+
 
     let simulation = d3.forceSimulation()
         .force("charge", d3.forceManyBody())
@@ -131,9 +144,38 @@ function initializeSimulation(svgConfig) {
         .force("forceY", d3.forceY())
         .alphaTarget(1);
 
-    return {links, nodes, labels, simulation}
+    return {links, nodes, labels, relatedLinks, simulation}
 }
 
+function initializeStyles() {
+    let link = { 
+        'defaultOpacity': 0.3,
+        'activeOpacity': 0.2,
+        'inactiveOpacity': 0.05,
+        'strokeColor': '#999',
+        'strokeWidth':1}
+    
+    let nodelabel = {
+        'defaultOpacity': 1,
+        'centralNodeDimmedOpacity': 0.5,
+        'inArrayOpacity': 0.75,
+        'notInArrayOpacity': 0.05,
+        'fontSize': '10px', 
+        'defaultRadius': 5,
+        'strokeColor': "#fff",
+        'strokeWidth':0.5 
+    }
+
+
+
+
+
+
+
+    return {link, nodelabel}
+
+
+}
 // ****** MENU FUNCTIONS ********
 
 function loadArticleMenu(data) {
@@ -153,6 +195,7 @@ function loadArticleMenu(data) {
 function loadDomainMenu(data) {
 
     let domains = ["[Search domains...]"]
+    console.log(data.domains.nodes)
     data.domains.nodes.forEach(node => domains.push(node.title))
     //load into searchMenu
     domainMenu.selectAll("option")
@@ -178,6 +221,10 @@ function showArticleGraphAreas() {
 
 // ****** ARTICLE GRAPH FUNCTIONS ****** 
 
+function setArticleMenuTitle(articleTitle) {
+    articleMenu.property("value", articleTitle)
+}
+
 function showArticleGraph(data, articleTitle, articleSimulationConfig) {
 
     let articleData = getArticleData(data,articleTitle)
@@ -187,7 +234,8 @@ function showArticleGraph(data, articleTitle, articleSimulationConfig) {
     drawArticleSimulation(data, articleSimulationConfig)
     updateSidebarsArticle(data, articleNode, articleSimulationConfig);
     window.getSelection().removeAllRanges();
-    domainMenu.value = "[Search domains...]"
+    setArticleMenuTitle(articleTitle)
+    loadDomainMenu(data)
 
 }
 function getArticleData(data, articleTitle) {
@@ -204,9 +252,10 @@ function getArticleData(data, articleTitle) {
 function getArticleDataFromJSON(data, articleTitle) {      
 
     let articleNodes = [];
+    let articleNodesSorted = [];
     let articleLinks = [];  
     let articleData = {};
-    let linkDomains = new Set();
+    let domains = {}
 
     //get the base node to build our graph around    
     let searchNode = data.articles.nodes.filter(node => {
@@ -230,19 +279,25 @@ function getArticleDataFromJSON(data, articleTitle) {
     let _outLinks = symmetricDifference(_biLinks, sourceLinks)
     let _inLinks = symmetricDifference(_biLinks, targetLinks)
 
-    articleLinks = combineLinks(searchID, _biLinks, _outLinks, _inLinks)
+    articleLinks = combineLinks(searchID, _biLinks, _outLinks, _inLinks, data)
 
     articleNodes.push(searchNode[0])
-
     articleLinks.forEach(link => {
         data.articles.nodes.filter(node => {
             if (node.id === link.target) {
                 articleNodes.push(node)
+                if (domains[node.primary_domain] > 0 ) {
+                    domains[node.primary_domain]++ 
+                }   else {
+                    domains[node.primary_domain] = 1
+                }
             }
         })
     }) 
 
-    articleNodes.forEach(node => linkDomains.add(node.primary_domain))
+    let domainArray = Object.entries(domains)
+    domainArray.sort((a,b) => d3.ascending(a[0], b[0]))
+
     //store the articleData term as an object
     articleData = { "search": articleTitle,
                     "nodes": articleNodes,
@@ -250,7 +305,7 @@ function getArticleDataFromJSON(data, articleTitle) {
                     "biLinks": _biLinks,
                     "inLinks": _inLinks,
                     "outLinks": _outLinks, 
-                    "linkDomains": linkDomains }
+                    "linkDomains": domainArray }
     
     articleSearchCache.push(articleData)
 
@@ -264,13 +319,12 @@ function drawArticleSimulation(data, simulationConfig) {
     let numTicks = 0;
     let transitionTime = 2000;
     let ticksCompleted = false;
-    let inElements = []
-    let outElements = []
-    let biElements = []
+    console.log(nodes)
 
     //links
     link = simulationConfig.links.selectAll('.link')
                          .data(links, function(d) {return `${d.source}-${d.target}`})
+                         .order()
                          .attr('dir', function(d) {return d.dir})
                          .attr('target', function(d) { return d.target })
 
@@ -278,9 +332,9 @@ function drawArticleSimulation(data, simulationConfig) {
 
     link = link.enter()
                .append('line')
-               .attr("stroke", "#999")
-               .attr("stroke-width", 1)
-               .attr("opacity", 0.3)
+               .attr("stroke", stylesConfig.link.strokeColor)
+               .attr("stroke-width", stylesConfig.link.strokeWidth)
+               .attr("opacity", stylesConfig.link.defaultOpacity)
                .attr('dir', function(d) {return d.dir})
                .attr('nodeID', function(d) { return d.target })
                .classed('link',true).merge(link)
@@ -288,7 +342,8 @@ function drawArticleSimulation(data, simulationConfig) {
     //labels
     label = simulationConfig.labels.selectAll('.label')
                            .data(nodes, function(d) {return d.title})
-                           .attr("display", "block")
+                           .attr('fill-opacity',stylesConfig.nodelabel.defaultOpacity)
+                           .order()
                            .classed('mainLabel', function(d,i) {return i===0?true:false})
                            .attr("fill", function(d) {return color(d.primary_domain)})
     label.exit().remove();
@@ -296,8 +351,8 @@ function drawArticleSimulation(data, simulationConfig) {
     label = label.enter()
                  .append("text")
                  .text(function(d) {return d.title})
-                 .attr("display", "block")
-                 .attr("font-size", '10px')
+                 .attr('fill-opacity',stylesConfig.nodelabel.defaultOpacity)
+                 .attr("font-size", stylesConfig.nodelabel.fontSize)
                  .attr("fill", function(d) {return color(d.primary_domain)})
                  .attr('nodeID', function(d) {return d.id})
                  .classed('label',true)
@@ -305,14 +360,15 @@ function drawArticleSimulation(data, simulationConfig) {
                  .merge(label)
 
     label
-        .on('mouseover', function() {mouseOverArticleGraph(this, data, simulationConfig)})
-        .on('mouseout', function() {mouseOutArticleGraph(this, centralNode, data, simulationConfig)})
+        .on('mouseover', function() {mouseOverArticleGraph(this, data, centralNode, simulationConfig)})
+        .on('mouseout', function() {mouseOutArticleGraph(this, data, centralNode, simulationConfig)})
         .on('dblclick', function() {dblClickArticleGraph(this, data, simulationConfig)})
 
 
     //nodes
     node = simulationConfig.nodes.selectAll('.node')
                          .data(nodes, function (d) {return d.id})
+                         .order()
                          .attr("r", 5)
                          .attr("fill", function(d) {return color(d.primary_domain)})
     
@@ -320,23 +376,21 @@ function drawArticleSimulation(data, simulationConfig) {
 
     node = node.enter()
                 .append('circle')
-                .attr("r", 5)
+                .attr("r", stylesConfig.nodelabel.defaultRadius)
                 .attr("fill", function(d) {return color(d.primary_domain)})
-                .attr("stroke", "#fff")
-                .attr("stroke-width", .5)
+                .attr("stroke", stylesConfig.nodelabel.strokeColor)
+                .attr("stroke-width", stylesConfig.nodelabel.strokeWidth)
                 .attr('nodeID', function(d) {return d.id})
-                .style('opacity',1)
+                .style('opacity',stylesConfig.nodelabel.defaultOpacity)
                 .classed('node',true)
                 .merge(node)
     node
-        .on('mouseover', function() {mouseOverArticleGraph(this, data, simulationConfig)})
-        .on('mouseout', function() {mouseOutArticleGraph(this, centralNode, data, simulationConfig)})
+        .on('mouseover', function() {mouseOverArticleGraph(this, data, centralNode, simulationConfig)})
+        .on('mouseout', function() {mouseOutArticleGraph(this, data, centralNode, simulationConfig)})
         .on('dblclick', function() {dblClickArticleGraph(this, data, simulationConfig)})
 
-    //deselect any selected nodes
-    // window.getSelection().removeAllRanges();
+    //update sim
 
-    //update simulation
     simulationConfig.simulation.on('tick', function (){
         let tickLimit = ticksByNodeCount(nodes.length)
 
@@ -377,166 +431,8 @@ function drawArticleSimulation(data, simulationConfig) {
     simulationConfig.simulation.force("forceY").strength(0)
     simulationConfig.simulation.alpha(1).restart();
 
-    //updateSideBars
 
 
-
-
-}
-function updateSidebarsArticle_old(data, currentNode, simulationConfig) {
-
-    if(currentNode) {
-        
-        //clear areas
-        sidebarLeft.html("")
-        sidebarRight.html("")
-
-        sidebarLeft.style("display", "block")
-        sidebarRight.style("display", "block")
-
-        //**populate sidebarLeft**
-        
-        let articleText = sidebarLeft.append("div")
-
-        // Title
-        if (typeof(currentNode.title)!=='undefined') {
-            articleText.append("h3")
-            .text(currentNode.title)
-            .classed('articleDetailH3',true)
-        }
-
-        // Intro Paragraph
-        if (typeof(currentNode.first_paragraph)!=='undefined') {
-            let paragraphData = getParagraphDataHTML(currentNode.first_paragraph);
-            articleText.append("div")
-                .html(paragraphData)
-                .classed('firstParagraph', true)
-        }
-
-        //**populate sidebarRight**
-
-        //create div to hold all sidebar details
-        let articleDetails = sidebarRight.append("div")
-
-        articleDetails.append("h3")
-        .text("Article Details")
-        .classed('articleDetailH3', true)
-
-        //create div to list domains 
-        let domainListDiv = articleDetails.append("div")
-        domainListDiv.append("h4")
-            .text("This article appears in these taxonomies")
-            .classed('articleDetailH4', true)
-
-        domainListDiv.append("ul")
-            .selectAll(".domainListItem")
-            .data(currentNode.domain_tags.split(','))
-                .enter()
-                .append('li')
-                .html(function(d) {return d})
-                .classed('domainListItem', true)
-            .exit().remove()
-    
-        // create div to list analyses
-        let linkAnalysisDiv = articleDetails.append("div")
-        linkAnalysisDiv.append("h4")
-        .text("Link Analysis")
-        .classed('articleDetailH4', true)
-
-        linkAnalysisDiv.append("p")
-        .text(`${links.length} articles are linked to this one.`)
-        .classed('firstParagraph', true)
-        
-        
-        // build direction links data 
-        let directionLinks = linkAnalysisDiv.append("div")
-
-        directionLinks.append("h5")
-        .text("Link Direction Summary")
-        .classed('articleDetailH5', true)
-
-        linkItems = [`Bi-Directional Links: ${biLinks.length}`,
-                     `In-coming Links: ${inLinks.length}`,
-                     `Out-going Links: ${outLinks.length}`]
-
-        directionLinks.append("ul")
-            .selectAll(".linkDirListItem")
-            .data(linkItems)
-            .enter()
-            .append('li')
-            .html(function(d) {return d})
-            .classed('linkDirListItem', true)
-        .exit().remove()
-
-        // build domain links data 
-        let linkDomainLinks = linkAnalysisDiv.append("div")
-
-        linkDomainLinks.append("h5")
-        .text("Link Domain Summary")
-        .classed('articleDetailH5', true)  
-
-        let linkDomainList = new Set() 
-        nodes.forEach(node => linkDomainList.add(node.primary_domain))
-        console.log(linkDomainList)
-
-        //create div to hold SEP link
-        let sepLinkDiv = articleDetails.append("div")
-        let sepURL = baseURL + currentNode.id
-    
-        sepLinkDiv.append('h4')
-            .text('Read the full article at SEP')
-            .classed('articleDetailH4', true)
-
-        sepLinkDiv.append("p")
-        .html(`<a href="${sepURL}" target="_blank">${currentNode.title}</a>`)
-        .classed('sepLink', true)
-        .style('color', 'white')
-        
-
-
-
-
-        ////// ux/ui interactions
-
-        let domainList = d3.selectAll('.domainListItem')
-
-        domainList
-            .on('mouseover', function() { d3.select(this).style("cursor", "pointer"); })
-            .on('mouseout', function() {d3.select(this).style("cursor", "default"); })
-            .on('dblclick', function () {
-                let domainTitle = d3.select(this).datum()
-                showDomainGraph(data, domainTitle, simulationConfig)
-        })
-
-        let linkList = d3.selectAll('.linkDirListItem')
-        linkList
-            .on('mouseover', function() {
-                d3.select(this).style("cursor", "pointer"); 
-                d3.select(this).style("font-weight", "bold")
-                let linkDirection = d3.select(this).datum().substring(0,2)
-                console.log(linkDirection)
-                switch(linkDirection) {
-                    case 'Bi':
-                        focusOnLinkDirection(biLinks)
-                        break;
-                    case 'In':
-                        focusOnLinkDirection(inLinks)
-                        break;
-                    case 'Ou':
-                        focusOnLinkDirection(outLinks)
-                        break;
-                }
-            })
-            .on('mouseout', function() {
-                d3.select(this).style("cursor", "default"); 
-                d3.select(this).style("font-weight", "normal");
-                resetDisplayDefaultsArticleGraph();
-            })
-            .on('dblclick', function() {})
-
-
-
-    }
 }
 
 function updateSidebarsArticle(data, selectedArticle, simulationConfig) {
@@ -550,46 +446,31 @@ function updateSideBarsAritcleLeft(data, selectedArticle, simulationConfig){
         sidebarLeft.style("display", "block")
 
         //**populate sidebarLeft**
+
+        let sideBarLeftContent = sidebarLeft.append("div")
+            .classed("sidebarContent", true)
         
-        let articleText = sidebarLeft.append("div")
+        let articleDetails = sideBarLeftContent.append("div")
 
         // Title
-        articleText.append("h3")
-        .text(selectedArticle.title)
-        .classed('articleDetailH3',true)
+        articleDetails.append("h3")
+            .text(selectedArticle.title)
+            .classed('articleDetailH3',true)
 
         // Intro Paragraph
         if (typeof(selectedArticle.first_paragraph)!=='undefined') {
+            let articleText = articleDetails.append("div")
             let paragraphData = getParagraphDataHTML(selectedArticle.first_paragraph);
-            articleText.append("div")
+            articleText
                 .html(paragraphData)
                 .classed('firstParagraph', true)
         }
 
-    }
-}
-
-function updateSideBarsArticleRight(data, selectedArticle, simulationConfig){
-    if(selectedArticle) {
-        //clear areas
-        sidebarRight.html("")
-        sidebarRight.style("display", "block")
-
-        let articleData = getArticleData(data,selectedArticle.title)
-        console.log(articleData)
-
-        //create div to hold all sidebar details
-        let articleDetails = sidebarRight.append("div")
-
-        articleDetails.append("h3")
-        .text("Article Details")
-        .classed('articleDetailH3', true)
-
         //create div to list domains 
         let domainListDiv = articleDetails.append("div")
-        domainListDiv.append("h4")
+        domainListDiv.append("h5")
             .text("This article appears in these domains")
-            .classed('articleDetailH4', true)
+            .classed('articleDetailH5', true)
 
         domainListDiv.append("ul")
             .selectAll(".domainListItem")
@@ -599,28 +480,66 @@ function updateSideBarsArticleRight(data, selectedArticle, simulationConfig){
                 .html(function(d) {return d})
                 .classed('domainListItem', true)
             .exit().remove()
+        
+        //create div to hold SEP link
+        let sepLinkDiv = articleDetails.append("div")
+        let sepURL = baseURL + selectedArticle.id
     
+        sepLinkDiv.append('h5')
+            .text('Read the full article at SEP')
+            .classed('articleDetailH5', true)
+
+        sepLinkDiv.append("p")
+        .html(`<a href="${sepURL}" target="_blank">${selectedArticle.title}</a>`)
+        .classed('sepLink', true)
+        .style('color', 'white')
+        
+        ////// ux/ui interactions
+        let domainList = d3.selectAll('.domainListItem')
+        
+        domainList
+            .on('mouseover', function() { d3.select(this).style("cursor", "pointer").style("font-weight", "bold"); })
+            .on('mouseout', function() {d3.select(this).style("cursor", "default").style("font-weight", "normal"); })
+            .on('dblclick', function () {
+                let domainTitle = d3.select(this).datum()
+                showDomainGraph(data, domainTitle, simulationConfig)
+        })
+    }
+}
+
+function updateSideBarsArticleRight(data, selectedArticle, simulationConfig){
+    if(selectedArticle) {
+        //clear areas
+        sidebarRight.html("")
+        sidebarRight.style("display", "block")
+
+        //create content area
+        let sidebarRightContent = sidebarRight.append("div").classed("sidebarContent", true)
+
+        //get data from article
+        let articleData = getArticleData(data,selectedArticle.title)
+
         // create div to list analyses
-        let linkAnalysisDiv = articleDetails.append("div")
+        let linkAnalysisDiv = sidebarRightContent.append("div")
         linkAnalysisDiv.append("h4")
-        .text("Link Analysis")
-        .classed('articleDetailH4', true)
+            .text("Link Analysis")
+            .classed('articleDetailH3', true)
 
         linkAnalysisDiv.append("p")
-        .text(`${articleData.links.length} articles are linked to this one.`)
-        .classed('firstParagraph', true)
+            .html(`${articleData.links.length} articles are linked to<br/>"${selectedArticle.title}"`)
+            .classed('firstParagraph', true)
         
         
         // build direction links data 
-        let directionLinks = linkAnalysisDiv.append("div")
+        let directionLinks = sidebarRightContent.append("div")
 
         directionLinks.append("h5")
-        .text("Link Direction Summary")
-        .classed('articleDetailH5', true)
+            .text("Link Direction Summary")
+            .classed('articleDetailH5', true)
 
-        linkItems = [`Bi-Directional Links: ${articleData.biLinks.size}`,
-                     `In-coming Links: ${articleData.inLinks.size}`,
-                     `Out-going Links: ${articleData.outLinks.size}`]
+        linkItems = [`Bi-Directional (${articleData.biLinks.size})`,
+                     `In-Coming (${articleData.inLinks.size})`,
+                     `Out-Going (${articleData.outLinks.size})`]
 
         directionLinks.append("ul")
             .selectAll(".linkDirListItem")
@@ -628,11 +547,13 @@ function updateSideBarsArticleRight(data, selectedArticle, simulationConfig){
             .enter()
             .append('li')
             .html(function(d) {return d})
+            .style("opacity",1)
             .classed('linkDirListItem', true)
         .exit().remove()
 
         // build domain links data 
-        let linkDomainLinks = linkAnalysisDiv.append("div")
+        let linkDomainLinks = sidebarRightContent.append("div")
+
 
         linkDomainLinks.append("h5")
         .text("Link Domain Summary")
@@ -640,71 +561,71 @@ function updateSideBarsArticleRight(data, selectedArticle, simulationConfig){
 
         linkDomainLinks.append("ul")
             .selectAll(".linkDomainListItem")
-            .data(Array.from(articleData.linkDomains))
+            .data(articleData.linkDomains)
             .enter()
             .append('li')
-            .html(function(d) {return d})
-            // .attr("stroke", function(d) {return color(d)})
-            .style("color", function(d) {return color(d)})
+            .html(function(d) {return `${d[0]} (${d[1]})`})
+            .style("color", function(d) {return color(d[0])})
             .classed('linkDomainListItem', true)
         .exit().remove()
-
-        //create div to hold SEP link
-        let sepLinkDiv = articleDetails.append("div")
-        let sepURL = baseURL + selectedArticle.id
-    
-        sepLinkDiv.append('h4')
-            .text('Read the full article at SEP')
-            .classed('articleDetailH4', true)
-
-        sepLinkDiv.append("p")
-        .html(`<a href="${sepURL}" target="_blank">${selectedArticle.title}</a>`)
-        .classed('sepLink', true)
-        .style('color', 'white')
         
-
-
-
-
         ////// ux/ui interactions
 
-        let domainList = d3.selectAll('.domainListItem')
-
-        domainList
-            .on('mouseover', function() { d3.select(this).style("cursor", "pointer"); })
-            .on('mouseout', function() {d3.select(this).style("cursor", "default"); })
-            .on('dblclick', function () {
-                let domainTitle = d3.select(this).datum()
-                showDomainGraph(data, domainTitle, simulationConfig)
-        })
-
-        let linkList = d3.selectAll('.linkDirListItem')
-        linkList
+        let linkDirectionList = d3.selectAll('.linkDirListItem')
+        linkDirectionList
             .on('mouseover', function() {
-                d3.select(this).style("cursor", "pointer"); 
-                d3.select(this).style("font-weight", "bold")
-                let linkDirection = d3.select(this).datum().substring(0,2)
-                console.log(linkDirection)
-                switch(linkDirection) {
-                    case 'Bi':
-                        focusOnLinkDirection(biLinks)
-                        break;
-                    case 'In':
-                        focusOnLinkDirection(inLinks)
-                        break;
-                    case 'Ou':
-                        focusOnLinkDirection(outLinks)
-                        break;
-                }
+                let mouseReference = d3.select(this)
+                let mouseReferenceOpacity = mouseReference.style("opacity")
+                    mouseReference
+                        .style("cursor", "pointer")
+                        .style("font-weight", "bold")
+                    let linkDirection = mouseReference.datum().substring(0,2)
+                    switch(linkDirection) {
+                        case 'Bi':
+                            focusOnLinkAnalysis(biLinks)
+                            break;
+                        case 'In':
+                            focusOnLinkAnalysis(inLinks)
+                            break;
+                        case 'Ou':
+                            focusOnLinkAnalysis(outLinks)
+                            break;
+                    }
+
             })
             .on('mouseout', function() {
-                d3.select(this).style("cursor", "default"); 
-                d3.select(this).style("font-weight", "normal");
+                d3.select(this)
+                    .style("cursor", "default")
+                    .style("font-weight", "normal");
                 resetDisplayDefaultsArticleGraph();
             })
-            .on('dblclick', function() {})
-
+        
+        let linkDomainList = d3.selectAll('.linkDomainListItem')
+        linkDomainList
+            .on('mouseover', function() {
+                d3.select(this)
+                    .style("cursor", "pointer")
+                    .style("font-weight", "bold")
+                let linkDomainArray = getDomainLinksInArticle(d3.select(this).datum())
+                focusOnLinkAnalysis(linkDomainArray)
+            
+        })
+            .on('mouseout', function() {
+                d3.select(this)
+                    .style("cursor", "default")
+                    .style("font-weight", "normal");
+                resetDisplayDefaultsArticleGraph();
+            })
     }
+
+}
+
+function getDomainLinksInArticle(linkDomain) {
+    let domainArray = []
+    nodes.filter(node => {
+        if (node.primary_domain === linkDomain[0]) { domainArray.push(node.id)}
+    })
+    return domainArray
 }
 function getParagraphDataHTML(ParagraphDataFromNode) {
     let htmlReturn = '';
@@ -745,7 +666,7 @@ function dblClickArticleGraph(dblClickReference, data, simulationConfig) {
         showArticleGraph(data, articleTitle,simulationConfig)
     }
 }
-function mouseOverArticleGraph(mouseOverReference, data, simulationConfig) {
+function mouseOverArticleGraph(mouseOverReference, data, centralNode, simulationConfig) {
     
     // get node or label activated
     let activeElement = d3.select(mouseOverReference)
@@ -754,70 +675,148 @@ function mouseOverArticleGraph(mouseOverReference, data, simulationConfig) {
     
         // do the following if the activated node or label was not the central node
         activeElement.style("cursor", "pointer"); 
-        focusOnSelectedArticle(activeElement.datum())
+        focusOnSelectedArticle(data, activeElement.datum(), centralNode, simulationConfig)
         updateSidebarsArticle(data, activeElement.datum(), simulationConfig)
     }
 }
-function mouseOutArticleGraph(mouseOverReference, centralNode, data, simulationConfig) {
+function mouseOutArticleGraph(mouseOverReference, data, centralNode, simulationConfig) {
     let activeElement = d3.select(mouseOverReference)
     
-    activeElement.style("cursor", "default"); 
+    activeElement.style("cursor", "default");
+    simulationConfig.relatedLinks.html("")
     resetDisplayDefaultsArticleGraph();
     updateSidebarsArticle(data, centralNode, simulationConfig)
 
 }
-function focusOnSelectedArticle(activeElement) {
 
-        // reduce link opacity for all non-activated links
-        d3.selectAll('.link').attr("opacity", function (link) {
-            return link.target.id === activeElement.id ? 1 : 0.1
-        });
-
-        // reduce label opactiy for non-activated labels
-        d3.selectAll('.label').attr("display", function (label) {
-            return label.index === 0 || label.id === activeElement.id ? 'block' : 'none';
-        });
-
-        // reduce node opacity for non-activated nodes
-        d3.selectAll('.node').style("opacity", function (node) {
-            return node.index === 0 || node.id === activeElement.id ? 1 : 0.1;
-        });
+function getNodeCenter(activeElement) {
+    let _selectedNode = d3.selectAll(".node")
+        .filter(function(d,i) {return d.id === activeElement.id})
+    return _selectedNode
 }
-function resetDisplayDefaultsArticleGraph() {
-    d3.selectAll('.link').attr("opacity", 0.3);
-    d3.selectAll('.label').attr("display", "block");
-    d3.selectAll('.node').style("opacity", 1);
-} 
-function focusOnLinkDirection(linksReference) {
-      
-    d3.selectAll(".link")
+
+function getRelatedArticles(data, activeElement, centralNode) {
+    let _articleData = getArticleData(data, activeElement.title)
+    let _relatedArticles = Array.from(intersection(nodes,_articleData.nodes))
+    let centralNodeIndex = _relatedArticles.indexOf(centralNode)
+    _relatedArticles.splice(centralNodeIndex,1)
+
+    return _relatedArticles
+}
+
+function drawRelatedLinks(data, activeElement, simulationConfig) {
+
+}
+function focusOnSelectedArticle(data, activeElement, centralNode, simulationConfig) {
+
+    let relatedArticles = getRelatedArticles(data,activeElement, centralNode)
+
+    let linkLinesGroup = simulationConfig.relatedLinks
+    linkLinesGroup.html("")
+    
+    let startX = getNodeCenter(activeElement).attr("cx")
+    let startY = getNodeCenter(activeElement).attr("cy")
+
+    let linkLines = linkLinesGroup.selectAll(".relatedLinkLines")
+        .data(relatedArticles)
+    linkLines.exit().remove()
+    linkLines = linkLines.enter()
+                .append('line')
+                .attr("x1", startX)
+                .attr("y1", startY)
+                .attr("x2", function (d) {return getNodeCenter(d).attr("cx")})
+                .attr("y2", function (d) {return getNodeCenter(d).attr("cy")})
+                .classed("relatedLinkLines", true)
+                .merge(linkLines)
+
+
+
+    let relatedArticleIDs = relatedArticles.map(article => article.id)
+
+    // reduce link opacity for all non-activated links
+    d3.selectAll('.link').
+        each(function (d,i) {
+            d3.select(this)
+            .attr("opacity", function (link) { 
+                return link.target.id === activeElement.id ? stylesConfig.link.activeOpacity : stylesConfig.link.inactiveOpacity
+            })
+    });
+
+    d3.selectAll('.label')
+        .each(function (d,i) {
+            d3.select(this)
+                .attr("fill-opacity", function(label) { return setNodeLabelOpacity(label, relatedArticleIDs, activeElement)})
+        })
+        
+    d3.selectAll('.node')
+        .each(function (d,i) {
+            d3.select(this)
+                .style("opacity", function(node) { return setNodeLabelOpacity(node, relatedArticleIDs, activeElement)})
+    })
+
+
+}
+
+function focusOnLinkAnalysis(linksReference) {
+
+    if (linksReference.length > 0 ) {
+        d3.selectAll(".link")
         .each(function (d,i) {
             let match = linksReference.includes(d.target.id)
-            d3.select(this).attr("opacity", match ? 1 : 0.1)
+            d3.select(this)
+                .attr("opacity", match ? stylesConfig.link.activeOpacity : stylesConfig.link.inactiveOpacity)
         })
 
-    d3.selectAll(".label")
+    
+        d3.selectAll('.label')
         .each(function (d,i) {
-            let match = linksReference.includes(d.id) || d.index === 0
-            d3.select(this).attr("display", match ? "block" : "none")
+            d3.select(this)
+                .attr("fill-opacity", function(label) { return setNodeLabelOpacity(label, linksReference)})
         })
 
-    d3.selectAll(".node")
+        d3.selectAll('.node')
         .each(function (d,i) {
-            let match = linksReference.includes(d.id) || d.index === 0
-            d3.select(this).style("opacity", match ? 1: 0.1)
+            d3.select(this)
+                .style("opacity", function(node) { return setNodeLabelOpacity(node, linksReference)})
         })
+    }
+
+
 }
+
+function setNodeLabelOpacity(selectedElement, elementsArray, activeElement) {
+    let _opacityValue;
+
+    if (elementsArray.includes(selectedElement.id)) {_opacityValue = stylesConfig.nodelabel.inArrayOpacity}
+    if (!elementsArray.includes(selectedElement.id)) {_opacityValue = stylesConfig.nodelabel.notInArrayOpacity}
+    if (selectedElement.index === 0) {_opacityValue = stylesConfig.nodelabel.centralNodeDimmedOpacity}
+    if (typeof(activeElement) !== 'undefined') {
+        if (selectedElement.id === activeElement.id) { _opacityValue = stylesConfig.nodelabel.defaultOpacity}
+    }
+
+    return _opacityValue
+
+}
+
+function resetDisplayDefaultsArticleGraph() {
+    d3.selectAll('.link').attr("opacity", stylesConfig.link.defaultOpacity);
+    d3.selectAll('.label').attr("fill-opacity", stylesConfig.nodelabel.defaultOpacity);
+    d3.selectAll('.node').style("opacity", stylesConfig.nodelabel.defaultOpacity);
+} 
 
 // ****** DOMAIN GRAPH FUNCTIONS ****** 
 
+function setDomainMenuTitle(domainTitle) {
+    domainMenu.property("value", domainTitle)
+}
 function showDomainGraph(data, domainTitle, articleSimulationConfig) {
     let domainData = getDomainData(data,domainTitle)
-    console.log(domainData)
     setGlobalNodesLinks(domainData)
     drawDomainSimulation(data, domainTitle, articleSimulationConfig)
     updateSidebarsDomain(data, domainTitle, articleSimulationConfig);
     updateNeighborNodes();
+    setDomainMenuTitle(domainTitle)
+    setArticleMenuTitle("[Search articles...]")
     window.getSelection().removeAllRanges();
 }
 function getDomainData(data, domainTitle) {
@@ -837,15 +836,7 @@ function getDomainDataFromJSON(data, domainTitle) {
     let domainLinks = [];  
     let domainData = {};
 
-    // //get the base node to build our graph around    
-    // let searchNode = data.domains.nodes.filter(node => {
-    //     return node.title === domainTitle
-    // })
-
     let sourceLinks = new Set();
-
-    // console.log(searchNode[0])
-    // searchNode[0].data.nodes.forEach(node => domainNodes.push(node))
 
     domainNodes = data.articles.nodes.filter(node => {
         return node.primary_domain === domainTitle
@@ -896,23 +887,23 @@ function drawDomainSimulation(data, entryTitle, simulationConfig){
 
     link = link.enter()
                .append('line')
-               .attr("stroke", "#999")
-               .attr("stroke-width", 1)
-               .attr("opacity", 0.3)
+               .attr("stroke", stylesConfig.link.strokeColor)
+               .attr("stroke-width", stylesConfig.link.strokeWidth)
+               .attr("opacity", stylesConfig.link.defaultOpacity)
                .classed('link',true).merge(link)
 
     //labels
     label = simulationConfig.labels.selectAll('.label')
                            .data(nodes, function(d) {return d.title})
-                           .attr("display","none")
+                            .attr('fill-opacity',0)
                            .attr("fill", function(d) {return color(d.primary_domain)})
     label.exit().remove();
 
     label = label.enter()
                  .append("text")
                  .text(function(d) {return d.title})
-                 .attr("display", "none")
-                 .attr("font-size", '10px')
+                 .attr('fill-opacity',0)
+                 .attr("font-size", stylesConfig.nodelabel.fontSize)
                  .attr("fill", function(d) {return color(d.primary_domain)})
                  .attr('nodeID', function(d) {return d.id})
                  .classed('label',true)
@@ -928,17 +919,17 @@ function drawDomainSimulation(data, entryTitle, simulationConfig){
     //nodes
     node = simulationConfig.nodes.selectAll('.node')
                          .data(nodes, function (d) {return d.id})
-                         .attr("r", 5)
+                         .attr("r", stylesConfig.nodelabel.defaultRadius)
                          .attr("fill", function(d) {return color(d.primary_domain)})
     
     node.exit().remove()
 
     node = node.enter()
                 .append('circle')
-                .attr("r", 5)
+                .attr("r", stylesConfig.nodelabel.defaultRadius)
                 .attr("fill", function(d) {return color(d.primary_domain)})
-                .attr("stroke", "#fff")
-                .attr("stroke-width", .5)
+                .attr("stroke", stylesConfig.nodelabel.strokeColor)
+                .attr("stroke-width",  stylesConfig.nodelabel.strokeWidth)
                 .attr('nodeID', function(d) {return d.id})
                 .style('opacity',1)
                 .classed('node',true)
@@ -1058,31 +1049,32 @@ function updateSidebarsDomain(data, domainTitle, simulationConfig) {
 function dblClickDomainGraph(dblClickReference, data, simulationConfig) {
     // get node or label activated
     let activeElement = d3.select(dblClickReference)
-
-    activeElement.style("cursor", "pointer"); 
-    activeElement.style("font-weight", "bold")
-    resetDisplayDefaultsArticleGraph();
+    activeElement
+        .style("cursor", "pointer")
+        .style("font-weight", "bold")
+    
     resetDisplayDefaultsDomainGraph();
+    resetDisplayDefaultsArticleGraph();
+
     let articleTitle = activeElement.datum().title
     showArticleGraph(data, articleTitle, simulationConfig)
 }
 function mouseOverDomainGraph(mouseOverReference, data, simulationConfig) {
     // get node or label activated
     let activeElement = d3.select(mouseOverReference)
-
-    activeElement.style("cursor", "pointer"); 
-    activeElement.style("font-weight", "bold")
+    activeElement
+        .style("cursor", "pointer")
+        .style("font-weight", "bold")
     focusOnDomainArticle(activeElement.datum())
     // updateSidebarsDomain(data, activeElement.datum().title, simulationConfig)
 }
 function mouseOutDomainGraph(mouseOutReference,data, simulationConfig) {
     // get node or label activated
     let activeElement = d3.select(mouseOutReference)
-
-    activeElement.style("cursor", "default");
-    activeElement.style("font-weight", "normal")
+    activeElement
+        .style("cursor", "default")
+        .style("font-weight", "normal")
     resetDisplayDefaultsDomainGraph()
-    // displayDetailsArticle(data, activeElement.datum(), simulationConfig)
 }
 function updateNeighborNodes() {
     neighborNodes.length = 0
@@ -1098,27 +1090,27 @@ function focusOnDomainArticle(activeElement) {
 
     d3.selectAll('.link').attr("opacity", function (link) {
         // return link.source.index == activeElement.index || link.target.index == activeElement.index ? 1 : 0.1;
-        return link.source.id === activeElement.id  || link.target.id === activeElement.id ? 1 : 0.1;
+        return link.source.id === activeElement.id  || link.target.id === activeElement.id ? stylesConfig.link.activeOpacity : stylesConfig.link.inactiveOpacity;
  
     });
-    d3.selectAll('.label').attr("display", function (label) {
-        return isNeighborNode(activeElement.id, label.id) ? "block" : "none";
+    d3.selectAll('.label').attr("fill-opacity", function (label) {
+        return isNeighborNode(activeElement.id, label.id) ? stylesConfig.nodelabel.defaultOpacity : stylesConfig.nodelabel.notInArrayOpacity;
 
     });
     d3.selectAll('.node').style("opacity", function (node) {
-        return isNeighborNode(activeElement.id, node.id) ?  1 : 0.1;
+        return isNeighborNode(activeElement.id, node.id) ?  stylesConfig.nodelabel.defaultOpacity : stylesConfig.nodelabel.notInArrayOpacity;
     });
 }
 function resetDisplayDefaultsDomainGraph() {
-    d3.selectAll('.link').attr("opacity", 0.3);
-    d3.selectAll('.label').attr("display", "none");
-    d3.selectAll('.node').style("opacity", 1);
+    d3.selectAll('.link').attr("opacity", stylesConfig.link.defaultOpacity);
+    d3.selectAll('.label').attr("fill-opacity", 0);
+    d3.selectAll('.node').style("opacity", stylesConfig.nodelabel.defaultOpacity);
 } 
 
 //******************** Array & Set Operations ************************/
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
 
-function combineLinks(searchID, biLinks, outLinks, inLinks) {
+function combineLinks(searchID, biLinks, outLinks, inLinks, data) {
     let _combinedLinks = []
 
     biLinks.forEach(biLink => {
@@ -1136,22 +1128,34 @@ function combineLinks(searchID, biLinks, outLinks, inLinks) {
         _combinedLinks.push(link)
     })
 
+    _combinedLinks.forEach(link => {
+        let matchedNode = data.articles.nodes.filter(node => {
+            return node.id === link.target
+        })
+        link['targetTitle'] = matchedNode[0].title 
+    })
+
+    _combinedLinks.sort((a,b) => d3.ascending(a.targetTitle, b.targetTitle))
     return _combinedLinks
 
 
 }
 function intersection(setA, setB) {
+    let _setA = new Set(setA)
+    let _setB = new Set(setB)
     let _intersection = new Set()
-    for (let elem of setB) {
-        if (setA.has(elem)) {
+    for (let elem of _setB) {
+        if (_setA.has(elem)) {
             _intersection.add(elem)
         }
     }
     return _intersection
 }
 function symmetricDifference(setA, setB) {
+    let _setA = new Set(setA)
+    let _setB = new Set(setB)
     let _difference = new Set(setA)
-    for (let elem of setB) {
+    for (let elem of _setB) {
         if (_difference.has(elem)) {
             _difference.delete(elem)
         } else {
@@ -1160,6 +1164,7 @@ function symmetricDifference(setA, setB) {
     }
     return _difference
 }
+
 
 //******************** UX Activation FUNCTIONS FOR INTERACTIVITY ************************/
 
