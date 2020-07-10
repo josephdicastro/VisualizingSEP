@@ -37,11 +37,15 @@ let baseURL = 'https://plato.stanford.edu/archives/spr2020';
 
 d3.json('static/sep_network_test.json').then(function(data) { startVisualization(data)} );
 
+function getJSON() {
+
+}
+
 function startVisualization(data) {
     // let articleSimulationConfig = initializeSimulation(svgConfig);  
     loadArticleMenu(data)
     loadDomainMenu(data)
-    console.log(data)
+
     showArticleGraphAreas() 
     // showHomeMenu(data, articleSimulationConfig)
 
@@ -50,6 +54,7 @@ function startVisualization(data) {
         let articleTitle = d3.event.target.value;
         showArticleGraph(data, articleTitle, articleSimulationConfig)
     })
+    articleMenu.style("display", "none")
 
     domainMenu.on('change', function(){
         let domainTitle = d3.event.target.value; 
@@ -242,12 +247,12 @@ function showArticleGraph(data, articleTitle, articleSimulationConfig) {
 }
 function getArticleData(data, articleTitle) {
     let articleData = {};
-    let inArticleCache = articleSearchCache.find( ({search}) => search === articleTitle);
-    if (!inArticleCache) {
+    // let inArticleCache = articleSearchCache.find( ({search}) => search === articleTitle);
+    // if (!inArticleCache) {
         articleData = getArticleDataFromJSON(data, articleTitle); 
-    }   else    {
-        articleData = inArticleCache
-    }
+    // }   else    {
+    //     articleData = inArticleCache
+    // }
 
     return articleData
 }
@@ -823,52 +828,57 @@ function showDomainGraph(data, domainTitle, articleSimulationConfig) {
 }
 function getDomainData(data, domainTitle) {
     let domainData = {};
-    let inDomainCache = domainSearchCache.find( ({search}) => search === domainTitle);
-    if (!inDomainCache) {
+    // let inDomainCache = domainSearchCache.find( ({search}) => search === domainTitle);
+    // if (!inDomainCache) {
         domainData = getDomainDataFromJSON(data, domainTitle); 
-    }   else    {
-        domainData = inDomainCache
-    }
+    // }   else    {
+    //     domainData = inDomainCache
+
+    // }
 
     return domainData
 }
 function getDomainDataFromJSON(data, domainTitle) {      
 
-    let domainNodes = [];
     let domainLinks = [];  
     let domainData = {};
+    let sourceLinks = [];
+    let targetLinks = [];
 
-    let sourceLinks = new Set();
-
-    // domainNodes = data.articles.nodes.filter(node => {
-    //     return node.primary_domain === domainTitle
-    // })
-
-    data.articles.nodes.forEach(node => {
-        if(node.primary_domain === domainTitle) {
-            domainNodes.push(node)
-        }
+    // filter JSON for all the articles tagged in domainTitle
+    let domainNodes = data.articles.nodes.filter(dnode => {
+        return dnode.primary_domain === domainTitle
     })
 
-    console.log(domainNodes)
+    // ****** The problem is happening in these two code blocks, and I can't figure out why *******
 
-    domainNodes.forEach(node => {
-        data.articles.links.forEach(link => {
-            if (node.id === link.source) {
-                sourceLinks.add(link)
+    // ****** The first weird thing is that on the second run, the sourcelinks return a different number, 
+    // ****** like data.articles.links has been changed.
+
+    // get the source (outgoing) links for each article contained in domainNodes
+    domainNodes.forEach(snode => {
+        data.articles.links.forEach(slink => {
+            if (snode.id === slink.source) {
+                sourceLinks.push(slink)
             }
         })
     })
 
-    domainNodes.forEach(node => {
-        sourceLinks.forEach(link => {
-            if (node.id === link.target) {
-                domainLinks.push(link)
+    console.log("sourcelinks:")
+    console.log(sourceLinks)
+
+   // ****** The second weird thing is that on the second run, nothing is returned here at all
+
+   // select only those links in sourceLinks that have a target that is one of the articles in domainNodes
+    sourceLinks.forEach(tlink => {
+        domainNodes.forEach(tnode => {
+            if (tnode.id === tlink.target) {
+                domainLinks.push(tlink)
             }
         })
     })
 
-    //store the articleData term as an object
+    //store the domain data as an object to return to calling function
     domainData = { "search": domainTitle,
                     "nodes": domainNodes,
                     "links": domainLinks }
@@ -877,7 +887,56 @@ function getDomainDataFromJSON(data, domainTitle) {
 
     return domainData
 
+}
+function getDomainDataFromJSON_old(data, domainTitle) {      
+
+    let domainLinks = [];  
+    let domainData = {};
+    let sourceLinks = [];
+    let targetLinks = [];
+
+    // filter JSON for all the articles tagged in domainTitle
+    let domainNodes = data.articles.nodes.filter(dnode => {
+        return dnode.primary_domain === domainTitle
+    })
+
+    // ****** The problem is happening in these two code blocks, and I can't figure out why *******
+
+    // ****** The first weird thing is that on the second run, the sourcelinks return a different number, 
+    // ****** like data.articles.links has been changed.
+
+    // get the source (outgoing) links for each article contained in domainNodes
+    domainNodes.forEach(snode => {
+        data.articles.links.forEach(slink => {
+            if (snode.id === slink.source) {
+                sourceLinks.push(slink)
+            }
+        })
+    })
+
+    console.log("sourcelinks:")
+    console.log(sourceLinks)
+
+   // ****** The second weird thing is that on the second run, nothing is returned here at all
+
+   // select only those links in sourceLinks that have a target that is one of the articles in domainNodes
+    sourceLinks.forEach(tlink => {
+        domainNodes.forEach(tnode => {
+            if (tnode.id === tlink.target) {
+                domainLinks.push(tlink)
+            }
+        })
+    })
+
+    //store the domain data as an object to return to calling function
+    domainData = { "search": domainTitle,
+                    "nodes": domainNodes,
+                    "links": domainLinks }
     
+    domainSearchCache.push(domainData)
+
+    return domainData
+
 }
 function drawDomainSimulation(data, entryTitle, simulationConfig){
 
