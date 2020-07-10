@@ -41,6 +41,7 @@ function startVisualization(data) {
     // let articleSimulationConfig = initializeSimulation(svgConfig);  
     loadArticleMenu(data)
     loadDomainMenu(data)
+    console.log(data)
     showArticleGraphAreas() 
     // showHomeMenu(data, articleSimulationConfig)
 
@@ -257,26 +258,21 @@ function getArticleDataFromJSON(data, articleTitle) {
     let articleLinks = [];  
     let articleData = {};
     let domains = {}
-    let searchNode = []
-
-    // //get the base node to build our graph around    
-    // let searchNode = data.articles.nodes.filter(node => {
-    //     return node.title === articleTitle
-    // })
 
     //get the base node to build our graph around    
-    data.articles.nodes.forEach(node => {
-        if(node.title === articleTitle) {
-            searchNode.push(node)
-        }
+    let searchNode = data.articles.nodes.filter(node => {
+        return node.title === articleTitle
     })
 
     //get the url for the base node
     let searchID = searchNode[0].id 
 
+    console.log(searchNode)
+
     let sourceLinks = new Set()
     let targetLinks = new Set()
 
+    console.log(data.articles.links)
     data.articles.links.forEach(link => { 
         if (searchID === link.source && searchID !== link.target)  { sourceLinks.add(link.target)}
         if (searchID === link.target && searchID !== link.source)  { targetLinks.add(link.source)}
