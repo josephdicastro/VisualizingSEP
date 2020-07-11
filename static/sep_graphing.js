@@ -14,10 +14,6 @@ let pageTitle = d3.select("#pageTitle").append("h1")
 let graphNodes = [];
 let graphLinks = [];
 
-let biLinks = [];
-let inLinks = [];
-let outLinks = [];
-
 // Initialize SVG and Simulation
 let svgConfig = initializeParentSVG(svg);
 let simulationConfig = initializeSimulation(svgConfig);  
@@ -36,7 +32,6 @@ let linkAngles = [];
 let sepEdition = "Spring 2020"
 let baseURL = 'https://plato.stanford.edu/archives/spr2020';
 
-// d3.json('static/sep_network_test.json').then(function(data) {startVisualization(data)} );
 
 startVisualization();
 
@@ -81,18 +76,6 @@ function setGlobalNodesLinks(sepData) {
     sepData.links.forEach(link => graphLinks.push(link))
 
 }
-function setGlobalLinkDir(sepData) {
-    //clear out whatever is in the global link direction arrays
-    biLinks.length = 0
-    outLinks.length = 0 
-    inLinks.length = 0 
-
-    //push new nodes and links objects into globals
-    sepData.biLinks.forEach(biLink => biLinks.push(biLink))
-    sepData.inLinks.forEach(inLink => inLinks.push(inLink))
-    sepData.outLinks.forEach(outLink => outLinks.push(outLink))
-}
-
 
 // ****** INITIALIZATION FUNCTIONS ********
 
@@ -256,7 +239,6 @@ function showArticleGraph(articleTitle) {
     d3.json('/static/sep_network_test.json').then((json) => {
         let articleData = getArticleData(json,articleTitle)
         setGlobalNodesLinks(articleData)
-        setGlobalLinkDir(articleData)
         let articleNode = graphNodes[0]
         drawArticleSimulation(json)
         updateSidebarsArticle(json, articleNode, simulationConfig);
@@ -615,13 +597,13 @@ function updateSideBarsArticleRight(data, selectedArticle){
                     let linkDirection = mouseReference.datum().substring(0,2)
                     switch(linkDirection) {
                         case 'Bi':
-                            focusOnLinkAnalysis(biLinks)
+                            focusOnLinkAnalysis(Array.from(articleData.biLinks))
                             break;
                         case 'In':
-                            focusOnLinkAnalysis(inLinks)
+                            focusOnLinkAnalysis(Array.from(articleData.inLinks))
                             break;
                         case 'Ou':
-                            focusOnLinkAnalysis(outLinks)
+                            focusOnLinkAnalysis(Array.from(articleData.outLinks))
                             break;
                     }
 
@@ -790,7 +772,7 @@ function focusOnSelectedArticle(data, activeElement, centralNode) {
 }
 
 function focusOnLinkAnalysis(linksReference) {
-
+    console.log(linksReference)
     if (linksReference.length > 0 ) {
         d3.selectAll(".link")
         .each(function (d,i) {
