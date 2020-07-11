@@ -272,8 +272,6 @@ function getArticleDataFromJSON(data, articleTitle) {
         if (link.target === articleURL) {targetLinks.push(link.source)}
     });
     
-    console.log(sourceLinks)
-    console.log(targetLinks)
     // break links out into arrays based on link direction
     let bidirectionalLinks = intersection(sourceLinks,targetLinks);
     let onlyOutLinks = symmetricDifference(bidirectionalLinks, sourceLinks);
