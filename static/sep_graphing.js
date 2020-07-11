@@ -41,6 +41,7 @@ let baseURL = 'https://plato.stanford.edu/archives/spr2020';
 startVisualization();
 
 function startVisualization() {
+    
     loadMenus();
     showArticleGraphAreas() 
     // showHomeMenu(data, simulationConfig)
@@ -48,14 +49,24 @@ function startVisualization() {
     //UI Response features
     articleMenu.on('change', function(){
         let articleTitle = d3.event.target.value;
+        if (articleTitle !== "[Search articles...]") { showArticleGraph(articleTitle)}
         showArticleGraph(articleTitle)
     })
 
     domainMenu.on('change', function(){
-        let domainTitle = d3.event.target.value; 
-        showDomainGraph(domainTitle)
+        let domainTitle = d3.event.target.value;
+        if (domainTitle !== "[Search domains...]") { showDomainGraph(domainTitle)}
         
     })
+
+    
+}
+
+function checkURL() {
+    let pageURL = window.location.href
+    if (pageURL.search("/entries/") !== -1) {
+        console.log('found')
+    }
 }
 
 // ****** SET GLOBALS  ********
@@ -195,8 +206,12 @@ function loadMenus() {
                 .html((d) => d)
 
         //build domain menu
-        let domainItems = ["[Search domains...]"]
-        json.domains.nodes.forEach(node => domainItems.push(node.title))
+        let domainSet = new Set() 
+        json.articles.nodes.forEach(node => domainSet.add(node.primary_domain))
+        let domainItems = Array.from(domainSet)
+        domainItems.sort((a,b) => d3.ascending(a, b));
+        domainItems.unshift("[Search domains...]")
+
         domainMenu.selectAll("option")
         .data(domainItems)
         .enter().append("option")
@@ -221,6 +236,16 @@ function showArticleGraphAreas() {
     articleGraphDiv.style('display', 'block')
 }
 
+function rewriteURL(entryTitle, entryURL) {
+
+    console.log(entryTitle)
+    console.log(entryURL)
+    
+    if (typeof(history.pushState) !== "undefined") {
+        var url = { Title: entryTitle, Url: entryURL };
+        history.pushState(url, url.Title, url.Url);
+    }
+}
 // ****** ARTICLE GRAPH FUNCTIONS ****** 
 
 function setArticleMenuTitle(articleTitle) {
@@ -228,9 +253,8 @@ function setArticleMenuTitle(articleTitle) {
 }
 
 function showArticleGraph(articleTitle) {
-    d3.json('static/sep_network_test.json').then((json) => {
+    d3.json('/static/sep_network_test.json').then((json) => {
         let articleData = getArticleData(json,articleTitle)
-        console.log(articleData)
         setGlobalNodesLinks(articleData)
         setGlobalLinkDir(articleData)
         let articleNode = graphNodes[0]
@@ -239,6 +263,7 @@ function showArticleGraph(articleTitle) {
         window.getSelection().removeAllRanges();
         setArticleMenuTitle(articleTitle)
         setDomainMenuTitle("[Search domains...]")
+
     })
 
 }
