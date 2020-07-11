@@ -11,15 +11,16 @@ let sidebarRight = d3.select("#sidebarRight")
 let pageTitle = d3.select("#pageTitle").append("h1")
 
 //Initialize nodes and links arrays for simulation
-let nodes = [];
-let links = [];
+let graphNodes = [];
+let graphLinks = [];
+
 let biLinks = [];
 let inLinks = [];
 let outLinks = [];
 
 // Initialize SVG and Simulation
 let svgConfig = initializeParentSVG(svg);
-let articleSimulationConfig = initializeSimulation(svgConfig);  
+let simulationConfig = initializeSimulation(svgConfig);  
 let stylesConfig = initializeStyles();
 
 //Initialze article and domain caches for SEP data 
@@ -35,56 +36,52 @@ let linkAngles = [];
 let sepEdition = "Spring 2020"
 let baseURL = 'https://plato.stanford.edu/archives/spr2020';
 
-d3.json('static/sep_network_test.json').then(function(data) { startVisualization(data)} );
+// d3.json('static/sep_network_test.json').then(function(data) {startVisualization(data)} );
 
-function getJSON() {
+startVisualization();
 
-}
-
-function startVisualization(data) {
-    // let articleSimulationConfig = initializeSimulation(svgConfig);  
-    loadArticleMenu(data)
-    loadDomainMenu(data)
-
+function startVisualization() {
+    loadMenus();
     showArticleGraphAreas() 
-    // showHomeMenu(data, articleSimulationConfig)
+    // showHomeMenu(data, simulationConfig)
 
     //UI Response features
     articleMenu.on('change', function(){
         let articleTitle = d3.event.target.value;
-        showArticleGraph(data, articleTitle, articleSimulationConfig)
+        showArticleGraph(articleTitle)
     })
-    articleMenu.style("display", "none")
 
     domainMenu.on('change', function(){
         let domainTitle = d3.event.target.value; 
-        showDomainGraph(data, domainTitle, articleSimulationConfig)
+        showDomainGraph(domainTitle)
         
     })
 }
 
 // ****** SET GLOBALS  ********
 
-function setGlobalNodesLinks(sepNetworkObject) {
+function setGlobalNodesLinks(sepData) {
+    //clear out whatever is in the global graphNodes and graphLinks arrays
+    graphNodes.length = 0
+    graphLinks.length = 0
 
-    console.log(sepNetworkObject)
-
-    nodes.length = 0
-    links.length = 0
-
-    sepNetworkObject.nodes.forEach(node => nodes.push(node))
-    sepNetworkObject.links.forEach(link => links.push(link))
+    //push new nodes and links objects into globals
+    sepData.nodes.forEach(node => graphNodes.push(node))
+    sepData.links.forEach(link => graphLinks.push(link))
 
 }
-function setGlobalLinkDir(sepNetworkObject) {
+function setGlobalLinkDir(sepData) {
+    //clear out whatever is in the global link direction arrays
     biLinks.length = 0
     outLinks.length = 0 
     inLinks.length = 0 
 
-    sepNetworkObject.biLinks.forEach(biLink => biLinks.push(biLink))
-    sepNetworkObject.inLinks.forEach(inLink => inLinks.push(inLink))
-    sepNetworkObject.outLinks.forEach(outLink => outLinks.push(outLink))
+    //push new nodes and links objects into globals
+    sepData.biLinks.forEach(biLink => biLinks.push(biLink))
+    sepData.inLinks.forEach(inLink => inLinks.push(inLink))
+    sepData.outLinks.forEach(outLink => outLinks.push(outLink))
 }
+
 
 // ****** INITIALIZATION FUNCTIONS ********
 
@@ -186,30 +183,28 @@ function initializeStyles() {
 }
 // ****** MENU FUNCTIONS ********
 
-function loadArticleMenu(data) {
+function loadMenus() {
+    d3.json('static/sep_network_test.json').then((json) => {
+        //build article menu 
+        let articleItems = ["[Search articles...]"]
+        json.articles.nodes.forEach(node => articleItems.push(node.title))
+        articleMenu.selectAll("option")
+        .data(articleItems)
+        .enter().append("option")
+                .attr("value", (d) => d)
+                .html((d) => d)
 
-    let articles = ["[Search articles...]"]
-    data.articles.nodes.forEach(node => articles.push(node.title))
+        //build domain menu
+        let domainItems = ["[Search domains...]"]
+        json.domains.nodes.forEach(node => domainItems.push(node.title))
+        domainMenu.selectAll("option")
+        .data(domainItems)
+        .enter().append("option")
+                .attr("value", (d) => d)
+                .html((d) => d)
 
-    //load into article search menu
-    articleMenu.selectAll("option")
-                .data(articles)
-                .enter().append("option")
-                        .attr("value", (d) => d)
-                        .html((d) => d)
+    })
 
-}
-
-function loadDomainMenu(data) {
-
-    let domains = ["[Search domains...]"]
-    data.domains.nodes.forEach(node => domains.push(node.title))
-    //load into searchMenu
-    domainMenu.selectAll("option")
-                .data(domains)
-                .enter().append("option")
-                        .attr("value", (d) => d)
-                        .html((d) => d)
 
 }
 
@@ -232,68 +227,75 @@ function setArticleMenuTitle(articleTitle) {
     articleMenu.property("value", articleTitle)
 }
 
-function showArticleGraph(data, articleTitle, articleSimulationConfig) {
-
-    let articleData = getArticleData(data,articleTitle)
-    setGlobalNodesLinks(articleData)
-    setGlobalLinkDir(articleData)
-    let articleNode = nodes[0]
-    drawArticleSimulation(data, articleSimulationConfig)
-    updateSidebarsArticle(data, articleNode, articleSimulationConfig);
-    window.getSelection().removeAllRanges();
-    setArticleMenuTitle(articleTitle)
-    loadDomainMenu(data)
+function showArticleGraph(articleTitle) {
+    d3.json('static/sep_network_test.json').then((json) => {
+        let articleData = getArticleData(json,articleTitle)
+        console.log(articleData)
+        setGlobalNodesLinks(articleData)
+        setGlobalLinkDir(articleData)
+        let articleNode = graphNodes[0]
+        drawArticleSimulation(json)
+        updateSidebarsArticle(json, articleNode, simulationConfig);
+        window.getSelection().removeAllRanges();
+        setArticleMenuTitle(articleTitle)
+        setDomainMenuTitle("[Search domains...]")
+    })
 
 }
 function getArticleData(data, articleTitle) {
     let articleData = {};
-    // let inArticleCache = articleSearchCache.find( ({search}) => search === articleTitle);
-    // if (!inArticleCache) {
+    let inArticleCache = articleSearchCache.find( ({article}) => article === articleTitle);
+    if (!inArticleCache) {
         articleData = getArticleDataFromJSON(data, articleTitle); 
-    // }   else    {
-    //     articleData = inArticleCache
-    // }
+    }   else    {
+        articleData = inArticleCache
+    }
 
     return articleData
 }
 function getArticleDataFromJSON(data, articleTitle) {      
 
-    let articleNodes = [];
-    let articleNodesSorted = [];
-    let articleLinks = [];  
-    let articleData = {};
-    let domains = {}
-
-    //get the base node to build our graph around    
-    let searchNode = data.articles.nodes.filter(node => {
+    //get the selectded article node to build our graph around    
+    let selectedArticle = data.articles.nodes.filter(node => {
         return node.title === articleTitle
     })
 
-    //get the url for the base node
-    let searchID = searchNode[0].id 
+    //get the url for the selectded article node
+    let articleURL = selectedArticle[0].id;
 
-    console.log(searchNode)
+    // get all the links going out from the selected article
+    let sourceLinks = [];
+    let targetLinks = [];
+    
+    data.articles.links.forEach(link => {
+        if (link.source === articleURL) {sourceLinks.push(link.target)}
+        if (link.target === articleURL) {targetLinks.push(link.source)}
+    });
+    
+    console.log(sourceLinks)
+    console.log(targetLinks)
+    // break links out into arrays based on link direction
+    let bidirectionalLinks = intersection(sourceLinks,targetLinks);
+    let onlyOutLinks = symmetricDifference(bidirectionalLinks, sourceLinks);
+    let onlyInLinks = symmetricDifference(bidirectionalLinks, targetLinks);
 
-    let sourceLinks = new Set()
-    let targetLinks = new Set()
+    // combine links back together into a single array 
+    let articleLinks = combineLinks(articleURL, bidirectionalLinks, onlyOutLinks, onlyInLinks);
 
-    console.log(data.articles.links)
-    data.articles.links.forEach(link => { 
-        if (searchID === link.source && searchID !== link.target)  { sourceLinks.add(link.target)}
-        if (searchID === link.target && searchID !== link.source)  { targetLinks.add(link.source)}
-    })
+    // create array to hold the article node objects
+    let articleNodes = []; 
 
-    let _biLinks = intersection(sourceLinks,targetLinks)
-    let _outLinks = symmetricDifference(_biLinks, sourceLinks)
-    let _inLinks = symmetricDifference(_biLinks, targetLinks)
+    // push selected article into first position of node array
+    articleNodes.push(selectedArticle[0]);
 
-    articleLinks = combineLinks(searchID, _biLinks, _outLinks, _inLinks, data)
-
-    articleNodes.push(searchNode[0])
+    // get all nodes that are linked to from the articleLinks array
+    let domains = {}
     articleLinks.forEach(link => {
         data.articles.nodes.forEach(node => {
             if (node.id === link.target) {
+                //push this node into the articleNodes array
                 articleNodes.push(node)
+                //build a domain object containing a list and a count of which domains are represented among the nodes
                 if (domains[node.primary_domain] > 0 ) {
                     domains[node.primary_domain]++ 
                 }   else {
@@ -303,34 +305,35 @@ function getArticleDataFromJSON(data, articleTitle) {
         })
     }) 
 
-    let domainArray = Object.entries(domains)
-    domainArray.sort((a,b) => d3.ascending(a[0], b[0]))
+    //create array from domains object and then sort the domains alphabetically
+    let linkDomains = Object.entries(domains);
+    linkDomains.sort((a,b) => d3.ascending(a[0], b[0]));
 
     //store the articleData term as an object
-    articleData = { "search": articleTitle,
-                    "nodes": articleNodes,
-                    "links": articleLinks,
-                    "biLinks": _biLinks,
-                    "inLinks": _inLinks,
-                    "outLinks": _outLinks, 
-                    "linkDomains": domainArray }
+    let articleData = { "article": articleTitle,
+                        "nodes": articleNodes,
+                        "links": articleLinks,
+                        "biLinks": bidirectionalLinks,
+                        "inLinks": onlyInLinks,
+                        "outLinks": onlyOutLinks, 
+                        "linkDomains": linkDomains }
     
+    //add to cache
     articleSearchCache.push(articleData)
 
     return articleData
 
     
 }
-function drawArticleSimulation(data, simulationConfig) {
+function drawArticleSimulation(data) {
 
-    let centralNode = nodes[0]
-    let numTicks = 0;
+    let centralNode = graphNodes[0];
+    let countOfNodes = graphNodes.length;
     let transitionTime = 2000;
-    let ticksCompleted = false;
 
     //links
     link = simulationConfig.links.selectAll('.link')
-                         .data(links, function(d) {return `${d.source}-${d.target}`})
+                         .data(graphLinks, function(d) {return `${d.source}-${d.target}`})
                          .order()
                          .attr('dir', function(d) {return d.dir})
                          .attr('target', function(d) { return d.target })
@@ -348,7 +351,7 @@ function drawArticleSimulation(data, simulationConfig) {
 
     //labels
     label = simulationConfig.labels.selectAll('.label')
-                           .data(nodes, function(d) {return d.title})
+                           .data(graphNodes, function(d) {return d.title})
                            .attr('fill-opacity',stylesConfig.nodelabel.defaultOpacity)
                            .order()
                            .classed('mainLabel', function(d,i) {return i===0?true:false})
@@ -367,14 +370,14 @@ function drawArticleSimulation(data, simulationConfig) {
                  .merge(label)
 
     label
-        .on('mouseover', function() {mouseOverArticleGraph(this, data, centralNode, simulationConfig)})
-        .on('mouseout', function() {mouseOutArticleGraph(this, data, centralNode, simulationConfig)})
-        .on('dblclick', function() {dblClickArticleGraph(this, data, simulationConfig)})
+        .on('mouseover', function() {mouseOverArticleGraph(this, data,centralNode)})
+        .on('mouseout', function() {mouseOutArticleGraph(this, data, centralNode)})
+        .on('dblclick', function() {dblClickArticleGraph(this)})
 
 
     //nodes
     node = simulationConfig.nodes.selectAll('.node')
-                         .data(nodes, function (d) {return d.id})
+                         .data(graphNodes, function (d) {return d.id})
                          .order()
                          .attr("r", 5)
                          .attr("fill", function(d) {return color(d.primary_domain)})
@@ -392,15 +395,15 @@ function drawArticleSimulation(data, simulationConfig) {
                 .classed('node',true)
                 .merge(node)
     node
-        .on('mouseover', function() {mouseOverArticleGraph(this, data, centralNode, simulationConfig)})
-        .on('mouseout', function() {mouseOutArticleGraph(this, data, centralNode, simulationConfig)})
-        .on('dblclick', function() {dblClickArticleGraph(this, data, simulationConfig)})
+        .on('mouseover', function() {mouseOverArticleGraph(this, data, centralNode)})
+        .on('mouseout', function() {mouseOutArticleGraph(this, data, centralNode)})
+        .on('dblclick', function() {dblClickArticleGraph(this)})
 
-    //update sim
-
+    //update simulation ticker
+    let numTicks = 0;
+    let ticksCompleted = false;
     simulationConfig.simulation.on('tick', function (){
-        let tickLimit = ticksByNodeCount(nodes.length)
-
+        let tickLimit = ticksByNodeCount(countOfNodes)
         if (numTicks < tickLimit) {
             link
                 .attr("x1", function(d) {return 0 })
@@ -428,12 +431,12 @@ function drawArticleSimulation(data, simulationConfig) {
 
     })
 
-    //restart simulation
-    simulationConfig.simulation.nodes(nodes);
-    simulationConfig.simulation.force("charge").strength(function() { return forceStrength(nodes.length)})
+    //update simulations
+    simulationConfig.simulation.nodes(graphNodes);
+    simulationConfig.simulation.force("charge").strength(function() { return forceStrength(countOfNodes)})
     simulationConfig.simulation.force("link").id(function (d) {return d.id})
                                              .distance(200)
-    simulationConfig.simulation.force("link").links(links)
+    simulationConfig.simulation.force("link").links(graphLinks)
     simulationConfig.simulation.force("forceX").strength(0)
     simulationConfig.simulation.force("forceY").strength(0)
     simulationConfig.simulation.alpha(1).restart();
@@ -443,10 +446,10 @@ function drawArticleSimulation(data, simulationConfig) {
 }
 
 function updateSidebarsArticle(data, selectedArticle, simulationConfig) {
-    updateSideBarsAritcleLeft(data, selectedArticle, simulationConfig)
+    updateSideBarsAritcleLeft(selectedArticle, simulationConfig)
     updateSideBarsArticleRight(data, selectedArticle, simulationConfig)
 }
-function updateSideBarsAritcleLeft(data, selectedArticle, simulationConfig){
+function updateSideBarsAritcleLeft(selectedArticle, simulationConfig){
     if(selectedArticle) {
         //clear areas
         sidebarLeft.html("")
@@ -506,15 +509,15 @@ function updateSideBarsAritcleLeft(data, selectedArticle, simulationConfig){
         
         domainList
             .on('mouseover', function() { d3.select(this).style("cursor", "pointer").style("font-weight", "bold"); })
-            .on('mouseout', function() {d3.select(this).style("cursor", "default").style("font-weight", "normal"); })
+            .on('mouseout', function() { d3.select(this).style("cursor", "default").style("font-weight", "normal"); })
             .on('dblclick', function () {
                 let domainTitle = d3.select(this).datum()
-                showDomainGraph(data, domainTitle, simulationConfig)
+                showDomainGraph(domainTitle)
         })
     }
 }
 
-function updateSideBarsArticleRight(data, selectedArticle, simulationConfig){
+function updateSideBarsArticleRight(data, selectedArticle){
     if(selectedArticle) {
         //clear areas
         sidebarRight.html("")
@@ -629,7 +632,7 @@ function updateSideBarsArticleRight(data, selectedArticle, simulationConfig){
 
 function getDomainLinksInArticle(linkDomain) {
     let domainArray = []
-    nodes.filter(node => {
+    graphNodes.filter(node => {
         if (node.primary_domain === linkDomain[0]) { domainArray.push(node.id)}
     })
     return domainArray
@@ -658,7 +661,7 @@ function getParagraphDataHTML(ParagraphDataFromNode) {
     return htmlReturn
 
 }
-function dblClickArticleGraph(dblClickReference, data, simulationConfig) {
+function dblClickArticleGraph(dblClickReference) {
     
     // get node or label activated
     let activeElement = d3.select(dblClickReference)
@@ -669,11 +672,10 @@ function dblClickArticleGraph(dblClickReference, data, simulationConfig) {
         activeElement.style("cursor", "pointer"); 
         resetDisplayDefaultsArticleGraph();
         let articleTitle = activeElement.datum().title
-        // updateGraph(data, 'article', articleTitle, simulationConfig)
-        showArticleGraph(data, articleTitle,simulationConfig)
+        showArticleGraph(articleTitle)
     }
 }
-function mouseOverArticleGraph(mouseOverReference, data, centralNode, simulationConfig) {
+function mouseOverArticleGraph(mouseOverReference, data, centralNode) {
     
     // get node or label activated
     let activeElement = d3.select(mouseOverReference)
@@ -682,17 +684,17 @@ function mouseOverArticleGraph(mouseOverReference, data, centralNode, simulation
     
         // do the following if the activated node or label was not the central node
         activeElement.style("cursor", "pointer"); 
-        focusOnSelectedArticle(data, activeElement.datum(), centralNode, simulationConfig)
-        updateSidebarsArticle(data, activeElement.datum(), simulationConfig)
+        focusOnSelectedArticle(data, activeElement.datum(), centralNode)
+        updateSidebarsArticle(data, activeElement.datum())
     }
 }
-function mouseOutArticleGraph(mouseOverReference, data, centralNode, simulationConfig) {
+function mouseOutArticleGraph(mouseOverReference, data, centralNode) {
     let activeElement = d3.select(mouseOverReference)
     
     activeElement.style("cursor", "default");
     simulationConfig.relatedLinks.html("")
     resetDisplayDefaultsArticleGraph();
-    updateSidebarsArticle(data, centralNode, simulationConfig)
+    updateSidebarsArticle(data, centralNode)
 
 }
 
@@ -704,7 +706,7 @@ function getNodeCenter(activeElement) {
 
 function getRelatedArticles(data, activeElement, centralNode) {
     let _articleData = getArticleData(data, activeElement.title)
-    let _relatedArticles = Array.from(intersection(nodes,_articleData.nodes))
+    let _relatedArticles = Array.from(intersection(graphNodes,_articleData.nodes))
     let centralNodeIndex = _relatedArticles.indexOf(centralNode)
     _relatedArticles.splice(centralNodeIndex,1)
 
@@ -714,7 +716,7 @@ function getRelatedArticles(data, activeElement, centralNode) {
 function drawRelatedLinks(data, activeElement, simulationConfig) {
 
 }
-function focusOnSelectedArticle(data, activeElement, centralNode, simulationConfig) {
+function focusOnSelectedArticle(data, activeElement, centralNode) {
 
     let relatedArticles = getRelatedArticles(data,activeElement, centralNode)
 
@@ -816,141 +818,76 @@ function resetDisplayDefaultsArticleGraph() {
 function setDomainMenuTitle(domainTitle) {
     domainMenu.property("value", domainTitle)
 }
-function showDomainGraph(data, domainTitle, articleSimulationConfig) {
-    let domainData = getDomainData(data,domainTitle)
-    setGlobalNodesLinks(domainData)
-    drawDomainSimulation(data, domainTitle, articleSimulationConfig)
-    updateSidebarsDomain(data, domainTitle, articleSimulationConfig);
-    updateNeighborNodes();
-    setDomainMenuTitle(domainTitle)
-    setArticleMenuTitle("[Search articles...]")
-    window.getSelection().removeAllRanges();
+function showDomainGraph(domainTitle) {
+
+    d3.json('static/sep_network_test.json').then(function(json) {
+        
+        let domainData = getDomainData(json,domainTitle)
+        setGlobalNodesLinks(domainData)
+        drawDomainSimulation(json, domainTitle)
+        updateSidebarsDomain(json, domainTitle);
+        updateNeighborNodes();
+        setDomainMenuTitle(domainTitle)
+        setArticleMenuTitle("[Search articles...]")
+        window.getSelection().removeAllRanges();
+    });
 }
 function getDomainData(data, domainTitle) {
     let domainData = {};
-    // let inDomainCache = domainSearchCache.find( ({search}) => search === domainTitle);
-    // if (!inDomainCache) {
+    let inDomainCache = domainSearchCache.find( ({domain}) => domain === domainTitle);
+    if (!inDomainCache) {
         domainData = getDomainDataFromJSON(data, domainTitle); 
-    // }   else    {
-    //     domainData = inDomainCache
-
-    // }
-
+    }   else    {
+        domainData = inDomainCache
+    }
     return domainData
 }
+
 function getDomainDataFromJSON(data, domainTitle) {      
-
-    let domainLinks = [];  
-    let domainData = {};
-    let sourceLinks = [];
-    let targetLinks = [];
-
     // filter JSON for all the articles tagged in domainTitle
     let domainNodes = data.articles.nodes.filter(dnode => {
         return dnode.primary_domain === domainTitle
     })
 
-    // ****** The problem is happening in these two code blocks, and I can't figure out why *******
-
-    // ****** The first weird thing is that on the second run, the sourcelinks return a different number, 
-    // ****** like data.articles.links has been changed.
-
-    // get the source (outgoing) links for each article contained in domainNodes
-    domainNodes.forEach(snode => {
-        data.articles.links.forEach(slink => {
-            if (snode.id === slink.source) {
-                sourceLinks.push(slink)
-            }
-        })
-    })
-
-    console.log("sourcelinks:")
-    console.log(sourceLinks)
-
-   // ****** The second weird thing is that on the second run, nothing is returned here at all
-
-   // select only those links in sourceLinks that have a target that is one of the articles in domainNodes
-    sourceLinks.forEach(tlink => {
-        domainNodes.forEach(tnode => {
-            if (tnode.id === tlink.target) {
-                domainLinks.push(tlink)
-            }
-        })
-    })
-
-    //store the domain data as an object to return to calling function
-    domainData = { "search": domainTitle,
-                    "nodes": domainNodes,
-                    "links": domainLinks }
-    
-    domainSearchCache.push(domainData)
-
-    return domainData
-
-}
-function getDomainDataFromJSON_old(data, domainTitle) {      
-
-    let domainLinks = [];  
-    let domainData = {};
+    // get all source links for each article contained in domainNodes
     let sourceLinks = [];
-    let targetLinks = [];
-
-    // filter JSON for all the articles tagged in domainTitle
-    let domainNodes = data.articles.nodes.filter(dnode => {
-        return dnode.primary_domain === domainTitle
-    })
-
-    // ****** The problem is happening in these two code blocks, and I can't figure out why *******
-
-    // ****** The first weird thing is that on the second run, the sourcelinks return a different number, 
-    // ****** like data.articles.links has been changed.
-
-    // get the source (outgoing) links for each article contained in domainNodes
-    domainNodes.forEach(snode => {
-        data.articles.links.forEach(slink => {
-            if (snode.id === slink.source) {
-                sourceLinks.push(slink)
+    domainNodes.forEach(dnode => {
+        data.articles.links.forEach(link => {
+            if (dnode.id === link.source) {
+                sourceLinks.push(link)
             }
         })
     })
 
-    console.log("sourcelinks:")
-    console.log(sourceLinks)
-
-   // ****** The second weird thing is that on the second run, nothing is returned here at all
-
-   // select only those links in sourceLinks that have a target that is one of the articles in domainNodes
-    sourceLinks.forEach(tlink => {
-        domainNodes.forEach(tnode => {
-            if (tnode.id === tlink.target) {
-                domainLinks.push(tlink)
+   // select only those links in sourceLinks that have a target to one of the articles in domainNodes
+   let domainLinks = [];
+    sourceLinks.forEach(slink => {
+        domainNodes.forEach(dnode => {
+            if (dnode.id === slink.target) {
+                domainLinks.push(slink)
             }
         })
     })
 
     //store the domain data as an object to return to calling function
-    domainData = { "search": domainTitle,
-                    "nodes": domainNodes,
-                    "links": domainLinks }
-    
+    let domainData = { "domain": domainTitle,
+                        "nodes": domainNodes,
+                        "links": domainLinks }
+
     domainSearchCache.push(domainData)
 
     return domainData
 
 }
-function drawDomainSimulation(data, entryTitle, simulationConfig){
 
-    let centralNode = nodes[0]
-    let numTicks = 0;
-    let transitionTime = 2000;
-    let ticksCompleted = false;
-    let inElements = []
-    let outElements = []
-    let biElements = []
+ 
+function drawDomainSimulation(data, entryTitle){
 
-    //links
+    let countOfNodes = graphNodes.length;
+
+    //bind simulation link objects to the the data in graphLinks
     link = simulationConfig.links.selectAll('.link')
-                         .data(links, function(d) {return `${d.source}-${d.target}`})
+        .data(graphLinks, function(d) {return `${d.source}-${d.target}`});
 
     link.exit().remove();
 
@@ -963,7 +900,7 @@ function drawDomainSimulation(data, entryTitle, simulationConfig){
 
     //labels
     label = simulationConfig.labels.selectAll('.label')
-                           .data(nodes, function(d) {return d.title})
+                           .data(graphNodes, function(d) {return d.title})
                             .attr('fill-opacity',0)
                            .attr("fill", function(d) {return color(d.primary_domain)})
     label.exit().remove();
@@ -979,15 +916,15 @@ function drawDomainSimulation(data, entryTitle, simulationConfig){
                  .classed('mainLabel', function(d,i) {return i===0?true:false})
                  .merge(label)
 
-    label.on('mouseover', function() {mouseOverDomainGraph(this, data, simulationConfig)})
-    label.on('mouseout', function() {mouseOutDomainGraph(this, data, simulationConfig)})
-    label.on('dblclick', function() {dblClickDomainGraph(this, data, simulationConfig)})
+    label.on('mouseover', function() {mouseOverDomainGraph(this, data)})
+    label.on('mouseout', function() {mouseOutDomainGraph(this, data)})
+    label.on('dblclick', function() {dblClickDomainGraph(this, data)})
              
     
 
     //nodes
     node = simulationConfig.nodes.selectAll('.node')
-                         .data(nodes, function (d) {return d.id})
+                         .data(graphNodes, function (d) {return d.id})
                          .attr("r", stylesConfig.nodelabel.defaultRadius)
                          .attr("fill", function(d) {return color(d.primary_domain)})
     
@@ -1004,16 +941,15 @@ function drawDomainSimulation(data, entryTitle, simulationConfig){
                 .classed('node',true)
                 .merge(node)
 
-    node.on('mouseover', function() {mouseOverDomainGraph(this, data, simulationConfig)})
-    node.on('mouseout', function() {mouseOutDomainGraph(this, data, simulationConfig)})
-    node.on('dblclick', function() {dblClickDomainGraph(this, data, simulationConfig)})
-
-    //deselect any selected nodes
-    window.getSelection().removeAllRanges();
+    node.on('mouseover', function() {mouseOverDomainGraph(this, data)})
+    node.on('mouseout', function() {mouseOutDomainGraph(this, data)})
+    node.on('dblclick', function() {dblClickDomainGraph(this, data)})
 
     //update simulation
+    let numTicks = 0;
+    let ticksCompleted = false;
     simulationConfig.simulation.on('tick', function (){
-        let tickLimit = ticksByNodeCount(nodes.length)
+        let tickLimit = ticksByNodeCount(countOfNodes)
 
         if (numTicks < tickLimit) {
             link
@@ -1040,16 +976,16 @@ function drawDomainSimulation(data, entryTitle, simulationConfig){
     })
     
     //restart simulation
-    simulationConfig.simulation.nodes(nodes);
-    simulationConfig.simulation.force("charge").strength(function() { return forceStrength(nodes.length)})
+    simulationConfig.simulation.nodes(graphNodes);
+    simulationConfig.simulation.force("charge").strength(function() { return forceStrength(countOfNodes)})
     simulationConfig.simulation.force("link").id(function (d) {return d.id}).distance(600)
-    simulationConfig.simulation.force("link").links(links)
+    simulationConfig.simulation.force("link").links(graphLinks)
     simulationConfig.simulation.force("forceX").strength(.5)
     simulationConfig.simulation.force("forceY").strength(.5)
     simulationConfig.simulation.alpha(.1).restart();
 
 }
-function updateSidebarsDomain(data, domainTitle, simulationConfig) {
+function updateSidebarsDomain(data, domainTitle) {
        
         //clear areas
         sidebarLeft.html("")
@@ -1069,8 +1005,8 @@ function updateSidebarsDomain(data, domainTitle, simulationConfig) {
             .classed('articleDetailH3',true)
         }
 
-        let domainNodesCount = nodes.length
-        let domainLinksCount = links.length
+        let domainNodesCount = graphNodes.length
+        let domainLinksCount = graphLinks.length
         let domainIntroHTML = `<p>SEP contains the following data for articles about ${domainTitle}.<br>` +
                                 `Articles: ${domainNodesCount}<br>` +
                                  `Links: ${domainLinksCount}</p>`
@@ -1093,12 +1029,12 @@ function updateSidebarsDomain(data, domainTitle, simulationConfig) {
             .style('height', '600px')
 
         //sort nodes in alphabetical order
-        nodes.sort((a,b) => d3.ascending(a.title, b.title))
+        graphNodes.sort((a,b) => d3.ascending(a.title, b.title))
 
             articleListArea.append("ul")
             .classed('domainListDetail', true)
             .selectAll(".domainArticle")
-            .data(nodes)
+            .data(graphNodes)
             .enter()       
             .append("li")             
                 .html(function(d) {return d.title})
@@ -1109,13 +1045,13 @@ function updateSidebarsDomain(data, domainTitle, simulationConfig) {
 
         let domainArticleList = d3.selectAll('.domainArticle')
         
-        domainArticleList.on('mouseover', function() {mouseOverDomainGraph(this, data, simulationConfig)})
-        domainArticleList.on('mouseout', function() {mouseOutDomainGraph(this, data, simulationConfig)})
-        domainArticleList.on('dblclick', function() {dblClickDomainGraph(this, data, simulationConfig)})
+        domainArticleList.on('mouseover', function() {mouseOverDomainGraph(this, data)})
+        domainArticleList.on('mouseout', function() {mouseOutDomainGraph(this, data)})
+        domainArticleList.on('dblclick', function() {dblClickDomainGraph(this, data)})
 
     
 }
-function dblClickDomainGraph(dblClickReference, data, simulationConfig) {
+function dblClickDomainGraph(dblClickReference) {
     // get node or label activated
     let activeElement = d3.select(dblClickReference)
     activeElement
@@ -1126,28 +1062,23 @@ function dblClickDomainGraph(dblClickReference, data, simulationConfig) {
     resetDisplayDefaultsArticleGraph();
 
     let articleTitle = activeElement.datum().title
-    showArticleGraph(data, articleTitle, simulationConfig)
+    showArticleGraph(articleTitle)
 }
-function mouseOverDomainGraph(mouseOverReference, data, simulationConfig) {
-    // get node or label activated
-    let activeElement = d3.select(mouseOverReference)
-    activeElement
+function mouseOverDomainGraph(mouseOverReference) {
+    d3.select(mouseOverReference)
         .style("cursor", "pointer")
-        .style("font-weight", "bold")
-    focusOnDomainArticle(activeElement.datum())
-    // updateSidebarsDomain(data, activeElement.datum().title, simulationConfig)
+        .style("font-weight", "bold");
+    focusOnDomainArticle(d3.select(mouseOverReference).datum());
 }
-function mouseOutDomainGraph(mouseOutReference,data, simulationConfig) {
-    // get node or label activated
-    let activeElement = d3.select(mouseOutReference)
-    activeElement
+function mouseOutDomainGraph(mouseOutReference) {
+    d3.select(mouseOutReference)
         .style("cursor", "default")
-        .style("font-weight", "normal")
-    resetDisplayDefaultsDomainGraph()
+        .style("font-weight", "normal");
+    resetDisplayDefaultsDomainGraph();
 }
 function updateNeighborNodes() {
     neighborNodes.length = 0
-    links.forEach(function (d) {
+    graphLinks.forEach(function (d) {
         neighborNodes[d.source.id + "-" + d.target.id] = true;
         neighborNodes[d.target.id + "-" + d.source.id] = true;
     });
@@ -1158,7 +1089,6 @@ function isNeighborNode(a, b) {
 function focusOnDomainArticle(activeElement) {
 
     d3.selectAll('.link').attr("opacity", function (link) {
-        // return link.source.index == activeElement.index || link.target.index == activeElement.index ? 1 : 0.1;
         return link.source.id === activeElement.id  || link.target.id === activeElement.id ? stylesConfig.link.activeOpacity : stylesConfig.link.inactiveOpacity;
  
     });
@@ -1179,7 +1109,7 @@ function resetDisplayDefaultsDomainGraph() {
 //******************** Array & Set Operations ************************/
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
 
-function combineLinks(searchID, biLinks, outLinks, inLinks, data) {
+function combineLinks(searchID, biLinks, outLinks, inLinks) {
     let _combinedLinks = []
 
     biLinks.forEach(biLink => {
@@ -1198,17 +1128,17 @@ function combineLinks(searchID, biLinks, outLinks, inLinks, data) {
     })
 
 
-    _combinedLinks.forEach(link => {
-        data.articles.nodes.forEach(node => {
-            if(node.id === link.target) { 
-                link['targetTitle'] = node.title 
-            }
+    // _combinedLinks.forEach(link => {
+    //     data.articles.nodes.forEach(node => {
+    //         if(node.id === link.target) { 
+    //             link['targetTitle'] = node.title 
+    //         }
 
-        })
+    //     })
         
-    })
+    // })
 
-    _combinedLinks.sort((a,b) => d3.ascending(a.targetTitle, b.targetTitle))
+    // _combinedLinks.sort((a,b) => d3.ascending(a.targetTitle, b.targetTitle))
     return _combinedLinks
 
 
@@ -1222,6 +1152,7 @@ function intersection(setA, setB) {
             _intersection.add(elem)
         }
     }
+ 
     return _intersection
 }
 function symmetricDifference(setA, setB) {
