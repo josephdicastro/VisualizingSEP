@@ -371,9 +371,9 @@ function drawArticleSimulation(data) {
                  .merge(label)
 
     label
-        .on('mouseover', function() {mouseOverArticleGraph(this, data,centralNode)})
-        .on('mouseout', function() {mouseOutArticleGraph(this, data, centralNode)})
-        .on('dblclick', function() {dblClickArticleGraph(this)})
+        .on('mouseover', function() {mouseOverArticleNode(this, data,centralNode)})
+        .on('mouseout', function() {mouseOutArticleNode(this, data, centralNode)})
+        .on('dblclick', function() {dblClickArticleNode(this)})
 
 
     //nodes
@@ -396,9 +396,9 @@ function drawArticleSimulation(data) {
                 .classed('node',true)
                 .merge(node)
     node
-        .on('mouseover', function() {mouseOverArticleGraph(this, data, centralNode)})
-        .on('mouseout', function() {mouseOutArticleGraph(this, data, centralNode)})
-        .on('dblclick', function() {dblClickArticleGraph(this)})
+        .on('mouseover', function() {mouseOverArticleNode(this, data, centralNode)})
+        .on('mouseout', function() {mouseOutArticleNode(this, data, centralNode)})
+        .on('dblclick', function() {dblClickArticleNode(this)})
 
     //update simulation ticker
     let numTicks = 0;
@@ -446,11 +446,11 @@ function drawArticleSimulation(data) {
 
 }
 
-function updateSidebarsArticle(data, selectedArticle, simulationConfig) {
-    updateSideBarsAritcleLeft(selectedArticle, simulationConfig)
-    updateSideBarsArticleRight(data, selectedArticle, simulationConfig)
+function updateSidebarsArticle(data, selectedArticle) {
+    updateSideBarsAritcleLeft(selectedArticle)
+    updateSideBarsArticleRight(data, selectedArticle)
 }
-function updateSideBarsAritcleLeft(selectedArticle, simulationConfig){
+function updateSideBarsAritcleLeft(selectedArticle){
     if(selectedArticle) {
         //clear areas
         sidebarLeft.html("")
@@ -542,9 +542,9 @@ function updateSideBarsArticleRight(data, selectedArticle){
         
         
         // build direction links data 
-        let directionLinks = sidebarRightContent.append("div")
+        let directionLinksDiv = sidebarRightContent.append("div")
 
-        directionLinks.append("h5")
+        directionLinksDiv.append("h5")
             .text("Link Direction Summary")
             .classed('articleDetailH5', true)
 
@@ -552,7 +552,7 @@ function updateSideBarsArticleRight(data, selectedArticle){
                      `In-Coming (${articleData.inLinks.size})`,
                      `Out-Going (${articleData.outLinks.size})`]
 
-        directionLinks.append("ul")
+        directionLinksDiv.append("ul")
             .selectAll(".linkDirListItem")
             .data(linkItems)
             .enter()
@@ -563,14 +563,13 @@ function updateSideBarsArticleRight(data, selectedArticle){
         .exit().remove()
 
         // build domain links data 
-        let linkDomainLinks = sidebarRightContent.append("div")
+        let domainLinksDiv = sidebarRightContent.append("div")
 
+        domainLinksDiv.append("h5")
+            .text("Link Domain Summary")
+            .classed('articleDetailH5', true)  
 
-        linkDomainLinks.append("h5")
-        .text("Link Domain Summary")
-        .classed('articleDetailH5', true)  
-
-        linkDomainLinks.append("ul")
+            domainLinksDiv.append("ul")
             .selectAll(".linkDomainListItem")
             .data(articleData.linkDomains)
             .enter()
@@ -579,58 +578,108 @@ function updateSideBarsArticleRight(data, selectedArticle){
             .style("color", function(d) {return color(d[0])})
             .classed('linkDomainListItem', true)
         .exit().remove()
+
+        // build list of articles 
+        let articleLinksDiv = sidebarRightContent.append("div")
+
+        
+        articleLinksDiv.append("h5")
+            .text("Article List")
+            .classed('articleDetailH5', true)
+        
+        let showHide = articleLinksDiv.append("p")
+            .text("(show)")
+            .classed("articleShowHide", true)
+        
+        
+        let articleListDiv = articleLinksDiv.append("div")
+            .attr("id", "articleListDiv")
+            .style("display", "none")
+
+        articleListDiv.append("ul")
+            .selectAll(".linkArticlesListItem")
+            .data(articleData.nodes)
+            .enter()
+                .append("li")
+                .html(function(d) {return `${d.title}`})
+                .style("color", function(d) {return color(d.primary_domain)})
+                .classed('linkArticlesListItem', true)
+
         
         ////// ux/ui interactions
 
-        let linkDirectionList = d3.selectAll('.linkDirListItem')
-        linkDirectionList
+        let listLinkDirection = d3.selectAll('.linkDirListItem')
+        listLinkDirection
             .on('mouseover', function() {
-                let mouseReference = d3.select(this)
-                let mouseReferenceOpacity = mouseReference.style("opacity")
-                    mouseReference
-                        .style("cursor", "pointer")
-                        .style("font-weight", "bold")
-                    let linkDirection = mouseReference.datum().substring(0,2)
-                    switch(linkDirection) {
-                        case 'Bi':
-                            focusOnLinkAnalysis(Array.from(articleData.biLinks))
-                            break;
-                        case 'In':
-                            focusOnLinkAnalysis(Array.from(articleData.inLinks))
-                            break;
-                        case 'Ou':
-                            focusOnLinkAnalysis(Array.from(articleData.outLinks))
-                            break;
-                    }
+                activateItemLink(this)
+                let linkDirection = d3.select(this).datum().substring(0,2)
+                switch(linkDirection) {
+                    case 'Bi':
+                        focusOnLinkAnalysis(Array.from(articleData.biLinks))
+                        break;
+                    case 'In':
+                        focusOnLinkAnalysis(Array.from(articleData.inLinks))
+                        break;
+                    case 'Ou':
+                        focusOnLinkAnalysis(Array.from(articleData.outLinks))
+                        break;
+                }
 
             })
             .on('mouseout', function() {
-                d3.select(this)
-                    .style("cursor", "default")
-                    .style("font-weight", "normal");
+                deActivateItemLink(this)
                 resetDisplayDefaultsArticleGraph();
             })
         
-        let linkDomainList = d3.selectAll('.linkDomainListItem')
-        linkDomainList
+        let listlinkDomains = d3.selectAll('.linkDomainListItem')
+        listlinkDomains
             .on('mouseover', function() {
-                d3.select(this)
-                    .style("cursor", "pointer")
-                    .style("font-weight", "bold")
+                activateItemLink(this)
                 let linkDomainArray = getDomainLinksInArticle(d3.select(this).datum())
                 focusOnLinkAnalysis(linkDomainArray)
             
-        })
+            })
             .on('mouseout', function() {
-                d3.select(this)
-                    .style("cursor", "default")
-                    .style("font-weight", "normal");
+                deActivateItemLink(this);
                 resetDisplayDefaultsArticleGraph();
             })
+
+        let listArticleLinks = d3.selectAll('.linkArticlesListItem');
+        let centralNode = graphNodes[0];
+        listArticleLinks
+            .on('mouseover', function() { mouseOverArticleNode(this, data)})
+            .on('mouseout', function()  { mouseOutArticleNode(this, data)})
+            .on('dblclick', function()  { dblClickArticleNode(this)})
+        showHide
+            .on('mouseover', function() { activateItemLink(this) })
+            .on('mouseout', function()  { deActivateItemLink(this) })
+            .on('dblclick', function()  { toggleArticleListVisibility(this)})
     }
 
 }
 
+function toggleArticleListVisibility(dblClickReference) {
+    let toggleState = d3.select(dblClickReference)
+    let articleListDiv = d3.select("#articleListDiv")
+    if (toggleState.node().innerHTML === "(show)") {
+        toggleState.node().innerHTML = "(hide)"
+        articleListDiv.style("display", "block")
+    }   else {
+        toggleState.node().innerHTML = "(show)"
+        articleListDiv.style("display", "none")
+    }
+}
+
+function activateItemLink(mouseReference) {
+    d3.select(mouseReference)
+        .style("cursor", "pointer")
+        .style("font-weight", "bold");
+}
+function deActivateItemLink(mouseReference) {
+    d3.select(mouseReference)
+        .style("cursor", "normal")
+        .style("font-weight", "normal");
+}
 function getDomainLinksInArticle(linkDomain) {
     let domainArray = []
     graphNodes.filter(node => {
@@ -662,7 +711,7 @@ function getParagraphDataHTML(ParagraphDataFromNode) {
     return htmlReturn
 
 }
-function dblClickArticleGraph(dblClickReference) {
+function dblClickArticleNode(dblClickReference) {
     
     // get node or label activated
     let activeElement = d3.select(dblClickReference)
@@ -676,7 +725,7 @@ function dblClickArticleGraph(dblClickReference) {
         showArticleGraph(articleTitle)
     }
 }
-function mouseOverArticleGraph(mouseOverReference, data, centralNode) {
+function mouseOverArticleNode(mouseOverReference, data) {
     
     // get node or label activated
     let activeElement = d3.select(mouseOverReference)
@@ -685,17 +734,18 @@ function mouseOverArticleGraph(mouseOverReference, data, centralNode) {
     
         // do the following if the activated node or label was not the central node
         activeElement.style("cursor", "pointer"); 
-        focusOnSelectedArticle(data, activeElement.datum(), centralNode)
-        updateSidebarsArticle(data, activeElement.datum())
+        focusOnArticleNode(data, activeElement.datum())
+        updateSideBarsAritcleLeft(activeElement.datum())
     }
 }
-function mouseOutArticleGraph(mouseOverReference, data, centralNode) {
+function mouseOutArticleNode(mouseOverReference, data) {
     let activeElement = d3.select(mouseOverReference)
+    let centralNode = graphNodes[0]
     
     activeElement.style("cursor", "default");
     simulationConfig.relatedLinks.html("")
     resetDisplayDefaultsArticleGraph();
-    updateSidebarsArticle(data, centralNode)
+    updateSideBarsAritcleLeft(centralNode)
 
 }
 
@@ -705,21 +755,34 @@ function getNodeCenter(activeElement) {
     return _selectedNode
 }
 
-function getRelatedArticles(data, activeElement, centralNode) {
-    let _articleData = getArticleData(data, activeElement.title)
-    let _relatedArticles = Array.from(intersection(graphNodes,_articleData.nodes))
-    let centralNodeIndex = _relatedArticles.indexOf(centralNode)
-    _relatedArticles.splice(centralNodeIndex,1)
+function getRelatedArticles(data, activeElement) {
 
-    return _relatedArticles
+    // get article data and node ids for active Element
+    let articleData = getArticleData(data, activeElement.title)
+    let articleNodeIDs = articleData.nodes.map(node => node.id)
+
+    // get node IDS for nodes in global graphNodes
+    let graphNodesIDs = graphNodes.map(node => node.id)
+
+    // get the set of related ids
+    let relatedArticlesIDs = intersection(graphNodesIDs,articleNodeIDs)
+
+    // populated relatedArticleNodes with nodes matched in the set of relatedArticlsIDS
+    let relatedArticleNodes = []
+    relatedArticlesIDs.forEach(relArticle=> {
+        graphNodes.forEach(node => {
+            if (node.index !== 0 && relArticle === node.id) {
+                relatedArticleNodes.push(node)
+            }
+        })
+    })
+
+    return relatedArticleNodes
 }
 
-function drawRelatedLinks(data, activeElement, simulationConfig) {
+function focusOnArticleNode(data, activeElement) {
 
-}
-function focusOnSelectedArticle(data, activeElement, centralNode) {
-
-    let relatedArticles = getRelatedArticles(data,activeElement, centralNode)
+    let relatedArticles = getRelatedArticles(data,activeElement)
 
     let linkLinesGroup = simulationConfig.relatedLinks
     linkLinesGroup.html("")
@@ -811,6 +874,7 @@ function resetDisplayDefaultsArticleGraph() {
     d3.selectAll('.link').attr("opacity", stylesConfig.link.defaultOpacity);
     d3.selectAll('.label').attr("fill-opacity", stylesConfig.nodelabel.defaultOpacity);
     d3.selectAll('.node').style("opacity", stylesConfig.nodelabel.defaultOpacity);
+    d3.selectAll('.relatedLinkLines').style("opacity",0)
 } 
 
 // ****** DOMAIN GRAPH FUNCTIONS ****** 
@@ -1026,8 +1090,7 @@ function updateSidebarsDomain(data, domainTitle) {
             .classed('articleDetailH3', true)
 
         let articleListArea = sidebarRight.append('div')
-            .style('overflow', 'auto')
-            .style('height', '600px')
+            .classed("overflow600", true)
 
         //sort nodes in alphabetical order
         graphNodes.sort((a,b) => d3.ascending(a.title, b.title))
