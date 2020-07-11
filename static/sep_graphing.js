@@ -57,12 +57,7 @@ function startVisualization() {
     
 }
 
-function checkURL() {
-    let pageURL = window.location.href
-    if (pageURL.search("/entries/") !== -1) {
-        console.log('found')
-    }
-}
+
 
 // ****** SET GLOBALS  ********
 
@@ -141,6 +136,7 @@ function initializeSimulation(svgConfig) {
         .force("center", d3.forceCenter())
         .force("forceX", d3.forceX())
         .force("forceY", d3.forceY())
+        .force("collide", d3.forceCollide())
         .alphaTarget(1);
 
     return {links, nodes, labels, relatedLinks, simulation}
@@ -772,7 +768,6 @@ function focusOnSelectedArticle(data, activeElement, centralNode) {
 }
 
 function focusOnLinkAnalysis(linksReference) {
-    console.log(linksReference)
     if (linksReference.length > 0 ) {
         d3.selectAll(".link")
         .each(function (d,i) {
@@ -987,6 +982,7 @@ function drawDomainSimulation(data, entryTitle){
     simulationConfig.simulation.force("link").links(graphLinks)
     simulationConfig.simulation.force("forceX").strength(.5)
     simulationConfig.simulation.force("forceY").strength(.5)
+    simulationConfig.simulation.force("collide").radius(10)
     simulationConfig.simulation.alpha(.1).restart();
 
 }
