@@ -421,7 +421,7 @@ function drawArticleSimulation(data) {
                 .attr("cy", function(d) {return d.index === 0 ? 0: d.y });
 
             label
-                .attr('x', function(d) {return d.index === 0 ? 0: setXpos(d.x,this.getBBox().width) })
+                .attr('x', function(d) {return d.index === 0 ? 0: setArticleXpos(d.x,this.getBBox().width) })
                 .attr('y', function(d) {return d.index === 0 ? -10: d.y+4})
                 .attr("transform", function(d,i){ return i===0 ?`rotate(0)`:rotateLabel(i,d.x, d.y)})
 
@@ -622,7 +622,7 @@ function updateSideBarsArticleRight(data, selectedArticle){
 
         
         articleLinksDiv.append("h5")
-            .text("Article List")
+            .text("Linked Articles")
             .classed('articleDetailH5', true)
         
         let showHide = articleLinksDiv.append("p")
@@ -634,9 +634,15 @@ function updateSideBarsArticleRight(data, selectedArticle){
             .attr("id", "articleListDiv")
             .style("display", "none")
 
+        let articleNodesCleaned = [] 
+        articleData.nodes.forEach(node=> {
+            if (node.index !== 0 ) {articleNodesCleaned.push(node)}
+        })
+        articleNodesCleaned.sort((a,b) => d3.ascending(a.title, b.title))
+
         articleListDiv.append("ul")
             .selectAll(".linkArticlesListItem")
-            .data(articleData.nodes)
+            .data(articleNodesCleaned)
             .enter()
                 .append("li")
                 .html(function(d) {return `${d.title}`})
@@ -949,10 +955,11 @@ function getDomainData(data, domainTitle) {
     return domainData
 }
 
-function getDomainDataFromJSON(data, domainTitle) {      
+function getDomainDataFromJSON(data, domainTitle) {    
+
     // filter JSON for all the articles tagged in domainTitle
     let domainNodes = data.articles.nodes.filter(dnode => {
-        return dnode.primary_domain === domainTitle
+        return dnode.domain_tags.includes(domainTitle)
     })
 
     // get all source links for each article contained in domainNodes
@@ -967,12 +974,23 @@ function getDomainDataFromJSON(data, domainTitle) {
 
    // select only those links in sourceLinks that have a target to one of the articles in domainNodes
    let domainLinks = [];
-    sourceLinks.forEach(slink => {
-        domainNodes.forEach(dnode => {
+   domainNodes.forEach(dnode => {
+        sourceLinks.forEach(slink => {
             if (dnode.id === slink.target) {
                 domainLinks.push(slink)
             }
         })
+    })
+
+    // get count of number of domain links for each node 
+    domainNodes.forEach(dnode => {
+
+        let totalLinks = new Set();
+        domainLinks.forEach(dlink => {
+            if(dnode.id === dlink.source) {totalLinks.add(dlink.target)};
+            if(dnode.id === dlink.target) {totalLinks.add(dlink.source)}
+        })
+        dnode["numLinks"] = totalLinks.size;
     })
 
     //store the domain data as an object to return to calling function
@@ -981,6 +999,7 @@ function getDomainDataFromJSON(data, domainTitle) {
                         "links": domainLinks }
 
     domainSearchCache.push(domainData)
+    console.log(domainData)
 
     return domainData
 
@@ -1026,19 +1045,24 @@ function drawDomainSimulation(data, entryTitle){
     label.on('mouseout', function() {mouseOutDomainGraph(this, data)})
     label.on('dblclick', function() {dblClickDomainGraph(this, data)})
              
-    
+    let numLinksRange = graphNodes.map(node=>node.numLinks)
+    let scaleNodeRadius = d3.scaleLinear()
+        .domain([d3.min(numLinksRange), d3.max(numLinksRange)])
+        .range([2,15])
+
+    console.log(scaleNodeRadius(10))
 
     //nodes
     node = simulationConfig.nodes.selectAll('.node')
                          .data(graphNodes, function (d) {return d.id})
-                         .attr("r", stylesConfig.nodelabel.defaultRadius)
+                         .attr("r", function(d) {return scaleNodeRadius(d.numLinks)})
                          .attr("fill", function(d) {return color(d.primary_domain)})
     
     node.exit().remove()
 
     node = node.enter()
                 .append('circle')
-                .attr("r", stylesConfig.nodelabel.defaultRadius)
+                .attr("r", function(d) {return scaleNodeRadius(d.numLinks)})
                 .attr("fill", function(d) {return color(d.primary_domain)})
                 .attr("stroke", stylesConfig.nodelabel.strokeColor)
                 .attr("stroke-width",  stylesConfig.nodelabel.strokeWidth)
@@ -1054,7 +1078,7 @@ function drawDomainSimulation(data, entryTitle){
     //update simulation
     let numTicks = 0;
     let ticksCompleted = false;
-    simulationConfig.simulation.on('tick', function (){
+    simulationConfig.simulation.on('tick', function () {
         let tickLimit = ticksByNodeCount(countOfNodes)
 
         if (numTicks < tickLimit) {
@@ -1065,11 +1089,10 @@ function drawDomainSimulation(data, entryTitle){
                 .attr("y2", function(d) {return d.target.y })
 
             node
-                .attr("cx", function(d) {return d.x })
-                .attr("cy", function(d) {return d.y });
-
+            .attr("cx", function(d) {return d.x })
+            .attr("cy", function(d) {return d.y });
             label
-                .attr('x', function(d) {return d.x + 12 })
+                .attr('x', function(d) {return setDomainXpos(d.x,scaleNodeRadius(d.numLinks),this.getBBox().width) })
                 .attr('y', function(d) {return d.y + 4})
                 .attr("transform", function(d,i){ return "rotate(0)"})
 
@@ -1084,61 +1107,61 @@ function drawDomainSimulation(data, entryTitle){
     //restart simulation
     simulationConfig.simulation.nodes(graphNodes);
     simulationConfig.simulation.force("charge").strength(function() { return forceStrength(countOfNodes)})
-    simulationConfig.simulation.force("link").id(function (d) {return d.id}).distance(600)
+    simulationConfig.simulation.force("link").id(function (d) {return d.id}).distance(500)
     simulationConfig.simulation.force("link").links(graphLinks)
     simulationConfig.simulation.force("forceX").strength(.5)
     simulationConfig.simulation.force("forceY").strength(.5)
-    simulationConfig.simulation.force("collide").radius(10)
+    simulationConfig.simulation.force("collide").radius(20)
     simulationConfig.simulation.alpha(.1).restart();
 
 }
 function updateSidebarsDomain(data, domainTitle) {
-       
-        //clear areas
-        sidebarLeft.html("")
-        sidebarRight.html("")
+    updateSidebarsDomainRight(data, domainTitle) ;
+    updateSidebarsDomainLeft(data,domainTitle);
+}
+function updateSidebarsDomainLeft(data, domainTitle) {
+    //clear areas
+    sidebarLeft.html("")
+    sidebarLeft.style("display", "block")
 
-        sidebarLeft.style("display", "block")
-        sidebarRight.style("display", "block")
+    let sidebarLeftContentDiv = sidebarLeft.append("div")
+}
+function updateSidebarsDomainRight(data, domainTitle) {
+    
+    //clear areas
+    sidebarRight.html("")
+    sidebarRight.style("display", "block")
 
-        //**populate sidebarLeft**
-        
-        let domainText = sidebarLeft.append("div")
-
-        // Title
-        if (typeof(domainTitle)!=='undefined') {
-            domainText.append("h3")
+    let sidebarRightContentDiv = sidebarRight.append("div")
+    
+    // Title
+    if (typeof(domainTitle)!=='undefined') {
+        //create domain stats div 
+        let domainStatsDiv = sidebarRightContentDiv.append("div")
+        domainStatsDiv.append("h3")
             .text(domainTitle)
             .classed('articleDetailH3',true)
-        }
 
-        let domainNodesCount = graphNodes.length
-        let domainLinksCount = graphLinks.length
-        let domainIntroHTML = `<p>SEP contains the following data for articles about ${domainTitle}.<br>` +
-                                `Articles: ${domainNodesCount}<br>` +
-                                 `Links: ${domainLinksCount}</p>`
-
-        domainText.append("div")
-            .html(domainIntroHTML)
+        let domainStatsHTML = `<p>There are ${graphNodes.length} articles in this domain.</p>` +
+                              `<p>Articles may appear in multiple domains. <br>Nodes are colored by the article's <em>primary</em> domain designation.`
+        domainStatsDiv.append("div")
+            .html(domainStatsHTML)
             .classed('mainText', true)
 
-        //  Add nodes and links data
-
-
-        //**populate sidebarRight**
-
-        sidebarRight.append('H3')
+        // create domain article list div
+        let domainArticleListDiv = sidebarRightContentDiv.append("div")
+        domainArticleListDiv.append('H4')
             .text("List of Articles")
-            .classed('articleDetailH3', true)
+            .classed('articleDetailH4', true)
 
-        let articleListArea = sidebarRight.append('div')
+        let articleListAreaDiv = domainArticleListDiv.append('div')
             .classed("overflow600", true)
 
         //sort nodes in alphabetical order
         graphNodes.sort((a,b) => d3.ascending(a.title, b.title))
 
-            articleListArea.append("ul")
-            .classed('domainListDetail', true)
+        articleListAreaDiv.append("ul")
+            // .classed('domainListDetail', true)
             .selectAll(".domainArticle")
             .data(graphNodes)
             .enter()       
@@ -1155,7 +1178,7 @@ function updateSidebarsDomain(data, domainTitle) {
         domainArticleList.on('mouseout', function() {mouseOutDomainGraph(this, data)})
         domainArticleList.on('dblclick', function() {dblClickDomainGraph(this, data)})
 
-    
+    }
 }
 function dblClickDomainGraph(dblClickReference) {
     // get node or label activated
@@ -1171,15 +1194,11 @@ function dblClickDomainGraph(dblClickReference) {
     showArticleGraph(articleTitle)
 }
 function mouseOverDomainGraph(mouseOverReference) {
-    d3.select(mouseOverReference)
-        .style("cursor", "pointer")
-        .style("font-weight", "bold");
+    activateItemLink(mouseOverReference)
     focusOnDomainArticle(d3.select(mouseOverReference).datum());
 }
 function mouseOutDomainGraph(mouseOutReference) {
-    d3.select(mouseOutReference)
-        .style("cursor", "default")
-        .style("font-weight", "normal");
+    deActivateItemLink(mouseOutReference)
     resetDisplayDefaultsDomainGraph();
 }
 function updateNeighborNodes() {
@@ -1342,13 +1361,19 @@ function rotateLabel(labelI, xPos, yPos){
     }
     return rotateReturn
 }
-function setXpos(distX,textwidth) {
+function setArticleXpos(distX,textwidth) {
     if ( distX > 0) {
         returnX = distX + 12
-        // returnX = distX - textwidth - 12
     }   else {
-        // returnX = distX + 12
         returnX = distX - textwidth - 12
+    }
+    return returnX
+}
+function setDomainXpos(distX, radiusScale ,textwidth) {
+    if ( distX > 0) {
+        returnX = distX + 5 + radiusScale
+    }   else {
+        returnX = distX - 5 - textwidth - radiusScale
     }
     return returnX
 }
