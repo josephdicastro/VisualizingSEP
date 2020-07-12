@@ -237,7 +237,7 @@ function showArticleGraph(articleTitle) {
         setGlobalNodesLinks(articleData)
         let articleNode = graphNodes[0]
         drawArticleSimulation(json)
-        updateSidebarsArticle(json, articleNode, simulationConfig);
+        updateSidebarsArticle(json, articleNode);
         window.getSelection().removeAllRanges();
         setArticleMenuTitle(articleTitle)
         setDomainMenuTitle("[Search domains...]")
@@ -447,10 +447,10 @@ function drawArticleSimulation(data) {
 }
 
 function updateSidebarsArticle(data, selectedArticle) {
-    updateSideBarsAritcleLeft(selectedArticle)
+    updateSideBarsArticleLeft(selectedArticle)
     updateSideBarsArticleRight(data, selectedArticle)
 }
-function updateSideBarsAritcleLeft(selectedArticle){
+function updateSideBarsArticleLeft(selectedArticle, relatedArticles){
     if(selectedArticle) {
         //clear areas
         sidebarLeft.html("")
@@ -466,6 +466,7 @@ function updateSideBarsAritcleLeft(selectedArticle){
         // Title
         articleDetails.append("h3")
             .text(selectedArticle.title)
+            .style("color", function(d) {return color(selectedArticle.primary_domain)})
             .classed('articleDetailH3',true)
 
         // Intro Paragraph
@@ -475,6 +476,7 @@ function updateSideBarsAritcleLeft(selectedArticle){
             articleText
                 .html(paragraphData)
                 .classed('firstParagraph', true)
+                .classed('mainText', true)
         }
 
         //create div to list domains 
@@ -489,6 +491,7 @@ function updateSideBarsAritcleLeft(selectedArticle){
                 .enter()
                 .append('li')
                 .html(function(d) {return d})
+                .style("color", function(d) {return color(d)})
                 .classed('domainListItem', true)
             .exit().remove()
         
@@ -504,6 +507,41 @@ function updateSideBarsAritcleLeft(selectedArticle){
         .html(`<a href="${sepURL}" target="_blank">${selectedArticle.title}</a>`)
         .classed('sepLink', true)
         .style('color', 'white')
+
+        //create div to hold related links
+
+        let relatedLinksDiv = articleDetails.append("div")
+
+
+        if (typeof(relatedArticles) !== "undefined") {
+            if (relatedArticles.length > 1 ) {
+                sepLinkDiv.html("")
+
+                relatedLinksDiv.append("h5")
+                    .text(`Links shared with "${graphNodes[0].title}"`)    
+                    .classed('articleDetailH5', true)
+                
+                let relatedLinksList = relatedLinksDiv.append("div")
+                relatedLinksList
+                    .attr("id","relatedLinksList")
+                
+                relatedArticles.splice(relatedArticles.lastIndexOf(selectedArticle),1)
+                relatedLinksList.append("ul")
+                    .selectAll(".relatedLinkItems")
+                    .data(relatedArticles)
+                        .enter()
+                        .append('li')
+                        .html(function(d) {return d.title})
+                        .style("color", function(d) {return color(d.primary_domain)})
+                        .classed('relatedLinkItems', true)
+                    .exit().remove()
+
+                    
+            }
+
+        }   else {
+            relatedLinksDiv.html("")
+        }
         
         ////// ux/ui interactions
         let domainList = d3.selectAll('.domainListItem')
@@ -538,7 +576,7 @@ function updateSideBarsArticleRight(data, selectedArticle){
 
         linkAnalysisDiv.append("p")
             .html(`${articleData.links.length} articles are linked to<br/>"${selectedArticle.title}"`)
-            .classed('firstParagraph', true)
+            .classed('mainText', true)
         
         
         // build direction links data 
@@ -734,8 +772,10 @@ function mouseOverArticleNode(mouseOverReference, data) {
     
         // do the following if the activated node or label was not the central node
         activeElement.style("cursor", "pointer"); 
+        let relatedArticles = getRelatedArticles(data,activeElement.datum())
+
         focusOnArticleNode(data, activeElement.datum())
-        updateSideBarsAritcleLeft(activeElement.datum())
+        updateSideBarsArticleLeft(activeElement.datum(), relatedArticles)
     }
 }
 function mouseOutArticleNode(mouseOverReference, data) {
@@ -745,7 +785,7 @@ function mouseOutArticleNode(mouseOverReference, data) {
     activeElement.style("cursor", "default");
     simulationConfig.relatedLinks.html("")
     resetDisplayDefaultsArticleGraph();
-    updateSideBarsAritcleLeft(centralNode)
+    updateSideBarsArticleLeft(centralNode)
 
 }
 
@@ -776,6 +816,8 @@ function getRelatedArticles(data, activeElement) {
             }
         })
     })
+
+    relatedArticleNodes.sort( (a,b) => d3.ascending(a.title, b.title))
 
     return relatedArticleNodes
 }
@@ -1078,7 +1120,7 @@ function updateSidebarsDomain(data, domainTitle) {
 
         domainText.append("div")
             .html(domainIntroHTML)
-            .classed('firstParagraph', true)
+            .classed('mainText', true)
 
         //  Add nodes and links data
 
