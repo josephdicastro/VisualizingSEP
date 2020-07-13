@@ -440,6 +440,8 @@ function drawArticleSimulation(data) {
     simulationConfig.simulation.force("link").links(graphLinks)
     simulationConfig.simulation.force("forceX").strength(0)
     simulationConfig.simulation.force("forceY").strength(0)
+    simulationConfig.simulation.force("collide").radius(0)
+
     simulationConfig.simulation.alpha(1).restart();
 
 
@@ -932,12 +934,13 @@ function setDomainMenuTitle(domainTitle) {
 }
 function showDomainGraph(domainTitle) {
 
-    d3.json('static/sep_network_test.json').then(function(json) {
+    d3.json('static/sep_network_test.json').then(function(data) {
         
-        let domainData = getDomainData(json,domainTitle)
+        let domainData = getDomainData(data,domainTitle)
         setGlobalNodesLinks(domainData)
-        drawDomainSimulation(json, domainTitle)
-        updateSidebarsDomain(json, domainTitle);
+        drawDomainSimulation(data, domainData)
+        updateSidebarsDomainLeft(data, domainData);
+        updateSidebarsDomainRight(data, domainData);
         updateNeighborNodes();
         setDomainMenuTitle(domainTitle)
         setArticleMenuTitle("[Search articles...]")
@@ -950,8 +953,8 @@ function getDomainData(data, domainTitle) {
     if (!inDomainCache) {
         domainData = getDomainDataFromJSON(data, domainTitle); 
     }   else    {
-        domainData = inDomainCache
     }
+
     return domainData
 }
 
@@ -999,14 +1002,13 @@ function getDomainDataFromJSON(data, domainTitle) {
                         "links": domainLinks }
 
     domainSearchCache.push(domainData)
-    console.log(domainData)
 
     return domainData
 
 }
 
  
-function drawDomainSimulation(data, entryTitle){
+function drawDomainSimulation(data, domainData){
 
     let countOfNodes = graphNodes.length;
 
@@ -1041,16 +1043,14 @@ function drawDomainSimulation(data, entryTitle){
                  .classed('mainLabel', function(d,i) {return i===0?true:false})
                  .merge(label)
 
-    label.on('mouseover', function() {mouseOverDomainGraph(this, data)})
-    label.on('mouseout', function() {mouseOutDomainGraph(this, data)})
-    label.on('dblclick', function() {dblClickDomainGraph(this, data)})
+    label.on('mouseover', function() {mouseOverDomainNode(this, data, domainData)})
+    label.on('mouseout', function() {mouseOutDomainNode(this, data, domainData)})
+    label.on('dblclick', function() {dblClickDomainNode(this, data)})
              
     let numLinksRange = graphNodes.map(node=>node.numLinks)
     let scaleNodeRadius = d3.scaleLinear()
         .domain([d3.min(numLinksRange), d3.max(numLinksRange)])
         .range([2,15])
-
-    console.log(scaleNodeRadius(10))
 
     //nodes
     node = simulationConfig.nodes.selectAll('.node')
@@ -1071,9 +1071,9 @@ function drawDomainSimulation(data, entryTitle){
                 .classed('node',true)
                 .merge(node)
 
-    node.on('mouseover', function() {mouseOverDomainGraph(this, data)})
-    node.on('mouseout', function() {mouseOutDomainGraph(this, data)})
-    node.on('dblclick', function() {dblClickDomainGraph(this, data)})
+    node.on('mouseover', function() {mouseOverDomainNode(this, data, domainData)})
+    node.on('mouseout', function() {mouseOutDomainNode(this, data, domainData)})
+    node.on('dblclick', function() {dblClickDomainNode(this, data)})
 
     //update simulation
     let numTicks = 0;
@@ -1116,17 +1116,110 @@ function drawDomainSimulation(data, entryTitle){
 
 }
 function updateSidebarsDomain(data, domainTitle) {
-    updateSidebarsDomainRight(data, domainTitle) ;
-    updateSidebarsDomainLeft(data,domainTitle);
+    updateSidebarsDomainLeft(data, domainTitle);
+    updateSidebarsDomainRight(data, domainTitle);
 }
-function updateSidebarsDomainLeft(data, domainTitle) {
-    //clear areas
-    sidebarLeft.html("")
-    sidebarLeft.style("display", "block")
 
-    let sidebarLeftContentDiv = sidebarLeft.append("div")
+function updateSidebarsDomainLeft(data, domainData, articleNode){
+    if(domainData) {
+        //clear areas
+        sidebarLeft.html("")
+        sidebarLeft.style("display", "block")
+
+        let sideBarLeftContent = sidebarLeft.append("div")
+            .classed("sidebarContent", true)
+        
+        let introAreaDiv = sideBarLeftContent.append("div")
+
+        // Title
+        introAreaDiv.append("h3")
+            .text(domainData.domain)
+            .style("color", function(d) {return color(domainData.domain)})
+            .classed('articleDetailH3',true)
+        
+        introAreaDiv.append("p")
+            .text("Domain Text to Follow")
+            .classed('mainText', true)
+
+        //create div to list central nodes 
+        let centralNodesDiv = sideBarLeftContent.append("div")
+
+        centralNodesDiv.append("h5")
+            .text("Central Nodes")
+            .classed('articleDetailH5', true)
+        
+        centralNodesDiv.append("p")
+            .text("The following articles are the most connected in this domain.")
+            .classed("mainText", true)
+
+        //sort domain nodes from most links to least, and then add the top 5 nodes to the centralNodes array
+        domainData.nodes.sort((a,b) => d3.descending(a.numLinks, b.numLinks))
+        let centralNodes = [];
+        domainData.nodes.forEach((node,index) => {
+            if (index < 5 ) {
+                centralNodes.push(node)
+            }
+        })
+        centralNodesDiv.append("ul")
+            .selectAll(".centralNodeArticles")
+            .data(centralNodes)
+                .enter()
+                .append('li')
+                .html(function(d) {return d.title})
+                .style("color", function(d) {return color(d.primary_domain)})
+                .classed('centralNodeArticles', true)
+
+        //create div to hold related links
+        if(typeof(articleNode)!=="undefined") {
+            let articlePreviewDiv = sideBarLeftContent.append("div")
+            articlePreviewDiv.append("h5")
+                .text("Article Preview")
+                .classed('articleDetailH5', true)
+
+        }
+
+        // let relatedLinksDiv = articleDetails.append("div")
+
+
+        // if (typeof(relatedArticles) !== "undefined") {
+        //     if (relatedArticles.length > 1 ) {
+        //         sepLinkDiv.html("")
+
+        //         relatedLinksDiv.append("h5")
+        //             .text(`Links shared with "${graphNodes[0].title}"`)    
+        //             .classed('articleDetailH5', true)
+                
+        //         let relatedLinksList = relatedLinksDiv.append("div")
+        //         relatedLinksList
+        //             .attr("id","relatedLinksList")
+                
+        //         relatedArticles.splice(relatedArticles.lastIndexOf(selectedArticle),1)
+        //         relatedLinksList.append("ul")
+        //             .selectAll(".relatedLinkItems")
+        //             .data(relatedArticles)
+        //                 .enter()
+        //                 .append('li')
+        //                 .html(function(d) {return d.title})
+        //                 .style("color", function(d) {return color(d.primary_domain)})
+        //                 .classed('relatedLinkItems', true)
+        //             .exit().remove()
+
+                    
+        //     }
+
+        // }   else {pyth
+        //     relatedLinksDiv.html("")
+        // }
+        
+        // ////// ux/ui interactions
+        ////// these need to be updated. these are overwriting the sidebar as they interact with it
+        let centralNodesList = d3.selectAll('.centralNodeArticles')
+        centralNodesList.on('mouseover', function() { activateItemLink(this); focusOnDomainArticle(d3.select(this).datum())/*mouseOverDomainNode(this, data, domainData)*/})
+        centralNodesList.on('mouseout', function() { deActivateItemLink(this); resetDisplayDefaultsDomainGraph();/*mouseOutDomainNode(this, data, domainData)*/})
+        centralNodesList.on('dblclick', function() {dblClickDomainNode(this, data)})
+    }
 }
-function updateSidebarsDomainRight(data, domainTitle) {
+function updateSidebarsDomainRight(data, domainData) {
     
     //clear areas
     sidebarRight.html("")
@@ -1135,15 +1228,15 @@ function updateSidebarsDomainRight(data, domainTitle) {
     let sidebarRightContentDiv = sidebarRight.append("div")
     
     // Title
-    if (typeof(domainTitle)!=='undefined') {
+    if (typeof(domainData.domain)!=='undefined') {
         //create domain stats div 
         let domainStatsDiv = sidebarRightContentDiv.append("div")
         domainStatsDiv.append("h3")
-            .text(domainTitle)
+            .text(domainData.domain)
             .classed('articleDetailH3',true)
 
-        let domainStatsHTML = `<p>There are ${graphNodes.length} articles in this domain.</p>` +
-                              `<p>Articles may appear in multiple domains. <br>Nodes are colored by the article's <em>primary</em> domain designation.`
+        let domainStatsHTML = `<p>There are ${domainData.nodes.length} articles in this domain.</p>` +
+                              `<p>Articles may appear in multiple domains, so they are colored by the article's <em>primary</em> domain designation in the graph.`
         domainStatsDiv.append("div")
             .html(domainStatsHTML)
             .classed('mainText', true)
@@ -1155,15 +1248,15 @@ function updateSidebarsDomainRight(data, domainTitle) {
             .classed('articleDetailH4', true)
 
         let articleListAreaDiv = domainArticleListDiv.append('div')
-            .classed("overflow600", true)
+            .classed("overflow500", true)
 
         //sort nodes in alphabetical order
-        graphNodes.sort((a,b) => d3.ascending(a.title, b.title))
+        domainData.nodes.sort((a,b) => d3.ascending(a.title, b.title))
 
         articleListAreaDiv.append("ul")
             // .classed('domainListDetail', true)
             .selectAll(".domainArticle")
-            .data(graphNodes)
+            .data(domainData.nodes)
             .enter()       
             .append("li")             
                 .html(function(d) {return d.title})
@@ -1174,13 +1267,13 @@ function updateSidebarsDomainRight(data, domainTitle) {
 
         let domainArticleList = d3.selectAll('.domainArticle')
         
-        domainArticleList.on('mouseover', function() {mouseOverDomainGraph(this, data)})
-        domainArticleList.on('mouseout', function() {mouseOutDomainGraph(this, data)})
-        domainArticleList.on('dblclick', function() {dblClickDomainGraph(this, data)})
+        domainArticleList.on('mouseover', function() {mouseOverDomainNode(this, data, domainData)})
+        domainArticleList.on('mouseout', function() {mouseOutDomainNode(this, data, domainData)})
+        domainArticleList.on('dblclick', function() {dblClickDomainNode(this, data)})
 
     }
 }
-function dblClickDomainGraph(dblClickReference) {
+function dblClickDomainNode(dblClickReference) {
     // get node or label activated
     let activeElement = d3.select(dblClickReference)
     activeElement
@@ -1193,12 +1286,16 @@ function dblClickDomainGraph(dblClickReference) {
     let articleTitle = activeElement.datum().title
     showArticleGraph(articleTitle)
 }
-function mouseOverDomainGraph(mouseOverReference) {
+function mouseOverDomainNode(mouseOverReference, data, domainTitle) {
     activateItemLink(mouseOverReference)
-    focusOnDomainArticle(d3.select(mouseOverReference).datum());
+    let selectedArticle = d3.select(mouseOverReference).datum()
+    focusOnDomainArticle(selectedArticle);
+    updateSidebarsDomainLeft(data,domainTitle, selectedArticle)
+
 }
-function mouseOutDomainGraph(mouseOutReference) {
+function mouseOutDomainNode(mouseOutReference, data, domainTitle) {
     deActivateItemLink(mouseOutReference)
+    updateSidebarsDomainLeft(data,domainTitle)
     resetDisplayDefaultsDomainGraph();
 }
 function updateNeighborNodes() {
@@ -1212,7 +1309,7 @@ function isNeighborNode(a, b) {
     return a == b || neighborNodes[a + "-" + b];
 }
 function focusOnDomainArticle(activeElement) {
-
+console.log(activeElement)
     d3.selectAll('.link').attr("opacity", function (link) {
         return link.source.id === activeElement.id  || link.target.id === activeElement.id ? stylesConfig.link.activeOpacity : stylesConfig.link.inactiveOpacity;
  
