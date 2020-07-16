@@ -1,0 +1,3693 @@
+<!DOCTYPE html><!--[if lt IE 7]> <html class="ie6 ie"> <![endif]--><!--[if IE 7]>    <html class="ie7 ie"> <![endif]--><!--[if IE 8]>    <html class="ie8 ie"> <![endif]--><!--[if IE 9]>    <html class="ie9 ie"> <![endif]--><!--[if !IE]> --><html xmlns="http://www.w3.org/1999/xhtml"><!-- <![endif]--><head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>
+The Computational Theory of Mind (Stanford Encyclopedia of Philosophy/Spring 2020 Edition)
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="noarchive, noodp" />
+<meta property="citation_title" content="The Computational Theory of Mind" />
+<meta property="citation_author" content="Rescorla, Michael" />
+<meta property="citation_publication_date" content="2015/10/16" />
+<meta name="DC.title" content="The Computational Theory of Mind" />
+<meta name="DC.creator" content="Rescorla, Michael" />
+<meta name="DCTERMS.issued" content="2015-10-16" />
+<meta name="DCTERMS.modified" content="2020-02-21" />
+
+<!-- NOTE: Import webfonts using this link: -->
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,200&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" media="screen,handheld" href="../../css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" media="screen,handheld" href="../../css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css" />
+<!--[if IE 7]> <link rel="stylesheet" type="text/css" href="../../css/font-awesome-ie7.min.css"> <![endif]-->
+<link rel="stylesheet" type="text/css" media="screen,handheld" href="../../css/style.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../../css/print.css" />
+<link rel="stylesheet" type="text/css" href="../../css/entry.css" />
+<!--[if IE]> <link rel="stylesheet" type="text/css" href="../../css/ie.css" /> <![endif]-->
+<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+
+<!-- NOTE: Javascript for sticky behavior needed on article and ToC pages -->
+<script type="text/javascript" src="../../js/jquery-scrolltofixed-min.js"></script>
+<script type="text/javascript" src="../../js/entry.js"></script>
+
+<!-- SEP custom script -->
+<script type="text/javascript" src="../../js/sep.js"></script>
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom &gt; * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd &gt; * {display: block!important}
+.MJXp-script-box &gt; *  {display: table!important; height: 50%}
+.MJXp-script-box &gt; * &gt; * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box &gt; *:last-child &gt; * {vertical-align: bottom}
+.MJXp-script-box &gt; * &gt; * &gt; * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over &gt; * {display: block!important}
+.MJXp-munderover &gt; * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable &gt; * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr &gt; .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child &gt; .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr &gt; .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child &gt; .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax.MathJax_FullWidth {text-align: center; display: table-cell!important; width: 10000em!important}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: 5000em; max-height: 5000em; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax_LineBox {display: table!important}
+.MathJax_LineBox span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Main; src: url('https://plato.stanford.edu/archives/spr2020/MathJax/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff?V=2.7.2') format('woff'), url('https://plato.stanford.edu/archives/spr2020/MathJax/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Main-bold; src: url('https://plato.stanford.edu/archives/spr2020/MathJax/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff?V=2.7.2') format('woff'), url('https://plato.stanford.edu/archives/spr2020/MathJax/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Main-italic; src: url('https://plato.stanford.edu/archives/spr2020/MathJax/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff?V=2.7.2') format('woff'), url('https://plato.stanford.edu/archives/spr2020/MathJax/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Math-italic; src: url('https://plato.stanford.edu/archives/spr2020/MathJax/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff?V=2.7.2') format('woff'), url('https://plato.stanford.edu/archives/spr2020/MathJax/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Caligraphic; src: url('https://plato.stanford.edu/archives/spr2020/MathJax/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff?V=2.7.2') format('woff'), url('https://plato.stanford.edu/archives/spr2020/MathJax/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Size1; src: url('https://plato.stanford.edu/archives/spr2020/MathJax/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff?V=2.7.2') format('woff'), url('https://plato.stanford.edu/archives/spr2020/MathJax/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Size2; src: url('https://plato.stanford.edu/archives/spr2020/MathJax/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff?V=2.7.2') format('woff'), url('https://plato.stanford.edu/archives/spr2020/MathJax/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Size3; src: url('https://plato.stanford.edu/archives/spr2020/MathJax/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff?V=2.7.2') format('woff'), url('https://plato.stanford.edu/archives/spr2020/MathJax/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Size4; src: url('https://plato.stanford.edu/archives/spr2020/MathJax/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff?V=2.7.2') format('woff'), url('https://plato.stanford.edu/archives/spr2020/MathJax/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf?V=2.7.2') format('opentype')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<!-- NOTE: The nojs class is removed from the page if javascript is enabled. Otherwise, it drives the display when there is no javascript. -->
+<body class="archive article" id="pagetopright"><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div>
+<div id="container">
+<div id="header-wrapper">
+  <div id="header">
+    <div id="branding">
+      <div id="site-logo"><a href="../../index.html"><img src="../../symbols/sep-man-red.png" alt="SEP logo" /></a></div>
+      <div id="site-title"><a href="../../index.html">Stanford Encyclopedia of Philosophy Archive<div id="site-subtitle">Spring 2020 Edition</div></a></div>
+    </div>
+    <div id="navigation">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <button class="btn btn-navbar collapsed" data-target=".collapse-main-menu" data-toggle="collapse" type="button"> <i class="icon-reorder"></i> Menu </button>
+            <div class="nav-collapse collapse-main-menu collapse">
+              <ul class="nav">
+                <li class="dropdown"><a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-book"></i> Browse</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                    <li><a href="../../contents.html">Table of Contents</a></li>
+                    <li><a href="../../new.html">New in this Archive</a></li>
+                    
+                    <li><a href="../../published.html">Chronological</a></li>
+                    <li><a href="../../../../archives/">Archives <i class="icon-external-link"></i></a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a id="drop2" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-info-sign"></i> About</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                    <li><a href="../../info.html">Editorial Information</a></li>
+                    <li><a href="../../about.html">About the SEP</a></li>
+                    <li><a href="../../board.html">Editorial Board</a></li>
+                    <li><a href="../../cite.html">How to Cite the SEP</a></li>
+                    <li><a href="../../special-characters.html">Special Characters</a></li>
+                    
+                    <li><a href="../../../../contact.html">Contact <i class="icon-external-link"></i></a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a id="drop3" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-leaf"></i> Support SEP</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                    <li><a href="../../../../support/">Support the SEP</a></li>
+                    <li><a href="../../../../support/friends.html">PDFs for SEP Friends</a></li>
+                    <li><a href="../../../../support/donate.html">Make a Donation</a></li>
+                    <li><a href="../../../../support/sepia.html">SEPIA for Libraries</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End navigation -->
+    
+    <div id="search">
+      <form id="search-form" method="get" action="../../../../search/searcher.py">
+        <input type="search" name="query" placeholder="Search this archive" />
+<input type="hidden" name="archive" value="spr2020" />
+
+        <div class="search-btn-wrapper"><button class="btn search-btn" type="submit"><i class="icon-search"></i></button></div>
+      </form>
+    </div>
+    <!-- End search --> 
+    
+  </div>
+  <!-- End header --> 
+</div>
+<!-- End header wrapper -->
+
+<div id="content">
+
+<!-- Begin article sidebar -->
+<div id="article-sidebar" class="sticky" style="z-index: 999;">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <button class="btn btn-navbar collapsed" data-target=".collapse-sidebar" data-toggle="collapse" type="button"> <i class="icon-reorder"></i> Entry Navigation </button>
+        <div id="article-nav" class="nav-collapse collapse-sidebar collapse">
+          <ul class="nav">
+            <li><a href="#toc">Entry Contents</a></li>
+            <li><a href="#Bib">Bibliography</a></li>
+            <li><a href="#Aca">Academic Tools</a></li>
+            <li><a href="https://leibniz.stanford.edu/friends/preview/computational-mind/">Friends PDF Preview <i class="icon-external-link"></i></a></li>
+            <li><a href="https://plato.stanford.edu/cgi-bin/encyclopedia/archinfo.cgi?entry=computational-mind&amp;archive=spr2020">Author and Citation Info <i class="icon-external-link"></i></a> </li>
+            <li><a href="#pagetopright" class="back-to-top">Back to Top <i class="icon-angle-up icon2x"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div></div>
+<!-- End article sidebar --> 
+
+<!-- NOTE: Article content must have two wrapper divs: id="article" and id="article-content" -->
+<div id="article">
+<div id="article-content">
+
+<!-- BEGIN ARTICLE HTML -->
+
+
+<div id="aueditable"><!--DO NOT MODIFY THIS LINE AND ABOVE-->
+
+<h1>The Computational Theory of Mind</h1><div id="pubinfo"><em>First published Fri Oct 16, 2015; substantive revision Fri Feb 21, 2020</em></div>
+
+<div id="preamble">
+
+<p>Could a machine think? Could the mind itself be a thinking machine?
+The computer revolution transformed discussion of these questions,
+offering our best prospects yet for machines that emulate reasoning,
+decision-making, problem solving, perception, linguistic
+comprehension, and other mental processes. Advances in
+computing raise the prospect that the mind itself is a computational
+system—a position known as <em>the computational theory of
+mind</em> (CTM). <em>Computationalists</em> are researchers who
+endorse CTM, at least as applied to certain important mental
+processes. CTM played a central role within cognitive science during
+the 1960s and 1970s. For many years, it enjoyed orthodox status. More
+recently, it has come under pressure from various rival paradigms. A
+key task facing computationalists is to explain what one means when
+one says that the mind “computes”. A second task is to
+argue that the mind “computes” in the relevant sense. A
+third task is to elucidate how computational description relates to
+other common types of description, especially <em>neurophysiological
+description</em> (which cites neurophysiological properties of the
+organism’s brain or body) and <em>intentional description</em>
+(which cites representational properties of mental states).</p>
+
+</div>
+
+<div id="toc">
+<!--Entry Contents-->
+<ul>
+<li><a href="#TurMac">1. Turing machines</a></li>
+<li><a href="#ArtInt">2. Artificial intelligence</a></li>
+<li><a href="#ClaComTheMin">3. The classical computational theory of mind</a>
+   <ul>
+   <li><a href="#MacFun">3.1 Machine functionalism</a></li>
+   <li><a href="#RepTheMin">3.2 The representational theory of mind</a></li>
+   </ul></li>
+<li><a href="#NeuNet">4. Neural networks</a>
+   <ul>
+   <li><a href="#RelBetNeuNetClaCom">4.1 Relation between neural networks and classical computation</a></li>
+   <li><a href="#ArgForCon">4.2 Arguments for connectionism</a></li>
+   <li><a href="#SysPro">4.3 Systematicity and productivity</a></li>
+   <li><a href="#ComNeu">4.4 Computational neuroscience</a></li>
+   </ul></li>
+<li><a href="#ComRep">5. Computation and representation</a>
+   <ul>
+   <li><a href="#ComFor">5.1 Computation as formal</a></li>
+   <li><a href="#ExtAboMenCon">5.2 Externalism about mental content</a></li>
+   <li><a href="#ConInvCom">5.3 Content-involving computation</a></li>
+   </ul></li>
+<li><a href="#AltConCom">6. Alternative conceptions of computation</a>
+   <ul>
+   <li><a href="#InfPro">6.1 Information-processing</a></li>
+   <li><a href="#FunEva">6.2 Function evaluation</a></li>
+   <li><a href="#Str">6.3 Structuralism</a></li>
+   <li><a href="#MecThe">6.4 Mechanistic theories</a></li>
+   <li><a href="#Plu">6.5 Pluralism</a></li>
+   </ul></li>
+<li><a href="#ArgAgaCom">7. Arguments against computationalism</a>
+   <ul>
+   <li><a href="#TriArg">7.1 Triviality arguments</a></li>
+   <li><a href="#GodIncThe">7.2 Gödel’s incompleteness theorem</a></li>
+   <li><a href="#LimComMod">7.3 Limits of computational modeling</a></li>
+   <li><a href="#TemArg">7.4 Temporal arguments</a></li>
+   <li><a href="#EmbCog">7.5 Embodied cognition</a></li>
+   </ul></li>
+<li><a href="#Bib">Bibliography</a></li>
+<li><a href="#Aca">Academic Tools</a></li>
+<li><a href="#Oth">Other Internet Resources</a></li>
+<li><a href="#Rel">Related Entries</a></li>
+</ul>
+
+<!--Entry Contents-->
+
+<hr />
+
+</div>
+
+<div id="main-text">
+
+<h2><a id="TurMac">1. Turing machines</a></h2>
+
+<p>The intuitive notions of <em>computation</em>
+and <em>algorithm</em> are central to mathematics. Roughly speaking,
+an algorithm is an explicit, step-by-step procedure for answering some
+question or solving some problem. An algorithm provides <em>routine
+mechanical instructions</em> dictating how to proceed at each
+step. Obeying the instructions requires no special ingenuity or
+creativity. For example, the familiar grade-school algorithms describe
+how to compute addition, multiplication, and division. Until the early
+twentieth century, mathematicians relied upon informal notions of
+computation and algorithm without attempting anything like a formal
+analysis. Developments in the foundations of mathematics eventually
+impelled logicians to pursue a more systematic treatment. Alan
+Turing’s landmark paper “On Computable Numbers, With
+an Application to the Entscheidungsproblem” (Turing 1936)
+offered the analysis that has proved most influential.</p>
+
+<p>A <em>Turing machine</em> is an abstract model of an idealized
+computing device with unlimited time and storage space at its
+disposal. The device manipulates <em>symbols</em>, much as a human
+computing agent manipulates pencil marks on paper during arithmetical
+computation. Turing says very little about the nature of symbols. He
+assumes that primitive symbols are drawn from a finite alphabet. He
+also assumes that symbols can be inscribed or erased at “memory
+locations”. Turing’s model works as follows:</p>
+
+<ul class="jfy">
+
+<li>There are infinitely many memory locations, arrayed in a linear
+structure. Metaphorically, these memory locations are
+“cells” on an infinitely long “paper
+tape”. More literally, the memory locations might be physically
+realized in various media (e.g., silicon chips).</li>
+
+<li>There is a central processor, which can access one memory location
+at a time. Metaphorically, the central processor is a
+“scanner” that moves along the paper tape one
+“cell” at a time.</li>
+
+<li>The central processor can enter into finitely many <em>machine
+states</em>.</li>
+
+<li>The central processor can perform four elementary operations:
+write a symbol at a memory location; erase a symbol from a memory
+location; access the next memory location in the linear array
+(“move to the right on the tape”); access the previous
+memory location in the linear array (“move to the left on the
+tape”).</li>
+
+<li>Which elementary operation the central processor performs depends
+entirely upon two facts: which symbol is currently inscribed at the
+present memory location; and the scanner’s own current machine
+state.</li>
+
+<li>A <em>machine table</em> dictates which elementary operation the
+central processor performs, given its current machine state and the
+symbol it is currently accessing. The machine table also dictates how
+the central processor’s machine state changes given those same
+factors. Thus, the machine table enshrines a finite set of routine
+mechanical instructions governing computation.</li>
+
+</ul>
+
+<p>Turing translates this informal description into a rigorous
+mathematical model. For more details, see the entry
+on <a href="../turing-machine/">Turing machines</a>.</p>
+
+<p>Turing motivates his approach by reflecting on idealized human
+computing agents. Citing finitary limits on our perceptual and
+cognitive apparatus, he argues that any symbolic algorithm executed by
+a human can be replicated by a suitable Turing machine. He concludes
+that the Turing machine formalism, despite its extreme simplicity, is
+powerful enough to capture all humanly executable mechanical
+procedures over symbolic configurations. Subsequent discussants have
+almost universally agreed.</p>
+
+<p>Turing computation is often described as <em>digital</em> rather
+than <em>analog</em>. What this means is not always so clear, but the
+basic idea is usually that computation operates over discrete
+configurations.  By comparison, many historically important algorithms
+operate over continuously variable configurations. For example,
+Euclidean geometry assigns a large role to <em>ruler-and-compass
+constructions</em>, which manipulate geometric shapes. For any shape,
+one can find another that differs to an arbitrarily small
+extent. Symbolic configurations manipulated by a Turing machine do not
+differ to arbitrarily small extent. Turing machines operate over
+discrete strings of elements (digits) drawn from a finite
+alphabet. One recurring controversy concerns whether the digital
+paradigm is well-suited to model mental activity or whether an analog
+paradigm would instead be more fitting (MacLennan 2012; Piccinini and
+Bahar 2013).</p>
+
+<p>Besides introducing Turing machines, Turing (1936) proved
+several seminal mathematical results involving them. In particular, he
+proved the existence of a <em>universal Turing machine</em> (UTM).
+Roughly speaking, a UTM is a Turing machine that can mimic any other
+Turing machine. One provides the UTM with a symbolic input that codes
+the machine table for Turing machine <em>M</em>. The UTM
+replicates <em>M</em>’s behavior, executing instructions
+enshrined by <em>M</em>’s machine table. In that sense, the UTM
+is a <em>programmable general purpose computer</em>. To a first
+approximation, all personal computers are also general purpose: they
+can mimic any Turing machine, when suitably programmed. The main
+caveat is that physical computers have finite memory, whereas a Turing
+machine has unlimited memory. More accurately, then, a personal
+computer can mimic any Turing machine <em>until it exhausts its
+limited memory supply</em>.</p>
+
+<p>Turing’s discussion helped lay the foundations
+for <em>computer science</em>, which seeks to design, build, and
+understand computing systems. As we know, computer scientists can now
+build extremely sophisticated computing machines. All these machines
+implement something resembling Turing computation, although the
+details differ from Turing’s simplified model.</p>
+
+<h2><a id="ArtInt">2. Artificial intelligence</a></h2>
+
+<p>Rapid progress in computer science prompted many, including Turing,
+to contemplate whether we could build a computer capable of
+thought.  <em>Artificial Intelligence</em> (AI) aims to construct
+“thinking machinery”. More precisely, it aims to construct
+computing machines that execute core mental tasks such as reasoning,
+decision-making, problem solving, and so on. During the 1950s and
+1960s, this goal came to seem increasingly realistic (Haugeland
+1985).</p>
+
+<p>Early AI research emphasized <em>logic</em>. Researchers sought to
+“mechanize” deductive reasoning. A famous example was
+the <em>Logic Theorist</em> computer program (Newell and Simon 1956),
+which proved 38 of the first 52 theorems from <em>Principia
+Mathematica</em> (Whitehead and Russell 1925). In one case, it
+discovered a simpler proof than <em>Principia</em>’s.</p>
+
+<p>Early success of this kind stimulated enormous interest inside and
+outside the academy. Many researchers predicted that intelligent
+machines were only a few years away. Obviously, these predictions have
+not been fulfilled. Intelligent robots do not yet walk among us. Even
+relatively low-level mental processes such as perception vastly exceed
+the capacities of current computer programs. When confident
+predictions of thinking machines proved too optimistic, many observers
+lost interest or concluded that AI was a fool’s
+errand. Nevertheless, the decades have witnessed gradual progress. One
+striking success was IBM’s Deep Blue, which defeated chess
+champion Gary Kasparov in 1997. Another major success was the
+driverless car Stanley (Thrun, Montemerlo, Dahlkamp, et al. 2006),
+which completed a 132-mile course in the Mojave Desert, winning the
+2005 Defense Advanced Research Projects Agency (DARPA) Grand
+Challenge. A less flashy success story is the vast improvement in
+speech recognition algorithms.</p>
+
+<p>One problem that dogged early work in AI is <em>uncertainty</em>.
+Nearly all reasoning and decision-making operates under conditions of
+uncertainty. For example, you may need to decide whether to go on a
+picnic while being uncertain whether it will rain. <em>Bayesian
+decision theory</em> is the standard mathematical model of
+inference and decision-making under uncertainty. Uncertainty is codified
+through <em>probability</em>. Precise rules dictate how to update
+probabilities in light of new evidence and how to select actions in
+light of probabilities and utilities. (See the
+entries <a href="../bayes-theorem/">Bayes’s theorem</a>
+and <a href="../rationality-normative-utility/">normative theories of rational choice: expected utility</a>
+ for details.)  In the 1980s and
+1990s, technological and conceptual developments enabled efficient
+computer programs that implement or approximate Bayesian inference in
+realistic scenarios. An explosion of Bayesian AI ensued (Thrun,
+Burgard, and Fox 2006), including the aforementioned advances in
+speech recognition and driverless vehicles. Tractable algorithms that
+handle uncertainty are a major achievement of contemporary AI (Murphy 2012), and
+possibly a harbinger of more impressive future progress.</p>
+
+<p>Some philosophers insist that computers, no matter how
+sophisticated they become, will at best <em>mimic</em> rather
+than <em>replicate</em> thought. A computer simulation of the weather
+does not really rain. A computer simulation of flight does not really
+fly. Even if a computing system could simulate mental activity, why
+suspect that it would constitute the genuine article?</p>
+
+<p>Turing (1950) anticipated these worries and tried to defuse
+them. He proposed a scenario, now called <em>the Turing Test</em>,
+where one evaluates whether an unseen interlocutor is a computer or a
+human. A computer <em>passes the Turing test</em> if one cannot
+determine that it is a computer. Turing proposed that we abandon the
+question “Could a computer think?” as hopelessly vague,
+replacing it with the question “Could a computer pass the Turing
+test?”.  Turing’s discussion has received considerable
+attention, proving especially influential within AI. Ned Block (1981)
+offers an influential critique. He argues that certain possible
+machines pass the Turing test even though these machines do not come
+close to genuine thought or intelligence. See the
+entry <a href="../turing-test/">the Turing test</a> for discussion of
+Block’s objection and other issues surrounding the Turing
+Test.</p>
+
+<p>For more on AI, see the entry
+ <a href="../logic-ai/">logic and artificial intelligence</a>.
+ For much more detail, see Russell and
+Norvig (2010).</p>
+
+<h2><a id="ClaComTheMin">3. The classical computational theory of mind</a></h2>
+
+<p>Warren McCulloch and Walter Pitts (1943) first suggested that
+something resembling the Turing machine might provide a good model for
+the mind.  In the 1960s, Turing computation became central to the
+emerging interdisciplinary initiative <em>cognitive science</em>,
+which studies the mind by drawing upon psychology, computer science
+(especially AI), linguistics, philosophy, economics (especially game
+theory and behavioral economics), anthropology, and neuroscience. The
+label <em>classical computational theory of mind</em> (which we will
+abbreviate as CCTM) is now fairly standard. According to CCTM, the
+mind is a computational system similar in important respects to a
+Turing machine, and core mental processes (e.g., reasoning,
+decision-making, and problem solving) are computations similar in
+important respects to computations executed by a Turing machine. These
+formulations are imprecise. CCTM is best seen as a family of views,
+rather than a single well-defined
+view.<sup>[<a href="notes.html#note-1" id="ref-1">1</a>]</sup></p>
+
+<p>It is common to describe CCTM as embodying “the computer
+metaphor”. This description is doubly misleading.</p>
+
+<p>First, CCTM is better formulated by describing the mind as a
+“computing system” or a “computational system”
+rather than a “computer”. As David Chalmers (2011) notes,
+describing a system as a “computer” strongly suggests that
+the system is <em>programmable</em>. As Chalmers also notes, one need
+not claim that the mind is programmable simply because one regards it
+as a Turing-style computational system. (Most Turing machines are not
+programmable.) Thus, the phrase “computer metaphor”
+strongly suggests theoretical commitments that are inessential to
+CCTM.  The point here is not just terminological. Critics of CCTM
+often object that the mind is not a programmable general purpose
+computer (Churchland, Koch, and Sejnowski 1990). Since classical
+computationalists need not claim (and usually do not claim) that the
+mind is a programmable general purpose computer, the objection is
+misdirected.</p>
+
+<p>Second, CCTM is not intended metaphorically. CCTM does not simply
+hold that the mind is <em>like</em> a computing system. CCTM holds
+that the mind <em>literally is</em> a computing system. Of course, the
+most familiar artificial computing systems are made from silicon chips
+or similar materials, whereas the human body is made from flesh and
+blood. But CCTM holds that this difference disguises a more
+fundamental similarity, which we can capture through a Turing-style
+computational model. In offering such a model, we prescind from
+physical details. We attain an abstract computational description that
+could be physically implemented in diverse ways (e.g., through silicon
+chips, or neurons, or pulleys and levers). CCTM holds that a suitable
+abstract computational model offers a literally true description of
+core mental processes.</p>
+
+<p>It is common to summarize CCTM through the slogan “the mind
+is a Turing machine”. This slogan is also somewhat misleading,
+because no one regards Turing’s precise formalism as a plausible
+model of mental activity. The formalism seems too restrictive in
+several ways:</p>
+
+<ul class="jfy">
+<li> Turing machines execute pure symbolic computation. The inputs and
+outputs are symbols inscribed in memory locations. In contrast, the
+mind receives <em>sensory input</em> (e.g., retinal stimulations) and
+produces <em>motor output</em> (e.g., muscle activations). A complete
+theory must describe how mental computation interfaces with sensory
+inputs and motor outputs.</li>
+
+<li> A Turing machine has infinite discrete memory capacity. Ordinary
+biological systems have finite memory capacity. A plausible
+psychological model must replace the infinite memory store with a
+large but finite memory store</li>
+
+<li> Modern computers have <em>random access memory</em>: addressable
+memory locations that the central processor can directly
+access. Turing machine memory is not addressable. The central
+processor can access a location only by sequentially accessing
+intermediate locations. Computation without addressable memory is
+hopelessly inefficient. For that reason, C.R.  Gallistel and Adam King
+(2009) argue that addressable memory gives a better model of the mind
+than non-addressable memory.</li>
+
+<li> A Turing machine has a central processor that
+operates <em>serially</em>, executing one instruction at a time. Other
+computational formalisms relax this assumption, allowing multiple
+processing units that operate in <em>parallel</em>. Classical
+computationalists can allow parallel computations (Fodor and Pylyshyn
+1988; Gallistel and King 2009: 174). See Gandy (1980) and Sieg (2009)
+for general mathematical treatments that encompass both serial and
+parallel computation.</li>
+
+<li> Turing computation is <em>deterministic</em>: total computational
+state determines subsequent computational state. One might instead
+allow <em>stochastic</em> computations. In a stochastic model, current
+state does not dictate a unique next state. Rather, there is a certain
+probability that the machine will transition from one state to
+another.</li>
+
+</ul>
+
+<p>CCTM claims that mental activity is “Turing-style
+computation”, allowing these and other departures from
+Turing’s own formalism.</p>
+
+<h3><a id="MacFun">3.1 Machine functionalism</a></h3>
+
+<p> Hilary Putnam (1967) introduced CCTM into philosophy. He
+contrasted his position with <em>logical behaviorism</em>
+and <em>type-identity theory</em>. Each position purports to
+reveal the nature of mental states, including propositional attitudes
+(e.g., beliefs), sensations (e.g., pains), and emotions (e.g.,
+fear). According to logical behaviorism, mental states are behavioral
+dispositions.  According to type-identity theory, mental states are
+brain states.  Putnam advances an opposing <em>functionalist</em>
+view, on which mental states are functional states. According to
+functionalism, a system has a mind when the system has a 
+suitable <em>functional organization</em>. Mental states are states
+that play appropriate roles in the system’s functional
+organization. Each mental state is individuated by its interactions
+with sensory input, motor output, and other mental states.</p>
+
+<p>Functionalism offers notable advantages over logical behaviorism
+and type-identity theory:</p>
+
+<ul class="jfy"> 
+<li> Behaviorists want to associate each mental state with a
+characteristic pattern of behavior—a hopeless task, because
+individual mental states do not usually have characteristic behavioral
+effects. Behavior almost always results from distinct mental states
+operating together (e.g., a belief and a desire).  Functionalism
+avoids this difficulty by individuating mental states through
+characteristic relations not only to sensory input and behavior but
+also to one another.</li>
+
+<li> Type-identity theorists want to associate each mental state with
+a characteristic physical or neurophysiological state. Putnam casts
+this project into doubt by arguing that mental states are <em>multiply
+realizable</em>: the same mental state can be realized by diverse
+physical systems, including not only terrestrial creatures but also
+hypothetical creatures (e.g., a silicon-based Martian). Functionalism
+is tailor-made to accommodate multiple realizability.  According to
+functionalism, what matters for mentality is a pattern of
+organization, which could be physically realized in many different
+ways. See the entry 
+<a href="../multiple-realizability/">multiple realizability</a>
+ for further discussion of this argument.</li>
+</ul>
+
+<p>Putnam defends a brand of functionalism now called <em>machine
+functionalism</em>. He emphasizes <em>probabilistic automata</em>,
+which are similar to Turing machines except that transitions between
+computational states are stochastic. He proposes that mental activity
+implements a probabilistic automaton and that particular mental states
+are machine states of the automaton’s central processor. The
+machine table specifies an appropriate functional organization, and it
+also specifies the role that individual mental states play within that
+functional organization. In this way, Putnam combines functionalism
+with CCTM.</p>
+
+<p>Machine functionalism faces several problems. One problem,
+highlighted by Ned Block and Jerry Fodor (1972), concerns
+the <em>productivity of thought</em>. A normal human can entertain a
+potential infinity of propositions. Machine functionalism identifies
+mental states with machine states of a probabilistic automaton. Since
+there are only finitely many machine states, there are not enough
+machine states to pair one-one with possible mental states of a normal
+human. Of course, an actual human will only ever entertain finitely
+many propositions. However, Block and Fodor contend that this
+limitation reflects limits on lifespan and memory, rather than (say)
+some psychological law that restricts the class of humanly
+entertainable propositions. A probabilistic automaton is endowed with
+unlimited time and memory capacity yet even still has only finitely
+many machine states. Apparently, then, machine functionalism
+mislocates the finitary limits upon human cognition.</p>
+
+<p>Another problem for machine functionalism, also highlighted by
+Block and Fodor (1972), concerns the <em>systematicity of
+thought.</em> An ability to entertain one proposition is correlated
+with an ability to think other propositions. For example, someone who
+can entertain the thought <em>that John loves Mary</em> can also
+entertain the thought <em>that Mary loves John</em>. Thus, there seem
+to be systematic relations between mental states. A good theory should
+reflect those systematic relations. Yet machine functionalism
+identifies mental states with unstructured machines states, which lack
+the requisite systematic relations to another. For that reason,
+machine functionalism does not explain systematicity. In response to
+this objection, machine functionalists might deny that they are
+obligated to explain systematicity. Nevertheless, the objection
+suggests that machine functionalism neglects essential features of
+human mentality. A better theory would explain those features in a
+principled way.</p>
+
+<p>While the productivity and systematicity objections to machine
+functionalism are perhaps not decisive, they provide strong impetus to
+pursue an improved version of CCTM. See Block (1978) for additional
+problems facing machine functionalism and functionalism more
+generally.</p>
+
+<h3><a id="RepTheMin">3.2 The representational theory of mind</a></h3>
+
+<p>Fodor (1975, 1981, 1987, 1990, 1994, 2008) advocates a version of
+CCTM that accommodates systematicity and productivity much more
+satisfactorily. He shifts attention to the <em>symbols</em>
+manipulated during Turing-style computation.</p>
+
+<p>An old view, stretching back at least to William of
+Ockham’s <em>Summa Logicae</em>, holds that thinking occurs in
+a <em>language of thought</em> (sometimes
+called <em>Mentalese</em>). Fodor revives this view. He postulates a
+system of mental representations, including both primitive
+representations and complex representations formed from primitive
+representations. For example, the primitive Mentalese words JOHN,
+MARY, and LOVES can combine to form the Mentalese sentence JOHN LOVES
+MARY. Mentalese is <em>compositional</em>: the meaning of a complex
+Mentalese expression is a function of the meanings of its parts and
+the way those parts are combined. Propositional attitudes are
+relations to Mentalese symbols. Fodor calls this view <em>the
+representational theory of mind</em> (<em>RTM</em>). Combining RTM
+with CCTM, he argues that mental activity involves Turing-style
+computation over the language of thought. Mental computation stores
+Mentalese symbols in memory locations, manipulating those symbols in
+accord with mechanical rules.</p>
+
+<p>A prime virtue of RTM is how readily it accommodates productivity
+and systematicity:</p>
+
+<p><em>Productivity</em>: RTM postulates a finite set of primitive
+Mentalese expressions, combinable into a potential infinity of complex
+Mentalese expressions. A thinker with access to primitive Mentalese
+vocabulary and Mentalese compounding devices has the potential to
+entertain an infinity of Mentalese expressions. She therefore has the
+potential to instantiate infinitely many propositional attitudes
+(neglecting limits on time and memory).</p>
+
+<p><em>Systematicity</em>: According to RTM, there are systematic
+relations between which propositional attitudes a thinker can
+entertain. For example, suppose I can think that John loves Mary.
+According to RTM, my doing so involves my standing in some
+relation <em>R</em> to a Mentalese sentence JOHN LOVES MARY, composed
+of Mentalese words JOHN, LOVES, and MARY combined in the right way. If
+I have this capacity, then I also have the capacity to stand in
+relation <em>R</em> to the distinct Mentalese sentence MARY LOVES
+JOHN, thereby thinking that Mary loves John. So the capacity to think
+that John loves Mary is systematically related to the capacity to
+think that Mary loves John.</p>
+
+<p>By treating propositional attitudes as relations to complex mental
+symbols, RTM explains both productivity and systematicity.</p>
+
+<p>CCTM+RTM differs from machine functionalism in several other
+respects.  First, machine functionalism is a theory of mental
+states <em>in general</em>, while RTM is only a theory of
+propositional attitudes.  Second, proponents of CCTM+RTM need not say
+that propositional attitudes are individuated functionally. As Fodor
+(2000: 105, fn. 4) notes, we must
+distinguish <em>computationalism</em> (mental processes are
+computational) from <em>functionalism</em> (mental states are
+functional states). Machine functionalism endorses both doctrines.
+CCTM+RTM endorses only the first. Unfortunately, many philosophers
+still mistakenly assume that computationalism entails a functionalist
+approach to propositional attitudes (see Piccinini 2004 for
+discussion).</p>
+
+<p>Philosophical discussion of RTM tends to focus mainly
+on <em>high-level human thought</em>, especially belief and
+desire. However, CCTM+RTM is applicable to a much wider range of
+mental states and processes. Many cognitive scientists apply it to
+non-human animals. For example, Gallistel and King (2009) apply it to
+certain invertebrate phenomena (e.g., honeybee navigation). Even
+confining attention to humans, one can apply CCTM+RTM
+to <em>subpersonal processing</em>. Fodor (1983) argues that
+perception involves a subpersonal “module” that converts
+retinal input into Mentalese symbols and then performs computations
+over those symbols. Thus, talk about a language of <em>thought</em> is
+potentially misleading, since it suggests a non-existent restriction
+to higher-level mental activity.</p>
+
+<p>Also potentially misleading is the description of Mentalese as
+a <em>language</em>, which suggests that all Mentalese symbols
+resemble expressions in a natural language. Many philosophers,
+including Fodor, sometimes seem to endorse that position. However,
+there are possible non-propositional formats for Mentalese
+symbols. Proponents of CCTM+RTM can adopt a pluralistic line, allowing
+mental computation to operate over items akin to images, maps,
+diagrams, or other non-propositional representations (Johnson-Laird
+2004: 187; McDermott 2001: 69; Pinker 2005: 7; Sloman 1978:
+144–176). The pluralistic line seems especially plausible as
+applied to subpersonal processes (such as perception) and non-human
+animals. Michael Rescorla (2009a,b) surveys research on <em>cognitive
+maps</em> (Tolman 1948; O’Keefe and Nadel 1978; Gallistel 1990),
+suggesting that some animals may navigate by computing over mental
+representations more similar to maps than sentences. Elisabeth Camp
+(2009), citing research
+on baboon social interaction (Cheney and Seyfarth
+2007), argues that
+baboons may encode social dominance relations through non-sentential
+tree-structured representations.</p>
+
+<p>CCTM+RTM is schematic. To fill in the schema, one must provide
+detailed computational models of specific mental processes. A complete
+model will:</p>
+
+<ul class="jfy">
+<li> describe the Mentalese symbols manipulated by the process;</li>
+
+<li> isolate elementary operations that manipulate the symbols
+(e.g., <em>inscribing a symbol in a memory location</em>); and</li>
+
+<li> delineate mechanical rules governing application of elementary
+operations.</li>
+</ul>
+
+<p>By providing a detailed computational model, we decompose a complex
+mental process into a series of elementary operations governed by
+precise, routine instructions.</p>
+
+<p>CCTM+RTM remains neutral in the traditional debate between
+physicalism and substance dualism. A Turing-style model proceeds at a
+very abstract level, not saying whether mental computations are
+implemented by physical stuff or Cartesian soul-stuff (Block 1983:
+522). In practice, all
+proponents of CCTM+RTM embrace a broadly physicalist outlook. They
+hold that mental computations are implemented not by soul-stuff but
+rather by the brain. On this view, Mentalese symbols are realized by
+neural states, and computational operations over Mentalese symbols are
+realized by neural processes. Ultimately, physicalist proponents of
+CCTM+RTM must produce empirically well-confirmed theories that explain
+how exactly neural activity implements Turing-style computation. As
+Gallistel and King (2009) emphasize, we do not currently have such
+theories—though see Zylberberg, Dehaene, Roelfsema, and Sigman
+(2011) for some speculations.</p>
+
+<p>Fodor (1975) advances CCTM+RTM as a foundation for cognitive
+science.  He discusses mental phenomena such as decision-making,
+perception, and linguistic processing. In each case, he maintains, our
+best scientific theories postulate Turing-style computation over
+mental representations. In fact, he argues that our <em>only</em>
+viable theories have this form. He concludes that CCTM+RTM is
+“the only game in town”. Many cognitive scientists argue
+along similar lines. C.R. Gallistel and Adam King (2009), Philip
+Johnson-Laird (1988), Allen Newell and Herbert Simon (1976), and Zenon
+Pylyshyn (1984) all recommend Turing-style computation over mental
+symbols as the best foundation for scientific theorizing about the
+mind.</p>
+
+<h2><a id="NeuNet">4. Neural networks</a></h2>
+
+<p> In the 1980s, connectionism emerged as a prominent rival to
+classical computationalism. Connectionists draw inspiration from
+neurophysiology rather than logic and computer science. They employ
+computational models, <em>neural networks</em>, that differ
+significantly from Turing-style models. A <em>neural network</em> is a
+collection of interconnected nodes. Nodes fall into three
+categories: <em>input</em> nodes, <em>output</em> nodes,
+and <em>hidden</em> nodes (which mediate between input and output
+nodes). Nodes have activation values, given by real numbers. One node
+can bear a <em>weighted connection</em> to another node, also given by
+a real number. Activations of input nodes are determined exogenously:
+these are the inputs to computation.  <em>Total input activation</em>
+of a hidden or output node is a weighted sum of the activations of
+nodes feeding into it. Activation of a hidden or output node is a
+function of its total input activation; the particular function varies
+with the network. During neural network computation, waves of
+activation propagate from input nodes to output nodes, as determined
+by weighted connections between nodes.</p>
+
+<p>In a <em>feedforward network</em>, weighted connections flow only
+in one direction. <em>Recurrent networks</em> have feedback loops, in
+which connections emanating from hidden units circle back to hidden
+units. Recurrent networks are less mathematically tractable than
+feedforward networks. However, they figure crucially in psychological
+modeling of various phenomena, such as phenomena that involve some
+kind of memory (Elman 1990).</p>
+
+<p>Weights in a neural network are typically mutable, evolving in
+accord with a <em>learning algorithm</em>. The literature offers
+various learning algorithms, but the basic idea is usually to adjust
+weights so that <em>actual outputs</em> gradually move closer to
+the <em>target outputs</em> one would expect for the relevant
+inputs. The <em>backpropagation algorithm</em> is a widely used
+algorithm of this kind (Rumelhart, Hinton, and Williams 1986).</p>
+
+<p>Connectionism traces back to McCulloch and Pitts (1943), who
+studied networks of interconnected <em>logic gates</em> (e.g.,
+AND-gates and OR-gates). One can view a network of logic gates as a
+neural network, with activations confined to two values (0 and 1) and
+activation functions given by the usual truth-functions. McCulloch and
+Pitts advanced logic gates as idealized models of individual
+neurons. Their discussion exerted a profound influence on computer
+science (von Neumann 1945). Modern digital computers are simply
+networks of logic gates. Within cognitive science, however,
+researchers usually focus upon networks whose elements are more
+“neuron-like” than logic gates. In particular, modern-day
+connectionists typically emphasize analog neural networks whose nodes
+take continuous rather than discrete activation values. Some authors
+even use the phrase “neural network” so that it
+exclusively denotes such networks.</p>
+
+<p>Neural networks received relatively scant attention from cognitive
+scientists during the 1960s and 1970s, when Turing-style models
+dominated. The 1980s witnessed a huge resurgence of interest in neural
+networks, especially analog neural networks, with the
+two-volume <em>Parallel Distributed Processing</em> (Rumelhart, McClelland, and the PDP research group, 1986; McClelland, Rumelhart, and the PDP research group, 1987) serving as a
+manifesto.  Researchers constructed connectionist models of diverse
+phenomena: object recognition, speech perception, sentence
+comprehension, cognitive development, and so on. Impressed by
+connectionism, many researchers concluded that CCTM+RTM was no longer
+“the only game in town”.</p>
+
+<p>
+In the 2010s, a class of computational models known as <em>deep neural
+networks</em> became quite popular (Krizhevsky, Sutskever, and Hinton
+2012; LeCun, Bengio, and Hinton 2015). These models are neural
+networks with multiple layers of hidden nodes (sometimes hundreds of
+such layers). Deep neural networks—trained on large data sets
+through one or another learning algorithm (usually
+backpropagation)—have achieved great success in many areas of
+AI, including object recognition and strategic game-playing. Deep
+neural networks are now widely deployed in commercial applications,
+and they are the focus of extensive ongoing investigation within both
+academia and industry. Researchers have also begun using them to model
+the mind (e.g. Marblestone, Wayne, and Kording 2016; Kriegeskorte
+2015).</p>
+
+<p>
+For a detailed overview of neural networks, see Haykin (2008). For a
+user-friendly introduction, with an emphasis on psychological
+applications, see Marcus (2001). For a philosophically oriented
+introduction to deep neural networks, see Buckner (2019).</p>
+
+<h3><a id="RelBetNeuNetClaCom">4.1 Relation between neural networks and classical computation</a></h3>
+
+<p>Neural networks have a very different “feel” than
+classical (i.e., Turing-style) models. Yet classical computation and
+neural network computation are not mutually exclusive:</p>
+
+<ul class="jfy">
+<li> <em>One can implement a neural network in a classical
+model</em>. Indeed, every neural network ever physically constructed
+has been implemented on a digital computer.</li>
+
+<li> <em>One can implement a classical model in a neural
+network</em>. Modern digital computers implement Turing-style
+computation in networks of logic gates.  Alternatively, one can
+implement Turing-style computation using an analog recurrent neural
+network whose nodes take continuous activation values (Graves, Wayne,
+and Danihelka 2014, Other Internet Resources; Siegelmann and Sontag
+1991; Siegelmann and Sontag 1995).</li>
+</ul>
+
+<p>Although some researchers suggest a fundamental opposition between
+classical computation and neural network computation, it seems more
+accurate to identify two modeling traditions that overlap in certain
+cases but not others (cf. Boden 1991; Piccinini 2008b). In this
+connection, it is also worth noting that classical computationalism
+and connectionist computationalism have their common origin in the
+work of McCulloch and Pitts.</p>
+
+<p>Philosophers often say that classical computation involves
+“rule-governed symbol manipulation” while neural network
+computation is non-symbolic. The intuitive picture is that
+“information” in neural networks is globally distributed
+across the weights and activations, rather than concentrated in
+localized symbols. However, the notion of “symbol” itself
+requires explication, so it is often unclear what theorists mean by
+describing computation as symbolic versus non-symbolic. As mentioned
+in <a href="#TurMac">§1</a>, the Turing formalism places very few
+conditions on “symbols”. Regarding primitive symbols,
+Turing assumes just that there are finitely many of them and that they
+can be inscribed in read/write memory locations. Neural networks can
+also manipulate symbols satisfying these two conditions: as just
+noted, one can implement a Turing-style model in a neural network.</p>
+
+<p>Many discussions of the symbolic/non-symbolic dichotomy employ a
+more robust notion of “symbol”. On the more robust
+approach, a symbol is the sort of thing that represents a subject
+matter. Thus, something is a symbol only if it has semantic or
+representational properties. If we employ this more robust notion of
+symbol, then the symbolic/non-symbolic distinction cross-cuts the
+distinction between Turing-style computation and neural network
+computation. A Turing machine need not employ symbols in the more
+robust sense. As far as the Turing formalism goes, symbols manipulated
+during Turing computation need not have representational properties
+(Chalmers 2011). Conversely, a neural network can manipulate symbols
+with representational properties. Indeed, an analog neural network can
+manipulate symbols that have a combinatorial syntax and semantics
+(Horgan and Tienson 1996; Marcus 2001).</p>
+
+<p>Following Steven Pinker and Alan Prince (1988), we may distinguish
+between <em>eliminative connectionism</em> and <em>implementationist
+connectionism</em>.</p>
+
+<p>Eliminative connectionists advance connectionism as a rival to
+classical computationalism. They argue that the Turing formalism is
+irrelevant to psychological explanation. Often, though not always,
+they seek to revive the <em>associationist</em> tradition in
+psychology, a tradition that CCTM had forcefully challenged. Often,
+though not always, they attack the mentalist, nativist linguistics
+pioneered by Noam Chomsky (1965). Often, though not always, they
+manifest overt hostility to the very notion of mental
+representation. But the defining feature of eliminative connectionism
+is that it uses neural networks as <em>replacements</em> for
+Turing-style models. Eliminative connectionists view the mind as a
+computing system of a radically different kind than the Turing
+machine. A few authors explicitly espouse eliminative connectionism
+(Churchland 1989; Rumelhart and McClelland
+1986; Horgan and Tienson
+1996), and many others incline towards it.</p>
+
+<p>Implementationist connectionism is a more ecumenical position. It
+allows a potentially valuable role for both Turing-style
+models <em>and</em> neural networks, operating harmoniously at
+different levels of description (Marcus 2001; Smolensky 1988). A
+Turing-style model is higher-level, whereas a neural network model is
+lower-level.  The neural network illuminates how the brain implements
+the Turing-style model, just as a description in terms of logic gates
+illuminates how a personal computer executes a program in a high-level
+programming language.</p>
+
+<h3><a id="ArgForCon">4.2 Arguments for connectionism</a></h3>
+
+<p>Connectionism excites many researchers because of the analogy
+between neural networks and the brain. Nodes resemble neurons, while
+connections between nodes resemble synapses. Connectionist modeling
+therefore seems more “biologically plausible” than
+classical modeling. A connectionist model of a psychological
+phenomenon apparently captures (in an idealized way) how
+interconnected neurons might generate the phenomenon.</p>
+
+<p>
+When evaluating the argument from biological plausibility, one should
+recognize that neural networks vary widely in how closely they match
+actual brain activity. Many networks that figure prominently in
+connectionist writings are not so biologically plausible (Bechtel and
+Abrahamsen 2002: 341–343; Bermúdez 2010: 237–239;
+Clark 2014: 87–89; Harnish 2002: 359–362). A few
+examples:</p>
+
+<ul class="jfy">
+<li> Real neurons are much more heterogeneous
+than the interchangeable nodes that figure in typical connectionist
+networks.</li>
+
+<li> Real neurons emit discrete spikes (action potentials) as
+outputs. But the nodes that figure in many prominent neural networks,
+including the best known deep neural networks, instead have continuous
+outputs.</li>
+
+<li> The backpropagation algorithm requires that weights between nodes
+can vary between excitatory and inhibitory, yet actual synapses cannot
+so vary (Crick and Asanuma 1986). Moreover, the algorithm assumes
+target outputs supplied exogenously by modelers <em>who know the
+desired answer</em>. In that sense, learning
+is <em>supervised</em>. Very little learning in actual biological
+systems involves anything resembling supervised training.</li>
+</ul>
+
+<p>
+On the other hand, some neural networks are more biologically
+realistic (Buckner and Garson 2019; Illing, Gerstner, and Brea
+2019). For instance, there are neural networks that replace
+backpropagation with more realistic learning algorithms, such as a
+reinforcement learning algorithm (Pozzi, Bohté, and Roelfsema
+2019, Other Internet Resources) or an unsupervised learning algorithm
+(Krotov and Hopfield 2019). There are also neural networks whose nodes
+output discrete spikes roughly akin to those emitted by real neurons
+in the brain (Maass 1996; Buesing, Bill, Nessler, and Maass 2011).</p>
+
+<p>Even when a neural network is not biologically plausible, it may
+still be <em>more</em> biologically plausible than classical
+models. Neural networks certainly seem closer than Turing-style
+models, in both details and spirit, to neurophysiological
+description. Many cognitive scientists worry that CCTM reflects a
+misguided attempt at imposing the architecture of digital computers
+onto the brain. Some doubt that the brain implements anything
+resembling digital computation, i.e., computation over discrete
+configurations of digits (Piccinini and Bahar 2013). Others doubt that
+brains display clean Turing-style separation between central processor
+and read/write memory (Dayan 2009). Neural networks fare better on
+both scores: they do not require computation over discrete
+configurations of digits, and they do not postulate a clean separation
+between central processor and read/write memory.</p>
+
+<p>Classical computationalists typically reply that it is premature to
+draw firm conclusions based upon biological plausibility, given how
+little we understand about the relation between neural, computational,
+and cognitive levels of description (Gallistel and King 2009; Marcus
+2001). Using measurement techniques such as cell recordings and
+functional magnetic resonance imaging (fMRI), and drawing upon
+disciplines as diverse as physics, biology, AI, information theory,
+statistics, graph theory, and dynamical systems theory,
+neuroscientists have accumulated substantial knowledge about the brain
+at varying levels of granularity (Zednik 2019). We now know quite a
+lot about individual neurons, about how neurons interact within neural
+populations, about the localization of mental activity in cortical
+regions (e.g. the visual cortex), and about interactions among
+cortical regions. Yet we still have a tremendous amount to learn about
+how neural tissue accomplishes the tasks that it surely accomplishes:
+perception, reasoning, decision-making, language acquisition, and so
+on. Given our present state of relative ignorance, it would be rash to
+insist that the brain does not implement anything resembling Turing
+computation.</p>
+
+<p>Connectionists offer numerous further arguments that we should
+employ connectionist models instead of, or in addition to, classical
+models.  See the entry <a href="../connectionism/">connectionism</a>
+for an overview. For purposes of this entry, we mention two additional
+arguments.</p>
+
+<p>The first argument emphasizes <em>learning</em> (Bechtel and
+Abrahamsen 2002: 51). A vast range of cognitive phenomena involve
+learning from experience. Many connectionist models are explicitly
+designed to model learning, through backpropagation or some other
+algorithm that modifies the weights between nodes. By contrast,
+connectionists often complain that there are no good classical models
+of learning. Classical computationalists can respond by citing
+perceived defects of connectionist learning algorithms (e.g., the
+heavy reliance of backpropagation upon supervised training). Classical
+computationalists can also cite Bayesian decision theory, which models
+learning as probabilistic updating. More specifically, classical
+computationalists can cite the achievements of <em>Bayesian cognitive
+science</em>, which uses Bayesian decision theory to construct
+mathematical models of mental activity (Ma 2019). Over the past few
+decades, Bayesian cognitive science has accrued many explanatory
+successes. This impressive track record suggests that some mental
+processes are Bayesian or approximately Bayesian (Rescorla
+2020). Moreover, the advances mentioned
+in <a href="#ArtInt">§2</a> show how classical computing systems
+can execute or at least approximately execute Bayesian updating in
+various realistic scenarios. These developments provide hope that
+classical computation can model many important cases of learning.</p>
+
+<p>The second argument emphasizes <em>speed of
+computation</em>. Neurons are much slower than silicon-based
+components of digital computers. For this reason, neurons could not
+execute serial computation quickly enough to match rapid human
+performance in perception, linguistic comprehension, decision-making,
+etc. Connectionists maintain that the only viable solution is to
+replace serial computation with a “massively parallel”
+computational architecture—precisely what neural networks
+provide (Feldman and Ballard 1982; Rumelhart 1989). However, this
+argument is only effective against classical computationalists who
+insist upon serial processing. As noted
+in <a href="#ClaComTheMin">§3</a>, some Turing-style models
+involve parallel processing. Many classical computationalists are
+happy to allow “massively parallel” mental computation,
+and the argument gains no traction against these researchers. That
+being said, the argument highlights an important question that any
+computationalist—whether classical, connectionist, or
+otherwise—must address: How does a brain built from relatively
+slow neurons execute sophisticated computations so quickly? Neither
+classical nor connectionist computationalists have answered this
+question satisfactorily (Gallistel and King 2009: 174 and 265).</p>
+
+<h3><a id="SysPro">4.3 Systematicity and productivity</a></h3>
+
+<p>Fodor and Pylyshyn (1988) offer a widely discussed critique of
+eliminativist connectionism. They argue that systematicity and
+productivity fail in connectionist models, except when the
+connectionist model implements a classical model. Hence, connectionism
+does not furnish a viable alternative to CCTM. At best, it supplies a
+low-level description that helps bridge the gap between Turing-style
+computation and neuroscientific description.</p>
+
+<p>This argument has elicited numerous replies and
+counter-replies. Some argue that neural networks can exhibit
+systematicity without implementing anything like classical
+computational architecture (Horgan and Tienson 1996; Chalmers 1990;
+Smolensky 1991; van Gelder 1990). Some argue that Fodor and Pylyshyn
+vastly exaggerate systematicity (Johnson 2004) or productivity
+(Rumelhart and McClelland 1986), especially for non-human animals
+(Dennett 1991).  These issues, and many others raised by Fodor and
+Pylyshyn’s argument, have been thoroughly investigated in the
+literature.  For further discussion, see Bechtel and Abrahamsen (2002:
+156–199), Bermúdez (2005: 244–278), Chalmers
+(1993), Clark (2014: 84–86), and the encyclopedia entries on
+ <a href="../language-thought/">the language of thought hypothesis</a>
+ and on 
+ <a href="../connectionism/">connectionism</a>.</p>
+
+<p>Gallistel and King (2009) advance a related but distinct
+productivity argument. They emphasize <em>productivity of mental
+computation</em>, as opposed to <em>productivity of mental
+states</em>. Through detailed empirical case studies, they argue that
+many non-human animals can extract, store, and retrieve detailed
+records of the surrounding environment. For example, the Western scrub
+jay records where it cached food, what kind of food it cached in each
+location, when it cached the food, and whether it has depleted a given
+cache (Clayton, Emery, and Dickinson 2006). The jay can access these
+records and exploit them in diverse computations: computing whether a
+food item stored in some cache is likely to have decayed; computing a
+route from one location to another; and so on. The number of possible
+computations a jay can execute is, for all practical purposes,
+infinite.</p>
+
+<p>CCTM explains the productivity of mental computation by positing a
+central processor that stores and retrieves symbols in addressable
+read/write memory. When needed, the central processor can retrieve
+arbitrary, unpredicted combinations of symbols from memory. In
+contrast, Gallistel and King argue, connectionism has difficulty
+accommodating the productivity of mental computation. Although
+Gallistel and King do not carefully distinguish between eliminativist
+and implementationist connectionism, we may summarize their argument
+as follows:</p>
+
+<ul class="jfy">
+<li> Eliminativist connectionism cannot explain how organisms combine
+stored memories (e.g., cache locations) for computational purposes
+(e.g., computing a route from one cache to another). There are a
+virtual infinity of possible combinations that might be useful, with
+no predicting in advance which pieces of information must be combined
+in future computations. The only computationally tractable solution is
+symbol storage in readily accessible read/write memory
+locations—a solution that eliminativist connectionists
+reject.</li>
+
+<li> Implementationist connectionists can postulate symbol storage in
+read/write memory, <em>as implemented by a neural
+network</em>. However, the mechanisms that connectionists usually
+propose for implementing memory are not plausible. Existing proposals
+are mainly variants upon a single idea: a recurrent neural network
+that allows reverberating activity to travel around a loop (Elman
+1990). There are many reasons why the reverberatory loop model is
+hopeless as a theory of long-term memory.  For example, noise in the
+nervous system ensures that signals would rapidly degrade in a few
+minutes. Implementationist connectionists have thus far offered no
+plausible model of read/write 
+memory.<sup>[<a href="notes.html#note-2" id="ref-2">2</a>]</sup></li>
+</ul>
+
+<p>Gallistel and King conclude that CCTM is much better suited than
+either eliminativist or implementationist connectionism to explain a
+vast range of cognitive phenomena.</p>
+
+<p>Critics attack this new productivity argument from various angles,
+focusing mainly on the empirical case studies adduced by Gallistel and
+King. Peter Dayan (2009), John Donahoe (2010), and Christopher Mole
+(2014) argue that biologically plausible neural network models can
+accommodate at least some of the case studies. Dayan and Donahoe argue
+that empirically adequate neural network models can dispense with
+anything resembling read/write memory. Mole argues that, in certain
+cases, empirically adequate neural network models
+can <em>implement</em> the read/write memory mechanisms posited by
+Gallistel and King. Debate on these fundamental issues seems poised to
+continue well into the future.</p>
+
+<h3><a id="ComNeu">4.4 Computational neuroscience</a></h3>
+
+<p> <em>Computational neuroscience</em> describes the nervous system
+through computational models. Although this research program is
+grounded in mathematical modeling of individual neurons, the
+distinctive focus of computational neuroscience is <em>systems</em> of
+interconnected neurons. Computational neuroscience usually models
+these systems as neural networks. In that sense, it is a variant,
+off-shoot, or descendant of connectionism. However, most computational
+neuroscientists do not self-identify as connectionists. There are
+several differences between connectionism and computational
+neuroscience:</p>
+
+<ul class="jfy">
+<li> Neural networks employed by computational neuroscientists are
+much more biologically realistic than those employed by
+connectionists. The computational neuroscience literature is filled
+with talk about firing rates, action potentials, tuning curves,
+etc. These notions play at best a limited role in connectionist
+research, such as most of the research canvassed in (Rogers and
+McClelland 2014).</li>
+
+<li> Computational neuroscience is driven in large measure by
+knowledge about the brain, and it assigns huge importance to
+neurophysiological data (e.g., cell recordings).  Connectionists place
+much less emphasis upon such data. Their research is primarily driven
+by behavioral data (although more recent connectionist writings cite
+neurophysiological data with somewhat greater frequency).</li>
+
+<li> Computational neuroscientists usually regard individual nodes in
+neural networks as idealized descriptions of actual
+neurons. Connectionists usually instead regard nodes
+as <em>neuron-like processing units</em> (Rogers and McClelland 2014)
+while remaining neutral about how exactly these units map onto actual
+neurophysiological entities.</li>
+</ul>
+
+<p>One might say that computational neuroscience is concerned mainly
+with <em>neural computation</em> (computation by systems of neurons),
+whereas connectionism is concerned mainly with abstract computational
+models <em>inspired</em> by neural computation. But the boundaries
+between connectionism and computational neuroscience are admittedly
+somewhat porous. For an overview of computational neuroscience, see
+Trappenberg (2010) or Miller (2018).</p>
+
+<p>Serious philosophical engagement with neuroscience dates back at
+least to Patricia Churchland’s <em>Neurophilosophy</em>
+(1986). As computational neuroscience matured, Churchland became one
+of its main philosophical champions (Churchland, Koch, and Sejnowski
+1990; Churchland and Sejnowski 1992). She was joined by Paul
+Churchland (1995, 2007) and others (Eliasmith 2013; Eliasmith and
+Anderson 2003; Piccinini and Bahar 2013; Piccinini and Shagrir
+2014). All these authors hold that theorizing about mental computation
+should begin with the brain, not with Turing machines or other
+inappropriate tools drawn from logic and computer science. They also
+hold that neural network modeling should strive for greater biological
+realism than connectionist models typically attain. Chris Eliasmith
+(2013) develops this neurocomputational viewpoint through
+the <em>Neural Engineering Framework</em>, which supplements
+computational neuroscience with tools drawn from control theory
+(Brogan 1990). He aims to “reverse engineer” the brain,
+building large-scale, biologically plausible neural network models of
+cognitive phenomena.</p>
+
+<p>Computational neuroscience differs in a crucial respect from CCTM
+and connectionism: it abandons multiply realizability. Computational
+neuroscientists cite specific neurophysiological properties and
+processes, so their models do not apply equally well to (say) a
+sufficiently different silicon-based creature. Thus, computational
+neuroscience sacrifices a key feature that originally attracted
+philosophers to CTM. Computational neuroscientists will respond that
+this sacrifice is worth the resultant insight into neurophysiological
+underpinnings. But many computationalists worry that, by focusing too
+much on neural underpinnings, we risk losing sight of the cognitive
+forest for the neuronal trees. Neurophysiological details are
+important, but don’t we also need an additional abstract level
+of computational description that prescinds from such details?
+Gallistel and King (2009) argue that a myopic fixation upon what we
+currently know about the brain has led computational neuroscience to
+shortchange core cognitive phenomena such as navigation, spatial and
+temporal learning, and so on. Similarly, Edelman (2014) complains that
+the Neural Engineering Framework substitutes a blizzard of
+neurophysiological details for satisfying psychological
+explanations.</p>
+
+<p>
+Partly in response to such worries, some researchers propose an
+integrated <em>cognitive computational neuroscience</em> that connects
+psychological theories with neural implementation mechanisms
+(Naselaris et al. 2018; Kriegeskorte and Douglas 2018). The basic idea
+is to use neural network models to illuminate how mental processes are
+instantiated in the brain, thereby grounding multiply realizable
+cognitive description in the neurophysiological. A good example is
+recent work on neural implementation of Bayesian inference (e.g.,
+Pouget et al. 2013; Orhan and Ma 2017; Aitchison and Lengyel
+2016). Researchers articulate (multiply realizable) Bayesian models of
+various mental processes; they construct biologically plausible neural
+networks that execute or approximately execute the posited Bayesian
+computations; and they evaluate how well these neural network models
+fit with neurophysiological data.</p>
+ 
+
+<p>Despite the differences between connectionism and computational
+neuroscience, these two movements raise many similar issues. In
+particular, the dialectic from <a href="#ComNeu">§4.4</a>
+regarding systematicity and productivity arises in similar form.</p>
+
+<h2><a id="ComRep">5. Computation and representation</a></h2>
+
+<p>Philosophers and cognitive scientists use the term
+“representation” in diverse ways. Within philosophy, the
+most dominant usage ties representation to intentionality, i.e., the
+“aboutness” of mental states. Contemporary philosophers
+usually elucidate intentionality by invoking <em>representational
+content</em>. A representational mental state has a content that
+represents the world as being a certain way, so we can ask whether the
+world is indeed that way. Thus, representationally contentful mental
+states are <em>semantically evaluable</em> with respect to properties
+such as truth, accuracy, fulfillment, and so on. To illustrate:</p>
+
+<ul class="jfy">
+<li> Beliefs are the sorts of things that can be true or false. My
+belief <em>that Emmanuel Macron is French</em> is true if Emmanuel
+Macron is French, false if he is not.</li>
+
+<li> Perceptual states are the sorts of things that can be accurate or
+inaccurate. My perceptual experience <em>as of a red sphere</em> is
+accurate only if a red sphere is before me.</li>
+
+<li> Desires are the sorts of things that can fulfilled or
+thwarted. My desire <em>to eat chocolate</em> is fulfilled if I eat
+chocolate, thwarted if I do not eat chocolate.</li>
+</ul>
+
+<p>Beliefs have truth-conditions (conditions under which they are
+true), perceptual states have accuracy-conditions (conditions under
+which they are accurate), and desires have fulfillment-conditions
+(conditions under which they are fulfilled).</p>
+
+<p>In ordinary life, we frequently predict and explain behavior by
+invoking beliefs, desires, and other representationally contentful
+mental states. We identify these states through their representational
+properties. When we say “Frank believes that Emmanuel Macron is
+French”, we specify the condition under which Frank’s
+belief is true (namely, that Emmanuel Macron is French). When we say
+“Frank wants to eat chocolate”, we specify the condition
+under which Frank’s desire is fulfilled (namely, that Frank eats
+chocolate). So folk psychology assigns a central role
+to <em>intentional descriptions</em>, i.e., descriptions that identify
+mental states through their representational properties. Whether
+scientific psychology should likewise employ intentional descriptions
+is a contested issue within contemporary philosophy of mind.</p>
+
+<p><em>Intentional realism</em> is realism regarding
+representation. At a minimum, this position holds that
+representational properties are genuine aspects of mentality. Usually,
+it is also taken to hold that scientific psychology should freely
+employ intentional descriptions when appropriate. Intentional realism
+is a popular position, advocated by Tyler Burge (2010a), Jerry Fodor
+(1987), Christopher Peacocke (1992, 1994), and many others. One
+prominent argument for intentional realism cites <em>cognitive science
+practice</em>. The argument maintains that intentional description
+figures centrally in many core areas of cognitive science, such as
+perceptual psychology and linguistics. For example,
+perceptual psychology describes how perceptual activity transforms
+sensory inputs (e.g., retinal stimulations) into representations of
+the distal environment (e.g., perceptual representations of distal
+shapes, sizes, and colors). The science identifies perceptual states
+by citing representational properties (e.g., representational
+relations to specific distal shapes, sizes, colors). Assuming a
+broadly scientific realist perspective, the explanatory achievements
+of perceptual psychology support a realist posture towards
+intentionality.</p>
+
+<p><em>Eliminativism</em> is a strong form of anti-realism about
+intentionality. Eliminativists dismiss intentional description as
+vague, context-sensitive, interest-relative, explanatorily
+superficial, or otherwise problematic. They recommend that scientific
+psychology jettison representational content. An early example is W.V.
+Quine’s <em>Word and Object</em> (1960), which seeks to replace
+intentional psychology with behaviorist stimulus-response psychology.
+Paul Churchland (1981), another prominent eliminativist, wants to
+replace intentional psychology with neuroscience.</p>
+
+<p>Between intentional realism and eliminativism lie various
+intermediate positions. Daniel Dennett (1971, 1987) acknowledges that
+intentional discourse is predictively useful, but he questions whether
+mental states <em>really</em> have representational properties.
+According to Dennett, theorists who employ intentional descriptions
+are not <em>literally</em> asserting that mental states have
+representational properties. They are merely adopting the
+“intentional stance”. Donald Davidson (1980) espouses a
+neighboring <em>interpretivist</em> position. He emphasizes the
+central role that intentional ascription plays within ordinary
+interpretive practice, i.e., our practice of interpreting one
+another’s mental states and speech acts. At the same time, he
+questions whether intentional psychology will find a place within
+mature scientific theorizing. Davidson and Dennett both profess
+realism about intentional mental states. Nevertheless, both
+philosophers are customarily read as intentional anti-realists. (In
+particular, Dennett is frequently read as a kind
+of <em>instrumentalist</em> about intentionality.) One source of this
+customary reading involves <em>indeterminacy of
+interpretation</em>. Suppose that behavioral evidence allows two
+conflicting interpretations of a thinker’s mental states.
+Following Quine, Davidson and Dennett both say there is then “no
+fact of the matter” regarding which interpretation is correct.
+This diagnosis indicates a less than fully realist attitude towards
+intentionality.</p>
+
+<p>Debates over intentionality figure prominently in philosophical
+discussion of CTM. Let us survey some highlights.</p>
+
+<h3><a id="ComFor">5.1 Computation as formal</a></h3>
+ 
+<p>Classical computationalists typically assume what one might
+call <em>the formal-syntactic conception of computation</em>
+(FSC). The intuitive idea is that computation manipulates symbols in
+virtue of their formal syntactic properties rather than their semantic
+properties.</p>
+
+<p>FSC stems from innovations in mathematical logic during the late
+19<sup>th</sup> and early 20<sup>th</sup> centuries, especially
+seminal contributions by George Boole and Gottlob Frege. In
+his <em>Begriffsschrift</em> (1879/1967), Frege effected a
+thoroughgoing <em>formalization</em> of deductive reasoning. To
+formalize, we specify a <em>formal language</em> whose component
+linguistic expressions are individuated non-semantically (e.g., by
+their geometric shapes). We may have some intended interpretation in
+mind, but elements of the formal language are purely syntactic
+entities that we can discuss without invoking semantic properties such
+as reference or truth-conditions. In particular, we can
+specify <em>inference rules</em> in formal syntactic terms. If we
+choose our inference rules wisely, then they will cohere with our
+intended interpretation: they will carry true premises to true
+conclusions. Through formalization, Frege invested logic with
+unprecedented rigor. He thereby laid the groundwork for numerous
+subsequent mathematical and philosophical developments.</p>
+
+<p>Formalization plays a significant foundational role within computer
+science. We can program a Turing-style computer that manipulates
+linguistic expressions drawn from a formal language. If we program the
+computer wisely, then its syntactic machinations will cohere with our
+intended semantic interpretation. For example, we can program the
+computer so that it carries true premises only to true conclusions, or
+so that it updates probabilities as dictated by Bayesian decision
+theory.</p>
+
+<p>FSC holds that <em>all</em> computation manipulates formal
+syntactic items, without regard to any semantic properties those items
+may have.  Precise formulations of FSC vary. Computation is said to be
+“sensitive” to syntax but not semantics, or to have
+“access” only to syntactic properties, or to operate
+“in virtue” of syntactic rather than semantic properties,
+or to be impacted by semantic properties only as
+“mediated” by syntactic properties. It is not always so
+clear what these formulations mean or whether they are equivalent to
+one another. But the intuitive picture is that syntactic properties
+have causal/explanatory primacy over semantic properties in driving
+computation forward.</p>
+
+<p>Fodor’s article “Methodological Solipsism Considered as
+a Research Strategy in Cognitive Psychology” (1980) offers an
+early statement. Fodor combines FSC with CCTM+RTM. He analogizes
+Mentalese to formal languages studied by logicians: it contains simple
+and complex items individuated non-semantically, just as typical
+formal languages contain simple and complex expressions individuated
+by their shapes. Mentalese symbols have a semantic interpretation, but
+this interpretation does not (directly) impact mental computation. A
+symbol’s formal properties, rather than its semantic properties,
+determine how computation manipulates the symbol. In that sense, the
+mind is a “syntactic engine”. Virtually all classical
+computationalists follow Fodor in endorsing FSC.</p>
+
+<p>Connectionists often deny that neural networks manipulate
+syntactically structured items. For that reason, many connectionists
+would hesitate to accept FSC. Nevertheless, most connectionists
+endorse a <em>generalized formality thesis</em>: computation is
+insensitive to semantic properties. The generalized formality thesis
+raises many of the same philosophical issues raised by FSC. We focus
+here on FSC, which has received the most philosophical discussion.</p>
+
+<p>Fodor combines CCTM+RTM+FSC with intentional realism. He holds that
+CCTM+RTM+FSC vindicates folk psychology by helping us convert common
+sense intentional discourse into rigorous science. He motivates his
+position with a famous abductive argument for CCTM+RTM+FSC (1987:
+18–20). Strikingly, mental activity tracks semantic properties
+in a coherent way. For example, deductive inference carries premises
+to conclusions that are true if the premises are true. How can we
+explain this crucial aspect of mental activity? Formalization shows
+that syntactic manipulations can track semantic properties, and
+computer science shows how to build physical machines that execute
+desired syntactic manipulations. If we treat the mind as a
+syntax-driven machine, then we can explain why mental activity tracks
+semantic properties in a coherent way. Moreover, our explanation does
+not posit causal mechanisms radically different from those posited
+within the physical sciences. We thereby answer the pivotal
+question: <em>How is rationality mechanically possible</em>?</p>
+
+<p>Stephen Stich (1983) and Hartry Field (2001) combine CCTM+FSC with
+eliminativism. They recommend that cognitive science model the mind in
+formal syntactic terms, eschewing intentionality altogether. They
+grant that mental states have representational properties, but they
+ask what explanatory value scientific psychology gains by invoking
+those properties. Why supplement formal syntactic description with
+intentional description? If the mind is a syntax-driven machine, then
+doesn’t representational content drop out as explanatorily
+irrelevant?</p>
+
+<p>At one point in his career, Putnam (1983: 139–154) combined
+CCTM+FSC with a Davidson-tinged <em>interpretivism</em>. Cognitive
+science should proceed along the lines suggested by Stich and Field,
+delineating purely formal syntactic computational models. Formal
+syntactic modeling co-exists with ordinary interpretive practice, in
+which we ascribe intentional contents to one another’s mental
+states and speech acts. Interpretive practice is governed by holistic
+and heuristic constraints, which stymie attempts at converting
+intentional discourse into rigorous science. For Putnam, as for Field
+and Stich, the scientific action occurs at the formal syntactic level
+rather than the intentional level.</p>
+
+<p>CTM+FSC comes under attack from various directions. One criticism
+targets <em>the causal relevance of representational content</em>
+(Block 1990; Figdor 2009; Kazez 1995). Intuitively speaking, the
+contents of mental states are causally relevant to mental activity and
+behavior. For example, my desire to drink water rather than orange
+juice causes me to walk to the sink rather than the refrigerator. The
+content of my desire (<em>that I drink water</em>) seems to play an
+important causal role in shaping my behavior. According to Fodor
+(1990: 137–159), CCTM+RTM+FSC accommodates such
+intuitions. Formal syntactic activity <em>implements</em> intentional
+mental activity, thereby ensuring that intentional mental states
+causally interact in accord with their contents. However, it is not so
+clear that this analysis secures the causal relevance of content. FSC
+says that computation is “sensitive” to syntax but not
+semantics.  Depending on how one glosses the key term
+“sensitive”, it can look like representational content is
+causally irrelevant, with formal syntax doing all the causal
+work. Here is an analogy to illustrate the worry. When a car drives
+along a road, there are stable patterns involving the car’s
+shadow. Nevertheless, shadow position at one time does not influence
+shadow position at a later time. Similarly, CCTM+RTM+FSC may explain
+how mental activity instantiates stable patterns described in
+intentional terms, but this is not enough to ensure the causal
+relevance of content. If the mind is a syntax-driven machine, then
+causal efficacy seems to reside at the syntactic rather the semantic
+level. Semantics is just “along for the ride”. Apparently,
+then, CTM+FSC encourages the conclusion that representational
+properties are causally inert. The conclusion may not trouble
+eliminativists, but intentional realists usually want to avoid it.</p>
+
+<p> A second criticism dismisses the formal-syntactic picture as
+speculation ungrounded in scientific practice. Tyler Burge (2010a,b,
+2013: 479–480) contends that formal syntactic description of
+mental activity plays no significant role within large areas of
+cognitive science, including the study of theoretical reasoning,
+practical reasoning, and perception. In each case, Burge argues, the
+science employs intentional description <em>rather than</em> formal
+syntactic description. For example, perceptual psychology individuates
+perceptual states not through formal syntactic properties but through
+representational relations to distal shapes, sizes, colors, and so
+on. To understand this criticism, we must distinguish <em>formal
+syntactic description</em> and <em>neurophysiological
+description</em>. Everyone agrees that a complete scientific
+psychology will assign prime importance to neurophysiological
+description. However, neurophysiological description is distinct from
+formal syntactic description, because formal syntactic description is
+supposed to be multiply realizable in the neurophysiological. The
+issue here is whether scientific psychology should
+supplement <em>intentional descriptions</em>
+and <em>neurophysiological descriptions</em> with <em>multiply
+realizable, non-intentional formal syntactic</em> descriptions.</p>
+
+<h3><a id="ExtAboMenCon">5.2 Externalism about mental content</a></h3>
+
+<p> Putnam’s landmark article “The Meaning of
+‘Meaning’” (1975: 215–271) introduced
+the <em>Twin Earth thought experiment</em>, which postulates a world
+just like our own except that H<sub>2</sub>O is replaced by a
+qualitatively similar substance XYZ with different chemical
+composition. Putnam argues that XYZ is not water and that speakers on
+Twin Earth use the word “water” to refer to XYZ rather
+than to water. Burge (1982) extends this conclusion
+from <em>linguistic reference</em> to <em>mental content</em>. He
+argues that Twin Earthlings instantiate mental states with different
+contents. For example, if Oscar on Earth thinks <em>that water is
+thirst-quenching</em>, then his duplicate on Twin Earth thinks a
+thought with a different content, which we might gloss as <em>that
+twater is thirst-quenching</em>. Burge concludes that mental content
+does not supervene upon internal neurophysiology. Mental content is
+individuated partly by factors outside the thinker’s skin,
+including causal relations to the environment. This position
+is <em>externalism about mental content</em>.</p>
+
+<p>Formal syntactic properties of mental states are widely taken to
+supervene upon internal neurophysiology. For example, Oscar and Twin
+Oscar instantiate the same formal syntactic manipulations. Assuming
+content externalism, it follows that there is a huge gulf between
+ordinary intentional description and formal syntactic description.</p>
+
+<p>Content externalism raises serious questions about the explanatory
+utility of representational content for scientific psychology:</p>
+
+<p><em>Argument from Causation</em> (Fodor 1987, 1991): How can mental
+content exert any causal influence except as manifested within
+internal neurophysiology? There is no “psychological action at a
+distance”. Differences in the physical environment impact
+behavior only by inducing differences in local brain states. So the
+only causally relevant factors are those that supervene upon internal
+neurophysiology. Externally individuated content is <em>causally
+irrelevant</em>.</p>
+
+<p><em>Argument from Explanation</em> (Stich 1983): Rigorous
+scientific explanation should not take into account factors outside
+the subject’s skin. Folk psychology may taxonomize mental states
+through relations to the external environment, but scientific
+psychology should taxonomize mental states entirely through factors
+that supervene upon internal neurophysiology. It should treat Oscar
+and Twin Oscar as psychological
+duplicates.<sup>[<a href="notes.html#note-3" id="ref-3">3</a>]</sup></p>
+
+<p>Some authors pursue the two arguments in conjunction with one
+another. Both arguments reach the same conclusion: externally
+individuated mental content finds no legitimate place within causal
+explanations provided by scientific psychology. Stich (1983) argues
+along these lines to motivate his formal-syntactic eliminativism.</p>
+
+<p>Many philosophers respond to such worries by promoting <em>content
+internalism</em>. Whereas content externalists favor <em>wide
+content</em> (content that does not supervene upon internal
+neurophysiology), content internalists favor <em>narrow content</em>
+(content that does so supervene). Narrow content is what remains of
+mental content when one factors out all external elements. At one
+point in his career, Fodor (1981, 1987) pursued internalism as a
+strategy for integrating intentional psychology with
+CCTM+RTM+FSC. While conceding that wide content should not figure in
+scientific psychology, he maintained that narrow content should play a
+central explanatory role.</p>
+
+<p>Radical internalists insist that <em>all</em> content is narrow. A
+typical analysis holds that Oscar is thinking not about water but
+about some more general category of substance that subsumes XYZ, so
+that Oscar and Twin Oscar entertain mental states with the same
+contents.  Tim Crane (1991) and Gabriel Segal (2000) endorse such an
+analysis.  They hold that folk psychology always individuates
+propositional attitudes narrowly. A less radical internalism
+recommends that we recognize narrow content <em>in addition to</em>
+wide content. Folk psychology may sometimes individuate propositional
+attitudes widely, but we can also delineate a viable notion of narrow
+content that advances important philosophical or scientific
+goals. Internalists have proposed various candidate notions of narrow
+content (Block 1986; Chalmers 2002; Cummins 1989; Fodor 1987; Lewis
+1994; Loar 1988; Mendola 2008). See the
+entry <a href="../content-narrow/">narrow mental content</a> for an
+overview of prominent candidates.</p>
+
+<p>Externalists complain that existing theories of narrow content are
+sketchy, implausible, useless for psychological explanation, or
+otherwise objectionable (Burge 2007; Sawyer 2000; Stalnaker
+1999). Externalists also question internalist arguments that
+scientific psychology requires narrow content:</p>
+
+<p><em>Argument from Causation</em>: Externalists insist that wide
+content can be causally relevant. The details vary among externalists,
+and discussion often becomes intertwined with complex issues
+surrounding causation, counterfactuals, and the metaphysics of mind.
+See the entry <a href="../mental-causation/">mental causation</a> for
+an introductory overview, and see Burge (2007), Rescorla (2014a), and
+Yablo (1997, 2003) for representative externalist discussion.</p>
+
+<p><em>Argument from Explanation</em>: Externalists claim that
+psychological explanation can legitimately taxonomize mental states
+through factors that outstrip internal neurophysiology (Peacocke
+1993; Shea, 2018). Burge observes that non-psychological sciences often
+individuate explanatory kinds <em>relationally</em>, i.e., through
+relations to external factors. For example, whether an entity counts
+as a heart depends (roughly) upon whether its biological function in
+its normal environment is to pump blood. So physiology individuates
+organ kinds relationally. Why can’t psychology likewise
+individuate mental states relationally? For a notable exchange on
+these issues, see Burge (1986, 1989, 1995) and Fodor (1987, 1991).</p>
+
+<p>Externalists doubt that we have any good reason to replace or
+supplement wide content with narrow content. They dismiss the search
+for narrow content as a wild goose chase.</p>
+
+<p>Burge (2007, 2010a) defends externalism by analyzing current
+cognitive science. He argues that many branches of scientific
+psychology (especially perceptual psychology) individuate mental
+content through causal relations to the external environment. He
+concludes that scientific practice embodies an externalist
+perspective.  By contrast, he maintains, narrow content is a
+philosophical fantasy ungrounded in current science.</p>
+
+<p>Suppose we abandon the search for narrow content. What are the
+prospects for combining CTM+FSC with externalist intentional
+psychology? The most promising option emphasizes <em>levels of
+explanation</em>. We can say that intentional psychology occupies one
+level of explanation, while formal-syntactic computational psychology
+occupies a different level. Fodor advocates this approach in his later
+work (1994, 2008). He comes to reject narrow content as otiose. He
+suggests that formal syntactic mechanisms implement externalist
+psychological laws. Mental computation manipulates Mentalese
+expressions in accord with their formal syntactic properties, and
+these formal syntactic manipulations ensure that mental activity
+instantiates appropriate law-like patterns defined over wide
+contents.</p>
+
+<p>In light of the internalism/externalism distinction, let us revisit
+the eliminativist challenge raised in <a href="#ComFor">§5.1</a>:
+what explanatory value does intentional description add to
+formal-syntactic description?  Internalists can respond that suitable
+formal syntactic manipulations determine and maybe even constitute
+narrow contents, so that internalist intentional description is
+already implicit in suitable formal syntactic description (cf. Field
+2001: 75). Perhaps this response vindicates intentional realism,
+perhaps not. Crucially, though, no such response is available to
+content externalists.  Externalist intentional description is not
+implicit in formal syntactic description, because one can hold formal
+syntax fixed while varying wide content. Thus, content externalists
+who espouse CTM+FSC must say what we gain by supplementing
+formal-syntactic explanations with intentional explanations. Once we
+accept that mental computation is sensitive to syntax but not
+semantics, it is far from clear that any useful explanatory work
+remains for wide content. Fodor addresses this challenge at various
+points, offering his most systematic treatment in <em>The Elm and the
+Expert</em> (1994). See Arjo (1996), Aydede (1998), Aydede and Robbins
+(2001), Wakefield (2002); Perry (1998), and Wakefield (2002) for
+criticism. See Rupert (2008) and Schneider (2005) for positions close
+to Fodor’s. Dretske (1993) and Shea (2018, pp. 197–226) pursue
+alternative strategies for vindicating the explanatory relevance of
+wide content.</p>
+
+<h3><a id="ConInvCom">5.3 Content-involving computation</a></h3>
+
+<p> The perceived gulf between computational description and
+intentional description animates many writings on CTM. A few
+philosophers try to bridge the gulf using computational descriptions
+that individuate computational states in representational terms. These
+descriptions are <em>content-involving</em>, to use Christopher
+Peacocke’s (1994) terminology. On the content-involving
+approach, there is no rigid demarcation between computational and
+intentional description. In particular, certain scientifically
+valuable descriptions of mental activity are both computational and
+intentional. Call this position <em>content-involving
+computationalism</em>.</p>
+
+<p>Content-involving computationalists need not say that all
+computational description is intentional. To illustrate, suppose we
+describe a simple Turing machine that manipulates symbols individuated
+by their geometric shapes. Then the resulting computational
+description is not plausibly content-involving. Accordingly,
+content-involving computationalists do not usually advance
+content-involving computation as a general theory of computation. They
+claim only that <em>some</em> important computational descriptions are
+content-involving.</p>
+
+<p>One can develop content-involving computationalism in an
+internalist or externalist direction. <em>Internalist
+content-involving computationalists</em> hold that some computational
+descriptions identify mental states partly through
+their <em>narrow</em> contents.  Murat Aydede (2005) recommends a
+position along these lines.  <em>Externalist content-involving
+computationalism</em> holds that certain computational descriptions
+identify mental states partly through their <em>wide</em>
+contents. Tyler Burge (2010a: 95–101), Christopher Peacocke
+(1994, 1999), Michael Rescorla (2012), and Mark Sprevak (2010) espouse
+this position. Oron Shagrir (2001, forthcoming) advocates a
+content-involving computationalism that is neutral between internalism
+and externalism.</p>
+
+<p>Externalist content-involving computationalists typically cite
+cognitive science practice as a motivating factor. For example,
+perceptual psychology describes the perceptual system as computing an
+estimate of some object’s size from retinal stimulations and
+from an estimate of the object’s depth. Perceptual
+“estimates” are identified representationally, as
+representations of specific distal sizes and depths. Quite plausibly,
+representational relations to specific distal sizes and depths do not
+supervene on internal neurophysiology. Quite plausibly, then,
+perceptual psychology type-identifies perceptual computations through
+wide contents. So externalist content-involving computationalism seems
+to harmonize well with current cognitive science.</p>
+
+<p>A major challenge facing content-involving computationalism
+concerns the interface with standard computationalism formalisms, such
+as the Turing machine. How exactly do content-involving descriptions
+relate to the computational models found in logic and computer
+science?  Philosophers usually assume that these models offer
+non-intentional descriptions. If so, that would be a major and perhaps
+decisive blow to content-involving computationalism.</p>
+
+<p>Arguably, though, many familiar computational formalisms allow a
+content-involving rather than formal syntactic construal. To
+illustrate, consider the Turing machine. One <em>can</em> individuate
+the “symbols” comprising the Turing machine alphabet
+non-semantically, through factors akin to geometric shape. But does
+Turing’s formalism <em>require</em> a non-semantic individuative
+scheme? Arguably, the formalism allows us
+to individuate symbols partly through their contents. Of course, the
+machine table for a Turing machine does not explicitly cite semantic
+properties of symbols (e.g., denotations or truth-conditions).
+Nevertheless, the machine table can encode mechanical rules that
+describe how to manipulate symbols, where those symbols are
+type-identified in content-involving terms. In this way, the machine
+table dictates transitions among content-involving states without
+explicitly mentioning semantic properties. Aydede (2005) suggests an
+internalist version of this view, with symbols type-identified through
+their narrow
+ contents.<sup>[<a href="notes.html#note-4" id="ref-4">4</a>]</sup>
+ Rescorla (2017a) develops the view in
+an externalist direction, with symbols type-identified through their
+wide contents. He argues that some Turing-style models describe
+computational operations over externalistically individuated Mentalese
+symbols.<sup>[<a href="notes.html#note-5" id="ref-5">5</a>]</sup></p>
+
+<p>In principle, one might embrace both externalist content-involving
+computational description <em>and</em> formal syntactic description.
+One might say that these two kinds of description occupy distinct
+levels of explanation. Peacocke suggests such a view. Other
+content-involving computationalists regard formal syntactic
+descriptions of the mind more skeptically. For example, Burge
+questions what explanatory value formal syntactic description
+contributes to certain areas of scientific psychology (such as
+perceptual psychology). From this viewpoint, the eliminativist
+challenge posed in <a href="#ComFor">§5.1</a> has matters
+backwards. We should not assume that formal syntactic descriptions are
+explanatorily valuable and then ask what value intentional
+descriptions contribute.  We should instead embrace the externalist
+intentional descriptions offered by current cognitive science and then
+ask what value formal syntactic description contributes.</p>
+
+<p>Proponents of formal syntactic description respond by
+citing <em>implementation mechanisms</em>. Externalist description of
+mental activity presupposes that suitable causal-historical relations
+between the mind and the external physical environment are in
+place. But surely we want a “local” description that
+ignores external causal-historical relations, a description that
+reveals underlying causal mechanisms. Fodor (1987, 1994) argues in
+this way to motivate the formal syntactic picture. For possible
+externalist responses to the argument from implementation mechanisms,
+see Burge (2010b), Rescorla (2017b), Shea (2013), and Sprevak
+(2010). Debate over this argument, and more generally over the
+relation between computation and representation, seems likely to
+continue into the indefinite future.</p>
+
+<h2><a id="AltConCom">6. Alternative conceptions of computation</a></h2>
+
+<p> The literature offers several alternative conceptions, usually
+advanced as foundations for CTM. In many cases, these conceptions
+overlap with one another or with the conceptions considered above.</p>
+
+<h3><a id="InfPro">6.1 Information-processing</a></h3>
+
+<p>It is common for cognitive scientists to describe computation as
+“information-processing”. It is less common for proponents
+to clarify what they mean by “information” or
+“processing”. Lacking clarification, the description is
+little more than an empty slogan.</p>
+
+<p>Claude Shannon introduced a scientifically important notion of
+“information” in his 1948 article “A Mathematical
+Theory of Communication”. The intuitive idea is that information
+measures <em>reduction in uncertainty</em>, where reduced uncertainty
+manifests as an altered probability distribution over possible states.
+Shannon codified this idea within a rigorous mathematical framework,
+laying the foundation for <em>information theory</em> (Cover and
+Thomas 2006). Shannon information is fundamental to modern
+engineering. It finds fruitful application within cognitive science,
+especially cognitive neuroscience. Does it support a convincing
+analysis of computation as “information-processing”?
+Consider an old-fashioned tape machine that records messages received
+over a wireless radio. Using Shannon’s framework, one can
+measure how much information is carried by some recorded
+message. There is a sense in which the tape machine
+“processes” Shannon information whenever we replay a
+recorded message. Still, the machine does not seem to implement a
+non-trivial computational 
+model.<sup>[<a href="notes.html#note-6" id="ref-6">6</a>]</sup>
+ Certainly, neither the Turing machine
+formalism nor the neural network formalism offers much insight into
+the machine’s operations. Arguably, then, a system can process
+Shannon information without executing computations in any interesting
+sense.</p>
+
+<p>Confronted with such examples, one might try to isolate a more
+demanding notion of “processing”, so that the tape machine
+does not “process” Shannon information. Alternatively, one
+might insist that the tape machine executes non-trivial computations.
+Piccinini and Scarantino (2010) advance a highly general notion of
+computation—which they dub <em>generic
+computation</em>—with that consequence.</p>
+
+<p> A second prominent notion of information derives from Paul
+Grice’s (1989) influential discussion of <em>natural
+meaning</em>. Natural meaning involves reliable,
+counterfactual-supporting correlations. For example, tree rings
+correlate with the age of the tree, and pox correlate with
+chickenpox. We colloquially describe tree rings as carrying
+information about tree age, pox as carrying information about
+chickenpox, and so on. Such descriptions suggest a conception that
+ties information to reliable, counterfactual-supporting
+correlations. Fred Dretske (1981) develops this conception into a
+systematic theory, as do various subsequent philosophers. Does
+Dretske-style information subserve a plausible analysis of computation
+as “information-processing”? Consider an
+old-fashioned <em>bimetallic strip thermostat</em>. Two metals are
+joined together into a strip. Differential expansion of the metals
+causes the strip to bend, thereby activating or deactivating a heating
+unit. Strip state reliably correlates with current ambient
+temperature, and the thermostat “processes” this
+information-bearing state when activating or deactivating the
+heater. Yet the thermostat does not seem to implement any non-trivial
+computational model. One would not ordinarily regard the thermostat as
+computing. Arguably, then, a system can process Dretske-style
+information without executing computations in any interesting
+sense. Of course, one might try to handle such examples through
+maneuvers parallel to those from the previous paragraph.</p>
+
+<p>A third prominent notion of information is <em>semantic
+information</em>, i.e., representational
+content.<sup>[<a href="notes.html#note-7" id="ref-7">7</a>]</sup> Some
+philosophers hold that a physical system computes only if the
+system’s states have representational properties (Dietrich 1989;
+Fodor 1998: 10; Ladyman 2009; Shagrir 2006; Sprevak 2010). In that
+sense, information-processing is <em>necessary</em> for
+computation. As Fodor memorably puts it, “no computation without
+representation” (1975: 34). However, this position is
+debatable. Chalmers (2011) and Piccinini (2008a) contend that a Turing
+machine might execute computations even though symbols manipulated by
+the machine have no semantic interpretation. The machine’s
+computations are purely syntactic in nature, lacking anything like
+semantic properties. On this view, representational content is not
+necessary for a physical system to count as computational.</p>
+
+<p>It remains unclear whether the slogan “computation is
+information-processing” provides much insight. Nevertheless, the
+slogan seems unlikely to disappear from the literature anytime soon.
+For further discussion of possible connections between computation and
+information, see Gallistel and King (2009: 1–26), Lizier,
+Flecker, and Williams (2013), Milkowski (2013), Piccinini and
+Scarantino (2010), and Sprevak (forthcoming).</p>
+
+<h3><a id="FunEva">6.2 Function evaluation</a></h3>
+
+<p> In a widely cited passage, the perceptual psychologist David Marr
+(1982) distinguishes three levels at which one can describe an
+“information-processing device”:</p>
+
+<blockquote> 
+<p> <em>Computational theory</em>: “[t]he device is
+characterized as a mapping from one kind of information to another,
+the abstract properties of this mapping are defined precisely, and its
+appropriateness and adequacy for the task as hand are
+demonstrated” (p. 24).</p>
+
+<p> <em>Representation and algorithm</em>: “the choice of
+representation for the input and output and the algorithm to be used
+to transform one into the other” (pp. 24–25).</p>
+
+<p> <em>Hardware implementation</em>: “the details of how the
+algorithm and representation are realized physically” (p.
+25).</p> </blockquote>
+
+<p>Marr’s three levels have attracted intense philosophical
+scrutiny. For our purposes, the key point is that Marr’s
+“computational level” describes a mapping from inputs to
+outputs, without describing intermediate steps. Marr illustrates his
+approach by providing “computational level” theories of
+various perceptual processes, such as edge detection.</p>
+
+<p>Marr’s discussion suggests a <em>functional conception of
+computation</em>, on which computation is a matter of transforming
+inputs into appropriate outputs. Frances Egan elaborates the
+functional conception over a series of articles (1991, 1992, 1999,
+2003, 2010, 2014, 2019). Like Marr, she treats computational
+description as description of input-output relations. She also claims
+that computational models characterize a purely <em>mathematical</em>
+function: that is, a mapping from mathematical inputs to mathematical
+outputs. She illustrates by considering a visual mechanism (called
+“Visua”) that computes an object’s depth from
+retinal disparity. She imagines a neurophysiological duplicate
+(“Twin Visua”) embedded so differently in the physical
+environment that it does not represent depth. Visua and Twin Visua
+instantiate perceptual states with different representational
+properties. Nevertheless, Egan says, vision science treats Visua and
+Twin Visua as <em>computational duplicates</em>. Visua and Twin Visua
+compute the same mathematical function, even though the computations
+have different representational import in the two cases. Egan
+concludes that computational modeling of the mind yields an
+“abstract mathematical description” consistent with many
+alternative possible representational descriptions.  Intentional
+attribution is just a heuristic gloss upon underlying computational
+description.</p>
+
+<p>Chalmers (2012) argues that the functional conception neglects
+important features of computation. As he notes, computational models
+usually describe more than just input-output relations. They describe
+intermediate steps through which inputs are transformed into outputs.
+These intermediate steps, which Marr consigns to the
+“algorithmic” level, figure prominently in computational
+models offered by logicians and computer scientists. Restricting the
+term “computation” to input-output description does not
+capture standard computational practice.</p>
+
+<p>An additional worry faces functional theories, such as
+Egan’s, that exclusively emphasize <em>mathematical</em> inputs
+and outputs.  Critics complain that Egan mistakenly elevates
+mathematical functions, at the expense of intentional explanations
+routinely offered by cognitive science (Burge
+2005; Rescorla
+2015; Silverberg 2006; Sprevak 2010). To illustrate, suppose
+perceptual psychology describes the perceptual system as estimating
+that some object’s depth is 5 meters. The perceptual
+depth-estimate has a representational content: it is accurate only if
+the object’s depth is 5 meters. We cite the number 5 to identify
+the depth-estimate.  But our choice of this number depends upon our
+arbitrary choice of measurement units. Critics contend that the
+content of the depth-estimate, not the arbitrarily chosen number
+through which we theorists specify that content, is what matters for
+psychological explanation. Egan’s theory places the number
+rather than the content at explanatory center stage. According to
+Egan, computational explanation should describe the visual system as
+computing a <em>particular mathematical function</em> that
+carries <em>particular mathematical inputs</em> into <em>particular
+mathematical outputs</em>. Those particular mathematical inputs and
+outputs depend upon our arbitrary choice of measurement units, so they
+arguably lack the explanatory significance that Egan assigns to
+them.</p>
+
+<p>We should distinguish the functional approach, as pursued by Marr
+and Egan, from the <em>functional programming paradigm</em> in
+computer science. The functional programming paradigm models
+evaluation of a complex function as successive evaluation of simpler
+functions. To take a simple example, one might evaluate <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;f&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" style="width: 7.888em; display: inline-block;"><span style="display: inline-block; position: relative; width: 7.649em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.167em, 1007.55em, 2.604em, -1000em); top: -2.177em; left: 0em;"><span class="mrow" id="MathJax-Span-2"><span class="mi" id="MathJax-Span-3" style="font-family: MathJax_Math-italic;">f<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.06em;"></span></span><span class="mo" id="MathJax-Span-4" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-5" style="font-family: MathJax_Math-italic;">x</span><span class="mo" id="MathJax-Span-6" style="font-family: MathJax_Main;">,</span><span class="mi" id="MathJax-Span-7" style="font-family: MathJax_Math-italic; padding-left: 0.167em;">y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.006em;"></span></span><span class="mo" id="MathJax-Span-8" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-9" style="font-family: MathJax_Main; padding-left: 0.278em;">=</span><span class="mo" id="MathJax-Span-10" style="font-family: MathJax_Main; padding-left: 0.278em;">(</span><span class="msubsup" id="MathJax-Span-11"><span style="display: inline-block; position: relative; width: 1.001em; height: 0px;"><span style="position: absolute; clip: rect(3.383em, 1000.52em, 4.189em, -1000em); top: -4.001em; left: 0em;"><span class="mi" id="MathJax-Span-12" style="font-family: MathJax_Math-italic;">x</span><span style="display: inline-block; width: 0px; height: 4.001em;"></span></span><span style="position: absolute; top: -4.364em; left: 0.572em;"><span class="texatom" id="MathJax-Span-13"><span class="mrow" id="MathJax-Span-14"><span class="mn" id="MathJax-Span-15" style="font-size: 70.7%; font-family: MathJax_Main;">2</span></span></span><span style="display: inline-block; width: 0px; height: 4.001em;"></span></span></span></span><span class="mo" id="MathJax-Span-16" style="font-family: MathJax_Main; padding-left: 0.222em;">+</span><span class="mi" id="MathJax-Span-17" style="font-family: MathJax_Math-italic; padding-left: 0.222em;">y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.006em;"></span></span><span class="mo" id="MathJax-Span-18" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.177em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.318em; border-left: 0px solid; width: 0px; height: 1.238em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><msup><mi>x</mi><mrow class="MJX-TeXAtom-ORD"><mn>2</mn></mrow></msup><mo>+</mo><mi>y</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-1">f(x,y) =
+(x^{2}+y)</script> by first evaluating the squaring function and then
+evaluating the addition function. Functional programming differs from
+the “computational level” descriptions emphasized by Marr,
+because it specifies intermediate computational stages. The functional
+programming paradigm stretches back to Alonzo Church’s
+(1936) <em>lambda calculus</em>, continuing with programming languages
+such as PCF and LISP. It plays an important role in AI and theoretical
+computer science. Some authors suggest that it offers special insight
+into mental computation (Klein 2012; Piantadosi, Tenenbaum, and
+Goodman 2012). However, many computational formalisms do not conform
+to the functional paradigm: Turing machines; imperative programming
+languages, such as C; logic programming languages, such as Prolog; and
+so on. Even though the functional paradigm describes numerous
+important computations (possibly including mental computations), it
+does not plausibly capture computation <em>in general</em>.</p>
+
+<h3><a id="Str">6.3 Structuralism</a></h3>
+
+<p>Many philosophical discussions embody a <em>structuralist
+conception of computation</em>: a computational model describes an
+abstract causal structure, without taking into account particular
+physical states that instantiate the structure. This conception traces
+back at least to Putnam’s original treatment (1967).
+Chalmers (1995, 1996a, 2011, 2012) develops it in detail. He
+introduces the <em>combinatorial-state automaton</em> (CSA) formalism,
+which subsumes most familiar models of computation (including Turing
+machines and neural networks). A CSA provides an abstract description
+of a physical system’s <em>causal topology</em>: the pattern of
+causal interaction among the system’s parts, independent of the
+nature of those parts or the causal mechanisms through which they
+interact.  Computational description specifies a causal topology.</p>
+
+<p>Chalmers deploys structuralism to delineate a very general version
+of CTM. He assumes the functionalist view that psychological states
+are individuated by their roles in a pattern of causal organization.
+Psychological description specifies causal roles, abstracted away from
+physical states that realize those roles. So psychological properties
+are <em>organizationally invariant</em>, in that they supervene upon
+causal topology. Since computational description characterizes a
+causal topology, satisfying a suitable computational description
+suffices for instantiating appropriate mental properties. It also
+follows that psychological description is a species of computational
+description, so that computational description should play a central
+role within psychological explanation. Thus, structuralist computation
+provides a solid foundation for cognitive science. Mentality is
+grounded in causal patterns, which are precisely what computational
+models articulate.</p>
+
+<p>Structuralism comes packaged with an attractive account of
+the <em>implementation relation</em> between abstract computational
+models and physical systems. Under what conditions does a physical
+system implement a computational model? Structuralists say that a
+physical system implements a model just in case the model’s
+causal structure is “isomorphic” to the model’s
+formal structure. A computational model describes a physical system by
+articulating a formal structure that mirrors some relevant causal
+topology. Chalmers elaborates this intuitive idea, providing detailed
+necessary and sufficient conditions for physical realization of CSAs.
+Few if any alternative conceptions of computation can provide so
+substantive an account of the implementation relation.</p>
+
+<p>We may instructively compare structuralist computationalism with
+some other theories discussed above:</p>
+
+<p><em>Machine functionalism</em>. Structuralist computationalism
+embraces the core idea behind machine functionalism: mental states are
+functional states describable through a suitable computational
+formalism. Putnam advances CTM as an empirical hypothesis, and he
+defends functionalism on that basis. In contrast, Chalmers follows
+David Lewis (1972) by grounding functionalism in the conceptual
+analysis of mentalistic discourse. Whereas Putnam defends
+functionalism by defending computationalism, Chalmers defends
+computationalism by assuming functionalism.</p>
+
+<p><em>Classical computationalism, connectionism, and computational
+neuroscience</em>. Structuralist computationalism emphasizes
+organizationally invariant descriptions, which are multiply
+realizable.  In that respect, it diverges from computational
+neuroscience.  Structuralism is compatible with both classical and
+connectionist computationalism, but it differs in spirit from those
+views.  Classicists and connectionists present their rival positions
+as bold, substantive hypotheses. Chalmers advances structuralist
+computationalism as a relatively minimalist position unlikely to be
+disconfirmed.</p>
+
+<p><em>Intentional realism and eliminativism</em>. Structuralist
+computationalism is compatible with both positions. CSA description
+does not explicitly mention semantic properties such as reference,
+truth-conditions, representational content, and so on. Structuralist
+computationalists need not assign representational content any
+important role within scientific psychology. On the other hand,
+structuralist computationalism does not preclude an important role for
+representational content.</p>
+
+<p><em>The formal-syntactic conception of computation</em>. Wide
+content depends on causal-historical relations to the external
+environment, relations that outstrip causal topology. Thus, CSA
+description leaves wide content underdetermined. Narrow content
+presumably supervenes upon causal topology, but CSA description does
+not explicitly mention narrow contents. Overall, then, structuralist
+computationalism prioritizes a level of formal, non-semantic
+computational description. In that respect, it resembles FSC. On the
+other hand, structuralist computationalists need not say that
+computation is “insensitive” to semantic properties, so
+they need not endorse all aspects of FSC.</p>
+
+<p>Although structuralist computationalism is distinct from CTM+FSC,
+it raises some similar issues. For example, Rescorla (2012) denies
+that causal topology plays the central explanatory role within
+cognitive science that structuralist computationalism dictates. He
+suggests that externalist intentional description rather than
+organizationally invariant description enjoys explanatory
+primacy. Coming from a different direction, computational
+neuroscientists will recommend that we forego organizationally
+invariant descriptions and instead employ more neurally specific
+computational models. In response to such objections, Chalmers (2012)
+argues that organizationally invariant computational description
+yields explanatory benefits that neither intentional description nor
+neurophysiological description replicate: it reveals the underlying
+mechanisms of cognition (unlike intentional description); and it
+abstracts away from neural implementation details that are irrelevant
+for many explanatory purposes.</p>
+
+<h3><a id="MecThe">6.4 Mechanistic theories</a></h3>
+
+<p>The mechanistic nature of computation is a recurring theme in
+logic, philosophy, and cognitive science. Gualtiero Piccinini (2007,
+2012, 2015) and Marcin Milkowski (2013) develop this theme into a
+mechanistic theory of computing systems. A <em>functional
+mechanism</em> is a system of interconnected components, where each
+component performs some function within the overall
+system. <em>Mechanistic explanation</em> proceeds by decomposing the
+system into parts, describing how the parts are organized into the
+larger system, and isolating the function performed by each part. A
+computing system is a functional mechanism of a particular kind. On
+Piccinini’s account, a computing system is a mechanism whose
+components are functionally organized to process vehicles in accord
+with rules. Echoing Putnam’s discussion of multiple
+realizability, Piccinini demands that the rules
+be <em>medium-independent</em>, in that they abstract away from the
+specific physical implementations of the vehicles. Computational
+explanation decomposes the system into parts and describes how each
+part helps the system process the relevant vehicles. If the system
+processes discretely structured vehicles, then the computation is
+digital. If the system processes continuous vehicles, then the
+computation is analog. Milkowski’s version of the mechanistic
+approach is similar. He differs from Piccinini by pursuing an
+“information-processing” gloss, so that computational
+mechanisms operate over information-bearing states. Milkowski and
+Piccinini deploy their respective mechanistic theories to defend
+computationalism.</p>
+
+<p>Mechanistic computationalists typically individuate computational
+states non-semantically. They therefore encounter worries about the
+explanatory role of representational content, similar to worries
+encountered by FSC and structuralism. In this spirit, Shagrir (2014)
+complains that mechanistic computationalism does not accommodate
+cognitive science explanations that are simultaneously computational
+and representational. The perceived force of this criticism will
+depend upon one’s sympathy for content-involving
+computationalism.</p>
+
+<h3><a id="Plu">6.5 Pluralism</a></h3>
+
+<p>We have surveyed various contrasting and sometimes overlapping
+conceptions of computation: classical computation, connectionist
+computation, neural computation, formal-syntactic computation,
+content-involving computation, information-processing computation,
+functional computation, structuralist computation, and mechanistic
+computation. Each conception yields a different form of
+computationalism. Each conception has its own strengths and
+weaknesses.  One might adopt a <em>pluralistic</em> stance that
+recognizes distinct legitimate conceptions. Rather than elevate one
+conception above the others, pluralists happily employ whichever
+conception seems useful in a given explanatory context. Edelman (2008)
+takes a pluralistic line, as does Chalmers (2012) in his most recent
+discussion.</p>
+
+<p>The pluralistic line raises some natural questions. Can we provide
+a general analysis that encompasses all or most types of computation?
+Do all computations share certain characteristic marks with one
+another?  Are they perhaps instead united by something like family
+resemblance?  Deeper understanding of computation requires us to
+grapple with these questions.</p>
+
+<h2><a id="ArgAgaCom">7. Arguments against computationalism</a></h2>
+
+<p>CTM has attracted numerous objections. In many cases, the
+objections apply only to specific versions of CTM (such as classical
+computationalism or connectionist computationalism). Here are a few
+prominent objections. See also the
+entry <a href="../chinese-room/">the Chinese room argument</a> for a
+widely discussed objection to classical computationalism advanced by
+John Searle (1980).</p>
+
+<h3><a id="TriArg">7.1 Triviality arguments</a></h3>
+
+<p> A recurring worry is that CTM is <em>trivial</em>, because we can
+describe almost any physical system as executing computations. Searle
+(1990) claims that a wall implements <em>any</em> computer program,
+since we can discern some pattern of molecular movements in the wall
+that is isomorphic to the formal structure of the program. Putnam
+(1988: 121–125) defends a less extreme but still very strong
+triviality thesis along the same lines. Triviality arguments play a
+large role in the philosophical literature. Anti-computationalists
+deploy triviality arguments against computationalism, while
+computationalists seek to avoid triviality.</p>
+
+<p>Computationalists usually rebut triviality arguments by insisting
+that the arguments overlook constraints upon computational
+implementation, constraints that bar trivializing implementations. The
+constraints may be counterfactual, causal, semantic, or otherwise,
+depending on one’s favored theory of computation. For example,
+David Chalmers (1995, 1996a) and B. Jack Copeland (1996) hold that
+Putnam’s triviality argument ignores counterfactual conditionals
+that a physical system must satisfy in order to implement a
+computational model. Other philosophers say that a physical system
+must have representational properties to implement a computational
+model (Fodor 1998: 11–12; Ladyman 2009; Sprevak 2010) or at
+least to implement a content-involving computational model (Rescorla
+2013, 2014b). The details here vary considerably, and
+computationalists debate amongst themselves exactly which types of
+computation can avoid which triviality arguments. But most
+computationalists agree that we can avoid any devastating triviality
+worries through a sufficiently robust theory of the implementation
+relation between computational models and physical systems.</p>
+
+<p><em>Pancomputationalism</em> holds that every physical system
+implements a computational model. This thesis is plausible, since any
+physical system arguably implements a sufficiently trivial
+computational model (e.g., a one-state finite state automaton). As
+Chalmers (2011) notes, pancomputationalism does not seem worrisome for
+computationalism. What would be worrisome is the much stronger
+triviality thesis that almost every physical system implements almost
+every computational model.</p>
+
+<p>For further discussion of triviality arguments and computational
+implementation, see Sprevak (2019) and the
+entry <a href="../computation-physicalsystems/">computation in physical systems</a>.</p>
+
+<h3><a id="GodIncThe">7.2 Gödel’s incompleteness theorem</a></h3>
+
+<p> According to some authors, Gödel’s incompleteness
+theorems show that human mathematical capacities outstrip the
+capacities of any Turing machine (Nagel and Newman 1958). J.R. Lucas
+(1961) develops this position into a famous critique of CCTM. Roger Penrose
+pursues the critique in <em>The Emperor’s New Mind</em> (1989)
+and subsequent writings. Various philosophers and logicians have
+answered the critique, arguing that existing formulations suffer from
+fallacies, question-begging assumptions, and even outright
+mathematical errors (Bowie 1982; Chalmers 1996b; Feferman 1996; Lewis 1969, 1979; Putnam
+1975: 365–366, 1994; Shapiro 2003). There is a wide consensus
+that this criticism of CCTM lacks any force. It may turn out that
+certain human mental capacities outstrip Turing-computability, but
+Gödel’s incompleteness theorems provide no reason to
+anticipate that outcome.</p>
+
+<h3><a id="LimComMod">7.3 Limits of computational modeling</a></h3>
+
+<p> Could a computer compose the <em>Eroica</em> symphony? Or discover
+general relativity? Or even replicate a child’s effortless
+ability to perceive the environment, tie her shoelaces, and discern
+the emotions of others? Intuitive, creative, or skillful human
+activity may seem to resist formalization by a computer program
+(Dreyfus 1972, 1992). More generally, one might worry that crucial
+aspects of human cognition elude computational modeling, especially
+classical computational modeling.</p>
+
+<p>Ironically, Fodor promulgates a forceful version of this
+critique. Even in his earliest statements of CCTM, Fodor (1975:
+197–205) expresses considerable skepticism that CCTM can handle
+all important cognitive phenomena. The pessimism becomes more
+pronounced in his later writings (1983, 2000), which focus especially
+on <em>abductive reasoning</em> as a mental phenomenon that
+potentially eludes computational modeling. His core argument may be
+summarized as follows:</p>
+
+<ul class="sentag tag2em">
+<li><span class="tag">(1)</span><span class="sen">Turing-style
+computation is sensitive only to “local” properties of a
+mental representation, which are exhausted by the identity and
+arrangement of the representation’s constituents.</span></li>
+
+<li><span class="tag">(2)</span><span class="sen">Many mental
+processes, paradigmatically abduction, are sensitive to
+“nonlocal” properties such as relevance, simplicity, and
+conservatism.</span></li>
+
+<li><span class="tag">(3)</span><span class="sen">Hence, we may have
+to abandon Turing-style modeling of the relevant
+processes.</span></li>
+
+<li><span class="tag">(4)</span><span class="sen">Unfortunately, we
+have currently have no idea what alternative theory might serve as a
+suitable replacement.</span></li>
+</ul>
+
+<p>Some critics deny (1), arguing that suitable Turing-style
+computations can be sensitive to “nonlocal” properties
+(Schneider 2011; Wilson 2005). Some challenge (2), arguing that
+typical abductive inferences are sensitive only to “local”
+properties (Carruthers 2003; Ludwig and Schneider 2008; Sperber
+2002). Some concede step (3) but dispute step (4), insisting that we
+have promising non-Turing-style models of the relevant mental
+processes (Pinker 2005). Partly spurred by such criticisms, Fodor
+elaborates his argument in considerable detail. To defend (2), he
+critiques theories that model abduction by deploying
+“local” heuristic algorithms (2005: 41–46; 2008:
+115–126) or by positing a profusion of domain-specific cognitive
+modules (2005: 56–100). To defend (4), he critiques various
+theories that handle abduction through non-Turing-style models (2000:
+46–53; 2008), such as connectionist networks.</p>
+
+<p>The scope and limits of computational modeling remain
+controversial. We may expect this topic to remain an active focus of
+inquiry, pursued jointly with AI.</p>
+
+<h3><a id="TemArg">7.4 Temporal arguments</a></h3>
+
+<p> Mental activity unfolds in time. Moreover, the mind accomplishes
+sophisticated tasks (e.g., perceptual estimation) very quickly. Many
+critics worry that computationalism, especially classical
+computationalism, does not adequately accommodate temporal aspects of
+cognition. A Turing-style model makes no explicit mention of the time
+scale over which computation occurs. One could physically implement
+the same abstract Turing machine with a silicon-based device, or a
+slower vacuum-tube device, or an even slower pulley-and-lever
+device. Critics recommend that we reject CCTM in favor of some
+alternative framework that more directly incorporates temporal
+considerations. van Gelder and Port (1995) use this argument to
+promote a non-computational <em>dynamical systems framework</em> for
+modeling mental activity. Eliasmith (2003, 2013: 12–13) uses it
+to support his Neural Engineering Framework.</p>
+
+<p>Computationalists respond that we can <em>supplement</em> an
+abstract computational model with temporal considerations (Piccinini
+2010; Weiskopf 2004). For example, a Turing machine model presupposes
+discrete “stages of computation”, without describing how
+the stages relate to physical time. But we can supplement our model by
+describing how long each stage lasts, thereby converting our
+non-temporal Turing machine model into a theory that yields detailed
+temporal predictions. Many advocates of CTM employ supplementation
+along these lines to study temporal properties of cognition (Newell
+1990). Similar supplementation figures prominently in computer
+science, whose practitioners are quite concerned to build machines
+with appropriate temporal properties. Computationalists conclude that
+a suitably supplemented version of CTM can adequately capture how
+cognition unfolds in time.</p>
+
+<p> A second temporal objection highlights the contrast
+between <em>discrete</em> and <em>continuous</em> temporal evolution
+(van Gelder and Port 1995). Computation by a Turing machine unfolds in
+discrete stages, while mental activity unfolds in a continuous time.
+Thus, there is a fundamental mismatch between the temporal properties
+of Turing-style computation and those of actual mental activity. We
+need a psychological theory that describes continuous temporal
+evolution.</p>
+
+<p>Computationalists respond that this objection assumes what is to be
+shown: that cognitive activity does not fall into explanatory
+significant discrete stages (Weiskopf 2004). Assuming that physical
+time is continuous, it follows that mental activity unfolds in
+continuous time. It does <em>not</em> follow that cognitive models
+must have continuous temporal structure. A personal computer operates
+in continuous time, and its physical state evolves continuously. A
+complete physical theory will reflect all those physical changes. But
+our <em>computational</em> model does not reflect every physical
+change to the computer. Our computational model has discrete temporal
+structure. Why assume that a good cognitive-level model of the mind
+must reflect every physical change to the brain? Even if there is a
+continuum of evolving <em>physical</em> states, why assume a continuum
+of evolving <em>cognitive</em> states? The mere fact of continuous
+temporal evolution does not militate against computational models with
+discrete temporal structure.</p>
+
+<h3><a id="EmbCog">7.5 Embodied cognition</a></h3>
+
+<p>Embodied cognition is a research program that draws inspiration
+from the continental philosopher Maurice Merleau-Ponty, the perceptual
+psychologist J.J. Gibson, and other assorted influences. It is a
+fairly heterogeneous movement, but the basic strategy is to emphasize
+links between cognition, bodily action, and the surrounding
+environment. See Varela, Thompson, and Rosch (1991) for an influential
+early statement. In many cases, proponents deploy tools of dynamical
+systems theory. Proponents typically present their approach as a
+radical alternative to computationalism (Chemero 2009; Kelso 1995;
+Thelen and Smith 1994). CTM, they complain, treats mental activity as
+static symbol manipulation detached from the embedding environment. It
+neglects myriad complex ways that the environment causally or
+constitutively shapes mental activity. We should replace CTM with a
+new picture that emphasizes continuous links between mind, body, and
+environment. Agent-environment dynamics, not internal mental
+computation, holds the key to understanding cognition. Often, a
+broadly eliminativist attitude towards intentionality propels this
+critique.</p>
+
+<p>Computationalists respond that CTM allows due recognition of
+cognition’s embodiment. Computational models can take into
+account how mind, body, and environment continuously interact. After
+all, computational models can incorporate sensory inputs and motor
+outputs. There is no obvious reason why an emphasis upon
+agent-environment dynamics precludes a dual emphasis upon internal
+mental computation (Clark 2014: 140–165; Rupert 2009).
+Computationalists maintain that CTM can incorporate any legitimate
+insights offered by the embodied cognition movement. They also insist
+that CTM remains our best overall framework for explaining numerous
+core psychological phenomena.</p>
+
+</div>
+
+<div id="bibliography">
+
+<h2><a id="Bib">Bibliography</a></h2>
+
+<ul class="hanging">
+
+<li>Aitchison, L. and Lengyel, M., 2016, “The Hamiltonian Brain:
+Efficient Probabilistic Inference with Excitatory-Inhibitory Neural
+Circuit Dynamics”, <em>PloS Computational Biology</em>, 12:
+e1005186.</li>
+
+<li>Arjo, D., 1996, “Sticking Up for Oedipus: Fodor on
+Intentional Generalizations and Broad Content”, <em>Mind and
+Language</em>, 11: 231–245.</li>
+
+<li>Aydede, M., 1998, “Fodor on Concepts and Frege
+Puzzles”, <em>Pacific Philosophical Quarterly</em>, 79:
+289–294.</li>
+
+<li>–––, 2005, “Computationalism and
+Functionalism: Syntactic Theory of Mind Revisited”,
+in <em>Turkish Studies in the History and Philosophy of Science</em>,
+G. Irzik and G. Güzeldere (eds), Dordrecht: Springer.</li>
+
+<li>Aydede, M. and P. Robbins, 2001, “Are Frege Cases Exceptions
+to Intentional Generalizations?”, <em>Canadian Journal of
+Philosophy</em>, 31: 1–22.</li>
+
+<li>Bechtel, W. and A. Abrahamsen, 2002, <em>Connectionism and the
+Mind</em>, Malden: Blackwell.</li>
+
+<li>Bermúdez, J.L., 2005, <em>Philosophy of Psychology: A
+Contemporary Introduction</em>, New York: Routledge.</li>
+
+<li>–––, 2010, <em>Cognitive Science: An
+Introduction to the Science of the Mind</em>, Cambridge: Cambridge
+University Press.</li>
+
+<li>Block, N., 1978, “Troubles With
+Functionalism”, <em>Minnesota Studies in the Philosophy of
+Science</em>, 9: 261–325.</li>
+
+<li>–––, 1981, “Psychologism and
+Behaviorism”, <em>Philosophical Review</em>, 90:
+5–43.</li>
+
+<li>–––, 1983, “Mental Pictures and Cognitive
+Science”, <em>Philosophical Review</em>, 92: 499–539.</li>
+
+<li>–––, 1986, “Advertisement for a Semantics
+for Psychology”, <em>Midwest Studies in Philosophy</em>, 10:
+615–678.</li>
+
+<li>–––, 1990, “Can the Mind Change the
+World?”, in <em>Meaning and Method: Essays in Honor of Hilary
+Putnam</em>, G. Boolos (ed.), Cambridge: Cambridge University
+Press.</li>
+
+<li>–––, 1995, <em>The Mind as the Software of the
+Brain</em>, in <em>Invitation to Cognitive Science, vol. 3:
+Thinking</em>, E. Smith and B. Osherson (eds), Cambridge, MA: MIT
+Press.</li>
+
+<li>Block, N. and J. Fodor, 1972, “What Psychological States Are
+Not”, <em>The Philosophical Review</em>, 81: 159–181.</li>
+
+<li>Boden, M., 1991, “Horses of a Different Color?”, in
+Ramsey et al. 1991: 3–19.</li>
+
+<li>Bontly, T., 1998, “Individualism and the Nature of Syntactic
+States”, <em>The British Journal for the Philosophy of
+Science</em>, 49: 557–574.</li>
+
+<li>Bowie, G.L., 1982, “Lucas’s Number is Finally
+Up”, <em>Journal of Philosophical Logic</em>, 11:
+79–285.</li>
+
+<li>Brogan, W., 1990, <em>Modern Control Theory</em>, 3rd
+edition. Englewood Cliffs: Prentice Hall.</li>
+
+<li>Buckner, C., 2019, “Deep Learning: A Philosophical
+Introduction”, <em>Philosophy Compass</em>, 14: e12625.</li>
+
+<li>Buckner, C., and J. Garson, 2019, “Connectionism and
+Post-Connectionist Models”, in Sprevak and Colombo 2019:
+175–191.</li>
+
+<li>Buesing, L., J. Bill, B. Nessler, and W. Maass, W., 2011,
+“Neural Dynamics of Sampling: A Model for Stochastic Computation
+in Recurring Networks of Spiking Neurons”, <em>PLOS
+Computational Biology</em>, 7: e1002211.</li>
+
+<li>Burge, T., 1982, “Other Bodies”, in <em>Thought and
+Object</em>, A. Woodfield (ed.), Oxford: Oxford University
+Press. Reprinted in Burge
+2007: 82–99.</li>
+
+<li>–––, 1986, “Individualism and
+Psychology”, <em>The Philosophical Review</em>, 95:
+3–45. Reprinted in Burge
+2007: 221–253.</li>
+
+<li>–––, 1989, “Individuation and Causation in
+Psychology”, <em>Pacific Philosophical Quarterly</em>, 70:
+303–322. Reprinted in Burge
+2007: 316–333.</li>
+
+<li>–––, 1995, “Intentional Properties and
+Causation”, in <em>Philosophy of Psychology</em>, C. MacDonald
+and G. MacDonald (eds), Oxford: Blackwell. Reprinted in Burge
+2007: 334–343.</li>
+
+<li>–––, 2005, “Disjunctivism and Perceptual
+Psychology”, <em>Philosophical Topics</em>, 33: 1–78.</li>
+
+<li>–––, 2007, <em>Foundations of Mind</em>, Oxford:
+Oxford University Press.</li>
+
+<li>–––, 2010a, <em>Origins of Objectivity</em>,
+Oxford: Oxford University Press.</li>
+
+<li>–––, 2010b, “Origins of
+Perception”, <em>Disputatio</em>, 4: 1–38.</li>
+
+<li>–––, 2010c, “Steps Towards Origins of
+Propositional Thought”, <em>Disputatio</em>, 4:
+39–67.</li>
+
+<li>–––, 2013, <em>Cognition through
+Understanding</em>, Oxford: Oxford University Press.</li>
+
+<li>Camp, E., 2009, “A Language of Baboon Thought?”,
+in <em>The Philosophy of Animal Minds</em>, R. Lurz (ed.), Cambridge:
+Cambridge University Press.</li>
+
+<li>Carruthers, P., 2003, “On Fodor’s
+Problem”, <em>Mind and Language</em>, 18: 508–523.</li>
+
+<li>Chalmers, D., 1990, “Syntactic Transformations on
+Distributed Representations”, <em>Connection Science</em>, 2:
+53–62.</li>
+
+<li>–––, 1993, “Why Fodor and Pylyshyn Were
+Wrong: The Simplest Refutation”, <em>Philosophical
+Psychology</em>, 63: 305–319.</li>
+
+<li>–––, 1995, “On Implementing a
+Computation”, <em>Minds and Machines</em>, 4:
+391–402.</li>
+
+<li>–––, 1996a, “Does a Rock Implement Every
+Finite State Automaton?”, <em>Synthese</em>, 108:
+309–333.</li>
+
+<li>–––, 1996b, “Minds, Machines, and
+Mathematics”, <em>Psyche</em>, 2: 11–20.</li>
+
+<li>–––, 2002, “The Components of
+Content”, in <em>Philosophy of Mind: Classical and Contemporary
+Readings</em>, D. Chalmers (ed.), Oxford: Oxford University
+Press.</li>
+
+<li>–––, 2011, “A Computational Foundation for
+the Study of Cognition”, <em>The Journal of Cognitive
+Science</em>, 12: 323–357.</li>
+
+<li>–––, 2012, “The Varieties of Computation:
+A Reply”, <em>The Journal of Cognitive Science</em>, 13:
+213–248.</li>
+
+<li>Chemero, A., 2009, <em>Radical Embodied Cognitive Science</em>,
+Cambridge, MA: MIT Press.</li>
+
+<li>Cheney, D. and R. Seyfarth, 2007, <em>Baboon Metaphysics: The
+Evolution of a Social Mind</em>, Chicago: University of Chicago
+Press.</li>
+
+<li>Chomsky, N., 1965, <em>Aspects of the Theory of Syntax</em>,
+Cambridge, MA: MIT Press.</li>
+
+<li>Church, A., 1936, “An Unsolvable Problem of Elementary
+Number Theory”, <em>American Journal of Mathematics</em>, 58:
+345–363.</li>
+
+<li>Churchland, P.M., 1981, “Eliminative Materialism and the
+Propositional Attitudes”, <em>Journal of Philosophy</em>, 78:
+67–90.</li>
+
+<li>–––, 1989, <em>A Neurocomputational Perspective:
+The Nature of Mind and the Structure of Science</em>, Cambridge, MA: MIT
+Press.</li>
+
+<li>–––, 1995, <em>The Engine of Reason, the Seat of
+the Soul</em>, Cambridge, MA: MIT Press.</li>
+
+<li>–––, 2007, <em>Neurophilosophy At Work</em>,
+Cambridge: Cambridge University Press.</li>
+
+<li>Churchland, P.S., 1986, <em>Neurophilosophy</em>, Cambridge, MA: MIT
+Press.</li>
+
+<li>Churchland, P.S., C. Koch, and T. Sejnowski, 1990, “What Is
+Computational Neuroscience?”, in <em>Computational
+Neuroscience</em>, E. Schwartz (ed.), Cambridge, MA: MIT Press.</li>
+
+<li>Churchland, P.S. and T. Sejnowski, 1992, <em>The Computational
+Brain</em>, Cambridge, MA: MIT Press.</li>
+
+<li>Clark, A., 2014, <em>Mindware: An Introduction to the Philosophy
+of Cognitive Science</em>, Oxford: Oxford University Press.</li>
+
+<li>Clayton, N., N. Emery, and A. Dickinson, 2006, “The
+Rationality of Animal Memory: Complex Caching Strategies of Western
+Scrub Jays”, in <em>Rational Animals?</em>, M. Nudds and
+S. Hurley (eds), Oxford: Oxford University Press.</li>
+
+<li>Copeland, J., 1996, “What is
+Computation?”, <em>Synthese</em>, 108: 335–359.</li>
+
+<li>Cover, T. and J. Thomas, 2006, <em>Elements of Information
+Theory</em>, Hoboken: Wiley.</li>
+
+<li>Crane, T., 1991, “All the Difference in the
+World”, <em>Philosophical Quarterly</em>, 41: 1–25.</li>
+
+<li>Crick, F. and C. Asanuma, 1986, “Certain Aspects of the
+Anatomy and Physiology of the Cerebral Cortex”, in McClelland et
+al. 1987: 333–371.</li>
+
+<li>Cummins, R., 1989, <em>Meaning and Mental Representation</em>,
+Cambridge, MA: MIT Press.</li>
+
+<li>Davidson, D., 1980, <em>Essays on Actions and Events</em>, Oxford:
+Clarendon Press.</li>
+
+<li>Dayan, P., 2009, “A Neurocomputational
+Jeremiad”, <em>Nature Neuroscience</em>, 12: 1207.</li>
+
+<li>Dennett, D., 1971, “Intentional Systems”, <em>Journal
+of Philosophy</em>, 68: 87–106.</li>
+
+<li>–––, 1987, <em>The Intentional Stance</em>,
+Cambridge, MA: MIT Press.</li>
+
+<li>–––, 1991, “Mother Nature versus the
+Walking Encyclopedia”, in Ramsey, et
+al. 1991: 21–30.</li>
+
+<li>Dietrich, E., 1989, “Semantics and the Computational
+Paradigm in Cognitive Psychology”, <em>Synthese</em>, 79:
+119–141.</li>
+
+<li>Donahoe, J., 2010, “Man as Machine: A Review of <em>Memory
+and Computational Brain</em>, by C.R. Gallistel and
+A.P. King”, <em>Behavior and Philosophy</em>, 38:
+83–101.</li>
+
+<li>Dreyfus, H., 1972, <em>What Computers Can’t Do</em>,
+Cambridge, MA: MIT Press.</li>
+
+<li>–––, 1992, <em>What Computers Still Can’t
+Do</em>, Cambridge, MA: MIT Press.</li>
+
+<li>Dretske, F., 1981, <em>Knowledge and the Flow of Information</em>,
+Oxford: Blackwell.</li>
+
+<li>–––, 1993, “Mental Events as Structuring
+Causes of Behavior”, in <em>Mental Causation</em>, J. Heil and
+A. Mele (eds), Oxford: Clarendon Press.</li>
+
+<li>Edelman, S., 2008, <em>Computing the Mind</em>, Oxford: Oxford
+University Press.</li>
+
+<li>–––, 2014, “How to Write a ‘How a
+Build a Brain’ Book”, <em>Trends in Cognitive
+Science</em>, 18: 118–119.</li>
+
+<li>Egan, F., 1991, “Must Psychology be
+Individualistic?”, <em>Philosophical Review</em>, 100:
+179–203.</li>
+
+<li>–––, 1992, “Individualism, Computation,
+and Perceptual Content”, <em>Mind</em>, 101: 443–459.</li>
+
+<li>–––, 1999, “In Defense of Narrow
+Mindedness”, <em>Mind and Language</em>, 14: 177–194.</li>
+
+<li>–––, 2003, “Naturalistic Inquiry: Where
+Does Mental Representation Fit In?”, in <em>Chomsky and His
+Critics</em>, L. Antony and N. Hornstein (eds), Malden:
+Blackwell.</li>
+
+<li>–––, 2010, “A Modest Role for
+Content”, <em>Studies in History and Philosophy of Science</em>,
+41: 253–259.</li>
+
+<li>–––, 2014, “How to Think About Mental
+Content”, <em>Philosophical Studies</em>, 170:
+115–135.</li>
+
+<li>–––, 2019, “The Nature and Function of
+Content in Computational Models”, in Sprevak and Colombo 2019:
+247–258.</li>
+
+<li>Eliasmith, C., 2003, “Moving Beyond Metaphors: Understanding
+the Mind for What It Is”, <em>Journal of Philosophy</em>, 100:
+493–520.</li>
+
+<li>–––, 2013, <em>How to Build a Brain</em>,
+Oxford: Oxford: University Press.</li>
+
+<li>Eliasmith, C. and C.H. Anderson, 2003, <em>Neural Engineering:
+Computation, Representation and Dynamics in Neurobiological
+Systems</em>, Cambridge, MA: MIT Press.</li>
+
+<li>Elman, J., 1990, “Finding Structure in
+Time”, <em>Cognitive Science</em>, 14: 179–211.</li>
+
+<li>Feferman, S., 1996, “Penrose’s Gödelian
+Argument”, <em>Psyche</em>, 2: 21–32.</li>
+
+<li>Feldman, J. and D. Ballard, 1982, “Connectionist Models and
+their Properties”, <em>Cognitive Science</em>, 6:
+205–254.</li>
+
+<li>Field, H., 2001, <em>Truth and the Absence of Fact</em>, Oxford:
+Clarendon Press.</li>
+
+<li>Figdor, C., 2009, “Semantic Externalism and the Mechanics of
+Thought”, <em>Minds and Machines</em>, 19: 1–24.</li>
+
+<li>Fodor, J., 1975, <em>The Language of Thought</em>, New York:
+Thomas Y. Crowell.</li>
+
+<li>–––, 1980, “Methodological Solipsism
+Considered as a Research Strategy in Cognitive
+Psychology”, <em>Behavioral and Brain Science</em>, 3:
+63–73. Reprinted in Fodor
+1981: 225–253.</li>
+
+<li>–––, 1981, <em>Representations</em>, Cambridge:
+MIT Press.</li>
+
+<li>–––, 1983, <em>The Modularity of Mind</em>,
+Cambridge, MA: MIT Press.</li>
+
+<li>–––, 1987, <em>Psychosemantics</em>, Cambridge:
+MIT Press.</li>
+
+<li>–––, 1990, <em>A Theory of Content and Other
+Essays</em>, Cambridge, MA: MIT Press.</li>
+
+<li>–––, 1991, “A Modal Argument for Narrow
+Content”, <em>Journal of Philosophy</em>, 88: 5–26.</li>
+
+<li>–––, 1994, <em>The Elm and the Expert</em>,
+Cambridge, MA: MIT Press.</li>
+
+<li>–––, 1998, <em>Concepts</em>, Oxford: Clarendon
+Press.</li>
+
+<li>–––, 2000, <em>The Mind Doesn’t Work That
+Way</em>, Cambridge, MA: MIT Press.</li>
+
+<li>–––, 2005, “Reply to Steven Pinker
+‘So How Does the Mind Work?’”, <em>Mind and
+Language</em>, 20: 25–32.</li>
+
+<li>–––, 2008, <em>LOT2</em>, Oxford: Clarendon
+Press.</li>
+
+<li>Fodor, J. and Z. Pylyshyn, 1988, “Connectionism and
+Cognitive Architecture: A Critical
+Analysis”, <em>Cognition</em>, 28: 3–71.</li>
+
+<li>Frege, G., 1879/1967, <em>Begriffsschrift, eine der Arithmetischen
+Nachgebildete Formelsprache des Reinen Denkens</em>. Reprinted
+as <em>Concept Script, a Formal Language of Pure Thought Modeled upon
+that of Arithmetic</em>, in <em>From Frege to Gödel: A Source
+Book in Mathematical Logic, 1879–1931</em>, J. van Heijenoort
+(ed.), S. Bauer-Mengelberg (trans.), Cambridge: Harvard University
+Press.</li>
+
+<li>Gallistel, C.R., 1990, <em>The Organization of Learning</em>,
+Cambridge, MA: MIT Press.</li>
+
+<li>Gallistel, C.R. and King, A., 2009, <em>Memory and the
+Computational Brain</em>, Malden: Wiley-Blackwell.</li>
+
+<li>Gandy, R., 1980, “Church’s Thesis and Principles for
+Mechanism”, in <em>The Kleene Symposium</em>, J. Barwise,
+H. Keisler, and K. Kunen (eds). Amsterdam: North Holland.</li>
+
+<li>Gödel, K., 1936/65. “On Formally Undecidable
+Propositions of Principia Mathematica and Related Systems”,
+Reprinted with a new Postscript in <em>The Undecidable</em>, M. Davis
+(ed.), New York: Raven Press Books.</li>
+
+<li>Grice, P., 1989, <em>Studies in the Ways of Words</em>, Cambridge:
+Harvard University Press.</li>
+
+<li>Hadley, R., 2000, “Cognition and the Computational Power of
+Connectionist Networks”, <em>Connection Science</em>, 12:
+95–110.</li>
+
+<li>Harnish, R., 2002, <em>Minds, Brains, Computers</em>, Malden:
+Blackwell.</li>
+
+<li>Haykin, S., 2008, <em>Neural Networks: A Comprehensive
+Foundation</em>, New York: Prentice Hall.</li>
+
+<li>Haugeland, J., 1985, <em>Artificial Intelligence: The Very
+Idea</em>, Cambridge, MA: MIT Press.</li>
+
+<li>Horgan, T. and J. Tienson, 1996, <em>Connectionism and the
+Philosophy of Psychology</em>, Cambridge, MA: MIT Press.</li>
+
+<li>Horowitz, A., 2007, “Computation, External Factors, and
+Cognitive Explanations”, <em>Philosophical Psychology</em>, 20:
+65–80.</li>
+
+<li>Johnson, K., 2004, “On the Systematicity of Language and
+Thought”, <em>Journal of Philosophy</em>, 101:
+111–139.</li>
+
+<li>Johnson-Laird, P., 1988, <em>The Computer and the Mind</em>,
+Cambridge: Harvard University Press.</li>
+
+<li>–––, 2004, “The History of Mental
+Models”, in <em>Psychology of Reasoning: Theoretical and
+Historical Perspectives</em>, K. Manktelow and M.C. Chung (eds), New
+York: Psychology Press.</li>
+
+<li>Kazez, J., 1995, “Computationalism and the Causal Role of
+Content”, <em>Philosophical Studies</em>, 75:
+231–260.</li>
+
+<li>Kelso, J., 1995, <em>Dynamic Patterns</em>, Cambridge, MA: MIT
+Press.</li>
+
+<li>Klein, C., 2012, “Two Paradigms for Individuating
+Implementations”, <em>Journal of Cognitive Science</em>, 13:
+167–179.</li>
+
+<li>Kriegesgorte, K., 2015, “Deep Neural Networks: A New
+Framework for Modeling Biological Vision and Brain Information
+Processing”, <em>Annual Review of Vision Science</em>, 1:
+417–446.</li>
+
+<li>Kriegesgorte, K. and P. Douglas, 2018, “Cognitive
+Computational Neuroscience”, <em>Nature Neuroscience</em>, 21:
+1148–1160.</li>
+
+<li>Krishevsky, A., I. Sutskever, and G. Hinton, 2012, “ImageNet
+Classification with Deep Convolutional Neural
+Networks”, <em>Advances in Neural Information Processing
+Systems</em>, 25: 1097–1105.</li>
+
+<li>Krotov, D., and J. Hopfield, 2019, “Unsupervised Learning by
+Competing Hidden Units”, <em>Proceedings of the National Academy
+of Sciences</em>, 116: 7723–7731.</li>
+
+<li>Ladyman, J., 2009, “What Does it Mean to Say that a Physical
+System Implements a Computation?”, <em>Theoretical Computer
+Science</em>, 410: 376–383.</li>
+
+<li>LeCun, Y., Y. Bengio, and G. Hinton, 2015, “Deep
+Learning”, <em>Nature</em>, 521: 436–444.</li>
+
+<li>Lewis, D., 1969, “Lucas against
+Mechanism”, <em>Philosophy</em>, 44: 231–3.</li>
+
+<li>–––, 1972, “Psychophysical and Theoretical
+Identifications”, <em>Australasian Journal of Philosophy</em>,
+50: 249–58.</li>
+
+<li>–––, 1979, “Lucas Against Mechanism
+II”, <em>Canadian Journal of Philosophy</em>, 9:
+373–376.</li>
+
+<li>–––, 1994, “Reduction of Mind”,
+in <em>A Companion to the Philosophy of Mind</em>, S. Guttenplan
+(ed.), Oxford: Blackwell.</li>
+
+<li>Lizier, J., B. Flecker, and P. Williams, 2013, “Towards a
+Synergy-based Account of Measuring Information
+Modification”, <em>Proceedings of the 2013 IEEE Symposium on
+Artificial Life (ALIFE)</em>, Singapore: 43–51.</li>
+
+<li>Ludwig, K. and S. Schneider, 2008, “Fodor’s Critique
+of the Classical Computational Theory of Mind”, <em>Mind and
+Language</em>, 23: 123–143.</li>
+
+<li>Lucas, J.R., 1961, “Minds, Machines, and
+Gödel”, <em>Philosophy</em>, 36: 112–137.</li>
+
+<li>Ma, W. J., 2019, “Bayesian Decision Models: A
+Primer”, <em>Neuron</em>, 104: 164–175.</li>
+
+<li>Maass, W., 1997, “Networks of Spiking Neurons: The Next
+Generation of Neural Network Models”, <em>Neural Networks</em>,
+10: 1659–1671.</li>
+
+<li>MacLennan, B., 2012, “Analog
+Computation”, <em>Computational Complexity</em>, R. Meyers
+(ed.), New York: Springer. </li>
+
+<li>Marblestone, A., G. Wayne, and K. Kording, 2016, “Toward an
+Integration of Deep Learning and Neuroscience”, <em>Frontiers in
+Computational Neuroscience</em>, 10: 1–41.</li>
+
+<li>Marcus, G., 2001, <em>The Algebraic Mind</em>, Cambridge, MA: MIT
+Press.</li>
+
+<li>Marr, D., 1982, <em>Vision</em>, San Francisco: W.H. Freeman.</li>
+
+<li>McClelland, J., D. Rumelhart, and G. Hinton, 1986, “The
+Appeal of Parallel Distributed Processing”, in Rumelhart et
+al. 1986: 3–44.</li>
+
+<li>McClelland, J., D. Rumelhart, and the PDP Research Group,
+1987, <em>Parallel Distributed Processing</em>, vol. 2. Cambridge, MA: MIT
+Press.</li>
+
+<li>McCulloch, W. and W. Pitts, 1943, “A Logical Calculus of the
+Ideas Immanent in Nervous Activity”, <em>Bulletin of
+Mathematical Biophysics</em>, 7: 115–133.</li>
+
+<li>McDermott, D., 2001, <em>Mind and Mechanism</em>, Cambridge, MA: MIT
+Press.</li>
+
+<li>Mendola, J., 2008, <em>Anti-Externalism</em>, Oxford: Oxford
+University Press.</li>
+
+<li>Milkowski, M., 2013, <em>Explaining the Computational Mind</em>,
+Cambridge, MA: MIT Press.</li>
+
+<li>Miller, P., 2018, <em>An Introductory Course in Computational
+Neuroscience</em>, Cambridge, MA: MIT Press.</li>
+
+<li>Mole, C., 2014, “Dead Reckoning in the Desert Ant: A Defense
+of Connectionist Models”, <em>Review of Philosophy and
+Psychology</em>, 5: 277–290.</li>
+
+<li>Murphy, K., 2012, <em>Machine Learning: A Probabilistic
+Perspective</em>, Cambridge, MA: MIT Press.</li>
+
+<li>Naselaris, T., Bassett, D., Fletcher, A., Körding, K.,
+Kriegeskorte, N., Nienborg, H., Poldrack, R., Shohamy, D., and Kay,
+K., 2018, “Cognitive Computational Neuroscience: A New
+Conference for an Emerging Discipline”, <em>Trends in Cognitive
+Science</em>, 22: 365–367.</li>
+
+<li>Nagel, E. and J.R. Newman, 1958, <em>Gödel’s
+Proof</em>, New York: New York University Press.</li>
+
+<li>Newell, A., 1990, <em>Unified Theories of Cognition</em>,
+Cambridge: Harvard University Press.</li>
+
+<li>Newell, A. and H. Simon, 1956, “The Logic Theory Machine: A
+Complex Information Processing System”, <em>IRE Transactions on
+Information Theory, IT-2</em>, 3: 61–79.</li>
+
+<li>–––, 1976, “Computer Science as Empirical
+Inquiry: Symbols and Search”, <em>Communications of the
+ACM</em>, 19: 113–126.</li>
+
+<li>O’Keefe, J. and L. Nadel, 1978, <em>The Hippocampus as a
+Cognitive Map</em>, Oxford: Clarendon University Press.</li>
+
+<li>Ockham, W., 1957, <em>Summa Logicae</em>, in his <em>Philosophical
+Writings, A Selection</em>, P. Boehner (ed. and trans.), London:
+Nelson.</li>
+
+<li>Orhan, A. E. and Ma, W. J., 2017, “Efficient Probabilistic
+Inference in Generic Neural Networks Trained with Non-probabilistic
+Feedback ”, <em>Nature Communications</em>, 8: 1–14.</li>
+
+<li>Peacocke, C., 1992, <em>A Study of Concepts</em>, Cambridge, MA: MIT
+Press.</li>
+
+<li>–––, 1993, “Externalist
+Explanation”, <em>Proceedings of the Aristotelian Society</em>,
+67: 203–230.</li>
+
+<li>–––, 1994, “Content, Computation, and
+Externalism”, <em>Mind and Language</em>, 9: 303–335.</li>
+
+<li>–––, 1999, “Computation as Involving
+Content: A Response to Egan”, <em>Mind and Language</em>, 14:
+195–202.</li>
+
+<li>Penrose, R., 1989, <em>The Emperor’s New Mind: Concerning
+Computers, Minds, and the Laws of Physics</em>, Oxford: Oxford
+University Press.</li>
+
+<li>Perry, J., 1998, “Broadening the Mind”, <em>Philosophy
+and Phenomenological Research</em>, 58: 223–231.</li>
+
+<li>Piantadosi, S., J. Tenenbaum, and N. Goodman, 2012,
+“Bootstrapping in a Language of
+Thought”, <em>Cognition</em>, 123: 199–217.</li>
+
+<li>Piccinini, G., 2004, “Functionalism, Computationalism, and
+Mental States”, <em>Studies in History and Philosophy of
+Science</em>, 35: 811–833.</li>
+
+<li>–––, 2007, “Computing
+Mechanisms”, <em>Philosophy of Science</em>, 74:
+501–526.</li>
+
+<li>–––, 2008a, “Computation Without
+Representation”, <em>Philosophical Studies</em>, 137:
+205–241.</li>
+
+<li>–––, 2008b, “Some Neural Networks Compute,
+Others Don’t”, <em>Neural Networks</em>, 21:
+311–321.</li>
+
+<li>–––, 2010, “The Resilience of
+Computationalism”, <em>Philosophy of Science</em>, 77:
+852–861.</li>
+
+<li>–––, 2012, “Computationalism”,
+in <em>The Oxford Handbook of Philosophy and Cognitive Science</em>,
+E. Margolis, R. Samuels, and S. Stich (eds), Oxford: Oxford University
+Press. </li>
+
+<li>–––, 2015, <em>Physical Computation: A
+Mechanistic Account</em>, Oxford: Oxford University Press.</li>
+
+<li>Piccinini, G. and A. Scarantino, 2010, “Computation
+vs. Information processing: Why their Difference Matters to Cognitive
+Science”, <em>Studies in History and Philosophy of Science</em>,
+41: 237–246.</li>
+
+<li>Piccinini, G. and S. Bahar, 2013, “Neural Computation and
+the Computational Theory of Cognition”, <em>Cognitive
+Science</em>, 37: 453–488.</li>
+
+<li>Piccinini, G. and O. Shagrir, 2014, “Foundations of
+Computational Neuroscience”, <em>Current Opinion in
+Neurobiology</em>, 25: 25–30.</li>
+
+<li>Pinker, S., 2005, “So How Does the Mind
+Work?”, <em>Mind and Language</em>, 20: 1–24.</li>
+
+<li>Pinker, S. and A. Prince, 1988, “On Language and
+Connectionism”, <em>Cognition</em>, 28: 73–193.</li>
+
+<li>Pouget, A., Beck, J., Ma., W. J., and Latham, P., 2013,
+“Probabilistic Brains: Knowns and Unknowns”, <em>Nature
+Neuroscience</em>, 16: 1170–1178.</li>
+
+<li>Putnam, H., 1967, “Psychophysical Predicates”,
+in <em>Art, Mind, and Religion</em>, W. Capitan and D. Merrill (eds),
+Pittsburgh: University of Pittsburgh Press. Reprinted in Putnam 1975
+as “The Nature of Mental
+States”: 429–440.</li>
+
+<li>–––, 1975, <em>Mind, Language, and Reality:
+Philosophical Papers, vol. 2</em>, Cambridge: Cambridge University
+Press.</li>
+
+<li>–––, 1983, <em>Realism and Reason: Philosophical
+Papers</em>, vol. 3. Cambridge: Cambridge University Press.</li>
+
+<li>–––, 1988, <em>Representation and Reality</em>,
+Cambridge, MA: MIT Press.</li>
+
+<li>–––, 1994, “The Best of All Possible
+Brains?”, <em>The New York Times</em>, November 20,
+1994: 7.</li>
+
+<li> Pylyshyn, Z., 1984, <em>Computation and Cognition</em>,
+Cambridge, MA: MIT Press.</li>
+
+<li>Quine, W.V.O., 1960, <em>Word and Object</em>, Cambridge, MA: MIT
+Press.</li>
+
+<li>Ramsey, W., S. Stich, and D. Rumelhart (eds), 1991, <em>Philosophy
+and Connectionist Theory</em>, Hillsdale: Lawrence Erlbaum
+Associates.</li>
+
+<li>Rescorla, M., 2009a, “Chrysippus’s Dog as a Case Study
+in Non-Linguistic Cognition”, in <em>The Philosophy of Animal
+Minds</em>, R. Lurz (ed.), Cambridge: Cambridge University Press.</li>
+
+<li>–––, 2009b, “Cognitive Maps and the
+Language of Thought”, <em>The British Journal for the Philosophy
+of Science</em>, 60: 377–407.</li>
+
+<li>–––, 2012, “How to Integrate
+Representation into Computational Modeling, and Why We
+Should”, <em>Journal of Cognitive Science</em>, 13:
+1–38.</li>
+
+<li>–––, 2013, “Against Structuralist Theories
+of Computational Implementation”, <em>British Journal for the
+Philosophy of Science</em>, 64: 681–707.</li>
+
+<li>–––, 2014a, “The Causal Relevance of
+Content to Computation”, <em>Philosophy and Phenomenological
+Research</em>, 88: 173–208.</li>
+
+<li>–––, 2014b, “A Theory of Computational
+Implementation”, <em>Synthese</em>, 191: 1277–1307.</li>
+
+<li>–––, 2015, “Bayesian Perceptual
+Psychology”, in <em>The Oxford Handbook of the Philosophy of
+Perception</em>, M. Matthen (ed.), Oxford: Oxford University
+Press.</li>
+
+<li>–––, 2017a, “From Ockham to
+Turing—and Back Again”, in <em>Turing 100: Philosophical
+Explorations of the Legacy of Alan Turing</em>, (<em>Boston Studies in
+the Philosophy and History</em>), A. Bokulich and J. Floyd (eds),
+Springer.</li>
+
+<li>–––, 2017b, “Levels of Computational
+Explanation”, in <em>Philosophy and Computing: Essays in
+Epistemology, Philosophy of Mind, Logic, and Ethics</em>, T. Powers
+(ed.), Cham: Springer.</li>
+
+<li>–––, 2020, “A Realist Perspective
+on Bayesian Cognitive Science”, in <em>Inference and
+Consciousness</em>, A. Nes and T. Chan (eds.), New York: Routledge.</li>
+
+<li>Rogers, T. and J. McClelland, 2014, “Parallel Distributed
+Processing at 25: Further Explorations of the Microstructure of
+Cognition”, <em>Cognitive Science</em>, 38:
+1024–1077.</li>
+
+<li>Rumelhart, D., 1989, “The Architecture of Mind: A
+Connectionist Approach”, in <em>Foundations of Cognitive
+Science</em>, M. Posner (ed.), Cambridge, MA: MIT Press.</li>
+
+<li>Rumelhart, D., G. Hinton, and R. Williams, 1986, “Learning
+Representations by Back-propagating Errors”, <em>Nature</em>,
+323: 533–536.</li>
+
+<li>Rumelhart, D. and J. McClelland, 1986, “PDP Models and
+General Issues in Cognitive Science”, in Rumelhart et
+al. 1986: 110–146.</li>
+
+<li>Rumelhart, D., J. McClelland, and the PDP Research Group,
+1986, <em>Parallel Distributed Processing</em>, vol. 1. Cambridge:
+MIT Press.</li>
+
+<li>Rupert, R., 2008, “Frege’s Puzzle and Frege Cases:
+Defending a Quasi-Syntactic Solution”, <em>Cognitive Systems
+Research</em>, 9: 76–91.</li>
+
+<li>–––, 2009, <em>Cognitive Systems and the
+Extended Mind</em>, Oxford: Oxford University Press.</li>
+
+<li>Russell, S. and P. Norvig, 2010, <em>Artificial Intelligence: A
+Modern Approach</em>, 3<sup>rd</sup> ed., New York: Prentice
+Hall.</li>
+
+<li>Sawyer, S., 2000, “There Is No Viable Notion of Narrow
+Content”, in <em>Contemporary Debates in Philosophy of
+Mind</em>, B. McLaughlin and J. Cohen (eds), Malden: Blackwell.</li>
+
+<li>Schneider, S., 2005, “Direct Reference, Psychological
+Explanation, and Frege Cases”, <em>Mind and Language</em>, 20:
+423–447.</li>
+
+<li>–––, 2011, <em>The Language of Thought: A New
+Philosophical Direction</em>, Cambridge, MA: MIT Press.</li>
+
+<li>Searle, J., 1980, “Minds, Brains, and
+Programs”, <em>Behavioral and Brain Sciences</em>, 3:
+417–457.</li>
+
+<li>–––, 1990, “Is the Brain a Digital
+Computer?”, <em>Proceedings and Addresses of the American
+Philosophical Association</em>, 64: 21–37.</li>
+
+<li>Segal, G., 2000, <em>A Slim Book About Narrow Content</em>,
+Cambridge, MA: MIT Press.</li>
+
+<li>Shagrir, O., 2001, “Content, Computation, and
+Externalism”, <em>Mind</em>, 110: 369–400.</li>
+
+<li>–––, 2006, “Why We View the Brain as a
+Computer”, <em>Synthese</em>, 153: 393–416.</li>
+
+<li>–––, 2014, “Review of <em>Explaining the
+Computational Theory of Mind</em>, by Marcin
+Milkowski”, <em>Notre Dame Review of Philosophy</em>, January
+2014.</li>
+
+<li>–––, forthcoming, “In Defense of the
+Semantic View of Computation”, <em>Synthese</em>,
+first online 11 October 2018; doi:10.1007/s11229-018-01921-z</li>
+
+<li>Shannon, C., 1948, “A Mathematical Theory of
+Communication”, <em>Bell System Technical Journal</em> 27:
+379–423, 623–656.</li>
+
+<li>Shapiro, S., 2003, “Truth, Mechanism, and Penrose’s
+New Argument”, <em>Journal of Philosophical Logic</em>, 32:
+19–42.</li>
+
+<li>Shea, N., 2013, “Naturalizing Representational
+Content”, <em>Philosophy Compass</em>, 8: 496–509.</li>
+
+<li>–––, 2018, <em>Representation in Cognitive
+Science</em>, Oxford: Oxford University Press.</li>
+
+<li>Sieg, W., 2009, “On Computability”, in <em>Philosophy
+of Mathematics</em>, A. Irvine (ed.), Burlington: Elsevier.</li>
+
+<li>Siegelmann, H. and E. Sontag, 1991, “Turing Computability
+with Neural Nets”, <em>Applied Mathematics Letters</em>, 4:
+77–80.</li>
+
+<li>Siegelmann, H. and E. Sontag, 1995, “On the Computational
+Power of Neural Nets”, <em>Journal of Computer and Science
+Systems</em>, 50: 132–150.</li>
+
+<li>Silverberg, A., 2006, “Chomsky and Egan on Computational
+Theories of Vision”, <em>Minds and Machines</em>, 16:
+495–524.</li>
+
+<li>Sloman, A., 1978, <em>The Computer Revolution in Philosophy</em>,
+Hassocks: The Harvester Press.</li>
+
+<li>Smolensky, P., 1988, “On the Proper Treatment of
+Connectionism”, <em>Behavioral and Brain Sciences</em>, 11:
+1–74.</li>
+
+<li>–––, 1991, “Connectionism, Constituency,
+and the Language of Thought”, in <em>Meaning in Mind: Fodor and
+His Critics</em>, B. Loewer and G. Rey (eds), Cambridge:
+Blackwell.</li>
+
+<li>Sperber, D., 2002, “In Defense of Massive Modularity”,
+in <em>Language, Brain, and Cognitive Development: Essays in Honor of
+Jacques Mehler</em>, E. Dupoux (ed.), Cambridge, MA: MIT Press.</li>
+
+<li>Sprevak, M., 2010, “Computation, Individuation, and the
+Received View on Representation”, <em>Studies in History and
+Philosophy of Science</em>, 41: 260–270.</li>
+
+<li>–––, 2019, “Triviality Arguments About
+Computational Implementation”, in Sprevak and Colombo 2019:
+175–191.</li>
+
+<li>–––, forthcoming, “Two Kinds of
+Information Processing in Cognition”, <em>Review of Philosophy
+and Psychology</em>.</li>
+
+<li>Sprevak, M. and Colombo, M., 2019, <em>The Routledge Handbook of
+the Computational Mind</em>, New York: Routledge.</li>
+
+<li>Stalnaker, R., 1999, <em>Context and Content</em>, Oxford: Oxford
+University Press.</li>
+
+<li>Stich, S., 1983, <em>From Folk Psychology to Cognitive
+Science</em>, Cambridge, MA: MIT Press.</li>
+
+<li>Thelen, E. and L. Smith, 1994, <em>A Dynamical Systems Approach to
+the Development of Cognition and Action</em>, Cambridge, MA: MIT
+Press.</li>
+
+<li>Thrun, S., W. Burgard, and D. Fox, 2006, <em>Probabilistic
+Robotics</em>, Cambridge, MA: MIT Press.</li>
+
+<li>Thrun, S., M. Montemerlo, and H. Dahlkamp, et al., 2006,
+“Stanley: The Robot That Won the DARPA Grand
+Challenge”, <em>Journal of Field Robotics</em>, 23:
+661–692.</li>
+
+<li>Tolman, E., 1948, “Cognitive Maps in Rats and
+Men”, <em>Psychological Review</em>, 55: 189–208.</li>
+
+<li>Trappenberg, T., 2010, <em>Fundamentals of Computational
+Neuroscience</em>, Oxford: Oxford University Press.</li>
+
+<li>Turing, A., 1936, “On Computable Numbers, with an
+Application to the Entscheidungsproblem”, <em>Proceedings of the
+London Mathematical Society</em>, 42: 230–265.</li>
+
+<li>–––, 1950, “Computing Machinery and
+Intelligence”, <em>Mind</em>, 49: 433–460.</li>
+
+<li>van Gelder, T., 1990, “Compositionality: A Connectionist
+Variation on a Classical Theme”,<em>Cognitive Science</em>, 14:
+355–384.</li>
+
+<li>van Gelder, T. and R. Port, 1995, “It’s About Time: An
+Overview of the Dynamical Approach to Cognition”, in <em>Mind as
+Motion: Explorations in the Dynamics of Cognition</em>, R. Port and
+T. van Gelder (eds), Cambridge, MA: MIT Press.</li>
+
+<li>Varela, F., Thompson, E. and Rosch, E., 1991, <em>The Embodied
+Mind: Cognitive Science and Human Experience</em>, Cambridge, MA: MIT
+Press.</li>
+
+<li>von Neumann, J., 1945, “First Draft of a Report on the
+EDVAC”, Moore School of Electrical Engineering, University of
+Pennsylvania. Philadelphia, PA.</li>
+
+<li>Wakefield, J., 2002, “Broad versus Narrow Content in the
+Explanation of Action: Fodor on Frege Cases”, <em>Philosophical
+Psychology</em>, 15: 119–133.</li>
+
+<li>Weiskopf, D., 2004, “The Place of Time in
+Cognition”, <em>British Journal for the Philosophy of
+Science</em>, 55: 87–105.</li>
+
+<li>Whitehead, A.N. and B. Russell, 1925, <em>Principia
+Mathematica</em>, vol. 1, 2<sup>nd</sup> ed., Cambridge: Cambridge
+University Press.</li>
+
+<li>Wilson, R., 2005, “What Computers (Still, Still) Can’t
+Do”, in <em>New Essays in Philosophy of Language and Mind</em>,
+R. Stainton, M. Ezcurdia, and C.D. Viger (eds). <em>Canadian Journal
+of Philosophy</em>, supplementary issue 30: 407–425.</li>
+
+<li>Yablo, S., 1997, “Wide Causation”, <em>Philosophical
+Perspectives</em>, 11: 251–281.</li>
+
+<li>–––, 2003, “Causal
+Relevance”, <em>Philosophical Issues</em>, 13:
+316–327.</li>
+
+<li>Zednik, C., 2019, “Computational Cognitive
+Neuroscience”, in Sprevak and Colombo 2019: 357–369.</li>
+
+<li>Zylberberg, A., S. Dehaene, P. Roelfsema, and M. Sigman, 2011,
+“The Human Turing Machine”, <em>Trends in Cognitive
+Science</em>, 15: 293–300.</li>
+
+</ul>
+
+</div>
+
+<div id="academic-tools">
+
+<h2><a id="Aca">Academic Tools</a></h2>
+
+<blockquote>
+<table class="vert-top">
+<tbody><tr>
+<td><img src="../../symbols/sepman-icon.jpg" alt="sep man icon" /></td>
+<td><a href="https://plato.stanford.edu/cgi-bin/encyclopedia/archinfo.cgi?entry=computational-mind&amp;archive=spr2020" target="other">How to cite this entry</a>.</td>
+</tr>
+
+<tr>
+<td><img src="../../symbols/sepman-icon.jpg" alt="sep man icon" /></td>
+<td><a href="https://leibniz.stanford.edu/friends/preview/computational-mind/" target="other">Preview the PDF version of this entry</a> at the
+ <a href="https://leibniz.stanford.edu/friends/" target="other">Friends of the SEP Society</a>.</td>
+</tr>
+
+<tr>
+<td><img src="../../symbols/inpho.png" alt="inpho icon" /></td>
+<td><a href="https://www.inphoproject.org/entity?sep=computational-mind&amp;redirect=True" target="other">Look up this entry topic</a>
+ at the <a href="https://www.inphoproject.org/" target="other">Internet Philosophy Ontology Project</a>
+ (InPhO).</td>
+</tr>
+
+<tr>
+<td><img src="../../symbols/pp.gif" alt="phil papers icon" /></td>
+<td><a href="http://philpapers.org/sep/computational-mind/" target="other">Enhanced bibliography for this entry</a>
+at <a href="http://philpapers.org/" target="other">PhilPapers</a>, with links to its database.</td>
+</tr>
+
+</tbody></table>
+</blockquote>
+
+</div>
+
+<div id="other-internet-resources">
+
+<h2><a id="Oth">Other Internet Resources</a></h2>
+
+<ul>
+
+<li>Graves, A., G. Wayne, and I. Danihelko, 2014, 
+“<a href="https://arxiv.org/abs/1410.5401" target="other">Neural Turing Machines</a>”, manuscript at arXiv.org.</li>
+
+<li>Horst, Steven, “The Computational Theory of Mind”,
+ <em>Stanford Encyclopedia of Philosophy</em> (Summer 2015 Edition),
+ Edward N. Zalta (ed.), URL =
+&lt;<a href="https://plato.stanford.edu/archives/sum2015/entries/computational-mind/">https://plato.stanford.edu/archives/sum2015/entries/computational-mind/</a>&gt;. [This is the previous entry on the
+Computational Theory of Mind in the 
+<em>Stanford Encyclopedia of Philosophy</em> — see the 
+<a href="https://plato.stanford.edu/cgi-bin/encyclopedia/archinfo.cgi?entry=computational-mind&amp;archive=spr2020" class="plain" target="other">version history</a>.]</li>
+
+<li>Marcin Milkowski, 
+ “<a href="http://www.iep.utm.edu/compmind/" target="other">The Computational Theory of Mind</a>,”
+ in the <em>Internet Encyclopedia of Philosophy</em>.</li>
+
+<li>Pozzi, I., S. Bohté, and P. Roelfsema, 2019, 
+“<a href="https://arxiv.org/pdf/1811.01768.pdf" target="other">A Biologically Plausible Learning Rule for Deep Learning in the Brain</a>”, 
+ manuscript at arXiv.org.</li>
+
+<li><a href="http://philpapers.org/browse/philosophy-of-artificial-intelligence" target="other">Bibliography on philosophy of artificial intelligence</a>,
+ in Philpapers.org.</li>
+
+</ul>
+
+</div>
+
+<div id="related-entries">
+
+<h2><a id="Rel">Related Entries</a></h2>
+
+<p>
+
+ <a href="../reasoning-analogy/">analogy and analogical reasoning</a> |
+ <a href="../anomalous-monism/">anomalous monism</a> |
+ <a href="../causation-metaphysics/">causation: the metaphysics of</a> |
+ <a href="../chinese-room/">Chinese room argument</a> |
+ <a href="../church-turing/">Church-Turing Thesis</a> |
+ <a href="../cognitive-science/">cognitive science</a> |
+ <a href="../computability/">computability and complexity</a> |
+ <a href="../computation-physicalsystems/">computation: in physical systems</a> |
+ <a href="../computer-science/">computer science, philosophy of</a> |
+ <a href="../computing-history/">computing: modern history of</a> |
+ <a href="../connectionism/">connectionism</a> |
+ <a href="../culture-cogsci/">culture: and cognitive science</a> |
+ <a href="../folkpsych-simulation/">folk psychology: as mental simulation</a> |
+ <a href="../frame-problem/">frame problem</a> |
+ <a href="../functionalism/">functionalism</a> |
+ <a href="../goedel/">Gödel, Kurt</a> |
+ <a href="../goedel-incompleteness/">Gödel, Kurt: incompleteness theorems</a> |
+ <a href="../hilbert-program/">Hilbert, David: program in the foundations of mathematics</a> |
+ <a href="../language-thought/">language of thought hypothesis</a> |
+ <a href="../mental-causation/">mental causation</a> |
+ <a href="../content-causal/">mental content: causal theories of</a> |
+ <a href="../content-externalism/">mental content: externalism about</a> |
+ <a href="../content-narrow/">mental content: narrow</a> |
+ <a href="../content-teleological/">mental content: teleological theories of</a> |
+ <a href="../mental-imagery/">mental imagery</a> |
+ <a href="../mental-representation/">mental representation</a> |
+ <a href="../representation-medieval/">mental representation: in medieval philosophy</a> |
+ <a href="../mind-identity/">mind/brain identity theory</a> |
+ <a href="../models-science/">models in science</a> |
+ <a href="../multiple-realizability/">multiple realizability</a> |
+ <a href="../other-minds/">other minds</a> |
+ <a href="../reasoning-automated/">reasoning: automated</a> |
+ <a href="../reasoning-defeasible/">reasoning: defeasible</a> |
+ <a href="../scientific-reduction/">reduction, scientific</a> |
+ <a href="../simulations-science/">simulations in science</a> |
+ <a href="../turing/">Turing, Alan</a> |
+ <a href="../turing-machine/">Turing machines</a> |
+ <a href="../turing-test/">Turing test</a> |
+ <a href="../zombies/">zombies</a>
+
+</p>
+
+</div>
+
+<script type="text/javascript" src="local.js"></script>
+<script type="text/javascript" src="../../MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</div><!-- #aueditable --><!--DO NOT MODIFY THIS LINE AND BELOW-->
+
+<!-- END ARTICLE HTML -->
+
+</div> <!-- End article-content -->
+
+  <div id="article-copyright">
+    <p>
+ <a href="../../info.html#c">Copyright © 2020</a> by
+
+<br />
+Michael Rescorla
+&lt;<a href="mailto:rescorla%40ucla%2eedu"><em>rescorla<abbr title=" at ">@</abbr>ucla<abbr title=" dot ">.</abbr>edu</em></a>&gt;
+    </p>
+  </div>
+
+</div> <!-- End article -->
+
+<!-- NOTE: article banner is outside of the id="article" div. -->
+<div id="article-banner" class="scroll-block">
+     <div id="article-banner-content">
+  <a href="../../fundraising/">
+  Open access to the SEP is made possible by a world-wide funding initiative.<br />
+  Please Read How You Can Help Keep the Encyclopedia Free</a>
+ </div>
+
+
+</div> <!-- End article-banner -->
+
+    </div> <!-- End content -->
+
+    <div id="footer">
+
+      <div id="footer-menu">
+        <div class="menu-block">
+          <h4><i class="icon-book"></i> Browse</h4>
+          <ul role="menu">
+            <li><a href="../../contents.html">Table of Contents</a></li>
+            <li><a href="../../new.html">New in this Archive</a></li>
+            
+            <li><a href="../../published.html">Chronological</a></li>
+            <li><a href="../../../../archives/">Archives <i class="icon-external-link"></i></a></li>
+          </ul>
+        </div>
+        <div class="menu-block">
+          <h4><i class="icon-info-sign"></i> About</h4>
+          <ul role="menu">
+            <li><a href="../../info.html">Editorial Information</a></li>
+            <li><a href="../../about.html">About the SEP</a></li>
+            <li><a href="../../board.html">Editorial Board</a></li>
+            <li><a href="../../cite.html">How to Cite the SEP</a></li>
+            <li><a href="../../special-characters.html">Special Characters</a></li>
+            
+            <li><a href="../../../../contact.html">Contact <i class="icon-external-link"></i></a></li>
+          </ul>
+        </div>
+        <div class="menu-block">
+          <h4><i class="icon-leaf"></i> Support SEP</h4>
+          <ul role="menu">
+            <li><a href="../../../../support/">Support the SEP</a></li>
+            <li><a href="../../../../support/friends.html">PDFs for SEP Friends</a></li>
+            <li><a href="../../../../support/donate.html">Make a Donation</a></li>
+            <li><a href="../../../../support/sepia.html">SEPIA for Libraries</a></li>
+          </ul>
+        </div>
+      </div> <!-- End footer menu -->
+
+      <div id="mirrors">
+        <div id="mirror-info">
+          <h4><i class="icon-globe"></i> Mirror Sites</h4>
+          <p>View this site from another server:</p>
+        </div>
+                <div class="btn-group">
+<a class="btn dropdown-toggle" data-toggle="dropdown" href="https://plato.stanford.edu/"><span class="flag flag-usa"></span> USA (Main Site) <span class="caret"></span><span class="mirror-source">CSLI, Stanford University</span></a>          <ul class="dropdown-menu">
+            <li><a href="https://stanford.library.sydney.edu.au/archives/spr2020/entries/computational-mind/"><span class="flag flag-australia"></span> Australia <span class="mirror-source">Library, University of Sydney</span></a>           </li>
+            <li><a href="https://seop.illc.uva.nl/archives/spr2020/entries/computational-mind/"><span class="flag flag-netherlands"></span> Netherlands <span class="mirror-source">ILLC, University of Amsterdam</span></a>           </li>
+          </ul>
+        </div>
+      </div> <!-- End mirrors -->
+      
+      <div id="site-credits">
+        <p class="csli-logo"><a href="https://www-csli.stanford.edu/"><img src="../../symbols/SU_csli.png" width="355" alt="Stanford Center for the Study of Language and Information" /></a></p>
+        <p>The Stanford Encyclopedia of Philosophy is <a href="../../info.html#c">copyright © 2020</a> by <a href="http://mally.stanford.edu/">The Metaphysics Research Lab</a>, Center for the Study of Language and Information (CSLI), Stanford University</p>
+        <p>Library of Congress Catalog Data: ISSN 1095-5054</p>
+      </div> <!-- End site credits -->
+
+    </div> <!-- End footer -->
+
+  </div> <!-- End container -->
+
+   <!-- NOTE: Script required for drop-down button to work (mirrors). -->
+  <script>
+    $('.dropdown-toggle').dropdown();
+  </script>
+
+
+
+
+
+<div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: MathJax_Main, sans-serif;"></div></div></body></html>

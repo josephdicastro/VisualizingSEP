@@ -1,0 +1,2365 @@
+<!DOCTYPE html><!--[if lt IE 7]> <html class="ie6 ie"> <![endif]--><!--[if IE 7]>    <html class="ie7 ie"> <![endif]--><!--[if IE 8]>    <html class="ie8 ie"> <![endif]--><!--[if IE 9]>    <html class="ie9 ie"> <![endif]--><!--[if !IE]> --><html xmlns="http://www.w3.org/1999/xhtml"><!-- <![endif]--><head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>
+Space and Time: Inertial Frames (Stanford Encyclopedia of Philosophy/Summer 2020 Edition)
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="noarchive, noodp" />
+<meta property="citation_title" content="Space and Time: Inertial Frames" />
+<meta property="citation_author" content="DiSalle, Robert" />
+<meta property="citation_publication_date" content="2002/03/30" />
+<meta name="DC.title" content="Space and Time: Inertial Frames" />
+<meta name="DC.creator" content="DiSalle, Robert" />
+<meta name="DCTERMS.issued" content="2002-03-30" />
+<meta name="DCTERMS.modified" content="2020-04-15" />
+
+<!-- NOTE: Import webfonts using this link: -->
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,200&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" media="screen,handheld" href="../../css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" media="screen,handheld" href="../../css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css" />
+<!--[if IE 7]> <link rel="stylesheet" type="text/css" href="../../css/font-awesome-ie7.min.css"> <![endif]-->
+<link rel="stylesheet" type="text/css" media="screen,handheld" href="../../css/style.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../../css/print.css" />
+<link rel="stylesheet" type="text/css" href="../../css/entry.css" />
+<!--[if IE]> <link rel="stylesheet" type="text/css" href="../../css/ie.css" /> <![endif]-->
+<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+
+<!-- NOTE: Javascript for sticky behavior needed on article and ToC pages -->
+<script type="text/javascript" src="../../js/jquery-scrolltofixed-min.js"></script>
+<script type="text/javascript" src="../../js/entry.js"></script>
+
+<!-- SEP custom script -->
+<script type="text/javascript" src="../../js/sep.js"></script>
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom &gt; * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd &gt; * {display: block!important}
+.MJXp-script-box &gt; *  {display: table!important; height: 50%}
+.MJXp-script-box &gt; * &gt; * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box &gt; *:last-child &gt; * {vertical-align: bottom}
+.MJXp-script-box &gt; * &gt; * &gt; * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over &gt; * {display: block!important}
+.MJXp-munderover &gt; * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable &gt; * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr &gt; .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child &gt; .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr &gt; .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child &gt; .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><script type="text/javascript" src="https://plato.stanford.edu/archives/sum2020/MathJax/jax/output/CommonHTML/jax.js?V=2.7.2"></script><script type="text/javascript" src="https://plato.stanford.edu/archives/sum2020/MathJax/jax/output/CommonHTML/fonts/TeX/fontdata.js?V=2.7.2"></script></head>
+
+<!-- NOTE: The nojs class is removed from the page if javascript is enabled. Otherwise, it drives the display when there is no javascript. -->
+<body class="archive article" id="pagetopright"><div id="MathJax_Message" style="">Loading [MathJax]/jax/output/CommonHTML/fonts/TeX/fontdata.js</div>
+<div id="container">
+<div id="header-wrapper">
+  <div id="header">
+    <div id="branding">
+      <div id="site-logo"><a href="../../index.html"><img src="../../symbols/sep-man-red.png" alt="SEP logo" /></a></div>
+      <div id="site-title"><a href="../../index.html">Stanford Encyclopedia of Philosophy Archive<div id="site-subtitle">Summer 2020 Edition</div></a></div>
+    </div>
+    <div id="navigation">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <button class="btn btn-navbar collapsed" data-target=".collapse-main-menu" data-toggle="collapse" type="button"> <i class="icon-reorder"></i> Menu </button>
+            <div class="nav-collapse collapse-main-menu collapse">
+              <ul class="nav">
+                <li class="dropdown"><a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-book"></i> Browse</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                    <li><a href="../../contents.html">Table of Contents</a></li>
+                    <li><a href="../../new.html">New in this Archive</a></li>
+                    
+                    <li><a href="../../published.html">Chronological</a></li>
+                    <li><a href="../../../../archives/">Archives <i class="icon-external-link"></i></a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a id="drop2" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-info-sign"></i> About</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                    <li><a href="../../info.html">Editorial Information</a></li>
+                    <li><a href="../../about.html">About the SEP</a></li>
+                    <li><a href="../../board.html">Editorial Board</a></li>
+                    <li><a href="../../cite.html">How to Cite the SEP</a></li>
+                    <li><a href="../../special-characters.html">Special Characters</a></li>
+                    
+                    <li><a href="../../../../contact.html">Contact <i class="icon-external-link"></i></a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a id="drop3" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="icon-leaf"></i> Support SEP</a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                    <li><a href="../../../../support/">Support the SEP</a></li>
+                    <li><a href="../../../../support/friends.html">PDFs for SEP Friends</a></li>
+                    <li><a href="../../../../support/donate.html">Make a Donation</a></li>
+                    <li><a href="../../../../support/sepia.html">SEPIA for Libraries</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End navigation -->
+    
+    <div id="search">
+      <form id="search-form" method="get" action="../../../../search/searcher.py">
+        <input type="search" name="query" placeholder="Search this archive" />
+<input type="hidden" name="archive" value="sum2020" />
+
+        <div class="search-btn-wrapper"><button class="btn search-btn" type="submit"><i class="icon-search"></i></button></div>
+      </form>
+    </div>
+    <!-- End search --> 
+    
+  </div>
+  <!-- End header --> 
+</div>
+<!-- End header wrapper -->
+
+<div id="content">
+
+<!-- Begin article sidebar -->
+<div id="article-sidebar" class="sticky" style="z-index: 999;">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <button class="btn btn-navbar collapsed" data-target=".collapse-sidebar" data-toggle="collapse" type="button"> <i class="icon-reorder"></i> Entry Navigation </button>
+        <div id="article-nav" class="nav-collapse collapse-sidebar collapse">
+          <ul class="nav">
+            <li><a href="#toc">Entry Contents</a></li>
+            <li><a href="#Bib">Bibliography</a></li>
+            <li><a href="#Aca">Academic Tools</a></li>
+            <li><a href="https://leibniz.stanford.edu/friends/preview/spacetime-iframes/">Friends PDF Preview <i class="icon-external-link"></i></a></li>
+            <li><a href="https://plato.stanford.edu/cgi-bin/encyclopedia/archinfo.cgi?entry=spacetime-iframes&amp;archive=sum2020">Author and Citation Info <i class="icon-external-link"></i></a> </li>
+            <li><a href="#pagetopright" class="back-to-top">Back to Top <i class="icon-angle-up icon2x"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div></div>
+<!-- End article sidebar --> 
+
+<!-- NOTE: Article content must have two wrapper divs: id="article" and id="article-content" -->
+<div id="article">
+<div id="article-content">
+
+<!-- BEGIN ARTICLE HTML -->
+
+
+<div id="aueditable"><!--DO NOT MODIFY THIS LINE AND ABOVE-->
+
+<h1>Space and Time: Inertial Frames</h1><div id="pubinfo"><em>First published Sat Mar 30, 2002; substantive revision Wed Apr 15, 2020</em></div>
+
+<div id="preamble">
+
+<p>
+A “frame of reference” is a standard relative to which
+motion and rest may be measured; any set of points or objects that are
+at rest relative to one another enables us, in principle, to describe
+the relative motions of bodies. A frame of reference is therefore a
+purely kinematical device, for the geometrical description of motion
+without regard to the masses or forces involved. A dynamical account
+of motion leads to the idea of an “inertial frame,” or a
+reference frame relative to which motions have distinguished dynamical
+properties. For that reason an inertial frame has to be understood as
+a spatial reference frame together with some means of measuring time,
+so that uniform motions can be distinguished from accelerated motions.
+The laws of Newtonian dynamics provide a simple definition: an
+inertial frame is a reference-frame with a time-scale, relative to
+which the motion of a body not subject to forces is always rectilinear
+and uniform, accelerations are always proportional to and in the
+direction of applied forces, and applied forces are always met with
+equal and opposite reactions. It follows that, in an inertial frame,
+the center of mass of a closed system of interacting bodies is always
+at rest or in uniform motion. It also follows that any other frame of
+reference moving uniformly relative to an inertial frame is also an
+inertial frame. For example, in Newtonian celestial mechanics, taking
+the “fixed stars” as a frame of reference, we can, in
+principle, determine an (approximately) inertial frame whose center is
+the center of mass of the solar system; relative to this frame, every
+acceleration of every planet can be accounted for (approximately) as a
+gravitational interaction with some other planet in accord with
+Newton’s laws of motion.</p>
+
+<p>
+This appears to be a simple and straightforward concept. By inquiring
+more narrowly into its origins and meaning, however, we begin to
+understand why it has been an ongoing subject of philosophical
+concern. It originated in a profound philosophical consideration of
+the principles of relativity and invariance in the context of
+Newtonian mechanics. Further reflections on it, in different
+theoretical contexts, had extraordinary consequences for
+20<sup>th</sup>-century theories of space and time.</p>
+</div>
+
+<div id="toc">
+<!--Entry Contents-->
+<ul>
+<li><a href="#RelaRefeFramClasMech">1. Relativity and reference frames in classical mechanics</a>
+   <ul>
+   <li><a href="#OrigGaliRela">1.1 The origins of Galilean relativity</a></li>
+   <li><a href="#PhilContOverAbsoRelaMoti">1.2 Philosophical controversy over absolute and relative motion</a></li>
+   <li><a href="#GaliRelaNewtPhys">1.3 Galilean relativity in Newtonian physics</a></li>
+   <li><a href="#LingProbAbsoSpac">1.4 The lingering problem of absolute space</a></li>
+   <li><a href="#N19tCentAnalLawIner">1.5 19th-century analyses of the law of inertia</a></li>
+   <li><a href="#EmerConcInerFram">1.6 The emergence of the concept of inertial frame</a></li>
+   <li><a href="#QuasInerFramNewtCoroVI">1.7 “Quasi-inertial” frames: Newton’s Corollary VI</a></li>
+   </ul></li>
+<li><a href="#InerFram20thCentSpecGeneRela">2. Inertial frames in the 20<sup>th</sup> century: special and general relativity</a>
+   <ul>
+   <li><a href="#InerFramNewtSpac">2.1 Inertial frames in Newtonian spacetime</a></li>
+   <li><a href="#ConfBetwGaliRelaModeElec">2.2 The conflict between Galilean relativity and modern electrodynamics</a></li>
+   <li><a href="#SpecRelaLoreInva">2.3 Special relativity and Lorentz invariance</a></li>
+   <li><a href="#SimuRefeFram">2.4 Simultaneity and reference-frames</a></li>
+   <li><a href="#SpecRelaLoreInvaGeneRelaGeneCova">2.5 From special relativity and Lorentz invariance to general relativity and general covariance</a></li>
+   </ul></li>
+<li><a href="#Bib">Bibliography</a></li>
+<li><a href="#Aca">Academic Tools</a></li>
+<li><a href="#Oth">Other Internet Resources</a></li>
+<li><a href="#Rel">Related Entries</a></li>
+</ul>
+<!--Entry Contents-->
+<hr />
+</div>
+
+<div id="main-text">
+
+<h2 id="RelaRefeFramClasMech">1. Relativity and reference frames in classical mechanics</h2>
+
+<h3 id="OrigGaliRela">1.1 The origins of Galilean relativity</h3>
+
+<p>
+The term “reference frame” was coined in the
+19<sup>th</sup> century, but it has a long prehistory, beginning,
+perhaps, with the emergence of the Copernican theory. The significant
+point was not the replacement of the earth by the sun as the center of
+all motion in the universe, but the recognition of both the earth and
+the sun as merely possible points of view from which the motions of
+the celestial bodies may be described. This implied that the basic
+task of Ptolemaic astronomy—to represent the planetary motions
+by combinations of circular motions—could take any point to be
+fixed, without sacrificing predictive power. Therefore, as Copernicus
+suggested in the opening arguments of <em>On the Revolutions of the
+Heavenly Spheres</em>, the choice of any particular point required
+some justification on grounds other than mere successful astronomical
+prediction. The most persuasive grounds, seemingly, were physical: we
+don’t perceive the physical effects that we would expect the
+earth’s motion to produce. Copernicus himself noted, however, in
+reply, that we can indeed undergo motions that are physically
+imperceptible, as on a smoothly moving ship (1543, p.6). At least in
+some circumstances, we can easily treat our moving point of view as if
+it were at rest. </p>
+
+<p>
+As the basic programme of Ptolemy and Copernicus gave way to that of
+early classical mechanics as developed by Galileo, this equivalence of
+points of view was made more precise and explicit. Galileo was unable
+to present a decisive argument for the motion of the earth around the
+sun. He demonstrated, however, that the Copernican view does not
+contradict our experience of a seemingly stable earth. He accomplished
+this through a principle that, in the precise form that it takes in
+Newtonian mechanics, has become known as the “principle of
+Galilean relativity”: mechanical experiments will have the same
+results in a system in uniform motion that they have in a system at
+rest. Arguments against the motion of the earth had typically appealed
+to experimental evidence—e.g., that a stone dropped from a tower
+falls to the base of the tower, instead of being left behind as the
+earth rotates during its fall. But Galileo argued persuasively that
+such experiments would happen just as they do whether the earth were
+moving or not, provided that the motion is sufficiently uniform. (See
+Figure 1.) Galileo’s account of this was not precisely the
+principle that we call “Galilean relativity”; he seems to
+have thought that a system in uniform circular motion, such as a frame
+at rest on the rotating earth, would be indistinguishable from a frame
+truly at rest. The principle was named in his honor because he had
+grasped the underlying idea of dynamical equivalence: he understood
+the composition of motion, and understood how individual motions of
+bodies within a system—such as the fall of a stone from a
+tower—are composed with the motion of the system as a whole.
+This principle of composition, combined with the idea that bodies
+maintain their uniform motion, formed the basis for the idea of
+dynamically indistinguishable frames of reference. </p>
+
+<div class="figure avoid-break">
+<img src="Fig1.png" style="width:300px;" alt="figure 1" />
+
+<p>
+<span class="figlabel">Figure 1: Galileo’s Argument</span> If
+the earth is rotating sufficiently uniformly, a stone dropped from the
+tower will fall straight to the base, just as a stone dropped from the
+mast of a uniformly moving ship will fall to the foot of the mast. In
+both cases the stone’s vertical motion will be smoothly composed
+with its horizontal motion. Hence a sufficiently uniform motion will
+be indistinguishable from rest.</p>
+</div>
+
+<h3 id="PhilContOverAbsoRelaMoti">1.2 Philosophical controversy over absolute and relative motion</h3>
+
+<p>
+Leibniz, later, articulated a more general “equipollence of
+hypotheses”: in any system of interacting bodies, any hypothesis
+that any particular body is at rest is equivalent to any other.
+Therefore neither Copernicus’ nor Ptolemy’s view can be
+true—though one may be judged simpler than the
+other—because both are merely possible hypothetical
+interpretations of the same relative motions. This principle clearly
+defines (what we would call) a set of reference frames. They differ in
+their arbitrary choices of a resting point or origin, but agree on the
+relative positions of bodies at any moment and their changing relative
+distances through time.</p>
+
+<p>
+For Leibniz and many others, this general equivalence was a matter of
+philosophical principle, founded in the metaphysical conviction that
+space itself is nothing more than an abstraction from the geometrical
+relations among bodies. In some form or other it was a widely shared
+tenet of the 17<sup>th</sup>-century “mechanical
+philosophy”. Yet it was flatly incompatible with physics as
+Leibniz himself, and the other “mechanists,” actually
+conceived it. For the basic program of mechanical explanation depended
+essentially on the concept of a privileged state of motion, as
+expressed in the common assumption that was the forerunner of the
+“principle of inertia”: bodies maintain a state of
+rectilinear motion until acted upon by an external cause. Thus their
+fundamental conception of force, as the power of a body to change the
+state of another, likewise depended on this notion of a privileged
+state. This dependence was clearly exhibited in the vortex theory of
+planetary motion, which presupposed that any planet would move in a
+straight line unless impeded. Its actual orbit was therefore explained
+by the balance between the planet’s inherent centrifugal
+tendency (its tendency to follow the tangent to the orbit) and the
+pressure of the surrounding medium.</p>
+
+<p>
+For this reason, the notion of a dispute between
+“relativists” or “relationists” and
+“absolutists” or “substantivalists”, in the
+17<sup>th</sup> century, is a drastic oversimplification. Newton, in
+his controversial Scholium on space, time, and motion, was not merely
+asserting that motion is absolute in the face of the mechanists’
+relativist view. He was arguing that a conception of absolute motion
+was already implicit in the views of his opponents—that it was
+implicit in their conception, which he largely shared, of physical
+cause and effect. The general equivalence of reference-frames was
+implicitly denied by a physics that characterized forces as powers to
+change the states of motion of bodies.</p>
+
+<p>
+This development placed the subject of reference frames in a new
+theoretical context. Having set aside the reference frame of common
+sense—the frame in which the earth is at rest in the center,
+with the heavens revolving around it—the mechanical physics of
+this time naturally tied this subject with novel theoretical
+conceptions of motion, and its physical causes and effects. Copernicus
+argued for a heliocentric system, not from a physical theory of
+motion, but from the comparative simplicity and reasonableness that it
+introduced into astronomy; he worked within the established theory of
+the causes of celestial motions, namely, the revolutions of the
+heavenly spheres. After Copernicus, however—more precisely,
+after the model of revolving spheres was largely
+abandoned—determining the right frame of reference was connected
+with discovering the true physical causes of the planets’
+motions. Philosophers such as Kepler, Descartes, Huygens, Leibniz, and
+Newton held vastly differing views of physical causation, motion. and
+the relativity of motion. They agreed, however, that the heliocentric
+picture was uniquely suited for giving a causal account of planetary
+motions, as the effects of physical actions originating in the sun. To
+Kepler and Descartes, for example, the rotation of the sun on its
+axis, in the same sense in which the planets revolved, identified it
+as the cause of those revolutions.</p>
+
+<p>
+The link between the causal account of motion and the more general
+conceptual account of “true” motion was never obvious or
+straightforward. Descartes’s heliocentric causal account, in
+which the planets moved in vortices arising from the sun’s
+rotation, was disconnected from his abstract account of motion
+“according to the truth of the matter,” or “in the
+proper sense” (Descartes 1642, part II section XXV). Since there
+are innumerable objects to which one might refer the motion of any
+given body, the reference may appear to be a matter of arbitrary
+choice. The unambiguous reference for the motion of any body, he
+argued, is provided by the bodies immediately touching it. Newton, in
+response, argued that Descartes’s philosophical account of
+motion is flatly incompatible with his causal account. To Newton, it
+was incoherent to appeal to a causal account of motion when explaining
+the centrifugal tendency of a body in its orbit around the sun, while
+identifying its “proper” motion only by its relations to
+the bodies immediately contiguous to it (Newton 1684a, Stein 1967,
+Rynasiewicz 2014). Hence Newton’s argument that the only
+unambiguous standard of motion is a body’s change of position
+with respect to space itself. To space understood in this sense, as
+the universal frame of reference with respect to which the
+displacements of bodies constitute their true motions, Newton gave the
+name “absolute space” (1687b, p. 5ff). </p>
+
+<p>
+Evidently Newton was aware that “absolute space” was not a
+reference frame in any practical sense. He emphasized that “the
+parts of space cannot be seen,” and that no observable bodies
+can be known to be at rest. Hence there is no way to determine motion
+with respect to space by direct observation; it must be known by its
+“properties, causes, and effects” (1687b, p. 7–8).
+The question arises, then, what properties, causes, or effects
+indicate a body’s change of position in absolute space? It is
+conceivable, for example, that there might be some physical correlate
+for velocity, in the sense that a body might have some observable
+physical state that depends on its velocity. It follows, in that case,
+that a body would be in a distinct physical state when it is at rest
+in space. If a body could be known to be in that state, therefore, it
+would (in principle) provide a physical marker for a truly resting
+frame of reference. On Leibniz’s conception of force, for
+instance, a given force is required to generate or to maintain a given
+velocity. For objects “passively” resist motion, but
+maintain their states of motion only by “active”
+force—so that, on dynamical grounds, “every body truly
+does have a certain amount of motion, or, if you will, force”
+(Leibniz 1694, p. 184; see also 1716, p. 404). It would follow from
+this that there must be, in principle, a distinguished frame of
+reference in which the velocities of bodies correspond to their true
+velocities, i.e. to the amounts of moving force that they truly
+possess. It would also follow that, with respect to any frame that is
+in motion relative to this one, bodies will not have their true
+velocities. In short, such a conception of force, if it could be
+applied physically, would give a precise physical application of
+Newton’s conception of absolute space, by providing a physical
+correlate for change of absolute place. </p>
+
+<h3 id="GaliRelaNewtPhys">1.3 Galilean relativity in Newtonian physics</h3>
+
+<p>
+The difficulty with Newton’s view of absolute space comes, not
+from the epistemological arguments of relationalism, but from
+Newton’s own conception of force. If force is defined and
+measured solely by the power to accelerate a body, then obviously the
+effects of forces—in short, the causal interactions within a
+system of bodies—will be independent of the velocity of the
+system in which they are measured. So the existence of a set of
+equivalent “inertial frames” is imposed from the start by
+Newton’s laws. Suppose that we determine for the bodies in a
+given frame of reference—say, the rest frame of the fixed
+stars—that all observable accelerations are proportional to
+forces impressed by bodies within the system, by equal and opposite
+actions and reactions among those bodies. Then we know that these
+physical interactions will be the same in any frame of reference that
+is in uniform rectilinear motion relative to the first one. Therefore
+no Newtonian experiment will be able to determine the velocity of a
+body, or system of bodies, relative to absolute space. In other words,
+there is no way to distinguish absolute space itself from any frame of
+reference that is in uniform motion relative to it. Newton thought
+that a coherent account of force and motion requires a background
+space consisting of “places” that “from infinity to
+infinity maintain given positions with respect to one another”
+(1687b, p. 8–9). But the laws of motion enable us to determine
+an infinity of such spaces, all in uniform rectilinear motion relative
+to each other. The laws furnish no way of singling out any one as
+“immovable space.”</p>
+
+<p>
+Oddly enough, no one in the 17<sup>th</sup> century, or even before
+the late 19<sup>th</sup> century, expressed this equivalence of
+reference-frames any more clearly than Newton himself. However, the
+credit for articulating this equivalence precisely for the first time,
+belongs to Christiaan Huygens, who introduced it as one of the
+Hypotheses of his first work on the rules of impact (1656).
+“Hypothesis I” was the first clear statement of the
+principle of inertia: “Any body, once in motion, if nothing
+opposes it, continues to move always with the same velocity and along
+the same straight line” (1656, pp. 30–31). The first
+precise statement of the relativity principle followed as Hypothesis
+III: </p>
+
+<blockquote>
+The motion of bodies, and their speeds equal or unequal, are to be
+understood respectively, in relation to other bodies which are
+considered as at rest, even though perhaps both the former and the
+latter are subject to another motion that is common to them. In
+consequence, when two bodies collide with one another, even if both
+together undergo another equable motion, they will move each other no
+differently, with respect to a body that is carried by the same common
+motion, than if this extraneous motion were absent from all of them.
+(1656, p. 32).
+</blockquote>
+
+<p>
+Huygens illustrated this principle by the example of an impact that
+takes place on a uniformly moving boat, asserting its equivalence to
+the same impact taking place at rest. Thus he made precise the
+argument of Galileo, in light of his more precise understanding of the
+principle of inertia and the dynamical difference between inertial and
+circular motion.</p>
+
+<p>
+Newton’s first statement of the same principle appears in one of
+the series of papers that culminated in the <em>Principia</em>,
+“De motu sphæricorum corporum in fluidis” (1684b).
+Like Huygens, Newton presents the relativity principle as a
+fundamental principle, “Law 3”: </p>
+
+<blockquote>
+The motions of bodies included in a given space are the same among
+themselves whether that space is at rest or moves uniformly in a
+straight line without circular motion. (1684b, p. 40r)
+</blockquote>
+
+<p>
+Newton’s first statement of the Galilean relativity principle
+evidently recapitulates Huygens’ version, which was probably
+known to Newton. The same may be said of “Law 4” in this
+manuscript, the principle of conservation of the center of gravity:
+</p>
+
+<blockquote>
+By the mutual actions between bodies their common centre of gravity
+does not change its state of motion or rest. (ibid., p. 40r)
+</blockquote>
+
+<p>
+But, uniquely, Newton immediately went on to consider the deeper
+theoretical significance of these principles: they radically
+reconceptualize the problem of “true motion” in the
+planetary system. First, they implied that the entire system must be
+seen as included in a space that may, itself, be either at rest or in
+uniform motion. Second, they implied that the only truly fixed point
+in such a system is the center of gravity of the relevant bodies.
+This, too, may therefore be in uniform motion or at rest:</p>
+
+<blockquote>
+Moreover the whole space of the planetary heavens either rests (as is
+commonly believed) or moves uniformly in a straight line, and hence
+the communal centre of gravity of the planets (by Law 4) either rests
+or moves along with it. In both cases (by Law 3) the relative motions
+of the planets are the same, and their common centre of gravity rests
+in relation to the whole space, and so can certainly be taken for the
+still centre of the whole planetary system. (ibid., p. 47r)
+</blockquote>
+
+<p>
+Newton now realized, in short, that the dispute between the
+heliocentric and geocentric views of the universe had been mistakenly
+framed. The proper question about “the system of the
+world” was not “which body is at rest in the
+center?” but “where is the center of gravity of the
+system, and which body is closest to it?” For in a system of
+orbiting bodies, only their common center of gravity will be
+unaccelerated, and by “Law 3”, the motions of the bodies
+in the system will be the same, whether its center of gravity is at
+rest or in uniform rectilinear motion. By explicitly asserting the
+dynamical equivalence of “whole spaces” that may moving
+uniformly or at rest, Newton made it clear that the solution to the
+problem of “the system of the world” is the same with
+respect to any such moving space as it is with respect to immobile
+space. Thus he came as close to articulating the concept of the
+inertial frame as anyone before the late 19th century.</p>
+
+<p>
+In the successive drafts of his <em>Principia</em>, Newton gradually
+clarified its conceptual structure, and in particular the
+frame-independent character of its concepts of motion, force, and
+interaction. He arrived at the new axiomatic structure whose only laws
+are the familiar “Newton’s Laws of Motion”; the
+principle of the conservation of the center of gravity, and the
+relativity principle, were no longer presupposed, but derived from the
+Laws as Corollaries IV and V:</p>
+
+<blockquote>
+Corollary IV: The common center of gravity of bodies does not change
+its state, whether of motion or rest, by the actions of those bodies
+among themselves; therefore the common centre of gravity of all bodies
+(external impediments excluded) rests or moves uniformly in a straight
+line (1687b, p. 17).
+</blockquote>
+
+<blockquote>
+Corollary V: When bodies are enclosed in a given space, their motions
+among themselves are the same whether the space is at rest, or whether
+it is moving uniformly straight forward without circular motion
+(1687b, p. 19).
+</blockquote>
+
+<p>
+These principles illuminate the relationship between the theory of
+absolute space, as articulated in Newton’s Scholium to the
+Definitions, and the overarching scientific problem of the
+<em>Principia</em>. According to Newton, “the aim for which I
+composed” the book was to show “how to gather the true
+motions from their causes, effects, and apparent differences, and
+conversely, from the motions, true or apparent, to gather their causes
+and effects” (1687b, p. 11); the more specific aim of Book III
+was “to exhibit the constitution of the system of the
+world” (1687b, p. 401). </p>
+
+<p>
+On the one hand, Corollary V, like “Law 3” in De Motu,
+precisely restricts what Newton’s procedure can determine about
+the structure of the system of the world. It cannot determine anything
+about the velocity of the system as a whole; it can only determine the
+position of the center of gravity of the bodies that comprise it, and
+the configuration of those bodies with respect to that center. In this
+sense it can, in principle, decide between a Keplerian and a Tychonic
+interpretation of the motions of these bodies. The system is indeed
+approximately Keplerian: the sun has by far the greatest mass and is
+therefore little disturbed from the center of gravity by its
+interactions with the planets. The sun therefore remains very close to
+the common focus of the nearly Keplerian ellipses in which the planets
+orbit the sun. But by Corollary V, the actions of the bodies among
+themselves would not reveal whether their center was moving uniformly
+or at rest. On the other hand, Newton recognized that motion with
+respect to absolute space is unknowable. This restriction, therefore,
+meant that the solution to the system of the world is secure in spite
+of our ignorance. The nearly-Keplerian structure of the system is
+known completely independently of the system’s state of motion
+in absolute space.</p>
+
+<p>
+The Galilean relativity principle thus contained, in Newton’s
+conception, a broader insight: that different states of uniform
+motion, or different uniformly-moving frames of reference, determine
+only different points of view on the same physically objective
+quantities, namely force, mass, and acceleration. We can see this
+insight expressed more explicitly in the evolution of Newton’s
+concept of inertia. The term had been introduced by Kepler, and played
+a central role in his physical conception of planetary motion.
+Rejecting the Aristotelian idea that the planets are carried by
+rotating crystalline spheres, Kepler held that the planets have a
+natural tendency to rest in space—what he called their natural
+inertia—and argued that they must be moved by active powers that
+overcome their natural inertia. Newton, well before working on
+<em>Principia</em>, had based his conception of inertia on the idea of
+Galileo and Huygens, that bodies tend to persist in uniform motion:
+Inertia, on this new conception, was a resistance to change in motion.
+Even so, Newton’s early understanding of inertia was essentially
+pre-relativistic, because it implied a conceptual distinction between
+a body’s power to resist external forces, and the power of a
+moving body to change the motion of another. The manuscript <em>De
+gravitatione et aequipondio fluidorum</em> (1684a), for example, was
+evidently written before Newton fully recognized the importance of the
+relativity principle; here Newton’s Definitions distinguish
+“conatus,” “impetus,” and
+“inertia” as conceptually separate properties:</p>
+
+<blockquote>
+Definition 6: Conatus (endeavor) is impeded force, or force in so far
+as it is resisted.
+</blockquote>
+
+<blockquote>
+Definition 7: Impetus is force in so far as it is impressed on
+another.
+</blockquote>
+
+<blockquote>
+Definition 8: Inertia is the internal force of a body, so that its
+state may not be easily changed by an external force (1684a).
+</blockquote>
+
+<p>
+Leibniz (among others), as we saw, made a corresponding distinction:
+moving force, the power of a body to change the motion of another, was
+determined by velocity. Leibniz therefore distinguished this force as
+an active power, fundamentally different from the passive power of a
+resting body to resist any change of position. Newton, in contrast, as
+he developed the <em>Principia</em>, and recognized the existence of a
+class of indistinguishable relative spaces, gradually came to
+understand the “force of inertia” as what we would call a
+Galilei-invariant quantity. Impetus and resistance were therefore
+recognized as appearances of that invariant quantity in different
+frames of reference:</p>
+
+<blockquote>
+A body truly exerts this force only in a change of its state brought
+about by another force impressed upon it, and the exercise of this
+force is, under different aspects, both resistance and impetus:
+resistance in so far as the body, to maintain its state, opposes the
+impressed force; impetus insofar as the same body, yielding only with
+difficulty to the force of a resisting obstacle, strives to change the
+state of that obstacle. Resistance is commonly attributed to resting
+bodies and impetus to moving bodies; but motion and rest, as commonly
+understood, are only relatively distinguished from each other; and
+bodies commonly seen as resting are not always truly at rest (1687b,
+p. 2).
+</blockquote>
+
+<p>
+There are two noteworthy points about this explication of inertia.
+First, it shows that Newton recognized properties that were commonly
+regarded as distinct (e.g. in the Leibnizian distinction between
+passive and active) as merely frame-dependent representations of the
+same fundamental property. That is, they represent the same invariant
+quantity seen from different points of view. The principle that a body
+exerts this force “only in a change of its state”
+decisively separates Newton’s new view from the older notion of
+a specific power that is required to maintain a body in motion. This
+change has been noted by modern commentators (see Herivel 1965, p. 26;
+see also DiSalle 2013, p. 453; Disalle 2017, in Other Internet
+Resources). But it was already noted in Newton’s own time by
+George Berkeley, who emphasized the contrast between Newton’s
+conception and that of Leibniz:</p>
+
+<blockquote>
+Leibniz confuses impetus with motion. According to Newton, impetus is
+really the same as the force of inertia… (Berkeley, 1720, p.
+80)
+</blockquote>
+
+<blockquote>
+…Experience confirms that primary law of nature by which a body
+persists equally in a state of motion or of rest as long as nothing
+external happens from elsewhere to change that state, and on that
+account the force of inertia appears under different aspects either as
+resistance or as impetus; in this sense a body can indeed be called
+indifferent in its own nature to motion or rest. (Berkeley, 1720, p.
+92)
+</blockquote>
+
+<p>
+Berkeley thus made clear that the older understanding of inertia,
+unlike that expressed in the <em>Principia</em>, did not respect the
+principle of relativity. Second, Newton’s explication implicitly
+invokes all three laws of motion (cf. Stein 2002). Newton’s
+first law alone came to be identified as “the principle of
+inertia.” Newton himself, however, understood that inertia has
+three inseparable aspects: the tendency to persist in motion, the
+resistance to change in motion, and the power to react against an
+impressed force. All are essential to the explication of inertial mass
+as a measurable theoretical quantity. To many later commentators,
+Newton’s use of the phrase “force of inertia”
+suggested a conceptual confusion. On the contrary, it was
+Newton’s way of drawing attention to the precise role of
+inertial mass as an invariant quantity in physical interactions,
+underlying the various ways in which its manifestations had been
+previously conceived.</p>
+
+<h3 id="LingProbAbsoSpac">1.4 The lingering problem of absolute space</h3>
+
+<p>
+Newton understood the Galilean principle of relativity with a degree
+of depth and clarity that eluded most of his “relativist”
+contemporaries and critics. It may seem bizarre, therefore, that the
+notion of inertial frame did not emerge until more than a century and
+a half after his death. He had identified a distinguished class of
+dynamically equivalent “relative spaces,” in any of which
+true forces and masses, accelerations and rotations, would have the
+same objectively measured values. Yet these spaces, though dynamically
+equivalent and empirically indistinguishable, were yet not equivalent
+in principle. Evidently, Newton conceived them as moving with various
+velocities in absolute space, though those velocities could not be
+known. Why should not he, or someone, have recognized the equivalence
+of these spaces, and the dispensability of a distinguished resting
+space—“absolute” space—immediately?</p>
+
+<p>
+This is not the place for an adequate answer to this question, if
+indeed one is possible. For much of the 20<sup>th</sup> century, the
+accepted answer was that of Ernst Mach: Newton lived in an age
+“deficient in epistemological critique.” He was therefore
+unable to draw the conclusion that these <em>dynamically</em>
+indistinguishable spaces must be equivalent in <em>every</em>
+meaningful sense, so that no one of them deserves even in principle to
+be designated as “absolute space.” Yet even those whom the
+20<sup>th</sup> century credited with more sophisticated
+epistemological views, such as Leibniz, evidently had difficulties
+understanding force and inertia in a Galilei-invariant way, despite a
+philosophical commitment to relativity. We may plausibly suppose that
+it was difficult to abandon the intuitive association of force or
+motion with velocity in space. It must also have been difficult, in
+the mathematical context of Newton’s time, to conceive of an
+equivalence-class structure as the fundamental spatio-temporal
+framework. It required a level of abstraction that became possible
+only with the extraordinary development of mathematics, especially of
+a more abstract view of geometry, that took place in the
+19<sup>th</sup> century. Newton’s arguments established, for the
+assumptions of classical dynamics, the need for a dynamical space-time
+structure beyond the kinematical structure required to represent
+changes of relative position over time. But absolute space, with its
+superfluous elements, was the only such structure imagined for the
+next two centuries. It was accepted as the only realistic alternative
+to theories with no dynamical structure at all. There was as yet no
+notion of a structure that expressed <em>all and only</em> what was
+required by the dynamical laws. Euler, for example, in a penetrating
+critique of Leibnizian relationalism (1748), argued that the laws of
+motion require a notion of sameness of direction in space, and of
+uniform motion with respect to time. The truth of the laws of
+motion—which, for Euler, were more securely established than any
+principle of metaphysics—could not, therefore, be reconciled
+with any account of space and time as merely ideal. But he did not see
+the possibility of separating true acceleration and rotation from true
+velocity with respect to absolute space. </p>
+
+<p>
+In the 17<sup>th</sup> century, only Huygens came close to expressing
+such a view; he held that not velocity, but velocity-difference, was
+the fundamental dynamical quantity. He therefore understood, for
+example, that the “absoluteness” of rotation had nothing
+to do with velocity relative to absolute space. Instead, it arose from
+the difference of velocity among different parts of a rotating body.
+If a disk is translated through space without rotation, then its parts
+move in parallel lines, but if it is rotating, then they move in
+different directions, even though they are at rest relative to one
+another on account of the bonds holding them together. The
+differences, evidently, would be the same irrespective of the velocity
+of the body as a whole in absolute space. Unfortunately, Huygens
+expressed this view only in manuscripts that remained unpublished for
+two centuries. (Cf. Stein, 1977, pp. 9–10 and Appendix III.)
+Huygens also reflected on the possibility of replacing absolute space
+with (what we would call) empirical frames of reference, again in
+unpublished notes that have only been brought to light in recent work
+by Stan (2016). But the complete concept of the inertial frame emerged
+only in the late 19<sup>th</sup> century, when it did not seem to be
+of any great immediate importance (see below). Indeed, even after the
+concept of inertial frame had been widely discussed, the notion
+persisted that true rotation could only be understood as rotation with
+respect to absolute space. Poincaré, for example, convinced of
+the essential “relativity of space” as well as the
+relativity of motion, considered the concept of absolute space to be
+something of a philosophical embarrassment. But it was not clear to
+him how the dynamical phenomena of rotation could be understood
+without it (cf. DiSalle 2014). So the failure of Newton and Huygens to
+formulate the concept of inertial frame, two centuries earlier, seems
+less remarkable than the progress that each of them made in
+understanding the relativity of motion. As we will see, articulating
+this concept involved synthesizing (in effect) insights of Newton,
+Huygens, and Euler.</p>
+
+<h3 id="N19tCentAnalLawIner">1.5 19th-century analyses of the law of inertia</h3>
+
+<p>
+The development of this concept began with a renewed critical analysis
+of the notion of absolute space, for reasons not anticipated by
+Newton’s contemporary critics. Its starting point was a critical
+question about the law of inertia: relative to what is the motion of a
+free particle uniform and rectilinear? If the answer is
+“absolute space,” then the law would appear to be
+something other than an empirical claim, for no one can observe the
+trajectory of a particle relative to absolute space. Two quite
+different answers to the question were offered in 1870, in the form of
+revised statements of the law of inertia. Carl Neumann proposed that
+when we state the law, we must suppose that there is a body somewhere
+in the universe—the “body Alpha”—with respect
+to which the motion of a free particle is rectilinear, and that there
+is a time-scale somewhere relative to which it is uniform (Neumann
+1870). Ernst Mach (1883) claimed that the law of inertia, and
+Newton’s laws generally, implicitly appeal to the fixed stars as
+a spatial reference-frame, and to the rotation of the earth as a
+time-scale. At any rate, he maintained, such is the basis for any
+genuine empirical content that the laws can claim. The notion of
+absolute space, it followed, was only an unwarranted abstraction from
+the practice of measuring motions relative to the fixed stars.</p>
+
+<p>
+Mach’s proposal had the advantage of a clear empirical
+motivation; Neumann’s “body Alpha” seemed no less
+mysterious than absolute space, and almost sounds comical to the
+modern reader. But Neumann’s discussion of a time-scale was
+somewhat more fruitful, and employed the principle that Euler had
+already expressed (1748): the law of inertia defines a time-scale, by
+which equal intervals of time are those in which a free particle
+travels equal distances. He also noted, however, that this definition
+is quite arbitrary. For, in the absence of a prior definition of equal
+times, any motion whatever can be stipulated to be uniform. It is no
+help to appeal to the requirement of freedom from external forces,
+since the free particles presumably are known to us only by their
+uniform motion. We have a genuine empirical claim only when we state
+of <em>at least two</em> free particles that their motions are
+<em>mutually</em> proportional. Equal intervals of time can then be
+defined as those in which two free particles travel mutually
+proportional distances.</p>
+
+<h3 id="EmerConcInerFram">1.6 The emergence of the concept of inertial frame</h3>
+
+<p>
+Neumann’s definition of a time-scale directly inspired Ludwig
+Lange’s conception of “inertial system” (Lange
+1885). An inertial coordinate system ought to be one in which free
+particles move in straight lines. But any trajectory may be stipulated
+to be rectilinear, and a coordinate system can always be constructed
+in which it is rectilinear. And so, as in the case of the time-scale,
+we cannot adequately define an inertial system by the motion of one
+particle. Indeed, for any two particles moving anyhow, a coordinate
+system may be found in which both their trajectories are rectilinear.
+So far the claim that either particle, or some third particle, is
+moving in a straight line may be said to be a matter of convention. We
+must define an inertial system as one in which at least three free
+particles move in straight lines. Then we can state the law of inertia
+as the claim that, relative to an inertial system so defined, the
+motion of any fourth particle, or arbitrarily many particles, will be
+rectilinear. The notions of inertial system and Neumann’s
+time-scale, which Lange called an “inertial time-scale,”
+may be combined as follows: relative to a coordinate system in which
+three free particles move in straight lines <em>and</em> travel
+mutually-proportional distances, the motion of any fourth free
+particle will be rectilinear and uniform. The questionable Newtonian
+concepts of absolute rotation and acceleration, Lange proposed, could
+now be replaced by the concepts of “inertial rotation” and
+“inertial acceleration,” i.e. rotation and acceleration
+relative to an inertial system and inertial time-scale. See Figures 2
+and 3.</p>
+
+<div class="figure avoid-break">
+
+<table class="wide">
+<tbody><tr>
+  <td>
+<img src="Fig2a.png" style="width:90%;" alt="Figure 2a" />
+</td>
+  <td>
+<img src="Fig2b.png" style="width:90%;" alt="Figure 2b" />
+</td> </tr>
+<tr>
+  <td class="center">(a)</td>
+  <td class="center">(b)</td> </tr>
+</tbody></table>
+
+<p>
+<span class="figlabel">Figure 2: Neumann’s Time-Scale</span> By
+Newton’s first law, a particle not subject to forces travels
+equal distances in equal times. But which particles are free of
+forces? This might appear to be a matter of convention.
+<br />
+(a) Either <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-1"><span class="MJXp-msubsup" id="MJXp-Span-2"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-3" style="margin-right: 0.05em;">P</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-4" style="vertical-align: -0.4em;">1</span></span></span></span><script type="math/tex" id="MathJax-Element-1">P_1</script> or <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-5"><span class="MJXp-msubsup" id="MJXp-Span-6"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-7" style="margin-right: 0.05em;">P</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-8" style="vertical-align: -0.4em;">2</span></span></span></span><script type="math/tex" id="MathJax-Element-2">P_2</script> can be arbitrarily stipulated to be at
+the origin of a system of coordinates, and to serve as the measure of
+equal times
+<br />
+(b) But one can say of two particles with different velocities: in
+intervals of time in which one moves a given distance <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-9"><span class="MJXp-msubsup" id="MJXp-Span-10"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-11" style="margin-right: 0.05em;">d</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-12" style="vertical-align: -0.4em;">1</span></span></span></span><script type="math/tex" id="MathJax-Element-3">d_1</script>, the
+other moves a proportional distance <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-13"><span class="MJXp-msubsup" id="MJXp-Span-14"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-15" style="margin-right: 0.05em;">d</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-16" style="vertical-align: -0.4em;">2</span></span><span class="MJXp-mo" id="MJXp-Span-17" style="margin-left: 0.333em; margin-right: 0.333em;">=</span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-18">k</span><span class="MJXp-msubsup" id="MJXp-Span-19"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-20" style="margin-right: 0.05em;">d</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-21" style="vertical-align: -0.4em;">1</span></span></span></span><script type="math/tex" id="MathJax-Element-4">d_2 = kd_1</script> (where <i>k</i> is
+a constant; i.e., <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-22"><span class="MJXp-msubsup" id="MJXp-Span-23"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-24" style="margin-right: 0.05em;">d</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-25" style="vertical-align: -0.4em;">1</span></span><span class="MJXp-mrow" id="MJXp-Span-26"><span class="MJXp-mo" id="MJXp-Span-27" style="margin-left: 0.111em; margin-right: 0.111em;">/</span></span><span class="MJXp-msubsup" id="MJXp-Span-28"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-29" style="margin-right: 0.05em;">d</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-30" style="vertical-align: -0.4em;">2</span></span><span class="MJXp-mo" id="MJXp-Span-31" style="margin-left: 0.333em; margin-right: 0.333em;">=</span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-32">k</span></span></span><script type="math/tex" id="MathJax-Element-5">d_1/d_2 = k</script>). Or one can compare a particle to a
+freely rotating planet: in intervals of time through which the planet
+rotates through equal angles, the particle moves equal distances. </p>
+</div>
+
+<div class="figure avoid-break">
+<img src="Fig3.png" style="width:210px" alt="Figure 3" />
+
+<p>
+<span class="figlabel">Figure 3: Lange’s Definition of
+‘inertial system’ (1885)</span> An inertial system is a
+coordinate system with respect to which three free particles,
+projected from a single point and moving in non-coplanar directions,
+move in straight lines and travel mutually-proportional distances. The
+law of inertia then states that relative to any inertial system, any
+fourth free particle will move uniformly. </p>
+</div>
+
+<p>
+At about the same time, apparently unaware of the work of Mach,
+Neumann, and Lange, James Thomson—older brother of William
+Thomson, Lord Kelvin—expressed the content of the law of
+inertia, and the appropriate frame of reference and time-scale
+(“dial-traveller”), in a somewhat simpler manner:</p>
+
+<blockquote>
+For any set of bodies acted on each by any force, a REFERENCE FRAME
+and a REFERENCE DIAL-TRAVELLER are kinematically possible, such that
+relatively to them conjointly, the motion of the mass-centre of each
+body, undergoes change simultaneously with any infinitely short
+element of the dial-traveller progress, or with any element during
+which the force on the body does not alter in direction nor in
+magnitude, which change is proportional to the intensity of the force
+acting on that body, and to the simultaneous progress of the
+dial-traveller, and is made in the direction of the force. (Thomson
+1884, p. 387)
+</blockquote>
+
+<p>
+Thomson did not reject the term “absolute rotation”.
+Instead, he held that it is properly defined as rotation relative to a
+frame that satisfies his definition of a reference frame. A body that
+is rotating with respect to a reference frame (and dial-traveller) is
+rotating with respect to any other frame in uniform motion relative to
+the first. The definition does not express, as Lange’s does, the
+degree of arbitrariness involved in the construction of an inertial
+system by means of free particles. By dispensing with the idealization
+of free particles, Thomson’s definition aims to characterize an
+inertial frame for an actual system of interacting bodies. However, it
+does not quite fulfill its aim. Like Lange’s definition, it
+leaves out a crucial condition for an inertial system as we understand
+it: all forces must belong to action-reaction pairs. Otherwise we
+could have, as on a rotating sphere, merely apparent (centrifugal)
+forces that are, by definition, proportional to mass and acceleration,
+and so the rotating sphere would satisfy Thomson’s definition.
+Therefore the definition needs to be completed by the stipulation that
+to every action there is an equal and opposite reaction. (This
+completion was actually proposed by R.F. Muirhead in 1887.) </p>
+
+<p>
+But, so completed, Thomson’s definition makes the essential
+point about the relation between Newton’s laws of motion and the
+inertial frames: that the laws assert the existence of at least one
+inertial frame. If one inertial frame is posited, in which
+accelerations properly correspond to Newtonian forces, then any other
+inertial frame is in uniform motion with respect to the first; the
+forces, masses, and accelerations measured in one will have the same
+measures in any other. Any one may be arbitrarily designated as an
+all-encompassing “immobile space” in which all others are
+moving uniformly. Thus the original question, “relative to what
+frame of reference do the laws of motion hold?” is revealed to
+be wrongly posed. For the laws of motion essentially
+<em>determine</em> a class of reference frames, and (in principle) a
+procedure for constructing them. For the same reason, a skeptical
+question that is still commonly asked about the laws of
+motion—why is it that the laws are true only relative to a
+certain choice of reference frame?—is also wrongly posed. If
+Newton’s laws are true, then we can construct an inertial frame;
+their truth doesn’t depend on our ability to construct such a
+frame in advance. Mach expressed the situation particularly
+clearly:</p>
+
+<blockquote>
+It is very much the same whether we refer the laws of motion to
+absolute space, or express them abstractly, without express indication
+of the system of reference. The latter course is unproblematic and
+practical, for in treating particular cases the student of mechanics
+looks for a suitable system of reference. But owing to the fact that
+the first way, whenever there was any actual issue at stake, was
+nearly always interpreted as having the same meaning as the latter,
+Newton’s error was much less dangerous than it would otherwise
+have been. (1933, p. 269.)
+</blockquote>
+
+<p>
+Mach’s remark roughly corresponds to Newton’s actual
+procedure. Even though, for Newton, absolute space was the implicit
+reference-frame for stating the laws of motion, the frame for their
+application was the standard one for most of the history of astronomy:
+the fixed stars. This seemingly arbitrary starting-point did not
+undermine Newton’s procedure as an account of the “true
+motions.” For the framework of the fixed stars, initially taken
+for granted, turns out to be justified in the course of Newton’s
+dynamical analysis. If all the accelerations relative to the fixed
+stars can be analyzed into action-reaction pairs involving bodies
+within the system—leaving no “leftover”
+accelerations that need to be traced to some yet-unknown
+influence—then we can conclude that the stars are a suitable
+(sufficiently inertial) frame of reference after all. Newton could
+appeal to a particular case to test this general point: the orbits of
+the outer planets were stable with respect to the fixed stars, their
+perihelia showing no measurable precession (unlike the perihelion of
+Mercury, for a famous example). Newton argued, then, that a relative
+space in which these apsides are stable is a sufficient approximation
+to a space at rest or in uniform motion (cf. Book III, Proposition
+XIV, 1687b, p. 420). </p>
+
+<p>
+Mach took particular notice of Newton’s use of the relativity
+principle in determining an appropriate reference-frame:</p>
+
+<blockquote>
+In order to have a generally valid system of reference, Newton
+introduced Corollary V of the <em>Principia</em>. He thought
+of… a coordinate system for which the law of inertia holds,
+fixed in space without rotation relative to the fixed stars. He could
+also allow an arbitrary origin and uniform translation of this
+system… without losing its usefulness… One can see that
+the reduction to absolute space was in no way necessary, since the
+reference frame is just as relatively determined as in any other case.
+(1933, p. 227.)
+</blockquote>
+
+<p>
+For Mach, this was an important acknowledgement of Newton’s
+insight into the relativity of motion. Starting from Corollary V, the
+concept of the inertial frame solved the problem of absolute rotation
+and acceleration, as a problem internal to the system of
+Newton’s laws. Absolute space could be dispensed with, without
+undermining Newton’s dynamical distinctions among states of
+motion. Of course, this point did not dismiss Mach’s skeptical
+questions regarding the laws themselves. Instead, it posed them in a
+more precise form: Are Newton’s laws truly general laws of
+nature, that determine a class of privileged frames? Or do they only
+describe motions relative to a particular material frame, the fixed
+stars? Empirical evidence was insufficient to decide. Eventually
+Mach’s question helped to motivate Einstein’s search for
+new laws in which privileged frames would not play an essential role.
+First, however, by comparing Newtonian mechanics with Maxwell’s
+electrodynamics, Einstein placed the notion of inertial frame on an
+entirely new footing (see below,
+ <a href="#ConfBetwGaliRelaModeElec">Section 2.2</a>
+ <em>et seq.</em>). </p>
+
+<h3 id="QuasInerFramNewtCoroVI">1.7 “Quasi-inertial” frames: Newton’s Corollary VI</h3>
+
+<p>
+A striking aspect of Newton’s treatment of indistinguishable
+frames of reference was his discovery of approximately
+indistinguishable frames: spaces that are accelerating, yet can be
+treated, for practical purposes, as if they were at rest or in uniform
+motion. Newton made this notion precise in Corollary VI to the laws of
+motion: </p>
+
+<blockquote>
+If bodies are moved in any way among themselves, and are urged by
+equal accelerative forces along parallel lines, they will all continue
+to move among themselves in the same way as if they were not acted on
+by those forces. (1687b, p. 20.)
+</blockquote>
+
+<p>
+As Corollaries IV and V implied, for a given system of interacting
+bodies, their center of gravity is unmoved by the actions of the
+bodies among themselves, and will remain at rest or in uniform motion
+as long as the bodies are not disturbed by any external forces. This,
+as we noted, was as close as Newton could come to the notion of an
+inertial frame. Corollary VI shows that, in very special ideal
+circumstances—accelerative forces that act equally on all bodies
+within a system, and accelerate them all in parallel
+directions—an accelerating system of bodies will behave,
+internally, as if there were no external forces acting on it at all.
+Yet Newton’s discovery was not limited to the point made
+explicitly in Corollary VI. Rather, it was threefold. The second point
+was that there was in fact a force acting equally and in parallel
+lines, at least to a high approximation, on important systems of
+celestial bodies. The system of Jupiter and its satellites, for
+example, is obviously accelerating, as its center of gravity completes
+an approximately elliptical orbit around the Sun bound by accelerative
+forces toward the Sun’s center. But because the accelerations of
+all the bodies are nearly equal and parallel, their motions among
+themselves are nearly the same as if no such forces acted, and the
+system may be treated as the sort of system described in Corollary V.
+Evidently the accelerations are unequal, since Jupiter and the
+satellites are at varying distances from the sun, and they cannot be
+parallel since they are all directed at the center of the sun. But
+these differences of distance and direction are so small, in
+comparison with the distance of the entire system from the sun, that
+they may be neglected. And the same applies to the centripetal
+acceleration of Saturn’s system. </p>
+
+<p>
+Newton applied this same reasoning to the entire solar system: even if
+the entire system were accelerating toward some unknown gravitational
+source, he could treat the solar system itself as if it were an
+isolated system. He argued, from the analysis of accelerations within
+the system, that outside forces must be acting more or less equally
+and in parallel directions on all parts of the system.</p>
+
+<blockquote>
+It may be imagined that the sun and planets are impelled by some other
+force equally and in the direction of parallel lines; but such a force
+(by Cor. VI of the Laws of Motion) would not change the situation of
+the planets among themselves, nor would produce any sensible effect;
+but we are concerned with the causes of sensible effects. Let us,
+therefore, neglect every such force as precarious, and of no bearing
+on the phenomena of the heavens…. (1687a, article 13.)
+</blockquote>
+
+<p>
+Newton raised this point in order to show that the possibility of such
+a force acting on the whole solar system would not affect his
+calculations of the forces acting within the system. In the
+calculation relevant to this passage, Newton was using Corollary VI to
+defend the inference that the force responsible for Jupiter’s
+orbit is directed to the Sun rather than to the Earth: neglecting any
+such imaginary force, “then all the remaining force by
+which… Jupiter is urged will tend (by prop. 3, corol. 1) toward
+the center of the sun” (ibid). This calculation formed an
+important step in the argument for a heliocentric system. Such a use
+of Corollary VI parallels, therefore, his use of Corollary V (and its
+earlier form, “Law 3”) to show that the “frame of
+the system of the world” could be determined without regard to
+the system’s uniform motion in absolute space. </p>
+
+<p>
+Indeed, the analogy between the two kinds of case helps to explain
+Newton’s changing the relativity principle from a law to a
+Corollary, for this coincides historically with his first use of
+Corollary VI. The two Corollaries identify two classes of frames of
+reference that may be treated as equivalent, because they involve,
+respectively, theoretically and practically indistinguishable states
+of motion. The frames corresponding to Corollary VI may be called
+“quasi-inertial,” because “approximately
+inertial” might be misleading: a closed orbit around the
+Sun—like that of Jupiter’s system—is not a good
+approximation to an inertial motion, and the system can hardly be
+considered isolated. But over sufficiently limited segments of its
+orbit, its motion is sufficiently close to being inertial.
+Moreover—and most important—the accelerative forces toward
+the sun are close enough to being equal and parallel that the forces
+acting within the system can be effectively isolated from the forces
+from without. Hence, while “quasi-inertial” is a useful
+term for the reference-frame corresponding to such a group of bodies,
+a useful description for the group itself is George Smith’s
+“quasi-insular system” (Smith 2019). A system of masses
+bound in orbit around a larger mass is by no means isolated, yet in
+the right conditions it may be treated as if it were. The modern term,
+“local inertial frame,” is not inappropriate (cf. Schutz
+1990, p. 124). But it typically designates the local coordinate frame
+of a given inertial observer, rather than the sort of “whole
+space” that Newton had in mind, as encompassing a celestial
+system as large as that of Jupiter, or the solar system as a whole.
+Moreover, it is typically used in a context in which a global inertial
+frame, with respect to which any such Newtonian system has a definite
+acceleration, would not be assumed to exist. </p>
+
+<p>
+This last point leads to the third point of Newton’s discovery:
+that the “quasi-inertial” system is part of a mathematical
+framework for approximative reasoning, to determine the precise degree
+of isolation that a group of interacting bodies may be said to
+possess. Proposition III of the <em>Principia</em> established
+Newton’s method for treating a body orbiting a second body which
+is, itself, subject to a centripetal force:</p>
+
+<blockquote>
+Proposition III, Theorem III: Every body, that, by a radius drawn to
+the centre of another body, in any way moved, describes areas about
+that centre proportional to the times, is urged by a force compounded
+out of the centripetal force tending to that other body, and of all
+the accelerative force by which that other body is impelled.(1687b, p.
+39).
+</blockquote>
+
+<p>
+In other words, if an orbiting body obeys Kepler’s area law,
+then any accelerative force acting on the central body is simply added
+to the centripetal force that maintains the orbiting body in its
+orbit.</p>
+
+<p>
+This principle of composition formed the mathematical basis for
+Newton’s treatment of quasi-inertial frames. When a system of
+lesser bodies is, as a whole, revolving around a greater body, we have
+a geometrical framework to describe how closely the motions of the
+lesser system approximate the conditions of Corollary VI:</p>
+
+<blockquote>
+Book I, Proposition LXV, Case 2: Suppose that the accelerative
+attractions towards the greater body to be among themselves
+reciprocally as the squares of the distances; and then, by increasing
+the distance of the great body till the differences of the straight
+lines drawn from that to the others in respect of their length, and
+the inclinations of those lines to each other, are less than any
+given, then the motions of the parts of the system, will continue with
+no errors except such as are less than any given. And because, by the
+small distance of those parts from each other, the whole system is
+attracted as if it were only one body, it will therefore be moved by
+this attraction as if it were one body….(1687b, p. 172.)
+</blockquote>
+
+<p>
+Thus the situation described by Corollary VI, in Newton’s
+analysis, emerges as a limiting case of an orbiting system under an
+inverse-square force. As the size of the orbit is arbitrarily
+increased, the accelerations toward the center become
+indistinguishable from equal and parallel accelerations. Evidently,
+Newton’s proposition provides, characteristically, a general
+method for treating a variety of possible configurations. But it
+enabled Newton to address the specific physical fact of the variation
+in the Sun’s gravity, and its consequences for the superposition
+upon it of lesser gravitating systems. At the distance of Jupiter or
+Saturn, a revolving system can be a very nearly regular Keplerian
+system. As the distance to the Sun decreases, however, differences in
+magnitude and direction of the accelerations become significant, and
+at the distance of the Earth-Moon system the motions become nearly
+intractable. The decisive factor is the proportion between the size of
+the orbiting system and its distance from the center of attraction.
+</p>
+
+<p>
+The actual existence of quasi-inertial frames, corresponding to the
+abstract cases of Proposition LXV, was a crucial part of
+Newton’s argument for universal gravitation—more
+precisely, that the force holding the planets and their satellites in
+their respective orbits is, in fact, the same force as gravity. One
+crucial ground for the identification was the fact that the
+interplanetary force shares the most striking feature of terrestrial
+gravity, namely, that it imparts the same acceleration to all
+terrestrial bodies. This principle was discovered by Galileo, of
+course, but Newton tested it more severely, and with a greater variety
+of test bodies. He constructed pendulums of identical wooden boxes
+suspended from strings of equal length, which he filled with different
+materials; he found that these differences made no difference to the
+speed of falling over many oscillations of the pendulums. By this
+means he showed that Galileo’s principle holds to a much higher
+degree of accuracy than Galileo was able to show, and inferred that a
+body’s weight toward the earth is generally proportional to its
+mass. (1687b, Book III, Proposition VI). But Newton extended this
+principle beyond terrestrial gravity, to the accelerative forces
+acting on the planets and their satellites. Proposition IV, Corollary
+VI, from Book I, showed that an orbiting body that obeys
+Kepler’s third law is urged toward the center by an
+inverse-square force. Newton could then show that the centripetal
+forces acting on Jupiter’s moons depend only on the
+inverse-square of the distance towards Jupiter’s center: </p>
+
+<blockquote>
+since the satellites of Jupiter perform their revolutions in times
+that observe the sesquiplicate proportion of their distances from
+Jupiter’s center, their accelerative gravities towards Jupiter
+will be inversely as the squares of their distances from
+Jupiter’s centre; that is, equal, at equal distances….
+And by the same argument, if the circumsolar planets were let fall at
+equal distances from the Sun, they would, in their descent towards the
+Sun, describe equal spaces in equal times. But forces that equally
+accelerate unequal bodies must be as those bodies; that is to say, the
+weights of the planets towards the Sun must be as their quantities of
+matter. (Ibid.)
+</blockquote>
+
+<p>
+In each of these cases, that is, Newton found that the centripetal
+acceleration behaves like gravitational acceleration, and so the
+bodies’ forces toward their respective centers are, essentially,
+their weights toward those centers. Moreover, the orbits of
+Jupiter’s moons provided a completely novel test of
+Galileo’s principle, on an extremely large scales of mass and
+distance. For he showed that Jupiter and its moons—within the
+limits of observational accuracy—undergo the same accelerations
+toward the sun (cf. 1687b, Book I, Proposition 65; Book III,
+Proposition VI). Any non-negligible difference in these accelerations
+would produce corresponding irregularities in the satellites’
+orbits. </p>
+
+<p>
+The proportionality of weight to mass was understood in its broader
+foundational significance, as the equivalence of gravitational and
+inertial mass, through Einstein’s “principle of
+equivalence” (cf. Einstein 1916; see also Norton 1985). In
+Einstein’s reasoning, the identity of inertia and gravitation
+helped to undermine the special status of inertial motion, and
+suggested the extension of the relativity principle from inertial
+frames to frames in any state of motion whatever. If an inertial
+frame, K, cannot be distinguished from another frame K′ that is
+uniformly accelerated with respect to K, then K′ may equally be
+treated as a “privileged” or “stationary”
+frame: “they have equal title as systems of reference for the
+description of physical phenomena” (Einstein 1916, p. 114). This
+circumstance undermines a defining characteristic of inertial frames:
+that with respect to a given inertial frame, every other inertial
+frame is in uniform rectilinear motion. Corollary VI points the way,
+after all, toward an extended relativity principle.</p>
+
+<blockquote>
+The assumption of the complete physical equivalence of the systems of
+co-ordinates, K and K′, we call the “principle of
+equivalence;” this principle is evidently intimately connected
+with the theorem of the equality between the inert and the
+gravitational mass, and signifies an extension of the principle of
+relativity to co-ordinate systems which are in non-uniform motion
+relatively to each other. In fact, through this conception we arrive
+at the unity of the nature of inertia and gravitation. (Einstein
+1922).
+</blockquote>
+
+<p>
+This reasoning, in turn, suggested the connection between the
+gravitational field and the curvature of space-time. (See Einstein
+1916; see also Related Entries:
+ <a href="../einstein-philscience/">Einstein, Albert: philosophy of science</a> |
+ 
+ <a href="../genrel-early/">general relativity: early philosophical interpretations of)</a>.
+ </p>
+
+<p>
+Even independently of Einstein’s theory, however, one might see
+in hindsight that Newton’s application of Corollary VI, and his
+identification of what we’ve been calling quasi-inertial frames,
+already undermined the idea of an inertial frame. As we saw, Newton
+could treat a quasi-inertial system like that of Jupiter and its
+moons, not as essentially different from the system of the Earth and
+the Moon, but as a limiting case of such a system: as the whole system
+becomes sufficiently far from the central body, the differences among
+the accelerations of its parts toward their common center become
+negligibly small. In other words, Newton could treat such systems, and
+the mathematical description of the differences among them, as
+revealing the structure and workings of the sun’s gravity,
+rather than as questioning the fundamental distinction between uniform
+and accelerated motion. In that sense, he was not proposing the
+“complete physical equivalence” of uniformly accelerating
+systems with uniformly moving systems (inertial frames). But even
+Newton recognized, as we also saw, that the solar system as a whole
+might have an unknown and practically unknowable acceleration. In
+effect, he explained why his analysis of accelerations of the bodies
+in the system, among themselves, required no knowledge of any absolute
+accelerations. In the 19th century, Maxwell, without questioning the
+underlying framework of absolute space and time, pointed out that
+Corollary VI implied a kind of relativity of acceleration (1878, pp.
+51–52). Viewing the foregoing in hindsight, more recent
+literature has suggested that the physics of the Principia did not
+really require the notion of inertial frame at all, and therefore that
+a weaker geometry than Newtonian spacetime would be a sufficient
+background structure for Newton’s dynamical reasoning (cf.
+Saunders, 2013). It is further suggested, following Cartan (1923,
+1924), that the space-time structure and the gravitational field be
+unified in a curved space-time (cf. section 9, below), as a Newtonian
+version of general relativity (cf. Malament 2012, chapter 4; see also
+Knox, 2014 and Weatherall 2018). The relevant conceptual resources and
+mathematical techniques for such approaches, evidently, developed only
+in the aftermath of general relativity. We return to this theme in
+2.5.</p>
+
+<h2 id="InerFram20thCentSpecGeneRela">2. Inertial frames in the 20<sup>th</sup> century: special and general relativity</h2>
+
+<h3 id="InerFramNewtSpac">2.1 Inertial frames in Newtonian spacetime</h3>
+
+<p>
+By the early years of the 20<sup>th</sup> century, the notion of
+inertial system seems to have been widely accepted as the basis for
+Newtonian mechanics, even if the specific works of Lange and Thomson
+were little noticed. In writing “On the electrodynamics of
+moving bodies” in 1905, Einstein took it to be obvious to his
+readers that classical mechanics does not require a single privileged
+frame of reference, but an equivalence-class of frames, all in uniform
+motion relative to each other, and in any of which “the
+equations of mechanics hold good.” Two inertial frames with
+coordinates <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-33"><span class="MJXp-mo" id="MJXp-Span-34" style="margin-left: 0em; margin-right: 0em;">(</span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-35">x</span><span class="MJXp-mo" id="MJXp-Span-36" style="margin-left: 0em; margin-right: 0.222em;">,</span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-37">y</span><span class="MJXp-mo" id="MJXp-Span-38" style="margin-left: 0em; margin-right: 0.222em;">,</span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-39">z</span><span class="MJXp-mo" id="MJXp-Span-40" style="margin-left: 0em; margin-right: 0.222em;">,</span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-41">t</span><span class="MJXp-mo" id="MJXp-Span-42" style="margin-left: 0em; margin-right: 0em;">)</span></span></span><script type="math/tex" id="MathJax-Element-6">(x, y, z, t)</script> and <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-43"><span class="MJXp-mo" id="MJXp-Span-44" style="margin-left: 0em; margin-right: 0em;">(</span><span class="MJXp-msup" id="MJXp-Span-45"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-46" style="margin-right: 0.05em;">x</span><span class="MJXp-mo MJXp-script" id="MJXp-Span-47" style="vertical-align: 0.5em;">′</span></span><span class="MJXp-mo" id="MJXp-Span-48" style="margin-left: 0em; margin-right: 0.222em;">,</span><span class="MJXp-msup" id="MJXp-Span-49"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-50" style="margin-right: 0.05em;">y</span><span class="MJXp-mo MJXp-script" id="MJXp-Span-51" style="vertical-align: 0.5em;">′</span></span><span class="MJXp-mo" id="MJXp-Span-52" style="margin-left: 0em; margin-right: 0.222em;">,</span><span class="MJXp-msup" id="MJXp-Span-53"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-54" style="margin-right: 0.05em;">z</span><span class="MJXp-mo MJXp-script" id="MJXp-Span-55" style="vertical-align: 0.5em;">′</span></span><span class="MJXp-mo" id="MJXp-Span-56" style="margin-left: 0em; margin-right: 0.222em;">,</span><span class="MJXp-msup" id="MJXp-Span-57"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-58" style="margin-right: 0.05em;">t</span><span class="MJXp-mo MJXp-script" id="MJXp-Span-59" style="vertical-align: 0.5em;">′</span></span><span class="MJXp-mo" id="MJXp-Span-60" style="margin-left: 0em; margin-right: 0em;">)</span></span></span><script type="math/tex" id="MathJax-Element-7">(x', y', z', t')</script> are related by
+the <em>Galilean transformations</em>,</p> 
+
+<span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math MJXp-display" id="MJXp-Span-61"><span class="MJXp-mtable" id="MJXp-Span-62"><span><span class="MJXp-mtr" id="MJXp-Span-63" style="vertical-align: baseline;"><span class="MJXp-mtd" id="MJXp-Span-64" style="text-align: right;"><span class="MJXp-msup" id="MJXp-Span-65"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-66" style="margin-right: 0.05em;">x</span><span class="MJXp-mo MJXp-script" id="MJXp-Span-67" style="vertical-align: 0.5em;">′</span></span></span><span class="MJXp-mtd" id="MJXp-Span-68" style="padding-left: 0em; text-align: left;"><span class="MJXp-mi" id="MJXp-Span-69"></span><span class="MJXp-mo" id="MJXp-Span-70" style="margin-left: 0.333em; margin-right: 0.333em;">=</span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-71">x</span><span class="MJXp-mo" id="MJXp-Span-72" style="margin-left: 0.267em; margin-right: 0.267em;">−</span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-73">v</span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-74">t</span></span></span><span class="MJXp-mtr" id="MJXp-Span-75" style="vertical-align: baseline;"><span class="MJXp-mtd" id="MJXp-Span-76" style="padding-top: 0.3em; text-align: right;"><span class="MJXp-msup" id="MJXp-Span-77"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-78" style="margin-right: 0.05em;">y</span><span class="MJXp-mo MJXp-script" id="MJXp-Span-79" style="vertical-align: 0.5em;">′</span></span></span><span class="MJXp-mtd" id="MJXp-Span-80" style="padding-left: 0em; padding-top: 0.3em; text-align: left;"><span class="MJXp-mi" id="MJXp-Span-81"></span><span class="MJXp-mo" id="MJXp-Span-82" style="margin-left: 0.333em; margin-right: 0.333em;">=</span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-83">y</span></span></span><span class="MJXp-mtr" id="MJXp-Span-84" style="vertical-align: baseline;"><span class="MJXp-mtd" id="MJXp-Span-85" style="padding-top: 0.3em; text-align: right;"><span class="MJXp-msup" id="MJXp-Span-86"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-87" style="margin-right: 0.05em;">z</span><span class="MJXp-mo MJXp-script" id="MJXp-Span-88" style="vertical-align: 0.5em;">′</span></span></span><span class="MJXp-mtd" id="MJXp-Span-89" style="padding-left: 0em; padding-top: 0.3em; text-align: left;"><span class="MJXp-mi" id="MJXp-Span-90"></span><span class="MJXp-mo" id="MJXp-Span-91" style="margin-left: 0.333em; margin-right: 0.333em;">=</span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-92">z</span></span></span><span class="MJXp-mtr" id="MJXp-Span-93" style="vertical-align: baseline;"><span class="MJXp-mtd" id="MJXp-Span-94" style="padding-top: 0.3em; text-align: right;"><span class="MJXp-msup" id="MJXp-Span-95"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-96" style="margin-right: 0.05em;">t</span><span class="MJXp-mo MJXp-script" id="MJXp-Span-97" style="vertical-align: 0.5em;">′</span></span></span><span class="MJXp-mtd" id="MJXp-Span-98" style="padding-left: 0em; padding-top: 0.3em; text-align: left;"><span class="MJXp-mi" id="MJXp-Span-99"></span><span class="MJXp-mo" id="MJXp-Span-100" style="margin-left: 0.333em; margin-right: 0.333em;">=</span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-101">t</span></span></span></span></span></span></span><script type="math/tex; mode=display" id="MathJax-Element-8">\begin{align*}
+ x' &amp;= x - vt \\
+ y' &amp;= y \\
+ z' &amp;= z \\
+ t' &amp;= t
+\end{align*}</script>
+
+<p>
+(assuming that the x-axis is defined to be the direction of their
+relative motion). These transformations clearly preserve the invariant
+quantities of Newtonian mechanics, i.e. acceleration, force, and mass
+(and therefore time, length, and simultaneity). As far as Newtonian
+mechanics was concerned, then, the problem of absolute motion was
+completely solved; all that remained was to express the equivalence of
+inertial frames in a simpler geometrical structure. </p>
+
+<p>
+The lack of a privileged spatial frame, combined with the obvious
+existence of privileged states of motion—paths defined as
+rectilinear in space and uniform with respect to time—suggests
+that the geometrical situation ought to be regarded from a
+four-dimensional <em>spatio-temporal</em> point of view. The
+structure defined by the class of inertial frames can be captured in
+the statement that <em>space-time</em> is a four-dimensional affine
+space, whose straight lines (geodesics) <em>are the trajectories of
+particles in uniform rectilinear motion</em>. See Figure 4.</p>
+
+<div class="figure avoid-break">
+<img src="Fig4.png" style="width:600px;" alt="Figure 4" />
+
+<p class="center">
+<span class="figlabel">Figure 4:</span> Inertial Trajectories as
+Straight Lines of Space-time</p>
+</div>
+
+<p>
+That is, space-time is a structure whose automorphisms—the
+Galilean transformations that relate one inertial frame to
+another—are affine transformations: they take straight lines
+into straight lines, and parallel lines into parallel lines. The
+former condition implies that an inertial motion in one frame will be
+an inertial motion in any other frame, and likewise for an
+accelerating or rotational motion. The latter implies that
+uniformly-moving particles or observers who are relatively at rest in
+one frame will also be relatively at rest in another. An inertial
+frame can be characterized as a family of parallel straight lines
+“filling” space-time, representing the possible
+trajectories of a family of free particles that are relatively at
+rest. See Figure 5. Therefore, to assert that an inertial frame exists
+is to impose a global structure on space-time; it is equivalent to the
+assertion that space-time is an affine space that is flat. </p>
+
+<div class="figure avoid-break">
+<img src="Fig5.png" style="width:500px;" alt="Figure 5" />
+
+<p>
+<span class="figlabel">Figure 5:</span> Each of these families of
+straight lines, <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-102"><span class="MJXp-msubsup" id="MJXp-Span-103"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-104" style="margin-right: 0.05em;">F</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-105" style="vertical-align: -0.4em;">1</span></span></span></span><script type="math/tex" id="MathJax-Element-9">F_1</script> and <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-106"><span class="MJXp-msubsup" id="MJXp-Span-107"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-108" style="margin-right: 0.05em;">F</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-109" style="vertical-align: -0.4em;">2</span></span></span></span><script type="math/tex" id="MathJax-Element-10">F_2</script>, represents the trajectories of a
+family of free particles that are relatively at rest, and therefore
+each defines an inertial frame. Relative to each other, the frames
+defined by <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-110"><span class="MJXp-msubsup" id="MJXp-Span-111"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-112" style="margin-right: 0.05em;">F</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-113" style="vertical-align: -0.4em;">1</span></span></span></span><script type="math/tex" id="MathJax-Element-11">F_1</script> and <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-114"><span class="MJXp-msubsup" id="MJXp-Span-115"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-116" style="margin-right: 0.05em;">F</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-117" style="vertical-align: -0.4em;">2</span></span></span></span><script type="math/tex" id="MathJax-Element-12">F_2</script> are in uniform motion.
+<br />
+Each of the surfaces <i>S</i> is a “hypersurface of absolute
+simultaneity” representing all of space at a given moment;
+evidently (given the Galilean transformations) two inertial frames
+will agree on which events in space-time are simultaneous.</p>
+</div>
+
+<p>
+The form of the Galilean transformations shows that, in addition to
+being affine transformations, they also preserve metrical relations on
+time and space. Distinct inertial frames will agree on simultaneity,
+and on (ratios of) time-intervals; they will also agree on the spatial
+distance between points at a given moment of time. Therefore, in the
+four-dimensional picture, the decomposition of space-time into
+hypersurfaces of absolute simultaneity is independent of the choice of
+inertial frame. Another way of putting this is that Newtonian
+space-time is endowed with a <em>projection</em> of space onto time,
+i.e. a function that identifies space-time points that have the same
+time-coordinate. Similarly, absolute space arises from a projection of
+space-time onto space, i.e. a function that identifies space-time
+points that have the same spatial coordinates. See Figure 6. </p>
+
+<div class="figure avoid-break">
+<img src="Fig6aandb.png" style="width:100%;" alt="Figure 6" />
+
+<p class="center">
+<span class="figlabel">Figure 6</span></p>
+</div>
+
+<p>
+But Galilean relativity implies that this latter projection is
+arbitrary. While it assumes that we can identify the same time at
+different spatial locations, Newtonian mechanics provides no physical
+way of identifying the same spatial point at different times. Thus the
+equivalence of inertial frames can be thought of as the arbitrariness
+of the projection of space-time onto space. Any such projection is,
+essentially, the arbitrary choice of some particular inertial frame as
+a rest-frame. In the relativized version of Newton’s theory,
+then, the class of inertial frames replaces absolute space, while
+absolute time remains. The structure of Newtonian space-time (also
+known as Galilean space-time, or neo-Newtonian space-time) expresses
+this fact in a direct and obvious way. (See Stein 1967 and Ehlers 1973
+for further explanation.)</p>
+
+<div class="figure avoid-break">
+
+<table class="wide vert-top cellpad-med-dense">
+<tbody><tr>
+  <td>
+<img src="Fig7a.png" style="wdith:240px;" alt="Figure 7a" />
+</td>
+  <td>
+<img src="Fig7b.png" style="width:250px;" alt="Figure 7b" />
+</td></tr>
+<tr>
+  <td class="center">(a)</td>
+  <td class="center">(b)</td></tr>
+</tbody></table>
+<p><span class="figlabel">Figure 7:</span>
+(a) Here is a space-time diagram of motions relative to the inertial
+frame in which <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-118"><span class="MJXp-msubsup" id="MJXp-Span-119"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-120" style="margin-right: 0.05em;">O</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-121" style="vertical-align: -0.4em;">1</span></span></span></span><script type="math/tex" id="MathJax-Element-13">O_1</script>, <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-122"><span class="MJXp-msubsup" id="MJXp-Span-123"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-124" style="margin-right: 0.05em;">O</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-125" style="vertical-align: -0.4em;">2</span></span></span></span><script type="math/tex" id="MathJax-Element-14">O_2</script>, and <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-126"><span class="MJXp-msubsup" id="MJXp-Span-127"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-128" style="margin-right: 0.05em;">P</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-129" style="vertical-align: -0.4em;">1</span></span></span></span><script type="math/tex" id="MathJax-Element-15">P_1</script> are at rest. This can be
+seen as arising from the projection of each of their inertial
+trajectories onto a single point of space. <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-130"><span class="MJXp-msubsup" id="MJXp-Span-131"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-132" style="margin-right: 0.05em;">O</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-133" style="vertical-align: -0.4em;">3</span></span></span></span><script type="math/tex" id="MathJax-Element-16">O_3</script> is in uniform
+motion. <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-134"><span class="MJXp-msubsup" id="MJXp-Span-135"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-136" style="margin-right: 0.05em;">O</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-137" style="vertical-align: -0.4em;">4</span></span></span></span><script type="math/tex" id="MathJax-Element-17">O_4</script> is accelerating any old way. <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-138"><span class="MJXp-msubsup" id="MJXp-Span-139"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-140" style="margin-right: 0.05em;">O</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-141" style="vertical-align: -0.4em;">5</span></span></span></span><script type="math/tex" id="MathJax-Element-18">O_5</script> and <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-142"><span class="MJXp-msubsup" id="MJXp-Span-143"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-144" style="margin-right: 0.05em;">O</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-145" style="vertical-align: -0.4em;">6</span></span></span></span><script type="math/tex" id="MathJax-Element-19">O_6</script> are
+revolving around their common center of gravity <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-146"><span class="MJXp-msubsup" id="MJXp-Span-147"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-148" style="margin-right: 0.05em;">P</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-149" style="vertical-align: -0.4em;">1</span></span></span></span><script type="math/tex" id="MathJax-Element-20">P_1</script>, which (as
+noted above) is at rest. <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-150"><span class="MJXp-msubsup" id="MJXp-Span-151"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-152" style="margin-right: 0.05em;">O</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-153" style="vertical-align: -0.4em;">7</span></span></span></span><script type="math/tex" id="MathJax-Element-21">O_7</script> and <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-154"><span class="MJXp-msubsup" id="MJXp-Span-155"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-156" style="margin-right: 0.05em;">O</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-157" style="vertical-align: -0.4em;">8</span></span></span></span><script type="math/tex" id="MathJax-Element-22">O_8</script> are revolving around
+their center of gravity <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-158"><span class="MJXp-msubsup" id="MJXp-Span-159"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-160" style="margin-right: 0.05em;">P</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-161" style="vertical-align: -0.4em;">2</span></span></span></span><script type="math/tex" id="MathJax-Element-23">P_2</script>, which is in uniform motion.
+<br />
+(b) Here is the same situation viewed from an inertial frame in which
+<span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-162"><span class="MJXp-msubsup" id="MJXp-Span-163"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-164" style="margin-right: 0.05em;">O</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-165" style="vertical-align: -0.4em;">3</span></span></span></span><script type="math/tex" id="MathJax-Element-24">O_3</script> and <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-166"><span class="MJXp-msubsup" id="MJXp-Span-167"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-168" style="margin-right: 0.05em;">P</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-169" style="vertical-align: -0.4em;">2</span></span></span></span><script type="math/tex" id="MathJax-Element-25">P_2</script> are at rest. Now <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-170"><span class="MJXp-msubsup" id="MJXp-Span-171"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-172" style="margin-right: 0.05em;">O</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-173" style="vertical-align: -0.4em;">1</span></span><span class="MJXp-mo" id="MJXp-Span-174" style="margin-left: 0em; margin-right: 0.222em;">,</span></span></span><script type="math/tex" id="MathJax-Element-26">O_1,</script> <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-175"><span class="MJXp-msubsup" id="MJXp-Span-176"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-177" style="margin-right: 0.05em;">O</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-178" style="vertical-align: -0.4em;">2</span></span><span class="MJXp-mo" id="MJXp-Span-179" style="margin-left: 0em; margin-right: 0.222em;">,</span></span></span><script type="math/tex" id="MathJax-Element-27">O_2,</script> and <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-180"><span class="MJXp-msubsup" id="MJXp-Span-181"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-182" style="margin-right: 0.05em;">P</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-183" style="vertical-align: -0.4em;">1</span></span></span></span><script type="math/tex" id="MathJax-Element-28">P_1</script> are
+in uniform motion. <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-184"><span class="MJXp-msubsup" id="MJXp-Span-185"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-186" style="margin-right: 0.05em;">O</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-187" style="vertical-align: -0.4em;">4</span></span></span></span><script type="math/tex" id="MathJax-Element-29">O_4</script> is accelerating any old way. <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-188"><span class="MJXp-msubsup" id="MJXp-Span-189"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-190" style="margin-right: 0.05em;">O</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-191" style="vertical-align: -0.4em;">5</span></span></span></span><script type="math/tex" id="MathJax-Element-30">O_5</script> and
+<span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-192"><span class="MJXp-msubsup" id="MJXp-Span-193"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-194" style="margin-right: 0.05em;">O</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-195" style="vertical-align: -0.4em;">6</span></span></span></span><script type="math/tex" id="MathJax-Element-31">O_6</script> are revolving around their common center of gravity <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-196"><span class="MJXp-msubsup" id="MJXp-Span-197"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-198" style="margin-right: 0.05em;">P</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-199" style="vertical-align: -0.4em;">1</span></span></span></span><script type="math/tex" id="MathJax-Element-32">P_1</script>,
+which is in uniform motion. <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-200"><span class="MJXp-msubsup" id="MJXp-Span-201"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-202" style="margin-right: 0.05em;">O</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-203" style="vertical-align: -0.4em;">7</span></span></span></span><script type="math/tex" id="MathJax-Element-33">O_7</script> and <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-204"><span class="MJXp-msubsup" id="MJXp-Span-205"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-206" style="margin-right: 0.05em;">O</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-207" style="vertical-align: -0.4em;">8</span></span></span></span><script type="math/tex" id="MathJax-Element-34">O_8</script> are revolving around
+their center of gravity <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-208"><span class="MJXp-msubsup" id="MJXp-Span-209"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-210" style="margin-right: 0.05em;">P</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-211" style="vertical-align: -0.4em;">2</span></span></span></span><script type="math/tex" id="MathJax-Element-35">P_2</script>, which (as noted above) is at
+rest.</p>
+</div>
+
+<h3 id="ConfBetwGaliRelaModeElec">2.2 The conflict between Galilean relativity and modern electrodynamics</h3>
+
+<p>
+By the time that this representation of the Newtonian space-time
+structure was developed, however, the Newtonian conception of inertial
+frame had been essentially overthrown. First, 19<sup>th</sup>-century
+electrodynamics raised again the question of a privileged frame of
+reference: the conception of light as an electromagnetic wave in the
+ether implied that the rest-frame of the ether itself should play a
+distinguished role in electrodynamical phenomena. On the one hand,
+physicists such as Maxwell and Lorentz were careful to point out that
+velocity relative to the ether was not equivalent to absolute
+velocity, because the state of motion of the ether itself was
+necessarily unknown. In other words, this conception of light did not
+necessarily violate the classical principle of relativity. On the
+other hand, the existence of such a preferred frame made the
+equivalence of inertial frames correspondingly less interesting, even
+if it was true in principle. This is why the appearance of the idea of
+inertial frame in the 1880s, as suggested earlier, was not of pressing
+physical interest to the majority of physicists, and seemed to be a
+mere philosophical sidelight. The attempts to measure the effects of
+motion relative to the ether commanded considerably more
+attention.</p>
+
+<p>
+Second, the abandonment of the ether—following the failure of
+attempts to measure velocity relative to the ether and, more
+generally, the apparent independence of all electrodynamical phenomena
+of motion relative to the ether—did not vindicate the Newtonian
+inertial frame. Rather, it required a dramatically revised conception.
+Special relativity might be said to have applied the relativity
+principle of Newtonian mechanics to Maxwell’s electrodynamics,
+by eliminating the privileged status of the rest-frame of the ether
+and admitting that the velocity of light is independent of the motion
+of the source. As Einstein expressed it, “the same laws of
+electrodynamics and optics will be valid for all frames of reference
+for which the equations of mechanics hold good.” (1905, p. 38.)
+But as Einstein also pointed out, the invariance of the velocity of
+light and the principle of relativity, at least in its Galilean form,
+are incompatible. It simply makes no sense, according to Galilean
+relativity, that any velocity should appear to be the same in inertial
+frames that are in relative motion.</p>
+
+<h3 id="SpecRelaLoreInva">2.3 Special relativity and Lorentz invariance</h3>
+
+<p>
+Einstein solved this difficulty through his analysis of simultaneity:
+frames in relative motion can agree on the velocity of light only if
+they disagree on simultaneity. Only the relativity of simultaneity
+makes possible the invariance of the velocity of light. This means
+that the transformations between inertial frames that preserve the
+velocity of light will not preserve simultaneity. These are the
+<em>Lorentz transformations</em>:</p> 
+
+<span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math MJXp-display" id="MJXp-Span-212"><span class="MJXp-msup" id="MJXp-Span-213"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-214" style="margin-right: 0.05em;">x</span><span class="MJXp-mo MJXp-script" id="MJXp-Span-215" style="vertical-align: 0.5em;">′</span></span><span class="MJXp-mo" id="MJXp-Span-216" style="margin-left: 0.333em; margin-right: 0.333em;">=</span><span class="MJXp-mfrac" id="MJXp-Span-217" style="vertical-align: 0.25em;"><span class="MJXp-box"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-218">x</span><span class="MJXp-mo" id="MJXp-Span-219" style="margin-left: 0.267em; margin-right: 0.267em;">−</span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-220">v</span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-221">t</span></span><span class="MJXp-box" style="margin-top: -0.9em;"><span class="MJXp-denom"><span><span class="MJXp-rule" style="height: 1em; border-top: none; border-bottom: 1px solid; margin: 0.1em 0px;"></span></span><span><span class="MJXp-box"><span class="MJXp-msqrt" id="MJXp-Span-222"><span class="MJXp-surd"><span class="MJXp-right MJXp-scale10" style="font-size: 166%; margin-top: 0.084em; margin-left: 0em;">√</span></span><span class="MJXp-root"><span class="MJXp-rule" style="border-top: 0.08em solid;"></span><span class="MJXp-box"><span class="MJXp-mn" id="MJXp-Span-223">1</span><span class="MJXp-mo" id="MJXp-Span-224" style="margin-left: 0.267em; margin-right: 0.267em;">−</span><span class="MJXp-msubsup" id="MJXp-Span-225"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-226" style="margin-right: 0.05em;">v</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-227" style="vertical-align: 0.5em;">2</span></span><span class="MJXp-mrow" id="MJXp-Span-228"><span class="MJXp-mo" id="MJXp-Span-229" style="margin-left: 0.111em; margin-right: 0.111em;">/</span></span><span class="MJXp-msubsup" id="MJXp-Span-230"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-231" style="margin-right: 0.05em;">c</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-232" style="vertical-align: 0.5em;">2</span></span></span></span></span></span></span></span></span></span><span class="MJXp-mspace" id="MJXp-Span-233" style="width: 1em; height: 0em;"></span><span class="MJXp-msup" id="MJXp-Span-234"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-235" style="margin-right: 0.05em;">y</span><span class="MJXp-mo MJXp-script" id="MJXp-Span-236" style="vertical-align: 0.5em;">′</span></span><span class="MJXp-mo" id="MJXp-Span-237" style="margin-left: 0.333em; margin-right: 0.333em;">=</span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-238">y</span><span class="MJXp-mspace" id="MJXp-Span-239" style="width: 1em; height: 0em;"></span><span class="MJXp-msup" id="MJXp-Span-240"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-241" style="margin-right: 0.05em;">z</span><span class="MJXp-mo MJXp-script" id="MJXp-Span-242" style="vertical-align: 0.5em;">′</span></span><span class="MJXp-mo" id="MJXp-Span-243" style="margin-left: 0.333em; margin-right: 0.333em;">=</span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-244">z</span><span class="MJXp-mspace" id="MJXp-Span-245" style="width: 1em; height: 0em;"></span><span class="MJXp-msup" id="MJXp-Span-246"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-247" style="margin-right: 0.05em;">t</span><span class="MJXp-mo MJXp-script" id="MJXp-Span-248" style="vertical-align: 0.5em;">′</span></span><span class="MJXp-mo" id="MJXp-Span-249" style="margin-left: 0.333em; margin-right: 0.333em;">=</span><span class="MJXp-mfrac" id="MJXp-Span-250" style="vertical-align: 0.25em;"><span class="MJXp-box"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-251">t</span><span class="MJXp-mo" id="MJXp-Span-252" style="margin-left: 0.267em; margin-right: 0.267em;">−</span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-253">v</span><span class="MJXp-mi MJXp-italic" id="MJXp-Span-254">x</span><span class="MJXp-mrow" id="MJXp-Span-255"><span class="MJXp-mo" id="MJXp-Span-256" style="margin-left: 0.111em; margin-right: 0.111em;">/</span></span><span class="MJXp-msubsup" id="MJXp-Span-257"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-258" style="margin-right: 0.05em;">c</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-259" style="vertical-align: 0.5em;">2</span></span></span><span class="MJXp-box" style="margin-top: -0.9em;"><span class="MJXp-denom"><span><span class="MJXp-rule" style="height: 1em; border-top: none; border-bottom: 1px solid; margin: 0.1em 0px;"></span></span><span><span class="MJXp-box"><span class="MJXp-msqrt" id="MJXp-Span-260"><span class="MJXp-surd"><span class="MJXp-right MJXp-scale10" style="font-size: 166%; margin-top: 0.084em; margin-left: 0em;">√</span></span><span class="MJXp-root"><span class="MJXp-rule" style="border-top: 0.08em solid;"></span><span class="MJXp-box"><span class="MJXp-mn" id="MJXp-Span-261">1</span><span class="MJXp-mo" id="MJXp-Span-262" style="margin-left: 0.267em; margin-right: 0.267em;">−</span><span class="MJXp-msubsup" id="MJXp-Span-263"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-264" style="margin-right: 0.05em;">v</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-265" style="vertical-align: 0.5em;">2</span></span><span class="MJXp-mrow" id="MJXp-Span-266"><span class="MJXp-mo" id="MJXp-Span-267" style="margin-left: 0.111em; margin-right: 0.111em;">/</span></span><span class="MJXp-msubsup" id="MJXp-Span-268"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-269" style="margin-right: 0.05em;">c</span><span class="MJXp-mn MJXp-script" id="MJXp-Span-270" style="vertical-align: 0.5em;">2</span></span></span></span></span></span></span></span></span></span></span></span><script type="math/tex; mode=display" id="MathJax-Element-36">
+x' = \frac{x-vt}{\sqrt{1-v^2/c^2}} \quad y'=y \quad z'=z \quad t'=\frac{t-vx/c^2}{\sqrt{1-v^2/c^2}}
+
+</script>
+
+<p>
+Evidently these transformations preserve the velocity of light, but
+they do not preserve length and time. So the invariant quantities of
+Newtonian mechanics, which presuppose invariant measures of length and
+time, must now depend on the choice of inertial frame. In other words,
+acceleration is an invariant quantity only when it is zero, for the
+magnitude of a non-zero acceleration will differ for observers in
+relative motion. Therefore the notions of force, mass, and
+acceleration no longer provides an appropriate definition of an
+inertial frame, except in the ideal case of a frame in which no forces
+are acting. Einstein’s definition instead appeals to the
+invariant quantities of electrodynamics: an inertial frame is one in
+which light travels equal distances in equal times in arbitrary
+directions. What seems impossible, from the point of view of Galilean
+relativity, is that a frame that moves uniformly relative to one frame
+that satisfies Einstein’s definition should also satisfy the
+definition. But that seeming impossibility rests, again, on the
+assumption that two inertial frames will have a common measure of
+simultaneity. Einstein showed that light-signals provide an
+empirically and theoretically reasonable definition of simultaneity,
+in light of the empirical soundness of Maxwell’s equations and
+the apparent invariance of the velocity of light. In the absence of an
+empirically reasonable alternative compatible with Galilean
+invariance, there is no sound criterion of simultaneity that will give
+the same results in different inertial frames. Of course, it would
+remain true that in a given inertial frame, the motions of free
+particles would satisfy the requirements of Lange’s definition,
+and particles that move uniformly in one such frame would also move
+uniformly in any other. But such a definition is not a substitute for
+Einstein’s definition, since it must itself presuppose a
+definition of simultaneity. Otherwise, its appeal to the measurement
+and comparison of times and distances is without a sound empirical
+basis. Einstein’s definition places such measurements on an
+empirical basis. Their results, however, will depend on the choice of
+an inertial frame, and will vary systematically according to the
+relative velocities of different inertial frames.</p>
+
+<p>
+The space-time structure of special relativity thus differs
+essentially from Newtonian space-time, and is called “Minkowski
+space-time” since Minkowski (1908) first formulated
+Einstein’s theory in its four-dimensional form. It is an affine
+space, like Newtonian space-time. In both cases, the trajectories of
+free particles are straight lines of the affine structure, and a set
+of parallel inertial trajectories (geodesics) corresponds to an
+inertial frame. As we just saw, however, Newtonian space-time
+presupposes the invariant division of space-time into
+three-dimensional hypersurfaces of absolute simultaneity, and an
+objective measure of distance between points at a given moment of
+absolute time. Minkowski space-time is a four-dimensional vector space
+with an invariant four-dimensional metrical structure, imposed by the
+invariance of the speed of light. Instead of an invariant spatial
+interval between simultaneous events, there is an invariant
+spatio-temporal interval between any two points in space-time. Since
+there is no invariant relation of simultaneity, the sets of
+simultaneous events for any inertial frame are the hyperplanes
+orthogonal to the trajectories that determine that frame. In other
+words, the choice between two inertial frames determines a choice
+between two distinct divisions of space-time into space and time. See
+Figure 8:</p>
+
+<div class="figure avoid-break">
+<img src="Fig8.png" style="width:100%;" alt="Figure 8" />
+
+<p>
+<span class="figlabel">Figure 8:</span> The inertial frames <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-271"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-272">F</span></span></span><script type="math/tex" id="MathJax-Element-37">F</script> and
+<span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-273"><span class="MJXp-msup" id="MJXp-Span-274"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-275" style="margin-right: 0.05em;">F</span><span class="MJXp-mo MJXp-script" id="MJXp-Span-276" style="vertical-align: 0.5em;">′</span></span></span></span><script type="math/tex" id="MathJax-Element-38">F'</script> are in relative motion, and therefore, as the Lorentz
+transformations indicate, they disagree on simultaneity. <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-277"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-278">F</span></span></span><script type="math/tex" id="MathJax-Element-39">F</script> and
+<span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-279"><span class="MJXp-msup" id="MJXp-Span-280"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-281" style="margin-right: 0.05em;">F</span><span class="MJXp-mo MJXp-script" id="MJXp-Span-282" style="vertical-align: 0.5em;">′</span></span></span></span><script type="math/tex" id="MathJax-Element-40">F'</script> thus determine distinct decompositions of space-time into
+instantaneous spaces, <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-283"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-284">S</span></span></span><script type="math/tex" id="MathJax-Element-41">S</script> and <span class="MathJax_Preview" style="color: inherit;"><span class="MJXp-math" id="MJXp-Span-285"><span class="MJXp-msup" id="MJXp-Span-286"><span class="MJXp-mi MJXp-italic" id="MJXp-Span-287" style="margin-right: 0.05em;">S</span><span class="MJXp-mo MJXp-script" id="MJXp-Span-288" style="vertical-align: 0.5em;">′</span></span></span></span><script type="math/tex" id="MathJax-Element-42">S'</script>, respectively </p>
+</div>
+
+<h3 id="SimuRefeFram">2.4 Simultaneity and reference-frames</h3>
+
+<p>
+The details of Einstein’s argument and the structure of
+Minkowski space-time can be found elsewhere (see, e.g., Einstein 1951
+and Geroch 1978). Here only one more point is worth making. It could
+be argued that Einstein’s and Lorentz’s view are
+completely equivalent. That is, we could assume that there is indeed a
+privileged frame of reference, and that the apparent invariance of the
+velocity of light is explained by the effects on bodies of their
+motion through the ether (the Lorentz contraction and time dilation).
+This purported distinction between empirically indistinguishable
+frames has often been criticized on straightforward methodological
+grounds, but it could be (and surely has been) argued that it is more
+intuitively plausible than the relativity of simultaneity. After all,
+knowing that (as Einstein showed) the Lorentz contraction can be
+derived from the invariance of the velocity of light does not, by
+itself, entitle us to say which of the two is the more convincing
+starting-point.</p>
+
+<p>
+This is why it is so important that Einstein’s 1905 paper begins
+with a critical analysis of the entire notion of a frame of reference.
+It is tacitly assumed by Lorentz’s theory, and classical
+electrodynamics generally, that we have a reference-frame in which we
+can measure the velocity of light, and that there is a distinguished
+frame—at rest with respect to the ether—in which its true
+velocity would be measured. But how is such a reference-frame
+determined? The distances between points in space can only be
+determined if it is possible to determine which events are
+simultaneous. In practice this is always done by light-signalling, if
+only in the informal sense that we identify simultaneous events when
+we see them at the same time. But if the spatial frame of reference is
+determined by light-signals, and is then to be used to measure the
+speed of light, we would appear to be going in a circle. For this
+reason, Poincaré concluded that determining the speed of light
+is partly a matter of convention (1898). Before Einstein, however, it
+was tacitly assumed that, while light-signalling is useful and
+practical, it is not essential to the definition of simultaneity.
+There would be, therefore, a fact of the matter about which events are
+simultaneous that is independent of this method of signalling. This
+assumption was actually made explicit by James Thomson. He
+recognized—as few did before Poincaré and
+Einstein—that the measurement of distance involves</p>
+
+<blockquote>
+the difficulty as to imperfection of our means of ascertaining or
+specifying, or clearly idealizing, simultaneity at distant places. For
+this we do commonly use signals by sound, by light, by electricity, by
+connecting wires or bars, and by various other means. The time
+required in the transmission of the signal involves an imperfection in
+human powers of ascertaining simultaneity of occurrences at distant
+places. It seems, however, probably not to involve any difficulty of
+idealizing or imagining the existence of simultaneity. Probably it may
+not be felt to involve any difficulty comparable to that of attempting
+to form a distinct notion of identity of place at successive times in
+unmarked space. (1884, p. 380).
+</blockquote>
+
+<p>
+In other words, Thomson assumed that it was not a difficulty in
+principle, like the difficulty of determining rest in absolute space.
+But Einstein showed that it was precisely the same kind of difficulty:
+determinations of simultaneity involve reference to an arbitrary
+choice of reference-frame, just as much as determinations of velocity.
+Einstein’s conclusion is, of course, entirely contingent on the
+empirical facts of electrodynamics. It could have been avoided if
+there were in nature a useful signal of some kind whose transmission
+would provide a criterion of absolute simultaneity, so that the same
+events would be determined to be simultaneous in all inertial frames.
+Or, experiments such as those of Michelson and Morley might have
+succeeded in exhibiting the dependence of the velocity of light on the
+state of motion of the source. Then synchronization by light-signals
+could still have been regarded as a mere practical substitute for a
+notion of absolute simultaneity that stood on independent grounds,
+empirically as well as conceptually. But as Einstein saw, because of
+the apparent independence of the velocity of light of the motion of
+the source, even “idealizing or imagining the existence of
+simultaneity” involves light-signalling more essentially than
+anyone could have realized. Unless some other criterion of
+simultaneity is provided, therefore, the establishment of a spatial
+frame of reference involves light-signalling in an essential way. In
+the absence of such a criterion the speed of light cannot be, as
+Lorentz supposed, empirically measured against the background of an
+inertial frame. By appealing to the speed of light in defining
+simultaneity, Einstein gave an empirically sound construction both for
+spatio-temporal measurement and for a dynamically distinct class of
+reference-frames. (Cf. DiSalle 2006, ch. 4.) </p>
+
+<h3 id="SpecRelaLoreInvaGeneRelaGeneCova">2.5 From special relativity and Lorentz invariance to general relativity and general covariance</h3>
+
+<p>
+It may seem surprising that, after this insightful analysis of the
+concept of inertial frame and its role in electrodynamics, Einstein
+should have turned almost immediately to call that concept into
+question. But he became convinced, largely by his reading of Mach,
+that the central role of inertial frames was an “epistemological
+defect” that special relativity shared with Newtonian mechanics.
+Only relative motions are observable, yet both of these theories
+purport to identify a privileged state of motion and use it to explain
+observable effects (such as centrifugal forces). Coordinate systems
+are not observable, yet both of these theories assign a fundamental
+physical role to certain kinds of coordinate system, namely, the
+inertial systems. In either theory, inertial coordinates are
+distinguished from all others, and the laws of physics are said to
+hold only relative to inertial coordinate systems. In an
+epistemologically sophisticated theory, both of these problems would
+be solved at once: the new theory would only refer to what is
+observable, which is relative motion; it would admit arbitrary
+coordinate systems, instead of confining itself to a special class of
+system. Why, after all, should any genuine physical phenomenon depend
+on the choice of coordinate system?</p>
+
+<p>
+Another way of expressing Einstein’s view is to say that, in
+Newtonian mechanics and special relativity, rotation is
+“absolute” because the transformations between inertial
+frames (Galilean or Lorentzian) preserve rotational states. Thus the
+“absoluteness” of rotation arises precisely from singling
+out one type of frame, by one type of transformation, instead of
+allowing arbitrary transformations and arbitrary frames. Einstein held
+that this epistemological insight had a natural mathematical
+representation in the principle of <em>general covariance</em>, or the
+principle that the laws of nature are to be invariant under
+<em>arbitrary</em> coordinate transformations. More precisely, what
+this means is that coordinate transformations are no longer required
+(as in the affine spaces of Newtonian mechanics and special
+relativity) to take straight lines to straight lines, and to preserve
+further metrical structures appropriate to each theory, but only to
+preserve the smoothness of curves (i.e. their differentiability). The
+general theory of relativity was intended to be a generally covariant
+theory of space-time, and its general covariance was intended to
+express the general relativity of motion (Cf. Einstein 1916, section
+3). The extent to which the theory realized Einstein’s original
+aims remains a topic of philosophical debate. (Cf. Related Entries:
+ <a href="../spacetime-holearg/">“space and time: the hole argument,”</a>
+ <a href="../einstein-philscience/">“Einstein’s philosophy of science”</a>.) </p>
+
+<p>
+The central role of inertial frames in Newtonian and Minkowski
+space-time theories, in sum, rested on their shared assumption of the
+uniformity of space-time. In Newtonian mechanics and special
+relativity, the formal relations between inertial coordinate
+systems—the Galilean and Lorentz transformations,
+respectively—correspond to symmetry transformations of uniform
+space-time, that is, a space-time with non-trivial global symmetries.
+In Einstein’s context, a coordinate transformation from the
+coordinates of one “stationary system” to those of another
+would generally not reflect a global symmetry of space-time, just to
+the extent that the two were relatively accelerating. </p>
+
+<p>
+At the same time, we can say that the concept of inertial frame
+retains at least one aspect of the relevance that it had for Newton.
+As we saw, Newton was aware that he could not determine (to put it in
+our language) an actual inertial frame from his analysis of the solar
+system; Corollary VI implied that all local phenomena were compatible
+with an acceleration of the entire system, by nearly equal and nearly
+parallel accelerative forces acting on the sun, the planets, and their
+satellites. By the very same reasoning, however, he established that
+such a uniformly accelerating frame was sufficient for a successful
+analysis of the relevant causes acting within the system—those
+causes that determine the system’s configuration. From this
+analysis he could determine the configuration of the system, that is,
+determine that our system is approximately Keplerian, with small
+deviations from Keplerian motion accounted for by perturbative actions
+of the members of the system on each other. In other words, though a
+true inertial frame cannot be determined, a sufficient approximation
+to an inertial frame provides a sufficient basis for this causal
+account. </p>
+
+<p>
+In empirical testing and measurement in general relativity, the
+treatment of individual gravitating systems follows an analogous
+pattern. For the analysis of interactions within a local system, an
+asymptotically flat solution to Einstein’s equation plays a role
+analogous to the Newtonian system that approximates the conditions of
+Corollary VI. In general relativity, there can be non-negligible
+post-Newtonian effects, such as spatial curvature, and the non-linear
+superposition of gravitational fields. When they appear, empirical
+consequences such as anomalous precessions and light-bending provide
+tests of general relativity and other relativistic gravitation
+theories. (See Will 2018, ch. 4, especially 4.1–4.3).
+Abstractly, we might wish to treat such a system as isolated within a
+region of space-time that “flattens out” at infinity.
+Practically, it suffices to consider a region in which, at a
+sufficient remove from a system of mutually gravitating masses,
+curvature becomes negligible in comparison with the curvature induced
+by those masses locally. In other words, analogously to the Newtonian
+case, it is not necessary that such a system be isolated from external
+influences. It suffices that external influences make a negligible
+difference to the actions of the masses among themselves, and to the
+resulting configuration of the system. In short, instead of providing
+an exact account of the global symmetries of space-time, the idea of
+an inertial frame still provides a crucial practical tool for the
+empirical study of actual physical interactions.</p>
+</div>
+
+<div id="bibliography">
+
+<h2 id="Bib">Bibliography</h2>
+
+<ul class="hanging">
+
+<li>Cartan, E., 1923, “Sur les variétés de
+connexion affine, et la théorie de la relativité
+généralisée” (première partie),
+<em>Annales scientifiques de l’École Normale
+Supérieure</em>, 40: 325–412.</li>
+
+<li>–––, 1924, “Sur les variétés
+de connexion affine, et la théorie de la relativité
+généralisée” (suite), <em>Annales
+scientifiques de l’École Normale Supérieure</em>,
+41: 1–25.</li>
+
+<li>Copernicus, N., 1543, <em>De revolutionibus orbium
+coelestium</em>, Nuremberg: Johannes Petreius.</li>
+
+<li>DiSalle, R., 1991, “Conventionalism and the origins of the
+inertial frame concept”, in <em>PSA 1990: Proceedings of the
+1990 Biennial Meeting of the Philosophy of Science Association</em>,
+East Lansing: The Philosophy of Science Association.</li>
+
+<li>–––, 2006, <em>Understanding Space-Time: The
+Philosophical Development of Physics from Newton to Einstein</em>,
+Cambridge: Cambridge University Press.</li>
+
+<li>–––, 2013, “The transcendental method from
+Newton to Kant”, <em>Studies in History and Philosophy of
+Science</em> (Part A), 44: 448–456.</li>
+
+<li>–––, 2014, “Poincaré on the
+construction of space-time”, in M. DePaz and R. DiSalle (eds.),
+<em>Poincaré, Philosopher of Science: Problems and
+Perspectives</em> (Western Ontario Series in Philosophy of Science, v.
+79), Dordrecht, New York: Springer, pp. 167–184.</li>
+
+
+<li>Earman, J., 1989, <em>World Enough and Spacetime: Absolute and
+Relational Theories of Motion</em>, Cambridge, MA: MIT Press.</li>
+
+<li>Ehlers, J., 1973, “The nature and structure of
+space-time”, in <em>The Physicist’s Conception of
+Nature</em>, Jagdish Mehra (ed.), Dordrecht: Reidel, pp.
+71–95.</li>
+
+<li>Einstein, A., 1905, “On the electrodynamics of moving
+bodies”, in Einstein, <em>et al</em>. 1952, pp.
+35–65.</li>
+
+<li>–––, 1911, “On the influence of
+gravitation on the propagation of light”, in Einstein, <em>et
+al</em>. 1952, pp. 97–108.</li>
+
+<li>–––, 1916, “The foundation of the general
+theory of relativity”, in Einstein, <em>et al</em>. 1952, pp.
+109–164.</li>
+
+<li>–––, 1920, “Grundgedanken und Methoden der
+Relativitätstheorie in ihrer Entwickelung dargestellt”, in
+M. Jansen, R. Shulmann, J. Illy, C. Lehner, D. Buchwald (eds.),
+<em>The Collected Papers of Albert Einstein</em> (Volume 7),
+Princeton: Princeton University Press, 2002, pp. 212–249.</li>
+
+<li>–––, 1922, <em>The Meaning of Relativity. Four
+lectures delivered at Princeton University</em>, R. Adams (trans),
+Princeton: Princeton University Press
+ [<a href="https://en.wikisource.org/wiki/The_Meaning_of_Relativity/Lecture_3" target="other">available online</a>].
+ </li>
+
+<li>–––, 1922, <em>Vier Vorlesungen über
+Relativitätstheorie gehalten im Mai 1921 an der Universität
+Princeton</em>, Braunschweig: Vieweg &amp; Sohn.
+ [<a href="https://einsteinpapers.press.princeton.edu/vol7-doc/585" target="other">available online</a>].
+ </li>
+
+<li>–––, 1949, “Autobiographical notes”,
+in P.A. Schilpp (ed.), <em>Albert Einstein,
+Philosopher-Scientist</em>, Chicago: Open Court.</li>
+
+<li>–––, 1951, <em>Relativity: The Special and the
+General Theory</em>, R. Lawson (trans.), New York: Crown
+Publishers.</li>
+
+<li>Einstein, A., H. A. Lorentz, H. Minkowski, and H. Weyl, 1952,
+<em>The Principle of Relativity</em>, W. Perrett and G.B. Jeffery
+(trans.), New York: Dover Books.</li>
+
+<li>Euler, L., 1748, “Réflexions sur l’espace et le
+temps”, <em>Histoire de l’Academie Royale des sciences et
+belles lettres</em>, 4: 324–33.</li>
+
+<li>Friedman, M., 1983, <em>Foundations of Space-Time Theories</em>,
+Princeton: Princeton University Press.</li>
+
+<li>Geroch, R., 1978, <em>General Relativity from A to B</em>,
+Chicago: University of Chicago Press.</li>
+
+<li>Herivel, J., 1965, <em>The Background to Newton’s</em>
+Principia, Oxford: Oxford University Press. </li>
+
+<li>Huygens, C., 1656, “De motu corporum ex percussione”,
+in <em>Oeuvres complètes de Christian Huygens</em> (Volume
+XVI), The Hague: Martinus Nijhoff, 1929, pp. 30–91.</li>
+
+<li>Knox, E., 2014, “Newtonian spacetime structure in light of
+the equivalence principle”, <em>British Journal for the
+Philosophy of Science</em>, 65: 863–880.</li>
+
+<li>Lange, L., 1885, “Ueber das Beharrungsgesetz”,
+<em>Berichte der Königlichen Sachsischen Gesellschaft der
+Wissenschaften zu Leipzig, Mathematisch-physische Classe</em>, 37:
+333–51.</li>
+
+<li>Leibniz, G., <em>Philosophical Papers and Letters</em>, 
+Leroy Loemker (ed.), Dordrecht: Reidel, 1970.</li>
+
+<li>Mach, E., 1872, <em>Die Geschichte und die Wurzel des Satzes von
+der Erhaltung der Arbeit</em>, Prague: J.G. Calve’sche K.-K.
+Univ-Buchhandlung.</li>
+
+<li>–––, 1883, <em>Die Mechanik in ihrer
+Entwickelung, historisch-kritisch dargestellt</em>, 2nd edition,
+Leipzig: Brockhaus.</li>
+
+<li>–––, 1933, <em>Die Mechanik in ihrer
+Entwickelung, historisch-kritisch dargestellt</em>, 9th edition,
+Leipzig: Brockhaus.</li>
+
+<li>Malament, D., 2012, <em>Topics in the Foundations of General
+Relativity and Newtonian Gravitation Theory</em>, Chicago: University
+of Chicago Press.</li>
+
+<li>Maxwell, J.C., 1878, <em>Matter and Motion</em>, New York: Van
+Nostrand.</li>
+
+<li>Minkowski, H., 1908, “Space and time”, in Einstein,
+<em>et al</em>. 1952, pp. 75–91.</li>
+
+<li>Misner, C., K. Thorne, and J.A. Wheeler, 1973,
+<em>Gravitation</em>, San Francisco: Freeman</li>
+
+<li>Muirhead, R.F., 1887, “The laws of motion”,
+<em>Philosophical Magazine</em> (5th series), 23: 473–89.</li>
+
+<li>Neumann, C., 1870, <em>Ueber die Principien der
+Galilei-Newton’schen Theorie</em>, Leipzig: B. G. Teubner.</li>
+
+<li>Newton, I., 1684a, <em>De gravitatio et aequipondio
+fluidorum</em>, MS Add. 4003, Cambridge University Library, Cambridge
+ [<a href="http://www.newtonproject.ox.ac.uk/" target="other">available online</a>].</li>
+ 
+<li>–––, 1684b, “De motu sphæricorum
+corporum in fluidis”, MS Add. 3965.7, ff. 55–62*,
+Cambridge University Library, Cambridge
+ [<a href="http://www.newtonproject.ox.ac.uk/" target="other">available online</a>].</li>
+ 
+<li>–––, 1687a, <em>De motu Corporum Liber
+Secundus</em>, MS Add. 4003, Cambridge University Library, Cambridge
+ [<a href="http://www.newtonproject.ox.ac.uk/" target="other">available online</a>].</li>
+ 
+<li>–––, 1687b, <em>Philosophiae naturalis principia
+mathematica</em>, London: The Royal Society.</li>
+
+<li>Norton, J., 1985, “What was Einstein’s principle of
+equivalence?”, <em>Studies in History and Philosophy of Science
+Part A</em>, 16(3): 203–246. </li>
+
+<li>Poincaré, H., 1898, “La mesure du temps”,
+<em>Revue de métaphysique et de morale</em>, 6:
+1–13.</li>
+
+<li>Saunders, S., 2013, “Rethinking Newton’s
+<em>Principia</em>”, <em>Philosophy of Science</em>, 80:
+22–48.</li>
+
+<li>Rynasiewicz, R., 2014, “Newton’s Views on Space, Time,
+and Motion”, in Edward N. Zalta (ed.), <em>The Stanford
+Encyclopedia of Philosophy</em> (Summer 2014 Edition), URL = 
+ &lt;<a href="https://plato.stanford.edu/archives/sum2014/entries/newton-stm/">https://plato.stanford.edu/archives/sum2014/entries/newton-stm/</a>&gt;. </li>
+
+<li>Schutz, B.F., 1990, <em>A First Course in General Relativity</em>,
+New York: Cambridge University Press.</li>
+
+<li>Seeliger, H., 1906, “Über die sogenannte absolute
+Bewegung”, <em>Sitzungs-Berichte der Bayerische Akademie der
+Wissenschaft</em>, 36: 85–137.</li>
+
+<li>Smith, G.E., 2019, “Newton’s numerator: A year of
+gestation”, <em>Studies in History and Philosophy of Modern
+Physics</em>, 68: 163–177.</li>
+
+<li>Stan, M., 2016, “Huygens on Inertial Structure and
+Relativity”, <em>Philosophy of Science</em>, 83: 277–298.
+</li>
+
+<li>Stein, H., 1967, “Newtonian space-time”, <em>Texas
+Quarterly</em>, 10: 174–200.</li>
+
+<li>Stein, H., 1977, “Some philosophical prehistory of general
+relativity”, in <em>Foundations of Space-Time Theories</em>
+(Minnesota Studies in the Philosophy of Science, Volume 8), John
+Earman, Clark Glymour, and John Stachel (eds.), Minneapolis:
+University of Minnesota Press, pp. 3–49.</li>
+
+<li>Thomson, J., 1884, “On the law of inertia; the principle of
+chronometry; and the principle of absolute clinural rest, and of
+absolute rotation”, <em>Proceedings of the Royal Society of
+Edinburgh</em>, 12: 568–78.</li>
+
+<li>Torretti, R., 1983, <em>Relativity and Geometry</em>, Oxford:
+Pergamon Press.</li>
+
+<li>Weatherall, J., 2018, “A Brief Comment on
+Maxwell(/Newton)[-Huygens] Spacetime.” <em>Studies in History
+and Philosophy of Modern Physics</em>, 63: 34–38. </li>
+
+<li>Will, C.M., 2018, <em>Theory and Experiment in Gravitational
+Physics</em>, revised edition, Cambridge: Cambridge University
+Press.</li>
+</ul>
+
+</div> 
+
+<div id="academic-tools">
+
+<h2 id="Aca">Academic Tools</h2>
+
+<blockquote>
+<table class="vert-top">
+<tbody><tr>
+<td><img src="../../symbols/sepman-icon.jpg" alt="sep man icon" /></td>
+<td><a href="https://plato.stanford.edu/cgi-bin/encyclopedia/archinfo.cgi?entry=spacetime-iframes&amp;archive=sum2020" target="other">How to cite this entry</a>.</td>
+</tr>
+
+<tr>
+<td><img src="../../symbols/sepman-icon.jpg" alt="sep man icon" /></td>
+<td><a href="https://leibniz.stanford.edu/friends/preview/spacetime-iframes/" target="other">Preview the PDF version of this entry</a> at the
+ <a href="https://leibniz.stanford.edu/friends/" target="other">Friends of the SEP Society</a>.</td>
+</tr>
+
+<tr>
+<td><img src="../../symbols/inpho.png" alt="inpho icon" /></td>
+<td><a href="https://www.inphoproject.org/entity?sep=spacetime-iframes&amp;redirect=True" target="other">Look up this entry topic</a>
+ at the <a href="https://www.inphoproject.org/" target="other">Internet Philosophy Ontology Project</a>
+ (InPhO).</td>
+</tr>
+
+<tr>
+<td><img src="../../symbols/pp.gif" alt="phil papers icon" /></td>
+<td><a href="https://philpapers.org/sep/spacetime-iframes/" target="other">Enhanced bibliography for this entry</a>
+at <a href="https://philpapers.org/" target="other">PhilPapers</a>, with links to its database.</td>
+</tr>
+
+</tbody></table>
+</blockquote>
+
+
+</div>
+
+<div id="other-internet-resources">
+
+<h2 id="Oth">Other Internet Resources</h2>
+
+<ul>
+
+<li>DiSalle, R., 2017,
+ “<a href="https://www.youtube.com/watch?v=ND6E-Qr-l3A" target="other">Absolute space and Newton's theory of relativity</a>”,
+ presentation at The Philosophy of Howard Stein (Conference 
+at U. Chicago, June 9-11, 2017).</li>
+
+</ul>
+
+</div>
+
+<div id="related-entries">
+
+<h2 id="Rel">Related Entries</h2>
+
+<p>
+
+ <a href="../einstein-philscience/">Einstein, Albert: philosophy of science</a> |
+ <a href="../genrel-early/">general relativity: early philosophical interpretations of</a> |
+ <a href="../geometry-19th/">geometry: in the 19th century</a> |
+ <a href="../spacetime-convensimul/">space and time: conventionality of simultaneity</a> |
+ <a href="../spacetime-holearg/">space and time: the hole argument</a>
+
+</p>
+
+</div>
+
+<div id="acknowledgments">
+
+<h3>Acknowledgments</h3>
+
+<p>
+I am deeply grateful to Sona Ghosh for her
+invaluable assistance with philosophical, mathematical, and technical
+matters. I would also like to thank an anonymous referee for the SEP
+for very helpful comments on previous versions.</p>
+</div>
+
+<script type="text/javascript" src="local.js"></script>
+<script type="text/javascript" src="../../MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+</div><!-- #aueditable --><!--DO NOT MODIFY THIS LINE AND BELOW-->
+
+<!-- END ARTICLE HTML -->
+
+</div> <!-- End article-content -->
+
+  <div id="article-copyright">
+    <p>
+ <a href="../../info.html#c">Copyright © 2020</a> by
+
+<br />
+<a href="http://publish.uwo.ca/~rdisalle/" target="other">Robert DiSalle</a>
+&lt;<a href="mailto:rdisalle%40uwo%2eca"><em>rdisalle<abbr title=" at ">@</abbr>uwo<abbr title=" dot ">.</abbr>ca</em></a>&gt;
+    </p>
+  </div>
+
+</div> <!-- End article -->
+
+<!-- NOTE: article banner is outside of the id="article" div. -->
+<div id="article-banner" class="scroll-block">
+     <div id="article-banner-content">
+  <a href="../../fundraising/">
+  Open access to the SEP is made possible by a world-wide funding initiative.<br />
+  Please Read How You Can Help Keep the Encyclopedia Free</a>
+ </div>
+
+
+</div> <!-- End article-banner -->
+
+    </div> <!-- End content -->
+
+    <div id="footer">
+
+      <div id="footer-menu">
+        <div class="menu-block">
+          <h4><i class="icon-book"></i> Browse</h4>
+          <ul role="menu">
+            <li><a href="../../contents.html">Table of Contents</a></li>
+            <li><a href="../../new.html">New in this Archive</a></li>
+            
+            <li><a href="../../published.html">Chronological</a></li>
+            <li><a href="../../../../archives/">Archives <i class="icon-external-link"></i></a></li>
+          </ul>
+        </div>
+        <div class="menu-block">
+          <h4><i class="icon-info-sign"></i> About</h4>
+          <ul role="menu">
+            <li><a href="../../info.html">Editorial Information</a></li>
+            <li><a href="../../about.html">About the SEP</a></li>
+            <li><a href="../../board.html">Editorial Board</a></li>
+            <li><a href="../../cite.html">How to Cite the SEP</a></li>
+            <li><a href="../../special-characters.html">Special Characters</a></li>
+            
+            <li><a href="../../../../contact.html">Contact <i class="icon-external-link"></i></a></li>
+          </ul>
+        </div>
+        <div class="menu-block">
+          <h4><i class="icon-leaf"></i> Support SEP</h4>
+          <ul role="menu">
+            <li><a href="../../../../support/">Support the SEP</a></li>
+            <li><a href="../../../../support/friends.html">PDFs for SEP Friends</a></li>
+            <li><a href="../../../../support/donate.html">Make a Donation</a></li>
+            <li><a href="../../../../support/sepia.html">SEPIA for Libraries</a></li>
+          </ul>
+        </div>
+      </div> <!-- End footer menu -->
+
+      <div id="mirrors">
+        <div id="mirror-info">
+          <h4><i class="icon-globe"></i> Mirror Sites</h4>
+          <p>View this site from another server:</p>
+        </div>
+                <div class="btn-group">
+<a class="btn dropdown-toggle" data-toggle="dropdown" href="https://plato.stanford.edu/"><span class="flag flag-usa"></span> USA (Main Site) <span class="caret"></span><span class="mirror-source">CSLI, Stanford University</span></a>          <ul class="dropdown-menu">
+            <li><a href="https://stanford.library.sydney.edu.au/archives/sum2020/entries/spacetime-iframes/"><span class="flag flag-australia"></span> Australia <span class="mirror-source">Library, University of Sydney</span></a>           </li>
+            <li><a href="https://seop.illc.uva.nl/archives/sum2020/entries/spacetime-iframes/"><span class="flag flag-netherlands"></span> Netherlands <span class="mirror-source">ILLC, University of Amsterdam</span></a>           </li>
+          </ul>
+        </div>
+      </div> <!-- End mirrors -->
+      
+      <div id="site-credits">
+        <p class="csli-logo"><a href="https://www-csli.stanford.edu/"><img src="../../symbols/SU_csli.png" width="355" alt="Stanford Center for the Study of Language and Information" /></a></p>
+        <p>The Stanford Encyclopedia of Philosophy is <a href="../../info.html#c">copyright © 2020</a> by <a href="http://mally.stanford.edu/">The Metaphysics Research Lab</a>, Center for the Study of Language and Information (CSLI), Stanford University</p>
+        <p>Library of Congress Catalog Data: ISSN 1095-5054</p>
+      </div> <!-- End site credits -->
+
+    </div> <!-- End footer -->
+
+  </div> <!-- End container -->
+
+   <!-- NOTE: Script required for drop-down button to work (mirrors). -->
+  <script>
+    $('.dropdown-toggle').dropdown();
+  </script>
+
+
+
+
+
+</body></html>
