@@ -8,7 +8,6 @@ let introDiv = d3.select('#intro')
 let articleGraphDiv = d3.select('#articleGraph')
 let sidebarLeft = d3.select("#sidebarLeft") 
 let sidebarRight = d3.select("#sidebarRight")
-let pageTitle = d3.select("#pageTitle").append("h1")
 
 //Initialize nodes and links arrays for simulation
 let graphNodes = [];
@@ -83,22 +82,22 @@ function initializeParentSVG(svg) {
         left:0
     };
 
-    // let areaWidth = 900;
-    let areaWidth = 700
-    let areaHeight = 700;
+    let areaWidth = 800;
+    let areaHeight = 800;
 
     let width = areaWidth - margin.left - margin.right;
     let height = areaHeight - margin.top - margin.bottom;
 
     svg.attr("viewBox", "0 0 " + width + " " + height )
-       .attr("preserveAspectRatio", "none")
+       .attr("preserveAspectRatio", "xMidYMid")
+    //    .style("border", "1px solid white")
 
     //clear out child SVG elements
     svg.html("")
 
     //create SVG group centered in the middle of the svg space
     let g1 = svg.append('g')
-                        .attr("transform", `translate(${width/2},${height/2})`)
+                        .attr("transform", `translate(${width/2},${(height/2)-50})`)
                         .classed('articleGraphGroup', true)
     
     //create secondary svg group so that we can add our graph elements to this group
@@ -155,8 +154,8 @@ function initializeStyles() {
         'centralNodeDimmedOpacity': 0.5,
         'inArrayOpacity': 0.75,
         'notInArrayOpacity': 0.05,
-        'fontSize': '10px', 
-        'defaultRadius': 5,
+        'fontSize': '12px', 
+        'defaultRadius': 4,
         'strokeColor': "#fff",
         'strokeWidth':0.5 
     }
@@ -231,12 +230,21 @@ function setArticleMenuTitle(articleTitle) {
     articleMenu.property("value", articleTitle)
 }
 
+function setArticleTitle(selectedArticle) {
+    let selectedArticleTitle = d3.select("#selectedEntryTitle").select("h1")
+    selectedArticleTitle
+        .text(selectedArticle.article)
+        .style("color", function(d) {return color(selectedArticle.nodes[0].primary_domain)})
+        .classed('selectedEntryTitle',true)
+
+}
 function showArticleGraph(articleTitle) {
     d3.json('/static/sep_network_test.json').then((json) => {
         let articleData = getArticleData(json,articleTitle)
         setGlobalNodesLinks(articleData)
         let articleNode = graphNodes[0]
         drawArticleSimulation(json)
+        setArticleTitle(articleData)
         updateSidebarsArticle(json, articleNode);
         window.getSelection().removeAllRanges();
         setArticleMenuTitle(articleTitle)
@@ -464,12 +472,10 @@ function updateSideBarsArticleLeft(selectedArticle, relatedArticles){
             .classed("sidebarContent", true)
         
         let articleDetails = sideBarLeftContent.append("div")
-
-        // Title
-        articleDetails.append("h3")
-            .text(selectedArticle.title)
-            .style("color", function(d) {return color(selectedArticle.primary_domain)})
-            .classed('articleDetailH3',true)
+        articleDetails.classed('panelBG', true)
+        articleDetails.append("h2")
+            .text("Introduction Text")
+            .classed('panelHeading', true)
 
         // Intro Paragraph
         if (typeof(selectedArticle.first_paragraph)!=='undefined') {
@@ -482,10 +488,11 @@ function updateSideBarsArticleLeft(selectedArticle, relatedArticles){
         }
 
         //create div to list domains 
-        let domainListDiv = articleDetails.append("div")
-        domainListDiv.append("h5")
-            .text("This article appears in these domains")
-            .classed('articleDetailH5', true)
+        let domainListDiv = sideBarLeftContent.append("div")
+        domainListDiv.classed('panelBG', true)
+        domainListDiv.append("h2")
+            .text("Domains")
+            .classed('panelHeading', true)
 
         domainListDiv.append("ul")
             .selectAll(".domainListItem")
@@ -498,12 +505,14 @@ function updateSideBarsArticleLeft(selectedArticle, relatedArticles){
             .exit().remove()
         
         //create div to hold SEP link
-        let sepLinkDiv = articleDetails.append("div")
+        let sepLinkDiv = sideBarLeftContent.append("div")
+        sepLinkDiv
+            .classed('panelBG', true)
         let sepURL = baseURL + selectedArticle.id
     
-        sepLinkDiv.append('h5')
+        sepLinkDiv.append('h2')
             .text('Read the full article at SEP')
-            .classed('articleDetailH5', true)
+            .classed('panelHeading', true)
 
         sepLinkDiv.append("p")
         .html(`<a href="${sepURL}" target="_blank">${selectedArticle.title}</a>`)
@@ -571,22 +580,29 @@ function updateSideBarsArticleRight(data, selectedArticle){
         let articleData = getArticleData(data,selectedArticle.title)
 
         // create div to list analyses
-        let linkAnalysisDiv = sidebarRightContent.append("div")
-        linkAnalysisDiv.append("h4")
-            .text("Link Analysis")
-            .classed('articleDetailH3', true)
+        let linkCountDiv = sidebarRightContent.append("div")
+        linkCountDiv
+            .classed("panelBG", true)
+            .classed('linkCountDiv', true)
 
-        linkAnalysisDiv.append("p")
-            .html(`${articleData.links.length} articles are linked to<br/>"${selectedArticle.title}"`)
-            .classed('mainText', true)
+        linkCountDiv.append("p")
+            .text(`${articleData.links.length}`)
+            .classed('linkCountNumber', true)
+
+        linkCountDiv.append("p")
+        .text('Linked Articles')
+        .classed('linkCountText', true)
+
         
         
         // build direction links data 
         let directionLinksDiv = sidebarRightContent.append("div")
+        directionLinksDiv
+            .classed('panelBG', true)
 
-        directionLinksDiv.append("h5")
+        directionLinksDiv.append("h2")
             .text("Link Direction Summary")
-            .classed('articleDetailH5', true)
+            .classed('panelHeading', true)
 
         linkItems = [`Bi-Directional (${articleData.biLinks.size})`,
                      `In-Coming (${articleData.inLinks.size})`,
@@ -604,10 +620,12 @@ function updateSideBarsArticleRight(data, selectedArticle){
 
         // build domain links data 
         let domainLinksDiv = sidebarRightContent.append("div")
+        domainLinksDiv
+            .classed('panelBG', true)
 
-        domainLinksDiv.append("h5")
+        domainLinksDiv.append("h2")
             .text("Link Domain Summary")
-            .classed('articleDetailH5', true)  
+            .classed('panelHeading', true)  
 
             domainLinksDiv.append("ul")
             .selectAll(".linkDomainListItem")
@@ -621,11 +639,12 @@ function updateSideBarsArticleRight(data, selectedArticle){
 
         // build list of articles 
         let articleLinksDiv = sidebarRightContent.append("div")
+        articleLinksDiv
+            .classed('panelBG', true)
 
-        
-        articleLinksDiv.append("h5")
+        articleLinksDiv.append("h2")
             .text("Linked Articles")
-            .classed('articleDetailH5', true)
+            .classed('panelHeading', true)
         
         let showHide = articleLinksDiv.append("p")
             .text("(show)")
