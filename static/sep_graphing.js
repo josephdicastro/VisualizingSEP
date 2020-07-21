@@ -82,8 +82,8 @@ function initializeParentSVG(svg) {
         left:0
     };
 
-    let areaWidth = 800;
-    let areaHeight = 800;
+    let areaWidth = 700;
+    let areaHeight = 700;
 
     let width = areaWidth - margin.left - margin.right;
     let height = areaHeight - margin.top - margin.bottom;
@@ -97,7 +97,7 @@ function initializeParentSVG(svg) {
 
     //create SVG group centered in the middle of the svg space
     let g1 = svg.append('g')
-                        .attr("transform", `translate(${width/2},${(height/2)-50})`)
+                        .attr("transform", `translate(${width/2},${height/2})`)
                         .classed('articleGraphGroup', true)
     
     //create secondary svg group so that we can add our graph elements to this group
