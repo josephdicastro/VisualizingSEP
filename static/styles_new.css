@@ -12,35 +12,29 @@ header {
     height:5%;
     width:100%;
     background-color: rgb(20, 20, 20);
-    margin: 1% auto;
     border-radius: 20px;
 }
 main {
     width: 90%;
-    height: 70%;
+    height: 75%;
     margin: 5% auto;
-    margin-bottom: 5%;
+
     /* overflow: hidden; */
 }
+.nav-item-select { margin-top:5px;}
 
-/* footer {
-    height:5%;
-    width: 100%;
-    background-color: rgb(20, 20, 20);
-    border-radius: 20px;
-    margin: 1% auto;
-} */
+
 
 #sidebarLeft {
     height:95%;
     /* overflow: clip; */
-    width:90%;
+    width:100%;
 }
 
 #sidebarRight {
     height:95%;
     /* overflow: clip; */
-    width:100%;
+    width:95%;
 }
 
 #articleGraph {
@@ -53,21 +47,39 @@ main {
 /* Panel Area styling information  */
 .panelBG {
     background-color: rgb(15, 15, 15);
-    border-radius: 20px;
-    padding: 10px;
-    margin-bottom:10px;
+    border-radius: 1.5em;
+    padding: .5em 1em;
+    margin-bottom:.5em;
 }
 
 .panelHeading {
     color:lightgray;
     border-bottom: 1px rgb(60,60,60) dotted;
-    font-size:1em;
-    padding-top:5px;
-    padding-left: 10px;
+    font-size:.9em;
+    padding-left: .5em; 
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  
 }
 
 .panelBGColor {
     background-color: rgb(20, 20, 20);
+}
+
+.panelParagraphText {
+    color:lightgray;
+    font-size: .9em;
+    line-height: 1.1em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  
+    padding-left: .5em; 
+}
+
+.panelListItem {
+    margin:0;
+    padding:0;
+    margin-left:-2.2em;
+    font-size: .8em;
+    line-height: 1.2em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  
+    list-style: none;
 }
 
 
@@ -85,6 +97,7 @@ main {
     text-align: center;
 }
 
+
 #selectedEntryTitle h1 {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 1.2em;
@@ -97,14 +110,10 @@ main {
     border-radius: 30px;
  }
 
-
-
-
-
-.linkCountDiv {
-    height: 90px;
-    position: relative;
-
+.linkCountText {
+    font-size: 1.75em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  
+    color: white;
 }
 
 .linkCountNumber {
@@ -122,14 +131,14 @@ main {
     left: 20px;
 }
 
-.linkCountText {
+/* .linkCountText {
     font-size:20px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: white;
     left: 90px;
     top: 25px;
     position: absolute;
-} */
+} */ */
 
 
 
@@ -140,4 +149,21 @@ main {
 
 .debugBorder {
     border: 1px dashed white;
+}
+
+.marginTopBottomHalfEm {
+    margin-top:.5em;
+    margin-bottom:.5em;
+}
+
+.showArticleList {
+    font-size: .75em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  
+    color:lightgray;
+    margin-left:75%;
+}
+
+#articleListDiv {
+    height:400px;
+    overflow-y: scroll;
 }

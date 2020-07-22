@@ -10,7 +10,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="https://use.typekit.net/nfp8cny.css">
     <link href="static/styles_new.css" rel="stylesheet">
-    <link href="static/styles.css" rel="stylesheet">
+    <!-- <link href="static/styles.css" rel="stylesheet"> -->
     
     <title>Visualizing SEP </title>
     </head>
@@ -20,21 +20,22 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse"  style="padding-left: 10%;" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse"  style="padding-left: 15%;" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Explore the Dataset <span class="sr-only">(current)</span></a>
+                    <li class="nav-item nav-item-select active" style="width:25%">
+                        <select id="articleSearchMenu" class="custom-select custom-select-sm"></select><span class="sr-only">(current)</span></li>
                     </li>
-                    <li><select id="domainSearchMenu" class="selectMenu" ></select></li>
-                    <li><select id="articleSearchMenu" class="selectMenu"></select></li>
+                    <li class="nav-item nav-item-select "  style="margin-left:10px; width:25%">
+                        <select id="domainSearchMenu" class="custom-select custom-select-sm" ></select>
+                    </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#">(Randomize)</a>
+                    </li>                
+                    <li class="nav-item" style="padding-left: 5%;">
                         <a class="nav-link" href="#">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Randomize</a>
                     </li>
                 </ul>
             </div>
@@ -61,11 +62,12 @@
                 </div>
                 <div class="row">&nbsp;</div>
             </div>
-            </main>
-            <footer class="panelBGColor>
-                <p class="align-center">© 2020 - Joseph DiCastro</p>
-            </footer>
         </main>
+        <footer class="panelBGColor">
+            <p class="float-left footerText">SEP Edition: Summer 2020></p>
+            <p class="float-right footerText">© 2020 - Joseph DiCastro</p>
+        </footer>
+
 
         <!--D3 js -->
         <script  type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>

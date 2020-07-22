@@ -468,9 +468,8 @@ function updateSideBarsArticleLeft(selectedArticle, relatedArticles){
 
         //**populate sidebarLeft**
 
-        let sideBarLeftContent = sidebarLeft.append("div")
-            .classed("sidebarContent", true)
-        
+        let sideBarLeftContent = sidebarLeft.append("div")   
+
         let articleDetails = sideBarLeftContent.append("div")
         articleDetails.classed('panelBG', true)
         articleDetails.append("h2")
@@ -483,8 +482,7 @@ function updateSideBarsArticleLeft(selectedArticle, relatedArticles){
             let paragraphData = getParagraphDataHTML(selectedArticle.first_paragraph);
             articleText
                 .html(paragraphData)
-                .classed('firstParagraph', true)
-                .classed('mainText', true)
+                .classed('panelParagraphText', true)
         }
 
         //create div to list domains 
@@ -502,6 +500,7 @@ function updateSideBarsArticleLeft(selectedArticle, relatedArticles){
                 .html(function(d) {return d})
                 .style("color", function(d) {return color(d)})
                 .classed('domainListItem', true)
+                .classed('panelListItem', true)
             .exit().remove()
         
         //create div to hold SEP link
@@ -558,8 +557,10 @@ function updateSideBarsArticleLeft(selectedArticle, relatedArticles){
         let domainList = d3.selectAll('.domainListItem')
         
         domainList
-            .on('mouseover', function() { d3.select(this).style("cursor", "pointer").style("font-weight", "bold"); })
-            .on('mouseout', function() { d3.select(this).style("cursor", "default").style("font-weight", "normal"); })
+            // .on('mouseover', function() { d3.select(this).style("cursor", "pointer").style("font-weight", "bold").style('list-style', 'circle'); })
+            .on('mouseover', function() { activateItemLink(this)})
+            .on('mouseout', function() { deActivateItemLink(this)})
+            // .on('mouseout', function() { d3.select(this).style("cursor", "default").style("font-weight", "normal"); })
             .on('dblclick', function () {
                 let domainTitle = d3.select(this).datum()
                 showDomainGraph(domainTitle)
@@ -573,88 +574,39 @@ function updateSideBarsArticleRight(data, selectedArticle){
         sidebarRight.html("")
         sidebarRight.style("display", "block")
 
-        //create content area
-        let sidebarRightContent = sidebarRight.append("div").classed("sidebarContent", true)
-
         //get data from article
         let articleData = getArticleData(data,selectedArticle.title)
+
+        //create content area
+        let sidebarRightContent = sidebarRight.append("div")
 
         // create div to list analyses
         let linkCountDiv = sidebarRightContent.append("div")
         linkCountDiv
-            .classed("panelBG", true)
-            .classed('linkCountDiv', true)
+            .classed("panelBG", true)  
+            .classed("linkCountDiv", true)
 
-        linkCountDiv.append("p")
-            .text(`${articleData.links.length}`)
-            .classed('linkCountNumber', true)
+        linkCountDiv.append("h2")
+            .html(`<span class="badge badge-pill badge-light">${articleData.links.length}</span> Linked Articles`)
+            .classed('linkCountText', true)
 
-        linkCountDiv.append("p")
-        .text('Linked Articles')
-        .classed('linkCountText', true)
-
-        
-        
-        // build direction links data 
-        let directionLinksDiv = sidebarRightContent.append("div")
-        directionLinksDiv
-            .classed('panelBG', true)
-
-        directionLinksDiv.append("h2")
-            .text("Link Direction Summary")
-            .classed('panelHeading', true)
-
-        linkItems = [`Bi-Directional (${articleData.biLinks.size})`,
-                     `In-Coming (${articleData.inLinks.size})`,
-                     `Out-Going (${articleData.outLinks.size})`]
-
-        directionLinksDiv.append("ul")
-            .selectAll(".linkDirListItem")
-            .data(linkItems)
-            .enter()
-            .append('li')
-            .html(function(d) {return d})
-            .style("opacity",1)
-            .classed('linkDirListItem', true)
-        .exit().remove()
-
-        // build domain links data 
-        let domainLinksDiv = sidebarRightContent.append("div")
-        domainLinksDiv
-            .classed('panelBG', true)
-
-        domainLinksDiv.append("h2")
-            .text("Link Domain Summary")
-            .classed('panelHeading', true)  
-
-            domainLinksDiv.append("ul")
-            .selectAll(".linkDomainListItem")
-            .data(articleData.linkDomains)
-            .enter()
-            .append('li')
-            .html(function(d) {return `${d[0]} (${d[1]})`})
-            .style("color", function(d) {return color(d[0])})
-            .classed('linkDomainListItem', true)
-        .exit().remove()
 
         // build list of articles 
-        let articleLinksDiv = sidebarRightContent.append("div")
-        articleLinksDiv
-            .classed('panelBG', true)
+        let articleLinksDiv = linkCountDiv.append("div")
 
-        articleLinksDiv.append("h2")
-            .text("Linked Articles")
-            .classed('panelHeading', true)
-        
         let showHide = articleLinksDiv.append("p")
             .text("(show)")
-            .classed("articleShowHide", true)
-        
+            .classed('showArticleList', true)
         
         let articleListDiv = articleLinksDiv.append("div")
             .attr("id", "articleListDiv")
             .style("display", "none")
 
+        articleListDiv.append("h2")
+            .text("List of Articles")
+            .classed('panelHeading', true)
+        
+        
         let articleNodesCleaned = [] 
         articleData.nodes.forEach(node=> {
             if (node.index !== 0 ) {articleNodesCleaned.push(node)}
@@ -669,6 +621,63 @@ function updateSideBarsArticleRight(data, selectedArticle){
                 .html(function(d) {return `${d.title}`})
                 .style("color", function(d) {return color(d.primary_domain)})
                 .classed('linkArticlesListItem', true)
+                .classed('panelListItem', true)
+
+        // build direction links data 
+        let directionLinksPanel = sidebarRightContent.append("div")
+        directionLinksPanel
+            .classed('panelBG', true)
+
+        directionLinksPanel.append("h2")
+            .text("Link Direction Summary")
+            .classed('panelHeading', true)
+
+        let directionLinksListDiv = directionLinksPanel.append("div")
+        directionLinksListDiv
+            .attr("id", "directionLinksListDiv")
+            .attr("display", "block")
+
+        linkItems = [`Bi-Directional <span class="badge badge-pill badge-light">${articleData.biLinks.size}</span>`,
+                     `In-Coming <span class="badge badge-pill badge-light">${articleData.inLinks.size}</span>`,
+                     `Out-Going <span class="badge badge-pill badge-light">${articleData.outLinks.size}</span>`]
+
+        directionLinksListDiv.append("ul")
+            .selectAll(".linkDirListItem")
+            .data(linkItems)
+            .enter()
+            .append('li')
+            .html(function(d) {return d})
+            .style('color', 'white')
+            .classed('linkDirListItem', true)
+            .classed('panelListItem', true)
+        .exit().remove()
+
+        // build domain links data 
+        let domainLinksPanel = sidebarRightContent.append("div")
+        domainLinksPanel
+            .classed('panelBG', true)
+
+        domainLinksPanel.append("h2")
+            .text("Link Domain Summary")
+            .classed('panelHeading', true)  
+
+        let domainLinksListDiv = domainLinksPanel.append("div")
+        domainLinksListDiv
+            .attr("id", "domainLinksListDiv")
+            .attr("display", "block")
+        
+        domainLinksListDiv.append("ul")
+            .selectAll(".linkDomainListItem")
+            .data(articleData.linkDomains)
+            .enter()
+            .append('li')
+            .html(function(d) {return `${d[0]} <span class="badge badge-bill badge-light">${d[1]}</span>`})
+            .style("color", function(d) {return color(d[0])})
+            .classed('linkDomainListItem', true)
+            .classed('panelListItem', true)
+        .exit().remove()
+
+
 
         
         ////// ux/ui interactions
@@ -726,24 +735,34 @@ function updateSideBarsArticleRight(data, selectedArticle){
 function toggleArticleListVisibility(dblClickReference) {
     let toggleState = d3.select(dblClickReference)
     let articleListDiv = d3.select("#articleListDiv")
+    let directionListDiv = d3.select("#directionLinksListDiv")
+    let domainListDiv = d3.select("#domainLinksListDiv")
+
     if (toggleState.node().innerHTML === "(show)") {
         toggleState.node().innerHTML = "(hide)"
         articleListDiv.style("display", "block")
+        directionListDiv.style("display", "none")
+        domainListDiv.style("display", "none")
+
     }   else {
         toggleState.node().innerHTML = "(show)"
         articleListDiv.style("display", "none")
+        directionListDiv.style("display", "block")
+        domainListDiv.style("display", "block")
     }
 }
 
 function activateItemLink(mouseReference) {
     d3.select(mouseReference)
         .style("cursor", "pointer")
-        .style("font-weight", "bold");
+        // .style("font-weight", "bold")
+        .style("list-style", "disc");
 }
 function deActivateItemLink(mouseReference) {
     d3.select(mouseReference)
         .style("cursor", "normal")
-        .style("font-weight", "normal");
+        // .style("font-weight", "normal")
+        .style("list-style", "none");
 }
 function getDomainLinksInArticle(linkDomain) {
     let domainArray = []
