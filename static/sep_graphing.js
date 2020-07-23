@@ -8,19 +8,22 @@ let introDiv = d3.select('#intro')
 let articleGraphDiv = d3.select('#articleGraph')
 let sidebarLeft = d3.select("#sidebarLeft") 
 let sidebarRight = d3.select("#sidebarRight")
+let getRandomEntry = d3.select("#getRandomEntry")
+let recentSearchMenu = d3.select("#recentSearchMenu")
 
 //Initialize nodes and links arrays for simulation
 let graphNodes = [];
 let graphLinks = [];
+let allEntries = [];
+
 
 // Initialize SVG and Simulation
 let svgConfig = initializeParentSVG(svg);
 let simulationConfig = initializeSimulation(svgConfig);  
 let stylesConfig = initializeStyles();
 
-//Initialze article and domain caches for SEP data 
-let articleSearchCache = [];
-let domainSearchCache = [];
+//Initialze searchCache
+let searchCache = [];
 
 //
 let neighborNodes = [];
@@ -53,7 +56,18 @@ function startVisualization() {
         
     })
 
-    
+    getRandomEntry.on('click', function() { getRandom() })
+
+    recentSearchMenu.on('change', function() {
+        searchItem = d3.event.target.value;
+        domainPosition = searchItem.indexOf(' (domain)');
+        if( domainPosition === -1) {
+            showArticleGraph(searchItem)
+        }   else    {
+            showDomainGraph(searchItem.substring(0,domainPosition))
+        }
+    })
+
 }
 
 // ****** SET GLOBALS  ********
@@ -174,7 +188,11 @@ function loadMenus() {
     d3.json('static/sep_network_test.json').then((json) => {
         //build article menu 
         let articleItems = ["[Search articles...]"]
-        json.articles.nodes.forEach(node => articleItems.push(node.title))
+        json.articles.nodes.forEach(node => {
+            articleItems.push(node.title)
+            allEntries.push(node.title)
+        })
+
         articleMenu.selectAll("option")
         .data(articleItems)
         .enter().append("option")
@@ -182,17 +200,19 @@ function loadMenus() {
                 .html((d) => d)
 
         //build domain menu
-        let domainSet = new Set() 
-        json.articles.nodes.forEach(node => domainSet.add(node.primary_domain))
+        let domainSet = new Set()
+        json.articles.nodes.forEach(node => {
+            domainSet.add(node.primary_domain)
+        })
         let domainItems = Array.from(domainSet)
         domainItems.sort((a,b) => d3.ascending(a, b));
+        domainItems.forEach(node => allEntries.push(node))
         domainItems.unshift("[Search domains...]")
-
         domainMenu.selectAll("option")
-        .data(domainItems)
-        .enter().append("option")
-                .attr("value", (d) => d)
-                .html((d) => d)
+            .data(domainItems)
+            .enter().append("option")
+                    .attr("value", (d) => d)
+                    .html((d) => d)
 
     })
 
@@ -222,6 +242,20 @@ function rewriteURL(entryTitle, entryURL) {
         history.pushState(url, url.Title, url.Url);
     }
 }
+
+function updateRecentSearch() {
+    let recentSearchArray = ['Recent Searches...']
+    searchCache.sort((a,b) => d3.descending(a.index, b.index))
+    searchCache.forEach(node=> recentSearchArray.push(node.article || node.domain + ' (domain)'))
+
+    recentSearchMenu.html("")
+    recentSearchMenu.selectAll(".recentSearch")
+        .data(recentSearchArray)
+        .enter().append('option')
+            .text((d)=>d)
+            .classed('recentSearch', true)
+
+}
 // ****** ARTICLE GRAPH DATA AND SIMULATION FUNCTIONS ****** 
 
 function setArticleMenuTitle(articleTitle) {
@@ -246,17 +280,17 @@ function showArticleGraph(articleTitle) {
         window.getSelection().removeAllRanges();
         setArticleMenuTitle(articleTitle)
         setDomainMenuTitle("[Search domains...]")
-
+        updateRecentSearch();
     })
 
 }
 function getArticleData(data, articleTitle) {
     let articleData = {};
-    let inArticleCache = articleSearchCache.find( ({article}) => article === articleTitle);
-    if (!inArticleCache) {
+    let inCache = searchCache.find( ({article}) => article === articleTitle);
+    if (!inCache) {
         articleData = getArticleDataFromJSON(data, articleTitle); 
     }   else    {
-        articleData = inArticleCache
+        articleData = inCache
     }
 
     return articleData
@@ -325,11 +359,10 @@ function getArticleDataFromJSON(data, articleTitle) {
                         "linkDomains": linkDomains }
     
     //add to cache
-    articleSearchCache.push(articleData)
+    searchCache.push(articleData)
 
     return articleData
 
-    
 }
 function drawArticleSimulation(data) {
 
@@ -585,7 +618,7 @@ function setArticleRelatedLinks(parentSidebar, selectedArticle, relatedArticles)
             let relatedLinksParagraph = relatedLinksDiv.append("p")
 
             relatedLinksParagraph.append("span")
-                .html(`<span class="badge badge-pill badge-light">${numRelated}</span> shared Links with`)
+                .html(`<span class="badge badge-pill badge-light">${numRelated}</span>    Shared Links with `)
                 .style('color', 'white')
                 .classed('linksSharedText', true)
             
@@ -1022,7 +1055,6 @@ function showDomainGraph(domainTitle) {
     d3.json('static/sep_network_test.json').then(function(data) {
         
         let domainData = getDomainData(data,domainTitle)
-        console.log(domainData)
         setGlobalNodesLinks(domainData)
         drawDomainSimulation(data, domainData)
         updateSidebarLeft_DomainMain(data, domainData);
@@ -1032,17 +1064,18 @@ function showDomainGraph(domainTitle) {
         setDomainMenuTitle(domainTitle)
         setArticleMenuTitle("[Search articles...]")
         window.getSelection().removeAllRanges();
+        updateRecentSearch();
 
     });
 }
 function getDomainData(data, domainTitle) {
     let domainData = {};
-    console.log(domainTitle)
-    let inDomainCache = domainSearchCache.find( ({domain}) => domain === domainTitle);
-    if (!inDomainCache) {
+     let inCache = searchCache.find( ({domain}) => domain === domainTitle);
+
+    if (!inCache) {
         domainData = getDomainDataFromJSON(data, domainTitle); 
     }   else    {
-        domainData = inDomainCache
+        domainData = inCache
     }
 
     return domainData
@@ -1091,7 +1124,8 @@ function getDomainDataFromJSON(data, domainTitle) {
                         "nodes": domainNodes,
                         "links": domainLinks }
 
-    domainSearchCache.push(domainData)
+    // domainSearchCache.push(domainData)
+    searchCache.push(domainData)
 
     return domainData
 
@@ -1676,12 +1710,24 @@ function color(entryType){
 
     }
 
-    // if (entryType==='Thinker') {
-    //     rgbValue = 'rgb(255, 255, 255)'
-    // }   else    {
-    //     rgbValue = 'rgb(255, 127, 14)'
-    //     // rgbValue = 'rgb(255,255,0)'
-    // }
 
     return rgbValue
 }
+
+function getRandom() {
+    let randomEntry  = getRandomIntInclusive(0,allEntries.length)
+    if (randomEntry <= articleMenu.nodes()[0].length-1) {
+        showArticleGraph(allEntries[randomEntry])
+    }   else {
+        showDomainGraph(allEntries[randomEntry])
+    }
+
+
+}
+
+function getRandomIntInclusive(min, max) {
+    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+  }
