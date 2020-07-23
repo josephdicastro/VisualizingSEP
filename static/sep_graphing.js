@@ -222,7 +222,7 @@ function rewriteURL(entryTitle, entryURL) {
         history.pushState(url, url.Title, url.Url);
     }
 }
-// ****** ARTICLE GRAPH FUNCTIONS ****** 
+// ****** ARTICLE GRAPH DATA AND SIMULATION FUNCTIONS ****** 
 
 function setArticleMenuTitle(articleTitle) {
     articleMenu.property("value", articleTitle)
@@ -452,9 +452,17 @@ function drawArticleSimulation(data) {
 
 
 }
+
+// ****** ARTICLE GRAPH SIDEBAR  ****** 
+
+function clearSidebar(sidebarToClear) {
+    sidebarToClear.html("")
+    sidebarToClear.style("display", "block")
+}
 function updateSidebarsArticle(data, selectedArticle) {
     updateSideBarLeft_ArticleMain(selectedArticle)
     updateSideBarRight_ArticleMain(data, selectedArticle)
+
 }
 
 function updateSideBarLeft_ArticleMain(selectedArticle, relatedArticles){
@@ -485,16 +493,12 @@ function updateSideBarLeft_ArticlePreview(selectedArticle, relatedArticles) {
 
 }
 
-function clearSidebar(sidebarToClear) {
-    sidebarToClear.html("")
-    sidebarToClear.style("display", "block")
-}
-
 function setArticleIntroParagraph(parentSidebar, introText, selectedArticle) {
 
     let introParagraphPanel = parentSidebar.append("div")
     introParagraphPanel.classed('panelBG', true)
 
+    //test if this is a main entry heading or a preview heading
     if ( introText === 'Introduction Text') {
         introParagraphPanel.append("h2")
             .text('Introduction Text')
@@ -506,10 +510,7 @@ function setArticleIntroParagraph(parentSidebar, introText, selectedArticle) {
             .style('color', function() {return color(selectedArticle.primary_domain)})
     }
 
-
-
-
-    // Intro Paragraph
+    //build paragraph
     if (typeof(selectedArticle.first_paragraph)!=='undefined') {
         let paragraphDiv = introParagraphPanel.append("div")
         let paragraphData = getParagraphDataHTML(selectedArticle.first_paragraph);
@@ -568,7 +569,6 @@ function setArticleReadAtSep(parentSidebar, selectedArticle) {
         .classed('sepLink', true)
         .style('color', 'white')
 }
-
 
 function setArticleRelatedLinks(parentSidebar, selectedArticle, relatedArticles) {
     let relatedLinksDiv = parentSidebar.append("div")
@@ -640,166 +640,172 @@ function setArticleRelatedLinks_old(parentSidebar, selectedArticle, relatedArtic
 
 function updateSideBarRight_ArticleMain(data, selectedArticle){
     if(selectedArticle) {
-        //clear areas
-        sidebarRight.html("")
-        sidebarRight.style("display", "block")
 
-        //get data from article
-        let articleData = getArticleData(data,selectedArticle.title)
+        let articleData = getArticleData(data,selectedArticle.title);
 
-        //create content area
-        let sidebarRightContent = sidebarRight.append("div")
+        clearSidebar(sidebarRight);
 
-        // create div to list analyses
-        let linkCountDiv = sidebarRightContent.append("div")
-        linkCountDiv
-            .classed("panelBG", true)  
-            .classed("linkCountDiv", true)
+        let sidebarRightContent = sidebarRight.append("div");
 
-        linkCountDiv.append("h2")
-            .html(`<span class="badge badge-pill badge-light">${articleData.links.length}</span> Linked Articles`)
-            .classed('linkCountText', true)
+        setLinkCountPanel(sidebarRightContent,articleData, data);
+        setLinkDirectionPanel(sidebarRightContent, articleData);
+        setLinkDomainPanel(sidebarRightContent, articleData);
+    }
+}
 
+function setLinkCountPanel(parentSidebar, articleData, data) {
 
-        // build list of articles 
-        let articleLinksDiv = linkCountDiv.append("div")
+    let linkCountDiv = parentSidebar.append("div")
 
-        let showHide = articleLinksDiv.append("p")
-            .text("(show)")
-            .classed('showArticleList', true)
-        
-        let articleListDiv = articleLinksDiv.append("div")
-            .attr("id", "articleListDiv")
-            .style("display", "none")
+    linkCountDiv
+        .classed("panelBG", true)  
+        .classed("linkCountDiv", true)
 
-        articleListDiv.append("h2")
-            .text("List of Articles")
-            .classed('panelHeading', true)
-        
-        
-        let articleNodesCleaned = [] 
-        articleData.nodes.forEach(node=> {
-            if (node.index !== 0 ) {articleNodesCleaned.push(node)}
-        })
-        articleNodesCleaned.sort((a,b) => d3.ascending(a.title, b.title))
+    linkCountDiv.append("h2")
+        .html(`<span class="badge badge-pill badge-light">${articleData.links.length}</span> Linked Articles`)
+        .classed('linkCountText', true)
 
-        articleListDiv.append("ul")
-            .selectAll(".linkArticlesListItem")
-            .data(articleNodesCleaned)
-            .enter()
-                .append("li")
-                .html(function(d) {return `${d.title}`})
-                .style("color", function(d) {return color(d.primary_domain)})
-                .classed('linkArticlesListItem', true)
-                .classed('panelListItem', true)
+    // build list of articles 
+    let articleLinksDiv = linkCountDiv.append("div")
 
-        // build direction links data 
-        let directionLinksPanel = sidebarRightContent.append("div")
-        directionLinksPanel
-            .classed('panelBG', true)
+    let showHide = articleLinksDiv.append("p")
+        .text("(show)")
+        .classed('showArticleList', true)
 
-        directionLinksPanel.append("h2")
-            .text("Link Direction Summary")
-            .classed('panelHeading', true)
+    let articleListDiv = articleLinksDiv.append("div")
+        .attr("id", "articleListDiv")
+        .style("display", "none")
 
-        let directionLinksListDiv = directionLinksPanel.append("div")
-        directionLinksListDiv
-            .attr("id", "directionLinksListDiv")
-            .attr("display", "block")
+    articleListDiv.append("h2")
+        .text("List of Articles")
+        .classed('panelHeading', true)
 
-        linkItems = [`Bi-Directional <span class="badge badge-pill badge-light">${articleData.biLinks.size}</span>`,
-                     `In-Coming <span class="badge badge-pill badge-light">${articleData.inLinks.size}</span>`,
-                     `Out-Going <span class="badge badge-pill badge-light">${articleData.outLinks.size}</span>`]
+    let articleNodesCleaned = [] 
+    articleData.nodes.forEach(node=> {
+        if (node.index !== 0 ) {articleNodesCleaned.push(node)}
+    })
+    articleNodesCleaned.sort((a,b) => d3.ascending(a.title, b.title))
 
-        directionLinksListDiv.append("ul")
-            .selectAll(".linkDirListItem")
-            .data(linkItems)
-            .enter()
-            .append('li')
-            .html(function(d) {return d})
-            .style('color', 'white')
-            .classed('linkDirListItem', true)
+    articleListDiv.append("ul")
+        .selectAll(".linkArticlesListItem")
+        .data(articleNodesCleaned)
+        .enter()
+            .append("li")
+            .html(function(d) {return `${d.title}`})
+            .style("color", function(d) {return color(d.primary_domain)})
+            .classed('linkArticlesListItem', true)
             .classed('panelListItem', true)
         .exit().remove()
 
-        // build domain links data 
-        let domainLinksPanel = sidebarRightContent.append("div")
-        domainLinksPanel
-            .classed('panelBG', true)
+    // setup UI interactions
+    let listArticleLinks = d3.selectAll('.linkArticlesListItem');
+    let centralNode = graphNodes[0];
+    listArticleLinks
+        .on('mouseover', function() { mouseOverArticleNode(this, data)})
+        .on('mouseout', function()  { mouseOutArticleNode(this, data)})
+        .on('dblclick', function()  { dblClickArticleNode(this)})
+    showHide
+        .on('mouseover', function() { activateItemLink(this) })
+        .on('mouseout', function()  { deActivateItemLink(this) })
+        .on('dblclick', function()  { toggleArticleListVisibility(this)})
+}
 
-        domainLinksPanel.append("h2")
-            .text("Link Domain Summary")
-            .classed('panelHeading', true)  
+function setLinkDirectionPanel(parentDiv, articleData) {
 
-        let domainLinksListDiv = domainLinksPanel.append("div")
-        domainLinksListDiv
-            .attr("id", "domainLinksListDiv")
-            .attr("display", "block")
-        
-        domainLinksListDiv.append("ul")
-            .selectAll(".linkDomainListItem")
-            .data(articleData.linkDomains)
-            .enter()
-            .append('li')
-            .html(function(d) {return `${d[0]} <span class="badge badge-bill badge-light">${d[1]}</span>`})
-            .style("color", function(d) {return color(d[0])})
-            .classed('linkDomainListItem', true)
-            .classed('panelListItem', true)
-        .exit().remove()
+    let directionLinksPanel = parentDiv.append("div")
+    directionLinksPanel
+        .classed('panelBG', true)
 
+    directionLinksPanel.append("h2")
+        .text("Link Direction Summary")
+        .classed('panelHeading', true)
 
+    let directionLinksListDiv = directionLinksPanel.append("div")
+    directionLinksListDiv
+        .attr("id", "directionLinksListDiv")
+        .attr("display", "block")
 
-        
+    linkItems = [`Bi-Directional <span class="badge badge-pill badge-light">${articleData.biLinks.size}</span>`,
+                    `In-Coming <span class="badge badge-pill badge-light">${articleData.inLinks.size}</span>`,
+                    `Out-Going <span class="badge badge-pill badge-light">${articleData.outLinks.size}</span>`]
+
+    directionLinksListDiv.append("ul")
+        .selectAll(".linkDirListItem")
+        .data(linkItems)
+        .enter()
+        .append('li')
+        .html(function(d) {return d})
+        .style('color', 'white')
+        .classed('linkDirListItem', true)
+        .classed('panelListItem', true)
+    .exit().remove()
+
         ////// ux/ui interactions
 
-        let listLinkDirection = d3.selectAll('.linkDirListItem')
-        listLinkDirection
-            .on('mouseover', function() {
-                activateItemLink(this)
-                let linkDirection = d3.select(this).datum().substring(0,2)
-                switch(linkDirection) {
-                    case 'Bi':
-                        focusOnLinkAnalysis(Array.from(articleData.biLinks))
-                        break;
-                    case 'In':
-                        focusOnLinkAnalysis(Array.from(articleData.inLinks))
-                        break;
-                    case 'Ou':
-                        focusOnLinkAnalysis(Array.from(articleData.outLinks))
-                        break;
-                }
+    let listLinkDirection = d3.selectAll('.linkDirListItem')
+    listLinkDirection
+        .on('mouseover', function() {
+            activateItemLink(this)
+            let linkDirection = d3.select(this).datum().substring(0,2)
+            switch(linkDirection) {
+                case 'Bi':
+                    focusOnLinkAnalysis(Array.from(articleData.biLinks))
+                    break;
+                case 'In':
+                    focusOnLinkAnalysis(Array.from(articleData.inLinks))
+                    break;
+                case 'Ou':
+                    focusOnLinkAnalysis(Array.from(articleData.outLinks))
+                    break;
+            }
 
-            })
-            .on('mouseout', function() {
-                deActivateItemLink(this)
-                resetDisplayDefaultsArticleGraph();
-            })
+        })
+        .on('mouseout', function() {
+            deActivateItemLink(this)
+            resetDisplayDefaultsArticleGraph();
+        })
+
+}
+
+function setLinkDomainPanel(parentSidebar, articleData) {
+    // build domain links data 
+    let domainLinksPanel = parentSidebar.append("div")
+    domainLinksPanel
+        .classed('panelBG', true)
+
+    domainLinksPanel.append("h2")
+        .text("Link Domain Summary")
+        .classed('panelHeading', true)  
+
+    let domainLinksListDiv = domainLinksPanel.append("div")
+    domainLinksListDiv
+        .attr("id", "domainLinksListDiv")
+        .attr("display", "block")
+    
+    domainLinksListDiv.append("ul")
+        .selectAll(".linkDomainListItem")
+        .data(articleData.linkDomains)
+        .enter()
+        .append('li')
+        .html(function(d) {return `${d[0]} <span class="badge badge-bill badge-light">${d[1]}</span>`})
+        .style("color", function(d) {return color(d[0])})
+        .classed('linkDomainListItem', true)
+        .classed('panelListItem', true)
+    .exit().remove()
+
+    // setup UI interactions
+    let listlinkDomains = d3.selectAll('.linkDomainListItem')
+    listlinkDomains
+        .on('mouseover', function() {
+            activateItemLink(this)
+            let linkDomainArray = getDomainLinksInArticle(d3.select(this).datum())
+            focusOnLinkAnalysis(linkDomainArray)
         
-        let listlinkDomains = d3.selectAll('.linkDomainListItem')
-        listlinkDomains
-            .on('mouseover', function() {
-                activateItemLink(this)
-                let linkDomainArray = getDomainLinksInArticle(d3.select(this).datum())
-                focusOnLinkAnalysis(linkDomainArray)
-            
-            })
-            .on('mouseout', function() {
-                deActivateItemLink(this);
-                resetDisplayDefaultsArticleGraph();
-            })
-
-        let listArticleLinks = d3.selectAll('.linkArticlesListItem');
-        let centralNode = graphNodes[0];
-        listArticleLinks
-            .on('mouseover', function() { mouseOverArticleNode(this, data)})
-            .on('mouseout', function()  { mouseOutArticleNode(this, data)})
-            .on('dblclick', function()  { dblClickArticleNode(this)})
-        showHide
-            .on('mouseover', function() { activateItemLink(this) })
-            .on('mouseout', function()  { deActivateItemLink(this) })
-            .on('dblclick', function()  { toggleArticleListVisibility(this)})
-    }
-
+        })
+        .on('mouseout', function() {
+            deActivateItemLink(this);
+            resetDisplayDefaultsArticleGraph();
+        })
 }
 
 function toggleArticleListVisibility(dblClickReference) {
@@ -887,7 +893,7 @@ function mouseOverArticleNode(mouseOverReference, data) {
     if (activeElement.datum().index !== 0) {
     
         // do the following if the activated node or label was not the central node
-        activeElement.style("cursor", "pointer"); 
+        activateItemLink(mouseOverReference)
         let relatedArticles = getRelatedArticles(data,activeElement.datum())
 
         focusOnArticleNode(data, activeElement.datum())
@@ -899,7 +905,7 @@ function mouseOutArticleNode(mouseOverReference, data) {
     let activeElement = d3.select(mouseOverReference)
     let centralNode = graphNodes[0]
     
-    activeElement.style("cursor", "default");
+    deActivateItemLink(mouseOverReference)
     simulationConfig.relatedLinks.html("")
     resetDisplayDefaultsArticleGraph();
     updateSideBarLeft_ArticleMain(centralNode)
