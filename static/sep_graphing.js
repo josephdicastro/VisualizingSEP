@@ -56,8 +56,6 @@ function startVisualization() {
     
 }
 
-
-
 // ****** SET GLOBALS  ********
 
 function setGlobalNodesLinks(sepData) {
@@ -229,7 +227,6 @@ function rewriteURL(entryTitle, entryURL) {
 function setArticleMenuTitle(articleTitle) {
     articleMenu.property("value", articleTitle)
 }
-
 function setArticleTitle(selectedArticle) {
     let selectedArticleTitle = d3.select("#selectedEntryTitle").select("h1")
     selectedArticleTitle
@@ -455,120 +452,193 @@ function drawArticleSimulation(data) {
 
 
 }
-
 function updateSidebarsArticle(data, selectedArticle) {
-    updateSideBarsArticleLeft(selectedArticle)
-    updateSideBarsArticleRight(data, selectedArticle)
+    updateSideBarLeft_ArticleMain(selectedArticle)
+    updateSideBarRight_ArticleMain(data, selectedArticle)
 }
-function updateSideBarsArticleLeft(selectedArticle, relatedArticles){
+
+function updateSideBarLeft_ArticleMain(selectedArticle, relatedArticles){
+
     if(selectedArticle) {
-        //clear areas
-        sidebarLeft.html("")
-        sidebarLeft.style("display", "block")
 
-        //**populate sidebarLeft**
+        clearSidebar(sidebarLeft)
 
-        let sideBarLeftContent = sidebarLeft.append("div")   
+        let sideBarLeftContent = sidebarLeft.append("div");
 
-        let articleDetails = sideBarLeftContent.append("div")
-        articleDetails.classed('panelBG', true)
-        articleDetails.append("h2")
-            .text("Introduction Text")
-            .classed('panelHeading', true)
-
-        // Intro Paragraph
-        if (typeof(selectedArticle.first_paragraph)!=='undefined') {
-            let articleText = articleDetails.append("div")
-            let paragraphData = getParagraphDataHTML(selectedArticle.first_paragraph);
-            articleText
-                .html(paragraphData)
-                .classed('panelParagraphText', true)
-        }
-
-        //create div to list domains 
-        let domainListDiv = sideBarLeftContent.append("div")
-        domainListDiv.classed('panelBG', true)
-        domainListDiv.append("h2")
-            .text("Domains")
-            .classed('panelHeading', true)
-
-        domainListDiv.append("ul")
-            .selectAll(".domainListItem")
-            .data(selectedArticle.domain_tags.split(','))
-                .enter()
-                .append('li')
-                .html(function(d) {return d})
-                .style("color", function(d) {return color(d)})
-                .classed('domainListItem', true)
-                .classed('panelListItem', true)
-            .exit().remove()
-        
-        //create div to hold SEP link
-        let sepLinkDiv = sideBarLeftContent.append("div")
-        sepLinkDiv
-            .classed('panelBG', true)
-        let sepURL = baseURL + selectedArticle.id
-    
-        sepLinkDiv.append('h2')
-            .text('Read the full article at SEP')
-            .classed('panelHeading', true)
-
-        sepLinkDiv.append("p")
-        .html(`<a href="${sepURL}" target="_blank">${selectedArticle.title}</a>`)
-        .classed('sepLink', true)
-        .style('color', 'white')
-
-        //create div to hold related links
-
-        let relatedLinksDiv = articleDetails.append("div")
-
-
-        if (typeof(relatedArticles) !== "undefined") {
-            if (relatedArticles.length > 1 ) {
-                sepLinkDiv.html("")
-
-                relatedLinksDiv.append("h5")
-                    .text(`Links shared with "${graphNodes[0].title}"`)    
-                    .classed('articleDetailH5', true)
-                
-                let relatedLinksList = relatedLinksDiv.append("div")
-                relatedLinksList
-                    .attr("id","relatedLinksList")
-                
-                relatedArticles.splice(relatedArticles.lastIndexOf(selectedArticle),1)
-                relatedLinksList.append("ul")
-                    .selectAll(".relatedLinkItems")
-                    .data(relatedArticles)
-                        .enter()
-                        .append('li')
-                        .html(function(d) {return d.title})
-                        .style("color", function(d) {return color(d.primary_domain)})
-                        .classed('relatedLinkItems', true)
-                    .exit().remove()
-
-                    
-            }
-
-        }   else {
-            relatedLinksDiv.html("")
-        }
-        
-        ////// ux/ui interactions
-        let domainList = d3.selectAll('.domainListItem')
-        
-        domainList
-            // .on('mouseover', function() { d3.select(this).style("cursor", "pointer").style("font-weight", "bold").style('list-style', 'circle'); })
-            .on('mouseover', function() { activateItemLink(this)})
-            .on('mouseout', function() { deActivateItemLink(this)})
-            // .on('mouseout', function() { d3.select(this).style("cursor", "default").style("font-weight", "normal"); })
-            .on('dblclick', function () {
-                let domainTitle = d3.select(this).datum()
-                showDomainGraph(domainTitle)
-        })
+        setArticleIntroParagraph(sideBarLeftContent, "Introduction Text", selectedArticle);
+        setArticleDomainDetails(sideBarLeftContent, selectedArticle.domain_tags);
+        setArticleReadAtSep(sideBarLeftContent, selectedArticle);
     }
 }
 
-function updateSideBarsArticleRight(data, selectedArticle){
+function updateSideBarLeft_ArticlePreview(selectedArticle, relatedArticles) {
+    if(selectedArticle) {
+
+        clearSidebar(sidebarLeft)
+
+        let sideBarLeftContent = sidebarLeft.append("div");
+
+        setArticleIntroParagraph(sideBarLeftContent, "Preview", selectedArticle);
+        setArticleDomainDetails(sideBarLeftContent, selectedArticle.domain_tags);
+        setArticleRelatedLinks(sideBarLeftContent, selectedArticle, relatedArticles);
+    }
+
+}
+
+function clearSidebar(sidebarToClear) {
+    sidebarToClear.html("")
+    sidebarToClear.style("display", "block")
+}
+
+function setArticleIntroParagraph(parentSidebar, introText, selectedArticle) {
+
+    let introParagraphPanel = parentSidebar.append("div")
+    introParagraphPanel.classed('panelBG', true)
+
+    if ( introText === 'Introduction Text') {
+        introParagraphPanel.append("h2")
+            .text('Introduction Text')
+            .classed('panelHeading', true)
+    }   else {
+        introParagraphPanel.append("h2")
+            .text(`${selectedArticle.title} (Preview)`)
+            .classed('panelHeading', true)
+            .style('color', function() {return color(selectedArticle.primary_domain)})
+    }
+
+
+
+
+    // Intro Paragraph
+    if (typeof(selectedArticle.first_paragraph)!=='undefined') {
+        let paragraphDiv = introParagraphPanel.append("div")
+        let paragraphData = getParagraphDataHTML(selectedArticle.first_paragraph);
+        paragraphDiv
+            .html(paragraphData)
+            .classed('panelParagraphText', true)
+    }
+}
+
+function setArticleDomainDetails(parentSidebar, domainArray) {
+    let domainListDiv = parentSidebar.append("div")
+
+
+    domainListDiv.classed('panelBG', true)
+    domainListDiv.append("h2")
+        .text("Domains")
+        .classed('panelHeading', true)
+
+    domainListDiv.append("ul")
+        .selectAll(".domainListItem")
+        .data(domainArray.split(','))
+            .enter()
+            .append('li')
+            .html(function(d) {return d})
+            .style("color", function(d) {return color(d)})
+            .classed('domainListItem', true)
+            .classed('panelListItem', true)
+        .exit().remove()
+
+    let domainList = d3.selectAll('.domainListItem')
+    
+    domainList
+        .on('mouseover', function() { activateItemLink(this)})
+        .on('mouseout', function() { deActivateItemLink(this)})
+        .on('dblclick', function () {
+            let domainTitle = d3.select(this).datum()
+            showDomainGraph(domainTitle)
+    })
+
+}
+
+function setArticleReadAtSep(parentSidebar, selectedArticle) {
+    let sepLinkDiv = parentSidebar.append("div")
+
+    sepLinkDiv
+        .classed('panelBG', true)
+
+    let sepURL = baseURL + selectedArticle.id
+
+    sepLinkDiv.append('h2')
+        .text('Read the full article at SEP')
+        .classed('panelHeading', true)
+
+    sepLinkDiv.append("p")
+        .html(`<a href="${sepURL}" target="_blank">${selectedArticle.title}</a>`)
+        .classed('sepLink', true)
+        .style('color', 'white')
+}
+
+
+function setArticleRelatedLinks(parentSidebar, selectedArticle, relatedArticles) {
+    let relatedLinksDiv = parentSidebar.append("div")
+
+    if (typeof(relatedArticles) !== "undefined") {
+            relatedLinksDiv.html("")
+            relatedLinksDiv.classed('panelBG', true);
+            let numRelated = (relatedArticles.length > 1) ?  relatedArticles.length - 1 : 0;
+
+            // relatedLinksDiv.append("h2")
+            //     .text(`Shared Links "${graphNodes[0].title}"`)    
+            //     .classed('panelHeading', true)
+
+            let relatedLinksParagraph = relatedLinksDiv.append("p")
+
+            relatedLinksParagraph.append("span")
+                .html(`<span class="badge badge-pill badge-light">${numRelated}</span> shared Links with`)
+                .style('color', 'white')
+                .classed('linksSharedText', true)
+            
+            relatedLinksParagraph.append('span')
+                .html(` ${graphNodes[0].title}`)   
+                .style('color', function() { return color(graphNodes[0].primary_domain)})
+                .classed('linksSharedText', true)
+
+     }  else {
+        relatedLinksDiv.html("")
+     } 
+}
+
+function setArticleRelatedLinks_old(parentSidebar, selectedArticle, relatedArticles) {
+
+    let relatedLinksDiv = parentSidebar.append("div")
+
+    if (typeof(relatedArticles) !== "undefined") {
+        if (relatedArticles.length > 1 ) {
+
+            relatedLinksDiv.html("")
+            relatedLinksDiv.classed('panelBG', true)
+
+            relatedLinksDiv.append("h2")
+                .text(`Links shared with "${graphNodes[0].title}"`)    
+                .classed('panelHeading', true)
+        
+            let relatedLinksList = relatedLinksDiv.append("div")
+            relatedLinksList
+                .attr("id","relatedLinksList")
+            
+            relatedArticles.splice(relatedArticles.lastIndexOf(selectedArticle),1)
+            relatedLinksList.append("ul")
+                .selectAll(".relatedLinkItems")
+                .data(relatedArticles)
+                    .enter()
+                    .append('li')
+                    .html(function(d) {return d.title})
+                    .style("color", function(d) {return color(d.primary_domain)})
+                    .classed('relatedLinkItems', true)
+                    .classed('panelListItem', true)
+                .exit().remove()
+
+                
+        }
+
+    }   else {
+        relatedLinksDiv.html("")
+    }
+
+} 
+
+function updateSideBarRight_ArticleMain(data, selectedArticle){
     if(selectedArticle) {
         //clear areas
         sidebarRight.html("")
@@ -821,7 +891,8 @@ function mouseOverArticleNode(mouseOverReference, data) {
         let relatedArticles = getRelatedArticles(data,activeElement.datum())
 
         focusOnArticleNode(data, activeElement.datum())
-        updateSideBarsArticleLeft(activeElement.datum(), relatedArticles)
+        updateSideBarLeft_ArticlePreview(activeElement.datum(), relatedArticles)
+
     }
 }
 function mouseOutArticleNode(mouseOverReference, data) {
@@ -831,7 +902,7 @@ function mouseOutArticleNode(mouseOverReference, data) {
     activeElement.style("cursor", "default");
     simulationConfig.relatedLinks.html("")
     resetDisplayDefaultsArticleGraph();
-    updateSideBarsArticleLeft(centralNode)
+    updateSideBarLeft_ArticleMain(centralNode)
 
 }
 
