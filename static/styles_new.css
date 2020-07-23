@@ -93,7 +93,7 @@ main {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 1.5em;
     color: white;
-    text-align: center;
+    text-align: left;
 }
 
 
@@ -151,10 +151,6 @@ main {
     margin-left:75%;
 }
 
-#articleListDiv {
-    height:400px;
-    overflow-y: auto;
-}
 
 .mainLabel {text-anchor: middle;}
 
@@ -163,4 +159,31 @@ main {
     stroke-width: 1;
     stroke-dasharray: 3,3;
     stroke: #999;
+}
+
+
+
+
+@media screen and (min-resolution: 150dpi) {
+    .domainArticleList {
+        max-height: 325px;
+        overflow-y: auto;
+    }
+
+    #articleListDiv {
+        max-height:400px;
+        overflow-y: auto;
+    }
+}
+
+@media screen and (max-resolution: 100dpi) {
+    .domainArticleList {
+        max-height: 525px;
+        overflow-y: auto;
+    }
+
+    #articleListDiv {
+        max-height:550px;
+        overflow-y: auto;
+    }
 }
