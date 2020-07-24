@@ -1215,6 +1215,7 @@ function drawDomainSimulation(data, domainData){
             node
             .attr("cx", function(d) {return d.x })
             .attr("cy", function(d) {return d.y });
+            
             label
                 .attr('x', function(d) {return setDomainXpos(d.x,scaleNodeRadius(d.numLinks),this.getBBox().width) })
                 .attr('y', function(d) {return d.y + 4})
