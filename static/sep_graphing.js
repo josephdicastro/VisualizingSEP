@@ -1,7 +1,7 @@
 // ****** Global Variables ******
 
 // Select Page Elements
-let svg = d3.select('svg')
+let svg = d3.select('#mainGraph')
 let articleMenu = d3.select('#articleSearchMenu')
 let domainMenu = d3.select('#domainSearchMenu')
 let introDiv = d3.select('#intro') 
