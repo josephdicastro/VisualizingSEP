@@ -35,11 +35,15 @@ def scrape_sep_toc(sep_edition, search_url, base_url, save_as_html):
     #get only links to articles in the SEP (ie, only those hrefs that begin with 'entries/') 
     links_in_toc = soup.findAll(href=re.compile('^entries/'))
 
-    #add only unique hrefs to toc_unique_hrefs list
+    #add only unique hrefs and their associated authors to toc_unique_hrefs list
     for link in links_in_toc:
-        print(link)
+        this_link = soup.find(href=re.compile(link['href']))
+        author_string = this_link.next_sibling.strip()
+        close_paren = author_string.find(')')
+        author = author_string[1:close_paren]
         article_url = { 'link_url': "/" + link['href'],
-                        'base_url': base_url }
+                        'base_url': base_url,
+                        'authors' : author }
                         
         if article_url not in toc_unique_hrefs:
             toc_unique_hrefs.append(article_url)
@@ -189,13 +193,12 @@ def parse_sep_file(file_to_parse):
 
     #get specific page properties
     title = soup.find(id='aueditable').find('h1').get_text().strip()
-    pubdate = soup.find(id='pubinfo').get_text().replace('\n','').strip()
-    copyright = str(soup.find(id='article-copyright')).replace('\n','').strip()
-    preamble_text = soup.find(id='preamble').get_text().replace('\n','').strip()
-    main_text = soup.find(id='main-text').get_text().replace('\n','').strip()
-    toc_text = soup.find(id='toc').get_text().replace('\n','').strip()
-    toc = str(soup.find(id='toc')).replace('\n','').strip()
-    page_text = preamble_text + ' ' + toc_text + ' ' + main_text
+    pubdate = soup.find(id='pubinfo').get_text().replace('\n',' ').strip()
+    copyright = str(soup.find(id='article-copyright')).replace('\n',' ').strip()
+    preamble_text = soup.find(id='preamble').get_text().replace('\n',' ').strip()
+    main_text = soup.find(id='main-text').get_text().replace('\n',' ').strip()
+    toc_text = soup.find(id='toc').get_text().replace('\n',' ').strip()
+    toc = str(soup.find(id='toc')).replace('\n',' ').strip()
 
     #get InPhO API endpoint and retrieve JSON data
     inpho_href = soup.find(href=re.compile('^https://www.inphoproject.org/'))['href']
@@ -211,7 +214,9 @@ def parse_sep_file(file_to_parse):
     page_object = { 'page_url': page_url,
                     'title': title,
                     'pubdate': pubdate,
-                    'pagetext': page_text,
+                    'preamble_text': preamble_text,
+                    'toc_text': toc_text,
+                    'main_text': main_text,
                     'copyright': copyright,
                     'toc': toc,
                     'inpho_href':inpho_href,
@@ -224,15 +229,24 @@ def parse_sep_file(file_to_parse):
 def update_main_document_data(sep_object):
     update_string = {'title': sep_object['title'],
                     'pubdate': sep_object['pubdate'],
-                    'pagetext': sep_object['pagetext'],
+                    'preamble_text': sep_object['preamble_text'],
+                    'toc_text': sep_object['toc_text'],
+                    'main_text': sep_object['main_text'],
                     'toc': sep_object['toc'],
                     'copyright': sep_object['copyright'],
-                    'inphoe_href': sep_object['toc'],
+                    'inphoe_href': sep_object['inpho_href'],
                     'inpho_api':sep_object['inpho_api'],
                     'inpho_json':sep_object['inpho_json'],
                     'outlinks':sep_object['outlinks']}
     return update_string
 
+def add_author(url, authors, collection_to_update):
+
+    result = collection_to_update.update_one(
+        { 'page_url': url },
+        { '$set': {'author': authors}}
+    )
+    # print (f'acknowledged: {url}\n', result.acknowledged)
 
 
 def update_sep_json(id_title,api_endpoint, collection_to_update):
