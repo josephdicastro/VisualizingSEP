@@ -240,13 +240,27 @@ def update_main_document_data(sep_object):
                     'outlinks':sep_object['outlinks']}
     return update_string
 
+def get_author_string(copyright_obj):
+    soup = BeautifulSoup(copyright_obj)
+    copyright_string = soup.get_text()
+    by_pos = copyright_string.find('by ') +2
+    authors = copyright_string[by_pos:].strip()
+    authors_clean = re.sub('<.*?>', '', authors)
+    return authors_clean
+
 def add_author(url, authors, collection_to_update):
 
     result = collection_to_update.update_one(
         { 'page_url': url },
-        { '$set': {'author': authors}}
+        { '$set': {'author': authors}},
+        upsert=True
     )
-    # print (f'acknowledged: {url}\n', result.acknowledged)
+
+    # boolean confirmation that the API call went through
+    print (f'acknowledged: {url}\n', result.acknowledged)
+
+
+
 
 
 def update_sep_json(id_title,api_endpoint, collection_to_update):
@@ -282,3 +296,11 @@ def update_sep_json(id_title,api_endpoint, collection_to_update):
             projection=['title','inpho_api', 'inpho_json']))
 
     print(doc)
+
+def get_author_string(copyright_obj):
+    soup = BeautifulSoup(copyright_obj)
+    copyright_string = soup.get_text()
+    by_pos = copyright_string.find('by ') +2
+    authors = copyright_string[by_pos:].strip()
+    authors_clean = re.sub('<.*?>', '', authors)
+    return authors_clean
