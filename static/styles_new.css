@@ -1,6 +1,6 @@
 /* Setup Page Layout */
 
-body {
+body, .container-fluid {
     height:100%;
     width:100%;
     background-color: black;
@@ -8,19 +8,13 @@ body {
 
 }
 
-main {
-    width: 95%;
-    /* height: 75%; */
+/* main {
+    height: 75%;
     margin: 2% auto;
-}
+} */
 
 
-#articleGraph {
-    height: 100%;
-    width:100%;
-    /* margin-bottom: 2%; */
-    overflow: hidden;
-}
+
 
 .exploreTOCToggle_collapsed {
     background-image: url('/static/bootstrap-icons/caret-right-fill.svg');
@@ -56,28 +50,39 @@ main {
     #sidebarLeft {
         height:95%;
         /* overflow: clip; */
-        width:90%;
+        width:85%;
     }
     
     #sidebarRight {
         height:95%;
         /* overflow: clip; */
-        width:85%;
+        width:100%;
     }
 
-    .domainArticleList {
-        max-height: 425px;
-        overflow-y: auto;
-    }
-
+  
     #articleListContentArea {
-        max-height:400px;
+        max-height:350px;
         overflow-y: auto;
     }
 
     #exploreTOCContentArea {
         max-height: 200px;
         overflow-y: auto;
+    }
+
+    #articleGraph {
+        height: 600px;
+        width:95%;
+        margin: 0 auto;
+        margin-bottom: 2%;
+        overflow: hidden;
+    }
+
+    .topRow {
+        height: 50px;
+    }
+    .contentRow {
+        height:600px;
     }
 }
 
@@ -102,6 +107,13 @@ main {
         height:95%;
         /* overflow: clip; */
         width:95%;
+    }
+
+    #articleGraph {
+        height: 95%;
+        width:100%;
+        /* margin-bottom: 2%; */
+        overflow: hidden;
     }
 }
 
@@ -178,7 +190,7 @@ select:focus, select:active, .btn:focus, .btn:active{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  
 }
 
-.panelBGColor {
+.panelBG_Color {
     background-color: rgb(20, 20, 20);
 }
 
@@ -232,7 +244,6 @@ select:focus, select:active, .btn:focus, .btn:active{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: .9em;
     color: white;
-    z-index: 99;
 }
 
 #pageTitle {
@@ -256,7 +267,7 @@ select:focus, select:active, .btn:focus, .btn:active{
  }
 
 .linkCountText {
-    font-size: 1.75em;
+    font-size: 1.5em;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  
     color: white;
     padding-top: .5em;
