@@ -34,6 +34,8 @@ let linkAngles = [];
 let sepEdition = "Spring 2020"
 let baseURL = 'https://plato.stanford.edu/archives/spr2020';
 
+let json_file = 'static/sep_network_new.json'
+
 
 startVisualization();
 
@@ -185,7 +187,7 @@ function initializeStyles() {
 // ****** MENU FUNCTIONS ********
 
 function loadMenus() {
-    d3.json('static/sep_network_test.json').then((json) => {
+    d3.json(json_file).then((json) => {
         //build article menu 
         let articleItems = ["[Search articles...]"]
         json.articles.nodes.forEach(node => {
@@ -270,7 +272,7 @@ function setArticleTitle(selectedArticle) {
 
 }
 function showArticleGraph(articleTitle) {
-    d3.json('/static/sep_network_test.json').then((json) => {
+    d3.json(json_file).then((json) => {
         let articleData = getArticleData(json,articleTitle)
         setGlobalNodesLinks(articleData)
         let articleNode = graphNodes[0]
@@ -508,7 +510,7 @@ function updateSideBarLeft_ArticleMain(selectedArticle, relatedArticles){
 
         setArticleIntroParagraph(sideBarLeftContent, "Introduction Text", selectedArticle);
         setArticleDomainDetails(sideBarLeftContent, selectedArticle);
-        setArticleReadAtSep(sideBarLeftContent, selectedArticle);
+        setArticleDetails(sideBarLeftContent, selectedArticle)
     }
 }
 
@@ -544,25 +546,105 @@ function setArticleIntroParagraph(parentSidebar, introText, selectedArticle) {
     }
 
     //build paragraph
-    if (typeof(selectedArticle.first_paragraph)!=='undefined') {
+    if (typeof(selectedArticle.preamble_text)!=='undefined') {
         let paragraphDiv = introParagraphPanel.append("div")
-        let paragraphData = getParagraphDataHTML(selectedArticle.first_paragraph);
+        let paragraphData = getParagraphDataHTML(selectedArticle.preamble_text);
         paragraphDiv
             .html(paragraphData)
             .classed('panelParagraphText', true)
     }
+    let sepURL = baseURL + selectedArticle.id
+
+    introParagraphPanel.append("p")
+        .html(`<a href="${sepURL}" target="_blank">Read the full article at SEP</a>`)
+        .classed('sepLink', true)
+        .style('color', 'white')
+
+    if ( introText === 'Introduction Text') {
+        setExploreTOC(introParagraphPanel, selectedArticle, sepURL);
+    }
+
+
+
+  
+
+    
+}
+function setArticleDetails(parentSidebar, selectedArticle) {
+    let additionalDetailsDiv = parentSidebar.append('div')
+        .classed('panelBG', true)
+
+    let detailsHeading = additionalDetailsDiv.append("h2")
+        .text('Details')
+        .attr('id', 'articleDetailsHeading')
+        .classed('panelHeading', true)
+        .classed('toggleOffBG', true)
+
+    
+    let detailsListDiv = additionalDetailsDiv.append('div')
+        .attr('id','detailsContentArea')
+        .style('display', 'block')
+
+    detailsData = [
+        `<td>Author(s):</td><td>${selectedArticle.author}</td>`,
+        `<td>Pub&nbsp;Date:</td><td> ${selectedArticle.pubdate}</td>`,
+        `<td>Word&nbsp;Count:</td><td> ${selectedArticle.word_count}</td>`]
+
+    let detailsTable = detailsListDiv.append('table')
+        .classed('table', true)
+        .classed('table-sm', true)
+        .classed('table-borderless',true)
+        .classed('table-hover', true)
+        .style('margin','0')
+        .style('padding','0')
+
+
+    detailsTable.append('tbody')
+
+    detailsTable.selectAll('tr')
+        .data(detailsData)
+        .enter().append('tr')
+            .html((d) => d)
+            .classed('panelListItem', true)
+            .style('margin','0')
+            .style('padding','0')
+
+    //ux/ui interactions
+    detailsHeading
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('dblclick', function() { toggleArticleDetailsContent()})
+}
+
+function toggleArticleDetailsContent() {
+    let detailsContentArea = d3.select('#detailsContentArea')
+    let articleDetailsHeading = d3.select('#articleDetailsHeading')
+
+    if(detailsContentArea.style('display')==='none') {
+        detailsContentArea.style('display', 'block')
+        articleDetailsHeading.classed('toggleOnBG', true)
+        articleDetailsHeading.classed('toggleOffBG', false)
+    }   else{
+        detailsContentArea.style('display', 'none')
+        articleDetailsHeading.classed('toggleOffBG', true)
+        articleDetailsHeading.classed('toggleOnBG', false)
+    }
+
 }
 
 function setArticleDomainDetails(parentSidebar, selectedArticle) {
     let domainListDiv = parentSidebar.append("div")
+        .classed('panelBG', true)
 
-
-    domainListDiv.classed('panelBG', true)
-    domainListDiv.append("h2")
+    let domainListHeading = domainListDiv.append("h2")
         .text("Domains")
         .classed('panelHeading', true)
 
-    domainListDiv.append("ul")
+    let domainListContentArea = domainListDiv.append('div')
+        .attr('id','domainListContentArea')
+        .style('display', 'block')
+
+    domainListContentArea.append("ul")
         .selectAll(".domainListItem")
         .data(selectedArticle.domain_tags.split(','))
             .enter()
@@ -583,24 +665,116 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
             showDomainGraph(domainTitle)
     })
 
+    //ux/ui interactions
+    domainListHeading
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('dblclick', function() { toggleDomainDetailsContent()})
+
 }
 
-function setArticleReadAtSep(parentSidebar, selectedArticle) {
-    let sepLinkDiv = parentSidebar.append("div")
+function toggleDomainDetailsContent() {
+    let domainDetailsContentArea = d3.select('#domainListContentArea')
+    if(domainDetailsContentArea.style('display')==='none') {
+        domainDetailsContentArea.style('display', 'block')
+    }   else{
+        domainDetailsContentArea.style('display', 'none')
+    }
 
-    sepLinkDiv
-        .classed('panelBG', true)
+}
 
-    let sepURL = baseURL + selectedArticle.id
+// function setArticleReadAtSep(parentSidebar, selectedArticle, sepURL) {
+//     let sepLinkDiv = parentSidebar.append("div")
 
-    sepLinkDiv.append('h2')
-        .text('Read the full article at SEP')
-        .classed('panelHeading', true)
+//     // sepLinkDiv
+//     //     .classed('panelBG', true)
 
-    sepLinkDiv.append("p")
-        .html(`<a href="${sepURL}" target="_blank">${selectedArticle.title}</a>`)
-        .classed('sepLink', true)
-        .style('color', 'white')
+//     // let sepURL = baseURL + selectedArticle.id
+
+//     // sepLinkDiv.append('h2')
+//     //     .text('Read the full article at SEP')
+//     //     .classed('panelHeading', true)
+
+//     // sepLinkDiv.append("p")
+//     //     .html(`<a href="${sepURL}" target="_blank">${selectedArticle.title}</a>`)
+//     //     .classed('sepLink', true)
+//     //     .style('color', 'white')
+
+//     sepLinkDiv.append('h2')
+//         .text('Explore the TOC')
+//         .attr('id','exploreTOC')
+//         .classed('toggleArea', true)
+
+//     sepLinkTOCDiv = sepLinkDiv.append('div')
+//         .style('display', 'none')
+
+//     let toc_html_original = selectedArticle.toc
+//     let toc_html_updated = toc_html_original.replace(/#/g, `${sepURL}#`)
+//                                             .replace(/<a/g, '<a target="_blank" ')
+//     sepLinkTOCDiv.append('div')
+//         .html(toc_html_updated)
+//         .classed('panelListItem', true)
+
+//     let exploreTOC = d3.select("#exploreTOC")
+//     exploreTOC
+//         .on('mouseover', function() { activateItemLink(this)})
+//         .on('mouseout', function() { deActivateItemLink(this)})
+//         .on('dblclick', function() {
+//             if(sepLinkTOCDiv.style('display')==='none') {
+//                 sepLinkTOCDiv.style('display', 'block')
+//             }   else{
+//                 sepLinkTOCDiv.style('display', 'none')
+//             }
+//         })
+// }
+
+function setExploreTOC(parentSidebar, selectedArticle, sepURL) {
+    let exploreTOCDiv = parentSidebar.append("div")
+
+    let exploreTOCHeading = exploreTOCDiv.append('h2')
+        .text('Explore the TOC')
+        .attr('id','exploreTOCToggle')
+        .classed('toggleArea', true)
+        .classed('exploreTOCToggle_collapsed', true)
+  
+    tocDiv = exploreTOCDiv.append('div')
+        .style('display', 'none')
+        .attr('id','exploreTOC')
+
+    let toc_html_original = selectedArticle.toc
+    let toc_html_updated = toc_html_original.replace(/#/g, `${sepURL}#`)
+                                            .replace(/<a/g, '<a target="_blank" ')
+    tocDiv.append('div')
+        .html(toc_html_updated)
+        .classed('panelListItem', true)
+
+    let exploreTOCToggle = d3.select("#exploreTOCToggle")
+    exploreTOCToggle
+        .on('mouseover', function() { activateItemLink(this)})
+        .on('mouseout', function() { deActivateItemLink(this)})
+        .on('dblclick', function() {
+            toggleTOCArea(tocDiv, exploreTOCHeading)
+        })
+}
+
+function toggleTOCArea(tocContentDiv, exploreTOCHeading){
+    let domainPanel = d3.select("#domainListContentArea")
+    let detailsPanel = d3.select("#detailsContentArea")
+
+    if(tocContentDiv.style('display')==='none') {
+        tocContentDiv.style('display', 'block')
+        exploreTOCHeading.classed('exploreTOCToggle_expanded', true)
+        exploreTOCHeading.classed('exploreTOCToggle_collapsed', false)
+    }   else{
+        tocContentDiv.style('display', 'none')
+        exploreTOCHeading.classed('exploreTOCToggle_collapsed', true)
+        exploreTOCHeading.classed('exploreTOCToggle_expanded', false)
+
+    }
+    toggleDomainDetailsContent();
+    toggleArticleDetailsContent();
+
+
 }
 
 function setArticleRelatedLinks(parentSidebar, selectedArticle, relatedArticles) {
@@ -610,20 +784,16 @@ function setArticleRelatedLinks(parentSidebar, selectedArticle, relatedArticles)
             relatedLinksDiv.html("")
             relatedLinksDiv.classed('panelBG', true);
             let numRelated = (relatedArticles.length > 1) ?  relatedArticles.length - 1 : 0;
-
-            // relatedLinksDiv.append("h2")
-            //     .text(`Shared Links "${graphNodes[0].title}"`)    
-            //     .classed('panelHeading', true)
-
+            let numRelatedText = (numRelated===1) ? 'Shared Link with' : 'Shared Links with' 
             let relatedLinksParagraph = relatedLinksDiv.append("p")
 
             relatedLinksParagraph.append("span")
-                .html(`<span class="badge badge-pill badge-light">${numRelated}</span>    Shared Links with `)
+                .html(`<span class="badge badge-pill badge-light">${numRelated}</span>  ${numRelatedText}`)
                 .style('color', 'white')
                 .classed('linksSharedText', true)
             
             relatedLinksParagraph.append('span')
-                .html(` ${graphNodes[0].title}`)   
+                .html(`${graphNodes[0].title}`)   
                 .style('color', function() { return color(graphNodes[0].primary_domain)})
                 .classed('linksSharedText', true)
 
@@ -822,6 +992,11 @@ function toggleArticleListVisibility(dblClickReference) {
     }
 }
 
+
+function toggleTOCPanel(panelToHide) {
+
+}
+
 function activateItemLink(mouseReference) {
     d3.select(mouseReference)
         .style("cursor", "pointer")
@@ -843,19 +1018,19 @@ function getDomainLinksInArticle(linkDomain) {
 }
 function getParagraphDataHTML(ParagraphDataFromNode) {
     let htmlReturn = '';
-
     //only display the first 500 characters of the node's intro paragraph
     if(typeof(ParagraphDataFromNode)!=='undefined') {
         if(ParagraphDataFromNode !== '') {
-            if (ParagraphDataFromNode.length > 500 ) {
+            if (ParagraphDataFromNode.length > 1000 ) {
                 let firstParaText = ParagraphDataFromNode.substring(0,500);
                 let lastPeriod = firstParaText.lastIndexOf('.')
-                let finalParaText = firstParaText.substring(0,lastPeriod+1)
-                let displayCut = `(Only the first ${finalParaText.length} characters of intro text are displayed.)`;
-                htmlReturn = "<p>" + finalParaText + "</p>" + 
-                             "<p class='displayCut'>" + displayCut + "</p>"
+                let lastQuestionMark = firstParaText.lastIndexOf('?') 
+                let finalParaText = (lastPeriod !== -1) ? firstParaText.substring(0,lastPeriod+1) : firstParaText.substring(0, lastQuestionMark+1) 
+                let displayCut = `(First ${finalParaText.length} characters displayed.)`;
+                htmlReturn = '<p>' + finalParaText + '</p>' + 
+                             '<p class="panelDispayCut">' + displayCut + '</p>'
             }  else {
-                htmlReturn = "<p>" + ParagraphDataFromNode + "</p>"
+                htmlReturn = '<p>' + ParagraphDataFromNode + '</p>'
             }
         }
     }   else    {
@@ -1052,7 +1227,7 @@ function setDomainMenuTitle(domainTitle) {
 }
 function showDomainGraph(domainTitle) {
 
-    d3.json('static/sep_network_test.json').then(function(data) {
+    d3.json(json_file).then(function(data) {
         
         let domainData = getDomainData(data,domainTitle)
         setGlobalNodesLinks(domainData)

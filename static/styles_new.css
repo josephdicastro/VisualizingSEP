@@ -7,13 +7,105 @@ body {
     font-size: 1em;
 
 }
+
 main {
     width: 95%;
-    height: 75%;
+    /* height: 75%; */
     margin: 2% auto;
-
-    /* overflow: hidden; */
 }
+
+
+#articleGraph {
+    height: 100%;
+    width:100%;
+    /* margin-bottom: 2%; */
+    overflow: hidden;
+}
+
+.exploreTOCToggle_collapsed {
+    background-image: url('/static/bootstrap-icons/caret-right-fill.svg');
+    background-repeat: no-repeat;
+    background-size: .9em .9em;
+    border-bottom: none;
+    background-position: 0 .2em;
+}
+
+.exploreTOCToggle_expanded {
+    background-image: url('/static/bootstrap-icons/caret-down-fill.svg');
+    background-repeat: no-repeat;
+    background-size: .9em .9em;
+    border-bottom: 1px rgb(60,60,60) dotted;
+    border-width: 50%;
+    background-position: 0 .2em;
+}
+
+.toggleOffBG {
+    background-image: url('/static/bootstrap-icons/toggle-off.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.toggleOnBG {
+    background-image: url('/static/bootstrap-icons/toggle-on.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+@media screen and (min-resolution: 150dpi) {
+
+    #sidebarLeft {
+        height:95%;
+        /* overflow: clip; */
+        width:90%;
+    }
+    
+    #sidebarRight {
+        height:95%;
+        /* overflow: clip; */
+        width:85%;
+    }
+
+    .domainArticleList {
+        max-height: 425px;
+        overflow-y: auto;
+    }
+
+    #articleListDiv {
+        max-height:400px;
+        overflow-y: auto;
+    }
+
+    #exploreTOC {
+        max-height: 200px;
+        overflow-y: auto;
+    }
+}
+
+@media screen and (max-resolution: 100dpi) {
+    .domainArticleList {
+        max-height: 525px;
+        overflow-y: auto;
+    }
+
+    #articleListDiv {
+        max-height:550px;
+        overflow-y: auto;
+    }
+
+    #sidebarLeft {
+        height:95%;
+        /* overflow: clip; */
+        width:100%;
+    }
+    
+    #sidebarRight {
+        height:95%;
+        /* overflow: clip; */
+        width:95%;
+    }
+}
+
+/* Select Menu Styles */
 .nav-item-select { margin-top:5px;}
 
 select:focus, select:active, .btn:focus, .btn:active{
@@ -25,38 +117,19 @@ select:focus, select:active, .btn:focus, .btn:active{
     outline: none!important;
 }
 
-#sidebarLeft {
-    height:95%;
-    /* overflow: clip; */
-    width:100%;
-}
-
-#sidebarRight {
-    height:95%;
-    /* overflow: clip; */
-    width:95%;
-}
-
-#articleGraph {
-    height: 100%;
-    width:100%;
-    /* margin-bottom: 2%; */
-    overflow: hidden;
-}
-
-
 /* Panel Area styling information  */
 .panelBG {
     background-color: rgb(15, 15, 15);
-    border-radius: 1.5em;
-    padding: .5em 1em;
-    margin-bottom:.5em;
+    border-radius: 1em;
+    padding-left: 1em;
+    padding-bottom: .01em;
+    margin-bottom:.3em;
 }
 
 .panelBG_graph {
     background-color: rgb(18, 18, 18);
     border-radius: 1.5em;
-    padding: .5em 1em;
+    padding: 0;
     margin-bottom:.5em;
 }
 
@@ -90,7 +163,18 @@ select:focus, select:active, .btn:focus, .btn:active{
     color:lightgray;
     border-bottom: 1px rgb(60,60,60) dotted;
     font-size:.9em;
-    padding-left: .5em; 
+    margin: 0 .5em;
+    padding-top: .5em; 
+    margin-bottom: .3em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  
+}
+
+.toggleArea {
+    color:lightgray;
+    font-size:.9em;
+    margin-left: -.8em;
+    padding: 0 1.3em;
+    margin-bottom: .3em;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  
 }
 
@@ -99,22 +183,50 @@ select:focus, select:active, .btn:focus, .btn:active{
 }
 
 .panelParagraphText {
-    color:lightgray;
+    color:white;
     font-size: .9em;
     line-height: 1.1em;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  
-    padding-left: .5em; 
+    padding: 0 .5em;
+    padding-right: 1em;
+}
+
+.panelDispayCut {
+    color:lightgray;
+    font-size: .7em;
+    text-align: left;
+    line-height: 1.1em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  
+    padding-top: .5em;
+    margin-top: -1.75em;
 }
 
 .panelListItem {
-    margin:0;
-    padding:0;
-    margin-left:-2.2em;
+    margin-left:-2.5em;
     font-size: .8em;
     line-height: 1.2em;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  
     list-style: none;
+    color:lightgray;
 }
+
+#toc ul {    
+    font-size: 1em;
+    line-height: 1.2em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  
+    list-style: none;
+    color:lightgray;
+}
+#toc ul li ul {    
+    font-size: .9em;
+    line-height: 1.2em;
+    margin:0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  
+    list-style: none;
+    color:lightgray;
+
+}
+
 
 .footerText {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -157,10 +269,15 @@ select:focus, select:active, .btn:focus, .btn:active{
 
 .sepLink {
     font-style: italic;
-    text-decoration: underline;
-    font-size:.8em;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    padding-left:.5em;
+    font-size:.9em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    margin-top: .5em;
+    margin-left: -.8em;
+    padding-left:1.3em;
+    background-image: url('/static/bootstrap-icons/arrow-right-circle.svg');
+    background-repeat: no-repeat;
+    background-size: .9em .9em;
+    background-position: 0 .2em;
 }
 
 
@@ -212,37 +329,11 @@ select:focus, select:active, .btn:focus, .btn:active{
     background-color: rgb(90,90,90);
 }
 
-/* #articleSearchMenu, #domainSearchMenu {
-    width:25%;
-} */
-
 .btn {
     width:50%;
     background-color: rgb(70,70,70);
     color:white;
+    border: none;
 }
 
 
-@media screen and (min-resolution: 150dpi) {
-    .domainArticleList {
-        max-height: 425px;
-        overflow-y: auto;
-    }
-
-    #articleListDiv {
-        max-height:400px;
-        overflow-y: auto;
-    }
-}
-
-@media screen and (max-resolution: 100dpi) {
-    .domainArticleList {
-        max-height: 525px;
-        overflow-y: auto;
-    }
-
-    #articleListDiv {
-        max-height:550px;
-        overflow-y: auto;
-    }
-}
