@@ -156,17 +156,20 @@ function initializeSimulation(svgConfig) {
 
 function initializeStyles() {
     let link = { 
-        'defaultOpacity': 0.3,
-        'activeOpacity': 0.2,
-        'inactiveOpacity': 0.05,
+        'defaultOpacity': 0.1,
+        'activeOpacity': 0.3,
+        'activeDomainOpacity': 0.2,
+        'inactiveOpacity': 0.03,
+        'inactiveDomainOpacity': 0.01,
         'strokeColor': '#999',
         'strokeWidth':1}
     
     let nodelabel = {
         'defaultOpacity': 1,
-        'centralNodeDimmedOpacity': 0.5,
+        'centralNodeDimmedOpacity': 0.75,
+        'neighborNodeOpacity': 0.5,
         'inArrayOpacity': 0.75,
-        'notInArrayOpacity': 0.05,
+        'notInArrayOpacity': 0.01,
         'fontSize': '12px', 
         'defaultRadius': 4,
         'strokeColor': "#fff",
@@ -355,7 +358,7 @@ function getArticleDataFromJSON(data, articleTitle) {
     return articleData
 
 }
-function drawArticleSimulation(data) {
+function drawArticleSimulation(data) { 
 
     let centralNode = graphNodes[0];
     let countOfNodes = graphNodes.length;
@@ -498,6 +501,7 @@ function updateSideBarLeft_ArticleMain(selectedArticle, relatedArticles){
         let sideBarLeftContent = sidebarLeft.append("div");
 
         setArticleIntroParagraph(sideBarLeftContent, "Introduction Text", selectedArticle);
+        setExploreTOC(sideBarLeftContent, selectedArticle) 
         setArticleDomainDetails(sideBarLeftContent, selectedArticle);
         setArticleDetails(sideBarLeftContent, selectedArticle)
     }
@@ -525,8 +529,9 @@ function setArticleIntroParagraph(parentSidebar, introText, selectedArticle) {
     //test if this is a main entry heading or a preview heading
     if ( introText === 'Introduction Text') {
         introParagraphPanel.append("h2")
-            .text('Introduction Text')
+            .text(`Introduction Text`)
             .classed('panelHeading', true)
+            .style('color', function() {return color(selectedArticle.primary_domain)})
     }   else {
         introParagraphPanel.append("h2")
             .text(`${selectedArticle.title} (Preview)`)
@@ -549,9 +554,8 @@ function setArticleIntroParagraph(parentSidebar, introText, selectedArticle) {
         introParagraphPanel.append("p")
             .html(`<a href="${sepURL}" target="_blank">Read the full article at SEP</a>`)
             .classed('sepLink', true)
-            .style('color', 'white')
 
-        setExploreTOC(introParagraphPanel, selectedArticle, sepURL);
+        // setExploreTOC(introParagraphPanel, selectedArticle, sepURL);
     }
 
 
@@ -559,6 +563,36 @@ function setArticleIntroParagraph(parentSidebar, introText, selectedArticle) {
   
 
     
+}
+
+function getParagraphDataHTML(paragraphDataFromNode) {
+    let htmlReturn = '';
+    //only display the first 500 characters of the node's intro paragraph
+    if(typeof(paragraphDataFromNode)!=='undefined') {
+        if(paragraphDataFromNode !== '') {
+            if (paragraphDataFromNode.length > 500 ) {
+                let firstPeriod = paragraphDataFromNode.indexOf('.',350) + 1
+                let firstQuestionMark = paragraphDataFromNode.indexOf('.',350) + 1
+                let lastSpace = paragraphDataFromNode.lastIndexOf(' ',500)
+                let finalParaText;
+
+                if(firstPeriod < 550 ) { finalParaText = paragraphDataFromNode.substring(0,firstPeriod) }
+                if(firstPeriod > 550 && firstQuestionMark < 550 ) { finalParaText = paragraphDataFromNode.substring(0,firstQuestionMark) }
+                if(firstPeriod > 550 && firstQuestionMark > 550 ) { finalParaText = paragraphDataFromNode.substring(0,lastSpace) + ' ...'}
+        
+                let displayCut = `(First ${finalParaText.length} characters displayed.)`;
+                htmlReturn = '<p>' + finalParaText + '</p>' + 
+                             '<p class="panelDispayCut float-right">' + displayCut + '</p>'
+            }  else {
+                htmlReturn = '<p>' + paragraphDataFromNode + '</p>'
+            }
+        }
+    }   else    {
+        htmlReturn = ''
+    }
+    
+    return htmlReturn
+
 }
 
 function setArticleDomainDetails(parentSidebar, selectedArticle) {
@@ -642,13 +676,10 @@ function setArticleDetails(parentSidebar, selectedArticle) {
         .classed('panelHeading', true)
         .classed('toggleOnBG', true)
 
-
-    
     let detailsListDiv = additionalDetailsDiv.append('div')
         .attr('id','detailsContentArea')
         .style('display', 'block')
     
-
     detailsData = [
         `<td>Author(s):</td><td>${selectedArticle.author}</td>`,
         `<td>Pub&nbsp;Date:</td><td> ${selectedArticle.pubdate}</td>`,
@@ -672,6 +703,7 @@ function setArticleDetails(parentSidebar, selectedArticle) {
             .classed('panelListItem', true)
             .style('margin','0')
             .style('padding','0')
+            .style('text-indent', '0')
 
     //ux/ui interactions
     detailsHeading
@@ -710,25 +742,37 @@ function toggleArticleDetailsContent(state) {
 
 }
 
-function setExploreTOC(parentSidebar, selectedArticle, sepURL) {
+function setExploreTOC(parentSidebar, selectedArticle) {
     let exploreTOCDiv = parentSidebar.append("div")
+        .classed('panelBG', true)
 
     let exploreTOCHeading = exploreTOCDiv.append('h2')
         .text('Explore the TOC')
         .attr('id','exploreTOCHeading')
-        .classed('toggleArea', true)
-        .classed('exploreTOCToggle_collapsed', true)
+        .classed('panelHeading', true)
+        .classed('toggleOffBG', true)
   
     exploreTOCContentArea = exploreTOCDiv.append('div')
         .style('display', 'none')
         .attr('id','exploreTOCContentArea')
 
+    exploreTOCContentArea.append('p')
+        .text('(Links to SEP article sections)')
+        .classed('panelDispayCut', true)
+        .classed('float-right', true)
+        .style('margin-top','-.5em')
+        .style('margin-left', '-1em')
+
+
+    let sepURL = baseURL + selectedArticle.id
+    
     let toc_html_original = selectedArticle.toc
     let toc_html_updated = toc_html_original.replace(/#/g, `${sepURL}#`)
                                             .replace(/<a/g, '<a target="_blank" ')
     exploreTOCContentArea.append('div')
         .html(toc_html_updated)
         .classed('panelListItem', true)
+        .style('margin-top', '-1.5')
 
     exploreTOCHeading
         .on('mouseover', function() { activateItemLink(this)})
@@ -755,13 +799,17 @@ function toggleExploreTOCArea(state){
     if(state==='on') {
         exploreTOCContentArea.style('display', 'block')
         exploreTOCHeading
-            .classed('exploreTOCToggle_expanded', true)
-            .classed('exploreTOCToggle_collapsed', false)
+            // .classed('exploreTOCToggle_expanded', true)
+            // .classed('exploreTOCToggle_collapsed', false)
+            .classed('toggleOnBG', true)
+            .classed('toggleOffBG', false)
     }   else if(state==='off') {
         exploreTOCContentArea.style('display', 'none')
         exploreTOCHeading
-            .classed('exploreTOCToggle_collapsed', true)
-            .classed('exploreTOCToggle_expanded', false)
+            // .classed('exploreTOCToggle_collapsed', true)
+            // .classed('exploreTOCToggle_expanded', false)
+            .classed('toggleOnBG', false)
+            .classed('toggleOffBG', true)
     }
 
 
@@ -806,16 +854,14 @@ function updateSideBarRight_ArticleMain(data, selectedArticle){
 
         setLinkCountPanel(sidebarRightContent,articleData, data);
         setArticleListPanel(sidebarRightContent,articleData, data)
-        setLinkDirectionPanel(sidebarRightContent, articleData);
         setLinkDomainPanel(sidebarRightContent, articleData);
+        setLinkDirectionPanel(sidebarRightContent, articleData);        
     }
 }
 
 function setLinkCountPanel(parentSidebar, articleData, data) {
 
     let linkCountDiv = parentSidebar.append("div")
-
-    linkCountDiv
         .classed("panelBG", true)  
         .classed("linkCountDiv", true)
 
@@ -909,18 +955,18 @@ function setLinkDirectionPanel(parentDiv, articleData) {
         .classed('panelBG', true)
 
     let linkDirectionHeading = linkDirectionPanel.append("h2")
-        .text("Link Direction Summary")
+        .text("Link Directions")
         .attr('id', 'linkDirectionHeading')
         .classed('panelHeading', true)
         .classed('toggleOnBG', true)
 
-    let linkDirectionContentArea = linkDirectionPanel.append("div")
+    let linkDirectionContentArea =  linkDirectionPanel.append("div")
         .attr("id", "linkDirectionContentArea")
         .attr("display", "block")
 
-    linkItems = [`Bi-Directional <span class="badge badge-pill badge-light">${articleData.biLinks.size}</span>`,
-                    `In-Coming <span class="badge badge-pill badge-light">${articleData.inLinks.size}</span>`,
-                    `Out-Going <span class="badge badge-pill badge-light">${articleData.outLinks.size}</span>`]
+    linkItems = [`<span class="badge badge-pill badge-light badge-adjust">${articleData.biLinks.size}</span> Bi-Directional Links`,
+                `<span class="badge badge-pill badge-light badge-adjust">${articleData.inLinks.size}</span> In-Coming Links`,
+                `<span class="badge badge-pill badge-light badge-adjust">${articleData.outLinks.size}</span> Out-Going Links`]
 
     linkDirectionContentArea.append("ul")
         .selectAll(".linkDirListItem")
@@ -928,9 +974,8 @@ function setLinkDirectionPanel(parentDiv, articleData) {
         .enter()
         .append('li')
         .html(function(d) {return d})
-        .style('color', 'white')
         .classed('linkDirListItem', true)
-        .classed('panelListItem', true)
+        .classed('panelListItem_numbered', true)
     .exit().remove()
 
     ////// ux/ui interactions
@@ -953,8 +998,11 @@ function setLinkDirectionPanel(parentDiv, articleData) {
     listLinkDirection
         .on('mouseover', function() {
             activateItemLink(this)
-            let linkDirection = d3.select(this).datum().substring(0,2)
-            switch(linkDirection) {
+            let linkDirectionHTML = d3.select(this).datum()
+            let startPos = linkDirectionHTML.lastIndexOf('</span>') + 7
+            let linkDirectionFinal = linkDirectionHTML.trim().substring(startPos,startPos+3).trim()
+            console.log(linkDirectionFinal)
+            switch(linkDirectionFinal) {
                 case 'Bi':
                     focusOnLinkAnalysis(Array.from(articleData.biLinks))
                     break;
@@ -1000,7 +1048,7 @@ function setLinkDomainPanel(parentSidebar, articleData) {
         .classed('panelBG', true)
 
     let linkDomainHeading = linkDomainPanel.append('h2')
-        .text('Link Domain Summary')
+        .text('Link Domains')
         .attr('id', 'linkDomainHeading')
         .classed('panelHeading', true)
         .classed('toggleOnBG', true)
@@ -1014,10 +1062,10 @@ function setLinkDomainPanel(parentSidebar, articleData) {
         .data(articleData.linkDomains)
         .enter()
         .append('li')
-        .html(function(d) {return `${d[0]} <span class="badge badge-bill badge-light">${d[1]}</span>`})
+        .html(function(d) {return `<span class="badge badge-pill badge-light">${d[1]}</span>  ${d[0]}`})
         .style("color", function(d) {return color(d[0])})
         .classed('linkDomainListItem', true)
-        .classed('panelListItem', true)
+        .classed('panelListItem_numbered', true)
     .exit().remove()
 
     // setup UI interactions
@@ -1087,30 +1135,7 @@ function getDomainLinksInArticle(linkDomain) {
     })
     return domainArray
 }
-function getParagraphDataHTML(ParagraphDataFromNode) {
-    let htmlReturn = '';
-    //only display the first 500 characters of the node's intro paragraph
-    if(typeof(ParagraphDataFromNode)!=='undefined') {
-        if(ParagraphDataFromNode !== '') {
-            if (ParagraphDataFromNode.length > 1000 ) {
-                let firstParaText = ParagraphDataFromNode.substring(0,500);
-                let lastPeriod = firstParaText.lastIndexOf('.')
-                let lastQuestionMark = firstParaText.lastIndexOf('?') 
-                let finalParaText = (lastPeriod !== -1) ? firstParaText.substring(0,lastPeriod+1) : firstParaText.substring(0, lastQuestionMark+1) 
-                let displayCut = `(First ${finalParaText.length} characters displayed.)`;
-                htmlReturn = '<p>' + finalParaText + '</p>' + 
-                             '<p class="panelDispayCut">' + displayCut + '</p>'
-            }  else {
-                htmlReturn = '<p>' + ParagraphDataFromNode + '</p>'
-            }
-        }
-    }   else    {
-        htmlReturn = ''
-    }
-    
-    return htmlReturn
 
-}
 function dblClickArticleNode(dblClickReference) {
     
     // get node or label activated
@@ -1395,6 +1420,36 @@ function drawDomainSimulation(data, domainData){
                .attr("opacity", stylesConfig.link.defaultOpacity)
                .classed('link',true).merge(link)
 
+    //nodes
+
+    let numLinksRange = graphNodes.map(node=>node.numLinks)
+    let scaleNodeRadius = d3.scaleLinear()
+        .domain([d3.min(numLinksRange), d3.max(numLinksRange)])
+        .range([2,15])
+
+
+    node = simulationConfig.nodes.selectAll('.node')
+                         .data(graphNodes, function (d) {return d.id})
+                         .attr("r", function(d) {return scaleNodeRadius(d.numLinks)})
+                         .attr("fill", function(d) {return color(d.primary_domain)})
+    
+    node.exit().remove()
+
+    node = node.enter()
+                .append('circle')
+                .attr("r", function(d) {return scaleNodeRadius(d.numLinks)})
+                .attr("fill", function(d) {return color(d.primary_domain)})
+                .attr("stroke", stylesConfig.nodelabel.strokeColor)
+                .attr("stroke-width",  stylesConfig.nodelabel.strokeWidth)
+                .attr('nodeID', function(d) {return d.id})
+                .style('opacity',1)
+                .classed('node',true)
+                .merge(node)
+
+    node.on('mouseover', function() {mouseOverDomainNode(this, data, domainData)})
+    node.on('mouseout', function() {mouseOutDomainNode(this, data, domainData)})
+    node.on('dblclick', function() {dblClickDomainNode(this, data)})    
+    
     //labels
     label = simulationConfig.labels.selectAll('.label')
                            .data(graphNodes, function(d) {return d.title})
@@ -1417,33 +1472,6 @@ function drawDomainSimulation(data, domainData){
     label.on('mouseout', function() {mouseOutDomainNode(this, data, domainData)})
     label.on('dblclick', function() {dblClickDomainNode(this, data)})
              
-    let numLinksRange = graphNodes.map(node=>node.numLinks)
-    let scaleNodeRadius = d3.scaleLinear()
-        .domain([d3.min(numLinksRange), d3.max(numLinksRange)])
-        .range([2,15])
-
-    //nodes
-    node = simulationConfig.nodes.selectAll('.node')
-                         .data(graphNodes, function (d) {return d.id})
-                         .attr("r", function(d) {return scaleNodeRadius(d.numLinks)})
-                         .attr("fill", function(d) {return color(d.primary_domain)})
-    
-    node.exit().remove()
-
-    node = node.enter()
-                .append('circle')
-                .attr("r", function(d) {return scaleNodeRadius(d.numLinks)})
-                .attr("fill", function(d) {return color(d.primary_domain)})
-                .attr("stroke", stylesConfig.nodelabel.strokeColor)
-                .attr("stroke-width",  stylesConfig.nodelabel.strokeWidth)
-                .attr('nodeID', function(d) {return d.id})
-                .style('opacity',1)
-                .classed('node',true)
-                .merge(node)
-
-    node.on('mouseover', function() {mouseOverDomainNode(this, data, domainData)})
-    node.on('mouseout', function() {mouseOutDomainNode(this, data, domainData)})
-    node.on('dblclick', function() {dblClickDomainNode(this, data)})
 
     //update simulation
     let numTicks = 0;
@@ -1464,7 +1492,8 @@ function drawDomainSimulation(data, domainData){
             
             label
                 .attr('x', function(d) {return setDomainXpos(d.x,scaleNodeRadius(d.numLinks),this.getBBox().width) })
-                .attr('y', function(d) {return d.y + 4})
+                .attr('y', function(d) {return setDomainYpos(d.y,scaleNodeRadius(d.numLinks),this.getBBox().width) })
+                // .attr('y', function(d) {return d.y -15})
                 .attr("transform", function(d,i){ return "rotate(0)"})
 
 
@@ -1478,11 +1507,11 @@ function drawDomainSimulation(data, domainData){
     //restart simulation
     simulationConfig.simulation.nodes(graphNodes);
     simulationConfig.simulation.force("charge").strength(function() { return forceStrength(countOfNodes)})
-    simulationConfig.simulation.force("link").id(function (d) {return d.id}).distance(500)
+    simulationConfig.simulation.force("link").id(function (d) {return d.id}).distance(580)
     simulationConfig.simulation.force("link").links(graphLinks)
     simulationConfig.simulation.force("forceX").strength(.5)
     simulationConfig.simulation.force("forceY").strength(.5)
-    simulationConfig.simulation.force("collide").radius(20)
+    simulationConfig.simulation.force("collide").radius(40)
     simulationConfig.simulation.alpha(.1).restart();
 
 }
@@ -1539,26 +1568,24 @@ function setDomainIntroPanel(parentSidebar, domainData) {
 
 function setDomainCountPanel(parentDiv, domainData, data) {
     let domainCountPanel = parentDiv.append("div")
-
-    domainCountPanel
         .classed("panelBG", true)  
         .classed("linkCountDiv", true)
 
     domainCountPanel.append("h2")
         .html(`<span class="badge badge-pill badge-light">${domainData.nodes.length}</span> Domain Articles`)
         .classed('linkCountText', true)
-        .style('font-size', '1.5em')
 }
 function setCentralNodesPanel(parentSidebar, domainData, data) {
 
     let centralNodesDiv = parentSidebar.append("div")
-
-    centralNodesDiv
         .classed('panelBG', true)
 
-    centralNodesDiv.append("h2")
+    let centralNodesHeading = centralNodesDiv.append("h2")
         .text("Most Connected Nodes")
         .classed('panelHeading', true)
+
+    let centralNodesContentArea = centralNodesDiv.append('div')
+        .attr('id', 'centralNodesContentArea')
         
     //sort domain nodes from most links to least, and then add the top 5 nodes to the centralNodes array
     domainData.nodes.sort((a,b) => d3.descending(a.numLinks, b.numLinks))
@@ -1568,15 +1595,16 @@ function setCentralNodesPanel(parentSidebar, domainData, data) {
             centralNodes.push(node)
         }
     })
-    centralNodesDiv.append("ul")
+
+    centralNodesContentArea.append("ul")
         .selectAll(".centralNodeArticles")
         .data(centralNodes)
         .enter()
             .append('li')
-            .html(function(d) {return `${d.title} <span class="badge badge-bill badge-light">${d.numLinks}</span>`})
+            .html(function(d) {return ` <span class="badge badge-pill badge-light">${d.numLinks}</span> ${d.title}`})
             .style("color", function(d) {return color(d.primary_domain)})
             .classed('centralNodeArticles', true)
-            .classed('panelListItem', true)
+            .classed('panelListItem_numbered', true)
         .exit().remove()
             
 
@@ -1602,6 +1630,7 @@ function setDomainArticleListPanel(parentSidebar, domainData, data) {
 
     let articleListAreaDiv = domainArticleListDiv.append('div')
         .classed("domainArticleList", true)
+        .attr('id','domainArticleListContentArea')
 
     //sort nodes in alphabetical order
     domainData.nodes.sort((a,b) => d3.ascending(a.title, b.title))
@@ -1664,7 +1693,7 @@ function isNeighborNode(a, b) {
 }
 function focusOnDomainArticle(activeElement) {
     d3.selectAll('.link').attr("opacity", function (link) {
-        return link.source.id === activeElement.id  || link.target.id === activeElement.id ? stylesConfig.link.activeOpacity : stylesConfig.link.inactiveOpacity;
+        return link.source.id === activeElement.id  || link.target.id === activeElement.id ? stylesConfig.link.activeDomainOpacity : stylesConfig.link.inactiveDomainOpacity;
  
     });
     d3.selectAll('.label').attr("fill-opacity", function (label) {
@@ -1672,7 +1701,7 @@ function focusOnDomainArticle(activeElement) {
 
     });
     d3.selectAll('.node').style("opacity", function (node) {
-        return isNeighborNode(activeElement.id, node.id) ?  stylesConfig.nodelabel.defaultOpacity : stylesConfig.nodelabel.notInArrayOpacity;
+        return isNeighborNode(activeElement.id, node.id) ?  stylesConfig.nodelabel.neighborNodeOpacity : stylesConfig.nodelabel.notInArrayOpacity;
     });
 }
 function resetDisplayDefaultsDomainGraph() {
@@ -1821,9 +1850,17 @@ function setArticleXpos(distX,textwidth) {
 }
 function setDomainXpos(distX, radiusScale ,textwidth) {
     if ( distX > 0) {
-        returnX = distX + 5 + radiusScale
+        returnX = distX - 5 - (textwidth/2) - radiusScale
     }   else {
-        returnX = distX - 5 - textwidth - radiusScale
+        returnX = distX - 5 - (textwidth/2)  + radiusScale
+    }
+    return returnX
+}
+function setDomainYpos(distY, radiusScale ,textwidth) {
+    if ( distY > 0) {
+        returnX = distY + 5 + radiusScale
+    }   else {
+        returnX = distY - 10 - radiusScale
     }
     return returnX
 }
