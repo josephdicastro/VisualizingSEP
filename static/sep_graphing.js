@@ -63,11 +63,15 @@ function startVisualization() {
 
     recentSearchMenu.on('change', function() {
         searchItem = d3.event.target.value;
+
+        if(searchItem !== 'Recent Searches...') {
         domainPosition = searchItem.indexOf(' (domain)');
-        if( domainPosition === -1) {
-            showArticleGraph(searchItem)
-        }   else    {
-            showDomainGraph(searchItem.substring(0,domainPosition))
+            if( domainPosition === -1) {
+                showArticleGraph(searchItem)
+            }   else    {
+                showDomainGraph(searchItem.substring(0,domainPosition))
+                console.log(searchItem.substring(0,domainPosition))
+            }
         }
     })
 
@@ -239,21 +243,23 @@ function showArticleGraphAreas() {
 
 function updateRecentSearch(searchObj) {
     
-    console.log(searchObj)
-    console.log(recentSearches)
     recentSearches.shift();
-
 
     if(!recentSearches.includes(searchObj)) { 
 
-        if (recentSearches.length < 11) {
-            recentSearches.push(searchObj)
-        }   else { 
-            recentSearches.pop()
-            recentSearches.push(searchObj)
+        let entryTitle;
+        if (searchObj.article) { entryTitle = searchObj.article}
+        if (searchObj.domain) {entryTitle = searchObj.domain + ' (domain)'}
+        if (!recentSearches.includes(entryTitle)) {
+            if (recentSearches.length < 11) {
+                recentSearches.push(entryTitle)
+            }   else { 
+                recentSearches.pop()
+                recentSearches.push(entryTitle)
+            }
         }
 
-        recentSearches.unshift({'article' : 'Recent Searches...'});
+        recentSearches.unshift(['Recent Searches...']);
 
         console.log(recentSearches)
 
@@ -261,7 +267,7 @@ function updateRecentSearch(searchObj) {
         recentSearchMenu.selectAll(".recentSearch")
             .data(recentSearches)
             .enter().append('option')
-                .text((d)=> d.article || d.domain)
+                .text((d)=> d)
                 .classed('recentSearch', true)
     }
 
@@ -1137,13 +1143,12 @@ function activateItemLink(mouseReference) {
     d3.select(mouseReference)
         .style('cursor', 'pointer')
         // .style('font-weight', 'bold')
-        .style('list-style', 'disc');
 }
 function deActivateItemLink(mouseReference) {
     d3.select(mouseReference)
         .style('cursor', 'normal')
         // .style('font-weight', 'normal')
-        .style('list-style', 'none');
+        // .style('list-style', 'none');
 }
 function getDomainLinksInArticle(linkDomain) {
     let domainArray = []
@@ -1267,6 +1272,12 @@ function focusOnArticleNode(data, activeElement) {
             d3.select(this)
                 .attr('fill-opacity', function(label) { return setNodeLabelOpacity(label, relatedArticleIDs, activeElement)})
         })
+
+        // d3.selectAll('.panelListItem')
+        //     .each(function (d,i) {
+        //         d3.select(this)
+        //             .attr('fill-opacity', function(label) { return setNodeLabelOpacity(label, relatedArticleIDs, activeElement)})
+        // })
         
     d3.selectAll('.node')
         .each(function (d,i) {
@@ -1509,8 +1520,7 @@ function drawDomainSimulation(data, domainData){
             
             label
                 .attr('x', function(d) {return setDomainXpos(d.x,scaleNodeRadius(d.numLinks),this.getBBox().width) })
-                .attr('y', function(d) {return setDomainYpos(d.y,scaleNodeRadius(d.numLinks),this.getBBox().width) })
-                // .attr('y', function(d) {return d.y -15})
+                .attr('y', function(d) {return setDomainYpos(d.y,scaleNodeRadius(d.numLinks),this.getBBox().height) })
                 .attr("transform", function(d,i){ return "rotate(0)"})
 
 
@@ -1866,6 +1876,7 @@ function setArticleXpos(distX,textwidth) {
     return returnX
 }
 function setDomainXpos(distX, radiusScale ,textwidth) {
+    let returnX;
     if ( distX > 0) {
         returnX = distX - 5 - (textwidth/2) - radiusScale
     }   else {
@@ -1873,13 +1884,15 @@ function setDomainXpos(distX, radiusScale ,textwidth) {
     }
     return returnX
 }
-function setDomainYpos(distY, radiusScale ,textwidth) {
+function setDomainYpos(distY, radiusScale ,textHeight) {
+    let returnY;
+
     if ( distY > 0) {
-        returnX = distY + 5 + radiusScale
+        returnY = distY + (textHeight/2) + radiusScale
     }   else {
-        returnX = distY - 10 - radiusScale
+        returnY = distY - (textHeight/2)  - radiusScale
     }
-    return returnX
+    return returnY
 }
 function color(entryType){
     let rgbValue = '';
