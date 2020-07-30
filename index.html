@@ -23,16 +23,20 @@
             <div class="collapse navbar-collapse"  id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item nav-item-select active">
-                        <select id="articleSearchMenu" class="custom-select custom-select-sm"></select><span class="sr-only">(current)</span></li>
+                        <select id="articleSearchMenu" class="custom-select custom-select-sm sep-select"></select><span class="sr-only">(current)</span></li>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" id="getRandomEntry">Randomize</a>
                     </li> 
                     <li class="nav-item nav-item-select">
-                        <select id="domainSearchMenu" class="custom-select custom-select-sm" ></select>
+                        <select id="domainSearchMenu" class="custom-select custom-select-sm sep-select" ></select>
                     </li>
-               
-                    <li class="nav-item"  style="margin-left:5%;" >
+                    <li class="nav-item" style="margin-left:10%;">
+                        <div id="recentSearches">
+                            <select id="recentSearchMenu" class="custom-select custom-select-sm float-right  shadow-none"></select>
+                        </div>
+                    </li>
+                    <li class="nav-item"  style="margin-left:7%;" >
                         <a class="nav-link" href="#">About</a>
                     </li>
                     <li class="nav-item">
@@ -41,26 +45,24 @@
                 </ul>
             </div>
         </nav>
+        <main>
             <div class="container-fluid">
                 <div class="row topRow">
-                    <div class="col-lg-8 ">
+                    <div class="col-lg-3 ">
+                        
+                    </div>
+                    <div class="col-lg-7">
                         <div id="selectedEntryTitle"><h1>Explore the Standford Encylopedia of Philosophy</h1></div>
                     </div>
-                    <div class="col-lg-2">
-                        <div id="recentSearches">
-                            <select id="recentSearchMenu" class="custom-select custom-select-sm float-right  shadow-none"></select>
-                        </div>
+                    <div class="col-lg-2">                        
+
                     </div>
-                    <div class="col-lg-2"></div>
                 </div>
                 <div class="row contentRow">            
                     <div class="col-lg-3">
                         <div id="sidebarLeft" class="sidebar float-right"></div>
                     </div>
                     <div class="col-lg-7">
-                        <!-- <div id="recentSearches">
-                            <select id="recentSearchMenu" class="custom-select custom-select-sm float-right  shadow-none"></select>
-                        </div> -->
                         <div id="articleGraph" class="panelBG_graph">
                             <svg id="mainGraph" height="100%" width="100%"></svg>
                         </div>
@@ -70,7 +72,8 @@
                     </div>
                 </div>
             </div>
-        <footer>
+        </main>
+        <footer class="fixed-bottom">
             <p class="float-left footerText">SEP Edition: Summer 2020</p>
             <p class="float-right footerText">© 2020 - Joseph DiCastro</p>
         </footer>

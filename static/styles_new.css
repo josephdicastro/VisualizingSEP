@@ -9,7 +9,8 @@ body, .container-fluid {
 }
 
 footer {
-    margin-top: -2%;
+    display: block;
+    /* margin-top: -2%; */
     margin-left: 8%;
     margin-right: 7%;
 }
@@ -31,7 +32,13 @@ nav {
 
 .nav-item-select { 
     margin-top:5px;
-    width:25%;
+    width:15%;
+}
+
+.sep-select {
+    background-color: rgb(18, 18, 18);
+    color:white;
+    border-color:  rgb(50, 50, 50);
 }
 
 select:focus, select:active, .btn:focus, .btn:active{
@@ -47,8 +54,8 @@ select:focus, select:active, .btn:focus, .btn:active{
 #getRandomEntry {
     background-color: rgb(60,60,60);
     margin-top: .55em;
-    margin-left: 3.5em;
-    margin-right: 3.5em;
+    margin-left: 3em;
+    margin-right: 3em;
     padding: 0 1em;
     border-radius: 10px;
 }
@@ -130,16 +137,11 @@ select:focus, select:active, .btn:focus, .btn:active{
     #recentSearchMenu {
         background-color: rgb(18, 18, 18);
         color:white;
-        border-color: none!important;
-        outline: none!important;
-        box-shadow: none!important;
-        border:0;
-
-        position: absolute;
-        top: .8em;
-        left: -5.5em;
-        z-index:99;
+        border-color:  rgb(50, 50, 50);
+        margin-top: .4em;
         border-radius: 1.5em;
+        width:150px;
+        margin-left:-4em;
     }
 
 
@@ -149,14 +151,14 @@ select:focus, select:active, .btn:focus, .btn:active{
 
     /* nav */
     #navbarSupportedContent {
-        margin-left: 15%;
+        margin-left: 13%;
     }
 
     #getRandomEntry {
         background-color: rgb(60,60,60);
         margin-top: .55em;
-        margin-left: 7em;
-        margin-right: 7em;
+        margin-left: 3em;
+        margin-right: 3em;
         padding: 0 1em;
         border-radius: 10px;
     }
@@ -164,47 +166,18 @@ select:focus, select:active, .btn:focus, .btn:active{
     #recentSearchMenu {
         background-color: rgb(18, 18, 18);
         color:white;
-        border-color: none!important;
-        outline: none!important;
-        box-shadow: none!important;
-        border:0;
-        position: absolute;
-        top: .8em;
-        left: -2em;
-        z-index:99;
+        border-color:  rgb(50, 50, 50);
+        margin-top: .5em;
         border-radius: 1.5em;
+        width:200px;
+        margin-left:3.5em;
     }
+
     #domainArticleListContentArea {
         max-height:525px;
         overflow-y: auto;
         width:100%;
     }
-
-    ul .panelListItem {
-        margin-left:-.8em;
-        margin-bottom:.5em;
-        padding-left: .3em;
-        font-size: .8em;
-        line-height: .9em;
-        font-family: proxima-nova, sans-serif;
-        font-style: normal;
-        font-weight: 100; 
-        list-style: none;
-        color:lightgray;
-        text-indent: -1.1em;
-    }
-
-    /* margin-left:-1.2em;
-    margin-bottom:.2em;
-    padding-left: -.2em;
-    font-size: .8em;
-    line-height: 1em;
-    font-family: proxima-nova, sans-serif;
-    font-style: normal;
-    font-weight: 100; 
-    list-style: none;
-    color:lightgray;
-    text-indent: -1.1em; */
 
     #articleListContentArea {
         max-height:550px;
@@ -227,6 +200,10 @@ select:focus, select:active, .btn:focus, .btn:active{
     }
     .contentRow {
         height:825px;
+    }
+
+    .footerRow {
+        height:30px;
     }
 
     #articleGraph {
@@ -401,22 +378,25 @@ select:focus, select:active, .btn:focus, .btn:active{
 
 
 .footerText {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: proxima-nova, sans-serif;
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
+    font-style: normal;
+    font-weight: 400; 
     font-size: .9em;
-    color: white;
+    color: lightgray;
 }
 
 
 #selectedEntryTitle h1 {
-    /* font-family: proxima-nova, sans-serif; */
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: proxima-nova, sans-serif;
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
     font-style: normal;
     font-weight: 400; 
     font-size: 1.3em;
     color:white;
     text-align:left;
     margin-top: .7em;
-    margin-left: 8%;
+    /* margin-left: 8%; */
 }
 
 .label {

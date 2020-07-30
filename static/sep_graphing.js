@@ -22,12 +22,13 @@ let svgConfig = initializeParentSVG(svg);
 let simulationConfig = initializeSimulation(svgConfig);  
 let stylesConfig = initializeStyles();
 
-//Initialze searchCache
+//Initialze searchCache and recentSearches
 let searchCache = [];
+let recentSearches = [];
 
-//
+
+// graph helpers
 let neighborNodes = [];
-
 let linkAngles = [];
 
 //set BaseURL for SEP Edition
@@ -236,17 +237,33 @@ function showArticleGraphAreas() {
     articleGraphDiv.style('display', 'block')
 }
 
-function updateRecentSearch() {
-    let recentSearchArray = ['Recent Searches...']
-    searchCache.sort((a,b) => d3.descending(a.index, b.index))
-    searchCache.forEach(node=> recentSearchArray.push(node.article || node.domain + ' (domain)'))
+function updateRecentSearch(searchObj) {
+    
+    console.log(searchObj)
+    console.log(recentSearches)
+    recentSearches.shift();
 
-    recentSearchMenu.html("")
-    recentSearchMenu.selectAll(".recentSearch")
-        .data(recentSearchArray)
-        .enter().append('option')
-            .text((d)=>d)
-            .classed('recentSearch', true)
+
+    if(!recentSearches.includes(searchObj)) { 
+
+        if (recentSearches.length < 11) {
+            recentSearches.push(searchObj)
+        }   else { 
+            recentSearches.pop()
+            recentSearches.push(searchObj)
+        }
+
+        recentSearches.unshift({'article' : 'Recent Searches...'});
+
+        console.log(recentSearches)
+
+        recentSearchMenu.html("")
+        recentSearchMenu.selectAll(".recentSearch")
+            .data(recentSearches)
+            .enter().append('option')
+                .text((d)=> d.article || d.domain)
+                .classed('recentSearch', true)
+    }
 
 }
 // ****** ARTICLE GRAPH DATA AND SIMULATION FUNCTIONS ****** 
@@ -272,7 +289,7 @@ function showArticleGraph(articleTitle) {
         updateSidebarsArticle(json, articleNode);
         setArticleMenuTitle(articleTitle)
         setDomainMenuTitle("[Search domains...]")
-        updateRecentSearch();
+        updateRecentSearch(articleData);
 
         window.getSelection().removeAllRanges();
     })
@@ -1335,7 +1352,7 @@ function showDomainGraph(domainTitle) {
         setDomainMenuTitle(domainTitle)
         setArticleMenuTitle("[Search articles...]")
         window.getSelection().removeAllRanges();
-        updateRecentSearch();
+        updateRecentSearch(domainData);
 
     });
 }
