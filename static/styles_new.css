@@ -10,10 +10,16 @@ body, .container-fluid {
 
 footer {
     display: block;
-    /* margin-top: -2%; */
-    margin-left: 8%;
     margin-right: 5%;
+    font-family: proxima-nova, sans-serif;
+    font-style: normal;
+    font-weight: 400; 
+    font-size: .9em;
+    color: lightgray;
+    text-align: right;
 }
+
+
 
 
 /* Nav Styles */
@@ -39,17 +45,26 @@ nav {
     background-color: rgb(18, 18, 18);
     color:white;
     border-color:  rgb(50, 50, 50);
+    font-family: proxima-nova, sans-serif;
+    font-weight: 100;
+    font-size:.9em;
 }
 
-select:focus, select:active, .btn:focus, .btn:active{
-    box-shadow: none!important
-  }
+.sep-select:hover, .sep-select:active {
+    background-color: rgb(18, 18, 18);
+    color:white;
+    border-color:  rgb(50, 50, 50);
+}
 
-.custom-select .btn:focus, .custom-select .btn:active {
+.custom-select {
+    border-color:  rgb(50, 50, 50);
     box-shadow: none!important;
     outline: none!important;
 }
 
+.custom-select:active, .custom-select:focus {
+    border-color:  rgb(100, 100, 100);
+}
 
 #getRandomEntry {
     background-color: rgb(60,60,60);
@@ -220,6 +235,15 @@ select:focus, select:active, .btn:focus, .btn:active{
 
 /* Select Menu Styles */
 
+.menuBorderOff {
+    border-color:  rgb(50, 50, 50);
+}
+
+.menuBorderOn{
+    border-color:  rgb(80, 80, 80);
+}
+
+
 
 /* Panel Area styling information  */
 
@@ -377,14 +401,7 @@ select:focus, select:active, .btn:focus, .btn:active{
 
 
 
-.footerText {
-    font-family: proxima-nova, sans-serif;
-    /* font-family: Georgia, 'Times New Roman', Times, serif; */
-    font-style: normal;
-    font-weight: 400; 
-    font-size: .9em;
-    color: lightgray;
-}
+
 
 
 #selectedEntryTitle h1 {
@@ -396,6 +413,7 @@ select:focus, select:active, .btn:focus, .btn:active{
     color:white;
     text-align:left;
     margin-top: .7em;
+    margin-left: .7em;
     /* margin-left: 8%; */
 }
 

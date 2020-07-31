@@ -51,6 +51,8 @@ function startVisualization() {
         let articleTitle = d3.event.target.value;
         if (articleTitle !== "[Search articles...]") { showArticleGraph(articleTitle)}
         showArticleGraph(articleTitle)
+        window.getSelection().removeAllRanges();
+
     })
 
     domainMenu.on('change', function(){
@@ -164,18 +166,18 @@ function initializeStyles() {
         'defaultOpacity': 0.1,
         'activeOpacity': 0.3,
         'activeDomainOpacity': 0.2,
-        'inactiveOpacity': 0.03,
+        'inactiveOpacity': 0.06,
         'inactiveDomainOpacity': 0.01,
         'strokeColor': '#999',
         'strokeWidth':1}
     
     let nodelabel = {
         'defaultOpacity': 1,
-        'centralNodeDimmedOpacity': 0.75,
-        'neighborNodeOpacity': 0.5,
-        'inArrayOpacity': 0.75,
+        'centralNodeDimmedOpacity': 0.8,
+        'neighborNodeOpacity': 0.25,
+        'inArrayOpacity': 1,
         'notInArrayOpacity': 0.01,
-        'fontSize': '12px', 
+        'fontSize': '1em', 
         'defaultRadius': 4,
         'strokeColor': "#fff",
         'strokeWidth':0.5 
@@ -276,6 +278,18 @@ function updateRecentSearch(searchObj) {
 
 function setArticleMenuTitle(articleTitle) {
     articleMenu.property("value", articleTitle)
+
+    if(articleTitle === '[Search articles...]') {
+        articleMenu
+            .classed('menuBorderOn', false)
+            .classed('menuBorderOff', true)
+    }   else {
+        articleMenu
+            .classed('menuBorderOn', true)
+            .classed('menuBorderOff', false)
+    }
+    
+
 }
 function setArticleGraphTitle(selectedArticle) {
     let selectedArticleTitle = d3.select("#selectedEntryTitle").select("h1")
@@ -294,7 +308,7 @@ function showArticleGraph(articleTitle) {
         setArticleGraphTitle(articleData)
         updateSidebarsArticle(json, articleNode);
         setArticleMenuTitle(articleTitle)
-        setDomainMenuTitle("[Search domains...]")
+        setDomainMenuTitle('[Search domains...]')
         updateRecentSearch(articleData);
 
         window.getSelection().removeAllRanges();
@@ -590,19 +604,25 @@ function setArticleIntroParagraph(parentSidebar, introText, selectedArticle) {
 
 function getParagraphDataHTML(paragraphDataFromNode) {
     let htmlReturn = '';
+    console.log(paragraphDataFromNode)
     //only display the first 500 characters of the node's intro paragraph
     if(typeof(paragraphDataFromNode)!=='undefined') {
         if(paragraphDataFromNode !== '') {
             if (paragraphDataFromNode.length > 500 ) {
                 let firstPeriod = paragraphDataFromNode.indexOf('.',350) + 1
                 let firstQuestionMark = paragraphDataFromNode.indexOf('.',350) + 1
-                let lastSpace = paragraphDataFromNode.lastIndexOf(' ',500)
+                let lastSpace = paragraphDataFromNode.indexOf(' ',450)
                 let finalParaText;
 
-                if(firstPeriod < 550 ) { finalParaText = paragraphDataFromNode.substring(0,firstPeriod) }
-                if(firstPeriod > 550 && firstQuestionMark < 550 ) { finalParaText = paragraphDataFromNode.substring(0,firstQuestionMark) }
+                console.log(firstPeriod, firstQuestionMark, lastSpace)
+
+                if(firstPeriod <= 550 ) { finalParaText = paragraphDataFromNode.substring(0,firstPeriod) }
+                if(firstPeriod > 550 && firstQuestionMark <= 550 ) { finalParaText = paragraphDataFromNode.substring(0,firstQuestionMark) }
                 if(firstPeriod > 550 && firstQuestionMark > 550 ) { finalParaText = paragraphDataFromNode.substring(0,lastSpace) + ' ...'}
-        
+
+                if(typeof(finalParaText)==='undefined') {
+                    finalParaText = paragraphDataFromNode.substring(0,500) + '...' 
+                }
                 let displayCut = `(First ${finalParaText.length} characters displayed.)`;
                 htmlReturn = '<p>' + finalParaText + '</p>' + 
                              '<p class="panelDispayCut float-right">' + displayCut + '</p>'
@@ -1346,8 +1366,19 @@ function setDomainGraphTitle(domainTitle) {
 
 }
 
-function setDomainMenuTitle(domainTitle) {
+function setDomainMenuTitle(domainTitle, borderState) {
     domainMenu.property('value', domainTitle)
+
+    if(domainTitle === '[Search domains...]') {
+        domainMenu
+            .classed('menuBorderOn', false)
+            .classed('menuBorderOff', true)
+    }   else {
+        domainMenu
+            .classed('menuBorderOn', true)
+            .classed('menuBorderOff', false)
+    }
+
 }
 function showDomainGraph(domainTitle) {
 
@@ -1361,7 +1392,7 @@ function showDomainGraph(domainTitle) {
         updateNeighborNodes();
         setDomainGraphTitle(domainTitle)
         setDomainMenuTitle(domainTitle)
-        setArticleMenuTitle("[Search articles...]")
+        setArticleMenuTitle('[Search articles...]')
         window.getSelection().removeAllRanges();
         updateRecentSearch(domainData);
 
@@ -1483,6 +1514,7 @@ function drawDomainSimulation(data, domainData){
                            .data(graphNodes, function(d) {return d.title})
                             .attr('fill-opacity',0)
                            .attr("fill", function(d) {return color(d.primary_domain)})
+                           .style('text-anchor', 'middle')
     label.exit().remove();
 
     label = label.enter()
@@ -1493,7 +1525,8 @@ function drawDomainSimulation(data, domainData){
                  .attr("fill", function(d) {return color(d.primary_domain)})
                  .attr('nodeID', function(d) {return d.id})
                  .classed('label',true)
-                 .classed('mainLabel', function(d,i) {return i===0?true:false})
+                 .style('text-anchor', 'middle')
+                //  .classed('mainLabel', function(d,i) {return i===0?true:false})
                  .merge(label)
 
     label.on('mouseover', function() {mouseOverDomainNode(this, data, domainData)})
@@ -1519,7 +1552,8 @@ function drawDomainSimulation(data, domainData){
             .attr("cy", function(d) {return d.y });
             
             label
-                .attr('x', function(d) {return setDomainXpos(d.x,scaleNodeRadius(d.numLinks),this.getBBox().width) })
+                // .attr('x', function(d) {return setDomainXpos(d.x,scaleNodeRadius(d.numLinks),this.getBBox().width) })
+                .attr('x', function(d) {return d.x})
                 .attr('y', function(d) {return setDomainYpos(d.y,scaleNodeRadius(d.numLinks),this.getBBox().height) })
                 .attr("transform", function(d,i){ return "rotate(0)"})
 
@@ -1542,6 +1576,7 @@ function drawDomainSimulation(data, domainData){
     simulationConfig.simulation.alpha(.1).restart();
 
 }
+
 function updateSidebarsDomain(data, domainTitle) {
     updateSidebarLeft_DomainMain(data, domainTitle);
     updateSidebarRight_DomainMain(data, domainTitle);
@@ -1719,6 +1754,7 @@ function isNeighborNode(a, b) {
     return a == b || neighborNodes[a + "-" + b];
 }
 function focusOnDomainArticle(activeElement) {
+
     d3.selectAll('.link').attr("opacity", function (link) {
         return link.source.id === activeElement.id  || link.target.id === activeElement.id ? stylesConfig.link.activeDomainOpacity : stylesConfig.link.inactiveDomainOpacity;
  
@@ -1728,7 +1764,11 @@ function focusOnDomainArticle(activeElement) {
 
     });
     d3.selectAll('.node').style("opacity", function (node) {
-        return isNeighborNode(activeElement.id, node.id) ?  stylesConfig.nodelabel.neighborNodeOpacity : stylesConfig.nodelabel.notInArrayOpacity;
+        if(activeElement.id === node.id) {
+            return stylesConfig.nodelabel.defaultOpacity
+        }   else {
+            return isNeighborNode(activeElement.id, node.id) ?  stylesConfig.nodelabel.neighborNodeOpacity : stylesConfig.nodelabel.notInArrayOpacity;
+        }
     });
 }
 function resetDisplayDefaultsDomainGraph() {
@@ -1880,7 +1920,7 @@ function setDomainXpos(distX, radiusScale ,textwidth) {
     if ( distX > 0) {
         returnX = distX - 5 - (textwidth/2) - radiusScale
     }   else {
-        returnX = distX - 5 - (textwidth/2)  + radiusScale
+        returnX = distX - 5 - (textwidth/2)  - radiusScale
     }
     return returnX
 }
@@ -1888,9 +1928,9 @@ function setDomainYpos(distY, radiusScale ,textHeight) {
     let returnY;
 
     if ( distY > 0) {
-        returnY = distY + (textHeight/2) + radiusScale
+        returnY = distY + (textHeight/2) + radiusScale + 5
     }   else {
-        returnY = distY - (textHeight/2)  - radiusScale
+        returnY = distY - (textHeight/2)  - radiusScale 
     }
     return returnY
 }
