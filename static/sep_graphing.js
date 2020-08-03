@@ -37,6 +37,8 @@ let baseURL = 'https://plato.stanford.edu/archives/spr2020';
 
 let json_file = 'static/sep_network_new.json'
 
+let testLabel = d3.select('#testLabel')
+
 
 startVisualization();
 
@@ -77,6 +79,7 @@ function startVisualization() {
         }
     })
 
+    testLabel.on('click', function() { updateDomainLabelPositions();})
 }
 
 // ****** SET GLOBALS  ********
@@ -118,36 +121,38 @@ function initializeParentSVG(svg) {
     //create SVG group centered in the middle of the svg space
     let g1 = svg.append('g')
                         .attr("transform", `translate(${width/2},${height/2})`)
-                        .classed('articleGraphGroup', true)
+                        .classed('sepGraphGroup', true)
     
     //create secondary svg group so that we can add our graph elements to this group
-    let graph_elements = g1.append('g')
-                            .classed('articleElements', true)
+    let graphElements = g1.append('g')
+                            .classed('graphElements', true)
                             // .attr('width',1000)
 
-    return {margin, areaWidth, areaHeight, width, height, graph_elements}
+    return {margin, areaWidth, areaHeight, width, height, graphElements}
 }
 
 function initializeSimulation(svgConfig) {
 
     // create main graph elements
-    let links = svgConfig.graph_elements
+    let links = svgConfig.graphElements
         .append("g")
         .classed('links',true)
 
-    let labels = svgConfig.graph_elements
+    let labels = svgConfig.graphElements
         .append("g")
         .classed('labels',true)
 
-    let relatedLinks = svgConfig.graph_elements
+    let relatedLinks = svgConfig.graphElements
         .append("g")
         .classed('relatedLinks', true)
 
-    let nodes = svgConfig.graph_elements
+    let nodes = svgConfig.graphElements
         .append("g")
         .classed('nodes',true)
 
-
+    let domainLabels = svgConfig.graphElements
+        .append("g")
+        .classed('domainLabels',true)
 
     let simulation = d3.forceSimulation()
         .force("charge", d3.forceManyBody())
@@ -158,7 +163,7 @@ function initializeSimulation(svgConfig) {
         .force("collide", d3.forceCollide())
         .alphaTarget(1);
 
-    return {links, nodes, labels, relatedLinks, simulation}
+    return {links, nodes, labels, relatedLinks, domainLabels, simulation}
 }
 
 function initializeStyles() {
@@ -263,9 +268,8 @@ function updateRecentSearch(searchObj) {
 
         recentSearches.unshift(['Recent Searches...']);
 
-        console.log(recentSearches)
-
         recentSearchMenu.html("")
+
         recentSearchMenu.selectAll(".recentSearch")
             .data(recentSearches)
             .enter().append('option')
@@ -604,7 +608,6 @@ function setArticleIntroParagraph(parentSidebar, introText, selectedArticle) {
 
 function getParagraphDataHTML(paragraphDataFromNode) {
     let htmlReturn = '';
-    console.log(paragraphDataFromNode)
     //only display the first 500 characters of the node's intro paragraph
     if(typeof(paragraphDataFromNode)!=='undefined') {
         if(paragraphDataFromNode !== '') {
@@ -613,8 +616,6 @@ function getParagraphDataHTML(paragraphDataFromNode) {
                 let firstQuestionMark = paragraphDataFromNode.indexOf('.',350) + 1
                 let lastSpace = paragraphDataFromNode.indexOf(' ',450)
                 let finalParaText;
-
-                console.log(firstPeriod, firstQuestionMark, lastSpace)
 
                 if(firstPeriod <= 550 ) { finalParaText = paragraphDataFromNode.substring(0,firstPeriod) }
                 if(firstPeriod > 550 && firstQuestionMark <= 550 ) { finalParaText = paragraphDataFromNode.substring(0,firstQuestionMark) }
@@ -1264,6 +1265,7 @@ function focusOnArticleNode(data, activeElement) {
 
     let linkLines = linkLinesGroup.selectAll('.relatedLinkLines')
         .data(relatedArticles)
+
     linkLines.exit().remove()
     linkLines = linkLines.enter()
                 .append('line')
@@ -1292,12 +1294,6 @@ function focusOnArticleNode(data, activeElement) {
             d3.select(this)
                 .attr('fill-opacity', function(label) { return setNodeLabelOpacity(label, relatedArticleIDs, activeElement)})
         })
-
-        // d3.selectAll('.panelListItem')
-        //     .each(function (d,i) {
-        //         d3.select(this)
-        //             .attr('fill-opacity', function(label) { return setNodeLabelOpacity(label, relatedArticleIDs, activeElement)})
-        // })
         
     d3.selectAll('.node')
         .each(function (d,i) {
@@ -1395,6 +1391,9 @@ function showDomainGraph(domainTitle) {
         setArticleMenuTitle('[Search articles...]')
         window.getSelection().removeAllRanges();
         updateRecentSearch(domainData);
+        
+    // updateDomainLabelPositions();
+
 
     });
 }
@@ -1552,9 +1551,10 @@ function drawDomainSimulation(data, domainData){
             .attr("cy", function(d) {return d.y });
             
             label
-                // .attr('x', function(d) {return setDomainXpos(d.x,scaleNodeRadius(d.numLinks),this.getBBox().width) })
-                .attr('x', function(d) {return d.x})
-                .attr('y', function(d) {return setDomainYpos(d.y,scaleNodeRadius(d.numLinks),this.getBBox().height) })
+                .attr('x', function(d) {return setDomainXpos(d.x,scaleNodeRadius(d.numLinks),this.getBBox().width) })
+                // .attr('x', function(d) {return d.x})
+                .attr('y', function(d) {return d.y+3})
+                // .attr('y', function(d) {return setDomainYpos(d.y,scaleNodeRadius(d.numLinks),this.getBBox().height) })
                 .attr("transform", function(d,i){ return "rotate(0)"})
 
 
@@ -1568,14 +1568,60 @@ function drawDomainSimulation(data, domainData){
     //restart simulation
     simulationConfig.simulation.nodes(graphNodes);
     simulationConfig.simulation.force("charge").strength(function() { return forceStrength(countOfNodes)})
-    simulationConfig.simulation.force("link").id(function (d) {return d.id}).distance(580)
+    simulationConfig.simulation.force("link").id(function (d) {return d.id}).distance(350)
     simulationConfig.simulation.force("link").links(graphLinks)
     simulationConfig.simulation.force("forceX").strength(.5)
     simulationConfig.simulation.force("forceY").strength(.5)
-    simulationConfig.simulation.force("collide").radius(40)
-    simulationConfig.simulation.alpha(.1).restart();
+    simulationConfig.simulation.force("collide").radius(20)
+    simulationConfig.simulation.alpha(1).restart();
 
 }
+
+function updateDomainLabelPositions() {
+
+    console.log('test')
+    
+    let labelsArray = [];
+    let nodesArray = [];
+
+    let domainLabels = d3.selectAll('.label')
+    let domainNodes = d3.selectAll('.node')
+
+    domainLabels.each(function(d,i) {
+        let currentLabel = d3.select(this).datum()
+        let  labelObj = {   'x': currentLabel.x, 
+                            'y': currentLabel.y,
+                            'name': currentLabel.title,
+                            'width': this.getBBox().width,
+                            'height': this.getBBox().height }
+        labelsArray.push(labelObj)
+    })
+
+    domainNodes.each(function(d,i) {
+        let currentNode = d3.select(this).datum()
+        let  nodeObj = {   'x': currentNode.x, 
+                            'y': currentNode.y,
+                            'r': +d3.select(this).attr('r')}
+        nodesArray.push(nodeObj)
+    })
+
+    let domainlabeler = d3.labeler()
+        .label(labelsArray)
+        .anchor(nodesArray)
+        .width(svgConfig.width)
+        .height(svgConfig.height);
+
+    domainlabeler.start(1000);
+
+    // console.log(domainlabeler)
+
+    domainLabels
+    .transition()
+    .duration(800)
+    .attr("x", function(d) { return (d.x); })
+    .attr("y", function(d) { return (d.y); });
+
+} 
 
 function updateSidebarsDomain(data, domainTitle) {
     updateSidebarLeft_DomainMain(data, domainTitle);
@@ -1755,13 +1801,15 @@ function isNeighborNode(a, b) {
 }
 function focusOnDomainArticle(activeElement) {
 
+    console.log(activeElement)
+
     d3.selectAll('.link').attr("opacity", function (link) {
         return link.source.id === activeElement.id  || link.target.id === activeElement.id ? stylesConfig.link.activeDomainOpacity : stylesConfig.link.inactiveDomainOpacity;
  
     });
     d3.selectAll('.label').attr("fill-opacity", function (label) {
-        return isNeighborNode(activeElement.id, label.id) ? stylesConfig.nodelabel.defaultOpacity : stylesConfig.nodelabel.notInArrayOpacity;
-
+        // return isNeighborNode(activeElement.id, label.id) ? stylesConfig.nodelabel.defaultOpacity : stylesConfig.nodelabel.notInArrayOpacity;
+        return (activeElement.id === label.id) ? stylesConfig.nodelabel.defaultOpacity : stylesConfig.nodelabel.notInArrayOpacity;
     });
     d3.selectAll('.node').style("opacity", function (node) {
         if(activeElement.id === node.id) {
@@ -1770,12 +1818,158 @@ function focusOnDomainArticle(activeElement) {
             return isNeighborNode(activeElement.id, node.id) ?  stylesConfig.nodelabel.neighborNodeOpacity : stylesConfig.nodelabel.notInArrayOpacity;
         }
     });
+
+    
+    positionRelatedDomainNodes(activeElement);
+
 }
+
+function positionRelatedDomainNodes(activeElement) {
+
+    let domainLabelsGroup = simulationConfig.domainLabels
+    domainLabelsGroup.html('')
+
+    let domainLabelsLeft = [];
+    let domainLabelsRight = [];
+
+    let domainNodes = d3.selectAll('.node')
+
+    domainNodes.each(function(node,index) {
+        let circle = d3.select(this)
+        let nodeCX = +circle.attr('cx')
+        let nodeCY = +circle.attr('cy')
+        let nodeID = circle.attr('nodeID')
+        let nodePrimaryDomain = node.primary_domain
+        let nodeTitle = node.title
+        let labelObj = {'id':nodeID, 'cx':nodeCX, 'cy': nodeCY, 'text':nodeTitle, 'title':nodeTitle, 'primaryDomain':nodePrimaryDomain}
+        
+        if(activeElement.id !== nodeID) {
+            if(isNeighborNode(activeElement.id, nodeID)) {
+                if(nodeCX > 0) {
+                    domainLabelsRight.push(labelObj)
+                }   else    { 
+                    domainLabelsLeft.push(labelObj)
+                }
+            }
+        }
+    })
+
+    domainLabelsLeft.sort((a,b) => d3.ascending(a.cy, b.cy))
+    domainLabelsRight.sort((a,b) => d3.ascending(a.cy, b.cy))
+
+    domainLabelsLeft = nudgeLabels(domainLabelsLeft)
+    domainLabelsRight = nudgeLabels(domainLabelsRight)
+
+    console.log(domainLabelsRight)
+
+    let domainLeftMinMax = d3.extent(domainLabelsLeft, d=> d.cy)
+    let domainRightMinMax = d3.extent(domainLabelsRight, d=> d.cy)
+
+    //left side nodes and labels
+    let labelListLeftGroup = domainLabelsGroup.append('g')
+        .attr('x', '-400')
+        .attr('y', '-400')
+        .classed('domainLabelLeftGroup', true)
+
+        new d3plus.TextBox()
+        .data(domainLabelsLeft)
+        .select('.domainLabelLeftGroup')
+        .y(function(d, i) {return placeLabel(d.cy,i,domainLabelsLeft.length, domainLeftMinMax)})
+        .x(-400)
+        .fontSize(12)
+        .fontColor(function(d) {return color(d.primaryDomain)})
+        .verticalAlign('top')
+        .textAnchor('start')
+        .width(210)
+        .padding(10)
+        .render();
+
+    //right side nodes and labels
+    let labelListRightGroup = domainLabelsGroup.append('g')
+        .attr('x', '400')
+        .attr('y', `-400`)
+        .classed('domainLabelRightGroup', true)
+
+        new d3plus.TextBox()
+        .data(domainLabelsRight)
+        .select('.domainLabelRightGroup')
+        .y(function(d, i) {return placeLabel(d.cy,i,domainLabelsRight.length, domainRightMinMax)})
+        .x(200)
+        .textAnchor('end')
+        .fontFamily('proxima-nova, sans-serif')
+        .fontSize(12)
+        .fontColor(function(d) {return color(d.primaryDomain)})
+        .verticalAlign('top')
+        .width(210)
+        .padding(10)
+        .render();
+
+
+
+}
+function placeLabel(cyVal, index, arrayLength, domainRightMinMax) {
+    let cyMin = domainRightMinMax[0];
+    let cyMax = domainRightMinMax[1]
+    let totalHeight = Math.abs(cyMin) + Math.abs(cyMax)
+    let itemOffset = (totalHeight/arrayLength) 
+
+    let returnCY;
+
+    if (arrayLength<=15) { returnCY = cyVal - 20 } ;
+    if (arrayLength > 15 && arrayLength <=20) {returnCY = (cyMin) + ( index * ( itemOffset * 0.75))}
+    if (arrayLength>20 && arrayLength <=30) {returnCY = (cyMin*1.25) + ( index * ( itemOffset * 0.75))}
+    if (arrayLength>30 ) {returnCY = (cyMin*1.50) + ( index * ( itemOffset * 0.5))}
+
+    return returnCY
+}
+
+function nudgeLabels(labelArray) {
+    labelArray.forEach(function(d,i,a) {
+        let nextIndex = i + 1;
+        //test for length 
+        let textLength = d.text.length
+        if(textLength > 35 ) {
+            a.forEach(function(d1, i1) { 
+                if(nextIndex <= a.length - 1 && nextIndex > i) { 
+                    nextNode = a[nextIndex]
+                    nextNode.cy = nextNode.cy + 15
+                }
+                
+            })
+        }
+
+        if(nextIndex <= a.length - 1) {
+
+
+            let currentCY = d.cy
+            let nextNodeIndex = i + 1
+            let nextNode = a[nextNodeIndex]
+            let nextNodeCY = nextNode.cy
+            cyDiff= Math.abs(nextNodeCY - currentCY)
+
+            if(cyDiff < 16) {
+                let textOffset = (textLength > 35) ? 30 : 16
+                nextNode.cy = nextNode.cy + cyDiff + textOffset + 5
+                a.forEach(function(node,nodeIndex) {
+                    if(nodeIndex > nextNodeIndex) {node.cy = node.cy + textOffset}
+                })
+            }
+        }
+    })
+
+    return labelArray
+}
+
 function resetDisplayDefaultsDomainGraph() {
     d3.selectAll('.link').attr("opacity", stylesConfig.link.defaultOpacity);
     d3.selectAll('.label').attr("fill-opacity", 0);
     d3.selectAll('.node').style("opacity", stylesConfig.nodelabel.defaultOpacity);
+
+    let domainLabelsGroup = simulationConfig.domainLabels
+    domainLabelsGroup.html('')
 } 
+
+
 
 //******************** Array & Set Operations ************************/
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
@@ -1920,7 +2114,7 @@ function setDomainXpos(distX, radiusScale ,textwidth) {
     if ( distX > 0) {
         returnX = distX - 5 - (textwidth/2) - radiusScale
     }   else {
-        returnX = distX - 5 - (textwidth/2)  - radiusScale
+        returnX = distX + 5 + (textwidth/2)  + radiusScale
     }
     return returnX
 }
