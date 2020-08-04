@@ -1511,6 +1511,30 @@ function drawDomainSimulation(data, domainData){
     node.on('mouseover', function() {mouseOverDomainNode(this, data, domainData)})
     node.on('mouseout', function() {mouseOutDomainNode(this, data, domainData)})
     node.on('dblclick', function() {dblClickDomainNode(this, data)})    
+    
+    // // //labels
+    // label = simulationConfig.labels.selectAll('.label')
+    //                        .data(graphNodes, function(d) {return d.title})
+    //                         .attr('fill-opacity',0)
+    //                        .attr("fill", function(d) {return color(d.primary_domain)})
+    //                        .style('text-anchor', 'middle')
+    // label.exit().remove();
+
+    // label = label.enter()
+    //              .append("text")
+    //              .text(function(d) {return d.title})
+    //              .attr('fill-opacity',0)
+    //              .attr("font-size", stylesConfig.nodelabel.fontSize)
+    //              .attr("fill", function(d) {return color(d.primary_domain)})
+    //              .attr('nodeID', function(d) {return d.id})
+    //              .classed('label',true)
+    //              .style('text-anchor', 'middle')
+    //             //  .classed('mainLabel', function(d,i) {return i===0?true:false})
+    //              .merge(label)
+
+    // label.on('mouseover', function() {mouseOverDomainNode(this, data, domainData)})
+    // label.on('mouseout', function() {mouseOutDomainNode(this, data, domainData)})
+    // label.on('dblclick', function() {dblClickDomainNode(this, data)})
              
     simulationConfig.simulation.on('tick', function () {
         link
@@ -1522,7 +1546,13 @@ function drawDomainSimulation(data, domainData){
         node
             .attr("cx", function(d) {return d.x })
             .attr("cy", function(d) {return d.y });
-
+            
+            // label
+            //     .attr('x', function(d) {return setDomainXpos(d.x,scaleNodeRadius(d.numLinks),this.getBBox().width) })
+            //     // .attr('x', function(d) {return d.x})
+            //     .attr('y', function(d) {return d.y+3})
+            //     // .attr('y', function(d) {return setDomainYpos(d.y,scaleNodeRadius(d.numLinks),this.getBBox().height) })
+            //     .attr("transform", function(d,i){ return "rotate(0)"})
 
     })
     
