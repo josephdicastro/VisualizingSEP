@@ -1805,7 +1805,7 @@ function positionRelatedDomainNodes(activeElement) {
     domainNodes.each(function(node,index) {
         let circle = d3.select(this)
         let nodeCX = +circle.attr('cx')
-        let nodeCY = +circle.attr('cy')
+        let nodeCY = +circle.attr('cy') + (-15) // adjust textnode position  to make straight line 
         let nodeRadius = +circle.attr('r')
         let nodeID = circle.attr('nodeID')
         let nodePrimaryDomain = node.primary_domain
@@ -1896,54 +1896,57 @@ function positionRelatedDomainNodes(activeElement) {
 
 
 }
-function placeLabel(cyVal, index, arrayLength, domainRightMinMax) {
+function placeLabel(nodeCY, index, arrayLength, domainRightMinMax) {
     let cyMin = domainRightMinMax[0];
     let cyMax = domainRightMinMax[1]
-    let totalHeight = Math.abs(cyMin) + Math.abs(cyMax)
+    let totalHeight = Math.abs(nodeCY) + Math.abs(nodeCY)
     let itemOffset = (totalHeight/arrayLength) 
 
     let returnCY;
 
-    if (arrayLength<=15) { returnCY = cyVal - 20 } ;
-    if (arrayLength > 15 && arrayLength <=20) {returnCY = (cyMin) + ( index * ( itemOffset * 0.75))}
-    if (arrayLength>20 && arrayLength <=30) {returnCY = (cyMin*1.25) + ( index * ( itemOffset * 0.75))}
-    if (arrayLength>30 ) {returnCY = (cyMin*1.50) + ( index * ( itemOffset * 0.5))}
+    if (arrayLength<=15) { returnCY = nodeCY - 20 } ;
+    if (arrayLength > 15 && arrayLength <=20) {returnCY = (nodeCY) + ( index * ( itemOffset * 0.75))}
+    if (arrayLength>20 && arrayLength <=30) {returnCY = (nodeCY*1.25) + ( index * ( itemOffset * 0.75))}
+    if (arrayLength>30 ) {returnCY = (nodeCY*1.50) + ( index * ( itemOffset * 0.5))}
 
+
+    returnCY = nodeCY
     return returnCY
 }
 
 function nudgeLabels(labelArray) {
     labelArray.forEach(function(d,i,a) {
-        let nextIndex = i + 1;
-        //test for length 
-        let textLength = d.text.length
-        if(textLength > 35 ) {
-            a.forEach(function(d1, i1) { 
-                if(nextIndex <= a.length - 1 && nextIndex > i) { 
-                    nextNode = a[nextIndex]
-                    nextNode.cy = nextNode.cy + 15
-                }
+
+        // let textLength = d.text.length
+        // let nextIndex = i + 1;
+
+        // if(textLength > 35 ) {
+        //     a.forEach(function(d1, i1) { 
+        //         if(nextIndex <= a.length - 1 && nextIndex > i) { 
+        //             nextNode = a[nextIndex]
+        //             nextNode.cy = nextNode.cy + 15
+        //         }
                 
-            })
-        }
+        //     })
+        // }
 
-        if(nextIndex <= a.length - 1) {
+        // if(nextIndex <= a.length - 1) {
 
 
-            let currentCY = d.cy
-            let nextNodeIndex = i + 1
-            let nextNode = a[nextNodeIndex]
-            let nextNodeCY = nextNode.cy
-            cyDiff= Math.abs(nextNodeCY - currentCY)
+        //     let currentCY = d.cy
+        //     let nextNodeIndex = i + 1
+        //     let nextNode = a[nextNodeIndex]
+        //     let nextNodeCY = nextNode.cy
+        //     cyDiff= Math.abs(nextNodeCY - currentCY)
 
-            if(cyDiff < 16) {
-                let textOffset = (textLength > 35) ? 30 : 16
-                nextNode.cy = nextNode.cy + cyDiff + textOffset + 5
-                a.forEach(function(node,nodeIndex) {
-                    if(nodeIndex > nextNodeIndex) {node.cy = node.cy + textOffset}
-                })
-            }
-        }
+        //     if(cyDiff < 16) {
+        //         let textOffset = (textLength > 35) ? 30 : 16
+        //         nextNode.cy = nextNode.cy + cyDiff + textOffset + 5
+        //         a.forEach(function(node,nodeIndex) {
+        //             if(nodeIndex > nextNodeIndex) {node.cy = node.cy + textOffset}
+        //         })
+        //     }
+        // }
     })
 
     return labelArray
@@ -1955,7 +1958,7 @@ function resetDisplayDefaultsDomainGraph() {
     d3.selectAll('.node').style("opacity", stylesConfig.nodelabel.defaultOpacity);
 
     let domainLabelsGroup = simulationConfig.domainLabels
-    domainLabelsGroup.html('')
+    // domainLabelsGroup.html('')
 } 
 
 
