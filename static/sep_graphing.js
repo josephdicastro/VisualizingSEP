@@ -172,22 +172,28 @@ function initializeStyles() {
     let link = { 
         'defaultOpacity': 0.1,
         'activeOpacity': 0.3,
-        'activeDomainOpacity': 0.1,
+        'activeDomainOpacity': 0.08,
         'inactiveOpacity': 0.06,
         'inactiveDomainOpacity': 0.01,
         'strokeColor': '#999',
-        'strokeWidth':1}
+        'strokeWidth':1
+    }
     
     let nodelabel = {
         'defaultOpacity': 1,
         'centralNodeDimmedOpacity': 0.8,
         'neighborNodeOpacity': 0.25,
         'inArrayOpacity': 1,
-        'notInArrayOpacity': 0.01,
+        'notInArrayOpacity': 0.00,
         'fontSize': '1em', 
         'defaultRadius': 4,
         'strokeColor': "#fff",
         'strokeWidth':0.5 
+    }
+
+    let linklines = {
+        'articleGraph': 0.2,
+        'domainGraph': 0.08
     }
 
 
@@ -196,7 +202,7 @@ function initializeStyles() {
 
 
 
-    return {link, nodelabel}
+    return {link, nodelabel, linklines}
 
 
 }
@@ -316,6 +322,7 @@ function showArticleGraph(articleTitle) {
         setArticleMenuTitle(articleTitle)
         setDomainMenuTitle('[Search domains...]')
         updateRecentSearch(articleData);
+        d3.select('.mainDomainNode').remove();
 
         window.getSelection().removeAllRanges();
     })
@@ -1278,6 +1285,7 @@ function focusOnArticleNode(data, activeElement) {
                 .attr('x2', function (d) {return getNodeCenter(d).attr('cx')})
                 .attr('y2', function (d) {return getNodeCenter(d).attr('cy')})
                 .classed('relatedLinkLines', true)
+                .style('opacity', stylesConfig.linklines.articleGraph)
                 .merge(linkLines)
 
 
@@ -1513,11 +1521,12 @@ function drawDomainSimulation(data, domainData){
     node.on('dblclick', function() {dblClickDomainNode(this, data)})    
              
     simulationConfig.simulation.on('tick', function () {
+        console.log(node.attr('r'))
         link
             .attr("x1", function(d) {return d.source.x })
             .attr("y1", function(d) {return d.source.y })
-            .attr("x2", function(d) {return d.target.x })
-            .attr("y2", function(d) {return d.target.y })
+            .attr("x2", function(d) {return d.target.x})
+            .attr("y2", function(d) {return d.target.y})
 
         node
             .attr("cx", function(d) {return d.x })
@@ -1787,11 +1796,11 @@ function focusOnDomainArticle(activeElement) {
     });
 
     
-    positionRelatedDomainNodes(activeElement);
+    positionRelatedDomainLabels(activeElement);
 
 }
 
-function positionRelatedDomainNodes(activeElement) {
+function positionRelatedDomainLabels(activeElement) { 
 
     let domainLabelsGroup = simulationConfig.domainLabels
     domainLabelsGroup.html('')
@@ -1845,12 +1854,13 @@ function positionRelatedDomainNodes(activeElement) {
         .data(currentMainNode)
         .select('.mainDomainNode')
         .y(function(d) {return d.cy -d.r})
-        .x(function(d) {return setDomainXpos(d.cx,d.r,mainNodeMaxWidth)})
-        .fontSize(16)
+        .x(function(d) {return setDomainXpos(d.cx,d.r,125)})
+        .fontFamily('proxima-nova, sans-serif')
+        .fontSize(18)
         .fontColor(function(d) {return color(d.primaryDomain)})
         .verticalAlign('top')
         .textAnchor(function (d) { return (d.cx > 0) ? 'end' : 'start' })
-        .width(mainNodeMaxWidth)
+        .width(125)
         .render();
 
 
@@ -1865,12 +1875,12 @@ function positionRelatedDomainNodes(activeElement) {
         .select('.domainLabelLeftGroup')
         .y(function(d, i) {return placeLabel(d.cy,i,domainLabelsLeft.length, domainLeftMinMax)})
         .x(-400)
+        .fontFamily('proxima-nova, sans-serif')
         .fontSize(12)
         .fontColor(function(d) {return color(d.primaryDomain)})
         .verticalAlign('top')
         .textAnchor('start')
-        .width(210)
-        .padding(10)
+        .width(175)
         .render();
 
     //right side nodes and labels
@@ -1879,7 +1889,7 @@ function positionRelatedDomainNodes(activeElement) {
         .attr('y', `-400`)
         .classed('domainLabelRightGroup', true)
 
-        new d3plus.TextBox()
+    new d3plus.TextBox()
         .data(domainLabelsRight)
         .select('.domainLabelRightGroup')
         .y(function(d, i) {return placeLabel(d.cy,i,domainLabelsRight.length, domainRightMinMax)})
@@ -1889,11 +1899,62 @@ function positionRelatedDomainNodes(activeElement) {
         .fontSize(12)
         .fontColor(function(d) {return color(d.primaryDomain)})
         .verticalAlign('top')
-        .width(210)
-        .padding(10)
+        .width(175)
         .render();
 
+    // draw link lines 
 
+    let linkLinesGroup = simulationConfig.relatedLinks
+    linkLinesGroup.html('');
+
+    let linkLinesLeft = linkLinesGroup.selectAll('.relatedLinkLines')
+        .data(domainLabelsLeft.concat(domainLabelsRight))
+    
+    console.log(domainLabelsLeft)
+    console.log(domainLabelsRight)
+    console.log(domainLabelsLeft.concat(domainLabelsRight))
+ 
+    linkLinesLeft.exit().remove()
+    linkLinesLeft = linkLinesLeft.enter()
+                .append('line')
+                .attr('x1', function (d) {return getDomainNodePos(d.id)[0]})
+                .attr('y1', function (d) {return getDomainNodePos(d.id)[1]})
+                .attr('x2', function (d) {return getDomainLabelPos(d.id)[0]})
+                .attr('y2', function (d) {return getDomainLabelPos(d.id)[1]})
+                .style('stroke', function (d) { return color(d.primaryDomain)})
+                .classed('relatedLinkLines', true)
+                .style('opacity', stylesConfig.linklines.domainGraph)
+                .merge(linkLinesLeft)
+
+
+
+
+        function getDomainNodePos(labelID) {
+            let selectedNode = d3.selectAll('.node')
+                .filter(function(d,i) {return d.id === labelID})
+            
+            let nodeCenter = +selectedNode.attr('cx')
+            let nodeRadius = +selectedNode.attr('r')
+            
+            let returnX = (nodeCenter > 0) ? nodeCenter + nodeRadius : nodeCenter - nodeRadius
+            let returnY = selectedNode.attr('cy')
+
+            return [parseFloat(returnX),parseFloat(returnY)]
+
+        }
+        function getDomainLabelPos(labelID) {
+            let textBoxID = '#d3plus-textBox-' + labelID.replace(/\//g,'')
+            let selectedLabel = d3.select(textBoxID)
+            let selectedLabelData = {
+                'startX': selectedLabel.datum().x,
+                'startY': selectedLabel.datum().y,
+                'height': selectedLabel.node().getBBox().height,
+                'width':selectedLabel.node().getBBox().width
+            }
+            let returnX = (selectedLabelData.startX + selectedLabelData.width) + 5;
+            let returnY = (selectedLabelData.startY + (selectedLabelData.height/2));
+            return [returnX, returnY]
+        }
 
 }
 function placeLabel(nodeCY, index, arrayLength, domainRightMinMax) {
@@ -1905,9 +1966,9 @@ function placeLabel(nodeCY, index, arrayLength, domainRightMinMax) {
     let returnCY;
 
     if (arrayLength<=15) { returnCY = nodeCY - 20 } ;
-    if (arrayLength > 15 && arrayLength <=20) {returnCY = (nodeCY) + ( index * ( itemOffset * 0.75))}
-    if (arrayLength>20 && arrayLength <=30) {returnCY = (nodeCY*1.25) + ( index * ( itemOffset * 0.75))}
-    if (arrayLength>30 ) {returnCY = (nodeCY*1.50) + ( index * ( itemOffset * 0.5))}
+    // if (arrayLength > 15 && arrayLength <=20) {returnCY = (nodeCY) + ( index * ( itemOffset * 0.75))}
+    // if (arrayLength>20 && arrayLength <=30) {returnCY = (nodeCY*1.25) + ( index * ( itemOffset * 0.75))}
+    if (arrayLength>15 ) {returnCY = (nodeCY*1.50) + ( index * ( itemOffset * 0.6))}
 
 
     returnCY = nodeCY
@@ -1917,36 +1978,36 @@ function placeLabel(nodeCY, index, arrayLength, domainRightMinMax) {
 function nudgeLabels(labelArray) {
     labelArray.forEach(function(d,i,a) {
 
-        // let textLength = d.text.length
-        // let nextIndex = i + 1;
+        let textLength = d.text.length
+        let nextIndex = i + 1;
 
-        // if(textLength > 35 ) {
-        //     a.forEach(function(d1, i1) { 
-        //         if(nextIndex <= a.length - 1 && nextIndex > i) { 
-        //             nextNode = a[nextIndex]
-        //             nextNode.cy = nextNode.cy + 15
-        //         }
+        if(textLength > 35 ) {
+            a.forEach(function(d1, i1) { 
+                if(nextIndex <= a.length - 1 && nextIndex > i) { 
+                    nextNode = a[nextIndex]
+                    nextNode.cy = nextNode.cy + 15
+                }
                 
-        //     })
-        // }
+            })
+        }
 
-        // if(nextIndex <= a.length - 1) {
+        if(nextIndex <= a.length - 1) {
 
 
-        //     let currentCY = d.cy
-        //     let nextNodeIndex = i + 1
-        //     let nextNode = a[nextNodeIndex]
-        //     let nextNodeCY = nextNode.cy
-        //     cyDiff= Math.abs(nextNodeCY - currentCY)
+            let currentCY = d.cy
+            let nextNodeIndex = i + 1
+            let nextNode = a[nextNodeIndex]
+            let nextNodeCY = nextNode.cy
+            cyDiff= Math.abs(nextNodeCY - currentCY)
 
-        //     if(cyDiff < 16) {
-        //         let textOffset = (textLength > 35) ? 30 : 16
-        //         nextNode.cy = nextNode.cy + cyDiff + textOffset + 5
-        //         a.forEach(function(node,nodeIndex) {
-        //             if(nodeIndex > nextNodeIndex) {node.cy = node.cy + textOffset}
-        //         })
-        //     }
-        // }
+            if(cyDiff < 16) {
+                let textOffset = (textLength > 35) ? 30 : 16
+                nextNode.cy = nextNode.cy + cyDiff + textOffset + 5
+                a.forEach(function(node,nodeIndex) {
+                    if(nodeIndex > nextNodeIndex) {node.cy = node.cy + textOffset}
+                })
+            }
+        }
     })
 
     return labelArray
@@ -1956,9 +2017,13 @@ function resetDisplayDefaultsDomainGraph() {
     d3.selectAll('.link').attr("opacity", stylesConfig.link.defaultOpacity);
     d3.selectAll('.label').attr("fill-opacity", 0);
     d3.selectAll('.node').style("opacity", stylesConfig.nodelabel.defaultOpacity);
+    d3.selectAll('.relatedLinkLines').style('opacity',0)
 
     let domainLabelsGroup = simulationConfig.domainLabels
-    // domainLabelsGroup.html('')
+    domainLabelsGroup.html('')
+    // domainLabelsGroup
+    //     .style('opacity','0')
+    //     .style('fill-opacity','0')
 } 
 
 
