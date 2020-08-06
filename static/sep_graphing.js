@@ -1521,7 +1521,6 @@ function drawDomainSimulation(data, domainData){
     node.on('dblclick', function() {dblClickDomainNode(this, data)})    
              
     simulationConfig.simulation.on('tick', function () {
-        console.log(node.attr('r'))
         link
             .attr("x1", function(d) {return d.source.x })
             .attr("y1", function(d) {return d.source.y })
@@ -1531,10 +1530,11 @@ function drawDomainSimulation(data, domainData){
         node
             .attr("cx", function(d) {return d.x })
             .attr("cy", function(d) {return d.y });
-
-
     })
-    
+
+
+ 
+
     //restart simulation
     simulationConfig.simulation.nodes(graphNodes);
     simulationConfig.simulation.force("charge").strength(function() { return forceStrength(countOfNodes)})
@@ -1547,6 +1547,9 @@ function drawDomainSimulation(data, domainData){
     simulationConfig.simulation.alphaDecay(.05)
     simulationConfig.simulation.alphaMin(.1)
     simulationConfig.simulation.alpha(1).restart();
+
+
+    drawDomainLabels(d3.selectAll('.node'))
 
 }
 
@@ -1783,10 +1786,7 @@ function focusOnDomainArticle(activeElement) {
         return link.source.id === activeElement.id  || link.target.id === activeElement.id ? stylesConfig.link.activeDomainOpacity : stylesConfig.link.inactiveDomainOpacity;
  
     });
-    // d3.selectAll('.label').attr("fill-opacity", function (label) {
-    //     // return isNeighborNode(activeElement.id, label.id) ? stylesConfig.nodelabel.defaultOpacity : stylesConfig.nodelabel.notInArrayOpacity;
-    //     return (activeElement.id === label.id) ? stylesConfig.nodelabel.defaultOpacity : stylesConfig.nodelabel.notInArrayOpacity;
-    // });
+
     d3.selectAll('.node').style("opacity", function (node) {
         if(activeElement.id === node.id) {
             return stylesConfig.nodelabel.defaultOpacity
@@ -1796,7 +1796,49 @@ function focusOnDomainArticle(activeElement) {
     });
 
     
-    positionRelatedDomainLabels(activeElement);
+    // positionRelatedDomainLabels(activeElement);
+
+}
+
+function drawDomainLabels(domainNodes4Labels) {
+
+    // 1. create domainLabels group and clear it out
+    let domainLabelsGroup = simulationConfig.domainLabels
+    domainLabelsGroup.html('')
+
+    let nodeCircleDimensions = []
+
+    domainNodes4Labels.each(function (d,i) {
+        let circleData = d3.select(this)
+        console.log(this.attributes)
+        console.log(d)
+        console.log(circleData.attributes[8])
+        console.log(circleData.datum())
+        console.log(circleData.node())
+    })
+
+    // let nodeCircles = domainNodes4Labels.nodes().map(node => { {'cx': node } })
+    let nodeData = domainNodes4Labels.data().map(node => node)
+
+    console.log(nodeCircles)
+    console.log(nodeData)
+
+    // new d3plus.TextBox()
+    //     .data(nodeData)
+    //     .select('.domainLabels')
+    //     .text(function (d) { return d.title})
+    //     .y(function(d,i) {  getCircleData(d,i); return 210 })
+    //     .x(function(d,i) { return 210 })
+    //     .fontFamily('proxima-nova, sans-serif')
+    //     .fontSize(18)
+    //     .fontColor(function(d) {return color(d.primary_domain)})
+    //     .verticalAlign('top')
+    //     // .textAnchor('function (d) { 'start'}')
+    //     .width(175)
+    //     .render()
+
+
+    
 
 }
 
@@ -1814,6 +1856,7 @@ function positionRelatedDomainLabels(activeElement) {
     domainNodes.each(function(node,index) {
         let circle = d3.select(this)
         let nodeCX = +circle.attr('cx')
+        console.log(nodeCX)
         let nodeCY = +circle.attr('cy') + (-15) // adjust textnode position  to make straight line 
         let nodeRadius = +circle.attr('r')
         let nodeID = circle.attr('nodeID')
@@ -2018,6 +2061,7 @@ function resetDisplayDefaultsDomainGraph() {
     d3.selectAll('.label').attr("fill-opacity", 0);
     d3.selectAll('.node').style("opacity", stylesConfig.nodelabel.defaultOpacity);
     d3.selectAll('.relatedLinkLines').style('opacity',0)
+    d3.selectAll('.domainlabels').style('opacity',0)
 
     let domainLabelsGroup = simulationConfig.domainLabels
     domainLabelsGroup.html('')
