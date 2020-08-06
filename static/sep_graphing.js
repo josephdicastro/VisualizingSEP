@@ -455,7 +455,7 @@ function drawArticleSimulation(data) {
     label
         .on('mouseover', function() {mouseOverArticleNode(this, data,centralNode)})
         .on('mouseout', function() {mouseOutArticleNode(this, data, centralNode)})
-        .on('dblclick', function() {dblClickArticleNode(this)})
+        .on('click', function() {dblClickArticleNode(this)})
 
 
     //nodes
@@ -480,7 +480,7 @@ function drawArticleSimulation(data) {
     node
         .on('mouseover', function() {mouseOverArticleNode(this, data, centralNode)})
         .on('mouseout', function() {mouseOutArticleNode(this, data, centralNode)})
-        .on('dblclick', function() {dblClickArticleNode(this)})
+        .on('click', function() {dblClickArticleNode(this)})
 
     //update simulation ticker
     let numTicks = 0;
@@ -679,7 +679,7 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
     domainList
         .on('mouseover', function() { activateItemLink(this)})
         .on('mouseout', function() { deActivateItemLink(this)})
-        .on('dblclick', function () {
+        .on('click', function () {
             let domainTitle = d3.select(this).datum()
             showDomainGraph(domainTitle)
     })
@@ -688,7 +688,7 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
     domainListHeading
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() { deActivateItemLink(this)})
-        .on('dblclick', function() { 
+        .on('click', function() { 
             let currentState = domainListContentArea.style('display')
 
             if(currentState === 'block') {
@@ -763,7 +763,7 @@ function setArticleDetails(parentSidebar, selectedArticle) {
     detailsHeading
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() {deActivateItemLink(this)})
-        .on('dblclick', function() { 
+        .on('click', function() { 
 
             let currentState = detailsListDiv.style('display')
 
@@ -831,7 +831,7 @@ function setExploreTOC(parentSidebar, selectedArticle) {
     exploreTOCHeading
         .on('mouseover', function() { activateItemLink(this)})
         .on('mouseout', function() { deActivateItemLink(this)})
-        .on('dblclick', function() {
+        .on('click', function() {
             let currentState = exploreTOCContentArea.style('display')
 
             if(currentState === 'block') {
@@ -964,11 +964,11 @@ function setArticleListPanel(parentSidebar, articleData, data) {
    listArticleLinks
        .on('mouseover', function() { mouseOverArticleNode(this, data)})
        .on('mouseout', function()  { mouseOutArticleNode(this, data)})
-       .on('dblclick', function()  { dblClickArticleNode(this)})
+       .on('click', function()  { dblClickArticleNode(this)})
     articleListHeading
        .on('mouseover', function() { activateItemLink(this) })
        .on('mouseout', function()  { deActivateItemLink(this) })
-       .on('dblclick', function()  {
+       .on('click', function()  {
         let currentState = articleListContentArea.style('display')
 
         if(currentState === 'block') {
@@ -1037,7 +1037,7 @@ function setLinkDirectionPanel(parentDiv, articleData) {
     linkDirectionHeading
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() { deActivateItemLink(this)})
-        .on('dblclick', function() { 
+        .on('click', function() { 
             let currentState = linkDirectionContentArea.style('display')
 
             if(currentState === 'block') {
@@ -1126,7 +1126,7 @@ function setLinkDomainPanel(parentSidebar, articleData) {
     linkDomainHeading
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() { deActivateItemLink(this)})
-        .on('dblclick', function() { 
+        .on('click', function() { 
             let currentState = linkDomainContentArea.style('display')
 
             if(currentState === 'block') {
