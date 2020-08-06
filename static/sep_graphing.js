@@ -319,7 +319,7 @@ function showArticleGraph(articleTitle) {
         drawArticleSimulation(json)
         setArticleGraphTitle(articleData)
         updateSidebarsArticle(json, articleNode);
-        setArticleMenuTitle(articleTitle)
+        setArticleMenuTitle('[Search articles...]')
         setDomainMenuTitle('[Search domains...]')
         updateRecentSearch(articleData);
         d3.select('.mainDomainNode').remove();
@@ -518,8 +518,7 @@ function drawArticleSimulation(data) {
     simulationConfig.simulation.nodes(graphNodes);
     simulationConfig.simulation.force("charge").strength(function() { return forceStrength(countOfNodes)})
     simulationConfig.simulation.force("link").id(function (d) {return d.id})
-                                             .distance(function (d) { return (countOfNodes > 80 ? 200 : 150)})
-                                             .iterations(1)
+                                             .distance(200)
     simulationConfig.simulation.force("link").links(graphLinks)
     simulationConfig.simulation.force("forceX").strength(0)
     simulationConfig.simulation.force("forceY").strength(0)
@@ -1399,7 +1398,7 @@ function showDomainGraph(domainTitle) {
         updateSidebarRight_DomainMain(data, domainData);
         updateNeighborNodes();
         setDomainGraphTitle(domainTitle)
-        setDomainMenuTitle(domainTitle)
+        setDomainMenuTitle('[Search domains...]')
         setArticleMenuTitle('[Search articles...]')
         window.getSelection().removeAllRanges();
         updateRecentSearch(domainData);
@@ -1838,8 +1837,8 @@ function positionRelatedDomainLabels(activeElement) {
     domainLabelsLeft.sort((a,b) => d3.ascending(a.cy, b.cy))
     domainLabelsRight.sort((a,b) => d3.ascending(a.cy, b.cy))
 
-    domainLabelsLeft = nudgeLabels(domainLabelsLeft)
-    domainLabelsRight = nudgeLabels(domainLabelsRight)
+    // domainLabelsLeft = nudgeLabels(domainLabelsLeft)
+    // domainLabelsRight = nudgeLabels(domainLabelsRight)
 
     let domainLeftMinMax = d3.extent(domainLabelsLeft, d=> d.cy)
     let domainRightMinMax = d3.extent(domainLabelsRight, d=> d.cy)
@@ -1965,13 +1964,13 @@ function placeLabel(nodeCY, index, arrayLength, domainRightMinMax) {
 
     let returnCY;
 
-    if (arrayLength<=15) { returnCY = nodeCY - 20 } ;
+    // if (arrayLength<=15) { returnCY = nodeCY - 20 } ;
     // if (arrayLength > 15 && arrayLength <=20) {returnCY = (nodeCY) + ( index * ( itemOffset * 0.75))}
     // if (arrayLength>20 && arrayLength <=30) {returnCY = (nodeCY*1.25) + ( index * ( itemOffset * 0.75))}
-    if (arrayLength>15 ) {returnCY = (nodeCY*1.50) + ( index * ( itemOffset * 0.6))}
+    // if (arrayLength>15 ) 
+    // returnCY = (nodeCY*1.50) + 
+    returnCY = ( index * ( itemOffset * 0.6))
 
-
-    returnCY = nodeCY
     return returnCY
 }
 
@@ -2122,7 +2121,6 @@ function forceStrength(numberOfNodes) {
     if (numberOfNodes < 90) { strength = -40 } else 
     if (numberOfNodes > 90) { strength = -30 } else 
 
-    strength = -30
     return strength
 
 }
