@@ -79,7 +79,6 @@ function startVisualization() {
         }
     })
 
-    testLabel.on('click', function() { updateDomainLabelPositions();})
 }
 
 // ****** SET GLOBALS  ********
@@ -161,6 +160,8 @@ function initializeSimulation(svgConfig) {
         .force("forceX", d3.forceX())
         .force("forceY", d3.forceY())
         .force("collide", d3.forceCollide())
+        // .alphaTarget(1)
+
         // .alphaDecay(.9)
         // .alphaMin(.9)
         // .alphaTarget(.9);
@@ -455,7 +456,7 @@ function drawArticleSimulation(data) {
     label
         .on('mouseover', function() {mouseOverArticleNode(this, data,centralNode)})
         .on('mouseout', function() {mouseOutArticleNode(this, data, centralNode)})
-        .on('click', function() {dblClickArticleNode(this)})
+        .on('dblclick', function() {dblClickArticleNode(this)})
 
 
     //nodes
@@ -480,7 +481,7 @@ function drawArticleSimulation(data) {
     node
         .on('mouseover', function() {mouseOverArticleNode(this, data, centralNode)})
         .on('mouseout', function() {mouseOutArticleNode(this, data, centralNode)})
-        .on('click', function() {dblClickArticleNode(this)})
+        .on('dblclick', function() {dblClickArticleNode(this)})
 
     //update simulation ticker
     let numTicks = 0;
@@ -523,8 +524,6 @@ function drawArticleSimulation(data) {
     simulationConfig.simulation.force("forceX").strength(0)
     simulationConfig.simulation.force("forceY").strength(0)
     simulationConfig.simulation.force("collide").radius(0)
-    // simulationConfig.simulation.alphaDecay(.5)
-    // simulationConfig.simulation.alphaMin(.5)
     simulationConfig.simulation.alpha(1).restart();
 
 
@@ -679,7 +678,7 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
     domainList
         .on('mouseover', function() { activateItemLink(this)})
         .on('mouseout', function() { deActivateItemLink(this)})
-        .on('click', function () {
+        .on('dblclick', function () {
             let domainTitle = d3.select(this).datum()
             showDomainGraph(domainTitle)
     })
@@ -688,7 +687,7 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
     domainListHeading
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() { deActivateItemLink(this)})
-        .on('click', function() { 
+        .on('dblclick', function() { 
             let currentState = domainListContentArea.style('display')
 
             if(currentState === 'block') {
@@ -763,7 +762,7 @@ function setArticleDetails(parentSidebar, selectedArticle) {
     detailsHeading
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() { 
+        .on('dblclick', function() { 
 
             let currentState = detailsListDiv.style('display')
 
@@ -831,7 +830,7 @@ function setExploreTOC(parentSidebar, selectedArticle) {
     exploreTOCHeading
         .on('mouseover', function() { activateItemLink(this)})
         .on('mouseout', function() { deActivateItemLink(this)})
-        .on('click', function() {
+        .on('dblclick', function() {
             let currentState = exploreTOCContentArea.style('display')
 
             if(currentState === 'block') {
@@ -964,11 +963,11 @@ function setArticleListPanel(parentSidebar, articleData, data) {
    listArticleLinks
        .on('mouseover', function() { mouseOverArticleNode(this, data)})
        .on('mouseout', function()  { mouseOutArticleNode(this, data)})
-       .on('click', function()  { dblClickArticleNode(this)})
+       .on('dblclick', function()  { dblClickArticleNode(this)})
     articleListHeading
        .on('mouseover', function() { activateItemLink(this) })
        .on('mouseout', function()  { deActivateItemLink(this) })
-       .on('click', function()  {
+       .on('dblclick', function()  {
         let currentState = articleListContentArea.style('display')
 
         if(currentState === 'block') {
@@ -1037,7 +1036,7 @@ function setLinkDirectionPanel(parentDiv, articleData) {
     linkDirectionHeading
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() { deActivateItemLink(this)})
-        .on('click', function() { 
+        .on('dblclick', function() { 
             let currentState = linkDirectionContentArea.style('display')
 
             if(currentState === 'block') {
@@ -1126,7 +1125,7 @@ function setLinkDomainPanel(parentSidebar, articleData) {
     linkDomainHeading
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() { deActivateItemLink(this)})
-        .on('click', function() { 
+        .on('dblclick', function() { 
             let currentState = linkDomainContentArea.style('display')
 
             if(currentState === 'block') {
@@ -1520,7 +1519,6 @@ function drawDomainSimulation(data, domainData){
     node.on('dblclick', function() {dblClickDomainNode(this, data)})    
              
     simulationConfig.simulation.on('tick', function () {
-        console.log(node.attr('r'))
         link
             .attr("x1", function(d) {return d.source.x })
             .attr("y1", function(d) {return d.source.y })
@@ -1538,11 +1536,11 @@ function drawDomainSimulation(data, domainData){
     simulationConfig.simulation.nodes(graphNodes);
     simulationConfig.simulation.force("charge").strength(function() { return forceStrength(countOfNodes)})
     simulationConfig.simulation.force("link").id(function (d) {return d.id})
-                                            .distance(function (d) {return (countOfNodes > 250) ? 250 : 300})
+                                            .distance(function (d) {return (countOfNodes > 250) ? 300 : 300})
     simulationConfig.simulation.force("link").links(graphLinks)
     simulationConfig.simulation.force("forceX").strength(.5)
     simulationConfig.simulation.force("forceY").strength(.5)
-    simulationConfig.simulation.force("collide").radius(20)
+    simulationConfig.simulation.force("collide").radius(10)
     simulationConfig.simulation.alphaDecay(.05)
     simulationConfig.simulation.alphaMin(.1)
     simulationConfig.simulation.alpha(1).restart();
@@ -1813,7 +1811,7 @@ function positionRelatedDomainLabels(activeElement) {
     domainNodes.each(function(node,index) {
         let circle = d3.select(this)
         let nodeCX = +circle.attr('cx')
-        let nodeCY = +circle.attr('cy') + (-15) // adjust textnode position  to make straight line 
+        let nodeCY = +circle.attr('cy') 
         let nodeRadius = +circle.attr('r')
         let nodeID = circle.attr('nodeID')
         let nodePrimaryDomain = node.primary_domain
@@ -1836,9 +1834,6 @@ function positionRelatedDomainLabels(activeElement) {
 
     domainLabelsLeft.sort((a,b) => d3.ascending(a.cy, b.cy))
     domainLabelsRight.sort((a,b) => d3.ascending(a.cy, b.cy))
-
-    // domainLabelsLeft = nudgeLabels(domainLabelsLeft)
-    // domainLabelsRight = nudgeLabels(domainLabelsRight)
 
     let domainLeftMinMax = d3.extent(domainLabelsLeft, d=> d.cy)
     let domainRightMinMax = d3.extent(domainLabelsRight, d=> d.cy)
@@ -1872,14 +1867,16 @@ function positionRelatedDomainLabels(activeElement) {
         new d3plus.TextBox()
         .data(domainLabelsLeft)
         .select('.domainLabelLeftGroup')
-        .y(function(d, i) {return placeLabel(d.cy,i,domainLabelsLeft.length, domainLeftMinMax)})
+        .y(function(d, i) {return placeLabel(d,i,domainLabelsLeft, domainLeftMinMax)})
         .x(-400)
         .fontFamily('proxima-nova, sans-serif')
-        .fontSize(12)
+        .fontSize(function() {return (domainLabelsLeft.length > 30) ? 12 : 12})
         .fontColor(function(d) {return color(d.primaryDomain)})
         .verticalAlign('top')
         .textAnchor('start')
-        .width(175)
+        .width(function() {return (domainLabelsLeft.length > 30) ? 300 : 250})
+        .lineHeight(function() {return (domainLabelsLeft.length > 30) ? 8 : 11})
+        .height(35)
         .render();
 
     //right side nodes and labels
@@ -1891,14 +1888,16 @@ function positionRelatedDomainLabels(activeElement) {
     new d3plus.TextBox()
         .data(domainLabelsRight)
         .select('.domainLabelRightGroup')
-        .y(function(d, i) {return placeLabel(d.cy,i,domainLabelsRight.length, domainRightMinMax)})
-        .x(200)
+        .y(function(d, i) {return placeLabel(d,i,domainLabelsRight, domainRightMinMax)})
+        .x(function() {return (domainLabelsRight.length > 30) ? 113 : 175})
         .textAnchor('end')
         .fontFamily('proxima-nova, sans-serif')
-        .fontSize(12)
+        .fontSize(function() {return (domainLabelsRight.length > 30) ? 12 : 12})
         .fontColor(function(d) {return color(d.primaryDomain)})
         .verticalAlign('top')
-        .width(175)
+        .width(function() {return (domainLabelsRight.length > 30) ? 300 : 250})
+        .lineHeight(function() {return (domainLabelsRight.length > 30) ? 8 : 11})
+        .height(35)
         .render();
 
     // draw link lines 
@@ -1909,10 +1908,6 @@ function positionRelatedDomainLabels(activeElement) {
     let linkLinesLeft = linkLinesGroup.selectAll('.relatedLinkLines')
         .data(domainLabelsLeft.concat(domainLabelsRight))
     
-    console.log(domainLabelsLeft)
-    console.log(domainLabelsRight)
-    console.log(domainLabelsLeft.concat(domainLabelsRight))
- 
     linkLinesLeft.exit().remove()
     linkLinesLeft = linkLinesLeft.enter()
                 .append('line')
@@ -1924,9 +1919,6 @@ function positionRelatedDomainLabels(activeElement) {
                 .classed('relatedLinkLines', true)
                 .style('opacity', stylesConfig.linklines.domainGraph)
                 .merge(linkLinesLeft)
-
-
-
 
         function getDomainNodePos(labelID) {
             let selectedNode = d3.selectAll('.node')
@@ -1956,60 +1948,22 @@ function positionRelatedDomainLabels(activeElement) {
         }
 
 }
-function placeLabel(nodeCY, index, arrayLength, domainRightMinMax) {
-    let cyMin = domainRightMinMax[0];
-    let cyMax = domainRightMinMax[1]
-    let totalHeight = Math.abs(nodeCY) + Math.abs(nodeCY)
-    let itemOffset = (totalHeight/arrayLength) 
+function placeLabel(d, index, domainArray, domainMinMax) {
+    let cyMin;
+    let cyMax;
+    let arrayLength = domainArray.length
+    
+    if (arrayLength <= 10) {cyMin = -200; cyMax = 200}
+    if (arrayLength > 10 && arrayLength <= 20) {cyMin = -325; cyMax = 225}
+    if (arrayLength > 20 && arrayLength <= 30) {cyMin = -325; cyMax = 275}
+    if (arrayLength > 30 ) {cyMin = -325; cyMax = 350}
 
-    let returnCY;
-
-    // if (arrayLength<=15) { returnCY = nodeCY - 20 } ;
-    // if (arrayLength > 15 && arrayLength <=20) {returnCY = (nodeCY) + ( index * ( itemOffset * 0.75))}
-    // if (arrayLength>20 && arrayLength <=30) {returnCY = (nodeCY*1.25) + ( index * ( itemOffset * 0.75))}
-    // if (arrayLength>15 ) 
-    // returnCY = (nodeCY*1.50) + 
-    returnCY = ( index * ( itemOffset * 0.6))
-
+    let totalHeight = Math.abs(cyMin) + Math.abs(cyMax)
+    
+    let itemOffset = (arrayLength > 30) ? ((totalHeight/arrayLength) * .03) + 14 : (totalHeight/arrayLength)
+    let returnCY = cyMin + ( index * ( itemOffset) )
+    
     return returnCY
-}
-
-function nudgeLabels(labelArray) {
-    labelArray.forEach(function(d,i,a) {
-
-        let textLength = d.text.length
-        let nextIndex = i + 1;
-
-        if(textLength > 35 ) {
-            a.forEach(function(d1, i1) { 
-                if(nextIndex <= a.length - 1 && nextIndex > i) { 
-                    nextNode = a[nextIndex]
-                    nextNode.cy = nextNode.cy + 15
-                }
-                
-            })
-        }
-
-        if(nextIndex <= a.length - 1) {
-
-
-            let currentCY = d.cy
-            let nextNodeIndex = i + 1
-            let nextNode = a[nextNodeIndex]
-            let nextNodeCY = nextNode.cy
-            cyDiff= Math.abs(nextNodeCY - currentCY)
-
-            if(cyDiff < 16) {
-                let textOffset = (textLength > 35) ? 30 : 16
-                nextNode.cy = nextNode.cy + cyDiff + textOffset + 5
-                a.forEach(function(node,nodeIndex) {
-                    if(nodeIndex > nextNodeIndex) {node.cy = node.cy + textOffset}
-                })
-            }
-        }
-    })
-
-    return labelArray
 }
 
 function resetDisplayDefaultsDomainGraph() {
