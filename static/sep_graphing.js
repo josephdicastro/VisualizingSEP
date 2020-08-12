@@ -26,14 +26,16 @@ let stylesConfig = initializeStyles();
 let searchCache = [];
 let recentSearches = [];
 
-
 // graph helpers
 let neighborNodes = [];
 let linkAngles = [];
+let graphFrozen = false;
+let currentMainNodeTitle;
+let priorNodeCircle;
 
 //set BaseURL for SEP Edition
-let sepEdition = "Spring 2020"
-let baseURL = 'https://plato.stanford.edu/archives/spr2020';
+let sepEdition = "Summer 2020"
+let baseURL = 'https://plato.stanford.edu/archives/sum2020';
 
 let json_file = 'static/sep_network_new.json'
 
@@ -160,10 +162,8 @@ function initializeSimulation(svgConfig) {
         .force("forceX", d3.forceX())
         .force("forceY", d3.forceY())
         .force("collide", d3.forceCollide())
-        // .alphaTarget(1)
-
-        // .alphaDecay(.9)
-        // .alphaMin(.9)
+        // .alphaDecay(.05)
+        .alphaMin(.7)
         // .alphaTarget(.9);
 
     return {links, nodes, labels, relatedLinks, domainLabels, simulation}
@@ -194,7 +194,7 @@ function initializeStyles() {
 
     let linklines = {
         'articleGraph': 0.2,
-        'domainGraph': 0.08
+        'domainGraph': 0.2
     }
 
 
@@ -324,6 +324,9 @@ function showArticleGraph(articleTitle) {
         setDomainMenuTitle('[Search domains...]')
         updateRecentSearch(articleData);
         d3.select('.mainDomainNode').remove();
+        graphFrozen = false;
+        resetDisplayDefaultsArticleGraph();
+        resetDisplayDefaultsDomainGraph();
 
         window.getSelection().removeAllRanges();
     })
@@ -480,15 +483,13 @@ function drawArticleSimulation(data) {
                 .merge(node)
     node
         .on('mouseover', function() {mouseOverArticleNode(this, data, centralNode)})
-        .on('mouseout', function() {mouseOutArticleNode(this, data, centralNode)})
-        .on('dblclick', function() {dblClickArticleNode(this)})
+        .on('mouseout', function()  {mouseOutArticleNode(this, data, centralNode)})
+        .on('dblclick', function()  {dblClickArticleNode(this)})
 
     //update simulation ticker
     let numTicks = 0;
     let ticksCompleted = false;
     simulationConfig.simulation.on('tick', function (){
-        let tickLimit = ticksByNodeCount(countOfNodes)
-        if (numTicks < tickLimit) {
             link
                 .attr("x1", function(d) {return 0 })
                 .attr("y1", function(d) {return 0 })
@@ -508,18 +509,15 @@ function drawArticleSimulation(data) {
                 .attr('y', function(d) {return d.index === 0 ? -10: d.y+4})
                 .attr("transform", function(d,i){ return i===0 ?`rotate(0)`:rotateLabel(i,d.x, d.y)})
 
-                numTicks++
-            }   else {   
-            ticksCompleted = true
-        }
-
     })
 
     //update simulations
     simulationConfig.simulation.nodes(graphNodes);
-    simulationConfig.simulation.force("charge").strength(function() { return forceStrength(countOfNodes)})
-    simulationConfig.simulation.force("link").id(function (d) {return d.id})
-                                             .distance(200)
+    simulationConfig.simulation.force("charge")
+        .strength(function() { return forceStrength(countOfNodes)})
+    simulationConfig.simulation.force("link")
+        .id(function (d) {return d.id})
+        .distance(function (d) {return (countOfNodes > 50) ? 200 : 175})
     simulationConfig.simulation.force("link").links(graphLinks)
     simulationConfig.simulation.force("forceX").strength(0)
     simulationConfig.simulation.force("forceY").strength(0)
@@ -1402,7 +1400,9 @@ function showDomainGraph(domainTitle) {
         window.getSelection().removeAllRanges();
         updateRecentSearch(domainData);
         d3.selectAll('.label').remove();
-    // updateDomainLabelPositions();
+        resetDisplayDefaultsDomainGraph();
+        graphFrozen = false;
+
 
 
     });
@@ -1516,6 +1516,7 @@ function drawDomainSimulation(data, domainData){
 
     node.on('mouseover', function() {mouseOverDomainNode(this, data, domainData)})
     node.on('mouseout', function() {mouseOutDomainNode(this, data, domainData)})
+    node.on('click', function() { sngClickDomainNode(this, data, domainData)})
     node.on('dblclick', function() {dblClickDomainNode(this, data)})    
              
     simulationConfig.simulation.on('tick', function () {
@@ -1536,82 +1537,32 @@ function drawDomainSimulation(data, domainData){
     simulationConfig.simulation.nodes(graphNodes);
     simulationConfig.simulation.force("charge").strength(function() { return forceStrength(countOfNodes)})
     simulationConfig.simulation.force("link").id(function (d) {return d.id})
-                                            .distance(function (d) {return (countOfNodes > 250) ? 300 : 300})
+                                             .distance(function (d) {return (countOfNodes > 250) ? 250 : 300})
     simulationConfig.simulation.force("link").links(graphLinks)
     simulationConfig.simulation.force("forceX").strength(.5)
     simulationConfig.simulation.force("forceY").strength(.5)
-    simulationConfig.simulation.force("collide").radius(10)
-    simulationConfig.simulation.alphaDecay(.05)
-    simulationConfig.simulation.alphaMin(.1)
+    simulationConfig.simulation.force("collide").radius(15)
     simulationConfig.simulation.alpha(1).restart();
 
 }
 
-function updateDomainLabelPositions() {
-
-    console.log('test')
-    
-    let labelsArray = [];
-    let nodesArray = [];
-
-    let domainLabels = d3.selectAll('.label')
-    let domainNodes = d3.selectAll('.node')
-
-    domainLabels.each(function(d,i) {
-        let currentLabel = d3.select(this).datum()
-        let  labelObj = {   'x': currentLabel.x, 
-                            'y': currentLabel.y,
-                            'name': currentLabel.title,
-                            'width': this.getBBox().width,
-                            'height': this.getBBox().height }
-        labelsArray.push(labelObj)
-    })
-
-    domainNodes.each(function(d,i) {
-        let currentNode = d3.select(this).datum()
-        let  nodeObj = {   'x': currentNode.x, 
-                            'y': currentNode.y,
-                            'r': +d3.select(this).attr('r')}
-        nodesArray.push(nodeObj)
-    })
-
-    let domainlabeler = d3.labeler()
-        .label(labelsArray)
-        .anchor(nodesArray)
-        .width(svgConfig.width)
-        .height(svgConfig.height);
-
-    domainlabeler.start(1000);
-
-    // console.log(domainlabeler)
-
-    domainLabels
-    .transition()
-    .duration(800)
-    .attr("x", function(d) { return (d.x); })
-    .attr("y", function(d) { return (d.y); });
-
-} 
-
 function updateSidebarsDomain(data, domainTitle) {
-    updateSidebarLeft_DomainMain(data, domainTitle);
+    updateSidebarLeft_DomainMain()//data, domainTitle);
     updateSidebarRight_DomainMain(data, domainTitle);
 }
 
-function updateSidebarLeft_DomainMain(data, domainData, selectedArticle){
-    if(domainData) {
+// function updateSidebarLeft_DomainMain(data, domainData, selectedArticle){
+ function updateSidebarLeft_DomainMain(selectedArticle){
+
         clearSidebar(sidebarLeft)
 
         let sideBarLeftContent = sidebarLeft.append("div")
-        setDomainIntroPanel(sideBarLeftContent,domainData)
-
-        if (selectedArticle) {
+        // setDomainIntroPanel(sideBarLeftContent,domainData)
+        if (typeof(selectedArticle.title) !== 'undefined') {
             setArticleIntroParagraph(sideBarLeftContent,"Preview", selectedArticle)
             setArticleDomainDetails(sideBarLeftContent,selectedArticle)
         }
 
-
-    }
 }
 
 function updateSidebarRight_DomainMain(data, domainData) {
@@ -1689,9 +1640,8 @@ function setCentralNodesPanel(parentSidebar, domainData, data) {
     let centralNodesList = d3.selectAll('.centralNodeArticles')
     centralNodesList.on('mouseover', function() { mouseOverDomainNode(this, data, domainData)})
     centralNodesList.on('mouseout', function() { mouseOutDomainNode(this, data, domainData)})
+    centralNodesList.on('click', function() { sngClickDomainNode(this, data, domainData)})
     centralNodesList.on('dblclick', function() { dblClickDomainNode(this, data)})
-
-    
 
 }
 
@@ -1730,11 +1680,25 @@ function setDomainArticleListPanel(parentSidebar, domainData, data) {
     
     domainArticleList.on('mouseover', function() {mouseOverDomainNode(this, data, domainData)})
     domainArticleList.on('mouseout', function() {mouseOutDomainNode(this, data, domainData)})
+    domainArticleList.on('click', function() { sngClickDomainNode(this, data, domainData)})
     domainArticleList.on('dblclick', function() {dblClickDomainNode(this, data)})
 
 }
 
+function previewDomainNode(mouseOverReference, data, domainTitle) {
+    let selectedArticle = d3.select(mouseOverReference)
+        .classed('domainMainNode', true)
 
+    focusOnDomainArticle(selectedArticle.datum());
+    updateSidebarLeft_DomainMain(selectedArticle.datum())
+}
+
+function resetDomainNode(mouseOutReference, data, domainTitle) {
+    let selectedArticle = d3.select(mouseOutReference)
+        .classed('domainMainNode', false)
+    updateSidebarLeft_DomainMain(data,domainTitle)
+    resetDisplayDefaultsDomainGraph();
+}
 function dblClickDomainNode(dblClickReference) {
     // get node or label activated
     let activeElement = d3.select(dblClickReference)
@@ -1742,27 +1706,52 @@ function dblClickDomainNode(dblClickReference) {
         .style("cursor", "pointer")
         .style("font-weight", "bold")
     
-    resetDisplayDefaultsDomainGraph();
+    // resetDisplayDefaultsDomainGraph();
     resetDisplayDefaultsArticleGraph();
 
     let articleTitle = activeElement.datum().title
     showArticleGraph(articleTitle)
 }
+
+function sngClickDomainNode(mouseOverReference, data, domainTitle) {
+        previewDomainNode(mouseOverReference, data, domainTitle)
+        graphFrozen = true
+}
 function mouseOverDomainNode(mouseOverReference, data, domainTitle) {
     activateItemLink(mouseOverReference)
 
-    let selectedArticle = d3.select(mouseOverReference)
-        .classed('domainMainNode', true)
-    
-    focusOnDomainArticle(selectedArticle.datum());
-    updateSidebarLeft_DomainMain(data, domainTitle, selectedArticle.datum())
+    if(!graphFrozen) { previewDomainNode(mouseOverReference, data, domainTitle) }
+    if(graphFrozen) {
+        let currentDomainNodeTextBox = d3.select('.mainDomainNode').select('g').node()
+        currentMainNodeTitle = getDomainNodeFromD3Plus(currentDomainNodeTextBox)
+
+        let selectedNode = d3.select(mouseOverReference).datum()
+        let selectedLabel = getD3PlusLabel(selectedNode.id)
+        let selectedLabelLocationData = getDomainLabelLocationData(selectedLabel)
+        let nodeCircle = d3.selectAll('.node').filter(function (d,i) { return d.id === selectedNode.id })
+        if(+nodeCircle.style('opacity') >= stylesConfig.nodelabel.neighborNodeOpacity) {
+            nodeCircle.style('opacity', stylesConfig.nodelabel.defaultOpacity)
+            updateSidebarLeft_DomainMain(selectedNode)
+            drawDomainLinkLine(selectedLabelLocationData,nodeCircle)
+            priorNodeCircle = nodeCircle
+        }
+        
+    }
 }
 function mouseOutDomainNode(mouseOutReference, data, domainTitle) {
     deActivateItemLink(mouseOutReference)
-    let selectedArticle = d3.select(mouseOutReference)
-        .classed('domainMainNode', false)
-    updateSidebarLeft_DomainMain(data,domainTitle)
-    resetDisplayDefaultsDomainGraph();
+
+    if(!graphFrozen) { resetDomainNode(mouseOutReference, data, domainTitle)}
+    if(graphFrozen) { 
+        let selectedNode = d3.select(mouseOutReference).datum()
+        d3.selectAll('.relatedLinkLines').style('opacity',0)
+        if(typeof(currentMainNodeTitle) !== 'undefined' ) {
+            if(selectedNode.title !== currentMainNodeTitle.title) { priorNodeCircle.style('opacity', stylesConfig.nodelabel.neighborNodeOpacity) }
+            updateSidebarLeft_DomainMain(currentMainNodeTitle)
+        }
+
+        
+    }
 }
 function updateNeighborNodes() {
     neighborNodes.length = 0
@@ -1780,10 +1769,7 @@ function focusOnDomainArticle(activeElement) {
         return link.source.id === activeElement.id  || link.target.id === activeElement.id ? stylesConfig.link.activeDomainOpacity : stylesConfig.link.inactiveDomainOpacity;
  
     });
-    // d3.selectAll('.label').attr("fill-opacity", function (label) {
-    //     // return isNeighborNode(activeElement.id, label.id) ? stylesConfig.nodelabel.defaultOpacity : stylesConfig.nodelabel.notInArrayOpacity;
-    //     return (activeElement.id === label.id) ? stylesConfig.nodelabel.defaultOpacity : stylesConfig.nodelabel.notInArrayOpacity;
-    // });
+
     d3.selectAll('.node').style("opacity", function (node) {
         if(activeElement.id === node.id) {
             return stylesConfig.nodelabel.defaultOpacity
@@ -1797,7 +1783,7 @@ function focusOnDomainArticle(activeElement) {
 
 }
 
-function positionRelatedDomainLabels(activeElement) { 
+function positionRelatedDomainLabels(activeElement) {
 
     let domainLabelsGroup = simulationConfig.domainLabels
     domainLabelsGroup.html('')
@@ -1889,7 +1875,7 @@ function positionRelatedDomainLabels(activeElement) {
         .data(domainLabelsRight)
         .select('.domainLabelRightGroup')
         .y(function(d, i) {return placeLabel(d,i,domainLabelsRight, domainRightMinMax)})
-        .x(function() {return (domainLabelsRight.length > 30) ? 113 : 175})
+        .x(function() {return (domainLabelsRight.length > 30) ? 100 : 150})
         .textAnchor('end')
         .fontFamily('proxima-nova, sans-serif')
         .fontSize(function() {return (domainLabelsRight.length > 30) ? 12 : 12})
@@ -1900,52 +1886,61 @@ function positionRelatedDomainLabels(activeElement) {
         .height(35)
         .render();
 
-    // draw link lines 
+        // UX/UI functions 
 
-    let linkLinesGroup = simulationConfig.relatedLinks
-    linkLinesGroup.html('');
-
-    let linkLinesLeft = linkLinesGroup.selectAll('.relatedLinkLines')
-        .data(domainLabelsLeft.concat(domainLabelsRight))
+        let domainLabelsList = d3.selectAll('.d3plus-textBox')
     
-    linkLinesLeft.exit().remove()
-    linkLinesLeft = linkLinesLeft.enter()
-                .append('line')
-                .attr('x1', function (d) {return getDomainNodePos(d.id)[0]})
-                .attr('y1', function (d) {return getDomainNodePos(d.id)[1]})
-                .attr('x2', function (d) {return getDomainLabelPos(d.id)[0]})
-                .attr('y2', function (d) {return getDomainLabelPos(d.id)[1]})
-                .style('stroke', function (d) { return color(d.primaryDomain)})
-                .classed('relatedLinkLines', true)
-                .style('opacity', stylesConfig.linklines.domainGraph)
-                .merge(linkLinesLeft)
+        domainLabelsList.on('mouseover', function() {mouseOverTextBox(this)})
+        domainLabelsList.on('mouseout', function() {mouseOutTextBox(this)})
+        domainLabelsList.on('click', function() { sngClickTextBox(this) })
+        domainLabelsList.on('dblclick', function() {dblClickTextBox(this)})
 
-        function getDomainNodePos(labelID) {
-            let selectedNode = d3.selectAll('.node')
-                .filter(function(d,i) {return d.id === labelID})
+        function mouseOverTextBox(mouseOverReference) {
+            let currentDomainNodeTextBox = d3.select('.mainDomainNode').select('g').node()
+            currentMainNodeTitle = getDomainNodeFromD3Plus(currentDomainNodeTextBox)
+
+            activateItemLink(mouseOverReference)
+            let selectedNode = getDomainNodeFromD3Plus(mouseOverReference)
+            let nodeCircle = d3.selectAll('.node').filter(function (d,i) { return d.id === selectedNode.id })
+            nodeCircle.style('opacity', stylesConfig.nodelabel.defaultOpacity)
+
+            let selectedLabel = d3.select(mouseOverReference)
+            let selectedLabelLocationData = getDomainLabelLocationData(selectedLabel)
+            if(selectedNode.title !== currentMainNodeTitle.title) { drawDomainLinkLine(selectedLabelLocationData, nodeCircle) }
             
-            let nodeCenter = +selectedNode.attr('cx')
-            let nodeRadius = +selectedNode.attr('r')
-            
-            let returnX = (nodeCenter > 0) ? nodeCenter + nodeRadius : nodeCenter - nodeRadius
-            let returnY = selectedNode.attr('cy')
-
-            return [parseFloat(returnX),parseFloat(returnY)]
-
+            updateSidebarLeft_DomainMain(selectedNode)
+            priorNodeCircle = nodeCircle
         }
-        function getDomainLabelPos(labelID) {
-            let textBoxID = '#d3plus-textBox-' + labelID.replace(/\//g,'')
-            let selectedLabel = d3.select(textBoxID)
-            let selectedLabelData = {
-                'startX': selectedLabel.datum().x,
-                'startY': selectedLabel.datum().y,
-                'height': selectedLabel.node().getBBox().height,
-                'width':selectedLabel.node().getBBox().width
-            }
-            let returnX = (selectedLabelData.startX + selectedLabelData.width) + 5;
-            let returnY = (selectedLabelData.startY + (selectedLabelData.height/2));
-            return [returnX, returnY]
+
+        function mouseOutTextBox(mouseOutReference) {
+            deActivateItemLink(mouseOutReference)
+            let selectedNode = getDomainNodeFromD3Plus(mouseOutReference)
+            let currentDomainMainNode = d3.select('.mainDomainNode')
+            d3.selectAll('.relatedLinkLines').style('opacity',0)
+
+            if(selectedNode.title !== currentMainNodeTitle.title) { priorNodeCircle.style('opacity', stylesConfig.nodelabel.neighborNodeOpacity) }
+
+            updateSidebarLeft_DomainMain(currentMainNodeTitle)
         }
+
+        let dblClick = false;
+        function sngClickTextBox(mouseClickReference) {
+            d3.selectAll('.relatedLinkLines').style('opacity',0)
+            let selectedNode = getDomainNodeFromD3Plus(mouseClickReference)
+            setTimeout(function() { 
+                if(!dblClick) {focusOnDomainArticle(selectedNode);}
+                }, 300)
+        }
+
+        function dblClickTextBox(mouseClickReference) {
+            dblClick = true;
+            let selectedNode = getDomainNodeFromD3Plus(mouseClickReference)
+            resetDisplayDefaultsDomainGraph();
+            showArticleGraph(selectedNode.title)
+        }
+
+
+
 
 }
 function placeLabel(d, index, domainArray, domainMinMax) {
@@ -1966,11 +1961,61 @@ function placeLabel(d, index, domainArray, domainMinMax) {
     return returnCY
 }
 
+function getDomainLabelLocationData(domainLabel) {
+    let labelX = domainLabel.datum().x
+    let labelY = domainLabel.datum().y
+    let height = domainLabel.node().getBBox().height
+    let width = domainLabel.node().getBBox().width
+    let startX = labelX < 0 ? labelX + width + 5 :labelX + (250 - width) + 5
+    let startY = (labelY + (height/2));
+
+    return {startX, startY}
+}
+function drawDomainLinkLine(labelData, nodeCircle) {
+
+    let nodeCircleCX = +nodeCircle.attr('cx')
+    let nodeCircleCY = +nodeCircle.attr('cy')
+
+    let linkLinesGroup = simulationConfig.relatedLinks
+    linkLinesGroup.html('')
+
+    linkLinesGroup
+        .append('line')
+        .attr('x1', labelData.startX)
+        .attr('y1', labelData.startY)
+        .attr('x2', nodeCircleCX)
+        .attr('y2', nodeCircleCY)
+        .attr('id', 'test')
+        .style('stroke', 'white')
+        .classed('relatedLinkLines', true)
+        .style('opacity', stylesConfig.linklines.domainGraph)
+
+}
+
+function getD3PlusLabel(nodeID) {
+    let selectedLabel = d3.selectAll('.d3plus-textBox').filter(function(d) { return d.id === nodeID})
+    return selectedLabel 
+
+}
+function getD3PlusIDString(nodeID) {
+    let d3PlusLabelID = 'd3plus-textbox-' + nodeID.replace(/\//g,'')
+    return d3PlusLabelID
+}
+function getDomainNodeFromD3Plus(mouseReference) {            
+    let baseDomainID = mouseReference.id
+    let domainID = baseDomainID.substring(15).replace(/entries/,'/entries/')
+    domainID = domainID + '/'
+    let domainNode = graphNodes.filter(node => node.id === domainID)
+
+    return domainNode[0]
+
+}
+
 function resetDisplayDefaultsDomainGraph() {
     d3.selectAll('.link').attr("opacity", stylesConfig.link.defaultOpacity);
-    d3.selectAll('.label').attr("fill-opacity", 0);
     d3.selectAll('.node').style("opacity", stylesConfig.nodelabel.defaultOpacity);
     d3.selectAll('.relatedLinkLines').style('opacity',0)
+    d3.selectAll('.d3plus-textbox').style('opacity',0)
 
     let domainLabelsGroup = simulationConfig.domainLabels
     domainLabelsGroup.html('')
@@ -2065,29 +2110,28 @@ function symmetricDifference(setA, setB) {
 
 function forceStrength(numberOfNodes) {
     let strength;
-    if (numberOfNodes < 20) { strength = -1000 } else
-    if (numberOfNodes < 30) { strength = -800 } else
-    if (numberOfNodes < 40) { strength = -600 } else
-    if (numberOfNodes < 50) { strength = -400 } else
-    if (numberOfNodes < 60) { strength = -200 } else
-    if (numberOfNodes < 70) { strength = -100 } else 
-    if (numberOfNodes < 80) { strength = -50 } else 
-    if (numberOfNodes < 90) { strength = -40 } else 
-    if (numberOfNodes > 90) { strength = -30 } else 
-
+    if (numberOfNodes <= 20) { strength = -1000 } 
+    if (numberOfNodes > 20 && numberOfNodes <= 30) { strength = -800 } 
+    if (numberOfNodes > 30 && numberOfNodes <= 40) { strength = -600 } 
+    if (numberOfNodes > 40 && numberOfNodes <= 50) { strength = -400 } 
+    if (numberOfNodes > 50 && numberOfNodes <= 60) { strength = -200 } 
+    if (numberOfNodes > 60 && numberOfNodes <= 70) { strength = -100 }  
+    if (numberOfNodes > 70 && numberOfNodes <= 80) { strength = -50 }  
+    if (numberOfNodes > 80 && numberOfNodes <= 90) { strength = -40 }  
+    if (numberOfNodes > 90) { strength = -30 }  
     return strength
 
 }
 function ticksByNodeCount(numberOfNodes) {
     let tickLimit;
-    if (numberOfNodes < 10) { tickLimit = 50 } else
-    if (numberOfNodes < 20) { tickLimit = 80 } else
-    if (numberOfNodes < 30) { tickLimit = 100 } else
-    if (numberOfNodes < 40) { tickLimit = 150 } else
-    if (numberOfNodes < 60) { tickLimit = 200 } else
-    if (numberOfNodes < 70) { tickLimit = 250 } else 
-    if (numberOfNodes < 80) { tickLimit = 200 } else 
-    if (numberOfNodes < 90) { tickLimit = 250 } else 
+    if (numberOfNodes <= 10) { tickLimit = 50 } 
+    if (numberOfNodes > 20 && numberOfNodes <= 20) { tickLimit = 80 } 
+    if (numberOfNodes > 30 && numberOfNodes <= 30) { tickLimit = 100 } 
+    if (numberOfNodes > 40 && numberOfNodes <= 40) { tickLimit = 150 } 
+    if (numberOfNodes > 50 && numberOfNodes <= 60) { tickLimit = 200 } 
+    if (numberOfNodes > 60 && numberOfNodes <= 70) { tickLimit = 250 }  
+    if (numberOfNodes > 70 && numberOfNodes <= 80) { tickLimit = 200 }  
+    if (numberOfNodes > 80 && numberOfNodes <= 90) { tickLimit = 250 }  
     if (numberOfNodes > 90) { tickLimit = 100 }
 
     return tickLimit
@@ -2156,135 +2200,145 @@ function setDomainYpos_old(distY, radiusScale ,textHeight) {
 }
 function color(entryType){
     let rgbValue = '';
+    
     switch(entryType) {
-        // traditional categories
+
+        // yellow 
+        case 'Thinker':
+            rgbValue = 'rgb(255, 250, 125)' //#FFFA7D
+            break;
+
         // purples
         case 'Aesthetics':
-            rgbValue = 'rgb(202, 5, 237)'
+            rgbValue = 'rgb(196, 134, 255)' //#C486FF
             break;
 
-        case 'Epistemology':
-            rgbValue = 'rgb(159, 6, 186)'
-            break;
-
-        case 'Ethics and Morality':
-            rgbValue = 'rgb(118, 7, 138)'
-            break;
-
-        case 'Metaphysics':
-            rgbValue = 'rgb(191, 74, 212)'
-            break;
-
-        case 'Mind':
-            rgbValue = 'rgb(217, 89, 240)'
-            break;
-
+        // violet 
         case 'Religion':
-            rgbValue = 'rgb(226, 120, 245)'
-            break;
-
-        case 'Thinker':
-            rgbValue = 'rgb(240, 240, 240)'
+            rgbValue = 'rgb(255, 0, 237)' //#FF00ED
             break;
 
         // social and political philosophies
         // reds
-
-        case 'Existentialism and Phenomenology':
-        // browns
-            rgbValue = 'rgb(138, 85, 44)'
+        case 'Ethics and Morality':
+            rgbValue = 'rgb(255, 139, 163)' //#FF8BA3
             break;
 
-        case 'Feminism':
-            rgbValue = 'rgb(161, 101, 29)'
+        case 'Political and Social Theory': //#E44C96
+            rgbValue = 'rgb(228, 76, 150)'
             break;
-
+    
         case 'Law':
-            rgbValue = 'rgb(207, 127, 31)'
+            rgbValue = 'rgb(255, 125, 99)' //#FF7D63
             break;
-
-        case 'Political and Social Theory':
-            rgbValue = 'rgb(230, 139, 30)'
+    
+        case 'Economics':
+            rgbValue = 'rgb(255, 29, 18)' //#FF1D12
+            break;
+    
+        case 'Feminism':
+            rgbValue = 'rgb(255, 100, 44)' //#FF642C
             break;
 
         // cultural philosophies
         // orange tones 
-        case 'African and African-American Philosophy':
-            rgbValue = 'rgb(247, 130, 5)'
-            break;
 
-        case 'Arabic and Islamic Philosophy':
-            rgbValue = 'rgb(247, 150, 5)'
+        case 'Existentialism and Phenomenology':
+            rgbValue = 'rgb(255, 103, 0)' //#FF6700
             break;
 
         case 'Chinese Philosophy':
-            rgbValue = 'rgb(222, 168, 7'
+            rgbValue = 'rgb(255, 153, 45)' //#FF992D
             break;   
 
-        case 'Indian Philosophy':
-            rgbValue = 'rgb(222, 147, 7)'
+        case 'Japanese Philosophy':
+            rgbValue = 'rgb(255, 153, 1)' //#FF9901
             break;
 
-        case 'Japanese Philosophy':
-            rgbValue = 'rgb(222, 129, 7)'
+        case 'Indian Philosophy':
+            rgbValue = 'rgb(255, 168, 0)' //#FFA800
             break;
 
         case 'Latin American Philosophy':
-            rgbValue = 'rgb(247, 86, 5)'
+            rgbValue = 'rgb(255, 203, 36)' //#FFCB56
             break;
 
-        // scientific philosophies
-        // blues
-        case 'Biology':
-            rgbValue = 'rgb(2, 6, 247)'
+        case 'Arabic and Islamic Philosophy':
+            rgbValue = 'rgb(255, 192, 7)' //#FFC007
             break;
 
-        case 'Computer Science':
-            rgbValue = 'rgb(2, 247, 157)'
+        case 'African and African-American Philosophy':
+            rgbValue = 'rgb(255, 210, 0)' //#FFD200
             break;
 
-        case 'Economics':
-            rgbValue = 'rgb(2, 247, 157)'
-            break;
-
-        case 'Evolution':
-            rgbValue = 'rgb(2, 51, 247)'
-            break;
-
-        case 'Genetics':
-            rgbValue = 'rgb(2, 100, 247)'
-            break;
-
-        case 'Physics':
-            rgbValue = 'rgb(2, 157, 247)'
-            break;    
-
-        case 'Quantum Mechanics':
-            rgbValue = 'rgb(2, 109, 247)'
-            break;
-
-        case 'Scientific Methods':
-            rgbValue = 'rgb(2, 47, 247)'
-            break;
-
-
-        // langauge, logic, math
+        // langauge, logic, math, computer science
         // greens
         case 'Language':
-            rgbValue = 'rgb(2, 247, 84)'
+            rgbValue = 'rgb(187, 255, 9)' //#BBFF09
             break;
 
         case 'Logic':
-            rgbValue = 'rgb(5, 168, 21)'
+            rgbValue = 'rgb(104, 255, 7)' //#68FF07
             break;
 
         case 'Mathematics':
-            rgbValue = 'rgb(5, 168, 70)'
+            rgbValue = 'rgb(4, 255, 21)' //#04FF15
             break;
 
+        case 'Computer Science':
+            rgbValue = 'rgb(11, 255, 117)' //#0BFF75
+            break;
+
+        //blue green 
+        case 'Metaphysics':
+            rgbValue = 'rgb(182, 222, 250)' //#00FFF4 -- #B7DEFA
+            break;
+
+        case 'Epistemology':
+            rgbValue = 'rgb(0, 219, 255)' // #00DBFF
+            break;
+    
+        case 'Mind':
+            rgbValue = 'rgb(147, 221, 255)' //#93DDFF
+            break;
+    
+    
+        // scientific philosophies
+        // blues
+
+        case 'Scientific Methods':
+            rgbValue = 'rgb(0, 135, 255)' //#0087FF
+            break;
+
+        case 'Biology':
+            rgbValue = 'rgb(0, 81, 255)' // #0051FF
+            break;
+    
+        case 'Evolution':
+            rgbValue = 'rgb(73, 116, 255)' //#4974FF
+            break;
+
+        case 'Genetics':
+            rgbValue = 'rgb(119, 134, 255)' //#7786FF
+            break;
+
+        case 'Physics':
+            rgbValue = 'rgb(56, 69, 255)' //#3845FF
+            break;    
+
+        case 'Quantum Mechanics':
+            rgbValue = 'rgb(97, 87, 255)' //#6157FF
+            break;
+
+
+
+
+
+
+    
+        
+
     }
-
-
     return rgbValue
 }
 
