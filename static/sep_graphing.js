@@ -29,9 +29,15 @@ let recentSearches = [];
 // graph helpers
 let neighborNodes = [];
 let linkAngles = [];
-let graphFrozen = false;
-let currentMainNodeTitle;
+let exploreMode = false;
 let priorNodeCircle;
+let priorNodeCircle_ListItem;
+let currentDomainCentralNode;
+
+//transition change
+let t = d3.transition()
+    .duration(300)
+    .ease(d3.easeLinear);
 
 //set BaseURL for SEP Edition
 let sepEdition = "Summer 2020"
@@ -162,8 +168,8 @@ function initializeSimulation(svgConfig) {
         .force("forceX", d3.forceX())
         .force("forceY", d3.forceY())
         .force("collide", d3.forceCollide())
-        // .alphaDecay(.05)
-        .alphaMin(.7)
+        .alphaDecay(.05)
+        .alphaMin(.1)
         // .alphaTarget(.9);
 
     return {links, nodes, labels, relatedLinks, domainLabels, simulation}
@@ -194,7 +200,7 @@ function initializeStyles() {
 
     let linklines = {
         'articleGraph': 0.2,
-        'domainGraph': 0.2
+        'domainGraph': 0.5
     }
 
 
@@ -324,7 +330,7 @@ function showArticleGraph(articleTitle) {
         setDomainMenuTitle('[Search domains...]')
         updateRecentSearch(articleData);
         d3.select('.mainDomainNode').remove();
-        graphFrozen = false;
+        exploreMode = false;
         resetDisplayDefaultsArticleGraph();
         resetDisplayDefaultsDomainGraph();
 
@@ -535,12 +541,12 @@ function clearSidebar(sidebarToClear) {
     sidebarToClear.style("display", "block")
 }
 function updateSidebarsArticle(data, selectedArticle) {
-    updateSideBarLeft_ArticleMain(selectedArticle)
+    updateSideBarLeft_ArticleMain(selectedArticle, 'Main')
     updateSideBarRight_ArticleMain(data, selectedArticle)
 
 }
 
-function updateSideBarLeft_ArticleMain(selectedArticle, relatedArticles){
+function updateSideBarLeft_ArticleMain(selectedArticle, titleType){
 
     if(selectedArticle) {
 
@@ -548,7 +554,7 @@ function updateSideBarLeft_ArticleMain(selectedArticle, relatedArticles){
 
         let sideBarLeftContent = sidebarLeft.append("div");
 
-        setArticleIntroParagraph(sideBarLeftContent, "Introduction Text", selectedArticle);
+        setArticleIntroParagraph(sideBarLeftContent, titleType, selectedArticle);
         setExploreTOC(sideBarLeftContent, selectedArticle) 
         setArticleDomainDetails(sideBarLeftContent, selectedArticle);
         setArticleDetails(sideBarLeftContent, selectedArticle)
@@ -569,41 +575,37 @@ function updateSideBarLeft_ArticlePreview(selectedArticle, relatedArticles) {
 
 }
 
-function setArticleIntroParagraph(parentSidebar, introText, selectedArticle) {
+function setArticleIntroParagraph(parentSidebar, titleType, selectedArticle) {
 
     let introParagraphPanel = parentSidebar.append("div")
-    introParagraphPanel.classed('panelBG', true)
+    introParagraphPanel
+        .classed('panelBG', true)
+        .transition(t).style('opacity',1)
+    
+    let titleDisplay;
+    if (titleType === 'Main') { titleDisplay = selectedArticle.title + ' (Main)' }
+    if (titleType === 'Preview') {titleDisplay = selectedArticle.title + ' (Preview)' }
+    if (titleType === 'Explore') {titleDisplay = selectedArticle.title + ' (Explore)' }
 
-    //test if this is a main entry heading or a preview heading
-    if ( introText === 'Introduction Text') {
-        introParagraphPanel.append("h2")
-            .text(`Introduction Text`)
-            .classed('panelHeading', true)
-            .style('color', function() {return color(selectedArticle.primary_domain)})
-    }   else {
-        introParagraphPanel.append("h2")
-            .text(`${selectedArticle.title} (Preview)`)
-            .classed('panelHeading', true)
-            .style('color', function() {return color(selectedArticle.primary_domain)})
-    }
+    introParagraphPanel.append("h2")
+        .text(titleDisplay)
+        .classed('panelHeading', true)
+        .style('color', function() {return color(selectedArticle.primary_domain)})
+        
+    let paragraphDiv = introParagraphPanel.append("div")
+    let paragraphData = getParagraphDataHTML(selectedArticle.preamble_text);
 
-    //build paragraph
-    if (typeof(selectedArticle.preamble_text)!=='undefined') {
-        let paragraphDiv = introParagraphPanel.append("div")
-        let paragraphData = getParagraphDataHTML(selectedArticle.preamble_text);
-        paragraphDiv
-            .html(paragraphData)
-            .classed('panelParagraphText', true)
-    }
+    paragraphDiv
+        .html(paragraphData)
+        .classed('panelParagraphText', true)
 
-    if ( introText === 'Introduction Text') {
+    if ( titleType !== 'Preview') {
         let sepURL = baseURL + selectedArticle.id
 
         introParagraphPanel.append("p")
             .html(`<a href="${sepURL}" target="_blank">Read the full article at SEP</a>`)
             .classed('sepLink', true)
 
-        // setExploreTOC(introParagraphPanel, selectedArticle, sepURL);
     }
 
 
@@ -654,11 +656,18 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
         .text('Domains')
         .attr('id', 'domainListHeading')
         .classed('panelHeading', true)
-        .classed('toggleOnBG', true)
+        // .classed('toggleOnBG', true)
 
     let domainListContentArea = domainListDiv.append('div')
         .attr('id','domainListContentArea')
         .style('display', 'block')
+
+    domainListContentArea.append('p')
+        .html('(Double Click Title<br> to load Domain Graph)')
+        .classed('panelDispayCut', true)
+        .classed('float-right', true)
+        .style('margin-top','-.5em')
+        .style('margin-left', '-.9em')
 
     domainListContentArea.append("ul")
         .selectAll(".domainListItem")
@@ -671,6 +680,8 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
             .classed('panelListItem', true)
         .exit().remove()
 
+
+
     let domainList = d3.selectAll('.domainListItem')
     
     domainList
@@ -681,19 +692,19 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
             showDomainGraph(domainTitle)
     })
 
-    //ux/ui interactions
-    domainListHeading
-        .on('mouseover', function() {activateItemLink(this)})
-        .on('mouseout', function() { deActivateItemLink(this)})
-        .on('dblclick', function() { 
-            let currentState = domainListContentArea.style('display')
+    // //ux/ui interactions
+    // domainListHeading
+    //     .on('mouseover', function() {activateItemLink(this)})
+    //     .on('mouseout', function() { deActivateItemLink(this)})
+    //     .on('dblclick', function() { 
+    //         let currentState = domainListContentArea.style('display')
 
-            if(currentState === 'block') {
-                toggleDomainDetailsContent('off')
-            }   else if(currentState === 'none')   {
-                toggleDomainDetailsContent('on')
-            }  
-        })
+    //         if(currentState === 'block') {
+    //             toggleDomainDetailsContent('off')
+    //         }   else if(currentState === 'none')   {
+    //             toggleDomainDetailsContent('on')
+    //         }  
+    //     })
 
 }
 
@@ -703,14 +714,14 @@ function toggleDomainDetailsContent(state) {
     if(state === 'on') {
         domainDetailsContentArea.style('display', 'block')
         domainDetailsHeading
-            .classed('toggleOnBG', true)
-            .classed('toggleOffBG', false)
+            // .classed('toggleOnBG', true)
+            // .classed('toggleOffBG', false)
         toggleExploreTOCArea('off')
     }   else  if (state === 'off')   {
         domainDetailsContentArea.style('display', 'none')
         domainDetailsHeading
-            .classed('toggleOffBG', true)
-            .classed('toggleOnBG', false)
+            // .classed('toggleOffBG', true)
+            // .classed('toggleOnBG', false)
     }
 
     window.getSelection().removeAllRanges();
@@ -725,7 +736,7 @@ function setArticleDetails(parentSidebar, selectedArticle) {
         .text('Details')
         .attr('id', 'articleDetailsHeading')
         .classed('panelHeading', true)
-        .classed('toggleOnBG', true)
+        // .classed('toggleOnBG', true)
 
     let detailsListDiv = additionalDetailsDiv.append('div')
         .attr('id','detailsContentArea')
@@ -757,19 +768,19 @@ function setArticleDetails(parentSidebar, selectedArticle) {
             .style('text-indent', '0')
 
     //ux/ui interactions
-    detailsHeading
-        .on('mouseover', function() {activateItemLink(this)})
-        .on('mouseout', function() {deActivateItemLink(this)})
-        .on('dblclick', function() { 
+    // detailsHeading
+    //     .on('mouseover', function() {activateItemLink(this)})
+    //     .on('mouseout', function() {deActivateItemLink(this)})
+    //     .on('dblclick', function() { 
 
-            let currentState = detailsListDiv.style('display')
+    //         let currentState = detailsListDiv.style('display')
 
-            if(currentState === 'block') {
-                toggleArticleDetailsContent('off')
-            }   else if(currentState === 'none')   {
-                toggleArticleDetailsContent('on')
-            }   
-        })
+    //         if(currentState === 'block') {
+    //             toggleArticleDetailsContent('off')
+    //         }   else if(currentState === 'none')   {
+    //             toggleArticleDetailsContent('on')
+    //         }   
+    //     })
 }
 
 function toggleArticleDetailsContent(state) {
@@ -779,14 +790,14 @@ function toggleArticleDetailsContent(state) {
     if(state === 'on') {
         detailsContentArea.style('display', 'block')
         articleDetailsHeading
-            .classed('toggleOnBG', true)
-            .classed('toggleOffBG', false)
+            // .classed('toggleOnBG', true)
+            // .classed('toggleOffBG', false)
         toggleExploreTOCArea('off')
     }   else  if (state === 'off')   {
         detailsContentArea.style('display', 'none')
         articleDetailsHeading
-            .classed('toggleOffBG', true)
-            .classed('toggleOnBG', false)
+            // .classed('toggleOffBG', true)
+            // .classed('toggleOnBG', false)
     }
 
     window.getSelection().removeAllRanges();
@@ -801,7 +812,7 @@ function setExploreTOC(parentSidebar, selectedArticle) {
         .text('Explore the TOC')
         .attr('id','exploreTOCHeading')
         .classed('panelHeading', true)
-        .classed('toggleOffBG', true)
+        .classed('toggleOffBG_User', true)
   
     exploreTOCContentArea = exploreTOCDiv.append('div')
         .style('display', 'none')
@@ -850,17 +861,13 @@ function toggleExploreTOCArea(state){
     if(state==='on') {
         exploreTOCContentArea.style('display', 'block')
         exploreTOCHeading
-            // .classed('exploreTOCToggle_expanded', true)
-            // .classed('exploreTOCToggle_collapsed', false)
-            .classed('toggleOnBG', true)
-            .classed('toggleOffBG', false)
+            .classed('toggleOnBG_User', true)
+            .classed('toggleOffBG_User', false)
     }   else if(state==='off') {
         exploreTOCContentArea.style('display', 'none')
         exploreTOCHeading
-            // .classed('exploreTOCToggle_collapsed', true)
-            // .classed('exploreTOCToggle_expanded', false)
-            .classed('toggleOnBG', false)
-            .classed('toggleOffBG', true)
+            .classed('toggleOnBG_User', false)
+            .classed('toggleOffBG_User', true)
     }
 
 
@@ -931,7 +938,7 @@ function setArticleListPanel(parentSidebar, articleData, data) {
     .text("List of Articles")
     .attr('id', 'articleListHeading')
     .classed('panelHeading', true)
-    .classed('toggleOffBG', true)
+    .classed('toggleOffBG_User', true)
 
 
    let articleListContentArea = articleListDiv.append("div")
@@ -988,13 +995,13 @@ function toggleArticleListContent(state) {
     if (state==='on') {
         articleListContentArea.style('display', 'block')
         articleListHeading
-            .classed('toggleOnBG', true)
-            .classed('toggleOffBG', false)
+            .classed('toggleOnBG_User', true)
+            .classed('toggleOffBG_User', false)
     }   else if(state==='off') {
         articleListContentArea.style('display', 'none')
         articleListHeading
-            .classed('toggleOnBG', false)
-            .classed('toggleOffBG', true)
+            .classed('toggleOnBG_User', false)
+            .classed('toggleOffBG_User', true)
     }
 
     window.getSelection().removeAllRanges();
@@ -1009,7 +1016,7 @@ function setLinkDirectionPanel(parentDiv, articleData) {
         .text("Link Directions")
         .attr('id', 'linkDirectionHeading')
         .classed('panelHeading', true)
-        .classed('toggleOnBG', true)
+        // .classed('toggleOnBG', true)
 
     let linkDirectionContentArea =  linkDirectionPanel.append("div")
         .attr("id", "linkDirectionContentArea")
@@ -1031,19 +1038,19 @@ function setLinkDirectionPanel(parentDiv, articleData) {
 
     ////// ux/ui interactions
 
-    linkDirectionHeading
-        .on('mouseover', function() {activateItemLink(this)})
-        .on('mouseout', function() { deActivateItemLink(this)})
-        .on('dblclick', function() { 
-            let currentState = linkDirectionContentArea.style('display')
+    // linkDirectionHeading
+    //     .on('mouseover', function() {activateItemLink(this)})
+    //     .on('mouseout', function() { deActivateItemLink(this)})
+    //     .on('dblclick', function() { 
+    //         let currentState = linkDirectionContentArea.style('display')
 
-            if(currentState === 'block') {
-                toggleLinkDirectionContent('off')
-            }   else if(currentState === 'none')   {
-                toggleLinkDirectionContent('on')
-                toggleArticleListContent('off')
-            }  
-        })
+    //         if(currentState === 'block') {
+    //             toggleLinkDirectionContent('off')
+    //         }   else if(currentState === 'none')   {
+    //             toggleLinkDirectionContent('on')
+    //             toggleArticleListContent('off')
+    //         }  
+    //     })
 
     let listLinkDirection = d3.selectAll('.linkDirListItem')
     listLinkDirection
@@ -1080,13 +1087,13 @@ function toggleLinkDirectionContent(state) {
     if (state==='on') {
         linkDirectionContentArea.style('display', 'block')
         linkDirectionHeading
-            .classed('toggleOnBG', true)
-            .classed('toggleOffBG', false)
+            // .classed('toggleOnBG', true)
+            // .classed('toggleOffBG', false)
     }   else if(state==='off') {
         linkDirectionContentArea.style('display', 'none')
         linkDirectionHeading
-            .classed('toggleOnBG', false)
-            .classed('toggleOffBG', true)
+            // .classed('toggleOnBG', false)
+            // .classed('toggleOffBG', true)
     }
 
     window.getSelection().removeAllRanges();
@@ -1102,7 +1109,7 @@ function setLinkDomainPanel(parentSidebar, articleData) {
         .text('Link Domains')
         .attr('id', 'linkDomainHeading')
         .classed('panelHeading', true)
-        .classed('toggleOnBG', true)
+        // .classed('toggleOnBG', true)
 
     let linkDomainContentArea = linkDomainPanel.append('div')
         .attr('id', "linkDomainContentArea")
@@ -1120,19 +1127,19 @@ function setLinkDomainPanel(parentSidebar, articleData) {
     .exit().remove()
 
     // setup UI interactions
-    linkDomainHeading
-        .on('mouseover', function() {activateItemLink(this)})
-        .on('mouseout', function() { deActivateItemLink(this)})
-        .on('dblclick', function() { 
-            let currentState = linkDomainContentArea.style('display')
+    // linkDomainHeading
+    //     .on('mouseover', function() {activateItemLink(this)})
+    //     .on('mouseout', function() { deActivateItemLink(this)})
+    //     .on('dblclick', function() { 
+    //         let currentState = linkDomainContentArea.style('display')
 
-            if(currentState === 'block') {
-                toggleLinkDomainContent('off')
-            }   else if(currentState === 'none')   {
-                toggleLinkDomainContent('on')
-                toggleArticleListContent('off')
-            }  
-        })
+    //         if(currentState === 'block') {
+    //             toggleLinkDomainContent('off')
+    //         }   else if(currentState === 'none')   {
+    //             toggleLinkDomainContent('on')
+    //             toggleArticleListContent('off')
+    //         }  
+    //     })
 
     let listlinkDomains = d3.selectAll('.linkDomainListItem')
     listlinkDomains
@@ -1154,13 +1161,13 @@ function toggleLinkDomainContent(state) {
     if (state==='on') {
         linkDomainContentArea.style('display', 'block')
         linkDomainHeading
-            .classed('toggleOnBG', true)
-            .classed('toggleOffBG', false)
+            // .classed('toggleOnBG', true)
+            // .classed('toggleOffBG', false)
     }   else if(state==='off') {
         linkDomainContentArea.style('display', 'none')
         linkDomainHeading
-            .classed('toggleOnBG', false)
-            .classed('toggleOffBG', true)
+            // .classed('toggleOnBG', false)
+            // .classed('toggleOffBG', true)
     }
 
     window.getSelection().removeAllRanges();
@@ -1223,7 +1230,7 @@ function mouseOutArticleNode(mouseOverReference, data) {
     deActivateItemLink(mouseOverReference)
     simulationConfig.relatedLinks.html('')
     resetDisplayDefaultsArticleGraph();
-    updateSideBarLeft_ArticleMain(centralNode)
+    updateSideBarLeft_ArticleMain(centralNode, 'Main')
 
 }
 
@@ -1401,7 +1408,7 @@ function showDomainGraph(domainTitle) {
         updateRecentSearch(domainData);
         d3.selectAll('.label').remove();
         resetDisplayDefaultsDomainGraph();
-        graphFrozen = false;
+        exploreMode = false;
 
 
 
@@ -1547,20 +1554,20 @@ function drawDomainSimulation(data, domainData){
 }
 
 function updateSidebarsDomain(data, domainTitle) {
-    updateSidebarLeft_DomainMain()//data, domainTitle);
+    updateSidebarLeft_DomainMain()
     updateSidebarRight_DomainMain(data, domainTitle);
 }
 
-// function updateSidebarLeft_DomainMain(data, domainData, selectedArticle){
- function updateSidebarLeft_DomainMain(selectedArticle){
+ function updateSidebarLeft_DomainMain(selectedDomainArticle){
 
         clearSidebar(sidebarLeft)
 
         let sideBarLeftContent = sidebarLeft.append("div")
-        // setDomainIntroPanel(sideBarLeftContent,domainData)
-        if (typeof(selectedArticle.title) !== 'undefined') {
-            setArticleIntroParagraph(sideBarLeftContent,"Preview", selectedArticle)
-            setArticleDomainDetails(sideBarLeftContent,selectedArticle)
+
+        if (typeof(selectedDomainArticle.title) !== 'undefined') {
+            setArticleIntroParagraph(sideBarLeftContent,"Preview", selectedDomainArticle)
+            setArticleDomainDetails(sideBarLeftContent,selectedDomainArticle)
+
         }
 
 }
@@ -1686,19 +1693,29 @@ function setDomainArticleListPanel(parentSidebar, domainData, data) {
 }
 
 function previewDomainNode(mouseOverReference, data, domainTitle) {
+    currentDomainCentralNode = getDomainCentralNode()
+
     let selectedArticle = d3.select(mouseOverReference)
         .classed('domainMainNode', true)
 
     focusOnDomainArticle(selectedArticle.datum());
-    updateSidebarLeft_DomainMain(selectedArticle.datum())
+    // updateSidebarLeft_DomainMain(selectedArticle.datum())
+    updateSideBarLeft_ArticleMain(selectedArticle.datum(), 'Preview')
+    
 }
 
-function resetDomainNode(mouseOutReference, data, domainTitle) {
-    let selectedArticle = d3.select(mouseOutReference)
-        .classed('domainMainNode', false)
-    updateSidebarLeft_DomainMain(data,domainTitle)
-    resetDisplayDefaultsDomainGraph();
+function exploreDomainNode(domainNode) {
+
+    focusOnDomainArticle(domainNode.datum());
+    updateSideBarLeft_ArticleMain(domainNode.datum(), 'Explore')
+
+    currentDomainCentralNode = getDomainCentralNode()
+    setListItemStyle_DomainCentralNode(currentDomainCentralNode)
+    setListItemStyle_NeighborNodeOpacity()
+    exploreMode = true
 }
+
+
 function dblClickDomainNode(dblClickReference) {
     // get node or label activated
     let activeElement = d3.select(dblClickReference)
@@ -1714,44 +1731,60 @@ function dblClickDomainNode(dblClickReference) {
 }
 
 function sngClickDomainNode(mouseOverReference, data, domainTitle) {
-        previewDomainNode(mouseOverReference, data, domainTitle)
-        graphFrozen = true
+    let selectedArticle = d3.select(mouseOverReference)
+        .classed('domainMainNode', true)
+
+    focusOnDomainArticle(selectedArticle.datum());
+    updateSideBarLeft_ArticleMain(selectedArticle.datum(), 'Explore')
+
+    currentDomainCentralNode = getDomainCentralNode()
+    setListItemStyle_DomainCentralNode(currentDomainCentralNode)
+    setListItemStyle_NeighborNodeOpacity()
+    exploreMode = true
+
+        
 }
 function mouseOverDomainNode(mouseOverReference, data, domainTitle) {
     activateItemLink(mouseOverReference)
+    let selectedNode = d3.select(mouseOverReference).datum()
 
-    if(!graphFrozen) { previewDomainNode(mouseOverReference, data, domainTitle) }
-    if(graphFrozen) {
-        let currentDomainNodeTextBox = d3.select('.mainDomainNode').select('g').node()
-        currentMainNodeTitle = getDomainNodeFromD3Plus(currentDomainNodeTextBox)
-
+    if(!exploreMode) { previewDomainNode(mouseOverReference, data, domainTitle) }
+    if(exploreMode) {
+        currentDomainCentralNode = getDomainCentralNode()
         let selectedNode = d3.select(mouseOverReference).datum()
-        let selectedLabel = getD3PlusLabel(selectedNode.id)
-        let selectedLabelLocationData = getDomainLabelLocationData(selectedLabel)
         let nodeCircle = d3.selectAll('.node').filter(function (d,i) { return d.id === selectedNode.id })
-        if(+nodeCircle.style('opacity') >= stylesConfig.nodelabel.neighborNodeOpacity) {
+        // updateSidebarLeft_DomainMain(selectedNode)
+        updateSideBarLeft_ArticleMain(selectedNode, 'Preview')
+
+        if(+nodeCircle.style('opacity') === stylesConfig.nodelabel.neighborNodeOpacity) {
             nodeCircle.style('opacity', stylesConfig.nodelabel.defaultOpacity)
-            updateSidebarLeft_DomainMain(selectedNode)
+            let selectedLabel = getD3PlusLabel(selectedNode.id)
+            let selectedLabelLocationData = getDomainLabelLocationData(selectedLabel)
+            if(nodeCircle.id !== currentDomainCentralNode.id ) {}
             drawDomainLinkLine(selectedLabelLocationData,nodeCircle)
-            priorNodeCircle = nodeCircle
-        }
-        
+            priorNodeCircle_ListItem = nodeCircle
+        }  
+
     }
 }
 function mouseOutDomainNode(mouseOutReference, data, domainTitle) {
     deActivateItemLink(mouseOutReference)
 
-    if(!graphFrozen) { resetDomainNode(mouseOutReference, data, domainTitle)}
-    if(graphFrozen) { 
+    if(!exploreMode) { clearSidebar(sidebarLeft); resetDisplayDefaultsDomainGraph();} //resetDomainNode(mouseOutReference, data, domainTitle)}
+    if(exploreMode) { 
         let selectedNode = d3.select(mouseOutReference).datum()
         d3.selectAll('.relatedLinkLines').style('opacity',0)
-        if(typeof(currentMainNodeTitle) !== 'undefined' ) {
-            if(selectedNode.title !== currentMainNodeTitle.title) { priorNodeCircle.style('opacity', stylesConfig.nodelabel.neighborNodeOpacity) }
-            updateSidebarLeft_DomainMain(currentMainNodeTitle)
+        if(typeof(currentDomainCentralNode.title) !== null ) {
+            if(selectedNode.title !== currentDomainCentralNode.title) { 
+                if(priorNodeCircle_ListItem) { priorNodeCircle_ListItem.style('opacity', stylesConfig.nodelabel.neighborNodeOpacity) }
+                 }
+                //  updateSidebarLeft_DomainMain(currentDomainCentralNode)
+                 updateSideBarLeft_ArticleMain(currentDomainCentralNode, 'Explore')
         }
+        priorNodeCircle_ListItem = null
 
-        
     }
+
 }
 function updateNeighborNodes() {
     neighborNodes.length = 0
@@ -1767,7 +1800,6 @@ function focusOnDomainArticle(activeElement) {
 
     d3.selectAll('.link').attr("opacity", function (link) {
         return link.source.id === activeElement.id  || link.target.id === activeElement.id ? stylesConfig.link.activeDomainOpacity : stylesConfig.link.inactiveDomainOpacity;
- 
     });
 
     d3.selectAll('.node').style("opacity", function (node) {
@@ -1782,11 +1814,67 @@ function focusOnDomainArticle(activeElement) {
     positionRelatedDomainLabels(activeElement);
 
 }
+function getDomainCentralNode() {
+    let domainCentralNodeData;
+
+    let domainCentralNodeTextBox = d3.select('.mainDomainNode').select('g').node()
+    if(domainCentralNodeTextBox !== null) {
+        domainCentralNodeData = getDomainNodeFromD3Plus(domainCentralNodeTextBox)
+    }   else {
+        domainCentralNodeData = null
+    }
+    
+    return domainCentralNodeData
+}
+
+function setListItemStyle_DomainCentralNode(domainCentralNode) {
+    d3.selectAll('.centralNodeArticles').each(function (d) {
+        if(d.id === domainCentralNode.id) {
+            let mainNode = d3.select(this)
+            mainNode.transition(t).style('font-weight', 'bold')
+        }   else {
+            let othernode = d3.select(this)
+            othernode.transition(t).style('font-weight', 'normal')
+        }
+    })
+    d3.selectAll('.domainArticle').each(function (d) {
+        if(d.id === domainCentralNode.id) {
+            let mainNode = d3.select(this)
+            mainNode.transition(t).style('font-weight', 'bold')
+        }   else {
+            let othernode = d3.select(this)
+            othernode.transition(t).style('font-weight', 'normal')
+        }
+    })
+}
+
+function setListItemStyle_NeighborNodeOpacity() {
+ 
+    let domainLabels = d3.selectAll('.d3plus-textBox').data()
+    let labelsText = domainLabels.map(label => label.data.title)
+
+    d3.selectAll('.centralNodeArticles').each(function (d) {
+        if(labelsText.includes(d.title)) {
+            d3.select(this).transition(t).style('opacity',1)
+        }   else {
+            d3.select(this).transition(t).style('opacity',0.5)
+        }
+    })
+    d3.selectAll('.domainArticle').each(function (d) {
+        if(labelsText.includes(d.title)) {
+            d3.select(this).transition(t).style('opacity',1)
+        }   else {
+            d3.select(this).transition(t).style('opacity',0.5)
+        }
+    })
+}
 
 function positionRelatedDomainLabels(activeElement) {
 
     let domainLabelsGroup = simulationConfig.domainLabels
-    domainLabelsGroup.html('')
+        domainLabelsGroup
+            .html('')
+                .style('opacity','1')
 
     let domainLabelsLeft = [];
     let domainLabelsRight = [];
@@ -1824,7 +1912,7 @@ function positionRelatedDomainLabels(activeElement) {
     let domainLeftMinMax = d3.extent(domainLabelsLeft, d=> d.cy)
     let domainRightMinMax = d3.extent(domainLabelsRight, d=> d.cy)
 
-    //style main node    
+    //style .mainDomainNode     
     let mainNodeArea = domainLabelsGroup.append('g')
         .classed('mainDomainNode', true)
 
@@ -1833,16 +1921,17 @@ function positionRelatedDomainLabels(activeElement) {
     new d3plus.TextBox()
         .data(currentMainNode)
         .select('.mainDomainNode')
-        .y(function(d) {return d.cy -d.r})
-        .x(function(d) {return setDomainXpos(d.cx,d.r,125)})
+        .y(function(d) {return d.cy - d.r})
+        .x(function(d) {return setDomainXpos(d.cx,d.r,175)})
         .fontFamily('proxima-nova, sans-serif')
         .fontSize(18)
         .fontColor(function(d) {return color(d.primaryDomain)})
         .verticalAlign('top')
         .textAnchor(function (d) { return (d.cx > 0) ? 'end' : 'start' })
-        .width(125)
+        .width(175)
+        .lineHeight(20)
+        .height(150)
         .render();
-
 
     //left side nodes and labels
     let labelListLeftGroup = domainLabelsGroup.append('g')
@@ -1853,14 +1942,14 @@ function positionRelatedDomainLabels(activeElement) {
         new d3plus.TextBox()
         .data(domainLabelsLeft)
         .select('.domainLabelLeftGroup')
-        .y(function(d, i) {return placeLabel(d,i,domainLabelsLeft, domainLeftMinMax)})
+        .y(function(d, i) {return placeLabel(i, domainLabelsLeft)})
         .x(-400)
         .fontFamily('proxima-nova, sans-serif')
-        .fontSize(function() {return (domainLabelsLeft.length > 30) ? 12 : 12})
+        .fontSize(12)
         .fontColor(function(d) {return color(d.primaryDomain)})
         .verticalAlign('top')
         .textAnchor('start')
-        .width(function() {return (domainLabelsLeft.length > 30) ? 300 : 250})
+        .width(function() {return (domainLabelsLeft.length > 30) ? 275 : 250})
         .lineHeight(function() {return (domainLabelsLeft.length > 30) ? 8 : 11})
         .height(35)
         .render();
@@ -1874,14 +1963,14 @@ function positionRelatedDomainLabels(activeElement) {
     new d3plus.TextBox()
         .data(domainLabelsRight)
         .select('.domainLabelRightGroup')
-        .y(function(d, i) {return placeLabel(d,i,domainLabelsRight, domainRightMinMax)})
-        .x(function() {return (domainLabelsRight.length > 30) ? 100 : 150})
+        .y(function(d, i) {return placeLabel(i, domainLabelsRight)})
+        .x(function() {return (domainLabelsRight.length > 30) ? 125 : 150})
         .textAnchor('end')
         .fontFamily('proxima-nova, sans-serif')
-        .fontSize(function() {return (domainLabelsRight.length > 30) ? 12 : 12})
+        .fontSize(12)
         .fontColor(function(d) {return color(d.primaryDomain)})
         .verticalAlign('top')
-        .width(function() {return (domainLabelsRight.length > 30) ? 300 : 250})
+        .width(function() {return (domainLabelsRight.length > 30) ? 275 : 250})
         .lineHeight(function() {return (domainLabelsRight.length > 30) ? 8 : 11})
         .height(35)
         .render();
@@ -1896,31 +1985,38 @@ function positionRelatedDomainLabels(activeElement) {
         domainLabelsList.on('dblclick', function() {dblClickTextBox(this)})
 
         function mouseOverTextBox(mouseOverReference) {
-            let currentDomainNodeTextBox = d3.select('.mainDomainNode').select('g').node()
-            currentMainNodeTitle = getDomainNodeFromD3Plus(currentDomainNodeTextBox)
-
             activateItemLink(mouseOverReference)
+
+            // let currentDomainNodeTextBox = d3.select('.mainDomainNode').select('g').node()
+            // currentMainNodeTitle = getDomainNodeFromD3Plus(currentDomainNodeTextBox)
+            currentDomainCentralNode = getDomainCentralNode()
+
+
             let selectedNode = getDomainNodeFromD3Plus(mouseOverReference)
             let nodeCircle = d3.selectAll('.node').filter(function (d,i) { return d.id === selectedNode.id })
             nodeCircle.style('opacity', stylesConfig.nodelabel.defaultOpacity)
 
             let selectedLabel = d3.select(mouseOverReference)
             let selectedLabelLocationData = getDomainLabelLocationData(selectedLabel)
-            if(selectedNode.title !== currentMainNodeTitle.title) { drawDomainLinkLine(selectedLabelLocationData, nodeCircle) }
+            if(selectedNode.title !== currentDomainCentralNode.title) { drawDomainLinkLine(selectedLabelLocationData, nodeCircle) }
             
-            updateSidebarLeft_DomainMain(selectedNode)
+            // updateSidebarLeft_DomainMain(selectedNode)
+            updateSideBarLeft_ArticleMain(selectedNode, 'Preview')
+
             priorNodeCircle = nodeCircle
         }
 
         function mouseOutTextBox(mouseOutReference) {
             deActivateItemLink(mouseOutReference)
+
             let selectedNode = getDomainNodeFromD3Plus(mouseOutReference)
-            let currentDomainMainNode = d3.select('.mainDomainNode')
+
             d3.selectAll('.relatedLinkLines').style('opacity',0)
 
-            if(selectedNode.title !== currentMainNodeTitle.title) { priorNodeCircle.style('opacity', stylesConfig.nodelabel.neighborNodeOpacity) }
+            if(selectedNode.title !== currentDomainCentralNode.title) { priorNodeCircle.style('opacity', stylesConfig.nodelabel.neighborNodeOpacity) }
 
-            updateSidebarLeft_DomainMain(currentMainNodeTitle)
+            // updateSidebarLeft_DomainMain(currentDomainCentralNode)
+            updateSideBarLeft_ArticleMain(currentDomainCentralNode, 'Explore')
         }
 
         let dblClick = false;
@@ -1928,7 +2024,14 @@ function positionRelatedDomainLabels(activeElement) {
             d3.selectAll('.relatedLinkLines').style('opacity',0)
             let selectedNode = getDomainNodeFromD3Plus(mouseClickReference)
             setTimeout(function() { 
-                if(!dblClick) {focusOnDomainArticle(selectedNode);}
+                if(!dblClick) {
+                    focusOnDomainArticle(selectedNode);
+                    updateSideBarLeft_ArticleMain(selectedNode, 'Explore')
+                    let currentDomainCentralNode = getDomainCentralNode()
+                    setListItemStyle_DomainCentralNode(currentDomainCentralNode)
+                    setListItemStyle_NeighborNodeOpacity()
+
+                }
                 }, 300)
         }
 
@@ -1940,22 +2043,23 @@ function positionRelatedDomainLabels(activeElement) {
         }
 
 
-
-
 }
-function placeLabel(d, index, domainArray, domainMinMax) {
+function placeLabel(index, domainArray) {
     let cyMin;
     let cyMax;
     let arrayLength = domainArray.length
     
     if (arrayLength <= 10) {cyMin = -200; cyMax = 200}
-    if (arrayLength > 10 && arrayLength <= 20) {cyMin = -325; cyMax = 225}
-    if (arrayLength > 20 && arrayLength <= 30) {cyMin = -325; cyMax = 275}
-    if (arrayLength > 30 ) {cyMin = -325; cyMax = 350}
+    if (arrayLength > 10 && arrayLength <= 20) {cyMin = -250; cyMax = 225}
+    if (arrayLength > 20 && arrayLength <= 30) {cyMin = -275; cyMax = 275}
+    if (arrayLength > 30 ) {cyMin = -300; cyMax = 350}
 
     let totalHeight = Math.abs(cyMin) + Math.abs(cyMax)
-    
-    let itemOffset = (arrayLength > 30) ? ((totalHeight/arrayLength) * .03) + 14 : (totalHeight/arrayLength)
+    let itemOffset;
+    if (arrayLength <= 40) {itemOffset = (totalHeight/arrayLength)}
+    if (arrayLength > 30 && arrayLength <= 40) {itemOffset = ((totalHeight/arrayLength) * .9)}
+    if (arrayLength > 40) {itemOffset  = ((totalHeight/arrayLength) * .03) + 14}
+
     let returnCY = cyMin + ( index * ( itemOffset) )
     
     return returnCY
@@ -1966,7 +2070,8 @@ function getDomainLabelLocationData(domainLabel) {
     let labelY = domainLabel.datum().y
     let height = domainLabel.node().getBBox().height
     let width = domainLabel.node().getBBox().width
-    let startX = labelX < 0 ? labelX + width + 5 :labelX + (250 - width) + 5
+    let widthOffset = (labelX === 150) ? 250 : 275
+    let startX = labelX < 0 ? labelX + width + 5 :labelX + (widthOffset - width) + 5
     let startY = (labelY + (height/2));
 
     return {startX, startY}
@@ -1975,9 +2080,13 @@ function drawDomainLinkLine(labelData, nodeCircle) {
 
     let nodeCircleCX = +nodeCircle.attr('cx')
     let nodeCircleCY = +nodeCircle.attr('cy')
+    let nodeCircleDomain = nodeCircle.datum().primary_domain
 
     let linkLinesGroup = simulationConfig.relatedLinks
-    linkLinesGroup.html('')
+
+        linkLinesGroup
+            .html('')
+            .style('opacity', stylesConfig.linklines.domainGraph)
 
     linkLinesGroup
         .append('line')
@@ -1986,9 +2095,9 @@ function drawDomainLinkLine(labelData, nodeCircle) {
         .attr('x2', nodeCircleCX)
         .attr('y2', nodeCircleCY)
         .attr('id', 'test')
-        .style('stroke', 'white')
+        .style('stroke', function() {return color(nodeCircleDomain)})
         .classed('relatedLinkLines', true)
-        .style('opacity', stylesConfig.linklines.domainGraph)
+        .transition(t).style('opacity', stylesConfig.linklines.domainGraph)
 
 }
 
@@ -2001,27 +2110,43 @@ function getD3PlusIDString(nodeID) {
     let d3PlusLabelID = 'd3plus-textbox-' + nodeID.replace(/\//g,'')
     return d3PlusLabelID
 }
-function getDomainNodeFromD3Plus(mouseReference) {            
-    let baseDomainID = mouseReference.id
-    let domainID = baseDomainID.substring(15).replace(/entries/,'/entries/')
-    domainID = domainID + '/'
-    let domainNode = graphNodes.filter(node => node.id === domainID)
+function getDomainNodeFromD3Plus(mouseReference) {
+    let returnNode;
 
-    return domainNode[0]
+    if (typeof(mouseReference.id) !== 'undefined') {
+        let baseDomainID = mouseReference.id
+        let domainID = baseDomainID.substring(15).replace(/entries/,'/entries/')
+        domainID = domainID + '/'
+        let domainNode = graphNodes.filter(node => node.id === domainID)
+        returnNode = domainNode[0]
+    }   else    {
+        returnNode = 'None'
+    }
+
+
+    return returnNode
 
 }
 
 function resetDisplayDefaultsDomainGraph() {
-    d3.selectAll('.link').attr("opacity", stylesConfig.link.defaultOpacity);
-    d3.selectAll('.node').style("opacity", stylesConfig.nodelabel.defaultOpacity);
-    d3.selectAll('.relatedLinkLines').style('opacity',0)
-    d3.selectAll('.d3plus-textbox').style('opacity',0)
+    let links = d3.selectAll('.link')
+        links.attr("opacity", stylesConfig.link.defaultOpacity);
+
+    let nodes = d3.selectAll('.node')
+        nodes.style("opacity", stylesConfig.nodelabel.defaultOpacity);
+    
+    let linkLines = d3.selectAll('.relatedLinkLines')
+        linkLines.style('opacity',0)
+
+    let labelTextBoxes = d3.selectAll('.d3plus-textbox')
+        labelTextBoxes.style('opacity',0)
 
     let domainLabelsGroup = simulationConfig.domainLabels
-    domainLabelsGroup.html('')
-    // domainLabelsGroup
-    //     .style('opacity','0')
-    //     .style('fill-opacity','0')
+    
+    domainLabelsGroup
+            .style('opacity',0)
+        
+        domainLabelsGroup.html('')
 } 
 
 
@@ -2110,12 +2235,13 @@ function symmetricDifference(setA, setB) {
 
 function forceStrength(numberOfNodes) {
     let strength;
-    if (numberOfNodes <= 20) { strength = -1000 } 
-    if (numberOfNodes > 20 && numberOfNodes <= 30) { strength = -800 } 
-    if (numberOfNodes > 30 && numberOfNodes <= 40) { strength = -600 } 
-    if (numberOfNodes > 40 && numberOfNodes <= 50) { strength = -400 } 
-    if (numberOfNodes > 50 && numberOfNodes <= 60) { strength = -200 } 
-    if (numberOfNodes > 60 && numberOfNodes <= 70) { strength = -100 }  
+    if (numberOfNodes <= 10) { strength = -500 } //1000
+    if (numberOfNodes > 10 && numberOfNodes <= 20) { strength = -400 } //1000
+    if (numberOfNodes > 20 && numberOfNodes <= 30) { strength = -300 } //800
+    if (numberOfNodes > 30 && numberOfNodes <= 40) { strength = -200 } //600
+    if (numberOfNodes > 40 && numberOfNodes <= 50) { strength = -150} //400
+    if (numberOfNodes > 50 && numberOfNodes <= 60) { strength = -70 } //200
+    if (numberOfNodes > 60 && numberOfNodes <= 70) { strength = -60 } //100
     if (numberOfNodes > 70 && numberOfNodes <= 80) { strength = -50 }  
     if (numberOfNodes > 80 && numberOfNodes <= 90) { strength = -40 }  
     if (numberOfNodes > 90) { strength = -30 }  
