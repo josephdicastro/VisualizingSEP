@@ -10,6 +10,7 @@ let sidebarLeft = d3.select("#sidebarLeft")
 let sidebarRight = d3.select("#sidebarRight")
 let getRandomEntry = d3.select("#getRandomEntry")
 let recentSearchMenu = d3.select("#recentSearchMenu")
+let graphMode = d3.select("#graphMode")
 
 //Initialize nodes and links arrays for simulation
 let graphNodes = [];
@@ -55,6 +56,7 @@ function startVisualization() {
     loadMenus();
     showArticleGraphAreas() 
     // showHomeMenu(data, simulationConfig)
+    setGraphMode('Preview')
 
     //UI Response features
     articleMenu.on('change', function(){
@@ -86,6 +88,14 @@ function startVisualization() {
             }
         }
     })
+
+    graphMode
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() {})
+        .on('dblclick', function() {toggleGraphMode();})
+
+
 
 }
 
@@ -199,7 +209,7 @@ function initializeStyles() {
     }
 
     let linklines = {
-        'articleGraph': 0.2,
+        'articleGraph': 0.3,
         'domainGraph': 0.5
     }
 
@@ -293,6 +303,21 @@ function updateRecentSearch(searchObj) {
     }
 
 }
+
+function setGraphMode(mode) {
+    if(mode==='Preview') {graphMode.text('Graph Mode: Mouseover/Preview'); exploreMode = false; resetDomainMenuOpacity()}
+    if(mode==='Explore') {graphMode.text('Graph Mode: Single Click/Explore'); exploreMode = true;}
+}
+
+function toggleGraphMode() {
+    if(exploreMode) {
+        setGraphMode('Preview')
+    } else {
+        setGraphMode('Explore')
+    }
+
+    window.getSelection().removeAllRanges();
+}
 // ****** ARTICLE GRAPH DATA AND SIMULATION FUNCTIONS ****** 
 
 function setArticleMenuTitle(articleTitle) {
@@ -330,7 +355,7 @@ function showArticleGraph(articleTitle) {
         setDomainMenuTitle('[Search domains...]')
         updateRecentSearch(articleData);
         d3.select('.mainDomainNode').remove();
-        exploreMode = false;
+        setGraphMode('Preview')
         resetDisplayDefaultsArticleGraph();
         resetDisplayDefaultsDomainGraph();
 
@@ -663,7 +688,7 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
         .style('display', 'block')
 
     domainListContentArea.append('p')
-        .html('(Double Click Title<br> to load Domain Graph)')
+        .html('(Dbl-Click for<br>Domain Graph)&nbsp;')
         .classed('panelDispayCut', true)
         .classed('float-right', true)
         .style('margin-top','-.5em')
@@ -839,7 +864,7 @@ function setExploreTOC(parentSidebar, selectedArticle) {
     exploreTOCHeading
         .on('mouseover', function() { activateItemLink(this)})
         .on('mouseout', function() { deActivateItemLink(this)})
-        .on('dblclick', function() {
+        .on('click', function() {
             let currentState = exploreTOCContentArea.style('display')
 
             if(currentState === 'block') {
@@ -972,7 +997,7 @@ function setArticleListPanel(parentSidebar, articleData, data) {
     articleListHeading
        .on('mouseover', function() { activateItemLink(this) })
        .on('mouseout', function()  { deActivateItemLink(this) })
-       .on('dblclick', function()  {
+       .on('click', function()  {
         let currentState = articleListContentArea.style('display')
 
         if(currentState === 'block') {
@@ -1016,7 +1041,6 @@ function setLinkDirectionPanel(parentDiv, articleData) {
         .text("Link Directions")
         .attr('id', 'linkDirectionHeading')
         .classed('panelHeading', true)
-        // .classed('toggleOnBG', true)
 
     let linkDirectionContentArea =  linkDirectionPanel.append("div")
         .attr("id", "linkDirectionContentArea")
@@ -1059,7 +1083,6 @@ function setLinkDirectionPanel(parentDiv, articleData) {
             let linkDirectionHTML = d3.select(this).datum()
             let startPos = linkDirectionHTML.lastIndexOf('</span>') + 7
             let linkDirectionFinal = linkDirectionHTML.trim().substring(startPos,startPos+3).trim()
-            console.log(linkDirectionFinal)
             switch(linkDirectionFinal) {
                 case 'Bi':
                     focusOnLinkAnalysis(Array.from(articleData.biLinks))
@@ -1289,6 +1312,7 @@ function focusOnArticleNode(data, activeElement) {
                 .attr('y2', function (d) {return getNodeCenter(d).attr('cy')})
                 .classed('relatedLinkLines', true)
                 .style('opacity', stylesConfig.linklines.articleGraph)
+                .style('stroke', function() {return color(activeElement.primary_domain)})
                 .merge(linkLines)
 
 
@@ -1408,7 +1432,7 @@ function showDomainGraph(domainTitle) {
         updateRecentSearch(domainData);
         d3.selectAll('.label').remove();
         resetDisplayDefaultsDomainGraph();
-        exploreMode = false;
+        setGraphMode('Preview')
 
 
 
@@ -1740,7 +1764,8 @@ function sngClickDomainNode(mouseOverReference, data, domainTitle) {
     currentDomainCentralNode = getDomainCentralNode()
     setListItemStyle_DomainCentralNode(currentDomainCentralNode)
     setListItemStyle_NeighborNodeOpacity()
-    exploreMode = true
+    // exploreMode = true
+    setGraphMode('Explore')
 
         
 }
@@ -2129,17 +2154,20 @@ function getDomainNodeFromD3Plus(mouseReference) {
 }
 
 function resetDisplayDefaultsDomainGraph() {
+
+    resetDomainMenuOpacity();
+
     let links = d3.selectAll('.link')
-        links.attr("opacity", stylesConfig.link.defaultOpacity);
+        .attr("opacity", stylesConfig.link.defaultOpacity);
 
     let nodes = d3.selectAll('.node')
-        nodes.style("opacity", stylesConfig.nodelabel.defaultOpacity);
+        .style("opacity", stylesConfig.nodelabel.defaultOpacity);
     
     let linkLines = d3.selectAll('.relatedLinkLines')
-        linkLines.style('opacity',0)
+        .style('opacity',0)
 
     let labelTextBoxes = d3.selectAll('.d3plus-textbox')
-        labelTextBoxes.style('opacity',0)
+        .style('opacity',0)
 
     let domainLabelsGroup = simulationConfig.domainLabels
     
@@ -2148,6 +2176,16 @@ function resetDisplayDefaultsDomainGraph() {
         
         domainLabelsGroup.html('')
 } 
+
+function resetDomainMenuOpacity() {
+    let centralNodes = d3.selectAll('.centralNodeArticles')
+        .style('opacity',1)
+        .style('font-weight','normal')
+
+    let domainArticles = d3.selectAll('.domainArticle')
+        .style('opacity',1)
+        .style('font-weight', 'normal')
+}
 
 
 
@@ -2235,16 +2273,16 @@ function symmetricDifference(setA, setB) {
 
 function forceStrength(numberOfNodes) {
     let strength;
-    if (numberOfNodes <= 10) { strength = -500 } //1000
-    if (numberOfNodes > 10 && numberOfNodes <= 20) { strength = -400 } //1000
-    if (numberOfNodes > 20 && numberOfNodes <= 30) { strength = -300 } //800
-    if (numberOfNodes > 30 && numberOfNodes <= 40) { strength = -200 } //600
-    if (numberOfNodes > 40 && numberOfNodes <= 50) { strength = -150} //400
-    if (numberOfNodes > 50 && numberOfNodes <= 60) { strength = -70 } //200
-    if (numberOfNodes > 60 && numberOfNodes <= 70) { strength = -60 } //100
-    if (numberOfNodes > 70 && numberOfNodes <= 80) { strength = -50 }  
-    if (numberOfNodes > 80 && numberOfNodes <= 90) { strength = -40 }  
-    if (numberOfNodes > 90) { strength = -30 }  
+    if (numberOfNodes <= 10) { strength = -600 } //1000
+    if (numberOfNodes > 10 && numberOfNodes <= 20) { strength = -500 } //1000
+    if (numberOfNodes > 20 && numberOfNodes <= 30) { strength = -400 } //800
+    if (numberOfNodes > 30 && numberOfNodes <= 40) { strength = -300 } //600
+    if (numberOfNodes > 40 && numberOfNodes <= 50) { strength = -200} //400
+    if (numberOfNodes > 50 && numberOfNodes <= 60) { strength = -150 } //200
+    if (numberOfNodes > 60 && numberOfNodes <= 70) { strength = -100 } //100
+    if (numberOfNodes > 70 && numberOfNodes <= 80) { strength = -75 }  
+    if (numberOfNodes > 80 && numberOfNodes <= 90) { strength = -50 }  
+    if (numberOfNodes > 90) { strength = -40 }  
     return strength
 
 }
