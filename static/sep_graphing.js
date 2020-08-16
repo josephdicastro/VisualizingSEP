@@ -11,6 +11,7 @@ let sidebarRight = d3.select("#sidebarRight")
 let getRandomEntry = d3.select("#getRandomEntry")
 let recentSearchMenu = d3.select("#recentSearchMenu")
 let graphMode = d3.select("#graphMode")
+let graphInstructions = d3.select("#graphInstructions")
 
 //Initialize nodes and links arrays for simulation
 let graphNodes = [];
@@ -92,8 +93,12 @@ function startVisualization() {
     graphMode
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() {toggleGraphMode();})
+
+    graphInstructions
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
         .on('click', function() {})
-        .on('dblclick', function() {toggleGraphMode();})
 
 
 
