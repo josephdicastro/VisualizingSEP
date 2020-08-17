@@ -17,11 +17,80 @@ footer {
     font-size: .9em;
     color: lightgray;
     text-align: right;
+
 }
 
 .mainArticleLabel {display: none}
 .mainArticleNode {display: none}
 
+.graphInstructionArea {
+    display: none;
+    position: absolute;
+    top:0%; left:1%;
+    height:99%;
+    width:98%;
+    z-index:999;
+    padding: 1em 1.5em;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    font-family: proxima-nova, sans-serif;
+    color: lightgray;
+    border:none;
+    background-color: rgb(18, 18, 18);
+}
+
+#articleInstructions, #domainInstructions {
+    display: none;
+}
+ul#helpMenu li {
+    display: inline;
+    font-size: 1em;
+    margin-left: -2.3em;
+    padding-right: 3em;
+    font-size: 1em;
+}
+
+ .graphInstructionArea h1 {
+    font-size: 1.3em;
+    color: lightgray;
+    border-bottom: 1px rgb(60,60,60) dotted;
+    background-image: url('/static/bootstrap-icons/x-circle.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 1.15em 1.15em;
+    padding-bottom: .3em;
+}
+
+.graphInstructionArea h2 {
+    font-size: 1.2em;
+    text-decoration: underline;
+}
+
+.graphInstructionArea h3 {
+    font-size: 1.1em;
+}
+
+.graphInstructionArea h4 {
+    font-size: 1em;
+}
+
+
+.graphInstructionArea p {
+    font-size: .9em;
+}
+.graphInstructionArea li {
+    font-size: .9em;
+    margin-left: -2em;
+}
+
+#sidebarLeftHelpDiv {
+    display: none;
+}
+#sidebarRightHelpDiv {
+    display: none;
+}
+#navBarHelpDiv {
+    display: none;}
 
 
 /* Nav Styles */
@@ -254,6 +323,11 @@ nav {
     /* nav */
     #navbarSupportedContent {
         margin-left: 13%;
+    }
+
+    #exploreTOCContentArea {
+        max-height: 400px;
+        overflow-y: auto;
     }
 
     #getRandomEntry {

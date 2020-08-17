@@ -11,7 +11,17 @@ let sidebarRight = d3.select("#sidebarRight")
 let getRandomEntry = d3.select("#getRandomEntry")
 let recentSearchMenu = d3.select("#recentSearchMenu")
 let graphMode = d3.select("#graphMode")
+
+// help functions
 let graphInstructions = d3.select("#graphInstructions")
+let articleGraphInstructionsHeading = d3.select("#articleGraphInstructionsHeading")
+
+let domainGraphInstructionsHeading = d3.select("#domainGraphInstructionsHeading")
+let domainGraphHelp = d3.select("#domainGraphHelp")
+let domainGraphHelpLeft = d3.select("domainGraphHelpLeft")
+let domainGraphHelpRight = d3.select("domainGraphHelpRight")
+let domainGraphHelpNav = d3.select("domainGraphHelpNav")
+
 
 //Initialize nodes and links arrays for simulation
 let graphNodes = [];
@@ -29,6 +39,7 @@ let searchCache = [];
 let recentSearches = [];
 
 // graph helpers
+let graphType;
 let neighborNodes = [];
 let linkAngles = [];
 let exploreMode = false;
@@ -95,10 +106,37 @@ function startVisualization() {
         .on('mouseout', function() {deActivateItemLink(this, 'normal')})
         .on('click', function() {toggleGraphMode();})
 
+    
+    //help functions
     graphInstructions
         .on('mouseover', function() {activateItemLink(this, 'bold')})
         .on('mouseout', function() {deActivateItemLink(this, 'normal')})
         .on('click', function() {displayGraphInstructions()})
+
+    articleGraphInstructionsHeading
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() {closeArticleGraphInstructions()})
+    
+    d3.select("#articleGraphHelp")
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() {showHelpPage('#articleGraphHelpDiv')})
+
+    d3.select("#articleGraphHelpLeft")
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() {showHelpPage('#sidebarLeftHelpDiv')})
+
+    d3.select("#articleGraphHelpRight")
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() {showHelpPage('#sidebarRightHelpDiv')})
+
+    ~d3.select("#articleGraphHelpNav")
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() {showHelpPage('#navBarHelpDiv')})
 
 
 
@@ -128,8 +166,8 @@ function initializeParentSVG(svg) {
         left:0
     };
 
-    let areaWidth = 730;
-    let areaHeight = 730;
+    let areaWidth = 740;
+    let areaHeight = 740;
 
     let width = areaWidth - margin.left - margin.right;
     let height = areaHeight - margin.top - margin.bottom;
@@ -326,13 +364,21 @@ function setGraphMode(mode) {
     }
 }
 
-function setGraphInstructions(mode) {
-    if(mode==='Article') {graphInstructions.text('Article Graph Instructions'); }
-    if(mode==='Domain') {graphInstructions.text('Domain Graph Instructions');}
+function setGraphType(graphState) {
+    if(graphState==='Article') {graphType = graphState; setGraphInstructions('Article Graph Instructions') }
+    if(graphState==='Domain') {graphType = graphState; setGraphInstructions('Domain Graph Instructions') }
+
+}
+
+function setGraphInstructions(instructionText) {
+    graphInstructions.text(instructionText);
 }
 
 function displayGraphInstructions() {
     let instructionText = graphInstructions.text()
+
+    dimScreen();
+
     if(instructionText.indexOf('Article') === 0 ) { 
         displayGraphInstructions_Article()
     }   else {
@@ -340,13 +386,48 @@ function displayGraphInstructions() {
     }
 }
 
+function closeArticleGraphInstructions() {
+    d3.select("#articleInstructions").style('display', 'none')
+    resetScreen();
+}
+
+function dimScreen() {
+    d3.select('nav').style('opacity', 0.25)
+    d3.select('#selectedEntryTitle').style('opacity', 0.25)
+    sidebarLeft.style('opacity', 0.25)
+    sidebarRight.style('opacity', 0.25)
+    svgConfig.graphElements.style('opacity', 0.25)
+    graphMode.style('opacity', 0.10)
+    graphInstructions.style('opacity',0.10)
+}
+
+function resetScreen() {
+    d3.select('nav').style('opacity', 1)
+    d3.select('#selectedEntryTitle').style('opacity', 1)
+    sidebarLeft.style('opacity',1)
+    sidebarRight.style('opacity', 1)
+    svgConfig.graphElements.style('opacity',1)
+    graphMode.style('opacity', 1)
+    graphInstructions.style('opacity',1)
+}
+
 function displayGraphInstructions_Article() {
-    console.log('display article graph instructions')
+    d3.select("#articleInstructions").style('display', 'block')
 }
 
 function displayGraphInstructions_Domain() {
     console.log('display domain graph instructions')
 }
+
+function showHelpPage(divID) {
+    d3.select('#articleGraphHelpDiv').style('display','none')
+    d3.select('#sidebarLeftHelpDiv').style('display','none')
+    d3.select('#sidebarRightHelpDiv').style('display','none')
+    d3.select('#navBarHelpDiv').style('display','none')
+    d3.select(divID).style('display', 'block')
+
+}
+
 
 
 function toggleGraphMode() {
@@ -395,7 +476,7 @@ function showArticleGraph(articleTitle) {
         updateRecentSearch(articleData);
         d3.select('.mainDomainNode').remove();
         setGraphMode('Preview')
-        setGraphInstructions('Article')
+        setGraphType('Article')
         resetDisplayDefaultsDomainGraph();
         resetDisplayDefaultsArticleGraph();
         updateSidebarsArticle(json, articleNode);
@@ -595,8 +676,8 @@ function drawArticleSimulation(data) {
         .id(function (d) {return d.id})
         .distance(function (d) {return (countOfNodes > 50) ? 200 : 175})
     simulationConfig.simulation.force("link").links(graphLinks)
-    simulationConfig.simulation.force("forceX").strength(0)
-    simulationConfig.simulation.force("forceY").strength(0)
+    simulationConfig.simulation.force("forceX").strength(.1)
+    simulationConfig.simulation.force("forceY").strength(.1)
     simulationConfig.simulation.force("collide").radius(0)
     simulationConfig.simulation.alpha(1).restart();
 
@@ -1611,7 +1692,7 @@ function showDomainGraph(domainTitle) {
         resetDisplayDefaultsArticleGraph();
         resetDisplayDefaultsDomainGraph();
         setGraphMode('Preview')
-        setGraphInstructions('Domain')
+        setGraphType('Domain')
 
         d3.selectAll('.label').remove();
         d3.select('.mainArticleLabelArea').remove();
@@ -2339,7 +2420,8 @@ function resetDisplayDefaultsDomainGraph() {
 
     resetDomainMenuOpacity();
 
-    clearSidebar(sidebarLeft)
+    if(graphType==='Domain') {clearSidebar(sidebarLeft)}
+    
 
     let links = d3.selectAll('.link')
         .transition().duration(200).attr("opacity", stylesConfig.link.defaultOpacity);
@@ -2459,27 +2541,25 @@ function symmetricDifference(setA, setB) {
 
 function forceStrength(numberOfNodes) {
 
-    let scaleForces= d3.scaleLinear()
-        .domain([10, 125])
-        .range([-1000,-30])
+    // let scaleForces= d3.scaleLinear()
+    //     .domain([10, 125])
+    //     .range([-1000,-30])
 
-    let strength = scaleForces(numberOfNodes)
+    // let strength = scaleForces(numberOfNodes)
  
 
-    // let strength;
-    // if (numberOfNodes <= 10) { strength = -600 } //1000
-    // if (numberOfNodes > 10 && numberOfNodes <= 20) { strength = -500 } //1000
-    // if (numberOfNodes > 20 && numberOfNodes <= 30) { strength = -400 } //800
-    // if (numberOfNodes > 30 && numberOfNodes <= 40) { strength = -300 } //600
-    // if (numberOfNodes > 40 && numberOfNodes <= 50) { strength = -200} //400
-    // if (numberOfNodes > 50 && numberOfNodes <= 60) { strength = -150 } //200
-    // if (numberOfNodes > 60 && numberOfNodes <= 70) { strength = -100 } //100
-    // if (numberOfNodes > 70 && numberOfNodes <= 80) { strength = -75 }  
-    // if (numberOfNodes > 80 && numberOfNodes <= 90) { strength = -50 }  
-    // if (numberOfNodes > 90) { strength = -30 }  
+    let strength;
+    if (numberOfNodes <= 10) { strength = -1000 } //1000
+    if (numberOfNodes > 10 && numberOfNodes <= 20) { strength = -900 } //1000
+    if (numberOfNodes > 20 && numberOfNodes <= 30) { strength = -800 } //800
+    if (numberOfNodes > 30 && numberOfNodes <= 40) { strength = -600 } //600
+    if (numberOfNodes > 40 && numberOfNodes <= 50) { strength = -400} //400
+    if (numberOfNodes > 50 && numberOfNodes <= 60) { strength = -200 } //200
+    if (numberOfNodes > 60 && numberOfNodes <= 70) { strength = -100 } //100
+    if (numberOfNodes > 70 && numberOfNodes <= 80) { strength = -75 }  
+    if (numberOfNodes > 80 && numberOfNodes <= 90) { strength = -50 }  
+    if (numberOfNodes > 90) { strength = -30 }  
 
-    // console.log(strength)
-    // console.log(forceStrengthScale)
     return strength
 
 }
