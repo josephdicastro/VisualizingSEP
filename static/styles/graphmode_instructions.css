@@ -1,0 +1,143 @@
+/* base styles for both boxes */
+
+.baseStylesModeInstructions {
+    display: block;
+    background-color: rgb(40,40,40);
+    color: darkgray;
+    font-size: .7em;
+    font-family: proxima-nova, sans-serif;
+    font-weight: 200;
+    border-color: white;
+    text-align: left;
+    z-index: 99;
+}
+.baseStylesModeInstructions:hover {
+    background-color: rgb(50,50,50);
+    color: lightgray
+}
+
+
+/* Graph Mode Area Styles */
+#graphMode {
+    position: absolute; 
+    height:2.5em;
+    width:15em;
+    padding-top:.5em;
+    padding-left: 1em;
+    padding-right: 2em;
+    border-bottom-left-radius: 2em;
+    border-top-right-radius: 2em;
+
+}
+.graphModePreview {
+    background-image: url('/static/bootstrap-icons/mouse2.svg');
+    background-repeat: no-repeat;
+    background-size: 1.35em 1.35em;
+    background-position: 11.5em .4em;
+}
+.graphModeExplore {
+    background-image: url('/static/bootstrap-icons/arrow-bar-down.svg');
+    background-repeat: no-repeat;
+    background-size: 1.35em 1.35em;
+    background-position: 11.5em .4em;
+}
+
+/* Graph Instruction Area Styles */
+#graphInstructions {
+    position: relative;
+    height:3em;
+    top:-2.5em;
+    width:16em;
+    padding-top:.5em;
+    padding-left: 3.25em;
+    left:0em;
+    border-top-right-radius: 2em;
+    border-bottom-left-radius: 2em;
+    background-image: url('/static/bootstrap-icons/question-circle.svg');
+    background-repeat: no-repeat;
+    background-size: 1.35em 1.35em;
+    background-position: 1.35em .6em;
+
+}
+
+#articleInstructions, #domainInstructions {
+    display: none;
+}
+
+.graphInstructionArea {
+    display: none;
+    position: absolute;
+    top:0%; left:1%;
+    height:99%;
+    width:100%;
+    z-index:999;
+    padding: 1em 1.5em;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    font-family: proxima-nova, sans-serif;
+    font-weight: 100;
+    color: rgb(230,230,230);
+    color: 
+    border:none;
+    background-color: rgb(25, 25, 25);
+}
+
+ul#helpMenu li {
+    display: inline;
+    font-size: 1em;
+    margin-left: -2.3em;
+    padding-right: 3em;
+    font-size: 1em;
+}
+
+ .graphInstructionArea h1 {
+    font-size: 1.5em;
+    color:#F0DB00;
+    border-bottom: 1px rgb(60,60,60) dotted;
+    background-image: url('/static/bootstrap-icons/x-circle.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 1.15em 1.15em;
+    padding-bottom: .3em;
+}
+
+.graphInstructionArea h2 {
+    font-size: 1.4em;
+    color: #F0DB00
+}
+
+.graphInstructionArea h3 {
+    font-size: 1.3em;
+    color: #F0DB00
+}
+
+.graphInstructionArea h4 {
+    font-size: 1.2em;
+    color: #F0DB00
+}
+
+
+.graphInstructionArea p {
+    font-size: 1em;
+}
+.graphInstructionArea li {
+    font-size: 1em;
+    margin-left: -2em;
+}
+
+    .logoBg {
+        background-image: url('/static/img/articlegraphLogo.svg');
+        background-repeat: no-repeat;
+        background-position: right;
+    }
+
+/* Media queries */
+
+@media screen and (min-resolution: 150dpi) {
+
+    #graphMode { left:54em; }
+}
+@media screen and (max-resolution: 100dpi) {
+    #graphMode { left:80em; }
+}
+

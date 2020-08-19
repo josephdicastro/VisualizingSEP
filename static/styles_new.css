@@ -23,195 +23,9 @@ footer {
 .mainArticleLabel {display: none}
 .mainArticleNode {display: none}
 
-.graphInstructionArea {
-    display: none;
-    position: absolute;
-    top:0%; left:1%;
-    height:99%;
-    width:98%;
-    z-index:999;
-    padding: 1em 1.5em;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    font-family: proxima-nova, sans-serif;
-    color: lightgray;
-    border:none;
-    background-color: rgb(18, 18, 18);
-}
-
-#articleInstructions, #domainInstructions {
-    display: none;
-}
-ul#helpMenu li {
-    display: inline;
-    font-size: 1em;
-    margin-left: -2.3em;
-    padding-right: 3em;
-    font-size: 1em;
-}
-
- .graphInstructionArea h1 {
-    font-size: 1.3em;
-    color: lightgray;
-    border-bottom: 1px rgb(60,60,60) dotted;
-    background-image: url('/static/bootstrap-icons/x-circle.svg');
-    background-repeat: no-repeat;
-    background-position: right;
-    background-size: 1.15em 1.15em;
-    padding-bottom: .3em;
-}
-
-.graphInstructionArea h2 {
-    font-size: 1.2em;
-    text-decoration: underline;
-}
-
-.graphInstructionArea h3 {
-    font-size: 1.1em;
-}
-
-.graphInstructionArea h4 {
-    font-size: 1em;
-}
-
-
-.graphInstructionArea p {
-    font-size: .9em;
-}
-.graphInstructionArea li {
-    font-size: .9em;
-    margin-left: -2em;
-}
-
-#sidebarLeftHelpDiv {
-    display: none;
-}
-#sidebarRightHelpDiv {
-    display: none;
-}
-#navBarHelpDiv {
-    display: none;}
-
-
-/* Nav Styles */
-
-nav {
-    background-image: url('/static/img/articlegraphLogo.svg');
-    background-repeat: no-repeat;
-    background-size: 2.5em 2.5em;
-    border-bottom: none;
-    background-position: 1em .6em;
-}
-
-.navbar-brand{
-    margin-left: 5%;
-}
-
-.nav-item-select { 
-    margin-top:5px;
-    width:15%;
-}
-
-.sep-select {
-    background-color: rgb(18, 18, 18);
-    color:white;
-    border-color:  rgb(50, 50, 50);
-    font-family: proxima-nova, sans-serif;
-    font-weight: 100;
-    font-size:.9em;
-}
-
-.sep-select:hover, .sep-select:active {
-    background-color: rgb(18, 18, 18);
-    color:white;
-    border-color:  rgb(50, 50, 50);
-}
-
-.custom-select {
-    border-color:  rgb(50, 50, 50);
-    box-shadow: none!important;
-    outline: none!important;
-}
-
-.custom-select:active, .custom-select:focus {
-    border-color:  rgb(100, 100, 100);
-}
-
-#getRandomEntry {
-    background-color: rgb(60,60,60);
-    margin-top: .55em;
-    margin-left: 3em;
-    margin-right: 3em;
-    padding: 0 1em;
-    border-radius: 10px;
-}
-
-#getRandomEntry:hover {
-    background-color: rgb(70,70,70);
-}
-
-#getRandomEntry:active {
-    background-color: rgb(90,90,90);
-}
-
-.btn {
-    width:50%;
-    background-color: rgb(70,70,70);
-    color:white;
-    border: none;
-}
-
-#domainSearchMenu {
-    margin-right: 2em;
-}
-
-
 @media screen and (min-resolution: 150dpi) {
 
-    /* nav */
-
-    #graphMode {
-        position: absolute;
-        display: none;
-        height:25px;
-        width:220px;
-        padding-top:.3em;
-        padding-left: 3em;
-        left:550px;
-        font-size: .7em;
-        font-family: proxima-nova, sans-serif;
-        font-weight: 200;
-        z-index: 99;
-        text-align: left;
-        /* border-radius: 1.5em; */
-        /* border-top-left-radius: 1em; */
-        border-bottom-left-radius: 2em;
-        color: lightgray;
-        border-color: white;
-        background-color: rgb(40,40,40);
-
-    }
-
-    #graphInstructions {
-        position: relative;
-        display: none;
-        height:25px;
-        top:-25px;
-        width:220px;
-        padding-top:.3em;
-        padding-left: 3em;
-        left:0px;
-        font-size: .7em;
-        font-family: proxima-nova, sans-serif;
-        font-weight: 200;
-        z-index: 99;
-        text-align: left;
-        border-top-right-radius: 2em;
-        color: lightgray;
-        border-color: white;
-        background-color: rgb(40,40,40);
-
-    }
+    /* graph Mode styles */
 
     #navbarSupportedContent {
         margin-left: 11%;
@@ -279,46 +93,7 @@ nav {
 
 @media screen and (max-resolution: 100dpi) {
 
-    #graphMode {
-        position: absolute;
-        display: none;
-        height:30px;
-        width:220px;
-        padding-top:.5em;
-        padding-left: 3em;
-        left:850px;
-        font-size: .7em;
-        font-family: proxima-nova, sans-serif;
-        z-index: 99;
-        text-align: left;
-        /* border-radius: 1.5em; */
-        /* border-top-left-radius: 1em; */
-        border-bottom-left-radius: 2em;
-        color: lightgray;
-        border-color: white;
-        background-color: rgb(40,40,40);
-
-    }
-
-    #graphInstructions {
-        position: relative;
-        display: none;
-        height:30px;
-        top:-30px;
-        width:220px;
-        padding-top:.5em;
-        padding-left: 3em;
-        left:0px;
-        font-size: .7em;
-        font-family: proxima-nova, sans-serif;
-        z-index: 99;
-        text-align: left;
-        border-top-right-radius: 2em;
-        color: lightgray;
-        border-color: white;
-        background-color: rgb(40,40,40);
-
-    }
+ 
 
     /* nav */
     #navbarSupportedContent {
@@ -330,14 +105,6 @@ nav {
         overflow-y: auto;
     }
 
-    #getRandomEntry {
-        background-color: rgb(60,60,60);
-        margin-top: .55em;
-        margin-left: 3em;
-        margin-right: 3em;
-        padding: 0 1em;
-        border-radius: 10px;
-    }
 
     #recentSearchMenu {
         background-color: rgb(18, 18, 18);
@@ -575,23 +342,6 @@ nav {
     padding-inline-start: 20px;
 }
 
-
-
-
-
-
-#selectedEntryTitle h1 {
-    font-family: proxima-nova, sans-serif;
-    /* font-family: Georgia, 'Times New Roman', Times, serif; */
-    font-style: normal;
-    font-weight: 400; 
-    font-size: 1.3em;
-    color:white;
-    text-align:left;
-    margin-top: .7em;
-    margin-left: .7em;
-    /* margin-left: 8%; */
-}
 
 .label {
     font-family: proxima-nova, sans-serif;

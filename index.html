@@ -10,7 +10,9 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="https://use.typekit.net/nfp8cny.css">
     <link href="static/styles_new.css" rel="stylesheet">
-    <!-- <link href="static/styles.css" rel="stylesheet"> -->
+    <link href="static/styles/base.css" rel="stylesheet">
+    <link href="static/styles/nav.css" rel="stylesheet">
+    <link href="static/styles/graphmode_instructions.css" rel="stylesheet">
     
     <title>Visualizing SEP </title>
     </head>
@@ -26,7 +28,7 @@
                         <select id="domainSearchMenu" class="custom-select custom-select-sm sep-select" ></select>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" id="getRandomEntry">Randomize</a>
+                        <a class="nav-link buttonBox " href="#" id="getRandomEntry">Randomize</a>
                     </li> 
                     <li class="nav-item nav-item-select active">
                         <select id="articleSearchMenu" class="custom-select custom-select-sm sep-select"></select><span class="sr-only">(current)</span></li>
@@ -63,49 +65,48 @@
                         <div id="sidebarLeft" class="sidebar float-right"></div>
                     </div>
                     <div class="col-lg-7">
-                        <div id="articleGraph" class="panelBG_graph">
+                        <div id="articleGraph" class="panelBG_graph" >
 
-                            <div id="graphMode"></div>
+                            <div id="graphMode" class="d-none"></div>
                             <svg id="mainGraph" height="100%" width="100%"></svg>
-                            <div id="graphInstructions"></div>
-                            <div id="articleInstructions" class="graphInstructionArea">
+                            <div id="graphInstructions" class="d-none"></div>
+                            <div id="articleInstructions" class="d-none graphInstructionArea">
 
-                                    <h1 id="articleGraphInstructionsHeading">Article Graph Instructions</h1>
-                                    <p>The Article Graph shows every article in the entire Encyclopedia that the currently selected SEP article is linked to.
-                                        One can explore all of SEP in endless and visually beautiful ways with this tool.
+                                    <h1 id="articleGraphInstructionsHeading" class="instructionsPageHeading">Article Graph Instructions</h1>
+                                    <p>The Article Graph shows every article in the entire Encyclopedia that the currently selected SEP article is linked to in some way.
                                     </p>
                                     <ul id="helpMenu">
-                                        <li><span id="articleGraphHelp">The Article Graph</span></li>
-                                        <li><span id="articleGraphHelpLeft">Left Sidebar</span></li>
-                                        <li><span id="articleGraphHelpRight">Right Sidebar</span></li>
-                                        <li><span id="articleGraphHelpNav">Navigation Bar</span></li>
+                                        <li id="articleGraphHelp">The Article Graph</li>
+                                        <li id="articleGraphHelpLeft">Left Sidebar</li>
+                                        <li id="articleGraphHelpRight">Right Sidebar</li>
+                                        <li id="articleGraphHelpNav">Navigation Bar</li>
                                     </ul>
-                                <div id="articleGraphHelpDiv">
+                                <div id="articleGraphHelpDiv" class="instructionsSection d-none">
                                     <h2>The Article Graph</h2>
                                     <ul>
-                                        <li><strong>Double-clicking</strong> any node or title will make a new selection and reload the graph.</li>
+                                        <li><b>Double-clicking</b> any node or title will make a new selection and reload the graph.</li>
                                         <li>Linked articles are a superset of all relations between the current SEP article and the links: <br>
                                             some are bi-directional links where both the selection and the related article link to and from each other; <br>
                                             some are just incoming links from the related articles; 
                                             others are just outgoing links from the current selection.</li>
                                     </ul>
-                                    <h3>Preview/Hover Mode and Explore/Click Mode</h3>
+                                    <h3>Preview Mode and Explore Mode</h3>
                                     <ul>
-                                        <li>There are two fundamental ways to interact with the graph: <em>Preview/Hover Mode</em> and <em>Explore/Click Mode</em>.
+                                        <li>There are two fundamental ways to interact with the graph: <em>Preview Mode</em> and <em>Explore</em>.
                                             These are exclusive modes, and the graph can only be in one mode at a time.</li>
                                         <li>The current mode is always listed in the <em>“Graph Mode”</em> box in the top right corner.</li>
-                                        <li>You can toggle between the two modes by <strong>single-clicking</strong> this box. Switching modes will clear out the graph.</li>
+                                        <li>You can toggle between the two modes by <b>single-clicking</b> this box. Switching modes will clear out the graph.</li>
                                     </ul>
                                         <h4>Preview Mode</h4>
                                         <ul>
                                             <li>This is the default modal state of the graph. </li>
-                                            <li>In this mode, when the user <strong>hovers over a node or title</strong>, the entire graph will be re-drawn to preview whatever 
+                                            <li>In this mode, when the user <b>hovers over a node or title</b>, the entire graph will be re-drawn to preview whatever 
                                                 data emerges from the hovered reference. The article details in the left sidebar will be temporarily replaced 
                                                 with preview information for the hovered node, and if the hovered node also links to other articles in the same 
                                                 graph, a dashed line will be drawn between the nodes that are also linked together to indicate this relationship.</li> 
                                             <li>As soon as the user stops hovering over that node, the graph will return to its original state. 
                                                 And when the user hovers over another node, the graph will be redrawn, etc. </li>
-                                            <li>At any point, a user can always <strong>double-click a node or title</strong> to draw a brand new graph with this new node as the main selection.</li>
+                                            <li>At any point, a user can always <b>double-click a node or title</b> to draw a brand new graph with this new node as the main selection.</li>
                                             <li>Preview Mode provides a powerful way to quickly view the relationships in the Article Graph. However,
                                                 it doesn’t really allow a deep exploration of the relationships between the selected article and the links.</li>
                                         </ul>
@@ -113,14 +114,14 @@
                                         <ul>
                                             <li>Explore Mode is for deep-diving into the relationships between the selected entry and 
                                                 the linked articles, as well as to make a more detailed inquiry into the articles themselves. </li>
-                                            <li>The power of this mode comes in when the user <strong>single-clicks a node or title</strong>. The graph will then be frozen in that state. Each time the 
+                                            <li>The power of this mode comes in when the user <b>single-clicks a node or title</b>. The graph will then be frozen in that state. Each time the 
                                                 users clicks a new node, the graph updates and is then re-frozen.</li>
                                             <li>In this state, the user can then explore all the details of all the linked articles, can follow how linked articles are themselves 
                                                 linked to other articles in the graph, or can look at, for examplke, only articles that are out-going links or only articles whose primary 
                                                 domain is epistemology, etc.</li>
-                                            <li>When a user <strong>hovers over a node or title</strong> in Explore Mode, only the data in  the left sidebar will be replaced, 
+                                            <li>When a user <b>hovers over a node or title</b> in Explore Mode, only the data in  the left sidebar will be replaced, 
                                                 but the main graph features remain the same.</li>
-                                            <li>At any point, a user can always <strong>double-click a node or title</strong> to draw a brand new graph with this new node as the main selection.</li>
+                                            <li>At any point, a user can always <b>double-click a node or title</b> to draw a brand new graph with this new node as the main selection.</li>
                                         </ul>
                                         <h3>Color</h3>
                                         <p>Each article node and title is colored according to its <i>primary domain</i> designation, which is the domain chosen as the most representative 
@@ -129,7 +130,7 @@
 
                                 </div>
                                 
-                                <div id="sidebarLeftHelpDiv">
+                                <div id="articleGraphHelpLeftDiv" class="instructionsSection d-none">
                                     <h3>Left Sidebar</h3>
                                     <ul>
                                         <li>The left side bar contains details the about the selected article. In it’s default state, the side bar provides:
@@ -150,22 +151,22 @@
                                     </ul>
                                 </div>
 
-                                <div id="sidebarRightHelpDiv">
+                                <div id="articleGraphHelpRightDiv" class="instructionsSection d-none">
                                     <h3>Right Sidebar</h3>
                                     <ul>
                                         <li>The right side bar contains details about the linked articles. In its default state, the right sidebar provides:
                                             <ul>
                                                 <li>Link Domains: A list of the primary domain designations for all of the linked articles, as well as a count of 
-                                                    how many articles in that domain. <strong>Hovering</strong> over a domain designation in Preview Mode will update the graph to 
+                                                    how many articles in that domain. <b>Hovering</b> over a domain designation in Preview Mode will update the graph to 
                                                     display only those articles with that primary domain designation; hovering off will reset the graph to its 
-                                                    default state. <strong>Single-clicking</strong> the domain will put the graph into Explore Mode, and freeze the graph to show 
+                                                    default state. <b>Single-clicking</b> the domain will put the graph into Explore Mode, and freeze the graph to show 
                                                     only those articles in the selected domain.
                                                 </li>
                                                 <li>Link Directions: Every article will have a link directions summary that shows which linked articles are 
                                                     bi-directional links, incoming links, and outgoing links. The panel also shows the count of how many articles 
-                                                    are in each category. <strong>Hovering</strong> over a link direction category in Preview Mode will update the graph to display only 
+                                                    are in each category. <b>Hovering</b> over a link direction category in Preview Mode will update the graph to display only 
                                                     those articles in that direction category; hovering off the category will reset the graph to its default state. 
-                                                    <strong>Single-clicking</strong> the link direction will put the graph into Explore Mode, and freeze the graph to show only those 
+                                                    <b>Single-clicking</b> the link direction will put the graph into Explore Mode, and freeze the graph to show only those 
                                                     articles in the selected category.
                                                 </li>
                                             </ul>
@@ -174,7 +175,7 @@
                                     </ul>
                                 </div>
 
-                                <div id="navBarHelpDiv">
+                                <div id="articleGraphHelpNavDiv" class="instructionsSection d-none">
                                     <h3>Navigation Bar</h3>
                                     <ul>
                                         <li>The Nav Bar is mostly self-explanatory, but the Recent Searches drop-down requires some explanation: Each time the user reloads the graph with a new article, including searches through the domain graph, the Recent Searches box will be updated, so the user can track their progress through the Encyclopedia. The Recent Searches box will contain the preview 10 searches. 
@@ -184,7 +185,7 @@
 
 
                             </div>
-                            <div id="domainInstructions" class="graphInstructionArea panelBG_graph">
+                            <div id="domainInstructions" class="graphInstructionArea panelBG_graph  d-none">
                                 <h2>Article Graph</h2>
                                 <p>a;lsdkjf;laksjdf;lkajsdf;lajsdlkfja;ljsdflkj</p>                             
                             </div>

@@ -4,7 +4,6 @@
 let svg = d3.select('#mainGraph')
 let articleMenu = d3.select('#articleSearchMenu')
 let domainMenu = d3.select('#domainSearchMenu')
-let introDiv = d3.select('#intro') 
 let articleGraphDiv = d3.select('#articleGraph')
 let sidebarLeft = d3.select("#sidebarLeft") 
 let sidebarRight = d3.select("#sidebarRight")
@@ -12,7 +11,7 @@ let getRandomEntry = d3.select("#getRandomEntry")
 let recentSearchMenu = d3.select("#recentSearchMenu")
 let graphMode = d3.select("#graphMode")
 
-// help functions
+// help elements
 let graphInstructions = d3.select("#graphInstructions")
 let articleGraphInstructionsHeading = d3.select("#articleGraphInstructionsHeading")
 
@@ -68,7 +67,6 @@ function startVisualization() {
     loadMenus();
     showArticleGraphAreas() 
     // showHomeMenu(data, simulationConfig)
-    setGraphMode('Preview')
 
     //UI Response features
     articleMenu.on('change', function(){
@@ -102,15 +100,15 @@ function startVisualization() {
     })
 
     graphMode
-        .on('mouseover', function() {activateItemLink(this,'bold')})
-        .on('mouseout', function() {deActivateItemLink(this, 'normal')})
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
         .on('click', function() {toggleGraphMode();})
 
     
     //help functions
     graphInstructions
-        .on('mouseover', function() {activateItemLink(this, 'bold')})
-        .on('mouseout', function() {deActivateItemLink(this, 'normal')})
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
         .on('click', function() {displayGraphInstructions()})
 
     articleGraphInstructionsHeading
@@ -118,28 +116,6 @@ function startVisualization() {
         .on('mouseout', function() {deActivateItemLink(this)})
         .on('click', function() {closeArticleGraphInstructions()})
     
-    d3.select("#articleGraphHelp")
-        .on('mouseover', function() {activateItemLink(this)})
-        .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() {showHelpPage('#articleGraphHelpDiv')})
-
-    d3.select("#articleGraphHelpLeft")
-        .on('mouseover', function() {activateItemLink(this)})
-        .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() {showHelpPage('#sidebarLeftHelpDiv')})
-
-    d3.select("#articleGraphHelpRight")
-        .on('mouseover', function() {activateItemLink(this)})
-        .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() {showHelpPage('#sidebarRightHelpDiv')})
-
-    ~d3.select("#articleGraphHelpNav")
-        .on('mouseover', function() {activateItemLink(this)})
-        .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() {showHelpPage('#navBarHelpDiv')})
-
-
-
 }
 
 // ****** SET GLOBALS  ********
@@ -311,11 +287,12 @@ function showHomeMenu(data, simulationConfig) {
 
 }
 
+
 function showArticleGraphAreas() {
-    introDiv.style('display', 'none')
-    articleGraphDiv.style('display', 'block')
-    graphInstructions.style('display', 'block')
-    graphMode.style('display', 'block')
+    articleGraphDiv.classed('d-block', true)
+    graphInstructions.classed('d-block', true)
+    graphMode.classed('d-block', true)
+    setGraphMode('Preview')
 }
 
 function updateRecentSearch(searchObj) {
@@ -350,16 +327,30 @@ function updateRecentSearch(searchObj) {
 }
 
 function setGraphMode(mode) {
+
     if(mode==='Preview') {
         exploreMode = false; 
-        graphMode.text('Graph Mode: Mouseover/Preview'); 
+        graphMode
+            .text('Graph Mode: Preview')
+            .classed('baseStylesModeInstructions', true)
+            .classed('graphModePreview', true)
+            .classed('graphModeExplore', false)
+            .classed('d-block', true).classed('d-none', false)
+
+            
+
         resetDomainMenuOpacity();
         resetDisplayDefaultsDomainGraph();
         resetDisplayDefaultsArticleGraph();
   }
     if(mode==='Explore') {
         exploreMode = true;
-        graphMode.text('Graph Mode: Single Click/Explore'); 
+        graphMode
+            .text('Graph Mode: Explore')
+            .classed('baseStylesModeInstructions', true)
+            .classed('graphModePreview', false)
+            .classed('graphModeExplore', true)
+            .classed('d-block', true).classed('d-none', false)
 
     }
 }
@@ -371,7 +362,10 @@ function setGraphType(graphState) {
 }
 
 function setGraphInstructions(instructionText) {
-    graphInstructions.text(instructionText);
+    graphInstructions
+        .text(instructionText)
+        .classed('d-block', true).classed('d-none', false)
+        .classed('baseStylesModeInstructions', true)
 }
 
 function displayGraphInstructions() {
@@ -387,7 +381,8 @@ function displayGraphInstructions() {
 }
 
 function closeArticleGraphInstructions() {
-    d3.select("#articleInstructions").style('display', 'none')
+    d3.select("#articleInstructions")
+        .classed('d-none', true).classed('d-block', false)
     resetScreen();
 }
 
@@ -412,20 +407,61 @@ function resetScreen() {
 }
 
 function displayGraphInstructions_Article() {
-    d3.select("#articleInstructions").style('display', 'block')
+    d3.select("#articleInstructions").classed('d-block',true)
+
+    d3.select("#articleGraphHelp")
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() { showHelpPage("#articleGraphHelp")})
+
+    d3.select("#articleGraphHelpLeft")
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() {showHelpPage("#articleGraphHelpLeft")})
+
+    d3.select("#articleGraphHelpRight")
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() {showHelpPage("#articleGraphHelpRight")})
+
+    ~d3.select("#articleGraphHelpNav")
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() {showHelpPage("#articleGraphHelpNav")})
+
+    showHelpPage('#articleGraphHelp')
+    
 }
 
 function displayGraphInstructions_Domain() {
     console.log('display domain graph instructions')
 }
 
-function showHelpPage(divID) {
-    d3.select('#articleGraphHelpDiv').style('display','none')
-    d3.select('#sidebarLeftHelpDiv').style('display','none')
-    d3.select('#sidebarRightHelpDiv').style('display','none')
-    d3.select('#navBarHelpDiv').style('display','none')
-    d3.select(divID).style('display', 'block')
 
+
+function showHelpPage(divID) {
+
+    let pageID = divID + "Div"
+
+    //help menu
+    d3.selectAll('#helpMenu > li')
+        // .classed('textNoUnderline', true)
+        // .classed('textUnderline', false)
+        .style('color', '#E6E6E6')
+
+    d3.select(divID)
+        // .classed('textNoUnderline', false)
+        // .classed('textUnderline', true)
+        .style('color', '#F0DB00')
+
+    //help pages
+    d3.selectAll('.instructionsSection')
+        .classed('d-none', true)
+        .classed('d-block', false)
+    
+    d3.select(pageID)
+        .classed('d-none', false)
+        .classed('d-block', true)
 }
 
 
