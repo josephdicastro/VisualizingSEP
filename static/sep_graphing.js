@@ -10,17 +10,7 @@ let sidebarRight = d3.select("#sidebarRight")
 let getRandomEntry = d3.select("#getRandomEntry")
 let recentSearchMenu = d3.select("#recentSearchMenu")
 let graphMode = d3.select("#graphMode")
-
-// help elements
 let graphInstructions = d3.select("#graphInstructions")
-let articleGraphInstructionsHeading = d3.select("#articleGraphInstructionsHeading")
-
-let domainGraphInstructionsHeading = d3.select("#domainGraphInstructionsHeading")
-let domainGraphHelp = d3.select("#domainGraphHelp")
-let domainGraphHelpLeft = d3.select("domainGraphHelpLeft")
-let domainGraphHelpRight = d3.select("domainGraphHelpRight")
-let domainGraphHelpNav = d3.select("domainGraphHelpNav")
-
 
 //Initialize nodes and links arrays for simulation
 let graphNodes = [];
@@ -111,11 +101,7 @@ function startVisualization() {
         .on('mouseout', function() {deActivateItemLink(this)})
         .on('click', function() {displayGraphInstructions()})
 
-    articleGraphInstructionsHeading
-        .on('mouseover', function() {activateItemLink(this)})
-        .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() {closeArticleGraphInstructions()})
-    
+
 }
 
 // ****** SET GLOBALS  ********
@@ -380,12 +366,6 @@ function displayGraphInstructions() {
     }
 }
 
-function closeArticleGraphInstructions() {
-    d3.select("#articleInstructions")
-        .classed('d-none', true).classed('d-block', false)
-    resetScreen();
-}
-
 function dimScreen() {
     d3.select('nav').style('opacity', 0.25)
     d3.select('#selectedEntryTitle').style('opacity', 0.25)
@@ -424,17 +404,50 @@ function displayGraphInstructions_Article() {
         .on('mouseout', function() {deActivateItemLink(this)})
         .on('click', function() {showHelpPage("#articleGraphHelpRight")})
 
-    ~d3.select("#articleGraphHelpNav")
+    d3.select("#articleGraphHelpNav")
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() {deActivateItemLink(this)})
         .on('click', function() {showHelpPage("#articleGraphHelpNav")})
+
+   d3.select('#articleGraphInstructionsHeading')
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() { d3.select('#articleInstructions').classed('d-block',false); resetScreen();})
+
 
     showHelpPage('#articleGraphHelp')
     
 }
 
 function displayGraphInstructions_Domain() {
-    console.log('display domain graph instructions')
+    d3.select("#domainInstructions").classed('d-block',true)
+
+    d3.select("#domainGraphHelp")
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() { showHelpPage("#domainGraphHelp")})
+
+    d3.select("#domainGraphHelpLeft")
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() {showHelpPage("#domainGraphHelpLeft")})
+
+    d3.select("#domainGraphHelpRight")
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() {showHelpPage("#domainGraphHelpRight")})
+
+    d3.select("#domainGraphHelpNav")
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() {showHelpPage("#domainGraphHelpNav")})
+
+    d3.select('#domainGraphInstructionsHeading')
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() { d3.select('#domainInstructions').classed('d-block',false); resetScreen();})
+
+    showHelpPage('#domainGraphHelp')
 }
 
 
@@ -445,13 +458,9 @@ function showHelpPage(divID) {
 
     //help menu
     d3.selectAll('#helpMenu > li')
-        // .classed('textNoUnderline', true)
-        // .classed('textUnderline', false)
         .style('color', '#E6E6E6')
 
     d3.select(divID)
-        // .classed('textNoUnderline', false)
-        // .classed('textUnderline', true)
         .style('color', '#F0DB00')
 
     //help pages
