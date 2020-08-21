@@ -53,10 +53,8 @@ let testLabel = d3.select('#testLabel')
 startVisualization();
 
 function startVisualization() {
-    
-    loadMenus();
+    homePageAnimation();
     showArticleGraphAreas() 
-    // showHomeMenu(data, simulationConfig)
 
     //UI Response features
     articleMenu.on('change', function(){
@@ -94,13 +92,16 @@ function startVisualization() {
         .on('mouseout', function() {deActivateItemLink(this)})
         .on('click', function() {toggleGraphMode();})
 
-    
-    //help functions
     graphInstructions
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() {deActivateItemLink(this)})
         .on('click', function() {displayGraphInstructions()})
 
+}
+
+function homePageAnimation() {    
+    d3.select('nav').transition().duration(2000).style('opacity',1)
+    loadMenus();
 
 }
 
@@ -183,9 +184,10 @@ function initializeSimulation(svgConfig) {
         .force("forceX", d3.forceX())
         .force("forceY", d3.forceY())
         .force("collide", d3.forceCollide())
+        // .force("radial", d3.forceRadial())
         .alphaDecay(.05)
         .alphaMin(.1)
-        // .alphaTarget(.9);
+        // .alphaTarget(1);
 
     return {links, nodes, labels, relatedLinks, domainLabels, simulation}
 }
@@ -265,20 +267,8 @@ function loadMenus() {
 
 }
 
-function showHomeMenu(data, simulationConfig) {
-    sep_node = data.domains.nodes
-    sep_node.forEach(node => nodes.push(node))
-    sep_node[0].links.forEach(link => links.push(link))
-    drawArticleSimulation(data, simulationConfig)
-
-}
-
-
 function showArticleGraphAreas() {
     articleGraphDiv.classed('d-block', true)
-    graphInstructions.classed('d-block', true)
-    graphMode.classed('d-block', true)
-    setGraphMode('Preview')
 }
 
 function updateRecentSearch(searchObj) {
@@ -314,10 +304,10 @@ function updateRecentSearch(searchObj) {
 
 function setGraphMode(mode) {
 
-    if(mode==='Preview') {
+    if(mode==='Hover') {
         exploreMode = false; 
         graphMode
-            .text('Graph Mode: Preview')
+            .text('Graph Mode: Hover')
             .classed('baseStylesModeInstructions', true)
             .classed('graphModePreview', true)
             .classed('graphModeExplore', false)
@@ -329,10 +319,10 @@ function setGraphMode(mode) {
         resetDisplayDefaultsDomainGraph();
         resetDisplayDefaultsArticleGraph();
   }
-    if(mode==='Explore') {
+    if(mode==='Click') {
         exploreMode = true;
         graphMode
-            .text('Graph Mode: Explore')
+            .text('Graph Mode: Click')
             .classed('baseStylesModeInstructions', true)
             .classed('graphModePreview', false)
             .classed('graphModeExplore', true)
@@ -367,27 +357,35 @@ function displayGraphInstructions() {
 }
 
 function dimScreen() {
-    d3.select('nav').style('opacity', 0.25)
-    d3.select('#selectedEntryTitle').style('opacity', 0.25)
-    sidebarLeft.style('opacity', 0.25)
-    sidebarRight.style('opacity', 0.25)
-    svgConfig.graphElements.style('opacity', 0.25)
-    graphMode.style('opacity', 0.10)
-    graphInstructions.style('opacity',0.10)
+    let transDuration = 300
+    d3.select('nav').transition(transDuration).style('opacity', 0.25)
+    d3.select('#selectedEntryTitle').transition(transDuration).style('opacity', 0.25)
+    sidebarLeft.transition(transDuration).style('opacity', 0.25)
+    sidebarRight.transition(transDuration).style('opacity', 0.25)
+    svgConfig.graphElements.transition(transDuration).style('opacity', 0.25)
+    graphMode.transition(transDuration).style('opacity', 0.10)
+    graphInstructions.transition(transDuration).style('opacity',0.10)
 }
 
 function resetScreen() {
-    d3.select('nav').style('opacity', 1)
-    d3.select('#selectedEntryTitle').style('opacity', 1)
-    sidebarLeft.style('opacity',1)
-    sidebarRight.style('opacity', 1)
-    svgConfig.graphElements.style('opacity',1)
-    graphMode.style('opacity', 1)
-    graphInstructions.style('opacity',1)
+    let transDuration = 300
+    d3.select('nav').transition(transDuration).style('opacity', 1)
+    d3.select('#selectedEntryTitle').transition(transDuration).style('opacity', 1)
+    sidebarLeft.transition(transDuration).style('opacity',1)
+    sidebarRight.transition(transDuration).style('opacity', 1)
+    svgConfig.graphElements.transition(transDuration).style('opacity',1)
+    graphMode.transition(transDuration).style('opacity', 1)
+    graphInstructions.transition(transDuration).style('opacity',1)
 }
 
 function displayGraphInstructions_Article() {
-    d3.select("#articleInstructions").classed('d-block',true)
+    let transDuration = 450
+    d3.select("#articleInstructions")
+        .style('display','block')
+        .transition()
+            .duration(transDuration)
+                .style('opacity',1)
+        
 
     d3.select("#articleGraphHelp")
         .on('mouseover', function() {activateItemLink(this)})
@@ -412,7 +410,12 @@ function displayGraphInstructions_Article() {
    d3.select('#articleGraphInstructionsHeading')
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() { d3.select('#articleInstructions').classed('d-block',false); resetScreen();})
+        .on('click', function() { 
+            d3.select('#articleInstructions').transition().duration(transDuration).style('opacity',0)
+            d3.select('#articleInstructions').style('display','none')
+            resetScreen();
+
+    })
 
 
     showHelpPage('#articleGraphHelp')
@@ -420,7 +423,10 @@ function displayGraphInstructions_Article() {
 }
 
 function displayGraphInstructions_Domain() {
-    d3.select("#domainInstructions").classed('d-block',true)
+    let transDuration = 450
+    d3.select("#domainInstructions")
+        .style('display','block')
+        .transition().duration(transDuration).style('opacity',1)
 
     d3.select("#domainGraphHelp")
         .on('mouseover', function() {activateItemLink(this)})
@@ -445,7 +451,11 @@ function displayGraphInstructions_Domain() {
     d3.select('#domainGraphInstructionsHeading')
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() { d3.select('#domainInstructions').classed('d-block',false); resetScreen();})
+        .on('click', function() { 
+            d3.select('#domainInstructions').transition().duration(transDuration).style('opacity',0)
+            d3.select('#domainInstructions').style('display','none')
+            resetScreen();
+        })
 
     showHelpPage('#domainGraphHelp')
 }
@@ -477,9 +487,9 @@ function showHelpPage(divID) {
 
 function toggleGraphMode() {
     if(exploreMode) {
-        setGraphMode('Preview')
+        setGraphMode('Hover')
     } else {
-        setGraphMode('Explore')
+        setGraphMode('Click')
     }
 
     window.getSelection().removeAllRanges();
@@ -520,7 +530,7 @@ function showArticleGraph(articleTitle) {
         setDomainMenuTitle('[Search domains...]')
         updateRecentSearch(articleData);
         d3.select('.mainDomainNode').remove();
-        setGraphMode('Preview')
+        setGraphMode('Hover')
         setGraphType('Article')
         resetDisplayDefaultsDomainGraph();
         resetDisplayDefaultsArticleGraph();
@@ -714,17 +724,22 @@ function drawArticleSimulation(data) {
     })
 
     //update simulations
-    simulationConfig.simulation.nodes(graphNodes);
+    simulationConfig.simulation.nodes(graphNodes)
     simulationConfig.simulation.force("charge")
         .strength(function() { return forceStrength(countOfNodes)})
     simulationConfig.simulation.force("link")
         .id(function (d) {return d.id})
-        .distance(function (d) {return (countOfNodes > 50) ? 200 : 175})
+        .distance(200)//function (d) {return (countOfNodes > 50) ? 200 : 175})
     simulationConfig.simulation.force("link").links(graphLinks)
-    simulationConfig.simulation.force("forceX").strength(.1)
-    simulationConfig.simulation.force("forceY").strength(.1)
-    simulationConfig.simulation.force("collide").radius(0)
+    simulationConfig.simulation.force("forceX").strength(0)
+    simulationConfig.simulation.force("forceY").strength(0)
+    simulationConfig.simulation.force("center")
+    // simulationConfig.simulation.force("radial").radius(200).strength(1)
+    // simulationConfig.simulation.force("collide").radius(0)
+
+    // simulationConfig.simulation.alphaTarget(.9)
     simulationConfig.simulation.alpha(1).restart();
+
 
     setArticleGraphMainLabel()
 
@@ -1309,7 +1324,7 @@ function setLinkDirectionPanel(parentDiv, articleData) {
             displayLinkDirectionArticles(this, articleData)
             activateLinkDirDomItem('.linkDirListItem',this)
             activateLinkDirDomItem('.linkDomainListItem',this)
-            setGraphMode('Explore')
+            setGraphMode('Click')
         })
 
 }
@@ -1425,7 +1440,7 @@ function setLinkDomainPanel(parentSidebar, articleData) {
             focusOnLinkAnalysis(linkDomainArray) 
             activateLinkDirDomItem('.linkDirListItem',this)
             activateLinkDirDomItem('.linkDomainListItem',this)
-            setGraphMode('Explore')
+            setGraphMode('Click')
             
         })
 }
@@ -1498,7 +1513,7 @@ function sngClickArticleNode(sngClickReference, data, opacityTest) {
                updateSideBarLeft_ArticleMain(activeElement.datum(), 'Explore')
                resetListItemDefaults('.linkDirListItem')
                resetListItemDefaults('.linkDomainListItem')
-               setGraphMode('Explore')
+               setGraphMode('Click')
        } 
 }
 function mouseOverArticleNode(mouseOverReference, data, opacityTest) {
@@ -1736,7 +1751,7 @@ function showDomainGraph(domainTitle) {
         updateRecentSearch(domainData);
         resetDisplayDefaultsArticleGraph();
         resetDisplayDefaultsDomainGraph();
-        setGraphMode('Preview')
+        setGraphMode('Hover')
         setGraphType('Domain')
 
         d3.selectAll('.label').remove();
@@ -2072,7 +2087,7 @@ function sngClickDomainNode(mouseOverReference, data, domainTitle) {
     setListItemStyle_DomainCentralNode(currentDomainCentralNode)
     setListItemStyle_NeighborNodeOpacity()
     // exploreMode = true
-    setGraphMode('Explore')
+    setGraphMode('Click')
 
         
 }
@@ -2691,101 +2706,103 @@ function color(entryType){
 
         // yellow 
         case 'Thinker':
-            rgbValue = 'rgb(255, 250, 125)' //#FFFA7D
+            rgbValue = 'rgb(180,255,249)'
+
             break;
 
         // purples
         case 'Aesthetics':
-            rgbValue = 'rgb(196, 134, 255)' //#C486FF
+            rgbValue = 'rgb(184, 108, 237)' 
             break;
 
         // violet 
         case 'Religion':
-            rgbValue = 'rgb(255, 0, 237)' //#FF00ED
+            rgbValue = 'rgb(156, 20, 252)' 
+
             break;
 
         // social and political philosophies
         // reds
         case 'Ethics and Morality':
-            rgbValue = 'rgb(255, 139, 163)' //#FF8BA3
+            rgbValue = 'rgb(230, 97, 97)' //#FF8BA3
             break;
 
         case 'Political and Social Theory': //#E44C96
-            rgbValue = 'rgb(228, 76, 150)'
+            rgbValue = 'rgb(192, 2, 96)'
             break;
     
         case 'Law':
-            rgbValue = 'rgb(255, 125, 99)' //#FF7D63
+            rgbValue = 'rgb(251, 3, 114)' //#FF7D63
             break;
     
         case 'Economics':
-            rgbValue = 'rgb(255, 29, 18)' //#FF1D12
+            rgbValue = 'rgb(238, 50, 170)' //#FF1D12
             break;
     
         case 'Feminism':
-            rgbValue = 'rgb(255, 100, 44)' //#FF642C
+            rgbValue = 'rgb(238, 4, 4)' //#FF642C
             break;
 
         // cultural philosophies
         // orange tones 
 
         case 'Existentialism and Phenomenology':
-            rgbValue = 'rgb(255, 103, 0)' //#FF6700
+            rgbValue = 'rgb(170, 50, 3)' //#FF6700
             break;
 
         case 'Chinese Philosophy':
-            rgbValue = 'rgb(255, 153, 45)' //#FF992D
+            rgbValue = 'rgb(235, 66, 3)' //#FF992D
             break;   
 
         case 'Japanese Philosophy':
-            rgbValue = 'rgb(255, 153, 1)' //#FF9901
+            rgbValue = 'rgb(191, 88, 12)' //#FF9901
             break;
 
         case 'Indian Philosophy':
-            rgbValue = 'rgb(255, 168, 0)' //#FFA800
+            rgbValue = 'rgb(255, 159, 101)' //#FFA800
             break;
 
         case 'Latin American Philosophy':
-            rgbValue = 'rgb(255, 203, 36)' //#FFCB56
+            rgbValue = 'rgb(237, 100, 68)' //#FFCB56
             break;
 
         case 'Arabic and Islamic Philosophy':
-            rgbValue = 'rgb(255, 192, 7)' //#FFC007
+            rgbValue = 'rgb(255, 128, 0)' //#FFC007
             break;
 
         case 'African and African-American Philosophy':
-            rgbValue = 'rgb(255, 210, 0)' //#FFD200
+            rgbValue = 'rgb(255, 165, 1)' //#FFD200
             break;
 
         // langauge, logic, math, computer science
         // greens
-        case 'Language':
-            rgbValue = 'rgb(187, 255, 9)' //#BBFF09
-            break;
-
         case 'Logic':
-            rgbValue = 'rgb(104, 255, 7)' //#68FF07
+            rgbValue = 'rgb(20,172,100)'
             break;
 
         case 'Mathematics':
-            rgbValue = 'rgb(4, 255, 21)' //#04FF15
+            rgbValue = 'rgb(0,255,80)'
             break;
 
         case 'Computer Science':
-            rgbValue = 'rgb(11, 255, 117)' //#0BFF75
+            rgbValue = 'rgb(155,235,135)'
+            break;
+
+        case 'Language':
+            rgbValue = 'rgb(172,247,76)'
             break;
 
         //blue green 
         case 'Metaphysics':
-            rgbValue = 'rgb(182, 222, 250)' //#00FFF4 -- #B7DEFA
+            rgbValue = 'rgb(2,255,208)' 
             break;
 
         case 'Epistemology':
-            rgbValue = 'rgb(0, 219, 255)' // #00DBFF
+            rgbValue = 'rgb(250,250,147)'
             break;
     
         case 'Mind':
-            rgbValue = 'rgb(147, 221, 255)' //#93DDFF
+            rgbValue = 'rgb(43, 162, 162)' 
             break;
     
     
@@ -2793,27 +2810,27 @@ function color(entryType){
         // blues
 
         case 'Scientific Methods':
-            rgbValue = 'rgb(0, 135, 255)' //#0087FF
+            rgbValue = 'rgb(0,111,255)'
             break;
 
         case 'Biology':
-            rgbValue = 'rgb(0, 81, 255)' // #0051FF
+            rgbValue = 'rgb(10,205,255)'
             break;
     
         case 'Evolution':
-            rgbValue = 'rgb(73, 116, 255)' //#4974FF
+            rgbValue = 'rgb(94,190,203)'
             break;
 
         case 'Genetics':
-            rgbValue = 'rgb(119, 134, 255)' //#7786FF
+            rgbValue = 'rgb(0,168,255)'
             break;
 
         case 'Physics':
-            rgbValue = 'rgb(56, 69, 255)' //#3845FF
+            rgbValue = 'rgb(70,144,255)'
             break;    
 
         case 'Quantum Mechanics':
-            rgbValue = 'rgb(97, 87, 255)' //#6157FF
+            rgbValue = 'rgb(35,173,255)'
             break;
 
 

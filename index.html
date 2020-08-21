@@ -69,7 +69,7 @@
                             <div id="graphMode" class="d-none"></div>
                             <svg id="mainGraph" height="100%" width="100%"></svg>
                             <div id="graphInstructions" class="d-none"></div>
-                            <div id="articleInstructions" class="d-none graphInstructionArea">
+                            <div id="articleInstructions" class="graphInstructionArea">
 
                                     <h1 id="articleGraphInstructionsHeading" class="instructionsPageHeading">Article Graph Instructions</h1>
                                     <p>The Article Graph selects a single SEP article, and then shows every article in the entire Encyclopedia that the selected article is linked to in some way.
@@ -177,13 +177,16 @@
 
 
                             </div>
-                            <div id="domainInstructions" class="d-none graphInstructionArea">
+                            <div id="domainInstructions" class="graphInstructionArea">
 
                                 <h1 id="domainGraphInstructionsHeading" class="instructionsPageHeading">Domain Graph Instructions</h1>
-                                <p>The Domain Graph shows how articles in a specific domain are linked together. The same articles may appear in multiple domains, but the
-                                    nodes are colored by their primary domain designation. When the graph is first loaded, the nodes are shown connected in their network
-                                    configuration, but the labels are hidden. 
+                                <p>The Domain Graph shows how articles in a specific domain are all linked together. An individual article may appear in multiple domains, but it will
+                                    always be colored by its primary domain designation. When the graph is first loaded, the entire domain network is displayed, but the labels are hidden.</p>
+                                <p> 
+                                    The Domain Graph differs from the Article Graph in that the Article Graph shows every link a particular SEP article has, while 
+                                    the Domain Graph will only show articles that are tagged as being members of the same domain.</p>
                                 </p>
+                                <p>Help Sections:</p>
                                 <ul id="helpMenu">
                                     <li id="domainGraphHelp">Navigate the Graph</li>
                                     <li id="domainGraphHelpLeft">Left Sidebar</li>
@@ -194,7 +197,7 @@
                                 <h2>Navigate the Graph</h2>
                                 <ul>
                                     <li>When the graph is first loaded, the nodes are visible, but the labels are not. You can hover over the nodes to see the node title, 
-                                        and to see which articles in the domain that particular node is linked to. You can also hover over the titles in the "Most Connected Nodes" panel,
+                                        and to see which articles in the domain that particular article is linked to. You can also hover over the titles in the "Most Connected Nodes" panel,
                                         or the titles in the "List of Articles" panel, to see the same information.
                                     </li>
                                     <li>There are two fundamental ways to navigate the graph: <em>Preview Mode</em> and <em>Explore Mode</em>.
