@@ -60,7 +60,7 @@ function startVisualization() {
     articleMenu.on('change', function(){
         let articleTitle = d3.event.target.value;
         if (articleTitle !== "[Search articles...]") { showArticleGraph(articleTitle)}
-        showArticleGraph(articleTitle)
+        // showArticleGraph(articleTitle)
         window.getSelection().removeAllRanges();
 
     })
@@ -729,7 +729,7 @@ function drawArticleSimulation(data) {
         .strength(function() { return forceStrength(countOfNodes)})
     simulationConfig.simulation.force("link")
         .id(function (d) {return d.id})
-        .distance(200)//function (d) {return (countOfNodes > 50) ? 200 : 175})
+        .distance(175)//function (d) {return (countOfNodes > 50) ? 200 : 175})
     simulationConfig.simulation.force("link").links(graphLinks)
     simulationConfig.simulation.force("forceX").strength(0)
     simulationConfig.simulation.force("forceY").strength(0)
@@ -1964,7 +1964,7 @@ function setCentralNodesPanel(parentSidebar, domainData, data) {
         .classed('panelBG', true)
 
     let centralNodesHeading = centralNodesDiv.append("h2")
-        .text("Most Connected Nodes")
+        .html("Most Connected Nodes")
         .classed('panelHeading', true)
 
     let centralNodesContentArea = centralNodesDiv.append('div')
@@ -2007,7 +2007,7 @@ function setDomainArticleListPanel(parentSidebar, domainData, data) {
         .classed('panelBG', true)
 
     domainArticleListDiv.append("h2")
-        .text("List of Articles")
+        .text("List of All Domain Articles")
         .classed('panelHeading', true)
 
     let articleListAreaDiv = domainArticleListDiv.append('div')
@@ -2022,10 +2022,10 @@ function setDomainArticleListPanel(parentSidebar, domainData, data) {
         .data(domainData.nodes)
         .enter()       
             .append("li")             
-                .html(function(d) {return d.title})
+            .html(function(d) {return ` <span class="badge badge-pill badge-light">${d.numLinks}</span> ${d.title}`})
                 .style('color', function(d)  { return color(d.primary_domain)})
                 .classed('domainArticle', true)
-                .classed('panelListItem', true)
+                .classed('panelListItem_numbered', true)
         .exit().remove()
 
     ////// ux/ui interactions

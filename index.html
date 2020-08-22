@@ -72,19 +72,40 @@
                             <div id="articleInstructions" class="graphInstructionArea">
 
                                     <h1 id="articleGraphInstructionsHeading" class="instructionsPageHeading">Article Graph Instructions</h1>
-                                    <p>The Article Graph selects a single SEP article, and then shows every article in the entire Encyclopedia that the selected article is linked to in some way.
-                                        When the graph is first loaded, the selected article is placed as the central node of a radial graph, and each linked article surrounds it.
+                                    <p>The Article Graph selects a single SEP article, and then shows every other article in the entire Encyclopedia that 
+                                        the selection is linked to in some way. The selected article is always at the center of the graph, and the related
+                                        articles spread radially around it.
                                     </p>
                                     <ul id="helpMenu">
                                         <li id="articleGraphHelp">Navigate the Graph</li>
                                         <li id="articleGraphHelpLeft">Left Sidebar</li>
                                         <li id="articleGraphHelpRight">Right Sidebar</li>
-                                        <li id="articleGraphHelpNav">Navigation Bar</li>
+                                        <li id="articleGraphHelpNav">Recent Searches</li>
                                     </ul>
                                 <div id="articleGraphHelpDiv" class="instructionsSection d-none">
                                     <h2>Navigate the Graph</h2>
+                                    <h3>Interaction Methods</h3>
                                     <ul>
-                                        <li>There are two fundamental ways to navigate the graph: <em>Preview Mode</em> and <em>Explore Mode</em>.
+                                        <li>Hover/MouseOver
+                                            <ul>
+                                                <li>When you hover over a node or title, the left sidebar will be updated with details from that node. 
+                                                    "(Preview)" will be appended to the end of the article name in the sidebar.</li>
+                                                <li>When the graph is in "Hover Mode", the graph itself will be redrawn with information about how the previewed node relates to other
+                                                    articles from the main selection.</li>
+                                            </ul></li>
+                                        <li>Click
+                                            <ul>
+                                                <li>If you click a node or a title, the graph will be frozen, so you can then explore the relationships among the linked articles.</li>
+                                            </ul></li>
+                                        <li>Double Click
+                                            <ul>
+                                                <li>Double-Clicking any node or title will reload the Article Graph will the double-clicked node as the central node.</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <h3>Hover Mode and Click Mode</h3>
+                                    <ul>
+                                        <li>There are two fundamental ways to navigate the graph: <em>Hover Mode</em> and <em>Click Mode</em>.
                                             These are exclusive modes, and the graph can only be in one mode at a time.</li>
                                         <li>The current mode is always listed in the <em>“Graph Mode”</em> box in the top right corner. Toggle between the two modes by <b>single-clicking</b> this box. Switching modes will clear out the graph.</li>
                                         <li>Regardless of the current Graph Mode, <b>Double-click</b> any node or title to make a new selection and reload the graph with the new selection.</li>
@@ -123,55 +144,54 @@
                                 </div>
                                 
                                 <div id="articleGraphHelpLeftDiv" class="instructionsSection d-none">
-                                    <h3>Left Sidebar</h3>
+                                    <h3>Left Sidebar (Same as Domain Graph)</h3>
+                                    <p>The left side bar contains details about a selected article. In it’s default state, the left side bar provides:</p>
                                     <ul>
-                                        <li>The left side bar contains details the about the selected article. In it’s default state, the side bar provides:
-                                            <ul>
-                                                <li>A preview of (up to) the first 500 characters in the full SEP article.</li>
-                                                <li>A link to read the full article on the SEP website.</li>
-                                                <li>The Domain designation(s) of the selected article.</li>
-                                                <li>Details about the author(s), publication data, and word count.</li>
-                                            </ul>
-                                        </li>
-                                        <li>There is a panel called “Explore the TOC” that is collapsed by default. Single-click on the panel heading to expand 
-                                            its content. This panel contains an outline of the full SEP article’s Table of Contents. Each TOC heading is an active
-                                             link, so clicking on a heading will link you into that particular section of the article on the SEP website. 
-                                             When you expand the “Explore the TOC” panel, the Domain(s) and the Article Details panels will collapse. 
-                                             Single-clicking the “Explore the TOC” heading will then re-collapse this panel, and restore the Domain and Article 
-                                             Details.
-                                        </li>
+                                        <li>A preview of (up to) the first 500 characters in the full SEP article.</li>
+                                        <li>A link to read the full article on the SEP website.</li>
+                                        <li>A panel called "Explore the TOC" that is collapsed by default.</li>
+                                        <li>The Domain designation(s) of the selected article.</li>
+                                        <li>Details about the author(s), publication date(s), and word count.</li>
+                                    </ul>
+                                    <p>“Explore the TOC”</p>
+                                    <ul>
+                                        <li>By default, the “Explore the TOC” panel is collapsed.</li>
+                                        <li>Single-click on the panel heading, or toggle button, to expand its contents.</li>
+                                        <li>This panel contains the complete outline from the full SEP article’s Table of Contents. Each TOC heading is an active
+                                            link, so clicking on a heading will link you into that particular section of the article on the SEP website.</li>
+                                        <li>When you expand the “Explore the TOC” panel, the Domain(s) and the Article Details panels will collapse. 
+                                        Single-clicking the “Explore the TOC” heading again will then re-collapse this panel, and restore the Domain and Article 
+                                        Details panels.</li>
                                     </ul>
                                 </div>
 
                                 <div id="articleGraphHelpRightDiv" class="instructionsSection d-none">
                                     <h3>Right Sidebar</h3>
+                                    <p>The right side bar contains details about the linked articles. In its default state, the right sidebar provides:</p>
                                     <ul>
-                                        <li>The right side bar contains details about the linked articles. In its default state, the right sidebar provides:
-                                            <ul>
-                                                <li>Link Domains: A list of the primary domain designations for all of the linked articles, as well as a count of 
-                                                    how many articles in that domain. <b>Hovering</b> over a domain designation in Preview Mode will update the graph to 
-                                                    display only those articles with that primary domain designation; hovering off will reset the graph to its 
-                                                    default state. <b>Single-clicking</b> the domain will put the graph into Explore Mode, and freeze the graph to show 
-                                                    only those articles in the selected domain.
-                                                </li>
-                                                <li>Link Directions: Every article will have a link directions summary that shows which linked articles are 
-                                                    bi-directional links, incoming links, and outgoing links. The panel also shows the count of how many articles 
-                                                    are in each category. <b>Hovering</b> over a link direction category in Preview Mode will update the graph to display only 
-                                                    those articles in that direction category; hovering off the category will reset the graph to its default state. 
-                                                    <b>Single-clicking</b> the link direction will put the graph into Explore Mode, and freeze the graph to show only those 
-                                                    articles in the selected category.
-                                                </li>
-                                            </ul>
+                                        <li>Link Count. This shows the number of links that connect to the main selection.</li>
+                                        <li>List of Articles. This is collapsed by default.</li>
+                                        <li>Link Domains: A list of the primary domain designations for each of the linked articles, as well as a count of 
+                                            how many articles in that domain.
                                         </li>
-                                        <li>"List of Article"</li>
+                                        <li>Link Directions: A list of the three kinds of link directions: bi-directional links, incoming links, and outgoing links; and a count of how many linked articles fall into each direction catergory.
+                                        </li>
+                                    </ul>
+                                    <p>“List of Articles”</p>
+                                    <ul>
+                                        <li>By default, the “List of Articles” panel is collapsed.</li>
+                                        <li>Single-click on the panel heading, or its toggle button, to expand its contents.</li>
+                                        <li>This panel contains an alphabetical list of all the linked articles in the radial graph, each title also colored by its primary domain designation.</li>
+                                        <li>Because this information duplicates the nodes and titles in the radial graph, it is hidden by default. But some graphs are so large that having the alphabetical list available is helpful for exploration. </li>
+                                        <li>When you expand the “List of Articles” panel, the Link Domains and Link Directions panels will collapse. 
+                                            Single-clicking the “List of Articles” heading again will then collapse this panel, and restore the Link Domains and Link Directions panels</li>
                                     </ul>
                                 </div>
 
                                 <div id="articleGraphHelpNavDiv" class="instructionsSection d-none">
-                                    <h3>Navigation Bar</h3>
+                                    <h3>Recent Searches (Same as Domain Graph)</h3>
                                     <ul>
-                                        <li>The Nav Bar is mostly self-explanatory, but the Recent Searches drop-down requires some explanation: Each time the user reloads the graph with a new article, including searches through the domain graph, the Recent Searches box will be updated, so the user can track their progress through the Encyclopedia. The Recent Searches box will contain the preview 10 searches. 
-                                        </li>
+                                        <li>The Recent Searches drop-down menu list the the 10 most recent searches on the site, inclusive of both the Article Graph and the Domain Graph. New searches are added/removed on a first-in/first-out basis.</li>
                                     </ul>
                                 </div>
 
@@ -191,7 +211,7 @@
                                     <li id="domainGraphHelp">Navigate the Graph</li>
                                     <li id="domainGraphHelpLeft">Left Sidebar</li>
                                     <li id="domainGraphHelpRight">Right Sidebar</li>
-                                    <li id="domainGraphHelpNav">Navigation Bar</li>
+                                    <li id="domainGraphHelpNav">Recent Searches</li>
                                 </ul>
                             <div id="domainGraphHelpDiv" class="instructionsSection d-none">
                                 <h2>Navigate the Graph</h2>
@@ -240,54 +260,45 @@
                             
                             <div id="domainGraphHelpLeftDiv" class="instructionsSection d-none">
                                 <h3>Left Sidebar (Same as Article Graph)</h3>
+                                <p>The left side bar contains details about a selected article. In it’s default state, the left side bar provides:</p>
                                 <ul>
-                                    <li>The left side bar contains details the about the selected article. In it’s default state, the side bar provides:
-                                        <ul>
-                                            <li>A preview of (up to) the first 500 characters in the full SEP article.</li>
-                                            <li>A link to read the full article on the SEP website.</li>
-                                            <li>The Domain designation(s) of the selected article.</li>
-                                            <li>Details about the author(s), publication data, and word count.</li>
-                                        </ul>
-                                    </li>
-                                    <li>There is a panel called “Explore the TOC” that is collapsed by default. Single-click on the panel heading to expand 
-                                        its content. This panel contains an outline of the full SEP article’s Table of Contents. Each TOC heading is an active
-                                         link, so clicking on a heading will link you into that particular section of the article on the SEP website. 
-                                         When you expand the “Explore the TOC” panel, the Domain(s) and the Article Details panels will collapse. 
-                                         Single-clicking the “Explore the TOC” heading will then re-collapse this panel, and restore the Domain and Article 
-                                         Details.
-                                    </li>
+                                    <li>A preview of (up to) the first 500 characters in the full SEP article.</li>
+                                    <li>A link to read the full article on the SEP website.</li>
+                                    <li>A panel called "Explore the TOC" that is collapsed by default.</li>
+                                    <li>The Domain designation(s) of the selected article.</li>
+                                    <li>Details about the author(s), publication date(s), and word count.</li>
+                                </ul>
+                                <p>“Explore the TOC”</p>
+                                <ul>
+                                    <li>By default, the “Explore the TOC” panel is collapsed.</li>
+                                    <li>Single-click on the panel heading, or toggle button, to expand its contents.</li>
+                                    <li>This panel contains the complete outline from the full SEP article’s Table of Contents. Each TOC heading is an active
+                                        link, so clicking on a heading will link you into that particular section of the article on the SEP website.</li>
+                                    <li>When you expand the “Explore the TOC” panel, the Domain(s) and the Article Details panels will collapse. 
+                                    Single-clicking the “Explore the TOC” heading again will then re-collapse this panel, and restore the Domain and Article 
+                                    Details panels.</li>
                                 </ul>
                             </div>
 
                             <div id="domainGraphHelpRightDiv" class="instructionsSection d-none">
                                 <h3>Right Sidebar</h3>
-                                <ul>
-                                    <li>The right side bar contains details about the linked articles. In its default state, the right sidebar provides:
-                                        <ul>
-                                            <li>Link Domains: A list of the primary domain designations for all of the linked articles, as well as a count of 
-                                                how many articles in that domain. <b>Hovering</b> over a domain designation in Preview Mode will update the graph to 
-                                                display only those articles with that primary domain designation; hovering off will reset the graph to its 
-                                                default state. <b>Single-clicking</b> the domain will put the graph into Explore Mode, and freeze the graph to show 
-                                                only those articles in the selected domain.
-                                            </li>
-                                            <li>Link Directions: Every article will have a link directions summary that shows which linked articles are 
-                                                bi-directional links, incoming links, and outgoing links. The panel also shows the count of how many articles 
-                                                are in each category. <b>Hovering</b> over a link direction category in Preview Mode will update the graph to display only 
-                                                those articles in that direction category; hovering off the category will reset the graph to its default state. 
-                                                <b>Single-clicking</b> the link direction will put the graph into Explore Mode, and freeze the graph to show only those 
-                                                articles in the selected category.
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>"List of Article"</li>
-                                </ul>
+                                <p>The right side bar lists all of the articles in the selected domain. It has three major sections:</p>
+                                    <ul>
+                                        <li>Count of Domain Articles.</li>
+                                        <li>Most Connected Nodes. This panel lists the top five most connected articles in the domain, sorted in descending order by the 
+                                            total number of connections within this domain. As usual: each title is colored by its primary
+                                            domain designation. The number preceeding the title is the number of domain connections for that particular article.
+                                        </li>
+                                        <li>List of All Domain Articles. This is an alphabetic list of every single article in the domain, where each title is colored by its primary
+                                            domain designation. The number preceeding the title is the number of domain connections for that particular article.
+                                        </li>
+                                    </ul>
                             </div>
 
                             <div id="domainGraphHelpNavDiv" class="instructionsSection d-none">
-                                <h3>Navigation Bar (Same as Article Graph)</h3>
+                                <h3>Recent Searches (Same as Article Graph)</h3>
                                 <ul>
-                                    <li>The Nav Bar is mostly self-explanatory, but the Recent Searches drop-down requires some explanation: Each time the user reloads the graph with a new article, including searches through the domain graph, the Recent Searches box will be updated, so the user can track their progress through the Encyclopedia. The Recent Searches box will contain the preview 10 searches. 
-                                    </li>
+                                    <li>The Recent Searches drop-down menu list the the 10 most recent searches on the site, inclusive of both the Article Graph and the Domain Graph. New searches are added/removed on a first-in/first-out basis.</li>
                                 </ul>
                             </div>
 
