@@ -180,14 +180,13 @@ function initializeSimulation(svgConfig) {
     let simulation = d3.forceSimulation()
     simulation
         .nodes(graphNodes)
-        .force("charge", d3.forceManyBody())//.strength(function () { (graphNodes.length) > 30 ? -40 : -200}))
+        .force("charge", d3.forceManyBody())
         .force("link", d3.forceLink())
         .force("center", d3.forceCenter())
-        // .force("forceX", d3.forceX().x(0).strength(.1))
-        // .force("forceY", d3.forceY().y(0).strength(.1))
-        // .force("collide", d3.forceCollide())
+        .alphaMin(0.1)
+        .alphaDecay(0.1)
+        .alphaTarget(0.9)
 
-    // console.log(graphNodes.length)
     return {links, nodes, labels, relatedLinks, domainLabels, simulation}
 }
 
@@ -725,7 +724,7 @@ function drawArticleSimulation(data) {
     //update simulations
 
     simConfig.simulation.force("charge")
-        .strength(function() { return forceStrength(countOfNodes)})//forceStrength(countOfNodes)})
+        .strength(function() { return forceStrength(countOfNodes)})
     simConfig.simulation.force("link")
         .id(function (d) {return d.id})
         .distance(200)//function () {return (countOfNodes > 50) ? 200 : 175})
@@ -1883,17 +1882,15 @@ function drawDomainSimulation(data, domainData){
     })
     
     //restart simulation
-    simConfig.simulation.nodes(graphNodes);
+
     simConfig.simulation.force("charge")
+        .strength(function() { return forceStrength(countOfNodes)})
     simConfig.simulation.force("link")
         .id(function (d) {return d.id})
         .distance(10)
         .links(graphLinks)
-    // simConfig.simulation.force("forceX")
-    // simConfig.simulation.force("forceY")
+    simConfig.simulation.nodes(graphNodes);
     // simConfig.simulation.force("collide").radius(15)
-    // simConfig.simulation.alphaMin(0.1)
-    // simConfig.simulation.alphaDecay(0.1)
     simConfig.simulation.alpha(1).restart();
 
 }
