@@ -20,8 +20,8 @@ let allEntries = [];
 
 // Initialize SVG and Simulation
 let svgConfig = initializeParentSVG(svg);
-let simulationConfig = initializeSimulation(svgConfig);  
-let stylesConfig = initializeStyles();
+let simConfig = initializeSimulation(svgConfig);  
+let styConfig = initializeStyles();
 
 //Initialze searchCache and recentSearches
 let searchCache = [];
@@ -100,7 +100,7 @@ function startVisualization() {
 }
 
 function homePageAnimation() {    
-    d3.select('nav').transition().duration(2000).style('opacity',1)
+    d3.select('nav').transition().duration(3000).style('opacity',1)
     loadMenus();
 
 }
@@ -178,17 +178,16 @@ function initializeSimulation(svgConfig) {
         .classed('domainLabels',true)
 
     let simulation = d3.forceSimulation()
-        .force("charge", d3.forceManyBody())
+    simulation
+        .nodes(graphNodes)
+        .force("charge", d3.forceManyBody())//.strength(function () { (graphNodes.length) > 30 ? -40 : -200}))
         .force("link", d3.forceLink())
         .force("center", d3.forceCenter())
-        .force("forceX", d3.forceX())
-        .force("forceY", d3.forceY())
-        .force("collide", d3.forceCollide())
-        // .force("radial", d3.forceRadial())
-        .alphaDecay(.05)
-        .alphaMin(.1)
-        // .alphaTarget(1);
+        // .force("forceX", d3.forceX().x(0).strength(.1))
+        // .force("forceY", d3.forceY().y(0).strength(.1))
+        // .force("collide", d3.forceCollide())
 
+    // console.log(graphNodes.length)
     return {links, nodes, labels, relatedLinks, domainLabels, simulation}
 }
 
@@ -627,7 +626,7 @@ function drawArticleSimulation(data) {
     let transitionTime = 2000;
 
     //links
-    link = simulationConfig.links.selectAll('.link')
+    link = simConfig.links.selectAll('.link')
                          .data(graphLinks, function(d) {return `${d.source}-${d.target}`})
                          .order()
                          .attr('dir', function(d) {return d.dir})
@@ -637,17 +636,17 @@ function drawArticleSimulation(data) {
 
     link = link.enter()
                .append('line')
-               .attr("stroke", stylesConfig.link.strokeColor)
-               .attr("stroke-width", stylesConfig.link.strokeWidth)
-               .attr("opacity", stylesConfig.link.defaultOpacity)
+               .attr("stroke", styConfig.link.strokeColor)
+               .attr("stroke-width", styConfig.link.strokeWidth)
+               .attr("opacity", styConfig.link.defaultOpacity)
                .attr('dir', function(d) {return d.dir})
                .attr('nodeID', function(d) { return d.target })
                .classed('link',true).merge(link)
 
     //labels
-    label = simulationConfig.labels.selectAll('.label')
+    label = simConfig.labels.selectAll('.label')
                            .data(graphNodes, function(d) {return d.title})
-                           .attr('fill-opacity',stylesConfig.nodeLabel.defaultOpacity)
+                           .attr('fill-opacity',styConfig.nodeLabel.defaultOpacity)
                            .order()
                            .classed('mainArticleLabel', function(d,i) {return i===0?true:false})
                            .attr("fill", function(d) {return color(d.primary_domain)})
@@ -656,8 +655,8 @@ function drawArticleSimulation(data) {
     label = label.enter()
                  .append("text")
                  .text(function(d) {return d.title})
-                 .attr('fill-opacity',stylesConfig.nodeLabel.defaultOpacity)
-                 .attr("font-size", stylesConfig.nodeLabel.fontSize)
+                 .attr('fill-opacity',styConfig.nodeLabel.defaultOpacity)
+                 .attr("font-size", styConfig.nodeLabel.fontSize)
                  .attr("fill", function(d) {return color(d.primary_domain)})
                  .attr('nodeID', function(d) {return d.id})
                  .classed('label',true)
@@ -672,10 +671,10 @@ function drawArticleSimulation(data) {
 
 
     //nodes
-    node = simulationConfig.nodes.selectAll('.node')
+    node = simConfig.nodes.selectAll('.node')
                          .data(graphNodes, function (d) {return d.id})
                          .order()
-                         .attr("r", 5)
+                         .attr("r", styConfig.nodeLabel.defaultRadius)
                          .attr("fill", function(d) {return color(d.primary_domain)})
                          .classed('mainArticleNode', function(d,i) {return i===0?true:false})
     
@@ -683,12 +682,12 @@ function drawArticleSimulation(data) {
 
     node = node.enter()
                 .append('circle')
-                .attr("r", stylesConfig.nodeLabel.defaultRadius)
+                .attr("r", styConfig.nodeLabel.defaultRadius)
                 .attr("fill", function(d) {return color(d.primary_domain)})
-                .attr("stroke", stylesConfig.nodeLabel.strokeColor)
-                .attr("stroke-width", stylesConfig.nodeLabel.strokeWidth)
+                .attr("stroke", styConfig.nodeLabel.strokeColor)
+                .attr("stroke-width", styConfig.nodeLabel.strokeWidth)
                 .attr('nodeID', function(d) {return d.id})
-                .style('opacity',stylesConfig.nodeLabel.defaultOpacity)
+                .style('opacity',styConfig.nodeLabel.defaultOpacity)
                 .classed('node',true)
                 .classed('mainArticleNode', function(d,i) {return i===0?true:false})
                 .merge(node)
@@ -701,7 +700,7 @@ function drawArticleSimulation(data) {
     //update simulation ticker
     let numTicks = 0;
     let ticksCompleted = false;
-    simulationConfig.simulation.on('tick', function (){
+    simConfig.simulation.on('tick', function (){
             link
                 .attr("x1", function(d) {return 0 })
                 .attr("y1", function(d) {return 0 })
@@ -724,22 +723,18 @@ function drawArticleSimulation(data) {
     })
 
     //update simulations
-    simulationConfig.simulation.nodes(graphNodes)
-    simulationConfig.simulation.force("charge")
-        .strength(function() { return forceStrength(countOfNodes)})
-    simulationConfig.simulation.force("link")
+
+    simConfig.simulation.force("charge")
+        .strength(function() { return forceStrength(countOfNodes)})//forceStrength(countOfNodes)})
+    simConfig.simulation.force("link")
         .id(function (d) {return d.id})
-        .distance(175)//function (d) {return (countOfNodes > 50) ? 200 : 175})
-    simulationConfig.simulation.force("link").links(graphLinks)
-    simulationConfig.simulation.force("forceX").strength(0)
-    simulationConfig.simulation.force("forceY").strength(0)
-    simulationConfig.simulation.force("center")
-    // simulationConfig.simulation.force("radial").radius(200).strength(1)
-    // simulationConfig.simulation.force("collide").radius(0)
-
-    // simulationConfig.simulation.alphaTarget(.9)
-    simulationConfig.simulation.alpha(1).restart();
-
+        .distance(200)//function () {return (countOfNodes > 50) ? 200 : 175})
+        .links(graphLinks)
+    simConfig.simulation.nodes(graphNodes)
+    // simConfig.simulation.force("collide").radius(0)
+    // simConfig.simulation.force("forceX")
+    // simConfig.simulation.force("forceY")
+    simConfig.simulation.alpha(1).restart();
 
     setArticleGraphMainLabel()
 
@@ -754,7 +749,7 @@ function setArticleGraphMainLabel() {
         let currentMainArticleNode = [{'text': mainArticleTitle.title, 'primaryDomain': mainArticleTitle.primary_domain}]
         
 
-        let mainArticleLabelArea = simulationConfig.labels.append('g')
+        let mainArticleLabelArea = simConfig.labels.append('g')
             .classed('mainArticleLabelArea', true)
 
         mainArticleLabelArea.html('')
@@ -1335,11 +1330,11 @@ function activateLinkDirDomItem(itemClass, mouseReference) {
         if(mouseReference === this) {
             d3.select(this)
                 .style('font-weight', 'bold')
-                .transition().duration(200).style('opacity', stylesConfig.listItems.defaultOpacity)
+                .transition().duration(200).style('opacity', styConfig.listItems.defaultOpacity)
         }   else    {
             d3.select(this)
                 .style('font-weight', 'normal')
-                .transition().duration(200).style('opacity', stylesConfig.listItems.dimmedOpacity)
+                .transition().duration(200).style('opacity', styConfig.listItems.dimmedOpacity)
         }
     })
 }
@@ -1579,7 +1574,7 @@ function focusOnArticleNode(data, activeElement) {
 
     let relatedArticles = getRelatedArticles(data,activeElement)
 
-    let linkLinesGroup = simulationConfig.relatedLinks
+    let linkLinesGroup = simConfig.relatedLinks
     linkLinesGroup.html('')
     
     let startX = getNodeCenter(activeElement).attr('cx')
@@ -1597,7 +1592,7 @@ function focusOnArticleNode(data, activeElement) {
                 .attr('y2', function (d) {return getNodeCenter(d).attr('cy')})
                 .classed('relatedLinkLines', true)
                 .style('stroke', function() {return color(activeElement.primary_domain)})
-                .style('opacity', stylesConfig.linkLines.articleGraphOpacity)
+                .style('opacity', styConfig.linkLines.articleGraphOpacity)
                 .merge(linkLines)
 
 
@@ -1609,7 +1604,7 @@ function focusOnArticleNode(data, activeElement) {
         each(function (d,i) {
             d3.select(this)
                 .transition().duration(200).attr('opacity', function (link) { 
-                    return link.target.id === activeElement.id ? stylesConfig.link.activeOpacity : stylesConfig.link.inactiveOpacity
+                    return link.target.id === activeElement.id ? styConfig.link.activeOpacity : styConfig.link.inactiveOpacity
                 })
     });
 
@@ -1636,7 +1631,7 @@ function focusOnLinkAnalysis(linksReference) {
         .each(function (d,i) {
             let match = linksReference.includes(d.target.id)
             d3.select(this)
-                .transition().duration(200).attr('opacity', match ? stylesConfig.link.activeOpacity : stylesConfig.link.inactiveOpacity)
+                .transition().duration(200).attr('opacity', match ? styConfig.link.activeOpacity : styConfig.link.inactiveOpacity)
         })
 
     
@@ -1652,7 +1647,7 @@ function focusOnLinkAnalysis(linksReference) {
                 .transition().duration(200).style('opacity', function(node) { return setNodeLabelOpacity(node, linksReference)})
         })
 
-        d3.selectAll('.relatedLinkLines').transition().duration(100).style('opacity',stylesConfig.linkLines.inactiveOpacity)
+        d3.selectAll('.relatedLinkLines').transition().duration(100).style('opacity',styConfig.linkLines.inactiveOpacity)
     }
 
     activateArticleListItem();
@@ -1666,9 +1661,9 @@ function activateArticleListItem() {
     listOfArticles.each(function (d) {
         let articleRef = this
         if(nodeTitles.includes(d.title)) {
-            d3.select(articleRef).transition().duration(200).style('opacity', stylesConfig.listItems.defaultOpacity)
+            d3.select(articleRef).transition().duration(200).style('opacity', styConfig.listItems.defaultOpacity)
         }   else    {
-            d3.select(articleRef).transition().duration(200).style('opacity', stylesConfig.listItems.dimmedOpacity)
+            d3.select(articleRef).transition().duration(200).style('opacity', styConfig.listItems.dimmedOpacity)
         }
     })
 
@@ -1678,11 +1673,11 @@ function activateArticleListItem() {
 function setNodeLabelOpacity(selectedElement, elementsArray, activeElement) {
     let opacityValue;
 
-    if (elementsArray.includes(selectedElement.id)) {opacityValue = stylesConfig.nodeLabel.inArrayOpacity}
-    if (!elementsArray.includes(selectedElement.id)) {opacityValue = stylesConfig.nodeLabel.notInArrayOpacity}
-    if (selectedElement.index === 0) {opacityValue = stylesConfig.nodeLabel.centralNodeDimmedOpacity}
+    if (elementsArray.includes(selectedElement.id)) {opacityValue = styConfig.nodeLabel.inArrayOpacity}
+    if (!elementsArray.includes(selectedElement.id)) {opacityValue = styConfig.nodeLabel.notInArrayOpacity}
+    if (selectedElement.index === 0) {opacityValue = styConfig.nodeLabel.centralNodeDimmedOpacity}
     if (typeof(activeElement) !== 'undefined') {
-        if (selectedElement.id === activeElement.id) { opacityValue = stylesConfig.nodeLabel.defaultOpacity}
+        if (selectedElement.id === activeElement.id) { opacityValue = styConfig.nodeLabel.defaultOpacity}
     }
 
     return opacityValue
@@ -1691,17 +1686,17 @@ function setNodeLabelOpacity(selectedElement, elementsArray, activeElement) {
 
 function resetListItemDefaults(itemClass) {
     d3.selectAll(itemClass)
-        .transition().duration(200).style('opacity',stylesConfig.listItems.defaultOpacity)
+        .transition().duration(200).style('opacity',styConfig.listItems.defaultOpacity)
         .style('font-weight', 'normal')
 }
    
 
 function resetDisplayDefaultsArticleGraph() {
-    d3.selectAll('.link').transition().duration(200).attr('opacity', stylesConfig.link.defaultOpacity);
-    d3.selectAll('.label').transition().duration(200).attr('fill-opacity', stylesConfig.nodeLabel.defaultOpacity);
-    d3.selectAll('.node').transition().duration(200).style('opacity', stylesConfig.nodeLabel.defaultOpacity);
-    d3.selectAll('.relatedLinkLines').transition().duration(200).style('opacity',stylesConfig.linkLines.inactiveOpacity)
-    d3.select('.d3plus-textBox').transition().duration(200).style('opacity',stylesConfig.nodeLabel.defaultOpacity)
+    d3.selectAll('.link').transition().duration(200).attr('opacity', styConfig.link.defaultOpacity);
+    d3.selectAll('.label').transition().duration(200).attr('fill-opacity', styConfig.nodeLabel.defaultOpacity);
+    d3.selectAll('.node').transition().duration(200).style('opacity', styConfig.nodeLabel.defaultOpacity);
+    d3.selectAll('.relatedLinkLines').transition().duration(200).style('opacity',styConfig.linkLines.inactiveOpacity)
+    d3.select('.d3plus-textBox').transition().duration(200).style('opacity',styConfig.nodeLabel.defaultOpacity)
 
     resetListItemDefaults('.linkDirListItem')
     resetListItemDefaults('.linkDomainListItem')
@@ -1830,16 +1825,16 @@ function drawDomainSimulation(data, domainData){
     let countOfNodes = graphNodes.length;
 
     //bind simulation link objects to the the data in graphLinks
-    link = simulationConfig.links.selectAll('.link')
+    link = simConfig.links.selectAll('.link')
         .data(graphLinks, function(d) {return `${d.source}-${d.target}`});
 
     link.exit().remove();
 
     link = link.enter()
                .append('line')
-               .attr("stroke", stylesConfig.link.strokeColor)
-               .attr("stroke-width", stylesConfig.link.strokeWidth)
-               .attr("opacity", stylesConfig.link.defaultOpacity)
+               .attr("stroke", styConfig.link.strokeColor)
+               .attr("stroke-width", styConfig.link.strokeWidth)
+               .attr("opacity", styConfig.link.defaultOpacity)
                .classed('link',true).merge(link)
 
     //nodes
@@ -1850,7 +1845,7 @@ function drawDomainSimulation(data, domainData){
         .range([2,15])
 
 
-    node = simulationConfig.nodes.selectAll('.node')
+    node = simConfig.nodes.selectAll('.node')
                          .data(graphNodes, function (d) {return d.id})
                          .attr("r", function(d) {return scaleNodeRadius(d.numLinks)})
                          .attr("fill", function(d) {return color(d.primary_domain)})
@@ -1861,8 +1856,8 @@ function drawDomainSimulation(data, domainData){
                 .append('circle')
                 .attr("r", function(d) {return scaleNodeRadius(d.numLinks)})
                 .attr("fill", function(d) {return color(d.primary_domain)})
-                .attr("stroke", stylesConfig.nodeLabel.strokeColor)
-                .attr("stroke-width",  stylesConfig.nodeLabel.strokeWidth)
+                .attr("stroke", styConfig.nodeLabel.strokeColor)
+                .attr("stroke-width",  styConfig.nodeLabel.strokeWidth)
                 .attr('nodeID', function(d) {return d.id})
                 .style('opacity',1)
                 .classed('node',true)
@@ -1873,7 +1868,7 @@ function drawDomainSimulation(data, domainData){
     node.on('click', function() { sngClickDomainNode(this, data, domainData)})
     node.on('dblclick', function() {dblClickDomainNode(this, data)})    
              
-    simulationConfig.simulation.on('tick', function () {
+    simConfig.simulation.on('tick', function () {
         link
             .attr("x1", function(d) {return d.source.x })
             .attr("y1", function(d) {return d.source.y })
@@ -1888,18 +1883,24 @@ function drawDomainSimulation(data, domainData){
     })
     
     //restart simulation
-    simulationConfig.simulation.nodes(graphNodes);
-    simulationConfig.simulation.force("charge").strength(function() { return forceStrength(countOfNodes)})
-    simulationConfig.simulation.force("link").id(function (d) {return d.id})
-                                             .distance(function (d) {return (countOfNodes > 250) ? 250 : 300})
-    simulationConfig.simulation.force("link").links(graphLinks)
-    simulationConfig.simulation.force("forceX").strength(.5)
-    simulationConfig.simulation.force("forceY").strength(.5)
-    simulationConfig.simulation.force("collide").radius(15)
-    simulationConfig.simulation.alpha(1).restart();
+    simConfig.simulation.nodes(graphNodes);
+    simConfig.simulation.force("charge")
+    simConfig.simulation.force("link")
+        .id(function (d) {return d.id})
+        .distance(10)
+        .links(graphLinks)
+    // simConfig.simulation.force("forceX")
+    // simConfig.simulation.force("forceY")
+    // simConfig.simulation.force("collide").radius(15)
+    // simConfig.simulation.alphaMin(0.1)
+    // simConfig.simulation.alphaDecay(0.1)
+    simConfig.simulation.alpha(1).restart();
 
 }
 
+function setLinkDistanceDomain(countofNodes) {
+
+}
 function updateSidebarsDomain(data, domainTitle) {
     updateSidebarLeft_DomainMain()
     updateSidebarRight_DomainMain(data, domainTitle);
@@ -2102,8 +2103,8 @@ function mouseOverDomainNode(mouseOverReference, data, domainTitle) {
         let nodeCircle = d3.selectAll('.node').filter(function (d,i) { return d.id === selectedNode.id })
         updateSideBarLeft_ArticleMain(selectedNode, 'Preview')
 
-        if(+nodeCircle.style('opacity') === stylesConfig.nodeLabel.neighborNodeOpacity) {
-            nodeCircle.style('opacity', stylesConfig.nodeLabel.defaultOpacity)
+        if(+nodeCircle.style('opacity') === styConfig.nodeLabel.neighborNodeOpacity) {
+            nodeCircle.style('opacity', styConfig.nodeLabel.defaultOpacity)
             let selectedLabel = getD3PlusLabel(selectedNode.id)
             let selectedLabelLocationData = getDomainLabelLocationData(selectedLabel)
             if(nodeCircle.id !== currentDomainCentralNode.id ) {}
@@ -2119,10 +2120,10 @@ function mouseOutDomainNode(mouseOutReference, data, domainTitle) {
     if(!exploreMode) { clearSidebar(sidebarLeft); resetDisplayDefaultsDomainGraph();} 
     if(exploreMode) { 
         let selectedNode = d3.select(mouseOutReference).datum()
-        d3.selectAll('.relatedLinkLines').style('opacity',stylesConfig.linkLines.inactiveOpacity)
+        d3.selectAll('.relatedLinkLines').style('opacity',styConfig.linkLines.inactiveOpacity)
         if(typeof(currentDomainCentralNode.title) !== null ) {
             if(selectedNode.title !== currentDomainCentralNode.title) { 
-                if(priorNodeCircle_ListItem) { priorNodeCircle_ListItem.style('opacity', stylesConfig.nodeLabel.neighborNodeOpacity) }
+                if(priorNodeCircle_ListItem) { priorNodeCircle_ListItem.style('opacity', styConfig.nodeLabel.neighborNodeOpacity) }
                  }
                 //  updateSidebarLeft_DomainMain(currentDomainCentralNode)
                  updateSideBarLeft_ArticleMain(currentDomainCentralNode, 'Explore')
@@ -2145,14 +2146,14 @@ function isNeighborNode(a, b) {
 function focusOnDomainArticle(activeElement) {
 
     d3.selectAll('.link').transition().duration(300).attr("opacity", function (link) {
-        return link.source.id === activeElement.id  || link.target.id === activeElement.id ? stylesConfig.link.activeDomainOpacity : stylesConfig.link.inactiveDomainOpacity;
+        return link.source.id === activeElement.id  || link.target.id === activeElement.id ? styConfig.link.activeDomainOpacity : styConfig.link.inactiveDomainOpacity;
     });
 
     d3.selectAll('.node').transition().duration(300).style("opacity", function (node) {
         if(activeElement.id === node.id) {
-            return stylesConfig.nodeLabel.defaultOpacity
+            return styConfig.nodeLabel.defaultOpacity
         }   else {
-            return isNeighborNode(activeElement.id, node.id) ?  stylesConfig.nodeLabel.neighborNodeOpacity : stylesConfig.nodeLabel.notInArrayOpacity;
+            return isNeighborNode(activeElement.id, node.id) ?  styConfig.nodeLabel.neighborNodeOpacity : styConfig.nodeLabel.notInArrayOpacity;
         }
     });
 
@@ -2201,26 +2202,26 @@ function setListItemStyle_NeighborNodeOpacity() {
 
     d3.selectAll('.centralNodeArticles').each(function (d) {
         if(labelsText.includes(d.title)) {
-            d3.select(this).transition().duration(200).style('opacity',stylesConfig.listItems.defaultOpacity)
+            d3.select(this).transition().duration(200).style('opacity',styConfig.listItems.defaultOpacity)
         }   else {
-            d3.select(this).transition().duration(200).style('opacity',stylesConfig.listItems.dimmedOpacity)
+            d3.select(this).transition().duration(200).style('opacity',styConfig.listItems.dimmedOpacity)
         }
     })
     d3.selectAll('.domainArticle').each(function (d) {
         if(labelsText.includes(d.title)) {
-            d3.select(this).transition().duration(200).style('opacity',stylesConfig.listItems.defaultOpacity)
+            d3.select(this).transition().duration(200).style('opacity',styConfig.listItems.defaultOpacity)
         }   else {
-            d3.select(this).transition().duration(200).style('opacity',stylesConfig.listItems.dimmedOpacity)
+            d3.select(this).transition().duration(200).style('opacity',styConfig.listItems.dimmedOpacity)
         }
     })
 }
 
 function positionRelatedDomainLabels(activeElement) {
 
-    let domainLabelsGroup = simulationConfig.domainLabels
+    let domainLabelsGroup = simConfig.domainLabels
         domainLabelsGroup
             .html('')
-                .style('opacity',stylesConfig.nodeLabel.defaultOpacity)
+                .style('opacity',styConfig.nodeLabel.defaultOpacity)
 
     let domainLabelsLeft = [];
     let domainLabelsRight = [];
@@ -2321,11 +2322,11 @@ function positionRelatedDomainLabels(activeElement) {
 
         // UX/UI functions 
         let mainDomainNodeLabel = d3.select('.mainDomainNode')
-            mainDomainNodeLabel.transition().duration(50).style('fill-opacity', stylesConfig.nodeLabel.defaultOpacity)
+            mainDomainNodeLabel.transition().duration(50).style('fill-opacity', styConfig.nodeLabel.defaultOpacity)
         
             let domainLabelsList = d3.selectAll('.d3plus-textBox')
 
-        domainLabelsList.transition().duration(200).style('fill-opacity', stylesConfig.nodeLabel.defaultOpacity)
+        domainLabelsList.transition().duration(200).style('fill-opacity', styConfig.nodeLabel.defaultOpacity)
     
         domainLabelsList.on('mouseover', function() {mouseOverTextBox(this)})
         domainLabelsList.on('mouseout', function() {mouseOutTextBox(this)})
@@ -2342,7 +2343,7 @@ function positionRelatedDomainLabels(activeElement) {
 
             let selectedNode = getDomainNodeFromD3Plus(mouseOverReference)
             let nodeCircle = d3.selectAll('.node').filter(function (d,i) { return d.id === selectedNode.id })
-            nodeCircle.style('opacity', stylesConfig.nodeLabel.defaultOpacity)
+            nodeCircle.style('opacity', styConfig.nodeLabel.defaultOpacity)
 
             let selectedLabel = d3.select(mouseOverReference)
             let selectedLabelLocationData = getDomainLabelLocationData(selectedLabel)
@@ -2361,7 +2362,7 @@ function positionRelatedDomainLabels(activeElement) {
 
             d3.selectAll('.relatedLinkLines').style('opacity',0)
 
-            if(selectedNode.title !== currentDomainCentralNode.title) { priorNodeCircle.style('opacity', stylesConfig.nodeLabel.neighborNodeOpacity) }
+            if(selectedNode.title !== currentDomainCentralNode.title) { priorNodeCircle.style('opacity', styConfig.nodeLabel.neighborNodeOpacity) }
 
             // updateSidebarLeft_DomainMain(currentDomainCentralNode)
             updateSideBarLeft_ArticleMain(currentDomainCentralNode, 'Explore')
@@ -2430,10 +2431,10 @@ function drawDomainLinkLine(labelData, nodeCircle) {
     let nodeCircleCY = +nodeCircle.attr('cy')
     let nodeCircleDomain = nodeCircle.datum().primary_domain
 
-    let linkLinesGroup = simulationConfig.relatedLinks
+    let linkLinesGroup = simConfig.relatedLinks
     linkLinesGroup.html('')
     linkLinesGroup
-            .style('opacity', stylesConfig.linkLines.domainGraphOpacity)
+            .style('opacity', styConfig.linkLines.domainGraphOpacity)
 
 
     linkLinesGroup
@@ -2445,7 +2446,7 @@ function drawDomainLinkLine(labelData, nodeCircle) {
         .attr('id', 'test')
         .style('stroke', function() {return color(nodeCircleDomain)})
         .classed('relatedLinkLines', true)
-        .transition().duration(200).style('opacity', stylesConfig.linkLines.domainGraphOpacity)
+        .transition().duration(200).style('opacity', styConfig.linkLines.domainGraphOpacity)
 
 }
 
@@ -2484,21 +2485,21 @@ function resetDisplayDefaultsDomainGraph() {
     
 
     let links = d3.selectAll('.link')
-        .transition().duration(200).attr("opacity", stylesConfig.link.defaultOpacity);
+        .transition().duration(200).attr("opacity", styConfig.link.defaultOpacity);
 
     let nodes = d3.selectAll('.node')
-        .transition().duration(200).style("opacity", stylesConfig.nodeLabel.defaultOpacity);
+        .transition().duration(200).style("opacity", styConfig.nodeLabel.defaultOpacity);
     
     let linkLines = d3.selectAll('.relatedLinkLines')
-        .transition().duration(200).style('opacity',stylesConfig.linkLines.inactiveOpacity)
+        .transition().duration(200).style('opacity',styConfig.linkLines.inactiveOpacity)
 
     d3.selectAll('.d3plus-textBox')
-        .transition().duration(200).style('opacity',stylesConfig.nodeLabel.defaultOpacity)
+        .transition().duration(200).style('opacity',styConfig.nodeLabel.defaultOpacity)
 
-    let domainLabelsGroup = simulationConfig.domainLabels
+    let domainLabelsGroup = simConfig.domainLabels
     
     domainLabelsGroup
-        .transition().duration(200).style('opacity',stylesConfig.nodeLabel.inactiveOpacity)
+        .transition().duration(200).style('opacity',styConfig.nodeLabel.inactiveOpacity)
         
         domainLabelsGroup.html('')
 } 
@@ -2609,16 +2610,16 @@ function forceStrength(numberOfNodes) {
  
 
     let strength;
-    if (numberOfNodes <= 10) { strength = -1000 } //1000
-    if (numberOfNodes > 10 && numberOfNodes <= 20) { strength = -900 } //1000
-    if (numberOfNodes > 20 && numberOfNodes <= 30) { strength = -800 } //800
-    if (numberOfNodes > 30 && numberOfNodes <= 40) { strength = -600 } //600
-    if (numberOfNodes > 40 && numberOfNodes <= 50) { strength = -400} //400
-    if (numberOfNodes > 50 && numberOfNodes <= 60) { strength = -200 } //200
-    if (numberOfNodes > 60 && numberOfNodes <= 70) { strength = -100 } //100
-    if (numberOfNodes > 70 && numberOfNodes <= 80) { strength = -75 }  
-    if (numberOfNodes > 80 && numberOfNodes <= 90) { strength = -50 }  
-    if (numberOfNodes > 90) { strength = -30 }  
+    if (numberOfNodes <= 10) { strength = -300 } //1000
+    if (numberOfNodes > 10 && numberOfNodes <= 20) { strength = -260 } //1000
+    if (numberOfNodes > 20 && numberOfNodes <= 30) { strength = -240 } //800
+    if (numberOfNodes > 30 && numberOfNodes <= 40) { strength = -200 } //600
+    if (numberOfNodes > 40 && numberOfNodes <= 50) { strength = -160} //400
+    if (numberOfNodes > 50 && numberOfNodes <= 60) { strength = -120 } //200
+    if (numberOfNodes > 60 && numberOfNodes <= 70) { strength = -80 } //100
+    if (numberOfNodes > 70 && numberOfNodes <= 80) { strength = -70 }  
+    if (numberOfNodes > 80 && numberOfNodes <= 90) { strength = -40 }  
+    if (numberOfNodes > 90) { strength = -20 }  
 
     return strength
 
