@@ -282,13 +282,9 @@ function updateRecentSearch(searchObj) {
         if (searchObj.article) { entryTitle = searchObj.article}
         if (searchObj.domain) {entryTitle = searchObj.domain + ' (domain)'}
         if (!recentSearches.includes(entryTitle)) {
-            if (recentSearches.length < 10) {
                 recentSearches.push(entryTitle)
-            }   else { 
-                recentSearches.pop()
-                recentSearches.push(entryTitle)
-            }
         }
+        if(recentSearches.length > 10 ) {recentSearches.shift()}
 
         recentSearches.unshift(['Recent Searches...']);
 
