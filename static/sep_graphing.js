@@ -15,7 +15,10 @@ let graphInstructions = d3.select("#graphInstructions")
 //Initialize nodes and links arrays for simulation
 let graphNodes = [];
 let graphLinks = [];
+
+//Init arrays for searching
 let allEntries = [];
+let allArticles = [];
 
 
 // Initialize SVG and Simulation
@@ -279,7 +282,7 @@ function updateRecentSearch(searchObj) {
         if (searchObj.article) { entryTitle = searchObj.article}
         if (searchObj.domain) {entryTitle = searchObj.domain + ' (domain)'}
         if (!recentSearches.includes(entryTitle)) {
-            if (recentSearches.length < 11) {
+            if (recentSearches.length < 10) {
                 recentSearches.push(entryTitle)
             }   else { 
                 recentSearches.pop()
