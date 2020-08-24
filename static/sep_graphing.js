@@ -2,8 +2,19 @@
 
 // Select Page Elements
 let svg = d3.select('#mainGraph')
+
+//deprecate these
 let articleMenu = d3.select('#articleSearchMenu')
 let domainMenu = d3.select('#domainSearchMenu')
+
+//new search areas
+let articleSearchButton = d3.select('#articleSearchButton')
+let articleSearchArea = d3.select('#articleSearchDiv')
+let articleSearchFilter = d3.select('#articleSearchFilter')
+let articleListDiv = d3.select('#articleListDiv')
+let showAllArticles = d3.select('#showAllArticles')
+
+
 let articleGraphDiv = d3.select('#articleGraph')
 let sidebarLeft = d3.select("#sidebarLeft") 
 let sidebarRight = d3.select("#sidebarRight")
@@ -60,18 +71,50 @@ function startVisualization() {
     showArticleGraphAreas() 
 
     //UI Response features
-    articleMenu.on('change', function(){
+    articleMenu
+        .on('change', function(){
         let articleTitle = d3.event.target.value;
         if (articleTitle !== "[Search articles...]") { showArticleGraph(articleTitle)}
-        // showArticleGraph(articleTitle)
         window.getSelection().removeAllRanges();
-
     })
+
+    articleSearchButton
+        .on('click', function() {toggleArticleSearchArea(); articleSearchFilter.node().focus();})
+
+    articleSearchFilter
+        .on('blur', function() { 
+            let articleFilter = d3.event.target.value
+            let articleFirst = d3.select('.articleTitles')
+            let articleFirstData = articleFirst.data()
+            console.log(articleFirstData.length)
+            // if (articleFilter.length===0 || articleFilter === '') {hideArticleTitles()}
+            if (articleFirstData.length > 0) {setFocusTo(articleFirst)}
+            
+        
+        })
+        .on('keyup', function() {
+            let articleFilter = d3.event.target.value
+            if(articleFilter.length === 0 ) {
+                populateArticleList([])
+            }   else {
+                filterArticleList(articleFilter);
+            }
+
+            
+        })
+
+    showAllArticles
+        .on('click', function() {
+            let chkStatus = showAllArticles.property('checked')
+            if(chkStatus) {populateArticleList(allArticles)}
+            if(!chkStatus) {populateArticleList([])}
+        })
+
+
 
     domainMenu.on('change', function(){
         let domainTitle = d3.event.target.value;
         if (domainTitle !== "[Search domains...]") { showDomainGraph(domainTitle)}
-        
     })
 
     getRandomEntry.on('click', function() { getRandom() })
@@ -233,22 +276,79 @@ function initializeStyles() {
 }
 // ****** MENU FUNCTIONS ********
 
-function loadMenus() {
-    d3.json(json_file).then((json) => {
-        //build article menu 
-        let articleItems = ["[Search articles...]"]
-        json.articles.nodes.forEach(node => {
-            articleItems.push(node.title)
-            allEntries.push(node.title)
+function toggleArticleSearchArea() {
+    let articleSearchAreaVis = articleSearchArea.style('display')
+    if (articleSearchAreaVis === 'block') {
+        hideArticleTitles();
+    }   else {
+        showArticleTitles();
+    }
+}
+
+function showArticleTitles(){
+    articleSearchArea
+        .transition().duration(300)
+        .style('display', 'block')
+        .style('opacity', 1)
+        .on('end', function() {setFocusTo(articleSearchFilter)})
+
+}
+
+function setFocusTo(element) {
+    element.node().focus()
+}
+
+function hideArticleTitles(){
+    articleSearchArea
+        .transition().duration(300)
+        .style('opacity', 0)
+        .style('display', 'none')
+
+    articleListDiv.html('')
+    articleSearchFilter.property('value','')
+
+}
+
+function populateArticleList(arrayOfTitles) {
+    
+    articleListDiv.html('')
+
+    articleListDiv
+        .transition().duration(350)
+            .style('display', 'block')
+            .style('opacity', 1)
+
+    articleListDiv.append("ul")
+        .selectAll(".articleTitles")
+        .data(arrayOfTitles)
+            .enter()
+            .append('li')
+            .html(function(d) {return '<a href="#">' + d + '</a>'})
+            .classed('articleTitles', true)
+        .exit().remove()
+  
+    d3.selectAll('.articleTitles')
+        .on('click', function() { 
+            showArticleGraph(d3.select(this).datum())
+            toggleArticleSearchArea()
+        
         })
+}
 
-        articleMenu.selectAll("option")
-        .data(articleItems)
-        .enter().append("option")
-                .attr("value", (d) => d)
-                .html((d) => d)
+function selectFoundArticle() {
+    let firstSelect = d3.select('.articleTitles')
+        .classed('selected', true)
+        .on('end', function() {setFocusTo(firstSelect)})
 
-        //build domain menu
+}
+
+function filterArticleList(searchString) {  
+    let matchedTitles = allArticles.filter(title => title.toLowerCase().includes(searchString.toLowerCase()) )
+    populateArticleList(matchedTitles)
+}
+
+function loadDomainTitles() {
+    d3.json(json_file).then((json) => {
         let domainSet = new Set()
         json.articles.nodes.forEach(node => {
             domainSet.add(node.primary_domain)
@@ -262,10 +362,35 @@ function loadMenus() {
             .enter().append("option")
                     .attr("value", (d) => d)
                     .html((d) => d)
+    })
 
+}
+
+function loadArticleTitles() {
+    d3.json(json_file).then((json) => {
+        //build article menu 
+        let articleItems = ["[Search articles...]"]
+        json.articles.nodes.forEach(node => {
+            articleItems.push(node.title)
+            allEntries.push(node.title)
+            allArticles.push(node.title)
+        })
+
+        // populateArticleList(allArticles)
+
+        articleMenu.selectAll("option")
+        .data(articleItems)
+        .enter().append("option")
+                .attr("value", (d) => d)
+                .attr("data-tokens", (d) => d)
+                .html((d) => d)
     })
 
 
+}
+function loadMenus() {
+    loadDomainTitles();
+    loadArticleTitles();
 }
 
 function showArticleGraphAreas() {
