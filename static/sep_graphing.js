@@ -24,6 +24,7 @@ let domainShowAllCheck = d3.select('#domainShowAllCheck')
 let domainCloseSearchArea = d3.select('#domainCloseSearchArea')
 
 //Recent Search elements
+let recentSearchDiv = d3.select('#recentSearchDiv')
 let recentSearchButton = d3.select('#recentSearchButton')
 let recentSearchArea = d3.select('#recentSearchArea')
 let recentSearchFilter = d3.select('#recentSearchFilter')
@@ -187,11 +188,6 @@ function setNavBar() {
     // domain searches
     function setDomainSearchElements() {
 
-        // domainSearchArea
-        //     .on('focusout', function() { 
-        //         setTimeout(function() { if(!preservePanel) { hideDomainSearchArea() }},200)
-        //     })
-
         domainSearchButton
             .on('mouseover', function() {domainSearchButton.classed('searchButtonActive', true)})
             .on('mouseout', function() {domainSearchButton.classed('searchButtonActive', false)})
@@ -261,11 +257,6 @@ function setNavBar() {
     // Recent Searches
 
     function setRecentSearchElements() {
-
-        recentSearchArea
-            .on('focusout', function() { 
-                setTimeout(function() { hideRecentSearchArea() },100)
-            })
 
         recentSearchButton
             .on('mouseover', function() {recentSearchButton.classed('searchButtonActive', true)})
