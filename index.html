@@ -21,44 +21,85 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark panelBG_Color" id="#navArea">
-            <a class="navbar-brand" style="margin-left: 5%" href="#">Visualizing SEP</a>
+            <a class="navbar-brand" href="#">Visualizing SEP</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse"  id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item nav-item-select">
-                        <select id="domainSearchMenu" class="custom-select custom-select-sm sep-select" ></select>
+                    <!-- Domain Search Features -->
+                    <li class="nav-item">
+                        <div id="domainSearch" class="dropDownMenuDiv">
+                            <button id="domainSearchButton" class="searchButton">Search Domains</button>
+                            <div id="domainSearchArea" class="searchArea">
+                                <input id="domainSearchFilter" type="text" placeholder="Search..." class="searchFilter">
+                                <div id="domainSearchListDiv" class="titleDisplay"></div>
+                                <div class="dropDownFooter">
+                                    <div id="showAllDomains" class="showAll">
+                                        <input type="checkbox" id="domainShowAllCheck" name="domainShowAllCheck" value="Show All Domains">
+                                        <label for="domainShowAllCheck">Show All Domains</label>
+                                    </div>
+                                    <div id="domainCloseSearchArea" class="cancelSearch">
+                                        <p>Cancel Search</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </li>
+                    <!-- Get Random -->
                     <li class="nav-item">
                         <a class="nav-link buttonBox " href="#" id="getRandomEntry">Randomize</a>
                     </li> 
-                    <li class="nav-item nav-item-select active">
-                        <select id="articleSearchMenu" data-live-search="true" class="custom-select custom-select-sm sep-select"></select><span class="sr-only">(current)</span>
-                    </li>
+                    <!-- Article Search Features -->
                     <li class="nav-item">
-                        <div id="articleSearch">
-                            <button id="articleSearchButton">Search Articles</button>
-                            <div id="articleSearchDiv">
-                                <input id="articleSearchFilter" type="text" placeholder="Search...">
-                                <hr>
-                                <div id="articleListDiv"></div>
-                                <hr>
-                                <label for="showAllCheck">Show All Articles</label>
-                                <input type="checkbox" id="showAllArticles" name="showAllCheck" value="Show All Articles">
-
+                        <div id="articleSearch" class="dropDownMenuDiv">
+                            <button id="articleSearchButton" class="searchButton">Search Articles</button>
+                            <div id="articleSearchArea" class="searchArea">
+                                <input id="articleSearchFilter" type="text" placeholder="Search..." class="searchFilter">
+                                <p class="searchTip">(Just use last names when searching philosophers)</p>
+                                <div id="articleSearchListDiv" class="titleDisplay"></div>
+                                <div class="dropDownFooter">
+                                    <div id="showAllArticles" class="showAll">
+                                        <input type="checkbox" id="articleShowAllCheck" name="articleShowAllCheck" value="Show All Articles">
+                                        <label for="articleShowAllCheck">Show All Articles</label>
+                                    </div>
+                                    <div id="articleCloseSearchArea" class="cancelSearch">
+                                        <p>Cancel Search</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        
                     </li>
-                    <li class="nav-item" style="margin-left:10%;">
+                    <!-- Recent Search Features -->
+                    <!-- <li class="nav-item" style="margin-left:10%;">
                         <div id="recentSearches">
                             <select id="recentSearchMenu" class="custom-select custom-select-sm float-right  shadow-none"></select>
                         </div>
+                    </li> -->
+                    <li class="nav-item">
+                        <div id="recentSearches" class="dropDownMenuDiv">
+                            <button id="recentSearchButton" class="searchButton">Recent Searches</button>
+                            <div id="recentSearchArea" class="searchArea">
+                                <input id="recentSearchFilter" type="text" placeholder="Filter..." class="searchFilter">
+                                <p class="searchTip">(Filter searches above, or just tab directly into search list)</p>
+                                <div id="recentSearchListDiv" class="titleDisplay"></div>
+                                <div class="dropDownFooter">
+                                    <div id="showAllSearches" class='showAll'>
+                                        <input type="checkbox" id="recentShowAllCheck" name="recentShowAllCheck" value="Show All Recent Searches">
+                                        <label for="recentShowAllCheck">Show All Recent Searches</label>
+                                    </div>
+                                    <div id="recentCloseSearchArea" class="cancelSearch">
+                                        <p>Cancel Search</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </li>
+                    <!-- About Page -->
                     <li class="nav-item"  style="margin-left:7%;" >
                         <a class="nav-link" href="#">About</a>
                     </li>
+                    <!-- Contact Page -->
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
                     </li>

@@ -7,14 +7,31 @@ let svg = d3.select('#mainGraph')
 let articleMenu = d3.select('#articleSearchMenu')
 let domainMenu = d3.select('#domainSearchMenu')
 
-//new search areas
+//Article Search Elements
 let articleSearchButton = d3.select('#articleSearchButton')
-let articleSearchArea = d3.select('#articleSearchDiv')
+let articleSearchArea = d3.select('#articleSearchArea')
 let articleSearchFilter = d3.select('#articleSearchFilter')
-let articleListDiv = d3.select('#articleListDiv')
-let showAllArticles = d3.select('#showAllArticles')
+let articleSearchListDiv = d3.select('#articleSearchListDiv')
+let articleShowAllCheck = d3.select('#articleShowAllCheck')
+let articleCloseSearchArea = d3.select('#articleCloseSearchArea')
 
+//Domain Search elements
+let domainSearchButton = d3.select('#domainSearchButton')
+let domainSearchArea = d3.select('#domainSearchArea')
+let domainSearchFilter = d3.select('#domainSearchFilter')
+let domainSearchListDiv = d3.select('#domainSearchListDiv')
+let domainShowAllCheck = d3.select('#domainShowAllCheck')
+let domainCloseSearchArea = d3.select('#domainCloseSearchArea')
 
+//Recent Search elements
+let recentSearchButton = d3.select('#recentSearchButton')
+let recentSearchArea = d3.select('#recentSearchArea')
+let recentSearchFilter = d3.select('#recentSearchFilter')
+let recentSearchListDiv = d3.select('#recentSearchListDiv')
+let recentShowAllCheck = d3.select('#recentShowAllCheck')
+let recentCloseSearchArea = d3.select('#recentCloseSearchArea')
+
+//
 let articleGraphDiv = d3.select('#articleGraph')
 let sidebarLeft = d3.select("#sidebarLeft") 
 let sidebarRight = d3.select("#sidebarRight")
@@ -27,21 +44,22 @@ let graphInstructions = d3.select("#graphInstructions")
 let graphNodes = [];
 let graphLinks = [];
 
-//Init arrays for searching
-let allEntries = [];
-let allArticles = [];
+//Init cache and search arrays
+let searchCache = [];
 
+let allArticles = [];
+let numArticles;
+let allDomains = [];
+let allEntries = [];
+let recentSearches = [];
 
 // Initialize SVG and Simulation
 let svgConfig = initializeParentSVG(svg);
 let simConfig = initializeSimulation(svgConfig);  
 let styConfig = initializeStyles();
 
-//Initialze searchCache and recentSearches
-let searchCache = [];
-let recentSearches = [];
-
 // graph helpers
+let showAll = false;
 let graphType;
 let neighborNodes = [];
 let linkAngles = [];
@@ -50,105 +68,387 @@ let priorNodeCircle;
 let priorNodeCircle_ListItem;
 let currentDomainCentralNode;
 
-//transition change
-let t = d3.transition()
-    .duration(300)
-    .ease(d3.easeLinear);
-
 //set BaseURL for SEP Edition
 let sepEdition = "Summer 2020"
 let baseURL = 'https://plato.stanford.edu/archives/sum2020';
 
 let json_file = 'static/sep_network_new.json'
 
-let testLabel = d3.select('#testLabel')
-
-
 startVisualization();
 
 function startVisualization() {
-    homePageAnimation();
-    showArticleGraphAreas() 
+    loadMenuData();
+    setNavBar();
+    showArticleGraphAreas();
+    setModeInstructions();
+}
 
-    //UI Response features
-    articleMenu
-        .on('change', function(){
-        let articleTitle = d3.event.target.value;
-        if (articleTitle !== "[Search articles...]") { showArticleGraph(articleTitle)}
-        window.getSelection().removeAllRanges();
+ 
+function setNavBar() {
+
+    setNavBarTransition() 
+    setArticleSearchElements();
+    setDomainSearchElements();
+    setRecentSearchElements();
+
+    let preservePanel = false;
+
+    function setNavBarTransition() {
+        d3.select('nav')
+        .transition().duration(3000)
+        .style('opacity',1)
+        .on('end', function() {
+            populateSearchResults(domainSearchListDiv, allDomains); 
+            domainShowAllCheck.property('checked', true)
     })
+    }
 
-    articleSearchButton
-        .on('click', function() {toggleArticleSearchArea(); articleSearchFilter.node().focus();})
+    // Article Searches
+    function setArticleSearchElements() {
+        //article search features
+        articleSearchButton
+            .on('mouseover', function() {articleSearchButton.classed('searchButtonActive', true)})
+            .on('mouseout', function() {articleSearchButton.classed('searchButtonActive', false)})
+            .on('click', function() {toggleArticleSearchArea(); hideDomainSearchArea(); hideRecentSearchArea();})
 
-    articleSearchFilter
-        .on('blur', function() { 
-            let articleFilter = d3.event.target.value
-            let articleFirst = d3.select('.articleTitles')
-            let articleFirstData = articleFirst.data()
-            console.log(articleFirstData.length)
-            // if (articleFilter.length===0 || articleFilter === '') {hideArticleTitles()}
-            if (articleFirstData.length > 0) {setFocusTo(articleFirst)}
-            
-        
-        })
-        .on('keyup', function() {
-            let articleFilter = d3.event.target.value
-            if(articleFilter.length === 0 ) {
-                populateArticleList([])
-            }   else {
-                filterArticleList(articleFilter);
-            }
+        articleSearchFilter
+            .on('focusout', function() { 
+                let articleFilter = d3.event.target.value
+                if (articleFilter.length===0) {
+                    setTimeout(function() {
+                        if(!showAll) { hideArticleSearchArea() }
+                    },200)
+                }
+            })
+            .on('keyup', function() {
+                let articleFilter = d3.event.target.value
+                if(articleFilter.length === 0 || articleFilter.trim() === '') {
+                    populateSearchResults(articleSearchListDiv, [])
+                    showAll = false;
+                }   else {
+                    filterSearchList('Article',articleFilter);
+                    showAll = false;
+                }
+            })
 
-            
-        })
+        articleShowAllCheck
+            .on('click', function() {
+                let chkStatus = articleShowAllCheck.property('checked')
+                if(chkStatus) {
+                    showAll = true; 
+                    populateSearchResults(articleSearchListDiv,allArticles); 
+                }
+                if(!chkStatus) {
+                    showAll = true; 
+                    populateSearchResults(articleSearchListDiv,[]); 
+                }
+                articleSearchFilter.node().focus()
 
-    showAllArticles
-        .on('click', function() {
-            let chkStatus = showAllArticles.property('checked')
-            if(chkStatus) {populateArticleList(allArticles)}
-            if(!chkStatus) {populateArticleList([])}
-        })
+            })
 
+        articleCloseSearchArea
+            .on('mouseover', function() {activateItemLink(this)})
+            .on('mouseout', function() {deActivateItemLink(this)})
+            .on('click', function() {hideArticleSearchArea()})
+    }
 
-
-    domainMenu.on('change', function(){
-        let domainTitle = d3.event.target.value;
-        if (domainTitle !== "[Search domains...]") { showDomainGraph(domainTitle)}
-    })
-
-    getRandomEntry.on('click', function() { getRandom() })
-
-    recentSearchMenu.on('change', function() {
-        searchItem = d3.event.target.value;
-
-        if(searchItem !== 'Recent Searches...') {
-        domainPosition = searchItem.indexOf(' (domain)');
-            if( domainPosition === -1) {
-                showArticleGraph(searchItem)
-            }   else    {
-                showDomainGraph(searchItem.substring(0,domainPosition))
-                console.log(searchItem.substring(0,domainPosition))
-            }
+    function toggleArticleSearchArea() {
+        let articleSearchAreaVis = articleSearchArea.style('display')
+        if (articleSearchAreaVis === 'block') {
+            hideArticleSearchArea();
+        }   else {
+            showArticleSearchArea();
         }
-    })
+    }
+    
+    function showArticleSearchArea(){
 
-    graphMode
-        .on('mouseover', function() {activateItemLink(this)})
-        .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() {toggleGraphMode();})
+        closeDropdowns()
 
-    graphInstructions
-        .on('mouseover', function() {activateItemLink(this)})
-        .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() {displayGraphInstructions()})
+        articleSearchArea.style('display', 'block')
+        articleSearchButton.classed('searchButtonActive', true)
+        articleSearchListDiv.style('display', 'block')
+        articleSearchFilter.node().focus()
+        articleShowAllCheck.property('checked', false)
+    
+    }
+    
+    function hideArticleSearchArea(){
+        articleSearchArea
+            .style('display', 'none')
+    
+        articleSearchListDiv.html('')
+        articleSearchFilter.property('value','')
+        articleShowAllCheck.property('checked', false)
+    
+    }
+
+
+    // domain searches
+    function setDomainSearchElements() {
+
+        // domainSearchArea
+        //     .on('focusout', function() { 
+        //         setTimeout(function() { if(!preservePanel) { hideDomainSearchArea() }},200)
+        //     })
+
+        domainSearchButton
+            .on('mouseover', function() {domainSearchButton.classed('searchButtonActive', true)})
+            .on('mouseout', function() {domainSearchButton.classed('searchButtonActive', false)})
+            .on('click', function() {toggleDomainSearchArea();})
+
+        domainSearchFilter
+            .on('keyup', function() {
+                let domainFilter = d3.event.target.value
+                if(domainFilter.length === 0 || domainFilter.trim() === '' ) {
+                    populateSearchResults(domainSearchListDiv, allDomains)
+                    domainShowAllCheck.property('checked', true)
+                }   else {
+                    domainShowAllCheck.property('checked', false)
+                    filterSearchList('Domain',domainFilter);
+                }
+            })
+
+        domainShowAllCheck
+            .on('change', function() {
+                let chkStatus = domainShowAllCheck.property('checked')
+                if(chkStatus) {
+                    populateSearchResults(domainSearchListDiv, allDomains)
+                    domainShowAllCheck.property('checked', true)
+                }   else {
+                    populateSearchResults(domainSearchListDiv, [])
+                    domainShowAllCheck.property('checked', false)
+                }
+                domainSearchFilter.node().focus();
+            })
+
+        domainCloseSearchArea
+            .on('mouseover', function() {activateItemLink(this)})
+            .on('mouseout', function() {deActivateItemLink(this)})
+            .on('click', function() {hideDomainSearchArea()})
+    }
+
+    function toggleDomainSearchArea() {
+        let domainSearchAreaVis = domainSearchArea.style('display')
+        if (domainSearchAreaVis === 'block') {
+            hideDomainSearchArea();
+        }   else {
+            showDomainSearchArea();
+        }
+    }
+
+    function showDomainSearchArea(){
+
+        closeDropdowns()
+        
+        domainSearchArea.style('display', 'block')
+        domainSearchButton.classed('searchButtonActive', true)
+        domainSearchListDiv.style('display', 'block')
+        domainShowAllCheck.property('checked', true)
+        domainSearchFilter.node().focus()
+        populateSearchResults(domainSearchListDiv, allDomains)
+    
+    }
+
+    function hideDomainSearchArea(){
+
+        domainSearchArea.style('display', 'none')
+        domainSearchFilter.property('value','')
+        domainShowAllCheck.property('checked', true)
+
+    }
+
+    // Recent Searches
+
+    function setRecentSearchElements() {
+
+        recentSearchArea
+            .on('focusout', function() { 
+                setTimeout(function() { hideRecentSearchArea() },100)
+            })
+
+        recentSearchButton
+            .on('mouseover', function() {recentSearchButton.classed('searchButtonActive', true)})
+            .on('mouseout', function() {recentSearchButton.classed('searchButtonActive', false)})
+            .on('click', function() {toggleRecentSearchArea();})
+
+        recentSearchFilter
+            .on('keyup', function() {
+                let recentFilter = d3.event.target.value
+                if(recentFilter.length === 0 || recentFilter.trim() === '' ) {
+                    populateSearchResults(recentSearchListDiv, recentSearches)
+                    recentShowAllCheck.property('checked', true)
+                }   else {
+                    recentShowAllCheck.property('checked', false)
+                    filterSearchList('Recent',recentFilter);
+                }
+            })
+
+        recentShowAllCheck
+            .on('change', function() {
+                let chkStatus = recentShowAllCheck.property('checked')
+                if(chkStatus) {
+                    populateSearchResults(recentSearchListDiv, recentSearches)
+                    recentShowAllCheck.property('checked', true)
+                }   else {
+                    populateSearchResults(recentSearchListDiv, [])
+                    recentShowAllCheck.property('checked', false)
+                }
+                recentSearchFilter.node().focus();
+            })
+
+        recentCloseSearchArea
+            .on('mouseover', function() {activateItemLink(this)})
+            .on('mouseout', function() {deActivateItemLink(this)})
+            .on('click', function() {hideRecentSearchArea()})
+    }
+
+    function toggleRecentSearchArea() {
+        let recentSearchAreaVis = recentSearchArea.style('display')
+        if (recentSearchAreaVis === 'block') {
+            hideRecentSearchArea();
+        }   else {
+            showRecentSearchArea();
+        }
+    }
+
+    function showRecentSearchArea(){
+
+        closeDropdowns()
+        
+        recentSearchArea.style('display', 'block')
+        recentSearchButton.classed('searchButtonActive', true)
+        recentSearchListDiv.style('display', 'block')
+        recentShowAllCheck.property('checked', true)
+        recentSearchFilter.node().focus()
+        populateSearchResults(recentSearchListDiv, recentSearches)
+        preservePanel = false;
+        
+    }
+
+    function hideRecentSearchArea(){
+
+        recentSearchArea.style('display', 'none')
+        recentSearchFilter.property('value','')
+        recentShowAllCheck.property('checked', true)
+
+    }
+
+    function closeDropdowns() {
+        hideArticleSearchArea();
+        hideDomainSearchArea();
+        hideRecentSearchArea();
+    }
+
+    //Get Random 
+    getRandomEntry.on('click', function() { closeDropdowns(); getRandom() })
+    
+    // Search Process functions 
+    function setFocusTo(element) {
+        element.node().focus()
+    }
+
+    function populateSearchResults(searchAreaDiv, arrayOfTitles) {
+        searchAreaDiv.html('')
+        searchAreaDiv
+            .transition().duration(350)
+                .style('display', 'block')
+                .style('opacity', 1)
+
+            searchAreaDiv.append('ul')
+                .selectAll('.searchResults')
+                .data(arrayOfTitles)
+                    .enter()
+                    .append('li')
+                        .append('a')
+                        .attr('href','#')
+                        .text(function(d) {return d.title})
+                        .style('color', function(d) {return color(d.primary_domain)})
+                    .classed('searchResults', true)
+                    .classed('dropDownMenuListItem', true)
+                    .classed('dropDownMenuLink', true)
+
+                .exit().remove()
+        
+            d3.selectAll('.searchResults')
+                .on('focusin', function () { preservePanel = true})
+                .on('click', function() { 
+                    let searchDivID = searchAreaDiv.node().id
+                    let searchTitle = d3.select(this).datum().title
+                    if (searchDivID.includes('article')) {
+                        showArticleGraph(searchTitle)
+                        hideArticleSearchArea()
+                    }
+                    if (searchDivID.includes('domain')) {
+                        showDomainGraph(searchTitle)
+                        hideDomainSearchArea()
+                    }
+                    if (searchDivID.includes('recent')) {
+                        let domainPosition = searchTitle.indexOf(' (domain)');
+                        if( domainPosition === -1) {
+                            showArticleGraph(searchTitle)
+                        }   else    {
+                            showDomainGraph(searchTitle.substring(0,domainPosition))
+                        }
+                        hideRecentSearchArea();
+                    }
+                    preservePanel = false
+                })
+
+    }
+
+    function returnNoResults(searchAreaDiv) {
+        searchAreaDiv.html('')
+        searchAreaDiv.append('h2')
+        .text('Nothing Found')
+        .classed('searchFilterResults', true)
+    }
+
+    function filterSearchList(graphType, searchString) {  
+        let matchedTitles;
+        let searchdDiv;
+        switch (graphType) {
+            case 'Article':
+                if(searchString === '*ALL*') {
+                    matchedTitles = allArticles.map(node => node.title)
+                }   else    {
+                    matchedTitles = allArticles.filter(node => node.title.toLowerCase().includes(searchString.toLowerCase()) )
+                }
+                searchDiv = articleSearchListDiv
+                break;
+
+            case 'Domain':
+                matchedTitles = allDomains.filter(node => node.title.toLowerCase().includes(searchString.toLowerCase()) )
+                searchDiv = domainSearchListDiv
+                break;
+
+            case 'Recent':
+                matchedTitles = recentSearches.filter(node => node.title.toLowerCase().includes(searchString.toLowerCase()) )
+                searchDiv = recentSearchListDiv
+                break;
+
+        }
+        console.log(matchedTitles)
+        if (matchedTitles.length > 0 ) {
+            populateSearchResults(searchDiv, matchedTitles)
+        }   else    {
+            returnNoResults(searchDiv)
+        }
+    }
+
 
 }
 
-function homePageAnimation() {    
-    d3.select('nav').transition().duration(3000).style('opacity',1)
-    loadMenus();
-
+function setModeInstructions() {
+    graphMode
+    .on('mouseover', function() {activateItemLink(this)})
+    .on('mouseout', function() {deActivateItemLink(this)})
+    .on('click', function() {toggleGraphMode();})
+ 
+ graphInstructions
+    .on('mouseover', function() {activateItemLink(this)})
+    .on('mouseout', function() {deActivateItemLink(this)})
+    .on('click', function() {displayGraphInstructions()})
 }
 
 // ****** SET GLOBALS  ********
@@ -276,150 +576,42 @@ function initializeStyles() {
 }
 // ****** MENU FUNCTIONS ********
 
-function toggleArticleSearchArea() {
-    let articleSearchAreaVis = articleSearchArea.style('display')
-    if (articleSearchAreaVis === 'block') {
-        hideArticleTitles();
-    }   else {
-        showArticleTitles();
-    }
-}
+function loadMenuData() {
 
-function showArticleTitles(){
-    articleSearchArea
-        .transition().duration(300)
-        .style('display', 'block')
-        .style('opacity', 1)
-        .on('end', function() {setFocusTo(articleSearchFilter)})
-
-}
-
-function setFocusTo(element) {
-    element.node().focus()
-}
-
-function hideArticleTitles(){
-    articleSearchArea
-        .transition().duration(300)
-        .style('opacity', 0)
-        .style('display', 'none')
-
-    articleListDiv.html('')
-    articleSearchFilter.property('value','')
-
-}
-
-function populateArticleList(arrayOfTitles) {
-    
-    articleListDiv.html('')
-
-    articleListDiv
-        .transition().duration(350)
-            .style('display', 'block')
-            .style('opacity', 1)
-
-    articleListDiv.append("ul")
-        .selectAll(".articleTitles")
-        .data(arrayOfTitles)
-            .enter()
-            .append('li')
-            .html(function(d) {return '<a href="#">' + d + '</a>'})
-            .classed('articleTitles', true)
-        .exit().remove()
-  
-    d3.selectAll('.articleTitles')
-        .on('click', function() { 
-            showArticleGraph(d3.select(this).datum())
-            toggleArticleSearchArea()
-        
-        })
-}
-
-function selectFoundArticle() {
-    let firstSelect = d3.select('.articleTitles')
-        .classed('selected', true)
-        .on('end', function() {setFocusTo(firstSelect)})
-
-}
-
-function filterArticleList(searchString) {  
-    let matchedTitles = allArticles.filter(title => title.toLowerCase().includes(searchString.toLowerCase()) )
-    populateArticleList(matchedTitles)
-}
-
-function loadDomainTitles() {
     d3.json(json_file).then((json) => {
+
         let domainSet = new Set()
         json.articles.nodes.forEach(node => {
-            domainSet.add(node.primary_domain)
-        })
-        let domainItems = Array.from(domainSet)
-        domainItems.sort((a,b) => d3.ascending(a, b));
-        domainItems.forEach(node => allEntries.push(node))
-        domainItems.unshift("[Search domains...]")
-        domainMenu.selectAll("option")
-            .data(domainItems)
-            .enter().append("option")
-                    .attr("value", (d) => d)
-                    .html((d) => d)
-    })
-
-}
-
-function loadArticleTitles() {
-    d3.json(json_file).then((json) => {
-        //build article menu 
-        let articleItems = ["[Search articles...]"]
-        json.articles.nodes.forEach(node => {
-            articleItems.push(node.title)
-            allEntries.push(node.title)
-            allArticles.push(node.title)
+            let nodeTitle = node.title
+            let nodePrimaryDomain = node.primary_domain
+            allArticles.push({'title': nodeTitle, 'primary_domain': nodePrimaryDomain})
+            domainSet.add(nodePrimaryDomain)
         })
 
-        // populateArticleList(allArticles)
+        numArticles = allArticles.length
 
-        articleMenu.selectAll("option")
-        .data(articleItems)
-        .enter().append("option")
-                .attr("value", (d) => d)
-                .attr("data-tokens", (d) => d)
-                .html((d) => d)
-    })
+        // allDomains = Array.from(domainSet)
+        domainSet.forEach(domain => allDomains.push({'title': domain, 'primary_domain':domain}))
+        allDomains.sort((a,b) => d3.ascending(a.title, b.title));
 
+        allEntries = allArticles.concat(allDomains)
+        // allEntries.sort((a,b) => d3.ascending(a, b));
+        })
 
-}
-function loadMenus() {
-    loadDomainTitles();
-    loadArticleTitles();
 }
 
 function showArticleGraphAreas() {
     articleGraphDiv.classed('d-block', true)
 }
 
-function updateRecentSearch(searchObj) {
+function updateRecentSearch(searchObj, graphType) {
     
-    recentSearches.shift();
-
     if(!recentSearches.includes(searchObj)) { 
 
-        let entryTitle;
-        if (searchObj.article) { entryTitle = searchObj.article}
-        if (searchObj.domain) {entryTitle = searchObj.domain + ' (domain)'}
-        if (!recentSearches.includes(entryTitle)) {
-                recentSearches.push(entryTitle)
-        }
+        if (graphType==='Domain') {searchObj.title = searchObj.title + ' (domain)'}
+        let testSearch = recentSearches.filter(node => {return node.title === searchObj.title})
+        if(testSearch.length === 0) {recentSearches.push(searchObj) }
         if(recentSearches.length > 10 ) {recentSearches.shift()}
-
-        recentSearches.unshift(['Recent Searches...']);
-
-        recentSearchMenu.html("")
-
-        recentSearchMenu.selectAll(".recentSearch")
-            .data(recentSearches)
-            .enter().append('option')
-                .text((d)=> d)
-                .classed('recentSearch', true)
     }
 
 }
@@ -648,15 +840,14 @@ function showArticleGraph(articleTitle) {
         let articleNode = graphNodes[0]
         drawArticleSimulation(json)
         setArticleGraphTitle(articleData)
-        setArticleMenuTitle('[Search articles...]')
-        setDomainMenuTitle('[Search domains...]')
-        updateRecentSearch(articleData);
+        updateRecentSearch({'title': articleTitle, 'primary_domain': articleData.primaryDomain},'Article');
         d3.select('.mainDomainNode').remove();
         setGraphMode('Hover')
         setGraphType('Article')
         resetDisplayDefaultsDomainGraph();
         resetDisplayDefaultsArticleGraph();
         updateSidebarsArticle(json, articleNode);
+        showAll = false;
 
         window.getSelection().removeAllRanges();
     })
@@ -682,6 +873,7 @@ function getArticleDataFromJSON(data, articleTitle) {
 
     //get the url for the selectded article node
     let articleURL = selectedArticle[0].id;
+    let articlePrimaryDomain = selectedArticle[0].primary_domain
 
     // get all the links going out from the selected article
     let sourceLinks = [];
@@ -734,7 +926,8 @@ function getArticleDataFromJSON(data, articleTitle) {
                         "biLinks": bidirectionalLinks,
                         "inLinks": onlyInLinks,
                         "outLinks": onlyOutLinks, 
-                        "linkDomains": linkDomains }
+                        "linkDomains": linkDomains,
+                        "primaryDomain": articlePrimaryDomain  }
     
     //add to cache
     searchCache.push(articleData)
@@ -1866,11 +2059,13 @@ function showDomainGraph(domainTitle) {
         setDomainMenuTitle('[Search domains...]')
         setArticleMenuTitle('[Search articles...]')
         window.getSelection().removeAllRanges();
-        updateRecentSearch(domainData);
+        updateRecentSearch({'title': domainTitle, 'primary_domain': domainTitle},'Domain');
         resetDisplayDefaultsArticleGraph();
         resetDisplayDefaultsDomainGraph();
         setGraphMode('Hover')
         setGraphType('Domain')
+
+        showAll = false;
 
         d3.selectAll('.label').remove();
         d3.select('.mainArticleLabelArea').remove();
@@ -2969,10 +3164,10 @@ function color(entryType){
 
 function getRandom() {
     let randomEntry  = getRandomIntInclusive(0,allEntries.length)
-    if (randomEntry <= articleMenu.nodes()[0].length-1) {
-        showArticleGraph(allEntries[randomEntry])
+    if (randomEntry <= numArticles-1) {
+        showArticleGraph(allEntries[randomEntry].title)
     }   else {
-        showDomainGraph(allEntries[randomEntry])
+        showDomainGraph(allEntries[randomEntry].title)
     }
 
 
