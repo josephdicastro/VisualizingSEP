@@ -10,6 +10,9 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="https://use.typekit.net/nfp8cny.css">
     <link href="static/styles_new.css" rel="stylesheet">
+    <link href="static/styles/home.css" rel="stylesheet">
+    <link href="static/styles/about.css" rel="stylesheet">
+    <link href="static/styles/contact.css" rel="stylesheet">
     <link href="static/styles/base.css" rel="stylesheet">
     <link href="static/styles/nav.css" rel="stylesheet">
     <link href="static/styles/graphmode_instructions.css" rel="stylesheet">
@@ -21,7 +24,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark panelBG_Color" id="#navArea">
-            <a class="navbar-brand" href="#">Visualizing SEP</a>
+            <a class="navbar-brand" href="#" id="vizLogo">Visualizing SEP</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -108,7 +111,7 @@
                         
                     </div>
                     <div class="col-lg-7">
-                        <div id="selectedEntryTitle"><h1>Explore the Standford Encylopedia of Philosophy</h1></div>
+                        <div id="pageTitle"><h1></h1></div>
                     </div>
                     <div class="col-lg-2">                        
 
@@ -119,10 +122,24 @@
                         <div id="sidebarLeft" class="sidebar float-right"></div>
                     </div>
                     <div class="col-lg-7">
-                        <div id="articleGraph" class="panelBG_graph" >
-                            <div id="graphMode" class="d-none"></div>
-                            <svg id="mainGraph" height="100%" width="100%"></svg>
-                            <div id="graphInstructions" class="d-none"></div>
+                        <div id="homePageDiv">
+                            <div id="homeHeader">
+                                <img src="/static/img/articlegraphLogo.svg" class="articleSVG">
+                                <h1>Welcome to Visualizing SEP</h1>
+                                <img src="/static/img/articlegraphLogo.svg" class="articleSVG">
+                            </div>
+
+                            <p>Explore the entire <a href="https://plato.stanford.edu/">Stanford Encylopedia of Philosphy</a>
+                                 visually and beautifully.</p>
+                            <p>This application uses network graphs to show the inter-relationships among all articles 
+                                in the Encylopedia. For the first time, one can easily, enjoyably, and powerfully navigate the entirety of this incredible resource of philosophical knowledge and practice.</p>
+                            <p>To begin: search for an article above, select a domain, or hit "Randomize" to be given a surprise entry.
+                            </p>
+                        </div>
+                        <div id="graphPageDiv" class="panelBG_graph" >
+                            <div id="graphMode" ></div>
+                            <svg id="graphSVG" height="100%" width="100%"></svg>
+                            <div id="graphInstructions" ></div>
                             <div id="articleInstructions" class="graphInstructionArea">
 
                                     <h1 id="articleGraphInstructionsHeading" class="instructionsPageHeading">Article Graph Instructions</h1>
@@ -136,7 +153,7 @@
                                         <li id="articleGraphHelpRight">Right Sidebar</li>
                                         <li id="articleGraphHelpNav">Recent Searches</li>
                                     </ul>
-                                <div id="articleGraphHelpDiv" class="instructionsSection d-none">
+                                <div id="articleGraphHelpDiv" class="instructionsSection">
                                     <h2>Navigate the Graph</h2>
                                     <h3>Interaction Methods</h3>
                                     <ul>
@@ -197,7 +214,7 @@
 
                                 </div>
                                 
-                                <div id="articleGraphHelpLeftDiv" class="instructionsSection d-none">
+                                <div id="articleGraphHelpLeftDiv" class="instructionsSection">
                                     <h3>Left Sidebar (Same as Domain Graph)</h3>
                                     <p>The left side bar contains details about a selected article. In it’s default state, the left side bar provides:</p>
                                     <ul>
@@ -219,7 +236,7 @@
                                     </ul>
                                 </div>
 
-                                <div id="articleGraphHelpRightDiv" class="instructionsSection d-none">
+                                <div id="articleGraphHelpRightDiv" class="instructionsSection">
                                     <h3>Right Sidebar</h3>
                                     <p>The right side bar contains details about the linked articles. In its default state, the right sidebar provides:</p>
                                     <ul>
@@ -242,7 +259,7 @@
                                     </ul>
                                 </div>
 
-                                <div id="articleGraphHelpNavDiv" class="instructionsSection d-none">
+                                <div id="articleGraphHelpNavDiv" class="instructionsSection">
                                     <h3>Recent Searches (Same as Domain Graph)</h3>
                                     <ul>
                                         <li>The Recent Searches drop-down menu list the the 10 most recent searches on the site, inclusive of both the Article Graph and the Domain Graph. New searches are added/removed on a first-in/first-out basis.</li>
@@ -267,7 +284,7 @@
                                     <li id="domainGraphHelpRight">Right Sidebar</li>
                                     <li id="domainGraphHelpNav">Recent Searches</li>
                                 </ul>
-                            <div id="domainGraphHelpDiv" class="instructionsSection d-none">
+                            <div id="domainGraphHelpDiv" class="instructionsSection">
                                 <h2>Navigate the Graph</h2>
                                 <ul>
                                     <li>When the graph is first loaded, the nodes are visible, but the labels are not. You can hover over the nodes to see the node title, 
@@ -312,7 +329,7 @@
 
                             </div>
                             
-                            <div id="domainGraphHelpLeftDiv" class="instructionsSection d-none">
+                            <div id="domainGraphHelpLeftDiv" class="instructionsSection">
                                 <h3>Left Sidebar (Same as Article Graph)</h3>
                                 <p>The left side bar contains details about a selected article. In it’s default state, the left side bar provides:</p>
                                 <ul>
@@ -334,7 +351,7 @@
                                 </ul>
                             </div>
 
-                            <div id="domainGraphHelpRightDiv" class="instructionsSection d-none">
+                            <div id="domainGraphHelpRightDiv" class="instructionsSection">
                                 <h3>Right Sidebar</h3>
                                 <p>The right side bar lists all of the articles in the selected domain. It has three major sections:</p>
                                     <ul>
@@ -349,7 +366,7 @@
                                     </ul>
                             </div>
 
-                            <div id="domainGraphHelpNavDiv" class="instructionsSection d-none">
+                            <div id="domainGraphHelpNavDiv" class="instructionsSection">
                                 <h3>Recent Searches (Same as Article Graph)</h3>
                                 <ul>
                                     <li>The Recent Searches drop-down menu list the the 10 most recent searches on the site, inclusive of both the Article Graph and the Domain Graph. New searches are added/removed on a first-in/first-out basis.</li>
@@ -360,6 +377,8 @@
                         </div>
   
                         </div>
+                        <div id="aboutPageDiv">About Page</div>
+                        <div id="contactPageDiv">Contact Page</div>
 
                     </div>
                     <div class="col-lg-2">
