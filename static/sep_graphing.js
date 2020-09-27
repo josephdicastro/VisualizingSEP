@@ -90,24 +90,8 @@ function startVisualization() {
 
 }
 
-function showContentPage (pageToShow, pageTitleText) {
-    hideSidebars();
 
-    hidePage(homePageDiv);
-    hidePage(graphPageDiv);
-    hidePage(aboutPageDiv);
-    hidePage(contactPageDiv);
-
-    pageToShow
-        .style('display', 'block')
-        .transition().duration(pageTransition)
-            .style('opacity',1)
-
-    setPageTitle(pageTitleText, 'Default Page')
-
-}
-
-
+// ****** BASIC PAGE SHOW / HIDE FUNCTIONS ****** 
  
 function setNavBar() {
 
@@ -484,6 +468,32 @@ function setNavBar() {
 
 }
 
+function setPageTitle(pageTitleText,primaryDomain) {
+    let selectedPageTitle = pageTitle.select("h1")
+    selectedPageTitle
+        .text(pageTitleText)
+        .style("color", function(d) {return color(primaryDomain)})
+        .classed('pageTitle',true)
+
+}
+
+function showContentPage (pageToShow, pageTitleText) {
+    hideSidebars();
+
+    hidePage(homePageDiv);
+    hidePage(graphPageDiv);
+    hidePage(aboutPageDiv);
+    hidePage(contactPageDiv);
+
+    pageToShow
+        .style('display', 'block')
+        .transition().duration(pageTransition)
+            .style('opacity',1)
+
+    setPageTitle(pageTitleText, 'Default Page')
+
+}
+
 function showAboutPage() {
     showContentPage(aboutPageDiv,"About Visualizing SEP")
 }
@@ -504,9 +514,47 @@ function setModeInstructions() {
     .on('click', function() {displayGraphInstructions()})
 }
 
+function hidePage(pageToHide) {
+    if (pageToHide.style('display') === 'block') {
+        pageToHide.transition().duration(pageTransition).style('opacity',0);
+        pageToHide.style('display','none')
+    }
+}
+
+function hideSidebars(){
+        sidebarLeft
+        .transition().duration(pageTransition)
+        .style('opacity',0);
+
+        sidebarRight
+        .transition().duration(pageTransition)
+        .style('opacity',0)
+
+}
+
+function showSidebars(){
+        sidebarLeft
+        .transition().duration(pageTransition)
+        .style('opacity',1)
+
+        sidebarRight
+        .transition().duration(pageTransition)
+        .style('opacity',1)
+}
+
+function showGraphPage() {
+    hidePage(homePageDiv);
+    hidePage(aboutPageDiv);
+    hidePage(contactPageDiv);
+    graphPageDiv.style('display','block')
+    graphPageDiv.transition().duration(pageTransition).style('opacity',1);
+
+    showSidebars();
+    setModeInstructions();
+}
 
 
-// ****** SET GLOBALS  ********
+// ****** INITIALIZATION FUNCTIONS ********
 
 function setGlobalNodesLinks(sepData) {
     //clear out whatever is in the global graphNodes and graphLinks arrays
@@ -518,8 +566,6 @@ function setGlobalNodesLinks(sepData) {
     sepData.links.forEach(link => graphLinks.push(link))
 
 }
-
-// ****** INITIALIZATION FUNCTIONS ********
 
 function initializeParentSVG(svg) {
     // set basic SVG Config data 
@@ -584,9 +630,10 @@ function initializeSimulation(svgConfig) {
         .force("charge", d3.forceManyBody())
         .force("link", d3.forceLink())
         .force("center", d3.forceCenter())
-        .alphaMin(0.1)
-        .alphaDecay(0.1)
-        .alphaTarget(0.9)
+        .force('collide', d3.forceCollide())
+        .force('forceX', d3.forceX())
+        .force('forceY', d3.forceY())
+        .alphaTarget(0.99)
 
     return {links, nodes, labels, relatedLinks, domainLabels, simulation}
 }
@@ -653,47 +700,6 @@ function loadMenuData() {
         // allEntries.sort((a,b) => d3.ascending(a, b));
         })
 
-}
-function hidePage(pageToHide) {
-    if (pageToHide.style('display') === 'block') {
-        pageToHide.transition().duration(pageTransition).style('opacity',0);
-        pageToHide.style('display','none')
-    }
-}
-
-function hideSidebars(){
-        sidebarLeft
-        .transition().duration(pageTransition)
-        .style('opacity',0);
-
-        sidebarRight
-        .transition().duration(pageTransition)
-        .style('opacity',0)
-
-}
-
-function showSidebars(){
-        sidebarLeft
-        .transition().duration(pageTransition)
-        .style('opacity',1)
-
-        sidebarRight
-        .transition().duration(pageTransition)
-        .style('opacity',1)
-}
-
-
-
-
-function showGraphPage() {
-    hidePage(homePageDiv);
-    hidePage(aboutPageDiv);
-    hidePage(contactPageDiv);
-    graphPageDiv.style('display','block')
-    graphPageDiv.transition().duration(pageTransition).style('opacity',1);
-
-    showSidebars();
-    setModeInstructions();
 }
 
 function updateRecentSearch(searchObj, graphType) {
@@ -862,8 +868,6 @@ function displayGraphInstructions_Domain() {
     showHelpPage('#domainGraphHelp')
 }
 
-
-
 function showHelpPage(divID) {
 
     let pageID = divID + "Div"
@@ -887,8 +891,6 @@ function showHelpPage(divID) {
         .style('display', 'block')
 }
 
-
-
 function toggleGraphMode() {
     if(exploreMode) {
         setGraphMode('Hover')
@@ -900,30 +902,8 @@ function toggleGraphMode() {
 }
 // ****** ARTICLE GRAPH DATA AND SIMULATION FUNCTIONS ****** 
 
-// function setArticleMenuTitle(articleTitle) {
-//     articleMenu.property("value", articleTitle)
 
-//     if(articleTitle === '[Search articles...]') {
-//         articleMenu
-//             .classed('menuBorderOn', false)
-//             .classed('menuBorderOff', true)
-//     }   else {
-//         articleMenu
-//             .classed('menuBorderOn', true)
-//             .classed('menuBorderOff', false)
-//     }
-    
 
-// }
-
-function setPageTitle(pageTitleText,primaryDomain) {
-    let selectedPageTitle = pageTitle.select("h1")
-    selectedPageTitle
-        .text(pageTitleText)
-        .style("color", function(d) {return color(primaryDomain)})
-        .classed('pageTitle',true)
-
-}
 
 function showArticleGraph(articleTitle) {
     d3.json(json_file).then((json) => {
@@ -1109,29 +1089,34 @@ function drawArticleSimulation(data) {
 
     //update simulation ticker
     let numTicks = 0;
-    let ticksCompleted = false;
     simConfig.simulation
         .on('tick', function (){
-            link
-                .attr("x1", function(d) {return 0 })
-                .attr("y1", function(d) {return 0 })
-                .attr("x2", function(d) {return d.target.x })
-                .attr("y2", function(d) {return d.target.y })
-                .attr("linkIndex", function(d,i) { 
-                    j=i+1;
-                    linkAngles[j] = angle(0,0,d.target.x,d.target.y);
-                    return i })
 
-            node
-                .attr("cx", function(d) {return d.index === 0 ? 0: d.x })
-                .attr("cy", function(d) {return d.index === 0 ? 0: d.y });
+            if (numTicks < 300 ) {
 
-            label
-                .attr('x', function(d) {return d.index === 0 ? 0: setArticleXpos(d.x,this.getBBox().width) })
-                .attr('y', function(d) {return d.index === 0 ? -10: d.y+4})
-                .attr("transform", function(d,i){ return i===0 ?`rotate(0)`:rotateLabel(i,d.x, d.y)})
+                link
+                    .attr("x1", function(d) {return 0 })
+                    .attr("y1", function(d) {return 0 })
+                    .attr("x2", function(d) {return d.target.x })
+                    .attr("y2", function(d) {return d.target.y })
+                    .attr("linkIndex", function(d,i) { 
+                        j=i+1;
+                        linkAngles[j] = angle(0,0,d.target.x,d.target.y);
+                        return i })
+
+                node
+                    .attr("cx", function(d) {return d.index === 0 ? 0: d.x })
+                    .attr("cy", function(d) {return d.index === 0 ? 0: d.y });
+
+                label
+                    .attr('x', function(d) {return d.index === 0 ? 0: setArticleXpos(d.x,this.getBBox().width) })
+                    .attr('y', function(d) {return d.index === 0 ? -10: d.y+4})
+                    .attr("transform", function(d,i){ return i===0 ?`rotate(0)`:rotateLabel(i,d.x, d.y)})
+            }   else {
+                simConfig.simulation.stop();
+            }   
+            numTicks++;
         })
-    .on('end', function() {simConfig.simulation.stop();})
 
     //update simulations
 
@@ -1141,6 +1126,8 @@ function drawArticleSimulation(data) {
         .id(function (d) {return d.id})
         .distance(200)//function () {return (countOfNodes > 50) ? 200 : 175})
         .links(graphLinks)
+    simConfig.simulation.force("forceX").strength(0)
+    simConfig.simulation.force("forceY").strength(0)
     simConfig.simulation.nodes(graphNodes)
     simConfig.simulation.alpha(1).restart();
 
@@ -1166,21 +1153,17 @@ function setArticleGraphMainLabel() {
             .style('display', 'block')
 
 
-
-
-    let mainNodeMaxWidth = 250 
-
     new d3plus.TextBox()
         .data(currentMainArticleNode)
         .select('.mainArticleLabelArea')
         .y(-15)
-        .x(-75)
+        .x(-100)
         .fontFamily('proxima-nova, sans-serif')
         .fontSize(18)
         .fontColor(function(d) {return color(d.primaryDomain)})
         .verticalAlign('top')
         .textAnchor('middle')
-        .width(150)
+        .width(200)
         .lineHeight(20)
         .height(150)
         .render();
@@ -2054,29 +2037,6 @@ function resetDisplayDefaultsArticleGraph() {
 
 // ****** DOMAIN GRAPH FUNCTIONS ****** 
 
-function setDomainGraphTitle(domainTitle) {
-    let selectedDomainTitle = pageTitle.select('h1')
-    selectedDomainTitle
-        .text(domainTitle)
-        .style('color', function(d) {return color(domainTitle)})
-        .classed('pageTitle',true)
-
-}
-
-// function setDomainMenuTitle(domainTitle, borderState) {
-//     domainMenu.property('value', domainTitle)
-
-//     if(domainTitle === '[Search domains...]') {
-//         domainMenu
-//             .classed('menuBorderOn', false)
-//             .classed('menuBorderOff', true)
-//     }   else {
-//         domainMenu
-//             .classed('menuBorderOn', true)
-//             .classed('menuBorderOff', false)
-//     }
-
-// }
 function showDomainGraph(domainTitle) {
 
     d3.json(json_file).then(function(data) {
@@ -2104,6 +2064,7 @@ function showDomainGraph(domainTitle) {
 
     });
 }
+
 function getDomainData(data, domainTitle) {
     let domainData = {};
      let inCache = searchCache.find( ({domain}) => domain === domainTitle);
@@ -2215,19 +2176,26 @@ function drawDomainSimulation(data, domainData){
     node.on('mouseout', function() {mouseOutDomainNode(this, data, domainData)})
     node.on('click', function() { sngClickDomainNode(this, data, domainData)})
     node.on('dblclick', function() {dblClickDomainNode(this, data)})    
-             
-    simConfig.simulation.on('tick', function () {
-        link
-            .attr("x1", function(d) {return d.source.x })
-            .attr("y1", function(d) {return d.source.y })
-            .attr("x2", function(d) {return d.target.x})
-            .attr("y2", function(d) {return d.target.y})
+    
+    let numTicks = 0;
+    simConfig.simulation
+        .on('tick', function () {
+            if (numTicks < 200 ) {
 
-        node
-            .attr("cx", function(d) {return d.x })
-            .attr("cy", function(d) {return d.y });
+                link
+                    .attr("x1", function(d) {return d.source.x })
+                    .attr("y1", function(d) {return d.source.y })
+                    .attr("x2", function(d) {return d.target.x})
+                    .attr("y2", function(d) {return d.target.y})
 
+                node
+                    .attr("cx", function(d) {return d.x })
+                    .attr("cy", function(d) {return d.y });
 
+            }   else {
+                simConfig.simulation.stop();
+            }  
+            numTicks++;
     })
     
     //restart simulation
@@ -2236,10 +2204,12 @@ function drawDomainSimulation(data, domainData){
         .strength(function() { return forceStrength(countOfNodes)})
     simConfig.simulation.force("link")
         .id(function (d) {return d.id})
-        .distance(10)
+        .distance(15)
         .links(graphLinks)
+    simConfig.simulation.force("forceX").strength(0.3)
+    simConfig.simulation.force("forceY").strength(0.2)
     simConfig.simulation.nodes(graphNodes);
-    // simConfig.simulation.force("collide").radius(15)
+    simConfig.simulation.force("collide").radius(5)
     simConfig.simulation.alpha(1).restart();
 
 }
@@ -2636,7 +2606,7 @@ function positionRelatedDomainLabels(activeElement) {
         .y(function(d, i) {return placeLabel(i, domainLabelsLeft)})
         .x(-400)
         .fontFamily('proxima-nova, sans-serif')
-        .fontSize(12)
+        .fontSize(function(d) {return (domainLabelsLeft.length > 30) ? 9 : 12})
         .fontColor(function(d) {return color(d.primaryDomain)})
         .verticalAlign('top')
         .textAnchor('start')
@@ -2658,7 +2628,7 @@ function positionRelatedDomainLabels(activeElement) {
         .x(function(d) {return (domainLabelsRight.length > 30) ? 125 : 150})
         .textAnchor('end')
         .fontFamily('proxima-nova, sans-serif')
-        .fontSize(12)
+        .fontSize(function(d) {return (domainLabelsRight.length > 30) ? 9 : 12})
         .fontColor(function(d) {return color(d.primaryDomain)})
         .verticalAlign('top')
         .width(function(d) {return (domainLabelsRight.length > 30) ? 275 : 250})
@@ -2747,7 +2717,7 @@ function placeLabel(index, domainArray) {
     if (arrayLength <= 10) {cyMin = -200; cyMax = 200}
     if (arrayLength > 10 && arrayLength <= 20) {cyMin = -250; cyMax = 225}
     if (arrayLength > 20 && arrayLength <= 30) {cyMin = -275; cyMax = 275}
-    if (arrayLength > 30 ) {cyMin = -300; cyMax = 350}
+    if (arrayLength > 30 ) {cyMin = -350; cyMax = 350}
 
     let totalHeight = Math.abs(cyMin) + Math.abs(cyMax)
     let itemOffset;
