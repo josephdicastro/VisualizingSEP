@@ -2475,6 +2475,7 @@ function focusOnDomainArticle(activeElement) {
 
     
     positionRelatedDomainLabels(activeElement);
+    // positionRelatedDomainLabels_new(activeElement);
 
 }
 function getDomainCentralNode() {
@@ -2532,45 +2533,113 @@ function setListItemStyle_NeighborNodeOpacity() {
     })
 }
 
+function getLabelObj(circle,node) {
+    let nodeCX = +circle.attr('cx')
+    let nodeCY = +circle.attr('cy') 
+    let nodeRadius = +circle.attr('r')
+    let nodeID = circle.attr('nodeID')
+    let nodePrimaryDomain = node.primary_domain
+    let nodeTitle = node.title
+    let labelObj = {'id':nodeID, 'cx':nodeCX, 'cy': nodeCY, 'r': nodeRadius,
+                    'text':nodeTitle, 'title':nodeTitle, 'primaryDomain':nodePrimaryDomain}
+    
+    return labelObj
+}
+
+function positionRelatedDomainLabels_new(activeElement) {
+    let domainLabelsGroup = simConfig.domainLabels
+        domainLabelsGroup
+            .html('')
+            .style('opacity',styConfig.nodeLabel.defaultOpacity)
+
+    let currentMainNode = [];
+    let linkedNodes = [];
+
+    d3.selectAll('.node').each(function(node,index) {
+        let nodeCircle = d3.select(this)
+        let nodeID = nodeCircle.attr('nodeID')
+        if(activeElement.id === nodeID) {
+            currentMainNode.push(getLabelObj(nodeCircle,node))
+        }   else {
+            if(isNeighborNode(activeElement.id, nodeID)) {
+                linkedNodes.push(getLabelObj(nodeCircle,node))
+            }
+        }    
+    })
+
+    let midPoint = parseInt(linkedNodes.length/2)
+    console.log(midPoint)
+    let domainLabelsLeft = linkedNodes.slice(0,midPoint);
+    let domainLabelsRight = linkedNodes.slice(midPoint);
+
+    console.log(currentMainNode)
+    console.log(linkedNodes)
+    console.log(domainLabelsLeft)
+    console.log(domainLabelsRight)
+
+}
 function positionRelatedDomainLabels(activeElement) {
 
     let domainLabelsGroup = simConfig.domainLabels
         domainLabelsGroup
             .html('')
-                .style('opacity',styConfig.nodeLabel.defaultOpacity)
+            .style('opacity',styConfig.nodeLabel.defaultOpacity)
 
-    let domainLabelsLeft = [];
-    let domainLabelsRight = [];
-    let currentMainNode = [];
-
-    let domainNodes = d3.selectAll('.node')
-
-    domainNodes.each(function(node,index) {
-        let circle = d3.select(this)
-        let nodeCX = +circle.attr('cx')
-        let nodeCY = +circle.attr('cy') 
-        let nodeRadius = +circle.attr('r')
-        let nodeID = circle.attr('nodeID')
-        let nodePrimaryDomain = node.primary_domain
-        let nodeTitle = node.title
-        let labelObj = {'id':nodeID, 'cx':nodeCX, 'cy': nodeCY, 'r': nodeRadius,
-                        'text':nodeTitle, 'title':nodeTitle, 'primaryDomain':nodePrimaryDomain}
+            let currentMainNode = [];
+            let linkedNodes = [];
         
-        if(activeElement.id !== nodeID) {
-            if(isNeighborNode(activeElement.id, nodeID)) {
-                if(nodeCX > 0) {
-                    domainLabelsRight.push(labelObj)
-                }   else    { 
-                    domainLabelsLeft.push(labelObj)
-                }
-            }
-        }   else {
-            currentMainNode.push(labelObj)
-        }
-    })
+            d3.selectAll('.node').each(function(node,index) {
+                let nodeCircle = d3.select(this)
+                let nodeID = nodeCircle.attr('nodeID')
+                if(activeElement.id === nodeID) {
+                    currentMainNode.push(getLabelObj(nodeCircle,node))
+                }   else {
+                    if(isNeighborNode(activeElement.id, nodeID)) {
+                        linkedNodes.push(getLabelObj(nodeCircle,node))
+                    }
+                }    
+            })
+        
+            let midPoint = parseInt(linkedNodes.length/2)
+            console.log(midPoint)
+            let domainLabelsLeft = linkedNodes.slice(0,midPoint);
+            let domainLabelsRight = linkedNodes.slice(midPoint);
 
-    domainLabelsLeft.sort((a,b) => d3.ascending(a.cy, b.cy))
-    domainLabelsRight.sort((a,b) => d3.ascending(a.cy, b.cy))
+    // let currentMainNode = [];
+    // let linkedNodes = [];
+    // let domainLabelsLeft = [];
+    // let domainLabelsRight = [];
+
+
+    // let domainNodes = d3.selectAll('.node')
+
+    // domainNodes.each(function(node,index) {
+    //     let circle = d3.select(this)
+    //     let nodeCX = +circle.attr('cx')
+    //     let nodeCY = +circle.attr('cy') 
+    //     let nodeRadius = +circle.attr('r')
+    //     let nodeID = circle.attr('nodeID')
+    //     let nodePrimaryDomain = node.primary_domain
+    //     let nodeTitle = node.title
+    //     let labelObj = {'id':nodeID, 'cx':nodeCX, 'cy': nodeCY, 'r': nodeRadius,
+    //                     'text':nodeTitle, 'title':nodeTitle, 'primaryDomain':nodePrimaryDomain}
+        
+    //     if(activeElement.id !== nodeID) {
+    //         if(isNeighborNode(activeElement.id, nodeID)) {
+                
+    //             if(nodeCX > 0) {
+    //                 domainLabelsRight.push(labelObj)
+    //             }   else    { 
+    //                 domainLabelsLeft.push(labelObj)
+    //             }
+    //         }
+    //     }   else {
+    //         currentMainNode.push(labelObj)
+    //     }
+    // })
+
+    // domainLabelsLeft.sort((a,b) => d3.ascending(a.cy, b.cy))
+    // domainLabelsRight.sort((a,b) => d3.ascending(a.cy, b.cy))
 
     let domainLeftMinMax = d3.extent(domainLabelsLeft, d=> d.cy)
     let domainRightMinMax = d3.extent(domainLabelsRight, d=> d.cy)
@@ -2606,7 +2675,7 @@ function positionRelatedDomainLabels(activeElement) {
         .y(function(d, i) {return placeLabel(i, domainLabelsLeft)})
         .x(-400)
         .fontFamily('proxima-nova, sans-serif')
-        .fontSize(function(d) {return (domainLabelsLeft.length > 30) ? 9 : 12})
+        .fontSize(function(d) {return (domainLabelsLeft.length > 30) ? 11 : 12})
         .fontColor(function(d) {return color(d.primaryDomain)})
         .verticalAlign('top')
         .textAnchor('start')
@@ -2628,7 +2697,7 @@ function positionRelatedDomainLabels(activeElement) {
         .x(function(d) {return (domainLabelsRight.length > 30) ? 125 : 150})
         .textAnchor('end')
         .fontFamily('proxima-nova, sans-serif')
-        .fontSize(function(d) {return (domainLabelsRight.length > 30) ? 9 : 12})
+        .fontSize(function(d) {return (domainLabelsRight.length > 30) ? 11 : 12})
         .fontColor(function(d) {return color(d.primaryDomain)})
         .verticalAlign('top')
         .width(function(d) {return (domainLabelsRight.length > 30) ? 275 : 250})
@@ -2640,7 +2709,7 @@ function positionRelatedDomainLabels(activeElement) {
         let mainDomainNodeLabel = d3.select('.mainDomainNode')
             mainDomainNodeLabel.transition().duration(50).style('fill-opacity', styConfig.nodeLabel.defaultOpacity)
         
-            let domainLabelsList = d3.selectAll('.d3plus-textBox')
+        let domainLabelsList = d3.selectAll('.d3plus-textBox')
 
         domainLabelsList.transition().duration(200).style('fill-opacity', styConfig.nodeLabel.defaultOpacity)
     
