@@ -2180,7 +2180,7 @@ function drawDomainSimulation(data, domainData){
     let numTicks = 0;
     simConfig.simulation
         .on('tick', function () {
-            if (numTicks < 200 ) {
+            if (numTicks < 100 ) {
 
                 link
                     .attr("x1", function(d) {return d.source.x })
@@ -2204,12 +2204,12 @@ function drawDomainSimulation(data, domainData){
         .strength(function() { return forceStrength(countOfNodes)})
     simConfig.simulation.force("link")
         .id(function (d) {return d.id})
-        .distance(15)
+        .distance(25)
         .links(graphLinks)
-    simConfig.simulation.force("forceX").strength(0.3)
-    simConfig.simulation.force("forceY").strength(0.2)
+    simConfig.simulation.force("forceX").strength(function (d) { return (countOfNodes > 300) ? 0.1 : 0.05 })
+    simConfig.simulation.force("forceY").strength(function (d) { return (countOfNodes > 300) ? 0.1 : 0.05 })
     simConfig.simulation.nodes(graphNodes);
-    simConfig.simulation.force("collide").radius(5)
+    simConfig.simulation.force("collide").radius(10)
     simConfig.simulation.alpha(1).restart();
 
 }
@@ -2475,7 +2475,6 @@ function focusOnDomainArticle(activeElement) {
 
     
     positionRelatedDomainLabels(activeElement);
-    // positionRelatedDomainLabels_new(activeElement);
 
 }
 function getDomainCentralNode() {
@@ -2585,61 +2584,24 @@ function positionRelatedDomainLabels(activeElement) {
             .html('')
             .style('opacity',styConfig.nodeLabel.defaultOpacity)
 
-            let currentMainNode = [];
-            let linkedNodes = [];
+    let currentMainNode = [];
+    let linkedNodes = [];
         
-            d3.selectAll('.node').each(function(node,index) {
-                let nodeCircle = d3.select(this)
-                let nodeID = nodeCircle.attr('nodeID')
-                if(activeElement.id === nodeID) {
-                    currentMainNode.push(getLabelObj(nodeCircle,node))
-                }   else {
-                    if(isNeighborNode(activeElement.id, nodeID)) {
-                        linkedNodes.push(getLabelObj(nodeCircle,node))
-                    }
-                }    
-            })
-        
-            let midPoint = parseInt(linkedNodes.length/2)
-            console.log(midPoint)
-            let domainLabelsLeft = linkedNodes.slice(0,midPoint);
-            let domainLabelsRight = linkedNodes.slice(midPoint);
+    d3.selectAll('.node').each(function(node,index) {
+        let nodeCircle = d3.select(this)
+        let nodeID = nodeCircle.attr('nodeID')
+        if(activeElement.id === nodeID) {
+            currentMainNode.push(getLabelObj(nodeCircle,node))
+        }   else {
+            if(isNeighborNode(activeElement.id, nodeID)) {
+                linkedNodes.push(getLabelObj(nodeCircle,node))
+            }
+        }    
+    })
 
-    // let currentMainNode = [];
-    // let linkedNodes = [];
-    // let domainLabelsLeft = [];
-    // let domainLabelsRight = [];
-
-
-    // let domainNodes = d3.selectAll('.node')
-
-    // domainNodes.each(function(node,index) {
-    //     let circle = d3.select(this)
-    //     let nodeCX = +circle.attr('cx')
-    //     let nodeCY = +circle.attr('cy') 
-    //     let nodeRadius = +circle.attr('r')
-    //     let nodeID = circle.attr('nodeID')
-    //     let nodePrimaryDomain = node.primary_domain
-    //     let nodeTitle = node.title
-    //     let labelObj = {'id':nodeID, 'cx':nodeCX, 'cy': nodeCY, 'r': nodeRadius,
-    //                     'text':nodeTitle, 'title':nodeTitle, 'primaryDomain':nodePrimaryDomain}
-        
-    //     if(activeElement.id !== nodeID) {
-    //         if(isNeighborNode(activeElement.id, nodeID)) {
-                
-    //             if(nodeCX > 0) {
-    //                 domainLabelsRight.push(labelObj)
-    //             }   else    { 
-    //                 domainLabelsLeft.push(labelObj)
-    //             }
-    //         }
-    //     }   else {
-    //         currentMainNode.push(labelObj)
-    //     }
-    // })
-
-    // domainLabelsLeft.sort((a,b) => d3.ascending(a.cy, b.cy))
-    // domainLabelsRight.sort((a,b) => d3.ascending(a.cy, b.cy))
+    let midPoint = parseInt(linkedNodes.length/2)
+    let domainLabelsLeft = linkedNodes.slice(0,midPoint);
+    let domainLabelsRight = linkedNodes.slice(midPoint);
 
     let domainLeftMinMax = d3.extent(domainLabelsLeft, d=> d.cy)
     let domainRightMinMax = d3.extent(domainLabelsRight, d=> d.cy)
@@ -2673,14 +2635,14 @@ function positionRelatedDomainLabels(activeElement) {
         .data(domainLabelsLeft)
         .select('.domainLabelLeftGroup')
         .y(function(d, i) {return placeLabel(i, domainLabelsLeft)})
-        .x(-400)
+        .x(-430)
         .fontFamily('proxima-nova, sans-serif')
-        .fontSize(function(d) {return (domainLabelsLeft.length > 30) ? 11 : 12})
+        .fontSize(12)
         .fontColor(function(d) {return color(d.primaryDomain)})
         .verticalAlign('top')
         .textAnchor('start')
-        .width(function() {return (domainLabelsLeft.length > 30) ? 275 : 250})
-        .lineHeight(function() {return (domainLabelsLeft.length > 30) ? 9 : 11})
+        .width(300)
+        .lineHeight(13)
         .height(35)
         .render();
 
@@ -2694,15 +2656,15 @@ function positionRelatedDomainLabels(activeElement) {
         .data(domainLabelsRight)
         .select('.domainLabelRightGroup')
         .y(function(d, i) {return placeLabel(i, domainLabelsRight)})
-        .x(function(d) {return (domainLabelsRight.length > 30) ? 125 : 150})
+        .x(140)
         .textAnchor('end')
         .fontFamily('proxima-nova, sans-serif')
-        .fontSize(function(d) {return (domainLabelsRight.length > 30) ? 11 : 12})
+        .fontSize(12)
         .fontColor(function(d) {return color(d.primaryDomain)})
         .verticalAlign('top')
-        .width(function(d) {return (domainLabelsRight.length > 30) ? 275 : 250})
-        .lineHeight(function(d) {return (domainLabelsRight.length > 30) ? 9 : 11})
-        .height(35)
+        .width(300)
+        .lineHeight(13)
+        .height(40)
         .render();
 
         // UX/UI functions 
@@ -2749,7 +2711,6 @@ function positionRelatedDomainLabels(activeElement) {
 
             if(selectedNode.title !== currentDomainCentralNode.title) { priorNodeCircle.style('opacity', styConfig.nodeLabel.neighborNodeOpacity) }
 
-            // updateSidebarLeft_DomainMain(currentDomainCentralNode)
             updateSideBarLeft_ArticleMain(currentDomainCentralNode, 'Explore')
         }
 
@@ -2786,7 +2747,7 @@ function placeLabel(index, domainArray) {
     if (arrayLength <= 10) {cyMin = -200; cyMax = 200}
     if (arrayLength > 10 && arrayLength <= 20) {cyMin = -250; cyMax = 225}
     if (arrayLength > 20 && arrayLength <= 30) {cyMin = -275; cyMax = 275}
-    if (arrayLength > 30 ) {cyMin = -350; cyMax = 350}
+    if (arrayLength > 30 ) {cyMin = -300; cyMax = 300}
 
     let totalHeight = Math.abs(cyMin) + Math.abs(cyMax)
     let itemOffset;
@@ -2804,7 +2765,7 @@ function getDomainLabelLocationData(domainLabel) {
     let labelY = domainLabel.datum().y
     let height = domainLabel.node().getBBox().height
     let width = domainLabel.node().getBBox().width
-    let widthOffset = (labelX === 150) ? 250 : 275
+    let widthOffset = 300
     let startX = labelX < 0 ? labelX + width + 5 :labelX + (widthOffset - width) + 5
     let startY = (labelY + (height/2));
 
