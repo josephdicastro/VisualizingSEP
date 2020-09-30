@@ -2151,7 +2151,7 @@ function drawDomainSimulation(data, domainData){
     let numLinksRange = graphNodes.map(node=>node.numLinks)
     let scaleNodeRadius = d3.scaleLinear()
         .domain([d3.min(numLinksRange), d3.max(numLinksRange)])
-        .range([2,15])
+        .range([4,18])
 
 
     node = simConfig.nodes.selectAll('.node')
@@ -2204,12 +2204,12 @@ function drawDomainSimulation(data, domainData){
         .strength(function() { return forceStrength(countOfNodes)})
     simConfig.simulation.force("link")
         .id(function (d) {return d.id})
-        .distance(25)
+        .distance(100)
         .links(graphLinks)
-    simConfig.simulation.force("forceX").strength(function (d) { return (countOfNodes > 300) ? 0.1 : 0.05 })
-    simConfig.simulation.force("forceY").strength(function (d) { return (countOfNodes > 300) ? 0.1 : 0.05 })
+    simConfig.simulation.force("forceX").strength(function (d) { return (countOfNodes > 300) ? 0.1 : 0.07 })
+    simConfig.simulation.force("forceY").strength(function (d) { return (countOfNodes > 300) ? 0.1 : 0.07 })
     simConfig.simulation.nodes(graphNodes);
-    simConfig.simulation.force("collide").radius(10)
+    simConfig.simulation.force("collide").radius(15)
     simConfig.simulation.alpha(1).restart();
 
 }
@@ -2545,38 +2545,6 @@ function getLabelObj(circle,node) {
     return labelObj
 }
 
-function positionRelatedDomainLabels_new(activeElement) {
-    let domainLabelsGroup = simConfig.domainLabels
-        domainLabelsGroup
-            .html('')
-            .style('opacity',styConfig.nodeLabel.defaultOpacity)
-
-    let currentMainNode = [];
-    let linkedNodes = [];
-
-    d3.selectAll('.node').each(function(node,index) {
-        let nodeCircle = d3.select(this)
-        let nodeID = nodeCircle.attr('nodeID')
-        if(activeElement.id === nodeID) {
-            currentMainNode.push(getLabelObj(nodeCircle,node))
-        }   else {
-            if(isNeighborNode(activeElement.id, nodeID)) {
-                linkedNodes.push(getLabelObj(nodeCircle,node))
-            }
-        }    
-    })
-
-    let midPoint = parseInt(linkedNodes.length/2)
-    console.log(midPoint)
-    let domainLabelsLeft = linkedNodes.slice(0,midPoint);
-    let domainLabelsRight = linkedNodes.slice(midPoint);
-
-    console.log(currentMainNode)
-    console.log(linkedNodes)
-    console.log(domainLabelsLeft)
-    console.log(domainLabelsRight)
-
-}
 function positionRelatedDomainLabels(activeElement) {
 
     let domainLabelsGroup = simConfig.domainLabels
@@ -2599,9 +2567,14 @@ function positionRelatedDomainLabels(activeElement) {
         }    
     })
 
+    linkedNodes.sort((a,b) => d3.ascending(a.text, b.text))
+
     let midPoint = parseInt(linkedNodes.length/2)
     let domainLabelsLeft = linkedNodes.slice(0,midPoint);
     let domainLabelsRight = linkedNodes.slice(midPoint);
+
+
+
 
     let domainLeftMinMax = d3.extent(domainLabelsLeft, d=> d.cy)
     let domainRightMinMax = d3.extent(domainLabelsRight, d=> d.cy)
@@ -2947,13 +2920,6 @@ function symmetricDifference(setA, setB) {
 //******************** Simulation Helpers ************************/
 
 function forceStrength(numberOfNodes) {
-
-    // let scaleForces= d3.scaleLinear()
-    //     .domain([10, 125])
-    //     .range([-1000,-30])
-
-    // let strength = scaleForces(numberOfNodes)
- 
 
     let strength;
     if (numberOfNodes <= 10) { strength = -300 } //1000
