@@ -11,6 +11,7 @@ let sidebarRight = d3.select("#sidebarRight")
 let vizLogo = d3.select('#vizLogo')
 let navBar = d3.select('nav')
 let pageTitle = d3.select('#pageTitle')
+let copyright = d3.select('#copyright')
 
 //Article Search Elements
 let articleSearchButton = d3.select('#articleSearchButton')
@@ -84,7 +85,7 @@ startVisualization();
 
 function startVisualization() {
     loadMenuData();
-    setNavBar();
+    setNavigation();
     showContentPage(homePageDiv, '');
 
 
@@ -93,7 +94,7 @@ function startVisualization() {
 
 // ****** BASIC PAGE SHOW / HIDE FUNCTIONS ****** 
  
-function setNavBar() {
+function setNavigation() {
 
     setNavBarTransition() 
     setHomePage()
@@ -103,18 +104,11 @@ function setNavBar() {
     setAboutPage();
     setContactPage();
 
-
-
-    // vizLogo
-    //     .on('mouseover', function() { activateItemLink(this)})
-    //     .on('mouseout', function() { deActivateItemLink(this)})
-    //     .on('click', function() { startVisualization()})
-
     let preservePanel = false;
 
     function setNavBarTransition() {
         navBar
-            .transition().duration(3000)
+            .transition().duration(pageTransition)
             .style('opacity',1)
             .on('end', function() {
                 populateSearchResults(domainSearchListDiv, allDomains); 
@@ -126,7 +120,7 @@ function setNavBar() {
         vizLogo
             .on('mouseover', function() { activateItemLink(this)})
             .on('mouseout', function() { deActivateItemLink(this)})
-            .on('click', function() { startVisualization()})
+            .on('click', function() { showContentPage(homePageDiv, '')})
         }
 
     // Article Searches
@@ -464,6 +458,11 @@ function setNavBar() {
             .on('mouseover', function() { activateItemLink(this)})
             .on('mouseout', function() { deActivateItemLink(this)})
             .on('click', function() { showContactPage()})
+
+        copyright
+            .on('mouseover', function() { activateItemLink(this)})
+            .on('mouseout', function() { deActivateItemLink(this)})
+            .on('click', function() { showContactPage()})
     }
 
 }
@@ -669,7 +668,7 @@ function initializeStyles() {
 
     let listItems = {
         'defaultOpacity': 1,
-        'dimmedOpacity': 0.51
+        'dimmedOpacity': 0.21
     }
 
     return {link, nodeLabel, linkLines, listItems}
@@ -873,7 +872,7 @@ function showHelpPage(divID) {
     let pageID = divID + "Div"
 
     //help menu
-    d3.selectAll('#helpMenu > li')
+    d3.selectAll('.helpMenu > li')
         .style('color', '#E6E6E6')
 
     d3.select(divID)
@@ -881,13 +880,9 @@ function showHelpPage(divID) {
 
     //help pages
     d3.selectAll('.instructionsSection')
-        // .classed('d-none', true)
-        // .classed('d-block', false)
         .style('display', 'none')
     
     d3.select(pageID)
-        // .classed('d-none', false)
-        // .classed('d-block', true)
         .style('display', 'block')
 }
 
@@ -1969,24 +1964,23 @@ function focusOnLinkAnalysis(linksReference) {
 function activateArticleListItem() {
     let activeNodes = d3.selectAll('.label').filter(function (d,i) {  return d3.select(this).style('fill-opacity') > 0.5})
     
-    console.log(activeNodes)
     //adjust opacity for titles in List of Articles
     let nodeTitles = activeNodes.data().map(node => node.title)
     let listOfArticles = d3.selectAll('.linkArticlesListItem')
     listOfArticles.each(function (d) {
         let articleRef = this
         if(nodeTitles.includes(d.title)) {
-            d3.select(articleRef).transition().duration(200).style('opacity', styConfig.listItems.defaultOpacity)
+            d3.select(articleRef)
+                .transition().duration(200).style('opacity', styConfig.listItems.defaultOpacity)
         }   else    {
-            d3.select(articleRef).transition().duration(200).style('opacity', styConfig.listItems.dimmedOpacity)
+            d3.select(articleRef)
+                .transition().duration(200).style('opacity', styConfig.listItems.dimmedOpacity)
         }
     })
 
     //adjust opacity for domains in Link Domains
     let nodeDomains = activeNodes.data().map(node => node.primary_domain)
-    console.log(nodeDomains)
     let linkDomains = d3.selectAll('.linkDomainListItem')
-    console.log(linkDomains)
 
     linkDomains.each(function (d) {
         console.log(d)

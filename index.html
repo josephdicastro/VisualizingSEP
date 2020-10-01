@@ -145,54 +145,38 @@
                             <div id="articleInstructions" class="graphInstructionArea">
 
                                     <h1 id="articleGraphInstructionsHeading" class="instructionsPageHeading">Article Graph Instructions</h1>
-                                    <p>The Article Graph selects a single SEP article, and then shows every other article in the entire Encyclopedia that 
-                                        the selection is linked to in some way. The selected article is always at the center of the graph, and the related
+                                    <p>The Article Graph selects a single SEP article, and then shows every other article in the Encyclopedia that 
+                                        the selection is linked to in some way. The selected article is always at the center of the graph, and the linked
                                         articles spread radially around it.
                                     </p>
-                                    <ul id="helpMenu">
-                                        <li id="articleGraphHelp">Navigate the Graph</li>
-                                        <li id="articleGraphHelpLeft">Left Sidebar</li>
-                                        <li id="articleGraphHelpRight">Right Sidebar</li>
-                                        <li id="articleGraphHelpNav">Recent Searches</li>
-                                    </ul>
+                                    <div class="instructionsMenu">
+                                        <h2>Instructions Menu</h2>
+                                        <ul class="helpMenu">
+                                            <li id="articleGraphHelp">Navigate the Graph</li>
+                                            <li id="articleGraphHelpLeft">Left Sidebar</li>
+                                            <li id="articleGraphHelpRight">Right Sidebar</li>
+                                            <li id="articleGraphHelpNav">Recent Searches</li>
+                                        </ul>
+                                    </div>
+
                                 <div id="articleGraphHelpDiv" class="instructionsSection">
                                     <h2>Navigate the Graph</h2>
-                                    <h3>Interaction Methods</h3>
-                                    <ul>
-                                        <li>Hover/MouseOver
-                                            <ul>
-                                                <li>When you hover over a node or title, the left sidebar will be updated with details from that node. 
-                                                    "(Preview)" will be appended to the end of the article name in the sidebar.</li>
-                                                <li>When the graph is in "Hover Mode", the graph itself will be redrawn with information about how the previewed node relates to other
-                                                    articles from the main selection.</li>
-                                            </ul></li>
-                                        <li>Click
-                                            <ul>
-                                                <li>If you click a node or a title, the graph will be frozen, so you can then explore the relationships among the linked articles.</li>
-                                            </ul></li>
-                                        <li>Double Click
-                                            <ul>
-                                                <li>Double-Clicking any node or title will reload the Article Graph will the double-clicked node as the central node.</li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    <h3>Hover Mode and Click Mode</h3>
                                     <ul>
                                         <li>There are two fundamental ways to navigate the graph: <em>Hover Mode</em> and <em>Click Mode</em>.
                                             These are exclusive modes, and the graph can only be in one mode at a time.</li>
-                                        <li>The current mode is always listed in the <em>“Graph Mode”</em> box in the top right corner. Toggle between the two modes by <b>single-clicking</b> this box. Switching modes will clear out the graph.</li>
-                                        <li>Regardless of the current Graph Mode, <b>Double-click</b> any node or title to make a new selection and reload the graph with the new selection.</li>
+                                        <li>The current mode is always listed in the <em>“Graph Mode”</em> box in the top right corner. Toggle between the two modes by <strong>single-clicking</strong> this box.</li>
+                                        <li>Regardless of the current Graph Mode, <strong>Double-click</strong> any node or title to make a new selection and reload the graph with the new selection.</li>
                                     </ul>
                                         <h4>Preview Mode</h4>
                                         <ul>
                                             <li>This is the default modal state of the graph. </li>
-                                            <li>In this mode, when you <b>hover/mouseOver over a node or title</b>, the entire graph will be re-drawn to preview the 
-                                                information that emerges from the hovered reference. The article details in the left sidebar will be temporarily replaced 
-                                                with preview information for the hovered node, and if the hovered node also links to other articles in the same 
-                                                graph, a dashed line will be drawn between the nodes that are also linked together to indicate this relationship.</li> 
+                                            <li>In this mode, when you <strong>hover/mouseOver</strong> over a node or title, the entire graph will be re-drawn to preview the 
+                                                information from the hovered reference. The other nodes in the graph will be dimmed, the article details in the left sidebar will be temporarily 
+                                                replaced with preview information for the hovered node, and, if the hovered node also links to other articles in the same 
+                                                graph, a dashed line will be drawn from the hovered node to the shared links to indicate these relationships.</li> 
                                             <li>As soon as you stop hovering over that node, the graph will return to its original state. 
                                                 And when you hover over another node, the graph will be redrawn, etc. </li>
-                                            <li>At any point, you can always <b>double-click a node or title</b> to draw a brand new graph with this new node as the main selection.</li>
+                                            <li>At any point, you can always <strong>double-click</strong> a node or title to draw a brand new graph with this new node as the main selection.</li>
                                             <li>Preview Mode provides a powerful way to quickly view the relationships in the Article Graph. However,
                                                 it doesn’t really allow a deep exploration of the relationships between the selected article and the links.</li>
                                         </ul>
@@ -200,16 +184,15 @@
                                         <ul>
                                             <li>Explore Mode is for deep-diving into the relationships between the selected entry and 
                                                 the linked articles, as well as to make a more detailed inquiry into the linked articles themselves. </li>
-                                            <li>The power of this mode comes in when the user <b>single-clicks a node or title</b>. The graph will then be frozen in that state. Each time the 
-                                                users clicks a new node, the graph updates and is then re-frozen.</li>
-                                            <li>In this state, the user can then explore all the details of all the linked articles, can follow how linked articles are themselves 
-                                                linked to other articles in the graph, or can look at, for examplke, only articles that are out-going links or only articles whose primary 
-                                                domain is epistemology, etc.</li>
-                                            <li>When you <b>hover over a node or title</b> in Explore Mode, the data in the left sidebar will be replaced with a preview of the hovered article, 
+                                            <li>The power of this mode comes in when the user <strong>single-clicks</strong> a node or title. The graph will then be frozen in that state. Each time the 
+                                                user clicks a new node or title, the graph updates and is then re-frozen.</li>
+                                            <li>In this state, the user can more easily explore the details of the linked articles, can see how linked articles are themselves 
+                                                linked to other articles in the graph, or can open the full SEP article itself, etc. </li>
+                                            <li>When you <strong>hover over</strong> a node or title in Explore Mode, the data in the left sidebar will be replaced with a preview of the hovered article, 
                                                 but the main graph features remain the same. The graph itself is only re-drawn when you click a node. </li>
-                                            <li>At any point, you can always <b>double-click a node or title</b> to draw a brand new graph with this new node as the main selection.</li>
+                                            <li>At any point, you can always <strong>double-click a node or title</strong> to draw a brand new graph with this new node as the main selection.</li>
                                         </ul>
-                                        <h3>Color</h3>
+                                        <h3>Color (Same as Domain Graph)</h3>
                                         <p>Each article node and title is colored according to its <i>primary domain</i> designation, which is the domain chosen as the most representative 
                                             expression of the article’s topic type. In many cases though, there are fluid boundaries between domain categories and many, perhaps most, 
                                             articles are tagged as appearing in multiple domains. The color of the node and title will always flow from the article’s primary domain.</p>
@@ -217,24 +200,24 @@
                                 </div>
                                 
                                 <div id="articleGraphHelpLeftDiv" class="instructionsSection">
-                                    <h3>Left Sidebar (Same as Domain Graph)</h3>
-                                    <p>The left side bar contains details about a selected article. In it’s default state, the left side bar provides:</p>
+                                    <h3>Left Sidebar (Same as Article Graph)</h3>
+                                    <p>The left side bar contains details about a selected article. In its default state, the left side bar provides:</p>
                                     <ul>
-                                        <li>A preview of (up to) the first 500 characters in the full SEP article.</li>
+                                        <li>A preview of the first 500 characters or so in the full SEP article.</li>
                                         <li>A link to read the full article on the SEP website.</li>
                                         <li>A panel called "Explore the TOC" that is collapsed by default.</li>
                                         <li>The Domain designation(s) of the selected article.</li>
-                                        <li>Details about the author(s), publication date(s), and word count.</li>
+                                        <li>Details about the author(s), publication date(s), and approximate word count of the selected article.</li>
                                     </ul>
                                     <p>“Explore the TOC”</p>
                                     <ul>
+                                        <li>This panel contains the complete Table of Contents from the full SEP article. Each heading is an active
+                                            link. <strong>Single-click</strong> on a heading to link into that particular section of the article on the SEP website.</li>
                                         <li>By default, the “Explore the TOC” panel is collapsed.</li>
-                                        <li>Single-click on the panel heading, or toggle button, to expand its contents.</li>
-                                        <li>This panel contains the complete outline from the full SEP article’s Table of Contents. Each TOC heading is an active
-                                            link, so clicking on a heading will link you into that particular section of the article on the SEP website.</li>
-                                        <li>When you expand the “Explore the TOC” panel, the Domain(s) and the Article Details panels will collapse. 
-                                        Single-clicking the “Explore the TOC” heading again will then re-collapse this panel, and restore the Domain and Article 
-                                        Details panels.</li>
+                                        <li><strong>Single-click</strong> on the panel heading, or toggle button, to expand its contents. When you expand 
+                                            the “Explore the TOC” panel, the Domain panel and the Article Details panel will collapse. <strong>Single-click</strong> 
+                                            the “Explore the TOC” heading again to re-collapse this panel, and restore the Domain and Article 
+                                            Details panels.</li>
                                     </ul>
                                 </div>
 
@@ -242,29 +225,31 @@
                                     <h3>Right Sidebar</h3>
                                     <p>The right side bar contains details about the linked articles. In its default state, the right sidebar provides:</p>
                                     <ul>
-                                        <li>Link Count. This shows the number of links that connect to the main selection.</li>
+                                        <li>A Count of Linked Articles. This shows the number of articles that are linked to the main selection.</li>
                                         <li>List of Articles. This is collapsed by default.</li>
                                         <li>Link Domains: A list of the primary domain designations for each of the linked articles, as well as a count of 
                                             how many articles in that domain.
                                         </li>
-                                        <li>Link Directions: A list of the three kinds of link directions: bi-directional links, incoming links, and outgoing links; and a count of how many linked articles fall into each direction catergory.
+                                        <li>Link Directions: A list of the three kinds of link directions: bi-directional links, incoming links, and outgoing links; 
+                                            and a count of how many linked articles fall into each direction category.
                                         </li>
                                     </ul>
                                     <p>“List of Articles”</p>
                                     <ul>
-                                        <li>By default, the “List of Articles” panel is collapsed.</li>
-                                        <li>Single-click on the panel heading, or its toggle button, to expand its contents.</li>
-                                        <li>This panel contains an alphabetical list of all the linked articles in the radial graph, each title also colored by its primary domain designation.</li>
-                                        <li>Because this information duplicates the nodes and titles in the radial graph, it is hidden by default. But some graphs are so large that having the alphabetical list available is helpful for exploration. </li>
-                                        <li>When you expand the “List of Articles” panel, the Link Domains and Link Directions panels will collapse. 
-                                            Single-clicking the “List of Articles” heading again will then collapse this panel, and restore the Link Domains and Link Directions panels</li>
+                                        <li>This panel contains an alphabetical list of all the linked articles in the radial graph, with each title colored by 
+                                            its primary domain designation. Because this information duplicates the nodes and titles in the radial graph, it is 
+                                            hidden by default. But some graphs are so large that having the alphabetical list available is helpful for exploration.</li>
+                                        <li><strong>Single-click</strong> on the panel heading, or its toggle button, to expand its contents. When you expand the “List of Articles” panel, the Link Domains and Link Directions panels will collapse. 
+                                            <strong>Single-click</strong> the “List of Articles” heading again to re-collapse this panel, 
+                                            and to restore the Link Domains and Link Directions panels.</li>
+
                                     </ul>
                                 </div>
 
                                 <div id="articleGraphHelpNavDiv" class="instructionsSection">
                                     <h3>Recent Searches (Same as Domain Graph)</h3>
                                     <ul>
-                                        <li>The Recent Searches drop-down menu list the the 10 most recent searches on the site, inclusive of both the Article Graph and the Domain Graph. New searches are added/removed on a first-in/first-out basis.</li>
+                                        <li>The Recent Searches drop-down menu lists the 10 most recent searches on the site, inclusive of both the Article Graph and the Domain Graph. New searches are added/removed on a first-in/first-out basis.</li>
                                     </ul>
                                 </div>
 
@@ -273,83 +258,75 @@
                             <div id="domainInstructions" class="graphInstructionArea">
 
                                 <h1 id="domainGraphInstructionsHeading" class="instructionsPageHeading">Domain Graph Instructions</h1>
-                                <p>The Domain Graph shows how articles in a specific domain are all linked together. An individual article may appear in multiple domains, but it will
-                                    always be colored by its primary domain designation. When the graph is first loaded, the entire domain network is displayed, but the labels are hidden.</p>
-                                <p> 
-                                    The Domain Graph differs from the Article Graph in that the Article Graph shows every link a particular SEP article has, while 
-                                    the Domain Graph will only show articles that are tagged as being members of the same domain.</p>
-                                </p>
-                                <p>Help Sections:</p>
-                                <ul id="helpMenu">
-                                    <li id="domainGraphHelp">Navigate the Graph</li>
-                                    <li id="domainGraphHelpLeft">Left Sidebar</li>
-                                    <li id="domainGraphHelpRight">Right Sidebar</li>
-                                    <li id="domainGraphHelpNav">Recent Searches</li>
-                                </ul>
-                            <div id="domainGraphHelpDiv" class="instructionsSection">
+                                <p>The Domain Graph shows the <em>structure</em> of the aricles in a specific domain of philosphy as it's currently represented in the SEP. That is, 
+                                    the Domain Graph shows how articles in one domain are all linked together: articles that are central to the domain will be clustered
+                                    together, and share many links between them; while articles at the periphery of a domain will be offset from the central network.</p>
+                                    <div class="instructionsMenu">
+                                        <h2>Instructions Menu</h2>
+                                        <ul class="helpMenu">
+                                            <li id="domainGraphHelp">Navigate the Graph</li>
+                                            <li id="domainGraphHelpLeft">Left Sidebar</li>
+                                            <li id="domainGraphHelpRight">Right Sidebar</li>
+                                            <li id="domainGraphHelpNav">Recent Searches</li>
+                                        </ul>
+                                    </div>
+                                <p>An individual article may appear in multiple domains, but it will always be colored by its primary domain designation.</p>
+                                <p>When the graph is first loaded, the nodes are visible, but the labels are not.</p>
+                                <div id="domainGraphHelpDiv" class="instructionsSection">
                                 <h2>Navigate the Graph</h2>
                                 <ul>
-                                    <li>When the graph is first loaded, the nodes are visible, but the labels are not. You can hover over the nodes to see the node title, 
-                                        and to see which articles in the domain that particular article is linked to. You can also hover over the titles in the "Most Connected Nodes" panel,
-                                        or the titles in the "List of Articles" panel, to see the same information.
-                                    </li>
-                                    <li>There are two fundamental ways to navigate the graph: <em>Preview Mode</em> and <em>Explore Mode</em>.
+                                    <li>There are two fundamental ways to navigate the graph: <em>Hover Mode</em> and <em>Click Mode</em>.
                                         These are exclusive modes, and the graph can only be in one mode at a time.</li>
-                                    <li>The current mode is always listed in the <em>“Graph Mode”</em> box in the top right corner. Toggle between the two modes by <b>single-clicking</b> this box. Switching modes will clear out the graph.</li>
-                                    <li><b>Double-click</b> any node or title to select that node and then load the Article Graph with that node as the selection.</li>
+                                    <li>The current mode is always listed in the <em>“Graph Mode”</em> box in the top right corner. Toggle between the two modes by <strong>single-clicking</strong> this box.</li>
+                                    <li><strong>Double-click</strong> any node or title to select that node and then load the <em>Article Graph</em> with that node as the main selection.</li>
                                 </ul>
                                     <h4>Preview Mode</h4>
                                     <ul>
                                         <li>This is the default modal state of the graph. </li>
-                                        <li>In this mode, when you <b>hover/mouseOver over a node or title</b>, the entire graph will be re-drawn to preview the 
-                                            information that emerges from the hovered reference. The article details in the left sidebar will be temporarily replaced 
-                                            with preview information for the hovered node, and if the hovered node also links to other articles in the same 
-                                            graph, a dashed line will be drawn between the nodes that are also linked together to indicate this relationship.</li> 
-                                        <li>As soon as you stop hovering over that node, the graph will return to its original state. 
-                                            And when you hover over another node, the graph will be redrawn, etc. </li>
-                                        <li>At any point, you can always <b>double-click a node or title</b> to draw a brand new graph with this new node as the main selection.</li>
-                                        <li>Preview Mode provides a powerful way to quickly view the relationships in the Article Graph. However,
-                                            it doesn’t really allow a deep exploration of the relationships between the selected article and the links.</li>
+                                        <li>In this mode, when you <strong>hover/mouseOver</strong> over a node or title, the entire graph will be re-drawn to preview the 
+                                            information from the hovered reference. The details of the selected article node will appear in the left sidebar; the article title will 
+                                            appear on top of the graph node; the titles of the articles that this node is linked to will appear at the left and right side of the graph; 
+                                            and, nodes that are not linked to the current node will be dimmed. </li>
+                                        <li>As soon as you stop hovering over that node, the graph will return to its default state of all nodes displayed, with no titles. 
+                                            And when you hover over another node, the graph will be redrawn in the same way, etc. </li>
+                                        <li>If you <strong>double-click</strong> a node or title, the domain graph disappears and the selected node will be loaded into the Article Graph as the main selection.</li>
                                     </ul>
                                     <h4>Explore Mode</h4>
                                     <ul>
-                                        <li>Explore Mode is for deep-diving into the relationships between the selected entry and 
-                                            the linked articles, as well as to make a more detailed inquiry into the linked articles themselves. </li>
-                                        <li>The power of this mode comes in when the user <b>single-clicks a node or title</b>. The graph will then be frozen in that state. Each time the 
+                                        <li>Explore Mode allows a much deeper dive into the structure of a domain than does Preview Mode.</li>
+                                        <li>The power of this mode comes in when the user <strong>single-clicks</strong> a node or title. The graph will then be frozen in that state. Each time the 
                                             users clicks a new node, the graph updates and is then re-frozen.</li>
-                                        <li>In this state, the user can then explore all the details of all the linked articles, can follow how linked articles are themselves 
-                                            linked to other articles in the graph, or can look at, for examplke, only articles that are out-going links or only articles whose primary 
-                                            domain is epistemology, etc.</li>
-                                        <li>When you <b>hover over a node or title</b> in Explore Mode, the data in the left sidebar will be replaced with a preview of the hovered article, 
-                                            but the main graph features remain the same. The graph itself is only re-drawn when you click a node. </li>
-                                        <li>At any point, you can always <b>double-click a node or title</b> to draw a brand new graph with this new node as the main selection.</li>
-                                    </ul>
-                                    <h3>Color</h3>
-                                    <p>Each article node and title is colored according to its <i>primary domain</i> designation, which is the domain chosen as the most representative 
+                                        <li>In this state, when the user selects a node and freezes the graph in its current state, not only does the user see the selected node and 
+                                            the titles of the linked articles, but those titles themselves become actionable. 
+                                        <li>When the user <strong>hovers</strong> a node or title in Click Mode, a dashed line
+                                            is drawn from the title to its correponding node. This allows the user to see where that title lives within the domain network.</li>
+                                            <li>If you <strong>double-click</strong> a node or title, the domain graph disappears and the selected node will be loaded into the Article Graph as the main selection.</li>
+                                        </ul>
+                                    <h3>Color (Same as Article Graph)</h3>
+                                    <p>Each node and title is colored according to its <em>primary domain</em> designation, which is the domain chosen as the most representative 
                                         expression of the article’s topic type. In many cases though, there are fluid boundaries between domain categories and many, perhaps most, 
                                         articles are tagged as appearing in multiple domains. The color of the node and title will always flow from the article’s primary domain.</p>
-
                             </div>
                             
                             <div id="domainGraphHelpLeftDiv" class="instructionsSection">
                                 <h3>Left Sidebar (Same as Article Graph)</h3>
-                                <p>The left side bar contains details about a selected article. In it’s default state, the left side bar provides:</p>
+                                <p>The left side bar contains details about a selected article. In its default state, the left side bar provides:</p>
                                 <ul>
-                                    <li>A preview of (up to) the first 500 characters in the full SEP article.</li>
+                                    <li>A preview of the first 500 characters or so in the full SEP article.</li>
                                     <li>A link to read the full article on the SEP website.</li>
                                     <li>A panel called "Explore the TOC" that is collapsed by default.</li>
                                     <li>The Domain designation(s) of the selected article.</li>
-                                    <li>Details about the author(s), publication date(s), and word count.</li>
+                                    <li>Details about the author(s), publication date(s), and approximate word count of the selected article.</li>
                                 </ul>
                                 <p>“Explore the TOC”</p>
                                 <ul>
+                                    <li>This panel contains the complete Table of Contents from the full SEP article. Each heading is an active
+                                        link. <strong>Single-click</strong> on a heading to link into that particular section of the article on the SEP website.</li>
                                     <li>By default, the “Explore the TOC” panel is collapsed.</li>
-                                    <li>Single-click on the panel heading, or toggle button, to expand its contents.</li>
-                                    <li>This panel contains the complete outline from the full SEP article’s Table of Contents. Each TOC heading is an active
-                                        link, so clicking on a heading will link you into that particular section of the article on the SEP website.</li>
-                                    <li>When you expand the “Explore the TOC” panel, the Domain(s) and the Article Details panels will collapse. 
-                                    Single-clicking the “Explore the TOC” heading again will then re-collapse this panel, and restore the Domain and Article 
-                                    Details panels.</li>
+                                    <li><strong>Single-click</strong> on the panel heading, or toggle button, to expand its contents. When you expand 
+                                        the “Explore the TOC” panel, the Domain panel and the Article Details panel will collapse. <strong>Single-click</strong> 
+                                        the “Explore the TOC” heading again to re-collapse this panel, and restore the Domain and Article 
+                                        Details panels.</li>
                                 </ul>
                             </div>
 
@@ -390,7 +367,7 @@
             </div>
         </main>
         <footer class="fixed-bottom">
-            <p>© 2020 - Joseph DiCastro</p>
+            <p id="copyright">© 2020 - Joseph DiCastro</p>
         </footer>
 
 
