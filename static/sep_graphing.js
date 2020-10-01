@@ -2409,17 +2409,19 @@ function sngClickDomainNode(mouseOverReference, data, domainTitle) {
         
 }
 function mouseOverDomainNode(mouseOverReference, data, domainTitle) {
-    activateItemLink(mouseOverReference)
+    
     let selectedNode = d3.select(mouseOverReference).datum()
 
-    if(!exploreMode) { previewDomainNode(mouseOverReference, data, domainTitle) }
+    if(!exploreMode) { activateItemLink(mouseOverReference); previewDomainNode(mouseOverReference, data, domainTitle) }
     if(exploreMode) {
         currentDomainCentralNode = getDomainCentralNode()
         let selectedNode = d3.select(mouseOverReference).datum()
         let nodeCircle = d3.selectAll('.node').filter(function (d,i) { return d.id === selectedNode.id })
-        updateSideBarLeft_ArticleMain(selectedNode, 'Preview')
 
-        if(+nodeCircle.style('opacity') === styConfig.nodeLabel.neighborNodeOpacity) {
+
+        if(+nodeCircle.style('opacity') >= styConfig.nodeLabel.neighborNodeOpacity) {
+            activateItemLink(mouseOverReference)
+            updateSideBarLeft_ArticleMain(selectedNode, 'Preview')
             nodeCircle.style('opacity', styConfig.nodeLabel.defaultOpacity)
             let selectedLabel = getD3PlusLabel(selectedNode.id)
             let selectedLabelLocationData = getDomainLabelLocationData(selectedLabel)
