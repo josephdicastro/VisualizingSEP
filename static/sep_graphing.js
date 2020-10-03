@@ -76,10 +76,10 @@ let currentDomainCentralNode;
 let pageTransition = 300
 
 //set BaseURL for SEP Edition
-let sepEdition = "Summer 2020"
-let baseURL = 'https://plato.stanford.edu/archives/sum2020';
+let sepEdition = "Fall 2020"
+let baseURL = 'https://plato.stanford.edu/archives/fall2020';
 
-let json_file = 'static/sep_network_new.json'
+let json_file = 'static/sep_network.json'
 
 startVisualization();
 
@@ -1294,12 +1294,12 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
         .attr('id','domainListContentArea')
         .style('display', 'block')
 
-    domainListContentArea.append('p')
-        .html('(Dbl-Click for<br>Domain Graph)&nbsp;')
-        .classed('panelDispayCut', true)
-        .classed('float-right', true)
-        .style('margin-top','-.5em')
-        .style('margin-left', '-.9em')
+    // domainListContentArea.append('p')
+    //     .html('(Dbl-Click for<br>Domain Graph)&nbsp;')
+    //     .classed('panelDispayCut', true)
+    //     .classed('float-right', true)
+    //     .style('margin-top','-.5em')
+    //     .style('margin-left', '-.9em')
 
     domainListContentArea.append("ul")
         .selectAll(".domainListItem")
@@ -3020,42 +3020,42 @@ function color(entryType){
             break;
 
         // purples
-        case 'Aesthetics':
+        case 'Aesthetics and Philosophy of Art':
             rgbValue = 'rgb(184, 108, 237)' 
             break;
 
         // violet 
-        case 'Religion':
+        case 'Philosophy of Religion':
             rgbValue = 'rgb(156, 20, 252)' 
 
             break;
 
         // social and political philosophies
         // reds
-        case 'Ethics and Morality':
+        case 'Ethics':
             rgbValue = 'rgb(230, 97, 97)' //#FF8BA3
             break;
 
-        case 'Political and Social Theory': //#E44C96
+        case 'Social and Political Philosophy': //#E44C96
             rgbValue = 'rgb(192, 2, 96)'
             break;
     
-        case 'Law':
+        case 'Philosophy of Law':
             rgbValue = 'rgb(251, 3, 114)' //#FF7D63
             break;
     
-        case 'Economics':
+        case 'Philosophy of Economics':
             rgbValue = 'rgb(238, 50, 170)' //#FF1D12
             break;
     
-        case 'Feminism':
+        case 'Feminist Philosophy':
             rgbValue = 'rgb(238, 4, 4)' //#FF642C
             break;
 
         // cultural philosophies
         // orange tones 
 
-        case 'Existentialism and Phenomenology':
+        case 'Continental Philosophy':
             rgbValue = 'rgb(170, 50, 3)' //#FF6700
             break;
 
@@ -3089,15 +3089,15 @@ function color(entryType){
             rgbValue = 'rgb(20,172,100)'
             break;
 
-        case 'Mathematics':
+        case 'Philosophy of Mathematics':
             rgbValue = 'rgb(0,255,80)'
             break;
 
-        case 'Computer Science':
+        case 'Philosophy of Computer Science':
             rgbValue = 'rgb(155,235,135)'
             break;
 
-        case 'Language':
+        case 'Philosophy of Language':
             rgbValue = 'rgb(172,247,76)'
             break;
 
@@ -3110,7 +3110,7 @@ function color(entryType){
             rgbValue = 'rgb(250,250,147)'
             break;
     
-        case 'Mind':
+        case 'Philosophy of Mind':
             rgbValue = 'rgb(43, 162, 162)' 
             break;
     
@@ -3118,29 +3118,29 @@ function color(entryType){
         // scientific philosophies
         // blues
 
-        case 'Scientific Methods':
+        case 'Philosophy of Science':
             rgbValue = 'rgb(0,111,255)'
             break;
 
-        case 'Biology':
+        case 'Philosophy of Biology':
             rgbValue = 'rgb(10,205,255)'
             break;
     
-        case 'Evolution':
-            rgbValue = 'rgb(94,190,203)'
-            break;
+        // case 'Evolution':
+        //     rgbValue = 'rgb(94,190,203)'
+        //     break;
 
-        case 'Genetics':
-            rgbValue = 'rgb(0,168,255)'
-            break;
+        // case 'Genetics':
+        //     rgbValue = 'rgb(0,168,255)'
+        //     break;
 
-        case 'Physics':
+        case 'Philosophy of Physics':
             rgbValue = 'rgb(70,144,255)'
             break;    
 
-        case 'Quantum Mechanics':
-            rgbValue = 'rgb(35,173,255)'
-            break;
+        // case 'Quantum Mechanics':
+        //     rgbValue = 'rgb(35,173,255)'
+        //     break;
 
         case 'Default Page':
             rgbValue = 'rgb(255,255,255)'
