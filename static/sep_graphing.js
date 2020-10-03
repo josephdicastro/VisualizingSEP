@@ -79,7 +79,7 @@ let pageTransition = 300
 let sepEdition = "Fall 2020"
 let baseURL = 'https://plato.stanford.edu/archives/fall2020';
 
-let json_file = 'static/sep_network.json'
+let json_file = '../static/sep_network.json'
 
 startVisualization();
 
