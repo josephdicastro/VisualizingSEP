@@ -263,17 +263,24 @@ def add_author(url, authors, collection_to_update):
 
 
 
-def update_sep_json(id_title,api_endpoint, collection_to_update):
+def update_sep_json(id_title,api_endpoint, json_type, collection_to_update):
     """ This function updates the JSON data for individually passed articles. """
     
-    #create correct api endoint url
-    inpho_api = f'http://inpho.cogs.indiana.edu/{api_endpoint}.json'
+    #check for valid api or not
+    if api_endpoint != 'no_api_data':
 
-    #get JSON data from InPhO
-    request_inpho = requests.get(inpho_api)
-    inpho_json = json.loads(request_inpho.text)
+        #create correct api endoint url
+        inpho_api = f'http://inpho.cogs.indiana.edu/{api_endpoint}.json'
+
+        #get JSON data from InPhO
+        request_inpho = requests.get(inpho_api)
+        inpho_json = json.loads(request_inpho.text)
+    else:
+        inpho_api = api_endpoint
+        inpho_json = {'type': json_type}
 
     #create udpate string
+
     new_values = {
         'inpho_api': inpho_api,
         'inpho_json': inpho_json
@@ -297,10 +304,30 @@ def update_sep_json(id_title,api_endpoint, collection_to_update):
 
     print(doc)
 
-def get_author_string(copyright_obj):
-    soup = BeautifulSoup(copyright_obj)
-    copyright_string = soup.get_text()
-    by_pos = copyright_string.find('by ') +2
-    authors = copyright_string[by_pos:].strip()
-    authors_clean = re.sub('<.*?>', '', authors)
-    return authors_clean
+def update_domain_info(page_url, domain_tags, primary_domain, collection_to_update):
+    """ This function updates the domain data for individually passed articles. """
+    
+    #create udpate string
+
+    new_values = {
+        'domain_tags': domain_tags,
+        'primary_domain': primary_domain
+    }
+
+    # return new_values
+
+    #udpate MongoDB
+    result = collection_to_update.update_one(
+        { 'page_url': page_url },
+        { '$set': new_values}
+    )
+
+    # boolean confirmation that the API call went through
+    print (f'acknowledged: {page_url}\n', result.acknowledged)
+
+    #get Projection to test update
+    doc = list(collection_to_update.find(
+            filter={'page_url': page_url},
+            projection=['title','domain_tags', 'primary_domain']))
+
+    print(doc)
