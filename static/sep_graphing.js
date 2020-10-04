@@ -1272,7 +1272,6 @@ function getParagraphDataHTML(paragraphDataFromNode) {
     let htmlReturn = '';
     //only display the first 500 characters of the node's intro paragraph
     if(typeof(paragraphDataFromNode)!=='undefined') {
-        console.log(paragraphDataFromNode)
         if(paragraphDataFromNode !== '') {
             if (paragraphDataFromNode.length > 500 ) {
                 let firstPeriod = paragraphDataFromNode.indexOf('.',350) + 1
@@ -1280,11 +1279,6 @@ function getParagraphDataHTML(paragraphDataFromNode) {
                 let firstSemicolon  = paragraphDataFromNode.indexOf(';',350) + 1
                 let lastSpace = paragraphDataFromNode.indexOf(' ',450)
                 let finalParaText;
-
-                console.log(firstPeriod)
-                console.log(firstQuestionMark)
-                console.log(firstSemicolon)
-                console.log(lastSpace)
 
                 if(firstPeriod <= 550 ) { finalParaText = paragraphDataFromNode.substring(0,firstPeriod) }
                 if(firstPeriod > 550 && firstQuestionMark <= 550 ) { finalParaText = paragraphDataFromNode.substring(0,firstQuestionMark) }
@@ -1324,13 +1318,6 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
         .attr('id','domainListContentArea')
         .style('display', 'block')
 
-    // domainListContentArea.append('p')
-    //     .html('(Dbl-Click for<br>Domain Graph)&nbsp;')
-    //     .classed('panelDispayCut', true)
-    //     .classed('float-right', true)
-    //     .style('margin-top','-.5em')
-    //     .style('margin-left', '-.9em')
-
     domainListContentArea.append("ul")
         .selectAll(".domainListItem")
         .data(selectedArticle.domain_tags.split(','))
@@ -1342,6 +1329,12 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
             .classed('panelListItem', true)
         .exit().remove()
 
+    domainListContentArea.append('p')
+        .html('(Dbl-Click for<br>Domain Graph)&nbsp;')
+        .classed('panelDispayCut', true)
+        .classed('float-right', true)
+        .style('margin-top','-.5em')
+        .style('margin-left', '-.9em')
 
 
     let domainList = d3.selectAll('.domainListItem')
@@ -2013,7 +2006,7 @@ function activateArticleListItem() {
     let linkDomains = d3.selectAll('.linkDomainListItem')
 
     linkDomains.each(function (d) {
-        console.log(d)
+
         let articleRef = this
         // if(nodeDomains.includes(d.title)) {
         //     d3.select(articleRef).transition().duration(200).style('opacity', styConfig.listItems.defaultOpacity)
