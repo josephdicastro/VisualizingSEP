@@ -45,6 +45,11 @@ let contactPageLink = d3.select('#contactPage')
 let graphMode = d3.select("#graphMode")
 let graphInstructions = d3.select("#graphInstructions")
 
+let aboutNumArticles = d3.select("#aboutNumArticles")
+let aboutNumLinks = d3.select("#aboutNumLinks")
+let aboutNumDomains = d3.select("#aboutNumDomains")
+let aboutAvgWordCount = d3.select("#aboutAvgWordCount")
+
 //Initialize nodes and links arrays for simulation
 let graphNodes = [];
 let graphLinks = [];
@@ -54,6 +59,7 @@ let searchCache = [];
 
 let allArticles = [];
 let numArticles;
+let numLinks;
 let allDomains = [];
 let allEntries = [];
 let recentSearches = [];
@@ -448,10 +454,14 @@ function setNavigation() {
     }
 
     function setAboutPage(){
+
+
+
         aboutPageLink
             .on('mouseover', function() { activateItemLink(this)})
             .on('mouseout', function() { deActivateItemLink(this)})
             .on('click', function() { showAboutPage()})
+
     }
 
     function setContactPage() {
@@ -682,22 +692,34 @@ function loadMenuData() {
 
     d3.json(json_file).then((json) => {
 
+        let wordCount = 0;
         let domainSet = new Set()
+
         json.articles.nodes.forEach(node => {
             let nodeTitle = node.title
             let nodePrimaryDomain = node.primary_domain
+            let wordCountText = parseInt(node.word_count.replace(',',''))
             allArticles.push({'title': nodeTitle, 'primary_domain': nodePrimaryDomain})
             domainSet.add(nodePrimaryDomain)
+            wordCount += wordCountText
+            
         })
 
         numArticles = allArticles.length
 
-        // allDomains = Array.from(domainSet)
+        let numArticlesDisplay = allArticles.length.toLocaleString();
+        console.log(numArticlesDisplay)
+
         domainSet.forEach(domain => allDomains.push({'title': domain, 'primary_domain':domain}))
         allDomains.sort((a,b) => d3.ascending(a.title, b.title));
 
         allEntries = allArticles.concat(allDomains)
-        // allEntries.sort((a,b) => d3.ascending(a, b));
+
+
+        aboutNumArticles.text(allArticles.length.toLocaleString())
+        aboutNumLinks.text(json.articles.links.length.toLocaleString())
+        aboutNumDomains.text(allDomains.length)
+        aboutAvgWordCount.text(parseInt(wordCount/allArticles.length).toLocaleString())
         })
 
 }
