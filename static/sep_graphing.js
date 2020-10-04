@@ -1330,11 +1330,10 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
         .exit().remove()
 
     domainListContentArea.append('p')
-        .html('(Dbl-Click for<br>Domain Graph)&nbsp;')
+        .html('(Dbl-Click for Domain Graph)')
         .classed('panelDispayCut', true)
         .classed('float-right', true)
-        .style('margin-top','-.5em')
-        .style('margin-left', '-.9em')
+
 
 
     let domainList = d3.selectAll('.domainListItem')
