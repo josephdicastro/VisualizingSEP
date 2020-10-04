@@ -445,7 +445,6 @@ function setNavigation() {
                 break;
 
         }
-        console.log(matchedTitles)
         if (matchedTitles.length > 0 ) {
             populateSearchResults(searchDiv, matchedTitles)
         }   else    {
@@ -708,7 +707,6 @@ function loadMenuData() {
         numArticles = allArticles.length
 
         let numArticlesDisplay = allArticles.length.toLocaleString();
-        console.log(numArticlesDisplay)
 
         domainSet.forEach(domain => allDomains.push({'title': domain, 'primary_domain':domain}))
         allDomains.sort((a,b) => d3.ascending(a.title, b.title));
@@ -1250,8 +1248,6 @@ function setArticleIntroParagraph(parentSidebar, titleType, selectedArticle) {
     let paragraphDiv = introParagraphPanel.append("div")
     let paragraphData = getParagraphDataHTML(selectedArticle.preamble_text);
 
-    console.log(selectedArticle.preamble_text)
-
     paragraphDiv
         .html(paragraphData)
         .classed('panelParagraphText', true)
@@ -1276,18 +1272,25 @@ function getParagraphDataHTML(paragraphDataFromNode) {
     let htmlReturn = '';
     //only display the first 500 characters of the node's intro paragraph
     if(typeof(paragraphDataFromNode)!=='undefined') {
+        console.log(paragraphDataFromNode)
         if(paragraphDataFromNode !== '') {
             if (paragraphDataFromNode.length > 500 ) {
                 let firstPeriod = paragraphDataFromNode.indexOf('.',350) + 1
-                let firstQuestionMark = paragraphDataFromNode.indexOf('.',350) + 1
+                let firstQuestionMark = paragraphDataFromNode.indexOf('?',350) + 1
                 let firstSemicolon  = paragraphDataFromNode.indexOf(';',350) + 1
                 let lastSpace = paragraphDataFromNode.indexOf(' ',450)
                 let finalParaText;
+
+                console.log(firstPeriod)
+                console.log(firstQuestionMark)
+                console.log(firstSemicolon)
+                console.log(lastSpace)
 
                 if(firstPeriod <= 550 ) { finalParaText = paragraphDataFromNode.substring(0,firstPeriod) }
                 if(firstPeriod > 550 && firstQuestionMark <= 550 ) { finalParaText = paragraphDataFromNode.substring(0,firstQuestionMark) }
                 if(firstPeriod > 550 && firstSemicolon <= 550 ) { finalParaText = paragraphDataFromNode.substring(0,firstSemicolon) }
                 if(firstPeriod > 550 && firstQuestionMark > 550 ) { finalParaText = paragraphDataFromNode.substring(0,lastSpace) + ' ...'}
+                if(firstPeriod === 0 && (firstQuestionMark === 0 || firstSemicolon === 0)) {finalParaText = paragraphDataFromNode.substring(0,500) + '...'}
 
                 if(typeof(finalParaText)==='undefined') {
                     finalParaText = paragraphDataFromNode.substring(0,500) + '...' 
