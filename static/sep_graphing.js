@@ -1250,6 +1250,8 @@ function setArticleIntroParagraph(parentSidebar, titleType, selectedArticle) {
     let paragraphDiv = introParagraphPanel.append("div")
     let paragraphData = getParagraphDataHTML(selectedArticle.preamble_text);
 
+    console.log(selectedArticle.preamble_text)
+
     paragraphDiv
         .html(paragraphData)
         .classed('panelParagraphText', true)
@@ -1278,11 +1280,13 @@ function getParagraphDataHTML(paragraphDataFromNode) {
             if (paragraphDataFromNode.length > 500 ) {
                 let firstPeriod = paragraphDataFromNode.indexOf('.',350) + 1
                 let firstQuestionMark = paragraphDataFromNode.indexOf('.',350) + 1
+                let firstSemicolon  = paragraphDataFromNode.indexOf(';',350) + 1
                 let lastSpace = paragraphDataFromNode.indexOf(' ',450)
                 let finalParaText;
 
                 if(firstPeriod <= 550 ) { finalParaText = paragraphDataFromNode.substring(0,firstPeriod) }
                 if(firstPeriod > 550 && firstQuestionMark <= 550 ) { finalParaText = paragraphDataFromNode.substring(0,firstQuestionMark) }
+                if(firstPeriod > 550 && firstSemicolon <= 550 ) { finalParaText = paragraphDataFromNode.substring(0,firstSemicolon) }
                 if(firstPeriod > 550 && firstQuestionMark > 550 ) { finalParaText = paragraphDataFromNode.substring(0,lastSpace) + ' ...'}
 
                 if(typeof(finalParaText)==='undefined') {
