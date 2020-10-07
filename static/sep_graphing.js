@@ -1274,6 +1274,9 @@ function getParagraphDataHTML(paragraphDataFromNode) {
     if(typeof(paragraphDataFromNode)!=='undefined') {
         if(paragraphDataFromNode !== '') {
             if (paragraphDataFromNode.length > 500 ) {
+                console.log(paragraphDataFromNode)
+                let paragraph550 = paragraphDataFromNode.substring(0,550)
+                
                 let firstPeriod = paragraphDataFromNode.indexOf('.',350) + 1
                 let firstQuestionMark = paragraphDataFromNode.indexOf('?',350) + 1
                 let firstSemicolon  = paragraphDataFromNode.indexOf(';',350) + 1
