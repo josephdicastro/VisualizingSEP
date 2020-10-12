@@ -1209,9 +1209,9 @@ function updateSideBarLeft_ArticleMain(selectedArticle, titleType){
         let sideBarLeftContent = sidebarLeft.append("div");
 
         setArticleIntroParagraph(sideBarLeftContent, titleType, selectedArticle);
-        setExploreTOC(sideBarLeftContent, selectedArticle) 
+        // setExploreTOC(sideBarLeftContent, selectedArticle) 
         setArticleDomainDetails(sideBarLeftContent, selectedArticle);
-        setArticleDetails(sideBarLeftContent, selectedArticle)
+        // setArticleDetails(sideBarLeftContent, selectedArticle)
     }
 }
 
