@@ -664,7 +664,8 @@ function initializeStyles() {
         'neighborNodeOpacity': 0.25,
         'inArrayOpacity': 1,
         'notInArrayOpacity': 0.00,
-        'fontSize': '1em', 
+        'defaultFontSize': '1.3em', 
+        'largeGraphFontSize': '.5em',
         'defaultRadius': 4,
         'strokeColor': "#fff",
         'strokeWidth':0.5 
@@ -1062,7 +1063,7 @@ function drawArticleSimulation(data) {
                  .append("text")
                  .text(function(d) {return d.title})
                  .attr('fill-opacity',styConfig.nodeLabel.defaultOpacity)
-                 .attr("font-size", styConfig.nodeLabel.fontSize)
+                 .attr("font-size", styConfig.nodeLabel.defaultFontSize)
                  .attr("fill", function(d) {return color(d.primary_domain)})
                  .attr('nodeID', function(d) {return d.id})
                  .classed('label',true)
@@ -1293,8 +1294,10 @@ function getParagraphDataHTML(paragraphDataFromNode) {
                     finalParaText = paragraphDataFromNode.substring(0,500) + '...' 
                 }
                 let displayCut = `(First ${finalParaText.length} characters displayed.)`;
-                htmlReturn = '<p>' + finalParaText + '</p>' + 
-                             '<p class="panelDispayCut float-right">' + displayCut + '</p>'
+
+                htmlReturn = '<p>' + finalParaText + '</p>' 
+                            //     + 
+                            //  '<p class="panelDispayCut float-right">' + displayCut + '</p>'
             }  else {
                 htmlReturn = '<p>' + paragraphDataFromNode + '</p>'
             }
@@ -1332,10 +1335,10 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
             .classed('panelListItem', true)
         .exit().remove()
 
-    domainListContentArea.append('p')
-        .html('(Dbl-Click for Domain Graph)')
-        .classed('panelDispayCut', true)
-        .classed('float-right', true)
+    // domainListContentArea.append('p')
+    //     .html('(Dbl-Click for Domain Graph)')
+    //     .classed('panelDispayCut', true)
+    //     .classed('float-right', true)
 
 
 
@@ -1344,7 +1347,7 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
     domainList
         .on('mouseover', function() { activateItemLink(this)})
         .on('mouseout', function() { deActivateItemLink(this)})
-        .on('dblclick', function () {
+        .on('click', function () {
             let domainTitle = d3.select(this).datum()
             showDomainGraph(domainTitle)
     })
