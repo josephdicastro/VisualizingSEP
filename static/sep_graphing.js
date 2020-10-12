@@ -585,8 +585,8 @@ function initializeParentSVG(svg) {
         left:0
     };
 
-    let areaWidth = 740;
-    let areaHeight = 740;
+    let areaWidth = 800;
+    let areaHeight = 800;
 
     let width = areaWidth - margin.left - margin.right;
     let height = areaHeight - margin.top - margin.bottom;
