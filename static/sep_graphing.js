@@ -579,14 +579,14 @@ function setGlobalNodesLinks(sepData) {
 function initializeParentSVG(svg) {
     // set basic SVG Config data 
     let margin = {
-        top: 0,
+        top: 50,
         right: 0,
         bottom:0,
         left:0
     };
 
-    let areaWidth = 950;
-    let areaHeight = 850;
+    let areaWidth = 1000;
+    let areaHeight = 900;
 
     let width = areaWidth - margin.left - margin.right;
     let height = areaHeight - margin.top - margin.bottom;
@@ -1141,7 +1141,7 @@ function drawArticleSimulation(data) {
         .strength(function() { return forceStrength(countOfNodes)})
     simConfig.simulation.force("link")
         .id(function (d) {return d.id})
-        .distance(200)//function () {return (countOfNodes > 50) ? 200 : 175})
+        .distance(250)//function () {return (countOfNodes > 50) ? 200 : 175})
         .links(graphLinks)
     simConfig.simulation.force("forceX").strength(0)
     simConfig.simulation.force("forceY").strength(0)
