@@ -9,15 +9,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="https://use.typekit.net/nfp8cny.css">
-    <link href="static/styles/styles_new.css" rel="stylesheet">
+    <link href="static/styles/layout.css" rel="stylesheet">
+    <link href="static/styles/nav.css" rel="stylesheet">
+    <link href="static/styles/graphs.css" rel="stylesheet">
     <link href="static/styles/home.css" rel="stylesheet">
     <link href="static/styles/about.css" rel="stylesheet">
     <link href="static/styles/contact.css" rel="stylesheet">
-    <link href="static/styles/base.css" rel="stylesheet">
-    <link href="static/styles/nav.css" rel="stylesheet">
     <link href="static/styles/graphmode_instructions.css" rel="stylesheet">
-
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css"> -->
+    <!-- <link href="static/styles/styles_new.css" rel="stylesheet"> -->
 
     
     <title>Visualizing SEP </title>
@@ -33,29 +32,6 @@
                 <ul class="navbar-nav mr-auto">
                     <!-- Domain Search Features -->
                     <li class="nav-item">
-                        <div id="domainSearchDiv" class="dropDownMenuDiv">
-                            <button id="domainSearchButton" class="searchButton">Search Domains</button>
-                            <div id="domainSearchArea" class="searchArea">
-                                <input id="domainSearchFilter" type="text" placeholder="Search..." class="searchFilter">
-                                <div id="domainSearchListDiv" class="titleDisplay"></div>
-                                <div class="dropDownFooter">
-                                    <div id="showAllDomains" class="showAll">
-                                        <input type="checkbox" id="domainShowAllCheck" name="domainShowAllCheck" value="Show All Domains">
-                                        <label for="domainShowAllCheck">Show All Domains</label>
-                                    </div>
-                                    <div id="domainCloseSearchArea" class="cancelSearch">
-                                        <p>Cancel Search</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <!-- Get Random -->
-                    <li class="nav-item">
-                        <a class="nav-link buttonBox " href="#" id="getRandomEntry">Randomize</a>
-                    </li> 
-                    <!-- Article Search Features -->
-                    <li class="nav-item">
                         <div id="articleSearchDiv" class="dropDownMenuDiv">
                             <button id="articleSearchButton" class="searchButton">Search Articles</button>
                             <div id="articleSearchArea" class="searchArea">
@@ -68,6 +44,29 @@
                                         <label for="articleShowAllCheck">Show All Articles</label>
                                     </div>
                                     <div id="articleCloseSearchArea" class="cancelSearch">
+                                        <p>Cancel Search</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Get Random -->
+                    <li class="nav-item">
+                        <a class="nav-link buttonBox " href="#" id="getRandomEntry">Randomize</a>
+                    </li> 
+                    <!-- Article Search Features -->
+                    <li class="nav-item">
+                        <div id="domainSearchDiv" class="dropDownMenuDiv">
+                            <button id="domainSearchButton" class="searchButton">Search Domains</button>
+                            <div id="domainSearchArea" class="searchArea">
+                                <input id="domainSearchFilter" type="text" placeholder="Search..." class="searchFilter">
+                                <div id="domainSearchListDiv" class="titleDisplay"></div>
+                                <div class="dropDownFooter">
+                                    <div id="showAllDomains" class="showAll">
+                                        <input type="checkbox" id="domainShowAllCheck" name="domainShowAllCheck" value="Show All Domains">
+                                        <label for="domainShowAllCheck">Show All Domains</label>
+                                    </div>
+                                    <div id="domainCloseSearchArea" class="cancelSearch">
                                         <p>Cancel Search</p>
                                     </div>
                                 </div>
@@ -108,99 +107,206 @@
         <main>
             <div>
                 <div class="row topRow">
-                    <div class="col-lg-3 ">
-                        
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-7"><div id="pageTitle"><h1></h1></div>
                     </div>
-                    <div class="col-lg-7">
-                        <div id="pageTitle"><h1></h1></div>
-                    </div>
-                    <div class="col-lg-2">                        
-
-                    </div>
+                    <div class="col-lg-2">  </div>
                 </div>
                 <div class="row contentRow">            
                     <div class="col-lg-3">
                         <div id="sidebarLeft" class="sidebar float-right"></div>
                     </div>
                     <div class="col-lg-7">
-                        <div id="homePageDiv">
-                            <div id="homeHeader">
-                                <img src="static/img/articlegraphLogo.svg" class="articleSVG">
-                                <h1>Welcome to Visualizing SEP</h1>
-                                <img src="static/img/articlegraphLogo.svg" class="articleSVG">
+                        <div id="mainContent">
+                            <div id="homePageDiv">
+                                <div id="homeHeader">
+                                    <img src="static/img/articlegraphLogo.svg" class="articleSVG">
+                                    <h1>Welcome to Visualizing SEP</h1>
+                                    <img src="static/img/articlegraphLogo.svg" class="articleSVG">
+                                </div>
+
+                                <p >Explore the entire <a href="https://plato.stanford.edu/">Stanford Encylopedia of Philosphy</a>
+                                    visually and beautifully.</p>
+                                <p>This application uses network graphs to show the inter-relationships among all articles 
+                                    in the Encylopedia. It also provide previews of each article, with links into the full article at the SEP. For the first time, 
+                                    one can easily and powerfully navigate the entirety of this incredible resource.</p>
+                                <p>To begin: search for an article, select a domain, or just hit "Randomize" to begin your journey through the Encylopedia with a surprise entry.</p>
+                                <p style="margin-top:4em">*Visualizing SEP is optimized for Chrome on the desktop. Performance on other browers and mobile devices is not guaranteed.
+                                </p>
                             </div>
+                            <div id="graphPageDiv" class="panelBG_graph" >
+                                <div id="graphMode" ></div>
+                                <svg id="graphSVG" width="100%" height="700"></svg>
+                                <div id="graphInstructions" ></div>
+                                <div id="articleInstructions" class="graphInstructionArea">
 
-                            <p >Explore the entire <a href="https://plato.stanford.edu/">Stanford Encylopedia of Philosphy</a>
-                                 visually and beautifully.</p>
-                            <p>This application uses network graphs to show the inter-relationships among all articles 
-                                in the Encylopedia. It also provide previews of each article, with links into the full article at the SEP. For the first time, 
-                                one can easily and powerfully navigate the entirety of this incredible resource.</p>
-                            <p>To begin: search for an article, select a domain, or just hit "Randomize" to begin your journey through the Encylopedia with a surprise entry.</p>
-                            <p style="margin-top:4em">*Visualizing SEP is optimized for Chrome on the desktop. Performance on other browers and mobile devices is not guaranteed.
-                            </p>
-                        </div>
-                        <div id="graphPageDiv" class="panelBG_graph" >
-                            <div id="graphMode" ></div>
-                            <svg id="graphSVG" width="100%" height="700"></svg>
-                            <div id="graphInstructions" ></div>
-                            <div id="articleInstructions" class="graphInstructionArea">
+                                        <h1 id="articleGraphInstructionsHeading" class="instructionsPageHeading">Article Graph Instructions</h1>
+                                        <p>The Article Graph selects a single SEP article, and then shows every other article in the Encyclopedia that 
+                                            the selection is linked to in some way. The selected article is always at the center of the graph, and the linked
+                                            articles spread radially around it.
+                                        </p>
+                                        <div class="instructionsMenu">
+                                            <h2>Instructions Menu</h2>
+                                            <ul class="helpMenu">
+                                                <li id="articleGraphHelp">Navigate the Graph</li>
+                                                <li id="articleGraphHelpLeft">Left Sidebar</li>
+                                                <li id="articleGraphHelpRight">Right Sidebar</li>
+                                                <li id="articleGraphHelpNav">Recent Searches</li>
+                                            </ul>
+                                        </div>
 
-                                    <h1 id="articleGraphInstructionsHeading" class="instructionsPageHeading">Article Graph Instructions</h1>
-                                    <p>The Article Graph selects a single SEP article, and then shows every other article in the Encyclopedia that 
-                                        the selection is linked to in some way. The selected article is always at the center of the graph, and the linked
-                                        articles spread radially around it.
-                                    </p>
-                                    <div class="instructionsMenu">
-                                        <h2>Instructions Menu</h2>
-                                        <ul class="helpMenu">
-                                            <li id="articleGraphHelp">Navigate the Graph</li>
-                                            <li id="articleGraphHelpLeft">Left Sidebar</li>
-                                            <li id="articleGraphHelpRight">Right Sidebar</li>
-                                            <li id="articleGraphHelpNav">Recent Searches</li>
+                                    <div id="articleGraphHelpDiv" class="instructionsSection">
+                                        <h2>Navigate the Graph</h2>
+                                        <ul>
+                                            <li>There are two fundamental ways to navigate the graph: <em>Hover Mode</em> and <em>Click Mode</em>.
+                                                These are exclusive modes, and the graph can only be in one mode at a time.</li>
+                                            <li>The current mode is always listed in the <em>“Graph Mode”</em> box in the top right corner. Toggle between the two modes by <strong>single-clicking</strong> this box.</li>
+                                            <li>Regardless of the current Graph Mode, <strong>Double-click</strong> any node or title to make a new selection and reload the graph with the new selection.</li>
+                                        </ul>
+                                            <h4>Hover Mode (Preview Mode)</h4>
+                                            <ul>
+                                                <li>This is the default modal state of the graph. </li>
+                                                <li>In this mode, when you <strong>hover/mouseOver</strong> over a node or title, the entire graph will be re-drawn to preview the 
+                                                    information from the hovered reference. The other nodes in the graph will be dimmed, the article details in the left sidebar will be temporarily 
+                                                    replaced with preview information for the hovered node, and, if the hovered node also links to other articles in the same 
+                                                    graph, a dashed line will be drawn from the hovered node to the shared links to indicate these relationships.</li> 
+                                                <li>As soon as you stop hovering over that node, the graph will return to its original state. 
+                                                    And when you hover over another node, the graph will be redrawn, etc. </li>
+                                                <li>At any point, you can always <strong>double-click</strong> a node or title to draw a brand new graph with this new node as the main selection.</li>
+                                                <li>Preview Mode provides a powerful way to quickly view the relationships in the Article Graph. However,
+                                                    it doesn’t really allow a deep exploration of the relationships between the selected article and the links.</li>
+                                            </ul>
+                                            <h4>Click Mode (Explore Mode)</h4>
+                                            <ul>
+                                                <li><em>Click Mode (Explore Mode)</em> is for deep-diving into the relationships between the selected entry and 
+                                                    the linked articles, as well as to make a more detailed inquiry into the linked articles themselves. </li>
+                                                <li>The power of this mode comes in when the user <strong>single-clicks</strong> a node or title. The graph will then be frozen in that state. Each time the 
+                                                    user clicks a new node or title, the graph updates and is then re-frozen.</li>
+                                                <li>In this state, the user can more easily explore the details of the linked articles, can see how linked articles are themselves 
+                                                    linked to other articles in the graph, or can open the full SEP article itself, etc. </li>
+                                                <li>When you <strong>hover over</strong> a node or title in Explore Mode, the data in the left sidebar will be replaced with a preview of the hovered article, 
+                                                    but the main graph features remain the same. The graph itself is only re-drawn when you click a node. </li>
+                                                <li>At any point, you can always <strong>double-click a node or title</strong> to draw a brand new graph with this new node as the main selection.</li>
+                                            </ul>
+                                            <h3>Color (Same as Domain Graph)</h3>
+                                            <p>Each article node and title is colored according to its <i>primary domain</i> designation, which is the domain chosen as the most representative 
+                                                expression of the article’s topic type. In many cases though, there are fluid boundaries between domain categories and many, perhaps most, 
+                                                articles are tagged as appearing in multiple domains. The color of the node and title will always flow from the article’s primary domain.</p>
+
+                                    </div>
+                                    
+                                    <div id="articleGraphHelpLeftDiv" class="instructionsSection">
+                                        <h3>Left Sidebar (Same as Article Graph)</h3>
+                                        <p>The left side bar contains details about a selected article. In its default state, the left side bar provides:</p>
+                                        <ul>
+                                            <li>A preview of the first 500 characters or so in the full SEP article.</li>
+                                            <li>A link to read the full article on the SEP website.</li>
+                                            <li>A panel called "Explore the TOC" that is collapsed by default.</li>
+                                            <li>The Domain designation(s) of the selected article. <strong>Double-click</strong> to load domain graph for selected domain.</li>
+                                            <li>Details about the author(s), publication date(s), and approximate word count of the selected article.</li>
+                                        </ul>
+                                        <p>“Explore the TOC”</p>
+                                        <ul>
+                                            <li>This panel contains the complete Table of Contents from the full SEP article. Each heading is an active
+                                                link. <strong>Single-click</strong> on a heading to link into that particular section of the article on the SEP website.</li>
+                                            <li>By default, the “Explore the TOC” panel is collapsed.</li>
+                                            <li><strong>Single-click</strong> on the panel heading, or toggle button, to expand its contents. When you expand 
+                                                the “Explore the TOC” panel, the Domain panel and the Article Details panel will collapse. <strong>Single-click</strong> 
+                                                the “Explore the TOC” heading again to re-collapse this panel, and restore the Domain and Article 
+                                                Details panels.</li>
                                         </ul>
                                     </div>
 
-                                <div id="articleGraphHelpDiv" class="instructionsSection">
+                                    <div id="articleGraphHelpRightDiv" class="instructionsSection">
+                                        <h3>Right Sidebar</h3>
+                                        <p>The right side bar contains details about the linked articles. In its default state, the right sidebar provides:</p>
+                                        <ul>
+                                            <li>A Count of Linked Articles. This shows the number of articles that are linked to the main selection.</li>
+                                            <li>List of Articles. This is collapsed by default.</li>
+                                            <li>Link Domains: A list of the primary domain designations for each of the linked articles, as well as a count of 
+                                                how many articles in that domain.
+                                            </li>
+                                            <li>Link Directions: A list of the three kinds of link directions: bi-directional links, incoming links, and outgoing links; 
+                                                and a count of how many linked articles fall into each direction category.
+                                            </li>
+                                        </ul>
+                                        <p>“List of Articles”</p>
+                                        <ul>
+                                            <li>This panel contains an alphabetical list of all the linked articles in the radial graph, with each title colored by 
+                                                its primary domain designation. Because this information duplicates the nodes and titles in the radial graph, it is 
+                                                hidden by default. But some graphs are so large that having the alphabetical list available is helpful for exploration.</li>
+                                            <li><strong>Single-click</strong> on the panel heading, or its toggle button, to expand its contents. When you expand the “List of Articles” panel, the Link Domains and Link Directions panels will collapse. 
+                                                <strong>Single-click</strong> the “List of Articles” heading again to re-collapse this panel, 
+                                                and to restore the Link Domains and Link Directions panels.</li>
+
+                                        </ul>
+                                    </div>
+
+                                    <div id="articleGraphHelpNavDiv" class="instructionsSection">
+                                        <h3>Recent Searches (Same as Domain Graph)</h3>
+                                        <ul>
+                                            <li>The Recent Searches drop-down menu lists the 10 most recent searches on the site, inclusive of both the Article Graph and the Domain Graph. New searches are added/removed on a first-in/first-out basis.</li>
+                                        </ul>
+                                    </div>
+
+
+                                </div>
+                                <div id="domainInstructions" class="graphInstructionArea">
+
+                                    <h1 id="domainGraphInstructionsHeading" class="instructionsPageHeading">Domain Graph Instructions</h1>
+                                    <p>The Domain Graph shows the <em>structure</em> of the aricles in a specific domain of philosphy as it's currently represented in the SEP. That is, 
+                                        the Domain Graph shows how articles in one domain are all linked together: articles that are central to the domain will be clustered
+                                        together, and share many links between them; while articles at the periphery of a domain will be offset from the central network.</p>
+                                        <div class="instructionsMenu">
+                                            <h2>Instructions Menu</h2>
+                                            <ul class="helpMenu">
+                                                <li id="domainGraphHelp">Navigate the Graph</li>
+                                                <li id="domainGraphHelpLeft">Left Sidebar</li>
+                                                <li id="domainGraphHelpRight">Right Sidebar</li>
+                                                <li id="domainGraphHelpNav">Recent Searches</li>
+                                            </ul>
+                                        </div>
+                                    <p>An individual article may appear in multiple domains, but it will always be colored by its primary domain designation.</p>
+                                    <p>When the graph is first loaded, the nodes are visible, but the labels are not.</p>
+                                    <div id="domainGraphHelpDiv" class="instructionsSection">
                                     <h2>Navigate the Graph</h2>
                                     <ul>
                                         <li>There are two fundamental ways to navigate the graph: <em>Hover Mode</em> and <em>Click Mode</em>.
                                             These are exclusive modes, and the graph can only be in one mode at a time.</li>
                                         <li>The current mode is always listed in the <em>“Graph Mode”</em> box in the top right corner. Toggle between the two modes by <strong>single-clicking</strong> this box.</li>
-                                        <li>Regardless of the current Graph Mode, <strong>Double-click</strong> any node or title to make a new selection and reload the graph with the new selection.</li>
+                                        <li><strong>Double-click</strong> any node or title to select that node and then load the <em>Article Graph</em> with that node as the main selection.</li>
                                     </ul>
                                         <h4>Hover Mode (Preview Mode)</h4>
                                         <ul>
                                             <li>This is the default modal state of the graph. </li>
                                             <li>In this mode, when you <strong>hover/mouseOver</strong> over a node or title, the entire graph will be re-drawn to preview the 
-                                                information from the hovered reference. The other nodes in the graph will be dimmed, the article details in the left sidebar will be temporarily 
-                                                replaced with preview information for the hovered node, and, if the hovered node also links to other articles in the same 
-                                                graph, a dashed line will be drawn from the hovered node to the shared links to indicate these relationships.</li> 
-                                            <li>As soon as you stop hovering over that node, the graph will return to its original state. 
-                                                And when you hover over another node, the graph will be redrawn, etc. </li>
-                                            <li>At any point, you can always <strong>double-click</strong> a node or title to draw a brand new graph with this new node as the main selection.</li>
-                                            <li>Preview Mode provides a powerful way to quickly view the relationships in the Article Graph. However,
-                                                it doesn’t really allow a deep exploration of the relationships between the selected article and the links.</li>
+                                                information from the hovered reference. The details of the selected article node will appear in the left sidebar; the article title will 
+                                                appear on top of the graph node; the titles of the articles that this node is linked to will appear at the left and right side of the graph; 
+                                                and, nodes that are not linked to the current node will be dimmed. </li>
+                                            <li>As soon as you stop hovering over that node, the graph will return to its default state of all nodes displayed, with no titles. 
+                                                And when you hover over another node, the graph will be redrawn in the same way, etc. </li>
+                                            <li>If you <strong>double-click</strong> a node or title, the domain graph disappears and the selected node will be loaded into the Article Graph as the main selection.</li>
                                         </ul>
                                         <h4>Click Mode (Explore Mode)</h4>
                                         <ul>
-                                            <li><em>Click Mode (Explore Mode)</em> is for deep-diving into the relationships between the selected entry and 
-                                                the linked articles, as well as to make a more detailed inquiry into the linked articles themselves. </li>
+                                            <li><em>Click Mode (Explore Mode)</em> allows a much deeper dive into the structure of a domain than does Preview Mode.</li>
                                             <li>The power of this mode comes in when the user <strong>single-clicks</strong> a node or title. The graph will then be frozen in that state. Each time the 
-                                                user clicks a new node or title, the graph updates and is then re-frozen.</li>
-                                            <li>In this state, the user can more easily explore the details of the linked articles, can see how linked articles are themselves 
-                                                linked to other articles in the graph, or can open the full SEP article itself, etc. </li>
-                                            <li>When you <strong>hover over</strong> a node or title in Explore Mode, the data in the left sidebar will be replaced with a preview of the hovered article, 
-                                                but the main graph features remain the same. The graph itself is only re-drawn when you click a node. </li>
-                                            <li>At any point, you can always <strong>double-click a node or title</strong> to draw a brand new graph with this new node as the main selection.</li>
-                                        </ul>
-                                        <h3>Color (Same as Domain Graph)</h3>
-                                        <p>Each article node and title is colored according to its <i>primary domain</i> designation, which is the domain chosen as the most representative 
+                                                users clicks a new node, the graph updates and is then re-frozen.</li>
+                                            <li>In this state, when the user selects a node and freezes the graph in its current state, not only does the user see the selected node and 
+                                                the titles of the linked articles, but those titles themselves become actionable. 
+                                            <li>When the user <strong>hovers</strong> a node or title in Click Mode, a dashed line
+                                                is drawn from the title to its correponding node. This allows the user to see where that article lives within the 
+                                                domain network. When you <strong>single-click</strong> a title, the graph is updated with that title as the selected node and the article
+                                            titles that the selected article links to are drawn into the graph. In this way, the user can explore the stucture of a domain in fine-grained detail. </li>
+                                            <li>If you <strong>double-click</strong> a node or title, the domain graph disappears and the selected node will be loaded into the Article Graph as the main selection.</li>
+                                            </ul>
+                                        <h3>Color (Same as Article Graph)</h3>
+                                        <p>Each node and title is colored according to its <em>primary domain</em> designation, which is the domain chosen as the most representative 
                                             expression of the article’s topic type. In many cases though, there are fluid boundaries between domain categories and many, perhaps most, 
                                             articles are tagged as appearing in multiple domains. The color of the node and title will always flow from the article’s primary domain.</p>
-
                                 </div>
                                 
-                                <div id="articleGraphHelpLeftDiv" class="instructionsSection">
+                                <div id="domainGraphHelpLeftDiv" class="instructionsSection">
                                     <h3>Left Sidebar (Same as Article Graph)</h3>
                                     <p>The left side bar contains details about a selected article. In its default state, the left side bar provides:</p>
                                     <ul>
@@ -222,254 +328,143 @@
                                     </ul>
                                 </div>
 
-                                <div id="articleGraphHelpRightDiv" class="instructionsSection">
+                                <div id="domainGraphHelpRightDiv" class="instructionsSection">
                                     <h3>Right Sidebar</h3>
-                                    <p>The right side bar contains details about the linked articles. In its default state, the right sidebar provides:</p>
-                                    <ul>
-                                        <li>A Count of Linked Articles. This shows the number of articles that are linked to the main selection.</li>
-                                        <li>List of Articles. This is collapsed by default.</li>
-                                        <li>Link Domains: A list of the primary domain designations for each of the linked articles, as well as a count of 
-                                            how many articles in that domain.
-                                        </li>
-                                        <li>Link Directions: A list of the three kinds of link directions: bi-directional links, incoming links, and outgoing links; 
-                                            and a count of how many linked articles fall into each direction category.
-                                        </li>
-                                    </ul>
-                                    <p>“List of Articles”</p>
-                                    <ul>
-                                        <li>This panel contains an alphabetical list of all the linked articles in the radial graph, with each title colored by 
-                                            its primary domain designation. Because this information duplicates the nodes and titles in the radial graph, it is 
-                                            hidden by default. But some graphs are so large that having the alphabetical list available is helpful for exploration.</li>
-                                        <li><strong>Single-click</strong> on the panel heading, or its toggle button, to expand its contents. When you expand the “List of Articles” panel, the Link Domains and Link Directions panels will collapse. 
-                                            <strong>Single-click</strong> the “List of Articles” heading again to re-collapse this panel, 
-                                            and to restore the Link Domains and Link Directions panels.</li>
-
-                                    </ul>
+                                    <p>The right side bar lists all of the articles in the selected domain. It has three major sections:</p>
+                                        <ul>
+                                            <li>Count of Domain Articles.</li>
+                                            <li>Most Connected Nodes. This panel lists the top five most connected articles in the domain, sorted in descending order by the 
+                                                total number of connections within this domain. As usual: each title is colored by its primary
+                                                domain designation. The number preceeding the title is the number of domain connections for that particular article.
+                                            </li>
+                                            <li>List of All Domain Articles. This is an alphabetic list of every single article in the domain, where each title is colored by its primary
+                                                domain designation. The number preceeding the title is the number of domain connections for that particular article.
+                                            </li>
+                                        </ul>
                                 </div>
 
-                                <div id="articleGraphHelpNavDiv" class="instructionsSection">
-                                    <h3>Recent Searches (Same as Domain Graph)</h3>
+                                <div id="domainGraphHelpNavDiv" class="instructionsSection">
+                                    <h3>Recent Searches (Same as Article Graph)</h3>
                                     <ul>
-                                        <li>The Recent Searches drop-down menu lists the 10 most recent searches on the site, inclusive of both the Article Graph and the Domain Graph. New searches are added/removed on a first-in/first-out basis.</li>
+                                        <li>The Recent Searches drop-down menu list the the 10 most recent searches on the site, inclusive of both the Article Graph and the Domain Graph. New searches are added/removed on a first-in/first-out basis.</li>
                                     </ul>
                                 </div>
 
 
                             </div>
-                            <div id="domainInstructions" class="graphInstructionArea">
-
-                                <h1 id="domainGraphInstructionsHeading" class="instructionsPageHeading">Domain Graph Instructions</h1>
-                                <p>The Domain Graph shows the <em>structure</em> of the aricles in a specific domain of philosphy as it's currently represented in the SEP. That is, 
-                                    the Domain Graph shows how articles in one domain are all linked together: articles that are central to the domain will be clustered
-                                    together, and share many links between them; while articles at the periphery of a domain will be offset from the central network.</p>
-                                    <div class="instructionsMenu">
-                                        <h2>Instructions Menu</h2>
-                                        <ul class="helpMenu">
-                                            <li id="domainGraphHelp">Navigate the Graph</li>
-                                            <li id="domainGraphHelpLeft">Left Sidebar</li>
-                                            <li id="domainGraphHelpRight">Right Sidebar</li>
-                                            <li id="domainGraphHelpNav">Recent Searches</li>
-                                        </ul>
+    
+                            </div>
+                            <div id="aboutPageDiv" class="panelParagraphText">
+                                <div id="aboutPageContent">
+                                    <div id="sepDetails">
+                                        <table class="table table-bordered table-dark table-sm">
+                                            <caption>Visualizing SEP Details</caption>
+                                            <tr>
+                                                <td>SEP Edition:</td>
+                                                <td>Fall 2020</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Articles:</td>
+                                                <td><span id="aboutNumArticles"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Links Between Articles:</td>
+                                                <td><span id="aboutNumLinks"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Domains:</td>
+                                                <td><span id="aboutNumDomains"></span></td>
+                                            </tr>                                        
+                                            <tr>
+                                                <td>Avg. Article Word Count:</td>
+                                                <td><span id="aboutAvgWordCount"></span></td>
+                                            </tr>
+                                        </table>
                                     </div>
-                                <p>An individual article may appear in multiple domains, but it will always be colored by its primary domain designation.</p>
-                                <p>When the graph is first loaded, the nodes are visible, but the labels are not.</p>
-                                <div id="domainGraphHelpDiv" class="instructionsSection">
-                                <h2>Navigate the Graph</h2>
-                                <ul>
-                                    <li>There are two fundamental ways to navigate the graph: <em>Hover Mode</em> and <em>Click Mode</em>.
-                                        These are exclusive modes, and the graph can only be in one mode at a time.</li>
-                                    <li>The current mode is always listed in the <em>“Graph Mode”</em> box in the top right corner. Toggle between the two modes by <strong>single-clicking</strong> this box.</li>
-                                    <li><strong>Double-click</strong> any node or title to select that node and then load the <em>Article Graph</em> with that node as the main selection.</li>
-                                </ul>
-                                    <h4>Hover Mode (Preview Mode)</h4>
-                                    <ul>
-                                        <li>This is the default modal state of the graph. </li>
-                                        <li>In this mode, when you <strong>hover/mouseOver</strong> over a node or title, the entire graph will be re-drawn to preview the 
-                                            information from the hovered reference. The details of the selected article node will appear in the left sidebar; the article title will 
-                                            appear on top of the graph node; the titles of the articles that this node is linked to will appear at the left and right side of the graph; 
-                                            and, nodes that are not linked to the current node will be dimmed. </li>
-                                        <li>As soon as you stop hovering over that node, the graph will return to its default state of all nodes displayed, with no titles. 
-                                            And when you hover over another node, the graph will be redrawn in the same way, etc. </li>
-                                        <li>If you <strong>double-click</strong> a node or title, the domain graph disappears and the selected node will be loaded into the Article Graph as the main selection.</li>
-                                    </ul>
-                                    <h4>Click Mode (Explore Mode)</h4>
-                                    <ul>
-                                        <li><em>Click Mode (Explore Mode)</em> allows a much deeper dive into the structure of a domain than does Preview Mode.</li>
-                                        <li>The power of this mode comes in when the user <strong>single-clicks</strong> a node or title. The graph will then be frozen in that state. Each time the 
-                                            users clicks a new node, the graph updates and is then re-frozen.</li>
-                                        <li>In this state, when the user selects a node and freezes the graph in its current state, not only does the user see the selected node and 
-                                            the titles of the linked articles, but those titles themselves become actionable. 
-                                        <li>When the user <strong>hovers</strong> a node or title in Click Mode, a dashed line
-                                            is drawn from the title to its correponding node. This allows the user to see where that article lives within the 
-                                            domain network. When you <strong>single-click</strong> a title, the graph is updated with that title as the selected node and the article
-                                        titles that the selected article links to are drawn into the graph. In this way, the user can explore the stucture of a domain in fine-grained detail. </li>
-                                        <li>If you <strong>double-click</strong> a node or title, the domain graph disappears and the selected node will be loaded into the Article Graph as the main selection.</li>
-                                        </ul>
-                                    <h3>Color (Same as Article Graph)</h3>
-                                    <p>Each node and title is colored according to its <em>primary domain</em> designation, which is the domain chosen as the most representative 
-                                        expression of the article’s topic type. In many cases though, there are fluid boundaries between domain categories and many, perhaps most, 
-                                        articles are tagged as appearing in multiple domains. The color of the node and title will always flow from the article’s primary domain.</p>
-                            </div>
-                            
-                            <div id="domainGraphHelpLeftDiv" class="instructionsSection">
-                                <h3>Left Sidebar (Same as Article Graph)</h3>
-                                <p>The left side bar contains details about a selected article. In its default state, the left side bar provides:</p>
-                                <ul>
-                                    <li>A preview of the first 500 characters or so in the full SEP article.</li>
-                                    <li>A link to read the full article on the SEP website.</li>
-                                    <li>A panel called "Explore the TOC" that is collapsed by default.</li>
-                                    <li>The Domain designation(s) of the selected article. <strong>Double-click</strong> to load domain graph for selected domain.</li>
-                                    <li>Details about the author(s), publication date(s), and approximate word count of the selected article.</li>
-                                </ul>
-                                <p>“Explore the TOC”</p>
-                                <ul>
-                                    <li>This panel contains the complete Table of Contents from the full SEP article. Each heading is an active
-                                        link. <strong>Single-click</strong> on a heading to link into that particular section of the article on the SEP website.</li>
-                                    <li>By default, the “Explore the TOC” panel is collapsed.</li>
-                                    <li><strong>Single-click</strong> on the panel heading, or toggle button, to expand its contents. When you expand 
-                                        the “Explore the TOC” panel, the Domain panel and the Article Details panel will collapse. <strong>Single-click</strong> 
-                                        the “Explore the TOC” heading again to re-collapse this panel, and restore the Domain and Article 
-                                        Details panels.</li>
-                                </ul>
-                            </div>
-
-                            <div id="domainGraphHelpRightDiv" class="instructionsSection">
-                                <h3>Right Sidebar</h3>
-                                <p>The right side bar lists all of the articles in the selected domain. It has three major sections:</p>
-                                    <ul>
-                                        <li>Count of Domain Articles.</li>
-                                        <li>Most Connected Nodes. This panel lists the top five most connected articles in the domain, sorted in descending order by the 
-                                            total number of connections within this domain. As usual: each title is colored by its primary
-                                            domain designation. The number preceeding the title is the number of domain connections for that particular article.
-                                        </li>
-                                        <li>List of All Domain Articles. This is an alphabetic list of every single article in the domain, where each title is colored by its primary
-                                            domain designation. The number preceeding the title is the number of domain connections for that particular article.
-                                        </li>
-                                    </ul>
-                            </div>
-
-                            <div id="domainGraphHelpNavDiv" class="instructionsSection">
-                                <h3>Recent Searches (Same as Article Graph)</h3>
-                                <ul>
-                                    <li>The Recent Searches drop-down menu list the the 10 most recent searches on the site, inclusive of both the Article Graph and the Domain Graph. New searches are added/removed on a first-in/first-out basis.</li>
-                                </ul>
-                            </div>
-
-
-                        </div>
-  
-                        </div>
-                        <div id="aboutPageDiv" class="panelParagraphText">
-                            <div id="aboutPageContent">
-                                <div id="sepDetails">
-                                    <table class="table table-bordered table-dark table-sm">
-                                        <caption>Visualizing SEP Details</caption>
-                                        <tr>
-                                            <td>SEP Edition:</td>
-                                            <td>Fall 2020</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Articles:</td>
-                                            <td><span id="aboutNumArticles"></span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Links Between Articles:</td>
-                                            <td><span id="aboutNumLinks"></span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Domains:</td>
-                                            <td><span id="aboutNumDomains"></span></td>
-                                        </tr>                                        
-                                        <tr>
-                                            <td>Avg. Article Word Count:</td>
-                                            <td><span id="aboutAvgWordCount"></span></td>
-                                        </tr>
-                                    </table>
+                                    <p>Visualizing SEP is an interactive data visualization for exploring the <a href="https://plato.stanford.edu/">Stanford Encyclopedia of Philosophy</a>, one of the Web’s foremost resources on the history and practice of philosophy. The application uses network graphs to explore the inter-relationships of all the articles in the Encyclopedia. There have been a number of wonderful visualizations of the SEP before, but there has not been a single application that combines beauty, ease, and power of exploring the SEP in the way this application does.</p>
+                                    <h2>Domain Taxonomy</h2>
+                                    <p>The domain taxonomy used for grouping articles is not derived from the SEP itself. The domain taxonomy is adapted from the taxonomy from the <a href="https://www.inphoproject.org/taxonomy">Indiana University Philosophy Ontology Project (InPhO)</a>. Visualizing SEP uses the top-level taxonomic categories from InPhO, and mostly ignores the deeper-level sub-domain groupings that InPhO provides. The exception here is that we do use certain specific sub-domains to designate the philosophies of particular sciences (Biology, Physics, etc.). There are currently 25 individual domains. </p>
+                                    <p>The tagging and modeling of the articles into domains were completed with a combination of topic modeling, text search, and old-fashioned individual tagging of documents. The domain groupings should be seen more like language games with loosely fit boundaries between related articles instead of rigid determinations with bright-line differences between them. </p>
+                                    <p>Each article is tagged with a <em>primary domain designation</em>, which is the individual domain category that the article is best grouped with, as well as a general <em>domain_tags</em> field, which indicates other domains that the article can reasonably be tagged. In this way, an article can appear in multiple domain groups.</p>
+                                    <h2>Development</h2>
+                                    <p>The data infrastructure for the application was developed using Python, Pandas, Beautiful Soup, and MongoDB. The interactive aspects of the site were built with HTML, CSS, Javascript, and D3.
+                                        A forthcoming article will describe the technical development of the application in detail. 
+                                        </p>
+                                    <!-- <h2>Domain Color Scheme</h2>
+                                    <p>Article nodes and titles are colored by their primary domain designation. A color scheme was developed to group related domain designations together, so the user can understand relations between domains as well. This is the color scheme: </p>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Domains</th>
+                                                <th>Colors</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr  style="color: rgb(184, 108, 237)">
+                                                <td>Aesthetics and Philosophy of Art</td>
+                                                <td style="color: rgb(184, 108, 237)">Violet</td>
+                                            </tr>
+                                            <tr style="color:rgb(156, 20, 252);">
+                                                <td>Philosopy of Religion</td>
+                                                <td>Purple</td>
+                                            </tr>
+                                            <tr style="color:rgb(180,255,249);">
+                                                <td>Thinker</td>
+                                                <td >Light Blue</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">Group: Social/Political Philosphies (Reds) </td>
+                                            </tr>
+                                            <tr style="color:rgb(230, 97, 97);">
+                                                <td colspan="2">Ethics</td>
+                                            </tr>                                       
+                                            <tr style="color:rgb(238, 4, 4);">
+                                                <td colspan="2">Feminist Philosophies</td>
+                                            </tr>
+                                            <tr style="color:rgb(251, 3, 114);">
+                                                <td colspan="2">Philosopy of Law</td>
+                                            </tr>
+                                            <tr style="color:rgb(238, 50, 170);">
+                                                <td colspan="2">Philosopy of Economics</td>
+                                            </tr>
+                                            <tr style="color:rgb(192, 2, 96);">
+                                                <td colspan="2">Social and Political Philosophy</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">Group: Cultural Philosophies (Oranges) </td>
+                                            </tr>
+                                            <tr style="color:rgb(255, 165, 1);">
+                                                <td colspan="2">African and African-American Philosophy</td>
+                                            </tr>                                       
+                                            <tr style="color:rgb(255, 128, 0);">
+                                                <td colspan="2">Arabic and Islamic Philosophy</td>
+                                            </tr>
+                                            <tr style="color:rgb(235, 66, 3);">
+                                                <td colspan="2">Chinese Philosophy</td>
+                                            </tr>
+                                            <tr style="color:rgb(170, 50, 3);">
+                                                <td colspan="2">Continental Philosophy</td>
+                                            </tr>
+                                            <tr style="color:rgb(192, 2, 96);">
+                                                <td colspan="2">Indian Philosophy</td>
+                                            </tr>
+                                            <tr style="color:rgb(191, 88, 12);">
+                                                <td colspan="2">Japanese Philosophy</td>
+                                            </tr>
+                                            <tr style="color:rgb(237, 100, 68;">
+                                                <td colspan="2">Latin American and Iberian Philosophy</td>
+                                            </tr>
+                                        </tbody>
+                                    </table> -->
                                 </div>
-                                <p>Visualizing SEP is an interactive data visualization for exploring the <a href="https://plato.stanford.edu/">Stanford Encyclopedia of Philosophy</a>, one of the Web’s foremost resources on the history and practice of philosophy. The application uses network graphs to explore the inter-relationships of all the articles in the Encyclopedia. There have been a number of wonderful visualizations of the SEP before, but there has not been a single application that combines beauty, ease, and power of exploring the SEP in the way this application does.</p>
-                                <h2>Domain Taxonomy</h2>
-                                <p>The domain taxonomy used for grouping articles is not derived from the SEP itself. The domain taxonomy is adapted from the taxonomy from the <a href="https://www.inphoproject.org/taxonomy">Indiana University Philosophy Ontology Project (InPhO)</a>. Visualizing SEP uses the top-level taxonomic categories from InPhO, and mostly ignores the deeper-level sub-domain groupings that InPhO provides. The exception here is that we do use certain specific sub-domains to designate the philosophies of particular sciences (Biology, Physics, etc.). There are currently 25 individual domains. </p>
-                                <p>The tagging and modeling of the articles into domains were completed with a combination of topic modeling, text search, and old-fashioned individual tagging of documents. The domain groupings should be seen more like language games with loosely fit boundaries between related articles instead of rigid determinations with bright-line differences between them. </p>
-                                <p>Each article is tagged with a <em>primary domain designation</em>, which is the individual domain category that the article is best grouped with, as well as a general <em>domain_tags</em> field, which indicates other domains that the article can reasonably be tagged. In this way, an article can appear in multiple domain groups.</p>
-                                <h2>Development</h2>
-                                <p>The data infrastructure for the application was developed using Python, Pandas, Beautiful Soup, and MongoDB. The interactive aspects of the site were built with HTML, CSS, Javascript, and D3.
-                                    A forthcoming article will describe the technical development of the application in detail. 
-                                    </p>
-                                <!-- <h2>Domain Color Scheme</h2>
-                                <p>Article nodes and titles are colored by their primary domain designation. A color scheme was developed to group related domain designations together, so the user can understand relations between domains as well. This is the color scheme: </p>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Domains</th>
-                                            <th>Colors</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr  style="color: rgb(184, 108, 237)">
-                                            <td>Aesthetics and Philosophy of Art</td>
-                                            <td style="color: rgb(184, 108, 237)">Violet</td>
-                                        </tr>
-                                        <tr style="color:rgb(156, 20, 252);">
-                                            <td>Philosopy of Religion</td>
-                                            <td>Purple</td>
-                                        </tr>
-                                        <tr style="color:rgb(180,255,249);">
-                                            <td>Thinker</td>
-                                            <td >Light Blue</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">Group: Social/Political Philosphies (Reds) </td>
-                                        </tr>
-                                        <tr style="color:rgb(230, 97, 97);">
-                                            <td colspan="2">Ethics</td>
-                                        </tr>                                       
-                                        <tr style="color:rgb(238, 4, 4);">
-                                            <td colspan="2">Feminist Philosophies</td>
-                                        </tr>
-                                        <tr style="color:rgb(251, 3, 114);">
-                                            <td colspan="2">Philosopy of Law</td>
-                                        </tr>
-                                        <tr style="color:rgb(238, 50, 170);">
-                                            <td colspan="2">Philosopy of Economics</td>
-                                        </tr>
-                                        <tr style="color:rgb(192, 2, 96);">
-                                            <td colspan="2">Social and Political Philosophy</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">Group: Cultural Philosophies (Oranges) </td>
-                                        </tr>
-                                        <tr style="color:rgb(255, 165, 1);">
-                                            <td colspan="2">African and African-American Philosophy</td>
-                                        </tr>                                       
-                                        <tr style="color:rgb(255, 128, 0);">
-                                            <td colspan="2">Arabic and Islamic Philosophy</td>
-                                        </tr>
-                                        <tr style="color:rgb(235, 66, 3);">
-                                            <td colspan="2">Chinese Philosophy</td>
-                                        </tr>
-                                        <tr style="color:rgb(170, 50, 3);">
-                                            <td colspan="2">Continental Philosophy</td>
-                                        </tr>
-                                        <tr style="color:rgb(192, 2, 96);">
-                                            <td colspan="2">Indian Philosophy</td>
-                                        </tr>
-                                        <tr style="color:rgb(191, 88, 12);">
-                                            <td colspan="2">Japanese Philosophy</td>
-                                        </tr>
-                                        <tr style="color:rgb(237, 100, 68;">
-                                            <td colspan="2">Latin American and Iberian Philosophy</td>
-                                        </tr>
-                                    </tbody>
-                                </table> -->
+                            </div>
+                            <div id="contactPageDiv" class="panelParagraphText">
+                                <p>Visualizing SEP is designed and developed by Joseph DiCastro, a data engineer and visualiation developer
+                                based in Brooklyn, NY.</p>
+                                <p>To learn more about my work, visit my website at {coming soon}.</p>
+                                <p>To reach me by email, write me at <a href="mailto:joe@josephdicastrollc.com">joe@josephdicastrollc.com</a></p>
                             </div>
                         </div>
-                        <div id="contactPageDiv" class="panelParagraphText">
-                            <p>Visualizing SEP is designed and developed by Joseph DiCastro, a data engineer and visualiation developer
-                            based in Brooklyn, NY.</p>
-                            <p>To learn more about my work, visit my website at {coming soon}.</p>
-                            <p>To reach me by email, write me at <a href="mailto:joe@josephdicastrollc.com">joe@josephdicastrollc.com</a></p>
-                        </div>
-
                     </div>
                     <div class="col-lg-2">
                         <div id="sidebarRight" class="sidebar float-left"></div>
@@ -495,7 +490,6 @@
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script> -->
  
  
 
