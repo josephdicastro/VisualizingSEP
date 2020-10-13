@@ -579,7 +579,7 @@ function setGlobalNodesLinks(sepData) {
 function initializeParentSVG(svg) {
     // set basic SVG Config data 
     let margin = {
-        top: 50,
+        top: 0,
         right: 0,
         bottom:0,
         left:0
@@ -588,10 +588,13 @@ function initializeParentSVG(svg) {
     let areaWidth = 1000;
     let areaHeight = 900;
 
+    // let areaWidth = 1100;
+    // let areaHeight = 950;
+
     let width = areaWidth - margin.left - margin.right;
     let height = areaHeight - margin.top - margin.bottom;
 
-    svg.attr("viewBox", "0 0 " + width + " " + height )
+    svg.attr("viewBox", "0 50 " + width + " " + height )
        .attr("preserveAspectRatio", "xMidYMid")
 
     //clear out child SVG elements
@@ -1032,6 +1035,8 @@ function drawArticleSimulation(data) {
     let countOfNodes = graphNodes.length;
     let transitionTime = 2000;
 
+    d3.selectAll('.mainArticleLabelArea').remove();
+
     //links
     link = simConfig.links.selectAll('.link')
                          .data(graphLinks, function(d) {return `${d.source}-${d.target}`})
@@ -1063,7 +1068,7 @@ function drawArticleSimulation(data) {
                  .append("text")
                  .text(function(d) {return d.title})
                  .attr('fill-opacity',styConfig.nodeLabel.defaultOpacity)
-                 .attr("font-size", styConfig.nodeLabel.defaultFontSize)
+                //  .attr("font-size", styConfig.nodeLabel.defaultFontSize)
                  .attr("fill", function(d) {return color(d.primary_domain)})
                  .attr('nodeID', function(d) {return d.id})
                  .classed('label',true)
@@ -1134,14 +1139,14 @@ function drawArticleSimulation(data) {
             }   
             numTicks++;
         })
-
+ 
     //update simulations
 
     simConfig.simulation.force("charge")
         .strength(function() { return forceStrength(countOfNodes)})
     simConfig.simulation.force("link")
         .id(function (d) {return d.id})
-        .distance(250)//function () {return (countOfNodes > 50) ? 200 : 175})
+        .distance(225)//function () {return (countOfNodes > 50) ? 200 : 175})
         .links(graphLinks)
     simConfig.simulation.force("forceX").strength(0)
     simConfig.simulation.force("forceY").strength(0)
