@@ -45,13 +45,12 @@
 
 /* Graph Instruction Area Styles */
 #graphInstructions {
-    position: relative;
+    position: absolute;
     height:3em;
-    top:-2.5em;
     width:16em;
     padding-top:.5em;
     padding-left: 3.25em;
-    left:0em;
+    left:0;
     border-top-right-radius: 2em;
     border-bottom-left-radius: 2em;
     background-image: url('../bootstrap-icons/question-circle.svg');
@@ -150,11 +149,23 @@
 
 /* Media queries */
 
-@media screen and (min-resolution: 150dpi) {
 
+
+/* Media queries */
+/* 4k 2.5 pixel ratio */
+@media only screen  and (max-height: 860px) {
     #graphMode { left:54em; }
-}
-@media screen and (max-resolution: 100dpi) {
-    #graphMode { left:80em; }
+    #graphInstructions { top:675px}
 }
 
+/* 2 pixel ratio */
+@media only screen and (max-height: 960px) {
+    #graphMode { left:80em; }
+    #graphInstructions {top:825px}
+}
+
+/* standard hd */
+@media only screen and (max-height: 1080px) {
+    #graphMode { left:80em; }
+    #graphInstructions {top:825px}
+}
