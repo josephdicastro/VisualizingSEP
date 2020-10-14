@@ -118,7 +118,7 @@
     margin-left:-1.2em;
     margin-bottom:.2em;
     padding-left: -.2em;
-    padding-right: .5em;
+    padding-right: 1em;
     font-size: .8em;
     line-height: 1em;
     font-family: proxima-nova, sans-serif;
@@ -142,7 +142,7 @@
     color:lightgray;
     text-indent: -1.1em;
     padding-left:.5em;
-    padding-right: .5em;
+    padding-right: 1em;
 }
 
 
@@ -173,7 +173,7 @@
 
 
 .linkCountText {
-    font-size: 1.1em;
+    font-size: 1em;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -226,9 +226,25 @@
 
 #articleListContentArea {
     width:100%;
+
+}
+
+.scrollbars {
     overflow-y: auto;
     overflow-x: hidden;
 }
+
+.scrollbars::-webkit-scrollbar {
+    width: 10px;               
+  }
+  .scrollbars::-webkit-scrollbar-track {
+    background:rgb(60,60,60);        
+  }
+  .scrollbars::-webkit-scrollbar-thumb {
+    background-color: lightgray;    
+    border-radius: 20px;       
+    border: 1px solid darkgray;  
+  }
 
 #centralNodesContentArea {
     overflow: hidden;
@@ -236,14 +252,10 @@
 }
 
 #domainArticleListContentArea {
-    overflow-y: auto;
-    overflow-x: hidden;
     width:100%;
 }
 
 #exploreTOCContentArea {
-    overflow-y: auto;
-    overflow-x: hidden;
     width: 100%;
 }
 
@@ -255,10 +267,6 @@
     #articleListContentArea {
         max-height:400px;
     }
-
-    /* #centralNodesContentArea {
-        max-height: 150px;
-    } */
 
     #domainArticleListContentArea {
         max-height:300px;
@@ -287,7 +295,7 @@
 
 }
 
-@media only screen and (min-resolution: 160dpi) {
+@media only screen and (min-height: 861px) and (min-resolution: 160dpi) {
     .panelHeading {
         font-size:.9em;
     }
@@ -332,6 +340,6 @@
     }
 }
 
-/* Panel Area styling information  */
+
 
 

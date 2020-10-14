@@ -1441,6 +1441,7 @@ function setExploreTOC(parentSidebar, selectedArticle) {
     exploreTOCContentArea = exploreTOCDiv.append('div')
         .style('display', 'none')
         .attr('id','exploreTOCContentArea')
+        .classed('scrollbars', true)
 
     exploreTOCContentArea.append('p')
         .text('(Links to SEP article sections)')
@@ -1567,6 +1568,7 @@ function setArticleListPanel(parentSidebar, articleData, data) {
 
    let articleListContentArea = articleListDiv.append("div")
        .attr("id", "articleListContentArea")
+       .classed('scrollbars', true)
        .style("display", "none")
 
    let articleNodesCleaned = [] 
@@ -2357,6 +2359,7 @@ function setDomainArticleListPanel(parentSidebar, domainData, data) {
     let articleListAreaDiv = domainArticleListDiv.append('div')
         .classed("domainArticleList", true)
         .attr('id','domainArticleListContentArea')
+        .classed('scrollbars', true)
 
     //sort nodes in alphabetical order
     domainData.nodes.sort((a,b) => d3.ascending(a.title, b.title))
