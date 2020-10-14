@@ -1,59 +1,20 @@
-@media screen and (min-resolution: 150dpi) {
 
-    #articleListContentArea {
-        max-height:400px;
-        width:100%;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
+/* Graph Styles */ 
 
-    #centralNodesContentArea {
-        max-height: 150px;
-        overflow: hidden;
-    }
-
-    #domainArticleListContentArea {
-        max-height:300px;
-        overflow-y: auto;
-        overflow-x: hidden;
-        width:100%;
-    }
-
-    #exploreTOCContentArea {
-        max-height: 175px;
-        overflow-y: auto;
-    }
-
+.label {
+    font-family: proxima-nova, sans-serif;
+    font-style: normal;
+    font-weight: 100; 
+    font-size: 1em;
 }
 
-@media screen and (max-resolution: 100dpi) {
-
-
-    #exploreTOCContentArea {
-        max-height: 400px;
-        overflow-y: auto;
-    }
-
-
-    #domainArticleListContentArea {
-        max-height:525px;
-        overflow-y: auto;
-        overflow-x: hidden;
-        width:100%;
-    }
-
-    #articleListContentArea {
-        max-height:550px;
-        overflow-y: auto;
-        overflow-x: hidden;
-        width:100%;
-    }
-
-
+.domainLabelItem {
+    font-family: proxima-nova, sans-serif;
+    font-style: normal;
+    font-weight: 100; 
+    font-size: 1em;
 }
-
-/* Panel Area styling information  */
-
+/* Panel Styles */
 
 
 .exploreTOCToggle_collapsed {
@@ -157,6 +118,7 @@
     margin-left:-1.2em;
     margin-bottom:.2em;
     padding-left: -.2em;
+    padding-right: .5em;
     font-size: .8em;
     line-height: 1em;
     font-family: proxima-nova, sans-serif;
@@ -180,13 +142,13 @@
     color:lightgray;
     text-indent: -1.1em;
     padding-left:.5em;
+    padding-right: .5em;
 }
 
 
 .panelListItem_numbered .badge-pill {
     padding: 0;
     padding-left: 1.25em;
-    /* margin-bottom: .3em; */
     width: 2em;
     margin-left: -1em;
     background-color: lightgrey;
@@ -194,7 +156,7 @@
 }
 
 #toc ul {    
-    font-size: .95em;
+    font-size: 1em;
     line-height: 1em;
     font-family: proxima-nova, sans;
     list-style: none;
@@ -207,19 +169,7 @@
 }
 
 
-.label {
-    font-family: proxima-nova, sans-serif;
-    font-style: normal;
-    font-weight: 100; 
-    font-size: 1em;
-}
 
-.domainLabelItem {
-    font-family: proxima-nova, sans-serif;
-    font-style: normal;
-    font-weight: 100; 
-    font-size: .8em;
-}
 
 
 .linkCountText {
@@ -262,24 +212,126 @@
     border: 1px dashed white;
 }
 
-.marginTopBottomHalfEm {
-    margin-top:.5em;
-    margin-bottom:.5em;
-}
-
-.showArticleList {
-    font-size: .75em;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;  
-    color:lightgray;
-    margin-left:75%;
-}
-
-
-
 
 .relatedLinkLines {
     stroke-width: 1;
     stroke-dasharray: 3,3;
     stroke: #999;
 }
+
+
+.panelHeading {
+    font-size:.8em;
+}
+
+#articleListContentArea {
+    width:100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#centralNodesContentArea {
+    overflow: hidden;
+    width:100%;
+}
+
+#domainArticleListContentArea {
+    overflow-y: auto;
+    overflow-x: hidden;
+    width:100%;
+}
+
+#exploreTOCContentArea {
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+
+
+/* 4k 2.5 pixel ratio */
+@media only screen  and (max-height: 860px) and (min-resolution: 150dpi) {
+
+    #articleListContentArea {
+        max-height:400px;
+    }
+
+    /* #centralNodesContentArea {
+        max-height: 150px;
+    } */
+
+    #domainArticleListContentArea {
+        max-height:300px;
+    }
+
+    #exploreTOCContentArea {
+        max-height: 175px;
+    }
+
+}
+
+/* standard hd */
+@media only screen and (min-height:900px) and (max-height: 1080px) {
+
+    #articleListContentArea {
+        max-height:550px;
+    }
+
+    #domainArticleListContentArea {
+        max-height:525px;
+    }
+
+    #exploreTOCContentArea {
+        max-height: 400px;
+    }
+
+}
+
+@media only screen and (min-resolution: 160dpi) {
+    .panelHeading {
+        font-size:.9em;
+    }
+
+    .panelParagraphText {
+        font-size: 1.1em;
+        line-height: 1.2em;
+    }
+
+    .panelListItem {
+        font-size: 1em;
+        line-height: 1.1em;
+    }
+
+    .panelListItem_numbered {
+        font-size: 1em;
+        line-height: 1.1em;
+    }
+       
+
+
+}
+
+@media only screen and (max-resolution: 160dpi) {
+    .panelHeading {
+        font-size:.8em;
+    }
+
+    .panelParagraphText {
+        font-size: 1em;
+        line-height: 1.1em;
+    }
+
+    .panelListItem {
+        font-size: .8em;
+        line-height: 1em;
+    }
+
+    .panelListItem_numbered {
+        font-size: .8em;
+        line-height: 1em;
+    }
+}
+
+/* Panel Area styling information  */
+
 
