@@ -1216,7 +1216,7 @@ function updateSideBarLeft_ArticleMain(selectedArticle, titleType){
         setArticleIntroParagraph(sideBarLeftContent, titleType, selectedArticle);
         // setExploreTOC(sideBarLeftContent, selectedArticle) 
         setArticleDomainDetails(sideBarLeftContent, selectedArticle);
-        // setArticleDetails(sideBarLeftContent, selectedArticle)
+        setArticleDetails(sideBarLeftContent, selectedArticle);
     }
 }
 
@@ -2770,7 +2770,7 @@ function getDomainLabelLocationData(domainLabel) {
     let labelY = domainLabel.datum().y
     let height = domainLabel.node().getBBox().height
     let width = domainLabel.node().getBBox().width
-    let widthOffset = 300
+    let widthOffset = 325
     let startX = labelX < 0 ? labelX + width + 5 :labelX + (widthOffset - width) + 5
     let startY = (labelY + (height/2));
 
