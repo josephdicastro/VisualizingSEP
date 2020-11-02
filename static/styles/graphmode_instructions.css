@@ -4,9 +4,7 @@
     display: block;
     background-color: rgb(40,40,40);
     color: darkgray;
-    font-size: .7em;
-    font-family: proxima-nova, sans-serif;
-    font-weight: 200;
+
     border-color: white;
     text-align: left;
     z-index: 99;
@@ -23,40 +21,59 @@
     position: absolute; 
     height:2.5em;
     width:16em;
+    font-size: .85em;
+    font-family: proxima-nova, sans-serif;
+    font-weight: 200;
     padding-top:.5em;
-    padding-left: 1em;
+    padding-left: 2em;
     padding-right: 2em;
     border-bottom-left-radius: 2em;
     border-top-right-radius: 2em;
-
-}
-.graphModePreview {
-    background-image: url('../bootstrap-icons/mouse2.svg');
+    background-image: url('/static/bootstrap-icons/arrow-clockwise.svg');
     background-repeat: no-repeat;
     background-size: 1.35em 1.35em;
-    background-position: 11.5em .4em;
-}
-.graphModeExplore {
-    background-image: url('../bootstrap-icons/arrow-bar-down.svg');
-    background-repeat: no-repeat;
-    background-size: 1.35em 1.35em;
-    background-position: 11.5em .4em;
+    background-position: 10em .6em;
 }
 
-/* Graph Instruction Area Styles */
-#graphInstructions {
-    position: absolute;
-    height:3em;
-    width:16em;
+#graphHelp {
+    position: absolute; 
+    height:2.5em;
+    width:3.5em;
+
     padding-top:.5em;
-    padding-left: 3.25em;
-    left:0;
-    border-top-right-radius: 2em;
-    border-bottom-left-radius: 2em;
+    padding-left: 1em;
+    padding-right: 1.5em;
+
+    border-top-left-radius: 2em;
+    border-bottom-right-radius: 1.5em;
+
     background-image: url('../bootstrap-icons/question-circle.svg');
     background-repeat: no-repeat;
-    background-size: 1.35em 1.35em;
-    background-position: 1.35em .6em;
+    background-size: 1.5em 1.5em;
+    background-position: 50% 50%;
+
+}
+
+
+/* Graph Instruction Area Styles */
+#graphTip {
+    position: absolute;
+    height:4em;
+    padding-top:.5em;
+    padding-bottom: .5em;
+    padding-left: 1em;
+    padding-right: 1em;
+
+    border-top-right-radius: 2em;
+    border-bottom-left-radius: 2em;
+
+    display: none;
+
+    background-color: rgb(40,40,40);
+    color: darkgray;
+    font-size: .85em;
+    font-family: proxima-nova, sans-serif;
+    font-weight: 200;
 
 }
 
@@ -68,13 +85,12 @@
 .graphInstructionArea {
     display: none;
     position: absolute;
-    top:0%; left:1%;
-    height:99%;
+    top:0%; left:0%;
+    height:100%;
     width:100%;
     z-index:999;
     padding: 1em 1.5em;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow: hidden;
     font-family: proxima-nova, sans-serif;
     font-weight: 100;
     color: rgb(230,230,230);
@@ -82,31 +98,25 @@
     background-color: rgb(25, 25, 25);
 }
 
-.instructionsMenu {
-    float: right; 
-    width: 15em;
-    margin-left: 2em;
-    margin-bottom: 5em;
-    padding: 0 2em;
-}
-
-.instructionsMenu h2 {
-    font-size: 1em;
-    text-decoration: underline;
-}
-
-.instructionsMenu .helpMenu li {
-    font-size: .9em;
-    margin-left: -2.3em;
-    padding-right: 3em;
-    list-style-type: none;
-}
 
 .graphInstructionArea {
     display: none;
 }
 
- .graphInstructionArea h1 {
+.closePageArea {
+
+    position: absolute;
+    
+    color:#F0DB00;
+    font-size: 1em;
+    background-image: url('../bootstrap-icons/x-circle.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 1em 1em;
+    padding-right: 2em;
+
+}
+ .graphInstructionArea h1, .instructionsPageHeading {
     font-size: 1.5em;
     color:#F0DB00;
     border-bottom: 1px rgb(60,60,60) dotted;
@@ -117,27 +127,18 @@
     padding-bottom: .3em;
 }
 
+
+
 .graphInstructionArea h2 {
     font-size: 1.4em;
     color: #F0DB00
 }
 
-.graphInstructionArea h3 {
-    font-size: 1.3em;
-    color: #F0DB00
-}
-
-.graphInstructionArea h4 {
-    font-size: 1.2em;
-    color: #F0DB00
-}
 
 
-.graphInstructionArea p {
-    font-size: .9em;
-}
+
 .graphInstructionArea li {
-    font-size: .9em;
+    font-size: 1em;
     margin-left: -2em;
 }
 
@@ -154,18 +155,23 @@
 /* Media queries */
 /* 4k 2.5 pixel ratio */
 @media only screen  and (max-height: 860px) and (min-resolution: 150dpi) {
-    #graphMode { left:80%; }
-    #graphInstructions { top:95%}
-}
+    #graphMode{ left:80%; }
+    #graphTip { top:95%}
+    #graphHelp {left: 94%; top: 94%}
+    .closePageArea {
+        top:94%;
+        left:81%;
+    }
 
-/* 2 pixel ratio */
-/* @media only screen and (max-height: 960px) {
-    #graphMode { left:54em; }
-    #graphInstructions {top:825px}
-} */
+}
 
 /* standard hd */
 @media only screen and (min-height:900px) and (max-height: 1080px) {
     #graphMode {  left:83%; }
-    #graphInstructions {top:97%}
+    #graphTip {top:96%}
+    #graphHelp {left: 95%; top: 95%}
+    .closePageArea {
+        top:94%;
+        left:87%;
+    }
 }

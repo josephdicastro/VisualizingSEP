@@ -12,6 +12,9 @@ let vizLogo = d3.select('#vizLogo')
 let navBar = d3.select('nav')
 let pageTitle = d3.select('#pageTitle')
 let copyright = d3.select('#copyright')
+let graphMode = d3.select("#graphMode")
+let graphTip = d3.select("#graphTip")
+let graphHelp = d3.select("#graphHelp")
 
 //Article Search Elements
 let articleSearchButton = d3.select('#articleSearchButton')
@@ -38,13 +41,14 @@ let recentSearchListDiv = d3.select('#recentSearchListDiv')
 let recentShowAllCheck = d3.select('#recentShowAllCheck')
 let recentCloseSearchArea = d3.select('#recentCloseSearchArea')
 
+//Other Nav Elements
 let getRandomEntry = d3.select("#getRandomEntry")
 let aboutPageLink = d3.select('#aboutPage')
 let contactPageLink = d3.select('#contactPage')
 
-let graphMode = d3.select("#graphMode")
-let graphInstructions = d3.select("#graphInstructions")
 
+
+//about Page Elements
 let aboutNumArticles = d3.select("#aboutNumArticles")
 let aboutNumLinks = d3.select("#aboutNumLinks")
 let aboutNumDomains = d3.select("#aboutNumDomains")
@@ -58,8 +62,6 @@ let graphLinks = [];
 let searchCache = [];
 
 let allArticles = [];
-let numArticles;
-let numLinks;
 let allDomains = [];
 let allEntries = [];
 let recentSearches = [];
@@ -81,23 +83,200 @@ let currentDomainCentralNode;
 
 let pageTransition = 300
 
+
 //set BaseURL for SEP Edition
 let sepEdition = "Fall 2020"
 let baseURL = 'https://plato.stanford.edu/archives/fall2020';
 
 // let json_file = 'static/sep_network.json'
-let json_file = 'https://josephdicastro.github.io/VisualizingSEP/static/sep_network.json'
+// let json_file = 'https://josephdicastro.github.io/VisualizingSEP/static/sep_network.json'
+let json_file = '/static/sep_network.json'
+
 
 startVisualization();
 
 function startVisualization() {
     loadMenuData();
-    setNavigation();
-    showContentPage(homePageDiv, '');
+    // setNavigation();
+    // showContentPage(homePageDiv, '');
+
+}
+
+// ****** INITIALIZATION FUNCTIONS ********
+
+function setGlobalNodesLinks(sepData) {
+    //clear out whatever is in the global graphNodes and graphLinks arrays
+    graphNodes.length = 0
+    graphLinks.length = 0
+
+    //push new nodes and links objects into globals
+    sepData.nodes.forEach(node => graphNodes.push(node))
+    sepData.links.forEach(link => graphLinks.push(link))
+
+}
+
+function initializeParentSVG(svg) {
+    // set basic SVG Config data 
+    let margin = {
+        top: 0,
+        right: 0,
+        bottom:0,
+        left:0
+    };
+
+    let areaWidth = 1000;
+    let areaHeight = 900;
+
+    // let areaWidth = 1100;
+    // let areaHeight = 950;
+
+    let width = areaWidth - margin.left - margin.right;
+    let height = areaHeight - margin.top - margin.bottom;
+
+    svg.attr("viewBox", "0 50 " + width + " " + height )
+       .attr("preserveAspectRatio", "xMidYMid")
+
+    //clear out child SVG elements
+    svg.html("")
+
+    //create SVG group centered in the middle of the svg space
+    let g1 = svg.append('g')
+                        .attr("transform", `translate(${width/2},${height/2})`)
+                        .classed('sepGraphGroup', true)
+    
+    //create secondary svg group so that we can add our graph elements to this group
+    let graphElements = g1.append('g')
+                            .classed('graphElements', true)
+                            // .attr('width',1000)
+
+    return {margin, areaWidth, areaHeight, width, height, graphElements}
+}
+
+function initializeSimulation(svgConfig) {
+
+    // create main graph elements
+    let links = svgConfig.graphElements
+        .append("g")
+        .classed('links',true)
+
+    let labels = svgConfig.graphElements
+        .append("g")
+        .classed('labels',true)
+
+    let relatedLinks = svgConfig.graphElements
+        .append("g")
+        .classed('relatedLinks', true)
+
+    let nodes = svgConfig.graphElements
+        .append("g")
+        .classed('nodes',true)
+
+    let domainLabels = svgConfig.graphElements
+        .append("g")
+        .classed('domainLabels',true)
+
+    let simulation = d3.forceSimulation()
+    simulation
+        .nodes(graphNodes)
+        .force("charge", d3.forceManyBody())
+        .force("link", d3.forceLink())
+        .force("center", d3.forceCenter())
+        .force('collide', d3.forceCollide())
+        .force('forceX', d3.forceX())
+        .force('forceY', d3.forceY())
+        .alphaTarget(0.99)
+
+    return {links, nodes, labels, relatedLinks, domainLabels, simulation}
+}
+
+function initializeStyles() {
+    let link = { 
+        'defaultOpacity': 0.1,
+        'activeOpacity': 0.3,
+        'activeDomainOpacity': 0.08,
+        'inactiveOpacity': 0.06,
+        'inactiveDomainOpacity': 0.01,
+        'strokeColor': '#999',
+        'strokeWidth':1
+    }
+    
+    let nodeLabel = {
+        'defaultOpacity': 1,
+        'centralNodeDimmedOpacity': 0.8,
+        'neighborNodeOpacity': 0.25,
+        'inArrayOpacity': 1,
+        'notInArrayOpacity': 0.03,
+        'defaultFontSize': '1.3em', 
+        'largeGraphFontSize': '.5em',
+        'defaultRadius': 4,
+        'strokeColor': "#fff",
+        'strokeWidth':0.5 
+    }
+
+    let linkLines = {
+        'articleGraphOpacity': 0.4,
+        'domainGraphOpacity': 0.5,
+        'inactiveOpacity':0
+    }
+
+    let listItems = {
+        'defaultOpacity': 1,
+        'dimmedOpacity': 0.21
+    }
+
+    return {link, nodeLabel, linkLines, listItems}
 
 
 }
 
+// ****** MENU FUNCTIONS ********
+
+function loadMenuData() {
+
+    d3.json(json_file).then((json) => {
+
+        let wordCount = 0;
+        let domainSet = new Set()
+
+        json.articles.nodes.forEach(node => {
+            let nodeTitle = node.title
+            let nodePrimaryDomain = node.primary_domain
+            let wordCountText = parseInt(node.word_count.replace(',',''))
+            allArticles.push({'title': nodeTitle, 'primary_domain': nodePrimaryDomain})
+            domainSet.add(nodePrimaryDomain)
+            wordCount += wordCountText
+            
+        })
+
+        let numArticlesDisplay = allArticles.length.toLocaleString();
+
+        domainSet.forEach(domain => allDomains.push({'title': domain, 'primary_domain':domain}))
+        allDomains.sort((a,b) => d3.ascending(a.title, b.title));
+
+        allEntries = allArticles.concat(allDomains)
+
+        aboutNumArticles.text(allArticles.length.toLocaleString())
+        aboutNumLinks.text(json.articles.links.length.toLocaleString())
+        aboutNumDomains.text(allDomains.length)
+        aboutAvgWordCount.text(parseInt(wordCount/allArticles.length).toLocaleString())
+
+            setNavigation();
+            showContentPage(homePageDiv, '');
+        })
+
+}
+
+function updateRecentSearch(searchObj, graphType) {
+    
+    if(!recentSearches.includes(searchObj)) { 
+
+        if (graphType==='Domain') {searchObj.title = searchObj.title + ' (domain)'}
+        let testSearch = recentSearches.filter(node => {return node.title === searchObj.title})
+        if(testSearch.length === 0) {recentSearches.push(searchObj) }
+        if(recentSearches.length > 10 ) {recentSearches.shift()}
+    }
+
+}
 
 // ****** BASIC PAGE SHOW / HIDE FUNCTIONS ****** 
  
@@ -511,18 +690,6 @@ function showContactPage() {
     showContentPage(contactPageDiv, "Contact Information")
 }
 
-function setModeInstructions() {
-    graphMode
-    .on('mouseover', function() {activateItemLink(this)})
-    .on('mouseout', function() {deActivateItemLink(this)})
-    .on('click', function() {toggleGraphMode();})
- 
- graphInstructions
-    .on('mouseover', function() {activateItemLink(this)})
-    .on('mouseout', function() {deActivateItemLink(this)})
-    .on('click', function() {displayGraphInstructions()})
-}
-
 function hidePage(pageToHide) {
     if (pageToHide.style('display') === 'block') {
         pageToHide.transition().duration(pageTransition).style('opacity',0);
@@ -555,236 +722,81 @@ function showGraphPage() {
     hidePage(homePageDiv);
     hidePage(aboutPageDiv);
     hidePage(contactPageDiv);
-    graphPageDiv.style('display','block')
-    graphPageDiv.transition().duration(pageTransition).style('opacity',1);
 
     showSidebars();
-    setModeInstructions();
+
+    graphPageDiv
+        .style('display','block')
+        .transition()
+            .duration(pageTransition).style('opacity',1);
 }
 
 
-// ****** INITIALIZATION FUNCTIONS ********
+// ********* graph modes and help 
 
-function setGlobalNodesLinks(sepData) {
-    //clear out whatever is in the global graphNodes and graphLinks arrays
-    graphNodes.length = 0
-    graphLinks.length = 0
 
-    //push new nodes and links objects into globals
-    sepData.nodes.forEach(node => graphNodes.push(node))
-    sepData.links.forEach(link => graphLinks.push(link))
-
-}
-
-function initializeParentSVG(svg) {
-    // set basic SVG Config data 
-    let margin = {
-        top: 0,
-        right: 0,
-        bottom:0,
-        left:0
-    };
-
-    let areaWidth = 1000;
-    let areaHeight = 900;
-
-    // let areaWidth = 1100;
-    // let areaHeight = 950;
-
-    let width = areaWidth - margin.left - margin.right;
-    let height = areaHeight - margin.top - margin.bottom;
-
-    svg.attr("viewBox", "0 50 " + width + " " + height )
-       .attr("preserveAspectRatio", "xMidYMid")
-
-    //clear out child SVG elements
-    svg.html("")
-
-    //create SVG group centered in the middle of the svg space
-    let g1 = svg.append('g')
-                        .attr("transform", `translate(${width/2},${height/2})`)
-                        .classed('sepGraphGroup', true)
-    
-    //create secondary svg group so that we can add our graph elements to this group
-    let graphElements = g1.append('g')
-                            .classed('graphElements', true)
-                            // .attr('width',1000)
-
-    return {margin, areaWidth, areaHeight, width, height, graphElements}
-}
-
-function initializeSimulation(svgConfig) {
-
-    // create main graph elements
-    let links = svgConfig.graphElements
-        .append("g")
-        .classed('links',true)
-
-    let labels = svgConfig.graphElements
-        .append("g")
-        .classed('labels',true)
-
-    let relatedLinks = svgConfig.graphElements
-        .append("g")
-        .classed('relatedLinks', true)
-
-    let nodes = svgConfig.graphElements
-        .append("g")
-        .classed('nodes',true)
-
-    let domainLabels = svgConfig.graphElements
-        .append("g")
-        .classed('domainLabels',true)
-
-    let simulation = d3.forceSimulation()
-    simulation
-        .nodes(graphNodes)
-        .force("charge", d3.forceManyBody())
-        .force("link", d3.forceLink())
-        .force("center", d3.forceCenter())
-        .force('collide', d3.forceCollide())
-        .force('forceX', d3.forceX())
-        .force('forceY', d3.forceY())
-        .alphaTarget(0.99)
-
-    return {links, nodes, labels, relatedLinks, domainLabels, simulation}
-}
-
-function initializeStyles() {
-    let link = { 
-        'defaultOpacity': 0.1,
-        'activeOpacity': 0.3,
-        'activeDomainOpacity': 0.08,
-        'inactiveOpacity': 0.06,
-        'inactiveDomainOpacity': 0.01,
-        'strokeColor': '#999',
-        'strokeWidth':1
-    }
-    
-    let nodeLabel = {
-        'defaultOpacity': 1,
-        'centralNodeDimmedOpacity': 0.8,
-        'neighborNodeOpacity': 0.25,
-        'inArrayOpacity': 1,
-        'notInArrayOpacity': 0.00,
-        'defaultFontSize': '1.3em', 
-        'largeGraphFontSize': '.5em',
-        'defaultRadius': 4,
-        'strokeColor': "#fff",
-        'strokeWidth':0.5 
-    }
-
-    let linkLines = {
-        'articleGraphOpacity': 0.4,
-        'domainGraphOpacity': 0.5,
-        'inactiveOpacity':0
-    }
-
-    let listItems = {
-        'defaultOpacity': 1,
-        'dimmedOpacity': 0.21
-    }
-
-    return {link, nodeLabel, linkLines, listItems}
+function setNavTip(state) {
+   if(state === 'On') {
+        graphTip
+            .transition().duration(pageTransition)
+                .style('opacity',1)
+                .style('display', 'block')
+   }    else    {
+        graphTip
+            .transition().duration(pageTransition)
+                .style('opacity',0)
+                .style('display', 'none')
+   }
 
 
 }
-// ****** MENU FUNCTIONS ********
-
-function loadMenuData() {
-
-    d3.json(json_file).then((json) => {
-
-        let wordCount = 0;
-        let domainSet = new Set()
-
-        json.articles.nodes.forEach(node => {
-            let nodeTitle = node.title
-            let nodePrimaryDomain = node.primary_domain
-            let wordCountText = parseInt(node.word_count.replace(',',''))
-            allArticles.push({'title': nodeTitle, 'primary_domain': nodePrimaryDomain})
-            domainSet.add(nodePrimaryDomain)
-            wordCount += wordCountText
-            
-        })
-
-        numArticles = allArticles.length
-
-        let numArticlesDisplay = allArticles.length.toLocaleString();
-
-        domainSet.forEach(domain => allDomains.push({'title': domain, 'primary_domain':domain}))
-        allDomains.sort((a,b) => d3.ascending(a.title, b.title));
-
-        allEntries = allArticles.concat(allDomains)
-
-
-        aboutNumArticles.text(allArticles.length.toLocaleString())
-        aboutNumLinks.text(json.articles.links.length.toLocaleString())
-        aboutNumDomains.text(allDomains.length)
-        aboutAvgWordCount.text(parseInt(wordCount/allArticles.length).toLocaleString())
-        })
-
-}
-
-function updateRecentSearch(searchObj, graphType) {
-    
-    if(!recentSearches.includes(searchObj)) { 
-
-        if (graphType==='Domain') {searchObj.title = searchObj.title + ' (domain)'}
-        let testSearch = recentSearches.filter(node => {return node.title === searchObj.title})
-        if(testSearch.length === 0) {recentSearches.push(searchObj) }
-        if(recentSearches.length > 10 ) {recentSearches.shift()}
-    }
-
-}
-
 function setGraphMode(mode) {
 
     graphMode
         .classed('baseStylesModeInstructions', true)
+        .text('Reset Graph')
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() {setGraphMode('Hover');})
 
     if(mode==='Hover') {
         exploreMode = false; 
-        graphMode
-            .text('Graph Mode: Hover')
-            .classed('graphModePreview', true)
-            .classed('graphModeExplore', false)
 
         resetDomainMenuOpacity();
         resetDisplayDefaultsDomainGraph();
         resetDisplayDefaultsArticleGraph();
+        graphMode.transition().duration(pageTransition).style('opacity',0)
   }
     if(mode==='Click') {
         exploreMode = true;
-        graphMode
-            .text('Graph Mode: Click')
-            .classed('graphModePreview', false)
-            .classed('graphModeExplore', true)
+        graphMode.transition().duration(pageTransition).style('opacity',1)
     }
 }
 
 function setGraphType(graphState) {
-    if(graphState==='Article') {graphType = graphState; setGraphInstructions('Article Graph Instructions') }
-    if(graphState==='Domain') {graphType = graphState; setGraphInstructions('Domain Graph Instructions') }
 
-}
+    let graphHelpText;
+    let helpPageToOpen;
 
-function setGraphInstructions(instructionText) {
-    graphInstructions
-        .text(instructionText)
-        .classed('baseStylesModeInstructions', true)
-}
-
-function displayGraphInstructions() {
-    let instructionText = graphInstructions.text()
-
-    dimScreen();
-
-    if(instructionText.indexOf('Article') === 0 ) { 
-        displayGraphInstructions_Article()
-    }   else {
-        displayGraphInstructions_Domain()
+    if(graphState==='Article') {
+        graphHelpText = "Quick Tip: <strong>Double-click</strong> node to load new graph; <strong>Single-click</strong> node to freeze graph."
+        helpPageToOpen = '#graphHelpArticle'
     }
+    if(graphState==='Domain') {
+        graphHelpText = "Quick Tip: <strong>Double-click</strong> node to load node into new Article graph; <strong>Single-click</strong> node to freeze Domain graph."
+        helpPageToOpen = '#graphHelpDomain'
+    }
+
+    graphTip
+        .html(graphHelpText)
+
+    graphHelp
+        .classed('baseStylesModeInstructions', true)
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() { toggleHelpPage(helpPageToOpen)})
+
+    graphType = graphState
 }
 
 function dimScreen() {
@@ -795,154 +807,127 @@ function dimScreen() {
     sidebarLeft.transition(transDuration).style('opacity', 0.25)
     sidebarRight.transition(transDuration).style('opacity', 0.25)
     svgConfig.graphElements.transition(transDuration).style('opacity', 0.25)
-    graphMode.transition(transDuration).style('opacity', 0.10)
-    graphInstructions.transition(transDuration).style('opacity',0.10)
+    graphHelp.transition(transDuration).style('opacity', 0.25)
+    graphTip.transition(transDuration).style('opacity', 0.25)
+
+    if(graphMode.style('opacity') === 1 ) {
+        graphMode.transition(transDuration).style('opacity',0.10)
+    }
+
+    if(graphTip.style('opacity') === 1 ) {
+        graphTip.transition(transDuration).style('opacity',0.10)
+    }
+
 }
 
 function resetScreen() {
     let transDuration = 300
+
+    hideAllHelpPages()
+
     navBar.transition(transDuration).style('opacity', 1)
     pageTitle.transition(transDuration).style('opacity', 1)
     sidebarLeft.transition(transDuration).style('opacity',1)
     sidebarRight.transition(transDuration).style('opacity', 1)
     svgConfig.graphElements.transition(transDuration).style('opacity',1)
-    graphMode.transition(transDuration).style('opacity', 1)
-    graphInstructions.transition(transDuration).style('opacity',1)
-}
+    graphHelp.transition(transDuration).style('opacity', 1)
 
-function displayGraphInstructions_Article() {
-    let transDuration = 450
-    d3.select("#articleInstructions")
-        .style('display','block')
-        .transition()
-            .duration(transDuration)
-                .style('opacity',1)
-        
-
-    d3.select("#articleGraphHelp")
-        .on('mouseover', function() {activateItemLink(this)})
-        .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() { showHelpPage("#articleGraphHelp")})
-
-    d3.select("#articleGraphHelpLeft")
-        .on('mouseover', function() {activateItemLink(this)})
-        .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() {showHelpPage("#articleGraphHelpLeft")})
-
-    d3.select("#articleGraphHelpRight")
-        .on('mouseover', function() {activateItemLink(this)})
-        .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() {showHelpPage("#articleGraphHelpRight")})
-
-    d3.select("#articleGraphHelpNav")
-        .on('mouseover', function() {activateItemLink(this)})
-        .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() {showHelpPage("#articleGraphHelpNav")})
-
-   d3.select('#articleGraphInstructionsHeading')
-        .on('mouseover', function() {activateItemLink(this)})
-        .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() { 
-            d3.select('#articleInstructions').transition().duration(transDuration).style('opacity',0)
-            d3.select('#articleInstructions').style('display','none')
-            resetScreen();
-
-    })
-
-
-    showHelpPage('#articleGraphHelp')
-    
-}
-
-function displayGraphInstructions_Domain() {
-    let transDuration = 450
-    d3.select("#domainInstructions")
-        .style('display','block')
-        .transition().duration(transDuration).style('opacity',1)
-
-    d3.select("#domainGraphHelp")
-        .on('mouseover', function() {activateItemLink(this)})
-        .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() { showHelpPage("#domainGraphHelp")})
-
-    d3.select("#domainGraphHelpLeft")
-        .on('mouseover', function() {activateItemLink(this)})
-        .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() {showHelpPage("#domainGraphHelpLeft")})
-
-    d3.select("#domainGraphHelpRight")
-        .on('mouseover', function() {activateItemLink(this)})
-        .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() {showHelpPage("#domainGraphHelpRight")})
-
-    d3.select("#domainGraphHelpNav")
-        .on('mouseover', function() {activateItemLink(this)})
-        .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() {showHelpPage("#domainGraphHelpNav")})
-
-    d3.select('#domainGraphInstructionsHeading')
-        .on('mouseover', function() {activateItemLink(this)})
-        .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() { 
-            d3.select('#domainInstructions').transition().duration(transDuration).style('opacity',0)
-            d3.select('#domainInstructions').style('display','none')
-            resetScreen();
-        })
-
-    showHelpPage('#domainGraphHelp')
-}
-
-function showHelpPage(divID) {
-
-    let pageID = divID + "Div"
-
-    //help menu
-    d3.selectAll('.helpMenu > li')
-        .style('color', '#E6E6E6')
-
-    d3.select(divID)
-        .style('color', '#F0DB00')
-
-    //help pages
-    d3.selectAll('.instructionsSection')
-        .style('display', 'none')
-    
-    d3.select(pageID)
-        .style('display', 'block')
-}
-
-function toggleGraphMode() {
-    if(exploreMode) {
-        setGraphMode('Hover')
-    } else {
-        setGraphMode('Click')
+    if(graphMode.style('opacity') === 0.10 ) {
+        graphMode.transition(transDuration).style('opacity',1)
     }
 
-    window.getSelection().removeAllRanges();
+    if(graphTip.style('opacity') > 0 ) {
+        graphTip.transition(transDuration).style('opacity',1)
+    }
+
+
 }
+
+function displayHelpPage(helpPageToDisplay) {
+    dimScreen();
+
+
+    hideAllHelpPages()
+    d3.select(helpPageToDisplay)
+        .style('display', 'block')
+        .transition()
+            .duration(pageTransition)
+                .style('opacity',1)
+
+    let closePageDiv = d3.select(helpPageToDisplay).append('div')
+        .text('Close Page')
+        .classed('closePageArea',true)
+
+
+        d3.selectAll('.instructionsPageHeading')
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() { hideHelpPage(helpPageToDisplay)})
+
+        d3.selectAll('.closePageArea')
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() { closePageDiv.remove(); hideHelpPage(helpPageToDisplay)})
+}
+
+function hideHelpPage(helpPageToDisplay) {
+    d3.select(helpPageToDisplay)
+        .transition()
+            .duration(pageTransition).style('opacity',0)
+
+    d3.select(helpPageToDisplay)
+        .style('display','none')
+
+    resetScreen();
+}
+
+function hideAllHelpPages() {
+    d3.selectAll('.graphInstructionArea')
+        .style('opacity', 0)
+        .style('display','none')
+
+}
+
+function toggleHelpPage(helpPageToDisplay) {
+   let helpPageVizibility = d3.select(helpPageToDisplay).style('display')
+
+   if (helpPageVizibility === 'none') {
+        displayHelpPage(helpPageToDisplay)
+   }    else{
+       hideHelpPage(helpPageToDisplay)
+   }
+}
+
 // ****** ARTICLE GRAPH DATA AND SIMULATION FUNCTIONS ****** 
-
-
-
-
 function showArticleGraph(articleTitle) {
     d3.json(json_file).then((json) => {
-        // simConfig = initializeSimulation(svgConfig);  
-        showGraphPage();
+
+        //get data from JSON and update globals
         let articleData = getArticleData(json,articleTitle)
         setGlobalNodesLinks(articleData)
         let articleNode = graphNodes[0]
-        drawArticleSimulation(json)
-        setPageTitle(articleTitle, articleData.primaryDomain)
-        updateRecentSearch({'title': articleTitle, 'primary_domain': articleData.primaryDomain},'Article');
-        d3.select('.mainDomainNode').remove();
+
+        //setup graph to display article data
+        showGraphPage();
+        resetScreen()
         setGraphMode('Hover')
         setGraphType('Article')
+
+        //update graph 
+        drawArticleSimulation(json)
+        setPageTitle(articleTitle, articleData.primaryDomain)
+        updateSidebarsArticle(json, articleNode);
+
+
         resetDisplayDefaultsDomainGraph();
         resetDisplayDefaultsArticleGraph();
-        updateSidebarsArticle(json, articleNode);
+        d3.select('.mainDomainNode').remove();
+
+        //update nav menu 
+        updateRecentSearch({'title': articleTitle, 'primary_domain': articleData.primaryDomain},'Article');
         showAll = false;
 
+        //remove selections
         window.getSelection().removeAllRanges();
     })
 
@@ -1068,7 +1053,6 @@ function drawArticleSimulation(data) {
                  .append("text")
                  .text(function(d) {return d.title})
                  .attr('fill-opacity',styConfig.nodeLabel.defaultOpacity)
-                //  .attr("font-size", styConfig.nodeLabel.defaultFontSize)
                  .attr("fill", function(d) {return color(d.primary_domain)})
                  .attr('nodeID', function(d) {return d.id})
                  .classed('label',true)
@@ -1078,8 +1062,8 @@ function drawArticleSimulation(data) {
     label
         .on('mouseover', function() {mouseOverArticleNode(this, data,'fill-opacity')})
         .on('mouseout', function() {mouseOutArticleNode(this, data)})
-        .on('click', function()  { sngClickArticleNode(this, data, 'opacity')})
-        .on('dblclick', function() {dblClickArticleNode(this)})
+        .on('click', function()  { sngClickArticleNode(this, data, 'fill-opacity')})
+        .on('dblclick', function() {dblClickArticleNode(this, 'fill-opacity')})
 
 
     //nodes
@@ -1107,7 +1091,7 @@ function drawArticleSimulation(data) {
         .on('mouseover', function() {mouseOverArticleNode(this, data, 'opacity')})
         .on('mouseout', function()  {mouseOutArticleNode(this, data)})
         .on('click', function()  { sngClickArticleNode(this, data, 'opacity')})
-        .on('dblclick', function()  {dblClickArticleNode(this)})
+        .on('dblclick', function()  {dblClickArticleNode(this, 'opacity')})
 
     //update simulation ticker
     let numTicks = 0;
@@ -1214,12 +1198,12 @@ function updateSideBarLeft_ArticleMain(selectedArticle, titleType){
         let sideBarLeftContent = sidebarLeft.append("div");
 
         setArticleIntroParagraph(sideBarLeftContent, titleType, selectedArticle);
-        // setExploreTOC(sideBarLeftContent, selectedArticle) 
         setArticleDomainDetails(sideBarLeftContent, selectedArticle);
-        setArticleDetails(sideBarLeftContent, selectedArticle);
+
     }
 }
 
+//presently not used, but possibly will be in the future
 function updateSideBarLeft_ArticlePreview(selectedArticle, relatedArticles) {
     if(selectedArticle) {
 
@@ -1241,68 +1225,161 @@ function setArticleIntroParagraph(parentSidebar, titleType, selectedArticle) {
         .classed('panelBG', true)
         .transition().duration(200).style('opacity',1)
     
-    let titleDisplay;
-    if (titleType === 'Main') { titleDisplay = selectedArticle.title + ' (Main)' }
-    if (titleType === 'Preview') {titleDisplay = selectedArticle.title + ' (Preview)' }
-    if (titleType === 'Explore') {titleDisplay = selectedArticle.title + ' (Explore)' }
+    let titleDisplay = selectedArticle.title
+
+    // if (titleType === 'Main') { titleDisplay = selectedArticle.title + ' (Main)' }
+    // if (titleType === 'Preview') {titleDisplay = selectedArticle.title + ' (Preview)' }
+    // if (titleType === 'Explore') {titleDisplay = selectedArticle.title + ' (Explore)' }y
 
     introParagraphPanel.append("h2")
         .text(titleDisplay)
         .classed('panelHeading', true)
+        .style('font-size', '1em')
         .style('color', function() {return color(selectedArticle.primary_domain)})
         
     let paragraphDiv = introParagraphPanel.append("div")
-    let paragraphData = getParagraphDataHTML(selectedArticle.preamble_text);
+    let paragraphData = getParagraphDataHTML(selectedArticle.preamble_text,600);
 
     paragraphDiv
         .html(paragraphData)
         .classed('panelParagraphText', true)
 
-    if ( titleType !== 'Preview') {
-        let sepURL = baseURL + selectedArticle.id
+    let articleDetailsArea = introParagraphPanel.append('div')
+        .classed('calloutBG', true)
+        .classed('articleDetailsBG', true)
+        .classed('introParagraphText', true)
+        .text('Article Details')
 
-        introParagraphPanel.append("p")
-            .html(`<a href="${sepURL}" target="_blank">Read the full article at SEP</a>`)
-            .classed('sepLink', true)
-
-    }
-
-
-
-  
-
+    setArticleDetailsPage(selectedArticle) 
     
+    articleDetailsArea
+            .on('mouseover', function() {activateItemLink(this)})
+            .on('mouseout', function() {deActivateItemLink(this)})
+            .on('click', function() { toggleHelpPage('#articleDetails')})
+
 }
 
-function getParagraphDataHTML(paragraphDataFromNode) {
+function setArticleDetailsPage(selectedArticle) {
+    let articleDetailsPage = d3.select('#articleDetails')
+    articleDetailsPage.html('')
+
+    let articleDetailsContentArea = articleDetailsPage.append('div')
+
+
+    let articleDetailsHeadeding = articleDetailsContentArea.append("h2")
+        .text(selectedArticle.title)
+        .classed('panelHeading', true)
+        .classed('instructionsPageHeading',true)
+        .style('color', function() {return color(selectedArticle.primary_domain)})
+
+    //details table
+    let sepURL = baseURL + selectedArticle.id
+    let detailsData = [
+            `<td>Author(s):</td><td>${selectedArticle.author}</td>`,
+            `<td>Pub&nbsp;Date:</td><td> ${selectedArticle.pubdate.replace(';',';<br>')}</td>`,
+            `<td>Word&nbsp;Count:</td><td> ${selectedArticle.word_count}</td>`,
+            `<td>SEP Link:</td><td><a href="${sepURL}" target="_blank">${selectedArticle.title}</a></td>`
+        ]
+    
+    let detailsAndTocDiv = articleDetailsContentArea.append('div')
+        .attr('id','detailsAndTOCDiv')
+
+    let detailsTableHeading = detailsAndTocDiv.append("h2")
+        .text('Article Details')
+        .style('color', '#F0DB00')
+
+    let detailsTableDiv = detailsAndTocDiv.append('div')
+        .classed('articleDetailsTableDiv', true)
+
+
+    let detailsTable = detailsTableDiv.append('table')
+            .classed('table', true)
+            .classed('table-sm', true)
+            .classed('table-bordered',true)
+            .classed('table-hover', true)
+            .classed('table-dark', true)
+            .classed('table-hover', true)
+            .style('margin','0')
+            .style('padding','0')
+    
+    detailsTable.append('tbody')
+    
+    detailsTable.selectAll('tr')
+            .data(detailsData)
+            .enter().append('tr')
+                .html((d) => d)
+                .classed('panelListItem', true)
+                .style('margin','0')
+                .style('padding','0')
+                .style('text-indent', '0')
+
+    let exploreTOCContentArea = detailsAndTocDiv.append("div")
+    .attr('id','exploreTOCContentArea')
+
+    let exploreTOCHeading = exploreTOCContentArea.append('h2')
+        .text('Table of Contents')
+        .style('color', '#F0DB00')
+
+    exploreTOCContentArea.append('p')
+        .text('(Links to SEP article sections)')
+        .style('font-size', 'smaller')
+        .style('margin-top', '-.5em')
+
+    let toc_html_original = selectedArticle.toc
+    let toc_html_updated = toc_html_original.replace(/#/g, `${sepURL}#`)
+                                            .replace(/<a/g, '<a target="_blank" ')
+
+    let tocArea = exploreTOCContentArea.append('div')
+        .html(toc_html_updated)
+        .attr('id','tocArea')
+
+    d3.select("#toc")
+        .classed('scrollbars', true)
+    
+    // main text area
+    let preamableArea = articleDetailsContentArea.append("div")
+    let paragraphData = getParagraphDataHTML(selectedArticle.preamble_text,2000)
+    preamableArea
+        .html(paragraphData)
+        .attr('id', 'preambleArea')
+        .classed('panelParagraphText', true)
+        .classed('scrollbars', true)
+        .style('line-height', '1.2')
+
+
+
+
+
+}
+function getParagraphDataHTML(paragraphDataFromNode, substringLength) {
     let htmlReturn = '';
     //only display the first 500 characters of the node's intro paragraph
     if(typeof(paragraphDataFromNode)!=='undefined') {
         if(paragraphDataFromNode !== '') {
-            if (paragraphDataFromNode.length > 500 ) {
-                // console.log(paragraphDataFromNode)
-                let paragraph550 = paragraphDataFromNode.substring(0,550)
-                
-                let firstPeriod = paragraphDataFromNode.indexOf('.',350) + 1
-                let firstQuestionMark = paragraphDataFromNode.indexOf('?',350) + 1
-                let firstSemicolon  = paragraphDataFromNode.indexOf(';',350) + 1
-                let lastSpace = paragraphDataFromNode.indexOf(' ',450)
-                let finalParaText;
+            if (paragraphDataFromNode.length > substringLength ) {
+                let paragraphSubstring = paragraphDataFromNode.substring(0,substringLength)
 
-                if(firstPeriod <= 550 ) { finalParaText = paragraphDataFromNode.substring(0,firstPeriod) }
-                if(firstPeriod > 550 && firstQuestionMark <= 550 ) { finalParaText = paragraphDataFromNode.substring(0,firstQuestionMark) }
-                if(firstPeriod > 550 && firstSemicolon <= 550 ) { finalParaText = paragraphDataFromNode.substring(0,firstSemicolon) }
-                if(firstPeriod > 550 && firstQuestionMark > 550 ) { finalParaText = paragraphDataFromNode.substring(0,lastSpace) + ' ...'}
-                if(firstPeriod === 0 && (firstQuestionMark === 0 || firstSemicolon === 0)) {finalParaText = paragraphDataFromNode.substring(0,500) + '...'}
+                let lastPeriod = paragraphSubstring.lastIndexOf('.') 
+                let lastQuestionMark = paragraphSubstring.lastIndexOf('?')
+                let lastComma = paragraphSubstring.lastIndexOf(',')
+                let lastSemiColon = paragraphSubstring.lastIndexOf(';')
+                let lastPuncMark = Math.max(lastPeriod, lastQuestionMark, lastComma, lastSemiColon)
 
-                if(typeof(finalParaText)==='undefined') {
-                    finalParaText = paragraphDataFromNode.substring(0,500) + '...' 
+                if(lastPeriod !== -1) {
+                    if(lastPeriod > lastQuestionMark) { finalParaText = paragraphSubstring.substring(0,lastPeriod+1) }
+                    if(lastPeriod < lastQuestionMark) { finalParaText = paragraphSubstring.substring(0,lastQuestionMark+1) }
+                } else {
+                    finalParaText = paragraphSubstring.substring(0,lastPuncMark) + ' ...'
                 }
-                let displayCut = `(First ${finalParaText.length} characters displayed.)`;
+                
+                if(substringLength===2000) {
+                    htmlReturn = '<p>' + finalParaText + '</p><p class="panelDispayCut">~ Abstract Shortened For Display ~</p>' 
+                }   else {
+                    htmlReturn = '<p>' + finalParaText + '</p>' 
+                }
+                
 
-                htmlReturn = '<p>' + finalParaText + '</p>' 
-                            //     + 
-                            //  '<p class="panelDispayCut float-right">' + displayCut + '</p>'
+                // less than 500 characters
             }  else {
                 htmlReturn = '<p>' + paragraphDataFromNode + '</p>'
             }
@@ -1319,41 +1396,75 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
     let domainListDiv = parentSidebar.append("div")
         .classed('panelBG', true)
 
+    // get domain list from selectedArticle, and then clean process it for display
+    let primaryDomain = selectedArticle.primary_domain
+    let domainDataDetails = selectedArticle.domain_tags.split(',')
+    let pdPosition = domainDataDetails.indexOf(primaryDomain)
+    domainDataDetails.splice(pdPosition,1)
+
+    domainDataDetails.unshift(primaryDomain)
+
+    let domainDataRows = [];
+
+    domainDataDetails.forEach(function(node, i)  {
+        let domainColor = color(node)
+        let domainTypeText;
+        let domainText = `<td style="color:${domainColor}"><span class="domainItem">${node}</span></td>`
+        
+        if(i===0) {  domainTypeText = `<td class="domainTypeText">Primary Domain:</td>` }
+        if(i===1) {  domainTypeText = `<td class="domainTypeText">Secondary Domain(s):</td>` }
+        if(i>1)   {  domainTypeText = `<td class="domainTypeText"></td>`  }
+
+        domainDataRows.push(domainTypeText + domainText)
+    })
+
+    let panelHeading;
+    if(domainDataRows.length === 1 ) { 
+        panelHeading = 'Article Domain' }   
+    else    {
+        panelHeading = "Article Domains"
+    }
+
     let domainListHeading = domainListDiv.append("h2")
-        .text('Domains')
+        .text(panelHeading)
         .attr('id', 'domainListHeading')
         .classed('panelHeading', true)
-        // .classed('toggleOnBG', true)
 
     let domainListContentArea = domainListDiv.append('div')
         .attr('id','domainListContentArea')
         .style('display', 'block')
 
-    domainListContentArea.append("ul")
-        .selectAll(".domainListItem")
-        .data(selectedArticle.domain_tags.split(','))
-            .enter()
-            .append('li')
-            .html(function(d) {return d})
-            .style("color", function(d) {return color(d)})
-            .classed('domainListItem', true)
-            .classed('panelListItem', true)
-        .exit().remove()
+    let domainTable = domainListContentArea.append('table')
+        .classed('table', true)
+        .classed('table-sm', true)
+        .classed('table-borderless',true)
+        .classed('detailsTable', true)
+        .style('margin-left', '.5em')
+   
 
-    // domainListContentArea.append('p')
-    //     .html('(Dbl-Click for Domain Graph)')
-    //     .classed('panelDispayCut', true)
-    //     .classed('float-right', true)
+    let domainTbody = domainTable.append('tbody')
 
+    domainTbody.selectAll('tr')
+        .data(domainDataRows)
+        .enter().append('tr')
+            .html((d) => d)
+            .style('margin','0')
+            .style('padding','0')
+            .exit().remove()
 
+    let articleDomainsHelp = setPanelHelp(domainListContentArea, 'Article Domains Help', 'panelHelpLeftSideBar', '#articleDomainsHelp')
 
-    let domainList = d3.selectAll('.domainListItem')
-    
-    domainList
+    articleDomainsHelp
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() { toggleHelpPage('#graphHelpArticleDomains')})
+
+    let domainItems = d3.selectAll('.domainItem')
+    domainItems
         .on('mouseover', function() { activateItemLink(this)})
         .on('mouseout', function() { deActivateItemLink(this)})
         .on('click', function () {
-            let domainTitle = d3.select(this).datum()
+            let domainTitle = d3.select(this).node().innerHTML
             showDomainGraph(domainTitle)
     })
 
@@ -1373,60 +1484,7 @@ function toggleDomainDetailsContent(state) {
 
 }
 
-function setArticleDetails(parentSidebar, selectedArticle) {
-    let additionalDetailsDiv = parentSidebar.append('div')
-        .classed('panelBG', true)
 
-    let detailsHeading = additionalDetailsDiv.append("h2")
-        .text('Details')
-        .attr('id', 'articleDetailsHeading')
-        .classed('panelHeading', true)
-        // .classed('toggleOnBG', true)
-
-    let detailsListDiv = additionalDetailsDiv.append('div')
-        .attr('id','detailsContentArea')
-        .style('display', 'block')
-    
-    detailsData = [
-        `<td>Author(s):</td><td>${selectedArticle.author}</td>`,
-        `<td>Pub&nbsp;Date:</td><td> ${selectedArticle.pubdate}</td>`,
-        `<td>Word&nbsp;Count:</td><td> ${selectedArticle.word_count}</td>`]
-
-    let detailsTable = detailsListDiv.append('table')
-        .classed('table', true)
-        .classed('table-sm', true)
-        .classed('table-borderless',true)
-        .classed('table-hover', true)
-        .style('margin','0')
-        .style('padding','0')
-
-
-    detailsTable.append('tbody')
-
-    detailsTable.selectAll('tr')
-        .data(detailsData)
-        .enter().append('tr')
-            .html((d) => d)
-            .classed('panelListItem', true)
-            .style('margin','0')
-            .style('padding','0')
-            .style('text-indent', '0')
-}
-
-function toggleArticleDetailsContent(state) {
-    let detailsContentArea = d3.select('#detailsContentArea')
-    let articleDetailsHeading = d3.select('#articleDetailsHeading')
-
-    if(state === 'on') {
-        detailsContentArea.style('display', 'block')
-        toggleExploreTOCArea('off')
-    }   else  if (state === 'off')   {
-        detailsContentArea.style('display', 'none')
-    }
-
-    window.getSelection().removeAllRanges();
-
-}
 
 function setExploreTOC(parentSidebar, selectedArticle) {
     let exploreTOCDiv = parentSidebar.append("div")
@@ -1479,26 +1537,7 @@ function setExploreTOC(parentSidebar, selectedArticle) {
         })
 }
 
-function toggleExploreTOCArea(state){
-    let exploreTOCHeading = d3.select("#exploreTOCHeading")
-    let exploreTOCContentArea = d3.select("#exploreTOCContentArea")
 
-    if(state==='on') {
-        exploreTOCContentArea.style('display', 'block')
-        exploreTOCHeading
-            .classed('toggleOnBG_User', true)
-            .classed('toggleOffBG_User', false)
-    }   else if(state==='off') {
-        exploreTOCContentArea.style('display', 'none')
-        exploreTOCHeading
-            .classed('toggleOnBG_User', false)
-            .classed('toggleOffBG_User', true)
-    }
-
-
-    window.getSelection().removeAllRanges();
-
-}
 
 function setArticleRelatedLinks(parentSidebar, selectedArticle, relatedArticles) {
     let relatedLinksDiv = parentSidebar.append("div")
@@ -1565,6 +1604,15 @@ function setArticleListPanel(parentSidebar, articleData, data) {
     .classed('panelHeading', true)
     .classed('toggleOffBG_User', true)
 
+    articleListDiv.append('p')
+        .text('')
+        .style('display', 'block')
+        .attr('id', 'articleHiddenMessage')
+        .classed('panelParagraphText', true)
+    
+    let articleListContentAreaMain = articleListDiv.append("div")
+        .style("display", "none")
+        .attr("id", "articleListContentAreaMain")
 
    let articleListContentArea = articleListDiv.append("div")
        .attr("id", "articleListContentArea")
@@ -1588,15 +1636,22 @@ function setArticleListPanel(parentSidebar, articleData, data) {
            .classed('panelListItem', true)
        .exit().remove()
 
+    let listOfArticlesHelp = setPanelHelp(articleListDiv, 'List of Articles Help', 'panelHelpRightSideBar', '#listOfArticlesHelp')
+
+    listOfArticlesHelp
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() { toggleHelpPage('#graphHelpListOfArticles')})
+
    // setup UI interactions
    let listArticleLinks = d3.selectAll('.linkArticlesListItem');
    let centralNode = graphNodes[0];
 
    listArticleLinks
-       .on('mouseover', function() { mouseOverArticleNode(this, data, 'opacity')})
+       .on('mouseover', function() { mouseOverArticleNode(this, data, 'fill-opacity')})
        .on('mouseout', function()  { mouseOutArticleNode(this, data)})
        .on('click', function()  { sngClickArticleNode(this, data, 'opacity')})
-       .on('dblclick', function()  { dblClickArticleNode(this)})
+       .on('dblclick', function()  { dblClickArticleNode(this, 'opacity')})
 
     articleListHeading
        .on('mouseover', function() { activateItemLink(this) })
@@ -1620,14 +1675,19 @@ function setArticleListPanel(parentSidebar, articleData, data) {
 function toggleArticleListContent(state) {
     let articleListHeading = d3.select("#articleListHeading")
     let articleListContentArea = d3.select("#articleListContentArea")
+    let articleHiddenMsg = d3.select('#articleHiddenMessage')
 
     if (state==='on') {
         articleListContentArea.transition().duration(200).style('display', 'block')
+        articleHiddenMsg.transition().duration(200).style('display', 'none')
+
         articleListHeading
             .classed('toggleOnBG_User', true)
             .classed('toggleOffBG_User', false)
     }   else if(state==='off') {
         articleListContentArea.transition().duration(200).style('display', 'none')
+        articleHiddenMsg.transition().duration(200).style('display', 'block')
+
         articleListHeading
             .classed('toggleOnBG_User', false)
             .classed('toggleOffBG_User', true)
@@ -1664,36 +1724,50 @@ function setLinkDirectionPanel(parentDiv, articleData) {
         .classed('panelListItem_numbered', true)
     .exit().remove()
 
+    let linkDirectionsHelp = setPanelHelp(linkDirectionContentArea, 'Link Directions Help', 'panelHelpRightSideBar', '#linkDirectionHelp')
+
+    linkDirectionsHelp
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() { toggleHelpPage('#graphHelpLinkDirections')})
+
     let listLinkDirection = d3.selectAll('.linkDirListItem')
+
     listLinkDirection
         .on('mouseover', function() {
             activateItemLink(this)
-            if(!exploreMode) { displayLinkDirectionArticles(this, articleData) }
-
+            
+            if(!exploreMode) { 
+                activateLinkDirDomItem('.linkDirListItem',this, 'normal');
+                displayLinkDirectionArticles(this, articleData) }
         })
         .on('mouseout', function() {
             deActivateItemLink(this)
             if(!exploreMode) {resetDisplayDefaultsArticleGraph();}
-
-            
         })
 
         .on('click', function() {
             activateItemLink(this)
-            displayLinkDirectionArticles(this, articleData)
-            activateLinkDirDomItem('.linkDirListItem',this)
-            activateLinkDirDomItem('.linkDomainListItem',this)
-            setGraphMode('Click')
+            if (d3.select(this).style('font-weight') === 'bold' ) {
+                resetDisplayDefaultsArticleGraph();
+                setGraphMode('Hover')
+            } else {
+                displayLinkDirectionArticles(this, articleData)
+                activateLinkDirDomItem('.linkDirListItem',this, 'bold')
+                activateLinkDirDomItem('.linkDomainListItem',this, 'normal')
+                setGraphMode('Click')
+            }
+
         })
 
 }
 
-function activateLinkDirDomItem(itemClass, mouseReference) {
+function activateLinkDirDomItem(itemClass, mouseReference, fontWeight) {
 
     d3.selectAll(itemClass).each(function (d,i) {
         if(mouseReference === this) {
             d3.select(this)
-                .style('font-weight', 'bold')
+                .style('font-weight', fontWeight)
                 .transition().duration(200).style('opacity', styConfig.listItems.defaultOpacity)
         }   else    {
             d3.select(this)
@@ -1702,6 +1776,7 @@ function activateLinkDirDomItem(itemClass, mouseReference) {
         }
     })
 }
+
 
 function displayLinkDirectionArticles(mouseReference, articleData){
     let linkDirectionHTML = d3.select(mouseReference).datum()
@@ -1757,14 +1832,23 @@ function setLinkDomainPanel(parentSidebar, articleData) {
         .style("color", function(d) {return color(d[0])})
         .classed('linkDomainListItem', true)
         .classed('panelListItem_numbered', true)
-    .exit().remove()
+        .exit().remove()
 
+    let linkDomainHelp = setPanelHelp(linkDomainContentArea, 'Link Domain Help', 'panelHelpRightSideBar', '#linkDomainHelp')
+
+    linkDomainHelp
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() { toggleHelpPage('#graphHelpLinkDomains')})
+    
     let listlinkDomains = d3.selectAll('.linkDomainListItem')
     listlinkDomains
         .on('mouseover', function() {
             activateItemLink(this)
             let linkDomainArray = getDomainLinksInArticle(d3.select(this).datum())
-            if(!exploreMode) { focusOnLinkAnalysis(linkDomainArray) }
+            if(!exploreMode) { 
+                activateLinkDirDomItem('.linkDomainListItem',this,'normal');
+                focusOnLinkAnalysis(linkDomainArray) }
             
         })
         .on('mouseout', function() {
@@ -1773,16 +1857,22 @@ function setLinkDomainPanel(parentSidebar, articleData) {
         })
         .on('click', function() {
             activateItemLink(this)
-            let linkDomainArray = getDomainLinksInArticle(d3.select(this).datum())
-            focusOnLinkAnalysis(linkDomainArray) 
-            activateLinkDirDomItem('.linkDirListItem',this)
-            activateLinkDirDomItem('.linkDomainListItem',this)
-            setGraphMode('Click')
+            if (d3.select(this).style('font-weight') === 'bold' ) {
+                resetDisplayDefaultsArticleGraph();
+                setGraphMode('Hover')
+            } else {
+                let linkDomainArray = getDomainLinksInArticle(d3.select(this).datum())
+                focusOnLinkAnalysis(linkDomainArray) 
+                activateLinkDirDomItem('.linkDirListItem',this, 'normal')
+                activateLinkDirDomItem('.linkDomainListItem',this,'bold')
+                setGraphMode('Click')
+            }
             
         })
 }
 
 function toggleLinkDomainContent(state) {
+    
     let linkDomainHeading = d3.select('#linkDomainHeading')
     let linkDomainContentArea = d3.select('#linkDomainContentArea')
 
@@ -1802,6 +1892,19 @@ function toggleLinkDomainContent(state) {
 
 }
 
+function setPanelHelp(contentArea, altText, sidebarClass, divID) {
+    
+    let html = `<a href="#"><img src="/static/bootstrap-icons/question-circle.svg" alt="${altText}" class="panelHelpImg"></a>`
+    let helpPanel = contentArea.append('p')
+        .classed('calloutBG', true)
+        .classed('panelHelp', true)
+        .classed(sidebarClass, true)
+        .attr('id', divID)
+        .html(html)
+
+    return helpPanel
+
+}
 function activateItemLink(mouseReference, fontWeight) {
     d3.select(mouseReference)
         .style('cursor', 'pointer')
@@ -1822,60 +1925,111 @@ function getDomainLinksInArticle(linkDomain) {
     })
     return domainArray
 }
+function setClickTargetActive(elementID) {
 
-function dblClickArticleNode(dblClickReference) {
+    let graphLabel = d3.selectAll('.label').filter(function(d,i) {return d.id===elementID})
+    let listTitle = d3.selectAll('.linkArticlesListItem').filter(function(d,i) {return d.id===elementID})
+
+    graphLabel.transition().duration(200)
+        .style('font-weight', 'bold')
+        .attr('fill-opacity', styConfig.nodeLabel.defaultOpacity)
+
+    listTitle.transition().duration(200)
+        .style('font-weight', 'bold')
+        .style('opacity', styConfig.listItems.defaultOpacity)
+
+
+}
+function dblClickArticleNode(dblClickReference, opacityTest) {
     
     // get node or label activated
     let activeElement = d3.select(dblClickReference)
 
-    if (activeElement.datum().index !== 0) {
-    // do the following if the activated node or label was not the central node
+   //test if nodes are active or if they're hidden
+   if(activeElement.style(opacityTest) > styConfig.nodeLabel.notInArrayOpacity) {
 
-        activeElement.style('cursor', 'pointer'); 
-        resetDisplayDefaultsArticleGraph();
-        let articleTitle = activeElement.datum().title
-        showArticleGraph(articleTitle)
-    }
+        if (activeElement.datum().index !== 0) {
+        // do the following if the activated node or label was not the central node
+
+            activeElement.style('cursor', 'pointer'); 
+            resetDisplayDefaultsArticleGraph();
+            let articleTitle = activeElement.datum().title
+            showArticleGraph(articleTitle)
+        }
+   }
+
+   window.getSelection().removeAllRanges();
 }
 
 function sngClickArticleNode(sngClickReference, data, opacityTest) {
-       // get node or label activated
-       let activeElement = d3.select(sngClickReference)
+    // get node or label activated
+    let activeElement = d3.select(sngClickReference)
+    
+    //test if nodes are active or if they're hidden
+    if(activeElement.style(opacityTest) > styConfig.nodeLabel.notInArrayOpacity) {
+        
+        //  if not central node
+        if (activeElement.datum().index !== 0) {
 
-       if (activeElement.datum().index !== 0  && activeElement.style(opacityTest) > .4) {
-               // do the following if the activated node or label was not the central node
-               activateItemLink(sngClickReference)
-               let relatedArticles = getRelatedArticles(data,activeElement.datum())
-               focusOnArticleNode(data, activeElement.datum())
-               updateSideBarLeft_ArticleMain(activeElement.datum(), 'Explore')
-               resetListItemDefaults('.linkDirListItem')
-               resetListItemDefaults('.linkDomainListItem')
-               setGraphMode('Click')
-       } 
+            activateItemLink(sngClickReference)
+            if(activeElement.style('font-weight') === 'normal') {
+                let relatedArticles = getRelatedArticles(data,activeElement.datum())
+                resetListItemDefaults('.linkArticlesListItem')
+                resetListItemDefaults('.linkDomainListItem')
+                resetListItemDefaults('.linkDirListItem')
+                focusOnArticleNode(data, activeElement.datum())
+                updateSideBarLeft_ArticleMain(activeElement.datum(), 'Explore')
+                setClickTargetActive(activeElement.datum().id)
+                setNavTip('On')
+                setGraphMode('Click')
+           }    else    {   
+                activeElement.transition().duration(200).style('font-weight', 'normal')
+                setGraphMode('Hover')
+                setNavTip('Off')
+           }
+        }
+    }
+
 }
+
 function mouseOverArticleNode(mouseOverReference, data, opacityTest) {
     
     // get node or label activated
     let activeElement = d3.select(mouseOverReference)
 
-    if (activeElement.datum().index !== 0  && activeElement.style(opacityTest) > .7) {
+    if(activeElement.style(opacityTest) > styConfig.nodeLabel.notInArrayOpacity) {
+        if (activeElement.datum().index !== 0) {
             // do the following if the activated node or label was not the central node
             activateItemLink(mouseOverReference)
-            let relatedArticles = getRelatedArticles(data,activeElement.datum())
+            // let relatedArticles = getRelatedArticles(data,activeElement.datum())
 
-            if (!exploreMode) {  focusOnArticleNode(data, activeElement.datum()) }
+            if (!exploreMode) {  
+                focusOnArticleNode(data, activeElement.datum()) 
+                setNavTip('On')
+            }
+
             updateSideBarLeft_ArticleMain(activeElement.datum(), 'Preview')
     }
+    }
+
+
 
 }
 function mouseOutArticleNode(mouseOverReference, data) {
+
+    deActivateItemLink(mouseOverReference)
+
     let activeElement = d3.select(mouseOverReference)
     let centralNode = graphNodes[0]
+    let frozenNode = d3.selectAll('.label').filter(function (d,i) {return d3.select(this).style('font-weight') === 'bold'})
     
-    deActivateItemLink(mouseOverReference)
+    if (!exploreMode) {  
+        resetDisplayDefaultsArticleGraph(); 
+        updateSideBarLeft_ArticleMain(centralNode, 'Main')
+    }   
+    if (exploreMode) {updateSideBarLeft_ArticleMain(frozenNode.datum(), 'Preview')}
     
-    if (!exploreMode) { resetDisplayDefaultsArticleGraph();}
-    updateSideBarLeft_ArticleMain(centralNode, 'Main')
+
 
 }
 
@@ -1941,9 +2095,9 @@ function focusOnArticleNode(data, activeElement) {
 
     let relatedArticleIDs = relatedArticles.map(article => article.id)
 
-    // reduce link opacity for all non-activated links
-    d3.selectAll('.link').
-        each(function (d,i) {
+    // reduce opacity for all non-activated graph links, nodes, and labels
+    d3.selectAll('.link')
+        .each(function (d,i) {
             d3.select(this)
                 .transition().duration(200).attr('opacity', function (link) { 
                     return link.target.id === activeElement.id ? styConfig.link.activeOpacity : styConfig.link.inactiveOpacity
@@ -1953,7 +2107,9 @@ function focusOnArticleNode(data, activeElement) {
     d3.selectAll('.label')
         .each(function (d,i) {
             d3.select(this)
-                .transition().duration(200).attr('fill-opacity', function(label) { return setNodeLabelOpacity(label, relatedArticleIDs, activeElement)})
+                .transition().duration(200)
+                    .attr('fill-opacity', function(label) { return setNodeLabelOpacity(label, relatedArticleIDs, activeElement)})
+                    .style('font-weight', 'normal')
         })
         
     d3.selectAll('.node')
@@ -1962,7 +2118,36 @@ function focusOnArticleNode(data, activeElement) {
             .transition().duration(200).style('opacity', function(node) { return setNodeLabelOpacity(node, relatedArticleIDs, activeElement)})
     })
 
-    activateArticleListItem();
+    // reduce opacity for all non-activated list article titles
+    d3.selectAll('.linkArticlesListItem')
+        .each(function (d,i) {
+            let articleRef = d3.select(this)
+
+            if(relatedArticleIDs.includes(d.id) && d.id === activeElement.id) {
+                articleRef
+                .transition().duration(200)
+                    .style('opacity', styConfig.listItems.defaultOpacity)
+                    .style('font-weight', 'normal')
+                    .style('list-style-type', 'disc')
+
+            }
+
+            if(relatedArticleIDs.includes(d.id) && d.id !== activeElement.id) {
+                articleRef
+                .transition().duration(200)
+                    .style('opacity', styConfig.listItems.defaultOpacity)
+                    .style('font-weight', 'normal')
+                    .style('list-style', 'none')
+            }
+            if(!relatedArticleIDs.includes(d.id)) {
+                articleRef
+                    .transition().duration(200)
+                        .style('opacity', styConfig.listItems.dimmedOpacity)
+                        .style('font-weight', 'normal')
+                        .style('list-style', 'none')
+            }
+            
+        })
 
 
 }
@@ -1970,63 +2155,42 @@ function focusOnArticleNode(data, activeElement) {
 function focusOnLinkAnalysis(linksReference) {
     if (linksReference.length > 0 ) {
         d3.selectAll('.link')
-        .each(function (d,i) {
-            let match = linksReference.includes(d.target.id)
-            d3.select(this)
-                .transition().duration(200).attr('opacity', match ? styConfig.link.activeOpacity : styConfig.link.inactiveOpacity)
-        })
+            .each(function (d,i) {
+                let match = linksReference.includes(d.target.id)
+                d3.select(this)
+                    .transition().duration(200).attr('opacity', match ? styConfig.link.activeOpacity : styConfig.link.inactiveOpacity)
+            })
 
     
         d3.selectAll('.label')
-        .each(function (d,i) {
-            d3.select(this)
-                .transition().duration(200).attr('fill-opacity', function(label) { return setNodeLabelOpacity(label, linksReference)})
-        })
+            .each(function (d,i) {
+                d3.select(this)
+                    .transition().duration(200).attr('fill-opacity', function(label) { return setNodeLabelOpacity(label, linksReference)})
+            })
 
         d3.selectAll('.node')
-        .each(function (d,i) {
-            d3.select(this)
-                .transition().duration(200).style('opacity', function(node) { return setNodeLabelOpacity(node, linksReference)})
-        })
+            .each(function (d,i) {
+                d3.select(this)
+                    .transition().duration(200).style('opacity', function(node) { return setNodeLabelOpacity(node, linksReference)})
+            })
+        
+        d3.selectAll('.linkArticlesListItem')
+            .each(function (d,i) {
+                let articleRef = d3.select(this)
+                if(linksReference.includes(d.id)) { 
+                    articleRef
+                        .transition().duration(200).style('opacity', styConfig.listItems.defaultOpacity)
+                }   else {
+                    articleRef
+                        .transition().duration(200).style('opacity', styConfig.listItems.dimmedOpacity)
+                }
+            })
 
-        d3.selectAll('.relatedLinkLines').transition().duration(100).style('opacity',styConfig.linkLines.inactiveOpacity)
+        d3.selectAll('.relatedLinkLines')
+            .transition().duration(100).style('opacity',styConfig.linkLines.inactiveOpacity)
+
+        setNavTip('On')
     }
-
-    activateArticleListItem();
-
-}
-
-function activateArticleListItem() {
-    let activeNodes = d3.selectAll('.label').filter(function (d,i) {  return d3.select(this).style('fill-opacity') > 0.5})
-    
-    //adjust opacity for titles in List of Articles
-    let nodeTitles = activeNodes.data().map(node => node.title)
-    let listOfArticles = d3.selectAll('.linkArticlesListItem')
-    listOfArticles.each(function (d) {
-        let articleRef = this
-        if(nodeTitles.includes(d.title)) {
-            d3.select(articleRef)
-                .transition().duration(200).style('opacity', styConfig.listItems.defaultOpacity)
-        }   else    {
-            d3.select(articleRef)
-                .transition().duration(200).style('opacity', styConfig.listItems.dimmedOpacity)
-        }
-    })
-
-    //adjust opacity for domains in Link Domains
-    let nodeDomains = activeNodes.data().map(node => node.primary_domain)
-    let linkDomains = d3.selectAll('.linkDomainListItem')
-
-    linkDomains.each(function (d) {
-
-        let articleRef = this
-        // if(nodeDomains.includes(d.title)) {
-        //     d3.select(articleRef).transition().duration(200).style('opacity', styConfig.listItems.defaultOpacity)
-        // }   else    {
-        //     d3.select(articleRef).transition().duration(200).style('opacity', styConfig.listItems.dimmedOpacity)
-        // }
-    })
-
 
 }
 
@@ -2043,6 +2207,15 @@ function setNodeLabelOpacity(selectedElement, elementsArray, activeElement) {
     return opacityValue
 
 }
+function setListItemBold(itemClass, mouseReference) {
+    d3.selectAll(itemClass).each(function (d,i) {
+        if(mouseReference === this) {
+            d3.select(this)
+                .style('font-weight', 'bold')
+                .transition().duration(200).style('opacity', styConfig.listItems.defaultOpacity)
+        }
+    })
+}
 
 function resetListItemDefaults(itemClass) {
     d3.selectAll(itemClass)
@@ -2053,7 +2226,9 @@ function resetListItemDefaults(itemClass) {
 
 function resetDisplayDefaultsArticleGraph() {
     d3.selectAll('.link').transition().duration(200).attr('opacity', styConfig.link.defaultOpacity);
-    d3.selectAll('.label').transition().duration(200).attr('fill-opacity', styConfig.nodeLabel.defaultOpacity);
+    d3.selectAll('.label').transition().duration(200)
+        .attr('fill-opacity', styConfig.nodeLabel.defaultOpacity)
+        .style('font-weight', 'normal')
     d3.selectAll('.node').transition().duration(200).style('opacity', styConfig.nodeLabel.defaultOpacity);
     d3.selectAll('.relatedLinkLines').transition().duration(200).style('opacity',styConfig.linkLines.inactiveOpacity)
     d3.select('.d3plus-textBox').transition().duration(200).style('opacity',styConfig.nodeLabel.defaultOpacity)
@@ -2062,6 +2237,9 @@ function resetDisplayDefaultsArticleGraph() {
     resetListItemDefaults('.linkDomainListItem')
     resetListItemDefaults('.linkArticlesListItem')
 
+    setNavTip('Off')
+
+
 } 
 
 // ****** DOMAIN GRAPH FUNCTIONS ****** 
@@ -2069,28 +2247,38 @@ function resetDisplayDefaultsArticleGraph() {
 function showDomainGraph(domainTitle) {
 
     d3.json(json_file).then(function(data) {
-        showGraphPage();
+
+        //get data from JSON and update globals
         let domainData = getDomainData(data,domainTitle)
         setGlobalNodesLinks(domainData)
-        drawDomainSimulation(data, domainData)
-        updateSidebarLeft_DomainMain(data, domainData);
-        updateSidebarRight_DomainMain(data, domainData);
-        updateNeighborNodes();
-        setPageTitle(domainTitle, domainTitle)
-        window.getSelection().removeAllRanges();
-        updateRecentSearch({'title': domainTitle, 'primary_domain': domainTitle},'Domain');
-        resetDisplayDefaultsArticleGraph();
-        resetDisplayDefaultsDomainGraph();
+
+        //setup graph to display article data
+
+        showGraphPage();
+        resetScreen()
         setGraphMode('Hover')
         setGraphType('Domain')
 
-        showAll = false;
+        //update graph 
+        drawDomainSimulation(data, domainData)
+        setPageTitle(domainTitle, domainTitle)
+        updateSidebarLeft_DomainMain();
+        // updateSidebarLeft_DomainMain(data, domainData);
+        updateSidebarRight_DomainMain(data, domainData);
+        updateNeighborNodes();
 
+        //set graph display defaults
+        resetDisplayDefaultsArticleGraph();
+        resetDisplayDefaultsDomainGraph();
         d3.selectAll('.label').remove();
         d3.select('.mainArticleLabelArea').remove();
 
+        //update nav menu
+        updateRecentSearch({'title': domainTitle, 'primary_domain': domainTitle},'Domain');
+        showAll = false;
 
-
+        //remove any selected page elements 
+        window.getSelection().removeAllRanges();
     });
 }
 
@@ -2256,8 +2444,8 @@ function updateSidebarsDomain(data, domainTitle) {
         clearSidebar(sidebarLeft)
 
         let sideBarLeftContent = sidebarLeft.append("div")
-
-        if (typeof(selectedDomainArticle.title) !== 'undefined') {
+        setDomainIntroPanel(sideBarLeftContent)
+        if (typeof(selectedDomainArticle) !== 'undefined') {
             setArticleIntroParagraph(sideBarLeftContent,"Preview", selectedDomainArticle)
             setArticleDomainDetails(sideBarLeftContent,selectedDomainArticle)
 
@@ -2280,18 +2468,22 @@ function updateSidebarRight_DomainMain(data, domainData) {
 
 }
 
-function setDomainIntroPanel(parentSidebar, domainData) {
+function setDomainIntroPanel(parentSidebar) {
     let domainIntroPanel = parentSidebar.append("div")
     domainIntroPanel
         .classed('panelBG', true)
         .style('margin-bottom', '2em')
 
+    let domainTitle = pageTitle.text()
     domainIntroPanel.append("h2")
-    .text("Domain Introduction")
+        .text("Domain Graph Introduction")
         .classed('panelHeading', true)
+        .style("color", '#F0DB00')
 
+    let introText = 'The Domain Graph shows the article structure of particular domains of philosophy. When the graph is first loaded, only the nodes are visible, ' 
+                    + 'to help make this structure clear. Articles can appear in multiple domains, but are always colored by their primary domain designation.'
     domainIntroPanel.append("p")
-        .text("Domain Text to follow")
+        .html(introText)
         .classed('panelParagraphText', true)
 }
 
@@ -2335,13 +2527,19 @@ function setCentralNodesPanel(parentSidebar, domainData, data) {
             .classed('centralNodeArticles', true)
             .classed('panelListItem_numbered', true)
         .exit().remove()
+
+    let centralNodesHelp = setPanelHelp(centralNodesContentArea, 'Most Connected Nodes Help', 'panelHelpRightSideBar', '#centralNodesHelp')
+    centralNodesHelp
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() { toggleHelpPage('#graphHelpCentralNodes')})
             
 
     let centralNodesList = d3.selectAll('.centralNodeArticles')
-    centralNodesList.on('mouseover', function() { mouseOverDomainNode(this, data, domainData)})
-    centralNodesList.on('mouseout', function() { mouseOutDomainNode(this, data, domainData)})
-    centralNodesList.on('click', function() { sngClickDomainNode(this, data, domainData)})
-    centralNodesList.on('dblclick', function() { dblClickDomainNode(this, data)})
+        centralNodesList.on('mouseover', function() { mouseOverDomainNode(this, data, domainData)})
+        centralNodesList.on('mouseout', function() { mouseOutDomainNode(this, data, domainData)})
+        centralNodesList.on('click', function() { sngClickDomainNode(this, data, domainData)})
+        centralNodesList.on('dblclick', function() { dblClickDomainNode(this, data)})
 
 }
 
@@ -2375,7 +2573,13 @@ function setDomainArticleListPanel(parentSidebar, domainData, data) {
                 .classed('panelListItem_numbered', true)
         .exit().remove()
 
-    ////// ux/ui interactions
+
+
+    let domainArticlesHelp = setPanelHelp(domainArticleListDiv, 'Domain Articles Help', 'panelHelpRightSideBar', '#domainArticlesHelp')
+    domainArticlesHelp
+            .on('mouseover', function() {activateItemLink(this)})
+            .on('mouseout', function() {deActivateItemLink(this)})
+            .on('click', function() { toggleHelpPage('#graphHelpListOfDomainArticles')})
 
     let domainArticleList = d3.selectAll('.domainArticle')
     
@@ -2393,14 +2597,15 @@ function previewDomainNode(mouseOverReference, data, domainTitle) {
         .classed('domainMainNode', true)
 
     focusOnDomainArticle(selectedArticle.datum());
-    updateSideBarLeft_ArticleMain(selectedArticle.datum(), 'Preview')
+    updateSidebarLeft_DomainMain(selectedArticle.datum())
+    setListItemStyle_NeighborNodeOpacity();
     
 }
 
 function exploreDomainNode(domainNode) {
 
     focusOnDomainArticle(domainNode.datum());
-    updateSideBarLeft_ArticleMain(domainNode.datum(), 'Explore')
+    updateSidebarLeft_DomainMain(domainNode.datum())
 
     currentDomainCentralNode = getDomainCentralNode()
     setListItemStyle_DomainCentralNode(currentDomainCentralNode)
@@ -2425,16 +2630,25 @@ function dblClickDomainNode(dblClickReference) {
 
 function sngClickDomainNode(mouseOverReference, data, domainTitle) {
     let selectedArticle = d3.select(mouseOverReference)
-        .classed('domainMainNode', true)
+    let fontWeight = selectedArticle.style('font-weight')
+    console.log(fontWeight)
+    if(fontWeight === 'normal' || fontWeight==='400') {
+        selectedArticle
+            .classed('domainMainNode', true)
 
-    focusOnDomainArticle(selectedArticle.datum());
-    updateSideBarLeft_ArticleMain(selectedArticle.datum(), 'Explore')
+        focusOnDomainArticle(selectedArticle.datum());
+        updateSidebarLeft_DomainMain(selectedArticle.datum());
 
-    currentDomainCentralNode = getDomainCentralNode()
-    setListItemStyle_DomainCentralNode(currentDomainCentralNode)
-    setListItemStyle_NeighborNodeOpacity()
-    // exploreMode = true
-    setGraphMode('Click')
+        currentDomainCentralNode = getDomainCentralNode()
+        setListItemStyle_DomainCentralNode(currentDomainCentralNode)
+        setListItemStyle_NeighborNodeOpacity()
+        setNavTip('On')
+        setGraphMode('Click')
+    } else {
+        selectedArticle.transition().duration(200).style('font-weight', 'normal')
+        setGraphMode('Hover')
+        setNavTip('Off')
+    }
 
         
 }
@@ -2442,7 +2656,7 @@ function mouseOverDomainNode(mouseOverReference, data, domainTitle) {
     
     let selectedNode = d3.select(mouseOverReference).datum()
 
-    if(!exploreMode) { activateItemLink(mouseOverReference); previewDomainNode(mouseOverReference, data, domainTitle) }
+    if(!exploreMode) { activateItemLink(mouseOverReference); previewDomainNode(mouseOverReference, data, domainTitle); setNavTip('On')}
     if(exploreMode) {
         currentDomainCentralNode = getDomainCentralNode()
         let selectedNode = d3.select(mouseOverReference).datum()
@@ -2451,7 +2665,7 @@ function mouseOverDomainNode(mouseOverReference, data, domainTitle) {
 
         if(+nodeCircle.style('opacity') >= styConfig.nodeLabel.neighborNodeOpacity) {
             activateItemLink(mouseOverReference)
-            updateSideBarLeft_ArticleMain(selectedNode, 'Preview')
+            updateSidebarLeft_DomainMain(selectedNode);
             nodeCircle.style('opacity', styConfig.nodeLabel.defaultOpacity)
             let selectedLabel = getD3PlusLabel(selectedNode.id)
             let selectedLabelLocationData = getDomainLabelLocationData(selectedLabel)
@@ -2465,7 +2679,7 @@ function mouseOverDomainNode(mouseOverReference, data, domainTitle) {
 function mouseOutDomainNode(mouseOutReference, data, domainTitle) {
     deActivateItemLink(mouseOutReference)
 
-    if(!exploreMode) { clearSidebar(sidebarLeft); resetDisplayDefaultsDomainGraph();} 
+    if(!exploreMode) { resetDisplayDefaultsDomainGraph(); } //clearSidebar(sidebarLeft); resetDisplayDefaultsDomainGraph();} 
     if(exploreMode) { 
         let selectedNode = d3.select(mouseOutReference).datum()
         d3.selectAll('.relatedLinkLines').style('opacity',styConfig.linkLines.inactiveOpacity)
@@ -2473,8 +2687,8 @@ function mouseOutDomainNode(mouseOutReference, data, domainTitle) {
             if(selectedNode.title !== currentDomainCentralNode.title) { 
                 if(priorNodeCircle_ListItem) { priorNodeCircle_ListItem.style('opacity', styConfig.nodeLabel.neighborNodeOpacity) }
                  }
-                //  updateSidebarLeft_DomainMain(currentDomainCentralNode)
-                 updateSideBarLeft_ArticleMain(currentDomainCentralNode, 'Explore')
+                 updateSidebarLeft_DomainMain(currentDomainCentralNode)
+                //  updateSideBarLeft_ArticleMain(currentDomainCentralNode, 'Explore')
         }
         priorNodeCircle_ListItem = null
 
@@ -2504,7 +2718,6 @@ function focusOnDomainArticle(activeElement) {
             return isNeighborNode(activeElement.id, node.id) ?  styConfig.nodeLabel.neighborNodeOpacity : styConfig.nodeLabel.notInArrayOpacity;
         }
     });
-
     
     positionRelatedDomainLabels(activeElement);
 
@@ -2640,9 +2853,9 @@ function positionRelatedDomainLabels(activeElement) {
         .data(domainLabelsLeft)
         .select('.domainLabelLeftGroup')
         .y(function(d, i) {return placeLabel(i, domainLabelsLeft)})
-        .x(-450)
+        .x(-475)
         .fontFamily('proxima-nova, sans-serif')
-        .fontSize(13)
+        .fontSize(function (d) {return (domainLabelsLeft.length > 30 ? 13 : 15)})
         .fontColor(function(d) {return color(d.primaryDomain)})
         .verticalAlign('top')
         .textAnchor('start')
@@ -2664,7 +2877,7 @@ function positionRelatedDomainLabels(activeElement) {
         .x(155)
         .textAnchor('end')
         .fontFamily('proxima-nova, sans-serif')
-        .fontSize(13)
+        .fontSize(function (d) {return (domainLabelsLeft.length > 30 ? 13 : 15)})
         .fontColor(function(d) {return color(d.primaryDomain)})
         .verticalAlign('top')
         .width(325)
@@ -2701,8 +2914,8 @@ function positionRelatedDomainLabels(activeElement) {
             let selectedLabelLocationData = getDomainLabelLocationData(selectedLabel)
             if(selectedNode.title !== currentDomainCentralNode.title) { drawDomainLinkLine(selectedLabelLocationData, nodeCircle) }
             
-            // updateSidebarLeft_DomainMain(selectedNode)
-            updateSideBarLeft_ArticleMain(selectedNode, 'Preview')
+            updateSidebarLeft_DomainMain(selectedNode)
+            
 
             priorNodeCircle = nodeCircle
         }
@@ -2716,7 +2929,8 @@ function positionRelatedDomainLabels(activeElement) {
 
             if(selectedNode.title !== currentDomainCentralNode.title) { priorNodeCircle.style('opacity', styConfig.nodeLabel.neighborNodeOpacity) }
 
-            updateSideBarLeft_ArticleMain(currentDomainCentralNode, 'Explore')
+            updateSidebarLeft_DomainMain(currentDomainCentralNode)
+            
         }
 
         let isDblClick = false;
@@ -2726,7 +2940,8 @@ function positionRelatedDomainLabels(activeElement) {
             setTimeout(function() { 
                 if(!isDblClick) {
                     focusOnDomainArticle(selectedNode);
-                    updateSideBarLeft_ArticleMain(selectedNode, 'Explore')
+                    updateSidebarLeft_DomainMain(selectedNode)
+                    
                     let currentDomainCentralNode = getDomainCentralNode()
                     setListItemStyle_DomainCentralNode(currentDomainCentralNode)
                     setListItemStyle_NeighborNodeOpacity()
@@ -2832,7 +3047,7 @@ function resetDisplayDefaultsDomainGraph() {
 
     resetDomainMenuOpacity();
 
-    if(graphType==='Domain') {clearSidebar(sidebarLeft)}
+    if(graphType==='Domain') { updateSidebarLeft_DomainMain(); } //clearSidebar(sidebarLeft)}
     
 
     let links = d3.selectAll('.link')
@@ -2852,7 +3067,9 @@ function resetDisplayDefaultsDomainGraph() {
     domainLabelsGroup
         .transition().duration(200).style('opacity',styConfig.nodeLabel.inactiveOpacity)
         
-        domainLabelsGroup.html('')
+    domainLabelsGroup.html('')
+
+    setNavTip('Off')
 } 
 
 function resetDomainMenuOpacity() {
@@ -3186,8 +3403,11 @@ function color(entryType){
 }
 
 function getRandom() {
+
+
     let randomEntry  = getRandomIntInclusive(0,allEntries.length)
-    if (randomEntry <= numArticles-1) {
+    if (randomEntry <= allEntries.length-1) {
+        
         showArticleGraph(allEntries[randomEntry].title)
     }   else {
         showDomainGraph(allEntries[randomEntry].title)
