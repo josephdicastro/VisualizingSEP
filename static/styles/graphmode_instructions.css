@@ -106,7 +106,6 @@
 .closePageArea {
 
     position: absolute;
-    
     color:#F0DB00;
     font-size: 1em;
     background-image: url('../bootstrap-icons/x-circle.svg');
@@ -155,12 +154,19 @@
 /* Media queries */
 /* 4k 2.5 pixel ratio */
 @media only screen  and (max-height: 860px) and (min-resolution: 150dpi) {
-    #graphMode{ left:80%; }
-    #graphTip { top:95%}
+    #graphMode{ left:80%;height:2.5em;font-size: .8em; }
+    #graphTip { top:95%; height:3em; font-size: .75em;}
     #graphHelp {left: 94%; top: 94%}
     .closePageArea {
         top:94%;
-        left:81%;
+        left:85%;
+        font-size: .9em;
+    }
+    .graphInstructionArea h1, .instructionsPageHeading {
+        font-size: 1.2em;
+    }
+    .graphInstructionArea h2 {
+        font-size: 1.1em;
     }
 
 }

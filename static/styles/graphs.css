@@ -136,6 +136,8 @@
 }
 .detailsTable td, .detailsTable th {
     padding: 0;
+    vertical-align: top;
+    line-height: 1em;
 }
 .domainTypeText {
     font-family: proxima-nova, sans-serif;
@@ -154,6 +156,7 @@
     font-style: normal;
     font-weight: 100; 
     font-size: .8em;
+    line-height: 1em;
     margin:0;
     padding:0;
     vertical-align: top;
@@ -203,7 +206,6 @@
 }
 
 .articleDetailsBG {
-    font-size: .9em;
     font-family: proxima-nova, sans-serif;
     font-style: normal;
     font-weight: 100; 
@@ -245,9 +247,6 @@
     clear: both;
 }
 
-#toc ul li ul {
-    padding-inline-start: 45px;
-}
 
 #toc ul li a, #toc ul li ul a  {
     font-family: proxima-nova, sans;
@@ -364,10 +363,17 @@
     #toc ul li, #toc ul li ul {
         margin:0;
         padding:0;
+        line-height: 1em;
     }
+
+
     #toc ul li a, #toc ul li ul a  {
         font-size: .8em;
         line-height: .8em;
+    }
+    #toc ul li {margin-left:-2em; }
+    #toc ul li ul {
+        padding-inline-start: 45px;
     }
 
 
@@ -377,21 +383,21 @@
     }
 
     .panelHeading {
-        font-size:.7em;
+        font-size:.8em;
     }
 
     .panelParagraphText {
-        font-size: .9em;
+        font-size: .85em;
         line-height: 1em;
     }
 
     .panelListItem {
-        font-size: .8em;
+        font-size: .75em;
         line-height: 1em;
     }
 
     .panelListItem_numbered {
-        font-size: .8em;
+        font-size: .75em;
         line-height: 1em;
     }
     .domainItem{
@@ -399,8 +405,9 @@
         line-height: 1em;
     }
     .articleDetailsBG {
-        left:56%;
-        top:97%;
+        left:62%;
+        top:98%;
+        font-size: .8em;
     }
 
     .panelHelpLeftSideBar {
@@ -425,11 +432,6 @@
 
     #domainArticleListContentArea {
         max-height:525px;
-    }
-
-    #toc {
-        max-height: 500px;
-        width: 100%;
     }
 
     #preambleArea {
@@ -463,6 +465,7 @@
     .articleDetailsBG {
         left:67%;
         top:97%;
+        font-size: .9em;
     }
 
     .panelHelpLeftSideBar {
@@ -474,11 +477,19 @@
         left:86%;
         top:95%;
     }
+    #toc {
+        max-height: 500px;
+        width: 100%;
+    }
 
     #toc ul li a, #toc ul li ul a  {
         font-size: 1em;
         line-height: 1em;
     }
+
+    #toc ul li ul {
+        padding-inline-start: 45px;
+    } 
 
 }
 

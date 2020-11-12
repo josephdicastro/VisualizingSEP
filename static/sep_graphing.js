@@ -184,7 +184,7 @@ function initializeSimulation(svgConfig) {
         .force('collide', d3.forceCollide())
         .force('forceX', d3.forceX())
         .force('forceY', d3.forceY())
-        .alphaTarget(0.99)
+        .alphaTarget(0.98)
 
     return {links, nodes, labels, relatedLinks, domainLabels, simulation}
 }
@@ -1128,12 +1128,16 @@ function drawArticleSimulation(data) {
 
     simConfig.simulation.force("charge")
         .strength(function() { return forceStrength(countOfNodes)})
+
+    console.log(simConfig.simulation.force("charge"))
+
     simConfig.simulation.force("link")
         .id(function (d) {return d.id})
-        .distance(225)//function () {return (countOfNodes > 50) ? 200 : 175})
+        .distance(225)
         .links(graphLinks)
     simConfig.simulation.force("forceX").strength(0)
     simConfig.simulation.force("forceY").strength(0)
+    simConfig.simulation.force("collide").radius(3)
     simConfig.simulation.nodes(graphNodes)
     simConfig.simulation.alpha(1).restart();
 
@@ -1234,7 +1238,7 @@ function setArticleIntroParagraph(parentSidebar, titleType, selectedArticle) {
     introParagraphPanel.append("h2")
         .text(titleDisplay)
         .classed('panelHeading', true)
-        .style('font-size', '1em')
+        .style('font-size', 'bigger')
         .style('color', function() {return color(selectedArticle.primary_domain)})
         
     let paragraphDiv = introParagraphPanel.append("div")
@@ -1286,7 +1290,7 @@ function setArticleDetailsPage(selectedArticle) {
 
     let detailsTableHeading = detailsAndTocDiv.append("h2")
         .text('Article Details')
-        .style('color', '#F0DB00')
+        .style('color', function() {return color(selectedArticle.primary_domain)})
 
     let detailsTableDiv = detailsAndTocDiv.append('div')
         .classed('articleDetailsTableDiv', true)
@@ -1318,7 +1322,7 @@ function setArticleDetailsPage(selectedArticle) {
 
     let exploreTOCHeading = exploreTOCContentArea.append('h2')
         .text('Table of Contents')
-        .style('color', '#F0DB00')
+        .style('color', function() {return color(selectedArticle.primary_domain)})
 
     exploreTOCContentArea.append('p')
         .text('(Links to SEP article sections)')
@@ -1412,7 +1416,7 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
         let domainText = `<td style="color:${domainColor}"><span class="domainItem">${node}</span></td>`
         
         if(i===0) {  domainTypeText = `<td class="domainTypeText">Primary Domain:</td>` }
-        if(i===1) {  domainTypeText = `<td class="domainTypeText">Secondary Domain(s):</td>` }
+        if(i===1) {  domainTypeText = `<td class="domainTypeText">Other Domain(s):</td>` }
         if(i>1)   {  domainTypeText = `<td class="domainTypeText"></td>`  }
 
         domainDataRows.push(domainTypeText + domainText)
@@ -2475,13 +2479,14 @@ function setDomainIntroPanel(parentSidebar) {
         .style('margin-bottom', '2em')
 
     let domainTitle = pageTitle.text()
+    let domainTitleText = `Domain Graph Introduction:<br>${domainTitle}`
     domainIntroPanel.append("h2")
-        .text("Domain Graph Introduction")
+        .html(domainTitleText)
         .classed('panelHeading', true)
-        .style("color", '#F0DB00')
+        .style('color', function() { return color(domainTitle) })
 
-    let introText = 'The Domain Graph shows the article structure of particular domains of philosophy. When the graph is first loaded, only the nodes are visible, ' 
-                    + 'to help make this structure clear. Articles can appear in multiple domains, but are always colored by their primary domain designation.'
+    let introText = 'The Domain Graph shows the structure of the articles within this domain. When the graph is first loaded, only the nodes are visible. ' 
+                    + 'Articles can appear in multiple domains, but are always colored by their primary domain designation.'
     domainIntroPanel.append("p")
         .html(introText)
         .classed('panelParagraphText', true)
@@ -2631,7 +2636,7 @@ function dblClickDomainNode(dblClickReference) {
 function sngClickDomainNode(mouseOverReference, data, domainTitle) {
     let selectedArticle = d3.select(mouseOverReference)
     let fontWeight = selectedArticle.style('font-weight')
-    console.log(fontWeight)
+
     if(fontWeight === 'normal' || fontWeight==='400') {
         selectedArticle
             .classed('domainMainNode', true)
@@ -3182,6 +3187,8 @@ function forceStrength(numberOfNodes) {
     if (numberOfNodes > 80 && numberOfNodes <= 90) { strength = -40 }  
     if (numberOfNodes > 90) { strength = -20 }  
 
+    console.log(strength)
+
     return strength
 
 }
@@ -3396,7 +3403,7 @@ function color(entryType){
         //     break;
 
         case 'Default Page':
-            rgbValue = 'rgb(255,255,255)'
+            rgbValue = 'rgb(240, 219, 0)'
             break;
     }
     return rgbValue
