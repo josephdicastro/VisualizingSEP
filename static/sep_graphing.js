@@ -1240,15 +1240,19 @@ function setArticleIntroParagraph(parentSidebar, titleType, selectedArticle) {
         .classed('panelHeading', true)
         .style('font-size', 'bigger')
         .style('color', function() {return color(selectedArticle.primary_domain)})
-        
-    let paragraphDiv = introParagraphPanel.append("div")
-    let paragraphData = getParagraphDataHTML(selectedArticle.preamble_text,600);
 
-    paragraphDiv
+    let articleIntroParagraphContentArea = introParagraphPanel.append('div')
+        .attr('id', 'articleIntroParagraphContentArea')
+        .style('display', 'block')
+
+
+    let paragraphData = getParagraphDataHTML(selectedArticle.preamble_text,600);
+   
+    let paragraphDiv = articleIntroParagraphContentArea.append('div')
         .html(paragraphData)
         .classed('panelParagraphText', true)
 
-    let articleDetailsArea = introParagraphPanel.append('div')
+    let articleDetailsArea = articleIntroParagraphContentArea.append('div')
         .classed('calloutBG', true)
         .classed('articleDetailsBG', true)
         .classed('introParagraphText', true)
@@ -1437,6 +1441,7 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
     let domainListContentArea = domainListDiv.append('div')
         .attr('id','domainListContentArea')
         .style('display', 'block')
+        .style('padding-right', '1em')
 
     let domainTable = domainListContentArea.append('table')
         .classed('table', true)
@@ -1474,12 +1479,24 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
 
 }
 
+function toggleArticleIntroContent(state) {
+    let articleIntroContentArea = d3.select('#articleIntroParagraphContentArea')
+
+    if(state === 'on') {
+        articleIntroContentArea.style('display', 'block')
+    }   else  if (state === 'off')   {
+        articleIntroContentArea.style('display', 'none')
+    }
+
+    window.getSelection().removeAllRanges();
+
+}
+
 function toggleDomainDetailsContent(state) {
     let domainDetailsContentArea = d3.select('#domainListContentArea')
     let domainDetailsHeading = d3.select('#domainListHeading')
     if(state === 'on') {
         domainDetailsContentArea.style('display', 'block')
-        toggleExploreTOCArea('off')
     }   else  if (state === 'off')   {
         domainDetailsContentArea.style('display', 'none')
     }
@@ -2443,7 +2460,8 @@ function updateSidebarsDomain(data, domainTitle) {
     updateSidebarRight_DomainMain(data, domainTitle);
 }
 
- function updateSidebarLeft_DomainMain(selectedDomainArticle){
+// figure out how to collapse the domainIntroPanel
+function updateSidebarLeft_DomainMain(selectedDomainArticle){
 
         clearSidebar(sidebarLeft)
 
@@ -2473,23 +2491,94 @@ function updateSidebarRight_DomainMain(data, domainData) {
 }
 
 function setDomainIntroPanel(parentSidebar) {
+
     let domainIntroPanel = parentSidebar.append("div")
-    domainIntroPanel
         .classed('panelBG', true)
         .style('margin-bottom', '2em')
 
     let domainTitle = pageTitle.text()
     let domainTitleText = `Domain Graph Introduction:<br>${domainTitle}`
-    domainIntroPanel.append("h2")
+
+
+    let domainIntroHeading = domainIntroPanel.append("h2")
         .html(domainTitleText)
+        .attr('id', 'domainIntroHeading')
         .classed('panelHeading', true)
+        .classed('toggleOnBG_User', true)
         .style('color', function() { return color(domainTitle) })
 
-    let introText = 'The Domain Graph shows the structure of the articles within this domain. When the graph is first loaded, only the nodes are visible. ' 
-                    + 'Articles can appear in multiple domains, but are always colored by their primary domain designation.'
-    domainIntroPanel.append("p")
+
+    let introText = '<p>The Domain Graph shows the structure of the articles within this domain.</p>' 
+                    + '<p>When the graph is first loaded, only the nodes are visible; labels are activated by <em>mousing-over</em> or <em>single-clicking</em> the nodes or the sidebar titles.</p>' 
+                    + '<p>Articles can appear in multiple domains, but are always colored by their primary domain designation.</p>'
+
+    let collapseNote = '<p>Please note: this panel will collapse automatically when a node is activated.</p>' 
+
+    let domainIntroContent = domainIntroPanel.append('div')
+        .attr('id','domainIntroContent')
+        .style('display', 'block')
+    
+    domainIntroContent.append('div')
         .html(introText)
         .classed('panelParagraphText', true)
+
+    domainIntroContent.append('div')
+        .html(collapseNote)
+        .classed('panelParagraphText', true)
+        .style('font-weight', 'bold')
+
+    // ui/ux interactions
+    domainIntroHeading
+        .on('mouseover', function() { activateItemLink(this) })
+        .on('mouseout', function()  { deActivateItemLink(this) })
+        .on('click', function()  {
+         let currentState = domainIntroContent.style('display')
+ 
+        if(currentState === 'block') {
+            toggleDomainIntroContent('off')
+            // toggleArticleIntroContent('on')
+            // toggleDomainDetailsContent('on')
+        }   else if(currentState === 'none')   {
+            toggleDomainIntroContent('on')
+            // toggleArticleIntroContent('off')
+            // toggleDomainDetailsContent('off')
+         } 
+            
+     })
+}
+
+function toggleDomainIntroContent(state) {
+    let domainHeadingPanel = d3.select('#domainIntroHeading')
+    let domainIntroContentArea = d3.select("#domainIntroContent")
+
+    if (state==='on') {
+        // domainIntroContent.transition().duration(200).style('display', 'block')
+        domainIntroContentArea.style('display', 'block')
+        domainHeadingPanel
+            .classed('toggleOnBG_User', true)
+            .classed('toggleOffBG_User', false)
+
+            toggleArticleIntroContent('off')
+            toggleDomainDetailsContent('off')
+    }
+
+    if(state==='off') {
+        console.log(state)
+        console.log(domainIntroContentArea.style('display'))
+        // domainIntroContent.transition().duration(200).style('display', 'none')
+        domainIntroContentArea.style('display', 'none')
+        console.log(domainIntroContentArea.style('display'))
+        domainHeadingPanel
+            .classed('toggleOnBG_User', false)
+            .classed('toggleOffBG_User', true)
+
+            toggleArticleIntroContent('on')
+            toggleDomainDetailsContent('on')
+    }
+
+    window.getSelection().removeAllRanges();
+
+
 }
 
 function setDomainCountPanel(parentDiv, domainData, data) {
@@ -2535,13 +2624,13 @@ function setCentralNodesPanel(parentSidebar, domainData, data) {
 
     let centralNodesHelp = setPanelHelp(centralNodesContentArea, 'Most Connected Nodes Help', 'panelHelpRightSideBar', '#centralNodesHelp')
     centralNodesHelp
-        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseover', function() {activateItemLink(this); })
         .on('mouseout', function() {deActivateItemLink(this)})
         .on('click', function() { toggleHelpPage('#graphHelpCentralNodes')})
             
 
     let centralNodesList = d3.selectAll('.centralNodeArticles')
-        centralNodesList.on('mouseover', function() { mouseOverDomainNode(this, data, domainData)})
+        centralNodesList.on('mouseover', function() { mouseOverDomainNode(this, data, domainData); toggleDomainIntroContent('off'); })
         centralNodesList.on('mouseout', function() { mouseOutDomainNode(this, data, domainData)})
         centralNodesList.on('click', function() { sngClickDomainNode(this, data, domainData)})
         centralNodesList.on('dblclick', function() { dblClickDomainNode(this, data)})
@@ -2611,7 +2700,6 @@ function exploreDomainNode(domainNode) {
 
     focusOnDomainArticle(domainNode.datum());
     updateSidebarLeft_DomainMain(domainNode.datum())
-
     currentDomainCentralNode = getDomainCentralNode()
     setListItemStyle_DomainCentralNode(currentDomainCentralNode)
     setListItemStyle_NeighborNodeOpacity()
@@ -2636,6 +2724,7 @@ function dblClickDomainNode(dblClickReference) {
 function sngClickDomainNode(mouseOverReference, data, domainTitle) {
     let selectedArticle = d3.select(mouseOverReference)
     let fontWeight = selectedArticle.style('font-weight')
+
 
     if(fontWeight === 'normal' || fontWeight==='400') {
         selectedArticle
@@ -3186,8 +3275,6 @@ function forceStrength(numberOfNodes) {
     if (numberOfNodes > 70 && numberOfNodes <= 80) { strength = -70 }  
     if (numberOfNodes > 80 && numberOfNodes <= 90) { strength = -40 }  
     if (numberOfNodes > 90) { strength = -20 }  
-
-    console.log(strength)
 
     return strength
 
