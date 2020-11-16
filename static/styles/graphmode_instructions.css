@@ -89,28 +89,32 @@
     display:none;
 }
 
+
 .graphInstructionArea {
     display: none;
     position: absolute;
     top:0%; left:0%;
     height:100%;
     width:100%;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
+    /* overflow-x: hidden;
+    overflow-y: auto; */
     z-index:999;
     padding: 1em 1.5em;
-    padding-bottom: 10em;
+    padding-bottom: 4em;
     font-family: proxima-nova, sans-serif;
-    font-weight: 100;
+    font-weight: 200;
     color: rgb(230,230,230);
     border:none;
     background-color: rgb(25, 25, 25);
 }
 
-
-.graphInstructionArea {
-    display: none;
+.helpTextArea {
+    height:90%;
+    overflow-x: hidden;
+    overflow-y: auto;    
 }
+
 
 .closePageArea {
 
@@ -169,6 +173,9 @@
     .closePageArea {
         top:94%;
         left:85%;
+        font-size: .9em;
+    }
+    .graphInstructionArea {
         font-size: .9em;
     }
     .graphInstructionArea h1, .instructionsPageHeading {
