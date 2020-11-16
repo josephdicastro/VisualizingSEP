@@ -97,9 +97,6 @@ startVisualization();
 
 function startVisualization() {
     loadMenuData();
-    // setNavigation();
-    // showContentPage(homePageDiv, '');
-
 }
 
 // ****** INITIALIZATION FUNCTIONS ********
@@ -260,8 +257,9 @@ function loadMenuData() {
         aboutNumDomains.text(allDomains.length)
         aboutAvgWordCount.text(parseInt(wordCount/allArticles.length).toLocaleString())
 
-            setNavigation();
-            showContentPage(homePageDiv, '');
+        // after menu is loaded, then setNavigation and call homepage
+        setNavigation();
+        showContentPage(homePageDiv, '');
         })
 
 }
@@ -307,7 +305,7 @@ function setNavigation() {
             .on('mouseover', function() { activateItemLink(this)})
             .on('mouseout', function() { deActivateItemLink(this)})
             .on('click', function() { showContentPage(homePageDiv, '')})
-        }
+    }
 
     // Article Searches
     function setArticleSearchElements() {
@@ -726,6 +724,7 @@ function showGraphPage() {
     showSidebars();
 
     graphPageDiv
+        .classed('panelBG_graph', 'true')
         .style('display','block')
         .transition()
             .duration(pageTransition).style('opacity',1);
@@ -753,7 +752,8 @@ function setNavTip(state) {
 function setGraphMode(mode) {
 
     graphMode
-        .classed('baseStylesModeInstructions', true)
+        .classed('graphModeHelpCallout', true)
+        .classed('graphModeBGImage',true)
         .text('Reset Graph')
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() {deActivateItemLink(this)})
@@ -779,11 +779,11 @@ function setGraphType(graphState) {
     let helpPageToOpen;
 
     if(graphState==='Article') {
-        graphHelpText = "Quick Tip: <strong>Double-click</strong> node to load new graph; <strong>Single-click</strong> node to freeze graph."
+        graphHelpText = "Quick Tip: <strong>Single-click</strong> node to freeze graph; <strong>Double-click</strong> node to load new graph."
         helpPageToOpen = '#graphHelpArticle'
     }
     if(graphState==='Domain') {
-        graphHelpText = "Quick Tip: <strong>Double-click</strong> node to load node into new Article graph; <strong>Single-click</strong> node to freeze Domain graph."
+        graphHelpText = "Quick Tip: <strong>Single-click</strong> node to freeze Domain graph; <strong>Double-click</strong> node to load node into new Article graph."
         helpPageToOpen = '#graphHelpDomain'
     }
 
@@ -791,7 +791,8 @@ function setGraphType(graphState) {
         .html(graphHelpText)
 
     graphHelp
-        .classed('baseStylesModeInstructions', true)
+        .classed('graphModeHelpCallout', true)
+        .classed('graphHelpBGImage',true)
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() {deActivateItemLink(this)})
         .on('click', function() { toggleHelpPage(helpPageToOpen)})
@@ -849,6 +850,7 @@ function displayHelpPage(helpPageToDisplay) {
 
     hideAllHelpPages()
     d3.select(helpPageToDisplay)
+        .classed('scrollbars', true)
         .style('display', 'block')
         .transition()
             .duration(pageTransition)
@@ -859,12 +861,12 @@ function displayHelpPage(helpPageToDisplay) {
         .classed('closePageArea',true)
 
 
-        d3.selectAll('.instructionsPageHeading')
+    d3.selectAll('.instructionsPageHeading')
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() {deActivateItemLink(this)})
         .on('click', function() { hideHelpPage(helpPageToDisplay)})
 
-        d3.selectAll('.closePageArea')
+    d3.selectAll('.closePageArea')
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() {deActivateItemLink(this)})
         .on('click', function() { closePageDiv.remove(); hideHelpPage(helpPageToDisplay)})
@@ -1128,8 +1130,6 @@ function drawArticleSimulation(data) {
 
     simConfig.simulation.force("charge")
         .strength(function() { return forceStrength(countOfNodes)})
-
-    console.log(simConfig.simulation.force("charge"))
 
     simConfig.simulation.force("link")
         .id(function (d) {return d.id})
@@ -1441,7 +1441,6 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
     let domainListContentArea = domainListDiv.append('div')
         .attr('id','domainListContentArea')
         .style('display', 'block')
-        .style('padding-right', '1em')
 
     let domainTable = domainListContentArea.append('table')
         .classed('table', true)
@@ -1449,6 +1448,7 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
         .classed('table-borderless',true)
         .classed('detailsTable', true)
         .style('margin-left', '.5em')
+        .style('padding-right', '1em')
    
 
     let domainTbody = domainTable.append('tbody')
@@ -2284,7 +2284,6 @@ function showDomainGraph(domainTitle) {
         drawDomainSimulation(data, domainData)
         setPageTitle(domainTitle, domainTitle)
         updateSidebarLeft_DomainMain();
-        // updateSidebarLeft_DomainMain(data, domainData);
         updateSidebarRight_DomainMain(data, domainData);
         updateNeighborNodes();
 
@@ -2455,10 +2454,6 @@ function drawDomainSimulation(data, domainData){
 function setLinkDistanceDomain(countofNodes) {
 
 }
-function updateSidebarsDomain(data, domainTitle) {
-    updateSidebarLeft_DomainMain()
-    updateSidebarRight_DomainMain(data, domainTitle);
-}
 
 // figure out how to collapse the domainIntroPanel
 function updateSidebarLeft_DomainMain(selectedDomainArticle){
@@ -2470,7 +2465,7 @@ function updateSidebarLeft_DomainMain(selectedDomainArticle){
         if (typeof(selectedDomainArticle) !== 'undefined') {
             setArticleIntroParagraph(sideBarLeftContent,"Preview", selectedDomainArticle)
             setArticleDomainDetails(sideBarLeftContent,selectedDomainArticle)
-
+            toggleDomainIntroContent('off')
         }
 
 }
@@ -2509,7 +2504,7 @@ function setDomainIntroPanel(parentSidebar) {
 
 
     let introText = '<p>The Domain Graph shows the structure of the articles within this domain.</p>' 
-                    + '<p>When the graph is first loaded, only the nodes are visible; labels are activated by <em>mousing-over</em> or <em>single-clicking</em> the nodes or the sidebar titles.</p>' 
+                    + '<p>When the graph is first loaded, only the nodes are visible; labels are activated by <strong>mousing-over</strong> or <strong>single-clicking</strong> the nodes or the sidebar titles.</p>' 
                     + '<p>Articles can appear in multiple domains, but are always colored by their primary domain designation.</p>'
 
     let collapseNote = '<p>Please note: this panel will collapse automatically when a node is activated.</p>' 
@@ -2552,8 +2547,7 @@ function toggleDomainIntroContent(state) {
     let domainIntroContentArea = d3.select("#domainIntroContent")
 
     if (state==='on') {
-        // domainIntroContent.transition().duration(200).style('display', 'block')
-        domainIntroContentArea.style('display', 'block')
+        domainIntroContentArea.transition().duration(500).style('display', 'block')
         domainHeadingPanel
             .classed('toggleOnBG_User', true)
             .classed('toggleOffBG_User', false)
@@ -2563,11 +2557,7 @@ function toggleDomainIntroContent(state) {
     }
 
     if(state==='off') {
-        console.log(state)
-        console.log(domainIntroContentArea.style('display'))
-        // domainIntroContent.transition().duration(200).style('display', 'none')
-        domainIntroContentArea.style('display', 'none')
-        console.log(domainIntroContentArea.style('display'))
+        domainIntroContentArea.transition().duration(500).style('display', 'none')
         domainHeadingPanel
             .classed('toggleOnBG_User', false)
             .classed('toggleOffBG_User', true)
@@ -2773,7 +2763,7 @@ function mouseOverDomainNode(mouseOverReference, data, domainTitle) {
 function mouseOutDomainNode(mouseOutReference, data, domainTitle) {
     deActivateItemLink(mouseOutReference)
 
-    if(!exploreMode) { resetDisplayDefaultsDomainGraph(); } //clearSidebar(sidebarLeft); resetDisplayDefaultsDomainGraph();} 
+    if(!exploreMode) { resetDisplayDefaultsDomainGraph(); toggleDomainIntroContent('off') } //clearSidebar(sidebarLeft); resetDisplayDefaultsDomainGraph();} 
     if(exploreMode) { 
         let selectedNode = d3.select(mouseOutReference).datum()
         d3.selectAll('.relatedLinkLines').style('opacity',styConfig.linkLines.inactiveOpacity)
@@ -2814,6 +2804,7 @@ function focusOnDomainArticle(activeElement) {
     });
     
     positionRelatedDomainLabels(activeElement);
+    toggleDomainIntroContent('off')
 
 }
 function getDomainCentralNode() {

@@ -1,7 +1,6 @@
 /* base styles for both boxes */
 
-.baseStylesModeInstructions {
-    display: block;
+.graphModeHelpCallout {
     background-color: rgb(40,40,40);
     color: darkgray;
 
@@ -10,11 +9,24 @@
     z-index: 99;
 }
 
-.baseStylesModeInstructions:hover {
+.graphModeHelpCallout:hover {
     background-color: rgb(50,50,50);
     color: lightgray
 }
 
+.graphModeBGImage {
+    background-image: url('/static/bootstrap-icons/arrow-clockwise.svg');
+    background-repeat: no-repeat;
+    background-size: 1.35em 1.35em;
+    background-position: 10em .6em;
+}
+
+.graphHelpBGImage {
+    background-image: url('../bootstrap-icons/question-circle.svg');
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    background-position: 50% 50%;
+}
 
 /* Graph Mode Area Styles */
 #graphMode {
@@ -29,10 +41,8 @@
     padding-right: 2em;
     border-bottom-left-radius: 2em;
     border-top-right-radius: 2em;
-    background-image: url('/static/bootstrap-icons/arrow-clockwise.svg');
-    background-repeat: no-repeat;
-    background-size: 1.35em 1.35em;
-    background-position: 10em .6em;
+    opacity: 0;
+
 }
 
 #graphHelp {
@@ -47,10 +57,7 @@
     border-top-left-radius: 2em;
     border-bottom-right-radius: 1.5em;
 
-    background-image: url('../bootstrap-icons/question-circle.svg');
-    background-repeat: no-repeat;
-    background-size: 1.5em 1.5em;
-    background-position: 50% 50%;
+
 
 }
 
@@ -88,9 +95,11 @@
     top:0%; left:0%;
     height:100%;
     width:100%;
+    overflow-x: hidden;
+    overflow-y: auto;
     z-index:999;
     padding: 1em 1.5em;
-    overflow: hidden;
+    padding-bottom: 10em;
     font-family: proxima-nova, sans-serif;
     font-weight: 100;
     color: rgb(230,230,230);

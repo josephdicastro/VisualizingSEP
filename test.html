@@ -134,13 +134,13 @@
                                 <p style="margin-top:4em">*Visualizing SEP is optimized for Chrome on the desktop. Performance on other browers and mobile devices is not guaranteed.
                                 </p>
                             </div>
-                            <div id="graphPageDiv" class="panelBG_graph" >
+                            <div id="graphPageDiv">
                                 <div id="graphHelp"></div>
                                 <div id="graphTip"></div>
                                 <div id="graphMode" ></div>
                                 <svg id="graphSVG" width="100%"></svg>
                                 <div id="articleDetails"  class="graphInstructionArea">
-                                </div>
+                            </div>
                                 <!-- Help Pages  -->
                                 <div id="graphHelpArticle"  class="graphInstructionArea">
                                     <h1 id="graphHelpArticleNavHeading" class="instructionsPageHeading">Article Graph Help</h1>
@@ -148,6 +148,31 @@
                                         the selection is linked to in some way. The selected article is always at the center of the graph, and the linked
                                         articles spread radially around it.
                                     </p>
+                                    <h2>User Interactions</h2>
+                                    <ul>
+                                        <li><strong>MouseOver</strong> a Node or Title to temporarily activate and focus on that particular article. See <em>Node or Title Activation</em> below for details.<br>
+                                            <strong>Mouseout</strong> to reset the graph to its default state.</li>
+                                        <li><strong>Single-click</strong> a Node or Title to freeze the graph in that activated state. When a graph is frozen, the activated article title is bolded and the <em>Reset Graph</em> 
+                                                    button will appear in the top right corner. In this state, one can continually <strong>single-click</strong> different Nodes or Titles to focus on the activated article and re-freeze the graph in that activation state. <br>
+                                            <strong>Single-click</strong> the bolded article again to reset the graph to its default state, or <strong>single-click</strong> the <em>Reset Graph</em> button. </li>
+                                        <li><strong>Double-click</strong> a Node or Title to load a brand-new Article Graph with that article as the newly selected article.</li>
+                                    </ul>
+                                    <h2>Node or Title Activation</h2>
+                                    <p>When a Node or Title is activated, the following occurs:</p>
+                                    <ul>
+                                        <li>The preview text and domain designations of the activated node replace the main article's information in the Left Sidebar.</li>
+                                        <li>If the activated article also links to any other articles in the current graph, a dashed line is drawn from the activated node to the related node(s). This shows the set of
+                                            article links that are shared between the activated node and the selected article. </li>
+                                        <li>All other nodes displayed in the graph will be dimmed.</li>
+                                        <li>Nothing changes in the Right Sidebar, which only provides information about the currently selected article.</li>
+                                    </ul>
+                                    <h2>Article Details</h2>
+                                    <p>The <em>Article Details</em> button opens a page that displays the following:</p>
+                                    <ul>
+                                        <li>A longer preview of the article's contents.</li>
+                                        <li>A table showing author(s), publication date(s), word count, and a link to the SEP article itself.</li>
+                                        <li>The SEP article's Table of Contents, where each outline item is a live link into that particular section of the SEP article on the SEP website. </li>
+                                    </ul>
                                 </div>                                   
                                 <div id="graphHelpArticleDomains"  class="graphInstructionArea">
                                     <h1 id="articleDomainHelpHeading" class="instructionsPageHeading">Article Domains Panel Help</h1>
@@ -187,7 +212,7 @@
                                     </ul>
                                     <h2>User Interactions:</h2>
                                     <ul>
-                                        <li><strong>MouseOver</strong> a Link Category to focus on only the articles in that category.<br>
+                                        <li><strong>MouseOver</strong> a Link Direction Category to focus on only the articles in that category.<br>
                                             <strong>Mouseout</strong> to reset the graph.</li>
                                         <li><strong>Single-click</strong> a Link Direction category to freeze the graph in that state. 
                                             The selected Link Direction is bolded. The other directions, as well as all of the Link Domains, are dimmed.<br>
@@ -216,19 +241,39 @@
                                 </div> 
                                 <div id="graphHelpDomain"  class="graphInstructionArea">
                                     <h1 id="graphHelpDomainNavHeading" class="instructionsPageHeading">Domain Graph Help</h1>
-                                    <p>The Domain Graph shows the <em>structure</em> of the aricles in a specific domain of philosphy as it's currently represented in the SEP. That is, 
+                                    <p>The Domain Graph shows the <em>structure</em> of the articles in a specific domain of philosophy. That is, 
                                         the Domain Graph shows how articles in one domain are all linked together: articles that are central to the domain will be clustered
-                                        together, and share many links between them; while articles at the periphery of a domain will be offset from the central network.</p>
+                                        together, and share many links between them; while articles at the periphery of a domain will be offset from the central network, and may even stand alone if they do not link to other articles in the domain.</p>
+                                        <h2>User Interactions</h2>
+                                        <ul>
+                                            <li><strong>MouseOver</strong> a Node or Title to temporarily activate and focus on that particular article. See <em>Node or Title Activation</em> below for details.<br>
+                                                <strong>Mouseout</strong> to reset the graph.</li>
+                                            <li><strong>Single-click</strong> a Node or Title to freeze the graph in that activated state. When a graph is frozen, the activated article title is bolded and the <em>Reset Graph</em> 
+                                                        button will appear in the top right corner. In this state, one can continually <strong>single-click</strong> different Nodes or Titles to focus on the activated article and re-freeze the graph in that activation state. <br>
+                                                <strong>Single-click</strong> the bolded article in the Right Sidebar again to reset the graph, or <strong>single-click</strong> the <em>Reset Graph</em> button. </li>
+                                            <li><strong>Double-click</strong> a Node or Title to load a brand-new <em>Article Graph</em> with that article as the newly selected article.</li>
+                                        </ul>
+                                        <h2>Node or Title Activation</h2>
+                                        <p>The Domain Graph differs from the <em>Article Graph</em> when nodes are activated:</p>
+                                        <ul>
+                                            <li>The <em>Domain Graph Introduction</em> panel is collapsed automatically, and does not expand automatically again unless the <em>Reset Graph</em> button is clicked. The user can manually expand the panel by clicking the toggle button in the panel heading.</li>
+                                            <li>When a node is activated, the preview text and domain designations of the activated node appear in the Left Sidebar.</li>
+                                            <li>The titles of any articles that are linked to from the activated node appear to the left and right side of the graph, and the graph nodes themselves are redrawn where linked nodes are highlighted and non-linked nodes are dimmed. A similar change in opacity is be reflected among the titles in the Right Sidebar: the titles of linked nodes will remain at full opacity, while the titles of non-linked articles will be dimmed.  </li>
+                                            <li>The titles displayed to the left and right of the graph are themselves active links. When you <strong>mouseOver</strong> or <strong>single-click</strong> one of those titles, the preview text and article domain information in the Left Sidebar is updated for the selected article, and a dashed line is drawn from the title to its corresponding node in the graph, which indicates the position of the article within the current domain network.</li>
+
+                                        </ul>
+                                        <h2>Article Details</h2>
+                                        <p>Same as <em>Article Graph</em>.</p>
 
                                 </div>           
                                 <div id="graphHelpCentralNodes"  class="graphInstructionArea">
                                     <h1 id="centralNodessHelpHeading" class="instructionsPageHeading">Most Connected Nodes Panel Help</h1>
-                                    <p>The Most Connected Nodes panel lists the five articles that have the highest number of links in the domain.
+                                    <p>The Most Connected Nodes panel lists the top five articles that have the highest number of links within the domain. The number of links is displayed to the left of the article title.
                                     </p>
                                 </div>  
                                 <div id="graphHelpListOfDomainArticles"  class="graphInstructionArea">
                                     <h1 id="listofDomainArticlesHelpHeading" class="instructionsPageHeading">List of Domain Articles Panel Help</h1>
-                                    <p>The List of Domain Articles panel provides an alphabetical list of all the articles within a designated domain.
+                                    <p>The List of Domain Articles panel provides an alphabetical list of all the articles within a designated domain, as well as the number of other articles that each individual article links to.
                                     </p>
                                 </div>                 
                                 <!-- End Help Pages  -->    
@@ -264,7 +309,7 @@
                                     <h2>Domain Taxonomy</h2>
                                     <p>The domain taxonomy used for grouping articles is not derived from the SEP itself. The domain taxonomy is adapted from the taxonomy from the <a href="https://www.inphoproject.org/taxonomy">Indiana University Philosophy Ontology Project (InPhO)</a>. Visualizing SEP uses the top-level taxonomic categories from InPhO, and mostly ignores the deeper-level sub-domain groupings that InPhO provides. The exception here is that we do use certain specific sub-domains to designate the philosophies of particular sciences (Biology, Physics, etc.). There are currently 25 individual domains. </p>
                                     <p>The tagging and modeling of the articles into domains were completed with a combination of topic modeling, text search, and old-fashioned individual tagging of documents. The domain groupings should be seen more like language games with loosely fit boundaries between related articles instead of rigid determinations with bright-line differences between them. </p>
-                                    <p>Each article is tagged with a <em>primary domain designation</em>, which is the individual domain category that the article is best grouped with, as well as a general <em>domain_tags</em> field, which indicates other domains that the article can reasonably be tagged. In this way, an article can appear in multiple domain groups.</p>
+                                    <p>Each article is tagged with a <em>primary domain designation</em>, which is the individual domain category that the article is best grouped with, as well as a general <em>domain_tags</em> field, which indicates other domains that the article can reasonably be tagged with. In this way, an article can appear in multiple domain groups.</p>
                                     <h2>Development</h2>
                                     <p>The data infrastructure for the application was developed using Python, Pandas, Beautiful Soup, and MongoDB. The interactive aspects of the site were built with HTML, CSS, Javascript, and D3.
                                         A forthcoming article will describe the technical development of the application in detail. 
