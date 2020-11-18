@@ -113,14 +113,14 @@ function setGlobalNodesLinks(sepData) {
 function initializeParentSVG(svg) {
     // set basic SVG Config data 
     let margin = {
-        top: 10,
+        top: 0,
         right: 0,
-        bottom:10,
+        bottom:0,
         left:0
     };
 
     let areaWidth = 1000;
-    let areaHeight = 820;
+    let areaHeight = 900;
 
     // let areaWidth = 1100;
     // let areaHeight = 950;
@@ -3052,7 +3052,7 @@ function placeLabel(index, domainArray) {
     if (arrayLength <= 10) {cyMin = -200; cyMax = 200}
     if (arrayLength > 10 && arrayLength <= 20) {cyMin = -250; cyMax = 225}
     if (arrayLength > 20 && arrayLength <= 30) {cyMin = -275; cyMax = 275}
-    if (arrayLength > 30 ) {cyMin = -300; cyMax = 350}
+    if (arrayLength > 30 ) {cyMin = -300; cyMax = 375}
 
     let totalHeight = Math.abs(cyMin) + Math.abs(cyMax)
     let itemOffset;
