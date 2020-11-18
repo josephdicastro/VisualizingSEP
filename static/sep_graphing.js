@@ -113,14 +113,14 @@ function setGlobalNodesLinks(sepData) {
 function initializeParentSVG(svg) {
     // set basic SVG Config data 
     let margin = {
-        top: 0,
+        top: 10,
         right: 0,
-        bottom:0,
+        bottom:10,
         left:0
     };
 
     let areaWidth = 1000;
-    let areaHeight = 900;
+    let areaHeight = 820;
 
     // let areaWidth = 1100;
     // let areaHeight = 950;
@@ -2418,7 +2418,7 @@ function drawDomainSimulation(data, domainData){
     let numTicks = 0;
     simConfig.simulation
         .on('tick', function () {
-            if (numTicks < 100 ) {
+            if (numTicks < 50 ) {
 
                 link
                     .attr("x1", function(d) {return d.source.x })
@@ -2444,8 +2444,8 @@ function drawDomainSimulation(data, domainData){
         .id(function (d) {return d.id})
         .distance(100)
         .links(graphLinks)
-    simConfig.simulation.force("forceX").strength(function (d) { return (countOfNodes > 300) ? 0.1 : 0.07 })
-    simConfig.simulation.force("forceY").strength(function (d) { return (countOfNodes > 300) ? 0.1 : 0.07 })
+    simConfig.simulation.force("forceX").strength(function (d) { return (countOfNodes > 300) ? 0.15 : 0.05 })
+    simConfig.simulation.force("forceY").strength(function (d) { return (countOfNodes > 300) ? 0.15 : 0.05 })
     simConfig.simulation.nodes(graphNodes);
     simConfig.simulation.force("collide").radius(15)
     simConfig.simulation.alpha(1).restart();
@@ -2456,7 +2456,6 @@ function setLinkDistanceDomain(countofNodes) {
 
 }
 
-// figure out how to collapse the domainIntroPanel
 function updateSidebarLeft_DomainMain(selectedDomainArticle){
 
         clearSidebar(sidebarLeft)
@@ -2941,11 +2940,11 @@ function positionRelatedDomainLabels(activeElement) {
         .y(function(d, i) {return placeLabel(i, domainLabelsLeft)})
         .x(-475)
         .fontFamily('proxima-nova, sans-serif')
-        .fontSize(function (d) {return (domainLabelsLeft.length > 30 ? 13 : 15)})
+        .fontSize(function (d) {return (domainLabelsLeft.length > 30 ? 14 : 15)})
         .fontColor(function(d) {return color(d.primaryDomain)})
         .verticalAlign('top')
         .textAnchor('start')
-        .width(325)
+        .width(350)
         .lineHeight(14)
         .height(35)
         .render();
@@ -2960,13 +2959,13 @@ function positionRelatedDomainLabels(activeElement) {
         .data(domainLabelsRight)
         .select('.domainLabelRightGroup')
         .y(function(d, i) {return placeLabel(i, domainLabelsRight)})
-        .x(155)
+        .x(130)
         .textAnchor('end')
         .fontFamily('proxima-nova, sans-serif')
-        .fontSize(function (d) {return (domainLabelsLeft.length > 30 ? 13 : 15)})
+        .fontSize(function (d) {return (domainLabelsLeft.length > 30 ? 14 : 15)})
         .fontColor(function(d) {return color(d.primaryDomain)})
         .verticalAlign('top')
-        .width(325)
+        .width(350)
         .lineHeight(14)
         .height(40)
         .render();
@@ -3053,7 +3052,7 @@ function placeLabel(index, domainArray) {
     if (arrayLength <= 10) {cyMin = -200; cyMax = 200}
     if (arrayLength > 10 && arrayLength <= 20) {cyMin = -250; cyMax = 225}
     if (arrayLength > 20 && arrayLength <= 30) {cyMin = -275; cyMax = 275}
-    if (arrayLength > 30 ) {cyMin = -300; cyMax = 300}
+    if (arrayLength > 30 ) {cyMin = -300; cyMax = 350}
 
     let totalHeight = Math.abs(cyMin) + Math.abs(cyMax)
     let itemOffset;
@@ -3071,7 +3070,7 @@ function getDomainLabelLocationData(domainLabel) {
     let labelY = domainLabel.datum().y
     let height = domainLabel.node().getBBox().height
     let width = domainLabel.node().getBBox().width
-    let widthOffset = 325
+    let widthOffset = 350
     let startX = labelX < 0 ? labelX + width + 5 :labelX + (widthOffset - width) + 5
     let startY = (labelY + (height/2));
 
