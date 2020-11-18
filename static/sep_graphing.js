@@ -231,25 +231,28 @@ function loadMenuData() {
     d3.json(json_file).then((json) => {
 
         let wordCount = 0;
-        let domainSet = new Set()
 
+        // load articles and primary domain data
         json.articles.nodes.forEach(node => {
             let nodeTitle = node.title
             let nodePrimaryDomain = node.primary_domain
             let wordCountText = parseInt(node.word_count.replace(',',''))
             allArticles.push({'title': nodeTitle, 'primary_domain': nodePrimaryDomain})
-            domainSet.add(nodePrimaryDomain)
+            // domainSet.add(nodePrimaryDomain)
             wordCount += wordCountText
             
         })
 
-        let numArticlesDisplay = allArticles.length.toLocaleString();
-
-        domainSet.forEach(domain => allDomains.push({'title': domain, 'primary_domain':domain}))
+        //load just the individual domains
+        json.domains.forEach(domain => {
+            allDomains.push({'title': domain, 'primary_domain':domain})
+        })
         allDomains.sort((a,b) => d3.ascending(a.title, b.title));
 
+        //create super array of all possible objects. This is used in the getRandom() function
         allEntries = allArticles.concat(allDomains)
 
+        //load variables for the 
         aboutNumArticles.text(allArticles.length.toLocaleString())
         aboutNumLinks.text(json.articles.links.length.toLocaleString())
         aboutNumDomains.text(allDomains.length)
@@ -3407,7 +3410,7 @@ function color(entryType){
             rgbValue = 'rgb(255, 159, 101)' //#FFA800
             break;
 
-        case 'Latin American Philosophy':
+        case 'Latin American and Iberian Philosophy':
             rgbValue = 'rgb(237, 100, 68)' //#FFCB56
             break;
 
@@ -3419,6 +3422,9 @@ function color(entryType){
             rgbValue = 'rgb(255, 165, 1)' //#FFD200
             break;
 
+        case 'Jewish Philosophy':
+            rgbValue = 'rgb(255, 165, 1)' //#FFD200
+            break;
         // langauge, logic, math, computer science
         // greens
         case 'Logic':
