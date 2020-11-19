@@ -6,6 +6,7 @@ let homePageDiv = d3.select('#homePageDiv')
 let aboutPageDiv = d3.select('#aboutPageDiv')
 let contactPageDiv = d3.select('#contactPageDiv')
 let graphPageDiv = d3.select('#graphPageDiv')
+let errorPageDiv = d3.select('#errorPageDiv')
 let sidebarLeft = d3.select("#sidebarLeft") 
 let sidebarRight = d3.select("#sidebarRight")
 let vizLogo = d3.select('#vizLogo')
@@ -260,8 +261,8 @@ function loadMenuData() {
 
         // after menu is loaded, then setNavigation and call homepage
         setNavigation();
-        // processURL();
-        showContentPage(homePageDiv, '');
+        processURL();
+        // showContentPage(homePageDiv, '');
         })
 
 }
@@ -677,6 +678,10 @@ function processURL() {
         case '#/contact/':
             showContactPage();
             break;
+        
+        case '#/404':
+            show404Page();
+            break;
 
 
 
@@ -733,6 +738,13 @@ function showContactPage() {
     let hashTarget = "#/contact"
     let htmlTitle = 'Contact Information'
     showContentPage(contactPageDiv, htmlTitle)
+    updateURL(hashTarget,htmlTitle)
+}
+
+function show404Page() {
+    let hashTarget = "#/404"
+    let htmlTitle = '404: Page Not Found'
+    showContentPage(errorPageDiv, htmlTitle)
     updateURL(hashTarget,htmlTitle)
 }
 
