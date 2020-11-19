@@ -687,6 +687,7 @@ function updateURL(hashTarget, title) {
 
     window.history.pushState({}, '', hashTarget);
     document.title = title;
+    console.log(window.location.href)
 
 
 }
