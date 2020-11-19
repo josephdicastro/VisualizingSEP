@@ -260,6 +260,7 @@ function loadMenuData() {
 
         // after menu is loaded, then setNavigation and call homepage
         setNavigation();
+        // processURL();
         showContentPage(homePageDiv, '');
         })
 
@@ -632,12 +633,10 @@ function setNavigation() {
 
     function setAboutPage(){
 
-
-
         aboutPageLink
             .on('mouseover', function() { activateItemLink(this)})
             .on('mouseout', function() { deActivateItemLink(this)})
-            .on('click', function() { showAboutPage()})
+            .on('click', function() { showAboutPage();history.pushState(null,null,'#/about')})
 
     }
 
@@ -654,6 +653,44 @@ function setNavigation() {
     }
 
 }
+
+function processURL() {
+    let url = window.location.hash
+
+    switch(url) {
+        case '':
+            showContentPage(homePageDiv, '');
+            break;
+        
+        case 'about':
+            showAboutPage();
+            break;
+
+        case '#/about/':
+            showAboutPage();
+            break;
+
+        case 'contact':
+            showContactPage();
+            break;
+
+        case '#/contact/':
+            showContactPage();
+            break;
+
+
+
+    }
+}
+
+function updateURL(hashTarget, title) {
+
+    window.history.pushState({}, '', hashTarget);
+    document.title = title;
+
+
+}
+
 
 function setPageTitle(pageTitleText,primaryDomain) {
     let selectedPageTitle = pageTitle.select("h1")
@@ -679,14 +716,23 @@ function showContentPage (pageToShow, pageTitleText) {
 
     setPageTitle(pageTitleText, 'Default Page')
 
+
 }
 
 function showAboutPage() {
-    showContentPage(aboutPageDiv,"About Visualizing SEP")
+    let hashTarget = '#/about'
+    let htmlTitle = 'About Visualizing SEP'
+    updateURL(hashTarget,htmlTitle)
+    showContentPage(aboutPageDiv,htmlTitle)
+
+
 }
 
 function showContactPage() {
-    showContentPage(contactPageDiv, "Contact Information")
+    let hashTarget = "#/contact"
+    let htmlTitle = 'Contact Information'
+    showContentPage(contactPageDiv, htmlTitle)
+    updateURL(hashTarget,htmlTitle)
 }
 
 function hidePage(pageToHide) {
