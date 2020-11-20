@@ -267,7 +267,7 @@ function loadMenuData() {
 
         //load just the individual domains
         json.domains.forEach(domain => {
-            let domainID = domain.toLowerCase().replaceAll(' ','-')
+            let domainID = domain.toLowerCase().replace(/' '/,'-')
             allDomains.push({'title': domain, 'id': domainID, 'primary_domain':domain})
         })
         allDomains.sort((a,b) => d3.ascending(a.title, b.title));
@@ -2473,7 +2473,7 @@ function getDomainDataFromJSON(data, domainTitle) {
 
 
     // set URL id for domainTitle
-    let domainID = domainTitle.toLowerCase().replaceAll(' ','-')
+    let domainID = domainTitle.toLowerCase().replaceAll(/' '/,'-')
 
     // filter JSON for all the articles tagged in domainTitle
     let domainNodes = data.articles.nodes.filter(dnode => {
