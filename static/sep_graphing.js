@@ -690,7 +690,7 @@ function setPageTitle(pageTitleText,primaryDomain) {
 
 }
 
-function showContentPage (pageToShow, pageTitleText) {
+function showContentPage (pageToShow, pageTitleText) {    
     hideSidebars();
 
     hidePage(homePageDiv);
@@ -699,7 +699,7 @@ function showContentPage (pageToShow, pageTitleText) {
     hidePage(contactPageDiv);
     hidePage(errorPageDiv);
 
-    resetScreen();
+
 
     pageToShow
         .style('display', 'block')
@@ -719,11 +719,11 @@ function hidePage(pageToHide) {
 }
 
 function hideSidebars(){
-        sidebarLeft
+    sidebarLeft
         .transition().duration(pageTransition)
         .style('opacity',0);
 
-        sidebarRight
+    sidebarRight
         .transition().duration(pageTransition)
         .style('opacity',0)
 
