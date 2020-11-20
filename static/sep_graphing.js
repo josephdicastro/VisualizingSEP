@@ -332,10 +332,7 @@ function setNavigation() {
         vizLogo
             .on('mouseover', function() { activateItemLink(this)})
             .on('mouseout', function() { deActivateItemLink(this)})
-            .on('click', function() { 
-                let opacityTest = navBar.style('opacity')
-                if(opacityTest===1) { showHomePage(); }
-            })
+            .on('click', function() { showHomePage(); })
     }
 
     // Article Searches
@@ -764,6 +761,7 @@ function showHomePage() {
     let htmlTitle = 'Welcome to Visualizing SEP'
     updateBrowser(url,htmlTitle)
     showContentPage(homePageDiv,'')
+
 }
 function showAboutPage() {
     let url = '/about'
@@ -779,20 +777,20 @@ function showContactPage() {
     updateBrowser(url,htmlTitle)
 }
 
-function show404Page() {
+function show404Page(badURL) {
+ 
     let url = "/404"
     let htmlTitle = '404: Page Not Found'
     showContentPage(errorPageDiv, htmlTitle)
     updateBrowser(url,htmlTitle)
-}
 
+}
 
 // ****** URL ROUTING & BROWSER  UPDATES ****** 
 
 // read URL and route to appropriate endpoint
 function processURL() {
     let urlHash = window.location.hash
-    // let pageURL = window.location.href
 
     //if urlHash does not indicate an article or domain graph
     if(urlHash.indexOf('entries') === -1 && urlHash.indexOf('domain') === -1) {
@@ -815,7 +813,7 @@ function processURL() {
         
         // any other URL is bad, and needs to go to 404
         } else {
-            show404Page();
+            show404Page(urlHash);
         }
 
     } else {
@@ -841,7 +839,7 @@ function processArticle(urlHash) {
     if(articleObj.length !== 0) {
         showArticleGraph(articleObj[0].title)
     }   else {
-        show404Page();
+        show404Page(urlHash);
     }
 
 }
@@ -855,7 +853,7 @@ function processDomain(urlHash) {
     if(domainObj.length !== 0) {
         showDomainGraph(domainObj[0].title)
     }   else {
-        show404Page();
+        show404Page(urlHash);
     }
 }
 
@@ -866,9 +864,6 @@ function updateBrowser(url, title) {
         window.history.replaceState({'id':urlTarget}, null, urlTarget);
         document.title = title;
     }
-
-    console.log(history)
-
 
 }
 
@@ -1556,7 +1551,6 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
     let domainDataDetails = selectedArticle.domain_tags.split(',')
     let pdPosition = domainDataDetails.indexOf(primaryDomain)
     domainDataDetails.splice(pdPosition,1)
-    console.log(domainDataDetails)
     domainDataDetails.sort((a,b) => d3.ascending(a, b))
     domainDataDetails.unshift(primaryDomain)
 
