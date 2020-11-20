@@ -88,15 +88,35 @@ let pageTransition = 300
 //set BaseURL for SEP Edition
 let sepEdition = "Fall 2020"
 let baseURL = 'https://plato.stanford.edu/archives/fall2020';
+let domainName = 'http://localhost:8000/'
 
 let json_file = 'static/sep_network.json'
 
 
+
 startVisualization();
+
+
+  // listen for changes to url  
+  window.addEventListener('popstate', function(e) {
+        processURL();
+  }, false);
+
+// listen for changes to url  
+window.addEventListener('hashchange', function() {
+    processURL();
+  }, false);
+
+
+
+
+// ****** BEGINNING OF CODE FUNCTIONS *******
 
 function startVisualization() {
     loadMenuData();
+
 }
+
 
 // ****** INITIALIZATION FUNCTIONS ********
 
@@ -236,9 +256,10 @@ function loadMenuData() {
         // load articles and primary domain data
         json.articles.nodes.forEach(node => {
             let nodeTitle = node.title
+            let nodeID = node.id
             let nodePrimaryDomain = node.primary_domain
             let wordCountText = parseInt(node.word_count.replace(',',''))
-            allArticles.push({'title': nodeTitle, 'primary_domain': nodePrimaryDomain})
+            allArticles.push({'title': nodeTitle, 'id':nodeID, 'primary_domain': nodePrimaryDomain})
             // domainSet.add(nodePrimaryDomain)
             wordCount += wordCountText
             
@@ -246,7 +267,8 @@ function loadMenuData() {
 
         //load just the individual domains
         json.domains.forEach(domain => {
-            allDomains.push({'title': domain, 'primary_domain':domain})
+            let domainID = domain.toLowerCase().replaceAll(' ','-')
+            allDomains.push({'title': domain, 'id': domainID, 'primary_domain':domain})
         })
         allDomains.sort((a,b) => d3.ascending(a.title, b.title));
 
@@ -259,10 +281,10 @@ function loadMenuData() {
         aboutNumDomains.text(allDomains.length)
         aboutAvgWordCount.text(parseInt(wordCount/allArticles.length).toLocaleString())
 
-        // after menu is loaded, then setNavigation and call homepage
+        // after menu is loaded, then setNavigation and test for URL parameters
         setNavigation();
         processURL();
-        // showContentPage(homePageDiv, '');
+
         })
 
 }
@@ -278,6 +300,8 @@ function updateRecentSearch(searchObj, graphType) {
     }
 
 }
+
+
 
 // ****** BASIC PAGE SHOW / HIDE FUNCTIONS ****** 
  
@@ -304,10 +328,14 @@ function setNavigation() {
     }
 
     function setHomePage() {
+        
         vizLogo
             .on('mouseover', function() { activateItemLink(this)})
             .on('mouseout', function() { deActivateItemLink(this)})
-            .on('click', function() { showContentPage(homePageDiv, '')})
+            .on('click', function() { 
+                let opacityTest = navBar.style('opacity')
+                if(opacityTest===1) { showHomePage(); }
+            })
     }
 
     // Article Searches
@@ -637,7 +665,7 @@ function setNavigation() {
         aboutPageLink
             .on('mouseover', function() { activateItemLink(this)})
             .on('mouseout', function() { deActivateItemLink(this)})
-            .on('click', function() { showAboutPage();history.pushState(null,null,'#/about')})
+            .on('click', function() { showAboutPage();})
 
     }
 
@@ -652,48 +680,6 @@ function setNavigation() {
             .on('mouseout', function() { deActivateItemLink(this)})
             .on('click', function() { showContactPage()})
     }
-
-}
-
-function processURL() {
-    let url = window.location.hash
-
-    switch(url) {
-        case '':
-            showContentPage(homePageDiv, '');
-            break;
-        
-        case 'about':
-            showAboutPage();
-            break;
-
-        case '#/about/':
-            showAboutPage();
-            break;
-
-        case 'contact':
-            showContactPage();
-            break;
-
-        case '#/contact/':
-            showContactPage();
-            break;
-        
-        case '#/404':
-            show404Page();
-            break;
-
-
-
-    }
-}
-
-function updateURL(hashTarget, title) {
-
-    window.history.pushState({}, '', hashTarget);
-    document.title = title;
-    console.log(window.location.href)
-
 
 }
 
@@ -714,6 +700,9 @@ function showContentPage (pageToShow, pageTitleText) {
     hidePage(graphPageDiv);
     hidePage(aboutPageDiv);
     hidePage(contactPageDiv);
+    hidePage(errorPageDiv);
+
+    resetScreen();
 
     pageToShow
         .style('display', 'block')
@@ -723,29 +712,6 @@ function showContentPage (pageToShow, pageTitleText) {
     setPageTitle(pageTitleText, 'Default Page')
 
 
-}
-
-function showAboutPage() {
-    let hashTarget = '#/about'
-    let htmlTitle = 'About Visualizing SEP'
-    updateURL(hashTarget,htmlTitle)
-    showContentPage(aboutPageDiv,htmlTitle)
-
-
-}
-
-function showContactPage() {
-    let hashTarget = "#/contact"
-    let htmlTitle = 'Contact Information'
-    showContentPage(contactPageDiv, htmlTitle)
-    updateURL(hashTarget,htmlTitle)
-}
-
-function show404Page() {
-    let hashTarget = "#/404"
-    let htmlTitle = '404: Page Not Found'
-    showContentPage(errorPageDiv, htmlTitle)
-    updateURL(hashTarget,htmlTitle)
 }
 
 function hidePage(pageToHide) {
@@ -780,6 +746,9 @@ function showGraphPage() {
     hidePage(homePageDiv);
     hidePage(aboutPageDiv);
     hidePage(contactPageDiv);
+    hidePage(errorPageDiv)
+
+    resetScreen();
 
     showSidebars();
 
@@ -790,8 +759,122 @@ function showGraphPage() {
             .duration(pageTransition).style('opacity',1);
 }
 
+function showHomePage() {
+    let url = ''
+    let htmlTitle = 'Welcome to Visualizing SEP'
+    updateBrowser(url,htmlTitle)
+    showContentPage(homePageDiv,'')
+}
+function showAboutPage() {
+    let url = '/about'
+    let htmlTitle = 'About Visualizing SEP'
+    updateBrowser(url,htmlTitle)
+    showContentPage(aboutPageDiv,htmlTitle)
+}
 
-// ********* graph modes and help 
+function showContactPage() {
+    let url = "/contact"
+    let htmlTitle = 'Contact Information'
+    showContentPage(contactPageDiv, htmlTitle)
+    updateBrowser(url,htmlTitle)
+}
+
+function show404Page() {
+    let url = "/404"
+    let htmlTitle = '404: Page Not Found'
+    showContentPage(errorPageDiv, htmlTitle)
+    updateBrowser(url,htmlTitle)
+}
+
+
+// ****** URL ROUTING & BROWSER  UPDATES ****** 
+
+// read URL and route to appropriate endpoint
+function processURL() {
+    let urlHash = window.location.hash
+    // let pageURL = window.location.href
+
+    //if urlHash does not indicate an article or domain graph
+    if(urlHash.indexOf('entries') === -1 && urlHash.indexOf('domain') === -1) {
+
+        // check for home page
+        if (urlHash === '' || urlHash === '#' || urlHash === '/#' || urlHash === '/#/' || urlHash === '#/') {
+            showHomePage();
+
+        // check for about page
+        } else if (urlHash === '#/about' || urlHash === '#/about/') {
+            showAboutPage();
+
+        // check for contact page
+        } else if (urlHash === '#/contact' || urlHash === '#/contact/') {
+            showContactPage();
+
+        // check for 404 page
+        } else if (urlHash === '#/404' || urlHash === '#/404/') {
+            show404Page();
+        
+        // any other URL is bad, and needs to go to 404
+        } else {
+            show404Page();
+        }
+
+    } else {
+
+        //if urlHash contains 'entries' then this is an article. check for valid article, or route to 404
+        if(urlHash.indexOf('entries') !== -1) {
+            processArticle(urlHash)
+        }
+
+        //if urlHash contains 'entries' then this is an article. check for valid article, or route to 404
+        if(urlHash.indexOf('domain') !== -1) {
+            processDomain(urlHash)
+        }
+
+    }
+}
+
+function processArticle(urlHash) {
+    let hashPosition = urlHash.indexOf('#') + 1
+    let articleID = urlHash.substring(hashPosition)
+    let articleObj = allArticles.filter(article => article.id === articleID)
+
+    if(articleObj.length !== 0) {
+        showArticleGraph(articleObj[0].title)
+    }   else {
+        show404Page();
+    }
+
+}
+
+function processDomain(urlHash) {
+    let hashPosition = urlHash.indexOf('#/domain/') + 9
+    let domainID = urlHash.substring(hashPosition)
+    console.log(domainID)
+    let domainObj = allDomains.filter(domain => domain.id === domainID)
+
+    if(domainObj.length !== 0) {
+        showDomainGraph(domainObj[0].title)
+    }   else {
+        show404Page();
+    }
+}
+
+function updateBrowser(url, title) {
+    let urlTarget = "#" + url
+
+    if(urlTarget !== location.hash) {
+        window.history.replaceState({'id':urlTarget}, null, urlTarget);
+        document.title = title;
+    }
+
+    console.log(history)
+
+
+}
+
+
+
+// ****** SET GRAPH MODE AND SET HELP PAGE FUNCTIONS  ****** 
 
 
 function setNavTip(state) {
@@ -980,6 +1063,8 @@ function showArticleGraph(articleTitle) {
         setPageTitle(articleTitle, articleData.primaryDomain)
         updateSidebarsArticle(json, articleNode);
 
+        updateBrowser(articleData.id,articleTitle)
+
 
         resetDisplayDefaultsDomainGraph();
         resetDisplayDefaultsArticleGraph();
@@ -1062,6 +1147,7 @@ function getArticleDataFromJSON(data, articleTitle) {
 
     //store the articleData term as an object
     let articleData = { "article": articleTitle,
+                        "id":articleURL,
                         "nodes": articleNodes,
                         "links": articleLinks,
                         "biLinks": bidirectionalLinks,
@@ -1241,6 +1327,7 @@ function setArticleGraphMainLabel() {
         d3.select('.d3plus-textBox').style('opacity',1)
 
 }
+
 // ****** ARTICLE GRAPH SIDEBAR  ****** 
 
 function clearSidebar(sidebarToClear) {
@@ -1469,7 +1556,8 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
     let domainDataDetails = selectedArticle.domain_tags.split(',')
     let pdPosition = domainDataDetails.indexOf(primaryDomain)
     domainDataDetails.splice(pdPosition,1)
-
+    console.log(domainDataDetails)
+    domainDataDetails.sort((a,b) => d3.ascending(a, b))
     domainDataDetails.unshift(primaryDomain)
 
     let domainDataRows = [];
@@ -2340,12 +2428,18 @@ function showDomainGraph(domainTitle) {
         setGraphMode('Hover')
         setGraphType('Domain')
 
+        updateBrowser(domainTitle, domainTitle)
+
         //update graph 
         drawDomainSimulation(data, domainData)
         setPageTitle(domainTitle, domainTitle)
         updateSidebarLeft_DomainMain();
         updateSidebarRight_DomainMain(data, domainData);
         updateNeighborNodes();
+
+        //update browser
+        let domainURL = '/domain/' + domainData.id
+        updateBrowser(domainURL,domainTitle)
 
         //set graph display defaults
         resetDisplayDefaultsArticleGraph();
@@ -2376,6 +2470,10 @@ function getDomainData(data, domainTitle) {
 }
 
 function getDomainDataFromJSON(data, domainTitle) {    
+
+
+    // set URL id for domainTitle
+    let domainID = domainTitle.toLowerCase().replaceAll(' ','-')
 
     // filter JSON for all the articles tagged in domainTitle
     let domainNodes = data.articles.nodes.filter(dnode => {
@@ -2415,6 +2513,7 @@ function getDomainDataFromJSON(data, domainTitle) {
 
     //store the domain data as an object to return to calling function
     let domainData = { "domain": domainTitle,
+                       "id": domainID,
                         "nodes": domainNodes,
                         "links": domainLinks }
 
