@@ -312,6 +312,7 @@ function setNavigation() {
     setArticleSearchElements();
     setDomainSearchElements();
     setRecentSearchElements();
+    setGetRandomEntry();
     setAboutPage();
     setContactPage();
 
@@ -415,6 +416,13 @@ function setNavigation() {
     
     }
 
+    // get random
+    function setGetRandomEntry() {
+        getRandomEntry
+            .on('mouseover', function() { activateItemLink(this)})
+            .on('mouseout', function() { deActivateItemLink(this)})
+            .on('click', function() { closeDropdowns(); getRandom() })
+    }
 
     // domain searches
     function setDomainSearchElements() {
@@ -562,8 +570,7 @@ function setNavigation() {
         hideRecentSearchArea();
     }
 
-    //Get Random 
-    getRandomEntry.on('click', function() { closeDropdowns(); getRandom() })
+
     
     // Search Process functions 
     function setFocusTo(element) {
@@ -679,7 +686,6 @@ function setNavigation() {
     }
 
 }
-
 
 function setPageTitle(pageTitleText,primaryDomain) {
     let selectedPageTitle = pageTitle.select("h1")
@@ -861,7 +867,7 @@ function updateBrowser(url, title) {
     let urlTarget = "#" + url
 
     if(urlTarget !== location.hash) {
-        window.history.replaceState({'id':urlTarget}, null, urlTarget);
+        window.history.pushState({'id':urlTarget}, null, urlTarget);
         document.title = title;
     }
 
