@@ -2473,7 +2473,7 @@ function getDomainDataFromJSON(data, domainTitle) {
 
 
     // set URL id for domainTitle
-    let domainID = domainTitle.toLowerCase().replaceAll(/' '/,'-')
+    let domainID = domainTitle.toLowerCase().replace(/' '/,'-')
 
     // filter JSON for all the articles tagged in domainTitle
     let domainNodes = data.articles.nodes.filter(dnode => {
