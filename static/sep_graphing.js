@@ -92,6 +92,13 @@ let domainName = 'http://localhost:8000/'
 
 let json_file = 'static/sep_network.json'
 
+console.log(window.devicePixelRatio)
+console.log(window.screen.height)
+console.log(window.screen.width)
+console.log(window.screen.availHeight)
+console.log(window.screen.availWidth)
+console.log(window.innerHeight)
+console.log(window.innerWidth)
 
 startVisualization();
 
