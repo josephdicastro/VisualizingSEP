@@ -92,7 +92,6 @@ let domainName = 'http://localhost:8000/'
 
 let json_file = 'static/sep_network.json'
 
-console.log(window.devicePixelRatio)
 
 startVisualization();
 
