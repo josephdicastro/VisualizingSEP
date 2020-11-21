@@ -75,6 +75,12 @@ footer {
 }
 
 
+/* 6k 2 pixel ratio */
+@media only screen  and (max-height: 1620px) and (max-width: 2880px) and (-webkit-device-pixel-ratio: 2) and (orientation:landscape) {
+    .contentRow { height:1400px; }
+    footer {top:1475px;}
+}
+
 
 /* 5k 2.5 pixel ratio */
 @media only screen  and (max-height: 1152px) and (max-width: 2048px) and (-webkit-device-pixel-ratio: 2.5) and (orientation:landscape) {
@@ -83,9 +89,15 @@ footer {
 }
 
 /* 5k 2 pixel ratio */
-@media only screen  and (max-height: 1440px) and (max-width: 2560px) and (-webkit-device-pixel-ratio: 2)and (orientation:landscape) {
+@media only screen  and (max-height: 1440px) and (max-width: 2560px) and (-webkit-device-pixel-ratio: 2) and (orientation:landscape) {
     .contentRow { height:1200px; }
     footer {top:1250px;}
+}
+
+/* up to 1600x900*/
+@media only screen and (max-height:1050px) and (max-width: 1680px) and (orientation:landscape) {
+    .contentRow { height:700px; }
+    footer {top:700px;}
 }
 
 
@@ -97,16 +109,11 @@ footer {
 
 
 /* standard hd or 4K 2pixel ratio*/
-@media only screen and (max-height:1080px) and (max-width: 1920px) and (orientation:landscape) {
+@media only screen and (min-height:1080px) and (min-width: 1920px) and (orientation:landscape) {
     .contentRow { height:900px; }
     footer {top:950px;}
 }
 
-/* up to 1600x900*/
-@media only screen and (max-height:1050px) and (max-width: 1680px) and (orientation:landscape) {
-    .contentRow { height:700px; }
-    footer {top:700px;}
-}
 
 
 /*mobile*/

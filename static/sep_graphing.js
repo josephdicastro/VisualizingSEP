@@ -273,10 +273,12 @@ function loadMenuData() {
 
         //load just the individual domains
         json.domains.forEach(domain => {
-            let domainID = domain.toLowerCase().replace(/' '/,'-')
+            let domainID = domain.toLowerCase().replace(/\s+/g,'-')
+            console.log(domainID)
             allDomains.push({'title': domain, 'id': domainID, 'primary_domain':domain})
         })
         allDomains.sort((a,b) => d3.ascending(a.title, b.title));
+        console.log(allDomains)
 
         //create super array of all possible objects. This is used in the getRandom() function
         allEntries = allArticles.concat(allDomains)
@@ -757,7 +759,7 @@ function showGraphPage() {
     hidePage(contactPageDiv);
     hidePage(errorPageDiv)
 
-    resetScreen();
+    // resetScreen();
 
     showSidebars();
 
@@ -1438,7 +1440,7 @@ function setArticleDetailsPage(selectedArticle) {
     let sepURL = baseURL + selectedArticle.id
     let detailsData = [
             `<td>Author(s):</td><td>${selectedArticle.author}</td>`,
-            `<td>Pub&nbsp;Date:</td><td> ${selectedArticle.pubdate.replace(';',';<br>')}</td>`,
+            `<td>Pub&nbsp;Date:</td><td> ${selectedArticle.pubdate.replace(/;/g,';<br>')}</td>`,
             `<td>Word&nbsp;Count:</td><td> ${selectedArticle.word_count}</td>`,
             `<td>SEP Link:</td><td><a href="${sepURL}" target="_blank">${selectedArticle.title}</a></td>`
         ]
@@ -2423,18 +2425,19 @@ function showDomainGraph(domainTitle) {
 
     d3.json(json_file).then(function(data) {
 
+
+        hidePage(homePageDiv);
+
         //get data from JSON and update globals
         let domainData = getDomainData(data,domainTitle)
         setGlobalNodesLinks(domainData)
 
-        //setup graph to display article data
+        // setup graph to display article data
 
         showGraphPage();
         resetScreen()
         setGraphMode('Hover')
         setGraphType('Domain')
-
-        updateBrowser(domainTitle, domainTitle)
 
         //update graph 
         drawDomainSimulation(data, domainData)
@@ -2479,7 +2482,7 @@ function getDomainDataFromJSON(data, domainTitle) {
 
 
     // set URL id for domainTitle
-    let domainID = domainTitle.toLowerCase().replace(/' '/,'-')
+    let domainID = domainTitle.toLowerCase().replace(/\s+/g,'-')
 
     // filter JSON for all the articles tagged in domainTitle
     let domainNodes = data.articles.nodes.filter(dnode => {
