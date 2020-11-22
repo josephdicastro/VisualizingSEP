@@ -274,11 +274,9 @@ function loadMenuData() {
         //load just the individual domains
         json.domains.forEach(domain => {
             let domainID = domain.toLowerCase().replace(/\s+/g,'-')
-            console.log(domainID)
             allDomains.push({'title': domain, 'id': domainID, 'primary_domain':domain})
         })
         allDomains.sort((a,b) => d3.ascending(a.title, b.title));
-        console.log(allDomains)
 
         //create super array of all possible objects. This is used in the getRandom() function
         allEntries = allArticles.concat(allDomains)
@@ -598,7 +596,7 @@ function setNavigation() {
                     .enter()
                     .append('li')
                         .append('a')
-                        .attr('href','#')
+                        // .attr('href','#')
                         .text(function(d) {return d.title})
                         .style('color', function(d) {return color(d.primary_domain)})
                     .classed('searchResults', true)
@@ -998,9 +996,8 @@ function resetScreen() {
 
 function displayHelpPage(helpPageToDisplay) {
     dimScreen();
-
-
     hideAllHelpPages()
+
     d3.select(helpPageToDisplay)
         .classed('scrollbars', true)
         .style('display', 'block')
@@ -1622,7 +1619,9 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
     articleDomainsHelp
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() { toggleHelpPage('#graphHelpArticleDomains')})
+        .on('click', function() { 
+            toggleHelpPage('#graphHelpArticleDomains')
+        })
 
     let domainItems = d3.selectAll('.domainItem')
     domainItems
@@ -2071,7 +2070,7 @@ function toggleLinkDomainContent(state) {
 
 function setPanelHelp(contentArea, altText, sidebarClass, divID) {
     
-    let html = `<a href="#"><img src="/static/bootstrap-icons/question-circle.svg" alt="${altText}" class="panelHelpImg"></a>`
+    let html = `<a><img src="/static/bootstrap-icons/question-circle.svg" alt="${altText}" class="panelHelpImg"></a>`
     let helpPanel = contentArea.append('p')
         .classed('calloutBG', true)
         .classed('panelHelp', true)
