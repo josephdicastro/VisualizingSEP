@@ -146,16 +146,16 @@ function initializeParentSVG(svg) {
         left:0
     };
 
-    let areaWidth = 1000;
-    let areaHeight = 900;
+    // let areaWidth = 1000;
+    // let areaHeight = 900;
 
-    // let areaWidth = 1100;
-    // let areaHeight = 950;
+    let areaWidth = 1100;
+    let areaHeight = 1000;
 
     let width = areaWidth - margin.left - margin.right;
     let height = areaHeight - margin.top - margin.bottom;
 
-    svg.attr("viewBox", "0 50 " + width + " " + height )
+    svg.attr("viewBox", "0 90 " + width + " " + height )
        .attr("preserveAspectRatio", "xMidYMid")
 
     //clear out child SVG elements
