@@ -1998,6 +1998,7 @@ function setLinkDomainPanel(parentSidebar, articleData) {
     let linkDomainContentArea = linkDomainPanel.append('div')
         .attr('id', "linkDomainContentArea")
         .attr("display", "block")
+        .classed('scrollbars',true)
     
     linkDomainContentArea.append("ul")
         .selectAll(".linkDomainListItem")
@@ -2010,7 +2011,7 @@ function setLinkDomainPanel(parentSidebar, articleData) {
         .classed('panelListItem_numbered', true)
         .exit().remove()
 
-    let linkDomainHelp = setPanelHelp(linkDomainContentArea, 'Link Domain Help', 'panelHelpRightSideBar', '#linkDomainHelp')
+    let linkDomainHelp = setPanelHelp(linkDomainPanel, 'Link Domain Help', 'panelHelpRightSideBar', '#linkDomainHelp')
 
     linkDomainHelp
         .on('mouseover', function() {activateItemLink(this)})
@@ -2074,9 +2075,10 @@ function setPanelHelp(contentArea, altText, sidebarClass, divID) {
     let helpPanel = contentArea.append('p')
         .classed('calloutBG', true)
         .classed('panelHelp', true)
+        .classed('panelHelpBGImage',true)
         .classed(sidebarClass, true)
         .attr('id', divID)
-        .html(html)
+        // .html(html)
 
     return helpPanel
 
