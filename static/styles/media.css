@@ -348,6 +348,7 @@
 
 }
 
+
 /* // 1280 x 800 or 2560 x 1600 2 pixel ratio */
 @media only screen  and (max-height: 800px) and (max-width: 1280px) and (orientation:landscape) {
     /* layout */
@@ -415,6 +416,58 @@
     .panelListItem, .panelListItem_numbered, .domainItem , .domainTypeText { font-size: .75em;}
 }
 
+/* 1152 X 864*/
+@media only screen  and (max-height: 864px) and (max-width: 1152px) and (orientation:landscape) {
+    /* layout */
+    .contentRow { height:650px; }
+    footer {top:725px;}
+    #pageTitle h1 { font-size: 1em;}
+
+    /* nav */
+    #navbarSupportedContent,
+    #recentSearchesDiv,
+    #aboutPage,
+    #contactPage { margin-left: 1em;}
+
+    /* graphmode_instructions.css */
+    #graphMode {  left:75%; height:2.25em; font-size: .75em; width:13em }
+    #graphTip {top:96%; height: 2.5em; font-size: .75em;}
+    #graphHelp {left: 93%; top: 94%}
+    .closePageArea { top:94%;  left:85%; font-size: .9em; }
+
+    .graphInstructionArea, .graphInstructionArea li {  font-size: .9em; }
+    .graphInstructionArea h1, .instructionsPageHeading { font-size: 1em; }
+    .graphInstructionArea h2 { font-size: .8em;}
+
+/* graph.css*/
+    /* divs */
+    #articleListContentArea { max-height:275px;}
+    #linkDomainContentArea { max-height: 275px; }
+    #domainArticleListContentArea { max-height:225px; }
+
+    #preambleArea { height: 750px; width: 60%; }
+    #toc { max-height: 250px; width: 100%;}
+    #toc ul li ul { padding-inline-start: 45px; } 
+    #toc ul li a, #toc ul li ul a  { font-size: .8em; line-height: .9em;}
+
+    .label {font-size: 1em;}
+
+    /* panel styles */
+    .panelHeading { font-size:.7em; }
+    .panelParagraphText {font-size: .75em; line-height: 1em; }
+    .panelListItem, .panelListItem_numbered, .domainItem, .domainTypeText { font-size: .7em; line-height: .95em;}
+
+    .panelHelp { height:1.5em}
+    .panelHelpBGImage { background-size: .75em .75em; }
+    .panelHelpLeftSideBar { left:87%; top:95%; }
+    .panelHelpRightSideBar { left:81%; top:90%; }
+    .articleDetailsBG { left:53%; top:100%; font-size: .7em;}
+
+    .linkCountText { font-size: .7em; }
+
+
+}
+
 /* mobile */
 @media only screen  and (max-height: 1024px) and (max-width: 1024px)  {
       /* layout */
@@ -422,5 +475,7 @@
       nav, .navbar {display:none}
       .contentRow { height:500px; }
       footer,#copyright {top: 600px;text-align: left; left:0}
+      #validContent {display: none;}
+      #mobileWarning {display: block;}
 
 }

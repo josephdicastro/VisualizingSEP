@@ -1,6 +1,17 @@
 <!doctype html>
 <html lang="en">
     <head>
+    <!-- Google  -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PBJQBQK3LW"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-PBJQBQK3LW');
+    </script>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -125,15 +136,17 @@
                                     <h1>Welcome to Visualizing SEP</h1>
                                     <img src="static/img/articlegraphLogo.svg" class="articleSVG">
                                 </div>
+                                <p>VisualizingSEP is an interactive data visualization for exploring the <a href="https://plato.stanford.edu/">Stanford Encyclopedia of Philosophy</a>
+                                    visually, powerfully, and beautifully.</p>
+                                <div id="validContent">
+                                    <p>The application uses network graphs to map the relationships between the articles in the SEP, allowing one to navigate the entirety of the encyclopedia more efficiently than ever before. The fundamental motivation of VisualizingSEP is that the conceptual contexts in which ideas emerge from and do battle within, the web of knowledge that links different ideas in different domains all together, is as important as any particular topic of philosophy itself, so the application brings these conceptual contexts to the forefront of the interface. Every article returned by the application’s search engine is presented within a graph of all the articles that it is directly linked with, allowing one to explore and deep-dive not only the topic and its surrounding contexts, but to continually link into new avenues of related knowledge. VisualizingSEP is a powerful research tool and search engine, but it's also a really fun way to explore the incredible resource that is the Stanford Encyclopedia of Philosophy.</p>
+                                <p>To begin: Search for an article title or select a domain from the navigation bar above. Or: click the "Randomize" button to get a surprise entry! </p>
 
-                                <p >Explore the <a href="https://plato.stanford.edu/">Stanford Encylopedia of Philosphy</a>
-                                    visually and beautifully.</p>
-                                <p>This application is a visual search engine and interactive data visualization of the SEP. Using network graphs, one can easily and powerfully explore the entirety of the Encyclopedia by traversing the 
-                                    links between articles.</p>
-                                <p>To begin: Click "Randomize" to get a surprise entry, search for an article title or select a domain from the navigation bar.</p>
-                                <p style="margin-top:4em">*Visualizing SEP is optimized for Chrome on the desktop. Performance on other browers is not guaranteed. Mobile devices are not supported.
-                                </p>
+                                <p style="margin-top:2em">*Visualizing SEP is optimized for Chrome on the desktop. Performance on other browers is not guaranteed.</p>
+                                </div>
+                                <div id="mobileWarning"><p>Mobile devices, and resolutions under 1024 x 768, are not supported. <br>Please visit the site on a desktop.</p></div>
                             </div>
+
                             <div id="graphPageDiv">
                                 <div id="graphHelp"></div>
                                 <div id="graphTip"></div>
@@ -311,11 +324,11 @@
                                     </div>
                                     <p>Visualizing SEP is an interactive data visualization for exploring the <a href="https://plato.stanford.edu/">Stanford Encyclopedia of Philosophy</a>, one of the Web’s foremost resources on the history and practice of philosophy. The application uses network graphs to explore the inter-relationships of all the articles in the Encyclopedia. There have been a number of wonderful visualizations of the SEP before, but there has not been a single application that combines beauty, ease, and power of exploring the SEP in the way this application does.</p>
                                     <h2>Domain Taxonomy</h2>
-                                    <p>The domain taxonomy used for grouping articles is not derived from the SEP itself. The domain taxonomy is adapted from the taxonomy from the <a href="https://www.inphoproject.org/taxonomy">Indiana University Philosophy Ontology Project (InPhO)</a>. Visualizing SEP uses the top-level taxonomic categories from InPhO, and mostly ignores the deeper-level sub-domain groupings that InPhO provides. The exception here is that we do use certain specific sub-domains to designate the philosophies of particular sciences (Biology, Physics, etc.). There are currently 25 individual domains. </p>
+                                    <p>The domain taxonomy used for grouping articles is not derived from the SEP itself. The taxonomy is based on the taxonomy from the <a href="https://www.inphoproject.org/taxonomy">Indiana University Philosophy Ontology Project (InPhO)</a>.</p>
                                     <p>The tagging and modeling of the articles into domains were completed with a combination of topic modeling, text search, and old-fashioned individual tagging of documents. The domain groupings should be seen more like language games with loosely fit boundaries between related articles instead of rigid determinations with bright-line differences between them. </p>
-                                    <p>Each article is tagged with a <em>primary domain designation</em>, which is the individual domain category that the article is best grouped with, as well as a general <em>domain_tags</em> field, which indicates other domains that the article can reasonably be tagged with. In this way, an article can appear in multiple domain groups.</p>
+                                    <p>Each article is tagged with a <em>primary domain designation</em>, which is the individual domain category that an article was best grouped with, as well as a general <em>domain_tags</em> field, which indicates other domains that the article can reasonably be tagged with. In this way, an article can appear in multiple domain groups.</p>
                                     <h2>Development</h2>
-                                    <p>The data infrastructure for the application was developed using Python, Pandas, Beautiful Soup, and MongoDB. The interactive aspects of the site were built with HTML, CSS, Javascript, and D3.
+                                    <p>The data infrastructure for the application was developed using Python, Pandas, Beautiful Soup, and MongoDB. The interactive aspects of the application were built with HTML, Javascript, and D3.
                                         A forthcoming article will describe the technical development of the application in detail. 
                                         </p>
                                     <!-- <h2>Domain Color Scheme</h2>
