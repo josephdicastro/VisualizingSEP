@@ -24,131 +24,48 @@
     footer {top:950px;}
 
     /* nav.css */
-    #navbarSupportedContent {
-        margin-left: 17em;
-    }
+    #navbarSupportedContent {margin-left: 17em;}
 
     /* graphmode_instructions.css */
     #graphMode {  left:83%; }
     #graphTip {top:96%}
     #graphHelp {left: 95%; top: 95%}
-    .closePageArea {
-        top:94%;
-        left:87%;
-    }
+    .closePageArea { top:94%; left:87%; }
 
-    /* graph.css */
-    #articleListContentArea {
-        max-height:550px;
-    }
+    /* graph.css*/
+    /* divs */
+    #articleListContentArea { max-height:550px;}
+    #domainArticleListContentArea { max-height:525px; }
+    #preambleArea { height: 750px; width: 60%; }
 
-    #domainArticleListContentArea {
-        max-height:525px;
-    }
+    #toc { max-height: 500px; width: 100%;}
+    #toc ul li ul { padding-inline-start: 45px; } 
+    #toc ul li a, #toc ul li ul a  { font-size: 1em; line-height: 1em;}
 
-    #preambleArea {
-        height: 750px;
-        width: 60%;
-    }
-
-    .panelHeading {
-        font-size:.8em;
-    }
-
-    .panelParagraphText {
-        font-size: 1em;
-        line-height: 1.1em;
-    }
-
-    .panelListItem {
-        font-size: .8em;
-        line-height: 1em;
-    }
-
-    .panelListItem_numbered {
-        font-size: .8em;
-        line-height: 1em;
-    }
-    .domainItem{
-        font-size: .8em;
-        line-height: 1em;
-    }
-
-    .articleDetailsBG {
-        left:67%;
-        top:97%;
-        font-size: .9em;
-    }
-
-    /* .panelHelp { height:1.5em} */
+    /* panel styles */
+    .panelHeading { font-size:.8em; }
+    .panelParagraphText {font-size: 1em; line-height: 1.2em; }
+    .panelListItem, .panelListItem_numbered, .domainItem, .domainTypeText { font-size: .8em; line-height: 1em;}
     .panelHelpBGImage { background-size: 1em 1em; }
-
-    .panelHelpLeftSideBar {
-        left:91%;
-        top:95%;
-    }
-    
-    .panelHelpRightSideBar {
-        left:86%;
-        top:95%;
-    }
-    #toc {
-        max-height: 500px;
-        width: 100%;
-    }
-
-    #toc ul li a, #toc ul li ul a  {
-        font-size: 1em;
-        line-height: 1em;
-    }
-
-    #toc ul li ul {
-        padding-inline-start: 45px;
-    } 
-
+    .panelHelpLeftSideBar { left:91%; top:95%; }
+    .panelHelpRightSideBar { left:86%; top:95%; }
+    .articleDetailsBG { left:67%; top:97%; font-size: .9em;}
 }
-
 
 
 /* only 4K 2pixel ratio*/
 @media only screen and (max-height:1080px) and (max-width: 1920px) and (-webkit-device-pixel-ratio: 2) and (orientation:landscape) {
-    #toc {
-        max-height: 400px;
-        width: 100%;
-    }
+    /* graph.css */
 
-    #preambleArea {
-        height: 750px;
-        width: 60%;
-    }
+    /* divs */
+    #toc { max-height: 400px; width: 100%;}
+    #preambleArea { height: 750px; width: 60%; }
+    #domainArticleListContentArea { max-height:500px;}
 
-    #domainArticleListContentArea {
-        max-height:500px;
-    }
-
-    .panelHeading {
-        font-size:.9em;
-    }
-
-    .panelParagraphText {
-        font-size: 1.1em;
-        line-height: 1.2em;
-    }
-
-    .panelListItem {
-        font-size: 1em;
-        line-height: 1.1em;
-    }
-
-    .panelListItem_numbered {
-        font-size: 1em;
-        line-height: 1.1em;
-    }
-    
-    .domainItem{
-        font-size: 1em;
-        line-height: 1.1em;
-    }
+    /* panel styles */
+    .panelHeading { font-size:.9em; }
+    .panelParagraphText { font-size: 1.1em; line-height: 1.3em;}
+    .panelListItem, .panelListItem_numbered, .domainItem , .domainTypeText { font-size: 1em;}
 }
 
 /* up to 1680x1050*/
@@ -156,34 +73,30 @@
     /* layout.css */
     .contentRow { height:800px; }
     footer {top:900px;}
+    #pageTitle h1 { font-size: 1.2em;}
 
     /* nav.css */
-    #navbarSupportedContent {
-        margin-left: 10em;
-    }
+    #navbarSupportedContent {margin-left: 10em; }
 
-    /* graph.css */
-    .articleDetailsBG {
-        left:68%;
-        top:97%;
-        font-size: .75em;
-    }
-    #domainArticleListContentArea {
-        max-height:450px;
-    }
-    .panelParagraphText {
-        font-size: .9em;
-        line-height: 1.1em;
-    }
+    /* graph.css*/
+    /* divs */
+    #articleListContentArea { max-height:550px;}
+    #domainArticleListContentArea { max-height:450px; }
+    #preambleArea { height: 750px; width: 60%; }
 
-    #toc ul li a, #toc ul li ul a  {
-        font-size:.9em;
-        line-height: 1em;
-    }
-    #toc {
-        max-height: 400px;
-        width: 100%;
-    }
+    #toc { max-height: 400px; width: 100%;}
+    #toc ul li ul { padding-inline-start: 45px; } 
+    #toc ul li a, #toc ul li ul a  { font-size: .9em; line-height: .9em;}
+
+    /* panel styles */
+    .panelHeading { font-size:.8em; }
+    .panelParagraphText {font-size: .9em; line-height: 1.1em; }
+    .panelListItem, .panelListItem_numbered, .domainItem, .domainTypeText { font-size: .8em; line-height: 1em;}
+    .panelHelpBGImage { background-size: 1em 1em; }
+    .panelHelpLeftSideBar { left:91%; top:95%; }
+    .panelHelpRightSideBar { left:86%; top:95%; }
+    .articleDetailsBG { left:68%; top:97%; font-size: .75em;}
+
 }
 
 /* up to 1600x1024*/
@@ -191,74 +104,37 @@
     /* layout.css */
     .contentRow { height:700px; }
     footer {top:765px;}
+    #pageTitle h1 { font-size: 1.1em;}
 
     /* nav.css */
-    #navbarSupportedContent {
-        margin-left: 10em;
-    }
+    #navbarSupportedContent { margin-left: 10em; }
 
-    /* graphmode.css */
     /* graphmode_instructions.css */
     #graphMode {  left:83%; }
     #graphTip {top:95%}
     #graphHelp {left: 94%; top: 94%}
-    .closePageArea {
-        top:94%;
-        left:82%;
-    }
+    .closePageArea { top:94%; left:82%;}
 
-    /* graph.css */
-    .articleDetailsBG {
-        left:66%;
-        top:97%;
-        font-size: .75em;
-    }
-    #articleListContentArea {
-        max-height:400px;
-    }
-    #domainArticleListContentArea {
-        max-height:335px;
-    }
-    .panelParagraphText {
-        font-size: .8em;
-        line-height: 1em;
-    }
+  /* graph.css*/
+    /* divs */
+    #articleListContentArea { max-height:400px;}
+    #domainArticleListContentArea { max-height:335px; }
+    #preambleArea { height: 750px; width: 60%; }
 
-    .panelListItem {
-        font-size: .8em;
-        line-height: 1em;
-    }
+    #toc { max-height: 275px; width: 100%;}
+    #toc ul li ul { padding-inline-start: 45px; } 
+    #toc ul li a, #toc ul li ul a  { font-size: .9em; line-height: .9em;}
 
-    .panelListItem_numbered {
-        font-size: .8em;
-        line-height: 1em;
-    }
-    
-    .domainItem{
-        font-size: .8em;
-        line-height: 1em;
-    }
+    /* panel styles */
+    .panelHeading { font-size:.8em; }
+    .panelParagraphText {font-size: .8em; line-height: 1em; }
+    .panelListItem, .panelListItem_numbered, .domainItem, .domainTypeText { font-size: .8em; line-height: 1em;}
+    .panelHelpBGImage { background-size: 1em 1em; }
+    .panelHelpLeftSideBar { left:89%; top:95%; }
+    .panelHelpRightSideBar { left:84%; top:95%; }
+    .articleDetailsBG { left:65%; top:97%; font-size: .75em;}
 
-    #toc ul li a, #toc ul li ul a  {
-        font-size:.9em;
-        line-height: 1em;
-    }
-    #toc {
-        max-height: 275px;
-        width: 100%;
-    }
-    .panelHelpLeftSideBar {
-        left:89%;
-        top:95%;
-    }
-    
-    .panelHelpRightSideBar {
-        left:84%;
-        top:95%;
-    }
 }
-
-
 
 
 /* 1440 x 1050 and 1400 x 900*/
@@ -269,122 +145,46 @@
     #pageTitle h1 { font-size: 1em;}
 
     /* nav */
-    #navbarSupportedContent {
-        margin-left: 5em;
-    }
-
-    #recentSearchesDiv {
-        margin-left:3em;
-    }
-
-    #aboutPage {
-        margin-left: 2em;
-    }
+    #navbarSupportedContent {margin-left: 5em;}
+    #recentSearchesDiv { margin-left:3em; }
+    #aboutPage { margin-left: 2em; }
 
     /* graphmode_instructions.css */
     #graphMode {  left:81%; height:2.25em; font-size: .75em; width:13em }
     #graphTip {top:96%; height: 2.5em; font-size: .75em;}
     #graphHelp {left: 93%; top: 94%}
-    .closePageArea {
-        top:94%;
-        left:85%;
-        font-size: .9em;
-    }
-    .graphInstructionArea {
-        font-size: .9em;
-    }
-    .graphInstructionArea h1, .instructionsPageHeading {
-        font-size: 1.1em;
-    }
-    .graphInstructionArea h2 {
-        font-size: 1em;
-    }
+    .closePageArea { top:94%; left:85%; font-size: .9em; }
 
-    /* graph.css */
+    .graphInstructionArea { font-size: .9em; }
+    .graphInstructionArea h1, .instructionsPageHeading { font-size: 1.1em; }
+    .graphInstructionArea h2 { font-size: 1em;}
 
-    .label {font-size: 1em;}
-    #articleListContentArea {
-        max-height:375px;
-    }
+/* graph.css*/
+    /* divs */
+    #articleListContentArea { max-height:375px;}
+    #linkDomainContentArea { max-height: 275px; }
+    #domainArticleListContentArea { max-height:375px; }
 
-    #linkDomainContentArea {
-        max-height: 275px;
-    }
+    #preambleArea { height: 750px; width: 60%; }
+    #toc { max-height: 350px; width: 100%;}
+    #toc ul li ul { padding-inline-start: 45px; } 
+    #toc ul li a, #toc ul li ul a  { font-size: .8em; line-height: 1em;}
 
-    #domainArticleListContentArea {
-        max-height:375px;
-    }
+    .label {font-size: .9em;}
 
-    .linkCountText {
-        font-size: .75em;
-    }
-
-    #toc {
-        max-height: 350px;
-        width: 100%;
-    }
-    #toc ul li, #toc ul li ul {
-        margin:0;
-        padding:0;
-        line-height: 1em;
-    }
-
-
-    #toc ul li a, #toc ul li ul a  {
-        font-size: .8em;
-        line-height: .8em;
-    }
-    #toc ul li {margin-left:-2em; }
-    #toc ul li ul {
-        padding-inline-start: 45px;
-    }
-
-
-    #preambleArea {
-        height: 750px;
-        width: 60%;
-    }
-
-    .panelHeading {
-        font-size:.75em;
-    }
-
-    .panelParagraphText {
-        font-size: .8em;
-        line-height: .9em;
-    }
-
-    .panelListItem {
-        font-size: .75em;
-        line-height: 1em;
-    }
-
-    .panelListItem_numbered {
-        font-size: .75em;
-        line-height: .9em;
-        margin-left: -1.5em;
-    }
-    .domainItem{
-        font-size: .7em;
-        line-height: .7em;
-    }
-    .articleDetailsBG {
-        left:64%;
-        top:100%;
-        font-size: .7em;
-    }
+    /* panel styles */
+    .panelHeading { font-size:.75em; }
+    .panelParagraphText {font-size: .8em; line-height: 1em; }
+    .panelListItem, .panelListItem_numbered, .domainItem, .domainTypeText { font-size: .75em; line-height: .95em;}
 
     .panelHelp { height:1.5em}
     .panelHelpBGImage { background-size: .75em .75em; }
-    .panelHelpLeftSideBar {
-        left:87%;
-        top:95%;
-    }
-    
-    .panelHelpRightSideBar {
-        left:81%;
-        top:90%;
-    }
+    .panelHelpLeftSideBar { left:87%; top:95%; }
+    .panelHelpRightSideBar { left:81%; top:90%; }
+    .articleDetailsBG { left:64%; top:100%; font-size: .7em;}
+
+    .linkCountText { font-size: .75em; }
+
 }
 
 
@@ -443,7 +243,7 @@
 
     #toc ul li a, #toc ul li ul a  {
         font-size: .8em;
-        line-height: .8em;
+        line-height: .9em;
     }
     #toc ul li {margin-left:-2em; }
     #toc ul li ul {
@@ -467,12 +267,12 @@
 
     .panelListItem {
         font-size: .75em;
-        line-height: 1em;
+        line-height: .95em;
     }
 
     .panelListItem_numbered {
         font-size: .75em;
-        line-height: 1em;
+        line-height: .95em;
     }
     .domainItem{
         font-size: .8em;
@@ -496,131 +296,6 @@
 
 }
 
-/* // 1280 x 800 or 2560 x 1600 2 pixel ratio */
-@media only screen  and (max-height: 800px) and (max-width: 1280px) and (orientation:landscape) {
-    /* layout */
-    .contentRow { height:590px; }
-    footer {top:650px;}
-    #pageTitle h1 { font-size: 1.1em;}
-
-    /* nav */
-    #navbarSupportedContent {
-        margin-left: 5em;
-    }
-
-    #recentSearchesDiv {
-        margin-left:3em;
-    }
-
-    #aboutPage {
-        margin-left: 2em;
-    }
-
-    /* graphmode_instructions.css */
-    #graphMode {  left:78%; height:2.25em; font-size: .75em; width:13em }
-    #graphTip {top:95%; height: 2.5em; font-size: .75em;}
-    #graphHelp {left: 93%; top: 93%}
-    .closePageArea {
-        top:94%;
-        left:85%;
-        font-size: .9em;
-    }
-    .graphInstructionArea {
-        font-size: .9em;
-    }
-    .graphInstructionArea h1, .instructionsPageHeading {
-        font-size: 1.1em;
-    }
-    .graphInstructionArea h2 {
-        font-size: 1em;
-    }
-
-    /* graph.css */
-
-    .label {font-size: 1em;}
-    #articleListContentArea {
-        max-height:300px;
-    }
-
-    #linkDomainContentArea {
-        max-height: 225px;
-    }
-
-    #domainArticleListContentArea {
-        max-height:225px;
-    }
-
-    .linkCountText {
-        font-size: .75em;
-    }
-
-    #toc {
-        max-height: 250px;
-        width: 100%;
-    }
-    #toc ul li, #toc ul li ul {
-        margin:0;
-        padding:0;
-        line-height: 1em;
-    }
-
-
-    #toc ul li a, #toc ul li ul a  {
-        font-size: .8em;
-        line-height: .8em;
-    }
-    #toc ul li {margin-left:-2em; }
-    #toc ul li ul {
-        padding-inline-start: 45px;
-    }
-
-
-    #preambleArea {
-        height: 750px;
-        width: 60%;
-    }
-
-    .panelHeading {
-        font-size:.75em;
-    }
-
-    .panelParagraphText {
-        font-size: .8em;
-        line-height: .9em;
-    }
-
-    .panelListItem {
-        font-size: .75em;
-        line-height: 1em;
-    }
-
-    .panelListItem_numbered {
-        font-size: .75em;
-        line-height: .9em;
-        margin-left: -1.5em;
-    }
-    .domainItem{
-        font-size: .7em;
-        line-height: .7em;
-    }
-    .articleDetailsBG {
-        left:58%;
-        top:98%;
-        font-size: .7em;
-    }
-
-    .panelHelp { height:1.5em}
-    .panelHelpBGImage { background-size: .75em .75em; }
-    .panelHelpLeftSideBar {
-        left:87%;
-        top:95%;
-    }
-    
-    .panelHelpRightSideBar {
-        left:81%;
-        top:90%;
-    }
-}
 
 /* 1368 x 768*/
 @media only screen  and (max-height: 768px) and (max-width: 1368px) and (orientation:landscape) {
@@ -630,121 +305,95 @@
     #pageTitle h1 { font-size: 1em;}
 
     /* nav */
-    #navbarSupportedContent {
-        margin-left: 5em;
-    }
-
-    #recentSearchesDiv {
-        margin-left:3em;
-    }
-
-    #aboutPage {
-        margin-left: 2em;
-    }
+    #navbarSupportedContent { margin-left: 5em; }
+    #recentSearchesDiv { margin-left:3em;}
+    #aboutPage { margin-left: 2em;}
 
     /* graphmode_instructions.css */
     #graphMode {  left:81%; height:2.25em; font-size: .75em; width:13em }
     #graphTip {top:94%; height: 2.5em; font-size: .75em;}
     #graphHelp {left: 93%; top: 93%}
-    .closePageArea {
-        top:94%;
-        left:85%;
-        font-size: .9em;
-    }
-    .graphInstructionArea, .graphInstructionArea li {
-        font-size: .9em;
-    }
-    .graphInstructionArea h1, .instructionsPageHeading {
-        font-size: 1em;
-    }
-    .graphInstructionArea h2 {
-        font-size: .8em;
-    }
+    .closePageArea { top:94%;  left:85%; font-size: .9em; }
 
-    /* graph.css */
+    .graphInstructionArea, .graphInstructionArea li {  font-size: .9em; }
+    .graphInstructionArea h1, .instructionsPageHeading { font-size: 1em; }
+    .graphInstructionArea h2 { font-size: .8em;}
 
-    .label {font-size: 1em;}
-    #articleListContentArea {
-        max-height:275px;
-    }
+/* graph.css*/
+    /* divs */
+    #articleListContentArea { max-height:275px;}
+    #linkDomainContentArea { max-height: 275px; }
+    #domainArticleListContentArea { max-height:225px; }
 
-    #linkDomainContentArea {
-        max-height: 275px;
-    }
+    #preambleArea { height: 750px; width: 60%; }
+    #toc { max-height: 250px; width: 100%;}
+    #toc ul li ul { padding-inline-start: 45px; } 
+    #toc ul li a, #toc ul li ul a  { font-size: .8em; line-height: .9em;}
 
-    #domainArticleListContentArea {
-        max-height:225px;
-    }
+    .label {font-size: .9em;}
 
-    .linkCountText {
-        font-size: .75em;
-    }
-
-    #toc {
-        max-height: 250px;
-        width: 100%;
-    }
-    #toc ul li, #toc ul li ul {
-        margin:0;
-        padding:0;
-        line-height: 1em;
-    }
-
-
-    #toc ul li a, #toc ul li ul a  {
-        font-size: .8em;
-        line-height: .8em;
-    }
-    #toc ul li {margin-left:-2em; }
-    #toc ul li ul {
-        padding-inline-start: 45px;
-    }
-
-
-    #preambleArea {
-        height: 750px;
-        width: 60%;
-    }
-
-    .panelHeading {
-        font-size:.75em;
-    }
-
-    .panelParagraphText {
-        font-size: .75em;
-        line-height: .9em;
-    }
-
-    .panelListItem {
-        font-size: .7em;
-        line-height: 1em;
-    }
-
-    .panelListItem_numbered {
-        font-size: .7em;
-        line-height: .9em;
-        margin-left: -1.5em;
-    }
-    .domainItem{
-        font-size: .7em;
-        line-height: .9em;
-    }
-    .articleDetailsBG {
-        left:64%;
-        top:100%;
-        font-size: .7em;
-    }
+    /* panel styles */
+    .panelHeading { font-size:.75em; }
+    .panelParagraphText {font-size: .8em; line-height: 1em; }
+    .panelListItem, .panelListItem_numbered, .domainItem, .domainTypeText { font-size: .75em; line-height: .95em;}
 
     .panelHelp { height:1.5em}
     .panelHelpBGImage { background-size: .75em .75em; }
-    .panelHelpLeftSideBar {
-        left:87%;
-        top:95%;
-    }
-    
-    .panelHelpRightSideBar {
-        left:81%;
-        top:90%;
-    }
+    .panelHelpLeftSideBar { left:87%; top:95%; }
+    .panelHelpRightSideBar { left:81%; top:90%; }
+    .articleDetailsBG { left:64%; top:100%; font-size: .7em;}
+
+    .linkCountText { font-size: .75em; }
+
+
 }
 
+/* // 1280 x 800 or 2560 x 1600 2 pixel ratio */
+@media only screen  and (max-height: 800px) and (max-width: 1280px) and (orientation:landscape) {
+    /* layout */
+    .contentRow { height:590px; }
+    footer {top:650px;}
+    #pageTitle h1 { font-size: 1.1em;}
+
+    /* nav */
+    #navbarSupportedContent { margin-left: 5em; }
+    #recentSearchesDiv { margin-left:3em;}
+    #aboutPage { margin-left: 2em;}
+
+    /* graphmode_instructions.css */
+    #graphMode {  left:78%; height:2.25em; font-size: .75em; width:13em }
+    #graphTip {top:95%; height: 2.5em; font-size: .75em;}
+    #graphHelp {left: 93%; top: 93%}
+    .closePageArea { top:94%; left:85%; font-size: .9em; }
+
+    .graphInstructionArea { font-size: .9em; }
+    .graphInstructionArea h1, .instructionsPageHeading { font-size: 1.1em; }
+    .graphInstructionArea h2 {  font-size: 1em; }
+
+    /* graph.css */
+    /* divs */
+    #articleListContentArea { max-height:300px;}
+    #linkDomainContentArea { max-height: 225px; }
+    #domainArticleListContentArea { max-height:225px; }
+
+    #preambleArea { height: 750px; width: 60%; }
+    #toc { max-height: 250px; width: 100%;}
+    #toc ul li ul { padding-inline-start: 45px; } 
+    #toc ul li a, #toc ul li ul a  { font-size: .8em; line-height: .9em;}
+
+    .label {font-size: 1em;}
+
+    /* panel styles */
+    .panelHeading { font-size:.75em; }
+    .panelParagraphText {font-size: .8em; line-height: 1em; }
+    .panelListItem, .panelListItem_numbered, .domainItem, .domainTypeText { font-size: .75em; line-height: .95em;}
+
+    .panelHelp { height:1.5em}
+    .panelHelpBGImage { background-size: .75em .75em; }
+    .panelHelpLeftSideBar { left:87%; top:95%; }
+    .panelHelpRightSideBar { left:81%; top:90%; }
+    .articleDetailsBG { left:58%; top:98%; font-size: .7em;}
+
+    .linkCountText { font-size: .75em; }
+
+}

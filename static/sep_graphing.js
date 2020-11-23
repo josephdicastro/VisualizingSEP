@@ -1785,10 +1785,6 @@ function setArticleListPanel(parentSidebar, articleData, data) {
         .style('display', 'block')
         .attr('id', 'articleHiddenMessage')
         .classed('panelParagraphText', true)
-    
-    let articleListContentAreaMain = articleListDiv.append("div")
-        .style("display", "none")
-        .attr("id", "articleListContentAreaMain")
 
    let articleListContentArea = articleListDiv.append("div")
        .attr("id", "articleListContentArea")
@@ -2306,7 +2302,6 @@ function focusOnArticleNode(data, activeElement) {
                 .transition().duration(200)
                     .style('opacity', styConfig.listItems.defaultOpacity)
                     .style('font-weight', 'normal')
-                    .style('list-style-type', 'disc')
 
             }
 
