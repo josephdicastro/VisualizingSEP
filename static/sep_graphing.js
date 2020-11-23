@@ -2680,7 +2680,7 @@ function setDomainIntroPanel(parentSidebar) {
     let introText = '<p>The Domain Graph shows the structure of the articles within this domain.</p>' 
                     + '<p>When the graph is first loaded, only the nodes are visible; labels are activated by <strong>mousing-over</strong> or <strong>single-clicking</strong> the nodes or the sidebar titles.</p>' 
                     + '<p>Articles can appear in multiple domains, but are always colored by their primary domain designation.</p>'
-
+                    + '<p>Nodes are sized according the number of shared links within the domain: the larger the circle, the greater number of links that node is related to.</p>'
     let collapseNote = '<p>Please note: this panel will collapse automatically when a node is activated.</p>' 
 
     let domainIntroContent = domainIntroPanel.append('div')
