@@ -1380,6 +1380,7 @@ function setArticleIntroParagraph(parentSidebar, titleType, selectedArticle) {
     let introParagraphPanel = parentSidebar.append("div")
     introParagraphPanel
         .classed('panelBG', true)
+        .attr('id','articleIntroParagraphPanel')
         .transition().duration(200).style('opacity',1)
     
     let titleDisplay = selectedArticle.title
@@ -1556,6 +1557,7 @@ function getParagraphDataHTML(paragraphDataFromNode, substringLength) {
 function setArticleDomainDetails(parentSidebar, selectedArticle) {
     let domainListDiv = parentSidebar.append("div")
         .classed('panelBG', true)
+        .attr('id','articleDomainDetailsPanel')
 
     // get domain list from selectedArticle, and then clean process it for display
     let primaryDomain = selectedArticle.primary_domain
@@ -1572,8 +1574,8 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
         let domainTypeText;
         let domainText = `<td style="color:${domainColor}"><span class="domainItem">${node}</span></td>`
         
-        if(i===0) {  domainTypeText = `<td class="domainTypeText">Primary Domain:</td>` }
-        if(i===1) {  domainTypeText = `<td class="domainTypeText">Other Domain(s):</td>` }
+        if(i===0) {  domainTypeText = `<td class="domainTypeText">Primary&nbsp;Domain:</td>` }
+        if(i===1) {  domainTypeText = `<td class="domainTypeText">Other&nbsp;Domain(s):</td>` }
         if(i>1)   {  domainTypeText = `<td class="domainTypeText"></td>`  }
 
         domainDataRows.push(domainTypeText + domainText)
@@ -1773,6 +1775,7 @@ function setArticleListPanel(parentSidebar, articleData, data) {
    // build list of articles 
    let articleListDiv = parentSidebar.append("div")
     .classed('panelBG', true)
+    .attr('id','articleListOfAllArticlesPanel')
 
    let articleListHeading = articleListDiv.append("h2")
     .text("List of Articles")
@@ -1872,6 +1875,7 @@ function setLinkDirectionPanel(parentDiv, articleData) {
 
     let linkDirectionPanel = parentDiv.append("div")
         .classed('panelBG', true)
+        .attr('id','articleLinkDirectionsPanel')
 
     let linkDirectionHeading = linkDirectionPanel.append("h2")
         .text("Link Directions")
@@ -1985,6 +1989,7 @@ function setLinkDomainPanel(parentSidebar, articleData) {
     // build domain links data 
     let linkDomainPanel = parentSidebar.append('div')
         .classed('panelBG', true)
+        .attr('id','articleLinkDomainsPanel')
 
     let linkDomainHeading = linkDomainPanel.append('h2')
         .text('Link Domains')
@@ -2652,6 +2657,7 @@ function setDomainIntroPanel(parentSidebar) {
 
     let domainIntroPanel = parentSidebar.append("div")
         .classed('panelBG', true)
+        .attr('id','domainIntroPanel')
         .style('margin-bottom', '2em')
 
     let domainTitle = pageTitle.text()
@@ -2736,7 +2742,8 @@ function toggleDomainIntroContent(state) {
 
 function setDomainCountPanel(parentDiv, domainData, data) {
     let domainCountPanel = parentDiv.append("div")
-        .classed("panelBG", true)  
+        .classed("panelBG", true)
+        .attr('id', 'domainCountPanel')  
         .classed("linkCountDiv", true)
 
     domainCountPanel.append("h2")
@@ -2747,6 +2754,7 @@ function setCentralNodesPanel(parentSidebar, domainData, data) {
 
     let centralNodesDiv = parentSidebar.append("div")
         .classed('panelBG', true)
+        .attr('id','domainCentralNodesPanel')
 
     let centralNodesHeading = centralNodesDiv.append("h2")
         .html("Most Connected Nodes")
@@ -2796,6 +2804,7 @@ function setDomainArticleListPanel(parentSidebar, domainData, data) {
 
     domainArticleListDiv
         .classed('panelBG', true)
+        .attr('id','domainArticlesPanel')
 
     domainArticleListDiv.append("h2")
         .text("List of All Domain Articles")

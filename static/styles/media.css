@@ -351,7 +351,7 @@
 /* // 1280 x 800 or 2560 x 1600 2 pixel ratio */
 @media only screen  and (max-height: 800px) and (max-width: 1280px) and (orientation:landscape) {
     /* layout */
-    .contentRow { height:590px; }
+    .contentRow { height:520px; }
     footer {top:650px;}
     #pageTitle h1 { font-size: 1.1em;}
 
@@ -366,7 +366,7 @@
     #graphHelp {left: 93%; top: 93%}
     .closePageArea { top:94%; left:85%; font-size: .9em; }
 
-    .graphInstructionArea { font-size: .9em; }
+    .graphInstructionArea { font-size: .8em; }
     .graphInstructionArea h1, .instructionsPageHeading { font-size: 1.1em; }
     .graphInstructionArea h2 {  font-size: 1em; }
 
@@ -377,7 +377,7 @@
     #domainArticleListContentArea { max-height:225px; }
 
     #preambleArea { height: 750px; width: 60%; }
-    #toc { max-height: 250px; width: 100%;}
+    #toc { max-height: 235px; width: 100%;}
     #toc ul li ul { padding-inline-start: 45px; } 
     #toc ul li a, #toc ul li ul a  { font-size: .8em; line-height: .9em;}
 
@@ -395,5 +395,32 @@
     .articleDetailsBG { left:58%; top:98%; font-size: .7em;}
 
     .linkCountText { font-size: .75em; }
+
+}
+
+/* 2560 x 1600 2 pixel ratio */
+@media only screen  and (max-height: 800px) and (max-width: 1280px) and (-webkit-device-pixel-ratio: 2) and (orientation:landscape) {
+
+ 
+    /* graph.css */
+
+    /* divs */
+    #toc { max-height: 225px; width: 100%;}
+    #preambleArea { height: 750px; width: 60%; }
+    #domainArticleListContentArea { max-height:175px;}
+
+    /* panel styles */
+    .panelHeading { font-size:.8em; }
+    .panelParagraphText { font-size: .8em; line-height: 1em;}
+    .panelListItem, .panelListItem_numbered, .domainItem , .domainTypeText { font-size: .75em;}
+}
+
+/* mobile */
+@media only screen  and (max-height: 1024px) and (max-width: 1024px)  {
+      /* layout */
+      body {overflow: visible;}
+      nav, .navbar {display:none}
+      .contentRow { height:500px; }
+      footer,#copyright {top: 600px;text-align: left; left:0}
 
 }
