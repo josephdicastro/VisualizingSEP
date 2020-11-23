@@ -92,13 +92,6 @@ let domainName = 'http://localhost:8000/'
 
 let json_file = 'static/sep_network.json'
 
-console.log(window.devicePixelRatio)
-console.log(window.screen.height)
-console.log(window.screen.width)
-console.log(window.screen.availHeight)
-console.log(window.screen.availWidth)
-console.log(window.innerHeight)
-console.log(window.innerWidth)
 
 startVisualization();
 
@@ -334,21 +327,26 @@ function setNavigation() {
             })
     }
 
-    function setHomePage() {
-        
+    function setHomePage() {   
         vizLogo
-            .on('mouseover', function() { activateItemLink(this)})
+            .on('mouseover', function() { if(isNavFullOpacity()) {activateItemLink(this)}})
             .on('mouseout', function() { deActivateItemLink(this)})
-            .on('click', function() { showHomePage(); })
+            .on('click', function() { if(isNavFullOpacity()) {showHomePage(); }})
     }
 
     // Article Searches
     function setArticleSearchElements() {
-        //article search features
+        // article search features
         articleSearchButton
-            .on('mouseover', function() {articleSearchButton.classed('searchButtonActive', true)})
+            .on('mouseover', function() { 
+                if(isNavFullOpacity()) {
+                    articleSearchButton
+                        .classed('searchButtonActive', true)
+                        .style('cursor','pointer')
+                }
+            })
             .on('mouseout', function() {articleSearchButton.classed('searchButtonActive', false)})
-            .on('click', function() {toggleArticleSearchArea(); hideDomainSearchArea(); hideRecentSearchArea();})
+            .on('click', function() { if(isNavFullOpacity()) { toggleArticleSearchArea(); }})
 
         articleSearchFilter
             .on('focusout', function() { 
@@ -425,9 +423,9 @@ function setNavigation() {
     // get random
     function setGetRandomEntry() {
         getRandomEntry
-            .on('mouseover', function() { activateItemLink(this)})
+            .on('mouseover', function() { if(isNavFullOpacity()) {activateItemLink(this)}})
             .on('mouseout', function() { deActivateItemLink(this)})
-            .on('click', function() { closeDropdowns(); getRandom() })
+            .on('click', function() { if(isNavFullOpacity()) {closeDropdowns(); getRandom() }})
     }
 
     // domain searches
@@ -436,7 +434,7 @@ function setNavigation() {
         domainSearchButton
             .on('mouseover', function() {domainSearchButton.classed('searchButtonActive', true)})
             .on('mouseout', function() {domainSearchButton.classed('searchButtonActive', false)})
-            .on('click', function() {toggleDomainSearchArea();})
+            .on('click', function() {if(isNavFullOpacity()) { toggleDomainSearchArea();}})
 
         domainSearchFilter
             .on('keyup', function() {
@@ -506,7 +504,7 @@ function setNavigation() {
         recentSearchButton
             .on('mouseover', function() {recentSearchButton.classed('searchButtonActive', true)})
             .on('mouseout', function() {recentSearchButton.classed('searchButtonActive', false)})
-            .on('click', function() {toggleRecentSearchArea();})
+            .on('click', function() {if(isNavFullOpacity()) {  toggleRecentSearchArea();}})
 
         recentSearchFilter
             .on('keyup', function() {
@@ -673,24 +671,31 @@ function setNavigation() {
     function setAboutPage(){
 
         aboutPageLink
-            .on('mouseover', function() { activateItemLink(this)})
+            .on('mouseover', function() { if(isNavFullOpacity()) { activateItemLink(this)}})
             .on('mouseout', function() { deActivateItemLink(this)})
-            .on('click', function() { showAboutPage();})
+            .on('click', function() { if(isNavFullOpacity()) { showAboutPage();}})
 
     }
 
     function setContactPage() {
         contactPageLink
-            .on('mouseover', function() { activateItemLink(this)})
+            .on('mouseover', function() { if(isNavFullOpacity()) { activateItemLink(this)}})
             .on('mouseout', function() { deActivateItemLink(this)})
-            .on('click', function() { showContactPage()})
+            .on('click', function() { if(isNavFullOpacity()) { showContactPage()}})
 
         copyright
-            .on('mouseover', function() { activateItemLink(this)})
+            .on('mouseover', function() { if(isNavFullOpacity()) { activateItemLink(this)}})
             .on('mouseout', function() { deActivateItemLink(this)})
-            .on('click', function() { showContactPage()})
+            .on('click', function() { if(isNavFullOpacity()) {  showContactPage()}})
     }
 
+}
+
+function isNavFullOpacity() {
+    let navIsFull = true
+    let navOpacity = parseFloat(navBar.style('opacity'))
+    if(navOpacity !== 1) {navIsFull = false}
+    return navIsFull
 }
 
 function setPageTitle(pageTitleText,primaryDomain) {
