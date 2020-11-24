@@ -28,6 +28,7 @@ let articleShowAllCheck = d3.select('#articleShowAllCheck')
 let articleCloseSearchArea = d3.select('#articleCloseSearchArea')
 let articleTextSearchButton = d3.select('#articleTextSearchButton')
 let articleDetailsPage = d3.select('#articleDetails')
+let articleDetailsTip = d3.select('#articleDetailsTip')
 
 //Domain Search elements
 let domainSearchButton = d3.select('#domainSearchButton')
@@ -36,6 +37,7 @@ let domainSearchFilter = d3.select('#domainSearchFilter')
 let domainSearchListDiv = d3.select('#domainSearchListDiv')
 let domainShowAllCheck = d3.select('#domainShowAllCheck')
 let domainCloseSearchArea = d3.select('#domainCloseSearchArea')
+let domainSelectedArticle = d3.select('#selectedDomainArticle')
 
 //Recent Search elements
 let recentSearchDiv = d3.select('#recentSearchDiv')
@@ -330,7 +332,6 @@ function setNavigation() {
 
     function setNavBarTransition() {
         navBar
-            .transition().duration(pageTransition)
             .style('opacity',1)
             .on('end', function() {
                 populateSearchResults(domainSearchListDiv, allDomains); 
@@ -1039,9 +1040,9 @@ function dimScreen(pageType) {
             break;
 
         case 'details':
-            d3.select('#articleIntroParagraphPanel')
-                .transition(transDuration).style('opacity', 0.25)
-
+            // d3.select('#articleIntroParagraphPanel').transition(transDuration).style('opacity', 0.25)
+            // d3.select('#domainIntroPanel').transition(transDuration).style('opacity', 0.25)
+            
             break;
 
     }
@@ -1072,9 +1073,8 @@ function resetScreen() {
         graphTip.transition(transDuration).style('opacity',1)
     }
 
-    d3.select('#articleIntroParagraphPanel')
-        .transition(transDuration).style('opacity',1)
-
+    d3.select('#articleIntroParagraphPanel').transition(transDuration).style('opacity',1)
+    d3.select('#domainIntroPanel').transition(transDuration).style('opacity', 0.25)
 
 }
 
@@ -1092,6 +1092,7 @@ function displayHelpPage(helpPageToDisplay) {
     let closePageDiv = d3.select(helpPageToDisplay).append('div')
         .text('Close Page')
         .classed('closePageArea',true)
+        .classed('graphModeHelpCallout', true)
 
 
     d3.selectAll('.instructionsPageHeading')
@@ -1422,7 +1423,7 @@ function setArticleGraphMainLabel() {
 
 function clearSidebar(sidebarToClear) {
     sidebarToClear.html("")
-    sidebarToClear.style("display", "block")
+    // sidebarToClear.style("display", "block")
 }
 function updateSidebarsArticle(data, selectedArticle) {
     updateSideBarLeft_ArticleMain(selectedArticle, 'Main')
@@ -1532,6 +1533,8 @@ function toggleArtileDetailsPage() {
 }
 function setArticleDetailsPage(selectedArticle) {
 
+    if(!isNavFullOpacity()) {dimScreen('details')}
+
     articleDetailsPage.html('')
 
     let articleDetailsContentArea = articleDetailsPage.append('div')
@@ -1621,6 +1624,13 @@ function setArticleDetailsPage(selectedArticle) {
     let closePageDiv = articleDetailsContentArea.append('div')
         .text('Close Page')
         .classed('closePageArea',true)
+        .classed('graphModeHelpCallout', true)
+
+    let articleDetailTip = articleDetailsContentArea.append('div')
+        .html('Update article details by <strong>mousing-over</strong> the article titles in the Right Sidebar.')
+        .attr('id', 'articleDetailsTip')
+
+
 
     d3.selectAll('.instructionsPageHeading')
         .on('mouseover', function() {activateItemLink(this)})
@@ -1838,7 +1848,7 @@ function setExploreTOC(parentSidebar, selectedArticle) {
 }
 
 
-
+// deprecated 
 function setArticleRelatedLinks(parentSidebar, selectedArticle, relatedArticles) {
     let relatedLinksDiv = parentSidebar.append("div")
 
@@ -3076,7 +3086,7 @@ function mouseOverDomainNode(mouseOverReference, data, domainTitle) {
 function mouseOutDomainNode(mouseOutReference, data, domainTitle) {
     deActivateItemLink(mouseOutReference)
 
-    if(!exploreMode) { resetDisplayDefaultsDomainGraph(); toggleDomainIntroContent('off') } //clearSidebar(sidebarLeft); resetDisplayDefaultsDomainGraph();} 
+    if(!exploreMode) { resetDisplayDefaultsDomainGraph(); toggleDomainIntroContent('off') } 
     if(exploreMode) { 
         let selectedNode = d3.select(mouseOutReference).datum()
         d3.selectAll('.relatedLinkLines').style('opacity',styConfig.linkLines.inactiveOpacity)
@@ -3445,7 +3455,7 @@ function resetDisplayDefaultsDomainGraph() {
 
     resetDomainMenuOpacity();
 
-    if(graphType==='Domain') { updateSidebarLeft_DomainMain(); } //clearSidebar(sidebarLeft)}
+    if(graphType==='Domain') { updateSidebarLeft_DomainMain(); } 
     
 
     let links = d3.selectAll('.link')
