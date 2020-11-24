@@ -16,6 +16,7 @@ let copyright = d3.select('#copyright')
 let graphMode = d3.select("#graphMode")
 let graphTip = d3.select("#graphTip")
 let graphHelp = d3.select("#graphHelp")
+let selectedDomainArticle = d3.select('#selectedDomainArticle') 
 
 //Article Search Elements
 let articleSearchButton = d3.select('#articleSearchButton')
@@ -26,6 +27,7 @@ let articleSearchListDiv = d3.select('#articleSearchListDiv')
 let articleShowAllCheck = d3.select('#articleShowAllCheck')
 let articleCloseSearchArea = d3.select('#articleCloseSearchArea')
 let articleTextSearchButton = d3.select('#articleTextSearchButton')
+let articleDetailsPage = d3.select('#articleDetails')
 
 //Domain Search elements
 let domainSearchButton = d3.select('#domainSearchButton')
@@ -1014,17 +1016,14 @@ function setGraphType(graphState) {
     graphType = graphState
 }
 
-function dimScreen() {
+function dimScreen(pageType) {
     let transDuration = 300
 
     navBar.transition(transDuration).style('opacity', 0.25)
     pageTitle.transition(transDuration).style('opacity', 0.25)
-    sidebarLeft.transition(transDuration).style('opacity', 0.25)
-    sidebarRight.transition(transDuration).style('opacity', 0.25)
     svgConfig.graphElements.transition(transDuration).style('opacity', 0.25)
     graphHelp.transition(transDuration).style('opacity', 0.25)
     graphTip.transition(transDuration).style('opacity', 0.25)
-
     if(graphMode.style('opacity') === 1 ) {
         graphMode.transition(transDuration).style('opacity',0.10)
     }
@@ -1032,6 +1031,24 @@ function dimScreen() {
     if(graphTip.style('opacity') === 1 ) {
         graphTip.transition(transDuration).style('opacity',0.10)
     }
+
+    switch(pageType) {
+        case 'help':
+            sidebarLeft.transition(transDuration).style('opacity', 0.25)
+            sidebarRight.transition(transDuration).style('opacity', 0.25)
+            break;
+
+        case 'details':
+            d3.select('#articleIntroParagraphPanel')
+                .transition(transDuration).style('opacity', 0.25)
+
+            break;
+
+    }
+
+
+
+
 
 }
 
@@ -1055,11 +1072,14 @@ function resetScreen() {
         graphTip.transition(transDuration).style('opacity',1)
     }
 
+    d3.select('#articleIntroParagraphPanel')
+        .transition(transDuration).style('opacity',1)
+
 
 }
 
 function displayHelpPage(helpPageToDisplay) {
-    dimScreen();
+    dimScreen('help');
     hideAllHelpPages()
 
     d3.select(helpPageToDisplay)
@@ -1481,16 +1501,40 @@ function setArticleIntroParagraph(parentSidebar, titleType, selectedArticle) {
     articleDetailsArea
             .on('mouseover', function() {activateItemLink(this)})
             .on('mouseout', function() {deActivateItemLink(this)})
-            .on('click', function() { toggleHelpPage('#articleDetails')})
+            // .on('click', function() { toggleHelpPage('#articleDetails')})
+            .on('click', function() { toggleArtileDetailsPage() })
 
 }
 
+function showArticleDetailsPage() {
+    dimScreen('details');
+    articleDetailsPage    
+        .transition().duration(pageTransition)
+            .style('display','block')
+            .style('opacity',1)
+
+}
+function hideArticleDetailsPage() {
+    articleDetailsPage
+        .transition().duration(pageTransition)
+        .style('opacity',0)
+        .style('display','none')
+
+    resetScreen();
+}
+function toggleArtileDetailsPage() {
+    
+    if(articleDetailsPage.style('display')==='block') {
+        hideArticleDetailsPage();
+    }   else    {
+        showArticleDetailsPage();
+    }
+}
 function setArticleDetailsPage(selectedArticle) {
-    let articleDetailsPage = d3.select('#articleDetails')
+
     articleDetailsPage.html('')
 
     let articleDetailsContentArea = articleDetailsPage.append('div')
-
 
     let articleDetailsHeadeding = articleDetailsContentArea.append("h2")
         .text(selectedArticle.title)
@@ -1539,6 +1583,7 @@ function setArticleDetailsPage(selectedArticle) {
                 .style('padding','0')
                 .style('text-indent', '0')
 
+    // TOC area
     let exploreTOCContentArea = detailsAndTocDiv.append("div")
     .attr('id','exploreTOCContentArea')
 
@@ -1572,7 +1617,20 @@ function setArticleDetailsPage(selectedArticle) {
         .classed('scrollbars', true)
         .style('line-height', '1.2')
 
+    // footer area - close page div
+    let closePageDiv = articleDetailsContentArea.append('div')
+        .text('Close Page')
+        .classed('closePageArea',true)
 
+    d3.selectAll('.instructionsPageHeading')
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() { hideArticleDetailsPage(); })
+
+    d3.selectAll('.closePageArea')
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() { hideArticleDetailsPage(); })
 
 
 
@@ -1887,10 +1945,15 @@ function setArticleListPanel(parentSidebar, articleData, data) {
    let centralNode = graphNodes[0];
 
    listArticleLinks
-       .on('mouseover', function() { if(isNavFullOpacity()) { mouseOverArticleNode(this, data, 'fill-opacity')}})
-       .on('mouseout', function()  { if(isNavFullOpacity()) { mouseOutArticleNode(this, data)}})
-       .on('click', function()  { if(isNavFullOpacity()) { sngClickArticleNode(this, data, 'opacity')}})
-       .on('dblclick', function()  { if(isNavFullOpacity()) { dblClickArticleNode(this, 'opacity')}})
+    //    .on('mouseover', function() { if(isNavFullOpacity()) { mouseOverArticleNode(this, data, 'fill-opacity')}})
+    //    .on('mouseout', function()  { if(isNavFullOpacity()) { mouseOutArticleNode(this, data)}})
+    //    .on('click', function()  { if(isNavFullOpacity()) { sngClickArticleNode(this, data, 'opacity')}})
+    //    .on('dblclick', function()  { if(isNavFullOpacity()) { dblClickArticleNode(this, 'opacity')}})
+
+    .on('mouseover', function() { mouseOverArticleNode(this, data, 'fill-opacity')})
+    .on('mouseout', function()  {  mouseOutArticleNode(this, data)})
+    .on('click', function()  { if(isNavFullOpacity()) { sngClickArticleNode(this, data, 'opacity')}})
+    .on('dblclick', function()  { if(isNavFullOpacity()) { dblClickArticleNode(this, 'opacity')}})
 
     articleListHeading
        .on('mouseover', function() { activateItemLink(this) })
@@ -2736,8 +2799,9 @@ function setDomainIntroPanel(parentSidebar) {
         .style('color', function() { return color(domainTitle) })
 
 
-    let introText = '<p>The Domain Graph shows the structure of the articles within this domain.</p>' 
+    let introText = '<p>The Domain Graph shows every article within this domain, and shows how they are all linked together.</p>' 
                     + '<p>When the graph is first loaded, only the nodes are visible; labels are activated by <strong>mousing-over</strong> or <strong>single-clicking</strong> the nodes or the sidebar titles.</p>' 
+                    + '<p>When a node is activated, all of its direct links are highlighted, and the rest of the graph is dimmed. The related article labels appear on the left and right sides of the graph.</p>'
                     + '<p>Articles can appear in multiple domains, but are always colored by their primary domain designation.</p>'
                     + '<p>Nodes are sized according the number of shared links within the domain: the larger the circle, the greater number of links that node is related to.</p>'
     let collapseNote = '<p>Please note: this panel will collapse automatically when a node is activated.</p>' 
