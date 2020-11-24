@@ -1945,15 +1945,10 @@ function setArticleListPanel(parentSidebar, articleData, data) {
    let centralNode = graphNodes[0];
 
    listArticleLinks
-    //    .on('mouseover', function() { if(isNavFullOpacity()) { mouseOverArticleNode(this, data, 'fill-opacity')}})
-    //    .on('mouseout', function()  { if(isNavFullOpacity()) { mouseOutArticleNode(this, data)}})
-    //    .on('click', function()  { if(isNavFullOpacity()) { sngClickArticleNode(this, data, 'opacity')}})
-    //    .on('dblclick', function()  { if(isNavFullOpacity()) { dblClickArticleNode(this, 'opacity')}})
-
-    .on('mouseover', function() { mouseOverArticleNode(this, data, 'opacity')})
-    .on('mouseout', function()  {  mouseOutArticleNode(this, data)})
-    .on('click', function()  { if(isNavFullOpacity()) { sngClickArticleNode(this, data, 'opacity')}})
-    .on('dblclick', function()  { if(isNavFullOpacity()) { dblClickArticleNode(this, 'opacity')}})
+        .on('mouseover', function() { mouseOverArticleNode(this, data, 'opacity')})
+        .on('mouseout', function()  {  mouseOutArticleNode(this, data)})
+        .on('click', function()  { if(isNavFullOpacity()) { sngClickArticleNode(this, data, 'opacity')}})
+        .on('dblclick', function()  { if(isNavFullOpacity()) { dblClickArticleNode(this, 'opacity')}})
 
     articleListHeading
        .on('mouseover', function() { activateItemLink(this) })
@@ -2937,7 +2932,7 @@ function setCentralNodesPanel(parentSidebar, domainData, data) {
             
 
     let centralNodesList = d3.selectAll('.centralNodeArticles')
-        centralNodesList.on('mouseover', function() { if(isNavFullOpacity()) { mouseOverDomainNode(this, data, domainData); toggleDomainIntroContent('off'); }})
+        centralNodesList.on('mouseover', function() { mouseOverDomainNode(this, data, domainData); toggleDomainIntroContent('off'); })
         centralNodesList.on('mouseout', function() { mouseOutDomainNode(this, data, domainData)})
         centralNodesList.on('click', function() { if(isNavFullOpacity()) { sngClickDomainNode(this, data, domainData)}})
         centralNodesList.on('dblclick', function() { if(isNavFullOpacity()) { dblClickDomainNode(this, data)}})
@@ -2985,7 +2980,7 @@ function setDomainArticleListPanel(parentSidebar, domainData, data) {
 
     let domainArticleList = d3.selectAll('.domainArticle')
     
-    domainArticleList.on('mouseover', function() {if(isNavFullOpacity()) { mouseOverDomainNode(this, data, domainData)}})
+    domainArticleList.on('mouseover', function() {mouseOverDomainNode(this, data, domainData)})
     domainArticleList.on('mouseout', function() {mouseOutDomainNode(this, data, domainData)})
     domainArticleList.on('click', function() { if(isNavFullOpacity()) { sngClickDomainNode(this, data, domainData)}})
     domainArticleList.on('dblclick', function() {if(isNavFullOpacity()) { dblClickDomainNode(this, data)}})
