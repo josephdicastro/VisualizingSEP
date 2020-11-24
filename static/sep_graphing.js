@@ -1950,7 +1950,7 @@ function setArticleListPanel(parentSidebar, articleData, data) {
     //    .on('click', function()  { if(isNavFullOpacity()) { sngClickArticleNode(this, data, 'opacity')}})
     //    .on('dblclick', function()  { if(isNavFullOpacity()) { dblClickArticleNode(this, 'opacity')}})
 
-    .on('mouseover', function() { mouseOverArticleNode(this, data, 'fill-opacity')})
+    .on('mouseover', function() { mouseOverArticleNode(this, data, 'opacity')})
     .on('mouseout', function()  {  mouseOutArticleNode(this, data)})
     .on('click', function()  { if(isNavFullOpacity()) { sngClickArticleNode(this, data, 'opacity')}})
     .on('dblclick', function()  { if(isNavFullOpacity()) { dblClickArticleNode(this, 'opacity')}})
@@ -2302,22 +2302,39 @@ function mouseOverArticleNode(mouseOverReference, data, opacityTest) {
     
     // get node or label activated
     let activeElement = d3.select(mouseOverReference)
-
-    if(activeElement.style(opacityTest) > styConfig.nodeLabel.notInArrayOpacity) {
-        if (activeElement.datum().index !== 0) {
-            // do the following if the activated node or label was not the central node
-            activateItemLink(mouseOverReference)
-            // let relatedArticles = getRelatedArticles(data,activeElement.datum())
-
-            if (!exploreMode) {  
-                focusOnArticleNode(data, activeElement.datum()) 
-                setNavTip('On')
+    if(opacityTest==='fill-opacity') {
+        if(activeElement.style(opacityTest) > styConfig.nodeLabel.notInArrayOpacity) {
+            if (activeElement.datum().index !== 0) {
+                // do the following if the activated node or label was not the central node
+                activateItemLink(mouseOverReference)
+                // let relatedArticles = getRelatedArticles(data,activeElement.datum())
+    
+                if (!exploreMode) {  
+                    focusOnArticleNode(data, activeElement.datum()) 
+                    setNavTip('On')
+                }
+    
+                updateSideBarLeft_ArticleMain(activeElement.datum(), 'Preview')
             }
-
-            updateSideBarLeft_ArticleMain(activeElement.datum(), 'Preview')
-    }
+        }
     }
 
+    if(opacityTest==='opacity') {
+        if(activeElement.style(opacityTest) > styConfig.listItems.dimmedOpacity) {
+            if (activeElement.datum().index !== 0) {
+                // do the following if the activated node or label was not the central node
+                activateItemLink(mouseOverReference)
+                // let relatedArticles = getRelatedArticles(data,activeElement.datum())
+    
+                if (!exploreMode) {  
+                    focusOnArticleNode(data, activeElement.datum()) 
+                    setNavTip('On')
+                }
+    
+                updateSideBarLeft_ArticleMain(activeElement.datum(), 'Preview')
+            }
+        }
+    }
 
 
 }
@@ -2328,13 +2345,14 @@ function mouseOutArticleNode(mouseOverReference, data) {
     let activeElement = d3.select(mouseOverReference)
     let centralNode = graphNodes[0]
     let frozenNode = d3.selectAll('.label').filter(function (d,i) {return d3.select(this).style('font-weight') === 'bold'})
-    
     if (!exploreMode) {  
         resetDisplayDefaultsArticleGraph(); 
         updateSideBarLeft_ArticleMain(centralNode, 'Main')
     }   
-    if (exploreMode) {updateSideBarLeft_ArticleMain(frozenNode.datum(), 'Preview')}
-    
+    if (exploreMode) {
+        if(frozenNode.data().length > 0) { updateSideBarLeft_ArticleMain(frozenNode.datum(), 'Preview') }
+        if(frozenNode.data().length === 0) { updateSideBarLeft_ArticleMain(centralNode, 'Preview')}
+    }
 
 
 }
