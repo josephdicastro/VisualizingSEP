@@ -20,10 +20,12 @@ let graphHelp = d3.select("#graphHelp")
 //Article Search Elements
 let articleSearchButton = d3.select('#articleSearchButton')
 let articleSearchArea = d3.select('#articleSearchArea')
+let articleSearchType = d3.select('#articleSearchType')
 let articleSearchFilter = d3.select('#articleSearchFilter')
 let articleSearchListDiv = d3.select('#articleSearchListDiv')
 let articleShowAllCheck = d3.select('#articleShowAllCheck')
 let articleCloseSearchArea = d3.select('#articleCloseSearchArea')
+let articleTextSearchButton = d3.select('#articleTextSearchButton')
 
 //Domain Search elements
 let domainSearchButton = d3.select('#domainSearchButton')
@@ -300,6 +302,13 @@ function updateRecentSearch(searchObj, graphType) {
 
 }
 
+function searchSEP(searchString) {
+
+    let stringCleaned = searchString.replace(/\s/g,'+')
+    let sepSearchURL = 'https://plato.stanford.edu/search/searcher.py?query=' + stringCleaned
+
+    window.open(sepSearchURL, '_blank')
+}
 
 
 // ****** BASIC PAGE SHOW / HIDE FUNCTIONS ****** 
@@ -336,6 +345,9 @@ function setNavigation() {
 
     // Article Searches
     function setArticleSearchElements() {
+
+        //set default search Type
+        setArticleSearchType('title')
         // article search features
         articleSearchButton
             .on('mouseover', function() { 
@@ -348,24 +360,35 @@ function setNavigation() {
             .on('mouseout', function() {articleSearchButton.classed('searchButtonActive', false)})
             .on('click', function() { if(isNavFullOpacity()) { toggleArticleSearchArea(); }})
 
-        articleSearchFilter
-            .on('focusout', function() { 
-                let articleFilter = d3.event.target.value
-                if (articleFilter.length===0) {
-                    setTimeout(function() {
-                        if(!showAll) { hideArticleSearchArea() }
-                    },200)
-                }
+        articleSearchType
+            .on('change', function() { 
+                let searchType = d3.event.target.value
+                setArticleSearchType(searchType)
             })
+
+        articleTextSearchButton
+            .on('mouseover', function() {activateItemLink(this)})
+            .on('mouseout', function() {deActivateItemLink(this)})
+            .on('click', function() {
+                let searchFilter = articleSearchFilter.property('value')
+                console.log(searchFilter)
+                searchSEP(searchFilter)
+            })
+
+        articleSearchFilter
             .on('keyup', function() {
                 let articleFilter = d3.event.target.value
-                if(articleFilter.length === 0 || articleFilter.trim() === '') {
-                    populateSearchResults(articleSearchListDiv, [])
-                    showAll = false;
-                }   else {
-                    filterSearchList('Article',articleFilter);
-                    showAll = false;
+                let searchType = d3.select('input[name="searchType"]:checked').property("value");
+                if(searchType==='title') {
+                    if(articleFilter.length === 0 || articleFilter.trim() === '') {
+                        populateSearchResults(articleSearchListDiv, [])
+                        showAll = false;
+                    }   else {
+                        filterSearchList('Article',articleFilter);
+                        showAll = false;
+                    }
                 }
+
             })
 
         articleShowAllCheck
@@ -387,6 +410,43 @@ function setNavigation() {
             .on('mouseover', function() {activateItemLink(this)})
             .on('mouseout', function() {deActivateItemLink(this)})
             .on('click', function() {hideArticleSearchArea()})
+    }
+
+    function setArticleSearchType(searchType) {
+        let titleSearchTip = d3.select('#titleSearchTip')
+        let textSearchTip = d3.select('#textSearchTip')
+
+        if(searchType==='title') {
+            titleSearchTip
+                .transition().duration(pageTransition)
+                    .style('display','block')
+                    .style('opacity',1)
+            textSearchTip
+                .transition().duration(pageTransition)
+                    .style('opacity',0)
+                    .style('display','none')
+            articleTextSearchButton
+                .transition().duration(pageTransition)
+                    .style('opacity',0)
+        }
+        articleTextSearchButton
+        if(searchType==='text') {
+            titleSearchTip
+                .transition().duration(pageTransition)
+                    .style('opacity',0)
+                    .style('display','none')
+
+            textSearchTip
+                .transition().duration(pageTransition)
+                    .style('display','block')
+                    .style('opacity',1)
+            articleTextSearchButton
+                .transition().duration(pageTransition)
+                    .style('opacity',1)
+    }
+        articleSearchFilter.property('value', '')
+        populateSearchResults(articleSearchListDiv, [])
+        setFocusTo(articleSearchFilter)
     }
 
     function toggleArticleSearchArea() {
@@ -584,7 +644,7 @@ function setNavigation() {
     function populateSearchResults(searchAreaDiv, arrayOfTitles) {
         searchAreaDiv.html('')
         searchAreaDiv
-            .transition().duration(350)
+            .transition().duration(pageTransition)
                 .style('display', 'block')
                 .style('opacity', 1)
 
@@ -864,7 +924,6 @@ function processArticle(urlHash) {
 function processDomain(urlHash) {
     let hashPosition = urlHash.indexOf('#/domain/') + 9
     let domainID = urlHash.substring(hashPosition)
-    console.log(domainID)
     let domainObj = allDomains.filter(domain => domain.id === domainID)
 
     if(domainObj.length !== 0) {

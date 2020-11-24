@@ -48,7 +48,17 @@
                             <button id="articleSearchButton" class="searchButton">Search Articles</button>
                             <div id="articleSearchArea" class="searchArea">
                                 <input id="articleSearchFilter" type="text" placeholder="Search..." class="searchFilter">
-                                <p class="searchTip">(Just use last names when searching philosophers)</p>
+                                <button id="articleTextSearchButton" class='goButton'>Go</button>
+                                <div id="articleSearchType">
+                                    <p> Search Type:
+                                    <input type="radio" id="searchTitles" name="searchType" value="title" checked>
+                                    <label for="titles">Title</label>
+                                    <input type="radio" id="searchText" name="searchType" value="text">
+                                    <label for="text">Text</label>
+                                    </p>
+                                    <p id="titleSearchTip" class="searchTip">Title Search is the primary search mode for VisualizingSEP. It will match your search term to any articles with that term in their titles. If you are searching for philosophers, just use their last name.</p>
+                                    <p id="textSearchTip" class="searchTip">Full Text searches of the SEP are not (currently) available within the VisualizingSEP interface. But, if you enter your search parameters into the input field, the results of the full text search will be displayed in a separate browser tab. You can then search for the article titles returned by SEP back here in VisualingSEP.</p>
+                                </div>
                                 <div id="articleSearchListDiv" class="titleDisplay"></div>
                                 <div class="dropDownFooter">
                                     <div id="showAllArticles" class="showAll">
@@ -91,7 +101,7 @@
                             <button id="recentSearchButton" class="searchButton">Recent Searches</button>
                             <div id="recentSearchArea" class="searchArea">
                                 <input id="recentSearchFilter" type="text" placeholder="Filter..." class="searchFilter">
-                                <p class="searchTip">(Filter searches above, or just tab directly into search list)</p>
+                                <!-- <p class="searchTip">(Filter searches above, or just tab directly into search list)</p> -->
                                 <div id="recentSearchListDiv" class="titleDisplay"></div>
                                 <div class="dropDownFooter">
                                     <div id="showAllSearches" class='showAll'>
@@ -322,6 +332,7 @@
                                         </table>
                                     </div>
                                     <p>Visualizing SEP is an interactive data visualization for exploring the <a href="https://plato.stanford.edu/">Stanford Encyclopedia of Philosophy</a>, one of the Web’s foremost resources on the history and practice of philosophy. The application uses network graphs to explore the inter-relationships of all the articles in the Encyclopedia. There have been a number of wonderful visualizations of the SEP before, but there has not been a single application that combines beauty, ease, and power of exploring the SEP in the way this application does.</p>
+                                    <p style="font-weight: bold;">VisualingSEP is not affiliated with the Stanford Encyclopedia of Philosophy in any way.</p>
                                     <h2>Domain Taxonomy</h2>
                                     <p>The domain taxonomy used for grouping articles is not derived from the SEP itself. The taxonomy is based on the taxonomy from the <a href="https://www.inphoproject.org/taxonomy">Indiana University Philosophy Ontology Project (InPhO)</a>.</p>
                                     <p>The tagging and modeling of the articles into domains were completed with a combination of topic modeling, text search, and old-fashioned individual tagging of documents. The domain groupings should be seen more like language games with loosely fit boundaries between related articles instead of rigid determinations with bright-line differences between them. </p>

@@ -59,6 +59,7 @@ button {cursor: default!important;}
     font-family: proxima-nova, sans-serif;
     font-weight: 100;
     color: white;
+    position: relative;
 }
 /* .searchButton , .searchButton:focus, .searchButton:hover, .searchButton:active { */
 .searchButton {
@@ -109,7 +110,7 @@ button {cursor: default!important;}
 .titleDisplay {
     display:none;
     opacity:0;
-    max-height:400px;
+    max-height:325px;
     width:100%;
     overflow-x: hidden;
     overflow-y: auto;
@@ -144,9 +145,27 @@ button {cursor: default!important;}
     background-color: rgb(100, 100, 100);
 }
 
+#articleSearchType {
+    text-align: right;
+    font-size: .8em;
+    width:80%;
+}
+
+.goButton {
+    position: relative;
+    display: inline;
+    margin: 0;
+
+}
+
 .searchFilter {
-    width:85%;
-    margin: .25em 1em;
+    display: inline;
+    width:80%;
+    /* position: relative; 
+    top: 2%;
+    left:3%; */
+    margin-left:.5em;
+    margin-top:.5em;
     box-shadow: none;
     outline:0;
     border-radius: .15em;
@@ -154,11 +173,14 @@ button {cursor: default!important;}
 
 }
 
+
+
 .searchTip {
-    margin-top: -.25em;
-    margin-left: 1.5em;
-    font-size:.7em;
-    color: rgb(200,200,200)
+    margin-top: -1em;
+    /* margin-left: 1.5em; */
+    font-size:.8em;
+    color: rgb(200,200,200);
+    text-align:left;
 }
 
 .searchFilterResults {
@@ -203,6 +225,8 @@ button {cursor: default!important;}
     text-align: right;
     top: -.2em;
 }
+
+
 
 #articleShowAllCheck, #articleShowAllCheck:focus, #articleShowAllCheck:hover, #articleShowAllCheck:active {
 
