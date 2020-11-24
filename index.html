@@ -57,7 +57,7 @@
                                     <label for="text">Text</label>
                                     </p>
                                     <p id="titleSearchTip" class="searchTip">Title Search is the primary search mode for VisualizingSEP. It will match your search term to any articles with that term in their titles. If you are searching for philosophers, just use their last name.</p>
-                                    <p id="textSearchTip" class="searchTip">Full Text searches of the SEP are not (currently) available within the VisualizingSEP interface. But, if you enter your search parameters into the input field, the results of the full text search will be displayed in a separate browser tab. You can then search for the article titles returned by SEP back here in VisualingSEP.</p>
+                                    <p id="textSearchTip" class="searchTip">Full Text searches of the SEP are not available within the VisualizingSEP interface. If you enter your search parameters into the input field, the results of the full text search will be displayed in a separate browser tab. You can then search for the article titles returned by SEP back here in VisualingSEP.</p>
                                 </div>
                                 <div id="articleSearchListDiv" class="titleDisplay"></div>
                                 <div class="dropDownFooter">
@@ -146,11 +146,12 @@
                                     <h1>Welcome to Visualizing SEP</h1>
                                     <img src="static/img/articlegraphLogo.svg" class="articleSVG">
                                 </div>
-                                <p>VisualizingSEP is an interactive data visualization for exploring the <a href="https://plato.stanford.edu/">Stanford Encyclopedia of Philosophy</a>
-                                    visually, powerfully, and beautifully.</p>
+                                <p>VisualizingSEP is an interactive data visualization for exploring the <a href="https://plato.stanford.edu/">Stanford Encyclopedia of Philosophy</a> practically, intuitively, and beautifully.</p>
                                 <div id="validContent" class="scrollbars">
-                                    <p>The application uses network graphs to map the relationships between the articles in the SEP, allowing one to navigate the entirety of the encyclopedia more efficiently than ever before. The fundamental motivation of VisualizingSEP is that the conceptual contexts in which ideas emerge, the web of knowledge that links different ideas in different domains all together, is as important as any particular topic of philosophy itself, so the application brings these conceptual contexts to the forefront of the interface. Every article returned by the application’s search engine is presented within a graph of all the articles that it is directly linked with, allowing one to explore and deep-dive not only the topic and its surrounding contexts, but to continually link into new avenues of related knowledge. </p>
-                                <p>To begin: Search for an article title or select a domain from the navigation bar above. Or: click the "Randomize" button to get a surprise entry! </p>
+                                    <p>The application uses network graphs to map the relationships between the articles in the SEP, allowing one to navigate the entirety of the encyclopedia more easily than ever before. The fundamental motivation of VisualizingSEP is that the web of knowledge that links different ideas and schools of thought together is as important as any particular topic itself. The application brings these intertextual connections to the forefront of the research process. Every article returned by the application’s search engine is displayed as a graph of all the articles to which it is directly linked, allowing users to easily deep-dive into the topic and its surrounding contexts, as well to continually explore new avenues of related knowledge. VisualizingSEP is first and foremost a powerful research tool, but it also doubles as a fun way to explore the incredible resource that is the Stanford Encyclopedia of Philosophy.
+
+                                    </p>
+                                <p>To begin: Search for an article title or select a domain from the navigation bar above, or click the "Randomize" button to find something new! </p>
 
                                 <p style="margin-top:2em">*Visualizing SEP is optimized for Chrome on the desktop. Performance on other browers is not guaranteed.</p>
                                 </div>
@@ -162,6 +163,7 @@
                                 <div id="graphTip"></div>
                                 <div id="graphMode" ></div>
                                 <svg id="graphSVG" width="100%"></svg>
+                                <div id="selectedDomainArticle"></div>
                                 <div id="articleDetails"  class="graphInstructionArea">
                             </div>
                                 <!-- Help Pages  -->
