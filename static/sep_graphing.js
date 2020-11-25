@@ -3760,7 +3760,7 @@ function color(entryType){
             rgbValue = 'rgb(255, 165, 1)' //#FFD200
             break;
 
-        case 'Jewish Philosophy':
+        case 'Judaic Philosophy':
             rgbValue = 'rgb(255, 165, 1)' //#FFD200
             break;
         // langauge, logic, math, computer science
