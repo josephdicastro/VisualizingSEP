@@ -88,6 +88,9 @@ let priorNodeCircle;
 let priorNodeCircle_ListItem;
 let currentDomainCentralNode;
 
+//used to set/check panel value for dimScreen('details')
+let panelOpacityValue = 1;
+
 let pageTransition = 300
 
 
@@ -1040,8 +1043,8 @@ function dimScreen(pageType) {
             break;
 
         case 'details':
-            // d3.select('#articleIntroParagraphPanel').transition(transDuration).style('opacity', 0.25)
-            // d3.select('#domainIntroPanel').transition(transDuration).style('opacity', 0.25)
+            d3.select('#articleIntroParagraphPanel').transition(transDuration).style('opacity', 0.25)
+            d3.select('#domainIntroPanel').transition(transDuration).style('opacity', 0.25)
             
             break;
 
@@ -1466,7 +1469,16 @@ function setArticleIntroParagraph(parentSidebar, titleType, selectedArticle) {
     introParagraphPanel
         .classed('panelBG', true)
         .attr('id','articleIntroParagraphPanel')
-        .transition().duration(200).style('opacity',1)
+        .style('opacity',0.25)
+        .style('display', 'none')
+
+    introParagraphPanel
+        .transition().duration(500)
+            .ease(d3.easeLinear)
+            .style('opacity',panelOpacityValue)
+            .style('display', 'block')
+
+
     
     let titleDisplay = selectedArticle.title
 
@@ -1509,6 +1521,8 @@ function setArticleIntroParagraph(parentSidebar, titleType, selectedArticle) {
 
 function showArticleDetailsPage() {
     dimScreen('details');
+    panelOpacityValue=0.25;
+
     articleDetailsPage    
         .transition().duration(pageTransition)
             .style('display','block')
@@ -1520,7 +1534,8 @@ function hideArticleDetailsPage() {
         .transition().duration(pageTransition)
         .style('opacity',0)
         .style('display','none')
-
+    
+    panelOpacityValue=1;
     resetScreen();
 }
 function toggleArtileDetailsPage() {
