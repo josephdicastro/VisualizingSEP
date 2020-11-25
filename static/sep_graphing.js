@@ -999,7 +999,7 @@ function setGraphType(graphState) {
     let helpPageToOpen;
 
     if(graphState==='Article') {
-        graphHelpText = "Quick Tip: <strong>Single-click</strong> node to freeze graph; <strong>Double-click</strong> node to load new graph."
+        graphHelpText = "Quick Tip: <strong>Single-click</strong> node to freeze graph; <strong>Double-click</strong> an article node to load new graph."
         helpPageToOpen = '#graphHelpArticle'
     }
     if(graphState==='Domain') {
