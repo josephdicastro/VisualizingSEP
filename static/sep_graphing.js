@@ -101,7 +101,7 @@ let domainName = 'http://localhost:8000/'
 
 let json_file = 'static/sep_network.json'
 
-
+getScreenProperties();
 startVisualization();
 
 
@@ -377,7 +377,6 @@ function setNavigation() {
             .on('mouseout', function() {deActivateItemLink(this)})
             .on('click', function() {
                 let searchFilter = articleSearchFilter.property('value')
-                console.log(searchFilter)
                 searchSEP(searchFilter)
             })
 
@@ -3848,3 +3847,17 @@ function getRandomIntInclusive(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
   }
+
+//   deubg 
+function getScreenProperties() {
+
+    console.log(window.devicePixelRatio)   
+
+    console.log(window.screen.width)   
+    console.log(window.screen.height) 
+    console.log(window.screen.availWidth)   
+    console.log(window.screen.availHeight)   
+
+    console.log(window.innerWidth)   
+    console.log(window.innerHeight)   
+}
