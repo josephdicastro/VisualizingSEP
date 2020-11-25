@@ -841,7 +841,7 @@ function showGraphPage() {
 
 function showHomePage() {
     let url = ''
-    let htmlTitle = 'Welcome to Visualizing SEP'
+    let htmlTitle = 'Visualizing SEP: An interactive data visualization of the Stanford Encyclopedia of Philosophy'
     updateBrowser(url,htmlTitle)
     showContentPage(homePageDiv,'')
 
