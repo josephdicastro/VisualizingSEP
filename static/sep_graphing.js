@@ -106,7 +106,7 @@ startVisualization();
 
 
   // listen for changes to url  
-  window.addEventListener('popstate', function(e) {
+window.addEventListener('popstate', function(e) {
         processURL();
   }, false);
 
@@ -842,7 +842,7 @@ function showHomePage() {
     let url = ''
     let htmlTitle = 'Visualizing SEP: An interactive data visualization of the Stanford Encyclopedia of Philosophy'
     updateBrowser(url,htmlTitle)
-    showContentPage(homePageDiv,'')
+    showContentPage(homePageDiv,'Welcome to Visualizing SEP')
 
 }
 function showAboutPage() {
@@ -1023,7 +1023,6 @@ function dimScreen(pageType) {
     let transDuration = 300
 
     navBar.transition(transDuration).style('opacity', 0.25)
-    pageTitle.transition(transDuration).style('opacity', 0.25)
     svgConfig.graphElements.transition(transDuration).style('opacity', 0.25)
     graphHelp.transition(transDuration).style('opacity', 0.25)
     graphTip.transition(transDuration).style('opacity', 0.25)
@@ -1039,6 +1038,7 @@ function dimScreen(pageType) {
         case 'help':
             sidebarLeft.transition(transDuration).style('opacity', 0.25)
             sidebarRight.transition(transDuration).style('opacity', 0.25)
+            pageTitle.transition(transDuration).style('opacity', 0.25)
             break;
 
         case 'details':
@@ -1448,19 +1448,19 @@ function updateSideBarLeft_ArticleMain(selectedArticle, titleType){
 }
 
 //presently not used, but possibly will be in the future
-function updateSideBarLeft_ArticlePreview(selectedArticle, relatedArticles) {
-    if(selectedArticle) {
+// function updateSideBarLeft_ArticlePreview(selectedArticle, relatedArticles) {
+//     if(selectedArticle) {
 
-        clearSidebar(sidebarLeft)
+//         clearSidebar(sidebarLeft)
 
-        let sideBarLeftContent = sidebarLeft.append("div");
+//         let sideBarLeftContent = sidebarLeft.append("div");
 
-        setArticleIntroParagraph(sideBarLeftContent, "Preview", selectedArticle);
-        setArticleDomainDetails(sideBarLeftContent, selectedArticle);
-        setArticleRelatedLinks(sideBarLeftContent, selectedArticle, relatedArticles);
-    }
+//         setArticleIntroParagraph(sideBarLeftContent, "Preview", selectedArticle);
+//         setArticleDomainDetails(sideBarLeftContent, selectedArticle);
+//         setArticleRelatedLinks(sideBarLeftContent, selectedArticle, relatedArticles);
+//     }
 
-}
+// }
 
 function setArticleIntroParagraph(parentSidebar, titleType, selectedArticle) {
 
@@ -1610,7 +1610,7 @@ function setArticleDetailsPage(selectedArticle) {
 
     exploreTOCContentArea.append('p')
         .text('(Links to SEP article sections)')
-        .style('font-size', 'smaller')
+        // .style('font-size', 'smaller')
         .style('margin-top', '-.5em')
 
     let toc_html_original = selectedArticle.toc
@@ -1626,13 +1626,15 @@ function setArticleDetailsPage(selectedArticle) {
     
     // main text area
     let preamableArea = articleDetailsContentArea.append("div")
-    let paragraphData = getParagraphDataHTML(selectedArticle.preamble_text,2000)
-    preamableArea
-        .html(paragraphData)
         .attr('id', 'preambleArea')
-        .classed('panelParagraphText', true)
         .classed('scrollbars', true)
-        .style('line-height', '1.2')
+
+    let paragraphData = getParagraphDataHTML(selectedArticle.preamble_text,1750)
+    let preamableText = preamableArea.append('div')
+        .html(paragraphData)
+        .classed('panelParagraphText', true)
+
+        // .style('line-height', '1.2')
 
     // footer area - close page div
     let closePageDiv = articleDetailsContentArea.append('div')
@@ -1661,7 +1663,7 @@ function setArticleDetailsPage(selectedArticle) {
 }
 function getParagraphDataHTML(paragraphDataFromNode, substringLength) {
     let htmlReturn = '';
-    //only display the first 500 characters of the node's intro paragraph
+
     if(typeof(paragraphDataFromNode)!=='undefined') {
         if(paragraphDataFromNode !== '') {
             if (paragraphDataFromNode.length > substringLength ) {
@@ -1680,14 +1682,13 @@ function getParagraphDataHTML(paragraphDataFromNode, substringLength) {
                     finalParaText = paragraphSubstring.substring(0,lastPuncMark) + ' ...'
                 }
                 
-                if(substringLength===2000) {
+                if(substringLength===1750) {
                     htmlReturn = '<p>' + finalParaText + '</p><p class="panelDispayCut">~ Abstract Shortened For Display ~</p>' 
                 }   else {
                     htmlReturn = '<p>' + finalParaText + '</p>' 
                 }
                 
 
-                // less than 500 characters
             }  else {
                 htmlReturn = '<p>' + paragraphDataFromNode + '</p>'
             }
@@ -1863,31 +1864,31 @@ function setExploreTOC(parentSidebar, selectedArticle) {
 
 
 // deprecated 
-function setArticleRelatedLinks(parentSidebar, selectedArticle, relatedArticles) {
-    let relatedLinksDiv = parentSidebar.append("div")
+// function setArticleRelatedLinks(parentSidebar, selectedArticle, relatedArticles) {
+//     let relatedLinksDiv = parentSidebar.append("div")
 
-    if (typeof(relatedArticles) !== "undefined") {
-            relatedLinksDiv.html("")
-            relatedLinksDiv.classed('panelBG', true);
-            let numRelated = (relatedArticles.length > 1) ?  relatedArticles.length - 1 : 0;
-            let numRelatedText = (numRelated===1) ? 'Shared Link with' : 'Shared Links with' 
-            let relatedLinksParagraph = relatedLinksDiv.append("p")
-                .style('padding', '.5em 0')
+//     if (typeof(relatedArticles) !== "undefined") {
+//             relatedLinksDiv.html("")
+//             relatedLinksDiv.classed('panelBG', true);
+//             let numRelated = (relatedArticles.length > 1) ?  relatedArticles.length - 1 : 0;
+//             let numRelatedText = (numRelated===1) ? 'Shared Link with' : 'Shared Links with' 
+//             let relatedLinksParagraph = relatedLinksDiv.append("p")
+//                 .style('padding', '.5em 0')
 
-            relatedLinksParagraph.append("span")
-                .html(`<span class="badge badge-pill badge-light">${numRelated}</span>  ${numRelatedText}`)
-                .style('color', 'white')
-                .classed('linksSharedText', true)
+//             relatedLinksParagraph.append("span")
+//                 .html(`<span class="badge badge-pill badge-light">${numRelated}</span>  ${numRelatedText}`)
+//                 .style('color', 'white')
+//                 .classed('linksSharedText', true)
             
-            relatedLinksParagraph.append('span')
-                .html(`${graphNodes[0].title}`)   
-                .style('color', function() { return color(graphNodes[0].primary_domain)})
-                .classed('linksSharedText', true)
+//             relatedLinksParagraph.append('span')
+//                 .html(`${graphNodes[0].title}`)   
+//                 .style('color', function() { return color(graphNodes[0].primary_domain)})
+//                 .classed('linksSharedText', true)
 
-     }  else {
-        relatedLinksDiv.html("")
-     } 
-}
+//      }  else {
+//         relatedLinksDiv.html("")
+//      } 
+// }
 
 function updateSideBarRight_ArticleMain(data, selectedArticle){
     if(selectedArticle) {
