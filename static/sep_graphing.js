@@ -1039,6 +1039,7 @@ function dimScreen(pageType) {
             sidebarLeft.transition(transDuration).style('opacity', 0.25)
             sidebarRight.transition(transDuration).style('opacity', 0.25)
             pageTitle.transition(transDuration).style('opacity', 0.25)
+            
             break;
 
         case 'details':
@@ -2837,9 +2838,9 @@ function setDomainIntroPanel(parentSidebar) {
         .style('color', function() { return color(domainTitle) })
 
 
-    let introText = '<p>The Domain Graph shows every article within this domain, and shows how they are all linked together.</p>' 
-                    + '<p>When the graph is first loaded, only the nodes are visible; labels are activated by <strong>mousing-over</strong> or <strong>single-clicking</strong> the nodes or the sidebar titles.</p>' 
-                    + '<p>When a node is activated, all of its direct links are highlighted, and the rest of the graph is dimmed. The related article labels appear on the left and right sides of the graph.</p>'
+    let introText = '<p>The Domain Graph shows every article within a particular domain, and how each article is linked together. </p>' 
+                    + '<p>When the graph is first loaded, only the nodes are visible; labels are activated by <strong>mousing-over</strong> or <strong>single-clicking</strong> the graph nodes or the sidebar titles.</p>' 
+                    + '<p>When a node is activated, all of its direct links are highlighted, and the rest of the graph is dimmed. Sidebar titles are also highlighted or dimmed. The related article labels appear on the left and right sides of the graph.</p>'
                     + '<p>Nodes are sized according the number of shared links within the domain: the larger the circle, the greater number of links that node is related to.</p>'
                     + '<p>Articles can appear in multiple domains, but are always colored by their primary domain designation.</p>'
 
@@ -2924,7 +2925,7 @@ function setCentralNodesPanel(parentSidebar, domainData, data) {
         .attr('id','domainCentralNodesPanel')
 
     let centralNodesHeading = centralNodesDiv.append("h2")
-        .html("Most Connected Nodes")
+        .html("Top 5 Most Connected Domain Articles")
         .classed('panelHeading', true)
 
     let centralNodesContentArea = centralNodesDiv.append('div')
