@@ -1192,6 +1192,8 @@ function getArticleDataFromJSON(data, articleTitle) {
     })
 
     //get the url for the selectded article node
+    console.log(articleTitle)
+    console.log(selectedArticle)
     let articleURL = selectedArticle[0].id;
     let articlePrimaryDomain = selectedArticle[0].primary_domain
 
@@ -2241,7 +2243,7 @@ function activateItemLink(mouseReference, fontWeight) {
 }
 function deActivateItemLink(mouseReference, fontWeight) {
     d3.select(mouseReference)
-        .style('cursor', 'normal')
+        .style('cursor', 'auto')
 
     if (typeof(fontWeight)!=='undefined') {    d3.select(mouseReference).style('font-weight', fontWeight)}
 }
@@ -2305,6 +2307,7 @@ function sngClickArticleNode(sngClickReference, data, opacityTest) {
                 resetListItemDefaults('.linkDomainListItem')
                 resetListItemDefaults('.linkDirListItem')
                 focusOnArticleNode(data, activeElement.datum())
+                updateSidebarTitleOpacity(data, activeElement.datum())
                 updateSideBarLeft_ArticleMain(activeElement.datum(), 'Explore')
                 setClickTargetActive(activeElement.datum().id)
                 setNavTip('On')
@@ -2323,6 +2326,7 @@ function mouseOverArticleNode(mouseOverReference, data, opacityTest) {
     
     // get node or label activated
     let activeElement = d3.select(mouseOverReference)
+
     if(opacityTest==='fill-opacity') {
         if(activeElement.style(opacityTest) > styConfig.nodeLabel.notInArrayOpacity) {
             if (activeElement.datum().index !== 0) {
@@ -2340,6 +2344,7 @@ function mouseOverArticleNode(mouseOverReference, data, opacityTest) {
         }
     }
 
+    // sidebar titles
     if(opacityTest==='opacity') {
         if(activeElement.style(opacityTest) > styConfig.listItems.dimmedOpacity) {
             if (activeElement.datum().index !== 0) {
@@ -2351,6 +2356,7 @@ function mouseOverArticleNode(mouseOverReference, data, opacityTest) {
                     focusOnArticleNode(data, activeElement.datum()) 
                     setNavTip('On')
                 }
+                // updateSidebarUnderlineTitle(data, activeElement) 
     
                 updateSideBarLeft_ArticleMain(activeElement.datum(), 'Preview')
             }
@@ -2373,9 +2379,10 @@ function mouseOutArticleNode(mouseOverReference, data) {
     if (exploreMode) {
         if(frozenNode.data().length > 0) { updateSideBarLeft_ArticleMain(frozenNode.datum(), 'Preview') }
         if(frozenNode.data().length === 0) { updateSideBarLeft_ArticleMain(centralNode, 'Preview')}
+        
     }
 
-
+    // updateSidebarUnderlineTitle(data, activeElement) 
 }
 
 function getNodeCenter(activeElement) {
@@ -2463,6 +2470,48 @@ function focusOnArticleNode(data, activeElement) {
             .transition().duration(200).style('opacity', function(node) { return setNodeLabelOpacity(node, relatedArticleIDs, activeElement)})
     })
 
+    updateSidebarUnderlineTitle(data, activeElement) 
+
+}
+function updateSidebarUnderlineTitle(data, activeElement) {
+    let relatedArticles = getRelatedArticles(data,activeElement)
+    let relatedArticleIDs = relatedArticles.map(article => article.id)
+
+    d3.selectAll('.linkArticlesListItem')
+        .each(function (d,i) {
+            let articleRef = d3.select(this)
+
+            if(relatedArticleIDs.includes(d.id) && d.id === activeElement.id) {
+                articleRef
+                .transition().duration(200)
+                    .style('text-decoration', 'underline')
+                    // .style('list-style', 'disc')
+
+            }
+
+            if(relatedArticleIDs.includes(d.id) && d.id !== activeElement.id) {
+                articleRef
+                .transition().duration(200)
+                    .style('font-weight', 'normal')
+                    .style('text-decoration', 'none')
+                    .style('list-style', 'none')
+            }
+            if(!relatedArticleIDs.includes(d.id)) {
+                articleRef
+                    .transition().duration(200)
+                        .style('font-weight', 'normal')
+                        .style('text-decoration', 'none')
+                        .style('list-style', 'none')
+            }
+    
+})
+
+}
+function updateSidebarTitleOpacity(data, activeElement) {
+
+    let relatedArticles = getRelatedArticles(data,activeElement)
+    let relatedArticleIDs = relatedArticles.map(article => article.id)
+
     // reduce opacity for all non-activated list article titles
     d3.selectAll('.linkArticlesListItem')
         .each(function (d,i) {
@@ -2473,6 +2522,7 @@ function focusOnArticleNode(data, activeElement) {
                 .transition().duration(200)
                     .style('opacity', styConfig.listItems.defaultOpacity)
                     .style('font-weight', 'normal')
+                    .style('text-decoration', 'none')
 
             }
 
@@ -2492,7 +2542,6 @@ function focusOnArticleNode(data, activeElement) {
             }
             
         })
-
 
 }
 
@@ -2565,6 +2614,7 @@ function resetListItemDefaults(itemClass) {
     d3.selectAll(itemClass)
         .transition().duration(200).style('opacity',styConfig.listItems.defaultOpacity)
         .style('font-weight', 'normal')
+        .style('text-decoration','none')
 }
    
 
