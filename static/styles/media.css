@@ -115,6 +115,7 @@
     /* layout.css */
     .contentRow { height:900px; }
     footer {top:950px;}
+    #pageTitle h1 { font-size: 1.2em;}
 
     /* nav.css */
     #navbarSupportedContent {margin-left: 17em;}
@@ -140,7 +141,7 @@
     /* panel styles */
     .panelHeading { font-size:.8em; }
     .panelParagraphText {font-size: 1em; line-height: 1.2em; }
-    .panelListItem, .panelListItem_numbered, .domainItem, .domainTypeText { font-size: .8em; line-height: 1em;}
+    .panelListItem, .panelListItem_numbered, .domainItem, .domainTypeText { font-size: .9em; line-height: 1.1em;}
     .panelHelpBGImage { background-size: 1em 1em; }
     .panelHelpLeftSideBar { left:91%; top:95%; }
     .panelHelpRightSideBar { left:86%; top:95%; }
@@ -166,7 +167,7 @@
 /* up to 1680x1050*/
 @media only screen and (max-height:1050px) and (max-width: 1680px) and (orientation:landscape) {
     /* layout.css */
-    .contentRow { height:800px; }
+    .contentRow { height:875px; }
     footer {top:900px;}
     #pageTitle h1 { font-size: 1.2em;}
 
@@ -187,10 +188,12 @@
     #toc ul li ul { padding-inline-start: 45px; } 
     #toc ul li a, #toc ul li ul a  { font-size: .9em; line-height: .9em;}
 
+
+
     /* panel styles */
     .panelHeading { font-size:.8em; }
-    .panelParagraphText {font-size: .9em; line-height: 1.1em; }
-    .panelListItem, .panelListItem_numbered, .domainItem, .domainTypeText { font-size: .8em; line-height: 1em;}
+    .panelParagraphText {font-size: 1em; line-height: 1.2em; }
+    .panelListItem, .panelListItem_numbered, .domainItem, .domainTypeText { font-size: .9em; line-height: 1.1em;}
     .panelHelpBGImage { background-size: 1em 1em; }
     .panelHelpLeftSideBar { left:91%; top:95%; }
     .panelHelpRightSideBar { left:86%; top:95%; }
@@ -201,8 +204,8 @@
 /* up to 1600x1024*/
 @media only screen and (max-height:1024px) and (max-width: 1600px) and (orientation:landscape) {
     /* layout.css */
-    .contentRow { height:700px; }
-    footer {top:765px;}
+    .contentRow { height:850px; }
+    footer {top:875px;}
     #pageTitle h1 { font-size: 1.1em;}
 
     /* nav.css */
@@ -221,13 +224,13 @@
     #domainArticleListContentArea { max-height:335px; }
     #preambleArea { height: 750px; width: 60%; }
 
-    #toc { max-height: 275px; width: 100%;}
+    #toc { max-height: 425px; width: 100%;}
     #toc ul li ul { padding-inline-start: 45px; } 
     #toc ul li a, #toc ul li ul a  { font-size: .9em; line-height: .9em;}
 
     /* panel styles */
     .panelHeading { font-size:.8em; }
-    .panelParagraphText {font-size: .8em; line-height: 1em; }
+    .panelParagraphText {font-size: 1em; line-height: 1.2em; }
     .panelListItem, .panelListItem_numbered, .domainItem, .domainTypeText { font-size: .8em; line-height: 1em;}
     .panelHelpBGImage { background-size: 1em 1em; }
     .panelHelpLeftSideBar { left:89%; top:95%; }
@@ -235,13 +238,23 @@
     .articleDetailsBG { left:65%; top:97%; font-size: .75em;}
 
 }
+/* up to 1600x900*/
+@media only screen and (max-height:1024px) and (max-width: 1600px) and (orientation:landscape) {
+    /* layout.css */
+    .contentRow { height:725px; }
+    footer {top:750px;}
+    #pageTitle h1 { font-size: 1.1em;}
 
+    /* graph */
+    .panelParagraphText {font-size: .9em; line-height: 1.2em; }
+    #toc { max-height: 350px; width: 100%;}
+}
 
 /* 1440 x 1050 and 1400 x 900*/
 @media only screen  and (max-height: 1050px) and (max-width: 1440px) and (orientation:landscape) {
     /* layout */
-    .contentRow { height:700px; }
-    footer {top:765px;}
+    .contentRow { height:800px; }
+    footer {top:825px;}
     #pageTitle h1 { font-size: 1em;}
 
     /* nav */
@@ -274,7 +287,7 @@
 
     /* panel styles */
     .panelHeading { font-size:.75em; }
-    .panelParagraphText {font-size: .8em; line-height: 1em; }
+    .panelParagraphText {font-size: .9em; line-height: 1.2em; }
     .panelListItem, .panelListItem_numbered, .domainItem, .domainTypeText { font-size: .75em; line-height: .95em;}
 
     .panelHelp { height:1.5em}
@@ -287,7 +300,13 @@
 
 }
 
-
+/* 1400 x 900*/
+@media only screen  and (max-height: 900px) and (max-width: 1440px) and (orientation:landscape) {
+    /* layout */
+    .contentRow { height:700px; }
+    footer {top:765px;}
+    #pageTitle h1 { font-size: 1em;}
+}
 
 
 /* 4k 2.5 pixel ratio */
@@ -459,6 +478,9 @@
      .contentRow { height:520px; }
      footer {top:570px;}
      #pageTitle h1 { font-size: 1.1em;}
+
+     /* graph */
+     #toc { max-height: 200px; width: 100%;}
 }
 
 /* // 1280 x 720 2 pixel ratio*/
