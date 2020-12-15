@@ -1139,7 +1139,7 @@ function showArticleGraph(articleTitle) {
         setGraphType('Article')
 
         //update graph 
-        drawArticleSimulation(json)
+        drawArticleSimulation(json, articleNode)
         setPageTitle(articleTitle, articleData.primaryDomain)
         updateSidebarsArticle(json, articleNode);
 
@@ -1242,7 +1242,7 @@ function getArticleDataFromJSON(data, articleTitle) {
     return articleData
 
 }
-function drawArticleSimulation(data) { 
+function drawArticleSimulation(data, selectedArticle) { 
 
     let centralNode = graphNodes[0];
     let countOfNodes = graphNodes.length;
@@ -1367,13 +1367,13 @@ function drawArticleSimulation(data) {
     simConfig.simulation.nodes(graphNodes)
     simConfig.simulation.alpha(1).restart();
 
-    setArticleGraphMainLabel()
+    setArticleGraphMainLabel(selectedArticle)
 
 
 
 }
 
-function setArticleGraphMainLabel() {
+function setArticleGraphMainLabel(selectedArticle) {
         //style main article node   
 
         let mainArticleTitle = d3.select('.mainArticleLabel').datum()
@@ -1408,11 +1408,11 @@ function setArticleGraphMainLabel() {
 
     mainArticleLabelArea
     .on('mouseover', function() {
-        if(!exploreMode && d3.event.shiftKey){ activateItemLink(this); clearSelections(); }
+        if(d3.event.shiftKey){ activateItemLink(this); clearSelections(); }
     })
     .on('mouseout', function() {if(!exploreMode) {deActivateItemLink(this)}})
     .on('click', function() { 
-        if(!exploreMode && d3.event.shiftKey) { showArticleDetailsPage(); clearSelections(); }
+        if(d3.event.shiftKey) { showArticleDetailsPage(selectedArticle); clearSelections(); }
         
     })
     
@@ -1507,18 +1507,21 @@ function setArticleIntroParagraph(parentSidebar, titleType, selectedArticle) {
         .classed('introParagraphText', true)
         .text('Article Details')
 
-    setArticleDetailsPage(selectedArticle) 
+    // setArticleDetailsPage(selectedArticle)
     
     articleDetailsArea
             .on('mouseover', function() {activateItemLink(this)})
             .on('mouseout', function() {deActivateItemLink(this)})
-            .on('click', function() { toggleArticleDetailsPage() })
+            .on('click', function() { toggleArticleDetailsPage(selectedArticle) })
 
 }
 
-function showArticleDetailsPage() {
-    dimScreen('details');
+function showArticleDetailsPage(selectedArticle) {
+
     panelOpacityValue=0.25;
+    clearSelections()
+    setArticleDetailsPage(selectedArticle) 
+
 
     articleDetailsPage    
         .transition().duration(pageTransition)
@@ -1530,6 +1533,8 @@ function showArticleDetailsPage() {
         toggleLinkDirectionContent('off')
         toggleLinkDomainContent('off')
     }  
+    clearSelections()
+    dimScreen('details');
 }
 function hideArticleDetailsPage() {
     articleDetailsPage
@@ -1537,25 +1542,18 @@ function hideArticleDetailsPage() {
         .style('opacity',0)
         .style('display','none')
 
-    if(graphType==='Article') {
-        toggleArticleListContent('off')
-        toggleLinkDirectionContent('on')
-        toggleLinkDomainContent('on')
-    }  
     resetScreen();
 
 }
-function toggleArticleDetailsPage() {
+function toggleArticleDetailsPage(selectedArticle) {
     
     if(articleDetailsPage.style('display')==='block') {
         hideArticleDetailsPage();
     }   else    {
-        showArticleDetailsPage();
+        showArticleDetailsPage(selectedArticle);
     }
 }
 function setArticleDetailsPage(selectedArticle) {
-
-    if(!isNavFullOpacity()) {dimScreen('details')}
 
     articleDetailsPage.html('')
 
@@ -2256,10 +2254,14 @@ function sngClickArticleNode(sngClickReference, data, opacityTest) {
 function sngClickArticleAction(sngClickReference, data, activeElement) {
     activateItemLink(sngClickReference) 
 
-    if(d3.event.shiftKey) { 
-        toggleArticleDetailsPage();
+    if(d3.event.shiftKey) {
         clearSelections();
-    }   else{
+        updateSideBarLeft_ArticleMain(activeElement.datum(), 'Preview')
+        showArticleDetailsPage(activeElement.datum());        
+        clearSelections();
+
+    }   else {
+
         if(activeElement.style('font-weight') === 'normal') {
             let relatedArticles = getRelatedArticles(data,activeElement.datum())
             resetListItemDefaults('.linkArticlesListItem')
@@ -2310,7 +2312,7 @@ function mouseOverArticleNode(mouseOverReference, data, opacityTest) {
 
 function mouseOverArticleActions(mouseOverReference, data, activeElement) {
     activateItemLink(mouseOverReference)
-    // underlineTitle(activeElement.datum())
+    setArticleDetailsPage(activeElement.datum())
     let previewTitle = d3.select("#articlePreviewTitle").node().innerHTML
     let mouseOverTitle = activeElement.datum().title
     
@@ -2318,11 +2320,10 @@ function mouseOverArticleActions(mouseOverReference, data, activeElement) {
         focusOnArticleNode(data, activeElement.datum()) 
         setNavTip('On')
     }
-
-
     if(previewTitle !== mouseOverTitle) { 
         updateSideBarLeft_ArticleMain(activeElement.datum(), 'Preview')
     }
+
     
 
 }
@@ -2457,31 +2458,7 @@ function focusOnArticleNode(data, activeElement) {
     })
 
 }
-//deprecated
-// function underlineTitle(activeElement) {
 
-//     d3.selectAll('.linkArticlesListItem, .domainArticle, .centralNodeArticles')
-//         .each(function (d,i) {
-//             let articleRef = d3.select(this)
-
-//             if(d.id === activeElement.id) {
-//                 articleRef
-//                     .transition().duration(200)
-//                         .style('text-decoration', 'underline')
-//                         // .style('list-style', 'disc')
-
-//             } else {
-//                 articleRef
-//                 .transition().duration(200)
-//                     .style('text-decoration', 'none')
-//                     // .style('list-style', 'disc')
-
-//             }
-
-    
-// })
-
-// }
 function updateSidebarTitleOpacity(data, activeElement) {
 
     let relatedArticles = getRelatedArticles(data,activeElement)
@@ -2770,8 +2747,8 @@ function drawDomainSimulation(data, domainData){
 
     node.on('mouseover', function() {mouseOverDomainNode(this, 'opacity')})
     node.on('mouseout', function() {mouseOutDomainNode(this, 'opacity')})
-    node.on('click', function() { sngClickDomainNode(this, data, domainData)})
-    node.on('dblclick', function() {dblClickDomainNode(this, data)})    
+    node.on('click', function() { sngClickDomainNode(this, 'opacity')})
+    node.on('dblclick', function() {dblClickDomainNode(this, 'opacity')})    
     
     let numTicks = 0;
     simConfig.simulation
@@ -2891,12 +2868,12 @@ function setDomainIntroPanel(parentSidebar) {
  
         if(currentState === 'block') {
             toggleDomainIntroContent('off')
-            // toggleArticleIntroContent('on')
-            // toggleDomainDetailsContent('on')
+            toggleArticleIntroContent('on')
+            toggleDomainDetailsContent('on')
         }   else if(currentState === 'none')   {
             toggleDomainIntroContent('on')
-            // toggleArticleIntroContent('off')
-            // toggleDomainDetailsContent('off')
+            toggleArticleIntroContent('off')
+            toggleDomainDetailsContent('off')
          } 
             
      })
@@ -2982,10 +2959,10 @@ function setCentralNodesPanel(parentSidebar, domainData, data) {
             
 
     let centralNodesList = d3.selectAll('.centralNodeArticles')
-        centralNodesList.on('mouseover', function() { mouseOverDomainNode(this, 'opacity'); toggleDomainIntroContent('off'); })
+        centralNodesList.on('mouseover', function() { mouseOverDomainNode(this, 'opacity'); })
         centralNodesList.on('mouseout', function() { mouseOutDomainNode(this, 'opacity')})
-        centralNodesList.on('click', function() { if(isNavFullOpacity()) { sngClickDomainNode(this, data, domainData)}})
-        centralNodesList.on('dblclick', function() { if(isNavFullOpacity()) { dblClickDomainNode(this, data)}})
+        centralNodesList.on('click', function() { sngClickDomainNode(this, 'opacity')})
+        centralNodesList.on('dblclick', function() {  dblClickDomainNode(this, 'opacity')})
 
 }
 
@@ -3032,8 +3009,8 @@ function setDomainArticleListPanel(parentSidebar, domainData, data) {
     
     domainArticleList.on('mouseover', function() {mouseOverDomainNode(this, 'opacity')})
     domainArticleList.on('mouseout', function() {mouseOutDomainNode(this, 'opacity')})
-    domainArticleList.on('click', function() { if(isNavFullOpacity()) { sngClickDomainNode(this, data, domainData)}})
-    domainArticleList.on('dblclick', function() {if(isNavFullOpacity()) { dblClickDomainNode(this, data)}})
+    domainArticleList.on('click', function() { sngClickDomainNode(this, 'opacity')})
+    domainArticleList.on('dblclick', function() {dblClickDomainNode(this, 'opacity')})
 
 }
 
@@ -3048,43 +3025,77 @@ function exploreDomainNode(domainNode) {
 }
 
 
-function dblClickDomainNode(dblClickReference) {
+function dblClickDomainNode(dblClickReference, opacityTest) {
     // get node or label activated
+
+
     let activeElement = d3.select(dblClickReference)
-    activeElement
-        .style("cursor", "pointer")
-        .style("font-weight", "bold")
-    
-    resetDisplayDefaultsArticleGraph();
 
-    let articleTitle = activeElement.datum().title
-    showArticleGraph(articleTitle)
-}
-
-function sngClickDomainNode(mouseOverReference, data, domainTitle) {
-    let selectedArticle = d3.select(mouseOverReference)
-    let fontWeight = selectedArticle.style('font-weight')
-
-
-    if(fontWeight === 'normal' || fontWeight==='400') {
-        selectedArticle
-            .classed('domainMainNode', true)
-
-        focusOnDomainArticle(selectedArticle.datum());
-        updateSidebarLeft_DomainMain(selectedArticle.datum());
-
-        currentDomainCentralNode = getDomainCentralNode()
-        setListItemStyle_DomainCentralNode(currentDomainCentralNode)
-        setListItemStyle_NeighborNodeOpacity()
-        setNavTip('On')
-        setGraphMode('Explore')
-    } else {
-        selectedArticle.transition().duration(200).style('font-weight', 'normal')
-        setGraphMode('Hover')
-        setNavTip('Off')
+    if(opacityTest==='opacity') {
+        console.log(activeElement.style(opacityTest))
+        if(activeElement.style(opacityTest) > styConfig.listItems.dimmedOpacity) {
+            activeElement
+                .style("cursor", "pointer")
+                .style("font-weight", "bold")
+            
+            resetDisplayDefaultsArticleGraph();
+        
+            let articleTitle = activeElement.datum().title
+            showArticleGraph(articleTitle)
+        }
     }
 
-        
+    // activeElement
+    //     .style("cursor", "pointer")
+    //     .style("font-weight", "bold")
+    
+    // resetDisplayDefaultsArticleGraph();
+
+    // let articleTitle = activeElement.datum().title
+    // showArticleGraph(articleTitle)
+}
+
+function sngClickDomainNode(sngClickReference, opacityTest) {
+    let activeElement = d3.select(sngClickReference)
+
+    if(opacityTest==='opacity') {
+        console.log(activeElement.style(opacityTest))
+        if(activeElement.style(opacityTest) > styConfig.listItems.dimmedOpacity) {
+            sngClickDomainNodeActions(sngClickReference)
+        }
+    }
+}
+
+function sngClickDomainNodeActions(sngClickReference) {
+    let activeElement = d3.select(sngClickReference)
+    let fontWeight = activeElement.style('font-weight')
+
+    if(d3.event.shiftKey) { 
+        showArticleDetailsPage(activeElement.datum());
+        updateSidebarLeft_DomainMain(activeElement.datum());
+        clearSelections();
+    }   else {
+
+        if(fontWeight === 'normal' || fontWeight==='400') {
+            activeElement
+                .classed('domainMainNode', true)
+    
+            focusOnDomainArticle(activeElement.datum());
+            updateSidebarLeft_DomainMain(activeElement.datum());
+    
+            currentDomainCentralNode = getDomainCentralNode()
+            setListItemStyle_DomainCentralNode(currentDomainCentralNode)
+            setListItemStyle_NeighborNodeOpacity()
+            setNavTip('On')
+            setGraphMode('Explore')
+        } else {
+            activeElement.transition().duration(200).style('font-weight', 'normal')
+            setGraphMode('Hover')
+            setNavTip('Off')
+        }
+    }
+
+
 }
 function mouseOverDomainNode(mouseOverReference, opacityTest) {
     
@@ -3093,23 +3104,23 @@ function mouseOverDomainNode(mouseOverReference, opacityTest) {
         // graph nodes & sidebar titles
         if(opacityTest==='opacity') {
             if(activeElement.style(opacityTest) > styConfig.listItems.dimmedOpacity) {
-                if (activeElement.datum().index !== 0) {
                     mouseOverDomainNodeActions(mouseOverReference)
-                }
             }
         }
 }
 function mouseOverDomainNodeActions(mouseOverReference) {
-    currentDomainCentralNode = getDomainCentralNode()
-    activateItemLink(mouseOverReference)
 
     let selectedArticle = d3.select(mouseOverReference)
-        .classed('domainMainNode', true)
+    .classed('domainMainNode', true)
+
+    currentDomainCentralNode = getDomainCentralNode()
+    activateItemLink(mouseOverReference)
+    setArticleDetailsPage(selectedArticle.datum())
+
+
 
     // underlineTitle(selectedArticle.datum())
     let selectedArticleTitle = selectedArticle.datum().title
-
-    console.log(mouseOverReference)
     
     if(!exploreMode) { 
         activateItemLink(mouseOverReference); 
@@ -3142,11 +3153,6 @@ function mouseOverDomainNodeActions(mouseOverReference) {
         }  
 
     }
-
-
-
-    
-
     
 }
 
@@ -3424,29 +3430,39 @@ function positionRelatedDomainLabels(activeElement) {
             d3.selectAll('.relatedLinkLines').style('opacity',0)
 
             if(selectedNode.title !== currentDomainCentralNode.title) { 
-                priorNodeCircle.style('opacity', styConfig.nodeLabel.neighborNodeOpacity) 
-                updateSidebarLeft_DomainMain(currentDomainCentralNode)
+
+                if(articleDetailsPage.style('display')!=='block') {
+                    priorNodeCircle.style('opacity', styConfig.nodeLabel.neighborNodeOpacity) 
+                    updateSidebarLeft_DomainMain(currentDomainCentralNode)
+                }
+
+
             }
-
-
-            
         }
 
         let isDblClick = false;
+
         function sngClickTextBox(mouseClickReference) {
+
             d3.selectAll('.relatedLinkLines').style('opacity',0)
             let selectedNode = getDomainNodeFromD3Plus(mouseClickReference)
-            setTimeout(function() { 
-                if(!isDblClick) {
-                    focusOnDomainArticle(selectedNode);
-                    updateSidebarLeft_DomainMain(selectedNode)
-                    
-                    let currentDomainCentralNode = getDomainCentralNode()
-                    setListItemStyle_DomainCentralNode(currentDomainCentralNode)
-                    setListItemStyle_NeighborNodeOpacity()
 
-                }
+            if(d3.event.shiftKey) { 
+                showArticleDetailsPage(selectedNode);
+                updateSidebarLeft_DomainMain(selectedNode)
+                clearSelections();
+            }   else    {
+                setTimeout(function() { 
+                    if(!isDblClick) {
+                        focusOnDomainArticle(selectedNode);
+                        updateSidebarLeft_DomainMain(selectedNode)
+                        
+                        let currentDomainCentralNode = getDomainCentralNode()
+                        setListItemStyle_DomainCentralNode(currentDomainCentralNode)
+                        setListItemStyle_NeighborNodeOpacity()
+                    }
                 }, 300)
+            }
         }
 
         function dblClickTextBox(mouseClickReference) {
@@ -3455,9 +3471,8 @@ function positionRelatedDomainLabels(activeElement) {
             resetDisplayDefaultsDomainGraph();
             showArticleGraph(selectedNode.title)
         }
-
-
 }
+
 function placeLabel(index, domainArray) {
     let cyMin;
     let cyMax;
@@ -3548,7 +3563,7 @@ function resetDisplayDefaultsDomainGraph() {
 
     resetDomainMenuOpacity();
 
-    if(graphType==='Domain') { updateSidebarLeft_DomainMain(); } 
+    // if(graphType==='Domain') { updateSidebarLeft_DomainMain(); } 
     
 
     let links = d3.selectAll('.link')
