@@ -139,7 +139,7 @@
                         <div id="mainContent">
 
                             <!-- Non Graph Pages  -->  
-                            <div id="homePageDiv" class='panelParagraphText scrollbars'>
+                            <div id="homePageDiv" class='pageContent panelParagraphText scrollbars'>
                                 <!-- <div id="homeHeader">
                                     <img src="static/img/articlegraphLogo.svg" class="articleSVG">
                                     <h1>Welcome to Visualizing SEP</h1>
@@ -157,7 +157,7 @@
                                 </div>
                                 <div id="mobileWarning"><p>Mobile devices, and resolutions under 1024 x 768, are not supported. <br>Please visit the site on a desktop.</p></div>
                             </div>
-                            <div id="aboutPageDiv" class="panelParagraphText scrollbars">
+                            <div id="aboutPageDiv" class="pageContent panelParagraphText scrollbars">
                                 <div id="aboutPageContent">
                                     <div id="sepDetails" class="detailsTable">
                                         <table class="table table-bordered table-dark table-sm">
@@ -190,83 +190,15 @@
                                     <h2>Domain Taxonomy</h2>
                                     <p>The domain taxonomy used for grouping articles is not derived from the SEP itself. It is based on the taxonomy from the <a href="https://www.inphoproject.org/taxonomy"  target="_blank">Indiana University Philosophy Ontology Project (InPhO)</a>. The domain groupings should be seen more like language games with loosely fit boundaries between related articles instead of rigid determinations with bright-line differences between them. </p>
                                     <p>Each article is tagged with a <em>primary domain designation</em>, which is the individual domain that an article was considered best grouped with, as well as a general <em>domain_tags</em> field, which indicates other domains that the article can reasonably be tagged with. In this way, an article can appear in multiple domain groups. Each domain is given a color reference, and all article nodes and titles are colored by the color reference of its <em>primary domain designation</em>. </p>
-                                    <!-- <h2>Development</h2>
-                                    <p>The data infrastructure for the application was developed using Python, Pandas, Beautiful Soup, and MongoDB. The interactive aspects of the application were built with HTML, Javascript, and D3.</p> -->
-                                    <!-- <h2>Domain Color Scheme</h2>
-                                    <p>Article nodes and titles are colored by their primary domain designation. A color scheme was developed to group related domain designations together, so the user can understand relations between domains as well. This is the color scheme: </p>
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th>Domains</th>
-                                                <th>Colors</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr  style="color: rgb(184, 108, 237)">
-                                                <td>Aesthetics and Philosophy of Art</td>
-                                                <td style="color: rgb(184, 108, 237)">Violet</td>
-                                            </tr>
-                                            <tr style="color:rgb(156, 20, 252);">
-                                                <td>Philosopy of Religion</td>
-                                                <td>Purple</td>
-                                            </tr>
-                                            <tr style="color:rgb(180,255,249);">
-                                                <td>Thinker</td>
-                                                <td >Light Blue</td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">Group: Social/Political Philosphies (Reds) </td>
-                                            </tr>
-                                            <tr style="color:rgb(230, 97, 97);">
-                                                <td colspan="2">Ethics</td>
-                                            </tr>                                       
-                                            <tr style="color:rgb(238, 4, 4);">
-                                                <td colspan="2">Feminist Philosophies</td>
-                                            </tr>
-                                            <tr style="color:rgb(251, 3, 114);">
-                                                <td colspan="2">Philosopy of Law</td>
-                                            </tr>
-                                            <tr style="color:rgb(238, 50, 170);">
-                                                <td colspan="2">Philosopy of Economics</td>
-                                            </tr>
-                                            <tr style="color:rgb(192, 2, 96);">
-                                                <td colspan="2">Social and Political Philosophy</td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="2">Group: Cultural Philosophies (Oranges) </td>
-                                            </tr>
-                                            <tr style="color:rgb(255, 165, 1);">
-                                                <td colspan="2">African and African-American Philosophy</td>
-                                            </tr>                                       
-                                            <tr style="color:rgb(255, 128, 0);">
-                                                <td colspan="2">Arabic and Islamic Philosophy</td>
-                                            </tr>
-                                            <tr style="color:rgb(235, 66, 3);">
-                                                <td colspan="2">Chinese Philosophy</td>
-                                            </tr>
-                                            <tr style="color:rgb(170, 50, 3);">
-                                                <td colspan="2">Continental Philosophy</td>
-                                            </tr>
-                                            <tr style="color:rgb(192, 2, 96);">
-                                                <td colspan="2">Indian Philosophy</td>
-                                            </tr>
-                                            <tr style="color:rgb(191, 88, 12);">
-                                                <td colspan="2">Japanese Philosophy</td>
-                                            </tr>
-                                            <tr style="color:rgb(237, 100, 68;">
-                                                <td colspan="2">Latin American and Iberian Philosophy</td>
-                                            </tr>
-                                        </tbody>
-                                    </table> -->
                                 </div>
                             </div>
-                            <div id="contactPageDiv" class="panelParagraphText">
+                            <div id="contactPageDiv" class="pageContent panelParagraphText">
                                 <p>Visualizing SEP is designed and developed by Joseph DiCastro, a data engineer and visualiation developer
                                 based in Brooklyn, NY.</p>
                                 <!-- <p>To learn more about my work, visit my website at {coming soon}.</p> -->
                                 <p>To reach me by email, write me at <a href="mailto:joe@josephdicastrollc.com">joe@josephdicastrollc.com</a></p>
                             </div>
-                            <div id="errorPageDiv" class="panelParagraphText">
+                            <div id="errorPageDiv" class="pageContent panelParagraphText">
                                 <p>Sorry. That page or graph can't be found. Please try again.</p>
                                 <p id="badURL"></p>
                             </div>
@@ -288,7 +220,7 @@
 
                                 <!-- Help Pages  -->
                                 <div id="graphHelpArticle"  class="graphInstructionArea">
-                                    <h1 id="graphHelpArticleNavHeading" class="instructionsPageHeading">Article Graph Help</h1>
+                                    <h1 id="graphHelpArticleNavHeading" class="graphInstructionsPageHeading">Article Graph Help</h1>
                                     <div class="helpTextArea scrollbars">
                                         <p>The Article Graph selects a single SEP article, and then shows every other article in the Encyclopedia that the selection is linked to in some way. The selected article is always at the center of the graph, and the linked
                                             articles spread radially around it.
@@ -297,7 +229,7 @@
                                         <h2>User Interactions</h2>
                                         <ul>
                                             <li><strong>MouseOver</strong> a Node or Title to temporarily activate and focus on that particular article. See <em>Node or Title Activation</em> below for details.<br>
-                                                <strong>Mouseout</strong> to reset the graph to its default state.</li>
+                                                <strong>MouseOut</strong> to reset the graph to its default state.</li>
                                             <li><strong>Single-click</strong> a Node or Title to freeze the graph in that activated state. When a graph is frozen, the activated article title is bolded and the <em>Reset Graph</em> 
                                                         button will appear in the top right corner. In this state, one can continually <strong>single-click</strong> different Nodes or Titles to focus on the activated article and re-freeze the graph in that activation state. <br>
                                                 <strong>Single-click</strong> the bolded article again to reset the graph to its default state, or <strong>single-click</strong> the <em>Reset Graph</em> button. </li>
@@ -322,7 +254,7 @@
                                     </div>
                                 </div>                                   
                                 <div id="graphHelpArticleDomains"  class="graphInstructionArea">
-                                    <h1 id="articleDomainHelpHeading" class="instructionsPageHeading">Article Domains Panel Help</h1>
+                                    <h1 id="articleDomainHelpHeading" class="graphInstructionsPageHeading">Article Domains Panel Help</h1>
                                     <p>The Article Domains panel indicates the primary domain designation of the currently selected article, as well as any secondary domains the selected article may also be tagged wtih. </p>
                                     <p>All domains are given a color reference, and all article nodes are colored according to their primary domain designation. </p>
                                     <h2>User Interactions</h2>
@@ -331,14 +263,14 @@
                                     </ul>
                                 </div>
                                 <div id="graphHelpLinkDomains"  class="graphInstructionArea">
-                                    <h1 id="linkDomainHelpHeading" class="instructionsPageHeading">Link Domains Panel Help</h1>
+                                    <h1 id="linkDomainHelpHeading" class="graphInstructionsPageHeading">Link Domains Panel Help</h1>
                                     <p>The Link Domains Panel shows the primary domain designations of each of the linked articles, as well as the number of articles within each domain for the currently selected article.
                                     </p>
                                     <p>All domains are given a color reference, and all article nodes are colored according to their primary domain designation. </p>
                                     <h2>User Interactions</h2>
                                     <ul>
                                         <li><strong>MouseOver</strong> a Link Domain to focus on only the articles in that domain.<br>
-                                            <strong>Mouseout</strong> to reset the graph.</li>
+                                            <strong>MouseOut</strong> to reset the graph.</li>
                                         <li><strong>Single-click</strong> a Link Domain category to freeze the graph in that state. 
                                             The selected Link Domain is bolded. The other domains, as well as all of the Link Direction categories, are dimmed.<br>
                                             <strong>Single-click</strong> the bolded Link Domain again to reset the graph.
@@ -346,7 +278,7 @@
                                     </ul>                                    
                                 </div>
                                 <div id="graphHelpLinkDirections"  class="graphInstructionArea">
-                                    <h1 id="linkDirectionHelpHeading" class="instructionsPageHeading">Link Directions Panel Help</h1>
+                                    <h1 id="linkDirectionHelpHeading" class="graphInstructionsPageHeading">Link Directions Panel Help</h1>
                                     <p>The Link Directions Panel shows the three categories of links that are possible between articles, 
                                         as well as the number of articles within each category for the currently selected article.
                                     </p>
@@ -359,7 +291,7 @@
                                     <h2>User Interactions:</h2>
                                     <ul>
                                         <li><strong>MouseOver</strong> a Link Direction Category to focus on only the articles in that category.<br>
-                                            <strong>Mouseout</strong> to reset the graph.</li>
+                                            <strong>MouseOut</strong> to reset the graph.</li>
                                         <li><strong>Single-click</strong> a Link Direction category to freeze the graph in that state. 
                                             The selected Link Direction is bolded. The other directions, as well as all of the Link Domains, are dimmed.<br>
                                             <strong>Single-click</strong> the bolded Link Direction again to reset the graph.
@@ -367,7 +299,7 @@
                                     </ul>
                                 </div>
                                 <div id="graphHelpListOfArticles"  class="graphInstructionArea">
-                                    <h1 id="listofArticlesHelpHeading" class="instructionsPageHeading">List of Articles Panel Help</h1>
+                                    <h1 id="listofArticlesHelpHeading" class="graphInstructionsPageHeading">List of Articles Panel Help</h1>
                                     <p>This panel contains an alphabetical list of all the linked articles for the currently selected article, with each title colored by 
                                         its primary domain designation. Because this information duplicates the nodes and titles in the radial graph, it is 
                                         hidden by default. But some graphs are so large that having the alphabetical list available is helpful for exploration.</p>
@@ -386,7 +318,7 @@
 
                                 </div> 
                                 <div id="graphHelpDomain"  class="graphInstructionArea">
-                                    <h1 id="graphHelpDomainNavHeading" class="instructionsPageHeading">Domain Graph Help</h1>
+                                    <h1 id="graphHelpDomainNavHeading" class="graphInstructionsPageHeading">Domain Graph Help</h1>
                                     <div class="helpTextArea scrollbars">
                                         <p>The Domain Graph shows the <em>structure</em> of the articles in a specific domain of philosophy. That is, 
                                             the Domain Graph shows how articles in one domain are all linked together: articles that are central to the domain will be clustered
@@ -395,7 +327,7 @@
                                         <h2>User Interactions</h2>
                                         <ul>
                                             <li><strong>MouseOver</strong> a Node or Title to temporarily activate and focus on that particular article. See <em>Node or Title Activation</em> below for details.<br>
-                                                <strong>Mouseout</strong> to reset the graph.</li>
+                                                <strong>MouseOut</strong> to reset the graph.</li>
                                             <li><strong>Single-click</strong> a Node or Title to freeze the graph in that activated state. When a graph is frozen, the activated article title is bolded and the <em>Reset Graph</em> 
                                                         button will appear in the top right corner. In this state, one can continually <strong>single-click</strong> different Nodes or Titles to focus on the activated article and re-freeze the graph in that activation state. <br>
                                                 <strong>Single-click</strong> the bolded article in the Right Sidebar again to reset the graph, or <strong>single-click</strong> the <em>Reset Graph</em> button. </li>
@@ -415,12 +347,12 @@
                                     </div>
                                 </div>           
                                 <div id="graphHelpCentralNodes"  class="graphInstructionArea">
-                                    <h1 id="centralNodessHelpHeading" class="instructionsPageHeading">Top 5 Most Connected Domain Articles Panel Help</h1>
+                                    <h1 id="centralNodessHelpHeading" class="graphInstructionsPageHeading">Top 5 Most Connected Domain Articles Panel Help</h1>
                                     <p>The Most Connected Domain Articles panel lists the top five articles that have the highest number of links within the domain. The number of links is displayed to the left of the article title.
                                     </p>
                                 </div>  
                                 <div id="graphHelpListOfDomainArticles"  class="graphInstructionArea">
-                                    <h1 id="listofDomainArticlesHelpHeading" class="instructionsPageHeading">List of Domain Articles Panel Help</h1>
+                                    <h1 id="listofDomainArticlesHelpHeading" class="graphInstructionsPageHeading">List of Domain Articles Panel Help</h1>
                                     <p>The List of Domain Articles panel provides an alphabetical list of all the articles within a designated domain, as well as the number of other articles that each individual article links to.
                                     </p>
                                 </div>                 

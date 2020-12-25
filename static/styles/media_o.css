@@ -110,27 +110,25 @@
         .articleDetailsBG { left:62%; top:98%; font-size: .8em;}
 }
 
-/* standard hd or 4K 2pixel ratio*/
+/* standard hd or 4K 2pixel ratio -- these are also the defaults for whole site */
 @media only screen and (max-height:1080px) and (max-width: 1920px) and (orientation:landscape) {
     /* layout.css */
-    .contentRow { height:900px; }
+    .contentRow { height:910px; }
     footer {top:950px;}
-    #pageTitle h1 { font-size: 1.2em;}
 
     /* nav.css */
-    #navbarSupportedContent {margin-left: 17em;}
+    #navbarSupportedContent {margin-left: 16em;}
 
     /* graphmode_instructions.css */
-    #graphMode {  left:83%; }
-    #graphTip {top:96%}
-    #graphHelp {left: 95%; top: 95%}
+    #graphMode {top: 0%; left:83%;}
+    #graphTip {top:96%; left: 0%;}
+    #graphHelp {top: 96%; left: 95%; }
+    #articleDetailsTip {top: 96%; left: 0%;}
     .closePageArea { top:96%; left:87%; }
-    #articleDetailsTip {left: 0; top:96%; font-size: .8em; }
 
-    /* graph.css*/
-    /* divs */
+    /* graph.css divs*/
     #articleListContentArea { max-height:550px;}
-    /* #linkDomainContentArea { max-height: 225px; } */
+    #linkDomainContentArea { max-height: 325px; }
     #domainArticleListContentArea { max-height:525px; }
     #preambleArea { height: 750px; width: 60%; }
 
@@ -138,14 +136,13 @@
     #toc ul li ul { padding-inline-start: 45px; } 
     #toc ul li a, #toc ul li ul a  { font-size: 1em; line-height: 1em;}
 
-    /* panel styles */
+    /* graph.css panel styles */
     .panelHeading { font-size:.8em; }
     .panelParagraphText {font-size: 1em; line-height: 1.2em; }
     .panelListItem, .panelListItem_numbered, .domainItem, .domainTypeText { font-size: .9em; line-height: 1.1em;}
-    .panelHelpBGImage { background-size: 1em 1em; }
     .panelHelpLeftSideBar { left:91%; top:95%; }
     .panelHelpRightSideBar { left:86%; top:95%; }
-    .articleDetailsBG { left:67%; top:97%; font-size: .9em;}
+    .articleDetailsBG { top:98%; left:71%;}
 }
 
 

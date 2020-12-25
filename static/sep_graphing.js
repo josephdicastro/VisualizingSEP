@@ -766,14 +766,21 @@ function isNavFullOpacity() {
     return navIsFull
 }
 
-function setPageTitle(pageTitleText,primaryDomain) {
+function setPageTitle(pageTitleText,primaryDomain, graphType) {
     let selectedPageTitle = pageTitle.select("h1")
+    let titleDisplay;
+
+    if(typeof(graphType) !== 'undefined') {
+        titleDisplay = pageTitleText + ' (Domain Graph)'
+    }   else  {
+        titleDisplay = pageTitleText
+    }
     selectedPageTitle
-        .text(pageTitleText)
+        .text(titleDisplay)
         .style("color", function(d) {return color(primaryDomain)})
-        .classed('pageTitle',true)
 
 }
+
 
 function showContentPage (pageToShow, pageTitleText) {    
     hideSidebars();
@@ -975,7 +982,6 @@ function setGraphMode(mode) {
 
     graphMode
         .classed('graphModeHelpCallout', true)
-        .classed('graphModeBGImage',true)
         .text('Reset Graph')
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() {deActivateItemLink(this)})
@@ -1001,11 +1007,11 @@ function setGraphType(graphState) {
     let helpPageToOpen;
 
     if(graphState==='Article') {
-        graphHelpText = "Quick Tip: <strong>Single-click</strong> a node or title to freeze graph; <strong>Single-click + SHIFT KEY</strong> to display Article Details; <strong>Double-click</strong> to load new graph."
+        graphHelpText = "Quick Tip: <strong>Single-click</strong> a node or title to freeze graph; <strong>Single-click+SHIFT Key</strong> to display Article Details; <strong>Double-click</strong> to load new graph."
         helpPageToOpen = '#graphHelpArticle'
     }
     if(graphState==='Domain') {
-        graphHelpText = "Quick Tip: <strong>Single-click</strong> a node or title to freeze graph; <strong>Single-click + SHIFT KEY</strong> to display Article Details; <strong>Double-click</strong> to load new Article Graph."
+        graphHelpText = "Quick Tip: <strong>Single-click</strong> a node or title to freeze graph; <strong>Single-click+SHIFT Key</strong> to display Article Details; <strong>Double-click</strong> to load new Article Graph."
         helpPageToOpen = '#graphHelpDomain'
     }
 
@@ -1074,6 +1080,13 @@ function displayHelpPage(helpPageToDisplay) {
     d3.select(helpPageToDisplay)
         .classed('scrollbars', true)
         .style('display', 'block')
+        .on('click', function() {
+            if(d3.event.shiftKey) {
+                clearSelections();
+                hideHelpPage(helpPageToDisplay);
+                clearSelections();
+            }
+        })
         .transition()
             .duration(pageTransition)
                 .style('opacity',1)
@@ -1084,7 +1097,7 @@ function displayHelpPage(helpPageToDisplay) {
         .classed('graphModeHelpCallout', true)
 
 
-    d3.selectAll('.instructionsPageHeading')
+    d3.selectAll('.graphInstructionsPageHeading')
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() {deActivateItemLink(this)})
         .on('click', function() { hideHelpPage(helpPageToDisplay)})
@@ -1502,12 +1515,12 @@ function setArticleIntroParagraph(parentSidebar, titleType, selectedArticle) {
         .classed('panelParagraphText', true)
 
     let articleDetailsArea = articleIntroParagraphContentArea.append('div')
-        .classed('calloutBG', true)
         .classed('articleDetailsBG', true)
-        .classed('introParagraphText', true)
-        .text('Article Details')
 
-    // setArticleDetailsPage(selectedArticle)
+    articleDetailsArea.append('p')
+            .classed('introParagraphText', true)
+            .classed('articleDetailsBG_textColor', true)
+            .text('Article Details')
     
     articleDetailsArea
             .on('mouseover', function() {activateItemLink(this)})
@@ -1562,7 +1575,7 @@ function setArticleDetailsPage(selectedArticle) {
     let articleDetailsHeadeding = articleDetailsContentArea.append("h2")
         .text(selectedArticle.title)
         .classed('panelHeading', true)
-        .classed('instructionsPageHeading',true)
+        .classed('graphInstructionsPageHeading',true)
         .style('color', function() {return color(selectedArticle.primary_domain)})
 
     //details table
@@ -1581,7 +1594,7 @@ function setArticleDetailsPage(selectedArticle) {
         .style('color', function() {return color(selectedArticle.primary_domain)})
 
     let detailsTableDiv = detailsAndTocDiv.append('div')
-        .classed('articleDetailsTableDiv', true)
+        .attr('id','articleDetailsTableDiv')
 
 
     let detailsTable = detailsTableDiv.append('table')
@@ -1606,16 +1619,18 @@ function setArticleDetailsPage(selectedArticle) {
                 .style('text-indent', '0')
 
     // TOC area
-    let exploreTOCContentArea = detailsAndTocDiv.append("div")
-    .attr('id','exploreTOCContentArea')
 
-    let exploreTOCHeading = exploreTOCContentArea.append('h2')
+    let exploreTOCHeading = detailsAndTocDiv.append('h2')
         .text('Table of Contents')
         .style('color', function() {return color(selectedArticle.primary_domain)})
 
-    exploreTOCContentArea.append('p')
+    exploreTOCHeading.append('p')
         .text('(Links to SEP article sections)')
-        .style('margin-top', '-.5em')
+        .style('font-size','smaller')
+        .style('color', function() {return color(selectedArticle.primary_domain)})
+
+    let exploreTOCContentArea = detailsAndTocDiv.append("div")
+        .attr('id','exploreTOCContentArea')
 
     let tocArea = exploreTOCContentArea.append('div')
         .html(selectedArticle.toc)
@@ -1641,7 +1656,7 @@ function setArticleDetailsPage(selectedArticle) {
         .classed('graphModeHelpCallout', true)
 
     let articleDetailTip = articleDetailsContentArea.append('div')
-        .html('<strong>MouseOver</strong> article titles in the Right Sidebar to update Article Details.')
+        .html('<strong>MouseOver</strong> article titles in the Right Sidebar to update Article Details; <strong>Single-click+SHIFT Key</strong> to close this page. ')
         .attr('id', 'articleDetailsTip')
 
     articleDetailsContentArea
@@ -1652,7 +1667,7 @@ function setArticleDetailsPage(selectedArticle) {
             }
         })
 
-    d3.selectAll('.instructionsPageHeading')
+    d3.selectAll('.graphInstructionsPageHeading')
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() {deActivateItemLink(this)})
         .on('click', function() { hideArticleDetailsPage(); })
@@ -1722,7 +1737,7 @@ function setArticleDomainDetails(parentSidebar, selectedArticle) {
     domainDataDetails.forEach(function(node, i)  {
         let domainColor = color(node)
         let domainTypeText;
-        let domainText = `<td style="color:${domainColor}"><span class="domainItem">${node}</span></td>`
+        let domainText = `<td><span class="domainItem" style="color:${domainColor}">${node}</span></td>`
         
         if(i===0) {  domainTypeText = `<td class="domainTypeText">Primary&nbsp;Domain:</td>` }
         if(i===1) {  domainTypeText = `<td class="domainTypeText">Other&nbsp;Domain(s):</td>` }
@@ -1973,7 +1988,7 @@ function setLinkDirectionPanel(parentDiv, articleData) {
         .classed('panelListItem_numbered', true)
     .exit().remove()
 
-    let linkDirectionsHelp = setPanelHelp(linkDirectionContentArea, 'Link Directions Help', 'panelHelpRightSideBar', '#linkDirectionHelp')
+    let linkDirectionsHelp = setPanelHelp(linkDirectionPanel, 'Link Directions Help', 'panelHelpRightSideBar', '#linkDirectionHelp')
 
     linkDirectionsHelp
         .on('mouseover', function() {activateItemLink(this)})
@@ -2145,14 +2160,12 @@ function toggleLinkDomainContent(state) {
 
 function setPanelHelp(contentArea, altText, sidebarClass, divID) {
     
-    let html = `<a><img src="/static/bootstrap-icons/question-circle.svg" alt="${altText}" class="panelHelpImg"></a>`
     let helpPanel = contentArea.append('p')
         .classed('calloutBG', true)
         .classed('panelHelp', true)
         .classed('panelHelpBGImage',true)
         .classed(sidebarClass, true)
         .attr('id', divID)
-        // .html(html)
 
     return helpPanel
 
@@ -2616,8 +2629,7 @@ function showDomainGraph(domainTitle) {
 
         //update graph 
         drawDomainSimulation(data, domainData)
-        setPageTitle(domainTitle, domainTitle)
-        updateSidebarLeft_DomainMain();
+        setPageTitle(domainTitle, domainTitle, 'Domain Graph')
         updateSidebarRight_DomainMain(data, domainData);
         updateNeighborNodes();
 
@@ -2834,8 +2846,8 @@ function setDomainIntroPanel(parentSidebar) {
         .attr('id','domainIntroPanel')
         .style('margin-bottom', '2em')
 
-    let domainTitle = pageTitle.text()
-    let domainTitleText = `Domain Graph Introduction:<br>${domainTitle}`
+    let domainTitle = pageTitle.text().replace(' (Domain Graph)','')
+    let domainTitleText = `Domain Graph Introduction`
 
 
     let domainIntroHeading = domainIntroPanel.append("h2")

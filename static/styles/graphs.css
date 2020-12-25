@@ -3,14 +3,144 @@
 
 .label, .domainLabelItem {
     font-family: proxima-nova, sans-serif;
-    font-style: normal;
-    font-weight: normal; 
     font-size: 1em;
 }
 
+.mainArticleLabel {display: none}
+.mainArticleNode {display: none}
 .mainDomainNode {font-weight: bold;}
+.mainLabel {text-anchor: middle}
 
-/* Panel Styles */
+/* Graph Area Divs - Article Graph  */
+
+#articleListContentArea {
+    width:100%;
+    max-height:550px;
+}
+#linkDomainContentArea { 
+    width:100%;
+    max-height: 325px; 
+}
+
+/* Graph Area Divs - Article Details Area Graph  */
+
+#detailsAndTOCDiv {
+    width: 40%;
+    float: right; 
+    overflow: hidden;
+    padding-left:2em;
+}
+
+#detailsAndTOCDiv h2 {
+    font-size:1.1em;
+}
+
+#articleDetailsTableDiv {
+    width: 100%;
+    margin-bottom: 2em;
+}
+
+#exploreTOCContentArea {
+    width: 100%;
+    overflow: hidden;
+}
+
+#toc { 
+    max-height: 500px; 
+    width: 100%;
+}
+
+#toc ul, #toc li {    
+    list-style: none;
+    clear: both;
+    margin-bottom: .2em;
+    line-height: 1.2em;
+}
+
+#toc ul li ul { padding-inline-start: 45px; } 
+
+#toc ul li, #toc ul li a, #toc ul li ul li, #toc ul li ul li a  {
+    text-decoration: none;
+    color:rgb(250,250,250);
+    padding-right: 1em;
+    font-size: 1em; 
+    line-height: 1.1em;
+
+}
+
+#toc ul li a:hover, #toc ul li ul li a:hover {
+    text-decoration: underline;
+}
+
+#preambleArea { 
+    height: 750px; 
+    width: 60%; 
+}
+
+#preambleArea p {
+    color:rgb(250,250,250);
+
+    font-size: 1em;
+    line-height: 1.2em;
+}
+
+/* Graph Area Divs - Domain Graph  */
+#centralNodesContentArea {
+    width:100%;
+}
+
+#domainArticleListContentArea {
+    width:100%;
+    margin-bottom:.5em;
+    max-height: 540px;
+}
+
+
+
+/* Panel Styles - Text */
+.panelHeading {
+    color: lightgray;
+    font-size:.8em;
+    font-weight: bold;
+
+    margin-left: .5em;
+    margin-bottom: .3em;
+
+    padding-top: .5em; 
+
+    border-bottom: 1px rgb(60,60,60) dotted;
+
+
+}
+
+.panelParagraphText {
+
+    color:rgb(250,250,250);
+
+    font-size: 1em;
+    line-height: 1.2em;
+
+    padding: 0 .5em;
+    padding-right: 1em;
+}
+
+.panelDispayCut {
+    color:lightgray;
+    font-size: .8em;
+    text-align: right;
+    margin-top: 2em;
+}
+
+.linkCountText {
+    font-size: 1em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    color: lightgray;
+    padding-top: .5em;
+}
+
+/* Panel Styles - Toggles */
 .toggleOffBG {
     background-image: url('../bootstrap-icons/toggle-off.svg');
     background-repeat: no-repeat;
@@ -35,6 +165,8 @@
     background-position: right;
 }
 
+/* Panel Styles - Backgrounds */
+
 .panelBG {
     background-color: rgb(15, 15, 15);
     border-radius: 1em;
@@ -51,85 +183,42 @@
     margin-bottom:.5em;
 }
 
-.panelHeading {
-    color: lightgray;
-    border-bottom: 1px rgb(60,60,60) dotted;
-    font-size:.8em;
-    margin-left: .5em;
-    padding-top: .5em; 
-    margin-bottom: .3em;
-    font-family: proxima-nova, sans-serif;
-    font-style: normal;
-    font-weight: bolder;
-}
-
 .panelBG_Color {
     background-color: rgb(20, 20, 20);
 }
 
-.panelParagraphText {
-    /* color:lightgray;
-     */
-     color:rgb(250,250,250);
-    font-size: 1em;
-    line-height: 1.2em;
-    font-family: proxima-nova, sans-serif;
-    font-weight: normal;
-    font-style: normal;
-    padding: 0 .5em;
-    padding-right: 1em;
-}
+/* Panel Styles - List Items and Domain Details Table */
 
-.panelDispayCut {
-    color:lightgray;
-    font-size: .8em;
-    text-align: right;
-    font-family: proxima-nova, sans-serif;
-    font-style: normal;
-    font-weight: normal; 
-
-    margin-top: 2em;
-}
-
-
-
-#articleListContentArea ul, #articleListContentArea ul li {list-style: none;}
-.panelListItem{
-    margin-left:-1.1em;
-    /* padding-left: -1.1em; */
-    padding-right: 1em;
-
-
+.panelListItem, .panelListItem_numbered, .domainTypeText, .domainItem {
     font-size: .9em;
-    font-family: proxima-nova, sans-serif;
-    font-style: normal;
-    font-weight: normal; 
+    line-height: 1.1em;
+    color:lightgray;
+}
+
+.panelListItem {
 
     list-style: none;
-    color:lightgray;
+    margin-left:-1.1em;
+    padding-right: 1em;
+
     text-indent: -1.1em;
 }
 .panelListItem_numbered{
+    list-style: none;
+
     margin-left:-1.1em;
     padding-left:.5em;
     padding-right: 1em;
 
-    font-size: .9em;
-    /* line-height: 1em; */
-    font-family: proxima-nova, sans-serif;
-    font-style: normal;
-    font-weight: normal; 
 
-    list-style: none;
-    color:lightgray;
     text-indent: -1.1em;
 
 }
-
 .panelListItem_numbered .badge-pill {
+    width: 2em;
+
     padding: 0;
     padding-left: 1.25em;
-    width: 2em;
     margin-left: -1em;
     background-color: lightgrey;
 
@@ -141,36 +230,47 @@
     padding-right:.5em;
 }
 .domainTypeText {
-    font-family: proxima-nova, sans-serif;
-    font-style: normal;
-    font-weight:normal; 
-    font-size: .9em;
-    color:lightgray;
     width: 40%;
     margin:0;
     padding:0;
     vertical-align: top;
-    width:50%
 }
 
 .domainItem {
-    font-family: proxima-nova, sans-serif;
-    font-style: normal;
-    font-weight: normal; 
-    font-size: .9em;
-    line-height: 1em;
     margin:0;
     padding:0;
     vertical-align: top;
 }
 
+/* Panel Styles - Help Items & Callouts*/
+.articleDetailsBG {
+    position: relative;
+    top:98%; 
+    left:68%;
 
+    height: 2.1em;
+    width: 8.2em;
+
+    margin-bottom: -.5em; 
+    padding-right: 1em;
+    padding-top: .25em;
+    
+    font-size: .9em;
+    text-align: right;
+
+    border-top-left-radius: 1.5em;
+    border-bottom-right-radius: 1.5em;
+
+    background-color: rgb(40,40,40);
+}
+
+.articleDetailsBG:hover { background-color: rgb(60,60,60) }
+
+.articleDetailsBG_textColor {color: #F0DB36;} 
 
 .calloutBG {
-    position: relative;
-
     border-top-left-radius: 1.25em;
-    border-bottom-right-radius: 1em;
+    border-bottom-right-radius: 1.5em;
     background-color: rgb(40,40,40);
 
     margin-top: -.2em;
@@ -183,19 +283,15 @@
 
 .panelHelp {
     position: relative;
-    width:2em;
-    height: 2em;
+    width:2.5em;
+    height: 2.5em;
 
-}
-
-.panelHelpBGImage {
     background-image: url('../bootstrap-icons/question-circle.svg');
     background-repeat: no-repeat;
-    background-size: .75em .75em;
+    background-size: 1.1em 1.1em;
     background-position: 50% 50%;
+
 }
-
-
 
 .panelHelp:hover, .calloutBG:hover {
     background-color: rgb(60,60,60);
@@ -204,95 +300,9 @@
 .helpText { 
     color: #F0DB36;
 }
-.panelHelpImg {
-    width:90%;
-    height:90%;
-    padding-top:.2em;
-}
 
-.articleDetailsBG {
-    font-family: proxima-nova, sans-serif;
-    font-style: normal;
-    font-weight: normal; 
-    text-align: right;
-    color: #F0DB36;
-    height: 2em;
-    padding-right: 1em;
-    padding-top: .4em;
-    width: 8.1em;
-    position: relative;
-}
-
-
-
-.articleDetailsTableDiv {
-    width: 100%;
-    margin-bottom: 2em;
-}
-
-#detailsAndTOCDiv {
-    width: 40%;
-    float: right; 
-    overflow: hidden;
-    padding-left:2em;
-
-}
-
-
-#exploreTOCContentArea {
-    width: 100%;
-    overflow: hidden;
-
-}
-
-
-
-#toc ul, #toc li {    
-    list-style: none;
-    clear: both;
-    margin-bottom: .2em;
-    line-height:1em;
-}
-
-
-#toc ul li a, #toc ul li ul a  {
-    font-family: proxima-nova, sans;
-    font-weight: normal;
-    text-decoration: none;
-    color:rgb(250,250,250);
-    padding-right: 1em;
-    list-style: none;
-}
-
-#toc ul li a:hover, #toc ul li ul a:hover {
-    text-decoration: underline;
-}
-
-
-
-
-
-.linkCountText {
-    font-size: 1em;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    color: lightgray;
-    padding-top: .5em;
-}
-
-
-
-
-
-
-
-
-/* Debug */
-
-.debugBorder {
-    border: 1px dashed white;
-}
+.panelHelpLeftSideBar { top:96%; left:89%; }
+.panelHelpRightSideBar { top:96%; left:84%; }
 
 
 .relatedLinkLines {
@@ -302,12 +312,7 @@
 }
 
 
-
-#articleListContentArea {
-    width:100%;
-    margin-bottom:.5em;
-}
-
+/* Scroll bar classes */
 .scrollbars {
     overflow-y: auto;
     overflow-x: hidden;
@@ -327,11 +332,4 @@
     border: 1px solid darkgray;  
   }
 
-#centralNodesContentArea {
-    width:100%;
-}
 
-#domainArticleListContentArea {
-    width:100%;
-    margin-bottom:.5em;
-}
