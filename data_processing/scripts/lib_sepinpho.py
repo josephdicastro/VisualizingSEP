@@ -227,28 +227,51 @@ def parse_sep_file(file_to_parse):
     return page_object
 
 def update_main_document_data(sep_object):
-    update_string = {'title': sep_object['title'],
-                    'pubdate': sep_object['pubdate'],
-                    'preamble_text': sep_object['preamble_text'],
-                    'toc_text': sep_object['toc_text'],
-                    'main_text': sep_object['main_text'],
-                    'toc': sep_object['toc'],
-                    'copyright': sep_object['copyright'],
-                    'inphoe_href': sep_object['inpho_href'],
-                    'inpho_api':sep_object['inpho_api'],
-                    'inpho_json':sep_object['inpho_json'],
+    """ Updates main dataset when new/revised articles are published in SEP
+
+        Keyword Arguments:
+        sep_object -- the mongoDB record
+
+        Returns:
+        MongoDB Update_string as Dictionary  
+
+    """
+
+    if sep_object['inpho_json'] == 'Error: No InPhO entry':
+        update_string = {'title': sep_object['title'],
+                        'pubdate': sep_object['pubdate'],
+                        'preamble_text': sep_object['preamble_text'],
+                        'toc_text': sep_object['toc_text'],
+                        'main_text': sep_object['main_text'],
+                        'toc': sep_object['toc'],
+                        'copyright': sep_object['copyright'],
+                        'outlinks':sep_object['outlinks']}        
+    else:
+        update_string = {'title': sep_object['title'],
+                        'pubdate': sep_object['pubdate'],
+                        'preamble_text': sep_object['preamble_text'],
+                        'toc_text': sep_object['toc_text'],
+                        'main_text': sep_object['main_text'],
+                        'toc': sep_object['toc'],
+                        'copyright': sep_object['copyright'],
+                        'inpho_href': sep_object['inpho_href'],
+                        'inpho_api':sep_object['inpho_api'],
+                        'inpho_json':sep_object['inpho_json'],
                     'outlinks':sep_object['outlinks']}
     return update_string
 
 def get_author_string(copyright_obj):
+    """ This function returns a string of the copyright_obj field """
     soup = BeautifulSoup(copyright_obj)
     copyright_string = soup.get_text()
     by_pos = copyright_string.find('by ') +2
     authors = copyright_string[by_pos:].strip()
     authors_clean = re.sub('<.*?>', '', authors)
+    
     return authors_clean
 
 def add_author(url, authors, collection_to_update):
+    """ This function adds the 'author' field to a MongoDB document """
 
     result = collection_to_update.update_one(
         { 'page_url': url },

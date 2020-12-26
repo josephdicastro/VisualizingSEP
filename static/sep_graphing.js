@@ -101,6 +101,8 @@ let baseURL;
 
 let json_file = 'static/sep_network.json'
 
+getScreenProperties();
+
 startVisualization();
 
 
