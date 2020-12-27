@@ -158,7 +158,7 @@ function initializeParentSVG(svg) {
     let width = areaWidth - margin.left - margin.right;
     let height = areaHeight - margin.top - margin.bottom;
 
-    svg.attr("viewBox", "0 75 " + width + " " + height )
+    svg.attr("viewBox", "0 90 " + width + " " + height )
        .attr("preserveAspectRatio", "xMidYMid")
 
     //clear out child SVG elements
@@ -1149,6 +1149,7 @@ function showArticleGraph(articleTitle) {
 
         //setup graph to display article data
         showGraphPage();
+        
         resetScreen()
         setGraphMode('Hover')
         setGraphType('Article')
@@ -1625,6 +1626,7 @@ function setArticleDetailsPage(selectedArticle) {
     let exploreTOCHeading = detailsAndTocDiv.append('h2')
         .text('Table of Contents')
         .style('color', function() {return color(selectedArticle.primary_domain)})
+        .style('margin-top', '-1em')
 
     exploreTOCHeading.append('p')
         .text('(Links to SEP article sections)')
@@ -2951,6 +2953,7 @@ function setCentralNodesPanel(parentSidebar, domainData, data) {
 
     let centralNodesContentArea = centralNodesDiv.append('div')
         .attr('id', 'centralNodesContentArea')
+        .classed('scrollbars', true)
         
     //sort domain nodes from most links to least, and then add the top 5 nodes to the centralNodes array
     domainData.nodes.sort((a,b) => d3.descending(a.numLinks, b.numLinks))
@@ -2972,7 +2975,7 @@ function setCentralNodesPanel(parentSidebar, domainData, data) {
             .classed('panelListItem_numbered', true)
         .exit().remove()
 
-    let centralNodesHelp = setPanelHelp(centralNodesContentArea, 'Most Connected Nodes Help', 'panelHelpRightSideBar', '#centralNodesHelp')
+    let centralNodesHelp = setPanelHelp(centralNodesDiv, 'Most Connected Nodes Help', 'panelHelpRightSideBar', '#centralNodesHelp')
     centralNodesHelp
         .on('mouseover', function() {activateItemLink(this); })
         .on('mouseout', function() {deActivateItemLink(this)})
