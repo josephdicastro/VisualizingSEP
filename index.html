@@ -221,10 +221,10 @@
                                 <div id="graphHelpArticle"  class="graphInstructionArea">
                                     <h1 id="graphHelpArticleNavHeading" class="graphInstructionsPageHeading">Article Graph Help</h1>
                                     <div class="helpTextArea scrollbars">
-                                        <p>The Article Graph selects a single SEP article, and then shows every other article in the Encyclopedia that the selection is linked to in some way. The selected article is always at the center of the graph, and the linked
+                                        <p>The Article Graph selects a single SEP article, and then shows every other article in the Encyclopedia that the selection is directly linked to in some way. The selected article is always at the center of the graph, and the linked
                                             articles spread radially around it.
                                         </p>
-                                        <p>All domains are given a color reference, and all article nodes are colored according to their primary domain designation. </p>
+                                        <p>Article nodes and titles are colored according to their primary domain designation. </p>
                                         <h2>User Interactions</h2>
                                         <ul>
                                             <li><strong>MouseOver</strong> a Node or Title to temporarily activate and focus on that particular article. See <em>Node or Title Activation</em> below for details.<br>
@@ -232,16 +232,21 @@
                                             <li><strong>Single-click</strong> a Node or Title to freeze the graph in that activated state. When a graph is frozen, the activated article title is bolded and the <em>Reset Graph</em> 
                                                         button will appear in the top right corner. In this state, one can continually <strong>single-click</strong> different Nodes or Titles to focus on the activated article and re-freeze the graph in that activation state. <br>
                                                 <strong>Single-click</strong> the bolded article again to reset the graph to its default state, or <strong>single-click</strong> the <em>Reset Graph</em> button. </li>
+                                            <li><strong>Single-click + SHIFT Key</strong> any Node or Title to open the Article Details page for the selected article. When you are inside the Article Details page, you can then <strong>Single-click + SHIFT Key</strong> anywhere on the page to close it and return to the main graph.</li>
                                             <li><strong>Double-click</strong> a Node or Title to load a brand-new Article Graph with that article as the newly selected article.</li>
                                         </ul>
                                         <h2>Node or Title Activation</h2>
                                         <p>When a Node or Title is activated, the following occurs:</p>
                                         <ul>
                                             <li>The preview text and domain designations of the activated node replace the main article's information in the Left Sidebar.</li>
-                                            <li>If the activated article also links to any other articles in the current graph, a dashed line is drawn from the activated node to the related node(s). This shows the set of
-                                                article links that are shared between the activated node and the selected article. </li>
+                                            <li>If the activated article also links to any other articles in the current graph, those article notes remain at full opacity and a dashed line is drawn from the activated node to the related node(s). This shows the set of related links that are shared between the activated node and the currently selected article. </li>
                                             <li>All other nodes displayed in the graph will be dimmed.</li>
-                                            <li>Nothing changes in the Right Sidebar, which only provides information about the currently selected article.</li>
+                                            <li>When the graph has been frozen:
+                                                <ul>
+                                                    <li>Frozen graphs feature all of the same above functionality, but the opacity of the article titles displayed in the List of Articles is updated in the same way as the graph nodes: all of the shared links are displayed at full opacity, while the rest of the titles are dimmed.</li>
+                                                </ul>
+                                            </li>
+                                            <li>There aren't any data changes in the Right Sidebar panels. They only provide information about the currently selected article.</li>
                                         </ul>
                                         <h2>Article Details</h2>
                                         <p>The <em>Article Details</em> button opens a page that displays the following:</p>
@@ -263,7 +268,7 @@
                                 </div>
                                 <div id="graphHelpLinkDomains"  class="graphInstructionArea">
                                     <h1 id="linkDomainHelpHeading" class="graphInstructionsPageHeading">Link Domains Panel Help</h1>
-                                    <p>The Link Domains Panel shows the primary domain designations of each of the linked articles, as well as the number of articles within each domain for the currently selected article.
+                                    <p>The Link Primary Domains Panel shows the primary domain designations of each of the linked articles, as well as the number of articles within each domain for the currently selected article.
                                     </p>
                                     <p>All domains are given a color reference, and all article nodes are colored according to their primary domain designation. </p>
                                     <h2>User Interactions</h2>
@@ -301,7 +306,11 @@
                                     <h1 id="listofArticlesHelpHeading" class="graphInstructionsPageHeading">List of Articles Panel Help</h1>
                                     <p>This panel contains an alphabetical list of all the linked articles for the currently selected article, with each title colored by 
                                         its primary domain designation. Because this information duplicates the nodes and titles in the radial graph, it is 
-                                        hidden by default. But some graphs are so large that having the alphabetical list available is helpful for exploration.</p>
+                                        hidden by default. But there are two cases where having this list is important:</p>
+                                        <ul>
+                                            <li>Some graphs are so large that having the alphabetical list available is helpful for exploration.</li>
+                                            <li>When the Article Details page is opened up for any article, this panel automatically expands so that you can easily get the details for all other linked articles.</li>
+                                        </ul></p>
                                     <h2>User Interactions: Panel Heading</h2>
                                         <ul>
                                         <li><strong>Single-click</strong> on the panel heading, or its toggle button, to expand its contents. 
@@ -330,6 +339,8 @@
                                             <li><strong>Single-click</strong> a Node or Title to freeze the graph in that activated state. When a graph is frozen, the activated article title is bolded and the <em>Reset Graph</em> 
                                                         button will appear in the top right corner. In this state, one can continually <strong>single-click</strong> different Nodes or Titles to focus on the activated article and re-freeze the graph in that activation state. <br>
                                                 <strong>Single-click</strong> the bolded article in the Right Sidebar again to reset the graph, or <strong>single-click</strong> the <em>Reset Graph</em> button. </li>
+                                            <li><strong>Single-click + SHIFT Key</strong> any Node or Title to open the Article Details page for the selected article. When you are inside the Article Details page, you can then <strong>Single-click + SHIFT Key</strong> anywhere on the page to close it and return to the main graph.</li>
+
                                             <li><strong>Double-click</strong> a Node or Title to load a brand-new <em>Article Graph</em> with that article as the newly selected article.</li>
                                         </ul>
                                         <h2>Node or Title Activation</h2>
@@ -337,8 +348,13 @@
                                         <ul>
                                             <li>The <em>Domain Graph Introduction</em> panel is collapsed automatically, and does not expand automatically again unless the <em>Reset Graph</em> button is clicked. The user can manually expand the panel by clicking the toggle button in the panel heading.</li>
                                             <li>When a node is activated, the preview text and domain designations of the activated node appear in the Left Sidebar.</li>
-                                            <li>The titles of any articles that are linked to from the activated node appear to the left and right side of the graph. The graph nodes themselves are redrawn to highlight the connections among the current set of links, with linked nodes highlighted and non-linked nodes are dimmed. A similar change in opacity is reflected among the titles in the Right Sidebar: the titles of linked nodes will remain at full opacity, while the titles of non-linked articles will be dimmed.  </li>
-                                            <li>The titles displayed to the left and right of the graph are themselves active links. When you <strong>mouseOver</strong> or <strong>single-click</strong> one of those titles, the preview text and article domain information in the Left Sidebar is updated for the selected article, and a dashed line is drawn from the title to its corresponding node in the graph, which indicates the position of the article within the current domain network.</li>
+                                            <li>The titles of any articles that are linked to from the activated node appear to the left and right side of the graph. The graph nodes themselves are redrawn to highlight the connections among the current set of links, with linked nodes highlighted and non-linked nodes dimmed. </li>
+                                            <li>When the graph is frozen: 
+                                                <ul>
+                                                    <li>The titles displayed to the left and right of the graph are active links. When you <strong>MouseOver</strong> one of those titles, the preview text and article domain information in the Left Sidebar is updated for the selected article, and a dashed line is drawn from the title to its corresponding node in the graph, which indicates the position of the article within the current domain network.</li>
+                                                    <li>When you <strong>single-click</strong> one of those titles, the graph is updated and then re-frozen with the newly selected node as the center of the Domain Graph.</li>
+                                                    <li>The opacity of titles in the Right Sidebar are updated based on the nodes currently displayed: the selected node and its related links remain at full opacity, while the non-related articles are all dimmed.</li>
+                                                </ul></li>
 
                                         </ul>
                                         <h2>Article Details</h2>
@@ -376,7 +392,7 @@
          <!--D3 js -->
          <script  type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
          <script src="https://d3plus.org/js/d3plus-text.v0.10.full.min.js"></script>
-         <script  type="text/javascript" src="static/sep_graphing-min.js"></script>
+         <script  type="text/javascript" src="static/sep_graphing.js"></script>
 
         <!-- Bootstrap JS: jQuery first, then Popper.js, then Bootstrap JS -->
 

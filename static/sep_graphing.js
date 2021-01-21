@@ -228,7 +228,7 @@ function initializeStyles() {
     let nodeLabel = {
         'defaultOpacity': 1,
         'centralNodeDimmedOpacity': 0.8,
-        'neighborNodeOpacity': 0.25,
+        'neighborNodeOpacity': 0.4, /* 0.25 default */
         'inArrayOpacity': 1,
         'notInArrayOpacity': 0.03,
         'defaultFontSize': '1.3em', 
@@ -240,7 +240,7 @@ function initializeStyles() {
 
     let linkLines = {
         'articleGraphOpacity': 0.4,
-        'domainGraphOpacity': 0.5,
+        'domainGraphOpacity': 0.9,
         'inactiveOpacity':0
     }
 
@@ -1553,10 +1553,16 @@ function showArticleDetailsPage(selectedArticle) {
     dimScreen('details');
 }
 function hideArticleDetailsPage() {
+
+
     articleDetailsPage
         .transition().duration(pageTransition)
         .style('opacity',0)
         .style('display','none')
+
+    toggleArticleListContent('off')
+    toggleLinkDirectionContent('on')
+    toggleLinkDomainContent('on')
 
     resetScreen();
 

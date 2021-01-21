@@ -142,7 +142,7 @@
     #graphTip {top:95%; left: 0%; font-size: .8em; padding-top: .75em}
     /* #graphHelp {top: 95%; left: 95%; } */
     /* #articleDetailsTip {top: 96%; left: 0%;} */
-    .closePageArea { top:96%; left:88%; }
+    .closePageArea { top:96%; left:87%; }
 
     /* graph.css - article graph divs*/
     /* #articleListContentArea { max-height:500px;} */
@@ -483,4 +483,16 @@
     #detailsAndTOCDiv h2 {  font-size:.9em; }
     .graphInstructionArea p, .graphInstructionArea li { font-size:.8em;}
     /* .linkCountText {font-size: 1em;} */
+}
+
+/* mobile */
+@media only screen  and (max-height: 1024px) and (max-width: 1024px)  {
+    /* layout */
+    body {overflow: visible;}
+    nav, .navbar {display:none}
+    .contentRow { height:500px; }
+    footer,#copyright {top: 600px;text-align: left; left:0}
+    #validContent {display: none;}
+    #mobileWarning {display: block;}
+
 }
