@@ -2411,7 +2411,6 @@ function mouseOutArticleAction(centralNode, frozenNode) {
         // otherwise, set left sidebar to main article
 
         if (currentArticleDetailsArticle !== '') {
-            console.log(currentArticleDetailsArticle)
             updateSideBarLeft_ArticleMain(currentArticleDetailsArticle, 'Main')
         }   else {
             updateSideBarLeft_ArticleMain(centralNode, 'Main')
