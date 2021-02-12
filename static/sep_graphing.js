@@ -87,6 +87,7 @@ let exploreMode = false;
 let priorNodeCircle;
 let priorNodeCircle_ListItem;
 let currentDomainCentralNode;
+let currentArticleDetailsArticle = '';
 
 //used to set/check panel value for dimScreen('details')
 let panelOpacityValue = 1;
@@ -1533,49 +1534,7 @@ function setArticleIntroParagraph(parentSidebar, titleType, selectedArticle) {
 
 }
 
-function showArticleDetailsPage(selectedArticle) {
 
-    panelOpacityValue=0.25;
-    clearSelections()
-    setArticleDetailsPage(selectedArticle) 
-
-
-    articleDetailsPage    
-        .transition().duration(pageTransition)
-            .style('display','block')
-            .style('opacity',1)
-
-    if(graphType==='Article') {
-        toggleArticleListContent('on')
-        toggleLinkDirectionContent('off')
-        toggleLinkDomainContent('off')
-    }  
-    clearSelections()
-    dimScreen('details');
-}
-function hideArticleDetailsPage() {
-
-
-    articleDetailsPage
-        .transition().duration(pageTransition)
-        .style('opacity',0)
-        .style('display','none')
-
-    toggleArticleListContent('off')
-    toggleLinkDirectionContent('on')
-    toggleLinkDomainContent('on')
-
-    resetScreen();
-
-}
-function toggleArticleDetailsPage(selectedArticle) {
-    
-    if(articleDetailsPage.style('display')==='block') {
-        hideArticleDetailsPage();
-    }   else    {
-        showArticleDetailsPage(selectedArticle);
-    }
-}
 function setArticleDetailsPage(selectedArticle) {
 
     articleDetailsPage.html('')
@@ -1689,6 +1648,62 @@ function setArticleDetailsPage(selectedArticle) {
         .on('click', function() { hideArticleDetailsPage(); })
     
 
+}
+function showArticleDetailsPage(selectedArticle) {
+
+    panelOpacityValue=0.25;
+    clearSelections()
+    setArticleDetailsPage(selectedArticle) 
+
+    currentArticleDetailsArticle = selectedArticle
+
+
+    articleDetailsPage    
+        .transition().duration(pageTransition)
+            .style('display','block')
+            .style('opacity',1)
+
+    if(graphType==='Article') {
+        toggleArticleListContent('on')
+        toggleLinkDirectionContent('off')
+        toggleLinkDomainContent('off')
+    }  
+    clearSelections()
+    dimScreen('details');
+}
+function hideArticleDetailsPage() {
+
+    currentArticleDetailsArticle = ''
+
+    articleDetailsPage
+        .transition().duration(pageTransition)
+        .style('opacity',0)
+        .style('display','none')
+
+    toggleArticleListContent('off')
+    toggleLinkDirectionContent('on')
+    toggleLinkDomainContent('on')
+
+    resetScreen();
+
+    // hack alert - figure out a cleaner ways of resetting graphs when closing details
+
+    if(graphType==='Article' && !exploreMode) {
+        updateSideBarLeft_ArticleMain(graphNodes[0], 'Main')
+
+    }
+    if(graphType==='Domain' && typeof(currentDomainCentralNode) != 'undefined') {
+        updateSidebarLeft_DomainMain(currentDomainCentralNode)
+    }
+    
+}
+function toggleArticleDetailsPage(selectedArticle) {
+    
+    if(articleDetailsPage.style('display')==='block') {
+        hideArticleDetailsPage();
+    }   else    {
+        showArticleDetailsPage(selectedArticle);
+    }
 }
 function getParagraphDataHTML(paragraphDataFromNode, substringLength) {
     let htmlReturn = '';
@@ -2390,7 +2405,18 @@ function mouseOutArticleAction(centralNode, frozenNode) {
 
     if (!exploreMode) {  
         resetDisplayDefaultsArticleGraph(); 
-        updateSideBarLeft_ArticleMain(centralNode, 'Main')
+
+
+        // if the article details page is open, set left sidebar to selected details page;
+        // otherwise, set left sidebar to main article
+
+        if (currentArticleDetailsArticle !== '') {
+            console.log(currentArticleDetailsArticle)
+            updateSideBarLeft_ArticleMain(currentArticleDetailsArticle, 'Main')
+        }   else {
+            updateSideBarLeft_ArticleMain(centralNode, 'Main')
+        }
+        
     }   
 
     if (exploreMode) {
