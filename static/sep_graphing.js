@@ -3046,7 +3046,7 @@ function setDomainIntroPanel(parentSidebar) {
         .html(collapseNote)
         .classed('panelParagraphText', true)
         .style('font-weight', 'bold')
-d
+
 
     // ui/ux interactions
     domainIntroHeading
