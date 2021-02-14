@@ -102,7 +102,7 @@ let baseURL;
 
 let json_file = 'static/sep_network.json'
 
-// getScreenProperties();
+getScreenProperties();
 
 startVisualization();
 
@@ -123,7 +123,7 @@ window.addEventListener('hashchange', function() {
 // ****** BEGINNING OF CODE FUNCTIONS *******
 
 function startVisualization() {
-    showHomePage();
+    // showHomePage();
     loadMenuData();
 
 }
@@ -1095,6 +1095,8 @@ function displayHelpPage(helpPageToDisplay) {
             .duration(pageTransition)
                 .style('opacity',1)
 
+    
+
     let closePageDiv = d3.select(helpPageToDisplay).append('div')
         .text('Close Page')
         .classed('closePageArea',true)
@@ -1541,11 +1543,16 @@ function setArticleDetailsPage(selectedArticle) {
 
     let articleDetailsContentArea = articleDetailsPage.append('div')
 
-    let articleDetailsHeadeding = articleDetailsContentArea.append("h2")
+    let articleDetailsHeading = articleDetailsContentArea.append('h2')
         .text(selectedArticle.title)
-        .classed('panelHeading', true)
+        // .classed('panelHeading', true)
         .classed('graphInstructionsPageHeading',true)
         .style('color', function() {return color(selectedArticle.primary_domain)})
+
+    // details breadcrumps
+    let articleBreadcrumbsContentArea = articleDetailsContentArea.append('div')
+    let articleDetailsBreadcrumbs = setArticleDetailsBreadcrumbs(articleBreadcrumbsContentArea, selectedArticle)
+    articleDetailsBreadcrumbs.attr('id','articleDetailsBreadcrumbs')
 
     //details table
     let detailsData = [
@@ -1613,8 +1620,8 @@ function setArticleDetailsPage(selectedArticle) {
     let preamableArea = articleDetailsContentArea.append("div")
         .attr('id', 'preambleArea')
         .classed('scrollbars', true)
-
-    let paragraphData = getParagraphDataHTML(selectedArticle.preamble_text,1750)
+    
+    let paragraphData = getParagraphDataHTML(selectedArticle.preamble_text,2000)
     let preamableText = preamableArea.append('div')
         .html(paragraphData)
         .classed('panelParagraphText', true)
@@ -1646,6 +1653,96 @@ function setArticleDetailsPage(selectedArticle) {
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() {deActivateItemLink(this)})
         .on('click', function() { hideArticleDetailsPage(); })
+
+    d3.select('#topLevelArticleLink')
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() { 
+            if(graphType==='Article') { showArticleDetailsPage(graphNodes[0]) }
+            if(graphType==='Domain') {showArticleDetailsPage(currentDomainCentralNode)}
+        } )
+
+    d3.select('#frozenNodeArticleLink')
+        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseout', function() {deActivateItemLink(this)})
+        .on('click', function() { let frozenNode = getFrozenNode('.label'); showArticleDetailsPage(frozenNode.datum())} )
+
+
+    // separate breadcrumbs injection to cleanly differentiate between article graph and domain graph
+    function setArticleDetailsBreadcrumbs(articleDetailsContentArea, selectedArticle) {
+
+        let topLevelArticle;
+        let frozenNode;
+        let currentArticleDetail = selectedArticle;
+
+        let breadcrumbsHTML = '';
+
+        // select topLevelArticle by graphType
+
+        switch(graphType){
+            case 'Article':
+
+                topLevelArticle = graphNodes[0]
+                breadcrumbsHTML = returnBreadcrumbLinks('topLevelArticleLink',topLevelArticle)  
+                frozenNode = getFrozenNode('.label')
+                
+                // there is a frozen node
+                if(frozenNode._groups[0].length === 1) {
+                    breadcrumbsHTML = breadcrumbsHTML + ' >> ' + returnBreadcrumbLinks('frozenNodeArticleLink',frozenNode.datum())   
+
+                    if( (frozenNode.datum().title !== currentArticleDetail.title) && (topLevelArticle.title !== currentArticleDetail.title) ) {
+                        breadcrumbsHTML = breadcrumbsHTML + ' >> ' + returnBreadcrumbLinks('currentArticleLink',currentArticleDetail)                         
+                    }
+
+                }
+
+                // no frozen node
+                if(frozenNode._groups[0].length === 0) {
+
+                    if(topLevelArticle.title !== currentArticleDetail.title) {
+
+                        breadcrumbsHTML = breadcrumbsHTML + ' >> ' + returnBreadcrumbLinks('currentArticleLink',currentArticleDetail) 
+                    }
+                }
+
+                break;
+            
+            case 'Domain':
+                if(currentDomainCentralNode) {
+                    topLevelArticle = currentDomainCentralNode
+                    if(topLevelArticle.title !== currentArticleDetail.title) {
+                        breadcrumbsHTML = returnBreadcrumbLinks('topLevelArticleLink',topLevelArticle) 
+                                        + ' >> ' 
+                                        + returnBreadcrumbLinks('currentArticleLink',currentArticleDetail) 
+                    }   else    {
+                        breadcrumbsHTML = returnBreadcrumbLinks('currentArticleLink',currentArticleDetail) 
+                    }
+                }   else {
+                    breadcrumbsHTML = returnBreadcrumbLinks('currentArticleLink',currentArticleDetail) 
+                }
+
+                break;
+        }
+
+
+        let breadcrumbsDiv = articleDetailsContentArea.append('div')
+        let breadcrumbsNavArea = breadcrumbsDiv.append("div")
+            .html(breadcrumbsHTML)
+
+        return breadcrumbsDiv
+
+
+    }
+
+    function returnBreadcrumbLinks(idValue, article) {
+        
+        let breadcrumbLink = '<span class="breadcrumbLink" id="' + idValue + '"style="color:' + color(article.primary_domain)  + '">' 
+                            + '<span>' + article.title + '</span>'
+                            + '</span>'
+
+        return breadcrumbLink
+
+    }
     
 
 }
@@ -1692,9 +1789,16 @@ function hideArticleDetailsPage() {
         updateSideBarLeft_ArticleMain(graphNodes[0], 'Main')
 
     }
-    if(graphType==='Domain' && typeof(currentDomainCentralNode) != 'undefined') {
-        updateSidebarLeft_DomainMain(currentDomainCentralNode)
-    }
+    if(graphType==='Domain') {
+        if(exploreMode) { 
+            updateSidebarLeft_DomainMain(currentDomainCentralNode)
+        }   else    {
+            resetDisplayDefaultsDomainGraph(); 
+            toggleDomainIntroContent('off') 
+        }
+
+
+    }   
     
 }
 function toggleArticleDetailsPage(selectedArticle) {
@@ -1707,11 +1811,22 @@ function toggleArticleDetailsPage(selectedArticle) {
 }
 function getParagraphDataHTML(paragraphDataFromNode, substringLength) {
     let htmlReturn = '';
+    let screenDependentSubstring;
+
+    // hack alert
+    // substring the preamble based on screen size. 
+    if(substringLength === 2000) {
+        if (window.screen.availHeight > 1000) { screenDependentSubstring = 2000 }
+        if (window.screen.availHeight < 1000) { screenDependentSubstring = 1500 }
+    }   else {
+        screenDependentSubstring = substringLength
+    }
+
 
     if(typeof(paragraphDataFromNode)!=='undefined') {
         if(paragraphDataFromNode !== '') {
-            if (paragraphDataFromNode.length > substringLength ) {
-                let paragraphSubstring = paragraphDataFromNode.substring(0,substringLength)
+            if (paragraphDataFromNode.length > screenDependentSubstring ) {
+                let paragraphSubstring = paragraphDataFromNode.substring(0,screenDependentSubstring)
 
                 let lastPeriod = paragraphSubstring.lastIndexOf('.') 
                 let lastQuestionMark = paragraphSubstring.lastIndexOf('?')
@@ -1726,7 +1841,7 @@ function getParagraphDataHTML(paragraphDataFromNode, substringLength) {
                     finalParaText = paragraphSubstring.substring(0,lastPuncMark) + ' ...'
                 }
                 
-                if(substringLength===1750) {
+                if(substringLength===2000) {
                     htmlReturn = '<p>' + finalParaText + '</p><p class="panelDispayCut">~ Abstract Shortened For Display ~</p>' 
                 }   else {
                     htmlReturn = '<p>' + finalParaText + '</p>' 
@@ -2325,7 +2440,13 @@ function sngClickArticleAction(sngClickReference, data, activeElement) {
             activeElement.transition().duration(200).style('font-weight', 'normal')
             setGraphMode('Hover')
             setNavTip('Off')
+
+
        }
+
+        if(currentArticleDetailsArticle !== '') {
+            setTimeout(function() {showArticleDetailsPage(activeElement.datum())}, 100);
+        }
     }
     
 }
@@ -2380,7 +2501,7 @@ function mouseOutArticleNode(mouseOverReference, data, opacityTest) {
 
     let activeElement = d3.select(mouseOverReference)
     let centralNode = graphNodes[0]
-    let frozenNode = d3.selectAll('.label').filter(function (d,i) {return d3.select(this).style('font-weight') === 'bold'})
+    let frozenNode = getFrozenNode('.label')
 
     //graph labels
     if(opacityTest==='fill-opacity') {
@@ -2420,12 +2541,21 @@ function mouseOutArticleAction(centralNode, frozenNode) {
 
     if (exploreMode) {
         let previewTitle = d3.select("#articlePreviewTitle").node().innerHTML
-        let mouseOutTitle = frozenNode.datum().title
+  
 
-        if(frozenNode.data().length > 0 && previewTitle !== mouseOutTitle) { updateSideBarLeft_ArticleMain(frozenNode.datum(), 'Preview') }
+        if(frozenNode.data().length > 0 && previewTitle !== frozenNode.datum().title) { updateSideBarLeft_ArticleMain(frozenNode.datum(), 'Preview') }
 
         
     }
+}
+
+
+function getFrozenNode(label) {
+    let frozenNode = d3.selectAll(label).filter(function (d,i) {
+            return d3.select(this).style('font-weight') === 'bold'}
+        )
+
+    return frozenNode;
 }
 
 function getNodeCenter(activeElement) {
@@ -2566,7 +2696,9 @@ function focusOnLinkAnalysis(linksReference) {
         d3.selectAll('.label')
             .each(function (d,i) {
                 d3.select(this)
-                    .transition().duration(200).attr('fill-opacity', function(label) { return setNodeLabelOpacity(label, linksReference)})
+                    .transition().duration(200)
+                    .attr('fill-opacity', function(label) { return setNodeLabelOpacity(label, linksReference)})
+                    .style('font-weight','normal')
             })
 
         d3.selectAll('.node')
@@ -2578,6 +2710,7 @@ function focusOnLinkAnalysis(linksReference) {
         d3.selectAll('.linkArticlesListItem')
             .each(function (d,i) {
                 let articleRef = d3.select(this)
+                articleRef.style('font-weight','normal')
                 if(linksReference.includes(d.id)) { 
                     articleRef
                         .transition().duration(200).style('opacity', styConfig.listItems.defaultOpacity)
@@ -2880,7 +3013,7 @@ function setDomainIntroPanel(parentSidebar) {
     let domainIntroPanel = parentSidebar.append("div")
         .classed('panelBG', true)
         .attr('id','domainIntroPanel')
-        .style('margin-bottom', '2em')
+        .style('margin-bottom', '.75em')
 
     let domainTitle = pageTitle.text().replace(' (Domain Graph)','')
     let domainTitleText = `Domain Graph Introduction`
@@ -2896,10 +3029,10 @@ function setDomainIntroPanel(parentSidebar) {
 
     let introText = '<p>The Domain Graph shows every article reasonably tagged as being part of the "' + domainTitle + '" domain, either as a primary domain or as a secondary domain. Articles can appear in multiple domains, but are always colored by their primary domain designation.</p>'
                     + '<p>In the graph\'s default state, only nodes are visible. <strong>MouseOver</strong> a node or a sidebar title to display the labels on the graph. </p>' 
-                    + '<p>When a node is activated, its label is displayed next to it, and the entire graph is updated interactively: the nodes for all of its direct links are highlighted, and the rest of the graph is dimmed. The labels for each of the linked articles are displayed on the left and right sides of the graph. </p>'
+                    // + '<p>When a node is activated, its label is displayed next to it, and the entire graph is updated interactively: the nodes for all of its direct links are highlighted, and the rest of the graph is dimmed. The labels for each of the linked articles are displayed on the left and right sides of the graph. </p>'
                     + '<p>Nodes are sized according the number of shared links within the domain: the larger the circle, the greater number of links that node is related to.</p>'
 
-                    let collapseNote = '<p>Please note: this panel will collapse automatically when a node is activated.</p>' 
+                    let collapseNote = '<p>This panel will collapse automatically when a node is activated.</p>' 
 
     let domainIntroContent = domainIntroPanel.append('div')
         .attr('id','domainIntroContent')
@@ -2913,6 +3046,7 @@ function setDomainIntroPanel(parentSidebar) {
         .html(collapseNote)
         .classed('panelParagraphText', true)
         .style('font-weight', 'bold')
+
 
     // ui/ux interactions
     domainIntroHeading
@@ -3124,8 +3258,8 @@ function sngClickDomainNodeActions(sngClickReference) {
 
     // open article details
     if(d3.event.shiftKey) { 
-        showArticleDetailsPage(activeElement.datum());
         updateSidebarLeft_DomainMain(activeElement.datum());
+        showArticleDetailsPage(activeElement.datum());
         clearSelections();
 
     }   else {
@@ -3162,6 +3296,10 @@ function sngClickDomainNodeActions(sngClickReference) {
                 setGraphMode('Hover')
                 setNavTip('Off')
 
+            }
+
+            if(currentArticleDetailsArticle !== '') {
+                setTimeout(function() {showArticleDetailsPage(activeElement.datum())}, 100);
             }
 
         
@@ -3246,13 +3384,18 @@ function mouseOutDomainNodeActions(mouseOutReference) {
     if(!exploreMode) { 
         resetDisplayDefaultsDomainGraph(); 
         toggleDomainIntroContent('off') 
+        // if the article details page is open, set left sidebar to selected details page;
+        // otherwise, set left sidebar to main article
+
+        if (currentArticleDetailsArticle !== '') {
+            updateSidebarLeft_DomainMain(currentArticleDetailsArticle, 'Main')
+        }   
     }
      
     if(exploreMode) { 
         let domainArticlePreviewTitle = d3.select('#articlePreviewTitle').node().innerHTML
-        let frozenNode = d3.selectAll('.domainArticle').filter(function (d,i) {
-            return d3.select(this).style('font-weight') === 'bold'
-        })
+        let frozenNode = getFrozenNode('.domainArticle');
+
         let mouseOutTitle = frozenNode.datum().title
 
         if(frozenNode.data().length > 0 && domainArticlePreviewTitle !== mouseOutTitle) { 
@@ -4050,12 +4193,16 @@ function clearSelections(){
 function getScreenProperties() {
 
     console.log(window.devicePixelRatio)   
+    console.log(window.aspec)
 
     console.log(window.screen.width)   
     console.log(window.screen.height) 
+    console.log(window.screen.width/window.screen.height)
     console.log(window.screen.availWidth)   
     console.log(window.screen.availHeight)   
-
+    console.log(window.screen.availWidth/window.screen.availHeight)
     console.log(window.innerWidth)   
     console.log(window.innerHeight)   
+    console.log(window.innerWidth/window.innerHeight)
+    console.log(window.visualViewport)
 }
