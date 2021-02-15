@@ -1666,7 +1666,7 @@ function setArticleDetailsPage(selectedArticle) {
     d3.select('#frozenNodeArticleLink')
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() { let frozenNode = getFrozenNode('.label'); showArticleDetailsPage(frozenNode.datum())} )
+        .on('click', function() { let frozenNode = getFrozenNode('.label'); showArticleDetailsPage(frozenNode.datum()); })
 
 
     // separate breadcrumbs injection to cleanly differentiate between article graph and domain graph
@@ -1765,7 +1765,10 @@ function showArticleDetailsPage(selectedArticle) {
         toggleArticleListContent('on')
         toggleLinkDirectionContent('off')
         toggleLinkDomainContent('off')
-    }  
+        updateSideBarLeft_ArticleMain(selectedArticle, 'Main')
+    }  else {
+        updateSideBarLeft_DomainMain(selectedArticle, 'Main')
+    }
     clearSelections()
     dimScreen('details');
 }
@@ -1786,10 +1789,22 @@ function hideArticleDetailsPage() {
 
     // hack alert - figure out a cleaner ways of resetting graphs when closing details
 
-    if(graphType==='Article' && !exploreMode) {
-        updateSideBarLeft_ArticleMain(graphNodes[0], 'Main')
+    if(graphType==='Article') {
 
-    }
+        if(exploreMode) {
+            let frozenNode = getFrozenNode('.label')
+            if(frozenNode.data().length > 0) {
+                updateSideBarLeft_ArticleMain(frozenNode.datum(), 'Main')
+            } else {
+                updateSideBarLeft_ArticleMain(graphNodes[0], 'Main')
+            }
+        } else {
+            updateSideBarLeft_ArticleMain(graphNodes[0], 'Main')
+        }
+
+
+    }  
+
     if(graphType==='Domain') {
         if(exploreMode) { 
             updateSidebarLeft_DomainMain(currentDomainCentralNode)
@@ -2481,6 +2496,10 @@ function mouseOverArticleNode(mouseOverReference, data, opacityTest) {
 function mouseOverArticleActions(mouseOverReference, data, activeElement) {
     activateItemLink(mouseOverReference)
     setArticleDetailsPage(activeElement.datum())
+    if(currentArticleDetailsArticle !== '') {
+        currentArticleDetailsArticle = activeElement.datum()
+    }
+    
     let previewTitle = d3.select("#articlePreviewTitle").node().innerHTML
     let mouseOverTitle = activeElement.datum().title
     
@@ -2524,30 +2543,43 @@ function mouseOutArticleNode(mouseOverReference, data, opacityTest) {
 }
 
 function mouseOutArticleAction(centralNode, frozenNode) {
+    let previewTitle = d3.select("#articlePreviewTitle").node().innerHTML
+
 
     if (!exploreMode) {  
         resetDisplayDefaultsArticleGraph(); 
-
+    }
+    if (currentArticleDetailsArticle !== '') {
+        updateSideBarLeft_ArticleMain(currentArticleDetailsArticle, 'Main')
+    }   else {
+        updateSideBarLeft_ArticleMain(centralNode, 'Main')
+    }
 
         // if the article details page is open, set left sidebar to selected details page;
         // otherwise, set left sidebar to main article
 
-        if (currentArticleDetailsArticle !== '') {
-            updateSideBarLeft_ArticleMain(currentArticleDetailsArticle, 'Main')
-        }   else {
-            updateSideBarLeft_ArticleMain(centralNode, 'Main')
-        }
+    //     if (currentArticleDetailsArticle !== '') {
+    //         updateSideBarLeft_ArticleMain(currentArticleDetailsArticle, 'Main')
+    //     }   else {
+    //         updateSideBarLeft_ArticleMain(centralNode, 'Main')
+    //     }
         
-    }   
+    // }   
 
-    if (exploreMode) {
-        let previewTitle = d3.select("#articlePreviewTitle").node().innerHTML
+    // if (exploreMode) {
+
+
   
 
-        if(frozenNode.data().length > 0 && previewTitle !== frozenNode.datum().title) { updateSideBarLeft_ArticleMain(frozenNode.datum(), 'Preview') }
+    //     if(frozenNode.data().length > 0 && previewTitle !== frozenNode.datum().title) { 
+    //         updateSideBarLeft_ArticleMain(frozenNode.datum(), 'Preview') 
+    //     }  
+    //      else {
+    //         updateSideBarLeft_ArticleMain(centralNode, 'Preview') 
+    //     }
 
         
-    }
+    // }
 }
 
 
