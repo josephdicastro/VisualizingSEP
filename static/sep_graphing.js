@@ -1024,7 +1024,8 @@ function setGraphType(graphState) {
 
     graphHelp
         .classed('graphModeHelpCallout', true)
-        .classed('graphHelpBGImage',true)
+        .style('display','block')
+        .style('opacity',1)
         .on('mouseover', function() {activateItemLink(this)})
         .on('mouseout', function() {deActivateItemLink(this)})
         .on('click', function() { toggleHelpPage(helpPageToOpen)})
