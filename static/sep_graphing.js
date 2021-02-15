@@ -4129,7 +4129,11 @@ function color(entryType){
         case 'Philosophy of Mind':
             rgbValue = 'rgb(43, 162, 162)' 
             break;
-    
+
+        case 'Philosophy of Action':
+            rgbValue = 'rgb(22, 247, 247)' 
+            break;
+        
     
         // scientific philosophies
         // blues
