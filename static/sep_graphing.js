@@ -1664,16 +1664,20 @@ function setArticleDetailsPage(selectedArticle) {
         } )
 
     d3.select('#frozenNodeArticleLink')
-        .on('mouseover', function() {activateItemLink(this)})
+        .on('mouseover', function() {
+            let linkText =this.innerHTML
+            console.log(linkText.indexOf('(Selected'))
+            if(linkText.indexOf('(Selected') === -1) { activateItemLink(this) }
+        })
         .on('mouseout', function() {deActivateItemLink(this)})
-        .on('click', function() { let frozenNode = getFrozenNode('.label'); showArticleDetailsPage(frozenNode.datum()); })
+        .on('click', function() { let frozenNode = getFrozenNode('.label'); if(frozenNode.data().length > 0) { showArticleDetailsPage(frozenNode.datum());} })
 
 
     // separate breadcrumbs injection to cleanly differentiate between article graph and domain graph
     function setArticleDetailsBreadcrumbs(articleDetailsContentArea, selectedArticle) {
 
         let topLevelArticle;
-        let frozenNode;
+        let frozenArticleNode;
         let currentArticleDetail = selectedArticle;
 
         let breadcrumbsHTML = '';
@@ -1685,26 +1689,52 @@ function setArticleDetailsPage(selectedArticle) {
 
                 topLevelArticle = graphNodes[0]
                 breadcrumbsHTML = returnBreadcrumbLinks('topLevelArticleLink',topLevelArticle)  
-                frozenNode = getFrozenNode('.label')
-                
-                // there is a frozen node
-                if(frozenNode._groups[0].length === 1) {
-                    breadcrumbsHTML = breadcrumbsHTML + ' >> ' + returnBreadcrumbLinks('frozenNodeArticleLink',frozenNode.datum())   
+                frozenArticleNode = getFrozenNode('.label')
 
-                    if( (frozenNode.datum().title !== currentArticleDetail.title) && (topLevelArticle.title !== currentArticleDetail.title) ) {
+                let frozenDirectionGraph = getFrozenNode('.linkDirListItem')
+                let frozenDomainGraph = getFrozenNode('.linkDomainListItem')
+                let frozenDirDomText = ''
+                let frozenDirDomObj = {};
+                
+                if(frozenDirectionGraph.data().length > 0 ) { 
+                    frozenDirDomText = frozenDirectionGraph.data()[0]
+                    let startPos = frozenDirDomText.lastIndexOf('</span>') + 7
+                    frozenDirDomText = frozenDirDomText.trim().substring(startPos,startPos+25).trim()
+                    frozenDirDomObj['title'] = '(Selected Link Direction: ' + frozenDirDomText + ')'
+                    frozenDirDomObj['primary_domain'] = 'Default Page'
+
+                }
+                if(frozenDomainGraph.data().length > 0 ) { 
+                    frozenDirDomText = frozenDomainGraph.data()[0][0]
+                    frozenDirDomObj['title'] = '(Selected Link Domain: ' + frozenDirDomText +')'
+                    frozenDirDomObj['primary_domain'] = frozenDirDomText
+                }                
+                // there is a frozen article node
+                if(frozenArticleNode.data().length === 1) {
+                    breadcrumbsHTML = breadcrumbsHTML + ' >> ' + returnBreadcrumbLinks('frozenNodeArticleLink',frozenArticleNode.datum())   
+
+                    if( (frozenArticleNode.data().title !== currentArticleDetail.title) && (topLevelArticle.title !== currentArticleDetail.title) ) {
                         breadcrumbsHTML = breadcrumbsHTML + ' >> ' + returnBreadcrumbLinks('currentArticleLink',currentArticleDetail)                         
                     }
 
                 }
 
-                // no frozen node
-                if(frozenNode._groups[0].length === 0) {
+                //  frozen dir or dom graph
+                if(frozenDirDomText !== '') {
+                    breadcrumbsHTML = breadcrumbsHTML + ' >> ' + returnBreadcrumbLinks('frozenNodeArticleLink',frozenDirDomObj)   
+
+                }
+
+                // no frozen article node
+                if(frozenArticleNode.data().length === 0) {
 
                     if(topLevelArticle.title !== currentArticleDetail.title) {
 
                         breadcrumbsHTML = breadcrumbsHTML + ' >> ' + returnBreadcrumbLinks('currentArticleLink',currentArticleDetail) 
                     }
                 }
+
+
 
                 break;
             
@@ -1752,7 +1782,7 @@ function showArticleDetailsPage(selectedArticle) {
     panelOpacityValue=0.25;
     clearSelections()
     setArticleDetailsPage(selectedArticle) 
-
+    dimScreen('details');
     currentArticleDetailsArticle = selectedArticle
 
 
@@ -1767,10 +1797,10 @@ function showArticleDetailsPage(selectedArticle) {
         toggleLinkDomainContent('off')
         updateSideBarLeft_ArticleMain(selectedArticle, 'Main')
     }  else {
-        updateSideBarLeft_DomainMain(selectedArticle, 'Main')
+        updateSidebarLeft_DomainMain(selectedArticle, 'Main')        
     }
     clearSelections()
-    dimScreen('details');
+
 }
 function hideArticleDetailsPage() {
 
@@ -2177,6 +2207,10 @@ function setLinkDirectionPanel(parentDiv, articleData) {
                 activateLinkDirDomItem('.linkDirListItem',this, 'bold')
                 activateLinkDirDomItem('.linkDomainListItem',this, 'normal')
                 setGraphMode('Explore')
+
+                if(currentArticleDetailsArticle !== '') {
+                    setTimeout(function() {showArticleDetailsPage(graphNodes[0])}, 100);
+                }                
             }
 
         })
@@ -2289,6 +2323,9 @@ function setLinkDomainPanel(parentSidebar, articleData) {
                 activateLinkDirDomItem('.linkDirListItem',this, 'normal')
                 activateLinkDirDomItem('.linkDomainListItem',this,'bold')
                 setGraphMode('Explore')
+                if(currentArticleDetailsArticle !== '') {
+                    setTimeout(function() {showArticleDetailsPage(graphNodes[0])}, 100);
+                }                   
             }
             
         })
@@ -3362,6 +3399,9 @@ function mouseOverDomainNodeActions(mouseOverReference) {
     currentDomainCentralNode = getDomainCentralNode()
     activateItemLink(mouseOverReference)
     setArticleDetailsPage(selectedArticle.datum())
+    if(currentArticleDetailsArticle !== '') {
+        currentArticleDetailsArticle = selectedArticle.datum()
+    }
 
     let selectedArticleTitle = selectedArticle.datum().title
     
@@ -3440,6 +3480,10 @@ function mouseOutDomainNodeActions(mouseOutReference) {
 
             priorNodeCircle_ListItem = null
         }
+
+        if (currentArticleDetailsArticle !== '') {
+            updateSidebarLeft_DomainMain(currentArticleDetailsArticle, 'Main')
+        }  
 
         d3.selectAll('.relatedLinkLines').style('opacity',styConfig.linkLines.inactiveOpacity)
     }
@@ -3720,8 +3764,8 @@ function positionRelatedDomainLabels(activeElement) {
 
 
             if(d3.event.shiftKey) { 
-                showArticleDetailsPage(selectedNode);
                 updateSidebarLeft_DomainMain(selectedNode)
+                showArticleDetailsPage(selectedNode);
                 clearSelections();
             }   else    {
                 setTimeout(function() { 
