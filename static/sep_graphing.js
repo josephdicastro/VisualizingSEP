@@ -123,7 +123,11 @@ window.addEventListener('hashchange', function() {
 // ****** BEGINNING OF CODE FUNCTIONS *******
 
 function startVisualization() {
-    // showHomePage();
+    let urlHash = window.location.hash
+    // check for home page
+    if (urlHash === '' || urlHash === '#' || urlHash === '/#' || urlHash === '/#/' || urlHash === '#/') {
+        showHomePage();
+    }
     loadMenuData();
 
 }
