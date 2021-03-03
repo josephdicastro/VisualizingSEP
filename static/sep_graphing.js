@@ -890,45 +890,52 @@ function show404Page() {
 
 // read URL and route to appropriate endpoint
 function processURL() {
-    let urlHash = window.location.hash
 
-    //if urlHash does not indicate an article or domain graph
-    if(urlHash.indexOf('entries') === -1 && urlHash.indexOf('domain') === -1) {
+    if(window.screen.width < 720) {
+        showHomePage()
+    }   else {
+        let urlHash = window.location.hash
 
-        // check for home page
-        if (urlHash === '' || urlHash === '#' || urlHash === '/#' || urlHash === '/#/' || urlHash === '#/') {
-            showHomePage();
-
-        // check for about page
-        } else if (urlHash === '#/about' || urlHash === '#/about/') {
-            showAboutPage();
-
-        // check for contact page
-        } else if (urlHash === '#/contact' || urlHash === '#/contact/') {
-            showContactPage();
-
-        // check for 404 page
-        } else if (urlHash === '#/404' || urlHash === '#/404/') {
-            show404Page();
-        
-        // any other URL is bad, and needs to go to 404
+        //if urlHash does not indicate an article or domain graph
+        if(urlHash.indexOf('entries') === -1 && urlHash.indexOf('domain') === -1) {
+    
+            // check for home page
+            if (urlHash === '' || urlHash === '#' || urlHash === '/#' || urlHash === '/#/' || urlHash === '#/') {
+                showHomePage();
+    
+            // check for about page
+            } else if (urlHash === '#/about' || urlHash === '#/about/') {
+                showAboutPage();
+    
+            // check for contact page
+            } else if (urlHash === '#/contact' || urlHash === '#/contact/') {
+                showContactPage();
+    
+            // check for 404 page
+            } else if (urlHash === '#/404' || urlHash === '#/404/') {
+                show404Page();
+            
+            // any other URL is bad, and needs to go to 404
+            } else {
+                show404Page();
+            }
+    
         } else {
-            show404Page();
+    
+            //if urlHash contains 'entries' then this is an article. check for valid article, or route to 404
+            if(urlHash.indexOf('entries') !== -1) {
+                processArticle(urlHash)
+            }
+    
+            //if urlHash contains 'entries' then this is an article. check for valid article, or route to 404
+            if(urlHash.indexOf('domain') !== -1) {
+                processDomain(urlHash)
+            }
+    
         }
-
-    } else {
-
-        //if urlHash contains 'entries' then this is an article. check for valid article, or route to 404
-        if(urlHash.indexOf('entries') !== -1) {
-            processArticle(urlHash)
-        }
-
-        //if urlHash contains 'entries' then this is an article. check for valid article, or route to 404
-        if(urlHash.indexOf('domain') !== -1) {
-            processDomain(urlHash)
-        }
-
     }
+
+ 
 }
 
 function processArticle(urlHash) {
@@ -4275,6 +4282,8 @@ function clearSelections(){
 }
 
 //   deubg 
+
+
 function getScreenProperties() {
 
     console.log(window.devicePixelRatio)   
