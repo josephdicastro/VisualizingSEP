@@ -939,7 +939,6 @@ function processURL() {
 }
 
 function processArticle(urlHash) {
-    console.log(urlHash)
     let hashPosition = urlHash.indexOf('#') + 1
     let articleID = urlHash.substring(hashPosition)
     let articleObj = allArticles.filter(article => article.id === articleID)
