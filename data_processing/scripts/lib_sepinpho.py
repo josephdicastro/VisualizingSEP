@@ -262,7 +262,7 @@ def update_main_document_data(sep_object):
 
 def get_author_string(copyright_obj):
     """ This function returns a string of the copyright_obj field """
-    soup = BeautifulSoup(copyright_obj)
+    soup = BeautifulSoup(copyright_obj, 'lxml')
     copyright_string = soup.get_text()
     by_pos = copyright_string.find('by ') +2
     authors = copyright_string[by_pos:].strip()
